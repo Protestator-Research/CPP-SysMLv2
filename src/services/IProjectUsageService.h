@@ -28,11 +28,13 @@ namespace SysMLv2::Entities{
 namespace SysMLv2::API {
     /**
      * @class IProjectUsageService
-     * This class represents an interface definition according to the SysMLv2 Standard Version: 1.0 Beta 3.
+     * This class represents an interface definition of the ProjectUsageService according to the SysMLv2 Standard Version: 1.0 Beta 3.
      * @author Moritz Herzog
      * @version 1.0 Beta 3
      * @see SysMLv2::Entities::Commit
+     * @see SysMLv2::Entities::Project
      * @see SysMLv2::Entities::ProjectUsage
+     * @see boost::uuids::uuid
      */
     class IProjectUsageService {
     public:

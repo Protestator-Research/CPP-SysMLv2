@@ -1,0 +1,8 @@
+//
+// Created by Moritz Herzog on 10.03.25.
+//
+
+#ifndef CPP_SYSMLV2_LIB_IPROJECTSERVICE_H
+#define CPP_SYSMLV2_LIB_IPROJECTSERVICE_H
+
+#endif //CPP_SYSMLV2_LIB_IPROJECTSERVICE_H
