@@ -26,7 +26,6 @@
 #include "ProjectUsage.h"
 #include "Tag.h"
 #include "Query.h"
-#include "../../BaseFuctions/StringExtention.hpp"
 
 
 namespace SysMLv2::Entities {
