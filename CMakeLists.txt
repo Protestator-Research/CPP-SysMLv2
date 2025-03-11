@@ -48,7 +48,13 @@ add_library(CPP-SysMLv2-Lib
         src/serialization/SysMLv2Deserializer.cpp
         src/serialization/SysMLv2Deserializer.h
 
-        src/services/IProjectUsageService.h)
+        src/services/IProjectUsageService.h
+        src/entities/Direction.h
+        src/entities/ChangeType.h
+        src/entities/MergeResult.cpp
+        src/entities/MergeResult.h
+        src/entities/DataDifference.cpp
+        src/entities/DataDifference.h)
 
 target_link_libraries(CPP-SysMLv2-Lib
         boost::boost

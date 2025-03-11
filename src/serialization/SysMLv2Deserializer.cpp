@@ -24,8 +24,8 @@ namespace SysMLv2 {
 
         nlohmann::json json = nlohmann::json::parse(inputValue);
 
-        std::string type = CPSBASELIB::STD_EXTENTION::StringExtention::toLower(
-                json[Entities::JSON_TYPE_ENTITY].get<std::string>());
+        std::string type = json[Entities::JSON_TYPE_ENTITY].get<std::string>();
+        std::transform(type.begin(), type.end(), type.begin(), [](unsigned char c){ return std::tolower(c); });
 
         if(type==Entities::PROJECT_TYPE)
             return new Entities::Project(inputValue);
@@ -65,22 +65,13 @@ namespace SysMLv2 {
     bool SysMLv2Deserializer::checkIfIsElementType(std::string type) {
         std::vector<std::string> element_names = {"Element", "AnnotatingElement","Annotation", "Association", "Classifier", "Class", "Comment", "Connector", "DataType", "Dependency", "Documentation", "Element", "FeatureTyping", "NamespaceImport", "MembershipImport", "Multiplicity", "Specialization", "Subsetting", "Type", "Feature", "Expression", "Invairant", "Package", "Namespace", "Redefinition", "Relationship", "ReferencedSubsetting", "TextualRepresentation"};
 
-        for(auto elem_name : element_names)
-            if(type == CPSBASELIB::STD_EXTENTION::StringExtention::toLower(elem_name))
+        for(auto elem_name : element_names) {
+            std::transform(elem_name.begin(), elem_name.end(), elem_name.begin(), [](unsigned char c){ return std::tolower(c); });
+            if (type == elem_name)
                 return true;
-
-        return false;
-    }
-
-    std::string SysMLv2Deserializer::splitString(std::string stringToSplit, char delimiter) {
-        std::vector<std::string> returnValue;
-        std::istringstream stream(stringToSplit);
-        std::string line;
-        while (getline(stream, line, delimiter)) {
-            returnValue.push_back(line);
         }
 
-        return returnValue;
+        return false;
     }
 
 } // SysMLv2

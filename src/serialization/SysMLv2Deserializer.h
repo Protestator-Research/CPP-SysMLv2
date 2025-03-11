@@ -40,7 +40,6 @@ namespace SysMLv2 {
         static std::vector<SysMLv2::Entities::IEntity*> deserializeJsonArray(std::string inputValue);
 
     private:
-        static std::string splitString(std::string stringToSplit, char delimiter);
         static bool checkIfIsElementType(std::string type);
     };
 

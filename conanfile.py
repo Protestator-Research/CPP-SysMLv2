@@ -8,7 +8,7 @@ from sys import platform
 
 class CPPSysMLRecipe(ConanFile):
     name = "Cpp-SysMLv2-lib"
-    version = "2503"
+    version = "1.0-beta-3"
     package_type = "library"
 
     # Optional metadata

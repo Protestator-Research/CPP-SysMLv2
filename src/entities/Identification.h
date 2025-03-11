@@ -20,7 +20,6 @@
 //---------------------------------------------------------
 #include "IEntity.h"
 #include "JSONEntities.h"
-#include "../../cps_base_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -34,7 +33,7 @@ namespace SysMLv2::Entities {
      * @author Moritz Herzog
      * @class Identification
      */
-    class CPSBASELIB_EXPORT Identification : public IEntity {
+    class Identification : public IEntity {
     public:
         /**
          * CTOR deleted
