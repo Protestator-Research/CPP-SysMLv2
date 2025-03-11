@@ -4,7 +4,18 @@
 
 #include "MergeResult.h"
 
-namespace SysMLv2 {
-    namespace Entities {
-    } // Entities
+namespace SysMLv2::Entities{
+
+    MergeResult::MergeResult(Commit *mergeCommit, std::vector<DataIdentity *> conflict) {
+        MergeCommit = mergeCommit;
+        Conflict = conflict;
+    }
+
+    std::vector<DataIdentity *> MergeResult::conflict() {
+        return Conflict;
+    }
+
+    Commit *MergeResult::mergeCommit() {
+        return MergeCommit;
+    }
 } // SysMLv2

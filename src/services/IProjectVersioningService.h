@@ -62,10 +62,10 @@ namespace SysMLv2::API {
         virtual SysMLv2::Entities::Commit* getHeadCommit(SysMLv2::Entities::Project* project, SysMLv2::Entities::Branch* branch) = 0;
 
         /**
-         *
-         * @param project
-         * @param commitId
-         * @return
+         * Gets the specific commit from the project with the given UUID.
+         * @param project The project where the commit is located.
+         * @param commitId The id of the commit.
+         * @return The specified commit by the project and the commit id.
          */
         virtual SysMLv2::Entities::Commit* getCommitById(SysMLv2::Entities::Project* project, boost::uuids::uuid commitId) = 0;
 

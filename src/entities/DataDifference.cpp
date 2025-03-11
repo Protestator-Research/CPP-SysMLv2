@@ -6,5 +6,17 @@
 
 namespace SysMLv2 {
     namespace Entities {
+        DataDifference::DataDifference(DataVersion *baseData, DataVersion *comparedData) {
+            BaseData = baseData;
+            CompareData = comparedData;
+        }
+
+        DataVersion *DataDifference::baseData() {
+            return BaseData;
+        }
+
+        DataVersion *DataDifference::comparedData() {
+            return CompareData;
+        }
     } // Entities
 } // SysMLv2
