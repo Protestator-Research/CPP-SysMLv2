@@ -111,4 +111,8 @@ namespace SysMLv2::Entities {
         return Type;
     }
 
+    Record::~Record() {
+
+    }
+
 }

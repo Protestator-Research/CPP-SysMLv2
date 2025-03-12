@@ -43,18 +43,18 @@ namespace SysMLv2::Entities {
          * @param name Name of the Object
          * @param description Description of the Object
          */
-        Record(boost::uuids::uuid id, std::string name="", std::string description="");
+        explicit Record(boost::uuids::uuid id, std::string name="", std::string description="");
 
         /**
          * Converts a JSON String into a valid Record
          * @param jsonString The JSON String that is converted to a Record or a valid name of the Record.
          */
-        Record(std::string jsonStringOrName);
+        explicit Record(std::string jsonStringOrName);
 
         /**
          * Destructor
          */
-        virtual ~Record() = default;
+        virtual ~Record();
 
         /**
          * Checks the equality of the individual Records.
@@ -112,7 +112,7 @@ namespace SysMLv2::Entities {
          */
         [[nodiscard]] std::string getType() const;
 
-        virtual std::string serializeToJson() override;
+        std::string serializeToJson() override;
 
 
 

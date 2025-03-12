@@ -9,7 +9,6 @@
 #include "../entities/Branch.h"
 #include "../entities/Tag.h"
 #include "../entities/Query.h"
-#include "../entities/DigitalTwin.h"
 #include "../entities/Element.h"
 #include <nlohmann/json.hpp>
 #include <vector>
@@ -41,9 +40,6 @@ namespace SysMLv2 {
 
         if(type==Entities::QUERY_TYPE)
             return new Entities::Query(inputValue);
-
-        if(type==Entities::DIGITAL_TWIN_TYPE)
-            return new Entities::DigitalTwin(inputValue);
 
         if(checkIfIsElementType(type))
             return new Entities::Element(inputValue);

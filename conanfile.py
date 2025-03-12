@@ -7,8 +7,8 @@ from sys import platform
 
 
 class CPPSysMLRecipe(ConanFile):
-    name = "Cpp-SysMLv2-lib"
-    version = "1.0-beta-3"
+    name = "cpp-sysmlv2-lib"
+    #version = "1.0-beta-3"
     package_type = "library"
 
     # Optional metadata
@@ -21,7 +21,7 @@ class CPPSysMLRecipe(ConanFile):
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False]}
-    default_options = {"shared": True, "fPIC": False}
+    default_options = {"shared": False, "fPIC": False}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = "CMakeLists.txt", "src/*"
@@ -72,6 +72,10 @@ class CPPSysMLRecipe(ConanFile):
     def package(self):
         cmake = CMake(self)
         cmake.install()
+
+    def package_info(self):
+        self.cpp_info.libs = ["sysmlv2"]
+        self.cpp_info.builddirs.append(os.path.join("lib", "cmake", "sysmlv2"))
 
     
 
