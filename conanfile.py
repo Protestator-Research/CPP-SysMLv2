@@ -20,8 +20,8 @@ class CPPSysMLRecipe(ConanFile):
 
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False], "fPIC": [True, False]}
-    default_options = {"shared": False, "fPIC": False}
+    options = {"shared": [True, False], "fPIC": [True, False], "with_rest": [True, False], "with_services":[True, False], "with_parsing":[True,False]}
+    default_options = {"shared": False, "fPIC": False, "with_rest": True, "with_services": True, "with_parsing": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = "CMakeLists.txt", "src/*"
@@ -30,6 +30,8 @@ class CPPSysMLRecipe(ConanFile):
         self.requires("boost/1.84.0")
         self.requires("nlohmann_json/3.11.3")
         self.requires("date/3.0.1")
+        if(self.options.with_parsing):
+            self.requires("antlr4-cppruntime/4.13.1")
 
     def config_options(self):
         if self.settings.os == "Windows":
@@ -41,10 +43,14 @@ class CPPSysMLRecipe(ConanFile):
             self.options["boost/*"].shared = True
             self.options["nlohmann_json/*"].shared = True
             self.options["date/*"].shared = True
+            if(self.options.with_parsing):
+                self.options["antlr4-cppruntime/*"].shared = True
         else:
             self.options["boost/*"].shared = False
             self.options["nlohmann_json/*"].shared = False
             self.options["date/*"].shared = False
+            if(self.options.with_parsing):
+                self.options["antlr4-cppruntime/*"].shared = False
 
     def layout(self):
         cmake_layout(self)
@@ -53,6 +59,10 @@ class CPPSysMLRecipe(ConanFile):
         deps = CMakeDeps(self)
         deps.generate()
         tc = CMakeToolchain(self)
+
+        if(self.options.with_parsing):
+            tc.variables["BUILD_WITH_PARSING"]=True
+
         tc.user_presets_path = 'CMakePresets.json'
         tc.generate()
 
