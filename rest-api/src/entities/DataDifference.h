@@ -13,7 +13,7 @@ namespace SysMLv2 ::Entities {
 
     class DataDifference {
     public:
-        explicit DataDifference(DataVersion *baseData = nullptr, DataVersion* comparedData = nullptr);
+        explicit DataDifference(std::shared_ptr<DataVersion> baseData = nullptr, std::shared_ptr<DataVersion> comparedData = nullptr);
 
         virtual ~DataDifference() = default;
 

@@ -19,7 +19,7 @@
 #include <string>
 
 namespace SysMLv2 {
-    SysMLv2::Entities::IEntity *SysMLv2Deserializer::deserializeJsonString(std::string inputValue) {
+    std::shared_ptr<SysMLv2::Entities::IEntity> SysMLv2Deserializer::deserializeJsonString(std::string inputValue) {
 
         nlohmann::json json = nlohmann::json::parse(inputValue);
 
@@ -27,30 +27,30 @@ namespace SysMLv2 {
         std::transform(type.begin(), type.end(), type.begin(), [](unsigned char c){ return std::tolower(c); });
 
         if(type==Entities::PROJECT_TYPE)
-            return new Entities::Project(inputValue);
+            return std::make_shared<Entities::Project>(inputValue);
 
         if(type==Entities::DATA_IDENTITY_TYPE)
-            return new Entities::DataIdentity(inputValue);
+            return std::make_shared<Entities::DataIdentity>(inputValue);
 
         if(type==Entities::BRANCH_TYPE)
-            return new Entities::Branch(inputValue);
+            return std::make_shared<Entities::Branch>(inputValue);
 
         if(type==Entities::TAG_TYPE)
-            return new Entities::Tag(inputValue);
+            return std::make_shared<Entities::Tag>(inputValue);
 
         if(type==Entities::QUERY_TYPE)
-            return new Entities::Query(inputValue);
+            return std::make_shared<Entities::Query>(inputValue);
 
         if(checkIfIsElementType(type))
-            return new Entities::Element(inputValue);
+            return std::make_shared<Entities::Element>(inputValue);
 
         return nullptr;
     }
 
-    std::vector<SysMLv2::Entities::IEntity*> SysMLv2Deserializer::deserializeJsonArray(std::string inputValue) {
+    std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> SysMLv2Deserializer::deserializeJsonArray(std::string inputValue) {
         nlohmann::json json = nlohmann::json::parse(inputValue);
         std::vector<nlohmann::json> arrayValues = json.get<std::vector<nlohmann::json>>();
-        std::vector<SysMLv2::Entities::IEntity*> returnValues;
+        std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> returnValues;
         returnValues.reserve(arrayValues.size());
         for(const nlohmann::json& elem : arrayValues) {
             returnValues.emplace_back(SysMLv2Deserializer::deserializeJsonString(elem.dump()));

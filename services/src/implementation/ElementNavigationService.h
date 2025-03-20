@@ -5,7 +5,7 @@
 #ifndef SYSMLV2_ELEMENTNAVIGATIONSERVICE_H
 #define SYSMLV2_ELEMENTNAVIGATIONSERVICE_H
 
-#include "../interfacess/IElementNavigationService.h"
+#include "../interfaces/IElementNavigationService.h"
 
 namespace SysMLv2::API {
     class ElementNavigationService : public IElementNavigationService{

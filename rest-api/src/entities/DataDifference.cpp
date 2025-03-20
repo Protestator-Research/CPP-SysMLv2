@@ -6,16 +6,16 @@
 
 namespace SysMLv2 {
     namespace Entities {
-        DataDifference::DataDifference(DataVersion *baseData, DataVersion *comparedData) {
+        DataDifference::DataDifference(std::shared_ptr<DataVersion> baseData, std::shared_ptr<DataVersion> comparedData) {
             BaseData = baseData;
             CompareData = comparedData;
         }
 
-        DataVersion* DataDifference::baseData() {
+        std::shared_ptr<DataVersion> DataDifference::baseData() {
             return BaseData;
         }
 
-        DataVersion* DataDifference::comparedData() {
+        std::shared_ptr<DataVersion> DataDifference::comparedData() {
             return CompareData;
         }
     } // Entities

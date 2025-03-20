@@ -35,8 +35,8 @@ namespace SysMLv2::Entities {
 
     }
 
-    std::vector<DataVersion *> DataIdentity::getDataVersions() const {
-        return std::vector<DataVersion *>();
+    std::vector<std::shared_ptr<DataVersion>> DataIdentity::getDataVersions() const {
+        return std::vector<std::shared_ptr<DataVersion>>();
     }
 
     std::chrono::system_clock::time_point DataIdentity::createdAt() {
@@ -70,7 +70,7 @@ namespace SysMLv2::Entities {
         return true;
     }
 
-    void DataIdentity::setDataVersions(std::vector<DataVersion *> versions) {
+    void DataIdentity::setDataVersions(std::vector<std::shared_ptr<DataVersion>> versions) {
         Version=versions;
     }
 }
