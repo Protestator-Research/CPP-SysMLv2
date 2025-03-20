@@ -35,23 +35,23 @@ namespace SysMLv2 {
                 std::vector<nlohmann::json> values = json[JSON_OWNED_ELEMENTS_ENTITY];
 
                 for(const auto& elementToParse : values) {
-                    auto identity = new Identification();
+                    auto identity = std::make_shared<Identification>();
                     from_json(elementToParse,*identity);
                     OwnedElements.push_back(identity);
                 }
             }
 
             if(!json[JSON_OWNER_ENTITY].is_null())
-                Owner = new Identification(json[JSON_OWNER_ENTITY].dump());
+                Owner = std::make_shared<Identification>(json[JSON_OWNER_ENTITY].dump());
 
             if(!json[JSON_OWNING_MEMBERSHIP_ENTITY].is_null())
-                OwningMembership = new Identification(json[JSON_OWNING_MEMBERSHIP_ENTITY].dump());
+                OwningMembership = std::make_shared<Identification>(json[JSON_OWNING_MEMBERSHIP_ENTITY].dump());
 
             if(!json[JSON_OWNING_NAMESPACE_ENTITY].is_null())
-                OwningNamespace = new Identification(json[JSON_OWNING_NAMESPACE_ENTITY].dump());
+                OwningNamespace = std::make_shared<Identification>(json[JSON_OWNING_NAMESPACE_ENTITY].dump());
 
             if(!json[JSON_OWNING_RELATIONSHIP_ENTITY].is_null())
-                OwningRelationship = new Identification(json[JSON_OWNING_RELATIONSHIP_ENTITY].dump());
+                OwningRelationship = std::make_shared<Identification>(json[JSON_OWNING_RELATIONSHIP_ENTITY].dump());
 
             if(!json[JSON_DIRECTION_ENTITY].is_null())
                 Direction = json[JSON_DIRECTION_ENTITY];
@@ -84,13 +84,13 @@ namespace SysMLv2 {
                 IsLibraryElement = json[JSON_IS_LIBRARY_ELEMENT_ENTITY];
 
             if(!json[JSON_DOCUMENTATION_ENTITY].is_null())
-                Documentation = new Identification(json[JSON_DOCUMENTATION_ENTITY].dump());
+                Documentation = std::make_shared<Identification>(json[JSON_DOCUMENTATION_ENTITY].dump());
 
             if(!json[JSON_TEXTUAL_REPRESENTATION_ENTITY].is_null()) {
                 std::vector<nlohmann::json> values = json[JSON_TEXTUAL_REPRESENTATION_ENTITY];
 
                 for (const auto &elementToParse: values) {
-                    auto identity = new Identification();
+                    auto identity = std::make_shared<Identification>();
                     from_json(elementToParse,*identity);
                     TextualRepresentation.push_back(identity);
                 }
@@ -100,7 +100,7 @@ namespace SysMLv2 {
                 std::vector<nlohmann::json> values = json[JSON_SOURCE_ENTITY];
 
                 for(const auto& elementToParse : values) {
-                    auto identity = new Identification();
+                    auto identity = std::make_shared<Identification>();
                     from_json(elementToParse,*identity);
                     Source.push_back(identity);
                 }
@@ -110,7 +110,7 @@ namespace SysMLv2 {
                 std::vector<nlohmann::json> values = json[JSON_TARGET_ENTITY];
 
                 for(const auto& elementToParse : values){
-                    auto identity = new Identification();
+                    auto identity = std::make_shared<Identification>();
                     from_json(elementToParse,*identity);
                     Target.push_back(identity);
                 }
@@ -118,27 +118,9 @@ namespace SysMLv2 {
         }
 
         Element::~Element() {
-            for(auto elem : OwnedElements)
-                delete elem;
             OwnedElements.clear();
-
-            delete Owner;
-            delete OwningMembership;
-            delete OwningNamespace;
-            delete OwningRelationship;
-
-            delete Documentation;
-
-            for(auto elem : TextualRepresentation)
-                delete elem;
             TextualRepresentation.clear();
-
-            for(auto elem : Source)
-                delete elem;
             Source.clear();
-
-            for(auto elem : Target)
-                delete elem;
             Target.clear();
         }
 
@@ -150,16 +132,16 @@ namespace SysMLv2 {
             serializeNullString(json,DeclaredName,JSON_DECLARED_NAME_ENTITY);
             serializeNullString(json,DeclaredShortName,JSON_DECLARED_SHORT_NAME_ENTITY);
 
-            for(const auto elem : OwnedElements){
+            for(const auto &elem : OwnedElements){
                 nlohmann::json json_elem;
-                to_json(json_elem,elem);
+                to_json(json_elem,*elem);
                 json[JSON_OWNED_ELEMENTS_ENTITY].push_back(json_elem);
             }
 
-            to_json(json[JSON_OWNER_ENTITY],Owner);
-            to_json(json[JSON_OWNING_MEMBERSHIP_ENTITY], OwningMembership);
-            to_json(json[JSON_OWNING_NAMESPACE_ENTITY], OwningNamespace);
-            to_json(json[JSON_OWNING_RELATIONSHIP_ENTITY], OwningRelationship);
+            to_json(json[JSON_OWNER_ENTITY],*Owner);
+            to_json(json[JSON_OWNING_MEMBERSHIP_ENTITY], *OwningMembership);
+            to_json(json[JSON_OWNING_NAMESPACE_ENTITY], *OwningNamespace);
+            to_json(json[JSON_OWNING_RELATIONSHIP_ENTITY], *OwningRelationship);
 
             serializeNullString(json,Direction,JSON_DIRECTION_ENTITY);
             serializeNullString(json,ImportedMemberName,JSON_IMPORTED_MEMBER_NAME_ENTITY);
@@ -175,23 +157,24 @@ namespace SysMLv2 {
             json[JSON_IS_STANDARD_ENTITY] = IsStandard;
             json[JSON_IS_LIBRARY_ELEMENT_ENTITY] = IsLibraryElement;
 
-            to_json(json[JSON_DOCUMENTATION_ENTITY], Documentation);
+            to_json(json[JSON_DOCUMENTATION_ENTITY], *Documentation);
 
-            for(const auto elem : TextualRepresentation){
+            for(const auto& elem : TextualRepresentation){
                 nlohmann::json json_elem;
-                to_json(json_elem,elem);
+                to_json(json_elem,*elem);
                 json[JSON_TEXTUAL_REPRESENTATION_ENTITY].push_back(json_elem);
             }
 
-            for(const auto elem : Source){
+            for(const auto &elem : Source){
                 nlohmann::json json_elem;
-                to_json(json_elem,elem);
+                to_json(json_elem,*elem);
                 json[JSON_SOURCE_ENTITY].push_back(json_elem);
             }
 
-            for(const auto elem : Target){
+            for(const auto &elem : Target){
                 nlohmann::json json_elem;
-                to_json(json_elem,elem);
+                to_json(json_elem,*elem);
+
                 json[JSON_TARGET_ENTITY].push_back(json_elem);
             }
 
@@ -245,23 +228,23 @@ namespace SysMLv2 {
             return DeclaredShortName;
         }
 
-        std::vector<Identification *> Element::ownedElements() {
+        std::vector<std::shared_ptr<Identification>> Element::ownedElements() {
             return OwnedElements;
         }
 
-        Identification *Element::owner() const {
+        std::shared_ptr<Identification> Element::owner() const {
             return Owner;
         }
 
-        Identification *Element::owningMembership() const {
+        std::shared_ptr<Identification> Element::owningMembership() const {
             return OwningMembership;
         }
 
-        Identification *Element::owningNamespace() const {
+        std::shared_ptr<Identification> Element::owningNamespace() const {
             return OwningNamespace;
         }
 
-        Identification *Element::owningRelationship() const {
+        std::shared_ptr<Identification> Element::owningRelationship() const {
             return OwningRelationship;
         }
 
@@ -305,19 +288,19 @@ namespace SysMLv2 {
             return IsLibraryElement;
         }
 
-        Identification *Element::documentation() const {
+        std::shared_ptr<Identification> Element::documentation() const {
             return Documentation;
         }
 
-        std::vector<Identification *> Element::textualRepresentation() {
+        std::vector<std::shared_ptr<Identification>> Element::textualRepresentation() {
             return TextualRepresentation;
         }
 
-        std::vector<Identification *> Element::source() {
+        std::vector<std::shared_ptr<Identification>> Element::source() {
             return Source;
         }
 
-        std::vector<Identification *> Element::target() {
+        std::vector<std::shared_ptr<Identification>> Element::target() {
             return Target;
         }
 

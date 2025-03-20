@@ -9,7 +9,6 @@ find_package(date REQUIRED)
 set(ENTITIES_HEADER
         src/entities/DataIdentity.h
         src/entities/Record.h
-        src/entities/IEntity.h
         src/entities/Project.h
         src/entities/JSONEntities.h
         src/entities/Commit.h
@@ -60,8 +59,10 @@ add_library(sysmlv2rest
 target_link_libraries(sysmlv2rest
         boost::boost
         nlohmann_json::nlohmann_json
-        date::date)
+        date::date
+        sysmlv2base)
 
+target_include_directories(sysmlv2rest PRIVATE ../interfaces/src/entities)
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2rest ARCHIVE DESTINATION lib)

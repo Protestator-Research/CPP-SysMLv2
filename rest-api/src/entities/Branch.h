@@ -9,7 +9,7 @@
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
-
+#include <memory>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
@@ -50,10 +50,10 @@ namespace SysMLv2::Entities {
          * @return A Commit
          * @see SysMLv2::Entities::Commit
          */
-        Commit* getHead();
+        std::shared_ptr<Commit> getHead();
 
     private:
-        Commit* Head;
+        std::shared_ptr<Commit> Head;
     };
 }
 

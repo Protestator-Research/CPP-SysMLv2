@@ -10,6 +10,7 @@
 // External Classes
 //---------------------------------------------------------
 #include <boost/uuid/uuid.hpp>
+#include <memory>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
@@ -34,20 +35,20 @@ namespace SysMLv2::Entities {
     public:
         DataVersion() = delete;
 
-        DataVersion(DataIdentity* identity, Data* payload = nullptr);
+        DataVersion(std::shared_ptr<DataIdentity> identity, std::shared_ptr<Data> payload = nullptr);
         virtual ~DataVersion();
 
-        DataIdentity* getIdentity();
-        void setPayload(Data* payload);
-        Data* getPayload();
+        std::shared_ptr<DataIdentity> getIdentity();
+        void setPayload(std::shared_ptr<Data> payload);
+        std::shared_ptr<Data> getPayload();
         boost::uuids::uuid getId();
 
         std::string serializeToJson();
 
     private:
-        DataIdentity* Identity;
+        std::shared_ptr<DataIdentity> Identity;
 
-        Data* Payload;
+        std::shared_ptr<Data> Payload;
     };
 }
 

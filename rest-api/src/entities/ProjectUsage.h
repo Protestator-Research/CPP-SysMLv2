@@ -9,7 +9,7 @@
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
-
+#include <memory>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
@@ -34,28 +34,28 @@ namespace SysMLv2::Entities {
          */
         ProjectUsage();
 
-        ~ProjectUsage();
+        ~ProjectUsage() override;
 
         /**
          * Returns the commit of the given Project.
          * @return the Related Commit
          */
-        [[nodiscard]] Commit* getUsedProjectCommit() const;
+        std::shared_ptr<Commit> getUsedProjectCommit() const;
 
         /**
          * Allows to set the used Project commit.
          * @param usedCommit used Project commit.
          */
-        void setUsedProjectCommit(Commit* usedCommit);
+        void setUsedProjectCommit(std::shared_ptr<Commit> usedCommit);
 
         /**
          * Returns the connected project according to the SysML v2 Standard
          * @see Commit
          * @return The project from the connected commit.
          */
-        [[nodiscard]] Project* getUsedProject() const;
+        std::shared_ptr<Project> getUsedProject() const;
     private:
-        Commit* UsedProjectCommit;
+        std::shared_ptr<Commit> UsedProjectCommit;
 
     };
 

@@ -15,7 +15,7 @@ namespace SysMLv2::Entities {
 
             const auto commit = parsedJson[JSON_HEAD_ID];
             if(!commit.empty())
-                Head = new Commit(commit.dump());
+                Head = std::make_shared<Commit>(commit.dump());
 
         }
         catch (...) {
@@ -31,7 +31,7 @@ namespace SysMLv2::Entities {
         return CommitReference::serializeToJson();
     }
 
-    Commit* Branch::getHead()
+    std::shared_ptr<Commit> Branch::getHead()
     {
         return Head;
     }

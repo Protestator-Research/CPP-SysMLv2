@@ -11,8 +11,7 @@ option(BUILD_WITH_SERVICES "Builds with the SysMLv2 services API" ON)
 option(BUILD_WITH_PARSING "Builds with the SysMLv2 parsing API" ON)
 
 
-
-
+add_subdirectory(interfaces)
 
 if (BUILD_WITH_REST)
     add_subdirectory(rest-api)

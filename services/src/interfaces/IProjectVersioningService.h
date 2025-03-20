@@ -51,7 +51,7 @@ namespace SysMLv2::API {
          * @param project The given project, where the commits are returned.
          * @return A vector of the commits that are given.
          */
-        virtual std::vector<SysMLv2::Entities::Commit*> getCommits(SysMLv2::Entities::Project* project) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::Entities::Commit>> getCommits(std::shared_ptr<SysMLv2::Entities::Project> project) = 0;
 
         /**
          * Gets the head commit of the branch that is given and placed inside of the project.
@@ -59,7 +59,7 @@ namespace SysMLv2::API {
          * @param branch The branch that is inside of the project. If this is not specified (null) then the default branch is chosen.
          * @return The head commit of the branch as a pointer.
          */
-        virtual SysMLv2::Entities::Commit* getHeadCommit(SysMLv2::Entities::Project* project, SysMLv2::Entities::Branch* branch) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Commit> getHeadCommit(std::shared_ptr<SysMLv2::Entities::Project> project, std::shared_ptr<SysMLv2::Entities::Branch> branch) = 0;
 
         /**
          * Gets the specific commit from the project with the given UUID.
@@ -67,7 +67,7 @@ namespace SysMLv2::API {
          * @param commitId The id of the commit.
          * @return The specified commit by the project and the commit id.
          */
-        virtual SysMLv2::Entities::Commit* getCommitById(SysMLv2::Entities::Project* project, boost::uuids::uuid commitId) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Commit> getCommitById(std::shared_ptr<SysMLv2::Entities::Project> project, boost::uuids::uuid commitId) = 0;
 
         /**
          *
@@ -77,7 +77,7 @@ namespace SysMLv2::API {
          * @param project
          * @return
          */
-        virtual SysMLv2::Entities::Commit* createCommit(SysMLv2::Entities::DataVersion* change, SysMLv2::Entities::Branch* branch, std::vector<SysMLv2::Entities::Commit*> previousCommits, SysMLv2::Entities::Project* project) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Commit> createCommit(std::shared_ptr<SysMLv2::Entities::DataVersion> change, std::shared_ptr<SysMLv2::Entities::Branch> branch, std::vector<std::shared_ptr<SysMLv2::Entities::Commit>> previousCommits, std::shared_ptr<SysMLv2::Entities::Project> project) = 0;
 
         /**
          *
@@ -86,7 +86,7 @@ namespace SysMLv2::API {
          * @param project
          * @return
          */
-        virtual SysMLv2::Entities::Commit* createCommit(SysMLv2::Entities::DataVersion* change, SysMLv2::Entities::Branch* branch, SysMLv2::Entities::Project* project) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Commit> createCommit(std::shared_ptr<SysMLv2::Entities::DataVersion> change, std::shared_ptr<SysMLv2::Entities::Branch> branch, std::shared_ptr<SysMLv2::Entities::Project> project) = 0;
 
         /**
          *
@@ -95,7 +95,7 @@ namespace SysMLv2::API {
          * @param project
          * @return
          */
-        virtual SysMLv2::Entities::Commit* createCommit(SysMLv2::Entities::DataVersion* change, std::vector<SysMLv2::Entities::Commit*> previousCommits, SysMLv2::Entities::Project* project) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Commit> createCommit(std::shared_ptr<SysMLv2::Entities::DataVersion> change, std::vector<std::shared_ptr<SysMLv2::Entities::Commit>> previousCommits, std::shared_ptr<SysMLv2::Entities::Project> project) = 0;
 
         /**
          *
@@ -103,7 +103,7 @@ namespace SysMLv2::API {
          * @param project
          * @return
          */
-        virtual SysMLv2::Entities::Commit* createCommit(SysMLv2::Entities::DataVersion* change, SysMLv2::Entities::Project* project) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Commit> createCommit(std::shared_ptr<SysMLv2::Entities::DataVersion> change, std::shared_ptr<SysMLv2::Entities::Project> project) = 0;
 
         /**
          *
@@ -111,7 +111,7 @@ namespace SysMLv2::API {
          * @param commit
          * @return
          */
-        virtual std::vector<SysMLv2::Entities::DataVersion*> getCommitChange(SysMLv2::Entities::Project* project, SysMLv2::Entities::Commit* commit, std::vector<SysMLv2::Entities::ChangeType> ) = 0 ;
+        virtual std::vector<std::shared_ptr<SysMLv2::Entities::DataVersion>> getCommitChange(std::shared_ptr<SysMLv2::Entities::Project> project, std::shared_ptr<SysMLv2::Entities::Commit> commit, std::vector<SysMLv2::Entities::ChangeType> ) = 0 ;
 
         /**
          *
@@ -120,29 +120,14 @@ namespace SysMLv2::API {
          * @param changeId
          * @return
          */
-        virtual SysMLv2::Entities::DataVersion* getCommitChangeById(SysMLv2::Entities::Project* project, SysMLv2::Entities::Commit* commit, boost::uuids::uuid changeId ) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::DataVersion> getCommitChangeById(SysMLv2::Entities::Project* project, SysMLv2::Entities::Commit* commit, boost::uuids::uuid changeId ) = 0;
 
         /**
          *
          * @param project
          * @return
          */
-        virtual std::vector<SysMLv2::Entities::Branch*> getBranches( SysMLv2::Entities::Project* project ) = 0;
-
-        /**
-         *
-         * @param project
-         * @param branchId
-         * @return
-         */
-        virtual SysMLv2::Entities::Branch* getBranchById(SysMLv2::Entities::Project* project, boost::uuids::uuid branchId) = 0;
-
-        /**
-         *
-         * @param project
-         * @return
-         */
-        virtual SysMLv2::Entities::Branch* getDefaultBranch(SysMLv2::Entities::Project* project) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::Entities::Branch>> getBranches( SysMLv2::Entities::Project* project ) = 0;
 
         /**
          *
@@ -150,7 +135,22 @@ namespace SysMLv2::API {
          * @param branchId
          * @return
          */
-        virtual SysMLv2::Entities::Project* setDefaultBranch(SysMLv2::Entities::Project* project, boost::uuids::uuid branchId) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Branch> getBranchById(SysMLv2::Entities::Project* project, boost::uuids::uuid branchId) = 0;
+
+        /**
+         *
+         * @param project
+         * @return
+         */
+        virtual std::shared_ptr<SysMLv2::Entities::Branch> getDefaultBranch(SysMLv2::Entities::Project* project) = 0;
+
+        /**
+         *
+         * @param project
+         * @param branchId
+         * @return
+         */
+        virtual std::shared_ptr<SysMLv2::Entities::Project> setDefaultBranch(SysMLv2::Entities::Project* project, boost::uuids::uuid branchId) = 0;
 
         /**
          *
@@ -159,7 +159,7 @@ namespace SysMLv2::API {
          * @param head
          * @return
          */
-        virtual SysMLv2::Entities::Branch* createBranch(SysMLv2::Entities::Project* project, std::string branchName, SysMLv2::Entities::Commit* head);
+        virtual std::shared_ptr<SysMLv2::Entities::Branch> createBranch(SysMLv2::Entities::Project* project, std::string branchName, SysMLv2::Entities::Commit* head) = 0;
 
         /**
          *
@@ -167,14 +167,14 @@ namespace SysMLv2::API {
          * @param branchId
          * @return
          */
-        virtual SysMLv2::Entities::Branch* deleteBranch(SysMLv2::Entities::Project* project, boost::uuids::uuid branchId) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Branch> deleteBranch(SysMLv2::Entities::Project* project, boost::uuids::uuid branchId) = 0;
 
         /**
          *
          * @param project
          * @return
          */
-        virtual std::vector<SysMLv2::Entities::Tag*> getTags(SysMLv2::Entities::Project* project) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::Entities::Tag>> getTags(SysMLv2::Entities::Project* project) = 0;
 
         /**
          *
@@ -182,7 +182,7 @@ namespace SysMLv2::API {
          * @param tagId
          * @return
          */
-        virtual SysMLv2::Entities::Tag* getTagById(SysMLv2::Entities::Project* project, boost::uuids::uuid tagId) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Tag> getTagById(SysMLv2::Entities::Project* project, boost::uuids::uuid tagId) = 0;
 
         /**
          *
@@ -190,7 +190,7 @@ namespace SysMLv2::API {
          * @param tag
          * @return
          */
-        virtual SysMLv2::Entities::Commit* getTaggedCommit(SysMLv2::Entities::Project* project, SysMLv2::Entities::Tag* tag) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Commit> getTaggedCommit(SysMLv2::Entities::Project* project, SysMLv2::Entities::Tag* tag) = 0;
 
         /**
          *
@@ -199,7 +199,7 @@ namespace SysMLv2::API {
          * @param taggedCommit
          * @return
          */
-        virtual SysMLv2::Entities::Tag* createTag(SysMLv2::Entities::Project* project, std::string tagName, SysMLv2::Entities::Commit* taggedCommit) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Tag> createTag(SysMLv2::Entities::Project* project, std::string tagName, SysMLv2::Entities::Commit* taggedCommit) = 0;
 
         /**
          *
@@ -209,7 +209,7 @@ namespace SysMLv2::API {
          * @param description
          * @return
          */
-        virtual SysMLv2::Entities::MergeResult* mergeIntoBranch(SysMLv2::Entities::Branch* baseBranch, std::vector<SysMLv2::Entities::Commit> commitsToMerge, SysMLv2::Entities::Data* resolution, std::string description) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::MergeResult> mergeIntoBranch(SysMLv2::Entities::Branch* baseBranch, std::vector<SysMLv2::Entities::Commit> commitsToMerge, SysMLv2::Entities::Data* resolution, std::string description) = 0;
 
         /**
          *
@@ -218,7 +218,7 @@ namespace SysMLv2::API {
          * @param changeType
          * @return
          */
-        virtual std::vector<SysMLv2::Entities::DataDifference*> diffCommits(SysMLv2::Entities::Commit* baseCommit, SysMLv2::Entities::Commit* compareCommit, std::vector<SysMLv2::Entities::ChangeType> changeType) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::Entities::DataDifference>> diffCommits(SysMLv2::Entities::Commit* baseCommit, SysMLv2::Entities::Commit* compareCommit, std::vector<SysMLv2::Entities::ChangeType> changeType) = 0;
     };
 }
 #endif //CPP_SYSMLV2_LIB_IPROJECTVERSIONINGSERVICE_H

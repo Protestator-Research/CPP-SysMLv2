@@ -11,11 +11,11 @@ namespace SysMLv2 {
             CompareData = comparedData;
         }
 
-        DataVersion *DataDifference::baseData() {
+        DataVersion* DataDifference::baseData() {
             return BaseData;
         }
 
-        DataVersion *DataDifference::comparedData() {
+        DataVersion* DataDifference::comparedData() {
             return CompareData;
         }
     } // Entities

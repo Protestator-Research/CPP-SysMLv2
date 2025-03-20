@@ -6,6 +6,7 @@
 #define CPP_SYSMLV2_LIB_MERGERESULT_H
 
 #include <vector>
+#include <memory>
 
 namespace SysMLv2::Entities {
     class Commit;
@@ -13,16 +14,16 @@ namespace SysMLv2::Entities {
 
     class MergeResult {
     public:
-        MergeResult(Commit* mergeCommit = nullptr, std::vector<DataIdentity*> conflict = std::vector<DataIdentity*>());
+        MergeResult(std::shared_ptr<Commit> mergeCommit = nullptr, std::vector<std::shared_ptr<DataIdentity>> conflict = std::vector<std::shared_ptr<DataIdentity>>());
 
         virtual ~MergeResult() = default;
 
-        std::vector<DataIdentity*> conflict();
-        Commit* mergeCommit();
+        std::vector<std::shared_ptr<DataIdentity>> conflict();
+        std::shared_ptr<Commit> mergeCommit();
 
     private:
-        Commit* MergeCommit = nullptr;
-        std::vector<DataIdentity*> Conflict;
+        std::shared_ptr<Commit> MergeCommit = nullptr;
+        std::vector<std::shared_ptr<DataIdentity>> Conflict;
     };
 } // SysMLv2
 

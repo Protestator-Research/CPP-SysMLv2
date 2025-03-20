@@ -51,7 +51,11 @@ namespace SysMLv2::Entities {
          */
         explicit DataIdentity(boost::uuids::uuid id);
 
-        DataIdentity(std::string jsonStringOrName);
+        /**
+         * Constuctor for JSON Parsing
+         * @param jsonStringOrName
+         */
+        explicit DataIdentity(std::string jsonStringOrName);
 
 
         /**
@@ -59,8 +63,8 @@ namespace SysMLv2::Entities {
          */
         virtual ~DataIdentity();
 
-        std::vector<DataVersion*> getDataVersions() const;
-        void setDataVersions(std::vector<DataVersion*> versions);
+        std::vector<std::shared_ptr<DataVersion>> getDataVersions() const;
+        void setDataVersions(std::vector<std::shared_ptr<DataVersion>> versions);
 
         /**
          * Returns the creation date of the data. This translations to the point in time, where the first commit is
@@ -80,7 +84,7 @@ namespace SysMLv2::Entities {
         bool operator==(DataIdentity const &other);
 
     private:
-        std::vector<DataVersion*> Version;
+        std::vector<std::shared_ptr<DataVersion>> Version;
     };
 }
 

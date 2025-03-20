@@ -15,15 +15,15 @@ namespace SysMLv2 {
         ProjectUsage::~ProjectUsage() {
         }
 
-        Project * ProjectUsage::getUsedProject() const {
+        std::shared_ptr<Project> ProjectUsage::getUsedProject() const {
             return UsedProjectCommit->getOwningProject();
         }
 
-        void ProjectUsage::setUsedProjectCommit(SysMLv2::Entities::Commit *usedCommit) {
+        void ProjectUsage::setUsedProjectCommit(std::shared_ptr<Commit> usedCommit) {
             UsedProjectCommit = usedCommit;
         }
 
-        Commit* ProjectUsage::getUsedProjectCommit() const {
+        std::shared_ptr<Commit> ProjectUsage::getUsedProjectCommit() const {
             return UsedProjectCommit;
         }
     } // Entities

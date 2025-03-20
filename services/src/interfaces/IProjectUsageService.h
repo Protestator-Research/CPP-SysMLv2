@@ -44,7 +44,7 @@ namespace SysMLv2::API {
          * @param commit The commit that is given to get the project usage. If this variable is null, it might result is a segmentation fault or a exception.
          * @return All the project usages, that are stored in the project.
          */
-        virtual std::vector<SysMLv2::Entities::ProjectUsage*> getProjectUsage(SysMLv2::Entities::Project* project, SysMLv2::Entities::Commit* commit) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::Entities::ProjectUsage>> getProjectUsage(std::shared_ptr<SysMLv2::Entities::Project> project, std::shared_ptr<SysMLv2::Entities::Commit> commit) = 0;
 
         /**
          *  Interface for the method that deletes the project usage with the given id from the given project at the head commit of the given branch.
@@ -54,7 +54,7 @@ namespace SysMLv2::API {
          * @return returns a new commit with the given project usage.
          * @see boost::uuids::uuid
          */
-        virtual SysMLv2::Entities::Commit* deleteProjectUsage(SysMLv2::Entities::Project* project, SysMLv2::Entities::Branch* branch, boost::uuids::uuid projectUsageId) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Commit> deleteProjectUsage(std::shared_ptr<SysMLv2::Entities::Project> project, std::shared_ptr<SysMLv2::Entities::Branch> branch, boost::uuids::uuid projectUsageId) = 0;
 
         /**
          * Interface of the method that creates a new project usage in the given project at the head of the given branch.
@@ -63,7 +63,7 @@ namespace SysMLv2::API {
          * @param projectUsage The given project usage for the new Commit.
          * @return The new commit is now part of the project.
          */
-        virtual SysMLv2::Entities::Commit* createProjectUsage(SysMLv2::Entities::Project* project, SysMLv2::Entities::Branch* branch, SysMLv2::Entities::ProjectUsage* projectUsage) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Commit> createProjectUsage(std::shared_ptr<SysMLv2::Entities::Project> project, std::shared_ptr<SysMLv2::Entities::Branch> branch, std::shared_ptr<SysMLv2::Entities::ProjectUsage> projectUsage) = 0;
     };
 }
 

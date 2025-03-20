@@ -68,18 +68,18 @@ namespace SysMLv2::Entities {
         std::string serializeToJson() override;
 
     private:
-        DataVersion* _DataVersion;
+        std::shared_ptr<DataVersion> DataVersion;
 
 
         std::chrono::system_clock::time_point Created;
 
-        std::vector<Commit*> Commits;
-        std::vector<CommitReference*> CommitReferences;
-        std::vector<Branch*> Branches;
-        Branch* DefaultBranch;
-        std::vector<Tag*> Tags;
-        std::vector<ProjectUsage*> ProjectUsages;
-        std::vector<Query*> Querries;
+        std::vector<std::shared_ptr<Commit>> Commits;
+        std::vector<std::shared_ptr<CommitReference>> CommitReferences;
+        std::vector<std::shared_ptr<Branch>> Branches;
+        std::shared_ptr<Branch> DefaultBranch;
+        std::vector<std::shared_ptr<Tag>> Tags;
+        std::vector<std::shared_ptr<ProjectUsage>> ProjectUsages;
+        std::vector<std::shared_ptr<Query>> Querries;
     };
 }
 

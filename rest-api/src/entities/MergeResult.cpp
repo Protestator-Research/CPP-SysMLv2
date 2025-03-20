@@ -6,16 +6,16 @@
 
 namespace SysMLv2::Entities{
 
-    MergeResult::MergeResult(Commit *mergeCommit, std::vector<DataIdentity *> conflict) {
+    MergeResult::MergeResult(std::shared_ptr<Commit> mergeCommit, std::vector<std::shared_ptr<DataIdentity>> conflict) {
         MergeCommit = mergeCommit;
         Conflict = conflict;
     }
 
-    std::vector<DataIdentity *> MergeResult::conflict() {
+    std::vector<std::shared_ptr<DataIdentity>> MergeResult::conflict() {
         return Conflict;
     }
 
-    Commit *MergeResult::mergeCommit() {
+    std::shared_ptr<Commit> MergeResult::mergeCommit() {
         return MergeCommit;
     }
 } // SysMLv2

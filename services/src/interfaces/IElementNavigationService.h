@@ -1,6 +1,22 @@
 //
 // Created by Moritz Herzog on 10.03.25.
 //
+// SysMLv2 C++ Library Implementation
+// Copyright (C) 2025  Moritz Herzog
+//
+//This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+//This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+//You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+//---------------------------------------------------------
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
@@ -11,10 +27,11 @@
 //---------------------------------------------------------
 #include <vector>
 #include <boost/uuid/uuid.hpp>
+#include <memory>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
-#include "../entities/Direction.h"
+
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -44,7 +61,7 @@ namespace SysMLv2::API {
          * @param commit The given commit inside of the project.
          * @return All the given that are available as a vector.
          */
-        virtual std::vector<SysMLv2::Entities::Element*> getElements(SysMLv2::Entities::Project* project, SysMLv2::Entities::Commit* commit) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::Entities::Element>> getElements(std::shared_ptr<SysMLv2::Entities::Project> project, std::shared_ptr<SysMLv2::Entities::Commit> commit) = 0;
 
         /**
          * Gets an element with the project and commit it belongs to and its specific id.
@@ -53,7 +70,7 @@ namespace SysMLv2::API {
          * @param elementId The id of the specific element.
          * @return The element that is located. Can be null if no element is found.
          */
-        virtual SysMLv2::Entities::Element* getElementById(SysMLv2::Entities::Project* project, SysMLv2::Entities::Commit* commit, boost::uuids::uuid elementId) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Element> getElementById(std::shared_ptr<SysMLv2::Entities::Project> project, std::shared_ptr<SysMLv2::Entities::Commit> commit, boost::uuids::uuid elementId) = 0;
 
         /**
          * Gets the relationships that are incoming, outgoing, or both relative to the related element.
@@ -63,7 +80,7 @@ namespace SysMLv2::API {
          * @param direction The direction of the relationship. Defined with the enum and can ether be in, out, or both.
          * @return A vector of the relationships that are found.
          */
-        virtual std::vector<SysMLv2::Entities::Relationship*> getRelationshipsByRelatedElement(SysMLv2::Entities::Project* project, SysMLv2::Entities::Commit* commit, boost::uuids::uuid elementId, SysMLv2::Entities::Direction direction) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::Entities::Relationship>> getRelationshipsByRelatedElement(std::shared_ptr<SysMLv2::Entities::Project> project, std::shared_ptr<SysMLv2::Entities::Commit> commit, boost::uuids::uuid elementId, int direction) = 0;
 
         /**
          * Gets all root elements in the given project at the given commit.
@@ -71,7 +88,7 @@ namespace SysMLv2::API {
          * @param commit The commit where the root elements are located.
          * @return A vector of all root elements available in the project and commit.
          */
-        virtual std::vector<SysMLv2::Entities::Element*> getRootElements(SysMLv2::Entities::Project* project, SysMLv2::Entities::Commit* commit) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::Entities::Element>> getRootElements(std::shared_ptr<SysMLv2::Entities::Project> project, std::shared_ptr<SysMLv2::Entities::Commit> commit) = 0;
     };
 }
 

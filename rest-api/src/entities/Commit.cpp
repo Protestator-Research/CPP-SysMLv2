@@ -30,13 +30,13 @@
 
 
 namespace SysMLv2::Entities{
-    Commit::Commit(boost::uuids::uuid id, std::string name, std::string description, Project *owningProject, std::vector<Commit*> previusCommits) : Record(id,name,description){
+    Commit::Commit(boost::uuids::uuid id, std::string name, std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits) : Record(id,name,description){
         Type = "Commit";
         PreviusCommits = previusCommits;
         OwningProject = owningProject;
     }
 
-    Commit::Commit(std::string name, std::string description, Project *owningProject, std::vector<Commit*> previusCommits) :
+    Commit::Commit(std::string name, std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits) :
             Record(boost::uuids::random_generator()(), name, description){
         Type = "Commit";
     	OwningProject = owningProject;
@@ -51,24 +51,24 @@ namespace SysMLv2::Entities{
 
     }
 
-    void Commit::setChange(std::vector<DataVersion*> change)
+    void Commit::setChange(std::vector<std::shared_ptr<DataVersion>> change)
     {
         Change = change;
     }
 
-    Project* Commit::getOwningProject() const {
+    std::shared_ptr<Project> Commit::getOwningProject() const {
         return OwningProject;
     }
 
-    void Commit::addChange(DataVersion *dataVersion) {
+    void Commit::addChange(std::shared_ptr<DataVersion> dataVersion) {
         Change.push_back(dataVersion);
     }
 
-    std::vector<DataVersion*> Commit::getDataVersion() {
+    std::vector<std::shared_ptr<DataVersion>> Commit::getDataVersion() {
         return Change;
     }
 
-    std::vector<Commit*> Commit::getPreviusCommits() const {
+    std::vector<std::shared_ptr<Commit>> Commit::getPreviusCommits() const {
         return PreviusCommits;
     }
 

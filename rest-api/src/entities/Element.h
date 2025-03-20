@@ -32,69 +32,70 @@ namespace SysMLv2::Entities {
      * @version 1.0
      * @author Moritz Herzog
      * @class Element
+     * @deprecated This should be a representation of the KerML Element Class, therefore see
      */
     class Element : public Data {
     public:
         /**
          * C-Tor
          */
-        Element();
+        [[deprecated]] Element();
 
         /**
          * C-Tor for the parsing.
          * @param jsonString JSON string to
          */
-        Element(std::string jsonString);
+        [[deprecated]] Element(std::string jsonString);
 
         /**
          * D-Tor
          */
-        ~Element() override;
+        [[deprecated]] ~Element() override;
 
-        std::string serializeToJson() override;
+        [[deprecated]] std::string serializeToJson() override;
 
-        void setName(std::string name);
-        std::string name();
+        [[deprecated]] void setName(std::string name);
+        [[deprecated]] std::string name();
 
-        void setShortName(std::string shortName);
-        std::string shortName();
+        [[deprecated]] void setShortName(std::string shortName);
+        [[deprecated]] std::string shortName();
 
-        void setDeclaredName(std::string declaredName);
-        std::string declaredName();
+        [[deprecated]] void setDeclaredName(std::string declaredName);
+        [[deprecated]] std::string declaredName();
 
-        void setDeclaredShortName(std::string declaredShortName);
-        std::string getDeclaredShortName();
+        [[deprecated]] void setDeclaredShortName(std::string declaredShortName);
+        [[deprecated]] std::string getDeclaredShortName();
 
-        std::vector<Identification*> ownedElements();
-        Identification* owner() const;
-        Identification* owningMembership() const;
-        Identification* owningNamespace() const;
-        Identification* owningRelationship() const;
+        [[deprecated]] std::vector<std::shared_ptr<Identification>> ownedElements();
+        [[deprecated]] std::shared_ptr<Identification> owner() const;
+        [[deprecated]] std::shared_ptr<Identification> owningMembership() const;
+        [[deprecated]] std::shared_ptr<Identification> owningNamespace() const;
+        [[deprecated]] std::shared_ptr<Identification> owningRelationship() const;
 
-        std::string direction();
-        std::string importedMemberName();
-        std::string importedNamespace();
+        [[deprecated]] std::string direction();
+        [[deprecated]] std::string importedMemberName();
+        [[deprecated]] std::string importedNamespace();
 
-        std::string valueString();
+        [[deprecated]] std::string valueString();
 
-        void setLanguage(std::string language);
-        std::string language();
-        void setBody(std::string body);
-        std::string body();
+        [[deprecated]] void setLanguage(std::string language);
+        [[deprecated]] std::string language();
+        [[deprecated]] void setBody(std::string body);
+        [[deprecated]] std::string body();
 
-        bool isImplied();
-        bool isImpliedIncluded();
-        bool isStandard();
-        bool isLibrary();
+        [[deprecated]] bool isImplied();
+        [[deprecated]] bool isImpliedIncluded();
+        [[deprecated]] bool isStandard();
+        [[deprecated]] bool isLibrary();
 
-        Identification* documentation() const;
+        [[deprecated]] std::shared_ptr<Identification> documentation() const;
 
-        std::vector<Identification*> textualRepresentation();
+        [[deprecated]] std::vector<std::shared_ptr<Identification>> textualRepresentation();
 
-        std::vector<Identification*> source();
-        std::vector<Identification*> target();
+        [[deprecated]] std::vector<std::shared_ptr<Identification>> source();
+        [[deprecated]] std::vector<std::shared_ptr<Identification>> target();
 
-        std::string getMarkdownString();
+        [[deprecated]] std::string getMarkdownString();
     protected:
 
     private:
@@ -105,11 +106,11 @@ namespace SysMLv2::Entities {
         std::string DeclaredName;
         std::string DeclaredShortName;
 
-        std::vector<Identification*> OwnedElements;
-        Identification* Owner = nullptr;
-        Identification* OwningMembership = nullptr;
-        Identification* OwningNamespace = nullptr;
-        Identification* OwningRelationship = nullptr;
+        std::vector<std::shared_ptr<Identification>> OwnedElements;
+        std::shared_ptr<Identification> Owner = nullptr;
+        std::shared_ptr<Identification> OwningMembership = nullptr;
+        std::shared_ptr<Identification> OwningNamespace = nullptr;
+        std::shared_ptr<Identification> OwningRelationship = nullptr;
 
         std::string Direction;
         std::string ImportedMemberName;
@@ -128,11 +129,11 @@ namespace SysMLv2::Entities {
         bool IsStandard = false;
         bool IsLibraryElement = false;
 
-        Identification* Documentation = nullptr;
-        std::vector<Identification*> TextualRepresentation;
+        std::shared_ptr<Identification> Documentation = nullptr;
+        std::vector<std::shared_ptr<Identification>> TextualRepresentation;
 
-        std::vector<Identification*> Source;
-        std::vector<Identification*> Target;
+        std::vector<std::shared_ptr<Identification>> Source;
+        std::vector<std::shared_ptr<Identification>> Target;
     };
 } // SysMLv2
 

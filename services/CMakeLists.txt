@@ -3,17 +3,23 @@ cmake_minimum_required(VERSION 3.15)
 project(sysmlv2service CXX C)
 
 set(API_HEADER
-        src/interfacess/IProjectUsageService.h
-        src/interfacess/IElementNavigationService.h
-        src/interfacess/IExternalReleationshipService.h
-        src/interfacess/IProjectService.h
-        src/interfacess/IProjectVersioningService.h
-        src/interfacess/IQueryService.h
+        src/interfaces/IProjectUsageService.h
+        src/interfaces/IElementNavigationService.h
+        src/interfaces/IExternalReleationshipService.h
+        src/interfaces/IProjectService.h
+        src/interfaces/IProjectVersioningService.h
+        src/interfaces/IQueryService.h
         src/implementation/ElementNavigationService.cpp)
 
 add_library(sysmlv2service
         ${API_HEADER}
         src/implementation/ElementNavigationService.cpp)
+
+target_link_libraries(sysmlv2service
+        boost::boost
+        nlohmann_json::nlohmann_json
+        date::date
+        sysmlv2rest)
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2service ARCHIVE DESTINATION lib)

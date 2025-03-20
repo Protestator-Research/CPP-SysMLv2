@@ -5,7 +5,7 @@
 #ifndef CPP_SYSMLV2_LIB_DATADIFFERENCE_H
 #define CPP_SYSMLV2_LIB_DATADIFFERENCE_H
 
-
+#include <memory>
 #include "DataVersion.h"
 
 namespace SysMLv2 ::Entities {
@@ -17,12 +17,12 @@ namespace SysMLv2 ::Entities {
 
         virtual ~DataDifference() = default;
 
-        DataVersion* baseData();
-        DataVersion* comparedData();
+        std::shared_ptr<DataVersion> baseData();
+        std::shared_ptr<DataVersion> comparedData();
 
     private:
-        DataVersion* BaseData = nullptr;
-        DataVersion* CompareData = nullptr;
+        std::shared_ptr<DataVersion> BaseData = nullptr;
+        std::shared_ptr<DataVersion> CompareData = nullptr;
     };
 } // SysMLv2
 

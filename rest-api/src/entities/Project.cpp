@@ -44,7 +44,7 @@ namespace SysMLv2::Entities {
         ProjectUsages = other.ProjectUsages;
 
         Querries = other.Querries;
-        _DataVersion = other._DataVersion;
+        DataVersion = other.DataVersion;
     }
 
     Project::Project(std::string JsonString) : Record(JsonString) {
@@ -53,7 +53,7 @@ namespace SysMLv2::Entities {
 
             const auto branch = parsedJson[JSON_DEFAULT_BRANCH_ENTITY];
             if(!branch.empty())
-                DefaultBranch = new Branch(branch.dump());
+                DefaultBranch = std::make_shared<Branch>(branch.dump());
 
         }
         catch (...) {
@@ -62,37 +62,16 @@ namespace SysMLv2::Entities {
     }
 
     Project::~Project() {
-
-        for(auto elem : Commits)
-            delete elem;
         Commits.clear();
-
-        for(auto elem : CommitReferences)
-            delete elem;
         CommitReferences.clear();
-
-        for(auto elem : Branches)
-            delete elem;
         Branches.clear();
-
-//        if(DefaultBranch != nullptr)
-//            delete DefaultBranch;
-
-        for(auto elem : Tags)
-            delete elem;
         Tags.clear();
-
-        for(auto elem : ProjectUsages)
-            delete elem;
         ProjectUsages.clear();
-
-        for(auto elem : Querries)
-            delete elem;
         Querries.clear();
     }
 
-    Branch *Project::getDefaultBranch() {
-        return nullptr;
+    std::shared_ptr<Branch> Project::getDefaultBranch() {
+        return DefaultBranch;
     }
 
     std::string Project::serializeToJson() {
@@ -111,7 +90,7 @@ namespace SysMLv2::Entities {
 
     Project::Project(std::string projectName, std::string projectDescription, std::string branchName) : Record(projectName){
         Description = projectDescription;
-        DefaultBranch = new Branch(branchName);
+        DefaultBranch = std::make_shared<Branch>(branchName);
         IsForCreation = true;
     }
 }

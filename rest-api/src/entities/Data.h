@@ -27,7 +27,7 @@ namespace SysMLv2::Entities {
      * @author Moritz Herzog
      * @version 1.0
      */
-    class Data  : public IEntity{
+    class Data  : public IEntity {
     public:
         /**
          * C-Tor
@@ -38,14 +38,17 @@ namespace SysMLv2::Entities {
          * C-Tor with the option to set the id.
          * @param id The given ID of the Data element
          */
-        Data(boost::uuids::uuid id);
+        explicit Data(boost::uuids::uuid id);
 
         /**
          * C-Tor allowing for the parsing of the JSON String.
          * @param jsonString The JSON string that is to be parsed.
          */
-        Data(std::string jsonString);
+        explicit Data(std::string jsonString);
 
+        /**
+         * D-Tor
+         */
         virtual ~Data() = default;
 
         /**

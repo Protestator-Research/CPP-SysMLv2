@@ -11,26 +11,25 @@
 #include <nlohmann/json.hpp>
 
 namespace SysMLv2::Entities {
-    DataVersion::DataVersion(DataIdentity *identity, Data* payload) : Record(boost::uuids::random_generator()()) {
+    DataVersion::DataVersion(std::shared_ptr<DataIdentity> identity, std::shared_ptr<Data> payload) : Record(boost::uuids::random_generator()()) {
         Type = "DataVersion";
         Identity = identity;
         Payload = payload;
     }
 
     DataVersion::~DataVersion() {
-        delete Identity;
-        delete Payload;
+
     }
 
-    DataIdentity *DataVersion::getIdentity() {
+    std::shared_ptr<DataIdentity> DataVersion::getIdentity() {
         return Identity;
     }
 
-    void DataVersion::setPayload(Data *payload) {
+    void DataVersion::setPayload(std::shared_ptr<Data> payload) {
         Payload = payload;
     }
 
-    Data *DataVersion::getPayload() {
+    std::shared_ptr<Data> DataVersion::getPayload() {
         return Payload;
     }
 
