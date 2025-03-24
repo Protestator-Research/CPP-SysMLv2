@@ -24,3 +24,5 @@ endif ()
 if (BUILD_WITH_PARSING)
     add_subdirectory(filehandling)
 endif ()
+
+add_subdirectory(kerml)
