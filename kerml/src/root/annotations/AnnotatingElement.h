@@ -5,7 +5,7 @@
 #ifndef SYSMLV2_ANNOTATINGELEMENT_H
 #define SYSMLV2_ANNOTATINGELEMENT_H
 
-#include "../Elements/Element.h"
+#include <root/elements/Element.h>
 
 namespace KerML::Entities {
     class AnnotatingElement : public Element{

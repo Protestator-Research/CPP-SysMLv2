@@ -6,12 +6,16 @@
 #define SYSMLV2_TEXTUALREPRESENTATION_H
 
 #include "AnnotatingElement.h"
+#include <string>
+
 
 namespace KerML::Entities {
     class TextualRepresentation : public AnnotatingElement{
     public:
 
     private:
+        std::string Language;
+        std::string Body;
     };
 } // KerML::Entities
 

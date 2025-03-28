@@ -5,7 +5,7 @@
 #ifndef SYSMLV2_DEPENDENCY_H
 #define SYSMLV2_DEPENDENCY_H
 
-#include "../Elements/Relationship.h"
+#include <root/elements/Relationship.h>
 
 namespace KerML::Entities{
     class Dependency : public Relationship{

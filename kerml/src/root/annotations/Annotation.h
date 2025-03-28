@@ -5,7 +5,7 @@
 #ifndef SYSMLV2_ANNOTATION_H
 #define SYSMLV2_ANNOTATION_H
 
-#include "../Elements/Relationship.h"
+#include <root/elements/Relationship.h>
 
 namespace KerML::Entities {
 
