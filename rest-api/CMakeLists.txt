@@ -54,7 +54,8 @@ add_library(sysmlv2rest
         src/entities/MergeResult.cpp
         src/entities/DataDifference.cpp
         ${ENTITIES_HEADER}
-        ${SERIALIZATION_HEADER})
+        ${SERIALIZATION_HEADER}
+        src/sysmlv2rest_global.h)
 
 target_link_libraries(sysmlv2rest
         boost::boost

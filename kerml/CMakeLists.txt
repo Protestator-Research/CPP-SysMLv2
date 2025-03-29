@@ -106,7 +106,8 @@ add_library(kerml
         src/kernel/datatypes/Class.cpp
         src/kernel/datatypes/Association.cpp
         src/kernel/datatypes/Structure.cpp
-        src/kernel/datatypes/AssociationStructure.cpp)
+        src/kernel/datatypes/AssociationStructure.cpp
+        src/kerml_global.h)
 
 target_link_libraries(kerml PRIVATE
         boost::boost

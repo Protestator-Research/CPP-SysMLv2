@@ -26,6 +26,7 @@ add_library(sysmlv2file
         src/parsing/sysml2/SysMLv2Lexer.cpp
         src/parsing/sysml2/SysMLv2Listener.cpp
         src/parsing/sysml2/SysMLv2Parser.cpp
+        src/sysmlv2file_global.h
         ${PARSER_HEADER})
 
 target_link_libraries(sysmlv2file

@@ -5,7 +5,8 @@ project(sysmlv2base CXX C)
 set(ENTITIES_HEADER src/entities/IEntity.h)
 
 add_library(sysmlv2base INTERFACE
-        ${ENTITIES_HEADER})
+        ${ENTITIES_HEADER}
+        src/sysmlv2base_global.h)
 
 target_link_libraries(sysmlv2base INTERFACE
         boost::boost

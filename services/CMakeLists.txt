@@ -13,7 +13,8 @@ set(API_HEADER
 
 add_library(sysmlv2service
         ${API_HEADER}
-        src/implementation/ElementNavigationService.cpp)
+        src/implementation/ElementNavigationService.cpp
+        src/sysmlv2service_global.h)
 
 target_link_libraries(sysmlv2service
         boost::boost
