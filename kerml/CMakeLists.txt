@@ -53,43 +53,76 @@ set(CORE_FEATURES_HEADER
         src/core/features/EndFeatureMembership.h)
 
 set(KERNEL_DATATYPES_HEADER
-        src/kernel/datatypes/DataType.h
-        src/kernel/classes/Class.h
+        src/kernel/datatypes/DataType.h)
+
+set(KERNEL_CLASSES_HEADER
+        src/kernel/classes/Class.h)
+
+set(KERNEL_STRUCTURES_HEADER
+        src/kernel/structures/Structure.h)
+
+set(KERNEL_ASSOCIATIONS_HEADER
         src/kernel/associations/Association.h
-        src/kernel/structures/Structure.h
-        src/kernel/associations/AssociationStructure.h
-        src/kernel/connectors/ParameterMembership.cpp
+        src/kernel/associations/AssociationStructure.h)
+
+set(KERNEL_CONNECTORS_HEADER
         src/kernel/connectors/ParameterMembership.h
-        src/kernel/expressions/InvocationExpression.cpp
+        src/kernel/connectors/BindingConnector.h
+        src/kernel/connectors/Succession.h
+        src/kernel/connectors/Expression.h)
+
+set(KERNEL_FEATUREVALUES_HEADER
+        src/kernel/featurevalues/FeatureValue.h)
+
+set(KERNEL_FUNCTIONS_HEADER
+        src/kernel/functions/Function.h
+        src/kernel/functions/Expression.h
+        src/kernel/functions/Predicate.h
+        src/kernel/functions/BooleanExpression.h
+        src/kernel/functions/Invariant.h
+        src/kernel/functions/ParameterMembership.h
+        src/kernel/functions/ReturnParameterMembership.h
+        src/kernel/functions/ResultExpressionMembersip.h)
+
+set(KERNEL_METADATA_HEADER
+        src/kernel/metadata/MetadataFeature.h)
+
+set(KERNEL_EXPRESSIONS_HEADER
         src/kernel/expressions/InvocationExpression.h
-        src/kernel/expressions/FeatureChainExpression.cpp
         src/kernel/expressions/FeatureChainExpression.h
-        src/kernel/expressions/CollectExpression.cpp
         src/kernel/expressions/CollectExpression.h
-        src/kernel/expressions/SelectExpression.cpp
         src/kernel/expressions/SelectExpression.h
-        src/kernel/expressions/LiteralString.cpp
         src/kernel/expressions/LiteralString.h
-        src/kernel/expressions/LiteralBoolean.cpp
         src/kernel/expressions/LiteralBoolean.h
-        src/kernel/expressions/LiteralRational.cpp
         src/kernel/expressions/LiteralRational.h
-        src/kernel/expressions/LiteralInfinity.cpp
         src/kernel/expressions/LiteralInfinity.h
-        src/kernel/interactions/Ineraction.cpp
-        src/kernel/interactions/Ineraction.h
-        src/kernel/interactions/ItemFeature.cpp
+        src/kernel/expressions/Expression.h
+        src/kernel/expressions/NullExpression.h
+        src/kernel/expressions/LiteralExpression.h
+        src/kernel/expressions/FeatureReferenceExpression.h
+        src/kernel/expressions/MetadataAccessExpression.h
+        src/kernel/expressions/OperatorExpression.h
+        src/kernel/expressions/LiteralInteger.h)
+
+set(KERNEL_INTERACTIONS_HEADER
+        src/kernel/interactions/Interaction.h
         src/kernel/interactions/ItemFeature.h
-        src/kernel/interactions/ItemFlowEnd.cpp
         src/kernel/interactions/ItemFlowEnd.h
-        src/kernel/mutliplicities/MultiplicityRange.cpp
-        src/kernel/mutliplicities/MultiplicityRange.h
-        src/kernel/packages/Package.cpp
+        src/kernel/interactions/ItemFlow.h
+        src/kernel/interactions/SuccessionItemFlow.h)
+
+set(KERNEL_MULTIPLICITIES_HEADER
+        src/kernel/multiplicities/MultiplicityRange.h)
+
+set(KERNEL_PACKAGE_HEADER
         src/kernel/packages/Package.h
-        src/kernel/packages/LibraryPackage.cpp
         src/kernel/packages/LibraryPackage.h
-        src/kernel/packages/ElementFilterMembership.cpp
         src/kernel/packages/ElementFilterMembership.h)
+
+
+set(KERNEL_BEHAVIORS_HEADER
+        src/kernel/behaviors/Step.h
+        src/kernel/behaviors/Behavior.h)
 
 add_library(kerml
         ${ROOT_ELEMENTS_HEADER}
@@ -100,6 +133,18 @@ add_library(kerml
         ${CORE_CLASSIFIER_HEADER}
         ${CORE_FEATURES_HEADER}
         ${KERNEL_DATATYPES_HEADER}
+        ${KERNEL_CLASSES_HEADER}
+        ${KERNEL_STRUCTURES_HEADER}
+        ${KERNEL_ASSOCIATIONS_HEADER}
+        ${KERNEL_CONNECTORS_HEADER}
+        ${KERNEL_FEATUREVALUES_HEADER}
+        ${KERNEL_FUNCTIONS_HEADER}
+        ${KERNEL_METADATA_HEADER}
+        ${KERNEL_EXPRESSIONS_HEADER}
+        ${KERNEL_INTERACTIONS_HEADER}
+        ${KERNEL_MULTIPLICITIES_HEADER}
+        ${KERNEL_PACKAGE_HEADER}
+        ${KERNEL_BEHAVIORS_HEADER}
         src/root/elements/Element.cpp
         src/root/elements/Relationship.cpp
         src/root/dependencies/Dependency.cpp
@@ -139,55 +184,47 @@ add_library(kerml
         src/kernel/associations/Association.cpp
         src/kernel/structures/Structure.cpp
         src/kernel/associations/AssociationStructure.cpp
-        src/kerml_global.h
-        src/kernel/connectors/BindingConnector.cpp
-        src/kernel/connectors/BindingConnector.h
-        src/kernel/connectors/Succession.cpp
-        src/kernel/connectors/Succession.h
-        src/kernel/behaviors/Step.cpp
-        src/kernel/behaviors/Step.h
-        src/kernel/connectors/Expression.cpp
-        src/kernel/connectors/Expression.h
-        src/kernel/behaviors/Behavior.cpp
-        src/kernel/behaviors/Behavior.h
-        src/kernel/functions/Function.cpp
-        src/kernel/functions/Function.h
-        src/kernel/functions/Expression.cpp
-        src/kernel/functions/Expression.h
-        src/kernel/functions/Predicate.cpp
-        src/kernel/functions/Predicate.h
-        src/kernel/functions/BooleanExpression.cpp
-        src/kernel/functions/BooleanExpression.h
-        src/kernel/functions/Invariant.cpp
-        src/kernel/functions/Invariant.h
-        src/kernel/functions/ParameterMembership.cpp
-        src/kernel/functions/ParameterMembership.h
-        src/kernel/functions/ReturnParameterMembership.cpp
-        src/kernel/functions/ReturnParameterMembership.h
-        src/kernel/functions/ResultExpressionMembersip.cpp
-        src/kernel/functions/ResultExpressionMembersip.h
+        src/kernel/packages/Package.cpp
+        src/kernel/packages/LibraryPackage.cpp
+        src/kernel/packages/ElementFilterMembership.cpp
+        src/kernel/multiplicities/MultiplicityRange.cpp
+        src/kernel/interactions/Interaction.cpp
+        src/kernel/interactions/ItemFeature.cpp
+        src/kernel/interactions/ItemFlowEnd.cpp
+        src/kernel/expressions/InvocationExpression.cpp
+        src/kernel/expressions/FeatureChainExpression.cpp
+        src/kernel/expressions/CollectExpression.cpp
+        src/kernel/expressions/SelectExpression.cpp
+        src/kernel/expressions/LiteralString.cpp
+        src/kernel/expressions/LiteralBoolean.cpp
+        src/kernel/expressions/LiteralRational.cpp
+        src/kernel/expressions/LiteralInfinity.cpp
         src/kernel/expressions/Expression.cpp
-        src/kernel/expressions/Expression.h
         src/kernel/expressions/NullExpression.cpp
-        src/kernel/expressions/NullExpression.h
         src/kernel/expressions/LiteralExpression.cpp
-        src/kernel/expressions/LiteralExpression.h
         src/kernel/expressions/FeatureReferenceExpression.cpp
-        src/kernel/expressions/FeatureReferenceExpression.h
         src/kernel/expressions/MetadataAccessExpression.cpp
-        src/kernel/expressions/MetadataAccessExpression.h
         src/kernel/expressions/OperatorExpression.cpp
-        src/kernel/expressions/OperatorExpression.h
         src/kernel/expressions/LiteralInteger.cpp
-        src/kernel/expressions/LiteralInteger.h
-        src/kernel/interactions/ItemFlow.cpp
-        src/kernel/interactions/ItemFlow.h
-        src/kernel/interactions/SuccessionItemFlow.cpp
-        src/kernel/interactions/SuccessionItemFlow.h
-        src/kernel/featurevalues/FeatureValue.cpp
-        src/kernel/featurevalues/FeatureValue.h
+        src/kernel/connectors/ParameterMembership.cpp
+        src/kernel/connectors/Succession.cpp
+        src/kernel/connectors/BindingConnector.cpp
+        src/kernel/connectors/Expression.cpp
         src/kernel/metadata/MetadataFeature.cpp
-        src/kernel/metadata/MetadataFeature.h)
+        src/kernel/featurevalues/FeatureValue.cpp
+        src/kernel/interactions/SuccessionItemFlow.cpp
+        src/kernel/interactions/ItemFlow.cpp
+        src/kernel/functions/Function.cpp
+        src/kernel/functions/Expression.cpp
+        src/kernel/functions/Predicate.cpp
+        src/kernel/functions/BooleanExpression.cpp
+        src/kernel/functions/Invariant.cpp
+        src/kernel/functions/ParameterMembership.cpp
+        src/kernel/functions/ReturnParameterMembership.cpp
+        src/kernel/functions/ResultExpressionMembersip.cpp
+        src/kernel/behaviors/Step.cpp
+        src/kernel/behaviors/Behavior.cpp
+        src/kerml_global.h )
 
 target_link_libraries(kerml PRIVATE
         boost::boost
@@ -202,6 +239,22 @@ install(FILES ${ROOT_ELEMENTS_HEADER} DESTINATION include/kerml/root/elements)
 install(FILES ${ROOT_DEPENDENCIES_HEADER} DESTINATION include/kerml/root/dependencies)
 install(FILES ${ROOT_ANNOTATIONS_HEADER} DESTINATION include/kerml/root/annotations)
 install(FILES ${ROOT_NAMESPACES_HEADER} DESTINATION include/kerml/root/namespaces)
+install(FILES ${CORE_TYPES_HEADER} DESTINATION include/kerml/core/types)
+install(FILES ${CORE_CLASSIFIER_HEADER} DESTINATION include/kerml/core/classifiers)
+install(FILES ${CORE_FEATURES_HEADER} DESTINATION include/kerml/core/features)
+install(FILES ${KERNEL_DATATYPES_HEADER} DESTINATION include/kerml/kernel/datatypes)
+install(FILES ${KERNEL_CLASSES_HEADER} DESTINATION include/kerml/kernel/classes)
+install(FILES ${KERNEL_STRUCTURES_HEADER} DESTINATION include/kerml/kernel/structures)
+install(FILES ${KERNEL_ASSOCIATIONS_HEADER} DESTINATION include/kerml/kernel/associations)
+install(FILES ${KERNEL_CONNECTORS_HEADER} DESTINATION include/kerml/kernel/connectors)
+install(FILES ${KERNEL_FEATUREVALUES_HEADER} DESTINATION include/kerml/kernel/featurevalues)
+install(FILES ${KERNEL_FUNCTIONS_HEADER} DESTINATION include/kerml/kernel/functions)
+install(FILES ${KERNEL_METADATA_HEADER} DESTINATION include/kerml/kernel/metadata)
+install(FILES ${KERNEL_EXPRESSIONS_HEADER} DESTINATION include/kerml/kernel/expressions)
+install(FILES ${KERNEL_INTERACTIONS_HEADER} DESTINATION include/kerml/kernel/interactions)
+install(FILES ${KERNEL_MULTIPLICITIES_HEADER} DESTINATION include/kerml/kernel/multiplicities)
+install(FILES ${KERNEL_PACKAGE_HEADER} DESTINATION include/kerml/kernel/packages)
+install(FILES ${KERNEL_BEHAVIORS_HEADER} DESTINATION include/kerml/kernel/behaviors)
 
 target_include_directories(kerml PRIVATE ./src/)
 
