@@ -5,7 +5,7 @@
 #ifndef SYSMLV2_ASSOCIATIONSTRUCTURE_H
 #define SYSMLV2_ASSOCIATIONSTRUCTURE_H
 
-#include "Structure.h"
+#include "../structures/Structure.h"
 #include "Association.h"
 
 namespace KerML::Entities {

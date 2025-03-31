@@ -5,7 +5,7 @@
 #ifndef SYSMLV2_STRUCTURE_H
 #define SYSMLV2_STRUCTURE_H
 
-#include "Class.h"
+#include "../classes/Class.h"
 
 namespace KerML::Entities {
     class Structure : public Class{

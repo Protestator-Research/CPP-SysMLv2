@@ -54,10 +54,42 @@ set(CORE_FEATURES_HEADER
 
 set(KERNEL_DATATYPES_HEADER
         src/kernel/datatypes/DataType.h
-        src/kernel/datatypes/Class.h
-        src/kernel/datatypes/Association.h
-        src/kernel/datatypes/Structure.h
-        src/kernel/datatypes/AssociationStructure.h)
+        src/kernel/classes/Class.h
+        src/kernel/associations/Association.h
+        src/kernel/structures/Structure.h
+        src/kernel/associations/AssociationStructure.h
+        src/kernel/connectors/ParameterMembership.cpp
+        src/kernel/connectors/ParameterMembership.h
+        src/kernel/expressions/InvocationExpression.cpp
+        src/kernel/expressions/InvocationExpression.h
+        src/kernel/expressions/FeatureChainExpression.cpp
+        src/kernel/expressions/FeatureChainExpression.h
+        src/kernel/expressions/CollectExpression.cpp
+        src/kernel/expressions/CollectExpression.h
+        src/kernel/expressions/SelectExpression.cpp
+        src/kernel/expressions/SelectExpression.h
+        src/kernel/expressions/LiteralString.cpp
+        src/kernel/expressions/LiteralString.h
+        src/kernel/expressions/LiteralBoolean.cpp
+        src/kernel/expressions/LiteralBoolean.h
+        src/kernel/expressions/LiteralRational.cpp
+        src/kernel/expressions/LiteralRational.h
+        src/kernel/expressions/LiteralInfinity.cpp
+        src/kernel/expressions/LiteralInfinity.h
+        src/kernel/interactions/Ineraction.cpp
+        src/kernel/interactions/Ineraction.h
+        src/kernel/interactions/ItemFeature.cpp
+        src/kernel/interactions/ItemFeature.h
+        src/kernel/interactions/ItemFlowEnd.cpp
+        src/kernel/interactions/ItemFlowEnd.h
+        src/kernel/mutliplicities/MultiplicityRange.cpp
+        src/kernel/mutliplicities/MultiplicityRange.h
+        src/kernel/packages/Package.cpp
+        src/kernel/packages/Package.h
+        src/kernel/packages/LibraryPackage.cpp
+        src/kernel/packages/LibraryPackage.h
+        src/kernel/packages/ElementFilterMembership.cpp
+        src/kernel/packages/ElementFilterMembership.h)
 
 add_library(kerml
         ${ROOT_ELEMENTS_HEADER}
@@ -103,11 +135,59 @@ add_library(kerml
         src/core/features/FeatureMembership.cpp
         src/core/features/EndFeatureMembership.cpp
         src/kernel/datatypes/DataType.cpp
-        src/kernel/datatypes/Class.cpp
-        src/kernel/datatypes/Association.cpp
-        src/kernel/datatypes/Structure.cpp
-        src/kernel/datatypes/AssociationStructure.cpp
-        src/kerml_global.h)
+        src/kernel/classes/Class.cpp
+        src/kernel/associations/Association.cpp
+        src/kernel/structures/Structure.cpp
+        src/kernel/associations/AssociationStructure.cpp
+        src/kerml_global.h
+        src/kernel/connectors/BindingConnector.cpp
+        src/kernel/connectors/BindingConnector.h
+        src/kernel/connectors/Succession.cpp
+        src/kernel/connectors/Succession.h
+        src/kernel/behaviors/Step.cpp
+        src/kernel/behaviors/Step.h
+        src/kernel/connectors/Expression.cpp
+        src/kernel/connectors/Expression.h
+        src/kernel/behaviors/Behavior.cpp
+        src/kernel/behaviors/Behavior.h
+        src/kernel/functions/Function.cpp
+        src/kernel/functions/Function.h
+        src/kernel/functions/Expression.cpp
+        src/kernel/functions/Expression.h
+        src/kernel/functions/Predicate.cpp
+        src/kernel/functions/Predicate.h
+        src/kernel/functions/BooleanExpression.cpp
+        src/kernel/functions/BooleanExpression.h
+        src/kernel/functions/Invariant.cpp
+        src/kernel/functions/Invariant.h
+        src/kernel/functions/ParameterMembership.cpp
+        src/kernel/functions/ParameterMembership.h
+        src/kernel/functions/ReturnParameterMembership.cpp
+        src/kernel/functions/ReturnParameterMembership.h
+        src/kernel/functions/ResultExpressionMembersip.cpp
+        src/kernel/functions/ResultExpressionMembersip.h
+        src/kernel/expressions/Expression.cpp
+        src/kernel/expressions/Expression.h
+        src/kernel/expressions/NullExpression.cpp
+        src/kernel/expressions/NullExpression.h
+        src/kernel/expressions/LiteralExpression.cpp
+        src/kernel/expressions/LiteralExpression.h
+        src/kernel/expressions/FeatureReferenceExpression.cpp
+        src/kernel/expressions/FeatureReferenceExpression.h
+        src/kernel/expressions/MetadataAccessExpression.cpp
+        src/kernel/expressions/MetadataAccessExpression.h
+        src/kernel/expressions/OperatorExpression.cpp
+        src/kernel/expressions/OperatorExpression.h
+        src/kernel/expressions/LiteralInteger.cpp
+        src/kernel/expressions/LiteralInteger.h
+        src/kernel/interactions/ItemFlow.cpp
+        src/kernel/interactions/ItemFlow.h
+        src/kernel/interactions/SuccessionItemFlow.cpp
+        src/kernel/interactions/SuccessionItemFlow.h
+        src/kernel/featurevalues/FeatureValue.cpp
+        src/kernel/featurevalues/FeatureValue.h
+        src/kernel/metadata/MetadataFeature.cpp
+        src/kernel/metadata/MetadataFeature.h)
 
 target_link_libraries(kerml PRIVATE
         boost::boost
