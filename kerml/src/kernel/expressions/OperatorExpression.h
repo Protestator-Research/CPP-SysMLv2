@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_OPERATOREXPRESSION_H
 #define SYSMLV2_OPERATOREXPRESSION_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class OperatorExpression {
 
-        class OperatorExpression {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_OPERATOREXPRESSION_H

@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_LITERALBOOLEAN_H
 #define SYSMLV2_LITERALBOOLEAN_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class LiteralBoolean {
 
-        class LiteralBoolean {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_LITERALBOOLEAN_H

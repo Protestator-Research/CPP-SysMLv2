@@ -5,10 +5,10 @@
 #ifndef SYSMLV2_COLLECTEXPRESSION_H
 #define SYSMLV2_COLLECTEXPRESSION_H
 
+namespace KerML::Entities {
+    class CollectExpression {
 
-class CollectExpression {
-
-};
-
+    };
+}
 
 #endif //SYSMLV2_COLLECTEXPRESSION_H

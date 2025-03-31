@@ -5,10 +5,10 @@
 #ifndef SYSMLV2_FEATUREVALUE_H
 #define SYSMLV2_FEATUREVALUE_H
 
+namespace KerML::Entities {
+    class FeatureValue {
 
-class FeatureValue {
-
-};
-
+    };
+}
 
 #endif //SYSMLV2_FEATUREVALUE_H

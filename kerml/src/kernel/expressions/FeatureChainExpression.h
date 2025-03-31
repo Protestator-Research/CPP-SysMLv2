@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_FEATURECHAINEXPRESSION_H
 #define SYSMLV2_FEATURECHAINEXPRESSION_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class FeatureChainExpression {
 
-        class FeatureChainExpression {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_FEATURECHAINEXPRESSION_H

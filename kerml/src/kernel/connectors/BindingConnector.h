@@ -5,10 +5,11 @@
 #ifndef SYSMLV2_BINDINGCONNECTOR_H
 #define SYSMLV2_BINDINGCONNECTOR_H
 
+namespace KerML::Entities {
+    class BindingConnector {
 
-class BindingConnector {
-
-};
+    };
+}
 
 
 #endif //SYSMLV2_BINDINGCONNECTOR_H

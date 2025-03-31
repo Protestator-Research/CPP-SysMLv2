@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_METADATAACCESSEXPRESSION_H
 #define SYSMLV2_METADATAACCESSEXPRESSION_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class MetadataAccessExpression {
 
-        class MetadataAccessExpression {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_METADATAACCESSEXPRESSION_H

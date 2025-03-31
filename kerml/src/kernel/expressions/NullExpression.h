@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_NULLEXPRESSION_H
 #define SYSMLV2_NULLEXPRESSION_H
 
-namespace KerML {
-    namespace Enitities {
+namespace KerML::Entities {
+    class NullExpression {
 
-        class NullExpression {
-
-        };
-
-    } // Enitities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_NULLEXPRESSION_H

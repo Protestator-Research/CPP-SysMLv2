@@ -5,14 +5,10 @@
 #ifndef CPP_SYSMLV2_CONNECTOR_H
 #define CPP_SYSMLV2_CONNECTOR_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class Connector {
 
-        class Connector {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //CPP_SYSMLV2_CONNECTOR_H

@@ -5,10 +5,11 @@
 #ifndef SYSMLV2_FEATUREREFERENCEEXPRESSION_H
 #define SYSMLV2_FEATUREREFERENCEEXPRESSION_H
 
+namespace KerML::Entities {
+    class FeatureReferenceExpression {
 
-class FeatureReferenceExpression {
-
-};
+    };
+}
 
 
 #endif //SYSMLV2_FEATUREREFERENCEEXPRESSION_H

@@ -5,10 +5,11 @@
 #ifndef SYSMLV2_LITERALEXPRESSION_H
 #define SYSMLV2_LITERALEXPRESSION_H
 
+namespace KerML::Entities {
+    class LiteralExpression {
 
-class LiteralExpression {
-
-};
+    };
+}
 
 
 #endif //SYSMLV2_LITERALEXPRESSION_H

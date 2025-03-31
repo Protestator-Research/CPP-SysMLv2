@@ -5,10 +5,10 @@
 #ifndef SYSMLV2_SUCCESSION_H
 #define SYSMLV2_SUCCESSION_H
 
+namespace KerML::Entities {
+    class Succession {
 
-class Succession {
-
-};
-
+    };
+}
 
 #endif //SYSMLV2_SUCCESSION_H

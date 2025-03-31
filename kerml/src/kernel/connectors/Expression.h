@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_EXPRESSION_H
 #define SYSMLV2_EXPRESSION_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class Expression {
 
-        class Expression {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_EXPRESSION_H

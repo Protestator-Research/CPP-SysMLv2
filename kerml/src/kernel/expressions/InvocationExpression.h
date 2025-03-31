@@ -5,10 +5,10 @@
 #ifndef SYSMLV2_INVOCATIONEXPRESSION_H
 #define SYSMLV2_INVOCATIONEXPRESSION_H
 
+namespace KerML::Entities {
+    class InvocationExpression {
 
-class InvocationExpression {
-
-};
-
+    };
+}
 
 #endif //SYSMLV2_INVOCATIONEXPRESSION_H

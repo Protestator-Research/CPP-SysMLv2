@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_LITERALSTRING_H
 #define SYSMLV2_LITERALSTRING_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class LiteralString {
 
-        class LiteralString {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_LITERALSTRING_H

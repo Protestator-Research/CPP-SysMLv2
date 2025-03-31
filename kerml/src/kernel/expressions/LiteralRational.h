@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_LITERALRATIONAL_H
 #define SYSMLV2_LITERALRATIONAL_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class LiteralRational {
 
-        class LiteralRational {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_LITERALRATIONAL_H

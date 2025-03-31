@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_SELECTEXPRESSION_H
 #define SYSMLV2_SELECTEXPRESSION_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class SelectExpression {
 
-        class SelectExpression {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_SELECTEXPRESSION_H

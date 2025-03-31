@@ -5,10 +5,10 @@
 #ifndef SYSMLV2_LITERALINTEGER_H
 #define SYSMLV2_LITERALINTEGER_H
 
+namespace KerML::Entities {
+    class LiteralInteger {
 
-class LiteralInteger {
-
-};
-
+    };
+}
 
 #endif //SYSMLV2_LITERALINTEGER_H
