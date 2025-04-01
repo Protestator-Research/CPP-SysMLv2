@@ -5,6 +5,6 @@
 #include "NullExpression.h"
 
 namespace KerML {
-    namespace Enitities {
-    } // Enitities
+    namespace Entities {
+    } // EntitiesÍ
 } // KerML

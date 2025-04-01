@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_FUNCTION_H
 #define SYSMLV2_FUNCTION_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class Function {
 
-        class Function {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_FUNCTION_H

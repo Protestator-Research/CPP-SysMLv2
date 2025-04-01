@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_BOOLEANEXPRESSION_H
 #define SYSMLV2_BOOLEANEXPRESSION_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class BooleanExpression {
 
-        class BooleanExpression {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_BOOLEANEXPRESSION_H

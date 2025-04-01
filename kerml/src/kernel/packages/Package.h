@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_PACKAGE_H
 #define SYSMLV2_PACKAGE_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class Package {
 
-        class Package {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_PACKAGE_H

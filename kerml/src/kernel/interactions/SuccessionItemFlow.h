@@ -5,10 +5,11 @@
 #ifndef SYSMLV2_SUCCESSIONITEMFLOW_H
 #define SYSMLV2_SUCCESSIONITEMFLOW_H
 
+namespace KerML::Entities {
+    class SuccessionItemFlow {
 
-class SuccessionItemFlow {
-
-};
+    };
+}
 
 
 #endif //SYSMLV2_SUCCESSIONITEMFLOW_H

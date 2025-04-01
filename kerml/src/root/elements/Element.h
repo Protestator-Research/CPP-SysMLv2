@@ -233,6 +233,8 @@ namespace KerML::Entities {
         std::vector<std::shared_ptr<Relationship>> OwnedRelationships;
 
         bool IsImpliedIncluded = false;
+
+
     };
 
 } // KerML::Entities

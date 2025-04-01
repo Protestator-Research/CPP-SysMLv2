@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_ITEMFEATURE_H
 #define SYSMLV2_ITEMFEATURE_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class ItemFeature {
 
-        class ItemFeature {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_ITEMFEATURE_H

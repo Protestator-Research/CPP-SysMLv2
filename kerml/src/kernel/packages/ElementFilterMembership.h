@@ -5,10 +5,11 @@
 #ifndef SYSMLV2_ELEMENTFILTERMEMBERSHIP_H
 #define SYSMLV2_ELEMENTFILTERMEMBERSHIP_H
 
+namespace KerML::Entities {
+    class ElementFilterMembership {
 
-class ElementFilterMembership {
-
-};
+    };
+}
 
 
 #endif //SYSMLV2_ELEMENTFILTERMEMBERSHIP_H

@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_PREDICATE_H
 #define SYSMLV2_PREDICATE_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class Predicate {
 
-        class Predicate {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_PREDICATE_H

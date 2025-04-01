@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_INVARIANT_H
 #define SYSMLV2_INVARIANT_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class Invariant {
 
-        class Invariant {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_INVARIANT_H

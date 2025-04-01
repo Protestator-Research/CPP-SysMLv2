@@ -5,10 +5,10 @@
 #ifndef SYSMLV2_STEP_H
 #define SYSMLV2_STEP_H
 
-namespace KerML::Enities {
+namespace KerML::Entities {
     class Step {
 
     };
-} // KerML::Enities
+} // KerML::Entities
 
 #endif //SYSMLV2_STEP_H

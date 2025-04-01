@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_PARAMETERMEMBERSHIP_H
 #define SYSMLV2_PARAMETERMEMBERSHIP_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class ParameterMembership {
 
-        class ParameterMembership {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_PARAMETERMEMBERSHIP_H

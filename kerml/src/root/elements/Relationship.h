@@ -10,7 +10,13 @@
 
 namespace KerML::Entities {
     class Namespace;
-
+    /**
+     * @class Relationship
+     * @author Moritz Herzog
+     * @version 1.0 Beta 2
+     *
+     *
+     */
     class Relationship : public Element {
     public:
         Relationship(boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);

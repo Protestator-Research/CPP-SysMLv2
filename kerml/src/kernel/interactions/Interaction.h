@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_INTERACTION_H
 #define SYSMLV2_INTERACTION_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class Interaction {
 
-        class Interaction {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_INTERACTION_H

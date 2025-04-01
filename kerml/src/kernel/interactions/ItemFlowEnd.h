@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_ITEMFLOWEND_H
 #define SYSMLV2_ITEMFLOWEND_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class ItemFlowEnd {
 
-        class ItemFlowEnd {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_ITEMFLOWEND_H

@@ -5,7 +5,14 @@
 #ifndef SYSMLV2_VISIBILITYKIND_H
 #define SYSMLV2_VISIBILITYKIND_H
 
-namespace KerML::Enitties {
+namespace KerML::Entities {
+    /**
+     * @class VisibilityKind
+     * @author Moritz Herzog
+     * @version 1.0 Beta 2
+     *
+     *
+     */
     enum VisibilityKind {
         PRIVATE,
         PROTECTED,

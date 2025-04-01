@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_MULTIPLICITYRANGE_H
 #define SYSMLV2_MULTIPLICITYRANGE_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class MultiplicityRange {
 
-        class MultiplicityRange {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_MULTIPLICITYRANGE_H

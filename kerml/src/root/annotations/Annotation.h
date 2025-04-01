@@ -8,10 +8,8 @@
 #include <root/elements/Relationship.h>
 
 namespace KerML::Entities {
-
     class Annotation : public Relationship {
     };
-
 } // KerML::Entities
 
 #endif //SYSMLV2_ANNOTATION_H

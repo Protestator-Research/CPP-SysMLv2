@@ -5,14 +5,10 @@
 #ifndef SYSMLV2_METADATAFEATURE_H
 #define SYSMLV2_METADATAFEATURE_H
 
-namespace KerML {
-    namespace Entities {
+namespace KerML::Entities {
+    class MetadataFeature {
 
-        class MetadataFeature {
-
-        };
-
-    } // Entities
-} // KerML
+    };
+} // KerML::Entities
 
 #endif //SYSMLV2_METADATAFEATURE_H
