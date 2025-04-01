@@ -1,0 +1,145 @@
+\doxysection{Sys\+MLv2\+::API\+::IQuery\+Service Class Reference}
+\hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service}{}\label{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service}\index{SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Sys\+MLv2\+::\+Entities\+::\+Query}} $>$ $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a1389f9981436289d3112a8ea08335ae7}{get\+Queries}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Sys\+MLv2\+::\+Entities\+::\+Query}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_af88f152027f34f678815f7f3d8db5673}{get\+Query\+By\+Id}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project, boost\+::uuids\+::uuid query\+Id)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Sys\+MLv2\+::\+Entities\+::\+Query}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a8673a987cd74faa0e6578cca19ef806e}{create\+Query}} (std\+::string name, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project, std\+::vector$<$ std\+::string $>$ select, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data}{Sys\+MLv2\+::\+Entities\+::\+Data}} $>$ $>$ scope, std\+::shared\+\_\+ptr$<$ Sys\+MLv2\+::\+Entities\+::\+Constraint $>$ where, std\+::vector$<$ std\+::string $>$ order\+By)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Sys\+MLv2\+::\+Entities\+::\+Query}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a93e8f8174d161a84a7d94d4e915b1b65}{update\+Query}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Sys\+MLv2\+::\+Entities\+::\+Query}} $>$ updated\+Query)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Sys\+MLv2\+::\+Entities\+::\+Query}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a0a0a3104baa72e7d1ff79a0172e3cbc7}{delete\+Query}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project, boost\+::uuids\+::uuid query\+Id)=0
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data}{Sys\+MLv2\+::\+Entities\+::\+Data}} $>$ $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_ae52d2e1b71a88326fe0eda15efe61578}{execute\+Query\+By\+Id}} (boost\+::uuids\+::uuid query\+Id, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ commit)=0
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data}{Sys\+MLv2\+::\+Entities\+::\+Data}} $>$ $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_ac26c931299eaa8a0dd0a49240741b716}{execute\+Query}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Sys\+MLv2\+::\+Entities\+::\+Query}} $>$ query, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ commit)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a8673a987cd74faa0e6578cca19ef806e}\index{SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}!createQuery@{createQuery}}
+\index{createQuery@{createQuery}!SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}}
+\doxysubsubsection{\texorpdfstring{createQuery()}{createQuery()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a8673a987cd74faa0e6578cca19ef806e} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Sys\+MLv2\+::\+Entities\+::\+Query}} $>$ Sys\+MLv2\+::\+API\+::\+IQuery\+Service\+::create\+Query (\begin{DoxyParamCaption}\item[{std\+::string}]{name}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{, }\item[{std\+::vector$<$ std\+::string $>$}]{select}{, }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data}{Sys\+MLv2\+::\+Entities\+::\+Data}} $>$ $>$}]{scope}{, }\item[{std\+::shared\+\_\+ptr$<$ Sys\+MLv2\+::\+Entities\+::\+Constraint $>$}]{where}{, }\item[{std\+::vector$<$ std\+::string $>$}]{order\+By}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+{\em project} & \\
+\hline
+{\em select} & \\
+\hline
+{\em scope} & \\
+\hline
+{\em where} & \\
+\hline
+{\em order\+By} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a0a0a3104baa72e7d1ff79a0172e3cbc7}\index{SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}!deleteQuery@{deleteQuery}}
+\index{deleteQuery@{deleteQuery}!SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}}
+\doxysubsubsection{\texorpdfstring{deleteQuery()}{deleteQuery()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a0a0a3104baa72e7d1ff79a0172e3cbc7} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Sys\+MLv2\+::\+Entities\+::\+Query}} $>$ Sys\+MLv2\+::\+API\+::\+IQuery\+Service\+::delete\+Query (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{, }\item[{boost\+::uuids\+::uuid}]{query\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+{\em query\+Id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_ac26c931299eaa8a0dd0a49240741b716}\index{SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}!executeQuery@{executeQuery}}
+\index{executeQuery@{executeQuery}!SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}}
+\doxysubsubsection{\texorpdfstring{executeQuery()}{executeQuery()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_ac26c931299eaa8a0dd0a49240741b716} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data}{Sys\+MLv2\+::\+Entities\+::\+Data}} $>$ $>$ Sys\+MLv2\+::\+API\+::\+IQuery\+Service\+::execute\+Query (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Sys\+MLv2\+::\+Entities\+::\+Query}} $>$}]{query}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$}]{commit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & \\
+\hline
+{\em commit} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_ae52d2e1b71a88326fe0eda15efe61578}\index{SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}!executeQueryById@{executeQueryById}}
+\index{executeQueryById@{executeQueryById}!SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}}
+\doxysubsubsection{\texorpdfstring{executeQueryById()}{executeQueryById()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_ae52d2e1b71a88326fe0eda15efe61578} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data}{Sys\+MLv2\+::\+Entities\+::\+Data}} $>$ $>$ Sys\+MLv2\+::\+API\+::\+IQuery\+Service\+::execute\+Query\+By\+Id (\begin{DoxyParamCaption}\item[{boost\+::uuids\+::uuid}]{query\+Id}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$}]{commit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em query\+Id} & \\
+\hline
+{\em commit} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a1389f9981436289d3112a8ea08335ae7}\index{SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}!getQueries@{getQueries}}
+\index{getQueries@{getQueries}!SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}}
+\doxysubsubsection{\texorpdfstring{getQueries()}{getQueries()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a1389f9981436289d3112a8ea08335ae7} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Sys\+MLv2\+::\+Entities\+::\+Query}} $>$ $>$ Sys\+MLv2\+::\+API\+::\+IQuery\+Service\+::get\+Queries (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_af88f152027f34f678815f7f3d8db5673}\index{SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}!getQueryById@{getQueryById}}
+\index{getQueryById@{getQueryById}!SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}}
+\doxysubsubsection{\texorpdfstring{getQueryById()}{getQueryById()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_af88f152027f34f678815f7f3d8db5673} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Sys\+MLv2\+::\+Entities\+::\+Query}} $>$ Sys\+MLv2\+::\+API\+::\+IQuery\+Service\+::get\+Query\+By\+Id (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{, }\item[{boost\+::uuids\+::uuid}]{query\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+{\em query\+Id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a93e8f8174d161a84a7d94d4e915b1b65}\index{SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}!updateQuery@{updateQuery}}
+\index{updateQuery@{updateQuery}!SysMLv2::API::IQueryService@{SysMLv2::API::IQueryService}}
+\doxysubsubsection{\texorpdfstring{updateQuery()}{updateQuery()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a93e8f8174d161a84a7d94d4e915b1b65} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Sys\+MLv2\+::\+Entities\+::\+Query}} $>$ Sys\+MLv2\+::\+API\+::\+IQuery\+Service\+::update\+Query (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Sys\+MLv2\+::\+Entities\+::\+Query}} $>$}]{updated\+Query}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+{\em updated\+Query} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+services/src/interfaces/IQuery\+Service.\+h\end{DoxyCompactItemize}

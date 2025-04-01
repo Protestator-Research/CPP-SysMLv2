@@ -1,0 +1,115 @@
+\doxysection{Sys\+MLv2\+::Entities\+::Project\+Usage Class Reference}
+\hypertarget{class_sys_m_lv2_1_1_entities_1_1_project_usage}{}\label{class_sys_m_lv2_1_1_entities_1_1_project_usage}\index{SysMLv2::Entities::ProjectUsage@{SysMLv2::Entities::ProjectUsage}}
+
+
+{\ttfamily \#include $<$Project\+Usage.\+h$>$}
+
+Inheritance diagram for Sys\+MLv2\+::Entities\+::Project\+Usage\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project_usage_a7fa4787666e84d5dbcf2e4efee83fe29}{Project\+Usage}} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Commit}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project_usage_a152230c65937a030861298433ce6f626}{get\+Used\+Project\+Commit}} () const
+\item 
+void \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project_usage_ac60a8b41ca7e7f7d730f1566112b3754}{set\+Used\+Project\+Commit}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Commit}} $>$ used\+Commit)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Project}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project_usage_aef8cb33656314548aec516ac832df1a5}{get\+Used\+Project}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data}{Sys\+MLv2\+::\+Entities\+::\+Data}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_a8764b2cee063c5961f2423bb61394398}{Data}} ()
+\item 
+\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_ab11291a4106304308b94f4a827e97f5d}{Data}} (boost\+::uuids\+::uuid id)
+\item 
+\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_a3ead38504d0fac260222ef510223492f}{Data}} (std\+::string json\+String)
+\item 
+virtual \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_a410a285059373318b7742b9ddf47a978}{\texorpdfstring{$\sim$}{\string~}\+Data}} ()=default
+\item 
+boost\+::uuids\+::uuid \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_a4d8b6e86e67395a6e8ca0afb22ea01eb}{get\+Id}} ()
+\item 
+std\+::string \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_ac0624bb99650ed554d1e78ce17d93c4d}{get\+Type}} ()
+\item 
+std\+::string \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_a01a079b57d6cadb79794f04edaadc3e4}{serialize\+To\+Json}} () override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sys_m_lv2_1_1_entities_1_1_project_usage_aec1e5d764f1e3fea5821abb61c7d573b}\label{class_sys_m_lv2_1_1_entities_1_1_project_usage_aec1e5d764f1e3fea5821abb61c7d573b} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Commit}} $>$ {\bfseries Used\+Project\+Commit}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data}{Sys\+MLv2\+::\+Entities\+::\+Data}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_a0e94702de18580a2d5b79ed0d59d0157}{Type}}
+\item 
+boost\+::uuids\+::uuid {\bfseries Id}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_i_entity}{Sys\+MLv2\+::\+Entities\+::\+IEntity}}}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_i_entity_ac3f7cba2488d110b820614b9cb709808}{JSON\+\_\+\+INTENT}} = 2
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the \doxylink{class_sys_m_lv2_1_1_entities_1_1_project}{Project} Usage according to the Sys\+ML v2 Standard \begin{DoxyAuthor}{Author}
+Moritz Herzog 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_sys_m_lv2_1_1_entities_1_1_project_usage_a7fa4787666e84d5dbcf2e4efee83fe29}\index{SysMLv2::Entities::ProjectUsage@{SysMLv2::Entities::ProjectUsage}!ProjectUsage@{ProjectUsage}}
+\index{ProjectUsage@{ProjectUsage}!SysMLv2::Entities::ProjectUsage@{SysMLv2::Entities::ProjectUsage}}
+\doxysubsubsection{\texorpdfstring{ProjectUsage()}{ProjectUsage()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_entities_1_1_project_usage_a7fa4787666e84d5dbcf2e4efee83fe29} 
+Sys\+MLv2\+::\+Entities\+::\+Project\+Usage\+::\+Project\+Usage (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Constructor 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sys_m_lv2_1_1_entities_1_1_project_usage_aef8cb33656314548aec516ac832df1a5}\index{SysMLv2::Entities::ProjectUsage@{SysMLv2::Entities::ProjectUsage}!getUsedProject@{getUsedProject}}
+\index{getUsedProject@{getUsedProject}!SysMLv2::Entities::ProjectUsage@{SysMLv2::Entities::ProjectUsage}}
+\doxysubsubsection{\texorpdfstring{getUsedProject()}{getUsedProject()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_entities_1_1_project_usage_aef8cb33656314548aec516ac832df1a5} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Project}} $>$ Sys\+MLv2\+::\+Entities\+::\+Project\+Usage\+::get\+Used\+Project (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+Returns the connected project according to the Sys\+ML v2 Standard \begin{DoxySeeAlso}{See also}
+\doxylink{class_sys_m_lv2_1_1_entities_1_1_commit}{Commit} 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+The project from the connected commit. 
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_entities_1_1_project_usage_a152230c65937a030861298433ce6f626}\index{SysMLv2::Entities::ProjectUsage@{SysMLv2::Entities::ProjectUsage}!getUsedProjectCommit@{getUsedProjectCommit}}
+\index{getUsedProjectCommit@{getUsedProjectCommit}!SysMLv2::Entities::ProjectUsage@{SysMLv2::Entities::ProjectUsage}}
+\doxysubsubsection{\texorpdfstring{getUsedProjectCommit()}{getUsedProjectCommit()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_entities_1_1_project_usage_a152230c65937a030861298433ce6f626} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Commit}} $>$ Sys\+MLv2\+::\+Entities\+::\+Project\+Usage\+::get\+Used\+Project\+Commit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+Returns the commit of the given \doxylink{class_sys_m_lv2_1_1_entities_1_1_project}{Project}. \begin{DoxyReturn}{Returns}
+the Related \doxylink{class_sys_m_lv2_1_1_entities_1_1_commit}{Commit} 
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_entities_1_1_project_usage_ac60a8b41ca7e7f7d730f1566112b3754}\index{SysMLv2::Entities::ProjectUsage@{SysMLv2::Entities::ProjectUsage}!setUsedProjectCommit@{setUsedProjectCommit}}
+\index{setUsedProjectCommit@{setUsedProjectCommit}!SysMLv2::Entities::ProjectUsage@{SysMLv2::Entities::ProjectUsage}}
+\doxysubsubsection{\texorpdfstring{setUsedProjectCommit()}{setUsedProjectCommit()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_entities_1_1_project_usage_ac60a8b41ca7e7f7d730f1566112b3754} 
+void Sys\+MLv2\+::\+Entities\+::\+Project\+Usage\+::set\+Used\+Project\+Commit (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Commit}} $>$}]{used\+Commit}{}\end{DoxyParamCaption})}
+
+Allows to set the used \doxylink{class_sys_m_lv2_1_1_entities_1_1_project}{Project} commit. 
+\begin{DoxyParams}{Parameters}
+{\em used\+Commit} & used \doxylink{class_sys_m_lv2_1_1_entities_1_1_project}{Project} commit. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+rest-\/api/src/entities/Project\+Usage.\+h\item 
+rest-\/api/src/entities/Project\+Usage.\+cpp\end{DoxyCompactItemize}

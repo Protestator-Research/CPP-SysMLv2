@@ -1,0 +1,64 @@
+\doxysection{Data\+Identity.\+h}
+\hypertarget{_data_identity_8h_source}{}\label{_data_identity_8h_source}\index{rest-\/api/src/entities/DataIdentity.h@{rest-\/api/src/entities/DataIdentity.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Moritz\ Herzog\ on\ 19.02.24.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Constants,\ Definitions,\ Pragmas}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ DIGITALTWIN\_DATAIDENTITY\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ DIGITALTWIN\_DATAIDENTITY\_H}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ External\ Classes}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <boost/uuid/uuid.hpp>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ Internal\ Classes}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Record.h"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ Forwarding}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_sys_m_lv2_1_1_entities}{SysMLv2::Entities}}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_version}{DataVersion}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Project}};}
+\DoxyCodeLine{00027\ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_sys_m_lv2_1_1_entities}{SysMLv2::Entities}}\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_identity_aac067a5bafbb7bb13722726f252cc00d}{DataIdentity}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a3bfd067522f0ef87a1b50c6493458a9b}{Record}}\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_identity_aac067a5bafbb7bb13722726f252cc00d}{DataIdentity}}()\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_identity_aac067a5bafbb7bb13722726f252cc00d}{DataIdentity}}(boost::uuids::uuid\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_identity_aac067a5bafbb7bb13722726f252cc00d}{DataIdentity}}(std::string\ jsonStringOrName);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_identity_ad645fbc99c1bb094b173fc06e6cb64f9}{\string~DataIdentity}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<DataVersion>>\ getDataVersions()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setDataVersions(std::vector<std::shared\_ptr<DataVersion>>\ versions);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ std::chrono::system\_clock::time\_point\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_identity_a254bbaaeeee734746ff42e2b350f0a9b}{createdAt}}();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ std::chrono::system\_clock::time\_point\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_identity_ad4cb4d76a4213c2cd1001a27612b4ca4}{deletedAt}}();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_identity_abaaf39353f7c4e099a136d067237bc85}{serializeToJson}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_identity_aac067a5bafbb7bb13722726f252cc00d}{DataIdentity}}\ \textcolor{keyword}{const}\ \&other);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<DataVersion>>\ Version;}
+\DoxyCodeLine{00088\ \ \ \ \ \};}
+\DoxyCodeLine{00089\ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//DIGITALTWIN\_DATAIDENTITY\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,72 @@
+\doxysection{Record.\+h}
+\hypertarget{_record_8h_source}{}\label{_record_8h_source}\index{rest-\/api/src/entities/Record.h@{rest-\/api/src/entities/Record.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Moritz\ Herzog\ on\ 19.02.24.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Constants,\ Definitions,\ Pragmas}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ DIGITALTWIN\_RECORD\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ DIGITALTWIN\_RECORD\_H}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ External\ Classes}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <boost/uuid/uuid.hpp>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ Internal\ Classes}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}IEntity.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ Forwarding}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_sys_m_lv2_1_1_entities}{SysMLv2::Entities}}\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a3bfd067522f0ef87a1b50c6493458a9b}{Record}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_i_entity}{IEntity}}\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a3bfd067522f0ef87a1b50c6493458a9b}{Record}}()\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a3bfd067522f0ef87a1b50c6493458a9b}{Record}}(boost::uuids::uuid\ \textcolor{keywordtype}{id},\ std::string\ name=\textcolor{stringliteral}{"{}"{}},\ std::string\ description=\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a3bfd067522f0ef87a1b50c6493458a9b}{Record}}(std::string\ jsonStringOrName);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_abccd189ffb39f8f1728b1a646cae7a3e}{\string~Record}}();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a44938fd7ae4280fa0473484273b4d431}{operator==}}(\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a3bfd067522f0ef87a1b50c6493458a9b}{Record}}\ \textcolor{keyword}{const}\ \&other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_aa619b90ce3e937a75a22854f3107ebc5}{getName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::list<std::string>\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a727329cbcf2499bff14edcdcb4735dfc}{getAlias}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a45b598f62d5fec7657728708ed8d5aa8}{appendAlias}}(std::string\&\ alias);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a28e97d4f86b1f57bd1a7f0e6e2c47e9e}{getDescription}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_ad826fec2e174a534cad1351750175c28}{setDescription}}(std::string\&\ description);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ [[nodiscard]]\ boost::uuids::uuid\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_aa503f01b715d59b29654fdd4ee2ade28}{getId}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a61bfd3751bc3c11628008337b1caf24b}{getType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a2a10fcc6f27a921cd60517703dfd3f2b}{serializeToJson}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a4fbf73e50a3dffee7e40393ce1db6508}{Type}};}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_ad1599c8728bec68fe1291f51b9d0a04b}{Name}};}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ std::list<std::string>\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a023b2aa15c7192d9af732ee3e7e84a56}{Alias}};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a6e2c0a9b166510546f567a25a64e2c80}{Description}};}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ boost::uuids::uuid\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a077d9e6a406a07331d43abcfe3fd2a20}{Id}};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ IsForCreation\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00144\ \ \ \ \ \};}
+\DoxyCodeLine{00145\ \}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//DIGITALTWIN\_RECORD\_H}}
+
+\end{DoxyCode}

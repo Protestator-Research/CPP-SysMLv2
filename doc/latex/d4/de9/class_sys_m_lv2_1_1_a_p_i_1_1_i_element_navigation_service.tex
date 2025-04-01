@@ -1,0 +1,135 @@
+\doxysection{Sys\+MLv2\+::API\+::IElement\+Navigation\+Service Class Reference}
+\hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service}{}\label{class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service}\index{SysMLv2::API::IElementNavigationService@{SysMLv2::API::IElementNavigationService}}
+
+
+{\ttfamily \#include $<$IElement\+Navigation\+Service.\+h$>$}
+
+Inheritance diagram for Sys\+MLv2\+::API\+::IElement\+Navigation\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d4/de9/class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_element}{Sys\+MLv2\+::\+Entities\+::\+Element}} $>$ $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service_a7d071de286bbfd9ceb6e510c711772bf}{get\+Elements}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ commit)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_element}{Sys\+MLv2\+::\+Entities\+::\+Element}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service_a841fa1db92f0064a84f82db003d3024b}{get\+Element\+By\+Id}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ commit, boost\+::uuids\+::uuid element\+Id)=0
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_relationship}{Sys\+MLv2\+::\+Entities\+::\+Relationship}} $>$ $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service_a5eca50fcd57497f19551588fd572c172}{get\+Relationships\+By\+Related\+Element}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ commit, boost\+::uuids\+::uuid element\+Id, int direction)=0
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_element}{Sys\+MLv2\+::\+Entities\+::\+Element}} $>$ $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service_ac7045d564162f51244e730e9077eed97}{get\+Root\+Elements}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ commit)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This represents the interface definition for the element navigation service. \begin{DoxyAuthor}{Author}
+Moritz Herzog 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 Beta 3 
+\end{DoxyVersion}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit} 
+
+Sys\+Mlv2\+::\+Entities\+::\+Project 
+
+\doxylink{class_sys_m_lv2_1_1_entities_1_1_element}{Sys\+MLv2\+::\+Entities\+::\+Element} 
+
+\doxylink{class_sys_m_lv2_1_1_entities_1_1_relationship}{Sys\+MLv2\+::\+Entities\+::\+Relationship} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service_a841fa1db92f0064a84f82db003d3024b}\index{SysMLv2::API::IElementNavigationService@{SysMLv2::API::IElementNavigationService}!getElementById@{getElementById}}
+\index{getElementById@{getElementById}!SysMLv2::API::IElementNavigationService@{SysMLv2::API::IElementNavigationService}}
+\doxysubsubsection{\texorpdfstring{getElementById()}{getElementById()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service_a841fa1db92f0064a84f82db003d3024b} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_element}{Sys\+MLv2\+::\+Entities\+::\+Element}} $>$ Sys\+MLv2\+::\+API\+::\+IElement\+Navigation\+Service\+::get\+Element\+By\+Id (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$}]{commit}{, }\item[{boost\+::uuids\+::uuid}]{element\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Gets an element with the project and commit it belongs to and its specific id. 
+\begin{DoxyParams}{Parameters}
+{\em project} & The project, where the element is located in. \\
+\hline
+{\em commit} & The commit where the element is located in. \\
+\hline
+{\em element\+Id} & The id of the specific element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The element that is located. Can be null if no element is found. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_a2d96062fc0068ad1244ea66be8950571}{Sys\+MLv2\+::\+API\+::\+Element\+Navigation\+Service}}.
+
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service_a7d071de286bbfd9ceb6e510c711772bf}\index{SysMLv2::API::IElementNavigationService@{SysMLv2::API::IElementNavigationService}!getElements@{getElements}}
+\index{getElements@{getElements}!SysMLv2::API::IElementNavigationService@{SysMLv2::API::IElementNavigationService}}
+\doxysubsubsection{\texorpdfstring{getElements()}{getElements()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service_a7d071de286bbfd9ceb6e510c711772bf} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_element}{Sys\+MLv2\+::\+Entities\+::\+Element}} $>$ $>$ Sys\+MLv2\+::\+API\+::\+IElement\+Navigation\+Service\+::get\+Elements (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$}]{commit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Gets all the elements in a given project at a given commit. 
+\begin{DoxyParams}{Parameters}
+{\em project} & The given project. \\
+\hline
+{\em commit} & The given commit inside of the project. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+All the given that are available as a vector. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_afb43b61fd6591ed0a3448d640f28e6dd}{Sys\+MLv2\+::\+API\+::\+Element\+Navigation\+Service}}.
+
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service_a5eca50fcd57497f19551588fd572c172}\index{SysMLv2::API::IElementNavigationService@{SysMLv2::API::IElementNavigationService}!getRelationshipsByRelatedElement@{getRelationshipsByRelatedElement}}
+\index{getRelationshipsByRelatedElement@{getRelationshipsByRelatedElement}!SysMLv2::API::IElementNavigationService@{SysMLv2::API::IElementNavigationService}}
+\doxysubsubsection{\texorpdfstring{getRelationshipsByRelatedElement()}{getRelationshipsByRelatedElement()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service_a5eca50fcd57497f19551588fd572c172} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_relationship}{Sys\+MLv2\+::\+Entities\+::\+Relationship}} $>$ $>$ Sys\+MLv2\+::\+API\+::\+IElement\+Navigation\+Service\+::get\+Relationships\+By\+Related\+Element (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$}]{commit}{, }\item[{boost\+::uuids\+::uuid}]{element\+Id}{, }\item[{int}]{direction}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Gets the relationships that are incoming, outgoing, or both relative to the related element. 
+\begin{DoxyParams}{Parameters}
+{\em project} & The project where the element is located. \\
+\hline
+{\em commit} & The commit where the element is located. \\
+\hline
+{\em element\+Id} & The element id, allowing to specify the element to locate it. \\
+\hline
+{\em direction} & The direction of the relationship. Defined with the enum and can ether be in, out, or both. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of the relationships that are found. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_a443d608b08d8d70534788255c5172352}{Sys\+MLv2\+::\+API\+::\+Element\+Navigation\+Service}}.
+
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service_ac7045d564162f51244e730e9077eed97}\index{SysMLv2::API::IElementNavigationService@{SysMLv2::API::IElementNavigationService}!getRootElements@{getRootElements}}
+\index{getRootElements@{getRootElements}!SysMLv2::API::IElementNavigationService@{SysMLv2::API::IElementNavigationService}}
+\doxysubsubsection{\texorpdfstring{getRootElements()}{getRootElements()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service_ac7045d564162f51244e730e9077eed97} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_element}{Sys\+MLv2\+::\+Entities\+::\+Element}} $>$ $>$ Sys\+MLv2\+::\+API\+::\+IElement\+Navigation\+Service\+::get\+Root\+Elements (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$}]{commit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Gets all root elements in the given project at the given commit. 
+\begin{DoxyParams}{Parameters}
+{\em project} & The project where the root elements are coming from. \\
+\hline
+{\em commit} & The commit where the root elements are located. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of all root elements available in the project and commit. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_a71986b44cd5216815efbc114d37c5d18}{Sys\+MLv2\+::\+API\+::\+Element\+Navigation\+Service}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+services/src/interfaces/IElement\+Navigation\+Service.\+h\end{DoxyCompactItemize}

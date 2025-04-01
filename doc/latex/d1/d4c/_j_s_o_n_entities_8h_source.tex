@@ -1,0 +1,121 @@
+\doxysection{JSONEntities.\+h}
+\hypertarget{_j_s_o_n_entities_8h_source}{}\label{_j_s_o_n_entities_8h_source}\index{rest-\/api/src/entities/JSONEntities.h@{rest-\/api/src/entities/JSONEntities.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Moritz\ Herzog\ on\ 22.02.24.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Constants,\ Definitions,\ Pragmas}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ DIGITALTWIN\_JSONENTITIES\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ DIGITALTWIN\_JSONENTITIES\_H}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ External\ Classes}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ Internal\ Classes}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ Forwarding}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_sys_m_lv2_1_1_entities}{SysMLv2::Entities}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Generally\ used}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_ID\_ENTITY\ =\ \textcolor{stringliteral}{"{}@id"{}};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_TYPE\_ENTITY\ =\ \textcolor{stringliteral}{"{}@type"{}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ Used\ for\ Record\ and\ the\ Superclasses}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_NAME\_ENTITY\ =\ \textcolor{stringliteral}{"{}name"{}};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_ALIAS\_ENTITY\ =\ \textcolor{stringliteral}{"{}alias"{}};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_DESCRIPTION\_ENTITY\ =\ \textcolor{stringliteral}{"{}description"{}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ Used\ for\ Project}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_DEFAULT\_BRANCH\_ENTITY\ =\ \textcolor{stringliteral}{"{}defaultBranch"{}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_CREATION\_ENTITY\ =\ \textcolor{stringliteral}{"{}created"{}};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_BRANCHES\_LIST\ =\ \textcolor{stringliteral}{"{}branches\_list"{}};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_COMMIT\_LIST\ =\ \textcolor{stringliteral}{"{}commits"{}};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_HEAD\_ID\_LIST\ =\ \textcolor{stringliteral}{"{}heads"{}};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Used\ for\ Digital\ Twin}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_CONNECTED\_MODELS\ =\ \textcolor{stringliteral}{"{}connectedModels"{}};}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_PARENT\_PROJECT\ =\ \textcolor{stringliteral}{"{}parentProject"{}};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_BRANCH\_ID\ =\ \textcolor{stringliteral}{"{}branchId"{}};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_COMMIT\_ID\ =\ \textcolor{stringliteral}{"{}commitId"{}};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Used\ for\ Branches}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_HEAD\_ID\ =\ \textcolor{stringliteral}{"{}head"{}};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_OWNING\_PROJECT\ =\ \textcolor{stringliteral}{"{}owningProject"{}};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_REFERENCE\_COMMIT\ =\ \textcolor{stringliteral}{"{}referencedCommit"{}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ Used\ for\ Data\ Identity}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_IDENTITY\_ENTITY\ =\ \textcolor{stringliteral}{"{}identity"{}};}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_PAYLOAD\_ENTITY\ =\ \textcolor{stringliteral}{"{}payload"{}};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ Used\ for\ Commit}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_CHANGE\_ENTITY\ =\ \textcolor{stringliteral}{"{}change"{}};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Used\ for\ the\ element\ implementation\ of\ the\ Agila\ Backend}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_SHORT\_NAME\_ENTITY\ =\ \textcolor{stringliteral}{"{}shortName"{}};}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_DECLARED\_NAME\_ENTITY\ =\ \textcolor{stringliteral}{"{}declaredName"{}};}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_DECLARED\_SHORT\_NAME\_ENTITY\ =\ \textcolor{stringliteral}{"{}declaredShortName"{}};}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_OWNED\_ELEMENTS\_ENTITY\ =\ \textcolor{stringliteral}{"{}ownedElements"{}};}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_OWNER\_ENTITY\ =\ \textcolor{stringliteral}{"{}owner"{}};}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_OWNING\_MEMBERSHIP\_ENTITY\ =\ \textcolor{stringliteral}{"{}owningMembership"{}};}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_OWNING\_NAMESPACE\_ENTITY\ =\ \textcolor{stringliteral}{"{}owningNamespace"{}};}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_OWNING\_RELATIONSHIP\_ENTITY\ =\ \textcolor{stringliteral}{"{}owningRelationship"{}};}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_DIRECTION\_ENTITY\ =\ \textcolor{stringliteral}{"{}direction"{}};}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_VALUE\_STRING\_ENTITY\ =\ \textcolor{stringliteral}{"{}valueStr"{}};}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_IMPORTED\_MEMBER\_NAME\_ENTITY\ =\ \textcolor{stringliteral}{"{}importedMemberName"{}};}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_IMPORTED\_NAMESPACE\_ENTITY\ =\ \textcolor{stringliteral}{"{}importedNamespace"{}};}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_LANGUAGE\_ENTITY\ =\ \textcolor{stringliteral}{"{}language"{}};}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_BODY\_ENTITY\ =\ \textcolor{stringliteral}{"{}body"{}};}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_SOURCE\_ENTITY\ =\ \textcolor{stringliteral}{"{}source"{}};}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_TARGET\_ENTITY\ =\ \textcolor{stringliteral}{"{}target"{}};}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_IS\_STANDARD\_ENTITY\ =\ \textcolor{stringliteral}{"{}isStandard"{}};}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_IS\_LIBRARY\_ELEMENT\_ENTITY\ =\ \textcolor{stringliteral}{"{}isLibraryElement"{}};}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_IS\_IMPLIED\_ELEMENT\_ENTITY\ =\ \textcolor{stringliteral}{"{}isImplied"{}};}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_IS\_IMPLIED\_INCLUDED\_ENTITY\ =\ \textcolor{stringliteral}{"{}isImpliedIncluded"{}};}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_DOCUMENTATION\_ENTITY\ =\ \textcolor{stringliteral}{"{}documentation"{}};}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_TEXTUAL\_REPRESENTATION\_ENTITY\ =\ \textcolor{stringliteral}{"{}textualRepresentation"{}};}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_ALIAS\_ID\_ENTITY\ =\ \textcolor{stringliteral}{"{}aliasIds"{}};}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ JSON\_ELEMENT\_ID\_ENTITY\ =\ \textcolor{stringliteral}{"{}elementId"{}};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//Type\ Strings}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ PROJECT\_TYPE=\textcolor{stringliteral}{"{}project"{}};}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ DATA\_IDENTITY\_TYPE=\textcolor{stringliteral}{"{}dataidentity"{}};}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ BRANCH\_TYPE=\textcolor{stringliteral}{"{}branch"{}};}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ TAG\_TYPE\ =\ \textcolor{stringliteral}{"{}tag"{}};}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ QUERY\_TYPE\ =\ \textcolor{stringliteral}{"{}query"{}};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ COMMIT\_TYPE\ =\ \textcolor{stringliteral}{"{}commit"{}};}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ FEATURE\_TYPE\ =\ \textcolor{stringliteral}{"{}feature"{}};}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ FEATURE\_TYPE\_TYPE\ =\ \textcolor{stringliteral}{"{}featuretyping"{}};}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ ASSOCIATION\_TYPE\ =\ \textcolor{stringliteral}{"{}association"{}};}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ ELEMENT\_TYPE\ =\ \textcolor{stringliteral}{"{}element"{}};}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ SPECIALIZATION\_TYPE\ =\ \textcolor{stringliteral}{"{}specialization"{}};}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ PACKAGE\_TYPE\ =\ \textcolor{stringliteral}{"{}package"{}};}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ EXPRESSION\_TYPE\ =\ \textcolor{stringliteral}{"{}expression"{}};}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ MULTIPLICITY\_TYPE\ =\ \textcolor{stringliteral}{"{}multiplicity"{}};}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ DATA\_TYPE\_TYPE\ =\ \textcolor{stringliteral}{"{}datatype"{}};}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ RELATIONSHIP\_TYPE=\textcolor{stringliteral}{"{}relationship"{}};}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ COMMENT\_TYPE=\textcolor{stringliteral}{"{}comment"{}};}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ DOCUMENTATION\_TYPE=\textcolor{stringliteral}{"{}documentation"{}};}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ CLASS\_TYPE\ =\ \textcolor{stringliteral}{"{}class"{}};}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ ANNOTATING\_ELEMENT\_TYPE\ =\ \textcolor{stringliteral}{"{}annotatingelement"{}};}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ TEXTUAL\_REPRESENTATION\_TYPE\ =\ \textcolor{stringliteral}{"{}textualrepresentation"{}};}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ CLASSIFIER\_TYPE\ =\ \textcolor{stringliteral}{"{}classifier"{}};}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ NAMESPACE\_TYPE\ =\ \textcolor{stringliteral}{"{}namespace"{}};}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ TYPE\_TYPE\ =\ \textcolor{stringliteral}{"{}type"{}};}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ DIGITAL\_TWIN\_TYPE\ =\ \textcolor{stringliteral}{"{}digitaltwin"{}};}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ DATA\_TYPE\ =\ \textcolor{stringliteral}{"{}data"{}};}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ DATA\_VERSION\_TYPE\ =\ \textcolor{stringliteral}{"{}dataversion"{}};}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ PAYLOAD\_TYPE\ =\ \textcolor{stringliteral}{"{}payload"{}};}
+\DoxyCodeLine{00112\ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//DIGITALTWIN\_JSONENTITIES\_H}}
+
+\end{DoxyCode}

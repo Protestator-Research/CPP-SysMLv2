@@ -1,0 +1,46 @@
+\doxysection{IQuery\+Service.\+h}
+\hypertarget{_i_query_service_8h_source}{}\label{_i_query_service_8h_source}\index{services/src/interfaces/IQueryService.h@{services/src/interfaces/IQueryService.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Moritz\ Herzog\ on\ 10.03.25.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ CPP\_SYSMLV2\_LIB\_IQUERYSERVICE\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ CPP\_SYSMLV2\_LIB\_IQUERYSERVICE\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <boost/uuid/uuid.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_sys_m_lv2_1_1_entities}{SysMLv2::Entities}}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_query}{Query}};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Project}};}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data}{Data}};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{class\ }Constraint;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Commit}};}
+\DoxyCodeLine{00019\ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_sys_m_lv2_1_1_a_p_i}{SysMLv2::API}}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service}{IQueryService}}\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<std::shared\_ptr<SysMLv2::Entities::Query>>\ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a1389f9981436289d3112a8ea08335ae7}{getQueries}}(std::shared\_ptr<SysMLv2::Entities::Project>\ project)\ =\ 0;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<SysMLv2::Entities::Query>\ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_af88f152027f34f678815f7f3d8db5673}{getQueryById}}(std::shared\_ptr<SysMLv2::Entities::Project>\ project,\ boost::uuids::uuid\ queryId)\ =\ 0;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<SysMLv2::Entities::Query>\ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a8673a987cd74faa0e6578cca19ef806e}{createQuery}}(std::string\ name,\ std::shared\_ptr<SysMLv2::Entities::Project>\ project,\ std::vector<std::string>\ select,\ std::vector<std::shared\_ptr<SysMLv2::Entities::Data>>\ scope,\ std::shared\_ptr<SysMLv2::Entities::Constraint>\ where,\ std::vector<std::string>\ orderBy)\ =\ 0;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<SysMLv2::Entities::Query>\ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a93e8f8174d161a84a7d94d4e915b1b65}{updateQuery}}(std::shared\_ptr<SysMLv2::Entities::Project>\ project,\ std::shared\_ptr<SysMLv2::Entities::Query>\ updatedQuery)\ =\ 0;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<SysMLv2::Entities::Query>\ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_a0a0a3104baa72e7d1ff79a0172e3cbc7}{deleteQuery}}(std::shared\_ptr<SysMLv2::Entities::Project>\ project,\ boost::uuids::uuid\ queryId)\ =\ 0;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<std::shared\_ptr<SysMLv2::Entities::Data>>\ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_ae52d2e1b71a88326fe0eda15efe61578}{executeQueryById}}(boost::uuids::uuid\ queryId,\ std::shared\_ptr<SysMLv2::Entities::Commit>\ commit)\ =\ 0;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<std::shared\_ptr<SysMLv2::Entities::Data>>\ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_ac26c931299eaa8a0dd0a49240741b716}{executeQuery}}(std::shared\_ptr<SysMLv2::Entities::Query>\ query,\ std::shared\_ptr<SysMLv2::Entities::Commit>\ commit)\ =\ 0;}
+\DoxyCodeLine{00085\ \ \ \ \ \};}
+\DoxyCodeLine{00086\ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//CPP\_SYSMLV2\_LIB\_IQUERYSERVICE\_H}}
+
+\end{DoxyCode}

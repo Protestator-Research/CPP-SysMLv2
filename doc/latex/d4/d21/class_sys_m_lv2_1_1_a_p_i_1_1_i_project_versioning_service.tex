@@ -1,0 +1,433 @@
+\doxysection{Sys\+MLv2\+::API\+::IProject\+Versioning\+Service Class Reference}
+\hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service}{}\label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+
+
+{\ttfamily \#include $<$IProject\+Versioning\+Service.\+h$>$}
+
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ae21942d5131f697e47cf2cbd0de7114b}{get\+Commits}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a8b9e66047199bab9ca078740734ab26e}{get\+Head\+Commit}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ branch)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a2199f633b8321e446d8cd6c0dbe9e7c9}{get\+Commit\+By\+Id}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project, boost\+::uuids\+::uuid commit\+Id)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a5750777286948eef8640ac9c42b11204}{create\+Commit}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_version}{Sys\+MLv2\+::\+Entities\+::\+Data\+Version}} $>$ change, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ branch, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ $>$ previous\+Commits, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a74b050e9fa93e33ad4c3b8d0474cf76d}{create\+Commit}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_version}{Sys\+MLv2\+::\+Entities\+::\+Data\+Version}} $>$ change, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ branch, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_abfd84006da2ad2b30e8d22fbbefcef18}{create\+Commit}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_version}{Sys\+MLv2\+::\+Entities\+::\+Data\+Version}} $>$ change, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ $>$ previous\+Commits, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ae9efc8f85d964cc81d45b7b3022c0daa}{create\+Commit}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_version}{Sys\+MLv2\+::\+Entities\+::\+Data\+Version}} $>$ change, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project)=0
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_version}{Sys\+MLv2\+::\+Entities\+::\+Data\+Version}} $>$ $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a5db644cb69f2d4238bbb4fde637260e9}{get\+Commit\+Change}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ commit, std\+::vector$<$ Sys\+MLv2\+::\+Entities\+::\+Change\+Type $>$)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_version}{Sys\+MLv2\+::\+Entities\+::\+Data\+Version}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ad5aed6d4e6406ee763e405b20ce067c1}{get\+Commit\+Change\+By\+Id}} (\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}project, \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} \texorpdfstring{$\ast$}{*}commit, boost\+::uuids\+::uuid change\+Id)=0
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a830a86fcb5dba953a9565abe753f33c6}{get\+Branches}} (\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}project)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_adcd1823b3c38ecefb89f83ac20ee156e}{get\+Branch\+By\+Id}} (\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}project, boost\+::uuids\+::uuid branch\+Id)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a306d88518e25fe9ccff5125752a4048d}{get\+Default\+Branch}} (\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}project)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a29ee13076332ea0c4291bc3203857b6e}{set\+Default\+Branch}} (\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}project, boost\+::uuids\+::uuid branch\+Id)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ac7d23a7513eb0e3b1345c0d734c197db}{create\+Branch}} (\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}project, std\+::string branch\+Name, \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} \texorpdfstring{$\ast$}{*}head)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_af9432d4dfb6a3ea8642690e1550dede4}{delete\+Branch}} (\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}project, boost\+::uuids\+::uuid branch\+Id)=0
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_tag}{Sys\+MLv2\+::\+Entities\+::\+Tag}} $>$ $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a7979eb8187c4014fe341af292b2d279f}{get\+Tags}} (\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}project)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_tag}{Sys\+MLv2\+::\+Entities\+::\+Tag}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ad493844a9a731cd499d0eef57b27624f}{get\+Tag\+By\+Id}} (\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}project, boost\+::uuids\+::uuid tag\+Id)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a0bc679b6bbd03101ffba9ea1b436dfde}{get\+Tagged\+Commit}} (\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}project, \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_tag}{Sys\+MLv2\+::\+Entities\+::\+Tag}} \texorpdfstring{$\ast$}{*}tag)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_tag}{Sys\+MLv2\+::\+Entities\+::\+Tag}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a0152cd2eebc1c99f60c46593604348b6}{create\+Tag}} (\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}project, std\+::string tag\+Name, \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} \texorpdfstring{$\ast$}{*}tagged\+Commit)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_merge_result}{Sys\+MLv2\+::\+Entities\+::\+Merge\+Result}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a26873f49b4c48ca34eb7ac88bdeeda96}{merge\+Into\+Branch}} (\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} \texorpdfstring{$\ast$}{*}base\+Branch, std\+::vector$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ commits\+To\+Merge, \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data}{Sys\+MLv2\+::\+Entities\+::\+Data}} \texorpdfstring{$\ast$}{*}resolution, std\+::string description)=0
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ Sys\+MLv2\+::\+Entities\+::\+Data\+Difference $>$ $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_acd7eb68ce209954eb02c6c109fa5d8b6}{diff\+Commits}} (\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} \texorpdfstring{$\ast$}{*}base\+Commit, \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} \texorpdfstring{$\ast$}{*}compare\+Commit, std\+::vector$<$ Sys\+MLv2\+::\+Entities\+::\+Change\+Type $>$ change\+Type)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface of the Project Versioning Service from the \doxylink{namespace_sys_m_lv2}{Sys\+MLv2} Standard \begin{DoxyVersion}{Version}
+1.\+0 Beta 3 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Moritz Herzog 
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit} 
+
+Sys\+Mlv2\+::\+Entities\+::\+Project 
+
+\doxylink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch} 
+
+\doxylink{class_sys_m_lv2_1_1_entities_1_1_data_version}{Sys\+MLv2\+::\+Entities\+::\+Data\+Version} 
+
+\doxylink{class_sys_m_lv2_1_1_entities_1_1_tag}{Sys\+MLv2\+::\+Entities\+::\+Tag} 
+
+Sys\+Mlv2\+::\+Entities\+::\+Merge\+Result 
+
+\doxylink{class_sys_m_lv2_1_1_entities_1_1_data}{Sys\+MLv2\+::\+Entities\+::\+Data} 
+
+Sys\+MLv2\+::\+Entities\+::\+Data\+Difference 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ac7d23a7513eb0e3b1345c0d734c197db}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!createBranch@{createBranch}}
+\index{createBranch@{createBranch}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{createBranch()}{createBranch()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ac7d23a7513eb0e3b1345c0d734c197db} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::create\+Branch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}}]{project}{, }\item[{std\+::string}]{branch\+Name}{, }\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} \texorpdfstring{$\ast$}{*}}]{head}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+{\em branch\+Name} & \\
+\hline
+{\em head} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a74b050e9fa93e33ad4c3b8d0474cf76d}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!createCommit@{createCommit}}
+\index{createCommit@{createCommit}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{createCommit()}{createCommit()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a74b050e9fa93e33ad4c3b8d0474cf76d} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::create\+Commit (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_version}{Sys\+MLv2\+::\+Entities\+::\+Data\+Version}} $>$}]{change}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$}]{branch}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em change} & \\
+\hline
+{\em branch} & \\
+\hline
+{\em project} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a5750777286948eef8640ac9c42b11204}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!createCommit@{createCommit}}
+\index{createCommit@{createCommit}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{createCommit()}{createCommit()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a5750777286948eef8640ac9c42b11204} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::create\+Commit (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_version}{Sys\+MLv2\+::\+Entities\+::\+Data\+Version}} $>$}]{change}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$}]{branch}{, }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ $>$}]{previous\+Commits}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em change} & \\
+\hline
+{\em branch} & \\
+\hline
+{\em previous\+Commits} & \\
+\hline
+{\em project} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ae9efc8f85d964cc81d45b7b3022c0daa}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!createCommit@{createCommit}}
+\index{createCommit@{createCommit}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{createCommit()}{createCommit()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ae9efc8f85d964cc81d45b7b3022c0daa} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::create\+Commit (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_version}{Sys\+MLv2\+::\+Entities\+::\+Data\+Version}} $>$}]{change}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em change} & \\
+\hline
+{\em project} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_abfd84006da2ad2b30e8d22fbbefcef18}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!createCommit@{createCommit}}
+\index{createCommit@{createCommit}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{createCommit()}{createCommit()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_abfd84006da2ad2b30e8d22fbbefcef18} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::create\+Commit (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_version}{Sys\+MLv2\+::\+Entities\+::\+Data\+Version}} $>$}]{change}{, }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ $>$}]{previous\+Commits}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em change} & \\
+\hline
+{\em previous\+Commits} & \\
+\hline
+{\em project} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a0152cd2eebc1c99f60c46593604348b6}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!createTag@{createTag}}
+\index{createTag@{createTag}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{createTag()}{createTag()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a0152cd2eebc1c99f60c46593604348b6} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_tag}{Sys\+MLv2\+::\+Entities\+::\+Tag}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::create\+Tag (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}}]{project}{, }\item[{std\+::string}]{tag\+Name}{, }\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} \texorpdfstring{$\ast$}{*}}]{tagged\+Commit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+{\em tag\+Name} & \\
+\hline
+{\em tagged\+Commit} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_af9432d4dfb6a3ea8642690e1550dede4}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!deleteBranch@{deleteBranch}}
+\index{deleteBranch@{deleteBranch}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{deleteBranch()}{deleteBranch()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_af9432d4dfb6a3ea8642690e1550dede4} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::delete\+Branch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}}]{project}{, }\item[{boost\+::uuids\+::uuid}]{branch\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+{\em branch\+Id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_acd7eb68ce209954eb02c6c109fa5d8b6}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!diffCommits@{diffCommits}}
+\index{diffCommits@{diffCommits}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{diffCommits()}{diffCommits()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_acd7eb68ce209954eb02c6c109fa5d8b6} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ Sys\+MLv2\+::\+Entities\+::\+Data\+Difference $>$ $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::diff\+Commits (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} \texorpdfstring{$\ast$}{*}}]{base\+Commit}{, }\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} \texorpdfstring{$\ast$}{*}}]{compare\+Commit}{, }\item[{std\+::vector$<$ Sys\+MLv2\+::\+Entities\+::\+Change\+Type $>$}]{change\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em base\+Commit} & \\
+\hline
+{\em compare\+Commit} & \\
+\hline
+{\em change\+Type} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_adcd1823b3c38ecefb89f83ac20ee156e}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!getBranchById@{getBranchById}}
+\index{getBranchById@{getBranchById}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{getBranchById()}{getBranchById()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_adcd1823b3c38ecefb89f83ac20ee156e} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::get\+Branch\+By\+Id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}}]{project}{, }\item[{boost\+::uuids\+::uuid}]{branch\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+{\em branch\+Id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a830a86fcb5dba953a9565abe753f33c6}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!getBranches@{getBranches}}
+\index{getBranches@{getBranches}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{getBranches()}{getBranches()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a830a86fcb5dba953a9565abe753f33c6} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::get\+Branches (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}}]{project}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a2199f633b8321e446d8cd6c0dbe9e7c9}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!getCommitById@{getCommitById}}
+\index{getCommitById@{getCommitById}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{getCommitById()}{getCommitById()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a2199f633b8321e446d8cd6c0dbe9e7c9} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::get\+Commit\+By\+Id (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{, }\item[{boost\+::uuids\+::uuid}]{commit\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+Gets the specific commit from the project with the given UUID. 
+\begin{DoxyParams}{Parameters}
+{\em project} & The project where the commit is located. \\
+\hline
+{\em commit\+Id} & The id of the commit. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified commit by the project and the commit id. 
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a5db644cb69f2d4238bbb4fde637260e9}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!getCommitChange@{getCommitChange}}
+\index{getCommitChange@{getCommitChange}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{getCommitChange()}{getCommitChange()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a5db644cb69f2d4238bbb4fde637260e9} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_version}{Sys\+MLv2\+::\+Entities\+::\+Data\+Version}} $>$ $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::get\+Commit\+Change (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$}]{commit}{, }\item[{std\+::vector$<$ Sys\+MLv2\+::\+Entities\+::\+Change\+Type $>$}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+{\em commit} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ad5aed6d4e6406ee763e405b20ce067c1}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!getCommitChangeById@{getCommitChangeById}}
+\index{getCommitChangeById@{getCommitChangeById}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{getCommitChangeById()}{getCommitChangeById()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ad5aed6d4e6406ee763e405b20ce067c1} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_version}{Sys\+MLv2\+::\+Entities\+::\+Data\+Version}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::get\+Commit\+Change\+By\+Id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}}]{project}{, }\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} \texorpdfstring{$\ast$}{*}}]{commit}{, }\item[{boost\+::uuids\+::uuid}]{change\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+{\em commit} & \\
+\hline
+{\em change\+Id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ae21942d5131f697e47cf2cbd0de7114b}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!getCommits@{getCommits}}
+\index{getCommits@{getCommits}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{getCommits()}{getCommits()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ae21942d5131f697e47cf2cbd0de7114b} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::get\+Commits (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+Gets all the commits from the given project. 
+\begin{DoxyParams}{Parameters}
+{\em project} & The given project, where the commits are returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of the commits that are given. 
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a306d88518e25fe9ccff5125752a4048d}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!getDefaultBranch@{getDefaultBranch}}
+\index{getDefaultBranch@{getDefaultBranch}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{getDefaultBranch()}{getDefaultBranch()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a306d88518e25fe9ccff5125752a4048d} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::get\+Default\+Branch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}}]{project}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a8b9e66047199bab9ca078740734ab26e}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!getHeadCommit@{getHeadCommit}}
+\index{getHeadCommit@{getHeadCommit}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{getHeadCommit()}{getHeadCommit()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a8b9e66047199bab9ca078740734ab26e} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::get\+Head\+Commit (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$}]{branch}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+Gets the head commit of the branch that is given and placed inside of the project. 
+\begin{DoxyParams}{Parameters}
+{\em project} & The project where the branch is located. \\
+\hline
+{\em branch} & The branch that is inside of the project. If this is not specified (null) then the default branch is chosen. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The head commit of the branch as a pointer. 
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ad493844a9a731cd499d0eef57b27624f}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!getTagById@{getTagById}}
+\index{getTagById@{getTagById}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{getTagById()}{getTagById()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_ad493844a9a731cd499d0eef57b27624f} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_tag}{Sys\+MLv2\+::\+Entities\+::\+Tag}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::get\+Tag\+By\+Id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}}]{project}{, }\item[{boost\+::uuids\+::uuid}]{tag\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+{\em tag\+Id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a0bc679b6bbd03101ffba9ea1b436dfde}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!getTaggedCommit@{getTaggedCommit}}
+\index{getTaggedCommit@{getTaggedCommit}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{getTaggedCommit()}{getTaggedCommit()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a0bc679b6bbd03101ffba9ea1b436dfde} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::get\+Tagged\+Commit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}}]{project}{, }\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_tag}{Sys\+MLv2\+::\+Entities\+::\+Tag}} \texorpdfstring{$\ast$}{*}}]{tag}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+{\em tag} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a7979eb8187c4014fe341af292b2d279f}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!getTags@{getTags}}
+\index{getTags@{getTags}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{getTags()}{getTags()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a7979eb8187c4014fe341af292b2d279f} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_tag}{Sys\+MLv2\+::\+Entities\+::\+Tag}} $>$ $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::get\+Tags (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}}]{project}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a26873f49b4c48ca34eb7ac88bdeeda96}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!mergeIntoBranch@{mergeIntoBranch}}
+\index{mergeIntoBranch@{mergeIntoBranch}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{mergeIntoBranch()}{mergeIntoBranch()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a26873f49b4c48ca34eb7ac88bdeeda96} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_merge_result}{Sys\+MLv2\+::\+Entities\+::\+Merge\+Result}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::merge\+Into\+Branch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} \texorpdfstring{$\ast$}{*}}]{base\+Branch}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$}]{commits\+To\+Merge}{, }\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data}{Sys\+MLv2\+::\+Entities\+::\+Data}} \texorpdfstring{$\ast$}{*}}]{resolution}{, }\item[{std\+::string}]{description}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em base\+Branch} & \\
+\hline
+{\em commits\+To\+Merge} & \\
+\hline
+{\em resolution} & \\
+\hline
+{\em description} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a29ee13076332ea0c4291bc3203857b6e}\index{SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}!setDefaultBranch@{setDefaultBranch}}
+\index{setDefaultBranch@{setDefaultBranch}!SysMLv2::API::IProjectVersioningService@{SysMLv2::API::IProjectVersioningService}}
+\doxysubsubsection{\texorpdfstring{setDefaultBranch()}{setDefaultBranch()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_a29ee13076332ea0c4291bc3203857b6e} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Versioning\+Service\+::set\+Default\+Branch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} \texorpdfstring{$\ast$}{*}}]{project}{, }\item[{boost\+::uuids\+::uuid}]{branch\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & \\
+\hline
+{\em branch\+Id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+services/src/interfaces/IProject\+Versioning\+Service.\+h\end{DoxyCompactItemize}

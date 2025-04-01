@@ -1,0 +1,119 @@
+\doxysection{Sys\+MLv2\+::API\+::IProject\+Service Class Reference}
+\hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service}{}\label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service}\index{SysMLv2::API::IProjectService@{SysMLv2::API::IProjectService}}
+
+
+{\ttfamily \#include $<$IProject\+Service.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_a1eb13566a71209d65dd34e20e7624612}{get\+Projects}} ()=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_a9b2699f484a2f6f5b1b18ea51e56dece}{get\+Project\+By\+Id}} (boost\+::uuids\+::uuid project\+Id)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_a6f75bb0e4996afdf5c0c3cd88e390f36}{create\+Project}} (std\+::string project\+Name, std\+::string description)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_af9b1317acd99b28f39ea55f90214dcc0}{update\+Project}} (boost\+::uuids\+::uuid project\+Id, std\+::string project\+Name="{}"{}, std\+::string description="{}"{}, \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} \texorpdfstring{$\ast$}{*}branch=nullptr)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_a59e33c42e9197d0c701e5ae14e1c3b19}{delete\+Project}} (boost\+::uuids\+::uuid project\+Id)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This represents the interface definition for the Project\+Service according to the \doxylink{namespace_sys_m_lv2}{Sys\+MLv2} Standard Version\+: 1.\+0 Beta 3. \begin{DoxyAuthor}{Author}
+Moritz Herzog 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 Beta 3 
+\end{DoxyVersion}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project} 
+
+\doxylink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch} 
+
+boost\+::uuids\+::uuid 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_a6f75bb0e4996afdf5c0c3cd88e390f36}\index{SysMLv2::API::IProjectService@{SysMLv2::API::IProjectService}!createProject@{createProject}}
+\index{createProject@{createProject}!SysMLv2::API::IProjectService@{SysMLv2::API::IProjectService}}
+\doxysubsubsection{\texorpdfstring{createProject()}{createProject()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_a6f75bb0e4996afdf5c0c3cd88e390f36} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Service\+::create\+Project (\begin{DoxyParamCaption}\item[{std\+::string}]{project\+Name}{, }\item[{std\+::string}]{description}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Creates a project with the given name and description. 
+\begin{DoxyParams}{Parameters}
+{\em project\+Name} & Name of the project as std\+::string \\
+\hline
+{\em description} & Description of the project as std\+::string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Pointer to the new project. 
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_a59e33c42e9197d0c701e5ae14e1c3b19}\index{SysMLv2::API::IProjectService@{SysMLv2::API::IProjectService}!deleteProject@{deleteProject}}
+\index{deleteProject@{deleteProject}!SysMLv2::API::IProjectService@{SysMLv2::API::IProjectService}}
+\doxysubsubsection{\texorpdfstring{deleteProject()}{deleteProject()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_a59e33c42e9197d0c701e5ae14e1c3b19} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Service\+::delete\+Project (\begin{DoxyParamCaption}\item[{boost\+::uuids\+::uuid}]{project\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Deletes a project. It is to remember that elements inside of a project should also be deleted to, except they are used inside of references 
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & The id of the project, that is to be deleted \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The project that is now deleted inside of the controller. You should delete the project it self. 
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_a9b2699f484a2f6f5b1b18ea51e56dece}\index{SysMLv2::API::IProjectService@{SysMLv2::API::IProjectService}!getProjectById@{getProjectById}}
+\index{getProjectById@{getProjectById}!SysMLv2::API::IProjectService@{SysMLv2::API::IProjectService}}
+\doxysubsubsection{\texorpdfstring{getProjectById()}{getProjectById()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_a9b2699f484a2f6f5b1b18ea51e56dece} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Service\+::get\+Project\+By\+Id (\begin{DoxyParamCaption}\item[{boost\+::uuids\+::uuid}]{project\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Gets a project from the given UUID. 
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & the project id of the project to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the given project. 
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_a1eb13566a71209d65dd34e20e7624612}\index{SysMLv2::API::IProjectService@{SysMLv2::API::IProjectService}!getProjects@{getProjects}}
+\index{getProjects@{getProjects}!SysMLv2::API::IProjectService@{SysMLv2::API::IProjectService}}
+\doxysubsubsection{\texorpdfstring{getProjects()}{getProjects()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_a1eb13566a71209d65dd34e20e7624612} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Service\+::get\+Projects (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Gets all Projects \begin{DoxyReturn}{Returns}
+A vector with all projects as pointer. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+std\+::vector$<$\+T$>$ 
+\end{DoxySeeAlso}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_af9b1317acd99b28f39ea55f90214dcc0}\index{SysMLv2::API::IProjectService@{SysMLv2::API::IProjectService}!updateProject@{updateProject}}
+\index{updateProject@{updateProject}!SysMLv2::API::IProjectService@{SysMLv2::API::IProjectService}}
+\doxysubsubsection{\texorpdfstring{updateProject()}{updateProject()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_af9b1317acd99b28f39ea55f90214dcc0} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Service\+::update\+Project (\begin{DoxyParamCaption}\item[{boost\+::uuids\+::uuid}]{project\+Id}{, }\item[{std\+::string}]{project\+Name}{ = {\ttfamily "{}"{}}, }\item[{std\+::string}]{description}{ = {\ttfamily "{}"{}}, }\item[{\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} \texorpdfstring{$\ast$}{*}}]{branch}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Updates a project with the given branch. This can be update with the project Name, Description and default branch. 
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & The given project ID. \\
+\hline
+{\em project\+Name} & The new project name. \\
+\hline
+{\em description} & The new project description. \\
+\hline
+{\em branch} & Pointer to the new default branch. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Pointer to the updated project. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+services/src/interfaces/IProject\+Service.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,760 @@
+\doxysection{Ker\+MLListener.\+h}
+\hypertarget{_ker_m_l_listener_8h_source}{}\label{_ker_m_l_listener_8h_source}\index{filehandling/src/parsing/kerml/KerMLListener.h@{filehandling/src/parsing/kerml/KerMLListener.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Generated\ from\ KerML.g4\ by\ ANTLR\ 4.13.2}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}antlr4-\/runtime.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}KerMLParser.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ \ }\mbox{\hyperlink{class_ker_m_l_listener}{KerMLListener}}\ :\ \textcolor{keyword}{public}\ antlr4::tree::ParseTreeListener\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterStart(\mbox{\hyperlink{class_ker_m_l_parser_1_1_start_context}{KerMLParser::StartContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00018\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitStart(\mbox{\hyperlink{class_ker_m_l_parser_1_1_start_context}{KerMLParser::StartContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterStartRule(\mbox{\hyperlink{class_ker_m_l_parser_1_1_start_rule_context}{KerMLParser::StartRuleContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00021\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitStartRule(\mbox{\hyperlink{class_ker_m_l_parser_1_1_start_rule_context}{KerMLParser::StartRuleContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterElements(\mbox{\hyperlink{class_ker_m_l_parser_1_1_elements_context}{KerMLParser::ElementsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00024\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitElements(\mbox{\hyperlink{class_ker_m_l_parser_1_1_elements_context}{KerMLParser::ElementsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterIdentification(\mbox{\hyperlink{class_ker_m_l_parser_1_1_identification_context}{KerMLParser::IdentificationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitIdentification(\mbox{\hyperlink{class_ker_m_l_parser_1_1_identification_context}{KerMLParser::IdentificationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterRelationship\_body(\mbox{\hyperlink{class_ker_m_l_parser_1_1_relationship__body_context}{KerMLParser::Relationship\_bodyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitRelationship\_body(\mbox{\hyperlink{class_ker_m_l_parser_1_1_relationship__body_context}{KerMLParser::Relationship\_bodyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterRelationship\_onwed\_elements(\mbox{\hyperlink{class_ker_m_l_parser_1_1_relationship__onwed__elements_context}{KerMLParser::Relationship\_onwed\_elementsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitRelationship\_onwed\_elements(\mbox{\hyperlink{class_ker_m_l_parser_1_1_relationship__onwed__elements_context}{KerMLParser::Relationship\_onwed\_elementsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterRelationship\_owned\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_relationship__owned__element_context}{KerMLParser::Relationship\_owned\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00036\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitRelationship\_owned\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_relationship__owned__element_context}{KerMLParser::Relationship\_owned\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_related\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__related__element_context}{KerMLParser::Owned\_related\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_related\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__related__element_context}{KerMLParser::Owned\_related\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterDependency(\mbox{\hyperlink{class_ker_m_l_parser_1_1_dependency_context}{KerMLParser::DependencyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitDependency(\mbox{\hyperlink{class_ker_m_l_parser_1_1_dependency_context}{KerMLParser::DependencyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterAnnotation(\mbox{\hyperlink{class_ker_m_l_parser_1_1_annotation_context}{KerMLParser::AnnotationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitAnnotation(\mbox{\hyperlink{class_ker_m_l_parser_1_1_annotation_context}{KerMLParser::AnnotationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_annotation(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__annotation_context}{KerMLParser::Owned\_annotationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00048\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_annotation(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__annotation_context}{KerMLParser::Owned\_annotationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterAnnotating\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_annotating__element_context}{KerMLParser::Annotating\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00051\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitAnnotating\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_annotating__element_context}{KerMLParser::Annotating\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterComment(\mbox{\hyperlink{class_ker_m_l_parser_1_1_comment_context}{KerMLParser::CommentContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00054\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitComment(\mbox{\hyperlink{class_ker_m_l_parser_1_1_comment_context}{KerMLParser::CommentContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterDocumentation(\mbox{\hyperlink{class_ker_m_l_parser_1_1_documentation_context}{KerMLParser::DocumentationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00057\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitDocumentation(\mbox{\hyperlink{class_ker_m_l_parser_1_1_documentation_context}{KerMLParser::DocumentationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterTextual\_representation(\mbox{\hyperlink{class_ker_m_l_parser_1_1_textual__representation_context}{KerMLParser::Textual\_representationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00060\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitTextual\_representation(\mbox{\hyperlink{class_ker_m_l_parser_1_1_textual__representation_context}{KerMLParser::Textual\_representationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterRoot\_namespace(\mbox{\hyperlink{class_ker_m_l_parser_1_1_root__namespace_context}{KerMLParser::Root\_namespaceContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitRoot\_namespace(\mbox{\hyperlink{class_ker_m_l_parser_1_1_root__namespace_context}{KerMLParser::Root\_namespaceContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNamespace(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace_context}{KerMLParser::NamespaceContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00066\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNamespace(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace_context}{KerMLParser::NamespaceContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNamespace\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace__declaration_context}{KerMLParser::Namespace\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00069\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNamespace\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace__declaration_context}{KerMLParser::Namespace\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNamespace\_body(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace__body_context}{KerMLParser::Namespace\_bodyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00072\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNamespace\_body(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace__body_context}{KerMLParser::Namespace\_bodyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNamespace\_body\_elements(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace__body__elements_context}{KerMLParser::Namespace\_body\_elementsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00075\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNamespace\_body\_elements(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace__body__elements_context}{KerMLParser::Namespace\_body\_elementsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNamespace\_body\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace__body__element_context}{KerMLParser::Namespace\_body\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00078\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNamespace\_body\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace__body__element_context}{KerMLParser::Namespace\_body\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMember\_prefix(\mbox{\hyperlink{class_ker_m_l_parser_1_1_member__prefix_context}{KerMLParser::Member\_prefixContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00081\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMember\_prefix(\mbox{\hyperlink{class_ker_m_l_parser_1_1_member__prefix_context}{KerMLParser::Member\_prefixContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterVisibility\_indicator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_visibility__indicator_context}{KerMLParser::Visibility\_indicatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00084\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitVisibility\_indicator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_visibility__indicator_context}{KerMLParser::Visibility\_indicatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNamespace\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace__member_context}{KerMLParser::Namespace\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00087\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNamespace\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace__member_context}{KerMLParser::Namespace\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNon\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_non__feature__member_context}{KerMLParser::Non\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00090\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNon\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_non__feature__member_context}{KerMLParser::Non\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNamespace\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace__feature__member_context}{KerMLParser::Namespace\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00093\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNamespace\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace__feature__member_context}{KerMLParser::Namespace\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterAlias\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_alias__member_context}{KerMLParser::Alias\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00096\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitAlias\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_alias__member_context}{KerMLParser::Alias\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterQualified\_name(\mbox{\hyperlink{class_ker_m_l_parser_1_1_qualified__name_context}{KerMLParser::Qualified\_nameContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00099\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitQualified\_name(\mbox{\hyperlink{class_ker_m_l_parser_1_1_qualified__name_context}{KerMLParser::Qualified\_nameContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNamespace\_import(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace__import_context}{KerMLParser::Namespace\_importContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00102\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNamespace\_import(\mbox{\hyperlink{class_ker_m_l_parser_1_1_namespace__import_context}{KerMLParser::Namespace\_importContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterImport\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_import__declaration_context}{KerMLParser::Import\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00105\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitImport\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_import__declaration_context}{KerMLParser::Import\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMembership\_import(\mbox{\hyperlink{class_ker_m_l_parser_1_1_membership__import_context}{KerMLParser::Membership\_importContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00108\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMembership\_import(\mbox{\hyperlink{class_ker_m_l_parser_1_1_membership__import_context}{KerMLParser::Membership\_importContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFilter\_package(\mbox{\hyperlink{class_ker_m_l_parser_1_1_filter__package_context}{KerMLParser::Filter\_packageContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00111\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFilter\_package(\mbox{\hyperlink{class_ker_m_l_parser_1_1_filter__package_context}{KerMLParser::Filter\_packageContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFilter\_package\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_filter__package__member_context}{KerMLParser::Filter\_package\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00114\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFilter\_package\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_filter__package__member_context}{KerMLParser::Filter\_package\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterElement(\mbox{\hyperlink{class_ker_m_l_parser_1_1_element_context}{KerMLParser::ElementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00117\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitElement(\mbox{\hyperlink{class_ker_m_l_parser_1_1_element_context}{KerMLParser::ElementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNon\_feature\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_non__feature__element_context}{KerMLParser::Non\_feature\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00120\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNon\_feature\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_non__feature__element_context}{KerMLParser::Non\_feature\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__element_context}{KerMLParser::Feature\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00123\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__element_context}{KerMLParser::Feature\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterType(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type_context}{KerMLParser::TypeContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00126\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitType(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type_context}{KerMLParser::TypeContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterType\_prefix(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__prefix_context}{KerMLParser::Type\_prefixContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00129\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitType\_prefix(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__prefix_context}{KerMLParser::Type\_prefixContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterType\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__declaration_context}{KerMLParser::Type\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00132\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitType\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__declaration_context}{KerMLParser::Type\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSpecialization\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_specialization__part_context}{KerMLParser::Specialization\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00135\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSpecialization\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_specialization__part_context}{KerMLParser::Specialization\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterConjugation\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_conjugation__part_context}{KerMLParser::Conjugation\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00138\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitConjugation\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_conjugation__part_context}{KerMLParser::Conjugation\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterType\_relationship\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__relationship__part_context}{KerMLParser::Type\_relationship\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00141\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitType\_relationship\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__relationship__part_context}{KerMLParser::Type\_relationship\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterDisjoining\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_disjoining__part_context}{KerMLParser::Disjoining\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00144\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitDisjoining\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_disjoining__part_context}{KerMLParser::Disjoining\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterUnioning\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_unioning__part_context}{KerMLParser::Unioning\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00147\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitUnioning\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_unioning__part_context}{KerMLParser::Unioning\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterIntersecting\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_intersecting__part_context}{KerMLParser::Intersecting\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00150\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitIntersecting\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_intersecting__part_context}{KerMLParser::Intersecting\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterDifferencing\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_differencing__part_context}{KerMLParser::Differencing\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00153\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitDifferencing\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_differencing__part_context}{KerMLParser::Differencing\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterType\_body(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__body_context}{KerMLParser::Type\_bodyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00156\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitType\_body(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__body_context}{KerMLParser::Type\_bodyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterType\_body\_elements(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__body__elements_context}{KerMLParser::Type\_body\_elementsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00159\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitType\_body\_elements(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__body__elements_context}{KerMLParser::Type\_body\_elementsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterType\_body\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__body__element_context}{KerMLParser::Type\_body\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00162\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitType\_body\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__body__element_context}{KerMLParser::Type\_body\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSpecialization(\mbox{\hyperlink{class_ker_m_l_parser_1_1_specialization_context}{KerMLParser::SpecializationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00165\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSpecialization(\mbox{\hyperlink{class_ker_m_l_parser_1_1_specialization_context}{KerMLParser::SpecializationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_specialization(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__specialization_context}{KerMLParser::Owned\_specializationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00168\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_specialization(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__specialization_context}{KerMLParser::Owned\_specializationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSpecific\_type(\mbox{\hyperlink{class_ker_m_l_parser_1_1_specific__type_context}{KerMLParser::Specific\_typeContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00171\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSpecific\_type(\mbox{\hyperlink{class_ker_m_l_parser_1_1_specific__type_context}{KerMLParser::Specific\_typeContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterGeneral\_type(\mbox{\hyperlink{class_ker_m_l_parser_1_1_general__type_context}{KerMLParser::General\_typeContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00174\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitGeneral\_type(\mbox{\hyperlink{class_ker_m_l_parser_1_1_general__type_context}{KerMLParser::General\_typeContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterConjunction(\mbox{\hyperlink{class_ker_m_l_parser_1_1_conjunction_context}{KerMLParser::ConjunctionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00177\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitConjunction(\mbox{\hyperlink{class_ker_m_l_parser_1_1_conjunction_context}{KerMLParser::ConjunctionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_conjugation(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__conjugation_context}{KerMLParser::Owned\_conjugationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00180\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_conjugation(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__conjugation_context}{KerMLParser::Owned\_conjugationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterDisjoining(\mbox{\hyperlink{class_ker_m_l_parser_1_1_disjoining_context}{KerMLParser::DisjoiningContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00183\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitDisjoining(\mbox{\hyperlink{class_ker_m_l_parser_1_1_disjoining_context}{KerMLParser::DisjoiningContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_disjoining(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__disjoining_context}{KerMLParser::Owned\_disjoiningContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00186\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_disjoining(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__disjoining_context}{KerMLParser::Owned\_disjoiningContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterUnioning(\mbox{\hyperlink{class_ker_m_l_parser_1_1_unioning_context}{KerMLParser::UnioningContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00189\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitUnioning(\mbox{\hyperlink{class_ker_m_l_parser_1_1_unioning_context}{KerMLParser::UnioningContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterIntersecting(\mbox{\hyperlink{class_ker_m_l_parser_1_1_intersecting_context}{KerMLParser::IntersectingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00192\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitIntersecting(\mbox{\hyperlink{class_ker_m_l_parser_1_1_intersecting_context}{KerMLParser::IntersectingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterDifferencing(\mbox{\hyperlink{class_ker_m_l_parser_1_1_differencing_context}{KerMLParser::DifferencingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00195\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitDifferencing(\mbox{\hyperlink{class_ker_m_l_parser_1_1_differencing_context}{KerMLParser::DifferencingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__member_context}{KerMLParser::Feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00198\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__member_context}{KerMLParser::Feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterType\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__feature__member_context}{KerMLParser::Type\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00201\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitType\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__feature__member_context}{KerMLParser::Type\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__feature__member_context}{KerMLParser::Owned\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00204\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__feature__member_context}{KerMLParser::Owned\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterClassifier(\mbox{\hyperlink{class_ker_m_l_parser_1_1_classifier_context}{KerMLParser::ClassifierContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00207\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitClassifier(\mbox{\hyperlink{class_ker_m_l_parser_1_1_classifier_context}{KerMLParser::ClassifierContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterClassifier\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_classifier__declaration_context}{KerMLParser::Classifier\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00210\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitClassifier\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_classifier__declaration_context}{KerMLParser::Classifier\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSuperclassing\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_superclassing__part_context}{KerMLParser::Superclassing\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00213\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSuperclassing\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_superclassing__part_context}{KerMLParser::Superclassing\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSubclassification(\mbox{\hyperlink{class_ker_m_l_parser_1_1_subclassification_context}{KerMLParser::SubclassificationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00216\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSubclassification(\mbox{\hyperlink{class_ker_m_l_parser_1_1_subclassification_context}{KerMLParser::SubclassificationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_subclassification(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__subclassification_context}{KerMLParser::Owned\_subclassificationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00219\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_subclassification(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__subclassification_context}{KerMLParser::Owned\_subclassificationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature_context}{KerMLParser::FeatureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00222\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature_context}{KerMLParser::FeatureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_prefix(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__prefix_context}{KerMLParser::Feature\_prefixContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00225\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_prefix(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__prefix_context}{KerMLParser::Feature\_prefixContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_direction(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__direction_context}{KerMLParser::Feature\_directionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00228\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_direction(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__direction_context}{KerMLParser::Feature\_directionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__declaration_context}{KerMLParser::Feature\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00231\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__declaration_context}{KerMLParser::Feature\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_identification(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__identification_context}{KerMLParser::Feature\_identificationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00234\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_identification(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__identification_context}{KerMLParser::Feature\_identificationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_relationship\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__relationship__part_context}{KerMLParser::Feature\_relationship\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00237\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_relationship\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__relationship__part_context}{KerMLParser::Feature\_relationship\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterChaining\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_chaining__part_context}{KerMLParser::Chaining\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00240\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitChaining\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_chaining__part_context}{KerMLParser::Chaining\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterInverting\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_inverting__part_context}{KerMLParser::Inverting\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00243\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitInverting\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_inverting__part_context}{KerMLParser::Inverting\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterType\_featuring\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__featuring__part_context}{KerMLParser::Type\_featuring\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00246\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitType\_featuring\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__featuring__part_context}{KerMLParser::Type\_featuring\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_specialization\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__specialization__part_context}{KerMLParser::Feature\_specialization\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00249\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_specialization\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__specialization__part_context}{KerMLParser::Feature\_specialization\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMultiplicity\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_multiplicity__part_context}{KerMLParser::Multiplicity\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00252\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMultiplicity\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_multiplicity__part_context}{KerMLParser::Multiplicity\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_specilization(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__specilization_context}{KerMLParser::Feature\_specilizationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00255\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_specilization(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__specilization_context}{KerMLParser::Feature\_specilizationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterTypings(\mbox{\hyperlink{class_ker_m_l_parser_1_1_typings_context}{KerMLParser::TypingsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00258\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitTypings(\mbox{\hyperlink{class_ker_m_l_parser_1_1_typings_context}{KerMLParser::TypingsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterTyped\_by(\mbox{\hyperlink{class_ker_m_l_parser_1_1_typed__by_context}{KerMLParser::Typed\_byContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00261\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitTyped\_by(\mbox{\hyperlink{class_ker_m_l_parser_1_1_typed__by_context}{KerMLParser::Typed\_byContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSubsettings(\mbox{\hyperlink{class_ker_m_l_parser_1_1_subsettings_context}{KerMLParser::SubsettingsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00264\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSubsettings(\mbox{\hyperlink{class_ker_m_l_parser_1_1_subsettings_context}{KerMLParser::SubsettingsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSubsets(\mbox{\hyperlink{class_ker_m_l_parser_1_1_subsets_context}{KerMLParser::SubsetsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00267\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSubsets(\mbox{\hyperlink{class_ker_m_l_parser_1_1_subsets_context}{KerMLParser::SubsetsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterReferences(\mbox{\hyperlink{class_ker_m_l_parser_1_1_references_context}{KerMLParser::ReferencesContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00270\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitReferences(\mbox{\hyperlink{class_ker_m_l_parser_1_1_references_context}{KerMLParser::ReferencesContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterRedefinitions(\mbox{\hyperlink{class_ker_m_l_parser_1_1_redefinitions_context}{KerMLParser::RedefinitionsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00273\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitRedefinitions(\mbox{\hyperlink{class_ker_m_l_parser_1_1_redefinitions_context}{KerMLParser::RedefinitionsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterRedefines(\mbox{\hyperlink{class_ker_m_l_parser_1_1_redefines_context}{KerMLParser::RedefinesContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00276\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitRedefines(\mbox{\hyperlink{class_ker_m_l_parser_1_1_redefines_context}{KerMLParser::RedefinesContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_typing(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__typing_context}{KerMLParser::Feature\_typingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00279\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_typing(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__typing_context}{KerMLParser::Feature\_typingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_feature\_typing(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__feature__typing_context}{KerMLParser::Owned\_feature\_typingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00282\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_feature\_typing(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__feature__typing_context}{KerMLParser::Owned\_feature\_typingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSubsetting(\mbox{\hyperlink{class_ker_m_l_parser_1_1_subsetting_context}{KerMLParser::SubsettingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00285\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSubsetting(\mbox{\hyperlink{class_ker_m_l_parser_1_1_subsetting_context}{KerMLParser::SubsettingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00287\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_subsetting(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__subsetting_context}{KerMLParser::Owned\_subsettingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00288\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_subsetting(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__subsetting_context}{KerMLParser::Owned\_subsettingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_reference\_subsetting(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__reference__subsetting_context}{KerMLParser::Owned\_reference\_subsettingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00291\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_reference\_subsetting(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__reference__subsetting_context}{KerMLParser::Owned\_reference\_subsettingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00293\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterRedefinition(\mbox{\hyperlink{class_ker_m_l_parser_1_1_redefinition_context}{KerMLParser::RedefinitionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00294\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitRedefinition(\mbox{\hyperlink{class_ker_m_l_parser_1_1_redefinition_context}{KerMLParser::RedefinitionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_redefinition(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__redefinition_context}{KerMLParser::Owned\_redefinitionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00297\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_redefinition(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__redefinition_context}{KerMLParser::Owned\_redefinitionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00299\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_feature\_chain(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__feature__chain_context}{KerMLParser::Owned\_feature\_chainContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00300\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_feature\_chain(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__feature__chain_context}{KerMLParser::Owned\_feature\_chainContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_chain(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__chain_context}{KerMLParser::Feature\_chainContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00303\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_chain(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__chain_context}{KerMLParser::Feature\_chainContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00305\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_feature\_chaining(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__feature__chaining_context}{KerMLParser::Owned\_feature\_chainingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00306\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_feature\_chaining(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__feature__chaining_context}{KerMLParser::Owned\_feature\_chainingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00308\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_inverting(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__inverting_context}{KerMLParser::Feature\_invertingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00309\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_inverting(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__inverting_context}{KerMLParser::Feature\_invertingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_feature\_inverting(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__feature__inverting_context}{KerMLParser::Owned\_feature\_invertingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00312\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_feature\_inverting(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__feature__inverting_context}{KerMLParser::Owned\_feature\_invertingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterType\_featuring(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__featuring_context}{KerMLParser::Type\_featuringContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00315\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitType\_featuring(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__featuring_context}{KerMLParser::Type\_featuringContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00317\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_type\_featuring(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__type__featuring_context}{KerMLParser::Owned\_type\_featuringContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00318\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_type\_featuring(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__type__featuring_context}{KerMLParser::Owned\_type\_featuringContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterData\_type(\mbox{\hyperlink{class_ker_m_l_parser_1_1_data__type_context}{KerMLParser::Data\_typeContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00321\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitData\_type(\mbox{\hyperlink{class_ker_m_l_parser_1_1_data__type_context}{KerMLParser::Data\_typeContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00323\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterClass(\mbox{\hyperlink{class_ker_m_l_parser_1_1_class_context}{KerMLParser::ClassContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00324\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitClass(\mbox{\hyperlink{class_ker_m_l_parser_1_1_class_context}{KerMLParser::ClassContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterStructure(\mbox{\hyperlink{class_ker_m_l_parser_1_1_structure_context}{KerMLParser::StructureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00327\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitStructure(\mbox{\hyperlink{class_ker_m_l_parser_1_1_structure_context}{KerMLParser::StructureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00329\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterAssociation(\mbox{\hyperlink{class_ker_m_l_parser_1_1_association_context}{KerMLParser::AssociationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00330\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitAssociation(\mbox{\hyperlink{class_ker_m_l_parser_1_1_association_context}{KerMLParser::AssociationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00332\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterAssociation\_structure(\mbox{\hyperlink{class_ker_m_l_parser_1_1_association__structure_context}{KerMLParser::Association\_structureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00333\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitAssociation\_structure(\mbox{\hyperlink{class_ker_m_l_parser_1_1_association__structure_context}{KerMLParser::Association\_structureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterConnector(\mbox{\hyperlink{class_ker_m_l_parser_1_1_connector_context}{KerMLParser::ConnectorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00336\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitConnector(\mbox{\hyperlink{class_ker_m_l_parser_1_1_connector_context}{KerMLParser::ConnectorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterConnector\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_connector__declaration_context}{KerMLParser::Connector\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00339\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitConnector\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_connector__declaration_context}{KerMLParser::Connector\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBinary\_connector\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_binary__connector__declaration_context}{KerMLParser::Binary\_connector\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00342\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBinary\_connector\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_binary__connector__declaration_context}{KerMLParser::Binary\_connector\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00344\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNary\_connector\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_nary__connector__declaration_context}{KerMLParser::Nary\_connector\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00345\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNary\_connector\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_nary__connector__declaration_context}{KerMLParser::Nary\_connector\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00347\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterConnector\_end\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_connector__end__member_context}{KerMLParser::Connector\_end\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00348\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitConnector\_end\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_connector__end__member_context}{KerMLParser::Connector\_end\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00350\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterConnector\_end(\mbox{\hyperlink{class_ker_m_l_parser_1_1_connector__end_context}{KerMLParser::Connector\_endContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00351\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitConnector\_end(\mbox{\hyperlink{class_ker_m_l_parser_1_1_connector__end_context}{KerMLParser::Connector\_endContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00353\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBinding\_connector(\mbox{\hyperlink{class_ker_m_l_parser_1_1_binding__connector_context}{KerMLParser::Binding\_connectorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00354\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBinding\_connector(\mbox{\hyperlink{class_ker_m_l_parser_1_1_binding__connector_context}{KerMLParser::Binding\_connectorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00356\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBinding\_connector\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_binding__connector__declaration_context}{KerMLParser::Binding\_connector\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00357\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBinding\_connector\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_binding__connector__declaration_context}{KerMLParser::Binding\_connector\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00359\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSuccession(\mbox{\hyperlink{class_ker_m_l_parser_1_1_succession_context}{KerMLParser::SuccessionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00360\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSuccession(\mbox{\hyperlink{class_ker_m_l_parser_1_1_succession_context}{KerMLParser::SuccessionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSuccession\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_succession__declaration_context}{KerMLParser::Succession\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00363\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSuccession\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_succession__declaration_context}{KerMLParser::Succession\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00364\ }
+\DoxyCodeLine{00365\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBehavior(\mbox{\hyperlink{class_ker_m_l_parser_1_1_behavior_context}{KerMLParser::BehaviorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00366\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBehavior(\mbox{\hyperlink{class_ker_m_l_parser_1_1_behavior_context}{KerMLParser::BehaviorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00368\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterStep(\mbox{\hyperlink{class_ker_m_l_parser_1_1_step_context}{KerMLParser::StepContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00369\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitStep(\mbox{\hyperlink{class_ker_m_l_parser_1_1_step_context}{KerMLParser::StepContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00371\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFunction(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function_context}{KerMLParser::FunctionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00372\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFunction(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function_context}{KerMLParser::FunctionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00374\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFunction\_body(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__body_context}{KerMLParser::Function\_bodyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00375\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFunction\_body(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__body_context}{KerMLParser::Function\_bodyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00376\ }
+\DoxyCodeLine{00377\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFunction\_body\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__body__part_context}{KerMLParser::Function\_body\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00378\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFunction\_body\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__body__part_context}{KerMLParser::Function\_body\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00380\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterReturn\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_return__feature__member_context}{KerMLParser::Return\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00381\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitReturn\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_return__feature__member_context}{KerMLParser::Return\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00382\ }
+\DoxyCodeLine{00383\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterResult\_expression\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_result__expression__member_context}{KerMLParser::Result\_expression\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00384\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitResult\_expression\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_result__expression__member_context}{KerMLParser::Result\_expression\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00385\ }
+\DoxyCodeLine{00386\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterExpression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_expression_context}{KerMLParser::ExpressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00387\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitExpression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_expression_context}{KerMLParser::ExpressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00389\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterPredicate(\mbox{\hyperlink{class_ker_m_l_parser_1_1_predicate_context}{KerMLParser::PredicateContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00390\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitPredicate(\mbox{\hyperlink{class_ker_m_l_parser_1_1_predicate_context}{KerMLParser::PredicateContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00391\ }
+\DoxyCodeLine{00392\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBoolean\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_boolean__expression_context}{KerMLParser::Boolean\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00393\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBoolean\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_boolean__expression_context}{KerMLParser::Boolean\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00395\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterInvariant(\mbox{\hyperlink{class_ker_m_l_parser_1_1_invariant_context}{KerMLParser::InvariantContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00396\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitInvariant(\mbox{\hyperlink{class_ker_m_l_parser_1_1_invariant_context}{KerMLParser::InvariantContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00397\ }
+\DoxyCodeLine{00398\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_expression\_reference\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__expression__reference__member_context}{KerMLParser::Owned\_expression\_reference\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00399\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_expression\_reference\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__expression__reference__member_context}{KerMLParser::Owned\_expression\_reference\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00400\ }
+\DoxyCodeLine{00401\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_expression\_reference(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__expression__reference_context}{KerMLParser::Owned\_expression\_referenceContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00402\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_expression\_reference(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__expression__reference_context}{KerMLParser::Owned\_expression\_referenceContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00403\ }
+\DoxyCodeLine{00404\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_expression\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__expression__member_context}{KerMLParser::Owned\_expression\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00405\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_expression\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__expression__member_context}{KerMLParser::Owned\_expression\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00406\ }
+\DoxyCodeLine{00407\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_expressions(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__expressions_context}{KerMLParser::Owned\_expressionsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00408\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_expressions(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__expressions_context}{KerMLParser::Owned\_expressionsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00409\ }
+\DoxyCodeLine{00410\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__expression_context}{KerMLParser::Owned\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00411\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__expression_context}{KerMLParser::Owned\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00412\ }
+\DoxyCodeLine{00413\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterConditional\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_conditional__expression_context}{KerMLParser::Conditional\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00414\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitConditional\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_conditional__expression_context}{KerMLParser::Conditional\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00416\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterConditional\_binary\_operator\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context}{KerMLParser::Conditional\_binary\_operator\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00417\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitConditional\_binary\_operator\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context}{KerMLParser::Conditional\_binary\_operator\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00419\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterConditional\_binary\_operator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_conditional__binary__operator_context}{KerMLParser::Conditional\_binary\_operatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00420\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitConditional\_binary\_operator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_conditional__binary__operator_context}{KerMLParser::Conditional\_binary\_operatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00421\ }
+\DoxyCodeLine{00422\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBinary\_operator\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_binary__operator__expression_context}{KerMLParser::Binary\_operator\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00423\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBinary\_operator\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_binary__operator__expression_context}{KerMLParser::Binary\_operator\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00424\ }
+\DoxyCodeLine{00425\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBinary\_operator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_binary__operator_context}{KerMLParser::Binary\_operatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00426\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBinary\_operator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_binary__operator_context}{KerMLParser::Binary\_operatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00428\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterUnary\_operator\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_unary__operator__expression_context}{KerMLParser::Unary\_operator\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00429\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitUnary\_operator\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_unary__operator__expression_context}{KerMLParser::Unary\_operator\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00430\ }
+\DoxyCodeLine{00431\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterUnary\_operator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_unary__operator_context}{KerMLParser::Unary\_operatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00432\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitUnary\_operator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_unary__operator_context}{KerMLParser::Unary\_operatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00433\ }
+\DoxyCodeLine{00434\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterClassification\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_classification__expression_context}{KerMLParser::Classification\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00435\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitClassification\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_classification__expression_context}{KerMLParser::Classification\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00437\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterClassification(\mbox{\hyperlink{class_ker_m_l_parser_1_1_classification_context}{KerMLParser::ClassificationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00438\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitClassification(\mbox{\hyperlink{class_ker_m_l_parser_1_1_classification_context}{KerMLParser::ClassificationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00439\ }
+\DoxyCodeLine{00440\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterClassification\_test\_operator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_classification__test__operator_context}{KerMLParser::Classification\_test\_operatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00441\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitClassification\_test\_operator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_classification__test__operator_context}{KerMLParser::Classification\_test\_operatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00443\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterCast\_operator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_cast__operator_context}{KerMLParser::Cast\_operatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00444\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitCast\_operator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_cast__operator_context}{KerMLParser::Cast\_operatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00445\ }
+\DoxyCodeLine{00446\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMetaclassification\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metaclassification__expression_context}{KerMLParser::Metaclassification\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00447\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMetaclassification\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metaclassification__expression_context}{KerMLParser::Metaclassification\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00448\ }
+\DoxyCodeLine{00449\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterArgument\_expression\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_argument__expression__member_context}{KerMLParser::Argument\_expression\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00450\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitArgument\_expression\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_argument__expression__member_context}{KerMLParser::Argument\_expression\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00451\ }
+\DoxyCodeLine{00452\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterArgument\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_argument__expression_context}{KerMLParser::Argument\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00453\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitArgument\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_argument__expression_context}{KerMLParser::Argument\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00454\ }
+\DoxyCodeLine{00455\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterArgument\_expression\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_argument__expression__value_context}{KerMLParser::Argument\_expression\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00456\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitArgument\_expression\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_argument__expression__value_context}{KerMLParser::Argument\_expression\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00457\ }
+\DoxyCodeLine{00458\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMetadata\_argument\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__argument__member_context}{KerMLParser::Metadata\_argument\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00459\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMetadata\_argument\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__argument__member_context}{KerMLParser::Metadata\_argument\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00460\ }
+\DoxyCodeLine{00461\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMetadata\_argument(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__argument_context}{KerMLParser::Metadata\_argumentContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00462\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMetadata\_argument(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__argument_context}{KerMLParser::Metadata\_argumentContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00463\ }
+\DoxyCodeLine{00464\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMetadata\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__value_context}{KerMLParser::Metadata\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00465\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMetadata\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__value_context}{KerMLParser::Metadata\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00466\ }
+\DoxyCodeLine{00467\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMetadata\_reference(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__reference_context}{KerMLParser::Metadata\_referenceContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00468\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMetadata\_reference(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__reference_context}{KerMLParser::Metadata\_referenceContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00469\ }
+\DoxyCodeLine{00470\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMetadataclassification\_test\_operator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadataclassification__test__operator_context}{KerMLParser::Metadataclassification\_test\_operatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00471\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMetadataclassification\_test\_operator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadataclassification__test__operator_context}{KerMLParser::Metadataclassification\_test\_operatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00472\ }
+\DoxyCodeLine{00473\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMeta\_cast\_operator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_meta__cast__operator_context}{KerMLParser::Meta\_cast\_operatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00474\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMeta\_cast\_operator(\mbox{\hyperlink{class_ker_m_l_parser_1_1_meta__cast__operator_context}{KerMLParser::Meta\_cast\_operatorContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00475\ }
+\DoxyCodeLine{00476\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterExtend\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_extend__expression_context}{KerMLParser::Extend\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00477\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitExtend\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_extend__expression_context}{KerMLParser::Extend\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00478\ }
+\DoxyCodeLine{00479\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterType\_reference\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__reference__member_context}{KerMLParser::Type\_reference\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00480\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitType\_reference\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__reference__member_context}{KerMLParser::Type\_reference\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00481\ }
+\DoxyCodeLine{00482\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterType\_result\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__result__member_context}{KerMLParser::Type\_result\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00483\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitType\_result\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__result__member_context}{KerMLParser::Type\_result\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00484\ }
+\DoxyCodeLine{00485\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterType\_reference(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__reference_context}{KerMLParser::Type\_referenceContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00486\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitType\_reference(\mbox{\hyperlink{class_ker_m_l_parser_1_1_type__reference_context}{KerMLParser::Type\_referenceContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00487\ }
+\DoxyCodeLine{00488\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterReference\_typing(\mbox{\hyperlink{class_ker_m_l_parser_1_1_reference__typing_context}{KerMLParser::Reference\_typingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00489\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitReference\_typing(\mbox{\hyperlink{class_ker_m_l_parser_1_1_reference__typing_context}{KerMLParser::Reference\_typingContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00490\ }
+\DoxyCodeLine{00491\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterPrimary\_expressions(\mbox{\hyperlink{class_ker_m_l_parser_1_1_primary__expressions_context}{KerMLParser::Primary\_expressionsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00492\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitPrimary\_expressions(\mbox{\hyperlink{class_ker_m_l_parser_1_1_primary__expressions_context}{KerMLParser::Primary\_expressionsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00493\ }
+\DoxyCodeLine{00494\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterPrimary\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_primary__expression_context}{KerMLParser::Primary\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00495\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitPrimary\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_primary__expression_context}{KerMLParser::Primary\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00496\ }
+\DoxyCodeLine{00497\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNon\_feature\_chain\_primary\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context}{KerMLParser::Non\_feature\_chain\_primary\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00498\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNon\_feature\_chain\_primary\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context}{KerMLParser::Non\_feature\_chain\_primary\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00500\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNon\_feature\_chain\_primary\_argument\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_non__feature__chain__primary__argument__value_context}{KerMLParser::Non\_feature\_chain\_primary\_argument\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00501\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNon\_feature\_chain\_primary\_argument\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_non__feature__chain__primary__argument__value_context}{KerMLParser::Non\_feature\_chain\_primary\_argument\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00502\ }
+\DoxyCodeLine{00503\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBracket\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_bracket__expression_context}{KerMLParser::Bracket\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00504\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBracket\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_bracket__expression_context}{KerMLParser::Bracket\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00505\ }
+\DoxyCodeLine{00506\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterIndex\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_index__expression_context}{KerMLParser::Index\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00507\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitIndex\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_index__expression_context}{KerMLParser::Index\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00508\ }
+\DoxyCodeLine{00509\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSequence\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_sequence__expression_context}{KerMLParser::Sequence\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00510\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSequence\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_sequence__expression_context}{KerMLParser::Sequence\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00511\ }
+\DoxyCodeLine{00512\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSequence\_expression\_list(\mbox{\hyperlink{class_ker_m_l_parser_1_1_sequence__expression__list_context}{KerMLParser::Sequence\_expression\_listContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00513\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSequence\_expression\_list(\mbox{\hyperlink{class_ker_m_l_parser_1_1_sequence__expression__list_context}{KerMLParser::Sequence\_expression\_listContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00514\ }
+\DoxyCodeLine{00515\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSequence\_operator\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_sequence__operator__expression_context}{KerMLParser::Sequence\_operator\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00516\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSequence\_operator\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_sequence__operator__expression_context}{KerMLParser::Sequence\_operator\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00517\ }
+\DoxyCodeLine{00518\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSequence\_expression\_list\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_sequence__expression__list__member_context}{KerMLParser::Sequence\_expression\_list\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00519\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSequence\_expression\_list\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_sequence__expression__list__member_context}{KerMLParser::Sequence\_expression\_list\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00520\ }
+\DoxyCodeLine{00521\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_chain\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__chain__expression_context}{KerMLParser::Feature\_chain\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00522\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_chain\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__chain__expression_context}{KerMLParser::Feature\_chain\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00523\ }
+\DoxyCodeLine{00524\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterCollect\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_collect__expression_context}{KerMLParser::Collect\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00525\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitCollect\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_collect__expression_context}{KerMLParser::Collect\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00526\ }
+\DoxyCodeLine{00527\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSelect\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_select__expression_context}{KerMLParser::Select\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00528\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSelect\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_select__expression_context}{KerMLParser::Select\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00529\ }
+\DoxyCodeLine{00530\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFunction\_operation\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__operation__expression_context}{KerMLParser::Function\_operation\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00531\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFunction\_operation\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__operation__expression_context}{KerMLParser::Function\_operation\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00532\ }
+\DoxyCodeLine{00533\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBody\_argument\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_body__argument__member_context}{KerMLParser::Body\_argument\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00534\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBody\_argument\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_body__argument__member_context}{KerMLParser::Body\_argument\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00535\ }
+\DoxyCodeLine{00536\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBody\_argument(\mbox{\hyperlink{class_ker_m_l_parser_1_1_body__argument_context}{KerMLParser::Body\_argumentContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00537\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBody\_argument(\mbox{\hyperlink{class_ker_m_l_parser_1_1_body__argument_context}{KerMLParser::Body\_argumentContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00538\ }
+\DoxyCodeLine{00539\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBody\_argument\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_body__argument__value_context}{KerMLParser::Body\_argument\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00540\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBody\_argument\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_body__argument__value_context}{KerMLParser::Body\_argument\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00541\ }
+\DoxyCodeLine{00542\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBody\_expression\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_body__expression__member_context}{KerMLParser::Body\_expression\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00543\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBody\_expression\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_body__expression__member_context}{KerMLParser::Body\_expression\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00544\ }
+\DoxyCodeLine{00545\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFunction\_reference\_argument\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__reference__argument__member_context}{KerMLParser::Function\_reference\_argument\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00546\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFunction\_reference\_argument\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__reference__argument__member_context}{KerMLParser::Function\_reference\_argument\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00547\ }
+\DoxyCodeLine{00548\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFunction\_reference\_argument(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__reference__argument_context}{KerMLParser::Function\_reference\_argumentContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00549\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFunction\_reference\_argument(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__reference__argument_context}{KerMLParser::Function\_reference\_argumentContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00550\ }
+\DoxyCodeLine{00551\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFunction\_reference\_arugment\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__reference__arugment__value_context}{KerMLParser::Function\_reference\_arugment\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00552\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFunction\_reference\_arugment\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__reference__arugment__value_context}{KerMLParser::Function\_reference\_arugment\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00553\ }
+\DoxyCodeLine{00554\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFunction\_reference\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__reference__expression_context}{KerMLParser::Function\_reference\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00555\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFunction\_reference\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__reference__expression_context}{KerMLParser::Function\_reference\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00556\ }
+\DoxyCodeLine{00557\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFunction\_reference\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__reference__member_context}{KerMLParser::Function\_reference\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00558\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFunction\_reference\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__reference__member_context}{KerMLParser::Function\_reference\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00559\ }
+\DoxyCodeLine{00560\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFunction\_reference(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__reference_context}{KerMLParser::Function\_referenceContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00561\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFunction\_reference(\mbox{\hyperlink{class_ker_m_l_parser_1_1_function__reference_context}{KerMLParser::Function\_referenceContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00562\ }
+\DoxyCodeLine{00563\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_chain\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__chain__member_context}{KerMLParser::Feature\_chain\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00564\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_chain\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__chain__member_context}{KerMLParser::Feature\_chain\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00565\ }
+\DoxyCodeLine{00566\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_feature\_chain\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__feature__chain__member_context}{KerMLParser::Owned\_feature\_chain\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00567\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_feature\_chain\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__feature__chain__member_context}{KerMLParser::Owned\_feature\_chain\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00568\ }
+\DoxyCodeLine{00569\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBase\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_base__expression_context}{KerMLParser::Base\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00570\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBase\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_base__expression_context}{KerMLParser::Base\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00571\ }
+\DoxyCodeLine{00572\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNull\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_null__expression_context}{KerMLParser::Null\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00573\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNull\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_null__expression_context}{KerMLParser::Null\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00574\ }
+\DoxyCodeLine{00575\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_reference\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__reference__expression_context}{KerMLParser::Feature\_reference\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00576\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_reference\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__reference__expression_context}{KerMLParser::Feature\_reference\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00577\ }
+\DoxyCodeLine{00578\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_reference\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__reference__member_context}{KerMLParser::Feature\_reference\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00579\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_reference\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__reference__member_context}{KerMLParser::Feature\_reference\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00580\ }
+\DoxyCodeLine{00581\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_reference(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__reference_context}{KerMLParser::Feature\_referenceContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00582\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_reference(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__reference_context}{KerMLParser::Feature\_referenceContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00583\ }
+\DoxyCodeLine{00584\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMetadata\_access\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__access__expression_context}{KerMLParser::Metadata\_access\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00585\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMetadata\_access\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__access__expression_context}{KerMLParser::Metadata\_access\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00586\ }
+\DoxyCodeLine{00587\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterInvocation\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_invocation__expression_context}{KerMLParser::Invocation\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00588\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitInvocation\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_invocation__expression_context}{KerMLParser::Invocation\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00589\ }
+\DoxyCodeLine{00590\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterInternal\_invocation\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_internal__invocation__expression_context}{KerMLParser::Internal\_invocation\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00591\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitInternal\_invocation\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_internal__invocation__expression_context}{KerMLParser::Internal\_invocation\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00592\ }
+\DoxyCodeLine{00593\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterArgument\_list(\mbox{\hyperlink{class_ker_m_l_parser_1_1_argument__list_context}{KerMLParser::Argument\_listContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00594\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitArgument\_list(\mbox{\hyperlink{class_ker_m_l_parser_1_1_argument__list_context}{KerMLParser::Argument\_listContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00595\ }
+\DoxyCodeLine{00596\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterPositional\_argument\_list(\mbox{\hyperlink{class_ker_m_l_parser_1_1_positional__argument__list_context}{KerMLParser::Positional\_argument\_listContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00597\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitPositional\_argument\_list(\mbox{\hyperlink{class_ker_m_l_parser_1_1_positional__argument__list_context}{KerMLParser::Positional\_argument\_listContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00598\ }
+\DoxyCodeLine{00599\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNamed\_argument\_list(\mbox{\hyperlink{class_ker_m_l_parser_1_1_named__argument__list_context}{KerMLParser::Named\_argument\_listContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00600\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNamed\_argument\_list(\mbox{\hyperlink{class_ker_m_l_parser_1_1_named__argument__list_context}{KerMLParser::Named\_argument\_listContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00601\ }
+\DoxyCodeLine{00602\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNamed\_argument\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_named__argument__member_context}{KerMLParser::Named\_argument\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00603\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNamed\_argument\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_named__argument__member_context}{KerMLParser::Named\_argument\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00604\ }
+\DoxyCodeLine{00605\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterNamed\_argument(\mbox{\hyperlink{class_ker_m_l_parser_1_1_named__argument_context}{KerMLParser::Named\_argumentContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00606\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitNamed\_argument(\mbox{\hyperlink{class_ker_m_l_parser_1_1_named__argument_context}{KerMLParser::Named\_argumentContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00607\ }
+\DoxyCodeLine{00608\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterParamenter\_redefinition(\mbox{\hyperlink{class_ker_m_l_parser_1_1_paramenter__redefinition_context}{KerMLParser::Paramenter\_redefinitionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00609\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitParamenter\_redefinition(\mbox{\hyperlink{class_ker_m_l_parser_1_1_paramenter__redefinition_context}{KerMLParser::Paramenter\_redefinitionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00610\ }
+\DoxyCodeLine{00611\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBody\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_body__expression_context}{KerMLParser::Body\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00612\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBody\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_body__expression_context}{KerMLParser::Body\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00613\ }
+\DoxyCodeLine{00614\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterExpression\_body\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_expression__body__member_context}{KerMLParser::Expression\_body\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00615\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitExpression\_body\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_expression__body__member_context}{KerMLParser::Expression\_body\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00616\ }
+\DoxyCodeLine{00617\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterExpression\_body(\mbox{\hyperlink{class_ker_m_l_parser_1_1_expression__body_context}{KerMLParser::Expression\_bodyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00618\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitExpression\_body(\mbox{\hyperlink{class_ker_m_l_parser_1_1_expression__body_context}{KerMLParser::Expression\_bodyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00619\ }
+\DoxyCodeLine{00620\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterLiteral\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_literal__expression_context}{KerMLParser::Literal\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00621\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitLiteral\_expression(\mbox{\hyperlink{class_ker_m_l_parser_1_1_literal__expression_context}{KerMLParser::Literal\_expressionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00622\ }
+\DoxyCodeLine{00623\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterLiteral\_boolean(\mbox{\hyperlink{class_ker_m_l_parser_1_1_literal__boolean_context}{KerMLParser::Literal\_booleanContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00624\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitLiteral\_boolean(\mbox{\hyperlink{class_ker_m_l_parser_1_1_literal__boolean_context}{KerMLParser::Literal\_booleanContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00625\ }
+\DoxyCodeLine{00626\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterBoolean\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_boolean__value_context}{KerMLParser::Boolean\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00627\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitBoolean\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_boolean__value_context}{KerMLParser::Boolean\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00628\ }
+\DoxyCodeLine{00629\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterLiteral\_string(\mbox{\hyperlink{class_ker_m_l_parser_1_1_literal__string_context}{KerMLParser::Literal\_stringContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00630\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitLiteral\_string(\mbox{\hyperlink{class_ker_m_l_parser_1_1_literal__string_context}{KerMLParser::Literal\_stringContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00631\ }
+\DoxyCodeLine{00632\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterLiteral\_integer(\mbox{\hyperlink{class_ker_m_l_parser_1_1_literal__integer_context}{KerMLParser::Literal\_integerContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00633\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitLiteral\_integer(\mbox{\hyperlink{class_ker_m_l_parser_1_1_literal__integer_context}{KerMLParser::Literal\_integerContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00634\ }
+\DoxyCodeLine{00635\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterLiteral\_real(\mbox{\hyperlink{class_ker_m_l_parser_1_1_literal__real_context}{KerMLParser::Literal\_realContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00636\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitLiteral\_real(\mbox{\hyperlink{class_ker_m_l_parser_1_1_literal__real_context}{KerMLParser::Literal\_realContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00637\ }
+\DoxyCodeLine{00638\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterReal\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_real__value_context}{KerMLParser::Real\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00639\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitReal\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_real__value_context}{KerMLParser::Real\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00640\ }
+\DoxyCodeLine{00641\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterLiteral\_infinity(\mbox{\hyperlink{class_ker_m_l_parser_1_1_literal__infinity_context}{KerMLParser::Literal\_infinityContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00642\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitLiteral\_infinity(\mbox{\hyperlink{class_ker_m_l_parser_1_1_literal__infinity_context}{KerMLParser::Literal\_infinityContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00643\ }
+\DoxyCodeLine{00644\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterInteraction(\mbox{\hyperlink{class_ker_m_l_parser_1_1_interaction_context}{KerMLParser::InteractionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00645\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitInteraction(\mbox{\hyperlink{class_ker_m_l_parser_1_1_interaction_context}{KerMLParser::InteractionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00646\ }
+\DoxyCodeLine{00647\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterItem\_flow(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__flow_context}{KerMLParser::Item\_flowContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00648\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitItem\_flow(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__flow_context}{KerMLParser::Item\_flowContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00649\ }
+\DoxyCodeLine{00650\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterSuccession\_item\_flow(\mbox{\hyperlink{class_ker_m_l_parser_1_1_succession__item__flow_context}{KerMLParser::Succession\_item\_flowContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00651\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitSuccession\_item\_flow(\mbox{\hyperlink{class_ker_m_l_parser_1_1_succession__item__flow_context}{KerMLParser::Succession\_item\_flowContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00652\ }
+\DoxyCodeLine{00653\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterItem\_flow\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__flow__declaration_context}{KerMLParser::Item\_flow\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00654\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitItem\_flow\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__flow__declaration_context}{KerMLParser::Item\_flow\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00655\ }
+\DoxyCodeLine{00656\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterItem\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__feature__member_context}{KerMLParser::Item\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00657\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitItem\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__feature__member_context}{KerMLParser::Item\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00658\ }
+\DoxyCodeLine{00659\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterItem\_feature(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__feature_context}{KerMLParser::Item\_featureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00660\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitItem\_feature(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__feature_context}{KerMLParser::Item\_featureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00661\ }
+\DoxyCodeLine{00662\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterItem\_feature\_specilization\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__feature__specilization__part_context}{KerMLParser::Item\_feature\_specilization\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00663\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitItem\_feature\_specilization\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__feature__specilization__part_context}{KerMLParser::Item\_feature\_specilization\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00664\ }
+\DoxyCodeLine{00665\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterItem\_flow\_end\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__flow__end__member_context}{KerMLParser::Item\_flow\_end\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00666\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitItem\_flow\_end\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__flow__end__member_context}{KerMLParser::Item\_flow\_end\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00667\ }
+\DoxyCodeLine{00668\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterItem\_flow\_end(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__flow__end_context}{KerMLParser::Item\_flow\_endContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00669\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitItem\_flow\_end(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__flow__end_context}{KerMLParser::Item\_flow\_endContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00670\ }
+\DoxyCodeLine{00671\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterItem\_flow\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__flow__feature__member_context}{KerMLParser::Item\_flow\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00672\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitItem\_flow\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__flow__feature__member_context}{KerMLParser::Item\_flow\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00673\ }
+\DoxyCodeLine{00674\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterItem\_flow\_feature(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__flow__feature_context}{KerMLParser::Item\_flow\_featureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00675\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitItem\_flow\_feature(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__flow__feature_context}{KerMLParser::Item\_flow\_featureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00676\ }
+\DoxyCodeLine{00677\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterItem\_flow\_redefinition(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__flow__redefinition_context}{KerMLParser::Item\_flow\_redefinitionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00678\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitItem\_flow\_redefinition(\mbox{\hyperlink{class_ker_m_l_parser_1_1_item__flow__redefinition_context}{KerMLParser::Item\_flow\_redefinitionContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00679\ }
+\DoxyCodeLine{00680\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterValue\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_value__part_context}{KerMLParser::Value\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00681\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitValue\_part(\mbox{\hyperlink{class_ker_m_l_parser_1_1_value__part_context}{KerMLParser::Value\_partContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00682\ }
+\DoxyCodeLine{00683\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterFeature\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__value_context}{KerMLParser::Feature\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00684\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitFeature\_value(\mbox{\hyperlink{class_ker_m_l_parser_1_1_feature__value_context}{KerMLParser::Feature\_valueContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00685\ }
+\DoxyCodeLine{00686\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMultiplicity(\mbox{\hyperlink{class_ker_m_l_parser_1_1_multiplicity_context}{KerMLParser::MultiplicityContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00687\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMultiplicity(\mbox{\hyperlink{class_ker_m_l_parser_1_1_multiplicity_context}{KerMLParser::MultiplicityContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00688\ }
+\DoxyCodeLine{00689\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMultiplicity\_subset(\mbox{\hyperlink{class_ker_m_l_parser_1_1_multiplicity__subset_context}{KerMLParser::Multiplicity\_subsetContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00690\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMultiplicity\_subset(\mbox{\hyperlink{class_ker_m_l_parser_1_1_multiplicity__subset_context}{KerMLParser::Multiplicity\_subsetContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00691\ }
+\DoxyCodeLine{00692\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMultiplicity\_range(\mbox{\hyperlink{class_ker_m_l_parser_1_1_multiplicity__range_context}{KerMLParser::Multiplicity\_rangeContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00693\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMultiplicity\_range(\mbox{\hyperlink{class_ker_m_l_parser_1_1_multiplicity__range_context}{KerMLParser::Multiplicity\_rangeContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00694\ }
+\DoxyCodeLine{00695\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_multiplicity(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__multiplicity_context}{KerMLParser::Owned\_multiplicityContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00696\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_multiplicity(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__multiplicity_context}{KerMLParser::Owned\_multiplicityContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00697\ }
+\DoxyCodeLine{00698\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterOwned\_multiplicity\_range(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__multiplicity__range_context}{KerMLParser::Owned\_multiplicity\_rangeContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00699\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitOwned\_multiplicity\_range(\mbox{\hyperlink{class_ker_m_l_parser_1_1_owned__multiplicity__range_context}{KerMLParser::Owned\_multiplicity\_rangeContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00700\ }
+\DoxyCodeLine{00701\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMultiplicity\_bounds(\mbox{\hyperlink{class_ker_m_l_parser_1_1_multiplicity__bounds_context}{KerMLParser::Multiplicity\_boundsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00702\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMultiplicity\_bounds(\mbox{\hyperlink{class_ker_m_l_parser_1_1_multiplicity__bounds_context}{KerMLParser::Multiplicity\_boundsContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00703\ }
+\DoxyCodeLine{00704\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMultiplicity\_expression\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_multiplicity__expression__member_context}{KerMLParser::Multiplicity\_expression\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00705\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMultiplicity\_expression\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_multiplicity__expression__member_context}{KerMLParser::Multiplicity\_expression\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00706\ }
+\DoxyCodeLine{00707\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterInternal\_multiplicity\_expression\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_internal__multiplicity__expression__member_context}{KerMLParser::Internal\_multiplicity\_expression\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00708\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitInternal\_multiplicity\_expression\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_internal__multiplicity__expression__member_context}{KerMLParser::Internal\_multiplicity\_expression\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00709\ }
+\DoxyCodeLine{00710\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMetaclass(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metaclass_context}{KerMLParser::MetaclassContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00711\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMetaclass(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metaclass_context}{KerMLParser::MetaclassContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00712\ }
+\DoxyCodeLine{00713\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterPrefix\_metadata\_annotation(\mbox{\hyperlink{class_ker_m_l_parser_1_1_prefix__metadata__annotation_context}{KerMLParser::Prefix\_metadata\_annotationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00714\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitPrefix\_metadata\_annotation(\mbox{\hyperlink{class_ker_m_l_parser_1_1_prefix__metadata__annotation_context}{KerMLParser::Prefix\_metadata\_annotationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00715\ }
+\DoxyCodeLine{00716\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterPrefix\_metadata\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_prefix__metadata__member_context}{KerMLParser::Prefix\_metadata\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00717\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitPrefix\_metadata\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_prefix__metadata__member_context}{KerMLParser::Prefix\_metadata\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00718\ }
+\DoxyCodeLine{00719\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterPrefix\_metadata\_feature(\mbox{\hyperlink{class_ker_m_l_parser_1_1_prefix__metadata__feature_context}{KerMLParser::Prefix\_metadata\_featureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00720\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitPrefix\_metadata\_feature(\mbox{\hyperlink{class_ker_m_l_parser_1_1_prefix__metadata__feature_context}{KerMLParser::Prefix\_metadata\_featureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00721\ }
+\DoxyCodeLine{00722\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMetadata\_feature(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__feature_context}{KerMLParser::Metadata\_featureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00723\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMetadata\_feature(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__feature_context}{KerMLParser::Metadata\_featureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00724\ }
+\DoxyCodeLine{00725\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMetadata\_feature\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__feature__declaration_context}{KerMLParser::Metadata\_feature\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00726\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMetadata\_feature\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__feature__declaration_context}{KerMLParser::Metadata\_feature\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00727\ }
+\DoxyCodeLine{00728\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMetadata\_body(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__body_context}{KerMLParser::Metadata\_bodyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00729\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMetadata\_body(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__body_context}{KerMLParser::Metadata\_bodyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00730\ }
+\DoxyCodeLine{00731\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMetadata\_body\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__body__element_context}{KerMLParser::Metadata\_body\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00732\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMetadata\_body\_element(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__body__element_context}{KerMLParser::Metadata\_body\_elementContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00733\ }
+\DoxyCodeLine{00734\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMetadata\_body\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__body__feature__member_context}{KerMLParser::Metadata\_body\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00735\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMetadata\_body\_feature\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__body__feature__member_context}{KerMLParser::Metadata\_body\_feature\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00736\ }
+\DoxyCodeLine{00737\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterMetadata\_body\_feature(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__body__feature_context}{KerMLParser::Metadata\_body\_featureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00738\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitMetadata\_body\_feature(\mbox{\hyperlink{class_ker_m_l_parser_1_1_metadata__body__feature_context}{KerMLParser::Metadata\_body\_featureContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00739\ }
+\DoxyCodeLine{00740\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterPackage(\mbox{\hyperlink{class_ker_m_l_parser_1_1_package_context}{KerMLParser::PackageContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00741\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitPackage(\mbox{\hyperlink{class_ker_m_l_parser_1_1_package_context}{KerMLParser::PackageContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00742\ }
+\DoxyCodeLine{00743\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterLibrary\_package(\mbox{\hyperlink{class_ker_m_l_parser_1_1_library__package_context}{KerMLParser::Library\_packageContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00744\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitLibrary\_package(\mbox{\hyperlink{class_ker_m_l_parser_1_1_library__package_context}{KerMLParser::Library\_packageContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00745\ }
+\DoxyCodeLine{00746\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterPackage\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_package__declaration_context}{KerMLParser::Package\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00747\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitPackage\_declaration(\mbox{\hyperlink{class_ker_m_l_parser_1_1_package__declaration_context}{KerMLParser::Package\_declarationContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00748\ }
+\DoxyCodeLine{00749\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterPackage\_body(\mbox{\hyperlink{class_ker_m_l_parser_1_1_package__body_context}{KerMLParser::Package\_bodyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00750\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitPackage\_body(\mbox{\hyperlink{class_ker_m_l_parser_1_1_package__body_context}{KerMLParser::Package\_bodyContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00751\ }
+\DoxyCodeLine{00752\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ enterElement\_filter\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_element__filter__member_context}{KerMLParser::Element\_filter\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00753\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ exitElement\_filter\_member(\mbox{\hyperlink{class_ker_m_l_parser_1_1_element__filter__member_context}{KerMLParser::Element\_filter\_memberContext}}\ *ctx)\ =\ 0;}
+\DoxyCodeLine{00754\ }
+\DoxyCodeLine{00755\ }
+\DoxyCodeLine{00756\ \};}
+\DoxyCodeLine{00757\ }
+
+\end{DoxyCode}

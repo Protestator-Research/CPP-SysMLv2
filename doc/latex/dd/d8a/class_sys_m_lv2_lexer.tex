@@ -1,0 +1,125 @@
+\doxysection{Sys\+MLv2\+Lexer Class Reference}
+\hypertarget{class_sys_m_lv2_lexer}{}\label{class_sys_m_lv2_lexer}\index{SysMLv2Lexer@{SysMLv2Lexer}}
+Inheritance diagram for Sys\+MLv2\+Lexer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{dd/d8a/class_sys_m_lv2_lexer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sys_m_lv2_lexer_a07a9e13158d30619b69ac6216495b0db}\label{class_sys_m_lv2_lexer_a07a9e13158d30619b69ac6216495b0db} 
+enum \{ \newline
+{\bfseries T\+\_\+\+\_\+0} = 1
+, {\bfseries T\+\_\+\+\_\+1} = 2
+, {\bfseries T\+\_\+\+\_\+2} = 3
+, {\bfseries T\+\_\+\+\_\+3} = 4
+, \newline
+{\bfseries T\+\_\+\+\_\+4} = 5
+, {\bfseries T\+\_\+\+\_\+5} = 6
+, {\bfseries T\+\_\+\+\_\+6} = 7
+, {\bfseries T\+\_\+\+\_\+7} = 8
+, \newline
+{\bfseries T\+\_\+\+\_\+8} = 9
+, {\bfseries T\+\_\+\+\_\+9} = 10
+, {\bfseries T\+\_\+\+\_\+10} = 11
+, {\bfseries DEPENDENCY} = 12
+, \newline
+{\bfseries REPRESENTATION} = 13
+, {\bfseries LANGUAGE\+\_\+\+DESCRIPTOR} = 14
+, {\bfseries DOCUMENTATION} = 15
+, {\bfseries COMMENT} = 16
+, \newline
+{\bfseries ABOUT} = 17
+, {\bfseries PART} = 18
+, {\bfseries BLOCK\+\_\+\+COMMENT} = 19
+, {\bfseries LINE\+\_\+\+COMMENT} = 20
+, \newline
+{\bfseries TO} = 21
+, {\bfseries FROM} = 22
+, {\bfseries FOR} = 23
+, {\bfseries DELIMITER} = 24
+, \newline
+{\bfseries PORT} = 25
+, {\bfseries ITEM} = 26
+, {\bfseries PACKAGE} = 27
+, {\bfseries DEFINITION} = 28
+, \newline
+{\bfseries ATTRIBUTE} = 29
+, {\bfseries MEASURABLE} = 30
+, {\bfseries CONTROLLABLE} = 31
+, {\bfseries ASSERT} = 32
+, \newline
+{\bfseries ACTION} = 33
+, {\bfseries ALIAS} = 34
+, {\bfseries PRIVATE} = 35
+, {\bfseries PROTECTED} = 36
+, \newline
+{\bfseries PUBLIC} = 37
+, {\bfseries IMPORT} = 38
+, {\bfseries ABSTRACT} = 39
+, {\bfseries VARIATION} = 40
+, \newline
+{\bfseries VARIANT} = 41
+, {\bfseries STAR} = 42
+, {\bfseries CALC} = 43
+, {\bfseries IN} = 44
+, \newline
+{\bfseries OUT} = 45
+, {\bfseries RETURN} = 46
+, {\bfseries HASHTAG} = 47
+, {\bfseries COMMAND} = 48
+, \newline
+{\bfseries VARIABLE} = 49
+, {\bfseries CONNECT\+\_\+\+TO} = 50
+, {\bfseries INSTANCE} = 51
+, {\bfseries INDIVIDUAL} = 52
+, \newline
+{\bfseries SUPERCLASS} = 53
+, {\bfseries NUMBER} = 54
+, {\bfseries NAME} = 55
+, {\bfseries INT} = 56
+, \newline
+{\bfseries WS} = 57
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sys_m_lv2_lexer_a7987ecb7ec912b81d6b6749e15484c81}\label{class_sys_m_lv2_lexer_a7987ecb7ec912b81d6b6749e15484c81} 
+{\bfseries Sys\+MLv2\+Lexer} (antlr4\+::\+Char\+Stream \texorpdfstring{$\ast$}{*}input)
+\item 
+\Hypertarget{class_sys_m_lv2_lexer_a78fe1cf5a7d487dd3151bc65c88a873f}\label{class_sys_m_lv2_lexer_a78fe1cf5a7d487dd3151bc65c88a873f} 
+std\+::string {\bfseries get\+Grammar\+File\+Name} () const override
+\item 
+\Hypertarget{class_sys_m_lv2_lexer_a69edbc75294c0a40c9672efa0f0c7a15}\label{class_sys_m_lv2_lexer_a69edbc75294c0a40c9672efa0f0c7a15} 
+const std\+::vector$<$ std\+::string $>$ \& {\bfseries get\+Rule\+Names} () const override
+\item 
+\Hypertarget{class_sys_m_lv2_lexer_a0d5433325d4789ad4eccc3ae80c59676}\label{class_sys_m_lv2_lexer_a0d5433325d4789ad4eccc3ae80c59676} 
+const std\+::vector$<$ std\+::string $>$ \& {\bfseries get\+Channel\+Names} () const override
+\item 
+\Hypertarget{class_sys_m_lv2_lexer_a5b4bd2fa01b79c9a9dc5500f4d90cc6a}\label{class_sys_m_lv2_lexer_a5b4bd2fa01b79c9a9dc5500f4d90cc6a} 
+const std\+::vector$<$ std\+::string $>$ \& {\bfseries get\+Mode\+Names} () const override
+\item 
+\Hypertarget{class_sys_m_lv2_lexer_a521a4207b8f5ecba1f6c989071e0a437}\label{class_sys_m_lv2_lexer_a521a4207b8f5ecba1f6c989071e0a437} 
+const antlr4\+::dfa\+::\+Vocabulary \& {\bfseries get\+Vocabulary} () const override
+\item 
+\Hypertarget{class_sys_m_lv2_lexer_a1942de4478d9c0573b529329a57d21f2}\label{class_sys_m_lv2_lexer_a1942de4478d9c0573b529329a57d21f2} 
+antlr4\+::atn\+::\+Serialized\+ATNView {\bfseries get\+Serialized\+ATN} () const override
+\item 
+\Hypertarget{class_sys_m_lv2_lexer_a1e63eee90ef3c95ed089646410d7afb3}\label{class_sys_m_lv2_lexer_a1e63eee90ef3c95ed089646410d7afb3} 
+const antlr4\+::atn\+::\+ATN \& {\bfseries get\+ATN} () const override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sys_m_lv2_lexer_a6de8303c16fe35dfc5d5016af8037c24}\label{class_sys_m_lv2_lexer_a6de8303c16fe35dfc5d5016af8037c24} 
+static void {\bfseries initialize} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+filehandling/src/parsing/sysml2/Sys\+MLv2\+Lexer.\+h\item 
+filehandling/src/parsing/sysml2/Sys\+MLv2\+Lexer.\+cpp\end{DoxyCompactItemize}

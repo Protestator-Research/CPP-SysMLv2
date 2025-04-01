@@ -1,0 +1,70 @@
+\doxysection{Commit\+Reference.\+h}
+\hypertarget{_commit_reference_8h_source}{}\label{_commit_reference_8h_source}\index{rest-\/api/src/entities/CommitReference.h@{rest-\/api/src/entities/CommitReference.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Moritz\ Herzog\ on\ 23.02.24.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ SysMLv2\ C++\ Library\ Implementation}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Copyright\ (C)\ 2025\ \ Moritz\ Herzog}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ Constants,\ Definitions,\ Pragmas}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#ifndef\ DIGITALTWIN\_COMMITREFERENCE\_H}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ DIGITALTWIN\_COMMITREFERENCE\_H}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ External\ Classes}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ Internal\ Classes}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}Record.h"{}}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ Forwarding}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_sys_m_lv2_1_1_entities}{SysMLv2::Entities}}\{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Commit}};}
+\DoxyCodeLine{00040\ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_sys_m_lv2_1_1_entities}{SysMLv2::Entities}}\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit_reference_af72c50690aaea9e3a3e18713514051f9}{CommitReference}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_record_a3bfd067522f0ef87a1b50c6493458a9b}{Record}}\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit_reference_af72c50690aaea9e3a3e18713514051f9}{CommitReference}}(std::string\ jsonStringOrName);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit_reference_a4dcf977e19d3703d347515d590adf456}{operator==}}(\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit_reference_af72c50690aaea9e3a3e18713514051f9}{CommitReference}}\&\ other);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit_reference_a14259140279b02d693d7b551abfa49f9}{serializeToJson}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit_reference_accd8db3247272e499410d237c06de6cf}{setCreated}}(std::chrono::system\_clock::time\_point\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit_reference_a157e452e3ecfb48557ef17d20101b81f}{created}});}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ std::chrono::system\_clock::time\_point\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit_reference_a157e452e3ecfb48557ef17d20101b81f}{created}}();}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit_reference_a629e0daab795b6cb3a8bdd329d02616c}{setDeleted}}(std::chrono::system\_clock::time\_point\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit_reference_a14e817b00167662cee898efbb8b3b926}{deleted}});}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ std::chrono::system\_clock::time\_point\ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit_reference_a14e817b00167662cee898efbb8b3b926}{deleted}}();}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ std::chrono::system\_clock::time\_point\ Created;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ std::chrono::system\_clock::time\_point\ Deleted;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ std::shared\_ptr<Commit>\ ReferencedCommit;}
+\DoxyCodeLine{00092\ \ \ \ \ \};}
+\DoxyCodeLine{00093\ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//DIGITALTWIN\_COMMITREFERENCE\_H}}
+
+\end{DoxyCode}

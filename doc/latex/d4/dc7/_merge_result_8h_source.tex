@@ -1,0 +1,36 @@
+\doxysection{Merge\+Result.\+h}
+\hypertarget{_merge_result_8h_source}{}\label{_merge_result_8h_source}\index{rest-\/api/src/entities/MergeResult.h@{rest-\/api/src/entities/MergeResult.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Moritz\ Herzog\ on\ 11.03.25.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ CPP\_SYSMLV2\_LIB\_MERGERESULT\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ CPP\_SYSMLV2\_LIB\_MERGERESULT\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_sys_m_lv2_1_1_entities}{SysMLv2::Entities}}\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Commit}};}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_identity}{DataIdentity}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }MergeResult\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ MergeResult(std::shared\_ptr<Commit>\ mergeCommit\ =\ \textcolor{keyword}{nullptr},\ std::vector<std::shared\_ptr<DataIdentity>>\ conflict\ =\ std::vector<std::shared\_ptr<DataIdentity>>());}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \string~MergeResult()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<DataIdentity>>\ conflict();}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ std::shared\_ptr<Commit>\ mergeCommit();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::shared\_ptr<Commit>\ MergeCommit\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<DataIdentity>>\ Conflict;}
+\DoxyCodeLine{00027\ \ \ \ \ \};}
+\DoxyCodeLine{00028\ \}\ \textcolor{comment}{//\ SysMLv2}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//CPP\_SYSMLV2\_LIB\_MERGERESULT\_H}}
+
+\end{DoxyCode}

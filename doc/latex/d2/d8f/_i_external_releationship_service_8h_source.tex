@@ -1,0 +1,49 @@
+\doxysection{IExternal\+Releationship\+Service.\+h}
+\hypertarget{_i_external_releationship_service_8h_source}{}\label{_i_external_releationship_service_8h_source}\index{services/src/interfaces/IExternalReleationshipService.h@{services/src/interfaces/IExternalReleationshipService.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Moritz\ Herzog\ on\ 10.03.25.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Constants,\ Definitions,\ Pragmas}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ CPP\_SYSMLV2\_LIB\_IEXTERNALRELEATIONSHIPSERVICE\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ CPP\_SYSMLV2\_LIB\_IEXTERNALRELEATIONSHIPSERVICE\_H}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ External\ Classes}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <boost/uuid/uuid.hpp>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ Internal\ Classes}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ Forwarding}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_sys_m_lv2_1_1_entities}{SysMLv2::Entities}}\{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Commit}};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Project}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Branch}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_external_relationship}{ExternalRelationship}};}
+\DoxyCodeLine{00027\ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_sys_m_lv2_1_1_a_p_i}{SysMLv2::API}}\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_external_relationship_service}{IExternalRelationshipService}}\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<std::shared\_ptr<SysMLv2::Entities::ExternalRelationship>>\ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_external_relationship_service_a8ef0d6a5e87b8ba20671ca42822a5884}{getExternalRelationships}}(std::shared\_ptr<SysMLv2::Entities::Project>\ project,\ std::shared\_ptr<SysMLv2::Entities::Commit>\ commit)\ =\ 0;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<std::shared\_ptr<SysMLv2::Entities::ExternalRelationship>>\ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_external_relationship_service_a8b04e2872808da0abd5443bc81739181}{getExternalRelationshipsByElement}}(std::shared\_ptr<SysMLv2::Entities::Project>\ project,\ std::shared\_ptr<SysMLv2::Entities::Commit>\ commit,\ boost::uuids::uuid\ elementId)\ =\ 0;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<SysMLv2::Entities::ExternalRelationship>\ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_external_relationship_service_a72c98719f482ec5e6aa1bc6332d138d1}{getExternalRelationshipById}}(std::shared\_ptr<SysMLv2::Entities::Project>\ project,\ std::shared\_ptr<SysMLv2::Entities::Commit>\ commit,\ boost::uuids::uuid\ externalRelationshipId)\ =\ 0;}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_external_relationship_service_a3caf5bb1b93d9759109db11e40077d45}{createExternalRelationship}}(std::shared\_ptr<SysMLv2::Entities::Project>\ project,\ std::shared\_ptr<SysMLv2::Entities::Branch>\ branch,\ std::shared\_ptr<SysMLv2::Entities::ExternalRelationship>\ externalRelationship)\ =\ 0;}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_external_relationship_service_a9ed2378405b769f13e9445f7669e4e77}{deleteExternalRelationship}}(std::shared\_ptr<SysMLv2::Entities::Project>\ project,\ std::shared\_ptr<SysMLv2::Entities::Branch>\ branch,\ boost::uuids::uuid\ externalRelationshipId)\ =\ 0;}
+\DoxyCodeLine{00084\ \ \ \ \ \};}
+\DoxyCodeLine{00085\ \}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//CPP\_SYSMLV2\_LIB\_IEXTERNALRELEATIONSHIPSERVICE\_H}}
+
+\end{DoxyCode}

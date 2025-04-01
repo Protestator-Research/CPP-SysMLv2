@@ -1,0 +1,96 @@
+\doxysection{Sys\+MLv2\+::API\+::IProject\+Usage\+Service Class Reference}
+\hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service}{}\label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service}\index{SysMLv2::API::IProjectUsageService@{SysMLv2::API::IProjectUsageService}}
+
+
+{\ttfamily \#include $<$IProject\+Usage\+Service.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project_usage}{Sys\+MLv2\+::\+Entities\+::\+Project\+Usage}} $>$ $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_a103f5f4b285a9268d5a18b10f9fcdfaa}{get\+Project\+Usage}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ commit)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_a66de0e2b291e6de2fd148d57501d9d36}{delete\+Project\+Usage}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ branch, boost\+::uuids\+::uuid project\+Usage\+Id)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ \mbox{\hyperlink{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_a9c6334038c18be8a1bcd5bf7a6d3906b}{create\+Project\+Usage}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$ project, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$ branch, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project_usage}{Sys\+MLv2\+::\+Entities\+::\+Project\+Usage}} $>$ project\+Usage)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class represents an interface definition of the Project\+Usage\+Service according to the \doxylink{namespace_sys_m_lv2}{Sys\+MLv2} Standard Version\+: 1.\+0 Beta 3. \begin{DoxyAuthor}{Author}
+Moritz Herzog 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 Beta 3 
+\end{DoxyVersion}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit} 
+
+\doxylink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project} 
+
+\doxylink{class_sys_m_lv2_1_1_entities_1_1_project_usage}{Sys\+MLv2\+::\+Entities\+::\+Project\+Usage} 
+
+boost\+::uuids\+::uuid 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_a9c6334038c18be8a1bcd5bf7a6d3906b}\index{SysMLv2::API::IProjectUsageService@{SysMLv2::API::IProjectUsageService}!createProjectUsage@{createProjectUsage}}
+\index{createProjectUsage@{createProjectUsage}!SysMLv2::API::IProjectUsageService@{SysMLv2::API::IProjectUsageService}}
+\doxysubsubsection{\texorpdfstring{createProjectUsage()}{createProjectUsage()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_a9c6334038c18be8a1bcd5bf7a6d3906b} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Usage\+Service\+::create\+Project\+Usage (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$}]{branch}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project_usage}{Sys\+MLv2\+::\+Entities\+::\+Project\+Usage}} $>$}]{project\+Usage}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Interface of the method that creates a new project usage in the given project at the head of the given branch. 
+\begin{DoxyParams}{Parameters}
+{\em project} & The project that is given. Please remember this could lead to segmentation fault or exception if null. \\
+\hline
+{\em branch} & The branch that is given. This can be null, if this is null the internal default branch is used. \\
+\hline
+{\em project\+Usage} & The given project usage for the new Commit. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new commit is now part of the project. 
+\end{DoxyReturn}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_a66de0e2b291e6de2fd148d57501d9d36}\index{SysMLv2::API::IProjectUsageService@{SysMLv2::API::IProjectUsageService}!deleteProjectUsage@{deleteProjectUsage}}
+\index{deleteProjectUsage@{deleteProjectUsage}!SysMLv2::API::IProjectUsageService@{SysMLv2::API::IProjectUsageService}}
+\doxysubsubsection{\texorpdfstring{deleteProjectUsage()}{deleteProjectUsage()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_a66de0e2b291e6de2fd148d57501d9d36} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Usage\+Service\+::delete\+Project\+Usage (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_branch}{Sys\+MLv2\+::\+Entities\+::\+Branch}} $>$}]{branch}{, }\item[{boost\+::uuids\+::uuid}]{project\+Usage\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Interface for the method that deletes the project usage with the given id from the given project at the head commit of the given branch. 
+\begin{DoxyParams}{Parameters}
+{\em project} & The project that is given by the User. If this is null it might result in a segmentation fault or exception. \\
+\hline
+{\em branch} & The branch that is given by the User. This variable might be null, then the default branch is assumed. \\
+\hline
+{\em project\+Usage\+Id} & The ID (UUID) of the project usage that is deleted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns a new commit with the given project usage. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+boost\+::uuids\+::uuid 
+\end{DoxySeeAlso}
+\Hypertarget{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_a103f5f4b285a9268d5a18b10f9fcdfaa}\index{SysMLv2::API::IProjectUsageService@{SysMLv2::API::IProjectUsageService}!getProjectUsage@{getProjectUsage}}
+\index{getProjectUsage@{getProjectUsage}!SysMLv2::API::IProjectUsageService@{SysMLv2::API::IProjectUsageService}}
+\doxysubsubsection{\texorpdfstring{getProjectUsage()}{getProjectUsage()}}
+{\footnotesize\ttfamily \label{class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_a103f5f4b285a9268d5a18b10f9fcdfaa} 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project_usage}{Sys\+MLv2\+::\+Entities\+::\+Project\+Usage}} $>$ $>$ Sys\+MLv2\+::\+API\+::\+IProject\+Usage\+Service\+::get\+Project\+Usage (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_project}{Sys\+MLv2\+::\+Entities\+::\+Project}} $>$}]{project}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_commit}{Sys\+MLv2\+::\+Entities\+::\+Commit}} $>$}]{commit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+This is the interface implementation of the method, that gets all the project usages in the given project. 
+\begin{DoxyParams}{Parameters}
+{\em project} & The project that is given by the project. If this variable is null, it might result in a segmentation fault or a exception. \\
+\hline
+{\em commit} & The commit that is given to get the project usage. If this variable is null, it might result is a segmentation fault or a exception. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+All the project usages, that are stored in the project. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+services/src/interfaces/IProject\+Usage\+Service.\+h\end{DoxyCompactItemize}

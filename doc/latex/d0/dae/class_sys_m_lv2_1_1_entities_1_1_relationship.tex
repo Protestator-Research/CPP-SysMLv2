@@ -1,0 +1,112 @@
+\doxysection{Sys\+MLv2\+::Entities\+::Relationship Class Reference}
+\hypertarget{class_sys_m_lv2_1_1_entities_1_1_relationship}{}\label{class_sys_m_lv2_1_1_entities_1_1_relationship}\index{SysMLv2::Entities::Relationship@{SysMLv2::Entities::Relationship}}
+Inheritance diagram for Sys\+MLv2\+::Entities\+::Relationship\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{d0/dae/class_sys_m_lv2_1_1_entities_1_1_relationship}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_element}{Sys\+MLv2\+::\+Entities\+::\+Element}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_element_ac38206319dd34ba75c7b309b682e3eb8}{Element}} ()
+\item 
+\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_element_ab52d4fadfa618985c015c52a5397fbf8}{Element}} (std\+::string json\+String)
+\item 
+\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_element_a17366e6ae069e4f67d31ace64c30dfaf}{\texorpdfstring{$\sim$}{\string~}\+Element}} () override
+\item 
+std\+::string \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_element_a94e32065cdd1b4e5392bf766318440fc}{serialize\+To\+Json}} () override
+\item 
+void {\bfseries set\+Name} (std\+::string name)
+\item 
+std\+::string {\bfseries name} ()
+\item 
+void {\bfseries set\+Short\+Name} (std\+::string short\+Name)
+\item 
+std\+::string {\bfseries short\+Name} ()
+\item 
+void {\bfseries set\+Declared\+Name} (std\+::string declared\+Name)
+\item 
+std\+::string {\bfseries declared\+Name} ()
+\item 
+void {\bfseries set\+Declared\+Short\+Name} (std\+::string declared\+Short\+Name)
+\item 
+std\+::string {\bfseries get\+Declared\+Short\+Name} ()
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_identification}{Identification}} $>$ $>$ {\bfseries owned\+Elements} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_identification}{Identification}} $>$ {\bfseries owner} () const
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_identification}{Identification}} $>$ {\bfseries owning\+Membership} () const
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_identification}{Identification}} $>$ {\bfseries owning\+Namespace} () const
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_identification}{Identification}} $>$ {\bfseries owning\+Relationship} () const
+\item 
+std\+::string {\bfseries direction} ()
+\item 
+std\+::string {\bfseries imported\+Member\+Name} ()
+\item 
+std\+::string {\bfseries imported\+Namespace} ()
+\item 
+std\+::string {\bfseries value\+String} ()
+\item 
+void {\bfseries set\+Language} (std\+::string language)
+\item 
+std\+::string {\bfseries language} ()
+\item 
+void {\bfseries set\+Body} (std\+::string body)
+\item 
+std\+::string {\bfseries body} ()
+\item 
+bool {\bfseries is\+Implied} ()
+\item 
+bool {\bfseries is\+Implied\+Included} ()
+\item 
+bool {\bfseries is\+Standard} ()
+\item 
+bool {\bfseries is\+Library} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_identification}{Identification}} $>$ {\bfseries documentation} () const
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_identification}{Identification}} $>$ $>$ {\bfseries textual\+Representation} ()
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_identification}{Identification}} $>$ $>$ {\bfseries source} ()
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_identification}{Identification}} $>$ $>$ {\bfseries target} ()
+\item 
+std\+::string {\bfseries get\+Markdown\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data}{Sys\+MLv2\+::\+Entities\+::\+Data}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_a8764b2cee063c5961f2423bb61394398}{Data}} ()
+\item 
+\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_ab11291a4106304308b94f4a827e97f5d}{Data}} (boost\+::uuids\+::uuid id)
+\item 
+\mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_a3ead38504d0fac260222ef510223492f}{Data}} (std\+::string json\+String)
+\item 
+virtual \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_a410a285059373318b7742b9ddf47a978}{\texorpdfstring{$\sim$}{\string~}\+Data}} ()=default
+\item 
+boost\+::uuids\+::uuid \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_a4d8b6e86e67395a6e8ca0afb22ea01eb}{get\+Id}} ()
+\item 
+std\+::string \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_ac0624bb99650ed554d1e78ce17d93c4d}{get\+Type}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data}{Sys\+MLv2\+::\+Entities\+::\+Data}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_data_a0e94702de18580a2d5b79ed0d59d0157}{Type}}
+\item 
+boost\+::uuids\+::uuid {\bfseries Id}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_i_entity}{Sys\+MLv2\+::\+Entities\+::\+IEntity}}}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{class_sys_m_lv2_1_1_entities_1_1_i_entity_ac3f7cba2488d110b820614b9cb709808}{JSON\+\_\+\+INTENT}} = 2
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+rest-\/api/src/entities/Relationship.\+h\end{DoxyCompactItemize}

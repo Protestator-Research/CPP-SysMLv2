@@ -1,0 +1,47 @@
+\doxysection{Relationship.\+h}
+\hypertarget{kerml_2src_2root_2elements_2_relationship_8h_source}{}\label{kerml_2src_2root_2elements_2_relationship_8h_source}\index{kerml/src/root/elements/Relationship.h@{kerml/src/root/elements/Relationship.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Moritz\ Herzog\ on\ 24.03.25.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ SYSMLV2\_RELATIONSHIP\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ SYSMLV2\_RELATIONSHIP\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Element.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ker_m_l_1_1_entities}{KerML::Entities}}\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_namespace}{Namespace}};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{class\ }Relationship\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ Relationship(boost::uuids::uuid\ elementID\ =\ boost::uuids::random\_generator()(),\ std::shared\_ptr<Element>\ owner\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \string~Relationship();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setIsImplied(\textcolor{keywordtype}{bool}\ isImplied);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isImplied();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ std::shared\_ptr<Namespace>\ libraryNamespace()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ appendElementToOwnedRelatedElement(std::shared\_ptr<Element>\ element);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setOwnedRelatedElements(std::vector<std::shared\_ptr<Element>>\ elements);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Element>>\ ownedRelatedElement();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ sortOwnedRelatedElements();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ IsImplied=\textcolor{keyword}{false};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Element>>\ OwnedRelatedElements;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ std::shared\_ptr<Element>\ OwningRelatedElement;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \};}
+\DoxyCodeLine{00046\ \}\ \textcolor{comment}{//\ KerML::Entities}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//SYSMLV2\_RELATIONSHIP\_H}}
+
+\end{DoxyCode}
