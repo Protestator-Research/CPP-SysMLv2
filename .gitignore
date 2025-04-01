@@ -35,3 +35,5 @@
 /cmake-build-debug/**
 /.idea/**
 CMakePresets.json
+
+cmake-build-debug-event-trace/

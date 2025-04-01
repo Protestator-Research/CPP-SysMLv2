@@ -30,7 +30,7 @@ namespace KerML::Entities {
         orderAliasIds();
     }
 
-    void Element::appendAliasId(std::string aliasId) {
+    void Element::appendAliasId(std::string& aliasId) {
         AliasIds.push_back(aliasId);
         orderAliasIds();
     }
@@ -39,43 +39,43 @@ namespace KerML::Entities {
         return AliasIds;
     }
 
-    void Element::setDeclaredShortName(std::string declaredShortName) {
+    void Element::setDeclaredShortName(std::string& declaredShortName) {
         DeclaredShortName = declaredShortName;
     }
 
-    std::string Element::declaredShortName() {
+    std::string Element::declaredShortName() const {
         return DeclaredShortName;
     }
 
-    void Element::setDeclaredName(std::string declaredName) {
+    void Element::setDeclaredName(std::string& declaredName) {
         DeclaredName = declaredName;
     }
 
-    std::string Element::declaredName() {
+    std::string Element::declaredName() const{
         return DeclaredName;
     }
 
-    void Element::setImpliedIncluded(bool isImpliedIncluded) {
+    void Element::setImpliedIncluded(bool& isImpliedIncluded) {
         IsImpliedIncluded = isImpliedIncluded;
     }
 
-    bool Element::isImpliedIncluded() {
+    bool Element::isImpliedIncluded() const{
         return IsImpliedIncluded;
     }
 
-    std::string Element::escapedName() {
+    std::string Element::escapedName() const{
         return std::string();
     }
 
-    std::string Element::effectiveShortName() {
+    std::string Element::effectiveShortName() const{
         return std::string();
     }
 
-    std::string Element::effectiveName() {
+    std::string Element::effectiveName() const{
         return std::string();
     }
 
-    std::shared_ptr<Namespace> Element::libraryNamespace() {
+    std::shared_ptr<Namespace> Element::libraryNamespace() const{
         return std::shared_ptr<Namespace>();
     }
 

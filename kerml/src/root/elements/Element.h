@@ -24,7 +24,8 @@ namespace KerML::Entities {
      * @class Element
      * @author Moritz Herzog
      * @version 1.0 Beta 2
-     * This part of the model allows the identification of all elements. Core concept of the KerML and SysML syntax.
+     * @brief This part of the model allows the identification of all elements.
+     * This part of the model allows the identification of all elements. This is a core concept of the KerML and SysML syntax.
      * Also this class is required for the REST-API and the parsing of the models.
      */
     class Element {
@@ -70,7 +71,7 @@ namespace KerML::Entities {
          * Add another alternative Identifier.
          * @param aliasId the given alternative Identifier.
          */
-        void appendAliasId(std::string aliasId);
+        void appendAliasId(std::string& aliasId);
 
         /**
          * Gives access to the alternative Identifiers for one specific element.
@@ -83,46 +84,62 @@ namespace KerML::Entities {
          * specific identifier.
          * @param declaredShortName The wanted declared short name.
          */
-        void setDeclaredShortName(std::string declaredShortName);
+        void setDeclaredShortName(std::string& declaredShortName);
 
         /**
          * Returns the declared short name. This is a modeller-specific primary name. It has the responsibility of beeing
          * unique in the specific context or within a model.
          * @return The declared short name.
          */
-        std::string declaredShortName();
+        [[nodiscard]] std::string declaredShortName() const;
 
         /**
          * Sets the declared name of the Element.
          * @param declaredName declared name of the Element.
          */
-        void setDeclaredName(std::string declaredName);
+        void setDeclaredName(std::string& declaredName);
 
         /**
-         *
-         * @return
+         * Gives access to the declared name.
+         * @return The internally stored declared name.
          */
-        std::string declaredName();
+        [[nodiscard]] std::string declaredName() const;
 
         /**
-         *
+         * Sets if element is included in a implied.
          * @param isImpliedIncluded
          */
-        void setImpliedIncluded(bool isImpliedIncluded);
+        void setImpliedIncluded(bool& isImpliedIncluded);
 
         /**
          *
          * @return
          */
-        bool isImpliedIncluded();
+        bool isImpliedIncluded() const;
 
-        std::string escapedName();
+        /**
+         *
+         * @return
+         */
+        std::string escapedName() const;
 
-        std::string effectiveShortName();
+        /**
+         *
+         * @return
+         */
+        std::string effectiveShortName() const;
 
-        std::string effectiveName();
+        /**
+         *
+         * @return
+         */
+        std::string effectiveName() const;
 
-        virtual std::shared_ptr<Namespace> libraryNamespace();
+        /**
+         *
+         * @return
+         */
+        virtual std::shared_ptr<Namespace> libraryNamespace() const;
 
         /**
          * This operator is deleted, because the ElementId can not be reset by definition.
