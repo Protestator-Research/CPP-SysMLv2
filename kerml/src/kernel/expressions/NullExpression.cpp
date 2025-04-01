@@ -6,5 +6,5 @@
 
 namespace KerML {
     namespace Entities {
-    } // EntitiesÍ
+    } // Entities
 } // KerML

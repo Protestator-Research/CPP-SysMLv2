@@ -5,6 +5,6 @@
 #include "Step.h"
 
 namespace KerML {
-    namespace Enities {
-    } // Enities
+    namespace Entities {
+    } // Entities
 } // KerML
