@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env: # Or as an environment variable
+      ARTIFACTORY_URL: ${{ secrets.ARTIFACTORY_URL }}
+      ARTIFACTORY_TOKEN: ${{ secrets.ARTIFACTORY_TOKEN }}
     steps:
     - uses: actions/checkout@v4
     - name: prepare runner
@@ -22,6 +25,7 @@ jobs:
     - name: build
       run: |
        - mkdir build && cd build
+       - conan install ..
        - conan build .. --name=cpp-sysmlv2-lib --version=1.0-beta-3
     #- name: test
     #- name: Doxygen
