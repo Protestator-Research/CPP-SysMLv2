@@ -19,20 +19,18 @@ namespace KerML::Entities {
         IsLibraryElement = false;
     }
 
-    Element::~Element() {    }
-
     std::string Element::elementId() const{
         return boost::lexical_cast<std::string>(ElementId);
     }
 
     void Element::setAliasIds(std::vector<std::string> aliasIds) {
         AliasIds = aliasIds;
-        orderAliasIds();
+        sortAliasIds();
     }
 
     void Element::appendAliasId(std::string& aliasId) {
         AliasIds.push_back(aliasId);
-        orderAliasIds();
+        sortAliasIds();
     }
 
     std::vector<std::string> Element::aliasIds() const{
@@ -68,18 +66,27 @@ namespace KerML::Entities {
     }
 
     std::string Element::effectiveShortName() const{
-        return std::string();
+        if(DeclaredShortName.empty())
+            return ShortName;
+
+        return DeclaredShortName;
     }
 
     std::string Element::effectiveName() const{
-        return std::string();
+        if((DeclaredName.empty())&&(Name.empty()))
+            return QualifiedName;
+
+        if(DeclaredName.empty())
+            return Name;
+
+        return DeclaredName;
     }
 
     std::shared_ptr<Namespace> Element::libraryNamespace() const{
         return std::shared_ptr<Namespace>();
     }
 
-    void Element::orderAliasIds() {
+    void Element::sortAliasIds() {
 
     }
 
@@ -113,7 +120,7 @@ namespace KerML::Entities {
         return elementId()>=other.elementId();
     }
 
-    void Element::orderOwnedRelationships() {
+    void Element::sortOwnedRelationships() {
         std::function<bool(std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs)>  comparisonFunction=
                 [](std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs){
                     return  (*lhs) < (*rhs);
@@ -121,12 +128,39 @@ namespace KerML::Entities {
         std::sort(OwnedRelationships.begin(), OwnedRelationships.end(), comparisonFunction);
     }
 
-    void Element::orderOwnedElements() {
+    void Element::sortOwnedElements() {
         std::function<bool(std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs)>  comparisonFunction=
                 [](std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs){
             return  (*lhs) < (*rhs);
         };
         std::sort(OwnedElements.begin(), OwnedElements.end(), comparisonFunction);
+    }
+
+    std::shared_ptr<Element> Element::owner() const {
+        return Owner;
+    }
+
+    void Element::setOwner(std::shared_ptr<Element> owner) {
+        Owner = owner;
+    }
+
+    void Element::appendOwnedElements(std::vector<std::shared_ptr<Element>> ownedElements) {
+        OwnedElements.insert(OwnedElements.end(),ownedElements.begin(), ownedElements.end());
+        sortOwnedElements();
+    }
+
+    void Element::setOwnedElements(std::vector<std::shared_ptr<Element>> ownedElements) {
+        OwnedElements = ownedElements;
+        sortOwnedElements();
+    }
+
+    void Element::appendOwnedElement(std::shared_ptr<Element> ownedElement) {
+        OwnedElements.push_back(ownedElement);
+        sortOwnedElements();
+    }
+
+    std::vector<std::shared_ptr<Element>> Element::ownedElements(){
+        return OwnedElements;
     }
 
 } // KerML::Entities

@@ -1,5 +1,5 @@
 # C++ SysMLv2 Implementation
-This library gives an implementation of the SysmlV2 standard and KerML standard. This allows developers to implment own applications with this library.
+This library gives an implementation of the SysML v2 standard and KerML standard. This allows developers to implment own applications with this library. The existance of this library is the proof, that SysML v2 can be implemented in C++.
 
 ## Licensing 
 

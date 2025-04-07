@@ -5,112 +5,137 @@
 \DoxyCodeLine{00001\ \textcolor{comment}{//}}
 \DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Moritz\ Herzog\ on\ 20.03.25.}}
 \DoxyCodeLine{00003\ \textcolor{comment}{//}}
-\DoxyCodeLine{00004\ }
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ SYSMLV2\_ELEMENT\_H}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ SYSMLV2\_ELEMENT\_H}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <memory>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <boost/uuid/uuid.hpp>}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <boost/uuid/random\_generator.hpp>}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ker_m_l_1_1_entities}{KerML::Entities}}\ \{}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_namespace}{Namespace}};}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_documentation}{Documentation}};}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_annotation}{Annotation}};}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship}{Relationship}};}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_textual_representation}{TextualRepresentation}};}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\ \{}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}(boost::uuids::uuid\ elementID\ =\ boost::uuids::random\_generator()(),\ std::shared\_ptr<Element>\ owner\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}(std::string\ elementID,\ std::shared\_ptr<Element>\ owner\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aed6431433e1db3461063bd7230428635}{\string~Element}}();}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a50f3f7be0b6883e97464e56fef80264e}{elementId}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ boost::uuids::uuid\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a08dfbcd5104a039aeb720d97b03eafbe}{elementIdAsUUID}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a67cd4e9242d86b6a92fb4f1b1ddbf8db}{setAliasIds}}(std::vector<std::string>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a293a9bbdd3f766e85b33c42ed314414d}{aliasIds}});}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a64e135f738f8c86a77df91429a4d609a}{appendAliasId}}(std::string\ aliasId);}
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::vector<std::string>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a293a9bbdd3f766e85b33c42ed314414d}{aliasIds}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00081\ }
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a129ab66c9820af3f99c9073fd139495b}{setDeclaredShortName}}(std::string\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ab9b4babd4b9576938b560a796a41c1c1}{declaredShortName}});}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ab9b4babd4b9576938b560a796a41c1c1}{declaredShortName}}();}
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a6dfeb83c561b1cee380bb494dc54a666}{setDeclaredName}}(std::string\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ae04c818018fc532fb404018bbc193e70}{declaredName}});}
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ae04c818018fc532fb404018bbc193e70}{declaredName}}();}
-\DoxyCodeLine{00107\ }
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a36ed2dee29a0fbee4bdb8e091674bcdd}{setImpliedIncluded}}(\textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a36951f118acb036d6a46b04c73c016f1}{isImpliedIncluded}});}
-\DoxyCodeLine{00113\ }
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a36951f118acb036d6a46b04c73c016f1}{isImpliedIncluded}}();}
-\DoxyCodeLine{00119\ }
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ std::string\ escapedName();}
-\DoxyCodeLine{00121\ }
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ std::string\ effectiveShortName();}
+\DoxyCodeLine{00004\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Constants,\ Definitions,\ Pragmas}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ SYSMLV2\_ELEMENT\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ SYSMLV2\_ELEMENT\_H}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ External\ Classes}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <boost/uuid/uuid.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <boost/uuid/random\_generator.hpp>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ Internal\ Classes}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ Forwarding}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ker_m_l_1_1_entities}{KerML::Entities}}\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_namespace}{Namespace}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_documentation}{Documentation}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_annotation}{Annotation}};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship}{Relationship}};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_textual_representation}{TextualRepresentation}};}
+\DoxyCodeLine{00029\ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ker_m_l_1_1_entities}{KerML::Entities}}\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}(boost::uuids::uuid\ elementID\ =\ boost::uuids::random\_generator()(),\ std::shared\_ptr<Element>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}}\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}(std::string\ elementID,\ std::shared\_ptr<Element>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}}\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a9fbeffb936fcab7b70327e8f22b40c19}{\string~Element}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a50f3f7be0b6883e97464e56fef80264e}{elementId}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ boost::uuids::uuid\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a08dfbcd5104a039aeb720d97b03eafbe}{elementIdAsUUID}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a67cd4e9242d86b6a92fb4f1b1ddbf8db}{setAliasIds}}(std::vector<std::string>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a293a9bbdd3f766e85b33c42ed314414d}{aliasIds}});}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_abc1566f2e815a6847958f5f39966b859}{appendAliasId}}(std::string\&\ aliasId);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::vector<std::string>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a293a9bbdd3f766e85b33c42ed314414d}{aliasIds}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a1d57a50fdec8c10f44ab714a34d0ce74}{setDeclaredShortName}}(std::string\&\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a8712642a475270d5caaa99fca188f07a}{declaredShortName}});}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a8712642a475270d5caaa99fca188f07a}{declaredShortName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a8686dafeedf332c846410da4d13b8aac}{setDeclaredName}}(std::string\&\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a5177637cac4c2f102c1ac622606fc18e}{declaredName}});}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a5177637cac4c2f102c1ac622606fc18e}{declaredName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a86d552849ed84c9631b9246662c9fa34}{setImpliedIncluded}}(\textcolor{keywordtype}{bool}\&\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a4b6577883757e6ae2d13cda2552e1e43}{isImpliedIncluded}});}
 \DoxyCodeLine{00123\ }
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ std::string\ effectiveName();}
-\DoxyCodeLine{00125\ }
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<Namespace>\ libraryNamespace();}
-\DoxyCodeLine{00127\ }
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\&\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a24ec7829b77b32369dafcb81d77af0e4}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\&\ other)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00134\ }
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a6b2eb4aeed41e45f2f14742f920dd751}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\&\ other);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a4b6577883757e6ae2d13cda2552e1e43}{isImpliedIncluded}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_adebc4425108aa41e89e6282d223e1c38}{escapedName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a5a0c3b8b6188c323aba3fe9db9dd5550}{effectiveShortName}}()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00141\ }
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a62d9c4f0a7e75986bd7adf97d0e028a1}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\&\ other);}
-\DoxyCodeLine{00148\ }
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a704d3dedba17f3e97eb08e2116716d83}{operator>}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\&\ other);}
-\DoxyCodeLine{00155\ }
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ac385bb608aad427a079324303181132f}{operator<=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\&\ other);}
-\DoxyCodeLine{00162\ }
-\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_af97c193ec8d513de2840ef5dd6b35ef4}{operator>=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\&\ other);}
-\DoxyCodeLine{00169\ }
-\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ std::shared\_ptr<Element>\ Owner\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Element>>\ OwnedElements;}
-\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ std::string\ ShortName;}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ std::string\ Name;}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ std::string\ QualifiedName;}
-\DoxyCodeLine{00176\ }
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a24655d02ec0e854d9c90818cf93a98f9}{IsLibraryElement}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a5303e53153fadd68bca76b5b8e06f685}{effectiveName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<Namespace>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ac2b5f829b8ad62eaca906e7cd866d1cf}{libraryNamespace}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\&\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a24ec7829b77b32369dafcb81d77af0e4}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\&\ other)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a6b2eb4aeed41e45f2f14742f920dd751}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\&\ other);}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a62d9c4f0a7e75986bd7adf97d0e028a1}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\&\ other);}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a704d3dedba17f3e97eb08e2116716d83}{operator>}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\&\ other);}
 \DoxyCodeLine{00181\ }
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Documentation>>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a81f29ab756dad42ce6db7d2406fbf567}{Documentations}};}
-\DoxyCodeLine{00186\ }
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Annotation>>\ OwnedAnnotations;}
-\DoxyCodeLine{00191\ }
-\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<TextualRepresentation>>\ TextualRepresentations;}
-\DoxyCodeLine{00196\ }
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a9ee608a6f19cfed11577ba1eb1bbc7a4}{orderOwnedRelationships}}();}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ac385bb608aad427a079324303181132f}{operator<=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\&\ other);}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_af97c193ec8d513de2840ef5dd6b35ef4}{operator>=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}}\&\ other);}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::shared\_ptr<Element>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}}()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00202\ }
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ae38ac298c65843d94a9e214a59dc7b49}{orderOwnedElements}}();}
-\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a699c0506e1713b4bd6feb78838226b9b}{orderAliasIds}}();}
-\DoxyCodeLine{00213\ }
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ boost::uuids::uuid\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a0a07e7e3146f7d7ef7e5f6e8cc151173}{ElementId}};}
-\DoxyCodeLine{00220\ }
-\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a2fe9d1d9ae52170ee016a2345015a2a8}{AliasIds}};}
-\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a6ca5b361ceea9afd58af30dbc26c39e5}{DeclaredShortName}};}
-\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ std::string\ DeclaredName;}
-\DoxyCodeLine{00230\ }
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Relationship>>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_afe41944c39ed48a58ee78560d213e5b0}{OwnedRelationships}};}
-\DoxyCodeLine{00235\ }
-\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ IsImpliedIncluded\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00237\ }
-\DoxyCodeLine{00238\ }
-\DoxyCodeLine{00239\ \ \ \ \ \};}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a78943db83fcff463c054ec4dccb691b6}{setOwner}}(std::shared\_ptr<Element>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}});}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ac66ccb28a7d82bd2a2629c14307b9ac4}{setOwnedElements}}(std::vector<std::shared\_ptr<Element>>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a7ddc025c7f987b1ac7abe87b471e07fc}{ownedElements}});}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a694b6623e44bca317fd07f3ceb9d6bf0}{appendOwnedElement}}(std::shared\_ptr<Element>\ ownedElement);}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a15b56d09276f5bcd8a8ae0bbc75a681b}{appendOwnedElements}}(std::vector<std::shared\_ptr<Element>>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a7ddc025c7f987b1ac7abe87b471e07fc}{ownedElements}});}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Element>>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a7ddc025c7f987b1ac7abe87b471e07fc}{ownedElements}}();}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a1f31c599d9a94695386c07d1551718b8}{sortAliasIds}}();}
 \DoxyCodeLine{00240\ }
-\DoxyCodeLine{00241\ \}\ \textcolor{comment}{//\ KerML::Entities}}
-\DoxyCodeLine{00242\ }
-\DoxyCodeLine{00243\ }
-\DoxyCodeLine{00244\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//SYSMLV2\_ELEMENT\_H}}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ boost::uuids::uuid\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a0a07e7e3146f7d7ef7e5f6e8cc151173}{ElementId}};}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a2fe9d1d9ae52170ee016a2345015a2a8}{AliasIds}};}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a6ca5b361ceea9afd58af30dbc26c39e5}{DeclaredShortName}};}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ std::string\ DeclaredName;}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Relationship>>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_afe41944c39ed48a58ee78560d213e5b0}{OwnedRelationships}};}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aba76f2d080c1d6527999d608041dc8b0}{IsImpliedIncluded}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ std::shared\_ptr<Element>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a9d3b8280d23066d2621a5410910930bf}{Owner}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Element>>\ OwnedElements;}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ std::string\ ShortName;}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ std::string\ Name;}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ std::string\ QualifiedName;}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a24655d02ec0e854d9c90818cf93a98f9}{IsLibraryElement}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Documentation>>\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a81f29ab756dad42ce6db7d2406fbf567}{Documentations}};}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Annotation>>\ OwnedAnnotations;}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<TextualRepresentation>>\ TextualRepresentations;}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a0c53cc502cb709f613d2869c8c94bf8b}{sortOwnedRelationships}}();}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a76d905ace783221b65ebd650eeb6cf36}{sortOwnedElements}}();}
+\DoxyCodeLine{00317\ \ \ \ \ \};}
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00319\ \}\ \textcolor{comment}{//\ KerML::Entities}}
+\DoxyCodeLine{00320\ }
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00322\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//SYSMLV2\_ELEMENT\_H}}
 
 \end{DoxyCode}

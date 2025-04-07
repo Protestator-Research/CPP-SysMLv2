@@ -10,28 +10,36 @@ Inheritance diagram for Ker\+ML\+::Entities\+::Unioning\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship}{Ker\+ML\+::\+Entities\+::\+Relationship}}}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries Relationship} (boost\+::uuids\+::uuid element\+ID=boost\+::uuids\+::random\+\_\+generator()(), std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ owner=nullptr)
+\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a6828ab0a5934d03f6858ec84193a0ccd}{Relationship}} (boost\+::uuids\+::uuid element\+ID=boost\+::uuids\+::random\+\_\+generator()(), std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}}=nullptr)
 \item 
-void {\bfseries set\+Is\+Implied} (bool is\+Implied)
+\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a1e4e57db6cd1128e42fece6461fe014a}{Relationship}} (std\+::string element\+ID, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}}=nullptr)
 \item 
-bool {\bfseries is\+Implied} ()
+virtual \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a2bf714f78b988a26b66d195b3eb19620}{\texorpdfstring{$\sim$}{\string~}\+Relationship}} ()=default
 \item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_namespace}{Namespace}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a0defda8dd5ccb21db5d320b840e06b4e}{library\+Namespace}} () override
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a3d040e9729b6646a83ecf85aab5192fd}{set\+Is\+Implied}} (bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a776acb680aa78ae90a282500e7565591}{is\+Implied}})
 \item 
-void {\bfseries append\+Element\+To\+Owned\+Related\+Element} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ element)
+bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a776acb680aa78ae90a282500e7565591}{is\+Implied}} ()
 \item 
-void {\bfseries set\+Owned\+Related\+Elements} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ elements)
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_namespace}{Namespace}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a99569006de4a3c175ffc89576427fba1}{library\+Namespace}} () const override
 \item 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ {\bfseries owned\+Related\+Element} ()
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_af29a0fc37c9162532f51eb16af05fe27}{append\+Element\+To\+Owned\+Related\+Element}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ element)
+\item 
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_ad87693d6609a978e80a549fa00629f8e}{set\+Owned\+Related\+Elements}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ elements)
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_ae6e6c82e371f43e0cdb13c16c893da24}{owned\+Related\+Element}} () const
+\item 
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a13fdcfa05169e037236bec0ebceb201a}{set\+Owning\+Related\+Element}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_adae66b24b0e92a40241844fdf14bfbed}{owning\+Related\+Element}})
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_adae66b24b0e92a40241844fdf14bfbed}{owning\+Related\+Element}} () const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Ker\+ML\+::\+Entities\+::\+Element}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}} (boost\+::uuids\+::uuid element\+ID=boost\+::uuids\+::random\+\_\+generator()(), std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ owner=nullptr)
+\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}} (boost\+::uuids\+::uuid element\+ID=boost\+::uuids\+::random\+\_\+generator()(), std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}}=nullptr)
 \item 
-\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a26006d0f6402324fc864bacf9f6ef29b}{Element}} (std\+::string element\+ID, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ owner=nullptr)
+\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a26006d0f6402324fc864bacf9f6ef29b}{Element}} (std\+::string element\+ID, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}}=nullptr)
 \item 
-virtual \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aed6431433e1db3461063bd7230428635}{\texorpdfstring{$\sim$}{\string~}\+Element}} ()
+virtual \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a9fbeffb936fcab7b70327e8f22b40c19}{\texorpdfstring{$\sim$}{\string~}\+Element}} ()=default
 \item 
 std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a50f3f7be0b6883e97464e56fef80264e}{element\+Id}} () const
 \item 
@@ -39,27 +47,27 @@ boost\+::uuids\+::uuid \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a
 \item 
 void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a67cd4e9242d86b6a92fb4f1b1ddbf8db}{set\+Alias\+Ids}} (std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a293a9bbdd3f766e85b33c42ed314414d}{alias\+Ids}})
 \item 
-void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a64e135f738f8c86a77df91429a4d609a}{append\+Alias\+Id}} (std\+::string alias\+Id)
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_abc1566f2e815a6847958f5f39966b859}{append\+Alias\+Id}} (std\+::string \&alias\+Id)
 \item 
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a293a9bbdd3f766e85b33c42ed314414d}{alias\+Ids}} () const
 \item 
-void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a129ab66c9820af3f99c9073fd139495b}{set\+Declared\+Short\+Name}} (std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ab9b4babd4b9576938b560a796a41c1c1}{declared\+Short\+Name}})
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a1d57a50fdec8c10f44ab714a34d0ce74}{set\+Declared\+Short\+Name}} (std\+::string \&\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a8712642a475270d5caaa99fca188f07a}{declared\+Short\+Name}})
 \item 
-std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ab9b4babd4b9576938b560a796a41c1c1}{declared\+Short\+Name}} ()
+std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a8712642a475270d5caaa99fca188f07a}{declared\+Short\+Name}} () const
 \item 
-void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a6dfeb83c561b1cee380bb494dc54a666}{set\+Declared\+Name}} (std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ae04c818018fc532fb404018bbc193e70}{declared\+Name}})
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a8686dafeedf332c846410da4d13b8aac}{set\+Declared\+Name}} (std\+::string \&\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a5177637cac4c2f102c1ac622606fc18e}{declared\+Name}})
 \item 
-std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ae04c818018fc532fb404018bbc193e70}{declared\+Name}} ()
+std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a5177637cac4c2f102c1ac622606fc18e}{declared\+Name}} () const
 \item 
-void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a36ed2dee29a0fbee4bdb8e091674bcdd}{set\+Implied\+Included}} (bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a36951f118acb036d6a46b04c73c016f1}{is\+Implied\+Included}})
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a86d552849ed84c9631b9246662c9fa34}{set\+Implied\+Included}} (bool \&\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a4b6577883757e6ae2d13cda2552e1e43}{is\+Implied\+Included}})
 \item 
-bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a36951f118acb036d6a46b04c73c016f1}{is\+Implied\+Included}} ()
+bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a4b6577883757e6ae2d13cda2552e1e43}{is\+Implied\+Included}} () const
 \item 
-std\+::string {\bfseries escaped\+Name} ()
+std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_adebc4425108aa41e89e6282d223e1c38}{escaped\+Name}} () const
 \item 
-std\+::string {\bfseries effective\+Short\+Name} ()
+std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a5a0c3b8b6188c323aba3fe9db9dd5550}{effective\+Short\+Name}} () const
 \item 
-std\+::string {\bfseries effective\+Name} ()
+std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a5303e53153fadd68bca76b5b8e06f685}{effective\+Name}} () const
 \item 
 \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} \& \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a24ec7829b77b32369dafcb81d77af0e4}{operator=}} (const \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} \&other)=delete
 \item 
@@ -73,33 +81,29 @@ virtual bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ac385bb608a
 \item 
 virtual bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_af97c193ec8d513de2840ef5dd6b35ef4}{operator$>$=}} (const \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} \&other)
 \end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship}{Ker\+ML\+::\+Entities\+::\+Relationship}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a4eec900254c83027498d8307579b1dba}{set\+Related\+Elements}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a6b11ba6b15aa8eaf007074d660fb46b9}{related\+Elements}})
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a6b11ba6b15aa8eaf007074d660fb46b9}{related\+Elements}} () const
+\item 
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a8da4cdd1eb513c3bb5e4fd873fd8851d}{append\+Element\+To\+Related\+Elements}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ element)
+\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Ker\+ML\+::\+Entities\+::\+Element}}}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a9ee608a6f19cfed11577ba1eb1bbc7a4}{order\+Owned\+Relationships}} ()
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}} () const
 \item 
-void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ae38ac298c65843d94a9e214a59dc7b49}{order\+Owned\+Elements}} ()
-\end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Ker\+ML\+::\+Entities\+::\+Element}}}
-\begin{DoxyCompactItemize}
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a78943db83fcff463c054ec4dccb691b6}{set\+Owner}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}})
 \item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ {\bfseries Owner} = nullptr
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ac66ccb28a7d82bd2a2629c14307b9ac4}{set\+Owned\+Elements}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a7ddc025c7f987b1ac7abe87b471e07fc}{owned\+Elements}})
 \item 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ {\bfseries Owned\+Elements}
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a694b6623e44bca317fd07f3ceb9d6bf0}{append\+Owned\+Element}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ owned\+Element)
 \item 
-std\+::string {\bfseries Short\+Name}
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a15b56d09276f5bcd8a8ae0bbc75a681b}{append\+Owned\+Elements}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a7ddc025c7f987b1ac7abe87b471e07fc}{owned\+Elements}})
 \item 
-std\+::string {\bfseries Name}
-\item 
-std\+::string {\bfseries Qualified\+Name}
-\item 
-bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a24655d02ec0e854d9c90818cf93a98f9}{Is\+Library\+Element}} = false
-\item 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_documentation}{Documentation}} $>$ $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a81f29ab756dad42ce6db7d2406fbf567}{Documentations}}
-\item 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_annotation}{Annotation}} $>$ $>$ {\bfseries Owned\+Annotations}
-\item 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_textual_representation}{Textual\+Representation}} $>$ $>$ {\bfseries Textual\+Representations}
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a7ddc025c7f987b1ac7abe87b471e07fc}{owned\+Elements}} ()
 \end{DoxyCompactItemize}
 
 

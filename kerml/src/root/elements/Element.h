@@ -1,25 +1,35 @@
 //
 // Created by Moritz Herzog on 20.03.25.
 //
-
+//---------------------------------------------------------
+// Constants, Definitions, Pragmas
+//---------------------------------------------------------
 #ifndef SYSMLV2_ELEMENT_H
 #define SYSMLV2_ELEMENT_H
-
+//---------------------------------------------------------
+// External Classes
+//---------------------------------------------------------
 #include <memory>
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/random_generator.hpp>
 #include <vector>
+//---------------------------------------------------------
+// Internal Classes
+//---------------------------------------------------------
 
-
-
-
+//---------------------------------------------------------
+// Forwarding
+//---------------------------------------------------------
 namespace KerML::Entities {
     class Namespace;
     class Documentation;
     class Annotation;
     class Relationship;
     class TextualRepresentation;
+}
 
+
+namespace KerML::Entities {
     /**
      * @class Element
      * @author Moritz Herzog
@@ -45,9 +55,9 @@ namespace KerML::Entities {
         explicit Element(std::string elementID, std::shared_ptr<Element> owner = nullptr);
 
         /**
-         * Destructor
+         * Destructor. An implementation is not required, since shared pointers are used.
          */
-        virtual ~Element();
+        virtual ~Element() = default;
 
         /**
          * Gives access to the ElementId as a string.
@@ -115,25 +125,25 @@ namespace KerML::Entities {
          *
          * @return
          */
-        bool isImpliedIncluded() const;
+        [[nodiscard]] bool isImpliedIncluded() const;
 
         /**
          *
          * @return
          */
-        std::string escapedName() const;
+        [[nodiscard]] std::string escapedName() const;
 
         /**
-         *
-         * @return
+         * Returns the effective ShortName of this Element. By default it is the DeclaredShortName.
+         * @return The effective short name of this Element.
          */
-        std::string effectiveShortName() const;
+        [[nodiscard]] std::string effectiveShortName() const;
 
         /**
-         *
-         * @return
+         * This method returns the effective name of a element. By default this is the declaredName().
+         * @return The effective name that is available.
          */
-        std::string effectiveName() const;
+        [[nodiscard]] std::string effectiveName() const;
 
         /**
          *
@@ -149,14 +159,14 @@ namespace KerML::Entities {
         Element& operator=(const Element& other) = delete;
 
         /**
-         *
-         * @param other
-         * @return
+         * Compares the equality of the elements. This is mainly done by the ElementId, because of the properties of the UUID.
+         * @param other The other Element, that is to compare with this element.
+         * @return If the Element is the same as the other Element.
          */
         virtual bool operator==(const Element& other);
 
         /**
-         *
+         * Compares one element to the other and decides which one is bigger. This is required
          * @param other
          * @return
          */
@@ -184,7 +194,90 @@ namespace KerML::Entities {
         virtual bool operator>=(const Element& other);
 
     protected:
+        /**
+         * Returns the owning Element. The owner is the element referenced in the owningRelationship as the owningRelatedElement.
+         * @return Shared pointer of the Owner.
+         */
+        [[nodiscard]] std::shared_ptr<Element> owner() const;
+
+        /**
+         * Sets the owner. The owner is the element referenced in the owningRelationship as the owningRelatedElement.
+         * @param owner The related Element, that is represended as owningRelatedElement in the owning Relationship.
+         */
+        void setOwner(std::shared_ptr<Element> owner);
+
+        /**
+         * This method overwrites the Elements of the owned elements. Warning this method deletes the old vector of owned Elements.
+         * If you want to append the elements of another vector please refer to Element::appendOwnedElements(std::vector<std::shared_ptr<Element>> ownedElements).
+         * @param ownedElements The new owned elements of the element.
+         */
+        void setOwnedElements(std::vector<std::shared_ptr<Element>> ownedElements);
+
+        /**
+         * This methods appends one owned element to the vector of the owned elements and sorts it, because the owned elements should be sorted
+         * @param ownedElement The element that is appended to the ownedElements.
+         */
+        void appendOwnedElement(std::shared_ptr<Element> ownedElement);
+
+        /**
+         * Appends owned elements to the internally managed ownedElements and sorts them afterwards.
+         * @param ownedElements The vector that is integrated into the ownedElements
+         */
+        void appendOwnedElements(std::vector<std::shared_ptr<Element>> ownedElements);
+
+        /**
+         * Returns the complete vector copy of the owned Elements.
+         * @return A copy of the Owned Elements.
+         */
+        std::vector<std::shared_ptr<Element>> ownedElements();
+
+
+    private:
+        /**
+        * Orders the AliasIds in their Array. Is per definition required to have the AliasIds always ordered.
+        */
+        void sortAliasIds();
+
+        /**
+         * Represents the global unique Identifier.
+         * In this case the ElementId is stored as a UUID, against the standard. Allowing us to address even more elements in an
+         * ElementId is according to the KerML standard not allowed to change.
+         */
+        const boost::uuids::uuid ElementId;
+
+        /**
+         * Alternative descriptors of the specific element.
+         */
+        std::vector<std::string> AliasIds;
+
+        /**
+         * An optional alternative name of the 
+         */
+        std::string DeclaredShortName;
+
+        /**
+         *
+         */
+        std::string DeclaredName;
+
+        /**
+         * Represents the Relationships for which this Element is the owning related Element.
+         */
+        std::vector<std::shared_ptr<Relationship>> OwnedRelationships;
+
+        /**
+         * Displays if a relationship is not included in the OwnedRelationships of the element.
+         */
+        bool IsImpliedIncluded = false;
+
+        /**
+         * The owner is the element referenced in the owningRelationship as the owningRelatedElement.
+         */
         std::shared_ptr<Element> Owner = nullptr;
+
+        /**
+         *
+         */
         std::vector<std::shared_ptr<Element>> OwnedElements;
         std::string ShortName;
         std::string Name;
@@ -214,44 +307,13 @@ namespace KerML::Entities {
         * Orders the OwnedRelationships in their Array. This is reuired per definition and needs to be called with
         * with every adding of a relationship.
         */
-        void orderOwnedRelationships();
+        void sortOwnedRelationships();
 
         /**
          * Orders the Owned Elements. This is per definition required. With every adding and removing of one OwnedElements
          * this function needs to be called.
          */
-        void orderOwnedElements();
-    private:
-        /**
-        * Orders the AliasIds in their Array. Is per definition required to have the AliasIds always ordered.
-        */
-        void orderAliasIds();
-
-        /**
-         * Represents the global unique Identifier.
-         * In this case the ElementId is stored as a UUID, against the standard. Allowing us to address even more elements in an
-         * ElementId is according to the KerML standard not allowed to change.
-         */
-        const boost::uuids::uuid ElementId;
-
-        /**
-         * Alternative descriptors of the specific element.
-         */
-        std::vector<std::string> AliasIds;
-        /**
-         * An optional alternative name of the 
-         */
-        std::string DeclaredShortName;
-        std::string DeclaredName;
-
-        /**
-         * Represents the Relationships for which this Element is the owning related Element.
-         */
-        std::vector<std::shared_ptr<Relationship>> OwnedRelationships;
-
-        bool IsImpliedIncluded = false;
-
-
+        void sortOwnedElements();
     };
 
 } // KerML::Entities

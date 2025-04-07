@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mergeintobranch_0',['mergeIntoBranch',['../d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service.html#a26873f49b4c48ca34eb7ac88bdeeda96',1,'SysMLv2::API::IProjectVersioningService']]]
+  ['librarynamespace_0',['libraryNamespace',['../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#ac2b5f829b8ad62eaca906e7cd866d1cf',1,'KerML::Entities::Element::libraryNamespace()'],['../d0/d55/class_ker_m_l_1_1_entities_1_1_relationship.html#a99569006de4a3c175ffc89576427fba1',1,'KerML::Entities::Relationship::libraryNamespace()']]]
 ];

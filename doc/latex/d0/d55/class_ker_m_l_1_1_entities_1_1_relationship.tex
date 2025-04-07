@@ -13,34 +13,36 @@ Inheritance diagram for Ker\+ML\+::Entities\+::Relationship\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a6828ab0a5934d03f6858ec84193a0ccd}\label{class_ker_m_l_1_1_entities_1_1_relationship_a6828ab0a5934d03f6858ec84193a0ccd} 
-{\bfseries Relationship} (boost\+::uuids\+::uuid element\+ID=boost\+::uuids\+::random\+\_\+generator()(), std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ owner=nullptr)
+\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a6828ab0a5934d03f6858ec84193a0ccd}{Relationship}} (boost\+::uuids\+::uuid element\+ID=boost\+::uuids\+::random\+\_\+generator()(), std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}}=nullptr)
 \item 
-\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a3d040e9729b6646a83ecf85aab5192fd}\label{class_ker_m_l_1_1_entities_1_1_relationship_a3d040e9729b6646a83ecf85aab5192fd} 
-void {\bfseries set\+Is\+Implied} (bool is\+Implied)
+\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a1e4e57db6cd1128e42fece6461fe014a}{Relationship}} (std\+::string element\+ID, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}}=nullptr)
 \item 
-\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a776acb680aa78ae90a282500e7565591}\label{class_ker_m_l_1_1_entities_1_1_relationship_a776acb680aa78ae90a282500e7565591} 
-bool {\bfseries is\+Implied} ()
+virtual \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a2bf714f78b988a26b66d195b3eb19620}{\texorpdfstring{$\sim$}{\string~}\+Relationship}} ()=default
 \item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_namespace}{Namespace}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a0defda8dd5ccb21db5d320b840e06b4e}{library\+Namespace}} () override
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a3d040e9729b6646a83ecf85aab5192fd}{set\+Is\+Implied}} (bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a776acb680aa78ae90a282500e7565591}{is\+Implied}})
 \item 
-\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_af29a0fc37c9162532f51eb16af05fe27}\label{class_ker_m_l_1_1_entities_1_1_relationship_af29a0fc37c9162532f51eb16af05fe27} 
-void {\bfseries append\+Element\+To\+Owned\+Related\+Element} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ element)
+bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a776acb680aa78ae90a282500e7565591}{is\+Implied}} ()
 \item 
-\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_ad87693d6609a978e80a549fa00629f8e}\label{class_ker_m_l_1_1_entities_1_1_relationship_ad87693d6609a978e80a549fa00629f8e} 
-void {\bfseries set\+Owned\+Related\+Elements} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ elements)
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_namespace}{Namespace}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a99569006de4a3c175ffc89576427fba1}{library\+Namespace}} () const override
 \item 
-\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a089f5f79a28c90a56a30ef35fefebcec}\label{class_ker_m_l_1_1_entities_1_1_relationship_a089f5f79a28c90a56a30ef35fefebcec} 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ {\bfseries owned\+Related\+Element} ()
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_af29a0fc37c9162532f51eb16af05fe27}{append\+Element\+To\+Owned\+Related\+Element}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ element)
+\item 
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_ad87693d6609a978e80a549fa00629f8e}{set\+Owned\+Related\+Elements}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ elements)
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_ae6e6c82e371f43e0cdb13c16c893da24}{owned\+Related\+Element}} () const
+\item 
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a13fdcfa05169e037236bec0ebceb201a}{set\+Owning\+Related\+Element}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_adae66b24b0e92a40241844fdf14bfbed}{owning\+Related\+Element}})
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_adae66b24b0e92a40241844fdf14bfbed}{owning\+Related\+Element}} () const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Ker\+ML\+::\+Entities\+::\+Element}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}} (boost\+::uuids\+::uuid element\+ID=boost\+::uuids\+::random\+\_\+generator()(), std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ owner=nullptr)
+\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ad54e5f092ef2e35ce397222d0abfdb4c}{Element}} (boost\+::uuids\+::uuid element\+ID=boost\+::uuids\+::random\+\_\+generator()(), std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}}=nullptr)
 \item 
-\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a26006d0f6402324fc864bacf9f6ef29b}{Element}} (std\+::string element\+ID, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ owner=nullptr)
+\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a26006d0f6402324fc864bacf9f6ef29b}{Element}} (std\+::string element\+ID, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}}=nullptr)
 \item 
-virtual \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aed6431433e1db3461063bd7230428635}{\texorpdfstring{$\sim$}{\string~}\+Element}} ()
+virtual \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a9fbeffb936fcab7b70327e8f22b40c19}{\texorpdfstring{$\sim$}{\string~}\+Element}} ()=default
 \item 
 std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a50f3f7be0b6883e97464e56fef80264e}{element\+Id}} () const
 \item 
@@ -48,27 +50,27 @@ boost\+::uuids\+::uuid \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a
 \item 
 void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a67cd4e9242d86b6a92fb4f1b1ddbf8db}{set\+Alias\+Ids}} (std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a293a9bbdd3f766e85b33c42ed314414d}{alias\+Ids}})
 \item 
-void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a64e135f738f8c86a77df91429a4d609a}{append\+Alias\+Id}} (std\+::string alias\+Id)
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_abc1566f2e815a6847958f5f39966b859}{append\+Alias\+Id}} (std\+::string \&alias\+Id)
 \item 
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a293a9bbdd3f766e85b33c42ed314414d}{alias\+Ids}} () const
 \item 
-void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a129ab66c9820af3f99c9073fd139495b}{set\+Declared\+Short\+Name}} (std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ab9b4babd4b9576938b560a796a41c1c1}{declared\+Short\+Name}})
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a1d57a50fdec8c10f44ab714a34d0ce74}{set\+Declared\+Short\+Name}} (std\+::string \&\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a8712642a475270d5caaa99fca188f07a}{declared\+Short\+Name}})
 \item 
-std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ab9b4babd4b9576938b560a796a41c1c1}{declared\+Short\+Name}} ()
+std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a8712642a475270d5caaa99fca188f07a}{declared\+Short\+Name}} () const
 \item 
-void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a6dfeb83c561b1cee380bb494dc54a666}{set\+Declared\+Name}} (std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ae04c818018fc532fb404018bbc193e70}{declared\+Name}})
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a8686dafeedf332c846410da4d13b8aac}{set\+Declared\+Name}} (std\+::string \&\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a5177637cac4c2f102c1ac622606fc18e}{declared\+Name}})
 \item 
-std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ae04c818018fc532fb404018bbc193e70}{declared\+Name}} ()
+std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a5177637cac4c2f102c1ac622606fc18e}{declared\+Name}} () const
 \item 
-void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a36ed2dee29a0fbee4bdb8e091674bcdd}{set\+Implied\+Included}} (bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a36951f118acb036d6a46b04c73c016f1}{is\+Implied\+Included}})
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a86d552849ed84c9631b9246662c9fa34}{set\+Implied\+Included}} (bool \&\mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a4b6577883757e6ae2d13cda2552e1e43}{is\+Implied\+Included}})
 \item 
-bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a36951f118acb036d6a46b04c73c016f1}{is\+Implied\+Included}} ()
+bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a4b6577883757e6ae2d13cda2552e1e43}{is\+Implied\+Included}} () const
 \item 
-std\+::string {\bfseries escaped\+Name} ()
+std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_adebc4425108aa41e89e6282d223e1c38}{escaped\+Name}} () const
 \item 
-std\+::string {\bfseries effective\+Short\+Name} ()
+std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a5a0c3b8b6188c323aba3fe9db9dd5550}{effective\+Short\+Name}} () const
 \item 
-std\+::string {\bfseries effective\+Name} ()
+std\+::string \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a5303e53153fadd68bca76b5b8e06f685}{effective\+Name}} () const
 \item 
 \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} \& \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a24ec7829b77b32369dafcb81d77af0e4}{operator=}} (const \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} \&other)=delete
 \item 
@@ -82,11 +84,44 @@ virtual bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ac385bb608a
 \item 
 virtual bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_af97c193ec8d513de2840ef5dd6b35ef4}{operator$>$=}} (const \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} \&other)
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a4eec900254c83027498d8307579b1dba}{set\+Related\+Elements}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a6b11ba6b15aa8eaf007074d660fb46b9}{related\+Elements}})
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a6b11ba6b15aa8eaf007074d660fb46b9}{related\+Elements}} () const
+\item 
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_relationship_a8da4cdd1eb513c3bb5e4fd873fd8851d}{append\+Element\+To\+Related\+Elements}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ element)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Ker\+ML\+::\+Entities\+::\+Element}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}} () const
+\item 
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a78943db83fcff463c054ec4dccb691b6}{set\+Owner}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_aa4c9d1f4fd1506ea8d61873a2ba177c1}{owner}})
+\item 
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ac66ccb28a7d82bd2a2629c14307b9ac4}{set\+Owned\+Elements}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a7ddc025c7f987b1ac7abe87b471e07fc}{owned\+Elements}})
+\item 
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a694b6623e44bca317fd07f3ceb9d6bf0}{append\+Owned\+Element}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ owned\+Element)
+\item 
+void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a15b56d09276f5bcd8a8ae0bbc75a681b}{append\+Owned\+Elements}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a7ddc025c7f987b1ac7abe87b471e07fc}{owned\+Elements}})
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a7ddc025c7f987b1ac7abe87b471e07fc}{owned\+Elements}} ()
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a625cd441755c2f75ca2be712d90525b2}\label{class_ker_m_l_1_1_entities_1_1_relationship_a625cd441755c2f75ca2be712d90525b2} 
 void {\bfseries sort\+Owned\+Related\+Elements} ()
+\item 
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a00a85edcf77bee890f724ca921fe8e0a}\label{class_ker_m_l_1_1_entities_1_1_relationship_a00a85edcf77bee890f724ca921fe8e0a} 
+void {\bfseries sort\+Related\+Elements} ()
+\item 
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a41ae35fe5c6b9b82f7d05ab11d1e331a}\label{class_ker_m_l_1_1_entities_1_1_relationship_a41ae35fe5c6b9b82f7d05ab11d1e331a} 
+void {\bfseries sort\+Source\+Elements} ()
+\item 
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_ad1a51df04559c620196271c4f84ccfe9}\label{class_ker_m_l_1_1_entities_1_1_relationship_ad1a51df04559c620196271c4f84ccfe9} 
+void {\bfseries sort\+Target\+Elements} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -98,36 +133,16 @@ bool {\bfseries Is\+Implied} =false
 std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ {\bfseries Owned\+Related\+Elements}
 \item 
 \Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a30df93c09263660dffd9a0464a73f95e}\label{class_ker_m_l_1_1_entities_1_1_relationship_a30df93c09263660dffd9a0464a73f95e} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ {\bfseries Owning\+Related\+Element}
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Additional Inherited Members}
-\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Ker\+ML\+::\+Entities\+::\+Element}}}
-\begin{DoxyCompactItemize}
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ {\bfseries Owning\+Related\+Element} = nullptr
 \item 
-void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a9ee608a6f19cfed11577ba1eb1bbc7a4}{order\+Owned\+Relationships}} ()
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_ac22c74d9217d89b0761be79b6e9d620e}\label{class_ker_m_l_1_1_entities_1_1_relationship_ac22c74d9217d89b0761be79b6e9d620e} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ {\bfseries Related\+Elements}
 \item 
-void \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ae38ac298c65843d94a9e214a59dc7b49}{order\+Owned\+Elements}} ()
-\end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Ker\+ML\+::\+Entities\+::\+Element}}}
-\begin{DoxyCompactItemize}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a579b4b6d9ece2cfb924f8b76da5bb773}\label{class_ker_m_l_1_1_entities_1_1_relationship_a579b4b6d9ece2cfb924f8b76da5bb773} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ {\bfseries Source}
 \item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ {\bfseries Owner} = nullptr
-\item 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ {\bfseries Owned\+Elements}
-\item 
-std\+::string {\bfseries Short\+Name}
-\item 
-std\+::string {\bfseries Name}
-\item 
-std\+::string {\bfseries Qualified\+Name}
-\item 
-bool \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a24655d02ec0e854d9c90818cf93a98f9}{Is\+Library\+Element}} = false
-\item 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_documentation}{Documentation}} $>$ $>$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_a81f29ab756dad42ce6db7d2406fbf567}{Documentations}}
-\item 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_annotation}{Annotation}} $>$ $>$ {\bfseries Owned\+Annotations}
-\item 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_textual_representation}{Textual\+Representation}} $>$ $>$ {\bfseries Textual\+Representations}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a0f26bf3f8ab277442f978ec485b9e23d}\label{class_ker_m_l_1_1_entities_1_1_relationship_a0f26bf3f8ab277442f978ec485b9e23d} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ {\bfseries Target}
 \end{DoxyCompactItemize}
 
 
@@ -136,21 +151,169 @@ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_en
 Moritz Herzog 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
-1.\+0 Beta 2 
+1.\+0 Beta 2 A \doxylink{class_ker_m_l_1_1_entities_1_1_relationship}{Relationship} is an \doxylink{class_ker_m_l_1_1_entities_1_1_element}{Element} that relates two elements to each other. 
 \end{DoxyVersion}
 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a6828ab0a5934d03f6858ec84193a0ccd}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!Relationship@{Relationship}}
+\index{Relationship@{Relationship}!KerML::Entities::Relationship@{KerML::Entities::Relationship}}
+\doxysubsubsection{\texorpdfstring{Relationship()}{Relationship()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_a6828ab0a5934d03f6858ec84193a0ccd} 
+Ker\+ML\+::\+Entities\+::\+Relationship\+::\+Relationship (\begin{DoxyParamCaption}\item[{boost\+::uuids\+::uuid}]{element\+ID}{ = {\ttfamily boost\+:\+:uuids\+:\+:random\+\_\+generator()()}, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$}]{owner}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Constructor of the \doxylink{class_ker_m_l_1_1_entities_1_1_relationship}{Relationship}. This constructor does not allow for an empty element\+ID. 
+\begin{DoxyParams}{Parameters}
+{\em element\+ID} & The \doxylink{class_ker_m_l_1_1_entities_1_1_element}{Element} ID of the \doxylink{class_ker_m_l_1_1_entities_1_1_relationship}{Relationship}. If no UUID is provided, a random UUID is provided by the Software. \\
+\hline
+{\em owner} & The \doxylink{class_ker_m_l_1_1_entities_1_1_element}{Element} that owns this \doxylink{class_ker_m_l_1_1_entities_1_1_relationship}{Relationship}. If no \doxylink{class_ker_m_l_1_1_entities_1_1_element}{Element} is provided the owning element is automatically set to null. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a1e4e57db6cd1128e42fece6461fe014a}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!Relationship@{Relationship}}
+\index{Relationship@{Relationship}!KerML::Entities::Relationship@{KerML::Entities::Relationship}}
+\doxysubsubsection{\texorpdfstring{Relationship()}{Relationship()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_a1e4e57db6cd1128e42fece6461fe014a} 
+Ker\+ML\+::\+Entities\+::\+Relationship\+::\+Relationship (\begin{DoxyParamCaption}\item[{std\+::string}]{element\+ID}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$}]{owner}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Constructor of the \doxylink{class_ker_m_l_1_1_entities_1_1_relationship}{Relationship}. This constructor does not allow for an empty element\+ID. 
+\begin{DoxyParams}{Parameters}
+{\em element\+ID} & The \doxylink{class_ker_m_l_1_1_entities_1_1_element}{Element} ID of the \doxylink{class_ker_m_l_1_1_entities_1_1_relationship}{Relationship} as string. \\
+\hline
+{\em owner} & The \doxylink{class_ker_m_l_1_1_entities_1_1_element}{Element} that owns this relationship. If no \doxylink{class_ker_m_l_1_1_entities_1_1_element}{Element} is provided the owning element is automatically set to null. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a2bf714f78b988a26b66d195b3eb19620}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!````~Relationship@{\texorpdfstring{$\sim$}{\string~}Relationship}}
+\index{````~Relationship@{\texorpdfstring{$\sim$}{\string~}Relationship}!KerML::Entities::Relationship@{KerML::Entities::Relationship}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Relationship()}{\string~Relationship()}}
+{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_a2bf714f78b988a26b66d195b3eb19620} 
+virtual Ker\+ML\+::\+Entities\+::\+Relationship\+::\texorpdfstring{$\sim$}{\string~}\+Relationship (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+Destructor. An implementation is not required, since shared pointer are used. 
+
 \doxysubsection{Member Function Documentation}
-\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a0defda8dd5ccb21db5d320b840e06b4e}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!libraryNamespace@{libraryNamespace}}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_af29a0fc37c9162532f51eb16af05fe27}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!appendElementToOwnedRelatedElement@{appendElementToOwnedRelatedElement}}
+\index{appendElementToOwnedRelatedElement@{appendElementToOwnedRelatedElement}!KerML::Entities::Relationship@{KerML::Entities::Relationship}}
+\doxysubsubsection{\texorpdfstring{appendElementToOwnedRelatedElement()}{appendElementToOwnedRelatedElement()}}
+{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_af29a0fc37c9162532f51eb16af05fe27} 
+void Ker\+ML\+::\+Entities\+::\+Relationship\+::append\+Element\+To\+Owned\+Related\+Element (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$}]{element}{}\end{DoxyParamCaption})}
+
+Appends one \doxylink{class_ker_m_l_1_1_entities_1_1_element}{Element} to the Owned Related \doxylink{class_ker_m_l_1_1_entities_1_1_element}{Element} list. 
+\begin{DoxyParams}{Parameters}
+{\em element} & Shared pointer of an element. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a8da4cdd1eb513c3bb5e4fd873fd8851d}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!appendElementToRelatedElements@{appendElementToRelatedElements}}
+\index{appendElementToRelatedElements@{appendElementToRelatedElements}!KerML::Entities::Relationship@{KerML::Entities::Relationship}}
+\doxysubsubsection{\texorpdfstring{appendElementToRelatedElements()}{appendElementToRelatedElements()}}
+{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_a8da4cdd1eb513c3bb5e4fd873fd8851d} 
+void Ker\+ML\+::\+Entities\+::\+Relationship\+::append\+Element\+To\+Related\+Elements (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$}]{element}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a776acb680aa78ae90a282500e7565591}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!isImplied@{isImplied}}
+\index{isImplied@{isImplied}!KerML::Entities::Relationship@{KerML::Entities::Relationship}}
+\doxysubsubsection{\texorpdfstring{isImplied()}{isImplied()}}
+{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_a776acb680aa78ae90a282500e7565591} 
+bool Ker\+ML\+::\+Entities\+::\+Relationship\+::is\+Implied (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Returns the is Implied option. This option is set by tools, to meet semantic standards. \begin{DoxyReturn}{Returns}
+The is Implied option. 
+\end{DoxyReturn}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a99569006de4a3c175ffc89576427fba1}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!libraryNamespace@{libraryNamespace}}
 \index{libraryNamespace@{libraryNamespace}!KerML::Entities::Relationship@{KerML::Entities::Relationship}}
 \doxysubsubsection{\texorpdfstring{libraryNamespace()}{libraryNamespace()}}
-{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_a0defda8dd5ccb21db5d320b840e06b4e} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_namespace}{Namespace}} $>$ Ker\+ML\+::\+Entities\+::\+Relationship\+::library\+Namespace (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_a99569006de4a3c175ffc89576427fba1} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_namespace}{Namespace}} $>$ Ker\+ML\+::\+Entities\+::\+Relationship\+::library\+Namespace (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
 
 
+Reimplemented from \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element_ac2b5f829b8ad62eaca906e7cd866d1cf}{Ker\+ML\+::\+Entities\+::\+Element}}.
 
-Reimplemented from \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Ker\+ML\+::\+Entities\+::\+Element}}.
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_ae6e6c82e371f43e0cdb13c16c893da24}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!ownedRelatedElement@{ownedRelatedElement}}
+\index{ownedRelatedElement@{ownedRelatedElement}!KerML::Entities::Relationship@{KerML::Entities::Relationship}}
+\doxysubsubsection{\texorpdfstring{ownedRelatedElement()}{ownedRelatedElement()}}
+{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_ae6e6c82e371f43e0cdb13c16c893da24} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ Ker\+ML\+::\+Entities\+::\+Relationship\+::owned\+Related\+Element (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
 
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_adae66b24b0e92a40241844fdf14bfbed}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!owningRelatedElement@{owningRelatedElement}}
+\index{owningRelatedElement@{owningRelatedElement}!KerML::Entities::Relationship@{KerML::Entities::Relationship}}
+\doxysubsubsection{\texorpdfstring{owningRelatedElement()}{owningRelatedElement()}}
+{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_adae66b24b0e92a40241844fdf14bfbed} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ Ker\+ML\+::\+Entities\+::\+Relationship\+::owning\+Related\+Element (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+Returns the owning related \doxylink{class_ker_m_l_1_1_entities_1_1_element}{Element}. It is to remember that the owning related \doxylink{class_ker_m_l_1_1_entities_1_1_element}{Element} can be NULL per definition. \begin{DoxyReturn}{Returns}
+The owning\+Related\+Element, if available. 
+\end{DoxyReturn}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a6b11ba6b15aa8eaf007074d660fb46b9}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!relatedElements@{relatedElements}}
+\index{relatedElements@{relatedElements}!KerML::Entities::Relationship@{KerML::Entities::Relationship}}
+\doxysubsubsection{\texorpdfstring{relatedElements()}{relatedElements()}}
+{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_a6b11ba6b15aa8eaf007074d660fb46b9} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$ Ker\+ML\+::\+Entities\+::\+Relationship\+::related\+Elements (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [protected]}}
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a3d040e9729b6646a83ecf85aab5192fd}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!setIsImplied@{setIsImplied}}
+\index{setIsImplied@{setIsImplied}!KerML::Entities::Relationship@{KerML::Entities::Relationship}}
+\doxysubsubsection{\texorpdfstring{setIsImplied()}{setIsImplied()}}
+{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_a3d040e9729b6646a83ecf85aab5192fd} 
+void Ker\+ML\+::\+Entities\+::\+Relationship\+::set\+Is\+Implied (\begin{DoxyParamCaption}\item[{bool}]{is\+Implied}{}\end{DoxyParamCaption})}
+
+Sets the Implied option. This should be set true if the relationship is implied by the elements. 
+\begin{DoxyParams}{Parameters}
+{\em is\+Implied} & Is set by most tools, to meet semantic rules. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_ad87693d6609a978e80a549fa00629f8e}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!setOwnedRelatedElements@{setOwnedRelatedElements}}
+\index{setOwnedRelatedElements@{setOwnedRelatedElements}!KerML::Entities::Relationship@{KerML::Entities::Relationship}}
+\doxysubsubsection{\texorpdfstring{setOwnedRelatedElements()}{setOwnedRelatedElements()}}
+{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_ad87693d6609a978e80a549fa00629f8e} 
+void Ker\+ML\+::\+Entities\+::\+Relationship\+::set\+Owned\+Related\+Elements (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$}]{elements}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em elements} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a13fdcfa05169e037236bec0ebceb201a}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!setOwningRelatedElement@{setOwningRelatedElement}}
+\index{setOwningRelatedElement@{setOwningRelatedElement}!KerML::Entities::Relationship@{KerML::Entities::Relationship}}
+\doxysubsubsection{\texorpdfstring{setOwningRelatedElement()}{setOwningRelatedElement()}}
+{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_a13fdcfa05169e037236bec0ebceb201a} 
+void Ker\+ML\+::\+Entities\+::\+Relationship\+::set\+Owning\+Related\+Element (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$}]{owning\+Related\+Element}{}\end{DoxyParamCaption})}
+
+Sets the owning related element. This is the element that owns this specific relationship. This can also be null. This method checks also, if the given element is contained inside of the owned\+Related\+Elements. 
+\begin{DoxyParams}{Parameters}
+{\em owning\+Related\+Element} & The element that owns this relationship as shared pointer. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::exception} & If the element is not in the owned\+Related\+Elements list an exception is thrown. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_ker_m_l_1_1_entities_1_1_relationship_a4eec900254c83027498d8307579b1dba}\index{KerML::Entities::Relationship@{KerML::Entities::Relationship}!setRelatedElements@{setRelatedElements}}
+\index{setRelatedElements@{setRelatedElements}!KerML::Entities::Relationship@{KerML::Entities::Relationship}}
+\doxysubsubsection{\texorpdfstring{setRelatedElements()}{setRelatedElements()}}
+{\footnotesize\ttfamily \label{class_ker_m_l_1_1_entities_1_1_relationship_a4eec900254c83027498d8307579b1dba} 
+void Ker\+ML\+::\+Entities\+::\+Relationship\+::set\+Related\+Elements (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_ker_m_l_1_1_entities_1_1_element}{Element}} $>$ $>$}]{related\+Elements}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Allows to set the related Elements. \begin{DoxyWarning}{Warning}
+This will overwrite the 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em related\+Elements} & \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

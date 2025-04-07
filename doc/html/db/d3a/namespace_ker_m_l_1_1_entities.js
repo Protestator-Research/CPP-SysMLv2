@@ -62,7 +62,7 @@ var namespace_ker_m_l_1_1_entities =
     [ "Predicate", "d6/d80/class_ker_m_l_1_1_entities_1_1_predicate.html", null ],
     [ "Redefinition", "d2/d4f/class_ker_m_l_1_1_entities_1_1_redefinition.html", null ],
     [ "ReferenceSubsetting", "d5/d80/class_ker_m_l_1_1_entities_1_1_reference_subsetting.html", null ],
-    [ "Relationship", "d0/d55/class_ker_m_l_1_1_entities_1_1_relationship.html", null ],
+    [ "Relationship", "d0/d55/class_ker_m_l_1_1_entities_1_1_relationship.html", "d0/d55/class_ker_m_l_1_1_entities_1_1_relationship" ],
     [ "ResultExpressionMembersip", "d8/daa/class_ker_m_l_1_1_entities_1_1_result_expression_membersip.html", null ],
     [ "ReturnParameterMembership", "d7/da9/class_ker_m_l_1_1_entities_1_1_return_parameter_membership.html", null ],
     [ "SelectExpression", "d1/d78/class_ker_m_l_1_1_entities_1_1_select_expression.html", null ],
