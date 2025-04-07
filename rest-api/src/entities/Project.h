@@ -68,7 +68,7 @@ namespace SysMLv2::Entities {
         std::string serializeToJson() override;
 
     private:
-        std::shared_ptr<DataVersion> DataVersion;
+        std::shared_ptr<DataVersion> m_DataVersion;
 
 
         std::chrono::system_clock::time_point Created;
