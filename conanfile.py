@@ -43,12 +43,14 @@ class CPPSysMLRecipe(ConanFile):
             self.options["boost/*"].shared = True
             self.options["nlohmann_json/*"].shared = True
             self.options["date/*"].shared = True
+            self.options["gtest/*"].shared = True
             if(self.options.with_parsing):
                 self.options["antlr4-cppruntime/*"].shared = True
         else:
             self.options["boost/*"].shared = False
             self.options["nlohmann_json/*"].shared = False
             self.options["date/*"].shared = False
+            self.options["gtest/*"].shared = False
             if(self.options.with_parsing):
                 self.options["antlr4-cppruntime/*"].shared = False
 

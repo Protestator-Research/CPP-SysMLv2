@@ -26,3 +26,4 @@ if (BUILD_WITH_PARSING)
 endif ()
 
 add_subdirectory(kerml)
+add_subdirectory(conformance-test)

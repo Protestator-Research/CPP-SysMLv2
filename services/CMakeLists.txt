@@ -8,8 +8,7 @@ set(API_HEADER
         src/interfaces/IExternalReleationshipService.h
         src/interfaces/IProjectService.h
         src/interfaces/IProjectVersioningService.h
-        src/interfaces/IQueryService.h
-        src/implementation/ElementNavigationService.cpp)
+        src/interfaces/IQueryService.h)
 
 add_library(sysmlv2service
         ${API_HEADER}
