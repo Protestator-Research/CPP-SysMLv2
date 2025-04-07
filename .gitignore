@@ -35,5 +35,5 @@
 /cmake-build-debug/**
 /.idea/**
 CMakePresets.json
-
+.DS_Store
 cmake-build-debug-event-trace/
