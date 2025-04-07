@@ -4,6 +4,7 @@
 
 #include "Relationship.h"
 #include <stdexcept>
+#include <functional>
 
 namespace KerML::Entities {
     Relationship::Relationship(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) : Element(elementID, owner) {
