@@ -11,8 +11,7 @@ add_library(sysmlv2base INTERFACE
 target_link_libraries(sysmlv2base INTERFACE
         boost::boost
         nlohmann_json::nlohmann_json
-        date::date
-        antlr4_static)
+        date::date)
 
 
 include(GNUInstallDirs)
