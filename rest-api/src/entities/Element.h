@@ -39,63 +39,63 @@ namespace SysMLv2::Entities {
         /**
          * C-Tor
          */
-        [[deprecated]] Element();
+         Element();
 
         /**
          * C-Tor for the parsing.
          * @param jsonString JSON string to
          */
-        [[deprecated]] Element(std::string jsonString);
+         Element(std::string jsonString);
 
         /**
          * D-Tor
          */
-        [[deprecated]] ~Element() override;
+         ~Element() override;
 
-        [[deprecated]] std::string serializeToJson() override;
+         std::string serializeToJson() override;
 
-        [[deprecated]] void setName(std::string name);
-        [[deprecated]] std::string name();
+         void setName(std::string name);
+         std::string name();
 
-        [[deprecated]] void setShortName(std::string shortName);
-        [[deprecated]] std::string shortName();
+         void setShortName(std::string shortName);
+         std::string shortName();
 
-        [[deprecated]] void setDeclaredName(std::string declaredName);
-        [[deprecated]] std::string declaredName();
+         void setDeclaredName(std::string declaredName);
+         std::string declaredName();
 
-        [[deprecated]] void setDeclaredShortName(std::string declaredShortName);
-        [[deprecated]] std::string getDeclaredShortName();
+         void setDeclaredShortName(std::string declaredShortName);
+         std::string getDeclaredShortName();
 
-        [[deprecated]] std::vector<std::shared_ptr<Identification>> ownedElements();
-        [[deprecated]] std::shared_ptr<Identification> owner() const;
-        [[deprecated]] std::shared_ptr<Identification> owningMembership() const;
-        [[deprecated]] std::shared_ptr<Identification> owningNamespace() const;
-        [[deprecated]] std::shared_ptr<Identification> owningRelationship() const;
+         std::vector<std::shared_ptr<Identification>> ownedElements();
+         std::shared_ptr<Identification> owner() const;
+         std::shared_ptr<Identification> owningMembership() const;
+         std::shared_ptr<Identification> owningNamespace() const;
+         std::shared_ptr<Identification> owningRelationship() const;
 
-        [[deprecated]] std::string direction();
-        [[deprecated]] std::string importedMemberName();
-        [[deprecated]] std::string importedNamespace();
+         std::string direction();
+         std::string importedMemberName();
+         std::string importedNamespace();
 
-        [[deprecated]] std::string valueString();
+         std::string valueString();
 
-        [[deprecated]] void setLanguage(std::string language);
-        [[deprecated]] std::string language();
-        [[deprecated]] void setBody(std::string body);
-        [[deprecated]] std::string body();
+         void setLanguage(std::string language);
+         std::string language();
+         void setBody(std::string body);
+         std::string body();
 
-        [[deprecated]] bool isImplied();
-        [[deprecated]] bool isImpliedIncluded();
-        [[deprecated]] bool isStandard();
-        [[deprecated]] bool isLibrary();
+         bool isImplied();
+         bool isImpliedIncluded();
+         bool isStandard();
+         bool isLibrary();
 
-        [[deprecated]] std::shared_ptr<Identification> documentation() const;
+         std::shared_ptr<Identification> documentation() const;
 
-        [[deprecated]] std::vector<std::shared_ptr<Identification>> textualRepresentation();
+         std::vector<std::shared_ptr<Identification>> textualRepresentation();
 
-        [[deprecated]] std::vector<std::shared_ptr<Identification>> source();
-        [[deprecated]] std::vector<std::shared_ptr<Identification>> target();
+        std::vector<std::shared_ptr<Identification>> source();
+        std::vector<std::shared_ptr<Identification>> target();
 
-        [[deprecated]] std::string getMarkdownString();
+        std::string getMarkdownString();
     protected:
 
     private:
