@@ -33,7 +33,7 @@ target_link_libraries(sysmlv2file
         boost::boost
         nlohmann_json::nlohmann_json
         date::date
-        antlr4_static)
+        antlr4_shared)
 
 
 include(GNUInstallDirs)
