@@ -84,7 +84,8 @@ namespace KerML::Entities {
     }
 
     void Relationship::setRelatedElements(std::vector<std::shared_ptr<Element>> relatedElements) {
-
+        RelatedElements.insert( RelatedElements.end(), relatedElements.begin(), relatedElements.end() );
+        sortRelatedElements();
     }
 
     std::vector<std::shared_ptr<Element>> Relationship::relatedElements() const {
@@ -92,6 +93,7 @@ namespace KerML::Entities {
     }
 
     void Relationship::appendElementToRelatedElements(std::shared_ptr<Element> element) {
-
+        RelatedElements.push_back(element);
+        sortRelatedElements();
     }
 } // KerML::Entities
