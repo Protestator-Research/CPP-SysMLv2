@@ -229,8 +229,7 @@ add_library(kerml
 target_link_libraries(kerml PRIVATE
         boost::boost
         nlohmann_json::nlohmann_json
-        date::date
-        antlr4_static)
+        date::date)
 
 
 include(GNUInstallDirs)
