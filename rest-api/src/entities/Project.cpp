@@ -95,4 +95,9 @@ namespace SysMLv2::Entities {
         IsForCreation = true;
         Record::Id = boost::uuids::random_generator()();
     }
+
+    void Project::setDefaultBranch(std::shared_ptr<Branch> branch) {
+        DefaultBranch = branch;
+        Branches.push_back(branch);
+    }
 }

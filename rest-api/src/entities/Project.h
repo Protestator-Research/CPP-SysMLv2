@@ -64,6 +64,7 @@ namespace SysMLv2::Entities {
         virtual ~Project();
 
         std::shared_ptr<Branch> getDefaultBranch();
+        void setDefaultBranch(std::shared_ptr<Branch> branch);
 
         std::string serializeToJson() override;
 

@@ -18,8 +18,11 @@ namespace SysMLv2::API {
         return returnValue;
     }
 
-    std::shared_ptr<SysMLv2::Entities::Project> ProjectService::getProjectById(boost::uuids::uuid ) {
-        return std::shared_ptr<SysMLv2::Entities::Project>();
+    std::shared_ptr<SysMLv2::Entities::Project> ProjectService::getProjectById(boost::uuids::uuid id) {
+        if(ProjectMap.count(id)>0)
+            return ProjectMap[id];
+        else
+            return nullptr;
     }
 
     std::shared_ptr<SysMLv2::Entities::Project>
@@ -30,13 +33,24 @@ namespace SysMLv2::API {
     }
 
     std::shared_ptr<SysMLv2::Entities::Project>
-    ProjectService::updateProject(boost::uuids::uuid , std::string , std::string ,
-                                  SysMLv2::Entities::Branch *) {
-        return std::shared_ptr<SysMLv2::Entities::Project>();
+    ProjectService::updateProject(boost::uuids::uuid id, std::string name, std::string description, std::shared_ptr<SysMLv2::Entities::Branch> defaultBranch) {
+        if(ProjectMap.count(id)>0) {
+            auto& project = ProjectMap[id];
+            project->setName(name);
+            if(!description.empty())
+                project->setDescription(description);
+            if(defaultBranch!= nullptr)
+                project->setDefaultBranch(defaultBranch);
+            return project;
+        }
+        else
+            return nullptr;
     }
 
-    std::shared_ptr<SysMLv2::Entities::Project> ProjectService::deleteProject(boost::uuids::uuid ) {
-        return std::shared_ptr<SysMLv2::Entities::Project>();
+    std::shared_ptr<SysMLv2::Entities::Project> ProjectService::deleteProject(boost::uuids::uuid id) {
+        auto project = ProjectMap[id];
+        ProjectMap.erase(id);
+        return project;
     }
 
 }

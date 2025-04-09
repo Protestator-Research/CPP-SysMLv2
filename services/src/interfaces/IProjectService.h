@@ -65,7 +65,7 @@ namespace SysMLv2::API {
          * @param branch Pointer to the new default branch.
          * @return A Pointer to the updated project.
          */
-        virtual std::shared_ptr<SysMLv2::Entities::Project> updateProject(boost::uuids::uuid projectId, std::string projectName = "", std::string description = "", SysMLv2::Entities::Branch* branch = nullptr) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Project> updateProject(boost::uuids::uuid projectId, std::string projectName = "", std::string description = "", std::shared_ptr<SysMLv2::Entities::Branch> branch = nullptr) = 0;
 
         /**
          * Deletes a project. It is to remember that elements inside of a project should also be deleted to, except they are used inside of references

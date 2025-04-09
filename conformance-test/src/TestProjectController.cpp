@@ -30,3 +30,10 @@ TEST(ProjectConformanceTest, GetProjects) {
     EXPECT_EQ(projectService->getProjects().size(), 5);
 }
 
+TEST(ProjectConformanceTest, GetProjectsWithId) {
+    SysMLv2::API::ProjectService* projectService = new SysMLv2::API::ProjectService();
+    createTestInstance(projectService);
+    for(const auto& project : projectService->getProjects()) {
+        EXPECT_EQ(projectService->getProjectById(project->getId())->getId(),project->getId());
+    }
+}

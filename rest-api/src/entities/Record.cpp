@@ -115,4 +115,8 @@ namespace SysMLv2::Entities {
 
     }
 
+    void Record::setName(std::string name) {
+        Name = name;
+    }
+
 }

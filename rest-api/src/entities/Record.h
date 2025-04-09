@@ -71,6 +71,12 @@ namespace SysMLv2::Entities {
         [[nodiscard]] std::string getName() const;
 
         /**
+         * Sets a new Human Identifier.
+         * @param name The new Human Identifier.
+         */
+        void setName(std::string name);
+
+        /**
          * Returns the list of all Aliases according ot the SysML Standard. Hereby also holds that the name aka. the
          * human identifier is part of the alias list.
          * @return All available Aliases.
