@@ -7,7 +7,7 @@ from sys import platform
 
 
 class CPPSysMLRecipe(ConanFile):
-    name = "cpp-sysmlv2-lib"
+    name = "sysmllib"
     #version = ""
     package_type = "library"
 
@@ -24,7 +24,7 @@ class CPPSysMLRecipe(ConanFile):
     default_options = {"shared": True, "fPIC": False, "with_rest": True, "with_services": True, "with_parsing": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
-    exports_sources = "CMakeLists.txt", "src/*"
+    exports_sources = "CMakeLists.txt", "interfaces/*", "conformance-test/*", "filehandling/*", "kerml/*", "rest-api/*", "services/*"
 
     def requirements(self):
         self.requires("boost/1.84.0")
@@ -78,7 +78,7 @@ class CPPSysMLRecipe(ConanFile):
         self.test_requires("gtest/1.14.0")
 
     #def test(self):
-        #cmd = os.path.join(self.cpp.build.bindir, "To be determined")
+        #cmd = os.path.join(self.cpp.build.bindir, "conformance-test/conformance-test")
         #self.run(cmd, env="conanrun")
 
     def package(self):
@@ -86,7 +86,7 @@ class CPPSysMLRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = ["sysmlv2"]
+        self.cpp_info.libs = ["sysmlv2service", "sysmlv2service", "kerml", "sysmlv2file"]
         self.cpp_info.builddirs.append(os.path.join("lib", "cmake", "sysmlv2"))
 
     

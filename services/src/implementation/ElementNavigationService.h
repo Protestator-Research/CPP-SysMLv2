@@ -11,7 +11,7 @@ namespace SysMLv2::API {
     class ElementNavigationService : public IElementNavigationService{
     public:
         ElementNavigationService();
-        virtual ~ElementNavigationService();
+        virtual ~ElementNavigationService() = default;
 
         std::vector<std::shared_ptr<SysMLv2::Entities::Element>> getElements(std::shared_ptr<SysMLv2::Entities::Project> project, std::shared_ptr<SysMLv2::Entities::Commit> commit) override;
 
@@ -28,7 +28,7 @@ namespace SysMLv2::API {
         getRootElements(std::shared_ptr<SysMLv2::Entities::Project> project,
                         std::shared_ptr<SysMLv2::Entities::Commit> commit) override;
 
-    private:
+    protected:
 
     };
 }

@@ -55,7 +55,7 @@ namespace SysMLv2::API {
          * @param description Description of the project as std::string
          * @return A Pointer to the new project.
          */
-        virtual std::shared_ptr<SysMLv2::Entities::Project> createProject(std::string projectName, std::string description) = 0;
+        virtual std::shared_ptr<SysMLv2::Entities::Project> createProject(std::string projectName, std::string description = "") = 0;
 
         /**
          * Updates a project with the given branch. This can be update with the project Name, Description and default branch.

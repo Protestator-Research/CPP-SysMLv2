@@ -16,7 +16,7 @@ target_link_libraries(sysmlv2base INTERFACE
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2base ARCHIVE DESTINATION lib)
-install(FILES ${ENTITIES_HEADER} DESTINATION include/sysmlv2/entities)
+install(FILES ${ENTITIES_HEADER} DESTINATION include/sysmlv2base)
 
 if(MSVC)
     target_compile_options(sysmlv2base INTERFACE /W4 /WX- /bigobj)

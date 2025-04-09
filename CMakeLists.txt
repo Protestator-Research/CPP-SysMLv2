@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(sysmlv2 CXX C)
+project(sysml CXX C)
 
 find_package(nlohmann_json REQUIRED)
 find_package(Boost REQUIRED)

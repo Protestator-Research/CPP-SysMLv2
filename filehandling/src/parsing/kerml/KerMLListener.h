@@ -122,6 +122,9 @@ public:
   virtual void enterFeature_element(KerMLParser::Feature_elementContext *ctx) = 0;
   virtual void exitFeature_element(KerMLParser::Feature_elementContext *ctx) = 0;
 
+  virtual void enterAdditional_options(KerMLParser::Additional_optionsContext *ctx) = 0;
+  virtual void exitAdditional_options(KerMLParser::Additional_optionsContext *ctx) = 0;
+
   virtual void enterType(KerMLParser::TypeContext *ctx) = 0;
   virtual void exitType(KerMLParser::TypeContext *ctx) = 0;
 
@@ -751,6 +754,9 @@ public:
 
   virtual void enterElement_filter_member(KerMLParser::Element_filter_memberContext *ctx) = 0;
   virtual void exitElement_filter_member(KerMLParser::Element_filter_memberContext *ctx) = 0;
+
+  virtual void enterMeta_assignment(KerMLParser::Meta_assignmentContext *ctx) = 0;
+  virtual void exitMeta_assignment(KerMLParser::Meta_assignmentContext *ctx) = 0;
 
 
 };

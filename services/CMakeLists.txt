@@ -8,7 +8,13 @@ set(API_HEADER
         src/interfaces/IExternalReleationshipService.h
         src/interfaces/IProjectService.h
         src/interfaces/IProjectVersioningService.h
-        src/interfaces/IQueryService.h)
+        src/interfaces/IQueryService.h
+        src/implementation/ProjectService.cpp
+        src/implementation/ProjectService.h
+        src/implementation/ProjectUsageService.cpp
+        src/implementation/ProjectUsageService.h
+        src/implementation/ProjectVersioningService.cpp
+        src/implementation/ProjectVersioningService.h)
 
 add_library(sysmlv2service
         ${API_HEADER}
@@ -21,9 +27,13 @@ target_link_libraries(sysmlv2service
         date::date
         sysmlv2rest)
 
+target_include_directories(sysmlv2service PUBLIC
+        ../rest-api/src
+        ../interfaces/src)
+
 include(GNUInstallDirs)
 install(TARGETS sysmlv2service ARCHIVE DESTINATION lib)
-install(FILES ${API_HEADER} DESTINATION include/sysmlv2/services)
+install(FILES ${API_HEADER} DESTINATION include/sysmlv2service)
 
 if(MSVC)
     target_compile_options(sysmlv2service PRIVATE /W4 /WX- /bigobj)

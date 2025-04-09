@@ -13,6 +13,7 @@
 #include <sstream>
 #include <date/date.h>
 #include <boost/uuid/string_generator.hpp>
+#include <boost/uuid/random_generator.hpp>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
@@ -92,5 +93,6 @@ namespace SysMLv2::Entities {
         Description = projectDescription;
         DefaultBranch = std::make_shared<Branch>(branchName);
         IsForCreation = true;
+        Record::Id = boost::uuids::random_generator()();
     }
 }

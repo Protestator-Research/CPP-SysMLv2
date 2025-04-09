@@ -27,7 +27,9 @@ jobs:
        conan install ..
        conan build .. --name=cpp-sysmlv2-lib --version=1.0-beta-3
     - name: test
-      run: Release/conformance-test/conformance-test
+      run: |
+        ls -al
+        Release/conformance-test/conformance-test
     #- name: test
     #- name: Doxygen
       # You may pin to the exact commit or the version.

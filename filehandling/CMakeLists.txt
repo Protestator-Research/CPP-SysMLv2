@@ -15,7 +15,9 @@ set(PARSER_HEADER
         src/parsing/sysml2/SysMLv2BaseListener.h
         src/parsing/sysml2/SysMLv2Lexer.h
         src/parsing/sysml2/SysMLv2Listener.h
-        src/parsing/sysml2/SysMLv2Parser.h)
+        src/parsing/sysml2/SysMLv2Parser.h
+        src/parsing/kerml/KerMlError.h
+        src/parsing/kerml/KerMlErrorListener.h)
 
 add_library(sysmlv2file
         src/parsing/kerml/KerMLBaseListener.cpp
@@ -27,7 +29,9 @@ add_library(sysmlv2file
         src/parsing/sysml2/SysMLv2Listener.cpp
         src/parsing/sysml2/SysMLv2Parser.cpp
         src/sysmlv2file_global.h
-        ${PARSER_HEADER})
+        ${PARSER_HEADER}
+        src/parsing/kerml/KerMlErrorListener.cpp
+        src/parsing/kerml/KerMlError.cpp)
 
 target_link_libraries(sysmlv2file
         boost::boost
@@ -38,7 +42,7 @@ target_link_libraries(sysmlv2file
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2file ARCHIVE DESTINATION lib)
-install(FILES ${PARSER_HEADER} DESTINATION include/sysmlv2/parser)
+install(FILES ${PARSER_HEADER} DESTINATION include/sysmlv2file)
 
 if(MSVC)
     target_compile_options(sysmlv2file PRIVATE /W4 /WX- /bigobj)

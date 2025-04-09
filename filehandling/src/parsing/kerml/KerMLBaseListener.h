@@ -124,6 +124,9 @@ public:
   virtual void enterFeature_element(KerMLParser::Feature_elementContext * /*ctx*/) override { }
   virtual void exitFeature_element(KerMLParser::Feature_elementContext * /*ctx*/) override { }
 
+  virtual void enterAdditional_options(KerMLParser::Additional_optionsContext * /*ctx*/) override { }
+  virtual void exitAdditional_options(KerMLParser::Additional_optionsContext * /*ctx*/) override { }
+
   virtual void enterType(KerMLParser::TypeContext * /*ctx*/) override { }
   virtual void exitType(KerMLParser::TypeContext * /*ctx*/) override { }
 
@@ -753,6 +756,9 @@ public:
 
   virtual void enterElement_filter_member(KerMLParser::Element_filter_memberContext * /*ctx*/) override { }
   virtual void exitElement_filter_member(KerMLParser::Element_filter_memberContext * /*ctx*/) override { }
+
+  virtual void enterMeta_assignment(KerMLParser::Meta_assignmentContext * /*ctx*/) override { }
+  virtual void exitMeta_assignment(KerMLParser::Meta_assignmentContext * /*ctx*/) override { }
 
 
   virtual void enterEveryRule(antlr4::ParserRuleContext * /*ctx*/) override { }
