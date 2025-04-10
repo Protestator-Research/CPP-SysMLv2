@@ -2,23 +2,26 @@ cmake_minimum_required(VERSION 3.15)
 
 project(sysmlv2service CXX C)
 
-set(API_HEADER
+set(INTERFACE_HEADER
         src/interfaces/IProjectUsageService.h
         src/interfaces/IElementNavigationService.h
         src/interfaces/IExternalReleationshipService.h
         src/interfaces/IProjectService.h
         src/interfaces/IProjectVersioningService.h
-        src/interfaces/IQueryService.h
-        src/implementation/ProjectService.cpp
+        src/interfaces/IQueryService.h)
+
+set(API_HEADER
         src/implementation/ProjectService.h
-        src/implementation/ProjectUsageService.cpp
         src/implementation/ProjectUsageService.h
-        src/implementation/ProjectVersioningService.cpp
         src/implementation/ProjectVersioningService.h)
 
 add_library(sysmlv2service
         ${API_HEADER}
+        ${INTERFACE_HEADER}
         src/implementation/ElementNavigationService.cpp
+        src/implementation/ProjectService.cpp
+        src/implementation/ProjectUsageService.cpp
+        src/implementation/ProjectVersioningService.cpp
         src/sysmlv2service_global.h)
 
 target_link_libraries(sysmlv2service
@@ -33,7 +36,8 @@ target_include_directories(sysmlv2service PUBLIC
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2service ARCHIVE DESTINATION lib)
-install(FILES ${API_HEADER} DESTINATION include/sysmlv2service)
+install(FILES ${API_HEADER} DESTINATION include/sysmlv2service/implementation)
+install(FILES ${INTERFACE_HEADER} DESTINATION include/sysmlv2service/interfaces)
 
 if(MSVC)
     target_compile_options(sysmlv2service PRIVATE /W4 /WX- /bigobj)

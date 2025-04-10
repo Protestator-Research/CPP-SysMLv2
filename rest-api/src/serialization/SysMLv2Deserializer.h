@@ -14,7 +14,7 @@
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
-#include <entities/IEntity.h>
+#include "../entities/IEntity.h"
 
 namespace SysMLv2 {
     /**

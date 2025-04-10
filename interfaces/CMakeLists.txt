@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project(sysmlv2base CXX C)
 
-set(ENTITIES_HEADER src/entities/IEntity.h)
+set(ENTITIES_HEADER ../rest-api/src/entities/IEntity.h)
 
 add_library(sysmlv2base INTERFACE
         ${ENTITIES_HEADER}
@@ -16,7 +16,7 @@ target_link_libraries(sysmlv2base INTERFACE
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2base ARCHIVE DESTINATION lib)
-install(FILES ${ENTITIES_HEADER} DESTINATION include/sysmlv2base)
+install(FILES ${ENTITIES_HEADER} DESTINATION include/sysmlv2/rest/entities)
 
 if(MSVC)
     target_compile_options(sysmlv2base INTERFACE /W4 /WX- /bigobj)

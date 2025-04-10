@@ -27,7 +27,8 @@ set(ENTITIES_HEADER
         src/entities/Direction.h
         src/entities/ChangeType.h
         src/entities/MergeResult.h
-        src/entities/DataDifference.h)
+        src/entities/DataDifference.h
+        src/entities/IEntity.h)
 
 set(SERIALIZATION_HEADER
         src/serialization/SysMLv2Deserializer.h)
@@ -60,15 +61,14 @@ add_library(sysmlv2rest
 target_link_libraries(sysmlv2rest
         boost::boost
         nlohmann_json::nlohmann_json
-        date::date
-        sysmlv2base)
+        date::date)
 
 target_include_directories(sysmlv2rest PUBLIC ../interfaces/src)
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2rest ARCHIVE DESTINATION lib)
-install(FILES ${ENTITIES_HEADER} DESTINATION include/sysmlv2rest/entities)
-install(FILES ${SERIALIZATION_HEADER} DESTINATION include/sysmlv2rest/serialization)
+install(FILES ${ENTITIES_HEADER} DESTINATION include/sysmlv2/rest/entities)
+install(FILES ${SERIALIZATION_HEADER} DESTINATION include/sysmlv2/rest/serialization)
 
 if(MSVC)
     target_compile_options(sysmlv2rest PRIVATE /W4 /WX- /bigobj)
