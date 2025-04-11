@@ -23,16 +23,13 @@ namespace SysMLv2::API {
         return std::shared_ptr<SysMLv2::Entities::Element>();
     }
 
-    std::vector<std::shared_ptr<SysMLv2::Entities::Relationship>>
-    ElementNavigationService::getRelationshipsByRelatedElement(
+    std::vector<std::shared_ptr<SysMLv2::Entities::Relationship>> ElementNavigationService::getRelationshipsByRelatedElement(
             std::shared_ptr<SysMLv2::Entities::Project>, std::shared_ptr<SysMLv2::Entities::Commit>,
             boost::uuids::uuid, int) {
         return std::vector<std::shared_ptr<SysMLv2::Entities::Relationship>>();
     }
 
-    std::vector<std::shared_ptr<SysMLv2::Entities::Element>>
-    ElementNavigationService::getRootElements(std::shared_ptr<SysMLv2::Entities::Project>,
-                                                            std::shared_ptr<SysMLv2::Entities::Commit>) {
+    std::vector<std::shared_ptr<SysMLv2::Entities::Element>> ElementNavigationService::getRootElements(std::shared_ptr<SysMLv2::Entities::Project>, std::shared_ptr<SysMLv2::Entities::Commit>) {
         return std::vector<std::shared_ptr<SysMLv2::Entities::Element>>();
     }
 
