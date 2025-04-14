@@ -6,6 +6,7 @@
 #define SYSML_PROJECTSERVICE_H
 
 #include "../interfaces/IProjectService.h"
+#include "../sysmlv2service_global.h"
 #include <vector>
 #include <map>
 #include <memory>
@@ -15,7 +16,7 @@ namespace SysMLv2::API {
     /**
      *
      */
-    class ProjectService : public IProjectService{
+    class SYSMLV2SERVICE_EXPORT ProjectService : public IProjectService{
     public:
         ProjectService();
         virtual ~ProjectService() = default;

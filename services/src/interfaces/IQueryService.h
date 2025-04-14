@@ -9,6 +9,7 @@
 #include <boost/uuid/uuid.hpp>
 #include <string>
 #include <memory>
+#include "../sysmlv2service_global.h"
 
 namespace SysMLv2::Entities {
     class Query;
@@ -22,7 +23,7 @@ namespace SysMLv2::API {
     /**
      *
      */
-    class IQueryService {
+    class SYSMLV2SERVICE_EXPORT IQueryService {
     public:
         /**
          *

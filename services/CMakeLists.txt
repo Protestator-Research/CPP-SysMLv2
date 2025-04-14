@@ -11,6 +11,7 @@ set(INTERFACE_HEADER
         src/interfaces/IQueryService.h)
 
 set(API_HEADER
+        src/implementation/ElementNavigationService.h
         src/implementation/ProjectService.h
         src/implementation/ProjectUsageService.h
         src/implementation/ProjectVersioningService.h)

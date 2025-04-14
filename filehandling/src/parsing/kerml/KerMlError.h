@@ -6,6 +6,7 @@
 #define SYSMLV2_KERMLERROR_H
 
 #include <string>
+#include "../../sysmlv2file_global.h"
 
 enum KerMLErrorType {
     SYNTAX_ERROR,
@@ -15,7 +16,7 @@ enum KerMLErrorType {
 };
 
 
-class KerMLError {
+class SYSMLV2FILE_EXPORT KerMLError {
 public:
     KerMLError() = delete;
     KerMLError(KerMLErrorType errorType, int line, int postionInLine, std::string message);

@@ -15,7 +15,7 @@
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
-
+#include "../sysmlv2service_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -37,7 +37,7 @@ namespace SysMLv2::API {
      * @see SysMLv2::Entities::Branch
      * @see SysMLv2::Entities::ExternalRelationship
      */
-    class IExternalRelationshipService {
+    class SYSMLV2SERVICE_EXPORT IExternalRelationshipService {
     public:
         /**
          * This is a interface for the method implementation that returns all all the external relationships for one specific commit in one project.

@@ -17,6 +17,7 @@
 // Internal Classes
 //---------------------------------------------------------
 #include "IEntity.h"
+#include "../sysmlv2rest_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -29,7 +30,7 @@ namespace SysMLv2::Entities {
      * @version 1.0
      * @see boost::uuids::uuid
      */
-    class Record : public IEntity {
+    class SYSMLV2REST_EXPORT Record : public IEntity {
     public:
         /**
          * Generalized Constructor is deleted According to the SysMLv2 Standard.

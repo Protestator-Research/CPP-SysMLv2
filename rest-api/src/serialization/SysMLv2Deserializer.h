@@ -15,12 +15,13 @@
 // Internal Classes
 //---------------------------------------------------------
 #include "../entities/IEntity.h"
+#include "../sysmlv2rest_global.h"
 
 namespace SysMLv2 {
     /**
      *
      */
-    class SysMLv2Deserializer {
+    class SYSMLV2REST_EXPORT SysMLv2Deserializer {
     public:
         /**
          * Deserializes a single element, which is contained within the inputValue.

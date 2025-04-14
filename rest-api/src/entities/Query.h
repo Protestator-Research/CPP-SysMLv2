@@ -14,6 +14,7 @@
 // Internal Classes
 //---------------------------------------------------------
 #include "Record.h"
+#include "../sysmlv2rest_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -25,7 +26,7 @@ namespace SysMLv2::Entities {
      * @author Moritz Herzog
      * @version 1.0
      */
-    class Query : public Record {
+    class SYSMLV2REST_EXPORT Query : public Record {
     public:
         explicit Query(std::string jsonString);
 

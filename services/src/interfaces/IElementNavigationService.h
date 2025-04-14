@@ -31,7 +31,7 @@
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
-
+#include "../sysmlv2service_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -53,7 +53,7 @@ namespace SysMLv2::API {
      * @see SysMLv2::Entities::Element
      * @see SysMLv2::Entities::Relationship
      */
-    class IElementNavigationService {
+    class SYSMLV2SERVICE_EXPORT IElementNavigationService {
     public:
         /**
          * Gets all the elements in a given project at a given commit.

@@ -20,6 +20,7 @@
 //---------------------------------------------------------
 #include "IEntity.h"
 #include "JSONEntities.h"
+#include "../sysmlv2rest_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -33,7 +34,7 @@ namespace SysMLv2::Entities {
      * @author Moritz Herzog
      * @class Identification
      */
-    class Identification : public IEntity {
+    class SYSMLV2REST_EXPORT Identification : public IEntity {
     public:
         /**
          * CTOR deleted

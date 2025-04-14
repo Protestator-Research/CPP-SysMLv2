@@ -7,12 +7,13 @@
 
 #include <vector>
 #include <memory>
+#include "../sysmlv2rest_global.h"
 
 namespace SysMLv2::Entities {
     class Commit;
     class DataIdentity;
 
-    class MergeResult {
+    class SYSMLV2REST_EXPORT MergeResult {
     public:
         MergeResult(std::shared_ptr<Commit> mergeCommit = nullptr, std::vector<std::shared_ptr<DataIdentity>> conflict = std::vector<std::shared_ptr<DataIdentity>>());
 

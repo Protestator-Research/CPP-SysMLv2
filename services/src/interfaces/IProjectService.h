@@ -11,10 +11,12 @@
 //---------------------------------------------------------
 #include <vector>
 #include <boost/uuid/uuid.hpp>
+#include <memory>
+#include <string>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
-
+#include "../sysmlv2service_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -33,7 +35,7 @@ namespace SysMLv2::API {
      * @see SysMLv2::Entities::Branch
      * @see boost::uuids::uuid
      */
-    class IProjectService {
+    class SYSMLV2SERVICE_EXPORT IProjectService {
     public:
         /**
          * Gets all Projects

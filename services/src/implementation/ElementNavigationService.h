@@ -6,9 +6,10 @@
 #define SYSMLV2_ELEMENTNAVIGATIONSERVICE_H
 
 #include "../interfaces/IElementNavigationService.h"
+#include "../sysmlv2service_global.h"
 
 namespace SysMLv2::API {
-    class ElementNavigationService : public IElementNavigationService{
+    class SYSMLV2SERVICE_EXPORT ElementNavigationService : public IElementNavigationService{
     public:
         ElementNavigationService();
         virtual ~ElementNavigationService() = default;
