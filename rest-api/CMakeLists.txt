@@ -6,6 +6,10 @@ find_package(nlohmann_json REQUIRED)
 find_package(Boost REQUIRED)
 find_package(date REQUIRED)
 
+set(GLOBAL_HEADER
+        src/sysmlv2rest_global.h
+)
+
 set(ENTITIES_HEADER
         src/entities/DataIdentity.h
         src/entities/Record.h
@@ -56,7 +60,7 @@ add_library(sysmlv2rest
         src/entities/DataDifference.cpp
         ${ENTITIES_HEADER}
         ${SERIALIZATION_HEADER}
-        src/sysmlv2rest_global.h)
+        ${GLOBAL_HEADER})
 
 target_link_libraries(sysmlv2rest
         boost::boost
@@ -68,6 +72,7 @@ target_include_directories(sysmlv2rest PUBLIC ../interfaces/src)
 include(GNUInstallDirs)
 install(TARGETS sysmlv2rest ARCHIVE DESTINATION lib)
 install(FILES ${ENTITIES_HEADER} DESTINATION include/sysmlv2/rest/entities)
+install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2/rest)
 install(FILES ${SERIALIZATION_HEADER} DESTINATION include/sysmlv2/rest/serialization)
 
 if(MSVC)

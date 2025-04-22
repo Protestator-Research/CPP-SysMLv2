@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.15)
 
 project(sysmlv2service CXX C)
 
+set(GLOBAL_HEADER
+        src/sysmlv2service_global.h)
+
 set(INTERFACE_HEADER
         src/interfaces/IProjectUsageService.h
         src/interfaces/IElementNavigationService.h
@@ -17,13 +20,13 @@ set(API_HEADER
         src/implementation/ProjectVersioningService.h)
 
 add_library(sysmlv2service
+        ${GLOBAL_HEADER}
         ${API_HEADER}
         ${INTERFACE_HEADER}
         src/implementation/ElementNavigationService.cpp
         src/implementation/ProjectService.cpp
         src/implementation/ProjectUsageService.cpp
-        src/implementation/ProjectVersioningService.cpp
-        src/sysmlv2service_global.h)
+        src/implementation/ProjectVersioningService.cpp)
 
 target_link_libraries(sysmlv2service
         boost::boost
@@ -37,6 +40,7 @@ target_include_directories(sysmlv2service PUBLIC
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2service ARCHIVE DESTINATION lib)
+install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2service)
 install(FILES ${API_HEADER} DESTINATION include/sysmlv2service/implementation)
 install(FILES ${INTERFACE_HEADER} DESTINATION include/sysmlv2service/interfaces)
 

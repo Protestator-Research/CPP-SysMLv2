@@ -7,19 +7,27 @@ find_package(Boost REQUIRED)
 find_package(date REQUIRED)
 find_package(antlr4-runtime REQUIRED)
 
-set(PARSER_HEADER
+set(GLOBAL_HEADER
+        src/sysmlv2file_global.h)
+
+set(KERML_PARSER_HEADER
         src/parsing/kerml/KerMLBaseListener.h
         src/parsing/kerml/KerMLLexer.h
         src/parsing/kerml/KerMLListener.h
         src/parsing/kerml/KerMLParser.h
-        src/parsing/sysml2/SysMLv2BaseListener.h
-        src/parsing/sysml2/SysMLv2Lexer.h
-        src/parsing/sysml2/SysMLv2Listener.h
-        src/parsing/sysml2/SysMLv2Parser.h
         src/parsing/kerml/KerMlError.h
         src/parsing/kerml/KerMlErrorListener.h)
 
+set(SYSML_PARSER_HEADER
+        src/parsing/sysml2/SysMLv2BaseListener.h
+        src/parsing/sysml2/SysMLv2Lexer.h
+        src/parsing/sysml2/SysMLv2Listener.h
+        src/parsing/sysml2/SysMLv2Parser.h)
+
 add_library(sysmlv2file
+        ${KERML_PARSER_HEADER}
+        ${SYSML_PARSER_HEADER}
+        ${GLOBAL_HEADER}
         src/parsing/kerml/KerMLBaseListener.cpp
         src/parsing/kerml/KerMLLexer.cpp
         src/parsing/kerml/KerMLListener.cpp
@@ -28,8 +36,6 @@ add_library(sysmlv2file
         src/parsing/sysml2/SysMLv2Lexer.cpp
         src/parsing/sysml2/SysMLv2Listener.cpp
         src/parsing/sysml2/SysMLv2Parser.cpp
-        src/sysmlv2file_global.h
-        ${PARSER_HEADER}
         src/parsing/kerml/KerMlErrorListener.cpp
         src/parsing/kerml/KerMlError.cpp)
 
@@ -42,7 +48,9 @@ target_link_libraries(sysmlv2file
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2file ARCHIVE DESTINATION lib)
-install(FILES ${PARSER_HEADER} DESTINATION include/sysmlv2file)
+install(FILES ${KERML_PARSER_HEADER} DESTINATION include/sysmlv2file/kerml)
+install(FILES ${SYSML_PARSER_HEADER} DESTINATION include/sysmlv2file/sysmlv2)
+install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2file)
 
 if(MSVC)
     target_compile_options(sysmlv2file PRIVATE /W4 /WX- /bigobj)
