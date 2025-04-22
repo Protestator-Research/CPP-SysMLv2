@@ -52,6 +52,7 @@ namespace SysMLv2::Entities {
          */
         std::shared_ptr<Commit> getHead();
 
+        void setHead(std::shared_ptr<Commit> head);
     private:
         std::shared_ptr<Commit> Head;
     };
