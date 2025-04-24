@@ -25,7 +25,7 @@ jobs:
       run: |
        mkdir build && cd build
        conan install ..
-       conan build .. --name=cpp-sysmlv2-lib --version=1.0-beta-3
+       conan build .. --version=1.0-beta-3
     - name: test
       run: |
         ls -al
