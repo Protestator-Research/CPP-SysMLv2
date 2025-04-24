@@ -30,3 +30,5 @@ foreach(_source IN ITEMS ${_source_list})
     string(REPLACE "/" "\\" _group_path "${_group_path}")
     source_group("${_group_path}" FILES "${_source}")
 endforeach()
+
+add_test(NAME conformance-test COMMAND conformance-test)
