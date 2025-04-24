@@ -77,9 +77,10 @@ class CPPSysMLRecipe(ConanFile):
         self.tool_requires("cmake/3.30.0")
         self.test_requires("gtest/1.14.0")
 
-    #def test(self):
-        #cmd = os.path.join(self.cpp.build.bindir, "conformance-test/conformance-test")
-        #self.run(cmd, env="conanrun")
+    def test(self):
+        cmake = CMake(self)
+        cmake.configure()
+        cmake.test()
 
     def package(self):
         cmake = CMake(self)

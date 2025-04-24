@@ -9,7 +9,7 @@ find_package(date REQUIRED)
 option(BUILD_WITH_REST "Builds with the SysMLv2 REST API" ON)
 option(BUILD_WITH_SERVICES "Builds with the SysMLv2 services API" ON)
 option(BUILD_WITH_PARSING "Builds with the SysMLv2 parsing API" ON)
-
+enable_testing()
 
 
 

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project(conformance-test CXX C)
 
-enable_testing()
+
 find_package(GTest)
 
 add_executable(conformance-test
