@@ -266,7 +266,8 @@ namespace SysMLv2::API {
 
         ServerResult = curl_easy_perform(serverConnection);
         if (ServerResult == CURLE_OK) {
-            barrierString = Data;
+            nlohmann::json resultJson = nlohmann::json::parse(Data);
+            barrierString = resultJson["barrierString"];
         } else {
             throw SysMLv2::API::EXCEPTIONS::ConnectionError(
                     static_cast<SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
