@@ -13,20 +13,18 @@
 #include <cstring>
 #include <curl/curl.h>
 #include <nlohmann/json.hpp>
-#include <BaseFuctions/StringExtention.hpp>
-#include <sysmlv2/serialization/SysMLv2Deserializer.h>
-#include <sysmlv2/entities/Project.h>
-#include <sysmlv2/entities/Commit.h>
-#include "AGILABackendImplementation/DigitalTwin.h"
+#include <serialization/SysMLv2Deserializer.h>
+#include <entities/Project.h>
+#include <entities/Commit.h>
 
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
 #include "SysMLAPIImplementation.h"
-#include "online/Exeptions/NotEnoughMemoryError.h"
-#include "online/Exeptions/ConnectionError.h"
-#include "online/APIImplementations/Standards/HttpReturnCodes.h"
-#include "online/Exeptions/HttpException.h"
+#include "../Exeptions/NotEnoughMemoryError.h"
+#include "../Exeptions/ConnectionError.h"
+#include "../APIImplementations/Standards/HttpReturnCodes.h"
+#include "../Exeptions/HttpException.h"
 
 
 
@@ -39,15 +37,15 @@ namespace BACKEND_COMMUNICATION {
     }
 
     SysMLAPIImplementation::~SysMLAPIImplementation() {
-        disconnectAndCleanUp();
+        curl_global_cleanup();
     }
 
     std::string SysMLAPIImplementation::loginUserWithPassword(std::string const& username, std::string const& passwod) {
         return loginToBackendVersion3(username,passwod);
     }
 
-    std::vector<SysMLv2::Entities::IEntity*> SysMLAPIImplementation::getAllProjects(std::string barrierString) {
-        std::vector<SysMLv2::Entities::IEntity*> returnValue;
+    std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> SysMLAPIImplementation::getAllProjects(std::string barrierString) {
+        std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> returnValue;
         CURLcode ServerResult;
 
         auto serverConnection = setUpServerConnection("projects", barrierString.c_str(), "");
@@ -112,67 +110,6 @@ namespace BACKEND_COMMUNICATION {
 
         return serverConnection;
     }
-
-    std::vector<SysMLv2::Entities::IEntity*> SysMLAPIImplementation::getAllDigitalTwinsForProject(std::string projectId, std::string barrierString) {
-        std::vector<SysMLv2::Entities::IEntity*> returnValue;
-        CURLcode ServerResult;
-
-        std::string urlAppendix = "projects/" + projectId + "/digital-twin/";
-
-        auto serverConnection = setUpServerConnection(urlAppendix.c_str(), barrierString.c_str(), "");
-
-        ServerResult = curl_easy_perform(serverConnection);
-
-        if (ServerResult == CURLE_OK) {
-            long httpResult;
-            curl_easy_getinfo(serverConnection, CURLINFO_RESPONSE_CODE, &httpResult);
-
-            if(tryToResolveHTTPError(httpResult, serverConnection)==INTERNAL_STATUS_CODE::SUCCESS){
-                returnValue = SysMLv2::SysMLv2Deserializer::deserializeJsonArray(Data);
-            }
-
-        } else {
-            throw BACKEND_COMMUNICATION::EXCEPTIONS::ConnectionError(
-                    static_cast<BACKEND_COMMUNICATION::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
-        }
-        curl_slist_free_all(HeaderList);
-        curl_easy_cleanup(serverConnection);
-
-        return returnValue;
-    }
-
-    SysMLv2::Entities::IEntity* SysMLAPIImplementation::postDigitalTwin(std::string projectId,
-	    SysMLv2::Entities::DigitalTwin* digitalTwin, std::string barrierString)
-    {
-        SysMLv2::Entities::IEntity* returnValue = nullptr;
-        CURLcode ServerResult;
-
-        std::string urlAppendix = "projects/" + projectId + "/digital-twin";
-        std::string jsonDump = digitalTwin->serializeToJson();
-
-        auto serverConnection = setUpServerConnection(urlAppendix.c_str(), barrierString.c_str(), jsonDump.c_str());
-
-        ServerResult = curl_easy_perform(serverConnection);
-
-        if (ServerResult == CURLE_OK) {
-            long httpResult;
-            curl_easy_getinfo(serverConnection, CURLINFO_RESPONSE_CODE, &httpResult);
-
-            if (tryToResolveHTTPError(httpResult, serverConnection) == INTERNAL_STATUS_CODE::SUCCESS) {
-                returnValue = SysMLv2::SysMLv2Deserializer::deserializeJsonString(Data);
-            }
-
-        }
-        else {
-            throw BACKEND_COMMUNICATION::EXCEPTIONS::ConnectionError(
-                static_cast<BACKEND_COMMUNICATION::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
-        }
-        curl_slist_free_all(HeaderList);
-        curl_easy_cleanup(serverConnection);
-
-        return returnValue;
-    }
-
 
     INTERNAL_STATUS_CODE SysMLAPIImplementation::tryToResolveHTTPError(long httpErrorCode, void* instance) {
         if(httpErrorCode>STANDARDS::HTTP::HTTP_PROPRIATARY)
@@ -260,10 +197,10 @@ namespace BACKEND_COMMUNICATION {
         return INTERNAL_STATUS_CODE::THROW_ERROR;
     }
 
-    std::vector<SysMLv2::Entities::IEntity *>
+    std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>>
     SysMLAPIImplementation::getAllElementsFromCommit(std::string projectId, std::string commitId, std::string barrierString) {
 
-        std::vector<SysMLv2::Entities::IEntity*> returnValue;
+        std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> returnValue;
         CURLcode ServerResult;
 
         std::string urlAppendix = "projects/" + projectId + "/commits/" + commitId + "/elements";
@@ -339,9 +276,9 @@ namespace BACKEND_COMMUNICATION {
         return barrierString;
     }
 
-    std::vector<SysMLv2::Entities::IEntity*> SysMLAPIImplementation::getAllBrachesFroProject(std::string const projectId, std::string barrierString)
+    std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> SysMLAPIImplementation::getAllBranchesFroProject(const std::string& projectId, std::string barrierString)
     {
-        std::vector<SysMLv2::Entities::IEntity*> returnValue;
+        std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> returnValue;
         CURLcode ServerResult;
 
         std::string urlAppendix = "projects/" + projectId + "/branches";
@@ -369,9 +306,9 @@ namespace BACKEND_COMMUNICATION {
         return returnValue;
     }
 
-    SysMLv2::Entities::IEntity *
-    SysMLAPIImplementation::postProject(SysMLv2::Entities::Project *project, std::string barrierString) {
-        SysMLv2::Entities::IEntity* returnValue = nullptr;
+    std::shared_ptr<SysMLv2::Entities::IEntity>
+    SysMLAPIImplementation::postProject(std::shared_ptr<SysMLv2::Entities::Project> project, std::string barrierString) {
+        std::shared_ptr<SysMLv2::Entities::IEntity> returnValue = nullptr;
         CURLcode ServerResult;
 
         std::string urlAppendix = "projects";
@@ -400,10 +337,10 @@ namespace BACKEND_COMMUNICATION {
 
     }
 
-    SysMLv2::Entities::IEntity* SysMLAPIImplementation::postCommit(std::string projectId,
-	    SysMLv2::Entities::Commit* commit, std::string barrierString)
+    std::shared_ptr<SysMLv2::Entities::IEntity> SysMLAPIImplementation::postCommit(std::string projectId,
+	    std::shared_ptr<SysMLv2::Entities::Commit> commit, std::string barrierString)
     {
-        SysMLv2::Entities::IEntity* returnValue = nullptr;
+        std::shared_ptr<SysMLv2::Entities::IEntity> returnValue = nullptr;
         CURLcode ServerResult;
 
         std::string urlAppendix = "projects/" + projectId + "/commits";
@@ -430,5 +367,10 @@ namespace BACKEND_COMMUNICATION {
         curl_easy_cleanup(serverConnection);
 
         return returnValue;
+    }
+
+    size_t SysMLAPIImplementation::WriteBufferCallback(char *contents, size_t size, size_t nmemb, void* userp){
+        ((std::string*)userp)->append((char*)contents, size * nmemb);
+        return size * nmemb;
     }
 }

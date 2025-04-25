@@ -10,6 +10,7 @@
 //---------------------------------------------------------
 #include <vector>
 #include <string>
+#include <memory>
 #include <curl/curl.h>
 //---------------------------------------------------------
 // Internal Classes
@@ -56,7 +57,7 @@ namespace BACKEND_COMMUNICATION {
          * @param barrierString The barrier authentication that is provided by the server.
          * @return A list of all Projects.
          */
-        std::vector<SysMLv2::Entities::IEntity*> getAllProjects(std::string barrierString);
+        std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> getAllProjects(std::string barrierString);
 
         /**
          *
@@ -64,7 +65,7 @@ namespace BACKEND_COMMUNICATION {
          * @param barrierString 
          * @return 
          */
-        SysMLv2::Entities::IEntity* postProject(SysMLv2::Entities::Project* project, std::string barrierString);
+        std::shared_ptr<SysMLv2::Entities::IEntity> postProject(std::shared_ptr<SysMLv2::Entities::Project> project, std::string barrierString);
 
         /**
          * 
@@ -73,16 +74,7 @@ namespace BACKEND_COMMUNICATION {
          * @param barrierString 
          * @return 
          */
-        SysMLv2::Entities::IEntity* postCommit(std::string projectId, SysMLv2::Entities::Commit* commit, std::string barrierString);
-
-
-        /**
-         * Downloads all digital twins from a project.
-         * @param projectId The Project UUID, given as a std::string.
-         * @param barrierString
-         * @return A vector of all digital twins, returned as a vector of IEntitiy.
-         */
-        std::vector<SysMLv2::Entities::IEntity*> getAllDigitalTwinsForProject(std::string projectId, std::string barrierString);
+        std::shared_ptr<SysMLv2::Entities::IEntity> postCommit(std::string projectId, std::shared_ptr<SysMLv2::Entities::Commit> commit, std::string barrierString);
 
         /**
          * Downloads and returns all elements of a commit from a specific project.
@@ -91,7 +83,7 @@ namespace BACKEND_COMMUNICATION {
          * @param barrierString The Barrier-String given after login.
          * @return All elements received from the backend.
          */
-        std::vector<SysMLv2::Entities::IEntity*> getAllElementsFromCommit(std::string projectId,std::string commitId, std::string barrierString);
+        std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> getAllElementsFromCommit(std::string projectId,std::string commitId, std::string barrierString);
 
         /**
          * Performs the login of the digital twin client and server at the backend. This login is also automatically
@@ -114,11 +106,24 @@ namespace BACKEND_COMMUNICATION {
          * @param projectId Displays the string of the Project UUID
          * @return JSON of the all the Branches.
          */
-        std::vector<SysMLv2::Entities::IEntity*> getAllBrachesFroProject(std::string const projectId, std::string barrierString);
+        std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> getAllBranchesFroProject(const std::string& projectId, std::string barrierString);
 
     protected:
+        /**
+         *
+         * @param urlAppendix
+         * @param barrierString
+         * @param postPayload
+         * @return
+         */
         CURL* setUpServerConnection(const char* urlAppendix, const char* barrierString, const char* postPayload);
 
+        /**
+         * In this method a internal resolvement of the HTTP connection error is tried. If this fails the exception is rethrown.
+         * @param httpErrorCode The HTTP error code that was thrown.
+         * @param instance The curl instance pointer.
+         * @return Returns an internal status code that can be referenced externally.
+         */
         INTERNAL_STATUS_CODE tryToResolveHTTPError(long httpErrorCode, void* instance);
 
         /**
@@ -129,9 +134,9 @@ namespace BACKEND_COMMUNICATION {
          */
         std::string loginToBackendVersion3(std::string const& username, std::string const& passwod);
 
-
-
     private:
+        static size_t WriteBufferCallback(char *contents, size_t size, size_t nmemb, void* userp);
+
         std::string ServerAddress;
         std::string ReturnedHeaderData;
         std::string Data;

@@ -30,6 +30,7 @@ class CPPSysMLRecipe(ConanFile):
         self.requires("boost/1.84.0")
         self.requires("nlohmann_json/3.11.3")
         self.requires("date/3.0.1")
+        self.requires("libcurl/8.4.0")
         if(self.options.with_parsing):
             self.requires("antlr4-cppruntime/4.13.1")
 
@@ -44,6 +45,7 @@ class CPPSysMLRecipe(ConanFile):
             self.options["nlohmann_json/*"].shared = True
             self.options["date/*"].shared = True
             self.options["gtest/*"].shared = True
+            self.options["libcurl/*"].shared = True
             if(self.options.with_parsing):
                 self.options["antlr4-cppruntime/*"].shared = True
         else:
@@ -51,6 +53,7 @@ class CPPSysMLRecipe(ConanFile):
             self.options["nlohmann_json/*"].shared = False
             self.options["date/*"].shared = False
             self.options["gtest/*"].shared = False
+            self.options["libcurl/*"].shared = False
             if(self.options.with_parsing):
                 self.options["antlr4-cppruntime/*"].shared = False
 
