@@ -110,11 +110,11 @@ namespace BACKEND_COMMUNICATION {
 
     protected:
         /**
-         *
-         * @param urlAppendix
-         * @param barrierString
-         * @param postPayload
-         * @return
+         * Sets up the server connection and creates the necessary CURL calls.
+         * @param urlAppendix The appendix to the url that is required to access the different folders for the Standard.
+         * @param barrierString The Barrier login string, this string might be required for login.
+         * @param postPayload The payload that is posted to the server.
+         * @return The CURL connection resulting from the properties.
          */
         CURL* setUpServerConnection(const char* urlAppendix, const char* barrierString, const char* postPayload);
 
