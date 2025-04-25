@@ -13,22 +13,22 @@
 #include <cstring>
 #include <curl/curl.h>
 #include <nlohmann/json.hpp>
-#include <serialization/SysMLv2Deserializer.h>
-#include <entities/Project.h>
-#include <entities/Commit.h>
+#include "serialization/SysMLv2Deserializer.h"
+#include "entities/Project.h"
+#include "entities/Commit.h"
 
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
 #include "SysMLAPIImplementation.h"
-#include "../Exeptions/NotEnoughMemoryError.h"
-#include "../Exeptions/ConnectionError.h"
-#include "../APIImplementations/Standards/HttpReturnCodes.h"
-#include "../Exeptions/HttpException.h"
+#include "NotEnoughMemoryError.h"
+#include "ConnectionError.h"
+#include "HttpReturnCodes.h"
+#include "HttpException.h"
 
 
 
-namespace BACKEND_COMMUNICATION {
+namespace SysMLv2::API {
 
     SysMLAPIImplementation::SysMLAPIImplementation(std::string serverAddress) {
         curl_global_init(CURL_GLOBAL_ALL);

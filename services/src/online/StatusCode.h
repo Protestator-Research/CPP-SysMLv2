@@ -5,7 +5,7 @@
 #ifndef DIGITALTWIN_STATUSCODE_H
 #define DIGITALTWIN_STATUSCODE_H
 
-namespace BACKEND_COMMUNICATION {
+namespace SysMLv2::API {
     enum INTERNAL_STATUS_CODE {
         SUCCESS = 0,
         RE_DO,

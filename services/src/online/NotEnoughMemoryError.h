@@ -7,7 +7,7 @@
 #include <stdexcept>
 
 
-namespace BACKEND_COMMUNICATION::EXCEPTIONS {
+namespace SysMLv2::API::EXCEPTIONS {
     class NotEnoughMemoryError : public std::runtime_error {
     public:
         NotEnoughMemoryError();

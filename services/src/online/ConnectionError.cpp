@@ -5,7 +5,7 @@
 #include "ConnectionError.h"
 #include <string>
 
-namespace BACKEND_COMMUNICATION::EXCEPTIONS {
+namespace SysMLv2::API::EXCEPTIONS {
     ConnectionError::ConnectionError(CONNECTION_ERROR_TYPE errorType)
     : runtime_error("") {
         ErrorType = errorType;

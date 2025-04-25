@@ -26,7 +26,7 @@ namespace SysMLv2::Entities {
     class Commit;
 }
 
-namespace BACKEND_COMMUNICATION {
+namespace SysMLv2::API {
     /**
      * Implements the Protocol of the SysMLv2 API Standard.
      * @version 1.1

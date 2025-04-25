@@ -20,13 +20,12 @@ set(API_HEADER
         src/implementation/ProjectVersioningService.h)
 
 set(ONLINE_HEADER
-        src/online/BECommunicationService.h
-        src/online/Exeptions/ConnectionError.h
-        src/online/Exeptions/HttpException.h
-        src/online/Exeptions/NotEnoughMemoryError.h
-        src/online/APIImplementations/Standards/HttpReturnCodes.h
-        src/online/APIImplementations/StatusCode.h
-        src/online/APIImplementations/SysMLAPIImplementation.h)
+        src/online/ConnectionError.h
+        src/online/HttpException.h
+        src/online/NotEnoughMemoryError.h
+        src/online/HttpReturnCodes.h
+        src/online/StatusCode.h
+        src/online/SysMLAPIImplementation.h)
 
 add_library(sysmlv2service
         ${GLOBAL_HEADER}
@@ -37,11 +36,10 @@ add_library(sysmlv2service
         src/implementation/ProjectService.cpp
         src/implementation/ProjectUsageService.cpp
         src/implementation/ProjectVersioningService.cpp
-        src/online/BECommunicationService.cpp
-        src/online/Exeptions/ConnectionError.cpp
-        src/online/Exeptions/HttpException.cpp
-        src/online/Exeptions/NotEnoughMemoryError.cpp
-        src/online/APIImplementations/SysMLAPIImplementation.cpp)
+        src/online/ConnectionError.cpp
+        src/online/HttpException.cpp
+        src/online/NotEnoughMemoryError.cpp
+        src/online/SysMLAPIImplementation.cpp)
 
 target_link_libraries(sysmlv2service
         boost::boost

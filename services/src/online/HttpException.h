@@ -7,7 +7,7 @@
 
 #include <exception>
 
-namespace BACKEND_COMMUNICATION::EXCEPTIONS {
+namespace SysMLv2::API::EXCEPTIONS {
     class HTTPException : std::exception {
     public:
         HTTPException() = delete;

@@ -5,7 +5,7 @@
 #ifndef DIGITALTWIN_HTTPRETURNCODES_H
 #define DIGITALTWIN_HTTPRETURNCODES_H
 
-namespace BACKEND_COMMUNICATION::STANDARDS::HTTP {
+namespace SysMLv2::API::STANDARDS::HTTP {
     /**
      * This enum represents a human readable version of the HTTP return codes.
      * HTTP Version 1.1

@@ -4,7 +4,7 @@
 
 #include "NotEnoughMemoryError.h"
 
-namespace BACKEND_COMMUNICATION::EXCEPTIONS {
+namespace SysMLv2::API::EXCEPTIONS {
 
     NotEnoughMemoryError::~NotEnoughMemoryError() {
 

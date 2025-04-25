@@ -6,7 +6,7 @@
 
 #include <stdexcept>
 
-namespace BACKEND_COMMUNICATION::EXCEPTIONS {
+namespace SysMLv2::API::EXCEPTIONS {
     enum CONNECTION_ERROR_TYPE {
         UNSUPPORTED_PROTOCOL = 1,
         FAILED_INIT,
@@ -98,7 +98,7 @@ namespace BACKEND_COMMUNICATION::EXCEPTIONS {
     class ConnectionError : public std::runtime_error {
     public:
         ConnectionError() = delete;
-        ConnectionError(BACKEND_COMMUNICATION::EXCEPTIONS::CONNECTION_ERROR_TYPE errorType);
+        ConnectionError(SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE errorType);
 
         const char * what() const noexcept override;
     private:
