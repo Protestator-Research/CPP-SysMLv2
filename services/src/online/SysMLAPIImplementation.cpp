@@ -61,8 +61,8 @@ namespace SysMLv2::API {
             }
 
         } else {
-            throw BACKEND_COMMUNICATION::EXCEPTIONS::ConnectionError(
-                    static_cast<BACKEND_COMMUNICATION::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
+            throw SysMLv2::API::EXCEPTIONS::ConnectionError(
+                    static_cast<SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
         }
         curl_slist_free_all(HeaderList);
         curl_easy_cleanup(serverConnection);
@@ -78,7 +78,7 @@ namespace SysMLv2::API {
         CURL* serverConnection = curl_easy_init();
 
         if(!serverConnection)
-            throw BACKEND_COMMUNICATION::EXCEPTIONS::NotEnoughMemoryError();
+            throw SysMLv2::API::EXCEPTIONS::NotEnoughMemoryError();
 
         char authorizationHeaderBeginning[] ="Authorization: Bearer ";
         char * authorizationHeader = new char[std::strlen(authorizationHeaderBeginning)+std::strlen(barrierString)+1];
@@ -113,7 +113,7 @@ namespace SysMLv2::API {
 
     INTERNAL_STATUS_CODE SysMLAPIImplementation::tryToResolveHTTPError(long httpErrorCode, void* instance) {
         if(httpErrorCode>STANDARDS::HTTP::HTTP_PROPRIATARY)
-            throw BACKEND_COMMUNICATION::EXCEPTIONS::HTTPException(httpErrorCode);
+            throw SysMLv2::API::EXCEPTIONS::HTTPException(httpErrorCode);
 
         switch (httpErrorCode) {
             case STANDARDS::HTTP::HTTP_CONTINUE:
@@ -191,7 +191,7 @@ namespace SysMLv2::API {
             case STANDARDS::HTTP::HTTP_BANDWIDTH_LIMIT:
             case STANDARDS::HTTP::HTTP_NOT_EXTENDED:
             case STANDARDS::HTTP::HTTP_NETWORK_AUTHENTICATION_REQUIRED:
-                throw BACKEND_COMMUNICATION::EXCEPTIONS::HTTPException(httpErrorCode);
+                throw SysMLv2::API::EXCEPTIONS::HTTPException(httpErrorCode);
         }
 
         return INTERNAL_STATUS_CODE::THROW_ERROR;
@@ -218,8 +218,8 @@ namespace SysMLv2::API {
             }
 
         } else {
-            throw BACKEND_COMMUNICATION::EXCEPTIONS::ConnectionError(
-                    static_cast<BACKEND_COMMUNICATION::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
+            throw SysMLv2::API::EXCEPTIONS::ConnectionError(
+                    static_cast<SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
         }
         curl_slist_free_all(HeaderList);
         curl_easy_cleanup(serverConnection);
@@ -268,8 +268,8 @@ namespace SysMLv2::API {
         if (ServerResult == CURLE_OK) {
             barrierString = Data;
         } else {
-            throw BACKEND_COMMUNICATION::EXCEPTIONS::ConnectionError(
-                    static_cast<BACKEND_COMMUNICATION::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
+            throw SysMLv2::API::EXCEPTIONS::ConnectionError(
+                    static_cast<SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
         }
 
         curl_easy_cleanup(serverConnection);
@@ -297,8 +297,8 @@ namespace SysMLv2::API {
 
         }
         else {
-            throw BACKEND_COMMUNICATION::EXCEPTIONS::ConnectionError(
-                static_cast<BACKEND_COMMUNICATION::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
+            throw SysMLv2::API::EXCEPTIONS::ConnectionError(
+                static_cast<SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
         }
         curl_slist_free_all(HeaderList);
         curl_easy_cleanup(serverConnection);
@@ -327,8 +327,8 @@ namespace SysMLv2::API {
 
         }
         else {
-            throw BACKEND_COMMUNICATION::EXCEPTIONS::ConnectionError(
-                    static_cast<BACKEND_COMMUNICATION::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
+            throw SysMLv2::API::EXCEPTIONS::ConnectionError(
+                    static_cast<SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
         }
         curl_slist_free_all(HeaderList);
         curl_easy_cleanup(serverConnection);
@@ -360,8 +360,8 @@ namespace SysMLv2::API {
 
         }
         else {
-            throw BACKEND_COMMUNICATION::EXCEPTIONS::ConnectionError(
-                static_cast<BACKEND_COMMUNICATION::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
+            throw SysMLv2::API::EXCEPTIONS::ConnectionError(
+                static_cast<SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
         }
         curl_slist_free_all(HeaderList);
         curl_easy_cleanup(serverConnection);

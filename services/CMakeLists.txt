@@ -56,6 +56,7 @@ install(TARGETS sysmlv2service ARCHIVE DESTINATION lib)
 install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2service)
 install(FILES ${API_HEADER} DESTINATION include/sysmlv2service/implementation)
 install(FILES ${INTERFACE_HEADER} DESTINATION include/sysmlv2service/interfaces)
+install(FILES ${ONLINE_HEADER} DESTINATION include/sysmlv2service/online)
 
 if(MSVC)
     target_compile_options(sysmlv2service PRIVATE /W4 /WX- /bigobj)
