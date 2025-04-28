@@ -8,6 +8,7 @@
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
+#include <sstream>
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -41,20 +42,24 @@ namespace SysMLv2::API {
     }
 
     std::string SysMLAPIImplementation::loginUserWithPassword(std::string const& username, std::string const& passwod) {
-        return loginToBackendVersion3(username,passwod);
+        if(getVersionOfBackend()=="2.X")
+            return loginToBackendVersion2(username,passwod);
+        else
+            return loginToBackendVersion3(username,passwod);
     }
 
     std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> SysMLAPIImplementation::getAllProjects(std::string barrierString) {
         std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> returnValue;
         CURLcode ServerResult;
-
+        std::cout << "getAllProjects: "<<ServerAddress<<"projects"<<std::endl;
         auto serverConnection = setUpServerConnection("projects", barrierString.c_str(), "");
-
+        std::cout<<"setUpServerConnection"<<std::endl;
         ServerResult = curl_easy_perform(serverConnection);
-
+        std::cout<<"curl_easy_perform: " << ServerResult<<std::endl;
         if (ServerResult == CURLE_OK) {
             long httpResult;
             curl_easy_getinfo(serverConnection, CURLINFO_RESPONSE_CODE, &httpResult);
+            std::cout<<"curl_easy_getinfo: " << httpResult<<std::endl;
 
             if(tryToResolveHTTPError(httpResult, serverConnection)==INTERNAL_STATUS_CODE::SUCCESS){
                 std::cout<<"getAllProjects: "<<Data<<std::endl;
@@ -243,9 +248,13 @@ namespace SysMLv2::API {
 
             if(httpResult==STANDARDS::HTTP::HTTP_OK)
                 returnValue = Data;
-            else
-                returnValue="2.X";
+            else {
+                returnValue = "2.X";
+                ServerAddress += "agila-server/";
+            }
         }
+
+
 
         curl_slist_free_all(HeaderList);
         curl_easy_cleanup(serverConnection);
@@ -402,6 +411,42 @@ namespace SysMLv2::API {
         }
         curl_slist_free_all(HeaderList);
         curl_easy_cleanup(serverConnection);
+
+        return returnValue;
+    }
+
+    std::string
+    SysMLAPIImplementation::loginToBackendVersion2(const std::string &username, const std::string &password) {
+        std::string barrierString;
+
+        CURLcode ServerResult;
+        nlohmann::json jsonData;
+        jsonData["email"] = username;
+        jsonData["password"] = password;
+
+
+        auto serverConnection = setUpServerConnection("users/login", "", jsonData.dump().c_str());
+
+        ServerResult = curl_easy_perform(serverConnection);
+        if (ServerResult == CURLE_OK) {
+            auto splittedAnswer = splittString(Data, ' ');
+            barrierString = splittedAnswer[2];
+        } else {
+            throw SysMLv2::API::EXCEPTIONS::ConnectionError(
+                    static_cast<SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
+        }
+
+        curl_easy_cleanup(serverConnection);
+        return barrierString;
+    }
+
+    std::vector<std::string> SysMLAPIImplementation::splittString(std::string value, char delimiter) {
+        std::vector<std::string> returnValue;
+        std::istringstream stream(value);
+        std::string internal;
+
+        while(std::getline(stream,internal, delimiter))
+            returnValue.push_back(internal);
 
         return returnValue;
     }

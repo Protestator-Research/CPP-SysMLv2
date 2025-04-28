@@ -140,9 +140,25 @@ namespace SysMLv2::API {
          * @param passwod The password of the user given as a string.
          * @return The barrier string from the server.
          */
-        std::string loginToBackendVersion3(std::string const& username, std::string const& passwod);
+        std::string loginToBackendVersion3(std::string const& username, std::string const& password);
+
+        /**
+         * Performs the login into the backend version 2.
+         * @param username The username given as a string.
+         * @param password The password of the user given as a string.
+         * @return The barrier string from the server.
+         */
+        std::string loginToBackendVersion2(std::string const& username, std::string const& password);
 
     private:
+        /**
+         *
+         * @param value
+         * @param delimiter
+         * @return
+         */
+        std::vector<std::string> splittString(std::string value, char delimiter);
+
         static size_t WriteBufferCallback(char *contents, size_t size, size_t nmemb, void* userp);
 
         std::string ServerAddress;
