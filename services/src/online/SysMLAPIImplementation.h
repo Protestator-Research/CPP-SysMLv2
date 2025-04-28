@@ -68,13 +68,21 @@ namespace SysMLv2::API {
         std::shared_ptr<SysMLv2::Entities::IEntity> postProject(std::shared_ptr<SysMLv2::Entities::Project> project, std::string barrierString);
 
         /**
-         * 
-         * @param projectId 
+         * Posts a commit to the Backend to add changes to a project or a branch.
+         * @param projectId
          * @param commit 
          * @param barrierString 
          * @return 
          */
         std::shared_ptr<SysMLv2::Entities::IEntity> postCommit(std::string projectId, std::shared_ptr<SysMLv2::Entities::Commit> commit, std::string barrierString);
+
+        /**
+         *
+         * @param projectId
+         * @param commitId
+         * @return
+         */
+        std::shared_ptr<SysMLv2::Entities::IEntity> getCommit(std::string projectId, std::string commitId, std::string barrierString);
 
         /**
          * Downloads and returns all elements of a commit from a specific project.

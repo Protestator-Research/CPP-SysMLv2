@@ -13,6 +13,7 @@
 #include <sstream>
 #include <date/date.h>
 #include <boost/uuid/string_generator.hpp>
+#include <iostream>
 #include <boost/uuid/random_generator.hpp>
 //---------------------------------------------------------
 // Internal Classes
@@ -49,6 +50,7 @@ namespace SysMLv2::Entities {
     }
 
     Project::Project(std::string JsonString) : Record(JsonString) {
+        std::cout<<"Project Constructor: "<< JsonString<<std::endl;
         try {
             nlohmann::json parsedJson = nlohmann::json::parse(JsonString);
 

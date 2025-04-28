@@ -13,9 +13,7 @@
 #include <cstring>
 #include <curl/curl.h>
 #include <nlohmann/json.hpp>
-#include "serialization/SysMLv2Deserializer.h"
-#include "entities/Project.h"
-#include "entities/Commit.h"
+
 
 //---------------------------------------------------------
 // Internal Classes
@@ -25,7 +23,9 @@
 #include "ConnectionError.h"
 #include "HttpReturnCodes.h"
 #include "HttpException.h"
-
+#include "serialization/SysMLv2Deserializer.h"
+#include "entities/Project.h"
+#include "entities/Commit.h"
 
 
 namespace SysMLv2::API {
@@ -57,6 +57,7 @@ namespace SysMLv2::API {
             curl_easy_getinfo(serverConnection, CURLINFO_RESPONSE_CODE, &httpResult);
 
             if(tryToResolveHTTPError(httpResult, serverConnection)==INTERNAL_STATUS_CODE::SUCCESS){
+                std::cout<<"getAllProjects: "<<Data<<std::endl;
                 returnValue = SysMLv2::SysMLv2Deserializer::deserializeJsonArray(Data);
             }
 
@@ -373,5 +374,35 @@ namespace SysMLv2::API {
     size_t SysMLAPIImplementation::WriteBufferCallback(char *contents, size_t size, size_t nmemb, void* userp){
         ((std::string*)userp)->append((char*)contents, size * nmemb);
         return size * nmemb;
+    }
+
+    std::shared_ptr<SysMLv2::Entities::IEntity>
+    SysMLAPIImplementation::getCommit(std::string projectId, std::string commitId, std::string barrierString) {
+        std::shared_ptr<SysMLv2::Entities::IEntity> returnValue;
+        CURLcode ServerResult;
+
+        std::string urlAppendix = "projects/" + projectId + "/commits/" + commitId;
+
+        auto serverConnection = setUpServerConnection(urlAppendix.c_str(), barrierString.c_str(), "");
+
+        ServerResult = curl_easy_perform(serverConnection);
+
+        if (ServerResult == CURLE_OK) {
+            long httpResult;
+            curl_easy_getinfo(serverConnection, CURLINFO_RESPONSE_CODE, &httpResult);
+
+            if (tryToResolveHTTPError(httpResult, serverConnection) == INTERNAL_STATUS_CODE::SUCCESS) {
+                returnValue = SysMLv2::SysMLv2Deserializer::deserializeJsonString(Data);
+            }
+
+        }
+        else {
+            throw SysMLv2::API::EXCEPTIONS::ConnectionError(
+                    static_cast<SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
+        }
+        curl_slist_free_all(HeaderList);
+        curl_easy_cleanup(serverConnection);
+
+        return returnValue;
     }
 }

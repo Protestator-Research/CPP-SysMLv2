@@ -10,6 +10,7 @@
 #include "../entities/Tag.h"
 #include "../entities/Query.h"
 #include "../entities/Element.h"
+#include "../entities/Commit.h"
 #include <nlohmann/json.hpp>
 #include <vector>
 #include <iostream>
@@ -40,6 +41,9 @@ namespace SysMLv2 {
 
         if(type==Entities::QUERY_TYPE)
             return std::make_shared<Entities::Query>(inputValue);
+
+        if(type==Entities::COMMIT_TYPE)
+            return std::make_shared<Entities::Commit>(inputValue);
 
         if(checkIfIsElementType(type))
             return std::make_shared<Entities::Element>(inputValue);
