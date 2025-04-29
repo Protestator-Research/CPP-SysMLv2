@@ -2,7 +2,10 @@ cmake_minimum_required(VERSION 3.15)
 
 project(sysmlv2service CXX C)
 
-set(API_HEADER
+set(GLOBAL_HEADER
+        src/sysmlv2service_global.h)
+
+set(INTERFACE_HEADER
         src/interfaces/IProjectUsageService.h
         src/interfaces/IElementNavigationService.h
         src/interfaces/IExternalReleationshipService.h
@@ -10,10 +13,33 @@ set(API_HEADER
         src/interfaces/IProjectVersioningService.h
         src/interfaces/IQueryService.h)
 
+set(API_HEADER
+        src/implementation/ElementNavigationService.h
+        src/implementation/ProjectService.h
+        src/implementation/ProjectUsageService.h
+        src/implementation/ProjectVersioningService.h)
+
+set(ONLINE_HEADER
+        src/online/ConnectionError.h
+        src/online/HttpException.h
+        src/online/NotEnoughMemoryError.h
+        src/online/HttpReturnCodes.h
+        src/online/StatusCode.h
+        src/online/SysMLAPIImplementation.h)
+
 add_library(sysmlv2service
+        ${GLOBAL_HEADER}
         ${API_HEADER}
+        ${INTERFACE_HEADER}
+        ${ONLINE_HEADER}
         src/implementation/ElementNavigationService.cpp
-        src/sysmlv2service_global.h)
+        src/implementation/ProjectService.cpp
+        src/implementation/ProjectUsageService.cpp
+        src/implementation/ProjectVersioningService.cpp
+        src/online/ConnectionError.cpp
+        src/online/HttpException.cpp
+        src/online/NotEnoughMemoryError.cpp
+        src/online/SysMLAPIImplementation.cpp)
 
 target_link_libraries(sysmlv2service
         boost::boost
@@ -21,9 +47,16 @@ target_link_libraries(sysmlv2service
         date::date
         sysmlv2rest)
 
+target_include_directories(sysmlv2service PUBLIC
+        ../rest-api/src
+        ../interfaces/src)
+
 include(GNUInstallDirs)
 install(TARGETS sysmlv2service ARCHIVE DESTINATION lib)
-install(FILES ${API_HEADER} DESTINATION include/sysmlv2/services)
+install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2service)
+install(FILES ${API_HEADER} DESTINATION include/sysmlv2service/implementation)
+install(FILES ${INTERFACE_HEADER} DESTINATION include/sysmlv2service/interfaces)
+install(FILES ${ONLINE_HEADER} DESTINATION include/sysmlv2service/online)
 
 if(MSVC)
     target_compile_options(sysmlv2service PRIVATE /W4 /WX- /bigobj)

@@ -6,14 +6,14 @@
 
 #include "antlr4-runtime.h"
 #include "SysMLv2Listener.h"
-
+#include "../../sysmlv2file_global.h"
 
 /**
  * This class provides an empty implementation of SysMLv2Listener,
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-class  SysMLv2BaseListener : public SysMLv2Listener {
+class SYSMLV2FILE_EXPORT SysMLv2BaseListener : public SysMLv2Listener {
 public:
 
   virtual void enterStart(SysMLv2Parser::StartContext * /*ctx*/) override { }

@@ -14,12 +14,13 @@
 // Internal Classes
 //---------------------------------------------------------
 #include "Element.h"
+#include "../sysmlv2rest_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
 
 namespace SysMLv2::Entities {
-    class Relationship : public Element {
+    class SYSMLV2REST_EXPORT Relationship : public Element {
 
     };
 } // SysMLv2

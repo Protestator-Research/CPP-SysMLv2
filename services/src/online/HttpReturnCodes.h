@@ -1,0 +1,96 @@
+//
+// Created by Moritz Herzog on 24.04.24.
+//
+
+#ifndef DIGITALTWIN_HTTPRETURNCODES_H
+#define DIGITALTWIN_HTTPRETURNCODES_H
+
+namespace SysMLv2::API::STANDARDS::HTTP {
+    /**
+     * This enum represents a human readable version of the HTTP return codes.
+     * HTTP Version 1.1
+     *
+     * @author Moritz Herzog <herzogm@rptu.de>
+     * @version 1.0
+     * @class HTTP_RETURN_CODES
+     */
+    enum HTTP_RETURN_CODES {
+        // Information Codes
+        HTTP_CONTINUE = 100,
+        HTTP_PROTOCOL_SWITCH,
+        HTTP_PROCESSING,
+        HTTP_EARLY_HINTS,
+
+        // Success Codes
+        HTTP_OK = 200,
+        HTTP_CREATED,
+        HTTP_ACCEPTED,
+        HTTP_NON_AUTHORITATIVE_INFORMATION,
+        HTTP_NO_CONTENT,
+        HTTP_RESET_CONTENT,
+        HTTP_PARTIAL_CONTENT,
+        HTTP_MULTI_STATUS,
+        HTTP_ALREADY_REPORTED,
+        HTTP_IM_USED = 226,
+
+        //Redirect
+        HTTP_MULTIPLE_CHOICES = 300,
+        HTTP_MOVED_PERMANENTLY,
+        HTTP_FOUND,
+        HTTP_SEE_OTHER,
+        HTTP_NOT_MODIFIED,
+        HTTP_USE_PROXY,
+        HTTP_SWITCH_PROXY,
+        HTTP_TEMPORARY_REDIRECT,
+        HTTP_PERMANENT_REDIRECT,
+
+        //Client error codes
+        HTTP_BAD_REQUEST = 400,
+        HTTP_UNAUTHORIZED,
+        HTTP_PAYMENT_REQUIRED,
+        HTTP_FORBIDDEN,
+        HTTP_NOT_FOUND,
+        HTTP_METHOD_NOT_ALLOWED,
+        HTTP_NOT_ACCEPTABLE,
+        HTTP_PROXY_AUTHENTICATION_REQUIRED,
+        HTTP_REQUEST_TIMEOUT,
+        HTTP_CONFLICT,
+        HTTP_GONE,
+        HTTP_LENGTH_REQUIRED,
+        HTTP_PRECONDITION_FIELD,
+        HTTP_PAYLOAD_TOO_LARGE,
+        HTTP_URI_TOO_LONG,
+        HTTP_UNSUPPORTED_MEDIA_TYPE,
+        HTTP_RANGE_NOT_SATISFIABLE,
+        HTTP_EXPECTATION_FAILED,
+        HTTP_MISDIRECTED_REQUEST = 421,
+        HTTP_UNPROCESSABLE_ENTITY,
+        HTTP_LOCKED,
+        HTTP_FAILED_DEPENDENCY,
+        HTTP_TOO_EARLY,
+        HTTP_UPGRADE_REQUIRED,
+        HTTP_PRECONDITION_REQUIRED,
+        HTTP_TOO_MANY_REQUESTS,
+        HTTP_REQUEST_HEADER_FIELDS = 431,
+        HTTP_UNAVAILABLE_FOR_LEGAL_REASONS = 451,
+
+        // Server error codes
+        HTTP_INTERNAL_SERVER_ERROR = 500,
+        HTTP_NOT_IMPLEMENTED,
+        HTTP_BAD_GATEWAY,
+        HTTP_SERVICE_UNAVAILABLE,
+        HTTP_GATEWAY_TIMEOUT,
+        HTTP_VERSION_NOT_SUPPORTED,
+        HTTP_VARIANT_ALSO_NEGOTIATES,
+        HTTP_INSUFFCIENT_STORAGE,
+        HTTP_LOOP_DETECTED,
+        HTTP_BANDWIDTH_LIMIT,
+        HTTP_NOT_EXTENDED,
+        HTTP_NETWORK_AUTHENTICATION_REQUIRED,
+
+        //Propriatary Codes
+        HTTP_PROPRIATARY = 900
+    };
+}
+
+#endif //DIGITALTWIN_HTTPRETURNCODES_H

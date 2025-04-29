@@ -46,7 +46,7 @@ membership_import: qualified_name (SYMBOL_NAMESPACE_SUBSET? (SYMBOL_DOUBLE_STAR|
 filter_package: import_declaration filter_package_member;
 filter_package_member: SYMBOL_SQUARE_BRACKET_OPEN owned_expression SYMBOL_SQUARE_BRACKET_CLOSE;
 
-element: annotating_element | non_feature_element | feature_element;
+element: annotating_element | non_feature_element | feature_element | additional_options;
 
 non_feature_element: dependency |
                     type |
@@ -86,6 +86,8 @@ feature_element: feature |
                  succession |
                  item_flow |
                  succession_item_flow;
+
+additional_options: meta_assignment;
 
 type: type_prefix KEYWORD_TYPE type_declaration type_body;
 type_prefix: KEYWORD_ABSTRACT? prefix_metadata_member*;
@@ -349,7 +351,7 @@ multiplicity_bounds: SYMBOL_SQUARE_BRACKET_OPEN (multiplicity_expression_member 
 multiplicity_expression_member: internal_multiplicity_expression_member;
 internal_multiplicity_expression_member: (literal_expression | feature_reference_expression);
 
-metaclass: type_prefix KEYWORD_METACLASS classifier_declaration type_body;
+metaclass: type_prefix KEYWORD_METACLASS classifier_declaration NAME? SPECIALIZES? NAME? type_body;
 prefix_metadata_annotation: SYMBOL_HASHTAG prefix_metadata_feature;
 prefix_metadata_member: SYMBOL_HASHTAG prefix_metadata_feature;
 prefix_metadata_feature: owned_feature_typing;
@@ -365,9 +367,11 @@ metadata_body_feature: KEYWORD_FEATURE? (SYMBOL_REDEFINES | KEYWORD_REDEFINES)? 
 
 package:(prefix_metadata_member)* package_declaration package_body;
 library_package: ('standard')? 'library' (prefix_metadata_member)* package_declaration package_body;
-package_declaration:KEYWORD_PACKAGE identification;
-package_body: ';' | (SYMBOL_CURLY_BRACKET_OPEN (namespace_body_element | element_filter_member)+ SYMBOL_CURLY_BRACKET_CLOSE);
+package_declaration: KEYWORD_PACKAGE identification;
+package_body: ';' | (SYMBOL_CURLY_BRACKET_OPEN (namespace_body_element | element_filter_member | element)+ SYMBOL_CURLY_BRACKET_CLOSE);
 element_filter_member: member_prefix KEYWORD_FILTER owned_expression ';';
+
+meta_assignment: qualified_name SYMBOL_ASSIGN 'meta' qualified_name ';';
 
 
 TYPED_BY: SYMBOL_TYPED_BY | KEYWORD_TYPED KEYWORD_BY;

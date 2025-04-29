@@ -14,12 +14,13 @@
 // Internal Classes
 //---------------------------------------------------------
 #include "Data.h"
+#include "../sysmlv2rest_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
 
 namespace SysMLv2::Entities {
-    class ExternalData : public Data{
+    class SYSMLV2REST_EXPORT ExternalData : public Data{
 
     };
 } // SysMLv2

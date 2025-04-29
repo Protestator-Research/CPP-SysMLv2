@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.15)
 
 project(kerml CXX C)
 
+set(GLOBAL_HEADER
+        src/kerml_global.h)
+
 set(ROOT_ELEMENTS_HEADER
         src/root/elements/Element.h
         src/root/elements/Relationship.h)
@@ -125,6 +128,7 @@ set(KERNEL_BEHAVIORS_HEADER
         src/kernel/behaviors/Behavior.h)
 
 add_library(kerml
+        ${GLOBAL_HEADER}
         ${ROOT_ELEMENTS_HEADER}
         ${ROOT_DEPENDENCIES_HEADER}
         ${ROOT_ANNOTATIONS_HEADER}
@@ -223,8 +227,7 @@ add_library(kerml
         src/kernel/functions/ReturnParameterMembership.cpp
         src/kernel/functions/ResultExpressionMembersip.cpp
         src/kernel/behaviors/Step.cpp
-        src/kernel/behaviors/Behavior.cpp
-        src/kerml_global.h )
+        src/kernel/behaviors/Behavior.cpp)
 
 target_link_libraries(kerml PRIVATE
         boost::boost
@@ -254,6 +257,7 @@ install(FILES ${KERNEL_INTERACTIONS_HEADER} DESTINATION include/kerml/kernel/int
 install(FILES ${KERNEL_MULTIPLICITIES_HEADER} DESTINATION include/kerml/kernel/multiplicities)
 install(FILES ${KERNEL_PACKAGE_HEADER} DESTINATION include/kerml/kernel/packages)
 install(FILES ${KERNEL_BEHAVIORS_HEADER} DESTINATION include/kerml/kernel/behaviors)
+install(FILES ${GLOBAL_HEADER} DESTINATION include/kerml)
 
 target_include_directories(kerml PRIVATE ./src/)
 

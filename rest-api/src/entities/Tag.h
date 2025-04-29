@@ -14,7 +14,7 @@
 // Internal Classes
 //---------------------------------------------------------
 #include "CommitReference.h"
-
+#include "../sysmlv2rest_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -27,7 +27,7 @@ namespace SysMLv2::Entities {
      * @author Moritz Herzog
      * @version 1.0
      */
-    class Tag : public CommitReference {
+    class SYSMLV2REST_EXPORT Tag : public CommitReference {
 
     public:
         /**
