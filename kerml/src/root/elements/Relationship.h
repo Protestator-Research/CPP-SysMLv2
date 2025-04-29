@@ -84,6 +84,8 @@ namespace KerML::Entities {
          * @return The owningRelatedElement, if available.
          */
         [[nodiscard]] std::shared_ptr<Element> owningRelatedElement() const;
+
+
     protected:
         /**
          * Allows to set the related Elements in bulk.
@@ -93,13 +95,13 @@ namespace KerML::Entities {
 
         /**
          * Returns the full and sorted list of the related elements.
-         * @return
+         * @return Returns the vectors of the related Elements.
          */
         [[nodiscard]] std::vector<std::shared_ptr<Element>> relatedElements() const;
 
         /**
-         *
-         * @param element
+         * Appends one element to the related elements vector.
+         * @param element A shared pointer to the related element.
          */
         void appendElementToRelatedElements(std::shared_ptr<Element> element);
 

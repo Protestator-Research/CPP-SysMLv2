@@ -35,4 +35,8 @@ namespace SysMLv2::Entities {
     {
         return Head;
     }
+
+    void Branch::setHead(std::shared_ptr<Commit> head) {
+        Head = head;
+    }
 }

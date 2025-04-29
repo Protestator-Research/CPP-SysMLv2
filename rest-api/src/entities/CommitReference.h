@@ -31,7 +31,7 @@
 // Internal Classes
 //---------------------------------------------------------
 #include "Record.h"
-
+#include "../sysmlv2rest_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -47,7 +47,7 @@ namespace SysMLv2::Entities {
      * @author Moritz Herzog
      * @version 1.0
      */
-    class CommitReference : public Record {
+    class SYSMLV2REST_EXPORT CommitReference : public Record {
     public:
 
         /**

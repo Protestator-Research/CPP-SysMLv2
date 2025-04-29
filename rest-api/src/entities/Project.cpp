@@ -13,6 +13,8 @@
 #include <sstream>
 #include <date/date.h>
 #include <boost/uuid/string_generator.hpp>
+#include <iostream>
+#include <boost/uuid/random_generator.hpp>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
@@ -48,6 +50,7 @@ namespace SysMLv2::Entities {
     }
 
     Project::Project(std::string JsonString) : Record(JsonString) {
+        std::cout<<"Project Constructor: "<< JsonString<<std::endl;
         try {
             nlohmann::json parsedJson = nlohmann::json::parse(JsonString);
 
@@ -92,5 +95,11 @@ namespace SysMLv2::Entities {
         Description = projectDescription;
         DefaultBranch = std::make_shared<Branch>(branchName);
         IsForCreation = true;
+        Record::Id = boost::uuids::random_generator()();
+    }
+
+    void Project::setDefaultBranch(std::shared_ptr<Branch> branch) {
+        DefaultBranch = branch;
+        Branches.push_back(branch);
     }
 }

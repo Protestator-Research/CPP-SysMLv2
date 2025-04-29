@@ -6,12 +6,12 @@
 
 #include "antlr4-runtime.h"
 #include "SysMLv2Parser.h"
-
+#include "../../sysmlv2file_global.h"
 
 /**
  * This interface defines an abstract listener for a parse tree produced by SysMLv2Parser.
  */
-class  SysMLv2Listener : public antlr4::tree::ParseTreeListener {
+class SYSMLV2FILE_EXPORT SysMLv2Listener : public antlr4::tree::ParseTreeListener {
 public:
 
   virtual void enterStart(SysMLv2Parser::StartContext *ctx) = 0;

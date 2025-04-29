@@ -14,7 +14,7 @@
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
-
+#include "../sysmlv2service_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -36,7 +36,7 @@ namespace SysMLv2::API {
      * @see SysMLv2::Entities::ProjectUsage
      * @see boost::uuids::uuid
      */
-    class IProjectUsageService {
+    class SYSMLV2SERVICE_EXPORT IProjectUsageService {
     public:
         /**
          * This is the interface implementation of the method, that gets all the project usages in the given project.

@@ -11,6 +11,7 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include <nlohmann/json.hpp>
+#include <iostream>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
@@ -29,6 +30,7 @@ namespace SysMLv2::Entities {
     }
 
     Record::Record(std::string jsonString) {
+        std::cout<<"Constructor of Record: " << jsonString << std::endl;
         try {
             nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
 
@@ -113,6 +115,10 @@ namespace SysMLv2::Entities {
 
     Record::~Record() {
 
+    }
+
+    void Record::setName(std::string name) {
+        Name = name;
     }
 
 }

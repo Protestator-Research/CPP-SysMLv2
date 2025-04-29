@@ -14,6 +14,7 @@
 // Internal Classes
 //---------------------------------------------------------
 #include "Data.h"
+#include "../sysmlv2rest_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -27,7 +28,7 @@ namespace SysMLv2::Entities {
      * Defines the Project Usage according to the SysML v2 Standard
      * @author Moritz Herzog
      */
-    class ProjectUsage : public Data {
+    class SYSMLV2REST_EXPORT ProjectUsage : public Data {
     public:
         /**
          * Constructor

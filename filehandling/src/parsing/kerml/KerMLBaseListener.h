@@ -6,14 +6,14 @@
 
 #include "antlr4-runtime.h"
 #include "KerMLListener.h"
-
+#include "../../sysmlv2file_global.h"
 
 /**
  * This class provides an empty implementation of KerMLListener,
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-class  KerMLBaseListener : public KerMLListener {
+class SYSMLV2FILE_EXPORT KerMLBaseListener : public KerMLListener {
 public:
 
   virtual void enterStart(KerMLParser::StartContext * /*ctx*/) override { }
@@ -123,6 +123,9 @@ public:
 
   virtual void enterFeature_element(KerMLParser::Feature_elementContext * /*ctx*/) override { }
   virtual void exitFeature_element(KerMLParser::Feature_elementContext * /*ctx*/) override { }
+
+  virtual void enterAdditional_options(KerMLParser::Additional_optionsContext * /*ctx*/) override { }
+  virtual void exitAdditional_options(KerMLParser::Additional_optionsContext * /*ctx*/) override { }
 
   virtual void enterType(KerMLParser::TypeContext * /*ctx*/) override { }
   virtual void exitType(KerMLParser::TypeContext * /*ctx*/) override { }
@@ -753,6 +756,9 @@ public:
 
   virtual void enterElement_filter_member(KerMLParser::Element_filter_memberContext * /*ctx*/) override { }
   virtual void exitElement_filter_member(KerMLParser::Element_filter_memberContext * /*ctx*/) override { }
+
+  virtual void enterMeta_assignment(KerMLParser::Meta_assignmentContext * /*ctx*/) override { }
+  virtual void exitMeta_assignment(KerMLParser::Meta_assignmentContext * /*ctx*/) override { }
 
 
   virtual void enterEveryRule(antlr4::ParserRuleContext * /*ctx*/) override { }

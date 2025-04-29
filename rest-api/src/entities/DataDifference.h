@@ -7,11 +7,12 @@
 
 #include <memory>
 #include "DataVersion.h"
+#include "../sysmlv2rest_global.h"
 
 namespace SysMLv2 ::Entities {
     class DataVersion;
 
-    class DataDifference {
+    class SYSMLV2REST_EXPORT DataDifference {
     public:
         explicit DataDifference(std::shared_ptr<DataVersion> baseData = nullptr, std::shared_ptr<DataVersion> comparedData = nullptr);
 

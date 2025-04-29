@@ -15,7 +15,8 @@
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
-#include "../entities/ChangeType.h"
+#include <entities/ChangeType.h>
+#include "../sysmlv2service_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -45,7 +46,7 @@ namespace SysMLv2::API {
      * @see SysMLv2::Entities::Data
      * @see SysMLv2::Entities::DataDifference
      */
-    class IProjectVersioningService{
+    class SYSMLV2SERVICE_EXPORT IProjectVersioningService{
         /**
          * Gets all the commits from the given project.
          * @param project The given project, where the commits are returned.
