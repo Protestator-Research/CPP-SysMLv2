@@ -5,11 +5,11 @@
 
 
 #include "antlr4-runtime.h"
-#include "../../sysmlv2file_global.h"
 
 
 
-class SYSMLV2FILE_EXPORT KerMLLexer : public antlr4::Lexer {
+
+class  KerMLLexer : public antlr4::Lexer {
 public:
   enum {
     T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, TYPED_BY = 5, SPECIALIZES = 6, 

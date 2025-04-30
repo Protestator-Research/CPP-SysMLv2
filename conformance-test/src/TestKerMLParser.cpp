@@ -49,6 +49,44 @@ TEST(TestKerMLParser, TestAddressBookModel) {
     EXPECT_EQ(listener->getSyntaxErrors().size(),0);
 }
 
+TEST(TestKerMLParser, ConformanceTestA2Atoms) {
+    std::string valueToParse = "package Atoms {\n"
+                               "\tdoc\n"
+                               "\t/* This package defines a keyword (atom) for classifiers with\n"
+                               "\t * exactly one instance and are disjoint from any others\n"
+                               "\t * marked with this keyword.\n"
+                               "\t */\n"
+                               "\n"
+                               "\tprivate import Metaobjects::Metaobject;\n"
+                               "\t\n"
+                               "\tclassifier Atom;\n"
+                               "\tmetaclass <atom> AtomMetadata specializes Metaobject {\n"
+                               "\t\tbaseType = Atom meta KerML::Classifier;\n"
+                               "\t}\n"
+                               "}";
+
+    // Provide the input text in a stream
+    antlr4::ANTLRInputStream input(valueToParse);
+
+    KerMLErrorListener *listener = new KerMLErrorListener();
+
+    // Create a lexer from the input
+    KerMLLexer lexer(&input);
+    lexer.addErrorListener(listener);
+
+    // Create a token stream from the lexer
+    antlr4::CommonTokenStream tokens(&lexer);
+
+
+    // Create a parser from the token stream
+    KerMLParser parser(&tokens);
+    parser.addErrorListener(listener);
+
+    // Display the parse tree
+    //std::cout << parser.start()->toStringTree() << std::endl;
+    EXPECT_EQ(listener->getSyntaxErrors().size(),0);
+}
+
 TEST(TestKerMLParser, TestJohnIndividualModel) {
     std::string valueToParse = "package JohnIndividualExample {\n"
                                "\tprivate import Objects::*;\n"
@@ -177,45 +215,7 @@ TEST(TestKerMLParser, TestJohnIndividualModel) {
     EXPECT_EQ(listener->getSyntaxErrors().size(),0);
 }
 
-TEST(TestKerMLParser, TestAtomsModel) {
-    std::string valueToParse = "package Atoms {\n"
-                               "\tdoc\n"
-                               "\t/* This package defines a keyword (atom) for classifiers with\n"
-                               "\t * exactly one instance and are disjoint from any others\n"
-                               "\t * marked with this keyword.\n"
-                               "\t */\n"
-                               "\n"
-                               "\tprivate import Metaobjects::Metaobject;\n"
-                               "\t\n"
-                               "\tclassifier Atom;\n"
-                               "\tmetaclass <atom> AtomMetadata specializes Metaobject {\n"
-                               "\t\tbaseType = Atom meta KerML::Classifier;\n"
-                               "\t}\n"
-                               "}";
-
-    // Provide the input text in a stream
-    antlr4::ANTLRInputStream input(valueToParse);
-
-    auto listener = new KerMLErrorListener();
-
-    // Create a lexer from the input
-    KerMLLexer lexer(&input);
-    lexer.addErrorListener(listener);
-
-    // Create a token stream from the lexer
-    antlr4::CommonTokenStream tokens(&lexer);
-
-
-    // Create a parser from the token stream
-    KerMLParser parser(&tokens);
-    parser.addErrorListener(listener);
-
-    // Display the parse tree
-    std::cout << parser.start()->toStringTree() << std::endl;
-    EXPECT_EQ(listener->getSyntaxErrors().size(),0);
-}
-
-TEST(TestKerMLParser, TestModelingInstancesModel) {
+TEST(TestKerMLParser, ConformanceTestA2ModelinInstances) {
     std::string valueToParse = "package ModelingInstances {\n"
                                "\tdoc\n"
                                "\t/* \n"
@@ -252,6 +252,148 @@ TEST(TestKerMLParser, TestModelingInstancesModel) {
                                "\t#atom\n"
                                "\tclassifier OurGarage specializes Garage {\n"
                                "\t\tfeature redefines stores : OurBicycle [2];\n"
+                               "\t}\n"
+                               "}";
+
+    // Provide the input text in a stream
+    antlr4::ANTLRInputStream input(valueToParse);
+
+    auto listener = new KerMLErrorListener();
+
+    // Create a lexer from the input
+    KerMLLexer lexer(&input);
+    lexer.addErrorListener(listener);
+
+    // Create a token stream from the lexer
+    antlr4::CommonTokenStream tokens(&lexer);
+
+
+    // Create a parser from the token stream
+    KerMLParser parser(&tokens);
+    parser.addErrorListener(listener);
+
+    // Display the parse tree
+    std::cout << parser.start()->toStringTree() << std::endl;
+    EXPECT_EQ(listener->getSyntaxErrors().size(),0);
+}
+
+TEST(TestKerMLParser, ConformanceTestA32WithoutConnectors) {
+    std::string valueToParse = "package WithoutConnectorsModelToBeExecuted {\n"
+                               "\tdoc\n"
+                               "\t/* \n"
+                               "\t */\n"
+                               "\n"
+                               "\tclassifier Bicycle {\n"
+                               "\t\tfeature rollsOn : Wheel [2];\n"
+                               "\t\tfeature holdsWheel : BikeFork [*];\n"
+                               "\t}\n"
+                               "\tclassifier Wheel;\n"
+                               "\tclassifier BikeFork;\n"
+                               "}\n"
+                               "\n"
+                               "package WithoutConnectorsExecution {\n"
+                               "\tdoc\n"
+                               "\t/* \n"
+                               "\t */\n"
+                               "\n"
+                               "\tprivate import Atoms::*;\n"
+                               "\tprivate import WithoutConnectorsModelToBeExecuted::*;\n"
+                               "\n"
+                               "\t#atom\n"
+                               "\tclassifier MyWheel1 specializes Wheel;\n"
+                               "\t#atom\n"
+                               "\tclassifier MyWheel2 specializes Wheel;\n"
+                               "\n"
+                               "\tclassifier MyWheel unions MyWheel1, MyWheel2;\n"
+                               "\n"
+                               "\t#atom\n"
+                               "\tclassifier MyBike specializes Bicycle {\n"
+                               "\t\tfeature redefines rollsOn : MyWheel;\n"
+                               "\t}\n"
+                               "}\n"
+                               "\n"
+                               "\n"
+                               "";
+
+    // Provide the input text in a stream
+    antlr4::ANTLRInputStream input(valueToParse);
+
+    auto listener = new KerMLErrorListener();
+
+    // Create a lexer from the input
+    KerMLLexer lexer(&input);
+    lexer.addErrorListener(listener);
+
+    // Create a token stream from the lexer
+    antlr4::CommonTokenStream tokens(&lexer);
+
+
+    // Create a parser from the token stream
+    KerMLParser parser(&tokens);
+    parser.addErrorListener(listener);
+
+    // Display the parse tree
+    std::cout << parser.start()->toStringTree() << std::endl;
+    EXPECT_EQ(listener->getSyntaxErrors().size(),0);
+}
+
+TEST(TestKerMLParser, ConformanceTestA33OneToOneConnectors) {
+    std::string valueToParse = "\n"
+                               "package OneToOneConnectorsModelToBeExecuted {\n"
+                               "\tdoc\n"
+                               "\t/* \n"
+                               "\t */\n"
+                               "\n"
+                               "    public import WithoutConnectorsModelToBeExecuted::Wheel;\n"
+                               "    public import WithoutConnectorsModelToBeExecuted::BikeFork;\n"
+                               "\n"
+                               "\tclassifier Bicycle {\n"
+                               "\t\tfeature rollsOn : Wheel [2];\n"
+                               "\t\tfeature holdsWheel : BikeFork [*];\n"
+                               "\t\tconnector fixWheel : BikeWheelFixed from [1] rollsOn to [1] holdsWheel;\n"
+                               "\t}\n"
+                               "\tassoc BikeWheelFixed {\n"
+                               "\t\tend feature wheel : Wheel;\n"
+                               "\t\tend feature fixedTo : BikeFork;\n"
+                               "\t}\n"
+                               "}\n"
+                               "\n"
+                               "package OneToOneConnectorsExecution {\n"
+                               "\tdoc\n"
+                               "\t/* \n"
+                               "\t */\n"
+                               "\n"
+                               "\tprivate import Atoms::*;\n"
+                               "\tpublic import OneToOneConnectorsModelToBeExecuted::*;\n"
+                               "\tpublic import WithoutConnectorsExecution::MyWheel1;\n"
+                               "\tpublic import WithoutConnectorsExecution::MyWheel2;\n"
+                               "\tpublic import WithoutConnectorsExecution::MyWheel;\n"
+                               "\n"
+                               "\t#atom\n"
+                               "\tclassifier MyBikeFork1 specializes BikeFork;\n"
+                               "\t#atom\n"
+                               "\tclassifier MyBikeFork2 specializes BikeFork;\n"
+                               "\n"
+                               "\tclassifier MyBikeFork unions MyBikeFork1, MyBikeFork2;\n"
+                               "\n"
+                               "\t#atom\n"
+                               " \tassoc MyBikeWheel1_Fork1_BWF_Link specializes BikeWheelFixed {\n"
+                               "\t\tend feature redefines wheel : MyWheel1;\n"
+                               "\t\tend feature redefines fixedTo : MyBikeFork1;\n"
+                               "\t}\n"
+                               "\t#atom\n"
+                               "\tassoc MyBikeWheel2_Fork2_BWF_Link specializes BikeWheelFixed {\n"
+                               "\t\tend feature redefines wheel : MyWheel2;\n"
+                               "\t\tend feature redefines fixedTo : MyBikeFork2;\n"
+                               "\t}\n"
+                               "\n"
+                               "\tclassifier MyBikeWheel_Fork_BWF_Link unions MyBikeWheel1_Fork1_BWF_Link, MyBikeWheel2_Fork2_BWF_Link;\n"
+                               "\n"
+                               "\t#atom\n"
+                               "\tclassifier MyBike specializes Bicycle {\n"
+                               "\t\tfeature redefines rollsOn : MyWheel;\n"
+                               "\t\tfeature redefines holdsWheel : MyBikeFork;\n"
+                               "\t\tconnector redefines fixWheel : MyBikeWheel_Fork_BWF_Link [2] from [1] rollsOn to [1] holdsWheel;\n"
                                "\t}\n"
                                "}";
 

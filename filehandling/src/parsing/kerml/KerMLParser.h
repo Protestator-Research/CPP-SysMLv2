@@ -5,11 +5,11 @@
 
 
 #include "antlr4-runtime.h"
-#include "../../sysmlv2file_global.h"
 
 
 
-class SYSMLV2FILE_EXPORT KerMLParser : public antlr4::Parser {
+
+class  KerMLParser : public antlr4::Parser {
 public:
   enum {
     T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, TYPED_BY = 5, SPECIALIZES = 6, 
@@ -1042,7 +1042,7 @@ public:
     virtual size_t getRuleIndex() const override;
     IdentificationContext *identification();
     antlr4::tree::TerminalNode *KEYWORD_ALL();
-    Owned_multiplicityContext *owned_multiplicity();
+    Multiplicity_boundsContext *multiplicity_bounds();
     std::vector<Specialization_partContext *> specialization_part();
     Specialization_partContext* specialization_part(size_t i);
     std::vector<Conjugation_partContext *> conjugation_part();
@@ -1437,10 +1437,10 @@ public:
   public:
     ClassifierContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Type_prefixContext *type_prefix();
     antlr4::tree::TerminalNode *KEYWORD_CLASSIFIER();
     Classifier_declarationContext *classifier_declaration();
     Type_bodyContext *type_body();
+    Type_prefixContext *type_prefix();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1455,7 +1455,7 @@ public:
     virtual size_t getRuleIndex() const override;
     IdentificationContext *identification();
     antlr4::tree::TerminalNode *KEYWORD_ALL();
-    Owned_multiplicityContext *owned_multiplicity();
+    Multiplicity_boundsContext *multiplicity_bounds();
     Superclassing_partContext *superclassing_part();
     Conjugation_partContext *conjugation_part();
     std::vector<Type_relationship_partContext *> type_relationship_part();
@@ -1573,6 +1573,7 @@ public:
   public:
     Feature_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    Type_bodyContext *type_body();
     Feature_identificationContext *feature_identification();
     Feature_specialization_partContext *feature_specialization_part();
     Conjugation_partContext *conjugation_part();
@@ -1671,9 +1672,9 @@ public:
   public:
     Feature_specialization_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Multiplicity_partContext *multiplicity_part();
     std::vector<Feature_specilizationContext *> feature_specilization();
     Feature_specilizationContext* feature_specilization(size_t i);
+    Multiplicity_partContext *multiplicity_part();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1686,7 +1687,7 @@ public:
   public:
     Multiplicity_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Owned_multiplicityContext *owned_multiplicity();
+    Multiplicity_boundsContext *multiplicity_bounds();
     antlr4::tree::TerminalNode *KEYWORD_ORDERED();
     antlr4::tree::TerminalNode *KEYWORD_NONUNIQUE();
 
@@ -1901,13 +1902,13 @@ public:
   public:
     RedefinitionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *KEYWORD_REDEFINITION();
     Specific_typeContext *specific_type();
     antlr4::tree::TerminalNode *REDEFINES();
     General_typeContext *general_type();
     Relationship_bodyContext *relationship_body();
     antlr4::tree::TerminalNode *KEYWORD_SPECILIZATION();
     IdentificationContext *identification();
-    antlr4::tree::TerminalNode *KEYWORD_REDEFINITION();
     Multiplicity_partContext *multiplicity_part();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -2208,7 +2209,7 @@ public:
     Owned_reference_subsettingContext *owned_reference_subsetting();
     antlr4::tree::TerminalNode *NAME();
     antlr4::tree::TerminalNode *REFERENCES();
-    Owned_multiplicityContext *owned_multiplicity();
+    Multiplicity_boundsContext *multiplicity_bounds();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -3733,7 +3734,7 @@ public:
     Item_feature_specilization_partContext *item_feature_specilization_part();
     Value_partContext *value_part();
     Owned_feature_typingContext *owned_feature_typing();
-    Owned_multiplicityContext *owned_multiplicity();
+    Multiplicity_boundsContext *multiplicity_bounds();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -3903,7 +3904,7 @@ public:
   public:
     Owned_multiplicityContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Owned_multiplicity_rangeContext *owned_multiplicity_range();
+    Multiplicity_boundsContext *multiplicity_bounds();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -3973,10 +3974,11 @@ public:
   public:
     MetaclassContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Type_prefixContext *type_prefix();
     antlr4::tree::TerminalNode *KEYWORD_METACLASS();
-    Classifier_declarationContext *classifier_declaration();
     Type_bodyContext *type_body();
+    IdentificationContext *identification();
+    Classifier_declarationContext *classifier_declaration();
+    Type_prefixContext *type_prefix();
     std::vector<antlr4::tree::TerminalNode *> NAME();
     antlr4::tree::TerminalNode* NAME(size_t i);
     antlr4::tree::TerminalNode *SPECIALIZES();
@@ -4222,6 +4224,7 @@ public:
     std::vector<Qualified_nameContext *> qualified_name();
     Qualified_nameContext* qualified_name(size_t i);
     antlr4::tree::TerminalNode *SYMBOL_ASSIGN();
+    IdentificationContext *identification();
     antlr4::tree::TerminalNode *SYMBOL_STATEMENT_DELIMITER();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
