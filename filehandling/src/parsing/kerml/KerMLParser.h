@@ -1193,7 +1193,8 @@ public:
   public:
     Type_body_elementsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    ElementsContext *elements();
+    std::vector<Type_body_elementContext *> type_body_element();
+    Type_body_elementContext* type_body_element(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1573,13 +1574,13 @@ public:
   public:
     Feature_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Type_bodyContext *type_body();
     Feature_identificationContext *feature_identification();
     Feature_specialization_partContext *feature_specialization_part();
     Conjugation_partContext *conjugation_part();
     antlr4::tree::TerminalNode *KEYWORD_ALL();
     std::vector<Feature_relationship_partContext *> feature_relationship_part();
     Feature_relationship_partContext* feature_relationship_part(size_t i);
+    Type_bodyContext *type_body();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -2124,12 +2125,10 @@ public:
   public:
     ConnectorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Feature_prefixContext *feature_prefix();
     antlr4::tree::TerminalNode *KEYWORD_CONNECTOR();
-    Type_bodyContext *type_body();
     Connector_declarationContext *connector_declaration();
-    Feature_declarationContext *feature_declaration();
-    Value_partContext *value_part();
+    Type_bodyContext *type_body();
+    Type_prefixContext *type_prefix();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -2142,6 +2141,7 @@ public:
   public:
     Connector_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    Feature_declarationContext *feature_declaration();
     Binary_connector_declarationContext *binary_connector_declaration();
     Nary_connector_declarationContext *nary_connector_declaration();
 
@@ -2156,12 +2156,11 @@ public:
   public:
     Binary_connector_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *KEYWORD_FROM();
     std::vector<Connector_end_memberContext *> connector_end_member();
     Connector_end_memberContext* connector_end_member(size_t i);
     antlr4::tree::TerminalNode *KEYWORD_TO();
-    antlr4::tree::TerminalNode *KEYWORD_FROM();
     antlr4::tree::TerminalNode *KEYWORD_ALL();
-    Feature_declarationContext *feature_declaration();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -2180,7 +2179,6 @@ public:
     std::vector<antlr4::tree::TerminalNode *> SYMBOL_COMMA();
     antlr4::tree::TerminalNode* SYMBOL_COMMA(size_t i);
     antlr4::tree::TerminalNode *SYMBOL_ROUND_BRACKET_CLOSE();
-    Feature_declarationContext *feature_declaration();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

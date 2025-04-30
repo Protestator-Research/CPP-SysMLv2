@@ -100,7 +100,7 @@ unioning_part: KEYWORD_UNIONS unioning (SYMBOL_COMMA unioning)*;
 intersecting_part: KEYWORD_INTERSECTS intersecting (SYMBOL_COMMA intersecting)*;
 differencing_part: KEYWORD_DIFFERENCES differencing (SYMBOL_COMMA differencing)*;
 type_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN type_body_elements SYMBOL_CURLY_BRACKET_CLOSE);
-type_body_elements: elements;
+type_body_elements: type_body_element*;
 type_body_element: non_feature_element | feature_element | alias_member | namespace_import;
 
 specialization: (KEYWORD_SPECILIZATION identification)? KEYWORD_SUBTYPE specific_type SPECIALIZES general_type relationship_body;
@@ -131,7 +131,7 @@ owned_subclassification: qualified_name;
 feature: feature_prefix ((KEYWORD_FEATURE feature_declaration) | KEYWORD_FEATURE | prefix_metadata_member);
 feature_prefix: (feature_direction)? KEYWORD_ABSTRACT? (KEYWORD_COMPOSITE | KEYWORD_PORTION)? KEYWORD_READONLY? KEYWORD_DERIVED? KEYWORD_END? prefix_metadata_member*;
 feature_direction: (KEYWORD_IN | KEYWORD_OUT | KEYWORD_INOUT);
-feature_declaration: KEYWORD_ALL? (feature_identification (feature_specialization_part | conjugation_part)? | feature_specialization_part | conjugation_part) feature_relationship_part* type_body;
+feature_declaration: KEYWORD_ALL? (feature_identification (feature_specialization_part | conjugation_part)? | feature_specialization_part | conjugation_part) feature_relationship_part* type_body?;
 feature_identification: SYMBOL_SMALLER NAME SYMBOL_GREATER (NAME)? | NAME;
 feature_relationship_part: type_relationship_part | chaining_part | inverting_part | type_featuring_part;
 chaining_part: KEYWORD_CHAINS owned_feature_chaining | feature_chain;
@@ -177,12 +177,12 @@ structure: type_prefix KEYWORD_STRUCT classifier_declaration type_body;
 association: type_prefix KEYWORD_ASSOC classifier_declaration type_body;
 association_structure: type_prefix KEYWORD_ASSOC KEYWORD_STRUCT classifier_declaration type_body;
 
-connector: feature_prefix? KEYWORD_CONNECTOR (connector_declaration|feature_declaration? value_part?) type_body;
-connector_declaration: binary_connector_declaration | nary_connector_declaration;
-binary_connector_declaration: (feature_declaration KEYWORD_FROM | KEYWORD_ALL KEYWORD_FROM?) connector_end_member KEYWORD_TO connector_end_member;
-nary_connector_declaration: feature_declaration? SYMBOL_ROUND_BRACKET_OPEN connector_end_member SYMBOL_COMMA connector_end_member (SYMBOL_COMMA connector_end_member)* SYMBOL_ROUND_BRACKET_CLOSE;
+connector: type_prefix? KEYWORD_CONNECTOR connector_declaration type_body;
+connector_declaration: feature_declaration (binary_connector_declaration | nary_connector_declaration);
+binary_connector_declaration: KEYWORD_ALL? KEYWORD_FROM connector_end_member 'to' connector_end_member;
+nary_connector_declaration: SYMBOL_ROUND_BRACKET_OPEN connector_end_member SYMBOL_COMMA connector_end_member (SYMBOL_COMMA connector_end_member)* SYMBOL_ROUND_BRACKET_CLOSE;
 connector_end_member: connector_end;
-connector_end: NAME REFERENCES? owned_reference_subsetting? multiplicity_bounds?;
+connector_end: (NAME REFERENCES)? multiplicity_bounds? owned_reference_subsetting;
 
 binding_connector: feature_prefix KEYWORD_BINDING binding_connector_declaration type_body;
 binding_connector_declaration: feature_declaration (KEYWORD_OF connector_end_member SYMBOL_EQUALS connector_end_member)? | (KEYWORD_ALL? (KEYWORD_OF? connector_end_member SYMBOL_EQUALS connector_end_member)?);
