@@ -688,6 +688,9 @@ public:
   virtual void enterFeature_value(KerMLParser::Feature_valueContext * /*ctx*/) override { }
   virtual void exitFeature_value(KerMLParser::Feature_valueContext * /*ctx*/) override { }
 
+  virtual void enterFeature_assignment(KerMLParser::Feature_assignmentContext * /*ctx*/) override { }
+  virtual void exitFeature_assignment(KerMLParser::Feature_assignmentContext * /*ctx*/) override { }
+
   virtual void enterMultiplicity(KerMLParser::MultiplicityContext * /*ctx*/) override { }
   virtual void exitMultiplicity(KerMLParser::MultiplicityContext * /*ctx*/) override { }
 

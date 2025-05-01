@@ -686,6 +686,9 @@ public:
   virtual void enterFeature_value(KerMLParser::Feature_valueContext *ctx) = 0;
   virtual void exitFeature_value(KerMLParser::Feature_valueContext *ctx) = 0;
 
+  virtual void enterFeature_assignment(KerMLParser::Feature_assignmentContext *ctx) = 0;
+  virtual void exitFeature_assignment(KerMLParser::Feature_assignmentContext *ctx) = 0;
+
   virtual void enterMultiplicity(KerMLParser::MultiplicityContext *ctx) = 0;
   virtual void exitMultiplicity(KerMLParser::MultiplicityContext *ctx) = 0;
 

@@ -40,22 +40,22 @@ public:
     KEYWORD_SUBSET = 94, KEYWORD_SUBSETS = 95, KEYWORD_SUBTYPE = 96, KEYWORD_SUCCSESSION = 97, 
     KEYWORD_THEN = 98, KEYWORD_TO = 99, KEYWORD_TRUE = 100, KEYWORD_TYPE = 101, 
     KEYWORD_TYPED = 102, KEYWORD_TYPING = 103, KEYWORD_UNIONS = 104, KEYWORD_XOR = 105, 
-    SINGLE_LINE_NOTE = 106, MULTI_LINE_NOTE = 107, REGULAR_COMMENT = 108, 
-    SYMBOL_COMMENT_BLOCK_START = 109, SYMBOL_NOTE_BLOCK_START = 110, SYMBOL_COMMENT_BLOCK_END = 111, 
-    SYMBOL_STATEMENT_DELIMITER = 112, SYMBOL_STAR = 113, SYMBOL_NAMESPACE_SUBSET = 114, 
-    SYMBOL_TYPED_BY = 115, SYMBOL_SPECIALIZES = 116, SYMBOL_REFERENCES = 117, 
-    SYMBOL_REDEFINES = 118, SYMBOL_CONJUNGATES = 119, SYMBOL_ROUND_BRACKET_OPEN = 120, 
-    SYMBOL_ROUND_BRACKET_CLOSE = 121, SYMBOL_CURLY_BRACKET_OPEN = 122, SYMBOL_CURLY_BRACKET_CLOSE = 123, 
-    SYMBOL_SQUARE_BRACKET_OPEN = 124, SYMBOL_SQUARE_BRACKET_CLOSE = 125, 
-    SYMBOL_COMMA = 126, SYMBOL_AT = 127, SYMBOL_HASHTAG = 128, SYMBOL_MOD = 129, 
-    SYMBOL_AND = 130, SYMBOL_UPPER = 131, SYMBOL_VERTICAL_LINE = 132, SYMBOL_DOUBLE_STAR = 133, 
-    SYMBOL_PLUS = 134, SYMBOL_MINUS = 135, SYMBOL_SLASH = 136, SYMBOL_ARROOW = 137, 
-    SYMBOL_DOT = 138, SYMBOL_DDOT = 139, SYMBOL_SMALLER = 140, SYMBOL_SMALLER_EQUAL = 141, 
-    SYMBOL_ASSIGN = 142, SYMBOL_DEF_ASSIGN = 143, SYMBOL_EQUALS = 144, SYMBOL_IFF_EQUALS = 145, 
-    SYMBOL_NOT_EQUALS = 146, SYMBOL_IFF_NOT_EQUALS = 147, SYMBOL_GREATER = 148, 
-    SYMBOL_GREATER_EQUALS = 149, SYMBOL_QUESTION = 150, SYMBOL_DQUESTION = 151, 
-    SYMBOL_DOT_QUESTION = 152, NAME = 153, BASIC_NAME = 154, UNRESTRICTED_NAME = 155, 
-    DECIMAL_VALUE = 156, EXPONENTIAL_VALUE = 157, STRING_VALUE = 158, WS = 159
+    KEYWORD_VAR = 106, SINGLE_LINE_NOTE = 107, MULTI_LINE_NOTE = 108, REGULAR_COMMENT = 109, 
+    SYMBOL_COMMENT_BLOCK_START = 110, SYMBOL_NOTE_BLOCK_START = 111, SYMBOL_COMMENT_BLOCK_END = 112, 
+    SYMBOL_STATEMENT_DELIMITER = 113, SYMBOL_STAR = 114, SYMBOL_NAMESPACE_SUBSET = 115, 
+    SYMBOL_TYPED_BY = 116, SYMBOL_SPECIALIZES = 117, SYMBOL_REFERENCES = 118, 
+    SYMBOL_REDEFINES = 119, SYMBOL_CONJUNGATES = 120, SYMBOL_ROUND_BRACKET_OPEN = 121, 
+    SYMBOL_ROUND_BRACKET_CLOSE = 122, SYMBOL_CURLY_BRACKET_OPEN = 123, SYMBOL_CURLY_BRACKET_CLOSE = 124, 
+    SYMBOL_SQUARE_BRACKET_OPEN = 125, SYMBOL_SQUARE_BRACKET_CLOSE = 126, 
+    SYMBOL_COMMA = 127, SYMBOL_AT = 128, SYMBOL_HASHTAG = 129, SYMBOL_MOD = 130, 
+    SYMBOL_AND = 131, SYMBOL_UPPER = 132, SYMBOL_VERTICAL_LINE = 133, SYMBOL_DOUBLE_STAR = 134, 
+    SYMBOL_PLUS = 135, SYMBOL_MINUS = 136, SYMBOL_SLASH = 137, SYMBOL_ARROOW = 138, 
+    SYMBOL_DOT = 139, SYMBOL_DDOT = 140, SYMBOL_SMALLER = 141, SYMBOL_SMALLER_EQUAL = 142, 
+    SYMBOL_ASSIGN = 143, SYMBOL_DEF_ASSIGN = 144, SYMBOL_EQUALS = 145, SYMBOL_IFF_EQUALS = 146, 
+    SYMBOL_NOT_EQUALS = 147, SYMBOL_IFF_NOT_EQUALS = 148, SYMBOL_GREATER = 149, 
+    SYMBOL_GREATER_EQUALS = 150, SYMBOL_QUESTION = 151, SYMBOL_DQUESTION = 152, 
+    SYMBOL_DOT_QUESTION = 153, NAME = 154, BASIC_NAME = 155, UNRESTRICTED_NAME = 156, 
+    DECIMAL_VALUE = 157, EXPONENTIAL_VALUE = 158, STRING_VALUE = 159, WS = 160
   };
 
   enum {
@@ -136,15 +136,16 @@ public:
     RuleItem_feature_specilization_part = 216, RuleItem_flow_end_member = 217, 
     RuleItem_flow_end = 218, RuleItem_flow_feature_member = 219, RuleItem_flow_feature = 220, 
     RuleItem_flow_redefinition = 221, RuleValue_part = 222, RuleFeature_value = 223, 
-    RuleMultiplicity = 224, RuleMultiplicity_subset = 225, RuleMultiplicity_range = 226, 
-    RuleOwned_multiplicity = 227, RuleOwned_multiplicity_range = 228, RuleMultiplicity_bounds = 229, 
-    RuleMultiplicity_expression_member = 230, RuleInternal_multiplicity_expression_member = 231, 
-    RuleMetaclass = 232, RulePrefix_metadata_annotation = 233, RulePrefix_metadata_member = 234, 
-    RulePrefix_metadata_feature = 235, RuleMetadata_feature = 236, RuleMetadata_feature_declaration = 237, 
-    RuleMetadata_body = 238, RuleMetadata_body_element = 239, RuleMetadata_body_feature_member = 240, 
-    RuleMetadata_body_feature = 241, RulePackage = 242, RuleLibrary_package = 243, 
-    RulePackage_declaration = 244, RulePackage_body = 245, RuleElement_filter_member = 246, 
-    RuleMeta_assignment = 247
+    RuleFeature_assignment = 224, RuleMultiplicity = 225, RuleMultiplicity_subset = 226, 
+    RuleMultiplicity_range = 227, RuleOwned_multiplicity = 228, RuleOwned_multiplicity_range = 229, 
+    RuleMultiplicity_bounds = 230, RuleMultiplicity_expression_member = 231, 
+    RuleInternal_multiplicity_expression_member = 232, RuleMetaclass = 233, 
+    RulePrefix_metadata_annotation = 234, RulePrefix_metadata_member = 235, 
+    RulePrefix_metadata_feature = 236, RuleMetadata_feature = 237, RuleMetadata_feature_declaration = 238, 
+    RuleMetadata_body = 239, RuleMetadata_body_element = 240, RuleMetadata_body_feature_member = 241, 
+    RuleMetadata_body_feature = 242, RulePackage = 243, RuleLibrary_package = 244, 
+    RulePackage_declaration = 245, RulePackage_body = 246, RuleElement_filter_member = 247, 
+    RuleMeta_assignment = 248
   };
 
   explicit KerMLParser(antlr4::TokenStream *input);
@@ -388,6 +389,7 @@ public:
   class Item_flow_redefinitionContext;
   class Value_partContext;
   class Feature_valueContext;
+  class Feature_assignmentContext;
   class MultiplicityContext;
   class Multiplicity_subsetContext;
   class Multiplicity_rangeContext;
@@ -489,7 +491,8 @@ public:
   public:
     Relationship_onwed_elementsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    ElementsContext *elements();
+    std::vector<Relationship_owned_elementContext *> relationship_owned_element();
+    Relationship_owned_elementContext* relationship_owned_element(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1193,8 +1196,8 @@ public:
   public:
     Type_body_elementsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    std::vector<Type_body_elementContext *> type_body_element();
-    Type_body_elementContext* type_body_element(size_t i);
+    std::vector<ElementContext *> element();
+    ElementContext* element(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1207,11 +1210,7 @@ public:
   public:
     Type_body_elementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Non_feature_elementContext *non_feature_element();
-    Feature_elementContext *feature_element();
-    Alias_memberContext *alias_member();
-    Namespace_importContext *namespace_import();
-    Additional_optionsContext *additional_options();
+    ElementContext *element();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1523,9 +1522,13 @@ public:
   public:
     FeatureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Feature_prefixContext *feature_prefix();
+    Type_bodyContext *type_body();
     antlr4::tree::TerminalNode *KEYWORD_FEATURE();
     Prefix_metadata_memberContext *prefix_metadata_member();
+    Feature_prefixContext *feature_prefix();
+    SubsetsContext *subsets();
+    Feature_assignmentContext *feature_assignment();
+    Feature_valueContext *feature_value();
     Feature_declarationContext *feature_declaration();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1546,6 +1549,7 @@ public:
     antlr4::tree::TerminalNode *KEYWORD_END();
     std::vector<Prefix_metadata_memberContext *> prefix_metadata_member();
     Prefix_metadata_memberContext* prefix_metadata_member(size_t i);
+    antlr4::tree::TerminalNode *KEYWORD_VAR();
     antlr4::tree::TerminalNode *KEYWORD_COMPOSITE();
     antlr4::tree::TerminalNode *KEYWORD_PORTION();
 
@@ -1752,10 +1756,10 @@ public:
     SubsettingsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     SubsetsContext *subsets();
-    std::vector<antlr4::tree::TerminalNode *> SYMBOL_COMMA();
-    antlr4::tree::TerminalNode* SYMBOL_COMMA(size_t i);
     std::vector<Owned_subsettingContext *> owned_subsetting();
     Owned_subsettingContext* owned_subsetting(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> SYMBOL_COMMA();
+    antlr4::tree::TerminalNode* SYMBOL_COMMA(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1813,6 +1817,7 @@ public:
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *REDEFINES();
     Owned_redefinitionContext *owned_redefinition();
+    Feature_directionContext *feature_direction();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1904,14 +1909,18 @@ public:
   public:
     RedefinitionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *KEYWORD_REDEFINITION();
-    Specific_typeContext *specific_type();
     antlr4::tree::TerminalNode *REDEFINES();
-    General_typeContext *general_type();
+    Qualified_nameContext *qualified_name();
     Relationship_bodyContext *relationship_body();
+    Feature_directionContext *feature_direction();
     antlr4::tree::TerminalNode *KEYWORD_SPECILIZATION();
     IdentificationContext *identification();
+    antlr4::tree::TerminalNode *KEYWORD_REDEFINITION();
+    Specific_typeContext *specific_type();
+    Typed_byContext *typed_by();
     Multiplicity_partContext *multiplicity_part();
+    SubsetsContext *subsets();
+    Feature_assignmentContext *feature_assignment();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1952,7 +1961,8 @@ public:
     virtual size_t getRuleIndex() const override;
     std::vector<Owned_feature_chainingContext *> owned_feature_chaining();
     Owned_feature_chainingContext* owned_feature_chaining(size_t i);
-    antlr4::tree::TerminalNode *SYMBOL_DOT();
+    std::vector<antlr4::tree::TerminalNode *> SYMBOL_DOT();
+    antlr4::tree::TerminalNode* SYMBOL_DOT(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -2077,10 +2087,10 @@ public:
   public:
     StructureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Type_prefixContext *type_prefix();
     antlr4::tree::TerminalNode *KEYWORD_STRUCT();
     Classifier_declarationContext *classifier_declaration();
     Type_bodyContext *type_body();
+    Type_prefixContext *type_prefix();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -3534,7 +3544,8 @@ public:
   public:
     Literal_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Literal_booleanContext *literal_boolean();
+    antlr4::tree::TerminalNode *KEYWORD_TRUE();
+    antlr4::tree::TerminalNode *KEYWORD_FALSE();
     Literal_stringContext *literal_string();
     Literal_integerContext *literal_integer();
     Literal_realContext *literal_real();
@@ -3852,6 +3863,20 @@ public:
   };
 
   Feature_valueContext* feature_value();
+
+  class  Feature_assignmentContext : public antlr4::ParserRuleContext {
+  public:
+    Feature_assignmentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *SYMBOL_ASSIGN();
+    Owned_expressionContext *owned_expression();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Feature_assignmentContext* feature_assignment();
 
   class  MultiplicityContext : public antlr4::ParserRuleContext {
   public:

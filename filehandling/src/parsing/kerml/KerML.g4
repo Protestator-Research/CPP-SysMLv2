@@ -14,7 +14,7 @@ elements: element*;
 
 identification: ('<' NAME '>')? | (NAME)?;
 relationship_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN relationship_onwed_elements SYMBOL_CURLY_BRACKET_CLOSE);
-relationship_onwed_elements: elements;
+relationship_onwed_elements: relationship_owned_element*;
 relationship_owned_element: owned_related_element | owned_annotation;
 owned_related_element: non_feature_element | feature_element;
 dependency: (prefix_metadata_annotation)* KEYWORD_DEPENDENCY (identification KEYWORD_FROM)? qualified_name (SYMBOL_COMMA qualified_name)* KEYWORD_TO qualified_name (SYMBOL_COMMA qualified_name)* relationship_body;
@@ -38,7 +38,7 @@ namespace_member: non_feature_member | namespace_feature_member;
 non_feature_member: member_prefix non_feature_element;
 namespace_feature_member: member_prefix feature_element;
 alias_member: member_prefix KEYWORD_ALIAS (SYMBOL_SMALLER NAME SYMBOL_GREATER)? (NAME)? KEYWORD_FOR qualified_name relationship_body;
-qualified_name: (NAME SYMBOL_NAMESPACE_SUBSET)* NAME;
+qualified_name: NAME  (SYMBOL_NAMESPACE_SUBSET NAME)*;
 
 namespace_import: visibility_indicator? KEYWORD_IMPORT KEYWORD_ALL? import_declaration relationship_body?;
 import_declaration: membership_import | namespace_import;
@@ -100,8 +100,8 @@ unioning_part: KEYWORD_UNIONS unioning (SYMBOL_COMMA unioning)*;
 intersecting_part: KEYWORD_INTERSECTS intersecting (SYMBOL_COMMA intersecting)*;
 differencing_part: KEYWORD_DIFFERENCES differencing (SYMBOL_COMMA differencing)*;
 type_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN type_body_elements SYMBOL_CURLY_BRACKET_CLOSE);
-type_body_elements: type_body_element*;
-type_body_element: non_feature_element | feature_element | alias_member | namespace_import | additional_options;
+type_body_elements: element*;
+type_body_element: element;
 
 specialization: (KEYWORD_SPECILIZATION identification)? KEYWORD_SUBTYPE specific_type SPECIALIZES general_type relationship_body;
 owned_specialization: general_type;
@@ -128,13 +128,13 @@ superclassing_part: SPECIALIZES owned_subclassification (SYMBOL_COMMA owned_subc
 subclassification: (KEYWORD_SPECILIZATION identification)? KEYWORD_SUBCLASSIFIER qualified_name SPECIALIZES qualified_name relationship_body;
 owned_subclassification: qualified_name;
 
-feature: feature_prefix ((KEYWORD_FEATURE feature_declaration) | KEYWORD_FEATURE | prefix_metadata_member);
-feature_prefix: (feature_direction)? KEYWORD_ABSTRACT? (KEYWORD_COMPOSITE | KEYWORD_PORTION)? KEYWORD_READONLY? KEYWORD_DERIVED? KEYWORD_END? prefix_metadata_member*;
+feature: feature_prefix? ((KEYWORD_FEATURE feature_declaration) | KEYWORD_FEATURE | prefix_metadata_member) subsets? feature_assignment? feature_value? type_body;
+feature_prefix: (feature_direction)? KEYWORD_ABSTRACT? (KEYWORD_VAR | KEYWORD_COMPOSITE | KEYWORD_PORTION)? KEYWORD_READONLY? KEYWORD_DERIVED? KEYWORD_END? prefix_metadata_member*;
 feature_direction: (KEYWORD_IN | KEYWORD_OUT | KEYWORD_INOUT);
 feature_declaration: KEYWORD_ALL? (feature_identification (feature_specialization_part | conjugation_part)? | feature_specialization_part | conjugation_part) feature_relationship_part* type_body?;
 feature_identification: SYMBOL_SMALLER NAME SYMBOL_GREATER (NAME)? | NAME;
 feature_relationship_part: type_relationship_part | chaining_part | inverting_part | type_featuring_part;
-chaining_part: KEYWORD_CHAINS owned_feature_chaining | feature_chain;
+chaining_part: KEYWORD_CHAINS (owned_feature_chaining | feature_chain);
 inverting_part: KEYWORD_INVERSE KEYWORD_OF owned_feature_inverting;
 type_featuring_part: KEYWORD_FEATURED KEYWORD_BY owned_type_featuring (SYMBOL_COMMA owned_type_featuring)*;
 feature_specialization_part: feature_specilization+ multiplicity_part? feature_specilization* | multiplicity_part feature_specilization+;
@@ -142,11 +142,11 @@ multiplicity_part: multiplicity_bounds ((KEYWORD_ORDERED KEYWORD_NONUNIQUE?)?|(K
 feature_specilization: typings | subsettings | references | redefinitions;
 typings: typed_by (SYMBOL_COMMA owned_feature_typing)*;
 typed_by: TYPED_BY owned_feature_typing;
-subsettings: subsets (SYMBOL_COMMA owned_subsetting)*;
+subsettings: subsets owned_subsetting (SYMBOL_COMMA owned_subsetting)*;
 subsets: SUBSETS owned_subsetting;
 references: REFERENCES owned_reference_subsetting;
 redefinitions: redefines (SYMBOL_COMMA owned_redefinition)?;
-redefines: REDEFINES owned_redefinition;
+redefines: feature_direction? REDEFINES owned_redefinition;
 
 feature_typing: (KEYWORD_SPECILIZATION identification)? KEYWORD_TYPING? qualified_name TYPED_BY general_type multiplicity_part? relationship_body;
 owned_feature_typing: general_type;
@@ -155,11 +155,11 @@ subsetting: (KEYWORD_SPECILIZATION identification)? KEYWORD_SUBSET? specific_typ
 owned_subsetting: general_type;
 owned_reference_subsetting: general_type;
 
-redefinition: (KEYWORD_SPECILIZATION identification)? KEYWORD_REDEFINITION specific_type REDEFINES general_type multiplicity_part? relationship_body;
+redefinition: feature_direction? (KEYWORD_SPECILIZATION identification)? (KEYWORD_REDEFINITION specific_type)? REDEFINES qualified_name typed_by? multiplicity_part? subsets? feature_assignment? relationship_body;
 owned_redefinition: general_type;
 
 owned_feature_chain: feature_chain;
-feature_chain: owned_feature_chaining (SYMBOL_DOT owned_feature_chaining);
+feature_chain: owned_feature_chaining (SYMBOL_DOT owned_feature_chaining)*;
 owned_feature_chaining: qualified_name;
 
 feature_inverting: (KEYWORD_INVERTING identification)? KEYWORD_INVERSE (qualified_name | owned_feature_chain) KEYWORD_OF (qualified_name | owned_feature_chain) relationship_body;
@@ -172,7 +172,7 @@ data_type: type_prefix KEYWORD_DATATYPE classifier_declaration type_body;
 
 class: type_prefix KEYWORD_CLASS classifier_declaration type_body;
 
-structure: type_prefix KEYWORD_STRUCT classifier_declaration type_body;
+structure: type_prefix? KEYWORD_STRUCT classifier_declaration type_body;
 
 association: type_prefix KEYWORD_ASSOC classifier_declaration type_body;
 association_structure: type_prefix KEYWORD_ASSOC KEYWORD_STRUCT classifier_declaration type_body;
@@ -311,7 +311,7 @@ body_expression: expression_body_member;
 expression_body_member: expression_body;
 expression_body: SYMBOL_ROUND_BRACKET_OPEN function_body_part SYMBOL_ROUND_BRACKET_CLOSE;
 
-literal_expression: literal_boolean |
+literal_expression: (KEYWORD_TRUE | KEYWORD_FALSE) |
                     literal_string |
                     literal_integer |
                     literal_real |
@@ -341,6 +341,7 @@ item_flow_redefinition: qualified_name;
 
 value_part: feature_value;
 feature_value:(SYMBOL_EQUALS | SYMBOL_DEF_ASSIGN | KEYWORD_DEFAULT (SYMBOL_EQUALS | SYMBOL_DEF_ASSIGN)?) owned_expression;
+feature_assignment: SYMBOL_ASSIGN owned_expression;
 
 multiplicity: multiplicity_subset | multiplicity_range;
 multiplicity_subset: KEYWORD_MULTIPLICITY identification subsets type_body;
@@ -372,7 +373,6 @@ package_body: ';' | (SYMBOL_CURLY_BRACKET_OPEN (namespace_body_element | element
 element_filter_member: member_prefix KEYWORD_FILTER owned_expression ';';
 
 meta_assignment: qualified_name SYMBOL_ASSIGN identification 'meta' qualified_name ';';
-
 
 TYPED_BY: SYMBOL_TYPED_BY | KEYWORD_TYPED KEYWORD_BY;
 SPECIALIZES: SYMBOL_SPECIALIZES | KEYWORD_SPECIALIZES;
@@ -478,6 +478,7 @@ KEYWORD_TYPED: 'typed';
 KEYWORD_TYPING: 'typing';
 KEYWORD_UNIONS: 'unions';
 KEYWORD_XOR: 'xor';
+KEYWORD_VAR: 'var';
 
 
 
