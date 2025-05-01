@@ -45,7 +45,7 @@ TEST(TestKerMLParser, TestAddressBookModel) {
     parser.addErrorListener(listener);
 
     // Display the parse tree
-    //std::cout << parser.start()->toStringTree() << std::endl;
+    parser.start()->toStringTree();
     EXPECT_EQ(listener->getSyntaxErrors().size(),0);
 }
 
@@ -83,7 +83,7 @@ TEST(TestKerMLParser, ConformanceTestA2Atoms) {
     parser.addErrorListener(listener);
 
     // Display the parse tree
-    //std::cout << parser.start()->toStringTree() << std::endl;
+    parser.start()->toStringTree();
     EXPECT_EQ(listener->getSyntaxErrors().size(),0);
 }
 
@@ -211,7 +211,7 @@ TEST(TestKerMLParser, TestJohnIndividualModel) {
     parser.addErrorListener(listener);
 
     // Display the parse tree
-    std::cout << parser.start()->toStringTree() << std::endl;
+    parser.start()->toStringTree();
     EXPECT_EQ(listener->getSyntaxErrors().size(),0);
 }
 
@@ -273,7 +273,7 @@ TEST(TestKerMLParser, ConformanceTestA2ModelinInstances) {
     parser.addErrorListener(listener);
 
     // Display the parse tree
-    std::cout << parser.start()->toStringTree() << std::endl;
+    parser.start()->toStringTree();
     EXPECT_EQ(listener->getSyntaxErrors().size(),0);
 }
 
@@ -333,7 +333,7 @@ TEST(TestKerMLParser, ConformanceTestA32WithoutConnectors) {
     parser.addErrorListener(listener);
 
     // Display the parse tree
-    std::cout << parser.start()->toStringTree() << std::endl;
+    parser.start()->toStringTree();
     EXPECT_EQ(listener->getSyntaxErrors().size(),0);
 }
 
@@ -415,6 +415,89 @@ TEST(TestKerMLParser, ConformanceTestA33OneToOneConnectors) {
     parser.addErrorListener(listener);
 
     // Display the parse tree
-    std::cout << parser.start()->toStringTree() << std::endl;
+    parser.start()->toStringTree();
     EXPECT_EQ(listener->getSyntaxErrors().size(),0);
+}
+
+TEST(TestKerMLParser, ConformanceTestA34OneeToUnrestrictedConnectors) {
+    std::string valueToParse = "\n"
+        "package OneToUnrestrictedConnectorsModelToBeExecuted{\n"
+        "    doc\n"
+        "    /*\n"
+        "     */\n"
+        "\n"
+        "    private import WithoutConnectorsModelToBeExecuted::BikeFork;\n"
+        "\n"
+        "    classifier Bicycle {\n"
+        "        feature carrier : BikeBasket[*];\n"
+        "        feature holdsWheel : BikeFork[*];\n"
+        "        connector carrierFixed : BikeBasketFixed from[*] carrier to[1] holdsWheel;\n"
+        "    }\n"
+        "    classifier BikeBasket;\n"
+        "\n"
+        "    assoc BikeBasketFixed {\n"
+        "        end feature basket : BikeBasket;\n"
+        "        end feature fixedTo : BikeFork;\n"
+        "    }\n"
+        "}"
+        "\n"
+        "package OneToUnrestrictedConnectorsExecution{\n"
+        "    doc\n"
+        "    /*\n"
+        "     */\n"
+        "\n"
+        "    private import Atoms::*;\n"
+        "    private import OneToUnrestrictedConnectorsModelToBeExecuted::*;\n"
+        "    private import OneToOneConnectorsExecution::MyBikeFork1;\n"
+        "    private import OneToOneConnectorsExecution::MyBikeFork2;\n"
+        "    private import OneToOneConnectorsExecution::MyBikeFork;\n"
+        "\n"
+        "    #atom\n"
+        "    classifier MyBikeBasket1 specializes BikeBasket;\n"
+        "    #atom\n"
+        "    classifier MyBikeBasket2 specializes BikeBasket;\n"
+        "\n"
+        "    classifier MyBikeBasket unions MyBikeBasket1, MyBikeBasket2;\n"
+        "\n"
+        "    #atom\n"
+        "    assoc MyBikeBasket1_Fork1_BBF_Link specializes BikeBasketFixed {\n"
+        "        end feature redefines basket : MyBikeBasket1;\n"
+        "        end feature redefines fixedTo : MyBikeFork1;\n"
+        "    }\n"
+        "    #atom\n"
+        "    assoc MyBikeBasket2_Fork1_BBF_Link specializes BikeBasketFixed {\n"
+        "        end feature redefines basket : MyBikeBasket2;\n"
+        "        end feature redefines fixedTo : MyBikeFork1;\n"
+        "    }\n"
+        "\n"
+        "    classifier MyBikeBasket_Fork_BBF_Link unions MyBikeBasket1_Fork1_BBF_Link, MyBikeBasket2_Fork1_BBF_Link;\n"
+        "\n"
+        "    #atom\n"
+        "    classifier MyBike specializes Bicycle {\n"
+        "        feature redefines carrier : MyBikeBasket[2];\n"
+        "        feature redefines holdsWheel : MyBikeFork[2];\n"
+        "        connector redefines carrierFixed : MyBikeBasket_Fork_BBF_Link[2] from[*] carrier to[1] holdsWheel;\n"
+        "    }\n"
+        "}";
+
+    // Provide the input text in a stream
+    antlr4::ANTLRInputStream input(valueToParse);
+
+    auto listener = new KerMLErrorListener();
+
+    // Create a lexer from the input
+    KerMLLexer lexer(&input);
+    lexer.addErrorListener(listener);
+
+    // Create a token stream from the lexer
+    antlr4::CommonTokenStream tokens(&lexer);
+
+
+    // Create a parser from the token stream
+    KerMLParser parser(&tokens);
+    parser.addErrorListener(listener);
+
+    // Display the parse tree
+    parser.start()->toStringTree();
+    EXPECT_EQ(listener->getSyntaxErrors().size(), 0);
 }

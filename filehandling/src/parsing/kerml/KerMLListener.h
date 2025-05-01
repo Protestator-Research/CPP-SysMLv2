@@ -1,17 +1,17 @@
 
-// Generated from KerML.g4 by ANTLR 4.13.2
+// Generated from ./KerML.g4 by ANTLR 4.13.2
 
 #pragma once
 
 
 #include "antlr4-runtime.h"
 #include "KerMLParser.h"
-
+#include "../../sysmlv2file_global.h"
 
 /**
  * This interface defines an abstract listener for a parse tree produced by KerMLParser.
  */
-class  KerMLListener : public antlr4::tree::ParseTreeListener {
+class SYSMLV2FILE_EXPORT KerMLListener : public antlr4::tree::ParseTreeListener {
 public:
 
   virtual void enterStart(KerMLParser::StartContext *ctx) = 0;

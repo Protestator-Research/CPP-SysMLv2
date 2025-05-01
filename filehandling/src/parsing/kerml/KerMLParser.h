@@ -1,15 +1,15 @@
 
-// Generated from KerML.g4 by ANTLR 4.13.2
+// Generated from ./KerML.g4 by ANTLR 4.13.2
 
 #pragma once
 
 
 #include "antlr4-runtime.h"
+#include "../../sysmlv2file_global.h"
 
 
 
-
-class  KerMLParser : public antlr4::Parser {
+class SYSMLV2FILE_EXPORT KerMLParser : public antlr4::Parser {
 public:
   enum {
     T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, TYPED_BY = 5, SPECIALIZES = 6, 
@@ -1211,6 +1211,7 @@ public:
     Feature_elementContext *feature_element();
     Alias_memberContext *alias_member();
     Namespace_importContext *namespace_import();
+    Additional_optionsContext *additional_options();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

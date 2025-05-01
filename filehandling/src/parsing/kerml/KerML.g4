@@ -101,7 +101,7 @@ intersecting_part: KEYWORD_INTERSECTS intersecting (SYMBOL_COMMA intersecting)*;
 differencing_part: KEYWORD_DIFFERENCES differencing (SYMBOL_COMMA differencing)*;
 type_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN type_body_elements SYMBOL_CURLY_BRACKET_CLOSE);
 type_body_elements: type_body_element*;
-type_body_element: non_feature_element | feature_element | alias_member | namespace_import;
+type_body_element: non_feature_element | feature_element | alias_member | namespace_import | additional_options;
 
 specialization: (KEYWORD_SPECILIZATION identification)? KEYWORD_SUBTYPE specific_type SPECIALIZES general_type relationship_body;
 owned_specialization: general_type;
