@@ -4,10 +4,10 @@
 
 #include <gtest/gtest.h>
 #include <antlr4-runtime.h>
-#include <parsing/kerml/KerMLParser.h>
-#include <parsing/kerml/KerMLLexer.h>
-#include <parsing/kerml/KerMLListener.h>
-#include <parsing/kerml/KerMlErrorListener.h>
+#include <kerml/KerMLParser.h>
+#include <kerml/KerMLLexer.h>
+#include <kerml/KerMLListener.h>
+#include <kerml/KerMlErrorListener.h>
 
 
 TEST(TestKerMLParser, TestAddressBookModel) {

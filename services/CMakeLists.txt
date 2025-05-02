@@ -52,7 +52,8 @@ target_include_directories(sysmlv2service PUBLIC
         ../interfaces/src)
 
 include(GNUInstallDirs)
-install(TARGETS sysmlv2service ARCHIVE DESTINATION lib)
+install(TARGETS sysmlv2service ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(TARGETS sysmlv2service RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2service)
 install(FILES ${API_HEADER} DESTINATION include/sysmlv2service/implementation)
 install(FILES ${INTERFACE_HEADER} DESTINATION include/sysmlv2service/interfaces)

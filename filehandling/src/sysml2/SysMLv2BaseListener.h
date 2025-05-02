@@ -6,7 +6,7 @@
 
 #include "antlr4-runtime.h"
 #include "SysMLv2Listener.h"
-#include "../../sysmlv2file_global.h"
+#include "../sysmlv2file_global.h"
 
 /**
  * This class provides an empty implementation of SysMLv2Listener,

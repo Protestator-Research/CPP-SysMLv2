@@ -7,14 +7,15 @@
 
 #include <string>
 #include <boost/uuid/uuid.hpp>
+#include "sysmlv2file_global.h"
 
 namespace SysMLv2::Files {
-    enum ErrorType {
+    enum SYSMLV2FILE_EXPORT ErrorType {
         ERROR,
         WARNING
     };
 
-    class ParserError {
+    class SYSMLV2FILE_EXPORT ParserError {
     public:
         ParserError(boost::uuids::uuid elementId, std::string projectName, ErrorType type, std::string description);
         ~ParserError() = default;

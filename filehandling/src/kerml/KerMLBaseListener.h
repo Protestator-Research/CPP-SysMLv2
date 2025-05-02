@@ -6,7 +6,7 @@
 
 #include "antlr4-runtime.h"
 #include "KerMLListener.h"
-#include "../../sysmlv2file_global.h"
+#include "../sysmlv2file_global.h"
 
 /**
  * This class provides an empty implementation of KerMLListener,

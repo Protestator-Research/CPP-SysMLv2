@@ -70,7 +70,8 @@ target_link_libraries(sysmlv2rest
 target_include_directories(sysmlv2rest PUBLIC ../interfaces/src)
 
 include(GNUInstallDirs)
-install(TARGETS sysmlv2rest ARCHIVE DESTINATION lib)
+install(TARGETS sysmlv2rest ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(TARGETS sysmlv2rest RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${ENTITIES_HEADER} DESTINATION include/sysmlv2/rest/entities)
 install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2/rest)
 install(FILES ${SERIALIZATION_HEADER} DESTINATION include/sysmlv2/rest/serialization)

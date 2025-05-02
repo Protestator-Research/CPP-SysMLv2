@@ -5,7 +5,7 @@
 
 
 #include "antlr4-runtime.h"
-#include "../../sysmlv2file_global.h"
+#include "../sysmlv2file_global.h"
 
 
 class SYSMLV2FILE_EXPORT SysMLv2Parser : public antlr4::Parser {

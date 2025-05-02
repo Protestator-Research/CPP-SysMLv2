@@ -6,7 +6,7 @@
 #define SYSMLV2_KERMLERROR_H
 
 #include <string>
-#include "../../sysmlv2file_global.h"
+#include "../sysmlv2file_global.h"
 
 enum KerMLErrorType {
     SYNTAX_ERROR,

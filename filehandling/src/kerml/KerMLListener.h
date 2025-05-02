@@ -6,7 +6,7 @@
 
 #include "antlr4-runtime.h"
 #include "KerMLParser.h"
-#include "../../sysmlv2file_global.h"
+#include "../sysmlv2file_global.h"
 
 /**
  * This interface defines an abstract listener for a parse tree produced by KerMLParser.

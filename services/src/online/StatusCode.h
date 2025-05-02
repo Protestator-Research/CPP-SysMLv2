@@ -5,8 +5,10 @@
 #ifndef DIGITALTWIN_STATUSCODE_H
 #define DIGITALTWIN_STATUSCODE_H
 
+#include "../sysmlv2service_global.h"
+
 namespace SysMLv2::API {
-    enum INTERNAL_STATUS_CODE {
+    enum SYSMLV2SERVICE_EXPORT INTERNAL_STATUS_CODE {
         SUCCESS = 0,
         RE_DO,
         THROW_ERROR
