@@ -8,7 +8,6 @@
 #include "../../sysmlv2file_global.h"
 
 
-
 class SYSMLV2FILE_EXPORT KerMLLexer : public antlr4::Lexer {
 public:
   enum {

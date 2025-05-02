@@ -1526,7 +1526,7 @@ public:
     antlr4::tree::TerminalNode *KEYWORD_FEATURE();
     Prefix_metadata_memberContext *prefix_metadata_member();
     Feature_prefixContext *feature_prefix();
-    SubsetsContext *subsets();
+    SubsettingsContext *subsettings();
     Feature_assignmentContext *feature_assignment();
     Feature_valueContext *feature_value();
     Feature_declarationContext *feature_declaration();

@@ -128,7 +128,7 @@ superclassing_part: SPECIALIZES owned_subclassification (SYMBOL_COMMA owned_subc
 subclassification: (KEYWORD_SPECILIZATION identification)? KEYWORD_SUBCLASSIFIER qualified_name SPECIALIZES qualified_name relationship_body;
 owned_subclassification: qualified_name;
 
-feature: feature_prefix? ((KEYWORD_FEATURE feature_declaration) | KEYWORD_FEATURE | prefix_metadata_member) subsets? feature_assignment? feature_value? type_body;
+feature: feature_prefix? ((KEYWORD_FEATURE feature_declaration) | KEYWORD_FEATURE | prefix_metadata_member) subsettings? feature_assignment? feature_value? type_body;
 feature_prefix: (feature_direction)? KEYWORD_ABSTRACT? (KEYWORD_VAR | KEYWORD_COMPOSITE | KEYWORD_PORTION)? KEYWORD_READONLY? KEYWORD_DERIVED? KEYWORD_END? prefix_metadata_member*;
 feature_direction: (KEYWORD_IN | KEYWORD_OUT | KEYWORD_INOUT);
 feature_declaration: KEYWORD_ALL? (feature_identification (feature_specialization_part | conjugation_part)? | feature_specialization_part | conjugation_part) feature_relationship_part* type_body?;
@@ -142,7 +142,7 @@ multiplicity_part: multiplicity_bounds ((KEYWORD_ORDERED KEYWORD_NONUNIQUE?)?|(K
 feature_specilization: typings | subsettings | references | redefinitions;
 typings: typed_by (SYMBOL_COMMA owned_feature_typing)*;
 typed_by: TYPED_BY owned_feature_typing;
-subsettings: subsets owned_subsetting (SYMBOL_COMMA owned_subsetting)*;
+subsettings: subsets owned_subsetting? (SYMBOL_COMMA owned_subsetting)*;
 subsets: SUBSETS owned_subsetting;
 references: REFERENCES owned_reference_subsetting;
 redefinitions: redefines (SYMBOL_COMMA owned_redefinition)?;
