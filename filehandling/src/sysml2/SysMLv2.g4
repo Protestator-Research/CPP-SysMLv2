@@ -1,4 +1,4 @@
-grammar SysMLv2;
+grammar SysMLv2_old;
 
 start: elements* EOF;
 
