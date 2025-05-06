@@ -367,7 +367,7 @@ metadata_body_feature_member: metadata_body_feature;
 metadata_body_feature: KEYWORD_FEATURE? (SYMBOL_REDEFINES | KEYWORD_REDEFINES)? owned_redefinition feature_specialization_part? value_part? metadata_body;
 
 package:(prefix_metadata_member)* package_declaration package_body;
-library_package: (KEYWORD_STANDARD)? KEYWPRD_LIBRARY (prefix_metadata_member)* package_declaration package_body;
+library_package: (KEYWORD_STANDARD)? KEYWORD_LIBRARY (prefix_metadata_member)* package_declaration package_body;
 package_declaration: KEYWORD_PACKAGE identification;
 package_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN (namespace_body_element | element_filter_member | element)+ SYMBOL_CURLY_BRACKET_CLOSE);
 element_filter_member: member_prefix KEYWORD_FILTER owned_expression ';';
@@ -464,7 +464,7 @@ KEYWORD_SPECILIZATION: 'specialization';
 KEYWORD_SPECIALIZES: 'specializes';
 KEYWORD_STEP: 'step';
 KEYWORD_STRUCT: 'struct';
-KEYWORD_SUBCLASSIFIER: 'subsclassifier';
+KEYWORD_SUBCLASSIFIER: 'subclassifier';
 KEYWORD_SUBSET: 'subset';
 KEYWORD_SUBSETS: 'subsets';
 KEYWORD_SUBTYPE: 'subtype';
@@ -480,9 +480,8 @@ KEYWORD_XOR: 'xor';
 KEYWORD_VAR: 'var';
 KEYWORD_LOCALE: 'locale';
 KEYWORD_STANDARD: 'standard';
-KEYWPRD_LIBRARY: 'library';
-
-
+KEYWORD_LIBRARY: 'library';
+KEYWORD_CONSTANT: 'constant';
 
 //Notes and Comments
 SINGLE_LINE_NOTE: '//'  ~( '\r' | '\n' )*;
