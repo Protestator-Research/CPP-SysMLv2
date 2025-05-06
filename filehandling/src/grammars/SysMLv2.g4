@@ -238,7 +238,7 @@ default_interface_end: KEYWORD_END usage;
 interface_usage: occurrence_usage_prefix KEYWORD_INTERFACE interface_usage_declaration interface_body;
 interface_usage_declaration: usage_declaration value_part? (KEYWORD_CONNECT interface_part)? | interface_part;
 interface_part: binary_interface_part | nary_interface_part;
-binary_interface_part: interface_end_member: KEYWORD_TO interface_end_member;
+binary_interface_part: interface_end_member KEYWORD_TO interface_end_member;
 nary_interface_part: SYMBOL_ROUND_BRACKET_OPEN interface_end_member (SYMBOL_COMMA interface_end_member)+ SYMBOL_ROUND_BRACKET_CLOSE;
 interface_end_member: interface_end;
 interface_end: owned_cross_multiplicity_member? (declared_name=NAME REFERENCES)? owned_reference_subsetting;
