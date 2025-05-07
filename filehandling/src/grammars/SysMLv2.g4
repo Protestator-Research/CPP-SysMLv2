@@ -51,9 +51,8 @@ definition_element: package |
                     state_definition |
                     constraint_definition |
                     requirement_definition |
-                    convern_definition |
-                    state_definitin |
-                    constraint_definition |
+                    calculation_definition |
+                    state_definition |
                     requirement_definition |
                     concern_definition |
                     case_definition |
@@ -318,6 +317,106 @@ sender_receiver_part: KEYWORD_VIA node_parameter_member (KEYWORD_TO node_paramet
 node_parameter_member: node_parameter;
 node_parameter: feature_binding;
 feature_binding: owned_expression;
+assignment_node: occurrence_usage_prefix assignment_node_declaration action_body;
+assignment_node_declaration: action_node_usage_declaration? KEYWORD_ASSIGN assignment_target_member feature_chain_member SYMBOL_DEF_ASSIGN node_parameter_member;
+assignment_target_member: assignment_target_parameter;
+assignment_target_parameter: (assignment_target_binding SYMBOL_DOT)?;
+assignment_target_binding: non_feature_chain_primary_expression;
+feature_chain_member: memberElement = qualified_name | owned_feature_chain;
+owned_feature_chain_member: owned_feature_chain;
+
+terminate_node: occurrence_usage_prefix action_node_usage_declaration? KEYWORD_TERMINATE node_parameter_member? action_body;
+
+if_node: action_node_prefix KEYWORD_IF expression_parameter_member action_body_parameter_member (KEYWORD_ELSE (action_body_parameter_member | if_node_parameter_member));
+expression_parameter_member: owned_expression;
+action_body_parameter_member: action_body_parameter;
+action_body_parameter: (KEYWORD_ACTION usage_declaration?)? SYMBOL_CURLY_BRACKET_OPEN action_body_item* SYMBOL_CURLY_BRACKET_CLOSE;
+if_node_parameter_member: if_node;
+while_loop_node: action_node_prefix (KEYWORD_WHILE expression_parameter_member | KEYWORD_LOOP ) action_body_parameter_member (KEYWORD_UNTIL expression_parameter_member SYMBOL_STATEMENT_DELIMITER);
+for_loop_node: action_node_prefix KEYWORD_FOR for_variable_declaration_member KEYWORD_IN node_parameter_member action_body_parameter_member;
+for_variable_declaration_member: usage_declaration;
+for_variable_declaration: usage_declaration;
+
+action_target_successoin: (target_succession | guarded_target_succession | default_target_succession) usage_body;
+target_succession: source_end_member KEYWORD_THEN connector_end_member;
+guarded_target_succession: guard_expression_member KEYWORD_THEN transition_succession_member;
+default_target_succession: KEYWORD_ELSE transition_succession_member;
+guarded_succession: (KEYWORD_SUCCSESSION usage_declaration)? KEYWORD_FIRST feature_chain_member guarded_expression_member KEYWORD_THEN transition_succession_member usage_body;
+
+state_definition: occurrence_definition_prefix KEYWORD_STATE KEYWORD_DEF definition_declaration state_def_body;
+state_def_body: SYMBOL_STATEMENT_DELIMITER | KEYWORD_PARALLEL? SYMBOL_CURLY_BRACKET_OPEN state_body_item SYMBOL_CURLY_BRACKET_CLOSE;
+state_body_item: non_behavior_body_item |
+                 source_succession_member? behavior_usage_member target_transition_usage_member* |
+                 transition_usage_member |
+                 entry_action_member entry_transition_member* |
+                 do_action_member |
+                 exit_action_member;
+entry_action_member: member_prefix kind = KEYWORD_ENTRY state_action_usage;
+do_action_member: member_prefix kind = KEYWORD_DO state_action_usage;
+exit_action_member: member_prefix kind = KEYWORD_EXIT state_action_usage;
+entry_transition_member: member_prefix (guarded_target_succession | KEYWORD_THEN target_succession) SYMBOL_STATEMENT_DELIMITER;
+state_action_usage: empty_action_usage SYMBOL_STATEMENT_DELIMITER |
+                    state_perform_action_uage |
+                    state_accept_action_usage |
+                    state_send_action_usage |
+                    state_assignment_action_usage;
+empty_action_usage: {};
+state_perform_action_uage: perform_action_usage_declaration action_body;
+state_accept_action_usage: accept_node_declaration action_body;
+state_send_action_usage: send_node_declaration action_body;
+state_assignment_action_usage:assignment_node_declaration action_body;
+transition_usage_member: member_prefix transition_usage;
+target_transition_usage_member: member_prefix target_transition_usage;
+
+state_usage: occurrence_usage_prefix KEYWORD_STATE action_usage_declaration state_usage_body;
+state_usage_body: SYMBOL_STATEMENT_DELIMITER | KEYWORD_PARALLEL? SYMBOL_CURLY_BRACKET_OPEN state_body_item* SYMBOL_CURLY_BRACKET_CLOSE; 
+exibit_state_usage: occurrence_usage_prefix KEYWORD_EXHIBIT (owned_reference_subsetting feature_specialization_part? | KEYWORD_STATE usage_declaration) value_part? state_usage_body;
+               
+transition_usage: KEYWORD_TRANSISTION (usage_declaration KEYWORD_FROM)? feature_chain_member trigger_action_member? guard_expression_member? effect_behavior_member? KEYWORD_THEN transition_succession_member action_body;
+target_transition_usage: (KEYWORD_TRANSISTION trigger_action_member? guard_expression_member? effect_behavior_member? | trigger_action_member guard_expression_member? effect_behavior_transition? | guard_expression_member effect_behavior_member?)? KEYWORD_THEN transition_succession_member action_body;
+trigger_action_member: KEYWORD_ACCEPT {kind=KEYWORD_TRIGGER} trigger_action;
+trigger_action: accept_parameter_part;
+guard_expression_member: KEYWORD_IF {kind=KEYWORD_GUARD} owned_expression;
+effect_behavior_member: KEYWORD_DO {kind=KEYWORD_TRIGGER} effect_behavior_usage;
+effect_behavior_usage: empty_action_usage |
+                       transition_perform_action_usage |
+                       transition_accept_action_usage |
+                       transition_send_action_usage |
+                       transition_assignment_action_usage;
+transition_perform_action_usage: perform_action_usage_declaration (SYMBOL_CURLY_BRACKET_OPEN action_body_item* SYMBOL_CURLY_BRACKET_CLOSE)?;
+transition_accept_action_usage: accept_node_declaration (SYMBOL_CURLY_BRACKET_OPEN action_body_item* SYMBOL_CURLY_BRACKET_CLOSE)?;
+transition_send_action_usage: send_node_declaration (SYMBOL_CURLY_BRACKET_OPEN action_body_item* SYMBOL_CURLY_BRACKET_CLOSE)?;
+transition_assignment_action_usage: assignment_node_declaration (SYMBOL_CURLY_BRACKET_OPEN action_body_item* SYMBOL_CURLY_BRACKET_CLOSE)?;
+transition_succession_member: transition_succession;
+transition_succession: connector_end_member;
+
+calculation_definition: occurrence_definition_prefix KEYWORD_CALC KEYWORD_DEF definition_declaration calculation_body;
+calculation_usage: occurrence_usage_prefix KEYWORD_CALC action_usage_declaration calculation_body;
+calculation_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN calculation_body_part SYMBOL_CURLY_BRACKET_CLOSE;
+calculation_body_part: calculation_body_item* result_expression_member?;
+calculation_body_item: action_body_item | return_parameter_member;
+return_parameter_member: member_prefix? KEYWORD_RETURN usage_element;
+result_expression_member: member_prefix? owned_expression;
+
+constraint_definition: occurrence_definition_prefix? definition_declaration calculation_body;
+constraint_usage: occurrence_usage_prefix? KEYWORD_CONSTRAINT constraint_usage_declaration calculation_body;
+assert_constriant_usage: occurrence_usage_prefix KEYWORD_ASSERT KEYWORD_NOT? (owned_reference_subsetting feature_specialization_part? | KEYWORD_CONSTRAINT constraont_usage_definition) calculation_body;
+constraint_usage_declaration: usage_declaration value_part?;
+
+requirement_definition: occurrence_definition_prefix KEYWORD_REQUIREMENT KEYWORD_DEF definition_declaration requirement_body;
+requirement_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN requirement_body_item* SYMBOL_CURLY_BRACKET_CLOSE;
+requirement_body_item: definition_body_item |
+                       subject_member |
+                       requirement_constraint_member |
+                       framed_concern_member |
+                       requirement_contraont_member |
+                       actor_member |
+                       stateholder_member;
+subject_member: member_prefix subject_usage;
+subject_usage: KEYWORD_SUBJECT usage_extention_keyword* usage;
+requirement_constraint_member: member_prefix? requriement_kind requirement_constraint_usage;
+requriement_kind: KEYWORD_ASSUME {kind = 'assumption'} | KEYWORD_REQUIRE {kind = 'requirement'}; 
+requirement_constraint_usage: owned_reference_subsetting feature_specialization_part? requirement_body | (usage_extention_keyword* KEYWORD_CONSTRAINT | usage_extention_keyword+) constraint_usage_declaration calculation_body;
 
 
 DEFINED_BY: SYMBOL_TYPED_BY | KEYWORD_DEFINED KEYWORD_BY;
@@ -359,6 +458,7 @@ KEYWORD_EXIT: 'exit';
 KEYWORD_EXPOSE: 'expose';
 KEYWORD_FORK: 'fork';
 KEYWORD_FRAME: 'frame';
+KEYWORD_GUARD: 'guard';
 KEYWORD_INCLUDE: 'include';
 KEYWORD_INDIVIDIAL: 'individual';
 KEYWORD_INTERFACE:'interface';
@@ -389,6 +489,7 @@ KEYWORD_SUBJECT: 'subject';
 KEYWORD_TERMINATE: 'terminate';
 KEYWORD_TIMESLICE: 'timeslice';
 KEYWORD_TRANSISTION: 'transition';
+KEYWORD_TRIGGER: 'trigger';
 KEYWORD_UNTIL: 'until';
 KEYWORD_USE: 'use';
 KEYWORD_VARIANT: 'variant';
