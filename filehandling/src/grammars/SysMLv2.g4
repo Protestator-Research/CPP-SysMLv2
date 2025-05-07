@@ -256,8 +256,71 @@ flow_usage: occurrence_usage_prefix KEYWORD_FLOW flow_declaration definition_bod
 flow_declaration: usage_declaration value_part? (KEYWORD_OF flow_payload_feature_member)? (KEYWORD_OF flow_end_member KEYWORD_TO flow_end_member)? | flow_end_member KEYWORD_TO flow_end_member;
 flow_payload_feature_member: flow_payload_feature;
 flow_payload_feature: payload_feature;
+payload_feature: identification payload_feature_specialization_part value_part | owned_feature_typing | owned_multiplicity owned_feature_typing;
+payload_feature_specialization_part: feature_specilization+ multiplicity_part? feature_specilization* | multiplicity_part feature_specilization+;
+flow_end_member: flow_end;
+flow_end: flow_end_subsetting? flow_feature_member;
+flow_end_subsetting: qualified_name | feature_chain_prefix;
+feature_chain_prefix: owned_feature_chaining SYMBOL_DOT (owned_feature_chaining SYMBOL_DOT)+;
+flow_feature_member: flow_feature;
+flow_feature: flow_feature_redefinition;
+flow_feature_redefinition: qualified_name;
 
-DEFINED_BY: SYMBOL_DEFINED_BY | (KEYWORD_DEFINED KEYWORD_BY);
+action_definition: occurrence_definition_prefix KEYWORD_ACTION KEYWORD_DEF definition_declaration action_body;
+action_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN action_body_item* SYMBOL_CURLY_BRACKET_CLOSE;
+action_body_item: non_behavior_body_item |
+                  initial_node_member action_target_succession_member*|
+                  source_succession_member? action_behavior_member action_target_succession_member?|
+                  guarded_succession_member;
+non_behavior_body_item: namespace_import |
+                        alias_member |
+                        definition_member |
+                        variant_usage_member |
+                        source_succession_member? structure_usage_member;
+action_behavior_member: behavior_usage_member | action_node_member;
+initial_node_member: member_prefix KEYWORD_FIRST qualified_name relationship_body;
+action_node_member: member_prefix action_node;
+action_target_succession_member: member_prefix action_target_succession;
+guarded_succession_memeber: member_prefix guarded_succession;
+
+action_usage: occurrence_usage_prefix KEYWORD_ACTION action_usage_declaration action_body;
+action_usage_declaration: usage_declaration value_part?;
+perform_action_usage: occurrence_usage_prefix KEYWORD_PERFORM perform_action_usage_declaration action_body;
+perform_action_usage_declaration: owned_reference_subsetting feature_specialization_part? | KEYWORD_ACTION usage_declaration value_part?;
+action_node: control_node |
+             send_node |
+             accept_node |
+             assignment_node |
+             terminate_node |
+             if_node |
+             while_loop_node |
+             for_loop_node;
+action_node_usage_declaration: KEYWORD_ACTION usage_declaration?;
+action_node_prefix: occurrence_usage_prefix action_node_usage_declaration?;
+
+control_node: merge_node | decision_node | join_node | fork_node;
+control_node_prefix: ref_prefix KEYWORD_INDIVIDIAL? portion_kind? usage_extention_keyword?;
+merge_node: control_node_prefix KEYWORD_MERGE? usage_declaration action_body;
+decision_node: control_node_prefix KEYWORD_DECIDE? usage_declaration action_body;
+join_node: control_node_prefix KEYWORD_DECIDE? usage_declaration action_body;
+fork_node: control_node_prefix KEYWORD_FORK? usage_declaration action_body;
+
+accept_node: occurrence_usage_prefix accept_node_declaration action_body;
+accept_node_declaration: action_node_usage_declaration? KEYWORD_ACCEPT accept_parameter_part;
+accept_parameter_part: payload_parameter_member (KEYWORD_VIA node_parameter_member)?;
+payload_parameter_member: payload_parameter;
+payload_parameter: payload_feature | identification payload_feature_specialization_part? trigger_value_part;
+trigger_value_part: trigger_expression;
+trigger_expression: kind=(KEYWORD_AT | KEYWORD_AFTER) argument_member | kind=KEYWORD_WHEN argument_expression_member;
+send_node: occurrence_usage_prefix action_usage_declaration? KEYWORD_SEND (node_parameter_member sender_receiver_part? | sender_receiver_part)? action_body;
+send_node_declaration: action_node_usage_declaration? KEYWORD_SEND  node_parameter_member sender_receiver_part?;
+sender_receiver_part: KEYWORD_VIA node_parameter_member (KEYWORD_TO node_parameter_member)? | KEYWORD_TO node_parameter_member;
+node_parameter_member: node_parameter;
+node_parameter: feature_binding;
+feature_binding: owned_expression;
+
+
+DEFINED_BY: SYMBOL_TYPED_BY | KEYWORD_DEFINED KEYWORD_BY;
 CROSSES: SYMBOL_CROSSES | KEYWORD_CROSSES;
 
 //Keywords
@@ -339,5 +402,4 @@ KEYWORD_WHEN: 'when';
 KEYWORD_WHILE: 'while';
 
 //Symbols
-SYMBOL_DEFINED_BY: ':';
 SYMBOL_CROSSES: '=>';

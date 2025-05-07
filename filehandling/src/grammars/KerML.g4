@@ -219,21 +219,21 @@ owned_expression: conditional_expression |
                   metaclassification_expression |
                   extend_expression |
                   primary_expression;
-conditional_expression: KEYWORD_IF /*argument_member*/ SYMBOL_QUESTION argument_expression_member KEYWORD_ELSE argument_expression_member;
-conditional_binary_operator_expression: /*argument_member*/ conditional_binary_operator argument_expression_member;
+conditional_expression: KEYWORD_IF argument_member SYMBOL_QUESTION argument_expression_member KEYWORD_ELSE argument_expression_member;
+conditional_binary_operator_expression: argument_member conditional_binary_operator argument_expression_member;
 conditional_binary_operator: SYMBOL_DQUESTION | KEYWORD_OR | KEYWORD_AND | KEYWORD_IMPLIES;
-binary_operator_expression:  /*argument_member*/ binary_operator owned_expressions;
+binary_operator_expression:  argument_member binary_operator owned_expressions;
 binary_operator: SYMBOL_VERTICAL_LINE | SYMBOL_AND | KEYWORD_XOR | SYMBOL_DDOT | SYMBOL_EQUALS | SYMBOL_NOT_EQUALS | SYMBOL_IFF_EQUALS | SYMBOL_IFF_NOT_EQUALS | SYMBOL_GREATER | SYMBOL_SMALLER | SYMBOL_GREATER_EQUALS | SYMBOL_SMALLER_EQUAL | SYMBOL_PLUS | SYMBOL_MINUS | SYMBOL_STAR | SYMBOL_SLASH | SYMBOL_MOD | SYMBOL_UPPER | SYMBOL_DOUBLE_STAR;
 unary_operator_expression: unary_operator owned_expressions;
 unary_operator: SYMBOL_PLUS | SYMBOL_MINUS | SYMBOL_CONJUNGATES | KEYWORD_NOT;
-classification_expression: /*argument_member?*/((classification_test_operator type_reference_member)|(cast_operator type_result_member));
-classification: /*argument_member?*/ (classification_test_operator type_reference_member)|(cast_operator type_result_member);
+classification_expression: argument = owned_expression? ((classification_test_operator type_reference_member)|(cast_operator type_result_member));
+classification: argument_member? (classification_test_operator type_reference_member)|(cast_operator type_result_member);
 classification_test_operator: KEYWORD_ISTYPE | KEYWORD_HASTYPE | SYMBOL_AT;
 cast_operator: KEYWORD_AS;
 metaclassification_expression: metadata_argument_member (metadataclassification_test_operator type_reference_member) | (meta_cast_operator type_result_member);
-//argument_member: argument;
-//argument: argument_value;
-//argument_value: owned_expression;
+argument_member: argument;
+argument: argument_value;
+argument_value: owned_expression;
 argument_expression_member: argument_expression;
 argument_expression: argument_expression_value;
 argument_expression_value: owned_expression_reference;
