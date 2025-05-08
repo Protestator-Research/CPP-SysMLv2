@@ -236,7 +236,8 @@ target_link_libraries(kerml PRIVATE
 
 
 include(GNUInstallDirs)
-install(TARGETS kerml ARCHIVE DESTINATION lib)
+install(TARGETS kerml ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(TARGETS kerml RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${ROOT_ELEMENTS_HEADER} DESTINATION include/kerml/root/elements)
 install(FILES ${ROOT_DEPENDENCIES_HEADER} DESTINATION include/kerml/root/dependencies)
 install(FILES ${ROOT_ANNOTATIONS_HEADER} DESTINATION include/kerml/root/annotations)

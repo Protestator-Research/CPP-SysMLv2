@@ -16,7 +16,7 @@
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
-
+#include "../../kerml_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -38,7 +38,7 @@ namespace KerML::Entities {
      * This part of the model allows the identification of all elements. This is a core concept of the KerML and SysML syntax.
      * Also this class is required for the REST-API and the parsing of the models.
      */
-    class Element {
+    class KERML_EXPORT Element {
     public:
         /**
          * Constructor of the Element. This constructor does not allow for an empty elementID.

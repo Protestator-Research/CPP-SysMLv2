@@ -10,7 +10,7 @@
 #include <memory>
 
 #include "KerMlError.h"
-#include "../../sysmlv2file_global.h"
+#include "../sysmlv2file_global.h"
 
 class SYSMLV2FILE_EXPORT KerMLErrorListener : public antlr4::BaseErrorListener {
 public:

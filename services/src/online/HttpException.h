@@ -6,9 +6,10 @@
 #define DIGITALTWIN_HTTPEXCEPTION_H
 
 #include <exception>
+#include "../sysmlv2service_global.h"
 
 namespace SysMLv2::API::EXCEPTIONS {
-    class HTTPException : std::exception {
+    class SYSMLV2SERVICE_EXPORT HTTPException : std::exception {
     public:
         HTTPException() = delete;
         HTTPException(long httpErrorCode);

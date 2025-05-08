@@ -5,6 +5,8 @@
 #ifndef DIGITALTWIN_HTTPRETURNCODES_H
 #define DIGITALTWIN_HTTPRETURNCODES_H
 
+#include "../sysmlv2service_global.h"
+
 namespace SysMLv2::API::STANDARDS::HTTP {
     /**
      * This enum represents a human readable version of the HTTP return codes.
@@ -14,7 +16,7 @@ namespace SysMLv2::API::STANDARDS::HTTP {
      * @version 1.0
      * @class HTTP_RETURN_CODES
      */
-    enum HTTP_RETURN_CODES {
+    enum SYSMLV2SERVICE_EXPORT HTTP_RETURN_CODES {
         // Information Codes
         HTTP_CONTINUE = 100,
         HTTP_PROTOCOL_SWITCH,

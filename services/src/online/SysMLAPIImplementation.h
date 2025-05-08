@@ -16,6 +16,7 @@
 // Internal Classes
 //---------------------------------------------------------
 #include "StatusCode.h"
+#include "../sysmlv2service_global.h"
 
 //---------------------------------------------------------
 // Forwarding
@@ -32,7 +33,7 @@ namespace SysMLv2::API {
      * @version 1.1
      * @author Moritz Herzog <herzogm@rptu.de>
      */
-    class SysMLAPIImplementation {
+    class SYSMLV2SERVICE_EXPORT SysMLAPIImplementation {
     public:
         /**
          * Deleted Constructorr

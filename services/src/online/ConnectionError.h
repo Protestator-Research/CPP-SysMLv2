@@ -5,9 +5,10 @@
 #pragma once
 
 #include <stdexcept>
+#include "../sysmlv2service_global.h"
 
 namespace SysMLv2::API::EXCEPTIONS {
-    enum CONNECTION_ERROR_TYPE {
+    enum SYSMLV2SERVICE_EXPORT CONNECTION_ERROR_TYPE {
         UNSUPPORTED_PROTOCOL = 1,
         FAILED_INIT,
         URL_FORMAT,
@@ -95,7 +96,7 @@ namespace SysMLv2::API::EXCEPTIONS {
         UNRECOVERABLE_POLL,
         TOO_LARGE
     };
-    class ConnectionError : public std::runtime_error {
+    class SYSMLV2SERVICE_EXPORT ConnectionError : public std::runtime_error {
     public:
         ConnectionError() = delete;
         ConnectionError(SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE errorType);
