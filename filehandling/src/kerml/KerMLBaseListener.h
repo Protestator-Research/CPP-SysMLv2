@@ -1,19 +1,19 @@
 
-// Generated from ./KerML.g4 by ANTLR 4.13.2
+// Generated from KerML.g4 by ANTLR 4.13.2
 
 #pragma once
 
 
 #include "antlr4-runtime.h"
 #include "KerMLListener.h"
-#include "../sysmlv2file_global.h"
+
 
 /**
  * This class provides an empty implementation of KerMLListener,
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-class SYSMLV2FILE_EXPORT KerMLBaseListener : public KerMLListener {
+class  KerMLBaseListener : public KerMLListener {
 public:
 
   virtual void enterStart(KerMLParser::StartContext * /*ctx*/) override { }
@@ -415,6 +415,9 @@ public:
   virtual void enterOwned_expression(KerMLParser::Owned_expressionContext * /*ctx*/) override { }
   virtual void exitOwned_expression(KerMLParser::Owned_expressionContext * /*ctx*/) override { }
 
+  virtual void enterEased_owned_expression(KerMLParser::Eased_owned_expressionContext * /*ctx*/) override { }
+  virtual void exitEased_owned_expression(KerMLParser::Eased_owned_expressionContext * /*ctx*/) override { }
+
   virtual void enterConditional_expression(KerMLParser::Conditional_expressionContext * /*ctx*/) override { }
   virtual void exitConditional_expression(KerMLParser::Conditional_expressionContext * /*ctx*/) override { }
 
@@ -450,6 +453,15 @@ public:
 
   virtual void enterMetaclassification_expression(KerMLParser::Metaclassification_expressionContext * /*ctx*/) override { }
   virtual void exitMetaclassification_expression(KerMLParser::Metaclassification_expressionContext * /*ctx*/) override { }
+
+  virtual void enterArgument_member(KerMLParser::Argument_memberContext * /*ctx*/) override { }
+  virtual void exitArgument_member(KerMLParser::Argument_memberContext * /*ctx*/) override { }
+
+  virtual void enterArgument(KerMLParser::ArgumentContext * /*ctx*/) override { }
+  virtual void exitArgument(KerMLParser::ArgumentContext * /*ctx*/) override { }
+
+  virtual void enterArgument_value(KerMLParser::Argument_valueContext * /*ctx*/) override { }
+  virtual void exitArgument_value(KerMLParser::Argument_valueContext * /*ctx*/) override { }
 
   virtual void enterArgument_expression_member(KerMLParser::Argument_expression_memberContext * /*ctx*/) override { }
   virtual void exitArgument_expression_member(KerMLParser::Argument_expression_memberContext * /*ctx*/) override { }
@@ -499,11 +511,26 @@ public:
   virtual void enterPrimary_expression(KerMLParser::Primary_expressionContext * /*ctx*/) override { }
   virtual void exitPrimary_expression(KerMLParser::Primary_expressionContext * /*ctx*/) override { }
 
+  virtual void enterPrimary_argument_value(KerMLParser::Primary_argument_valueContext * /*ctx*/) override { }
+  virtual void exitPrimary_argument_value(KerMLParser::Primary_argument_valueContext * /*ctx*/) override { }
+
+  virtual void enterPrimary_argument(KerMLParser::Primary_argumentContext * /*ctx*/) override { }
+  virtual void exitPrimary_argument(KerMLParser::Primary_argumentContext * /*ctx*/) override { }
+
+  virtual void enterPrimary_argument_member(KerMLParser::Primary_argument_memberContext * /*ctx*/) override { }
+  virtual void exitPrimary_argument_member(KerMLParser::Primary_argument_memberContext * /*ctx*/) override { }
+
   virtual void enterNon_feature_chain_primary_expression(KerMLParser::Non_feature_chain_primary_expressionContext * /*ctx*/) override { }
   virtual void exitNon_feature_chain_primary_expression(KerMLParser::Non_feature_chain_primary_expressionContext * /*ctx*/) override { }
 
   virtual void enterNon_feature_chain_primary_argument_value(KerMLParser::Non_feature_chain_primary_argument_valueContext * /*ctx*/) override { }
   virtual void exitNon_feature_chain_primary_argument_value(KerMLParser::Non_feature_chain_primary_argument_valueContext * /*ctx*/) override { }
+
+  virtual void enterNon_feature_chain_primary_argument(KerMLParser::Non_feature_chain_primary_argumentContext * /*ctx*/) override { }
+  virtual void exitNon_feature_chain_primary_argument(KerMLParser::Non_feature_chain_primary_argumentContext * /*ctx*/) override { }
+
+  virtual void enterNon_feature_chain_primary_argument_member(KerMLParser::Non_feature_chain_primary_argument_memberContext * /*ctx*/) override { }
+  virtual void exitNon_feature_chain_primary_argument_member(KerMLParser::Non_feature_chain_primary_argument_memberContext * /*ctx*/) override { }
 
   virtual void enterBracket_expression(KerMLParser::Bracket_expressionContext * /*ctx*/) override { }
   virtual void exitBracket_expression(KerMLParser::Bracket_expressionContext * /*ctx*/) override { }

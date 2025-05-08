@@ -1,61 +1,63 @@
 
-// Generated from ./KerML.g4 by ANTLR 4.13.2
+// Generated from KerML.g4 by ANTLR 4.13.2
 
 #pragma once
 
 
 #include "antlr4-runtime.h"
-#include "../sysmlv2file_global.h"
 
 
 
-class SYSMLV2FILE_EXPORT KerMLParser : public antlr4::Parser {
+
+class  KerMLParser : public antlr4::Parser {
 public:
   enum {
-    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, TYPED_BY = 5, SPECIALIZES = 6, 
-    SUBSETS = 7, REFERENCES = 8, REDEFINES = 9, CONJUNGATES = 10, KEYWORD_ABOUT = 11, 
-    KEYWORD_ABSTRACT = 12, KEYWORD_ALIAS = 13, KEYWORD_ALL = 14, KEYWORD_AND = 15, 
-    KEYWORD_AS = 16, KEYWORD_ASSOC = 17, KEYWORD_BEHAVIOR = 18, KEYWORD_BINDING = 19, 
-    KEYWORD_BOOL = 20, KEYWORD_BY = 21, KEYWORD_CHAINS = 22, KEYWORD_CLASS = 23, 
-    KEYWORD_CLASSIFIER = 24, KEYWORD_COMMENT = 25, KEYWORD_COMPOSITE = 26, 
-    KEYWORD_CONJUGATE = 27, KEYWORD_CONJUGATES = 28, KEYWORD_CONJUGATION = 29, 
-    KEYWORD_CONNECTOR = 30, KEYWORD_DATATYPE = 31, KEYWORD_DEFAULT = 32, 
-    KEYWORD_DEPENDENCY = 33, KEYWORD_DERIVED = 34, KEYWORD_DIFFERENCES = 35, 
-    KEYWORD_DISJOINING = 36, KEYWORD_DISJOINT = 37, KEYWORD_DOC = 38, KEYWORD_ELSE = 39, 
-    KEYWORD_END = 40, KEYWORD_EXPR = 41, KEYWORD_FALSE = 42, KEYWORD_FEATURE = 43, 
-    KEYWORD_FEATURED = 44, KEYWORD_FEATURING = 45, KEYWORD_FILTER = 46, 
-    KEYWORD_FIRST = 47, KEYWORD_FLOW = 48, KEYWORD_FOR = 49, KEYWORD_FROM = 50, 
-    KEYWORD_FUNCTION = 51, KEYWORD_HASTYPE = 52, KEYWORD_IF = 53, KEYWORD_INTERSECTS = 54, 
-    KEYWORD_IMPLIES = 55, KEYWORD_IMPORT = 56, KEYWORD_IN = 57, KEYWORD_INOUT = 58, 
-    KEYWORD_INTERACTION = 59, KEYWORD_INV = 60, KEYWORD_INVERSE = 61, KEYWORD_INVERTING = 62, 
-    KEYWORD_ISTYPE = 63, KEYWORD_LANGUAGE = 64, KEYWORD_MEMBER = 65, KEYWORD_METACLASS = 66, 
-    KEYWORD_METADATA = 67, KEYWORD_MULTIPLICITY = 68, KEYWORD_NAMESPACE = 69, 
-    KEYWORD_NONUNIQUE = 70, KEYWORD_NOT = 71, KEYWORD_NULL = 72, KEYWORD_OF = 73, 
-    KEYWORD_OR = 74, KEYWORD_ORDERED = 75, KEYWORD_OUT = 76, KEYWORD_PACKAGE = 77, 
-    KEYWORD_PORTION = 78, KEYWORD_PREDICATE = 79, KEYWORD_PRIVATE = 80, 
-    KEYWORD_PROTECTED = 81, KEYWORD_PUBLIC = 82, KEYWORD_READONLY = 83, 
-    KEYWORD_REDEFINES = 84, KEYWORD_REDEFINITION = 85, KEYWORD_REFERENCES = 86, 
-    KEYWORD_REP = 87, KEYWORD_RETURN = 88, KEYWORD_SPECILIZATION = 89, KEYWORD_SPECIALIZES = 90, 
-    KEYWORD_STEP = 91, KEYWORD_STRUCT = 92, KEYWORD_SUBCLASSIFIER = 93, 
-    KEYWORD_SUBSET = 94, KEYWORD_SUBSETS = 95, KEYWORD_SUBTYPE = 96, KEYWORD_SUCCSESSION = 97, 
-    KEYWORD_THEN = 98, KEYWORD_TO = 99, KEYWORD_TRUE = 100, KEYWORD_TYPE = 101, 
-    KEYWORD_TYPED = 102, KEYWORD_TYPING = 103, KEYWORD_UNIONS = 104, KEYWORD_XOR = 105, 
-    KEYWORD_VAR = 106, SINGLE_LINE_NOTE = 107, MULTI_LINE_NOTE = 108, REGULAR_COMMENT = 109, 
-    SYMBOL_COMMENT_BLOCK_START = 110, SYMBOL_NOTE_BLOCK_START = 111, SYMBOL_COMMENT_BLOCK_END = 112, 
-    SYMBOL_STATEMENT_DELIMITER = 113, SYMBOL_STAR = 114, SYMBOL_NAMESPACE_SUBSET = 115, 
-    SYMBOL_TYPED_BY = 116, SYMBOL_SPECIALIZES = 117, SYMBOL_REFERENCES = 118, 
-    SYMBOL_REDEFINES = 119, SYMBOL_CONJUNGATES = 120, SYMBOL_ROUND_BRACKET_OPEN = 121, 
-    SYMBOL_ROUND_BRACKET_CLOSE = 122, SYMBOL_CURLY_BRACKET_OPEN = 123, SYMBOL_CURLY_BRACKET_CLOSE = 124, 
-    SYMBOL_SQUARE_BRACKET_OPEN = 125, SYMBOL_SQUARE_BRACKET_CLOSE = 126, 
-    SYMBOL_COMMA = 127, SYMBOL_AT = 128, SYMBOL_HASHTAG = 129, SYMBOL_MOD = 130, 
-    SYMBOL_AND = 131, SYMBOL_UPPER = 132, SYMBOL_VERTICAL_LINE = 133, SYMBOL_DOUBLE_STAR = 134, 
-    SYMBOL_PLUS = 135, SYMBOL_MINUS = 136, SYMBOL_SLASH = 137, SYMBOL_ARROOW = 138, 
-    SYMBOL_DOT = 139, SYMBOL_DDOT = 140, SYMBOL_SMALLER = 141, SYMBOL_SMALLER_EQUAL = 142, 
-    SYMBOL_ASSIGN = 143, SYMBOL_DEF_ASSIGN = 144, SYMBOL_EQUALS = 145, SYMBOL_IFF_EQUALS = 146, 
-    SYMBOL_NOT_EQUALS = 147, SYMBOL_IFF_NOT_EQUALS = 148, SYMBOL_GREATER = 149, 
-    SYMBOL_GREATER_EQUALS = 150, SYMBOL_QUESTION = 151, SYMBOL_DQUESTION = 152, 
-    SYMBOL_DOT_QUESTION = 153, NAME = 154, BASIC_NAME = 155, UNRESTRICTED_NAME = 156, 
-    DECIMAL_VALUE = 157, EXPONENTIAL_VALUE = 158, STRING_VALUE = 159, WS = 160
+    T__0 = 1, TYPED_BY = 2, SPECIALIZES = 3, SUBSETS = 4, REFERENCES = 5, 
+    REDEFINES = 6, CONJUNGATES = 7, KEYWORD_ABOUT = 8, KEYWORD_ABSTRACT = 9, 
+    KEYWORD_ALIAS = 10, KEYWORD_ALL = 11, KEYWORD_AND = 12, KEYWORD_AS = 13, 
+    KEYWORD_ASSOC = 14, KEYWORD_BEHAVIOR = 15, KEYWORD_BINDING = 16, KEYWORD_BOOL = 17, 
+    KEYWORD_BY = 18, KEYWORD_CHAINS = 19, KEYWORD_CLASS = 20, KEYWORD_CLASSIFIER = 21, 
+    KEYWORD_COMMENT = 22, KEYWORD_COMPOSITE = 23, KEYWORD_CONJUGATE = 24, 
+    KEYWORD_CONJUGATES = 25, KEYWORD_CONJUGATION = 26, KEYWORD_CONNECTOR = 27, 
+    KEYWORD_DATATYPE = 28, KEYWORD_DEFAULT = 29, KEYWORD_DEPENDENCY = 30, 
+    KEYWORD_DERIVED = 31, KEYWORD_DIFFERENCES = 32, KEYWORD_DISJOINING = 33, 
+    KEYWORD_DISJOINT = 34, KEYWORD_DOC = 35, KEYWORD_ELSE = 36, KEYWORD_END = 37, 
+    KEYWORD_EXPR = 38, KEYWORD_FALSE = 39, KEYWORD_FEATURE = 40, KEYWORD_FEATURED = 41, 
+    KEYWORD_FEATURING = 42, KEYWORD_FILTER = 43, KEYWORD_FIRST = 44, KEYWORD_FLOW = 45, 
+    KEYWORD_FOR = 46, KEYWORD_FROM = 47, KEYWORD_FUNCTION = 48, KEYWORD_HASTYPE = 49, 
+    KEYWORD_IF = 50, KEYWORD_INTERSECTS = 51, KEYWORD_IMPLIES = 52, KEYWORD_IMPORT = 53, 
+    KEYWORD_IN = 54, KEYWORD_INOUT = 55, KEYWORD_INTERACTION = 56, KEYWORD_INV = 57, 
+    KEYWORD_INVERSE = 58, KEYWORD_INVERTING = 59, KEYWORD_ISTYPE = 60, KEYWORD_LANGUAGE = 61, 
+    KEYWORD_MEMBER = 62, KEYWORD_METACLASS = 63, KEYWORD_METADATA = 64, 
+    KEYWORD_MULTIPLICITY = 65, KEYWORD_NAMESPACE = 66, KEYWORD_NONUNIQUE = 67, 
+    KEYWORD_NOT = 68, KEYWORD_NULL = 69, KEYWORD_OF = 70, KEYWORD_OR = 71, 
+    KEYWORD_ORDERED = 72, KEYWORD_OUT = 73, KEYWORD_PACKAGE = 74, KEYWORD_PORTION = 75, 
+    KEYWORD_PREDICATE = 76, KEYWORD_PRIVATE = 77, KEYWORD_PROTECTED = 78, 
+    KEYWORD_PUBLIC = 79, KEYWORD_READONLY = 80, KEYWORD_REDEFINES = 81, 
+    KEYWORD_REDEFINITION = 82, KEYWORD_REFERENCES = 83, KEYWORD_REP = 84, 
+    KEYWORD_RETURN = 85, KEYWORD_SPECILIZATION = 86, KEYWORD_SPECIALIZES = 87, 
+    KEYWORD_STEP = 88, KEYWORD_STRUCT = 89, KEYWORD_SUBCLASSIFIER = 90, 
+    KEYWORD_SUBSET = 91, KEYWORD_SUBSETS = 92, KEYWORD_SUBTYPE = 93, KEYWORD_SUCCSESSION = 94, 
+    KEYWORD_THEN = 95, KEYWORD_TO = 96, KEYWORD_TRUE = 97, KEYWORD_TYPE = 98, 
+    KEYWORD_TYPED = 99, KEYWORD_TYPING = 100, KEYWORD_UNIONS = 101, KEYWORD_XOR = 102, 
+    KEYWORD_VAR = 103, KEYWORD_LOCALE = 104, KEYWORD_STANDARD = 105, KEYWORD_LIBRARY = 106, 
+    KEYWORD_CONSTANT = 107, SINGLE_LINE_NOTE = 108, MULTI_LINE_NOTE = 109, 
+    REGULAR_COMMENT = 110, SYMBOL_COMMENT_BLOCK_START = 111, SYMBOL_NOTE_BLOCK_START = 112, 
+    SYMBOL_COMMENT_BLOCK_END = 113, SYMBOL_STATEMENT_DELIMITER = 114, SYMBOL_STAR = 115, 
+    SYMBOL_NAMESPACE_SUBSET = 116, SYMBOL_TYPED_BY = 117, SYMBOL_SPECIALIZES = 118, 
+    SYMBOL_REFERENCES = 119, SYMBOL_REDEFINES = 120, SYMBOL_CONJUNGATES = 121, 
+    SYMBOL_ROUND_BRACKET_OPEN = 122, SYMBOL_ROUND_BRACKET_CLOSE = 123, SYMBOL_CURLY_BRACKET_OPEN = 124, 
+    SYMBOL_CURLY_BRACKET_CLOSE = 125, SYMBOL_SQUARE_BRACKET_OPEN = 126, 
+    SYMBOL_SQUARE_BRACKET_CLOSE = 127, SYMBOL_COMMA = 128, SYMBOL_AT = 129, 
+    SYMBOL_HASHTAG = 130, SYMBOL_MOD = 131, SYMBOL_AND = 132, SYMBOL_UPPER = 133, 
+    SYMBOL_VERTICAL_LINE = 134, SYMBOL_DOUBLE_STAR = 135, SYMBOL_PLUS = 136, 
+    SYMBOL_MINUS = 137, SYMBOL_SLASH = 138, SYMBOL_ARROOW = 139, SYMBOL_DOT = 140, 
+    SYMBOL_DDOT = 141, SYMBOL_SMALLER = 142, SYMBOL_SMALLER_EQUAL = 143, 
+    SYMBOL_ASSIGN = 144, SYMBOL_DEF_ASSIGN = 145, SYMBOL_EQUALS = 146, SYMBOL_IFF_EQUALS = 147, 
+    SYMBOL_NOT_EQUALS = 148, SYMBOL_IFF_NOT_EQUALS = 149, SYMBOL_GREATER = 150, 
+    SYMBOL_GREATER_EQUALS = 151, SYMBOL_QUESTION = 152, SYMBOL_DQUESTION = 153, 
+    SYMBOL_DOT_QUESTION = 154, NAME = 155, BASIC_NAME = 156, UNRESTRICTED_NAME = 157, 
+    DECIMAL_VALUE = 158, EXPONENTIAL_VALUE = 159, STRING_VALUE = 160, WS = 161
   };
 
   enum {
@@ -102,50 +104,54 @@ public:
     RuleExpression = 124, RulePredicate = 125, RuleBoolean_expression = 126, 
     RuleInvariant = 127, RuleOwned_expression_reference_member = 128, RuleOwned_expression_reference = 129, 
     RuleOwned_expression_member = 130, RuleOwned_expressions = 131, RuleOwned_expression = 132, 
-    RuleConditional_expression = 133, RuleConditional_binary_operator_expression = 134, 
-    RuleConditional_binary_operator = 135, RuleBinary_operator_expression = 136, 
-    RuleBinary_operator = 137, RuleUnary_operator_expression = 138, RuleUnary_operator = 139, 
-    RuleClassification_expression = 140, RuleClassification = 141, RuleClassification_test_operator = 142, 
-    RuleCast_operator = 143, RuleMetaclassification_expression = 144, RuleArgument_expression_member = 145, 
-    RuleArgument_expression = 146, RuleArgument_expression_value = 147, 
-    RuleMetadata_argument_member = 148, RuleMetadata_argument = 149, RuleMetadata_value = 150, 
-    RuleMetadata_reference = 151, RuleMetadataclassification_test_operator = 152, 
-    RuleMeta_cast_operator = 153, RuleExtend_expression = 154, RuleType_reference_member = 155, 
-    RuleType_result_member = 156, RuleType_reference = 157, RuleReference_typing = 158, 
-    RulePrimary_expressions = 159, RulePrimary_expression = 160, RuleNon_feature_chain_primary_expression = 161, 
-    RuleNon_feature_chain_primary_argument_value = 162, RuleBracket_expression = 163, 
-    RuleIndex_expression = 164, RuleSequence_expression = 165, RuleSequence_expression_list = 166, 
-    RuleSequence_operator_expression = 167, RuleSequence_expression_list_member = 168, 
-    RuleFeature_chain_expression = 169, RuleCollect_expression = 170, RuleSelect_expression = 171, 
-    RuleFunction_operation_expression = 172, RuleBody_argument_member = 173, 
-    RuleBody_argument = 174, RuleBody_argument_value = 175, RuleBody_expression_member = 176, 
-    RuleFunction_reference_argument_member = 177, RuleFunction_reference_argument = 178, 
-    RuleFunction_reference_arugment_value = 179, RuleFunction_reference_expression = 180, 
-    RuleFunction_reference_member = 181, RuleFunction_reference = 182, RuleFeature_chain_member = 183, 
-    RuleOwned_feature_chain_member = 184, RuleBase_expression = 185, RuleNull_expression = 186, 
-    RuleFeature_reference_expression = 187, RuleFeature_reference_member = 188, 
-    RuleFeature_reference = 189, RuleMetadata_access_expression = 190, RuleInvocation_expression = 191, 
-    RuleInternal_invocation_expression = 192, RuleArgument_list = 193, RulePositional_argument_list = 194, 
-    RuleNamed_argument_list = 195, RuleNamed_argument_member = 196, RuleNamed_argument = 197, 
-    RuleParamenter_redefinition = 198, RuleBody_expression = 199, RuleExpression_body_member = 200, 
-    RuleExpression_body = 201, RuleLiteral_expression = 202, RuleLiteral_boolean = 203, 
-    RuleBoolean_value = 204, RuleLiteral_string = 205, RuleLiteral_integer = 206, 
-    RuleLiteral_real = 207, RuleReal_value = 208, RuleLiteral_infinity = 209, 
-    RuleInteraction = 210, RuleItem_flow = 211, RuleSuccession_item_flow = 212, 
-    RuleItem_flow_declaration = 213, RuleItem_feature_member = 214, RuleItem_feature = 215, 
-    RuleItem_feature_specilization_part = 216, RuleItem_flow_end_member = 217, 
-    RuleItem_flow_end = 218, RuleItem_flow_feature_member = 219, RuleItem_flow_feature = 220, 
-    RuleItem_flow_redefinition = 221, RuleValue_part = 222, RuleFeature_value = 223, 
-    RuleFeature_assignment = 224, RuleMultiplicity = 225, RuleMultiplicity_subset = 226, 
-    RuleMultiplicity_range = 227, RuleOwned_multiplicity = 228, RuleOwned_multiplicity_range = 229, 
-    RuleMultiplicity_bounds = 230, RuleMultiplicity_expression_member = 231, 
-    RuleInternal_multiplicity_expression_member = 232, RuleMetaclass = 233, 
-    RulePrefix_metadata_annotation = 234, RulePrefix_metadata_member = 235, 
-    RulePrefix_metadata_feature = 236, RuleMetadata_feature = 237, RuleMetadata_feature_declaration = 238, 
-    RuleMetadata_body = 239, RuleMetadata_body_element = 240, RuleMetadata_body_feature_member = 241, 
-    RuleMetadata_body_feature = 242, RulePackage = 243, RuleLibrary_package = 244, 
-    RulePackage_declaration = 245, RulePackage_body = 246, RuleElement_filter_member = 247, 
-    RuleMeta_assignment = 248
+    RuleEased_owned_expression = 133, RuleConditional_expression = 134, 
+    RuleConditional_binary_operator_expression = 135, RuleConditional_binary_operator = 136, 
+    RuleBinary_operator_expression = 137, RuleBinary_operator = 138, RuleUnary_operator_expression = 139, 
+    RuleUnary_operator = 140, RuleClassification_expression = 141, RuleClassification = 142, 
+    RuleClassification_test_operator = 143, RuleCast_operator = 144, RuleMetaclassification_expression = 145, 
+    RuleArgument_member = 146, RuleArgument = 147, RuleArgument_value = 148, 
+    RuleArgument_expression_member = 149, RuleArgument_expression = 150, 
+    RuleArgument_expression_value = 151, RuleMetadata_argument_member = 152, 
+    RuleMetadata_argument = 153, RuleMetadata_value = 154, RuleMetadata_reference = 155, 
+    RuleMetadataclassification_test_operator = 156, RuleMeta_cast_operator = 157, 
+    RuleExtend_expression = 158, RuleType_reference_member = 159, RuleType_result_member = 160, 
+    RuleType_reference = 161, RuleReference_typing = 162, RulePrimary_expressions = 163, 
+    RulePrimary_expression = 164, RulePrimary_argument_value = 165, RulePrimary_argument = 166, 
+    RulePrimary_argument_member = 167, RuleNon_feature_chain_primary_expression = 168, 
+    RuleNon_feature_chain_primary_argument_value = 169, RuleNon_feature_chain_primary_argument = 170, 
+    RuleNon_feature_chain_primary_argument_member = 171, RuleBracket_expression = 172, 
+    RuleIndex_expression = 173, RuleSequence_expression = 174, RuleSequence_expression_list = 175, 
+    RuleSequence_operator_expression = 176, RuleSequence_expression_list_member = 177, 
+    RuleFeature_chain_expression = 178, RuleCollect_expression = 179, RuleSelect_expression = 180, 
+    RuleFunction_operation_expression = 181, RuleBody_argument_member = 182, 
+    RuleBody_argument = 183, RuleBody_argument_value = 184, RuleBody_expression_member = 185, 
+    RuleFunction_reference_argument_member = 186, RuleFunction_reference_argument = 187, 
+    RuleFunction_reference_arugment_value = 188, RuleFunction_reference_expression = 189, 
+    RuleFunction_reference_member = 190, RuleFunction_reference = 191, RuleFeature_chain_member = 192, 
+    RuleOwned_feature_chain_member = 193, RuleBase_expression = 194, RuleNull_expression = 195, 
+    RuleFeature_reference_expression = 196, RuleFeature_reference_member = 197, 
+    RuleFeature_reference = 198, RuleMetadata_access_expression = 199, RuleInvocation_expression = 200, 
+    RuleInternal_invocation_expression = 201, RuleArgument_list = 202, RulePositional_argument_list = 203, 
+    RuleNamed_argument_list = 204, RuleNamed_argument_member = 205, RuleNamed_argument = 206, 
+    RuleParamenter_redefinition = 207, RuleBody_expression = 208, RuleExpression_body_member = 209, 
+    RuleExpression_body = 210, RuleLiteral_expression = 211, RuleLiteral_boolean = 212, 
+    RuleBoolean_value = 213, RuleLiteral_string = 214, RuleLiteral_integer = 215, 
+    RuleLiteral_real = 216, RuleReal_value = 217, RuleLiteral_infinity = 218, 
+    RuleInteraction = 219, RuleItem_flow = 220, RuleSuccession_item_flow = 221, 
+    RuleItem_flow_declaration = 222, RuleItem_feature_member = 223, RuleItem_feature = 224, 
+    RuleItem_feature_specilization_part = 225, RuleItem_flow_end_member = 226, 
+    RuleItem_flow_end = 227, RuleItem_flow_feature_member = 228, RuleItem_flow_feature = 229, 
+    RuleItem_flow_redefinition = 230, RuleValue_part = 231, RuleFeature_value = 232, 
+    RuleFeature_assignment = 233, RuleMultiplicity = 234, RuleMultiplicity_subset = 235, 
+    RuleMultiplicity_range = 236, RuleOwned_multiplicity = 237, RuleOwned_multiplicity_range = 238, 
+    RuleMultiplicity_bounds = 239, RuleMultiplicity_expression_member = 240, 
+    RuleInternal_multiplicity_expression_member = 241, RuleMetaclass = 242, 
+    RulePrefix_metadata_annotation = 243, RulePrefix_metadata_member = 244, 
+    RulePrefix_metadata_feature = 245, RuleMetadata_feature = 246, RuleMetadata_feature_declaration = 247, 
+    RuleMetadata_body = 248, RuleMetadata_body_element = 249, RuleMetadata_body_feature_member = 250, 
+    RuleMetadata_body_feature = 251, RulePackage = 252, RuleLibrary_package = 253, 
+    RulePackage_declaration = 254, RulePackage_body = 255, RuleElement_filter_member = 256, 
+    RuleMeta_assignment = 257
   };
 
   explicit KerMLParser(antlr4::TokenStream *input);
@@ -298,6 +304,7 @@ public:
   class Owned_expression_memberContext;
   class Owned_expressionsContext;
   class Owned_expressionContext;
+  class Eased_owned_expressionContext;
   class Conditional_expressionContext;
   class Conditional_binary_operator_expressionContext;
   class Conditional_binary_operatorContext;
@@ -310,6 +317,9 @@ public:
   class Classification_test_operatorContext;
   class Cast_operatorContext;
   class Metaclassification_expressionContext;
+  class Argument_memberContext;
+  class ArgumentContext;
+  class Argument_valueContext;
   class Argument_expression_memberContext;
   class Argument_expressionContext;
   class Argument_expression_valueContext;
@@ -326,8 +336,13 @@ public:
   class Reference_typingContext;
   class Primary_expressionsContext;
   class Primary_expressionContext;
+  class Primary_argument_valueContext;
+  class Primary_argumentContext;
+  class Primary_argument_memberContext;
   class Non_feature_chain_primary_expressionContext;
   class Non_feature_chain_primary_argument_valueContext;
+  class Non_feature_chain_primary_argumentContext;
+  class Non_feature_chain_primary_argument_memberContext;
   class Bracket_expressionContext;
   class Index_expressionContext;
   class Sequence_expressionContext;
@@ -601,6 +616,7 @@ public:
     antlr4::tree::TerminalNode *REGULAR_COMMENT();
     antlr4::tree::TerminalNode *KEYWORD_COMMENT();
     IdentificationContext *identification();
+    antlr4::tree::TerminalNode *KEYWORD_LOCALE();
     antlr4::tree::TerminalNode *STRING_VALUE();
     antlr4::tree::TerminalNode *KEYWORD_ABOUT();
     std::vector<AnnotationContext *> annotation();
@@ -622,6 +638,7 @@ public:
     antlr4::tree::TerminalNode *KEYWORD_DOC();
     IdentificationContext *identification();
     antlr4::tree::TerminalNode *REGULAR_COMMENT();
+    antlr4::tree::TerminalNode *KEYWORD_LOCALE();
     antlr4::tree::TerminalNode *STRING_VALUE();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -2548,11 +2565,28 @@ public:
 
   Owned_expressionContext* owned_expression();
 
+  class  Eased_owned_expressionContext : public antlr4::ParserRuleContext {
+  public:
+    Eased_owned_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Primary_expressionContext *primary_expression();
+    Extend_expressionContext *extend_expression();
+    Metaclassification_expressionContext *metaclassification_expression();
+    Unary_operator_expressionContext *unary_operator_expression();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Eased_owned_expressionContext* eased_owned_expression();
+
   class  Conditional_expressionContext : public antlr4::ParserRuleContext {
   public:
     Conditional_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *KEYWORD_IF();
+    Argument_memberContext *argument_member();
     antlr4::tree::TerminalNode *SYMBOL_QUESTION();
     std::vector<Argument_expression_memberContext *> argument_expression_member();
     Argument_expression_memberContext* argument_expression_member(size_t i);
@@ -2569,6 +2603,7 @@ public:
   public:
     Conditional_binary_operator_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    Argument_memberContext *argument_member();
     Conditional_binary_operatorContext *conditional_binary_operator();
     Argument_expression_memberContext *argument_expression_member();
 
@@ -2599,6 +2634,7 @@ public:
   public:
     Binary_operator_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    Argument_memberContext *argument_member();
     Binary_operatorContext *binary_operator();
     Owned_expressionsContext *owned_expressions();
 
@@ -2674,6 +2710,7 @@ public:
   public:
     Classification_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    Argument_memberContext *argument_member();
     Classification_test_operatorContext *classification_test_operator();
     Type_reference_memberContext *type_reference_member();
     Cast_operatorContext *cast_operator();
@@ -2692,6 +2729,7 @@ public:
     virtual size_t getRuleIndex() const override;
     Classification_test_operatorContext *classification_test_operator();
     Type_reference_memberContext *type_reference_member();
+    Argument_memberContext *argument_member();
     Cast_operatorContext *cast_operator();
     Type_result_memberContext *type_result_member();
 
@@ -2746,6 +2784,45 @@ public:
   };
 
   Metaclassification_expressionContext* metaclassification_expression();
+
+  class  Argument_memberContext : public antlr4::ParserRuleContext {
+  public:
+    Argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    ArgumentContext *argument();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Argument_memberContext* argument_member();
+
+  class  ArgumentContext : public antlr4::ParserRuleContext {
+  public:
+    ArgumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Argument_valueContext *argument_value();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  ArgumentContext* argument();
+
+  class  Argument_valueContext : public antlr4::ParserRuleContext {
+  public:
+    Argument_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Eased_owned_expressionContext *eased_owned_expression();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Argument_valueContext* argument_value();
 
   class  Argument_expression_memberContext : public antlr4::ParserRuleContext {
   public:
@@ -2957,6 +3034,45 @@ public:
 
   Primary_expressionContext* primary_expression();
 
+  class  Primary_argument_valueContext : public antlr4::ParserRuleContext {
+  public:
+    Primary_argument_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Primary_expressionContext *primary_expression();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Primary_argument_valueContext* primary_argument_value();
+
+  class  Primary_argumentContext : public antlr4::ParserRuleContext {
+  public:
+    Primary_argumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Primary_argument_valueContext *primary_argument_value();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Primary_argumentContext* primary_argument();
+
+  class  Primary_argument_memberContext : public antlr4::ParserRuleContext {
+  public:
+    Primary_argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Primary_argumentContext *primary_argument();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Primary_argument_memberContext* primary_argument_member();
+
   class  Non_feature_chain_primary_expressionContext : public antlr4::ParserRuleContext {
   public:
     Non_feature_chain_primary_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -2988,6 +3104,32 @@ public:
   };
 
   Non_feature_chain_primary_argument_valueContext* non_feature_chain_primary_argument_value();
+
+  class  Non_feature_chain_primary_argumentContext : public antlr4::ParserRuleContext {
+  public:
+    Non_feature_chain_primary_argumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Primary_argumentContext *primary_argument();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Non_feature_chain_primary_argumentContext* non_feature_chain_primary_argument();
+
+  class  Non_feature_chain_primary_argument_memberContext : public antlr4::ParserRuleContext {
+  public:
+    Non_feature_chain_primary_argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Primary_argumentContext *primary_argument();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Non_feature_chain_primary_argument_memberContext* non_feature_chain_primary_argument_member();
 
   class  Bracket_expressionContext : public antlr4::ParserRuleContext {
   public:
@@ -3430,6 +3572,7 @@ public:
   public:
     Positional_argument_listContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    Argument_memberContext *argument_member();
     std::vector<antlr4::tree::TerminalNode *> SYMBOL_COMMA();
     antlr4::tree::TerminalNode* SYMBOL_COMMA(size_t i);
     std::vector<Owned_expressionsContext *> owned_expressions();
@@ -4178,8 +4321,10 @@ public:
   public:
     Library_packageContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *KEYWORD_LIBRARY();
     Package_declarationContext *package_declaration();
     Package_bodyContext *package_body();
+    antlr4::tree::TerminalNode *KEYWORD_STANDARD();
     std::vector<Prefix_metadata_memberContext *> prefix_metadata_member();
     Prefix_metadata_memberContext* prefix_metadata_member(size_t i);
 
