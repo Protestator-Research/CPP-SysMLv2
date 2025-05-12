@@ -122,25 +122,26 @@ $(function(){initNavTree('dd/dfb/_query_8h_source.html','../../'); initResizable
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// Internal Classes</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">//---------------------------------------------------------</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;Record.h&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">//---------------------------------------------------------</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// Forwarding</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">//---------------------------------------------------------</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d4/d33/namespace_sys_m_lv2_1_1_entities.html">SysMLv2::Entities</a> {</div>
-<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="../../d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query.html">   28</a></span>    <span class="keyword">class </span>Query : <span class="keyword">public</span> <a class="code hl_function" href="../../d9/dad/class_sys_m_lv2_1_1_entities_1_1_record.html#a3bfd067522f0ef87a1b50c6493458a9b">Record</a> {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keyword">explicit</span> Query(std::string jsonString);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        std::string <a class="code hl_function" href="../../d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query.html#a8cb6114b1e714ddcae6214c0c303ef36">serializeToJson</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    };</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;../sysmlv2rest_global.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">//---------------------------------------------------------</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// Forwarding</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">//---------------------------------------------------------</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d4/d33/namespace_sys_m_lv2_1_1_entities.html">SysMLv2::Entities</a> {</div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query.html">   29</a></span>    <span class="keyword">class </span>SYSMLV2REST_EXPORT Query : <span class="keyword">public</span> <a class="code hl_function" href="../../d9/dad/class_sys_m_lv2_1_1_entities_1_1_record.html#a3bfd067522f0ef87a1b50c6493458a9b">Record</a> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keyword">explicit</span> Query(std::string jsonString);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        std::string <a class="code hl_function" href="../../d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query.html#a8cb6114b1e714ddcae6214c0c303ef36">serializeToJson</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    };</div>
 </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif </span><span class="comment">//DIGITALTWIN_QUERY_H</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif </span><span class="comment">//DIGITALTWIN_QUERY_H</span></div>
 <div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_query_html_a8cb6114b1e714ddcae6214c0c303ef36"><div class="ttname"><a href="../../d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query.html#a8cb6114b1e714ddcae6214c0c303ef36">SysMLv2::Entities::Query::serializeToJson</a></div><div class="ttdeci">std::string serializeToJson() override</div><div class="ttdef"><b>Definition</b> Query.cpp:12</div></div>
 <div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_record_html_a3bfd067522f0ef87a1b50c6493458a9b"><div class="ttname"><a href="../../d9/dad/class_sys_m_lv2_1_1_entities_1_1_record.html#a3bfd067522f0ef87a1b50c6493458a9b">SysMLv2::Entities::Record::Record</a></div><div class="ttdeci">Record()=delete</div></div>
-<div class="ttc" id="anamespace_sys_m_lv2_1_1_entities_html"><div class="ttname"><a href="../../d4/d33/namespace_sys_m_lv2_1_1_entities.html">SysMLv2::Entities</a></div><div class="ttdef"><b>Definition</b> IEntity.h:22</div></div>
+<div class="ttc" id="anamespace_sys_m_lv2_1_1_entities_html"><div class="ttname"><a href="../../d4/d33/namespace_sys_m_lv2_1_1_entities.html">SysMLv2::Entities</a></div><div class="ttdef"><b>Definition</b> Branch.cpp:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>SysMLv2::Entities::IEntity</compoundname>
+    <derivedcompoundref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" prot="public" virt="non-virtual">SysMLv2::Entities::Data</derivedcompoundref>
+    <derivedcompoundref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" prot="public" virt="non-virtual">SysMLv2::Entities::Identification</derivedcompoundref>
+    <derivedcompoundref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" prot="public" virt="non-virtual">SysMLv2::Entities::Record</derivedcompoundref>
+    <includes refid="d9/d45/_i_entity_8h" local="no">IEntity.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1ac3f7cba2488d110b820614b9cb709808" prot="protected" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int SysMLv2::Entities::IEntity::JSON_INTENT</definition>
+        <argsstring></argsstring>
+        <name>JSON_INTENT</name>
+        <qualifiedname>SysMLv2::Entities::IEntity::JSON_INTENT</qualifiedname>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Describes the intent of nlohmanns json library. <simplesect kind="see"><para>nlohmann::json::dump </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/IEntity.h" line="42" column="19" bodyfile="rest-api/src/entities/IEntity.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1a21ebb7ed491edd322301c7ba20cf66dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string SysMLv2::Entities::IEntity::serializeToJson</definition>
+        <argsstring>()=0</argsstring>
+        <name>serializeToJson</name>
+        <qualifiedname>SysMLv2::Entities::IEntity::serializeToJson</qualifiedname>
+        <reimplementedby refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch_1a4dcadc24d21171c6d36906b613f7f5f8">serializeToJson</reimplementedby>
+        <reimplementedby refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit_1abdcba8ede41175531d3d17d3de0dee49">serializeToJson</reimplementedby>
+        <reimplementedby refid="d3/daf/class_sys_m_lv2_1_1_entities_1_1_commit_reference_1a14259140279b02d693d7b551abfa49f9">serializeToJson</reimplementedby>
+        <reimplementedby refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a01a079b57d6cadb79794f04edaadc3e4">serializeToJson</reimplementedby>
+        <reimplementedby refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1abaaf39353f7c4e099a136d067237bc85">serializeToJson</reimplementedby>
+        <reimplementedby refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1acd719b891bb323c95294d4479284d2ef">serializeToJson</reimplementedby>
+        <reimplementedby refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a94e32065cdd1b4e5392bf766318440fc">serializeToJson</reimplementedby>
+        <reimplementedby refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a8517173a49bfc74893219a6465394383">serializeToJson</reimplementedby>
+        <reimplementedby refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1ab12999d3ad6024de75eac4ed4f6d7b72">serializeToJson</reimplementedby>
+        <reimplementedby refid="d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query_1a8cb6114b1e714ddcae6214c0c303ef36">serializeToJson</reimplementedby>
+        <reimplementedby refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a2a10fcc6f27a921cd60517703dfd3f2b">serializeToJson</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows the serialization of the Object to a JSON String. <simplesect kind="return"><para>JSON String of the Object </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/IEntity.h" line="36" column="29"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Defines the interface for all <ref refid="d7/dba/namespace_sys_m_lv2" kindref="compound">SysMLv2</ref> classes.</para>
+<para><simplesect kind="author"><para>Moritz Herzog </para>
+</simplesect>
+<simplesect kind="version"><para>1.0 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="12">
+        <label>SysMLv2::Entities::Branch</label>
+        <link refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>SysMLv2::Entities::Commit</label>
+        <link refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>SysMLv2::Entities::CommitReference</label>
+        <link refid="d3/daf/class_sys_m_lv2_1_1_entities_1_1_commit_reference"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>SysMLv2::Entities::Data</label>
+        <link refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>SysMLv2::Entities::DataIdentity</label>
+        <link refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>SysMLv2::Entities::DataVersion</label>
+        <link refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>SysMLv2::Entities::Element</label>
+        <link refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>SysMLv2::Entities::ExternalData</label>
+        <link refid="d1/df8/class_sys_m_lv2_1_1_entities_1_1_external_data"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>SysMLv2::Entities::ExternalRelationship</label>
+        <link refid="dc/d95/class_sys_m_lv2_1_1_entities_1_1_external_relationship"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+      <node id="8">
+        <label>SysMLv2::Entities::Identification</label>
+        <link refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>SysMLv2::Entities::Project</label>
+        <link refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>SysMLv2::Entities::ProjectUsage</label>
+        <link refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>SysMLv2::Entities::Query</label>
+        <link refid="d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>SysMLv2::Entities::Record</label>
+        <link refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>SysMLv2::Entities::Relationship</label>
+        <link refid="d0/dae/class_sys_m_lv2_1_1_entities_1_1_relationship"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>SysMLv2::Entities::Tag</label>
+        <link refid="d7/dab/class_sys_m_lv2_1_1_entities_1_1_tag"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="rest-api/src/entities/IEntity.h" line="29" column="5" bodyfile="rest-api/src/entities/IEntity.h" bodystart="29" bodyend="43"/>
+    <listofallmembers>
+      <member refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1ac3f7cba2488d110b820614b9cb709808" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::IEntity</scope><name>JSON_INTENT</name></member>
+      <member refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1a21ebb7ed491edd322301c7ba20cf66dc" prot="public" virt="pure-virtual"><scope>SysMLv2::Entities::IEntity</scope><name>serializeToJson</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d0/df2/_feature_membership_8cpp" kind="file" language="C++">
+    <compoundname>FeatureMembership.cpp</compoundname>
+    <includes refid="d5/dcb/_feature_membership_8h" local="yes">FeatureMembership.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>kerml/src/core/features/FeatureMembership.cpp</label>
+        <link refid="d0/df2/_feature_membership_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>FeatureMembership.h</label>
+        <link refid="d5/dcb/_feature_membership_8h_source"/>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Moritz<sp/>Herzog<sp/>on<sp/>25.03.25.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;FeatureMembership.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="kerml/src/core/features/FeatureMembership.cpp"/>
+  </compounddef>
+</doxygen>

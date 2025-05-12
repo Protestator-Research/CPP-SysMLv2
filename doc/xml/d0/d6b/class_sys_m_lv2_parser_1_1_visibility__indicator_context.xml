@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Visibility_indicatorContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context_1aa6ca4c50703eeaa2d935c6d71059fbbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Visibility_indicatorContext::Visibility_indicatorContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Visibility_indicatorContext</name>
+        <qualifiedname>SysMLv2Parser::Visibility_indicatorContext::Visibility_indicatorContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5721" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="27596" bodyend="27598"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context_1ab98675b10609db4838275d5e5018ea20" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Visibility_indicatorContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Visibility_indicatorContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5722" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="27613" bodyend="27615"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context_1aabb5bd45c81f2a353504900e1da5a5cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Visibility_indicatorContext::KEYWORD_PUBLIC</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_PUBLIC</name>
+        <qualifiedname>SysMLv2Parser::Visibility_indicatorContext::KEYWORD_PUBLIC</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5723" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="27600" bodyend="27602"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context_1ade1a0935f39a8f1347e1f7aab5c5b94c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Visibility_indicatorContext::KEYWORD_PRIVATE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_PRIVATE</name>
+        <qualifiedname>SysMLv2Parser::Visibility_indicatorContext::KEYWORD_PRIVATE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5724" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="27604" bodyend="27606"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context_1a6b375ef9cf172b00b7f4e0b71bb2f8f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Visibility_indicatorContext::KEYWORD_PROTECTED</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_PROTECTED</name>
+        <qualifiedname>SysMLv2Parser::Visibility_indicatorContext::KEYWORD_PROTECTED</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5725" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="27608" bodyend="27610"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context_1a5bc58455ad4b27b7aa368b236e8264ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Visibility_indicatorContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Visibility_indicatorContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5727" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="27617" bodyend="27621"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context_1a5b1203759a7314c2d66eead81da59094" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Visibility_indicatorContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Visibility_indicatorContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5728" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="27623" bodyend="27627"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Visibility_indicatorContext</label>
+        <link refid="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Visibility_indicatorContext</label>
+        <link refid="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5719" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="5719" bodyend="5730"/>
+    <listofallmembers>
+      <member refid="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context_1a5bc58455ad4b27b7aa368b236e8264ab" prot="public" virt="virtual"><scope>SysMLv2Parser::Visibility_indicatorContext</scope><name>enterRule</name></member>
+      <member refid="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context_1a5b1203759a7314c2d66eead81da59094" prot="public" virt="virtual"><scope>SysMLv2Parser::Visibility_indicatorContext</scope><name>exitRule</name></member>
+      <member refid="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context_1ab98675b10609db4838275d5e5018ea20" prot="public" virt="virtual"><scope>SysMLv2Parser::Visibility_indicatorContext</scope><name>getRuleIndex</name></member>
+      <member refid="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context_1ade1a0935f39a8f1347e1f7aab5c5b94c" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Visibility_indicatorContext</scope><name>KEYWORD_PRIVATE</name></member>
+      <member refid="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context_1a6b375ef9cf172b00b7f4e0b71bb2f8f6" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Visibility_indicatorContext</scope><name>KEYWORD_PROTECTED</name></member>
+      <member refid="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context_1aabb5bd45c81f2a353504900e1da5a5cc" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Visibility_indicatorContext</scope><name>KEYWORD_PUBLIC</name></member>
+      <member refid="d0/d6b/class_sys_m_lv2_parser_1_1_visibility__indicator_context_1aa6ca4c50703eeaa2d935c6d71059fbbb" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Visibility_indicatorContext</scope><name>Visibility_indicatorContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

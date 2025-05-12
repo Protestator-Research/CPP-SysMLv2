@@ -1,0 +1,14 @@
+# class `KerML::Entities::Namespace` {#d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace}
+
+```
+class KerML::Entities::Namespace
+  : public KerML::Entities::Element
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+
+## Members
+

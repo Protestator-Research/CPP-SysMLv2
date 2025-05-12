@@ -19,7 +19,7 @@ var annotated_dup =
         [ "Conjunction", "da/dff/class_ker_m_l_1_1_entities_1_1_conjunction.html", null ],
         [ "Connector", "d8/de4/class_ker_m_l_1_1_entities_1_1_connector.html", null ],
         [ "DataType", "d0/da3/class_ker_m_l_1_1_entities_1_1_data_type.html", null ],
-        [ "Dependency", "d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html", null ],
+        [ "Dependency", "d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html", "d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency" ],
         [ "Differencing", "d5/db6/class_ker_m_l_1_1_entities_1_1_differencing.html", null ],
         [ "Disjoining", "d0/d13/class_ker_m_l_1_1_entities_1_1_disjoining.html", null ],
         [ "Documentation", "d0/ded/class_ker_m_l_1_1_entities_1_1_documentation.html", null ],
@@ -86,13 +86,20 @@ var annotated_dup =
     ] ],
     [ "SysMLv2", "d7/dba/namespace_sys_m_lv2.html", [
       [ "API", "da/dd6/namespace_sys_m_lv2_1_1_a_p_i.html", [
+        [ "EXCEPTIONS", "df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s.html", [
+          [ "ConnectionError", "df/d87/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_connection_error.html", null ],
+          [ "HTTPException", "db/dbe/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_h_t_t_p_exception.html", null ],
+          [ "NotEnoughMemoryError", "db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error.html", null ]
+        ] ],
         [ "ElementNavigationService", "d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service.html", "d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service" ],
         [ "IElementNavigationService", "d4/de9/class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service.html", "d4/de9/class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service" ],
         [ "IExternalRelationshipService", "da/df6/class_sys_m_lv2_1_1_a_p_i_1_1_i_external_relationship_service.html", "da/df6/class_sys_m_lv2_1_1_a_p_i_1_1_i_external_relationship_service" ],
         [ "IProjectService", "d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service.html", "d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service" ],
         [ "IProjectUsageService", "d1/dd6/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service.html", "d1/dd6/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service" ],
         [ "IProjectVersioningService", "d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service.html", "d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service" ],
-        [ "IQueryService", "d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service.html", "d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service" ]
+        [ "IQueryService", "d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service.html", "d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service" ],
+        [ "ProjectService", "d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service.html", "d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service" ],
+        [ "SysMLAPIImplementation", "d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation.html", "d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation" ]
       ] ],
       [ "Entities", "d4/d33/namespace_sys_m_lv2_1_1_entities.html", [
         [ "Branch", "d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch.html", "d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" ],
@@ -114,6 +121,10 @@ var annotated_dup =
         [ "Relationship", "d0/dae/class_sys_m_lv2_1_1_entities_1_1_relationship.html", null ],
         [ "Tag", "d7/dab/class_sys_m_lv2_1_1_entities_1_1_tag.html", "d7/dab/class_sys_m_lv2_1_1_entities_1_1_tag" ]
       ] ],
+      [ "Files", "d9/d03/namespace_sys_m_lv2_1_1_files.html", [
+        [ "Parser", "d1/d41/class_sys_m_lv2_1_1_files_1_1_parser.html", null ],
+        [ "ParserError", "d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error.html", null ]
+      ] ],
       [ "SysMLv2Deserializer", "d5/ddf/class_sys_m_lv2_1_1_sys_m_lv2_deserializer.html", "d5/ddf/class_sys_m_lv2_1_1_sys_m_lv2_deserializer" ]
     ] ],
     [ "SysMLv2 ", "d7/dbc/namespace_sys_m_lv2_01.html", [
@@ -121,11 +132,17 @@ var annotated_dup =
         [ "DataDifference", "d6/d96/class_sys_m_lv2_01_1_1_entities_1_1_data_difference.html", null ]
       ] ]
     ] ],
+    [ "HTTP_RETURN_CODES", "d0/dfb/class_h_t_t_p___r_e_t_u_r_n___c_o_d_e_s.html", null ],
     [ "IExternalRelationShipService", "da/de7/class_i_external_relation_ship_service.html", null ],
     [ "KerMLBaseListener", "dc/d4c/class_ker_m_l_base_listener.html", null ],
+    [ "KerMLError", "d0/d73/class_ker_m_l_error.html", null ],
+    [ "KerMLErrorListener", "dc/ded/class_ker_m_l_error_listener.html", null ],
     [ "KerMLLexer", "d4/de4/class_ker_m_l_lexer.html", null ],
     [ "KerMLListener", "d9/d13/class_ker_m_l_listener.html", null ],
+    [ "KerMLListenerImplementation", "d7/db3/class_ker_m_l_listener_implementation.html", null ],
     [ "KerMLParser", "da/d98/class_ker_m_l_parser.html", "da/d98/class_ker_m_l_parser" ],
+    [ "ProjectUsageService", "d0/d4e/class_project_usage_service.html", null ],
+    [ "ProjectVersioningService", "dc/dee/class_project_versioning_service.html", null ],
     [ "SysMLv2BaseListener", "d3/df1/class_sys_m_lv2_base_listener.html", null ],
     [ "SysMLv2Lexer", "dd/d8a/class_sys_m_lv2_lexer.html", null ],
     [ "SysMLv2Listener", "d7/d4d/class_sys_m_lv2_listener.html", null ],

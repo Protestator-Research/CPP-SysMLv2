@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Non_occurrence_usage_elementContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1ad3ad0d74feb929e0c76ed2f2f73069e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Non_occurrence_usage_elementContext::Non_occurrence_usage_elementContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Non_occurrence_usage_elementContext</name>
+        <qualifiedname>SysMLv2Parser::Non_occurrence_usage_elementContext::Non_occurrence_usage_elementContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1608" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6269" bodyend="6271"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1a5105ef280e9f79f898412b7faa8a06cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Non_occurrence_usage_elementContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Non_occurrence_usage_elementContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1609" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6302" bodyend="6304"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1a1f09b9a467b2da78846a8c6fcc7244e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/df8/class_sys_m_lv2_parser_1_1_default__reference__usage_context" kindref="compound">Default_reference_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Default_reference_usageContext * SysMLv2Parser::Non_occurrence_usage_elementContext::default_reference_usage</definition>
+        <argsstring>()</argsstring>
+        <name>default_reference_usage</name>
+        <qualifiedname>SysMLv2Parser::Non_occurrence_usage_elementContext::default_reference_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1610" column="36" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6273" bodyend="6275"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1aa7166bf4b632f00e7735219fc048a920" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/da6/class_sys_m_lv2_parser_1_1_reference__usage_context" kindref="compound">Reference_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Reference_usageContext * SysMLv2Parser::Non_occurrence_usage_elementContext::reference_usage</definition>
+        <argsstring>()</argsstring>
+        <name>reference_usage</name>
+        <qualifiedname>SysMLv2Parser::Non_occurrence_usage_elementContext::reference_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1611" column="28" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6277" bodyend="6279"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1a65ea16b6379e8eb7f1e8450303a89bc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/de5/class_sys_m_lv2_parser_1_1_attribute__usage_context" kindref="compound">Attribute_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Attribute_usageContext * SysMLv2Parser::Non_occurrence_usage_elementContext::attribute_usage</definition>
+        <argsstring>()</argsstring>
+        <name>attribute_usage</name>
+        <qualifiedname>SysMLv2Parser::Non_occurrence_usage_elementContext::attribute_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1612" column="28" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6281" bodyend="6283"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1a47eca915f2e0abb66055cf639240d127" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="db/dfe/class_sys_m_lv2_parser_1_1_enumeration__usage_context" kindref="compound">Enumeration_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Enumeration_usageContext * SysMLv2Parser::Non_occurrence_usage_elementContext::enumeration_usage</definition>
+        <argsstring>()</argsstring>
+        <name>enumeration_usage</name>
+        <qualifiedname>SysMLv2Parser::Non_occurrence_usage_elementContext::enumeration_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1613" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6285" bodyend="6287"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1abf5684e8fc14ef39be05741749bf498b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/dc9/class_sys_m_lv2_parser_1_1_binding__connector__as__usage_context" kindref="compound">Binding_connector_as_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Binding_connector_as_usageContext * SysMLv2Parser::Non_occurrence_usage_elementContext::binding_connector_as_usage</definition>
+        <argsstring>()</argsstring>
+        <name>binding_connector_as_usage</name>
+        <qualifiedname>SysMLv2Parser::Non_occurrence_usage_elementContext::binding_connector_as_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1614" column="39" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6289" bodyend="6291"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1ad0a10e2de5dda70c1a54a173bd9e8b1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context" kindref="compound">Succession_as_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Succession_as_usageContext * SysMLv2Parser::Non_occurrence_usage_elementContext::succession_as_usage</definition>
+        <argsstring>()</argsstring>
+        <name>succession_as_usage</name>
+        <qualifiedname>SysMLv2Parser::Non_occurrence_usage_elementContext::succession_as_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1615" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6293" bodyend="6295"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1a1e4a80d8b5d89d39d73693f5c30a4635" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/d4a/class_sys_m_lv2_parser_1_1_extended__usage_context" kindref="compound">Extended_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Extended_usageContext * SysMLv2Parser::Non_occurrence_usage_elementContext::extended_usage</definition>
+        <argsstring>()</argsstring>
+        <name>extended_usage</name>
+        <qualifiedname>SysMLv2Parser::Non_occurrence_usage_elementContext::extended_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1616" column="27" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6297" bodyend="6299"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1ac1a13cd095deaeffe7bb8701dfb3439e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Non_occurrence_usage_elementContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Non_occurrence_usage_elementContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1618" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6306" bodyend="6310"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1a5911ad2ee6bf9e2244027698dd2173ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Non_occurrence_usage_elementContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Non_occurrence_usage_elementContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1619" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6312" bodyend="6316"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Non_occurrence_usage_elementContext</label>
+        <link refid="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Non_occurrence_usage_elementContext</label>
+        <link refid="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1606" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="1606" bodyend="1621"/>
+    <listofallmembers>
+      <member refid="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1a65ea16b6379e8eb7f1e8450303a89bc0" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Non_occurrence_usage_elementContext</scope><name>attribute_usage</name></member>
+      <member refid="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1abf5684e8fc14ef39be05741749bf498b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Non_occurrence_usage_elementContext</scope><name>binding_connector_as_usage</name></member>
+      <member refid="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1a1f09b9a467b2da78846a8c6fcc7244e8" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Non_occurrence_usage_elementContext</scope><name>default_reference_usage</name></member>
+      <member refid="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1ac1a13cd095deaeffe7bb8701dfb3439e" prot="public" virt="virtual"><scope>SysMLv2Parser::Non_occurrence_usage_elementContext</scope><name>enterRule</name></member>
+      <member refid="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1a47eca915f2e0abb66055cf639240d127" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Non_occurrence_usage_elementContext</scope><name>enumeration_usage</name></member>
+      <member refid="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1a5911ad2ee6bf9e2244027698dd2173ea" prot="public" virt="virtual"><scope>SysMLv2Parser::Non_occurrence_usage_elementContext</scope><name>exitRule</name></member>
+      <member refid="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1a1e4a80d8b5d89d39d73693f5c30a4635" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Non_occurrence_usage_elementContext</scope><name>extended_usage</name></member>
+      <member refid="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1a5105ef280e9f79f898412b7faa8a06cc" prot="public" virt="virtual"><scope>SysMLv2Parser::Non_occurrence_usage_elementContext</scope><name>getRuleIndex</name></member>
+      <member refid="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1ad3ad0d74feb929e0c76ed2f2f73069e4" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Non_occurrence_usage_elementContext</scope><name>Non_occurrence_usage_elementContext</name></member>
+      <member refid="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1aa7166bf4b632f00e7735219fc048a920" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Non_occurrence_usage_elementContext</scope><name>reference_usage</name></member>
+      <member refid="d8/d84/class_sys_m_lv2_parser_1_1_non__occurrence__usage__element_context_1ad0a10e2de5dda70c1a54a173bd9e8b1d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Non_occurrence_usage_elementContext</scope><name>succession_as_usage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,213 @@
+.TH "SysMLv2::Entities::DataIdentity" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::Entities::DataIdentity
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <DataIdentity\&.h>\fP
+.PP
+Inherits \fBSysMLv2::Entities::Record\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDataIdentity\fP ()=delete"
+.br
+.ti -1c
+.RI "\fBDataIdentity\fP (boost::uuids::uuid id)"
+.br
+.ti -1c
+.RI "\fBDataIdentity\fP (std::string jsonStringOrName)"
+.br
+.ti -1c
+.RI "virtual \fB~DataIdentity\fP ()"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBDataVersion\fP > > \fBgetDataVersions\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetDataVersions\fP (std::vector< std::shared_ptr< \fBDataVersion\fP > > versions)"
+.br
+.ti -1c
+.RI "std::chrono::system_clock::time_point \fBcreatedAt\fP ()"
+.br
+.ti -1c
+.RI "std::chrono::system_clock::time_point \fBdeletedAt\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBDataIdentity\fP const &other)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBSysMLv2::Entities::Record\fP
+.in +1c
+.ti -1c
+.RI "\fBRecord\fP ()=delete"
+.br
+.ti -1c
+.RI "\fBRecord\fP (boost::uuids::uuid id, std::string name='', std::string description='')"
+.br
+.ti -1c
+.RI "\fBRecord\fP (std::string jsonStringOrName)"
+.br
+.ti -1c
+.RI "virtual \fB~Record\fP ()"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBRecord\fP const &other) const"
+.br
+.ti -1c
+.RI "std::string \fBgetName\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetName\fP (std::string name)"
+.br
+.ti -1c
+.RI "std::list< std::string > \fBgetAlias\fP () const"
+.br
+.ti -1c
+.RI "void \fBappendAlias\fP (std::string &alias)"
+.br
+.ti -1c
+.RI "std::string \fBgetDescription\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetDescription\fP (std::string &description)"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBgetId\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBgetType\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBDataVersion\fP > > \fBVersion\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBSysMLv2::Entities::Record\fP
+.in +1c
+.ti -1c
+.RI "std::string \fBType\fP"
+.br
+.ti -1c
+.RI "std::string \fBName\fP"
+.br
+.ti -1c
+.RI "std::list< std::string > \fBAlias\fP"
+.br
+.ti -1c
+.RI "std::string \fBDescription\fP"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBId\fP"
+.br
+.ti -1c
+.RI "bool \fBIsForCreation\fP = false"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBSysMLv2::Entities::IEntity\fP
+.in +1c
+.ti -1c
+.RI "const int \fBJSON_INTENT\fP = 2"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The class \fBData\fP Identity is a subclass of \fBRecord\fP that represents a unique, version-independent representation of \fBData\fP through its lifecycle\&.A \fBData\fP Identity is associated with 1 or more \fBData\fP Version records that represent different versions of the same \fBData\fP\&.
+
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+boost::uuids::uuid 
+
+.PP
+\fBSysMLv2::Entities::Record\fP 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SysMLv2::Entities::DataIdentity::DataIdentity ()\fR [delete]\fP"
+Default constructor is delted\&. 
+.SS "SysMLv2::Entities::DataIdentity::DataIdentity (boost::uuids::uuid id)\fR [explicit]\fP"
+Constructor\&. Generates a 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP 
+.RE
+.PP
+
+.SS "SysMLv2::Entities::DataIdentity::DataIdentity (std::string jsonStringOrName)\fR [explicit]\fP"
+Constuctor for JSON Parsing 
+.PP
+\fBParameters\fP
+.RS 4
+\fIjsonStringOrName\fP 
+.RE
+.PP
+
+.SS "SysMLv2::Entities::DataIdentity::~DataIdentity ()\fR [virtual]\fP"
+Destructor 
+.SH "Member Function Documentation"
+.PP 
+.SS "std::chrono::system_clock::time_point SysMLv2::Entities::DataIdentity::createdAt ()"
+Returns the creation date of the data\&. This translations to the point in time, where the first commit is created, representing then the creation of the specified Dataset\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBData\fP creation date\&. 
+.RE
+.PP
+
+.SS "std::chrono::system_clock::time_point SysMLv2::Entities::DataIdentity::deletedAt ()"
+Returns the date, where the data is deleted\&. Thus this represents the commit, that deletes the data set\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The time, where the data is delted\&. 
+.RE
+.PP
+
+.SS "std::string SysMLv2::Entities::DataIdentity::serializeToJson ()\fR [override]\fP, \fR [virtual]\fP"
+Allows the serialization of the Object to a JSON String\&. 
+.PP
+\fBReturns\fP
+.RS 4
+JSON String of the Object 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::Entities::IEntity\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

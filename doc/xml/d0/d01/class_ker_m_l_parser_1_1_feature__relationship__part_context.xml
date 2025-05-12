@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Feature_relationship_partContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1ac897d85eaae82f4fc3d73dcb6ddc7223" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Feature_relationship_partContext::Feature_relationship_partContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Feature_relationship_partContext</name>
+        <qualifiedname>KerMLParser::Feature_relationship_partContext::Feature_relationship_partContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1632" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7530" bodyend="7532"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1a8c973df3a866aed8e12b7ed2e19dbd80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Feature_relationship_partContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Feature_relationship_partContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1633" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7551" bodyend="7553"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1ac1395cc378ce609d1729b7d6be97cb21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d62/class_ker_m_l_parser_1_1_type__relationship__part_context" kindref="compound">Type_relationship_partContext</ref> *</type>
+        <definition>KerMLParser::Type_relationship_partContext * KerMLParser::Feature_relationship_partContext::type_relationship_part</definition>
+        <argsstring>()</argsstring>
+        <name>type_relationship_part</name>
+        <qualifiedname>KerMLParser::Feature_relationship_partContext::type_relationship_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1634" column="35" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7534" bodyend="7536"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1a45449bc12edd3bfbd5d9aac079a0469f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d82/class_ker_m_l_parser_1_1_chaining__part_context" kindref="compound">Chaining_partContext</ref> *</type>
+        <definition>KerMLParser::Chaining_partContext * KerMLParser::Feature_relationship_partContext::chaining_part</definition>
+        <argsstring>()</argsstring>
+        <name>chaining_part</name>
+        <qualifiedname>KerMLParser::Feature_relationship_partContext::chaining_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1635" column="26" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7538" bodyend="7540"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1af03a27f05442709d31532e7a3d97e8a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d46/class_ker_m_l_parser_1_1_inverting__part_context" kindref="compound">Inverting_partContext</ref> *</type>
+        <definition>KerMLParser::Inverting_partContext * KerMLParser::Feature_relationship_partContext::inverting_part</definition>
+        <argsstring>()</argsstring>
+        <name>inverting_part</name>
+        <qualifiedname>KerMLParser::Feature_relationship_partContext::inverting_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1636" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7542" bodyend="7544"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1a31c2b7419c85214bd0b60ba06c2d8373" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/d6e/class_ker_m_l_parser_1_1_type__featuring__part_context" kindref="compound">Type_featuring_partContext</ref> *</type>
+        <definition>KerMLParser::Type_featuring_partContext * KerMLParser::Feature_relationship_partContext::type_featuring_part</definition>
+        <argsstring>()</argsstring>
+        <name>type_featuring_part</name>
+        <qualifiedname>KerMLParser::Feature_relationship_partContext::type_featuring_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1637" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7546" bodyend="7548"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1a4a64d7a6da5bdaba0a88130552385477" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Feature_relationship_partContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Feature_relationship_partContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1639" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7555" bodyend="7559"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1ace09ba988a6bd22b8c2ffad010ff5fa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Feature_relationship_partContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Feature_relationship_partContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1640" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7561" bodyend="7565"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Feature_relationship_partContext</label>
+        <link refid="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Feature_relationship_partContext</label>
+        <link refid="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="1630" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="1630" bodyend="1642"/>
+    <listofallmembers>
+      <member refid="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1a45449bc12edd3bfbd5d9aac079a0469f" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_relationship_partContext</scope><name>chaining_part</name></member>
+      <member refid="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1a4a64d7a6da5bdaba0a88130552385477" prot="public" virt="virtual"><scope>KerMLParser::Feature_relationship_partContext</scope><name>enterRule</name></member>
+      <member refid="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1ace09ba988a6bd22b8c2ffad010ff5fa4" prot="public" virt="virtual"><scope>KerMLParser::Feature_relationship_partContext</scope><name>exitRule</name></member>
+      <member refid="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1ac897d85eaae82f4fc3d73dcb6ddc7223" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_relationship_partContext</scope><name>Feature_relationship_partContext</name></member>
+      <member refid="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1a8c973df3a866aed8e12b7ed2e19dbd80" prot="public" virt="virtual"><scope>KerMLParser::Feature_relationship_partContext</scope><name>getRuleIndex</name></member>
+      <member refid="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1af03a27f05442709d31532e7a3d97e8a1" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_relationship_partContext</scope><name>inverting_part</name></member>
+      <member refid="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1a31c2b7419c85214bd0b60ba06c2d8373" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_relationship_partContext</scope><name>type_featuring_part</name></member>
+      <member refid="d0/d01/class_ker_m_l_parser_1_1_feature__relationship__part_context_1ac1395cc378ce609d1729b7d6be97cb21" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_relationship_partContext</scope><name>type_relationship_part</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

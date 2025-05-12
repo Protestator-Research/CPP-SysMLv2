@@ -1,0 +1,14 @@
+# class `KerML::Entities::Class` {#dd/d6e/class_ker_m_l_1_1_entities_1_1_class}
+
+```
+class KerML::Entities::Class
+  : public KerML::Entities::Classifier
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+
+## Members
+

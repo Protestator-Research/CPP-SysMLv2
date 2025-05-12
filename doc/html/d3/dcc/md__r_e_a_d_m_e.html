@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SysMLv2 C++ Implementation: C++ SysMLv2 Implementation</title>
+<title>SysMLv2 C++ Implementation: C++ SysML v2 Implementation</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -103,17 +103,60 @@ $(function(){initNavTree('d3/dcc/md__r_e_a_d_m_e.html','../../'); initResizable(
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">C++ SysMLv2 Implementation</div></div>
+  <div class="headertitle"><div class="title">C++ SysML v2 Implementation</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
-<p>This library gives an implementation of the SysML v2 standard and <a class="el" href="../../d2/d14/namespace_ker_m_l.html">KerML</a> standard. This allows developers to implment own applications with this library. The existance of this library is the proof, that SysML v2 can be implemented in C++.</p>
+<p>This library gives an implementation of the SysML v2 standard and <a class="el" href="../../d2/d14/namespace_ker_m_l.html">KerML</a> standard. This allows developers to implment own applications with this library. The existence of this library is the proof, that SysML v2 can be implemented in C++.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
-Licensing</h1>
-<p>This software is licensed under the GPL v3, allowing a free and open source editing of the code. If you are in the case where you want to use the software for commercial projects where it is not possible to use this library in a GPL v3 compliant way, please contact us. It might be the case that you need to purchase a commercial license.</p>
+Table of Contents</h1>
+<p>[toc]</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
-Contact</h1>
-</div></div><!-- contents -->
+Build Status</h1>
+<p>The System and Tests: <a href="https://github.com/Protestator-Research/CPP-SysMLv2/actions/workflows/c-cpp.yml"><img src="https://github.com/Protestator-Research/CPP-SysMLv2/actions/workflows/c-cpp.yml/badge.svg" alt="C/C++ CI" style="pointer-events: none;" class="inline"/></a></p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Licensing</h1>
+<p>This software is licensed under the GPL v3, allowing a free and open source editing of the code. We want to offer you the option to use this libary also for commercial project. This will be done in a later step, since we are currently developing this from the ground up.</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Building and usage</h1>
+<p>We offer the build work flow with conan and standalone.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Conan Build</h2>
+<p>One of the Todos we have is to offer this library in the conan central repositories. But this can be done, if the implementation is done. You will be informed.</p>
+<p>With this build the conan file is provided, allowing you to install the dependencies and then to build the files.</p>
+<div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div>
+<div class="line">conan install ..</div>
+<div class="line">conan build ..</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+Standalone Build</h2>
+<p>Please install the dependencies required for the build:</p>
+<h3><a class="anchor" id="autotoc_md7"></a>
+Dependencies</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Dependency   </th><th class="markdownTableHeadNone">Version    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">antlr4-cppruntime   </td><td class="markdownTableBodyNone">4.13.1    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">boost   </td><td class="markdownTableBodyNone">Min 1.83.0    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">nlohmann_json   </td><td class="markdownTableBodyNone">Min 3.11.2    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">date   </td><td class="markdownTableBodyNone">3.0.1    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">gtest   </td><td class="markdownTableBodyNone">1.14.0   </td></tr>
+</table>
+<p>We are working on an option to only use a part of the dependencies. This will be depended on the modules that are used.</p>
+<h3><a class="anchor" id="autotoc_md8"></a>
+Build</h3>
+<p>For the build we require you to have CMake installed. This allows to have one implementation for all operating systems.</p>
+<p>To generate the build files for your system use the following command.</p>
+<div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div>
+<div class="line">cmake ..</div>
+<div class="line">make</div>
+</div><!-- fragment --><p>For the install option use the following command install.</p>
+<div class="fragment"><div class="line">make install </div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->

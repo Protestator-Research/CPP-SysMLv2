@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Sender_receiver_partContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1a6024dc139aa6cabda662df03a28e1976" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Sender_receiver_partContext::Sender_receiver_partContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Sender_receiver_partContext</name>
+        <qualifiedname>SysMLv2Parser::Sender_receiver_partContext::Sender_receiver_partContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3475" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16103" bodyend="16105"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1ae962f2d8ef5a4f829618cc80d615c52a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Sender_receiver_partContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Sender_receiver_partContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3476" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16124" bodyend="16126"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1ac5c39a8b43d95137ecba8efc3d107a9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Sender_receiver_partContext::KEYWORD_VIA</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_VIA</name>
+        <qualifiedname>SysMLv2Parser::Sender_receiver_partContext::KEYWORD_VIA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3477" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16107" bodyend="16109"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1ac88030519793b8389f83bfaa3e4bed91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d5/d1e/class_sys_m_lv2_parser_1_1_node__parameter__member_context" kindref="compound">Node_parameter_memberContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Node_parameter_memberContext * &gt; SysMLv2Parser::Sender_receiver_partContext::node_parameter_member</definition>
+        <argsstring>()</argsstring>
+        <name>node_parameter_member</name>
+        <qualifiedname>SysMLv2Parser::Sender_receiver_partContext::node_parameter_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3478" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16111" bodyend="16113"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1ab0b2b12df237203981c834d7253c7ef9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/d1e/class_sys_m_lv2_parser_1_1_node__parameter__member_context" kindref="compound">Node_parameter_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Node_parameter_memberContext * SysMLv2Parser::Sender_receiver_partContext::node_parameter_member</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>node_parameter_member</name>
+        <qualifiedname>SysMLv2Parser::Sender_receiver_partContext::node_parameter_member</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3479" column="34" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16115" bodyend="16117"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1a40a96506d50e0ef2f59629bcbea7e182" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Sender_receiver_partContext::KEYWORD_TO</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_TO</name>
+        <qualifiedname>SysMLv2Parser::Sender_receiver_partContext::KEYWORD_TO</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3480" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16119" bodyend="16121"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1a773e3513e75605cf65992797adaca72a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Sender_receiver_partContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Sender_receiver_partContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3482" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16128" bodyend="16132"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1a03bb6cc682f863b3595d4c347fedfea6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Sender_receiver_partContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Sender_receiver_partContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3483" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16134" bodyend="16138"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Sender_receiver_partContext</label>
+        <link refid="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Sender_receiver_partContext</label>
+        <link refid="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3473" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="3473" bodyend="3485"/>
+    <listofallmembers>
+      <member refid="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1a773e3513e75605cf65992797adaca72a" prot="public" virt="virtual"><scope>SysMLv2Parser::Sender_receiver_partContext</scope><name>enterRule</name></member>
+      <member refid="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1a03bb6cc682f863b3595d4c347fedfea6" prot="public" virt="virtual"><scope>SysMLv2Parser::Sender_receiver_partContext</scope><name>exitRule</name></member>
+      <member refid="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1ae962f2d8ef5a4f829618cc80d615c52a" prot="public" virt="virtual"><scope>SysMLv2Parser::Sender_receiver_partContext</scope><name>getRuleIndex</name></member>
+      <member refid="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1a40a96506d50e0ef2f59629bcbea7e182" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Sender_receiver_partContext</scope><name>KEYWORD_TO</name></member>
+      <member refid="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1ac5c39a8b43d95137ecba8efc3d107a9a" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Sender_receiver_partContext</scope><name>KEYWORD_VIA</name></member>
+      <member refid="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1ac88030519793b8389f83bfaa3e4bed91" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Sender_receiver_partContext</scope><name>node_parameter_member</name></member>
+      <member refid="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1ab0b2b12df237203981c834d7253c7ef9" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Sender_receiver_partContext</scope><name>node_parameter_member</name></member>
+      <member refid="d9/d80/class_sys_m_lv2_parser_1_1_sender__receiver__part_context_1a6024dc139aa6cabda662df03a28e1976" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Sender_receiver_partContext</scope><name>Sender_receiver_partContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

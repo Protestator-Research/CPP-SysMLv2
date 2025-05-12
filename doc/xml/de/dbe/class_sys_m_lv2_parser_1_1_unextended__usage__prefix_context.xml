@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Unextended_usage_prefixContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context_1aac8f47f34be2f34d2682bcf1224e8ab1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Unextended_usage_prefixContext::Unextended_usage_prefixContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Unextended_usage_prefixContext</name>
+        <qualifiedname>SysMLv2Parser::Unextended_usage_prefixContext::Unextended_usage_prefixContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1478" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5650" bodyend="5652"/>
+      </memberdef>
+      <memberdef kind="function" id="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context_1a9bf29768733524939b91363e0c08ba72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Unextended_usage_prefixContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Unextended_usage_prefixContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1479" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5663" bodyend="5665"/>
+      </memberdef>
+      <memberdef kind="function" id="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context_1ad515591a8203a79eb5fcfc0fc3f80fea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d74/class_sys_m_lv2_parser_1_1_end__usage__prefix_context" kindref="compound">End_usage_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::End_usage_prefixContext * SysMLv2Parser::Unextended_usage_prefixContext::end_usage_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>end_usage_prefix</name>
+        <qualifiedname>SysMLv2Parser::Unextended_usage_prefixContext::end_usage_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1480" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5654" bodyend="5656"/>
+      </memberdef>
+      <memberdef kind="function" id="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context_1a848a30f2168654186e37dcf706e8d22c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d1f/class_sys_m_lv2_parser_1_1_basic__usage__prefix_context" kindref="compound">Basic_usage_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::Basic_usage_prefixContext * SysMLv2Parser::Unextended_usage_prefixContext::basic_usage_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>basic_usage_prefix</name>
+        <qualifiedname>SysMLv2Parser::Unextended_usage_prefixContext::basic_usage_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1481" column="31" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5658" bodyend="5660"/>
+      </memberdef>
+      <memberdef kind="function" id="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context_1aa4b35687cbb2315c22a8debaef9d3af1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Unextended_usage_prefixContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Unextended_usage_prefixContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1483" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5667" bodyend="5671"/>
+      </memberdef>
+      <memberdef kind="function" id="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context_1a84290fad38b4964d0581b05a09cf8f4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Unextended_usage_prefixContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Unextended_usage_prefixContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1484" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5673" bodyend="5677"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Unextended_usage_prefixContext</label>
+        <link refid="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Unextended_usage_prefixContext</label>
+        <link refid="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1476" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="1476" bodyend="1486"/>
+    <listofallmembers>
+      <member refid="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context_1a848a30f2168654186e37dcf706e8d22c" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Unextended_usage_prefixContext</scope><name>basic_usage_prefix</name></member>
+      <member refid="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context_1ad515591a8203a79eb5fcfc0fc3f80fea" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Unextended_usage_prefixContext</scope><name>end_usage_prefix</name></member>
+      <member refid="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context_1aa4b35687cbb2315c22a8debaef9d3af1" prot="public" virt="virtual"><scope>SysMLv2Parser::Unextended_usage_prefixContext</scope><name>enterRule</name></member>
+      <member refid="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context_1a84290fad38b4964d0581b05a09cf8f4d" prot="public" virt="virtual"><scope>SysMLv2Parser::Unextended_usage_prefixContext</scope><name>exitRule</name></member>
+      <member refid="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context_1a9bf29768733524939b91363e0c08ba72" prot="public" virt="virtual"><scope>SysMLv2Parser::Unextended_usage_prefixContext</scope><name>getRuleIndex</name></member>
+      <member refid="de/dbe/class_sys_m_lv2_parser_1_1_unextended__usage__prefix_context_1aac8f47f34be2f34d2682bcf1224e8ab1" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Unextended_usage_prefixContext</scope><name>Unextended_usage_prefixContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

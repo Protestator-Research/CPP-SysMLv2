@@ -24,12 +24,14 @@ var class_ker_m_l_1_1_entities_1_1_element =
     [ "operator>=", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#af97c193ec8d513de2840ef5dd6b35ef4", null ],
     [ "ownedElements", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a7ddc025c7f987b1ac7abe87b471e07fc", null ],
     [ "owner", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#aa4c9d1f4fd1506ea8d61873a2ba177c1", null ],
+    [ "owningNamespace", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a8518d1b35c0f41d01e57ba11a7680be0", null ],
     [ "setAliasIds", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a67cd4e9242d86b6a92fb4f1b1ddbf8db", null ],
     [ "setDeclaredName", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a8686dafeedf332c846410da4d13b8aac", null ],
     [ "setDeclaredShortName", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a1d57a50fdec8c10f44ab714a34d0ce74", null ],
     [ "setImpliedIncluded", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a86d552849ed84c9631b9246662c9fa34", null ],
     [ "setOwnedElements", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#ac66ccb28a7d82bd2a2629c14307b9ac4", null ],
     [ "setOwner", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a78943db83fcff463c054ec4dccb691b6", null ],
+    [ "setOwningNamespace", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a7dfbb6ba5545bb37db11abbf9f44ef1b", null ],
     [ "sortAliasIds", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a1f31c599d9a94695386c07d1551718b8", null ],
     [ "sortOwnedElements", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a76d905ace783221b65ebd650eeb6cf36", null ],
     [ "sortOwnedRelationships", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a0c53cc502cb709f613d2869c8c94bf8b", null ],
@@ -40,5 +42,6 @@ var class_ker_m_l_1_1_entities_1_1_element =
     [ "IsImpliedIncluded", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#aba76f2d080c1d6527999d608041dc8b0", null ],
     [ "IsLibraryElement", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a24655d02ec0e854d9c90818cf93a98f9", null ],
     [ "OwnedRelationships", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#afe41944c39ed48a58ee78560d213e5b0", null ],
-    [ "Owner", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a9d3b8280d23066d2621a5410910930bf", null ]
+    [ "Owner", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a9d3b8280d23066d2621a5410910930bf", null ],
+    [ "OwningNamespace", "d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#aa8c403722101127b06d92c5ac22467a3", null ]
 ];

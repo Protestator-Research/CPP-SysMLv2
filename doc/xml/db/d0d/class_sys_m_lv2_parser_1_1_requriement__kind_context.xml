@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Requriement_kindContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context_1ab6bceb5e915f0df789eb272ca71fa132" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Requriement_kindContext::Requriement_kindContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Requriement_kindContext</name>
+        <qualifiedname>SysMLv2Parser::Requriement_kindContext::Requriement_kindContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4635" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="21955" bodyend="21957"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context_1a36f4757d92a0dfbfaa4b9c1047e8d98c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Requriement_kindContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Requriement_kindContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4636" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="21968" bodyend="21970"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context_1a373de0fdda556de6748413e325df4fc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Requriement_kindContext::KEYWORD_ASSUME</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_ASSUME</name>
+        <qualifiedname>SysMLv2Parser::Requriement_kindContext::KEYWORD_ASSUME</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4637" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="21959" bodyend="21961"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context_1a5fc073788c741f8b4c859ede975131bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Requriement_kindContext::KEYWORD_REQUIRE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_REQUIRE</name>
+        <qualifiedname>SysMLv2Parser::Requriement_kindContext::KEYWORD_REQUIRE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4638" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="21963" bodyend="21965"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context_1ab1a5535dafa53197428af0984bec1ba3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Requriement_kindContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Requriement_kindContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4640" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="21972" bodyend="21976"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context_1a30b65738f9e3f9d90a64d8241a0fc32c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Requriement_kindContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Requriement_kindContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4641" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="21978" bodyend="21982"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Requriement_kindContext</label>
+        <link refid="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Requriement_kindContext</label>
+        <link refid="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4633" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="4633" bodyend="4643"/>
+    <listofallmembers>
+      <member refid="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context_1ab1a5535dafa53197428af0984bec1ba3" prot="public" virt="virtual"><scope>SysMLv2Parser::Requriement_kindContext</scope><name>enterRule</name></member>
+      <member refid="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context_1a30b65738f9e3f9d90a64d8241a0fc32c" prot="public" virt="virtual"><scope>SysMLv2Parser::Requriement_kindContext</scope><name>exitRule</name></member>
+      <member refid="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context_1a36f4757d92a0dfbfaa4b9c1047e8d98c" prot="public" virt="virtual"><scope>SysMLv2Parser::Requriement_kindContext</scope><name>getRuleIndex</name></member>
+      <member refid="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context_1a373de0fdda556de6748413e325df4fc1" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Requriement_kindContext</scope><name>KEYWORD_ASSUME</name></member>
+      <member refid="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context_1a5fc073788c741f8b4c859ede975131bd" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Requriement_kindContext</scope><name>KEYWORD_REQUIRE</name></member>
+      <member refid="db/d0d/class_sys_m_lv2_parser_1_1_requriement__kind_context_1ab6bceb5e915f0df789eb272ca71fa132" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Requriement_kindContext</scope><name>Requriement_kindContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d6/d96/class_sys_m_lv2_01_1_1_entities_1_1_data_difference" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2 ::Entities::DataDifference</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d6/d96/class_sys_m_lv2_01_1_1_entities_1_1_data_difference_1a578a23a2574d6f57ac057f32a81cc6d3" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; DataVersion &gt;</type>
+        <definition>std::shared_ptr&lt;DataVersion&gt; SysMLv2 ::Entities::DataDifference::BaseData</definition>
+        <argsstring></argsstring>
+        <name>BaseData</name>
+        <qualifiedname>SysMLv2 ::Entities::DataDifference::BaseData</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataDifference.h" line="25" column="25" bodyfile="rest-api/src/entities/DataDifference.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d96/class_sys_m_lv2_01_1_1_entities_1_1_data_difference_1a065cfce48b4af2742fc243e725477e80" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; DataVersion &gt;</type>
+        <definition>std::shared_ptr&lt;DataVersion&gt; SysMLv2 ::Entities::DataDifference::CompareData</definition>
+        <argsstring></argsstring>
+        <name>CompareData</name>
+        <qualifiedname>SysMLv2 ::Entities::DataDifference::CompareData</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataDifference.h" line="26" column="25" bodyfile="rest-api/src/entities/DataDifference.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d6/d96/class_sys_m_lv2_01_1_1_entities_1_1_data_difference_1aea5c15f17e5a69fcd08115f0c39de4a7" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::DataDifference::DataDifference</definition>
+        <argsstring>(std::shared_ptr&lt; DataVersion &gt; baseData=nullptr, std::shared_ptr&lt; DataVersion &gt; comparedData=nullptr)</argsstring>
+        <name>DataDifference</name>
+        <qualifiedname>SysMLv2 ::Entities::DataDifference::DataDifference</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; DataVersion &gt;</type>
+          <declname>baseData</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; DataVersion &gt;</type>
+          <declname>comparedData</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataDifference.h" line="17" column="18" bodyfile="rest-api/src/entities/DataDifference.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d96/class_sys_m_lv2_01_1_1_entities_1_1_data_difference_1a6d5f41816d7abbf2326e23a9ad0ca3e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual SysMLv2 ::Entities::DataDifference::~DataDifference</definition>
+        <argsstring>()=default</argsstring>
+        <name>~DataDifference</name>
+        <qualifiedname>SysMLv2 ::Entities::DataDifference::~DataDifference</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataDifference.h" line="19" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d96/class_sys_m_lv2_01_1_1_entities_1_1_data_difference_1aca5ed22280288780b580244d039fdd19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; DataVersion &gt;</type>
+        <definition>std::shared_ptr&lt; DataVersion &gt; SysMLv2::Entities::DataDifference::baseData</definition>
+        <argsstring>()</argsstring>
+        <name>baseData</name>
+        <qualifiedname>SysMLv2 ::Entities::DataDifference::baseData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataDifference.h" line="21" column="25" bodyfile="rest-api/src/entities/DataDifference.cpp" bodystart="14" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d96/class_sys_m_lv2_01_1_1_entities_1_1_data_difference_1afbc6e672c8f02981452f7a93b18b4403" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; DataVersion &gt;</type>
+        <definition>std::shared_ptr&lt; DataVersion &gt; SysMLv2::Entities::DataDifference::comparedData</definition>
+        <argsstring>()</argsstring>
+        <name>comparedData</name>
+        <qualifiedname>SysMLv2 ::Entities::DataDifference::comparedData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataDifference.h" line="22" column="25" bodyfile="rest-api/src/entities/DataDifference.cpp" bodystart="18" bodyend="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="rest-api/src/entities/DataDifference.h" line="15" column="5" bodyfile="rest-api/src/entities/DataDifference.h" bodystart="15" bodyend="27"/>
+    <listofallmembers>
+      <member refid="d6/d96/class_sys_m_lv2_01_1_1_entities_1_1_data_difference_1a578a23a2574d6f57ac057f32a81cc6d3" prot="private" virt="non-virtual"><scope>SysMLv2 ::Entities::DataDifference</scope><name>BaseData</name></member>
+      <member refid="d6/d96/class_sys_m_lv2_01_1_1_entities_1_1_data_difference_1aca5ed22280288780b580244d039fdd19" prot="public" virt="non-virtual"><scope>SysMLv2 ::Entities::DataDifference</scope><name>baseData</name></member>
+      <member refid="d6/d96/class_sys_m_lv2_01_1_1_entities_1_1_data_difference_1a065cfce48b4af2742fc243e725477e80" prot="private" virt="non-virtual"><scope>SysMLv2 ::Entities::DataDifference</scope><name>CompareData</name></member>
+      <member refid="d6/d96/class_sys_m_lv2_01_1_1_entities_1_1_data_difference_1afbc6e672c8f02981452f7a93b18b4403" prot="public" virt="non-virtual"><scope>SysMLv2 ::Entities::DataDifference</scope><name>comparedData</name></member>
+      <member refid="d6/d96/class_sys_m_lv2_01_1_1_entities_1_1_data_difference_1aea5c15f17e5a69fcd08115f0c39de4a7" prot="public" virt="non-virtual"><scope>SysMLv2 ::Entities::DataDifference</scope><name>DataDifference</name></member>
+      <member refid="d6/d96/class_sys_m_lv2_01_1_1_entities_1_1_data_difference_1a6d5f41816d7abbf2326e23a9ad0ca3e9" prot="public" virt="virtual"><scope>SysMLv2 ::Entities::DataDifference</scope><name>~DataDifference</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Enumeration_definitionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1a1ed0f6160d840eafb80cef82cffd65b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Enumeration_definitionContext::Enumeration_definitionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Enumeration_definitionContext</name>
+        <qualifiedname>SysMLv2Parser::Enumeration_definitionContext::Enumeration_definitionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1850" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7796" bodyend="7798"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1a292b4ec71b44bbd92a2abe180a70b164" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Enumeration_definitionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Enumeration_definitionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1851" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7825" bodyend="7827"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1ab928af8f335993c47c3c4b34ddb60282" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Enumeration_definitionContext::KEYWORD_ENUM</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_ENUM</name>
+        <qualifiedname>SysMLv2Parser::Enumeration_definitionContext::KEYWORD_ENUM</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1852" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7800" bodyend="7802"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1a74a07c46f8081cce2f0b67af8ec746c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Enumeration_definitionContext::KEYWORD_DEF</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_DEF</name>
+        <qualifiedname>SysMLv2Parser::Enumeration_definitionContext::KEYWORD_DEF</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1853" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7804" bodyend="7806"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1ac0c73f1dac932d4fde757342ddaedb1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d5e/class_sys_m_lv2_parser_1_1_definition__declaration_context" kindref="compound">Definition_declarationContext</ref> *</type>
+        <definition>SysMLv2Parser::Definition_declarationContext * SysMLv2Parser::Enumeration_definitionContext::definition_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>definition_declaration</name>
+        <qualifiedname>SysMLv2Parser::Enumeration_definitionContext::definition_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1854" column="35" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7808" bodyend="7810"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1a19a714178fa6b5913d1e7d8948c83770" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/da9/class_sys_m_lv2_parser_1_1_enumeration__body_context" kindref="compound">Enumeration_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Enumeration_bodyContext * SysMLv2Parser::Enumeration_definitionContext::enumeration_body</definition>
+        <argsstring>()</argsstring>
+        <name>enumeration_body</name>
+        <qualifiedname>SysMLv2Parser::Enumeration_definitionContext::enumeration_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1855" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7812" bodyend="7814"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1a73ab6bf3ea962e9c52e6d0d749f58051" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d0/d6b/class_sys_m_lv2_parser_1_1_definition__extension__keyword_context" kindref="compound">Definition_extension_keywordContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Definition_extension_keywordContext * &gt; SysMLv2Parser::Enumeration_definitionContext::definition_extension_keyword</definition>
+        <argsstring>()</argsstring>
+        <name>definition_extension_keyword</name>
+        <qualifiedname>SysMLv2Parser::Enumeration_definitionContext::definition_extension_keyword</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1856" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7816" bodyend="7818"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1add99ca948bbf9fd17d9767642b7294df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/d6b/class_sys_m_lv2_parser_1_1_definition__extension__keyword_context" kindref="compound">Definition_extension_keywordContext</ref> *</type>
+        <definition>SysMLv2Parser::Definition_extension_keywordContext * SysMLv2Parser::Enumeration_definitionContext::definition_extension_keyword</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>definition_extension_keyword</name>
+        <qualifiedname>SysMLv2Parser::Enumeration_definitionContext::definition_extension_keyword</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1857" column="41" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7820" bodyend="7822"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1a32d97b035fb598a225f7970da3ce069a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Enumeration_definitionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Enumeration_definitionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1859" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7829" bodyend="7833"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1a6b28a091a3ae02c10abb3c61a35fad54" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Enumeration_definitionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Enumeration_definitionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1860" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7835" bodyend="7839"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Enumeration_definitionContext</label>
+        <link refid="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Enumeration_definitionContext</label>
+        <link refid="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1848" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="1848" bodyend="1862"/>
+    <listofallmembers>
+      <member refid="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1ac0c73f1dac932d4fde757342ddaedb1a" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Enumeration_definitionContext</scope><name>definition_declaration</name></member>
+      <member refid="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1a73ab6bf3ea962e9c52e6d0d749f58051" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Enumeration_definitionContext</scope><name>definition_extension_keyword</name></member>
+      <member refid="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1add99ca948bbf9fd17d9767642b7294df" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Enumeration_definitionContext</scope><name>definition_extension_keyword</name></member>
+      <member refid="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1a32d97b035fb598a225f7970da3ce069a" prot="public" virt="virtual"><scope>SysMLv2Parser::Enumeration_definitionContext</scope><name>enterRule</name></member>
+      <member refid="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1a19a714178fa6b5913d1e7d8948c83770" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Enumeration_definitionContext</scope><name>enumeration_body</name></member>
+      <member refid="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1a1ed0f6160d840eafb80cef82cffd65b0" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Enumeration_definitionContext</scope><name>Enumeration_definitionContext</name></member>
+      <member refid="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1a6b28a091a3ae02c10abb3c61a35fad54" prot="public" virt="virtual"><scope>SysMLv2Parser::Enumeration_definitionContext</scope><name>exitRule</name></member>
+      <member refid="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1a292b4ec71b44bbd92a2abe180a70b164" prot="public" virt="virtual"><scope>SysMLv2Parser::Enumeration_definitionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1a74a07c46f8081cce2f0b67af8ec746c2" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Enumeration_definitionContext</scope><name>KEYWORD_DEF</name></member>
+      <member refid="d3/daf/class_sys_m_lv2_parser_1_1_enumeration__definition_context_1ab928af8f335993c47c3c4b34ddb60282" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Enumeration_definitionContext</scope><name>KEYWORD_ENUM</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

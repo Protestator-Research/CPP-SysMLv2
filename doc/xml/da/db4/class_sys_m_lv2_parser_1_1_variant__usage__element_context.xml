@@ -1,0 +1,429 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Variant_usage_elementContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a0bf596203f21715df32f592d3916d2b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Variant_usage_elementContext::Variant_usage_elementContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Variant_usage_elementContext</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::Variant_usage_elementContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1696" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6917" bodyend="6919"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1ac534c44d672a9f9d12a07746ee376566" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Variant_usage_elementContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1697" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7006" bodyend="7008"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a4b91ec416544dac3f77e37140298ce36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context" kindref="compound">Variant_referenceContext</ref> *</type>
+        <definition>SysMLv2Parser::Variant_referenceContext * SysMLv2Parser::Variant_usage_elementContext::variant_reference</definition>
+        <argsstring>()</argsstring>
+        <name>variant_reference</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::variant_reference</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1698" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6921" bodyend="6923"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a87ce6a63159c045342beaec2638eff31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/da6/class_sys_m_lv2_parser_1_1_reference__usage_context" kindref="compound">Reference_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Reference_usageContext * SysMLv2Parser::Variant_usage_elementContext::reference_usage</definition>
+        <argsstring>()</argsstring>
+        <name>reference_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::reference_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1699" column="28" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6925" bodyend="6927"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1ab82b23caf7f8a5f12c81ef9fab95199d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/de5/class_sys_m_lv2_parser_1_1_attribute__usage_context" kindref="compound">Attribute_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Attribute_usageContext * SysMLv2Parser::Variant_usage_elementContext::attribute_usage</definition>
+        <argsstring>()</argsstring>
+        <name>attribute_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::attribute_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1700" column="28" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6929" bodyend="6931"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a80c00b705a80cb5e499d0a4ecfd3673f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/dc9/class_sys_m_lv2_parser_1_1_binding__connector__as__usage_context" kindref="compound">Binding_connector_as_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Binding_connector_as_usageContext * SysMLv2Parser::Variant_usage_elementContext::binding_connector_as_usage</definition>
+        <argsstring>()</argsstring>
+        <name>binding_connector_as_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::binding_connector_as_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1701" column="39" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6933" bodyend="6935"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a60d8efa4173c543e105b883e064f1d1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context" kindref="compound">Succession_as_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Succession_as_usageContext * SysMLv2Parser::Variant_usage_elementContext::succession_as_usage</definition>
+        <argsstring>()</argsstring>
+        <name>succession_as_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::succession_as_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1702" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6937" bodyend="6939"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a161e7232e8c7aca75ae1f5e53287886c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/dd0/class_sys_m_lv2_parser_1_1_occurrence__usage_context" kindref="compound">Occurrence_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Occurrence_usageContext * SysMLv2Parser::Variant_usage_elementContext::occurrence_usage</definition>
+        <argsstring>()</argsstring>
+        <name>occurrence_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::occurrence_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1703" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6941" bodyend="6943"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a2393b805691371a611809eb3d4dcc2b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/df3/class_sys_m_lv2_parser_1_1_individual__usage_context" kindref="compound">Individual_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Individual_usageContext * SysMLv2Parser::Variant_usage_elementContext::individual_usage</definition>
+        <argsstring>()</argsstring>
+        <name>individual_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::individual_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1704" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6945" bodyend="6947"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a5c6959c01a28074c4c10757817444799" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/de2/class_sys_m_lv2_parser_1_1_portion__usage_context" kindref="compound">Portion_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Portion_usageContext * SysMLv2Parser::Variant_usage_elementContext::portion_usage</definition>
+        <argsstring>()</argsstring>
+        <name>portion_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::portion_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1705" column="26" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6949" bodyend="6951"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a8be9cb6ff48b2f784d31d96e06584fe0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context" kindref="compound">Event_occurrence_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Event_occurrence_usageContext * SysMLv2Parser::Variant_usage_elementContext::event_occurrence_usage</definition>
+        <argsstring>()</argsstring>
+        <name>event_occurrence_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::event_occurrence_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1706" column="35" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6953" bodyend="6955"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a05bf50d21af08e9139d2b4b8171e9737" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/dff/class_sys_m_lv2_parser_1_1_item__usage_context" kindref="compound">Item_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Item_usageContext * SysMLv2Parser::Variant_usage_elementContext::item_usage</definition>
+        <argsstring>()</argsstring>
+        <name>item_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::item_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1707" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6957" bodyend="6959"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a9c2dcc699a4b54553b72bd9f3086e4db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/db5/class_sys_m_lv2_parser_1_1_part__usage_context" kindref="compound">Part_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Part_usageContext * SysMLv2Parser::Variant_usage_elementContext::part_usage</definition>
+        <argsstring>()</argsstring>
+        <name>part_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::part_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1708" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6961" bodyend="6963"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a93391af2e08df9ae1d3cff0f9689db80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dc2/class_sys_m_lv2_parser_1_1_view__usage_context" kindref="compound">View_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::View_usageContext * SysMLv2Parser::Variant_usage_elementContext::view_usage</definition>
+        <argsstring>()</argsstring>
+        <name>view_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::view_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1709" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6965" bodyend="6967"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1ad0d0dfdc2b0592dfd8958dba315044d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/de0/class_sys_m_lv2_parser_1_1_rendering__usage_context" kindref="compound">Rendering_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Rendering_usageContext * SysMLv2Parser::Variant_usage_elementContext::rendering_usage</definition>
+        <argsstring>()</argsstring>
+        <name>rendering_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::rendering_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1710" column="28" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6969" bodyend="6971"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1aaa6f195d1fc65211a55b85d760107e99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d78/class_sys_m_lv2_parser_1_1_port__usage_context" kindref="compound">Port_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Port_usageContext * SysMLv2Parser::Variant_usage_elementContext::port_usage</definition>
+        <argsstring>()</argsstring>
+        <name>port_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::port_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1711" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6973" bodyend="6975"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1aad756b56513f5b8fb4de127e57593a19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/de5/class_sys_m_lv2_parser_1_1_connection__usage_context" kindref="compound">Connection_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Connection_usageContext * SysMLv2Parser::Variant_usage_elementContext::connection_usage</definition>
+        <argsstring>()</argsstring>
+        <name>connection_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::connection_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1712" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6977" bodyend="6979"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a7a4026208402b66361cb3a5ddd33250a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/da3/class_sys_m_lv2_parser_1_1_interface__usage_context" kindref="compound">Interface_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Interface_usageContext * SysMLv2Parser::Variant_usage_elementContext::interface_usage</definition>
+        <argsstring>()</argsstring>
+        <name>interface_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::interface_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1713" column="28" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6981" bodyend="6983"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a08821ca6f27bbcd59d5553472e3df67b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d18/class_sys_m_lv2_parser_1_1_allocation__usage_context" kindref="compound">Allocation_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Allocation_usageContext * SysMLv2Parser::Variant_usage_elementContext::allocation_usage</definition>
+        <argsstring>()</argsstring>
+        <name>allocation_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::allocation_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1714" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6985" bodyend="6987"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a3c73c8b71926d68da902740d69e60d99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/d74/class_sys_m_lv2_parser_1_1_message_context" kindref="compound">MessageContext</ref> *</type>
+        <definition>SysMLv2Parser::MessageContext * SysMLv2Parser::Variant_usage_elementContext::message</definition>
+        <argsstring>()</argsstring>
+        <name>message</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1715" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6989" bodyend="6991"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1ab2ff4b2dab869229955fcd1e8de11a31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/df1/class_sys_m_lv2_parser_1_1_flow__usage_context" kindref="compound">Flow_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Flow_usageContext * SysMLv2Parser::Variant_usage_elementContext::flow_usage</definition>
+        <argsstring>()</argsstring>
+        <name>flow_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::flow_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1716" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6993" bodyend="6995"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a94dfe68936a81778c4141738c2473659" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/dec/class_sys_m_lv2_parser_1_1_succession__flow__usage_context" kindref="compound">Succession_flow_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Succession_flow_usageContext * SysMLv2Parser::Variant_usage_elementContext::succession_flow_usage</definition>
+        <argsstring>()</argsstring>
+        <name>succession_flow_usage</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::succession_flow_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1717" column="34" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6997" bodyend="6999"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a5c2e2b08c5ae8c6db74569fece2b5f09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/dd0/class_sys_m_lv2_parser_1_1_behavior__usage__element_context" kindref="compound">Behavior_usage_elementContext</ref> *</type>
+        <definition>SysMLv2Parser::Behavior_usage_elementContext * SysMLv2Parser::Variant_usage_elementContext::behavior_usage_element</definition>
+        <argsstring>()</argsstring>
+        <name>behavior_usage_element</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::behavior_usage_element</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1718" column="35" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7001" bodyend="7003"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1aeb420249cc6362048bc42c3c06cde044" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Variant_usage_elementContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1720" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7010" bodyend="7014"/>
+      </memberdef>
+      <memberdef kind="function" id="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a087827a51100e093d591dcc6acac38b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Variant_usage_elementContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Variant_usage_elementContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1721" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7016" bodyend="7020"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Variant_usage_elementContext</label>
+        <link refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Variant_usage_elementContext</label>
+        <link refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1694" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="1694" bodyend="1723"/>
+    <listofallmembers>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a08821ca6f27bbcd59d5553472e3df67b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>allocation_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1ab82b23caf7f8a5f12c81ef9fab95199d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>attribute_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a5c2e2b08c5ae8c6db74569fece2b5f09" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>behavior_usage_element</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a80c00b705a80cb5e499d0a4ecfd3673f" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>binding_connector_as_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1aad756b56513f5b8fb4de127e57593a19" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>connection_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1aeb420249cc6362048bc42c3c06cde044" prot="public" virt="virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>enterRule</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a8be9cb6ff48b2f784d31d96e06584fe0" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>event_occurrence_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a087827a51100e093d591dcc6acac38b7" prot="public" virt="virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>exitRule</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1ab2ff4b2dab869229955fcd1e8de11a31" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>flow_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1ac534c44d672a9f9d12a07746ee376566" prot="public" virt="virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>getRuleIndex</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a2393b805691371a611809eb3d4dcc2b7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>individual_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a7a4026208402b66361cb3a5ddd33250a" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>interface_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a05bf50d21af08e9139d2b4b8171e9737" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>item_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a3c73c8b71926d68da902740d69e60d99" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>message</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a161e7232e8c7aca75ae1f5e53287886c" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>occurrence_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a9c2dcc699a4b54553b72bd9f3086e4db" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>part_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1aaa6f195d1fc65211a55b85d760107e99" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>port_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a5c6959c01a28074c4c10757817444799" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>portion_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a87ce6a63159c045342beaec2638eff31" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>reference_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1ad0d0dfdc2b0592dfd8958dba315044d1" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>rendering_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a60d8efa4173c543e105b883e064f1d1f" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>succession_as_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a94dfe68936a81778c4141738c2473659" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>succession_flow_usage</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a4b91ec416544dac3f77e37140298ce36" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>variant_reference</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a0bf596203f21715df32f592d3916d2b9" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>Variant_usage_elementContext</name></member>
+      <member refid="da/db4/class_sys_m_lv2_parser_1_1_variant__usage__element_context_1a93391af2e08df9ae1d3cff0f9689db80" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_usage_elementContext</scope><name>view_usage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

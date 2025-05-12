@@ -1,0 +1,200 @@
+.TH "SysMLv2::Entities::Project" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::Entities::Project
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Project\&.h>\fP
+.PP
+Inherits \fBSysMLv2::Entities::Record\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBProject\fP ()=delete"
+.br
+.ti -1c
+.RI "\fBProject\fP (\fBProject\fP &other)"
+.br
+.ti -1c
+.RI "\fBProject\fP (std::string JsonString)"
+.br
+.ti -1c
+.RI "\fBProject\fP (std::string projectName, std::string projectDescription, std::string branchName)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBBranch\fP > \fBgetDefaultBranch\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetDefaultBranch\fP (std::shared_ptr< \fBBranch\fP > branch)"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBSysMLv2::Entities::Record\fP
+.in +1c
+.ti -1c
+.RI "\fBRecord\fP ()=delete"
+.br
+.ti -1c
+.RI "\fBRecord\fP (boost::uuids::uuid id, std::string name='', std::string description='')"
+.br
+.ti -1c
+.RI "\fBRecord\fP (std::string jsonStringOrName)"
+.br
+.ti -1c
+.RI "virtual \fB~Record\fP ()"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBRecord\fP const &other) const"
+.br
+.ti -1c
+.RI "std::string \fBgetName\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetName\fP (std::string name)"
+.br
+.ti -1c
+.RI "std::list< std::string > \fBgetAlias\fP () const"
+.br
+.ti -1c
+.RI "void \fBappendAlias\fP (std::string &alias)"
+.br
+.ti -1c
+.RI "std::string \fBgetDescription\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetDescription\fP (std::string &description)"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBgetId\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBgetType\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::shared_ptr< \fBDataVersion\fP > \fBm_DataVersion\fP"
+.br
+.ti -1c
+.RI "std::chrono::system_clock::time_point \fBCreated\fP"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBCommit\fP > > \fBCommits\fP"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBCommitReference\fP > > \fBCommitReferences\fP"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBBranch\fP > > \fBBranches\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBBranch\fP > \fBDefaultBranch\fP"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBTag\fP > > \fBTags\fP"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBProjectUsage\fP > > \fBProjectUsages\fP"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBQuery\fP > > \fBQuerries\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBSysMLv2::Entities::Record\fP
+.in +1c
+.ti -1c
+.RI "std::string \fBType\fP"
+.br
+.ti -1c
+.RI "std::string \fBName\fP"
+.br
+.ti -1c
+.RI "std::list< std::string > \fBAlias\fP"
+.br
+.ti -1c
+.RI "std::string \fBDescription\fP"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBId\fP"
+.br
+.ti -1c
+.RI "bool \fBIsForCreation\fP = false"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBSysMLv2::Entities::IEntity\fP
+.in +1c
+.ti -1c
+.RI "const int \fBJSON_INTENT\fP = 2"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents the object of the \fBProject\fP entity\&.
+
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SysMLv2::Entities::Project::Project ()\fR [delete]\fP"
+Constructor 
+.SS "SysMLv2::Entities::Project::Project (\fBProject\fP & other)"
+Copy constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP 
+.RE
+.PP
+
+.SS "SysMLv2::Entities::Project::Project (std::string JsonString)\fR [explicit]\fP"
+Generates a \fBProject\fP object from a JSON string\&. This will be used for the JSON interface of the Parser\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIJsonString\fP 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "std::string SysMLv2::Entities::Project::serializeToJson ()\fR [override]\fP, \fR [virtual]\fP"
+Allows the serialization of the Object to a JSON String\&. 
+.PP
+\fBReturns\fP
+.RS 4
+JSON String of the Object 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::Entities::IEntity\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

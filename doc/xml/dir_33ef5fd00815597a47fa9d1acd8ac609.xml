@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_33ef5fd00815597a47fa9d1acd8ac609" kind="dir">
+    <compoundname>services/src</compoundname>
+    <innerdir refid="dir_572ec767ac6f862a6669f87ccbee8bdc">services/src/implementation</innerdir>
+    <innerdir refid="dir_38f3bd8285a8f6aee89ed35cb8791fde">services/src/interfaces</innerdir>
+    <innerdir refid="dir_c995cdcd5e6b18860bc000689e9842db">services/src/online</innerdir>
+    <innerfile refid="d8/d0c/sysmlv2service__global_8h">sysmlv2service_global.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="services/src/"/>
+  </compounddef>
+</doxygen>

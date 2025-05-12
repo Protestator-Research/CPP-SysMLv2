@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_01212c9f911fb66b13b358af68967643" kind="dir">
+    <compoundname>rest-api/src/entities</compoundname>
+    <innerfile refid="dc/d2d/_branch_8cpp">Branch.cpp</innerfile>
+    <innerfile refid="d7/d7d/_branch_8h">Branch.h</innerfile>
+    <innerfile refid="d3/dcd/_change_type_8h">ChangeType.h</innerfile>
+    <innerfile refid="d3/d1c/_commit_8cpp">Commit.cpp</innerfile>
+    <innerfile refid="d0/d61/_commit_8h">Commit.h</innerfile>
+    <innerfile refid="db/d14/_commit_reference_8cpp">CommitReference.cpp</innerfile>
+    <innerfile refid="df/da8/_commit_reference_8h">CommitReference.h</innerfile>
+    <innerfile refid="de/d99/_data_8cpp">Data.cpp</innerfile>
+    <innerfile refid="df/dc1/_data_8h">Data.h</innerfile>
+    <innerfile refid="df/d4b/_data_difference_8cpp">DataDifference.cpp</innerfile>
+    <innerfile refid="df/d4e/_data_difference_8h">DataDifference.h</innerfile>
+    <innerfile refid="d2/dbc/_data_identity_8cpp">DataIdentity.cpp</innerfile>
+    <innerfile refid="df/dc0/_data_identity_8h">DataIdentity.h</innerfile>
+    <innerfile refid="d2/dc4/_data_version_8cpp">DataVersion.cpp</innerfile>
+    <innerfile refid="da/d39/_data_version_8h">DataVersion.h</innerfile>
+    <innerfile refid="d6/d35/_direction_8h">Direction.h</innerfile>
+    <innerfile refid="d2/d4b/rest-api_2src_2entities_2_element_8cpp">Element.cpp</innerfile>
+    <innerfile refid="dd/d61/rest-api_2src_2entities_2_element_8h">Element.h</innerfile>
+    <innerfile refid="d1/da2/_external_data_8cpp">ExternalData.cpp</innerfile>
+    <innerfile refid="d4/d8a/_external_data_8h">ExternalData.h</innerfile>
+    <innerfile refid="d9/da0/_external_relationship_8cpp">ExternalRelationship.cpp</innerfile>
+    <innerfile refid="d8/dca/_external_relationship_8h">ExternalRelationship.h</innerfile>
+    <innerfile refid="df/d56/_identification_8cpp">Identification.cpp</innerfile>
+    <innerfile refid="db/d89/_identification_8h">Identification.h</innerfile>
+    <innerfile refid="d9/d45/_i_entity_8h">IEntity.h</innerfile>
+    <innerfile refid="d1/d4c/_j_s_o_n_entities_8h">JSONEntities.h</innerfile>
+    <innerfile refid="d9/dea/_merge_result_8cpp">MergeResult.cpp</innerfile>
+    <innerfile refid="d4/dc7/_merge_result_8h">MergeResult.h</innerfile>
+    <innerfile refid="d1/d49/_project_8cpp">Project.cpp</innerfile>
+    <innerfile refid="d9/d8d/_project_8h">Project.h</innerfile>
+    <innerfile refid="de/dca/_project_usage_8cpp">ProjectUsage.cpp</innerfile>
+    <innerfile refid="de/d91/_project_usage_8h">ProjectUsage.h</innerfile>
+    <innerfile refid="d5/d4a/_query_8cpp">Query.cpp</innerfile>
+    <innerfile refid="dd/dfb/_query_8h">Query.h</innerfile>
+    <innerfile refid="dd/dc4/_record_8cpp">Record.cpp</innerfile>
+    <innerfile refid="d7/dfe/_record_8h">Record.h</innerfile>
+    <innerfile refid="d0/dfd/rest-api_2src_2entities_2_relationship_8cpp">Relationship.cpp</innerfile>
+    <innerfile refid="d2/d48/rest-api_2src_2entities_2_relationship_8h">Relationship.h</innerfile>
+    <innerfile refid="d4/d73/_tag_8cpp">Tag.cpp</innerfile>
+    <innerfile refid="d2/d4a/_tag_8h">Tag.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="rest-api/src/entities/"/>
+  </compounddef>
+</doxygen>

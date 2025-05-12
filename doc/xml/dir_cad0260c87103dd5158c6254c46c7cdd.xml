@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_cad0260c87103dd5158c6254c46c7cdd" kind="dir">
+    <compoundname>conformance-test</compoundname>
+    <innerdir refid="dir_5d23eab70725d5dd089477f891fa14f1">conformance-test/src</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="conformance-test/"/>
+  </compounddef>
+</doxygen>

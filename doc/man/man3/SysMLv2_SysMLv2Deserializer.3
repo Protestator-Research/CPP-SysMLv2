@@ -1,0 +1,72 @@
+.TH "SysMLv2::SysMLv2Deserializer" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::SysMLv2Deserializer
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > \fBdeserializeJsonString\fP (std::string inputValue)"
+.br
+.ti -1c
+.RI "static std::vector< std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > > \fBdeserializeJsonArray\fP (std::string inputValue)"
+.br
+.in -1c
+.SS "Static Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBcheckIfIsElementType\fP (std::string type)"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "std::vector< std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > > SysMLv2::SysMLv2Deserializer::deserializeJsonArray (std::string inputValue)\fR [static]\fP"
+Deserializes a JSON Array, containing any number of Elements\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinputValue\fP The json string of the Array\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A vector of the entities\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+std::vector 
+
+.PP
+\fBSysMLv2::Entities::IEntity\fP 
+.RE
+.PP
+
+.SS "std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > SysMLv2::SysMLv2Deserializer::deserializeJsonString (std::string inputValue)\fR [static]\fP"
+Deserializes a single element, which is contained within the inputValue\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinputValue\fP string of the element that is to deserialize 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the Element given as an IEntity\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBSysMLv2::Entities::IEntity\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Interface_occurrence_usage_memberContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context_1ab88256232a06a15744a24cd123a23759" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Interface_occurrence_usage_memberContext::Interface_occurrence_usage_memberContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Interface_occurrence_usage_memberContext</name>
+        <qualifiedname>SysMLv2Parser::Interface_occurrence_usage_memberContext::Interface_occurrence_usage_memberContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2501" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11056" bodyend="11058"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context_1a309d201cccd010a573c3cea4d680d34a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Interface_occurrence_usage_memberContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Interface_occurrence_usage_memberContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2502" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11069" bodyend="11071"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context_1a475d0c904b12dc617ff8f5e9eeac9620" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="db/d8b/class_sys_m_lv2_parser_1_1_member__prefix_context" kindref="compound">Member_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::Member_prefixContext * SysMLv2Parser::Interface_occurrence_usage_memberContext::member_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>member_prefix</name>
+        <qualifiedname>SysMLv2Parser::Interface_occurrence_usage_memberContext::member_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2503" column="26" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11060" bodyend="11062"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context_1a2f2cda077f651a72a3b8dcffc57fb443" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/dd6/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__element_context" kindref="compound">Interface_occurrence_usage_elementContext</ref> *</type>
+        <definition>SysMLv2Parser::Interface_occurrence_usage_elementContext * SysMLv2Parser::Interface_occurrence_usage_memberContext::interface_occurrence_usage_element</definition>
+        <argsstring>()</argsstring>
+        <name>interface_occurrence_usage_element</name>
+        <qualifiedname>SysMLv2Parser::Interface_occurrence_usage_memberContext::interface_occurrence_usage_element</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2504" column="47" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11064" bodyend="11066"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context_1a7e5337224b3d1188eba95c37511ee640" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Interface_occurrence_usage_memberContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Interface_occurrence_usage_memberContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2506" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11073" bodyend="11077"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context_1aae00421cb2bce44103ba32fb746efde0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Interface_occurrence_usage_memberContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Interface_occurrence_usage_memberContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2507" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11079" bodyend="11083"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Interface_occurrence_usage_memberContext</label>
+        <link refid="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Interface_occurrence_usage_memberContext</label>
+        <link refid="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2499" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="2499" bodyend="2509"/>
+    <listofallmembers>
+      <member refid="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context_1a7e5337224b3d1188eba95c37511ee640" prot="public" virt="virtual"><scope>SysMLv2Parser::Interface_occurrence_usage_memberContext</scope><name>enterRule</name></member>
+      <member refid="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context_1aae00421cb2bce44103ba32fb746efde0" prot="public" virt="virtual"><scope>SysMLv2Parser::Interface_occurrence_usage_memberContext</scope><name>exitRule</name></member>
+      <member refid="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context_1a309d201cccd010a573c3cea4d680d34a" prot="public" virt="virtual"><scope>SysMLv2Parser::Interface_occurrence_usage_memberContext</scope><name>getRuleIndex</name></member>
+      <member refid="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context_1a2f2cda077f651a72a3b8dcffc57fb443" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Interface_occurrence_usage_memberContext</scope><name>interface_occurrence_usage_element</name></member>
+      <member refid="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context_1ab88256232a06a15744a24cd123a23759" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Interface_occurrence_usage_memberContext</scope><name>Interface_occurrence_usage_memberContext</name></member>
+      <member refid="dd/d2a/class_sys_m_lv2_parser_1_1_interface__occurrence__usage__member_context_1a475d0c904b12dc617ff8f5e9eeac9620" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Interface_occurrence_usage_memberContext</scope><name>member_prefix</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

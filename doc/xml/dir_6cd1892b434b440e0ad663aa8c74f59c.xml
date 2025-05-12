@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_6cd1892b434b440e0ad663aa8c74f59c" kind="dir">
+    <compoundname>build/Debug/kerml/CMakeFiles/kerml.dir/src/root/dependencies</compoundname>
+    <innerfile refid="d9/d87/_dependency_8cpp_8o_8d">Dependency.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/kerml/CMakeFiles/kerml.dir/src/root/dependencies/"/>
+  </compounddef>
+</doxygen>

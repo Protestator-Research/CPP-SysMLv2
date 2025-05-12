@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Eased_owned_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1a39f6624e1aa7df4ff3aa63c42240dcd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Eased_owned_expressionContext::Eased_owned_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Eased_owned_expressionContext</name>
+        <qualifiedname>KerMLParser::Eased_owned_expressionContext::Eased_owned_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2570" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12401" bodyend="12403"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1ad3b33af76d8f73a51c35dbffda6c1b3b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Eased_owned_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Eased_owned_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2571" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12422" bodyend="12424"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1a1bd402f4952a1e5e1ba34acb68c06ca9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context" kindref="compound">Primary_expressionContext</ref> *</type>
+        <definition>KerMLParser::Primary_expressionContext * KerMLParser::Eased_owned_expressionContext::primary_expression</definition>
+        <argsstring>()</argsstring>
+        <name>primary_expression</name>
+        <qualifiedname>KerMLParser::Eased_owned_expressionContext::primary_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2572" column="31" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12405" bodyend="12407"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1a1cf77e7f5e218a69d6c7d9cdabc37a20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/d61/class_ker_m_l_parser_1_1_extend__expression_context" kindref="compound">Extend_expressionContext</ref> *</type>
+        <definition>KerMLParser::Extend_expressionContext * KerMLParser::Eased_owned_expressionContext::extend_expression</definition>
+        <argsstring>()</argsstring>
+        <name>extend_expression</name>
+        <qualifiedname>KerMLParser::Eased_owned_expressionContext::extend_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2573" column="30" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12409" bodyend="12411"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1ac57922b0175883ac537421eff4a4c7c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context" kindref="compound">Metaclassification_expressionContext</ref> *</type>
+        <definition>KerMLParser::Metaclassification_expressionContext * KerMLParser::Eased_owned_expressionContext::metaclassification_expression</definition>
+        <argsstring>()</argsstring>
+        <name>metaclassification_expression</name>
+        <qualifiedname>KerMLParser::Eased_owned_expressionContext::metaclassification_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2574" column="42" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12413" bodyend="12415"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1aa56385afd5cd3227673ed731fbcf10cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context" kindref="compound">Unary_operator_expressionContext</ref> *</type>
+        <definition>KerMLParser::Unary_operator_expressionContext * KerMLParser::Eased_owned_expressionContext::unary_operator_expression</definition>
+        <argsstring>()</argsstring>
+        <name>unary_operator_expression</name>
+        <qualifiedname>KerMLParser::Eased_owned_expressionContext::unary_operator_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2575" column="38" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12417" bodyend="12419"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1a6202888c8245a3f5d76ddac3eb6182dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Eased_owned_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Eased_owned_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2577" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12426" bodyend="12430"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1a360306a74848b334d83f702d998fc1f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Eased_owned_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Eased_owned_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2578" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12432" bodyend="12436"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Eased_owned_expressionContext</label>
+        <link refid="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Eased_owned_expressionContext</label>
+        <link refid="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2568" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2568" bodyend="2580"/>
+    <listofallmembers>
+      <member refid="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1a39f6624e1aa7df4ff3aa63c42240dcd4" prot="public" virt="non-virtual"><scope>KerMLParser::Eased_owned_expressionContext</scope><name>Eased_owned_expressionContext</name></member>
+      <member refid="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1a6202888c8245a3f5d76ddac3eb6182dd" prot="public" virt="virtual"><scope>KerMLParser::Eased_owned_expressionContext</scope><name>enterRule</name></member>
+      <member refid="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1a360306a74848b334d83f702d998fc1f1" prot="public" virt="virtual"><scope>KerMLParser::Eased_owned_expressionContext</scope><name>exitRule</name></member>
+      <member refid="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1a1cf77e7f5e218a69d6c7d9cdabc37a20" prot="public" virt="non-virtual"><scope>KerMLParser::Eased_owned_expressionContext</scope><name>extend_expression</name></member>
+      <member refid="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1ad3b33af76d8f73a51c35dbffda6c1b3b" prot="public" virt="virtual"><scope>KerMLParser::Eased_owned_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1ac57922b0175883ac537421eff4a4c7c6" prot="public" virt="non-virtual"><scope>KerMLParser::Eased_owned_expressionContext</scope><name>metaclassification_expression</name></member>
+      <member refid="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1a1bd402f4952a1e5e1ba34acb68c06ca9" prot="public" virt="non-virtual"><scope>KerMLParser::Eased_owned_expressionContext</scope><name>primary_expression</name></member>
+      <member refid="de/d1b/class_ker_m_l_parser_1_1_eased__owned__expression_context_1aa56385afd5cd3227673ed731fbcf10cd" prot="public" virt="non-virtual"><scope>KerMLParser::Eased_owned_expressionContext</scope><name>unary_operator_expression</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

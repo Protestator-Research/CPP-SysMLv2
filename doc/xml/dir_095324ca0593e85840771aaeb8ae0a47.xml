@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_095324ca0593e85840771aaeb8ae0a47" kind="dir">
+    <compoundname>build/Debug/kerml/CMakeFiles/kerml.dir/src/root/namespaces</compoundname>
+    <innerfile refid="d2/d25/_import_8cpp_8o_8d">Import.cpp.o.d</innerfile>
+    <innerfile refid="da/d88/_membership_8cpp_8o_8d">Membership.cpp.o.d</innerfile>
+    <innerfile refid="dd/d08/_membership_import_8cpp_8o_8d">MembershipImport.cpp.o.d</innerfile>
+    <innerfile refid="d9/dc5/_namespace_8cpp_8o_8d">Namespace.cpp.o.d</innerfile>
+    <innerfile refid="d3/d76/_namespace_import_8cpp_8o_8d">NamespaceImport.cpp.o.d</innerfile>
+    <innerfile refid="d0/d07/_owning_membership_8cpp_8o_8d">OwningMembership.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/kerml/CMakeFiles/kerml.dir/src/root/namespaces/"/>
+  </compounddef>
+</doxygen>

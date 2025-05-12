@@ -1,0 +1,14 @@
+# class `KerML::Entities::MembershipImport` {#d1/d96/class_ker_m_l_1_1_entities_1_1_membership_import}
+
+```
+class KerML::Entities::MembershipImport
+  : public KerML::Entities::Import
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+
+## Members
+

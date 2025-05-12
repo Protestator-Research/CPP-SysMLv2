@@ -1,0 +1,20 @@
+# class `SysMLv2::API::EXCEPTIONS::NotEnoughMemoryError` {#db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error}
+
+```
+class SysMLv2::API::EXCEPTIONS::NotEnoughMemoryError
+  : public std::runtime_error
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public  `[`NotEnoughMemoryError`](#db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error_1a7e5474a2df8e002f52051951bcb95a94)`()` | 
+`public  `[`~NotEnoughMemoryError`](#db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error_1a5a7b572383565e95a30f1e08b6294d57)`()` | 
+
+## Members
+
+#### `public  `[`NotEnoughMemoryError`](#db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error_1a7e5474a2df8e002f52051951bcb95a94)`()` {#db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error_1a7e5474a2df8e002f52051951bcb95a94}
+
+#### `public  `[`~NotEnoughMemoryError`](#db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error_1a5a7b572383565e95a30f1e08b6294d57)`()` {#db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error_1a5a7b572383565e95a30f1e08b6294d57}
+

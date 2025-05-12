@@ -1,0 +1,246 @@
+# class `KerML::Entities::Element` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element}
+
+This part of the model allows the identification of all elements. This part of the model allows the identification of all elements. This is a core concept of the [KerML](api.md KerML#d2/d14/namespace_ker_m_l) and SysML syntax. Also this class is required for the REST-API and the parsing of the models.
+
+Moritz Herzog 
+
+1.0 Beta 2
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public  explicit `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c)`(boost::uuids::uuid elementID,std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > owner)` | Constructor of the [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). This constructor does allow for an empty elementID. 
+`public  explicit `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a26006d0f6402324fc864bacf9f6ef29b)`(std::string elementID,std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > owner)` | Constructor of the [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). This constructor does not allow for an empty elementID. 
+`public virtual  `[`~Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a9fbeffb936fcab7b70327e8f22b40c19)`() = default` | Destructor. An implementation is not required, since shared pointers are used.
+`public std::string `[`elementId`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a50f3f7be0b6883e97464e56fef80264e)`() const` | Gives access to the ElementId as a string. 
+`public boost::uuids::uuid `[`elementIdAsUUID`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a08dfbcd5104a039aeb720d97b03eafbe)`() const` | Gives acces to the ElementId as a uuid. This makes the internal comparison eayser. 
+`public void `[`setAliasIds`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a67cd4e9242d86b6a92fb4f1b1ddbf8db)`(std::vector< std::string > aliasIds)` | Sets the various alternative Identifiers and overrides them with the given value. 
+`public void `[`appendAliasId`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1abc1566f2e815a6847958f5f39966b859)`(std::string & aliasId)` | Add another alternative Identifier. 
+`public std::vector< std::string > `[`aliasIds`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a293a9bbdd3f766e85b33c42ed314414d)`() const` | Gives access to the alternative Identifiers for one specific element. 
+`public void `[`setDeclaredShortName`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a1d57a50fdec8c10f44ab714a34d0ce74)`(std::string & declaredShortName)` | Sets the declared short name, this is an optional alternative name of the [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). This may act as a modeller- specific identifier. 
+`public std::string `[`declaredShortName`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8712642a475270d5caaa99fca188f07a)`() const` | Returns the declared short name. This is a modeller-specific primary name. It has the responsibility of beeing unique in the specific context or within a model. 
+`public void `[`setDeclaredName`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8686dafeedf332c846410da4d13b8aac)`(std::string & declaredName)` | Sets the declared name of the [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). 
+`public std::string `[`declaredName`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5177637cac4c2f102c1ac622606fc18e)`() const` | Gives access to the declared name. 
+`public void `[`setImpliedIncluded`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a86d552849ed84c9631b9246662c9fa34)`(bool & isImpliedIncluded)` | Sets if element is included in a implied. 
+`public bool `[`isImpliedIncluded`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a4b6577883757e6ae2d13cda2552e1e43)`() const` | #### Returns
+`public std::string `[`escapedName`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1adebc4425108aa41e89e6282d223e1c38)`() const` | #### Returns
+`public std::string `[`effectiveShortName`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5a0c3b8b6188c323aba3fe9db9dd5550)`() const` | Returns the effective ShortName of this [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). By default it is the DeclaredShortName. 
+`public std::string `[`effectiveName`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5303e53153fadd68bca76b5b8e06f685)`() const` | This method returns the effective name of a element. By default this is the [declaredName()](api.md declaredName#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5177637cac4c2f102c1ac622606fc18e). 
+`public virtual std::shared_ptr< `[`Namespace`](api.md KerML::Entities::Namespace#d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace)` > `[`libraryNamespace`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac2b5f829b8ad62eaca906e7cd866d1cf)`() const` | #### Returns
+`public `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` & `[`operator=`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a24ec7829b77b32369dafcb81d77af0e4)`(const `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` & other) = delete` | This operator is deleted, because the ElementId can not be reset by definition. 
+`public virtual bool `[`operator==`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a6b2eb4aeed41e45f2f14742f920dd751)`(const `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` & other)` | Compares the equality of the elements. This is mainly done by the ElementId, because of the properties of the UUID. 
+`public virtual bool `[`operator<`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a62d9c4f0a7e75986bd7adf97d0e028a1)`(const `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` & other)` | Compares one element to the other and decides which one is bigger. This is required for the maps between the Elements. 
+`public virtual bool `[`operator>`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a704d3dedba17f3e97eb08e2116716d83)`(const `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` & other)` | #### Parameters
+`public virtual bool `[`operator<=`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac385bb608aad427a079324303181132f)`(const `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` & other)` | #### Parameters
+`public virtual bool `[`operator>=`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1af97c193ec8d513de2840ef5dd6b35ef4)`(const `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` & other)` | #### Parameters
+`protected std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > `[`owner`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aa4c9d1f4fd1506ea8d61873a2ba177c1)`() const` | Returns the owning [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). The owner is the element referenced in the owningRelationship as the owningRelatedElement. 
+`protected void `[`setOwner`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a78943db83fcff463c054ec4dccb691b6)`(std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > owner)` | Sets the owner. The owner is the element referenced in the owningRelationship as the owningRelatedElement. 
+`protected void `[`setOwnedElements`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac66ccb28a7d82bd2a2629c14307b9ac4)`(std::vector< std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > > ownedElements)` | This method overwrites the Elements of the owned elements. Warning this method deletes the old vector of owned Elements. If you want to append the elements of another vector please refer to [Element::appendOwnedElements(std::vector<std::shared_ptr<Element>> ownedElements)](api.md appendOwnedElements#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a15b56d09276f5bcd8a8ae0bbc75a681b). 
+`protected void `[`appendOwnedElement`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a694b6623e44bca317fd07f3ceb9d6bf0)`(std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > ownedElement)` | This methods appends one owned element to the vector of the owned elements and sorts it, because the owned elements should be sorted 
+`protected void `[`appendOwnedElements`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a15b56d09276f5bcd8a8ae0bbc75a681b)`(std::vector< std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > > ownedElements)` | Appends owned elements to the internally managed ownedElements and sorts them afterwards. 
+`protected std::vector< std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > > `[`ownedElements`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7ddc025c7f987b1ac7abe87b471e07fc)`()` | Returns the complete vector copy of the owned Elements. 
+`protected void `[`setOwningNamespace`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7dfbb6ba5545bb37db11abbf9f44ef1b)`(std::shared_ptr< `[`Namespace`](api.md KerML::Entities::Namespace#d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace)` > owningNamespace)` | Sets the owningNamespace of a [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). The [Namespace](api.md KerML::Entities::Namespace#d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace) that owns this [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element), wich is the MembershipOwningNamespace of the [OwningMembership](api.md KerML::Entities::OwningMembership#d3/d8d/class_ker_m_l_1_1_entities_1_1_owning_membership) of this [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)
+`protected std::shared_ptr< `[`Namespace`](api.md KerML::Entities::Namespace#d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace)` > `[`owningNamespace`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8518d1b35c0f41d01e57ba11a7680be0)`()` | Gets you the owning [Namespace](api.md KerML::Entities::Namespace#d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace). The [Namespace](api.md KerML::Entities::Namespace#d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace) that owns this [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element), wich is the MembershipOwningNamespace of the [OwningMembership](api.md KerML::Entities::OwningMembership#d3/d8d/class_ker_m_l_1_1_entities_1_1_owning_membership) of this [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)
+
+## Members
+
+#### `public  explicit `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c)`(boost::uuids::uuid elementID,std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > owner)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c}
+
+Constructor of the [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). This constructor does allow for an empty elementID. 
+#### Parameters
+* `elementID` The [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) ID of the [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). If no UUID is provided, a random UUID is provided by the Software. 
+
+* `owner` The [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) that owns this element. If no [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) is provided the owning element is automatically set to null.
+
+#### `public  explicit `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a26006d0f6402324fc864bacf9f6ef29b)`(std::string elementID,std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > owner)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a26006d0f6402324fc864bacf9f6ef29b}
+
+Constructor of the [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). This constructor does not allow for an empty elementID. 
+#### Parameters
+* `elementID` The [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) ID of the [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) as string. 
+
+* `owner` The [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) that owns this element. If no [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) is provided the owning element is automatically set to null.
+
+#### `public virtual  `[`~Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a9fbeffb936fcab7b70327e8f22b40c19)`() = default` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a9fbeffb936fcab7b70327e8f22b40c19}
+
+Destructor. An implementation is not required, since shared pointers are used.
+
+#### `public std::string `[`elementId`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a50f3f7be0b6883e97464e56fef80264e)`() const` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a50f3f7be0b6883e97464e56fef80264e}
+
+Gives access to the ElementId as a string. 
+#### Returns
+String of the element Id.
+
+#### `public boost::uuids::uuid `[`elementIdAsUUID`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a08dfbcd5104a039aeb720d97b03eafbe)`() const` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a08dfbcd5104a039aeb720d97b03eafbe}
+
+Gives acces to the ElementId as a uuid. This makes the internal comparison eayser. 
+#### Returns
+[Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) id of the [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) as a uuid.
+
+#### `public void `[`setAliasIds`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a67cd4e9242d86b6a92fb4f1b1ddbf8db)`(std::vector< std::string > aliasIds)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a67cd4e9242d86b6a92fb4f1b1ddbf8db}
+
+Sets the various alternative Identifiers and overrides them with the given value. 
+#### Parameters
+* `aliasIds` The given AliasIds.
+
+#### `public void `[`appendAliasId`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1abc1566f2e815a6847958f5f39966b859)`(std::string & aliasId)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1abc1566f2e815a6847958f5f39966b859}
+
+Add another alternative Identifier. 
+#### Parameters
+* `aliasId` the given alternative Identifier.
+
+#### `public std::vector< std::string > `[`aliasIds`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a293a9bbdd3f766e85b33c42ed314414d)`() const` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a293a9bbdd3f766e85b33c42ed314414d}
+
+Gives access to the alternative Identifiers for one specific element. 
+#### Returns
+A vector of the values. Not possible to set values via this function.
+
+#### `public void `[`setDeclaredShortName`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a1d57a50fdec8c10f44ab714a34d0ce74)`(std::string & declaredShortName)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a1d57a50fdec8c10f44ab714a34d0ce74}
+
+Sets the declared short name, this is an optional alternative name of the [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). This may act as a modeller- specific identifier. 
+#### Parameters
+* `declaredShortName` The wanted declared short name.
+
+#### `public std::string `[`declaredShortName`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8712642a475270d5caaa99fca188f07a)`() const` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8712642a475270d5caaa99fca188f07a}
+
+Returns the declared short name. This is a modeller-specific primary name. It has the responsibility of beeing unique in the specific context or within a model. 
+#### Returns
+The declared short name.
+
+#### `public void `[`setDeclaredName`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8686dafeedf332c846410da4d13b8aac)`(std::string & declaredName)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8686dafeedf332c846410da4d13b8aac}
+
+Sets the declared name of the [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). 
+#### Parameters
+* `declaredName` declared name of the [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element).
+
+#### `public std::string `[`declaredName`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5177637cac4c2f102c1ac622606fc18e)`() const` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5177637cac4c2f102c1ac622606fc18e}
+
+Gives access to the declared name. 
+#### Returns
+The internally stored declared name.
+
+#### `public void `[`setImpliedIncluded`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a86d552849ed84c9631b9246662c9fa34)`(bool & isImpliedIncluded)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a86d552849ed84c9631b9246662c9fa34}
+
+Sets if element is included in a implied. 
+#### Parameters
+* `isImpliedIncluded`
+
+#### `public bool `[`isImpliedIncluded`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a4b6577883757e6ae2d13cda2552e1e43)`() const` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a4b6577883757e6ae2d13cda2552e1e43}
+
+#### Returns
+
+#### `public std::string `[`escapedName`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1adebc4425108aa41e89e6282d223e1c38)`() const` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1adebc4425108aa41e89e6282d223e1c38}
+
+#### Returns
+
+#### `public std::string `[`effectiveShortName`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5a0c3b8b6188c323aba3fe9db9dd5550)`() const` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5a0c3b8b6188c323aba3fe9db9dd5550}
+
+Returns the effective ShortName of this [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). By default it is the DeclaredShortName. 
+#### Returns
+The effective short name of this [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element).
+
+#### `public std::string `[`effectiveName`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5303e53153fadd68bca76b5b8e06f685)`() const` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5303e53153fadd68bca76b5b8e06f685}
+
+This method returns the effective name of a element. By default this is the [declaredName()](api.md declaredName#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5177637cac4c2f102c1ac622606fc18e). 
+#### Returns
+The effective name that is available.
+
+#### `public virtual std::shared_ptr< `[`Namespace`](api.md KerML::Entities::Namespace#d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace)` > `[`libraryNamespace`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac2b5f829b8ad62eaca906e7cd866d1cf)`() const` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac2b5f829b8ad62eaca906e7cd866d1cf}
+
+#### Returns
+
+#### `public `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` & `[`operator=`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a24ec7829b77b32369dafcb81d77af0e4)`(const `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` & other) = delete` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a24ec7829b77b32369dafcb81d77af0e4}
+
+This operator is deleted, because the ElementId can not be reset by definition. 
+#### Parameters
+* `other` The element that one wants to set this element to. 
+
+#### Returns
+This element.
+
+#### `public virtual bool `[`operator==`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a6b2eb4aeed41e45f2f14742f920dd751)`(const `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` & other)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a6b2eb4aeed41e45f2f14742f920dd751}
+
+Compares the equality of the elements. This is mainly done by the ElementId, because of the properties of the UUID. 
+#### Parameters
+* `other` The other [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element), that is to compare with this element. 
+
+#### Returns
+If the [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) is the same as the other [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element).
+
+#### `public virtual bool `[`operator<`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a62d9c4f0a7e75986bd7adf97d0e028a1)`(const `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` & other)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a62d9c4f0a7e75986bd7adf97d0e028a1}
+
+Compares one element to the other and decides which one is bigger. This is required for the maps between the Elements. 
+#### Parameters
+* `other` 
+
+#### Returns
+
+#### `public virtual bool `[`operator>`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a704d3dedba17f3e97eb08e2116716d83)`(const `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` & other)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a704d3dedba17f3e97eb08e2116716d83}
+
+#### Parameters
+* `other` 
+
+#### Returns
+
+#### `public virtual bool `[`operator<=`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac385bb608aad427a079324303181132f)`(const `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` & other)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac385bb608aad427a079324303181132f}
+
+#### Parameters
+* `other` 
+
+#### Returns
+
+#### `public virtual bool `[`operator>=`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1af97c193ec8d513de2840ef5dd6b35ef4)`(const `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` & other)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1af97c193ec8d513de2840ef5dd6b35ef4}
+
+#### Parameters
+* `other` 
+
+#### Returns
+
+#### `protected std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > `[`owner`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aa4c9d1f4fd1506ea8d61873a2ba177c1)`() const` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aa4c9d1f4fd1506ea8d61873a2ba177c1}
+
+Returns the owning [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). The owner is the element referenced in the owningRelationship as the owningRelatedElement. 
+#### Returns
+Shared pointer of the Owner.
+
+#### `protected void `[`setOwner`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a78943db83fcff463c054ec4dccb691b6)`(std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > owner)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a78943db83fcff463c054ec4dccb691b6}
+
+Sets the owner. The owner is the element referenced in the owningRelationship as the owningRelatedElement. 
+#### Parameters
+* `owner` The related [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element), that is represended as owningRelatedElement in the owning [Relationship](api.md KerML::Entities::Relationship#d0/d55/class_ker_m_l_1_1_entities_1_1_relationship).
+
+#### `protected void `[`setOwnedElements`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac66ccb28a7d82bd2a2629c14307b9ac4)`(std::vector< std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > > ownedElements)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac66ccb28a7d82bd2a2629c14307b9ac4}
+
+This method overwrites the Elements of the owned elements. Warning this method deletes the old vector of owned Elements. If you want to append the elements of another vector please refer to [Element::appendOwnedElements(std::vector<std::shared_ptr<Element>> ownedElements)](api.md appendOwnedElements#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a15b56d09276f5bcd8a8ae0bbc75a681b). 
+#### Parameters
+* `ownedElements` The new owned elements of the element.
+
+#### `protected void `[`appendOwnedElement`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a694b6623e44bca317fd07f3ceb9d6bf0)`(std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > ownedElement)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a694b6623e44bca317fd07f3ceb9d6bf0}
+
+This methods appends one owned element to the vector of the owned elements and sorts it, because the owned elements should be sorted 
+#### Parameters
+* `ownedElement` The element that is appended to the ownedElements.
+
+#### `protected void `[`appendOwnedElements`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a15b56d09276f5bcd8a8ae0bbc75a681b)`(std::vector< std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > > ownedElements)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a15b56d09276f5bcd8a8ae0bbc75a681b}
+
+Appends owned elements to the internally managed ownedElements and sorts them afterwards. 
+#### Parameters
+* `ownedElements` The vector that is integrated into the ownedElements
+
+#### `protected std::vector< std::shared_ptr< `[`Element`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > > `[`ownedElements`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7ddc025c7f987b1ac7abe87b471e07fc)`()` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7ddc025c7f987b1ac7abe87b471e07fc}
+
+Returns the complete vector copy of the owned Elements. 
+#### Returns
+A copy of the Owned Elements.
+
+#### `protected void `[`setOwningNamespace`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7dfbb6ba5545bb37db11abbf9f44ef1b)`(std::shared_ptr< `[`Namespace`](api.md KerML::Entities::Namespace#d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace)` > owningNamespace)` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7dfbb6ba5545bb37db11abbf9f44ef1b}
+
+Sets the owningNamespace of a [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). The [Namespace](api.md KerML::Entities::Namespace#d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace) that owns this [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element), wich is the MembershipOwningNamespace of the [OwningMembership](api.md KerML::Entities::OwningMembership#d3/d8d/class_ker_m_l_1_1_entities_1_1_owning_membership) of this [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)
+#### Parameters
+* `owningNamespace`
+
+#### `protected std::shared_ptr< `[`Namespace`](api.md KerML::Entities::Namespace#d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace)` > `[`owningNamespace`](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8518d1b35c0f41d01e57ba11a7680be0)`()` {#d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8518d1b35c0f41d01e57ba11a7680be0}
+
+Gets you the owning [Namespace](api.md KerML::Entities::Namespace#d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace). The [Namespace](api.md KerML::Entities::Namespace#d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace) that owns this [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element), wich is the MembershipOwningNamespace of the [OwningMembership](api.md KerML::Entities::OwningMembership#d3/d8d/class_ker_m_l_1_1_entities_1_1_owning_membership) of this [Element](#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)
+#### Returns
+Shared Pointer of the [Namespace](api.md KerML::Entities::Namespace#d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace).
+

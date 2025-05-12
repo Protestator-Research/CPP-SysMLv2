@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_a4625687b25d8e0144f956005ca009f2" kind="dir">
+    <compoundname>kerml/src/kernel/packages</compoundname>
+    <innerfile refid="d4/d66/_element_filter_membership_8cpp">ElementFilterMembership.cpp</innerfile>
+    <innerfile refid="d6/d78/_element_filter_membership_8h">ElementFilterMembership.h</innerfile>
+    <innerfile refid="d6/df9/_library_package_8cpp">LibraryPackage.cpp</innerfile>
+    <innerfile refid="d4/d28/_library_package_8h">LibraryPackage.h</innerfile>
+    <innerfile refid="d2/d01/_package_8cpp">Package.cpp</innerfile>
+    <innerfile refid="d9/d40/_package_8h">Package.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="kerml/src/kernel/packages/"/>
+  </compounddef>
+</doxygen>

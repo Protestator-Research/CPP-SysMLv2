@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Prefix_metadata_annotationContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context_1a57c5102dc4d78b3cab5f70a342207d4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Prefix_metadata_annotationContext::Prefix_metadata_annotationContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Prefix_metadata_annotationContext</name>
+        <qualifiedname>SysMLv2Parser::Prefix_metadata_annotationContext::Prefix_metadata_annotationContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5398" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25907" bodyend="25909"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context_1af7ffce51106c8ecd778845b0fd852f31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Prefix_metadata_annotationContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Prefix_metadata_annotationContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5399" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25924" bodyend="25926"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context_1a2205320d1ed63a17b8f61dd7298a5080" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Prefix_metadata_annotationContext::SYMBOL_HASHTAG</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_HASHTAG</name>
+        <qualifiedname>SysMLv2Parser::Prefix_metadata_annotationContext::SYMBOL_HASHTAG</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5400" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25911" bodyend="25913"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context_1ad330607aede200269056637fe466e3f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/de4/class_sys_m_lv2_parser_1_1_prefix__metadata__usage_context" kindref="compound">Prefix_metadata_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Prefix_metadata_usageContext * SysMLv2Parser::Prefix_metadata_annotationContext::prefix_metadata_usage</definition>
+        <argsstring>()</argsstring>
+        <name>prefix_metadata_usage</name>
+        <qualifiedname>SysMLv2Parser::Prefix_metadata_annotationContext::prefix_metadata_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5401" column="34" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25915" bodyend="25917"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context_1a90bb03d20a66929405ec72a5a8138e2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/dd4/class_sys_m_lv2_parser_1_1_annotating__element_context" kindref="compound">Annotating_elementContext</ref> *</type>
+        <definition>SysMLv2Parser::Annotating_elementContext * SysMLv2Parser::Prefix_metadata_annotationContext::annotating_element</definition>
+        <argsstring>()</argsstring>
+        <name>annotating_element</name>
+        <qualifiedname>SysMLv2Parser::Prefix_metadata_annotationContext::annotating_element</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5402" column="31" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25919" bodyend="25921"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context_1a53d1da3b3f126978dbe4a916ea42bbfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Prefix_metadata_annotationContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Prefix_metadata_annotationContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5404" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25928" bodyend="25932"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context_1adb935b60cd6d3080353c8f9489544765" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Prefix_metadata_annotationContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Prefix_metadata_annotationContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5405" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25934" bodyend="25938"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Prefix_metadata_annotationContext</label>
+        <link refid="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Prefix_metadata_annotationContext</label>
+        <link refid="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5396" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="5396" bodyend="5407"/>
+    <listofallmembers>
+      <member refid="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context_1a90bb03d20a66929405ec72a5a8138e2d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Prefix_metadata_annotationContext</scope><name>annotating_element</name></member>
+      <member refid="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context_1a53d1da3b3f126978dbe4a916ea42bbfb" prot="public" virt="virtual"><scope>SysMLv2Parser::Prefix_metadata_annotationContext</scope><name>enterRule</name></member>
+      <member refid="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context_1adb935b60cd6d3080353c8f9489544765" prot="public" virt="virtual"><scope>SysMLv2Parser::Prefix_metadata_annotationContext</scope><name>exitRule</name></member>
+      <member refid="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context_1af7ffce51106c8ecd778845b0fd852f31" prot="public" virt="virtual"><scope>SysMLv2Parser::Prefix_metadata_annotationContext</scope><name>getRuleIndex</name></member>
+      <member refid="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context_1a57c5102dc4d78b3cab5f70a342207d4e" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Prefix_metadata_annotationContext</scope><name>Prefix_metadata_annotationContext</name></member>
+      <member refid="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context_1ad330607aede200269056637fe466e3f9" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Prefix_metadata_annotationContext</scope><name>prefix_metadata_usage</name></member>
+      <member refid="d6/d04/class_sys_m_lv2_parser_1_1_prefix__metadata__annotation_context_1a2205320d1ed63a17b8f61dd7298a5080" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Prefix_metadata_annotationContext</scope><name>SYMBOL_HASHTAG</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

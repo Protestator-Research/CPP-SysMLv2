@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_63aa8e050fef87e05a109724f76f94e6" kind="dir">
+    <compoundname>kerml/src</compoundname>
+    <innerdir refid="dir_fae9c644836fe56b315b62659a0479e1">kerml/src/core</innerdir>
+    <innerdir refid="dir_17f329100d0347feb2ec1f115d27469e">kerml/src/kernel</innerdir>
+    <innerdir refid="dir_8233f43843c3ee2a7cff286369ad7f0b">kerml/src/root</innerdir>
+    <innerfile refid="d9/de5/kerml__global_8h">kerml_global.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="kerml/src/"/>
+  </compounddef>
+</doxygen>

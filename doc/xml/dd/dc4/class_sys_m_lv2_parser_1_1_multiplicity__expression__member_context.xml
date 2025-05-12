@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Multiplicity_expression_memberContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context_1af3cf567ef1205c6bd46c676756901ccb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Multiplicity_expression_memberContext::Multiplicity_expression_memberContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Multiplicity_expression_memberContext</name>
+        <qualifiedname>SysMLv2Parser::Multiplicity_expression_memberContext::Multiplicity_expression_memberContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8932" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43790" bodyend="43792"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context_1a60fab3c3ec1b8bd20a4aad418a855d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Multiplicity_expression_memberContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Multiplicity_expression_memberContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8933" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43799" bodyend="43801"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context_1a540c36198e53d32878c20929c53d1b74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/class_sys_m_lv2_parser_1_1_internal__multiplicity__expression__member_context" kindref="compound">Internal_multiplicity_expression_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Internal_multiplicity_expression_memberContext * SysMLv2Parser::Multiplicity_expression_memberContext::internal_multiplicity_expression_member</definition>
+        <argsstring>()</argsstring>
+        <name>internal_multiplicity_expression_member</name>
+        <qualifiedname>SysMLv2Parser::Multiplicity_expression_memberContext::internal_multiplicity_expression_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8934" column="52" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43794" bodyend="43796"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context_1a8e70ea48c00d38165b28121e3d1008c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Multiplicity_expression_memberContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Multiplicity_expression_memberContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8936" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43803" bodyend="43807"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context_1a79684685b7cb98edbd06f7d0d9bc1906" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Multiplicity_expression_memberContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Multiplicity_expression_memberContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8937" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43809" bodyend="43813"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Multiplicity_expression_memberContext</label>
+        <link refid="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Multiplicity_expression_memberContext</label>
+        <link refid="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8930" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="8930" bodyend="8939"/>
+    <listofallmembers>
+      <member refid="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context_1a8e70ea48c00d38165b28121e3d1008c4" prot="public" virt="virtual"><scope>SysMLv2Parser::Multiplicity_expression_memberContext</scope><name>enterRule</name></member>
+      <member refid="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context_1a79684685b7cb98edbd06f7d0d9bc1906" prot="public" virt="virtual"><scope>SysMLv2Parser::Multiplicity_expression_memberContext</scope><name>exitRule</name></member>
+      <member refid="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context_1a60fab3c3ec1b8bd20a4aad418a855d49" prot="public" virt="virtual"><scope>SysMLv2Parser::Multiplicity_expression_memberContext</scope><name>getRuleIndex</name></member>
+      <member refid="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context_1a540c36198e53d32878c20929c53d1b74" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Multiplicity_expression_memberContext</scope><name>internal_multiplicity_expression_member</name></member>
+      <member refid="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context_1af3cf567ef1205c6bd46c676756901ccb" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Multiplicity_expression_memberContext</scope><name>Multiplicity_expression_memberContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

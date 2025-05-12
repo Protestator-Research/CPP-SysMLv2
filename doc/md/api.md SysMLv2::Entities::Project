@@ -1,0 +1,58 @@
+# class `SysMLv2::Entities::Project` {#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project}
+
+```
+class SysMLv2::Entities::Project
+  : public SysMLv2::Entities::Record
+```  
+
+Represents the object of the [Project](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project) entity.
+
+Moritz Herzog 
+
+1.0
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public  `[`Project`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1aa3af618d5363897c4e6b7248112f21cb)`() = delete` | Constructor
+`public  `[`Project`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1a49a857485b5a2fa46e4541bfc30475f3)`(`[`Project`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` & other)` | Copy constructor 
+`public  explicit `[`Project`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1a1dacbfb6f9b24eae3800e52f5bf9795e)`(std::string JsonString)` | Generates a [Project](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project) object from a JSON string. This will be used for the JSON interface of the Parser. 
+`public  `[`Project`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1a04fc7cd934f614984aa4bc769ca5d9f6)`(std::string projectName,std::string projectDescription,std::string branchName)` | 
+`public virtual  `[`~Project`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1ae141e909d1f1a286659664dd85cbff22)`()` | 
+`public std::shared_ptr< `[`Branch`](api.md SysMLv2::Entities::Branch#d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch)` > `[`getDefaultBranch`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1ada2d00dbd7a0ca17428f058151269c9d)`()` | 
+`public void `[`setDefaultBranch`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1abac6720ff40dc75dcf8474dcd70e463d)`(std::shared_ptr< `[`Branch`](api.md SysMLv2::Entities::Branch#d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch)` > branch)` | 
+`public virtual std::string `[`serializeToJson`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1ab12999d3ad6024de75eac4ed4f6d7b72)`()` | Allows the serialization of the Object to a JSON String. 
+
+## Members
+
+#### `public  `[`Project`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1aa3af618d5363897c4e6b7248112f21cb)`() = delete` {#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1aa3af618d5363897c4e6b7248112f21cb}
+
+Constructor
+
+#### `public  `[`Project`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1a49a857485b5a2fa46e4541bfc30475f3)`(`[`Project`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` & other)` {#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1a49a857485b5a2fa46e4541bfc30475f3}
+
+Copy constructor 
+#### Parameters
+* `other`
+
+#### `public  explicit `[`Project`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1a1dacbfb6f9b24eae3800e52f5bf9795e)`(std::string JsonString)` {#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1a1dacbfb6f9b24eae3800e52f5bf9795e}
+
+Generates a [Project](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project) object from a JSON string. This will be used for the JSON interface of the Parser. 
+#### Parameters
+* `JsonString`
+
+#### `public  `[`Project`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1a04fc7cd934f614984aa4bc769ca5d9f6)`(std::string projectName,std::string projectDescription,std::string branchName)` {#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1a04fc7cd934f614984aa4bc769ca5d9f6}
+
+#### `public virtual  `[`~Project`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1ae141e909d1f1a286659664dd85cbff22)`()` {#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1ae141e909d1f1a286659664dd85cbff22}
+
+#### `public std::shared_ptr< `[`Branch`](api.md SysMLv2::Entities::Branch#d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch)` > `[`getDefaultBranch`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1ada2d00dbd7a0ca17428f058151269c9d)`()` {#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1ada2d00dbd7a0ca17428f058151269c9d}
+
+#### `public void `[`setDefaultBranch`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1abac6720ff40dc75dcf8474dcd70e463d)`(std::shared_ptr< `[`Branch`](api.md SysMLv2::Entities::Branch#d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch)` > branch)` {#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1abac6720ff40dc75dcf8474dcd70e463d}
+
+#### `public virtual std::string `[`serializeToJson`](#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1ab12999d3ad6024de75eac4ed4f6d7b72)`()` {#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project_1ab12999d3ad6024de75eac4ed4f6d7b72}
+
+Allows the serialization of the Object to a JSON String. 
+#### Returns
+JSON String of the Object
+

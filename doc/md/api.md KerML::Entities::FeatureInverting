@@ -1,0 +1,14 @@
+# class `KerML::Entities::FeatureInverting` {#dc/d59/class_ker_m_l_1_1_entities_1_1_feature_inverting}
+
+```
+class KerML::Entities::FeatureInverting
+  : public KerML::Entities::Relationship
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+
+## Members
+

@@ -1,0 +1,28 @@
+# class `SysMLv2::Entities::IEntity` {#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity}
+
+Defines the interface for all [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2) classes.
+
+Moritz Herzog 
+
+1.0
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public std::string `[`serializeToJson`](#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1a21ebb7ed491edd322301c7ba20cf66dc)`()` | Allows the serialization of the Object to a JSON String. 
+`protected const int `[`JSON_INTENT`](#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1ac3f7cba2488d110b820614b9cb709808) | Describes the intent of nlohmanns json library. 
+
+## Members
+
+#### `public std::string `[`serializeToJson`](#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1a21ebb7ed491edd322301c7ba20cf66dc)`()` {#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1a21ebb7ed491edd322301c7ba20cf66dc}
+
+Allows the serialization of the Object to a JSON String. 
+#### Returns
+JSON String of the Object
+
+#### `protected const int `[`JSON_INTENT`](#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1ac3f7cba2488d110b820614b9cb709808) {#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1ac3f7cba2488d110b820614b9cb709808}
+
+Describes the intent of nlohmanns json library. 
+**See also**: nlohmann::json::dump
+

@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2::API::EXCEPTIONS::NotEnoughMemoryError</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::runtime_error</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error_1a7e5474a2df8e002f52051951bcb95a94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::API::EXCEPTIONS::NotEnoughMemoryError::NotEnoughMemoryError</definition>
+        <argsstring>()</argsstring>
+        <name>NotEnoughMemoryError</name>
+        <qualifiedname>SysMLv2::API::EXCEPTIONS::NotEnoughMemoryError::NotEnoughMemoryError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/NotEnoughMemoryError.h" line="13" column="9" bodyfile="services/src/online/NotEnoughMemoryError.cpp" bodystart="13" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error_1a5a7b572383565e95a30f1e08b6294d57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::API::EXCEPTIONS::NotEnoughMemoryError::~NotEnoughMemoryError</definition>
+        <argsstring>()</argsstring>
+        <name>~NotEnoughMemoryError</name>
+        <qualifiedname>SysMLv2::API::EXCEPTIONS::NotEnoughMemoryError::~NotEnoughMemoryError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/NotEnoughMemoryError.h" line="14" column="9" bodyfile="services/src/online/NotEnoughMemoryError.cpp" bodystart="9" bodyend="11"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2::API::EXCEPTIONS::NotEnoughMemoryError</label>
+        <link refid="db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::runtime_error</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2::API::EXCEPTIONS::NotEnoughMemoryError</label>
+        <link refid="db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::runtime_error</label>
+      </node>
+    </collaborationgraph>
+    <location file="services/src/online/NotEnoughMemoryError.h" line="11" column="5" bodyfile="services/src/online/NotEnoughMemoryError.h" bodystart="11" bodyend="15"/>
+    <listofallmembers>
+      <member refid="db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error_1a7e5474a2df8e002f52051951bcb95a94" prot="public" virt="non-virtual"><scope>SysMLv2::API::EXCEPTIONS::NotEnoughMemoryError</scope><name>NotEnoughMemoryError</name></member>
+      <member refid="db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error_1a5a7b572383565e95a30f1e08b6294d57" prot="public" virt="non-virtual"><scope>SysMLv2::API::EXCEPTIONS::NotEnoughMemoryError</scope><name>~NotEnoughMemoryError</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,48 @@
+# class `SysMLv2::Entities::DataVersion` {#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version}
+
+```
+class SysMLv2::Entities::DataVersion
+  : public SysMLv2::Entities::Record
+```  
+
+The class [DataVersion](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version) represents a specific version of the [Data](api.md SysMLv2::Entities::Data#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data) in its lifecycle
+
+Moritz Herzog 
+
+1.0
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public  `[`DataVersion`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a92a94c53770efc0216c8e8e921f9ef94)`() = delete` | 
+`public  `[`DataVersion`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1aa9b25650d2bbba0e709e2cf0f04b0306)`(std::shared_ptr< `[`DataIdentity`](api.md SysMLv2::Entities::DataIdentity#de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity)` > identity,std::shared_ptr< `[`Data`](api.md SysMLv2::Entities::Data#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data)` > payload)` | 
+`public virtual  `[`~DataVersion`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a8db399ce80a7000e5e5e4fe74c35a56d)`()` | 
+`public std::shared_ptr< `[`DataIdentity`](api.md SysMLv2::Entities::DataIdentity#de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity)` > `[`getIdentity`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1ade5b600068eda5dbe7c81a033f791615)`()` | 
+`public void `[`setPayload`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1aa82f9a5e249c3083b4bc36c79b238a98)`(std::shared_ptr< `[`Data`](api.md SysMLv2::Entities::Data#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data)` > payload)` | 
+`public std::shared_ptr< `[`Data`](api.md SysMLv2::Entities::Data#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data)` > `[`getPayload`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a9bfcca75b62a365e638d3b6690fc465d)`()` | 
+`public boost::uuids::uuid `[`getId`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a2a815a2cfe2114e8f37eee2a11658bd8)`()` | 
+`public virtual std::string `[`serializeToJson`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1acd719b891bb323c95294d4479284d2ef)`()` | Allows the serialization of the Object to a JSON String. 
+
+## Members
+
+#### `public  `[`DataVersion`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a92a94c53770efc0216c8e8e921f9ef94)`() = delete` {#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a92a94c53770efc0216c8e8e921f9ef94}
+
+#### `public  `[`DataVersion`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1aa9b25650d2bbba0e709e2cf0f04b0306)`(std::shared_ptr< `[`DataIdentity`](api.md SysMLv2::Entities::DataIdentity#de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity)` > identity,std::shared_ptr< `[`Data`](api.md SysMLv2::Entities::Data#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data)` > payload)` {#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1aa9b25650d2bbba0e709e2cf0f04b0306}
+
+#### `public virtual  `[`~DataVersion`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a8db399ce80a7000e5e5e4fe74c35a56d)`()` {#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a8db399ce80a7000e5e5e4fe74c35a56d}
+
+#### `public std::shared_ptr< `[`DataIdentity`](api.md SysMLv2::Entities::DataIdentity#de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity)` > `[`getIdentity`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1ade5b600068eda5dbe7c81a033f791615)`()` {#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1ade5b600068eda5dbe7c81a033f791615}
+
+#### `public void `[`setPayload`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1aa82f9a5e249c3083b4bc36c79b238a98)`(std::shared_ptr< `[`Data`](api.md SysMLv2::Entities::Data#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data)` > payload)` {#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1aa82f9a5e249c3083b4bc36c79b238a98}
+
+#### `public std::shared_ptr< `[`Data`](api.md SysMLv2::Entities::Data#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data)` > `[`getPayload`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a9bfcca75b62a365e638d3b6690fc465d)`()` {#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a9bfcca75b62a365e638d3b6690fc465d}
+
+#### `public boost::uuids::uuid `[`getId`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a2a815a2cfe2114e8f37eee2a11658bd8)`()` {#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a2a815a2cfe2114e8f37eee2a11658bd8}
+
+#### `public virtual std::string `[`serializeToJson`](#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1acd719b891bb323c95294d4479284d2ef)`()` {#de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1acd719b891bb323c95294d4479284d2ef}
+
+Allows the serialization of the Object to a JSON String. 
+#### Returns
+JSON String of the Object
+

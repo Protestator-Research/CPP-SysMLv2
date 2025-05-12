@@ -1,0 +1,47 @@
+.TH "SysMLv2::Files::ParserError" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::Files::ParserError
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBParserError\fP (boost::uuids::uuid elementId, std::string projectName, ErrorType type, std::string description)"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBgetElementID\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBgetProjectName\fP ()"
+.br
+.ti -1c
+.RI "ErrorType \fBerrorType\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBdescription\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "boost::uuids::uuid \fBElementId\fP"
+.br
+.ti -1c
+.RI "std::string \fBProjectName\fP"
+.br
+.ti -1c
+.RI "ErrorType \fBType\fP"
+.br
+.ti -1c
+.RI "std::string \fBDescription\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

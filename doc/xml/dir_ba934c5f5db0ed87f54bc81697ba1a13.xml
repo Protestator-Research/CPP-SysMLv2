@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_ba934c5f5db0ed87f54bc81697ba1a13" kind="dir">
+    <compoundname>build/Debug/kerml/CMakeFiles/kerml.dir/src/core/classifiers</compoundname>
+    <innerfile refid="d9/d74/_classifier_8cpp_8o_8d">Classifier.cpp.o.d</innerfile>
+    <innerfile refid="de/de3/_subclassification_8cpp_8o_8d">Subclassification.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/kerml/CMakeFiles/kerml.dir/src/core/classifiers/"/>
+  </compounddef>
+</doxygen>

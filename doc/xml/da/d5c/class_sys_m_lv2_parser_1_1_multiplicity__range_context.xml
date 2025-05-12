@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Multiplicity_rangeContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1a7c8453dd53c9fdd077069b2e9ad10c83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Multiplicity_rangeContext::Multiplicity_rangeContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Multiplicity_rangeContext</name>
+        <qualifiedname>SysMLv2Parser::Multiplicity_rangeContext::Multiplicity_rangeContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1802" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7572" bodyend="7574"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1a5fdd5a7f0c28ad599829e269f543942b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Multiplicity_rangeContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Multiplicity_rangeContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1803" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7597" bodyend="7599"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1afbc64cc092eef319cf789de2e0ebf22a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Multiplicity_rangeContext::SYMBOL_SQUARE_BRACKET_OPEN</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_SQUARE_BRACKET_OPEN</name>
+        <qualifiedname>SysMLv2Parser::Multiplicity_rangeContext::SYMBOL_SQUARE_BRACKET_OPEN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1804" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7576" bodyend="7578"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1ada2cab4f595f3c3e87176a65e93b1369" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context" kindref="compound">Multiplicity_expression_memberContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Multiplicity_expression_memberContext * &gt; SysMLv2Parser::Multiplicity_rangeContext::multiplicity_expression_member</definition>
+        <argsstring>()</argsstring>
+        <name>multiplicity_expression_member</name>
+        <qualifiedname>SysMLv2Parser::Multiplicity_rangeContext::multiplicity_expression_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1805" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7580" bodyend="7582"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1a893691c18aef6e0fc329ce67d6dffaa7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/dc4/class_sys_m_lv2_parser_1_1_multiplicity__expression__member_context" kindref="compound">Multiplicity_expression_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Multiplicity_expression_memberContext * SysMLv2Parser::Multiplicity_rangeContext::multiplicity_expression_member</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>multiplicity_expression_member</name>
+        <qualifiedname>SysMLv2Parser::Multiplicity_rangeContext::multiplicity_expression_member</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1806" column="43" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7584" bodyend="7586"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1ab377129e93a9f1ff18d77fbff58f508e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Multiplicity_rangeContext::SYMBOL_SQUARE_BRACKET_CLOSE</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_SQUARE_BRACKET_CLOSE</name>
+        <qualifiedname>SysMLv2Parser::Multiplicity_rangeContext::SYMBOL_SQUARE_BRACKET_CLOSE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1807" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7588" bodyend="7590"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1a183f3bfcd47212be0dd6c7a12f38db36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Multiplicity_rangeContext::SYMBOL_DDOT</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_DDOT</name>
+        <qualifiedname>SysMLv2Parser::Multiplicity_rangeContext::SYMBOL_DDOT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1808" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7592" bodyend="7594"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1a5085219d904eb54b20d9256b52d73e64" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Multiplicity_rangeContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Multiplicity_rangeContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1810" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7601" bodyend="7605"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1a772e13578d74e749e3dc75599fcd8258" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Multiplicity_rangeContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Multiplicity_rangeContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1811" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7607" bodyend="7611"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Multiplicity_rangeContext</label>
+        <link refid="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Multiplicity_rangeContext</label>
+        <link refid="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1800" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="1800" bodyend="1813"/>
+    <listofallmembers>
+      <member refid="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1a5085219d904eb54b20d9256b52d73e64" prot="public" virt="virtual"><scope>SysMLv2Parser::Multiplicity_rangeContext</scope><name>enterRule</name></member>
+      <member refid="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1a772e13578d74e749e3dc75599fcd8258" prot="public" virt="virtual"><scope>SysMLv2Parser::Multiplicity_rangeContext</scope><name>exitRule</name></member>
+      <member refid="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1a5fdd5a7f0c28ad599829e269f543942b" prot="public" virt="virtual"><scope>SysMLv2Parser::Multiplicity_rangeContext</scope><name>getRuleIndex</name></member>
+      <member refid="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1ada2cab4f595f3c3e87176a65e93b1369" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Multiplicity_rangeContext</scope><name>multiplicity_expression_member</name></member>
+      <member refid="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1a893691c18aef6e0fc329ce67d6dffaa7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Multiplicity_rangeContext</scope><name>multiplicity_expression_member</name></member>
+      <member refid="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1a7c8453dd53c9fdd077069b2e9ad10c83" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Multiplicity_rangeContext</scope><name>Multiplicity_rangeContext</name></member>
+      <member refid="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1a183f3bfcd47212be0dd6c7a12f38db36" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Multiplicity_rangeContext</scope><name>SYMBOL_DDOT</name></member>
+      <member refid="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1ab377129e93a9f1ff18d77fbff58f508e" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Multiplicity_rangeContext</scope><name>SYMBOL_SQUARE_BRACKET_CLOSE</name></member>
+      <member refid="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context_1afbc64cc092eef319cf789de2e0ebf22a" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Multiplicity_rangeContext</scope><name>SYMBOL_SQUARE_BRACKET_OPEN</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

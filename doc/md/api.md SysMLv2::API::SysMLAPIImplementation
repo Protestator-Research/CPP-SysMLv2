@@ -1,0 +1,166 @@
+# class `SysMLv2::API::SysMLAPIImplementation` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation}
+
+Implements the Protocol of the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2)[API](api.md SysMLv2::API#da/dd6/namespace_sys_m_lv2_1_1_a_p_i) Standard. 1.1 
+
+Moritz Herzog [herzogm@rptu.de](mailto:herzogm@rptu.de)
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public  `[`SysMLAPIImplementation`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a490fb7dd3547ade6388e8ddb65274600)`() = delete` | Deleted Constructorr
+`public  `[`SysMLAPIImplementation`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a4fb54c6c240a6bbab5926d93d7b531f7)`(std::string serverAddress)` | The constructor that allows the needed server address. 
+`public virtual  `[`~SysMLAPIImplementation`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aa3a47d80eab4749f340431456750407b)`()` | D-TOR
+`public std::vector< std::shared_ptr< `[`SysMLv2::Entities::IEntity`](api.md SysMLv2::Entities::IEntity#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity)` > > `[`getAllProjects`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a7aff8d7083626ad3fdc098d5829fa053)`(std::string barrierString)` | Returns a std::vector of all projects that are available within the backend. The data is returned as elements from type std::vector<SysMLv2:Entities:Project*>, please consider the polimorphism of all SysMLV2 elements. 
+`public std::shared_ptr< `[`SysMLv2::Entities::IEntity`](api.md SysMLv2::Entities::IEntity#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity)` > `[`postProject`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a2bc833c848eade9b262f9aaf9969f237)`(std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > project,std::string barrierString)` | #### Parameters
+`public std::shared_ptr< `[`SysMLv2::Entities::IEntity`](api.md SysMLv2::Entities::IEntity#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity)` > `[`postCommit`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aae4f66884d39ad59e13e757fd369c9c0)`(std::string projectId,std::shared_ptr< `[`SysMLv2::Entities::Commit`](api.md SysMLv2::Entities::Commit#da/da9/class_sys_m_lv2_1_1_entities_1_1_commit)` > commit,std::string barrierString)` | Posts a commit to the Backend to add changes to a project or a branch. 
+`public std::shared_ptr< `[`SysMLv2::Entities::IEntity`](api.md SysMLv2::Entities::IEntity#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity)` > `[`getCommit`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1abdedcdb8045d6870a97ce0b6070be011)`(std::string projectId,std::string commitId,std::string barrierString)` | #### Parameters
+`public std::vector< std::shared_ptr< `[`SysMLv2::Entities::IEntity`](api.md SysMLv2::Entities::IEntity#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity)` > > `[`getAllElementsFromCommit`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1ac6972290b0f22d89c77adb82d38f1b7c)`(std::string projectId,std::string commitId,std::string barrierString)` | Downloads and returns all elements of a commit from a specific project. 
+`public std::string `[`loginUserWithPassword`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a53ff16a81eb1b63c54f9f17bb85a3c51)`(const std::string & username,const std::string & password)` | Performs the login of the digital twin client and server at the backend. This login is also automatically algorithmically changed dependent on the version of the Backend. 
+`public std::string `[`getVersionOfBackend`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a9593a716d3803b6f7cef52b4666090eb)`()` | Downloads the version of the backend. Version 3 of the backend has an endpoint to download the version of the Backend. Whereas the backend Version 2.X does not have the option. Thus the error is returning version 2.x. 
+`public std::vector< std::shared_ptr< `[`SysMLv2::Entities::IEntity`](api.md SysMLv2::Entities::IEntity#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity)` > > `[`getAllBranchesFroProject`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a25deafb21e326702fdaf9aa8c2dfc98d)`(const std::string & projectId,std::string barrierString)` | Downloads all the Branches that belong to a specific project with a specific ID. 
+`protected CURL * `[`setUpServerConnection`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a0b0cf217f8070c40ab2c7b53c1ecbc6e)`(const char * urlAppendix,const char * barrierString,const char * postPayload)` | Sets up the server connection and creates the necessary CURL calls. 
+`protected INTERNAL_STATUS_CODE `[`tryToResolveHTTPError`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a65ce5ce019bd0587bf535a29f5bdff20)`(long httpErrorCode,void * instance)` | In this method a internal resolvement of the HTTP connection error is tried. If this fails the exception is rethrown. 
+`protected std::string `[`loginToBackendVersion3`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a369dd53f66b47d9fe7f426b665e391f1)`(std::string const & username,std::string const & password)` | Performs the login in to the AGILA backend from Version 3 and upwards 
+`protected std::string `[`loginToBackendVersion2`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a967d4aace66f869f0dbe1424eca0cbde)`(std::string const & username,std::string const & password)` | Performs the login into the backend version 2. 
+
+## Members
+
+#### `public  `[`SysMLAPIImplementation`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a490fb7dd3547ade6388e8ddb65274600)`() = delete` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a490fb7dd3547ade6388e8ddb65274600}
+
+Deleted Constructorr
+
+#### `public  `[`SysMLAPIImplementation`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a4fb54c6c240a6bbab5926d93d7b531f7)`(std::string serverAddress)` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a4fb54c6c240a6bbab5926d93d7b531f7}
+
+The constructor that allows the needed server address. 
+#### Parameters
+* `serverAddress` Server address as a string.
+
+#### `public virtual  `[`~SysMLAPIImplementation`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aa3a47d80eab4749f340431456750407b)`()` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aa3a47d80eab4749f340431456750407b}
+
+D-TOR
+
+#### `public std::vector< std::shared_ptr< `[`SysMLv2::Entities::IEntity`](api.md SysMLv2::Entities::IEntity#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity)` > > `[`getAllProjects`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a7aff8d7083626ad3fdc098d5829fa053)`(std::string barrierString)` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a7aff8d7083626ad3fdc098d5829fa053}
+
+Returns a std::vector of all projects that are available within the backend. The data is returned as elements from type std::vector<SysMLv2:Entities:Project*>, please consider the polimorphism of all SysMLV2 elements. 
+#### Parameters
+* `barrierString` The barrier authentication that is provided by the server. 
+
+#### Returns
+A list of all Projects.
+
+#### `public std::shared_ptr< `[`SysMLv2::Entities::IEntity`](api.md SysMLv2::Entities::IEntity#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity)` > `[`postProject`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a2bc833c848eade9b262f9aaf9969f237)`(std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > project,std::string barrierString)` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a2bc833c848eade9b262f9aaf9969f237}
+
+#### Parameters
+* `project` 
+
+* `barrierString` 
+
+#### Returns
+
+#### `public std::shared_ptr< `[`SysMLv2::Entities::IEntity`](api.md SysMLv2::Entities::IEntity#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity)` > `[`postCommit`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aae4f66884d39ad59e13e757fd369c9c0)`(std::string projectId,std::shared_ptr< `[`SysMLv2::Entities::Commit`](api.md SysMLv2::Entities::Commit#da/da9/class_sys_m_lv2_1_1_entities_1_1_commit)` > commit,std::string barrierString)` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aae4f66884d39ad59e13e757fd369c9c0}
+
+Posts a commit to the Backend to add changes to a project or a branch. 
+#### Parameters
+* `projectId` 
+
+* `commit` 
+
+* `barrierString` 
+
+#### Returns
+
+#### `public std::shared_ptr< `[`SysMLv2::Entities::IEntity`](api.md SysMLv2::Entities::IEntity#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity)` > `[`getCommit`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1abdedcdb8045d6870a97ce0b6070be011)`(std::string projectId,std::string commitId,std::string barrierString)` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1abdedcdb8045d6870a97ce0b6070be011}
+
+#### Parameters
+* `projectId` 
+
+* `commitId` 
+
+#### Returns
+
+#### `public std::vector< std::shared_ptr< `[`SysMLv2::Entities::IEntity`](api.md SysMLv2::Entities::IEntity#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity)` > > `[`getAllElementsFromCommit`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1ac6972290b0f22d89c77adb82d38f1b7c)`(std::string projectId,std::string commitId,std::string barrierString)` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1ac6972290b0f22d89c77adb82d38f1b7c}
+
+Downloads and returns all elements of a commit from a specific project. 
+#### Parameters
+* `projectId` The UUID of the Project as a String 
+
+* `commitId` The UUID of the Commit as a String 
+
+* `barrierString` The Barrier-String given after login. 
+
+#### Returns
+All elements received from the backend.
+
+#### `public std::string `[`loginUserWithPassword`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a53ff16a81eb1b63c54f9f17bb85a3c51)`(const std::string & username,const std::string & password)` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a53ff16a81eb1b63c54f9f17bb85a3c51}
+
+Performs the login of the digital twin client and server at the backend. This login is also automatically algorithmically changed dependent on the version of the Backend. 
+#### Parameters
+* `username` The username as a string. 
+
+* `password` Password of the user. 
+
+#### Returns
+Barrier string after the login.
+
+#### `public std::string `[`getVersionOfBackend`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a9593a716d3803b6f7cef52b4666090eb)`()` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a9593a716d3803b6f7cef52b4666090eb}
+
+Downloads the version of the backend. Version 3 of the backend has an endpoint to download the version of the Backend. Whereas the backend Version 2.X does not have the option. Thus the error is returning version 2.x. 
+#### Returns
+The version of the Backend.
+
+#### `public std::vector< std::shared_ptr< `[`SysMLv2::Entities::IEntity`](api.md SysMLv2::Entities::IEntity#d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity)` > > `[`getAllBranchesFroProject`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a25deafb21e326702fdaf9aa8c2dfc98d)`(const std::string & projectId,std::string barrierString)` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a25deafb21e326702fdaf9aa8c2dfc98d}
+
+Downloads all the Branches that belong to a specific project with a specific ID. 
+#### Parameters
+* `projectId` Displays the string of the Project UUID 
+
+#### Returns
+JSON of the all the Branches.
+
+#### `protected CURL * `[`setUpServerConnection`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a0b0cf217f8070c40ab2c7b53c1ecbc6e)`(const char * urlAppendix,const char * barrierString,const char * postPayload)` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a0b0cf217f8070c40ab2c7b53c1ecbc6e}
+
+Sets up the server connection and creates the necessary CURL calls. 
+#### Parameters
+* `urlAppendix` The appendix to the url that is required to access the different folders for the Standard. 
+
+* `barrierString` The Barrier login string, this string might be required for login. 
+
+* `postPayload` The payload that is posted to the server. 
+
+#### Returns
+The CURL connection resulting from the properties.
+
+#### `protected INTERNAL_STATUS_CODE `[`tryToResolveHTTPError`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a65ce5ce019bd0587bf535a29f5bdff20)`(long httpErrorCode,void * instance)` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a65ce5ce019bd0587bf535a29f5bdff20}
+
+In this method a internal resolvement of the HTTP connection error is tried. If this fails the exception is rethrown. 
+#### Parameters
+* `httpErrorCode` The HTTP error code that was thrown. 
+
+* `instance` The curl instance pointer. 
+
+#### Returns
+Returns an internal status code that can be referenced externally.
+
+#### `protected std::string `[`loginToBackendVersion3`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a369dd53f66b47d9fe7f426b665e391f1)`(std::string const & username,std::string const & password)` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a369dd53f66b47d9fe7f426b665e391f1}
+
+Performs the login in to the AGILA backend from Version 3 and upwards 
+#### Parameters
+* `username` The username given as a string. 
+
+* `passwod` The password of the user given as a string. 
+
+#### Returns
+The barrier string from the server.
+
+#### `protected std::string `[`loginToBackendVersion2`](#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a967d4aace66f869f0dbe1424eca0cbde)`(std::string const & username,std::string const & password)` {#d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a967d4aace66f869f0dbe1424eca0cbde}
+
+Performs the login into the backend version 2. 
+#### Parameters
+* `username` The username given as a string. 
+
+* `password` The password of the user given as a string. 
+
+#### Returns
+The barrier string from the server.
+

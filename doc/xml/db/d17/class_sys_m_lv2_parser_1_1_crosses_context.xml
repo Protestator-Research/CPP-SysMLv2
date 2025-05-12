@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="db/d17/class_sys_m_lv2_parser_1_1_crosses_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::CrossesContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/d17/class_sys_m_lv2_parser_1_1_crosses_context_1a884bcf5a43a50e2a24840c4e3118f516" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::CrossesContext::CrossesContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>CrossesContext</name>
+        <qualifiedname>SysMLv2Parser::CrossesContext::CrossesContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1746" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7284" bodyend="7286"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d17/class_sys_m_lv2_parser_1_1_crosses_context_1a9e17f3532a560a9a55d2f7b130bce6af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::CrossesContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::CrossesContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1747" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7297" bodyend="7299"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d17/class_sys_m_lv2_parser_1_1_crosses_context_1aea34d3d4aa90ba0eec09ac524f3a5650" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::CrossesContext::CROSSES</definition>
+        <argsstring>()</argsstring>
+        <name>CROSSES</name>
+        <qualifiedname>SysMLv2Parser::CrossesContext::CROSSES</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1748" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7288" bodyend="7290"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d17/class_sys_m_lv2_parser_1_1_crosses_context_1ad240696a93cbda83902fc6ab30fe04d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context" kindref="compound">Owned_cross_subsettingContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_cross_subsettingContext * SysMLv2Parser::CrossesContext::owned_cross_subsetting</definition>
+        <argsstring>()</argsstring>
+        <name>owned_cross_subsetting</name>
+        <qualifiedname>SysMLv2Parser::CrossesContext::owned_cross_subsetting</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1749" column="35" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7292" bodyend="7294"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d17/class_sys_m_lv2_parser_1_1_crosses_context_1afd2ae79c586e1016caa44a46169524db" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::CrossesContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::CrossesContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1751" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7301" bodyend="7305"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d17/class_sys_m_lv2_parser_1_1_crosses_context_1a56f03f15962aca1a0be976875dfbd119" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::CrossesContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::CrossesContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1752" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7307" bodyend="7311"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::CrossesContext</label>
+        <link refid="db/d17/class_sys_m_lv2_parser_1_1_crosses_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::CrossesContext</label>
+        <link refid="db/d17/class_sys_m_lv2_parser_1_1_crosses_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1744" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="1744" bodyend="1754"/>
+    <listofallmembers>
+      <member refid="db/d17/class_sys_m_lv2_parser_1_1_crosses_context_1aea34d3d4aa90ba0eec09ac524f3a5650" prot="public" virt="non-virtual"><scope>SysMLv2Parser::CrossesContext</scope><name>CROSSES</name></member>
+      <member refid="db/d17/class_sys_m_lv2_parser_1_1_crosses_context_1a884bcf5a43a50e2a24840c4e3118f516" prot="public" virt="non-virtual"><scope>SysMLv2Parser::CrossesContext</scope><name>CrossesContext</name></member>
+      <member refid="db/d17/class_sys_m_lv2_parser_1_1_crosses_context_1afd2ae79c586e1016caa44a46169524db" prot="public" virt="virtual"><scope>SysMLv2Parser::CrossesContext</scope><name>enterRule</name></member>
+      <member refid="db/d17/class_sys_m_lv2_parser_1_1_crosses_context_1a56f03f15962aca1a0be976875dfbd119" prot="public" virt="virtual"><scope>SysMLv2Parser::CrossesContext</scope><name>exitRule</name></member>
+      <member refid="db/d17/class_sys_m_lv2_parser_1_1_crosses_context_1a9e17f3532a560a9a55d2f7b130bce6af" prot="public" virt="virtual"><scope>SysMLv2Parser::CrossesContext</scope><name>getRuleIndex</name></member>
+      <member refid="db/d17/class_sys_m_lv2_parser_1_1_crosses_context_1ad240696a93cbda83902fc6ab30fe04d8" prot="public" virt="non-virtual"><scope>SysMLv2Parser::CrossesContext</scope><name>owned_cross_subsetting</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

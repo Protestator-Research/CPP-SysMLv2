@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_55099eb752da7fe1d1361d689198e7ef" kind="dir">
+    <compoundname>filehandling/src/kerml</compoundname>
+    <innerfile refid="da/de5/_ker_m_l_base_listener_8cpp">KerMLBaseListener.cpp</innerfile>
+    <innerfile refid="da/d77/_ker_m_l_base_listener_8h">KerMLBaseListener.h</innerfile>
+    <innerfile refid="dc/df8/_ker_ml_error_8cpp">KerMlError.cpp</innerfile>
+    <innerfile refid="d3/da6/_ker_ml_error_8h">KerMlError.h</innerfile>
+    <innerfile refid="d1/dff/_ker_ml_error_listener_8cpp">KerMlErrorListener.cpp</innerfile>
+    <innerfile refid="d3/d61/_ker_ml_error_listener_8h">KerMlErrorListener.h</innerfile>
+    <innerfile refid="d1/d7e/_ker_m_l_lexer_8cpp">KerMLLexer.cpp</innerfile>
+    <innerfile refid="df/d29/_ker_m_l_lexer_8h">KerMLLexer.h</innerfile>
+    <innerfile refid="dd/da1/_ker_m_l_listener_8cpp">KerMLListener.cpp</innerfile>
+    <innerfile refid="d8/d19/_ker_m_l_listener_8h">KerMLListener.h</innerfile>
+    <innerfile refid="d5/d26/_ker_ml_listener_implementation_8cpp">KerMlListenerImplementation.cpp</innerfile>
+    <innerfile refid="d6/dde/_ker_ml_listener_implementation_8h">KerMlListenerImplementation.h</innerfile>
+    <innerfile refid="d8/d65/_ker_m_l_parser_8cpp">KerMLParser.cpp</innerfile>
+    <innerfile refid="d6/d37/_ker_m_l_parser_8h">KerMLParser.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="filehandling/src/kerml/"/>
+  </compounddef>
+</doxygen>

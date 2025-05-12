@@ -1,0 +1,332 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dc/d66/_sys_m_lv2_deserializer_8cpp" kind="file" language="C++">
+    <compoundname>SysMLv2Deserializer.cpp</compoundname>
+    <includes refid="da/d6c/_sys_m_lv2_deserializer_8h" local="yes">SysMLv2Deserializer.h</includes>
+    <includes refid="d1/d4c/_j_s_o_n_entities_8h" local="yes">../entities/JSONEntities.h</includes>
+    <includes refid="d9/d8d/_project_8h" local="yes">../entities/Project.h</includes>
+    <includes refid="df/dc0/_data_identity_8h" local="yes">../entities/DataIdentity.h</includes>
+    <includes refid="d7/d7d/_branch_8h" local="yes">../entities/Branch.h</includes>
+    <includes refid="d2/d4a/_tag_8h" local="yes">../entities/Tag.h</includes>
+    <includes refid="dd/dfb/_query_8h" local="yes">../entities/Query.h</includes>
+    <includes refid="dd/d61/rest-api_2src_2entities_2_element_8h" local="yes">../entities/Element.h</includes>
+    <includes refid="d0/d61/_commit_8h" local="yes">../entities/Commit.h</includes>
+    <includes local="no">nlohmann/json.hpp</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">sstream</includes>
+    <includes local="no">cctype</includes>
+    <includes local="no">algorithm</includes>
+    <includes local="no">string</includes>
+    <incdepgraph>
+      <node id="15">
+        <label>../entities/Branch.h</label>
+        <link refid="d7/d7d/_branch_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>../entities/Commit.h</label>
+        <link refid="d0/d61/_commit_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>CommitReference.h</label>
+        <link refid="df/da8/_commit_reference_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>Data.h</label>
+        <link refid="df/dc1/_data_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>../entities/DataIdentity.h</label>
+        <link refid="df/dc0/_data_identity_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>../entities/Element.h</label>
+        <link refid="dd/d61/rest-api_2src_2entities_2_element_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>../entities/IEntity.h</label>
+        <link refid="d9/d45/_i_entity_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>../entities/JSONEntities.h</label>
+        <link refid="d1/d4c/_j_s_o_n_entities_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>../entities/Project.h</label>
+        <link refid="d9/d8d/_project_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>../entities/Query.h</label>
+        <link refid="dd/dfb/_query_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>Record.h</label>
+        <link refid="d7/dfe/_record_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>../entities/Tag.h</label>
+        <link refid="d2/d4a/_tag_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>rest-api/src/serialization/SysMLv2Deserializer.cpp</label>
+        <link refid="dc/d66/_sys_m_lv2_deserializer_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>SysMLv2Deserializer.h</label>
+        <link refid="da/d6c/_sys_m_lv2_deserializer_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>../sysmlv2rest_global.h</label>
+        <link refid="d6/d17/sysmlv2rest__global_8h_source"/>
+      </node>
+      <node id="26">
+        <label>algorithm</label>
+      </node>
+      <node id="10">
+        <label>boost/uuid/uuid.hpp</label>
+      </node>
+      <node id="25">
+        <label>cctype</label>
+      </node>
+      <node id="11">
+        <label>chrono</label>
+      </node>
+      <node id="23">
+        <label>iostream</label>
+      </node>
+      <node id="13">
+        <label>list</label>
+      </node>
+      <node id="3">
+        <label>memory</label>
+      </node>
+      <node id="20">
+        <label>nlohmann/json.hpp</label>
+      </node>
+      <node id="24">
+        <label>sstream</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="d7/dba/namespace_sys_m_lv2">SysMLv2</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Moritz<sp/>Herzog<sp/>on<sp/>29.02.24.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;SysMLv2Deserializer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../entities/JSONEntities.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../entities/Project.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../entities/DataIdentity.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../entities/Branch.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../entities/Tag.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../entities/Query.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../entities/Element.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../entities/Commit.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;nlohmann/json.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cctype&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="d7/dba/namespace_sys_m_lv2" kindref="compound">SysMLv2</ref><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;SysMLv2::Entities::IEntity&gt;<sp/><ref refid="d5/ddf/class_sys_m_lv2_1_1_sys_m_lv2_deserializer_1ab2d1f1aadf1f64d67afa76e7b5642a51" kindref="member">SysMLv2Deserializer::deserializeJsonString</ref>(std::string<sp/>inputValue)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nlohmann::json<sp/>json<sp/>=<sp/>nlohmann::json::parse(inputValue);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>type<sp/>=<sp/>json[Entities::JSON_TYPE_ENTITY].get&lt;std::string&gt;();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::transform(type.begin(),<sp/>type.end(),<sp/>type.begin(),<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c){<sp/>return<sp/>std::tolower(c);<sp/>});</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(type==Entities::PROJECT_TYPE)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_shared&lt;Entities::Project&gt;(inputValue);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(type==Entities::DATA_IDENTITY_TYPE)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_shared&lt;Entities::DataIdentity&gt;(inputValue);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(type==Entities::BRANCH_TYPE)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_shared&lt;Entities::Branch&gt;(inputValue);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(type==Entities::TAG_TYPE)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_shared&lt;Entities::Tag&gt;(inputValue);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(type==Entities::QUERY_TYPE)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_shared&lt;Entities::Query&gt;(inputValue);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(type==Entities::COMMIT_TYPE)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_shared&lt;Entities::Commit&gt;(inputValue);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(checkIfIsElementType(type))</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_shared&lt;Entities::Element&gt;(inputValue);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::IEntity&gt;&gt;<sp/><ref refid="d5/ddf/class_sys_m_lv2_1_1_sys_m_lv2_deserializer_1a520b87e2e1f798e41e5695ac0f488fbe" kindref="member">SysMLv2Deserializer::deserializeJsonArray</ref>(std::string<sp/>inputValue)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nlohmann::json<sp/>json<sp/>=<sp/>nlohmann::json::parse(inputValue);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;nlohmann::json&gt;<sp/>arrayValues<sp/>=<sp/>json.get&lt;std::vector&lt;nlohmann::json&gt;&gt;();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::IEntity&gt;&gt;<sp/>returnValues;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>returnValues.reserve(arrayValues.size());</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>nlohmann::json&amp;<sp/>elem<sp/>:<sp/>arrayValues)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>returnValues.emplace_back(<ref refid="d5/ddf/class_sys_m_lv2_1_1_sys_m_lv2_deserializer_1ab2d1f1aadf1f64d67afa76e7b5642a51" kindref="member">SysMLv2Deserializer::deserializeJsonString</ref>(elem.dump()));</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>returnValues;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>SysMLv2Deserializer::checkIfIsElementType(std::string<sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>element_names<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;Element&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;AnnotatingElement&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;Annotation&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Association&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Classifier&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Class&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Comment&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Connector&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;DataType&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Dependency&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Documentation&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Element&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;FeatureTyping&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;NamespaceImport&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;MembershipImport&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Multiplicity&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Specialization&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Subsetting&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Type&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Feature&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Expression&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Invairant&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Package&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Namespace&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Redefinition&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Relationship&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;ReferencedSubsetting&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;TextualRepresentation&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>elem_name<sp/>:<sp/>element_names)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::transform(elem_name.begin(),<sp/>elem_name.end(),<sp/>elem_name.begin(),<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c){<sp/>return<sp/>std::tolower(c);<sp/>});</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(type<sp/>==<sp/>elem_name)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>SysMLv2</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="rest-api/src/serialization/SysMLv2Deserializer.cpp"/>
+  </compounddef>
+</doxygen>

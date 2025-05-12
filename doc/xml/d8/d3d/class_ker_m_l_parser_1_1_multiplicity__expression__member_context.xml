@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d8/d3d/class_ker_m_l_parser_1_1_multiplicity__expression__member_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Multiplicity_expression_memberContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d8/d3d/class_ker_m_l_parser_1_1_multiplicity__expression__member_context_1a387a269afb353cce29460bf418144d50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Multiplicity_expression_memberContext::Multiplicity_expression_memberContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Multiplicity_expression_memberContext</name>
+        <qualifiedname>KerMLParser::Multiplicity_expression_memberContext::Multiplicity_expression_memberContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4115" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19581" bodyend="19583"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d3d/class_ker_m_l_parser_1_1_multiplicity__expression__member_context_1a4ec35dbd96d0a9145ccac9a190d5e270" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Multiplicity_expression_memberContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Multiplicity_expression_memberContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4116" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19590" bodyend="19592"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d3d/class_ker_m_l_parser_1_1_multiplicity__expression__member_context_1a2a0df1c2dbe2de0e952b6def016af6be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/d31/class_ker_m_l_parser_1_1_internal__multiplicity__expression__member_context" kindref="compound">Internal_multiplicity_expression_memberContext</ref> *</type>
+        <definition>KerMLParser::Internal_multiplicity_expression_memberContext * KerMLParser::Multiplicity_expression_memberContext::internal_multiplicity_expression_member</definition>
+        <argsstring>()</argsstring>
+        <name>internal_multiplicity_expression_member</name>
+        <qualifiedname>KerMLParser::Multiplicity_expression_memberContext::internal_multiplicity_expression_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4117" column="52" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19585" bodyend="19587"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d3d/class_ker_m_l_parser_1_1_multiplicity__expression__member_context_1a34f0d0f869e254265c47c1233217b812" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Multiplicity_expression_memberContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Multiplicity_expression_memberContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4119" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19594" bodyend="19598"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d3d/class_ker_m_l_parser_1_1_multiplicity__expression__member_context_1a723a76c9dc26af6647e4a1541b4c6546" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Multiplicity_expression_memberContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Multiplicity_expression_memberContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4120" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19600" bodyend="19604"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Multiplicity_expression_memberContext</label>
+        <link refid="d8/d3d/class_ker_m_l_parser_1_1_multiplicity__expression__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Multiplicity_expression_memberContext</label>
+        <link refid="d8/d3d/class_ker_m_l_parser_1_1_multiplicity__expression__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="4113" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="4113" bodyend="4122"/>
+    <listofallmembers>
+      <member refid="d8/d3d/class_ker_m_l_parser_1_1_multiplicity__expression__member_context_1a34f0d0f869e254265c47c1233217b812" prot="public" virt="virtual"><scope>KerMLParser::Multiplicity_expression_memberContext</scope><name>enterRule</name></member>
+      <member refid="d8/d3d/class_ker_m_l_parser_1_1_multiplicity__expression__member_context_1a723a76c9dc26af6647e4a1541b4c6546" prot="public" virt="virtual"><scope>KerMLParser::Multiplicity_expression_memberContext</scope><name>exitRule</name></member>
+      <member refid="d8/d3d/class_ker_m_l_parser_1_1_multiplicity__expression__member_context_1a4ec35dbd96d0a9145ccac9a190d5e270" prot="public" virt="virtual"><scope>KerMLParser::Multiplicity_expression_memberContext</scope><name>getRuleIndex</name></member>
+      <member refid="d8/d3d/class_ker_m_l_parser_1_1_multiplicity__expression__member_context_1a2a0df1c2dbe2de0e952b6def016af6be" prot="public" virt="non-virtual"><scope>KerMLParser::Multiplicity_expression_memberContext</scope><name>internal_multiplicity_expression_member</name></member>
+      <member refid="d8/d3d/class_ker_m_l_parser_1_1_multiplicity__expression__member_context_1a387a269afb353cce29460bf418144d50" prot="public" virt="non-virtual"><scope>KerMLParser::Multiplicity_expression_memberContext</scope><name>Multiplicity_expression_memberContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

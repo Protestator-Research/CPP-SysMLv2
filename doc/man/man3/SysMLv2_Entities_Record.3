@@ -1,0 +1,291 @@
+.TH "SysMLv2::Entities::Record" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::Entities::Record
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <CommitReference\&.h>\fP
+.PP
+Inherits \fBSysMLv2::Entities::IEntity\fP\&.
+.PP
+Inherited by \fBSysMLv2::Entities::Commit\fP, \fBSysMLv2::Entities::CommitReference\fP, \fBSysMLv2::Entities::DataIdentity\fP, \fBSysMLv2::Entities::DataVersion\fP, \fBSysMLv2::Entities::Project\fP, and \fBSysMLv2::Entities::Query\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRecord\fP ()=delete"
+.br
+.ti -1c
+.RI "\fBRecord\fP (boost::uuids::uuid id, std::string name='', std::string description='')"
+.br
+.ti -1c
+.RI "\fBRecord\fP (std::string jsonStringOrName)"
+.br
+.ti -1c
+.RI "virtual \fB~Record\fP ()"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBRecord\fP const &other) const"
+.br
+.ti -1c
+.RI "std::string \fBgetName\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetName\fP (std::string name)"
+.br
+.ti -1c
+.RI "std::list< std::string > \fBgetAlias\fP () const"
+.br
+.ti -1c
+.RI "void \fBappendAlias\fP (std::string &alias)"
+.br
+.ti -1c
+.RI "std::string \fBgetDescription\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetDescription\fP (std::string &description)"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBgetId\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBgetType\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBType\fP"
+.br
+.ti -1c
+.RI "std::string \fBName\fP"
+.br
+.ti -1c
+.RI "std::list< std::string > \fBAlias\fP"
+.br
+.ti -1c
+.RI "std::string \fBDescription\fP"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBId\fP"
+.br
+.ti -1c
+.RI "bool \fBIsForCreation\fP = false"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBSysMLv2::Entities::IEntity\fP
+.in +1c
+.ti -1c
+.RI "const int \fBJSON_INTENT\fP = 2"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents an abstract baseclass that is used for the \fBSysMLv2\fP \fBAPI\fP
+
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0
+.RE
+.PP
+Represents an abstract baseclass that is used for the \fBSysMLv2\fP \fBAPI\fP
+
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+boost::uuids::uuid 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SysMLv2::Entities::Record::Record ()\fR [delete]\fP"
+Generalized Constructor is deleted According to the \fBSysMLv2\fP Standard\&. This requires a human Identifier, that is read only\&. This can not be realized by a general constructor\&. 
+.SS "SysMLv2::Entities::Record::Record (boost::uuids::uuid id, std::string name = \fR''\fP, std::string description = \fR''\fP)\fR [explicit]\fP"
+Init the \fBRecord\fP Object with all the nesecary objects\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP Id of the Object 
+.br
+\fIname\fP Name of the Object 
+.br
+\fIdescription\fP Description of the Object 
+.RE
+.PP
+
+.SS "SysMLv2::Entities::Record::Record (std::string jsonStringOrName)\fR [explicit]\fP"
+Converts a JSON String into a valid \fBRecord\fP 
+.PP
+\fBParameters\fP
+.RS 4
+\fIjsonString\fP The JSON String that is converted to a \fBRecord\fP or a valid name of the \fBRecord\fP\&. 
+.RE
+.PP
+
+.SS "SysMLv2::Entities::Record::~Record ()\fR [virtual]\fP"
+Destructor 
+.SH "Member Function Documentation"
+.PP 
+.SS "void SysMLv2::Entities::Record::appendAlias (std::string & alias)"
+Appends an single alias to the aliases list of a single \fBRecord\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIalias\fP Additional alias, that will be stored in tha alias list\&. 
+.RE
+.PP
+
+.SS "std::list< std::string > SysMLv2::Entities::Record::getAlias () const\fR [nodiscard]\fP"
+Returns the list of all Aliases according ot the SysML Standard\&. Hereby also holds that the name aka\&. the human identifier is part of the alias list\&. 
+.PP
+\fBReturns\fP
+.RS 4
+All available Aliases\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+std::list 
+
+.PP
+std::string 
+.RE
+.PP
+
+.SS "std::string SysMLv2::Entities::Record::getDescription () const\fR [nodiscard]\fP"
+Returns the description of a \fBRecord\fP according to the \fBSysMLv2\fP standard\&. 
+.PP
+\fBReturns\fP
+.RS 4
+A std::string containing the Description of the \fBRecord\fP\&. 
+.RE
+.PP
+
+.SS "boost::uuids::uuid SysMLv2::Entities::Record::getId () const\fR [nodiscard]\fP"
+Returns the ID of the \fBRecord\fP\&. The ID is only gettable and not settable except the option to set the ID in the constructor according to the \fBSysMLv2\fP Standard\&. 
+.PP
+\fBReturns\fP
+.RS 4
+A boost::uuids::uuid, as the ID\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+boost::uuids::uuid 
+.RE
+.PP
+
+.SS "std::string SysMLv2::Entities::Record::getName () const\fR [nodiscard]\fP"
+Returns the human identifier according to the \fBSysMLv2\fP standard\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Human Identifier\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+std::string 
+.RE
+.PP
+
+.SS "std::string SysMLv2::Entities::Record::getType () const\fR [nodiscard]\fP"
+Returns the type of the \fBRecord\fP\&. The type is a complexity that is needed to parse an object\&. Also there is no point in making the type settable, since the type is dependent on the subclass of the \fBRecord\fP that is used\&. 
+.PP
+\fBReturns\fP
+.RS 4
+String representation of the Type\&. 
+.RE
+.PP
+
+.SS "bool SysMLv2::Entities::Record::operator== (\fBRecord\fP const & other) const"
+Checks the equality of the individual Records\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP The other \fBRecord\fP object to check 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if the objects are identical\&. 
+.RE
+.PP
+
+.SS "std::string SysMLv2::Entities::Record::serializeToJson ()\fR [override]\fP, \fR [virtual]\fP"
+Allows the serialization of the Object to a JSON String\&. 
+.PP
+\fBReturns\fP
+.RS 4
+JSON String of the Object 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::Entities::IEntity\fP\&.
+.SS "void SysMLv2::Entities::Record::setDescription (std::string & description)"
+Sets a new description of the \fBRecord\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdescription\fP The description is given as a std::string\&. 
+.RE
+.PP
+
+.SS "void SysMLv2::Entities::Record::setName (std::string name)"
+Sets a new Human Identifier\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP The new Human Identifier\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::list<std::string> SysMLv2::Entities::Record::Alias\fR [protected]\fP"
+Contains all Aliases of the object\&. Also within the Aliases the human identifier needs to be contained, according to the \fBSysMLv2\fP standard\&. 
+.SS "std::string SysMLv2::Entities::Record::Description\fR [protected]\fP"
+Contains the description of a single \fBRecord\fP\&. 
+.SS "boost::uuids::uuid SysMLv2::Entities::Record::Id\fR [protected]\fP"
+Contains the ID of a single \fBRecord\fP\&. This is also stored as a UUID\&. 
+.PP
+\fBSee also\fP
+.RS 4
+boost::uuids::uuid 
+.RE
+.PP
+
+.SS "std::string SysMLv2::Entities::Record::Name\fR [protected]\fP"
+Contains the name of the \fBRecord\fP Class\&. This is also called human identifier within the \fBSysMLv2\fP Documentation\&. 
+.SS "std::string SysMLv2::Entities::Record::Type\fR [protected]\fP"
+Type of the generated class\&. This also enables the parsing of the element\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

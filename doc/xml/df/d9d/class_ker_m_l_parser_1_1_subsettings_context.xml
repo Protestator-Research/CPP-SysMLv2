@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="df/d9d/class_ker_m_l_parser_1_1_subsettings_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::SubsettingsContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1a8e1da51823d10e080057926c77e51bae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::SubsettingsContext::SubsettingsContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>SubsettingsContext</name>
+        <qualifiedname>KerMLParser::SubsettingsContext::SubsettingsContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1773" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8353" bodyend="8355"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1a235f68a447fe8dc23648dabd8cba5df8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::SubsettingsContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::SubsettingsContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1774" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8378" bodyend="8380"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1a1dd0e518e05e99715be07b393f78c97c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/dae/class_ker_m_l_parser_1_1_subsets_context" kindref="compound">SubsetsContext</ref> *</type>
+        <definition>KerMLParser::SubsetsContext * KerMLParser::SubsettingsContext::subsets</definition>
+        <argsstring>()</argsstring>
+        <name>subsets</name>
+        <qualifiedname>KerMLParser::SubsettingsContext::subsets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1775" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8357" bodyend="8359"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1ab2658846731d4fbffc2e0ae949de547a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context" kindref="compound">Owned_subsettingContext</ref> * &gt;</type>
+        <definition>std::vector&lt; KerMLParser::Owned_subsettingContext * &gt; KerMLParser::SubsettingsContext::owned_subsetting</definition>
+        <argsstring>()</argsstring>
+        <name>owned_subsetting</name>
+        <qualifiedname>KerMLParser::SubsettingsContext::owned_subsetting</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1776" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8361" bodyend="8363"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1a104ff9e9e87e1a24227e668675232460" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context" kindref="compound">Owned_subsettingContext</ref> *</type>
+        <definition>KerMLParser::Owned_subsettingContext * KerMLParser::SubsettingsContext::owned_subsetting</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>owned_subsetting</name>
+        <qualifiedname>KerMLParser::SubsettingsContext::owned_subsetting</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1777" column="29" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8365" bodyend="8367"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1a56c4a85582742ca0c89b20d338ca541c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; antlr4::tree::TerminalNode * &gt;</type>
+        <definition>std::vector&lt; tree::TerminalNode * &gt; KerMLParser::SubsettingsContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>KerMLParser::SubsettingsContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1778" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8369" bodyend="8371"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1afbd0305ed395954989cf3be4e9abc248" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::SubsettingsContext::SYMBOL_COMMA</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>KerMLParser::SubsettingsContext::SYMBOL_COMMA</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1779" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8373" bodyend="8375"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1ac139db40279aedf1f561f2cd76b43cd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::SubsettingsContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::SubsettingsContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1781" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8382" bodyend="8386"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1ae184db0f14d07246be32790e314edb80" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::SubsettingsContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::SubsettingsContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1782" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8388" bodyend="8392"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::SubsettingsContext</label>
+        <link refid="df/d9d/class_ker_m_l_parser_1_1_subsettings_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::SubsettingsContext</label>
+        <link refid="df/d9d/class_ker_m_l_parser_1_1_subsettings_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="1771" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="1771" bodyend="1784"/>
+    <listofallmembers>
+      <member refid="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1ac139db40279aedf1f561f2cd76b43cd8" prot="public" virt="virtual"><scope>KerMLParser::SubsettingsContext</scope><name>enterRule</name></member>
+      <member refid="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1ae184db0f14d07246be32790e314edb80" prot="public" virt="virtual"><scope>KerMLParser::SubsettingsContext</scope><name>exitRule</name></member>
+      <member refid="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1a235f68a447fe8dc23648dabd8cba5df8" prot="public" virt="virtual"><scope>KerMLParser::SubsettingsContext</scope><name>getRuleIndex</name></member>
+      <member refid="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1ab2658846731d4fbffc2e0ae949de547a" prot="public" virt="non-virtual"><scope>KerMLParser::SubsettingsContext</scope><name>owned_subsetting</name></member>
+      <member refid="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1a104ff9e9e87e1a24227e668675232460" prot="public" virt="non-virtual"><scope>KerMLParser::SubsettingsContext</scope><name>owned_subsetting</name></member>
+      <member refid="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1a1dd0e518e05e99715be07b393f78c97c" prot="public" virt="non-virtual"><scope>KerMLParser::SubsettingsContext</scope><name>subsets</name></member>
+      <member refid="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1a8e1da51823d10e080057926c77e51bae" prot="public" virt="non-virtual"><scope>KerMLParser::SubsettingsContext</scope><name>SubsettingsContext</name></member>
+      <member refid="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1a56c4a85582742ca0c89b20d338ca541c" prot="public" virt="non-virtual"><scope>KerMLParser::SubsettingsContext</scope><name>SYMBOL_COMMA</name></member>
+      <member refid="df/d9d/class_ker_m_l_parser_1_1_subsettings_context_1afbd0305ed395954989cf3be4e9abc248" prot="public" virt="non-virtual"><scope>KerMLParser::SubsettingsContext</scope><name>SYMBOL_COMMA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

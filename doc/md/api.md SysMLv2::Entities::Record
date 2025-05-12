@@ -1,0 +1,166 @@
+# class `SysMLv2::Entities::Record` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record}
+
+```
+class SysMLv2::Entities::Record
+  : public SysMLv2::Entities::IEntity
+```  
+
+Represents an abstract baseclass that is used for the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2)[API](api.md SysMLv2::API#da/dd6/namespace_sys_m_lv2_1_1_a_p_i)
+
+Moritz Herzog 
+
+1.0
+
+Represents an abstract baseclass that is used for the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2)[API](api.md SysMLv2::API#da/dd6/namespace_sys_m_lv2_1_1_a_p_i)
+
+Moritz Herzog 
+
+1.0 
+
+**See also**: boost::uuids::uuid
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public  `[`Record`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a3bfd067522f0ef87a1b50c6493458a9b)`() = delete` | Generalized Constructor is deleted According to the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2) Standard. This requires a human Identifier, that is read only. This can not be realized by a general constructor.
+`public  explicit `[`Record`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a51b38a3923a662061d8f647aa172ce4e)`(boost::uuids::uuid id,std::string name,std::string description)` | Init the [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record) Object with all the nesecary objects. 
+`public  explicit `[`Record`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ae6e096d934f6107cd2585081bc59da10)`(std::string jsonStringOrName)` | Converts a JSON String into a valid [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record)
+`public virtual  `[`~Record`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1abccd189ffb39f8f1728b1a646cae7a3e)`()` | Destructor
+`public bool `[`operator==`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a44938fd7ae4280fa0473484273b4d431)`(`[`Record`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record)` const & other) const` | Checks the equality of the individual Records. 
+`public std::string `[`getName`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1aa619b90ce3e937a75a22854f3107ebc5)`() const` | Returns the human identifier according to the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2) standard. 
+`public void `[`setName`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ac7666583958bc98be3e6f2da3880454c)`(std::string name)` | Sets a new Human Identifier. 
+`public std::list< std::string > `[`getAlias`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a727329cbcf2499bff14edcdcb4735dfc)`() const` | Returns the list of all Aliases according ot the SysML Standard. Hereby also holds that the name aka. the human identifier is part of the alias list. 
+`public void `[`appendAlias`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a45b598f62d5fec7657728708ed8d5aa8)`(std::string & alias)` | Appends an single alias to the aliases list of a single [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record). 
+`public std::string `[`getDescription`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a28e97d4f86b1f57bd1a7f0e6e2c47e9e)`() const` | Returns the description of a [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record) according to the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2) standard. 
+`public void `[`setDescription`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ad826fec2e174a534cad1351750175c28)`(std::string & description)` | Sets a new description of the [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record). 
+`public boost::uuids::uuid `[`getId`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1aa503f01b715d59b29654fdd4ee2ade28)`() const` | Returns the ID of the [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record). The ID is only gettable and not settable except the option to set the ID in the constructor according to the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2) Standard. 
+`public std::string `[`getType`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a61bfd3751bc3c11628008337b1caf24b)`() const` | Returns the type of the [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record). The type is a complexity that is needed to parse an object. Also there is no point in making the type settable, since the type is dependent on the subclass of the [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record) that is used. 
+`public virtual std::string `[`serializeToJson`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a2a10fcc6f27a921cd60517703dfd3f2b)`()` | Allows the serialization of the Object to a JSON String. 
+`protected std::string `[`Type`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a4fbf73e50a3dffee7e40393ce1db6508) | Type of the generated class. This also enables the parsing of the element.
+`protected std::string `[`Name`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ad1599c8728bec68fe1291f51b9d0a04b) | Contains the name of the [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record) Class. This is also called human identifier within the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2) Documentation.
+`protected std::list< std::string > `[`Alias`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a023b2aa15c7192d9af732ee3e7e84a56) | Contains all Aliases of the object. Also within the Aliases the human identifier needs to be contained, according to the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2) standard.
+`protected std::string `[`Description`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a6e2c0a9b166510546f567a25a64e2c80) | Contains the description of a single [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record).
+`protected boost::uuids::uuid `[`Id`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a077d9e6a406a07331d43abcfe3fd2a20) | Contains the ID of a single [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record). This is also stored as a UUID. 
+`protected bool `[`IsForCreation`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a06c5038dc6f912801a70e6c3fd7a52e0) | 
+
+## Members
+
+#### `public  `[`Record`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a3bfd067522f0ef87a1b50c6493458a9b)`() = delete` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a3bfd067522f0ef87a1b50c6493458a9b}
+
+Generalized Constructor is deleted According to the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2) Standard. This requires a human Identifier, that is read only. This can not be realized by a general constructor.
+
+#### `public  explicit `[`Record`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a51b38a3923a662061d8f647aa172ce4e)`(boost::uuids::uuid id,std::string name,std::string description)` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a51b38a3923a662061d8f647aa172ce4e}
+
+Init the [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record) Object with all the nesecary objects. 
+#### Parameters
+* `id` Id of the Object 
+
+* `name` Name of the Object 
+
+* `description` Description of the Object
+
+#### `public  explicit `[`Record`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ae6e096d934f6107cd2585081bc59da10)`(std::string jsonStringOrName)` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ae6e096d934f6107cd2585081bc59da10}
+
+Converts a JSON String into a valid [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record)
+#### Parameters
+* `jsonString` The JSON String that is converted to a [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record) or a valid name of the [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record).
+
+#### `public virtual  `[`~Record`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1abccd189ffb39f8f1728b1a646cae7a3e)`()` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1abccd189ffb39f8f1728b1a646cae7a3e}
+
+Destructor
+
+#### `public bool `[`operator==`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a44938fd7ae4280fa0473484273b4d431)`(`[`Record`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record)` const & other) const` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a44938fd7ae4280fa0473484273b4d431}
+
+Checks the equality of the individual Records. 
+#### Parameters
+* `other` The other [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record) object to check 
+
+#### Returns
+True if the objects are identical.
+
+#### `public std::string `[`getName`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1aa619b90ce3e937a75a22854f3107ebc5)`() const` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1aa619b90ce3e937a75a22854f3107ebc5}
+
+Returns the human identifier according to the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2) standard. 
+#### Returns
+Human Identifier. 
+
+**See also**: std::string
+
+#### `public void `[`setName`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ac7666583958bc98be3e6f2da3880454c)`(std::string name)` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ac7666583958bc98be3e6f2da3880454c}
+
+Sets a new Human Identifier. 
+#### Parameters
+* `name` The new Human Identifier.
+
+#### `public std::list< std::string > `[`getAlias`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a727329cbcf2499bff14edcdcb4735dfc)`() const` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a727329cbcf2499bff14edcdcb4735dfc}
+
+Returns the list of all Aliases according ot the SysML Standard. Hereby also holds that the name aka. the human identifier is part of the alias list. 
+#### Returns
+All available Aliases. 
+
+**See also**: std::list 
+
+**See also**: std::string
+
+#### `public void `[`appendAlias`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a45b598f62d5fec7657728708ed8d5aa8)`(std::string & alias)` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a45b598f62d5fec7657728708ed8d5aa8}
+
+Appends an single alias to the aliases list of a single [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record). 
+#### Parameters
+* `alias` Additional alias, that will be stored in tha alias list.
+
+#### `public std::string `[`getDescription`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a28e97d4f86b1f57bd1a7f0e6e2c47e9e)`() const` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a28e97d4f86b1f57bd1a7f0e6e2c47e9e}
+
+Returns the description of a [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record) according to the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2) standard. 
+#### Returns
+A std::string containing the Description of the [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record).
+
+#### `public void `[`setDescription`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ad826fec2e174a534cad1351750175c28)`(std::string & description)` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ad826fec2e174a534cad1351750175c28}
+
+Sets a new description of the [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record). 
+#### Parameters
+* `description` The description is given as a std::string.
+
+#### `public boost::uuids::uuid `[`getId`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1aa503f01b715d59b29654fdd4ee2ade28)`() const` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1aa503f01b715d59b29654fdd4ee2ade28}
+
+Returns the ID of the [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record). The ID is only gettable and not settable except the option to set the ID in the constructor according to the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2) Standard. 
+#### Returns
+A boost::uuids::uuid, as the ID. 
+
+**See also**: boost::uuids::uuid
+
+#### `public std::string `[`getType`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a61bfd3751bc3c11628008337b1caf24b)`() const` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a61bfd3751bc3c11628008337b1caf24b}
+
+Returns the type of the [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record). The type is a complexity that is needed to parse an object. Also there is no point in making the type settable, since the type is dependent on the subclass of the [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record) that is used. 
+#### Returns
+String representation of the Type.
+
+#### `public virtual std::string `[`serializeToJson`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a2a10fcc6f27a921cd60517703dfd3f2b)`()` {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a2a10fcc6f27a921cd60517703dfd3f2b}
+
+Allows the serialization of the Object to a JSON String. 
+#### Returns
+JSON String of the Object
+
+#### `protected std::string `[`Type`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a4fbf73e50a3dffee7e40393ce1db6508) {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a4fbf73e50a3dffee7e40393ce1db6508}
+
+Type of the generated class. This also enables the parsing of the element.
+
+#### `protected std::string `[`Name`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ad1599c8728bec68fe1291f51b9d0a04b) {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ad1599c8728bec68fe1291f51b9d0a04b}
+
+Contains the name of the [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record) Class. This is also called human identifier within the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2) Documentation.
+
+#### `protected std::list< std::string > `[`Alias`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a023b2aa15c7192d9af732ee3e7e84a56) {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a023b2aa15c7192d9af732ee3e7e84a56}
+
+Contains all Aliases of the object. Also within the Aliases the human identifier needs to be contained, according to the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2) standard.
+
+#### `protected std::string `[`Description`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a6e2c0a9b166510546f567a25a64e2c80) {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a6e2c0a9b166510546f567a25a64e2c80}
+
+Contains the description of a single [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record).
+
+#### `protected boost::uuids::uuid `[`Id`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a077d9e6a406a07331d43abcfe3fd2a20) {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a077d9e6a406a07331d43abcfe3fd2a20}
+
+Contains the ID of a single [Record](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record). This is also stored as a UUID. 
+**See also**: boost::uuids::uuid
+
+#### `protected bool `[`IsForCreation`](#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a06c5038dc6f912801a70e6c3fd7a52e0) {#d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a06c5038dc6f912801a70e6c3fd7a52e0}
+

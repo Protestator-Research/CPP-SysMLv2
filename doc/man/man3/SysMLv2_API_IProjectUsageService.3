@@ -1,0 +1,115 @@
+.TH "SysMLv2::API::IProjectUsageService" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::API::IProjectUsageService
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <IProjectUsageService\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::ProjectUsage\fP > > \fBgetProjectUsage\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > \fBdeleteProjectUsage\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch, boost::uuids::uuid projectUsageId)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > \fBcreateProjectUsage\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch, std::shared_ptr< \fBSysMLv2::Entities::ProjectUsage\fP > projectUsage)=0"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class represents an interface definition of the \fBProjectUsageService\fP according to the \fBSysMLv2\fP Standard Version: 1\&.0 Beta 3\&. 
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 Beta 3 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBSysMLv2::Entities::Commit\fP 
+
+.PP
+\fBSysMLv2::Entities::Project\fP 
+
+.PP
+\fBSysMLv2::Entities::ProjectUsage\fP 
+
+.PP
+boost::uuids::uuid 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > SysMLv2::API::IProjectUsageService::createProjectUsage (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch, std::shared_ptr< \fBSysMLv2::Entities::ProjectUsage\fP > projectUsage)\fR [pure virtual]\fP"
+Interface of the method that creates a new project usage in the given project at the head of the given branch\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The project that is given\&. Please remember this could lead to segmentation fault or exception if null\&. 
+.br
+\fIbranch\fP The branch that is given\&. This can be null, if this is null the internal default branch is used\&. 
+.br
+\fIprojectUsage\fP The given project usage for the new Commit\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The new commit is now part of the project\&. 
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > SysMLv2::API::IProjectUsageService::deleteProjectUsage (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch, boost::uuids::uuid projectUsageId)\fR [pure virtual]\fP"
+Interface for the method that deletes the project usage with the given id from the given project at the head commit of the given branch\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The project that is given by the User\&. If this is null it might result in a segmentation fault or exception\&. 
+.br
+\fIbranch\fP The branch that is given by the User\&. This variable might be null, then the default branch is assumed\&. 
+.br
+\fIprojectUsageId\fP The ID (UUID) of the project usage that is deleted\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+returns a new commit with the given project usage\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+boost::uuids::uuid 
+.RE
+.PP
+
+.SS "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::ProjectUsage\fP > > SysMLv2::API::IProjectUsageService::getProjectUsage (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit)\fR [pure virtual]\fP"
+This is the interface implementation of the method, that gets all the project usages in the given project\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The project that is given by the project\&. If this variable is null, it might result in a segmentation fault or a exception\&. 
+.br
+\fIcommit\fP The commit that is given to get the project usage\&. If this variable is null, it might result is a segmentation fault or a exception\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+All the project usages, that are stored in the project\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

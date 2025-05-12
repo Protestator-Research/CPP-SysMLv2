@@ -1,0 +1,70 @@
+.TH "SysMLv2::Entities::IEntity" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::Entities::IEntity
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <IEntity\&.h>\fP
+.PP
+Inherited by \fBSysMLv2::Entities::Data\fP, \fBSysMLv2::Entities::Identification\fP, and \fBSysMLv2::Entities::Record\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual std::string \fBserializeToJson\fP ()=0"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBJSON_INTENT\fP = 2"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the interface for all \fBSysMLv2\fP classes\&.
+
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual std::string SysMLv2::Entities::IEntity::serializeToJson ()\fR [pure virtual]\fP"
+Allows the serialization of the Object to a JSON String\&. 
+.PP
+\fBReturns\fP
+.RS 4
+JSON String of the Object 
+.RE
+.PP
+
+.PP
+Implemented in \fBSysMLv2::Entities::Branch\fP, \fBSysMLv2::Entities::Commit\fP, \fBSysMLv2::Entities::CommitReference\fP, \fBSysMLv2::Entities::Data\fP, \fBSysMLv2::Entities::DataIdentity\fP, \fBSysMLv2::Entities::DataVersion\fP, \fBSysMLv2::Entities::Element\fP, \fBSysMLv2::Entities::Identification\fP, \fBSysMLv2::Entities::Project\fP, \fBSysMLv2::Entities::Query\fP, and \fBSysMLv2::Entities::Record\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const int SysMLv2::Entities::IEntity::JSON_INTENT = 2\fR [protected]\fP"
+Describes the intent of nlohmanns json library\&. 
+.PP
+\fBSee also\fP
+.RS 4
+nlohmann::json::dump 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

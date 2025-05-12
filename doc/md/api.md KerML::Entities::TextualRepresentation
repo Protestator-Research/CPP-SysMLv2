@@ -1,0 +1,14 @@
+# class `KerML::Entities::TextualRepresentation` {#d6/d87/class_ker_m_l_1_1_entities_1_1_textual_representation}
+
+```
+class KerML::Entities::TextualRepresentation
+  : public KerML::Entities::AnnotatingElement
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+
+## Members
+

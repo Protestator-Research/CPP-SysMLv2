@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Entry_transition_memberContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1a20fb6db5bf1205bbd3fbe7266a6bffe8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Entry_transition_memberContext::Entry_transition_memberContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Entry_transition_memberContext</name>
+        <qualifiedname>SysMLv2Parser::Entry_transition_memberContext::Entry_transition_memberContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3973" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="18507" bodyend="18509"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1a217d1244566b2199645863df9575a12d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Entry_transition_memberContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Entry_transition_memberContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3974" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="18532" bodyend="18534"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1ae5d3cb1c337f8f6d64177e1c6924f6ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="db/d8b/class_sys_m_lv2_parser_1_1_member__prefix_context" kindref="compound">Member_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::Member_prefixContext * SysMLv2Parser::Entry_transition_memberContext::member_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>member_prefix</name>
+        <qualifiedname>SysMLv2Parser::Entry_transition_memberContext::member_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3975" column="26" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="18511" bodyend="18513"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1a66329e71d4f3f8fefbbdc9c34329e76e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Entry_transition_memberContext::SYMBOL_STATEMENT_DELIMITER</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_STATEMENT_DELIMITER</name>
+        <qualifiedname>SysMLv2Parser::Entry_transition_memberContext::SYMBOL_STATEMENT_DELIMITER</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3976" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="18515" bodyend="18517"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1a5cf983cb7751057e56ae8f56e331b5b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d20/class_sys_m_lv2_parser_1_1_guarded__target__succession_context" kindref="compound">Guarded_target_successionContext</ref> *</type>
+        <definition>SysMLv2Parser::Guarded_target_successionContext * SysMLv2Parser::Entry_transition_memberContext::guarded_target_succession</definition>
+        <argsstring>()</argsstring>
+        <name>guarded_target_succession</name>
+        <qualifiedname>SysMLv2Parser::Entry_transition_memberContext::guarded_target_succession</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3977" column="38" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="18519" bodyend="18521"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1a3ec8db8a8fa97d826544fc9abf12c7b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Entry_transition_memberContext::KEYWORD_THEN</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_THEN</name>
+        <qualifiedname>SysMLv2Parser::Entry_transition_memberContext::KEYWORD_THEN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3978" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="18523" bodyend="18525"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1afcef977f2d5fa0c07017418133b5920d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd4/class_sys_m_lv2_parser_1_1_target__succession_context" kindref="compound">Target_successionContext</ref> *</type>
+        <definition>SysMLv2Parser::Target_successionContext * SysMLv2Parser::Entry_transition_memberContext::target_succession</definition>
+        <argsstring>()</argsstring>
+        <name>target_succession</name>
+        <qualifiedname>SysMLv2Parser::Entry_transition_memberContext::target_succession</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3979" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="18527" bodyend="18529"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1afda1f545657abac674ea1fbe44aaeafc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Entry_transition_memberContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Entry_transition_memberContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3981" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="18536" bodyend="18540"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1a9f0c652dbe3e24ddc9870a9aab4e3adf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Entry_transition_memberContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Entry_transition_memberContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3982" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="18542" bodyend="18546"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Entry_transition_memberContext</label>
+        <link refid="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Entry_transition_memberContext</label>
+        <link refid="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3971" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="3971" bodyend="3984"/>
+    <listofallmembers>
+      <member refid="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1afda1f545657abac674ea1fbe44aaeafc" prot="public" virt="virtual"><scope>SysMLv2Parser::Entry_transition_memberContext</scope><name>enterRule</name></member>
+      <member refid="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1a20fb6db5bf1205bbd3fbe7266a6bffe8" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Entry_transition_memberContext</scope><name>Entry_transition_memberContext</name></member>
+      <member refid="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1a9f0c652dbe3e24ddc9870a9aab4e3adf" prot="public" virt="virtual"><scope>SysMLv2Parser::Entry_transition_memberContext</scope><name>exitRule</name></member>
+      <member refid="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1a217d1244566b2199645863df9575a12d" prot="public" virt="virtual"><scope>SysMLv2Parser::Entry_transition_memberContext</scope><name>getRuleIndex</name></member>
+      <member refid="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1a5cf983cb7751057e56ae8f56e331b5b1" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Entry_transition_memberContext</scope><name>guarded_target_succession</name></member>
+      <member refid="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1a3ec8db8a8fa97d826544fc9abf12c7b5" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Entry_transition_memberContext</scope><name>KEYWORD_THEN</name></member>
+      <member refid="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1ae5d3cb1c337f8f6d64177e1c6924f6ae" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Entry_transition_memberContext</scope><name>member_prefix</name></member>
+      <member refid="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1a66329e71d4f3f8fefbbdc9c34329e76e" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Entry_transition_memberContext</scope><name>SYMBOL_STATEMENT_DELIMITER</name></member>
+      <member refid="d4/da0/class_sys_m_lv2_parser_1_1_entry__transition__member_context_1afcef977f2d5fa0c07017418133b5920d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Entry_transition_memberContext</scope><name>target_succession</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

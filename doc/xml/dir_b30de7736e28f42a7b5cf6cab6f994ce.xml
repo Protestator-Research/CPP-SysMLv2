@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_b30de7736e28f42a7b5cf6cab6f994ce" kind="dir">
+    <compoundname>filehandling/src</compoundname>
+    <innerdir refid="dir_55099eb752da7fe1d1361d689198e7ef">filehandling/src/kerml</innerdir>
+    <innerdir refid="dir_e0406cc5b7cb54ae00ec5afb6f88db28">filehandling/src/sysml2</innerdir>
+    <innerfile refid="de/df6/_parser_8cpp">Parser.cpp</innerfile>
+    <innerfile refid="de/d40/_parser_8h">Parser.h</innerfile>
+    <innerfile refid="df/da2/_parser_error_8cpp">ParserError.cpp</innerfile>
+    <innerfile refid="da/d6e/_parser_error_8h">ParserError.h</innerfile>
+    <innerfile refid="d4/d76/sysmlv2file__global_8h">sysmlv2file_global.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="filehandling/src/"/>
+  </compounddef>
+</doxygen>

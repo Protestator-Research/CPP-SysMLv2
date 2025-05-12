@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_e0406cc5b7cb54ae00ec5afb6f88db28" kind="dir">
+    <compoundname>filehandling/src/sysml2</compoundname>
+    <innerfile refid="de/d07/_sys_m_lv2_base_listener_8cpp">SysMLv2BaseListener.cpp</innerfile>
+    <innerfile refid="d6/d88/_sys_m_lv2_base_listener_8h">SysMLv2BaseListener.h</innerfile>
+    <innerfile refid="d9/d07/_sys_m_lv2_lexer_8cpp">SysMLv2Lexer.cpp</innerfile>
+    <innerfile refid="df/d34/_sys_m_lv2_lexer_8h">SysMLv2Lexer.h</innerfile>
+    <innerfile refid="de/d8c/_sys_m_lv2_listener_8cpp">SysMLv2Listener.cpp</innerfile>
+    <innerfile refid="d0/dc6/_sys_m_lv2_listener_8h">SysMLv2Listener.h</innerfile>
+    <innerfile refid="de/d8b/_sys_m_lv2_parser_8cpp">SysMLv2Parser.cpp</innerfile>
+    <innerfile refid="d8/dd3/_sys_m_lv2_parser_8h">SysMLv2Parser.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="filehandling/src/sysml2/"/>
+  </compounddef>
+</doxygen>

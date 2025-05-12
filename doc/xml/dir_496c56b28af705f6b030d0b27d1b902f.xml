@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_496c56b28af705f6b030d0b27d1b902f" kind="dir">
+    <compoundname>kerml/src/root/dependencies</compoundname>
+    <innerfile refid="d4/dac/_dependency_8cpp">Dependency.cpp</innerfile>
+    <innerfile refid="d4/d90/_dependency_8h">Dependency.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="kerml/src/root/dependencies/"/>
+  </compounddef>
+</doxygen>

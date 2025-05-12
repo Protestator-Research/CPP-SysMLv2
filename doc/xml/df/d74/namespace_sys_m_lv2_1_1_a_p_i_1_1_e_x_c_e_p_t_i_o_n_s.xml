@@ -1,0 +1,641 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s" kind="namespace" language="C++">
+    <compoundname>SysMLv2::API::EXCEPTIONS</compoundname>
+    <innerclass refid="df/d87/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_connection_error" prot="public">SysMLv2::API::EXCEPTIONS::ConnectionError</innerclass>
+    <innerclass refid="db/dbe/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_h_t_t_p_exception" prot="public">SysMLv2::API::EXCEPTIONS::HTTPException</innerclass>
+    <innerclass refid="db/d21/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_not_enough_memory_error" prot="public">SysMLv2::API::EXCEPTIONS::NotEnoughMemoryError</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8b" prot="public" static="no" strong="no">
+        <type></type>
+        <name>CONNECTION_ERROR_TYPE</name>
+        <qualifiedname>SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE</qualifiedname>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bac1394329dbef85eba7f765dfea872aad" prot="public">
+          <name>UNSUPPORTED_PROTOCOL</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba51043e6a89d060bdfee124ffec3a800b" prot="public">
+          <name>FAILED_INIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bac122474f85e5ae9a4948dc23a2aecff1" prot="public">
+          <name>URL_FORMAT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8baf13194652adb707ef678e55073c67a7f" prot="public">
+          <name>UNKNOWN_PROTOCOL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bac0d806d7971272fc28c1fe57ff46653f" prot="public">
+          <name>COULD_NOT_RESOLVE_PROXY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba9b6f19cff7177396a0e47b49da474484" prot="public">
+          <name>COULD_NOT_RESOLVE_HOST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8baa6a6be670b099f084092a617627a0b91" prot="public">
+          <name>COULD_NOT_CONNECT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bac6cb3d2886600618fa0a77b8d8fd584d" prot="public">
+          <name>WIRED_SERVER_REPLY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba6bc0ed365c05b81a12242d68b738c870" prot="public">
+          <name>REMOTE_ACCESS_DENIED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba92a0700e83209f84470e26592d3005d5" prot="public">
+          <name>FTP_ACCESS_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba94c5edc444818e70ad614bc2460ae18b" prot="public">
+          <name>FTP_WEIRED_PASS_REPLY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba2c7d7b28a6529a15d35c5362543d1959" prot="public">
+          <name>FTP_ACCEPT_TIMEOUT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba0250a4fe0f6bec5c7c2f4368bdf46a22" prot="public">
+          <name>FTP_WEIRED_PASV_REPLY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8baec2aec6fe2b2d0ad90bbfa087e143cd4" prot="public">
+          <name>FTP_WEIRED_227_FORMAT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8babff625ba3cfb1a351bcbbedf4b151219" prot="public">
+          <name>FTP_CANT_GET_HOST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba435a9800d2df9c90dad312ecc60018c9" prot="public">
+          <name>HTTP2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba4422e0e57194d62b1bd7cb64934fcf24" prot="public">
+          <name>FTP_COULDNT_SET_TYPE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba8f12ece503ec4016635d492320ead510" prot="public">
+          <name>PARTIAL_FILE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba45921cc5ba6bad9ce21b54bd40eefc17" prot="public">
+          <name>FTP_COULDNT_RETR_FILE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba4121286a5877b39746ccbd10b8afd43d" prot="public">
+          <name>QUOTE_ERROR</name>
+          <initializer>= 21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba4813ad8d405eb173ef629b2d49b4e67d" prot="public">
+          <name>HTTP_RETURNED_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba7c2670d006f3c9083f7711169d80b8dc" prot="public">
+          <name>WRITE_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba0d277863a7670ca992ae6551969473db" prot="public">
+          <name>UPLOAD_FAILED</name>
+          <initializer>= 25</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba8455cf2e867a5878c016ec9645256efd" prot="public">
+          <name>READ_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba991a9047dfd1ed4263668dd68b2adaad" prot="public">
+          <name>OUT_OF_MEMORY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba69e53a1dccc0e1472b4cbd373ed52f19" prot="public">
+          <name>OPERATION_TIMEDOUT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bafb60a5df3979bff704bf5fbb141b6d2c" prot="public">
+          <name>FTP_PORT_FAILED</name>
+          <initializer>= 30</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba30eb65676f0ac73629467a29be7e3226" prot="public">
+          <name>FTP_COULDNT_USE_REST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba28e856b09698e1b161e003cb8948507e" prot="public">
+          <name>RANGE_ERROR</name>
+          <initializer>= 33</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8baa68ab1cefd1c0044e8e75e15954b43b7" prot="public">
+          <name>HTTP_POST_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bacda7b49c9ffce3ee66a61aa958ef3630" prot="public">
+          <name>SSL_CONNECT_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bad0e9d62ed42da912a2cead2b40f20693" prot="public">
+          <name>BAD_DOWNLOAD_RESUME</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba19a52bb814764c75c19b15f74a8dec77" prot="public">
+          <name>FILE_COUNDNT_READ_FILE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba15e3a321b6e878909364286352b38923" prot="public">
+          <name>LDAP_CANNOT_BIND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bac01ef2df1adc97d853a3394206119fb9" prot="public">
+          <name>LDAP_SEARCH_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba0812b1fda965bf9c04d0d7b9bc2e1edd" prot="public">
+          <name>FUNCTION_NOT_FOUND</name>
+          <initializer>= 41</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bac49efee04908c17d44f36f02ba4b840a" prot="public">
+          <name>ABORTED_BY_CALLBACK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba9f104358d46e544c7876166a06bab6ee" prot="public">
+          <name>BAD_FUNCTION_ARGUMENT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba88cb5c337e9954f34c6bdcebd00cd2a5" prot="public">
+          <name>INTERFACE_FAILED</name>
+          <initializer>= 45</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8baaed0dd1ee342073d7730185cc5dde518" prot="public">
+          <name>TOO_MANY_REDIRECTS</name>
+          <initializer>= 47</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba7e9aef87efb5c9c8c6f85a09527045aa" prot="public">
+          <name>UNKNOWN_OPTION</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bac986bd673443d81821c18ac6076ddfec" prot="public">
+          <name>GOT_NOTHING</name>
+          <initializer>= 52</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba4c7ebbdde38c8bed89f7b4779060506b" prot="public">
+          <name>SLL_ENGINE_NOTFOUND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bae22e83c7164f5a990c09b5c6be5c4621" prot="public">
+          <name>SSL_ENGINE_SETFAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba3e1ee1e3dbbb7ada1a9296530196e015" prot="public">
+          <name>SEND_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba299e600f70281461885152a02ef7c4cc" prot="public">
+          <name>RECV_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba50ef64d05f9a25866961ce40c8a99d69" prot="public">
+          <name>SSL_CERTPROBLEM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba263e2ea7e701096214755883d37de388" prot="public">
+          <name>SSL_CIPHER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba523b33f6cd36b1ca8209f29fbb2b2e5f" prot="public">
+          <name>PEER_FAILED_VERIFICATION</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bae7c68343840fe66d4df15c287ae11583" prot="public">
+          <name>BAD_CONTENT_ENCODING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba436e1229e05b47458d2c22b3a26ba7d2" prot="public">
+          <name>FILE_SIZE_EXCEEDED</name>
+          <initializer>= 63</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bad723bdfae89ca664938284a43dffa2cb" prot="public">
+          <name>USE_SSL_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba00fb194619daea1652ba99b3f7e3f158" prot="public">
+          <name>SEND_FAIL_REWIND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bacc224bc68a9d2ea121a30ac593ac26f3" prot="public">
+          <name>SSL_ENGINE_INITFAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba0f29040cb8df9036df641d1939976614" prot="public">
+          <name>LOGIN_DENIED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba0b88169ce040985caffd4c0eb622880a" prot="public">
+          <name>TFTP_NOTFOUND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba092b81fc461a26602a0e1d58bcbc4e69" prot="public">
+          <name>TFTP_PERM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba17407916fd156c21b24134b7a12b6dbf" prot="public">
+          <name>REMOTE_DISK_FULL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba1b6be121d201653f8429b9a14d636d12" prot="public">
+          <name>TFTP_ILLEGAL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba1cf72cd0d35041babee126ca8bc3ae66" prot="public">
+          <name>TFTP_UNKNOWNID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba0d8f69f4875409d1fd5bc519e48dfd95" prot="public">
+          <name>REMOTE_FILE_EXITIS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba5e21c93f7d75caef0d30eda6fda698a0" prot="public">
+          <name>TFTP_NOSUCHUSER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bacdfb94fb6bb69163feceeb78408eb317" prot="public">
+          <name>SSL_CACERT_BADFILE</name>
+          <initializer>= 77</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba8ab35c88789c8d8d8fb18ed783afeb83" prot="public">
+          <name>REMOTE_FILE_NOT_FOUND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba79e1b29ae873795c49d4b45525349820" prot="public">
+          <name>SSH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8baf057172f9699b5d0dcd0184f4d4c2b73" prot="public">
+          <name>SSL_SHUTDOWN_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba773f56d923bfca6c8ca8880cdbd07616" prot="public">
+          <name>AGAIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8baec5bf198223a36eef2ee0e6990770c4e" prot="public">
+          <name>SSL_CRL_BADFILE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba1b04405cf589dcebb65415f7572724ee" prot="public">
+          <name>SSL_ISSUER_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba0029b03111738b5f471bfc99888d0d4a" prot="public">
+          <name>FTP_PRET_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba3b9c68bcead65a51947093a81190914a" prot="public">
+          <name>RTSP_CSEQ_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba96b7fdf93e3c25e3869f34b71de28b72" prot="public">
+          <name>RTSP_SESSION_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bafcf8291e169a80b857eccc6ba5e0da39" prot="public">
+          <name>FTP_BAS_DILE_LIST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba08e39aa0803a4e834bd5a6119f06cb71" prot="public">
+          <name>CHUNK_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba056a7c9998e0b5d7866c7bf18cc5878b" prot="public">
+          <name>NO_CONNECTION_AVAILABLE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba011c5bd7b0a8ec9e6efeeb578638bb8e" prot="public">
+          <name>SSK_PINNEDPUBKEYNOTMATCH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba8c5b6bd7f0a3ad214d3e8d55312da05b" prot="public">
+          <name>SSL_INVALIDCERTSTATUS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba591e864b602cc3c4e3902490303995ed" prot="public">
+          <name>HTTP2_STREAM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bab746929594f30f5d20e337a8d36c01be" prot="public">
+          <name>RECURSIVE_API_CALL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba327e9ab9536d3d6429a86a3e8b6391d2" prot="public">
+          <name>AUTH_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8baac424113627801cc426797b873291ae0" prot="public">
+          <name>HTTP3</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bac7aa0317ffd5c8c68fdc4cbc9f2cb5c0" prot="public">
+          <name>QUIC_CONNECT_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba664e63e87a19c92db1b00d13657ad02a" prot="public">
+          <name>PROXY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba6abf051ab699690c2eabb046f165a0ce" prot="public">
+          <name>SSL_CLIENTCERT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8bafbc35d0c622eff4fae8aa31bca027e7b" prot="public">
+          <name>UNRECOVERABLE_POLL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="df/d74/namespace_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1a8a15adbd5c0adfb70710cf4bbef96d8ba64d428403d86e64117df5e972a35727e" prot="public">
+          <name>TOO_LARGE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/ConnectionError.h" line="10" column="5" bodyfile="services/src/online/ConnectionError.h" bodystart="10" bodyend="97"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="services/src/online/ConnectionError.cpp" line="8" column="1"/>
+  </compounddef>
+</doxygen>

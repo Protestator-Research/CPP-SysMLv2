@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Differencing_partContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1a7dc8ebebabd6394179f5cb37f2d938ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Differencing_partContext::Differencing_partContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Differencing_partContext</name>
+        <qualifiedname>KerMLParser::Differencing_partContext::Differencing_partContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1181" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5030" bodyend="5032"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1adf0b06c0ab9412380acf5235db0be573" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Differencing_partContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Differencing_partContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1182" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5055" bodyend="5057"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1a0275f41b34464a4c8eb2a9c23f1ce3cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Differencing_partContext::KEYWORD_DIFFERENCES</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_DIFFERENCES</name>
+        <qualifiedname>KerMLParser::Differencing_partContext::KEYWORD_DIFFERENCES</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1183" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5034" bodyend="5036"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1a3d18077316e06ce79b51e9b78a1bac0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d5/da0/class_ker_m_l_parser_1_1_differencing_context" kindref="compound">DifferencingContext</ref> * &gt;</type>
+        <definition>std::vector&lt; KerMLParser::DifferencingContext * &gt; KerMLParser::Differencing_partContext::differencing</definition>
+        <argsstring>()</argsstring>
+        <name>differencing</name>
+        <qualifiedname>KerMLParser::Differencing_partContext::differencing</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1184" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5038" bodyend="5040"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1a3fd61e7ef2c86ad9a40dd318aa0b3149" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/da0/class_ker_m_l_parser_1_1_differencing_context" kindref="compound">DifferencingContext</ref> *</type>
+        <definition>KerMLParser::DifferencingContext * KerMLParser::Differencing_partContext::differencing</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>differencing</name>
+        <qualifiedname>KerMLParser::Differencing_partContext::differencing</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1185" column="25" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5042" bodyend="5044"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1a8d1010b311103a11f501de3a0f83c257" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; antlr4::tree::TerminalNode * &gt;</type>
+        <definition>std::vector&lt; tree::TerminalNode * &gt; KerMLParser::Differencing_partContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>KerMLParser::Differencing_partContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1186" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5046" bodyend="5048"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1ab56efa92a3dda392ac6a20c000241219" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Differencing_partContext::SYMBOL_COMMA</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>KerMLParser::Differencing_partContext::SYMBOL_COMMA</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1187" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5050" bodyend="5052"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1a6f291cde2f1c221659479e66ce770d7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Differencing_partContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Differencing_partContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1189" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5059" bodyend="5063"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1a0e844247a7e4fdeecb0108e99204009b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Differencing_partContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Differencing_partContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1190" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5065" bodyend="5069"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Differencing_partContext</label>
+        <link refid="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Differencing_partContext</label>
+        <link refid="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="1179" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="1179" bodyend="1192"/>
+    <listofallmembers>
+      <member refid="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1a3d18077316e06ce79b51e9b78a1bac0c" prot="public" virt="non-virtual"><scope>KerMLParser::Differencing_partContext</scope><name>differencing</name></member>
+      <member refid="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1a3fd61e7ef2c86ad9a40dd318aa0b3149" prot="public" virt="non-virtual"><scope>KerMLParser::Differencing_partContext</scope><name>differencing</name></member>
+      <member refid="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1a7dc8ebebabd6394179f5cb37f2d938ba" prot="public" virt="non-virtual"><scope>KerMLParser::Differencing_partContext</scope><name>Differencing_partContext</name></member>
+      <member refid="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1a6f291cde2f1c221659479e66ce770d7b" prot="public" virt="virtual"><scope>KerMLParser::Differencing_partContext</scope><name>enterRule</name></member>
+      <member refid="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1a0e844247a7e4fdeecb0108e99204009b" prot="public" virt="virtual"><scope>KerMLParser::Differencing_partContext</scope><name>exitRule</name></member>
+      <member refid="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1adf0b06c0ab9412380acf5235db0be573" prot="public" virt="virtual"><scope>KerMLParser::Differencing_partContext</scope><name>getRuleIndex</name></member>
+      <member refid="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1a0275f41b34464a4c8eb2a9c23f1ce3cd" prot="public" virt="non-virtual"><scope>KerMLParser::Differencing_partContext</scope><name>KEYWORD_DIFFERENCES</name></member>
+      <member refid="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1a8d1010b311103a11f501de3a0f83c257" prot="public" virt="non-virtual"><scope>KerMLParser::Differencing_partContext</scope><name>SYMBOL_COMMA</name></member>
+      <member refid="d5/dd2/class_ker_m_l_parser_1_1_differencing__part_context_1ab56efa92a3dda392ac6a20c000241219" prot="public" virt="non-virtual"><scope>KerMLParser::Differencing_partContext</scope><name>SYMBOL_COMMA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

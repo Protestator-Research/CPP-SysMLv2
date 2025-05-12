@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Metadata_access_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context_1a2d423394d4c565552f9ed4985bbad098" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Metadata_access_expressionContext::Metadata_access_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Metadata_access_expressionContext</name>
+        <qualifiedname>SysMLv2Parser::Metadata_access_expressionContext::Metadata_access_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8359" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41016" bodyend="41018"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context_1afc52660f8741b2c41c0ab360bc950ac6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Metadata_access_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Metadata_access_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8360" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41033" bodyend="41035"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context_1a14121bda45433b6fbc2f17c4df38d230" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dc1/class_sys_m_lv2_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>SysMLv2Parser::Qualified_nameContext * SysMLv2Parser::Metadata_access_expressionContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>SysMLv2Parser::Metadata_access_expressionContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8361" column="27" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41020" bodyend="41022"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context_1a09f8ff694d0d016dcd8ddaf11f6b743e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Metadata_access_expressionContext::SYMBOL_DOT</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_DOT</name>
+        <qualifiedname>SysMLv2Parser::Metadata_access_expressionContext::SYMBOL_DOT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8362" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41024" bodyend="41026"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context_1accfee4cd606a0f7933220890180ba3fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Metadata_access_expressionContext::KEYWORD_METADATA</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_METADATA</name>
+        <qualifiedname>SysMLv2Parser::Metadata_access_expressionContext::KEYWORD_METADATA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8363" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41028" bodyend="41030"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context_1a92f3214ea5e9b4664fd4c76e336f5726" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Metadata_access_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Metadata_access_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8365" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41037" bodyend="41041"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context_1a01b949065946ece552308ca07874270a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Metadata_access_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Metadata_access_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8366" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41043" bodyend="41047"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Metadata_access_expressionContext</label>
+        <link refid="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Metadata_access_expressionContext</label>
+        <link refid="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8357" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="8357" bodyend="8368"/>
+    <listofallmembers>
+      <member refid="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context_1a92f3214ea5e9b4664fd4c76e336f5726" prot="public" virt="virtual"><scope>SysMLv2Parser::Metadata_access_expressionContext</scope><name>enterRule</name></member>
+      <member refid="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context_1a01b949065946ece552308ca07874270a" prot="public" virt="virtual"><scope>SysMLv2Parser::Metadata_access_expressionContext</scope><name>exitRule</name></member>
+      <member refid="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context_1afc52660f8741b2c41c0ab360bc950ac6" prot="public" virt="virtual"><scope>SysMLv2Parser::Metadata_access_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context_1accfee4cd606a0f7933220890180ba3fc" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadata_access_expressionContext</scope><name>KEYWORD_METADATA</name></member>
+      <member refid="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context_1a2d423394d4c565552f9ed4985bbad098" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadata_access_expressionContext</scope><name>Metadata_access_expressionContext</name></member>
+      <member refid="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context_1a14121bda45433b6fbc2f17c4df38d230" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadata_access_expressionContext</scope><name>qualified_name</name></member>
+      <member refid="da/d5f/class_sys_m_lv2_parser_1_1_metadata__access__expression_context_1a09f8ff694d0d016dcd8ddaf11f6b743e" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadata_access_expressionContext</scope><name>SYMBOL_DOT</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

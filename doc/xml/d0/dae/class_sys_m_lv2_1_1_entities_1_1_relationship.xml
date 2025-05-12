@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d0/dae/class_sys_m_lv2_1_1_entities_1_1_relationship" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2::Entities::Relationship</compoundname>
+    <basecompoundref refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element" prot="public" virt="non-virtual">SysMLv2::Entities::Element</basecompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>SysMLv2::Entities::Data</label>
+        <link refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>SysMLv2::Entities::Element</label>
+        <link refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+      <node id="1">
+        <label>SysMLv2::Entities::Relationship</label>
+        <link refid="d0/dae/class_sys_m_lv2_1_1_entities_1_1_relationship"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>SysMLv2::Entities::Data</label>
+        <link refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>SysMLv2::Entities::Element</label>
+        <link refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+      <node id="1">
+        <label>SysMLv2::Entities::Relationship</label>
+        <link refid="d0/dae/class_sys_m_lv2_1_1_entities_1_1_relationship"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="rest-api/src/entities/Relationship.h" line="23" column="5" bodyfile="rest-api/src/entities/Relationship.h" bodystart="23" bodyend="25"/>
+    <listofallmembers>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a89a746eeed5e9283d04ca67e710436a9" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Body</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a92aac1595d0922015b783c5d2ec7d3e8" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>body</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a8764b2cee063c5961f2423bb61394398" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Data</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1ab11291a4106304308b94f4a827e97f5d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Data</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a3ead38504d0fac260222ef510223492f" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Data</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a00a9fede477c04fed7ba8c003bf3747d" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>DeclaredName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a9b1f0490928e6a7e30e3a4bc85f5e01d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>declaredName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1abdc9520ec6f22063d124a49f883331e1" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>DeclaredShortName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a77ee3e8d294a22254c52a2fb89a352c6" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Direction</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a4734cf79f652c29216a9e417c7d368ab" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>direction</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a564b8c28929e262f2144bda546249ddc" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Documentation</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a4e1adfb03abc0d1541b1a242b11a246a" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>documentation</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1ac38206319dd34ba75c7b309b682e3eb8" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Element</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1ab52d4fadfa618985c015c52a5397fbf8" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Element</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a561417401849a71d18b72ec6af0a619e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>getDeclaredShortName</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a4d8b6e86e67395a6e8ca0afb22ea01eb" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>getId</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a8f77044960ecad333be620c13a733350" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>getMarkdownString</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1ac0624bb99650ed554d1e78ce17d93c4d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>getType</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1abeee9acd12e31beb38e59d8d0e94bc34" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Id</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a72ea17afe9abb68bb89ef48ef0e1ff4a" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>ImportedMemberName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1af0defb2c9b35e5df30a4adf9d02aacc2" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>importedMemberName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a6b96b4cf7b05ac093b27c144e87548e2" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>ImportedNamespace</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1abb4a1b01fa2b6b75a931c4dae5b6b689" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>importedNamespace</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a80001a97b99b634c7a2b5b5deed02930" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>IsImplied</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a70d0e0b63f43d645350ac00afb3ebeb4" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>isImplied</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a6d55bf2cef559c4410a51eb4740a56ad" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>IsImpliedIncluded</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a91cdfcfba2eec9f47314c239d669c909" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>isImpliedIncluded</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a59de2fd6bebc24bfb3c8a17eb8242e6e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>isLibrary</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a2ee5b2682af6b1904b9dc9d26c2a4a0c" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>IsLibraryElement</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1af90390883b170ae851a5573436f6b4c2" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>IsStandard</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a9237c6a86478ae0b4e933d99c9e0080d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>isStandard</name></member>
+      <member refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1ac3f7cba2488d110b820614b9cb709808" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>JSON_INTENT</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1ab68f31f6eec774d45df518cc8da19030" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Language</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1aa3ecb14df01181008ce55714bbaf786e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>language</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1afa7588e1a6146958a17eec45759626fa" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Name</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a00348c6da8696b689cf69fabca48a659" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>name</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a78908e207102048ed0a67bac76a9e8ce" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>OwnedElements</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a5ef804b54248b5761bc85a7ca948910a" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>ownedElements</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a674e4877b5298caeeb76a54c4aaa70a2" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Owner</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1add2cfbc0ac3b8e3178201fb972a7ae4f" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>owner</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1ad92c711a45f54db1df1adb16c476836e" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>OwningMembership</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1adf4485f5e0d329348c9b055e0fd4d60f" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>owningMembership</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a6d4583847e1d11ed806a695190222b84" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>OwningNamespace</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1aad67da6ae56d01c17a90b272aeaa60fa" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>owningNamespace</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a175fe21e480d5255f80bde82f61c8ba7" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>OwningRelationship</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a6f30dccf381411b869a573e2bb69ccda" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>owningRelationship</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1aab8d641c1794f975cf522bdf30ff9712" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>serializeNullString</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a94e32065cdd1b4e5392bf766318440fc" prot="public" virt="virtual"><scope>SysMLv2::Entities::Relationship</scope><name>serializeToJson</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a35027800e4c68806f4348488cb5aefc0" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>setBody</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a51d1071ba63aacab2cf08d01c64fe322" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>setDeclaredName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a8552b7ae460de1989895c588849a3dac" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>setDeclaredShortName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a62611f66bba151fa02c8e88208bde067" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>setLanguage</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1aabc44d232e30ca108fb102de0fb955e1" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>setName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a9044f3767424a229d127bcf8259a0b2b" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>setShortName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a7489480889da4ea81170b97935a74875" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>ShortName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a36aa9e5c22aef7c72b63efda8d0d649d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>shortName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a4078de3165069e1cc54601c29f6806ab" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Source</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a31ae2aba1f54f5222c7152e609e96e1a" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>source</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a3678b89e6c64f094f4804c3740ae6672" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Target</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1af929761459c0fb145ecafb80337d65be" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>target</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a553727ac4451e90fe0508972d2180d3e" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>TextualRepresentation</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1abd72d64f195abda58d64b3f7a720ab36" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>textualRepresentation</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a0e94702de18580a2d5b79ed0d59d0157" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>Type</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a3b5411c254e49b8934fdb1435f8f2658" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>ValueStr</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a3e55d66547e7194c6f22921eaf072f8e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>valueString</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a410a285059373318b7742b9ddf47a978" prot="public" virt="virtual"><scope>SysMLv2::Entities::Relationship</scope><name>~Data</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a17366e6ae069e4f67d31ace64c30dfaf" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Relationship</scope><name>~Element</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

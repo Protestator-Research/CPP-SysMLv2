@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/d3d/class_sys_m_lv2_parser_1_1_owned__cross__feature__member_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Owned_cross_feature_memberContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/d3d/class_sys_m_lv2_parser_1_1_owned__cross__feature__member_context_1a75250ff037eb07e7dfeb30bb40118d6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Owned_cross_feature_memberContext::Owned_cross_feature_memberContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Owned_cross_feature_memberContext</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_feature_memberContext::Owned_cross_feature_memberContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1438" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5485" bodyend="5487"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d3d/class_sys_m_lv2_parser_1_1_owned__cross__feature__member_context_1a7ce3c1252ea394ff65e8a99c82d3e992" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Owned_cross_feature_memberContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_feature_memberContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1439" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5494" bodyend="5496"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d3d/class_sys_m_lv2_parser_1_1_owned__cross__feature__member_context_1a954ad8464d493e8c6af3e18387168fb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d98/class_sys_m_lv2_parser_1_1_owned__cross__feature_context" kindref="compound">Owned_cross_featureContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_cross_featureContext * SysMLv2Parser::Owned_cross_feature_memberContext::owned_cross_feature</definition>
+        <argsstring>()</argsstring>
+        <name>owned_cross_feature</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_feature_memberContext::owned_cross_feature</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1440" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5489" bodyend="5491"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d3d/class_sys_m_lv2_parser_1_1_owned__cross__feature__member_context_1a7066c355d8ed475f2f3cc788b3d7821a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_cross_feature_memberContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_feature_memberContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1442" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5498" bodyend="5502"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d3d/class_sys_m_lv2_parser_1_1_owned__cross__feature__member_context_1a80e38dc88aaa585318bc99805cf33720" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_cross_feature_memberContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_feature_memberContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1443" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5504" bodyend="5508"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_cross_feature_memberContext</label>
+        <link refid="d9/d3d/class_sys_m_lv2_parser_1_1_owned__cross__feature__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_cross_feature_memberContext</label>
+        <link refid="d9/d3d/class_sys_m_lv2_parser_1_1_owned__cross__feature__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1436" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="1436" bodyend="1445"/>
+    <listofallmembers>
+      <member refid="d9/d3d/class_sys_m_lv2_parser_1_1_owned__cross__feature__member_context_1a7066c355d8ed475f2f3cc788b3d7821a" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_cross_feature_memberContext</scope><name>enterRule</name></member>
+      <member refid="d9/d3d/class_sys_m_lv2_parser_1_1_owned__cross__feature__member_context_1a80e38dc88aaa585318bc99805cf33720" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_cross_feature_memberContext</scope><name>exitRule</name></member>
+      <member refid="d9/d3d/class_sys_m_lv2_parser_1_1_owned__cross__feature__member_context_1a7ce3c1252ea394ff65e8a99c82d3e992" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_cross_feature_memberContext</scope><name>getRuleIndex</name></member>
+      <member refid="d9/d3d/class_sys_m_lv2_parser_1_1_owned__cross__feature__member_context_1a954ad8464d493e8c6af3e18387168fb2" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_cross_feature_memberContext</scope><name>owned_cross_feature</name></member>
+      <member refid="d9/d3d/class_sys_m_lv2_parser_1_1_owned__cross__feature__member_context_1a75250ff037eb07e7dfeb30bb40118d6b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_cross_feature_memberContext</scope><name>Owned_cross_feature_memberContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

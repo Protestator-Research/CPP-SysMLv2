@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="db/d86/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s" kind="namespace" language="C++">
+    <compoundname>SysMLv2::API::STANDARDS</compoundname>
+    <innernamespace refid="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p">SysMLv2::API::STANDARDS::HTTP</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="services/src/online/HttpReturnCodes.h" line="8" column="1"/>
+  </compounddef>
+</doxygen>

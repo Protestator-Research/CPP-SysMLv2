@@ -1,0 +1,14 @@
+# class `KerML::Entities::Differencing` {#d5/db6/class_ker_m_l_1_1_entities_1_1_differencing}
+
+```
+class KerML::Entities::Differencing
+  : public KerML::Entities::Relationship
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+
+## Members
+

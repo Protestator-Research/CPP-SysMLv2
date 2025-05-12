@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Conditional_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1a1dd95e06b26686397fea93b5e8644747" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Conditional_expressionContext::Conditional_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Conditional_expressionContext</name>
+        <qualifiedname>SysMLv2Parser::Conditional_expressionContext::Conditional_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7459" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36959" bodyend="36961"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1a21834d2b827003e5fbac4ff7fd92f055" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Conditional_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Conditional_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7460" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36988" bodyend="36990"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1a4965f20c5dc7525ea49d60616cfbcbe2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Conditional_expressionContext::KEYWORD_IF</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_IF</name>
+        <qualifiedname>SysMLv2Parser::Conditional_expressionContext::KEYWORD_IF</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7461" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36963" bodyend="36965"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1a6e5e345ffb5268f7f557fc4a04bdcb46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/da6/class_sys_m_lv2_parser_1_1_argument__member_context" kindref="compound">Argument_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Argument_memberContext * SysMLv2Parser::Conditional_expressionContext::argument_member</definition>
+        <argsstring>()</argsstring>
+        <name>argument_member</name>
+        <qualifiedname>SysMLv2Parser::Conditional_expressionContext::argument_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7462" column="28" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36967" bodyend="36969"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1acca702e9f3bd87f1ed79ad027c632d99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Conditional_expressionContext::SYMBOL_QUESTION</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_QUESTION</name>
+        <qualifiedname>SysMLv2Parser::Conditional_expressionContext::SYMBOL_QUESTION</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7463" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36971" bodyend="36973"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1ad80ede6a88d23628586543a924917577" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d3/da1/class_sys_m_lv2_parser_1_1_argument__expression__member_context" kindref="compound">Argument_expression_memberContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Argument_expression_memberContext * &gt; SysMLv2Parser::Conditional_expressionContext::argument_expression_member</definition>
+        <argsstring>()</argsstring>
+        <name>argument_expression_member</name>
+        <qualifiedname>SysMLv2Parser::Conditional_expressionContext::argument_expression_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7464" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36975" bodyend="36977"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1a0abd2743a83721eb047a67a6cae0916e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/da1/class_sys_m_lv2_parser_1_1_argument__expression__member_context" kindref="compound">Argument_expression_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Argument_expression_memberContext * SysMLv2Parser::Conditional_expressionContext::argument_expression_member</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>argument_expression_member</name>
+        <qualifiedname>SysMLv2Parser::Conditional_expressionContext::argument_expression_member</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7465" column="39" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36979" bodyend="36981"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1ae2b10b4b5b29a32c066d78d88560a457" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Conditional_expressionContext::KEYWORD_ELSE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_ELSE</name>
+        <qualifiedname>SysMLv2Parser::Conditional_expressionContext::KEYWORD_ELSE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7466" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36983" bodyend="36985"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1a4240afd99f5092efc1964aacf973c00d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Conditional_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Conditional_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7468" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36992" bodyend="36996"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1a604ee02f3dd8832975ab1a3c044c990e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Conditional_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Conditional_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7469" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36998" bodyend="37002"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Conditional_expressionContext</label>
+        <link refid="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Conditional_expressionContext</label>
+        <link refid="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7457" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="7457" bodyend="7471"/>
+    <listofallmembers>
+      <member refid="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1ad80ede6a88d23628586543a924917577" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Conditional_expressionContext</scope><name>argument_expression_member</name></member>
+      <member refid="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1a0abd2743a83721eb047a67a6cae0916e" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Conditional_expressionContext</scope><name>argument_expression_member</name></member>
+      <member refid="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1a6e5e345ffb5268f7f557fc4a04bdcb46" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Conditional_expressionContext</scope><name>argument_member</name></member>
+      <member refid="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1a1dd95e06b26686397fea93b5e8644747" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Conditional_expressionContext</scope><name>Conditional_expressionContext</name></member>
+      <member refid="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1a4240afd99f5092efc1964aacf973c00d" prot="public" virt="virtual"><scope>SysMLv2Parser::Conditional_expressionContext</scope><name>enterRule</name></member>
+      <member refid="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1a604ee02f3dd8832975ab1a3c044c990e" prot="public" virt="virtual"><scope>SysMLv2Parser::Conditional_expressionContext</scope><name>exitRule</name></member>
+      <member refid="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1a21834d2b827003e5fbac4ff7fd92f055" prot="public" virt="virtual"><scope>SysMLv2Parser::Conditional_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1ae2b10b4b5b29a32c066d78d88560a457" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Conditional_expressionContext</scope><name>KEYWORD_ELSE</name></member>
+      <member refid="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1a4965f20c5dc7525ea49d60616cfbcbe2" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Conditional_expressionContext</scope><name>KEYWORD_IF</name></member>
+      <member refid="d0/d13/class_sys_m_lv2_parser_1_1_conditional__expression_context_1acca702e9f3bd87f1ed79ad027c632d99" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Conditional_expressionContext</scope><name>SYMBOL_QUESTION</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

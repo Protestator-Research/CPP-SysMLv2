@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Feature_invertingContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a28e8d3fd8ab59f771ae5fa40ae7bf761" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Feature_invertingContext::Feature_invertingContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Feature_invertingContext</name>
+        <qualifiedname>KerMLParser::Feature_invertingContext::Feature_invertingContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2006" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9495" bodyend="9497"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1abf18175275af226a074a8006a840d3d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Feature_invertingContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Feature_invertingContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2007" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9536" bodyend="9538"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a936640d419191af6b0346f1f3862a2ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Feature_invertingContext::KEYWORD_INVERSE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_INVERSE</name>
+        <qualifiedname>KerMLParser::Feature_invertingContext::KEYWORD_INVERSE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2008" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9499" bodyend="9501"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a5f49bcf9e3eceac846f26143f027cbde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Feature_invertingContext::KEYWORD_OF</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_OF</name>
+        <qualifiedname>KerMLParser::Feature_invertingContext::KEYWORD_OF</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2009" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9503" bodyend="9505"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a80733ab3229d9b64b07e41b32a2d9f83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context" kindref="compound">Relationship_bodyContext</ref> *</type>
+        <definition>KerMLParser::Relationship_bodyContext * KerMLParser::Feature_invertingContext::relationship_body</definition>
+        <argsstring>()</argsstring>
+        <name>relationship_body</name>
+        <qualifiedname>KerMLParser::Feature_invertingContext::relationship_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2010" column="30" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9507" bodyend="9509"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a31ab5e2200de1bd9bc98871e913ccce9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> * &gt;</type>
+        <definition>std::vector&lt; KerMLParser::Qualified_nameContext * &gt; KerMLParser::Feature_invertingContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>KerMLParser::Feature_invertingContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2011" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9511" bodyend="9513"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a93ccbddc6d2420bcefe0191c7c977c9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>KerMLParser::Qualified_nameContext * KerMLParser::Feature_invertingContext::qualified_name</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>KerMLParser::Feature_invertingContext::qualified_name</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2012" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9515" bodyend="9517"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1acfade90d7a53a47cf7366b466254c131" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d3/dff/class_ker_m_l_parser_1_1_owned__feature__chain_context" kindref="compound">Owned_feature_chainContext</ref> * &gt;</type>
+        <definition>std::vector&lt; KerMLParser::Owned_feature_chainContext * &gt; KerMLParser::Feature_invertingContext::owned_feature_chain</definition>
+        <argsstring>()</argsstring>
+        <name>owned_feature_chain</name>
+        <qualifiedname>KerMLParser::Feature_invertingContext::owned_feature_chain</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2013" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9519" bodyend="9521"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1aeb16f10bd435ba943acb02f30472e5e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/dff/class_ker_m_l_parser_1_1_owned__feature__chain_context" kindref="compound">Owned_feature_chainContext</ref> *</type>
+        <definition>KerMLParser::Owned_feature_chainContext * KerMLParser::Feature_invertingContext::owned_feature_chain</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>owned_feature_chain</name>
+        <qualifiedname>KerMLParser::Feature_invertingContext::owned_feature_chain</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2014" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9523" bodyend="9525"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1ad3585e9af11a3703e6ec9af8f0cd6fc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Feature_invertingContext::KEYWORD_INVERTING</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_INVERTING</name>
+        <qualifiedname>KerMLParser::Feature_invertingContext::KEYWORD_INVERTING</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2015" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9527" bodyend="9529"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1af8921a7237c79d40c9c53e4ddb12f67a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d18/class_ker_m_l_parser_1_1_identification_context" kindref="compound">IdentificationContext</ref> *</type>
+        <definition>KerMLParser::IdentificationContext * KerMLParser::Feature_invertingContext::identification</definition>
+        <argsstring>()</argsstring>
+        <name>identification</name>
+        <qualifiedname>KerMLParser::Feature_invertingContext::identification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2016" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9531" bodyend="9533"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a75e62375dcba53c0a0600e4eec45b3d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Feature_invertingContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Feature_invertingContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2018" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9540" bodyend="9544"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a75e67ff37ab02bf502a801637f795f0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Feature_invertingContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Feature_invertingContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2019" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9546" bodyend="9550"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Feature_invertingContext</label>
+        <link refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Feature_invertingContext</label>
+        <link refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2004" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2004" bodyend="2021"/>
+    <listofallmembers>
+      <member refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a75e62375dcba53c0a0600e4eec45b3d8" prot="public" virt="virtual"><scope>KerMLParser::Feature_invertingContext</scope><name>enterRule</name></member>
+      <member refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a75e67ff37ab02bf502a801637f795f0f" prot="public" virt="virtual"><scope>KerMLParser::Feature_invertingContext</scope><name>exitRule</name></member>
+      <member refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a28e8d3fd8ab59f771ae5fa40ae7bf761" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_invertingContext</scope><name>Feature_invertingContext</name></member>
+      <member refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1abf18175275af226a074a8006a840d3d3" prot="public" virt="virtual"><scope>KerMLParser::Feature_invertingContext</scope><name>getRuleIndex</name></member>
+      <member refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1af8921a7237c79d40c9c53e4ddb12f67a" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_invertingContext</scope><name>identification</name></member>
+      <member refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a936640d419191af6b0346f1f3862a2ef" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_invertingContext</scope><name>KEYWORD_INVERSE</name></member>
+      <member refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1ad3585e9af11a3703e6ec9af8f0cd6fc3" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_invertingContext</scope><name>KEYWORD_INVERTING</name></member>
+      <member refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a5f49bcf9e3eceac846f26143f027cbde" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_invertingContext</scope><name>KEYWORD_OF</name></member>
+      <member refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1acfade90d7a53a47cf7366b466254c131" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_invertingContext</scope><name>owned_feature_chain</name></member>
+      <member refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1aeb16f10bd435ba943acb02f30472e5e4" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_invertingContext</scope><name>owned_feature_chain</name></member>
+      <member refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a31ab5e2200de1bd9bc98871e913ccce9" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_invertingContext</scope><name>qualified_name</name></member>
+      <member refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a93ccbddc6d2420bcefe0191c7c977c9a" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_invertingContext</scope><name>qualified_name</name></member>
+      <member refid="db/d30/class_ker_m_l_parser_1_1_feature__inverting_context_1a80733ab3229d9b64b07e41b32a2d9f83" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_invertingContext</scope><name>relationship_body</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

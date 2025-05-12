@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Unary_operator_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context_1a1248c3e71597b304f7ee4ee9762b8211" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Unary_operator_expressionContext::Unary_operator_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Unary_operator_expressionContext</name>
+        <qualifiedname>SysMLv2Parser::Unary_operator_expressionContext::Unary_operator_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7554" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37380" bodyend="37382"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context_1a3bc377c31a97b8e05e693fe1113df1dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Unary_operator_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Unary_operator_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7555" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37393" bodyend="37395"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context_1a555d616f31a2ff290a405e0867f14826" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/d2f/class_sys_m_lv2_parser_1_1_unary__operator_context" kindref="compound">Unary_operatorContext</ref> *</type>
+        <definition>SysMLv2Parser::Unary_operatorContext * SysMLv2Parser::Unary_operator_expressionContext::unary_operator</definition>
+        <argsstring>()</argsstring>
+        <name>unary_operator</name>
+        <qualifiedname>SysMLv2Parser::Unary_operator_expressionContext::unary_operator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7556" column="27" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37384" bodyend="37386"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context_1adbc991a29c290a351437462fa94c95df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/d48/class_sys_m_lv2_parser_1_1_owned__expressions_context" kindref="compound">Owned_expressionsContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_expressionsContext * SysMLv2Parser::Unary_operator_expressionContext::owned_expressions</definition>
+        <argsstring>()</argsstring>
+        <name>owned_expressions</name>
+        <qualifiedname>SysMLv2Parser::Unary_operator_expressionContext::owned_expressions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7557" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37388" bodyend="37390"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context_1a70c55e9d6e6d93d7b6f07aca1a7c3784" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Unary_operator_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Unary_operator_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7559" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37397" bodyend="37401"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context_1a2459a3fb673dccb331c3739486643ff4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Unary_operator_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Unary_operator_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7560" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37403" bodyend="37407"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Unary_operator_expressionContext</label>
+        <link refid="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Unary_operator_expressionContext</label>
+        <link refid="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7552" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="7552" bodyend="7562"/>
+    <listofallmembers>
+      <member refid="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context_1a70c55e9d6e6d93d7b6f07aca1a7c3784" prot="public" virt="virtual"><scope>SysMLv2Parser::Unary_operator_expressionContext</scope><name>enterRule</name></member>
+      <member refid="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context_1a2459a3fb673dccb331c3739486643ff4" prot="public" virt="virtual"><scope>SysMLv2Parser::Unary_operator_expressionContext</scope><name>exitRule</name></member>
+      <member refid="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context_1a3bc377c31a97b8e05e693fe1113df1dd" prot="public" virt="virtual"><scope>SysMLv2Parser::Unary_operator_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context_1adbc991a29c290a351437462fa94c95df" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Unary_operator_expressionContext</scope><name>owned_expressions</name></member>
+      <member refid="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context_1a555d616f31a2ff290a405e0867f14826" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Unary_operator_expressionContext</scope><name>unary_operator</name></member>
+      <member refid="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context_1a1248c3e71597b304f7ee4ee9762b8211" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Unary_operator_expressionContext</scope><name>Unary_operator_expressionContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d5/d5a/class_ker_m_l_parser_1_1_invocation__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Invocation_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/d5a/class_ker_m_l_parser_1_1_invocation__expression_context_1a8ac4e0ab7588da5ff143c27f420ac042" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Invocation_expressionContext::Invocation_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Invocation_expressionContext</name>
+        <qualifiedname>KerMLParser::Invocation_expressionContext::Invocation_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3528" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16748" bodyend="16750"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d5a/class_ker_m_l_parser_1_1_invocation__expression_context_1a9f0e6fa704f4137fd60609b172c2714d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Invocation_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Invocation_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3529" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16757" bodyend="16759"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d5a/class_ker_m_l_parser_1_1_invocation__expression_context_1ac51733c8016143ee5070f4ae218a1cdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context" kindref="compound">Internal_invocation_expressionContext</ref> *</type>
+        <definition>KerMLParser::Internal_invocation_expressionContext * KerMLParser::Invocation_expressionContext::internal_invocation_expression</definition>
+        <argsstring>()</argsstring>
+        <name>internal_invocation_expression</name>
+        <qualifiedname>KerMLParser::Invocation_expressionContext::internal_invocation_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3530" column="43" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16752" bodyend="16754"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d5a/class_ker_m_l_parser_1_1_invocation__expression_context_1a4df7e1698d60d08f477ae1fc63eefde7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Invocation_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Invocation_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3532" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16761" bodyend="16765"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d5a/class_ker_m_l_parser_1_1_invocation__expression_context_1a85401d677a109e72b52271f0f8c080b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Invocation_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Invocation_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3533" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16767" bodyend="16771"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Invocation_expressionContext</label>
+        <link refid="d5/d5a/class_ker_m_l_parser_1_1_invocation__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Invocation_expressionContext</label>
+        <link refid="d5/d5a/class_ker_m_l_parser_1_1_invocation__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="3526" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="3526" bodyend="3535"/>
+    <listofallmembers>
+      <member refid="d5/d5a/class_ker_m_l_parser_1_1_invocation__expression_context_1a4df7e1698d60d08f477ae1fc63eefde7" prot="public" virt="virtual"><scope>KerMLParser::Invocation_expressionContext</scope><name>enterRule</name></member>
+      <member refid="d5/d5a/class_ker_m_l_parser_1_1_invocation__expression_context_1a85401d677a109e72b52271f0f8c080b0" prot="public" virt="virtual"><scope>KerMLParser::Invocation_expressionContext</scope><name>exitRule</name></member>
+      <member refid="d5/d5a/class_ker_m_l_parser_1_1_invocation__expression_context_1a9f0e6fa704f4137fd60609b172c2714d" prot="public" virt="virtual"><scope>KerMLParser::Invocation_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d5/d5a/class_ker_m_l_parser_1_1_invocation__expression_context_1ac51733c8016143ee5070f4ae218a1cdf" prot="public" virt="non-virtual"><scope>KerMLParser::Invocation_expressionContext</scope><name>internal_invocation_expression</name></member>
+      <member refid="d5/d5a/class_ker_m_l_parser_1_1_invocation__expression_context_1a8ac4e0ab7588da5ff143c27f420ac042" prot="public" virt="non-virtual"><scope>KerMLParser::Invocation_expressionContext</scope><name>Invocation_expressionContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_01afab5545b06797b8794facbe67bf02" kind="dir">
+    <compoundname>build/Debug/filehandling/CMakeFiles/sysmlv2file.dir/src/sysml2</compoundname>
+    <innerfile refid="d0/de1/sysml2_2_sys_m_lv2_base_listener_8cpp_8o_8d">SysMLv2BaseListener.cpp.o.d</innerfile>
+    <innerfile refid="d9/d52/sysml2_2_sys_m_lv2_lexer_8cpp_8o_8d">SysMLv2Lexer.cpp.o.d</innerfile>
+    <innerfile refid="dc/d8e/sysml2_2_sys_m_lv2_listener_8cpp_8o_8d">SysMLv2Listener.cpp.o.d</innerfile>
+    <innerfile refid="d4/d96/sysml2_2_sys_m_lv2_parser_8cpp_8o_8d">SysMLv2Parser.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/filehandling/CMakeFiles/sysmlv2file.dir/src/sysml2/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_ecce6cf810ccac96311f709bcd7ce67c" kind="dir">
+    <compoundname>kerml/src/kernel/functions</compoundname>
+    <innerfile refid="dc/db6/_boolean_expression_8cpp">BooleanExpression.cpp</innerfile>
+    <innerfile refid="d9/dec/_boolean_expression_8h">BooleanExpression.h</innerfile>
+    <innerfile refid="df/d27/functions_2_expression_8cpp">Expression.cpp</innerfile>
+    <innerfile refid="d2/dcd/functions_2_expression_8h">Expression.h</innerfile>
+    <innerfile refid="d2/dc2/_function_8cpp">Function.cpp</innerfile>
+    <innerfile refid="df/dc1/_function_8h">Function.h</innerfile>
+    <innerfile refid="d5/da0/_invariant_8cpp">Invariant.cpp</innerfile>
+    <innerfile refid="d4/dd9/_invariant_8h">Invariant.h</innerfile>
+    <innerfile refid="d9/dbf/functions_2_parameter_membership_8cpp">ParameterMembership.cpp</innerfile>
+    <innerfile refid="d3/d89/functions_2_parameter_membership_8h">ParameterMembership.h</innerfile>
+    <innerfile refid="d0/dbd/_predicate_8cpp">Predicate.cpp</innerfile>
+    <innerfile refid="d6/d04/_predicate_8h">Predicate.h</innerfile>
+    <innerfile refid="db/d76/_result_expression_membersip_8cpp">ResultExpressionMembersip.cpp</innerfile>
+    <innerfile refid="d1/d0c/_result_expression_membersip_8h">ResultExpressionMembersip.h</innerfile>
+    <innerfile refid="d6/def/_return_parameter_membership_8cpp">ReturnParameterMembership.cpp</innerfile>
+    <innerfile refid="d3/d5d/_return_parameter_membership_8h">ReturnParameterMembership.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="kerml/src/kernel/functions/"/>
+  </compounddef>
+</doxygen>

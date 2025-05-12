@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Owned_cross_subsettingContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context_1a11f3cd64431043700f7d4dae1ace02ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Owned_cross_subsettingContext::Owned_cross_subsettingContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Owned_cross_subsettingContext</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_subsettingContext::Owned_cross_subsettingContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1760" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7343" bodyend="7345"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context_1a7e8ed0aaf859b607f11507bf61f2fe39" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Owned_cross_subsettingContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_subsettingContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1761" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7356" bodyend="7358"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context_1a583dc13ac6b76bcba09d67d555917255" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dc1/class_sys_m_lv2_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>SysMLv2Parser::Qualified_nameContext * SysMLv2Parser::Owned_cross_subsettingContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_subsettingContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1762" column="27" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7347" bodyend="7349"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context_1af43732f0efed62c171af849f35918fc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context" kindref="compound">Owned_feature_chainContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_feature_chainContext * SysMLv2Parser::Owned_cross_subsettingContext::owned_feature_chain</definition>
+        <argsstring>()</argsstring>
+        <name>owned_feature_chain</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_subsettingContext::owned_feature_chain</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1763" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7351" bodyend="7353"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context_1afafc032862334fab6ff775f108cd8eec" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_cross_subsettingContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_subsettingContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1765" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7360" bodyend="7364"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context_1acef31fd8e6119cf545859593fc91b70a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_cross_subsettingContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_subsettingContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1766" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="7366" bodyend="7370"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_cross_subsettingContext</label>
+        <link refid="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_cross_subsettingContext</label>
+        <link refid="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1758" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="1758" bodyend="1768"/>
+    <listofallmembers>
+      <member refid="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context_1afafc032862334fab6ff775f108cd8eec" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_cross_subsettingContext</scope><name>enterRule</name></member>
+      <member refid="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context_1acef31fd8e6119cf545859593fc91b70a" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_cross_subsettingContext</scope><name>exitRule</name></member>
+      <member refid="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context_1a7e8ed0aaf859b607f11507bf61f2fe39" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_cross_subsettingContext</scope><name>getRuleIndex</name></member>
+      <member refid="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context_1a11f3cd64431043700f7d4dae1ace02ba" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_cross_subsettingContext</scope><name>Owned_cross_subsettingContext</name></member>
+      <member refid="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context_1af43732f0efed62c171af849f35918fc6" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_cross_subsettingContext</scope><name>owned_feature_chain</name></member>
+      <member refid="d9/dd8/class_sys_m_lv2_parser_1_1_owned__cross__subsetting_context_1a583dc13ac6b76bcba09d67d555917255" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_cross_subsettingContext</scope><name>qualified_name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

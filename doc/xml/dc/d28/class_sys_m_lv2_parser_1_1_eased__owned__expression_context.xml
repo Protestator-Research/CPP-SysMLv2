@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Eased_owned_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1a82f334f0e4adbc5595e2c7a24dee7687" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Eased_owned_expressionContext::Eased_owned_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Eased_owned_expressionContext</name>
+        <qualifiedname>SysMLv2Parser::Eased_owned_expressionContext::Eased_owned_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7443" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36863" bodyend="36865"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1ab4e493cc446a2e17fde7cefb091523a0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Eased_owned_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Eased_owned_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7444" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36884" bodyend="36886"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1a97b67ac8d6b3fabe06ce70f1ce9de424" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="db/d65/class_sys_m_lv2_parser_1_1_primary__expression_context" kindref="compound">Primary_expressionContext</ref> *</type>
+        <definition>SysMLv2Parser::Primary_expressionContext * SysMLv2Parser::Eased_owned_expressionContext::primary_expression</definition>
+        <argsstring>()</argsstring>
+        <name>primary_expression</name>
+        <qualifiedname>SysMLv2Parser::Eased_owned_expressionContext::primary_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7445" column="31" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36867" bodyend="36869"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1a9e9d88d801cb7f8d55079c46bd800a4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/db2/class_sys_m_lv2_parser_1_1_extend__expression_context" kindref="compound">Extend_expressionContext</ref> *</type>
+        <definition>SysMLv2Parser::Extend_expressionContext * SysMLv2Parser::Eased_owned_expressionContext::extend_expression</definition>
+        <argsstring>()</argsstring>
+        <name>extend_expression</name>
+        <qualifiedname>SysMLv2Parser::Eased_owned_expressionContext::extend_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7446" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36871" bodyend="36873"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1af91cd25f640a58dfb0cb4e820174d059" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/def/class_sys_m_lv2_parser_1_1_metaclassification__expression_context" kindref="compound">Metaclassification_expressionContext</ref> *</type>
+        <definition>SysMLv2Parser::Metaclassification_expressionContext * SysMLv2Parser::Eased_owned_expressionContext::metaclassification_expression</definition>
+        <argsstring>()</argsstring>
+        <name>metaclassification_expression</name>
+        <qualifiedname>SysMLv2Parser::Eased_owned_expressionContext::metaclassification_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7447" column="42" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36875" bodyend="36877"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1ac35e5b07f4f6e8704d28c6087ab50de9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d29/class_sys_m_lv2_parser_1_1_unary__operator__expression_context" kindref="compound">Unary_operator_expressionContext</ref> *</type>
+        <definition>SysMLv2Parser::Unary_operator_expressionContext * SysMLv2Parser::Eased_owned_expressionContext::unary_operator_expression</definition>
+        <argsstring>()</argsstring>
+        <name>unary_operator_expression</name>
+        <qualifiedname>SysMLv2Parser::Eased_owned_expressionContext::unary_operator_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7448" column="38" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36879" bodyend="36881"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1a172e255f37969ad78a40e9e08c3af160" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Eased_owned_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Eased_owned_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7450" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36888" bodyend="36892"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1af090f8612c115785298ce4ca8ed221e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Eased_owned_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Eased_owned_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7451" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36894" bodyend="36898"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Eased_owned_expressionContext</label>
+        <link refid="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Eased_owned_expressionContext</label>
+        <link refid="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7441" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="7441" bodyend="7453"/>
+    <listofallmembers>
+      <member refid="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1a82f334f0e4adbc5595e2c7a24dee7687" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Eased_owned_expressionContext</scope><name>Eased_owned_expressionContext</name></member>
+      <member refid="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1a172e255f37969ad78a40e9e08c3af160" prot="public" virt="virtual"><scope>SysMLv2Parser::Eased_owned_expressionContext</scope><name>enterRule</name></member>
+      <member refid="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1af090f8612c115785298ce4ca8ed221e0" prot="public" virt="virtual"><scope>SysMLv2Parser::Eased_owned_expressionContext</scope><name>exitRule</name></member>
+      <member refid="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1a9e9d88d801cb7f8d55079c46bd800a4b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Eased_owned_expressionContext</scope><name>extend_expression</name></member>
+      <member refid="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1ab4e493cc446a2e17fde7cefb091523a0" prot="public" virt="virtual"><scope>SysMLv2Parser::Eased_owned_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1af91cd25f640a58dfb0cb4e820174d059" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Eased_owned_expressionContext</scope><name>metaclassification_expression</name></member>
+      <member refid="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1a97b67ac8d6b3fabe06ce70f1ce9de424" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Eased_owned_expressionContext</scope><name>primary_expression</name></member>
+      <member refid="dc/d28/class_sys_m_lv2_parser_1_1_eased__owned__expression_context_1ac35e5b07f4f6e8704d28c6087ab50de9" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Eased_owned_expressionContext</scope><name>unary_operator_expression</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

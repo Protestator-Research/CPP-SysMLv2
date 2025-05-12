@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_ea786708fe5576eb1dbc8c4b032945ec" kind="dir">
+    <compoundname>build/Debug/services/CMakeFiles/sysmlv2service.dir/src/online</compoundname>
+    <innerdir refid="dir_ee5083046074acf2532a7ca9291fb9bd">build/Debug/services/CMakeFiles/sysmlv2service.dir/src/online/Exeptions</innerdir>
+    <innerfile refid="df/d8e/_connection_error_8cpp_8o_8d">ConnectionError.cpp.o.d</innerfile>
+    <innerfile refid="d8/d2c/_http_exception_8cpp_8o_8d">HttpException.cpp.o.d</innerfile>
+    <innerfile refid="d6/db4/_not_enough_memory_error_8cpp_8o_8d">NotEnoughMemoryError.cpp.o.d</innerfile>
+    <innerfile refid="dd/d23/_sys_m_l_a_p_i_implementation_8cpp_8o_8d">SysMLAPIImplementation.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/services/CMakeFiles/sysmlv2service.dir/src/online/"/>
+  </compounddef>
+</doxygen>

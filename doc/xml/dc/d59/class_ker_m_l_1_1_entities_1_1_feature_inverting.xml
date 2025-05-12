@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dc/d59/class_ker_m_l_1_1_entities_1_1_feature_inverting" kind="class" language="C++" prot="public">
+    <compoundname>KerML::Entities::FeatureInverting</compoundname>
+    <basecompoundref refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship" prot="public" virt="non-virtual">KerML::Entities::Relationship</basecompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>KerML::Entities::Element</label>
+        <link refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element"/>
+      </node>
+      <node id="1">
+        <label>KerML::Entities::FeatureInverting</label>
+        <link refid="dc/d59/class_ker_m_l_1_1_entities_1_1_feature_inverting"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KerML::Entities::Relationship</label>
+        <link refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>KerML::Entities::Element</label>
+        <link refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element"/>
+      </node>
+      <node id="1">
+        <label>KerML::Entities::FeatureInverting</label>
+        <link refid="dc/d59/class_ker_m_l_1_1_entities_1_1_feature_inverting"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KerML::Entities::Relationship</label>
+        <link refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="kerml/src/core/features/FeatureInverting.h" line="11" column="5" bodyfile="kerml/src/core/features/FeatureInverting.h" bodystart="11" bodyend="13"/>
+    <listofallmembers>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a2fe9d1d9ae52170ee016a2345015a2a8" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>AliasIds</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a293a9bbdd3f766e85b33c42ed314414d" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>aliasIds</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1abc1566f2e815a6847958f5f39966b859" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>appendAliasId</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1af29a0fc37c9162532f51eb16af05fe27" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>appendElementToOwnedRelatedElement</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a8da4cdd1eb513c3bb5e4fd873fd8851d" prot="protected" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>appendElementToRelatedElements</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a694b6623e44bca317fd07f3ceb9d6bf0" prot="protected" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>appendOwnedElement</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a15b56d09276f5bcd8a8ae0bbc75a681b" prot="protected" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>appendOwnedElements</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aaaf0054dcbefdc977e5dedf37e0a7932" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>DeclaredName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5177637cac4c2f102c1ac622606fc18e" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>declaredName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a6ca5b361ceea9afd58af30dbc26c39e5" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>DeclaredShortName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8712642a475270d5caaa99fca188f07a" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>declaredShortName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a81f29ab756dad42ce6db7d2406fbf567" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>Documentations</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5303e53153fadd68bca76b5b8e06f685" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>effectiveName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5a0c3b8b6188c323aba3fe9db9dd5550" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>effectiveShortName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>Element</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a26006d0f6402324fc864bacf9f6ef29b" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>Element</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a0a07e7e3146f7d7ef7e5f6e8cc151173" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>ElementId</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a50f3f7be0b6883e97464e56fef80264e" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>elementId</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a08dfbcd5104a039aeb720d97b03eafbe" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>elementIdAsUUID</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1adebc4425108aa41e89e6282d223e1c38" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>escapedName</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ab07af90d089fb715f1e2c9ff6ee483d6" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>IsImplied</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a776acb680aa78ae90a282500e7565591" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>isImplied</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aba76f2d080c1d6527999d608041dc8b0" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>IsImpliedIncluded</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a4b6577883757e6ae2d13cda2552e1e43" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>isImpliedIncluded</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a24655d02ec0e854d9c90818cf93a98f9" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>IsLibraryElement</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a99569006de4a3c175ffc89576427fba1" prot="public" virt="virtual"><scope>KerML::Entities::FeatureInverting</scope><name>libraryNamespace</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aec40f580554caab218120b4d81662e55" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>Name</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a62d9c4f0a7e75986bd7adf97d0e028a1" prot="public" virt="virtual"><scope>KerML::Entities::FeatureInverting</scope><name>operator&lt;</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac385bb608aad427a079324303181132f" prot="public" virt="virtual"><scope>KerML::Entities::FeatureInverting</scope><name>operator&lt;=</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a24ec7829b77b32369dafcb81d77af0e4" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>operator=</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a6b2eb4aeed41e45f2f14742f920dd751" prot="public" virt="virtual"><scope>KerML::Entities::FeatureInverting</scope><name>operator==</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a704d3dedba17f3e97eb08e2116716d83" prot="public" virt="virtual"><scope>KerML::Entities::FeatureInverting</scope><name>operator&gt;</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1af97c193ec8d513de2840ef5dd6b35ef4" prot="public" virt="virtual"><scope>KerML::Entities::FeatureInverting</scope><name>operator&gt;=</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7931562943c16b966f424e15dcab9d0e" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>OwnedAnnotations</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a89f807371c51dc8f827f191677bbbe57" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>OwnedElements</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7ddc025c7f987b1ac7abe87b471e07fc" prot="protected" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>ownedElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ae6e6c82e371f43e0cdb13c16c893da24" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>ownedRelatedElement</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a22c2e7659c1495b28e82a0c9a3ffd55f" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>OwnedRelatedElements</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1afe41944c39ed48a58ee78560d213e5b0" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>OwnedRelationships</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a9d3b8280d23066d2621a5410910930bf" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>Owner</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aa4c9d1f4fd1506ea8d61873a2ba177c1" prot="protected" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>owner</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aa8c403722101127b06d92c5ac22467a3" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>OwningNamespace</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8518d1b35c0f41d01e57ba11a7680be0" prot="protected" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>owningNamespace</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a30df93c09263660dffd9a0464a73f95e" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>OwningRelatedElement</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1adae66b24b0e92a40241844fdf14bfbed" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>owningRelatedElement</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a596931d529bfb0afb41acbb23e8d8e7e" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>QualifiedName</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ac22c74d9217d89b0761be79b6e9d620e" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>RelatedElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a6b11ba6b15aa8eaf007074d660fb46b9" prot="protected" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>relatedElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a6828ab0a5934d03f6858ec84193a0ccd" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>Relationship</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a1e4e57db6cd1128e42fece6461fe014a" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>Relationship</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a67cd4e9242d86b6a92fb4f1b1ddbf8db" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>setAliasIds</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8686dafeedf332c846410da4d13b8aac" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>setDeclaredName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a1d57a50fdec8c10f44ab714a34d0ce74" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>setDeclaredShortName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a86d552849ed84c9631b9246662c9fa34" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>setImpliedIncluded</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a3d040e9729b6646a83ecf85aab5192fd" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>setIsImplied</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac66ccb28a7d82bd2a2629c14307b9ac4" prot="protected" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>setOwnedElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ad87693d6609a978e80a549fa00629f8e" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>setOwnedRelatedElements</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a78943db83fcff463c054ec4dccb691b6" prot="protected" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>setOwner</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7dfbb6ba5545bb37db11abbf9f44ef1b" prot="protected" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>setOwningNamespace</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a13fdcfa05169e037236bec0ebceb201a" prot="public" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>setOwningRelatedElement</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a4eec900254c83027498d8307579b1dba" prot="protected" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>setRelatedElements</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1af66371679fa6ddc033a5da748985f080" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>ShortName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a1f31c599d9a94695386c07d1551718b8" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>sortAliasIds</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a76d905ace783221b65ebd650eeb6cf36" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>sortOwnedElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a625cd441755c2f75ca2be712d90525b2" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>sortOwnedRelatedElements</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a0c53cc502cb709f613d2869c8c94bf8b" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>sortOwnedRelationships</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a00a85edcf77bee890f724ca921fe8e0a" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>sortRelatedElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a41ae35fe5c6b9b82f7d05ab11d1e331a" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>sortSourceElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ad1a51df04559c620196271c4f84ccfe9" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>sortTargetElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a579b4b6d9ece2cfb924f8b76da5bb773" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>Source</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a0f26bf3f8ab277442f978ec485b9e23d" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>Target</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad0cbcbbe93d9d501ad42b6568769d784" prot="private" virt="non-virtual"><scope>KerML::Entities::FeatureInverting</scope><name>TextualRepresentations</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a9fbeffb936fcab7b70327e8f22b40c19" prot="public" virt="virtual"><scope>KerML::Entities::FeatureInverting</scope><name>~Element</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a2bf714f78b988a26b66d195b3eb19620" prot="public" virt="virtual"><scope>KerML::Entities::FeatureInverting</scope><name>~Relationship</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

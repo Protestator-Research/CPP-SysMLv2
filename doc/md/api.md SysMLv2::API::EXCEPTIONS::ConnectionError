@@ -1,0 +1,23 @@
+# class `SysMLv2::API::EXCEPTIONS::ConnectionError` {#df/d87/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_connection_error}
+
+```
+class SysMLv2::API::EXCEPTIONS::ConnectionError
+  : public std::runtime_error
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public  `[`ConnectionError`](#df/d87/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_connection_error_1aab23aaf344f6906756584d023de2c5e8)`() = delete` | 
+`public  `[`ConnectionError`](#df/d87/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_connection_error_1a1c9b6961197dea54b975539b79f7fa7f)`(SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE errorType)` | 
+`public const char * `[`what`](#df/d87/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_connection_error_1a31970a7a6a5e652c73031c1bed17723e)`() const` | 
+
+## Members
+
+#### `public  `[`ConnectionError`](#df/d87/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_connection_error_1aab23aaf344f6906756584d023de2c5e8)`() = delete` {#df/d87/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_connection_error_1aab23aaf344f6906756584d023de2c5e8}
+
+#### `public  `[`ConnectionError`](#df/d87/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_connection_error_1a1c9b6961197dea54b975539b79f7fa7f)`(SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE errorType)` {#df/d87/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_connection_error_1a1c9b6961197dea54b975539b79f7fa7f}
+
+#### `public const char * `[`what`](#df/d87/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_connection_error_1a31970a7a6a5e652c73031c1bed17723e)`() const` {#df/d87/class_sys_m_lv2_1_1_a_p_i_1_1_e_x_c_e_p_t_i_o_n_s_1_1_connection_error_1a31970a7a6a5e652c73031c1bed17723e}
+

@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Conjugation_partContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context_1a2c219f4aba53564bf7fd47c4c5fb8719" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Conjugation_partContext::Conjugation_partContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Conjugation_partContext</name>
+        <qualifiedname>SysMLv2Parser::Conjugation_partContext::Conjugation_partContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6029" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29372" bodyend="29374"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context_1a9f4702c72e56d5b9c2f00460b342cfe3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Conjugation_partContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Conjugation_partContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6030" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29385" bodyend="29387"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context_1a1eddf7842e73379d2d9763c14c8f117b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Conjugation_partContext::CONJUNGATES</definition>
+        <argsstring>()</argsstring>
+        <name>CONJUNGATES</name>
+        <qualifiedname>SysMLv2Parser::Conjugation_partContext::CONJUNGATES</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6031" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29376" bodyend="29378"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context_1aabdfcd585742b1a8d976f5f3e957408d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/dd0/class_sys_m_lv2_parser_1_1_owned__conjugation_context" kindref="compound">Owned_conjugationContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_conjugationContext * SysMLv2Parser::Conjugation_partContext::owned_conjugation</definition>
+        <argsstring>()</argsstring>
+        <name>owned_conjugation</name>
+        <qualifiedname>SysMLv2Parser::Conjugation_partContext::owned_conjugation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6032" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29380" bodyend="29382"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context_1a17b1bbe55877222029912c060aab26b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Conjugation_partContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Conjugation_partContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6034" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29389" bodyend="29393"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context_1a4b0dd7ea274c8743d59e19996b4a265d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Conjugation_partContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Conjugation_partContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6035" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29395" bodyend="29399"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Conjugation_partContext</label>
+        <link refid="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Conjugation_partContext</label>
+        <link refid="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6027" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="6027" bodyend="6037"/>
+    <listofallmembers>
+      <member refid="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context_1a2c219f4aba53564bf7fd47c4c5fb8719" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Conjugation_partContext</scope><name>Conjugation_partContext</name></member>
+      <member refid="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context_1a1eddf7842e73379d2d9763c14c8f117b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Conjugation_partContext</scope><name>CONJUNGATES</name></member>
+      <member refid="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context_1a17b1bbe55877222029912c060aab26b9" prot="public" virt="virtual"><scope>SysMLv2Parser::Conjugation_partContext</scope><name>enterRule</name></member>
+      <member refid="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context_1a4b0dd7ea274c8743d59e19996b4a265d" prot="public" virt="virtual"><scope>SysMLv2Parser::Conjugation_partContext</scope><name>exitRule</name></member>
+      <member refid="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context_1a9f4702c72e56d5b9c2f00460b342cfe3" prot="public" virt="virtual"><scope>SysMLv2Parser::Conjugation_partContext</scope><name>getRuleIndex</name></member>
+      <member refid="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context_1aabdfcd585742b1a8d976f5f3e957408d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Conjugation_partContext</scope><name>owned_conjugation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

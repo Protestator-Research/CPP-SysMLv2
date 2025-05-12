@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_a9d10916d6c37998ba7fea56395aff6d" kind="dir">
+    <compoundname>build/Debug/kerml/CMakeFiles/kerml.dir/src/core</compoundname>
+    <innerdir refid="dir_ba934c5f5db0ed87f54bc81697ba1a13">build/Debug/kerml/CMakeFiles/kerml.dir/src/core/classifiers</innerdir>
+    <innerdir refid="dir_4aae02be6335e85cccf240926a36e479">build/Debug/kerml/CMakeFiles/kerml.dir/src/core/features</innerdir>
+    <innerdir refid="dir_2d939e323e768936e47d341f9d63995e">build/Debug/kerml/CMakeFiles/kerml.dir/src/core/types</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/kerml/CMakeFiles/kerml.dir/src/core/"/>
+  </compounddef>
+</doxygen>

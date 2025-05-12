@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Calculation_usageContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1a07dba505a525054b5b436b2f22024252" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Calculation_usageContext::Calculation_usageContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Calculation_usageContext</name>
+        <qualifiedname>SysMLv2Parser::Calculation_usageContext::Calculation_usageContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4382" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="20621" bodyend="20623"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1a61480d83692f8358c78ee8d714cea1aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Calculation_usageContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Calculation_usageContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4383" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="20642" bodyend="20644"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1ae49ad7eaad9ecaf667ccb96861b2b7d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/dcb/class_sys_m_lv2_parser_1_1_occurrence__usage__prefix_context" kindref="compound">Occurrence_usage_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::Occurrence_usage_prefixContext * SysMLv2Parser::Calculation_usageContext::occurrence_usage_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>occurrence_usage_prefix</name>
+        <qualifiedname>SysMLv2Parser::Calculation_usageContext::occurrence_usage_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4384" column="36" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="20625" bodyend="20627"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1abcce810b63989dd8cf013075af6f8b0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Calculation_usageContext::KEYWORD_CALC</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_CALC</name>
+        <qualifiedname>SysMLv2Parser::Calculation_usageContext::KEYWORD_CALC</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4385" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="20629" bodyend="20631"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1acb658a9a6ff559f8f2759be347e18d43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/de7/class_sys_m_lv2_parser_1_1_action__usage__declaration_context" kindref="compound">Action_usage_declarationContext</ref> *</type>
+        <definition>SysMLv2Parser::Action_usage_declarationContext * SysMLv2Parser::Calculation_usageContext::action_usage_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>action_usage_declaration</name>
+        <qualifiedname>SysMLv2Parser::Calculation_usageContext::action_usage_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4386" column="37" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="20633" bodyend="20635"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1a39bc1928d19d6da86a952ab39dff4c59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/dbd/class_sys_m_lv2_parser_1_1_calculation__body_context" kindref="compound">Calculation_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Calculation_bodyContext * SysMLv2Parser::Calculation_usageContext::calculation_body</definition>
+        <argsstring>()</argsstring>
+        <name>calculation_body</name>
+        <qualifiedname>SysMLv2Parser::Calculation_usageContext::calculation_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4387" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="20637" bodyend="20639"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1a5f716c3848c857a672ecfc04e3cbac7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Calculation_usageContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Calculation_usageContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4389" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="20646" bodyend="20650"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1a3162a1c03571d0d2a948f01edddda6aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Calculation_usageContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Calculation_usageContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4390" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="20652" bodyend="20656"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Calculation_usageContext</label>
+        <link refid="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Calculation_usageContext</label>
+        <link refid="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4380" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="4380" bodyend="4392"/>
+    <listofallmembers>
+      <member refid="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1acb658a9a6ff559f8f2759be347e18d43" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Calculation_usageContext</scope><name>action_usage_declaration</name></member>
+      <member refid="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1a39bc1928d19d6da86a952ab39dff4c59" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Calculation_usageContext</scope><name>calculation_body</name></member>
+      <member refid="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1a07dba505a525054b5b436b2f22024252" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Calculation_usageContext</scope><name>Calculation_usageContext</name></member>
+      <member refid="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1a5f716c3848c857a672ecfc04e3cbac7a" prot="public" virt="virtual"><scope>SysMLv2Parser::Calculation_usageContext</scope><name>enterRule</name></member>
+      <member refid="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1a3162a1c03571d0d2a948f01edddda6aa" prot="public" virt="virtual"><scope>SysMLv2Parser::Calculation_usageContext</scope><name>exitRule</name></member>
+      <member refid="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1a61480d83692f8358c78ee8d714cea1aa" prot="public" virt="virtual"><scope>SysMLv2Parser::Calculation_usageContext</scope><name>getRuleIndex</name></member>
+      <member refid="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1abcce810b63989dd8cf013075af6f8b0b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Calculation_usageContext</scope><name>KEYWORD_CALC</name></member>
+      <member refid="dd/d89/class_sys_m_lv2_parser_1_1_calculation__usage_context_1ae49ad7eaad9ecaf667ccb96861b2b7d7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Calculation_usageContext</scope><name>occurrence_usage_prefix</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

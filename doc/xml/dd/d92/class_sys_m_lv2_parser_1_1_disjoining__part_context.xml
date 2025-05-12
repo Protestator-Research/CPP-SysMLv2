@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Disjoining_partContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1abb39fbfcb226153c15b29c1f473726ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Disjoining_partContext::Disjoining_partContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Disjoining_partContext</name>
+        <qualifiedname>SysMLv2Parser::Disjoining_partContext::Disjoining_partContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6059" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29527" bodyend="29529"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1a887250247fa9013e26738e874fed700a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Disjoining_partContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Disjoining_partContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6060" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29556" bodyend="29558"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1ac8da5efe66c2f2f8e203d810d7e0c12a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Disjoining_partContext::KEYWORD_DISJOINT</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_DISJOINT</name>
+        <qualifiedname>SysMLv2Parser::Disjoining_partContext::KEYWORD_DISJOINT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6061" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29531" bodyend="29533"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1af2ec5afadf3de6eabe064ace9e12a650" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Disjoining_partContext::KEYWORD_FROM</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_FROM</name>
+        <qualifiedname>SysMLv2Parser::Disjoining_partContext::KEYWORD_FROM</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6062" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29535" bodyend="29537"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1a559f40229bd90b3f5e925e00fcb8d8a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="de/d12/class_sys_m_lv2_parser_1_1_owned__disjoining_context" kindref="compound">Owned_disjoiningContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Owned_disjoiningContext * &gt; SysMLv2Parser::Disjoining_partContext::owned_disjoining</definition>
+        <argsstring>()</argsstring>
+        <name>owned_disjoining</name>
+        <qualifiedname>SysMLv2Parser::Disjoining_partContext::owned_disjoining</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6063" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29539" bodyend="29541"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1a3c87c7cf1cf83d6b0b15578cb062ccc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d12/class_sys_m_lv2_parser_1_1_owned__disjoining_context" kindref="compound">Owned_disjoiningContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_disjoiningContext * SysMLv2Parser::Disjoining_partContext::owned_disjoining</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>owned_disjoining</name>
+        <qualifiedname>SysMLv2Parser::Disjoining_partContext::owned_disjoining</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6064" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29543" bodyend="29545"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1a69b41a11d41a9744f7b8b3a61a881813" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; antlr4::tree::TerminalNode * &gt;</type>
+        <definition>std::vector&lt; tree::TerminalNode * &gt; SysMLv2Parser::Disjoining_partContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>SysMLv2Parser::Disjoining_partContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6065" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29547" bodyend="29549"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1a4c8a7807e1c9495153d74fed557dfe61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Disjoining_partContext::SYMBOL_COMMA</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>SysMLv2Parser::Disjoining_partContext::SYMBOL_COMMA</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6066" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29551" bodyend="29553"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1aaf6c874352a73a5b88f2ada0608d6e44" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Disjoining_partContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Disjoining_partContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6068" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29560" bodyend="29564"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1aacae677b80f3269c98eef8e7f42d2ce2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Disjoining_partContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Disjoining_partContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6069" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29566" bodyend="29570"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Disjoining_partContext</label>
+        <link refid="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Disjoining_partContext</label>
+        <link refid="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6057" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="6057" bodyend="6071"/>
+    <listofallmembers>
+      <member refid="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1abb39fbfcb226153c15b29c1f473726ac" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Disjoining_partContext</scope><name>Disjoining_partContext</name></member>
+      <member refid="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1aaf6c874352a73a5b88f2ada0608d6e44" prot="public" virt="virtual"><scope>SysMLv2Parser::Disjoining_partContext</scope><name>enterRule</name></member>
+      <member refid="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1aacae677b80f3269c98eef8e7f42d2ce2" prot="public" virt="virtual"><scope>SysMLv2Parser::Disjoining_partContext</scope><name>exitRule</name></member>
+      <member refid="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1a887250247fa9013e26738e874fed700a" prot="public" virt="virtual"><scope>SysMLv2Parser::Disjoining_partContext</scope><name>getRuleIndex</name></member>
+      <member refid="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1ac8da5efe66c2f2f8e203d810d7e0c12a" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Disjoining_partContext</scope><name>KEYWORD_DISJOINT</name></member>
+      <member refid="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1af2ec5afadf3de6eabe064ace9e12a650" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Disjoining_partContext</scope><name>KEYWORD_FROM</name></member>
+      <member refid="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1a559f40229bd90b3f5e925e00fcb8d8a8" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Disjoining_partContext</scope><name>owned_disjoining</name></member>
+      <member refid="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1a3c87c7cf1cf83d6b0b15578cb062ccc9" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Disjoining_partContext</scope><name>owned_disjoining</name></member>
+      <member refid="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1a69b41a11d41a9744f7b8b3a61a881813" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Disjoining_partContext</scope><name>SYMBOL_COMMA</name></member>
+      <member refid="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context_1a4c8a7807e1c9495153d74fed557dfe61" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Disjoining_partContext</scope><name>SYMBOL_COMMA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

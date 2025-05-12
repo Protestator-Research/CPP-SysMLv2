@@ -1,0 +1,40 @@
+.TH "KerMLErrorListener" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KerMLErrorListener
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits antlr4::BaseErrorListener\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsyntaxError\fP (antlr4::Recognizer *recognizer, antlr4::Token *offendingSymbol, size_t line, size_t charPositionInLine, const std::string &msg, std::exception_ptr e) override"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBKerMLError\fP > > \fBgetSyntaxErrors\fP () const"
+.br
+.ti -1c
+.RI "void \fBreportAmbiguity\fP (antlr4::Parser *recognizer, const antlr4::dfa::DFA &dfa, size_t startIndex, size_t stopIndex, bool exact, const antlrcpp::BitSet &ambigAlts, antlr4::atn::ATNConfigSet *configs) override"
+.br
+.ti -1c
+.RI "void \fBreportAttemptingFullContext\fP (antlr4::Parser *recognizer, const antlr4::dfa::DFA &dfa, size_t startIndex, size_t stopIndex, const antlrcpp::BitSet &conflictingAlts, antlr4::atn::ATNConfigSet *configs) override"
+.br
+.ti -1c
+.RI "void \fBreportContextSensitivity\fP (antlr4::Parser *recognizer, const antlr4::dfa::DFA &dfa, size_t startIndex, size_t stopIndex, size_t prediction, antlr4::atn::ATNConfigSet *configs) override"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBKerMLError\fP > > \fBSyntaxErrors\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dc/d43/namespaceantlr4" kind="namespace" language="C++">
+    <compoundname>antlr4</compoundname>
+    <innernamespace refid="dd/d13/namespaceantlr4_1_1tree">antlr4::tree</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="filehandling/src/kerml/KerMLLexer.cpp" line="8" column="1"/>
+  </compounddef>
+</doxygen>

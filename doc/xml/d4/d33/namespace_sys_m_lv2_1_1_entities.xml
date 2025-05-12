@@ -1,0 +1,1111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d4/d33/namespace_sys_m_lv2_1_1_entities" kind="namespace" language="C++">
+    <compoundname>SysMLv2::Entities</compoundname>
+    <innerclass refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" prot="public">SysMLv2::Entities::Branch</innerclass>
+    <innerclass refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" prot="public">SysMLv2::Entities::Commit</innerclass>
+    <innerclass refid="d3/daf/class_sys_m_lv2_1_1_entities_1_1_commit_reference" prot="public">SysMLv2::Entities::CommitReference</innerclass>
+    <innerclass refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" prot="public">SysMLv2::Entities::Data</innerclass>
+    <innerclass refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity" prot="public">SysMLv2::Entities::DataIdentity</innerclass>
+    <innerclass refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" prot="public">SysMLv2::Entities::DataVersion</innerclass>
+    <innerclass refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element" prot="public">SysMLv2::Entities::Element</innerclass>
+    <innerclass refid="d1/df8/class_sys_m_lv2_1_1_entities_1_1_external_data" prot="public">SysMLv2::Entities::ExternalData</innerclass>
+    <innerclass refid="dc/d95/class_sys_m_lv2_1_1_entities_1_1_external_relationship" prot="public">SysMLv2::Entities::ExternalRelationship</innerclass>
+    <innerclass refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" prot="public">SysMLv2::Entities::Identification</innerclass>
+    <innerclass refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity" prot="public">SysMLv2::Entities::IEntity</innerclass>
+    <innerclass refid="dd/d36/class_sys_m_lv2_1_1_entities_1_1_merge_result" prot="public">SysMLv2::Entities::MergeResult</innerclass>
+    <innerclass refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" prot="public">SysMLv2::Entities::Project</innerclass>
+    <innerclass refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage" prot="public">SysMLv2::Entities::ProjectUsage</innerclass>
+    <innerclass refid="d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query" prot="public">SysMLv2::Entities::Query</innerclass>
+    <innerclass refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" prot="public">SysMLv2::Entities::Record</innerclass>
+    <innerclass refid="d0/dae/class_sys_m_lv2_1_1_entities_1_1_relationship" prot="public">SysMLv2::Entities::Relationship</innerclass>
+    <innerclass refid="d7/dab/class_sys_m_lv2_1_1_entities_1_1_tag" prot="public">SysMLv2::Entities::Tag</innerclass>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a863178e121b9d2e467f23f3605e5535c" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_ID_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_ID_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_ID_ENTITY</qualifiedname>
+        <initializer>= &quot;@id&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="23" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a88e0a9b789747ae14737d3b161cbcc11" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_TYPE_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_TYPE_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_TYPE_ENTITY</qualifiedname>
+        <initializer>= &quot;@type&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="24" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a260a25f5b23c008764dd7a0e22086744" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_NAME_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_NAME_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_NAME_ENTITY</qualifiedname>
+        <initializer>= &quot;name&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="27" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a8a20cd7d8ba6566360b00e02d7e1b8d4" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_ALIAS_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_ALIAS_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_ALIAS_ENTITY</qualifiedname>
+        <initializer>= &quot;alias&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="28" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1adc21e0309b1898935524e3c5cd632469" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_DESCRIPTION_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_DESCRIPTION_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_DESCRIPTION_ENTITY</qualifiedname>
+        <initializer>= &quot;description&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="29" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a6084f19b7ddff0fadd8c6ef91221a48e" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_DEFAULT_BRANCH_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_DEFAULT_BRANCH_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_DEFAULT_BRANCH_ENTITY</qualifiedname>
+        <initializer>= &quot;defaultBranch&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="32" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1ae224ab06f15cc3548acdc362800b5265" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_CREATION_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_CREATION_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_CREATION_ENTITY</qualifiedname>
+        <initializer>= &quot;created&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="33" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1ae570217239144f79f5e49819b35c3241" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_BRANCHES_LIST</definition>
+        <argsstring></argsstring>
+        <name>JSON_BRANCHES_LIST</name>
+        <qualifiedname>SysMLv2::Entities::JSON_BRANCHES_LIST</qualifiedname>
+        <initializer>= &quot;branches_list&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="34" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1ae2e0705b0ad27923053967fb9f7446f5" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_COMMIT_LIST</definition>
+        <argsstring></argsstring>
+        <name>JSON_COMMIT_LIST</name>
+        <qualifiedname>SysMLv2::Entities::JSON_COMMIT_LIST</qualifiedname>
+        <initializer>= &quot;commits&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="35" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1acff75ec7747264885d6d3cc544d25de8" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_HEAD_ID_LIST</definition>
+        <argsstring></argsstring>
+        <name>JSON_HEAD_ID_LIST</name>
+        <qualifiedname>SysMLv2::Entities::JSON_HEAD_ID_LIST</qualifiedname>
+        <initializer>= &quot;heads&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="36" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a95a1005067f6799f1f057afd0c09920a" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_CONNECTED_MODELS</definition>
+        <argsstring></argsstring>
+        <name>JSON_CONNECTED_MODELS</name>
+        <qualifiedname>SysMLv2::Entities::JSON_CONNECTED_MODELS</qualifiedname>
+        <initializer>= &quot;connectedModels&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="39" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a39f672ce66e8c392d7becea3cb5347e4" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_PARENT_PROJECT</definition>
+        <argsstring></argsstring>
+        <name>JSON_PARENT_PROJECT</name>
+        <qualifiedname>SysMLv2::Entities::JSON_PARENT_PROJECT</qualifiedname>
+        <initializer>= &quot;parentProject&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="40" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a4390117b86e8cd0b9ad8f96d7ce62b88" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_BRANCH_ID</definition>
+        <argsstring></argsstring>
+        <name>JSON_BRANCH_ID</name>
+        <qualifiedname>SysMLv2::Entities::JSON_BRANCH_ID</qualifiedname>
+        <initializer>= &quot;branchId&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="41" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1af82cd5790c57adea3afa52d95e3198c4" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_COMMIT_ID</definition>
+        <argsstring></argsstring>
+        <name>JSON_COMMIT_ID</name>
+        <qualifiedname>SysMLv2::Entities::JSON_COMMIT_ID</qualifiedname>
+        <initializer>= &quot;commitId&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="42" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1ab8a1e47ae3479f83684e854fba1cba75" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_HEAD_ID</definition>
+        <argsstring></argsstring>
+        <name>JSON_HEAD_ID</name>
+        <qualifiedname>SysMLv2::Entities::JSON_HEAD_ID</qualifiedname>
+        <initializer>= &quot;head&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="45" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a160f83dc4669e91a65061346d8ca7a25" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_OWNING_PROJECT</definition>
+        <argsstring></argsstring>
+        <name>JSON_OWNING_PROJECT</name>
+        <qualifiedname>SysMLv2::Entities::JSON_OWNING_PROJECT</qualifiedname>
+        <initializer>= &quot;owningProject&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="46" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1abf37d249a0269e5c34e38e37c71c975f" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_REFERENCE_COMMIT</definition>
+        <argsstring></argsstring>
+        <name>JSON_REFERENCE_COMMIT</name>
+        <qualifiedname>SysMLv2::Entities::JSON_REFERENCE_COMMIT</qualifiedname>
+        <initializer>= &quot;referencedCommit&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="47" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1abe57ffe454dea414e2378b0173394fe8" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_IDENTITY_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_IDENTITY_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_IDENTITY_ENTITY</qualifiedname>
+        <initializer>= &quot;identity&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="50" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a3a0415f13a357f0f8435452eed4af7d4" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_PAYLOAD_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_PAYLOAD_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_PAYLOAD_ENTITY</qualifiedname>
+        <initializer>= &quot;payload&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="51" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a2042a3eabca23d2e9be7faf27719249e" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_CHANGE_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_CHANGE_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_CHANGE_ENTITY</qualifiedname>
+        <initializer>= &quot;change&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="54" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a98a50ff0c9ae76055c871d4c205d5271" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_SHORT_NAME_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_SHORT_NAME_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_SHORT_NAME_ENTITY</qualifiedname>
+        <initializer>= &quot;shortName&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="57" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1ab005e097d07ce5857c3df3e9adab2d34" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_DECLARED_NAME_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_DECLARED_NAME_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_DECLARED_NAME_ENTITY</qualifiedname>
+        <initializer>= &quot;declaredName&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="58" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1aa62a9ebb95049ba71d7bfe667d351999" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_DECLARED_SHORT_NAME_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_DECLARED_SHORT_NAME_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_DECLARED_SHORT_NAME_ENTITY</qualifiedname>
+        <initializer>= &quot;declaredShortName&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="59" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a3991cdb2fdf06c3c6c1d93021a4073c4" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_OWNED_ELEMENTS_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_OWNED_ELEMENTS_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_OWNED_ELEMENTS_ENTITY</qualifiedname>
+        <initializer>= &quot;ownedElements&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="60" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a315db18c2d5007d6c0a36b91ca8eff33" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_OWNER_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_OWNER_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_OWNER_ENTITY</qualifiedname>
+        <initializer>= &quot;owner&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="61" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a5dd55ac41186d3fcac9cf7de33188de1" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_OWNING_MEMBERSHIP_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_OWNING_MEMBERSHIP_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_OWNING_MEMBERSHIP_ENTITY</qualifiedname>
+        <initializer>= &quot;owningMembership&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="62" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1af99e74bad561d3d4232ed4137e55cae8" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_OWNING_NAMESPACE_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_OWNING_NAMESPACE_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_OWNING_NAMESPACE_ENTITY</qualifiedname>
+        <initializer>= &quot;owningNamespace&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="63" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a522f40505ef85e96fc3a737fad15a575" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_OWNING_RELATIONSHIP_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_OWNING_RELATIONSHIP_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_OWNING_RELATIONSHIP_ENTITY</qualifiedname>
+        <initializer>= &quot;owningRelationship&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="64" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a46b9048ee5627e1c71e6a23e97c8dcbe" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_DIRECTION_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_DIRECTION_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_DIRECTION_ENTITY</qualifiedname>
+        <initializer>= &quot;direction&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="65" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a014d131f11a7c0c9f4dd9b74038566a4" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_VALUE_STRING_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_VALUE_STRING_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_VALUE_STRING_ENTITY</qualifiedname>
+        <initializer>= &quot;valueStr&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="66" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a61bf2041ceb5134f77f04536256ee201" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_IMPORTED_MEMBER_NAME_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_IMPORTED_MEMBER_NAME_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_IMPORTED_MEMBER_NAME_ENTITY</qualifiedname>
+        <initializer>= &quot;importedMemberName&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="67" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1ab1fec01aefb9205e42754efcb7eca69b" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_IMPORTED_NAMESPACE_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_IMPORTED_NAMESPACE_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_IMPORTED_NAMESPACE_ENTITY</qualifiedname>
+        <initializer>= &quot;importedNamespace&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="68" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a92c618361a3591de94705e2b85c4e5dd" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_LANGUAGE_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_LANGUAGE_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_LANGUAGE_ENTITY</qualifiedname>
+        <initializer>= &quot;language&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="69" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a164c49ff90c8957db0244b69f39cdef0" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_BODY_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_BODY_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_BODY_ENTITY</qualifiedname>
+        <initializer>= &quot;body&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="70" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a9b8fc7c8411d91750d8df8a5c4458ab5" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_SOURCE_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_SOURCE_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_SOURCE_ENTITY</qualifiedname>
+        <initializer>= &quot;source&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="71" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a5d330c264d300586bd07387544231e72" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_TARGET_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_TARGET_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_TARGET_ENTITY</qualifiedname>
+        <initializer>= &quot;target&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="72" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a00d13d67d544c7f57d9d0ae69e6baa86" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_IS_STANDARD_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_IS_STANDARD_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_IS_STANDARD_ENTITY</qualifiedname>
+        <initializer>= &quot;isStandard&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="73" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a6c27ba13d7b130af4674695e709a2e45" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_IS_LIBRARY_ELEMENT_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_IS_LIBRARY_ELEMENT_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_IS_LIBRARY_ELEMENT_ENTITY</qualifiedname>
+        <initializer>= &quot;isLibraryElement&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="74" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a05da588e47f06d67da959fa5bbc0e971" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_IS_IMPLIED_ELEMENT_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_IS_IMPLIED_ELEMENT_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_IS_IMPLIED_ELEMENT_ENTITY</qualifiedname>
+        <initializer>= &quot;isImplied&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="75" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a810f6969734ffad6ac0d7400139eec61" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_IS_IMPLIED_INCLUDED_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_IS_IMPLIED_INCLUDED_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_IS_IMPLIED_INCLUDED_ENTITY</qualifiedname>
+        <initializer>= &quot;isImpliedIncluded&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="76" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a3aaa790d85600155333ef4e11823c29f" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_DOCUMENTATION_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_DOCUMENTATION_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_DOCUMENTATION_ENTITY</qualifiedname>
+        <initializer>= &quot;documentation&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="77" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1ac417def99eee2575e782a8b94cf1ea61" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_TEXTUAL_REPRESENTATION_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_TEXTUAL_REPRESENTATION_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_TEXTUAL_REPRESENTATION_ENTITY</qualifiedname>
+        <initializer>= &quot;textualRepresentation&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="78" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1ae1d3869ae9829aa0eb75cfed9bcd64e8" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_ALIAS_ID_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_ALIAS_ID_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_ALIAS_ID_ENTITY</qualifiedname>
+        <initializer>= &quot;aliasIds&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="79" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a875d9310b7179a975adfc52dfc7f817c" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::JSON_ELEMENT_ID_ENTITY</definition>
+        <argsstring></argsstring>
+        <name>JSON_ELEMENT_ID_ENTITY</name>
+        <qualifiedname>SysMLv2::Entities::JSON_ELEMENT_ID_ENTITY</qualifiedname>
+        <initializer>= &quot;elementId&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="80" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1ad32e5a0b523c2348eeacae6206352423" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::PROJECT_TYPE</definition>
+        <argsstring></argsstring>
+        <name>PROJECT_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::PROJECT_TYPE</qualifiedname>
+        <initializer>=&quot;project&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="83" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a75ef848b03991b306712e7ae4e1d7e71" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::DATA_IDENTITY_TYPE</definition>
+        <argsstring></argsstring>
+        <name>DATA_IDENTITY_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::DATA_IDENTITY_TYPE</qualifiedname>
+        <initializer>=&quot;dataidentity&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="84" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a87d578737bf9d9f9e2051c80c369ca8a" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::BRANCH_TYPE</definition>
+        <argsstring></argsstring>
+        <name>BRANCH_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::BRANCH_TYPE</qualifiedname>
+        <initializer>=&quot;branch&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="85" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a3720d1b9e77babda3fd225506f1040aa" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::TAG_TYPE</definition>
+        <argsstring></argsstring>
+        <name>TAG_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::TAG_TYPE</qualifiedname>
+        <initializer>= &quot;tag&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="86" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a7138059b3ecc596c6836cd5ef165628d" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::QUERY_TYPE</definition>
+        <argsstring></argsstring>
+        <name>QUERY_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::QUERY_TYPE</qualifiedname>
+        <initializer>= &quot;query&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="87" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1afe5bfa1c7243dd4487cc14be98f10a3c" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::COMMIT_TYPE</definition>
+        <argsstring></argsstring>
+        <name>COMMIT_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::COMMIT_TYPE</qualifiedname>
+        <initializer>= &quot;commit&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="89" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a5d517497118b42a241ace6aff307a03e" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::FEATURE_TYPE</definition>
+        <argsstring></argsstring>
+        <name>FEATURE_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::FEATURE_TYPE</qualifiedname>
+        <initializer>= &quot;feature&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="90" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1aefb69de7e8c2b315748c5e89dac41220" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::FEATURE_TYPE_TYPE</definition>
+        <argsstring></argsstring>
+        <name>FEATURE_TYPE_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::FEATURE_TYPE_TYPE</qualifiedname>
+        <initializer>= &quot;featuretyping&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="91" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a3227ed8b422f5e4fb0a1ae1f5d00057b" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::ASSOCIATION_TYPE</definition>
+        <argsstring></argsstring>
+        <name>ASSOCIATION_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::ASSOCIATION_TYPE</qualifiedname>
+        <initializer>= &quot;association&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="92" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a96d6cbcaa7a29defd625fffad95a5798" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::ELEMENT_TYPE</definition>
+        <argsstring></argsstring>
+        <name>ELEMENT_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::ELEMENT_TYPE</qualifiedname>
+        <initializer>= &quot;element&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="93" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a640fb750049077dd124656864003b4d9" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::SPECIALIZATION_TYPE</definition>
+        <argsstring></argsstring>
+        <name>SPECIALIZATION_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::SPECIALIZATION_TYPE</qualifiedname>
+        <initializer>= &quot;specialization&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="94" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a26b61249a6dd4f8ce6b30c419dcdcc84" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::PACKAGE_TYPE</definition>
+        <argsstring></argsstring>
+        <name>PACKAGE_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::PACKAGE_TYPE</qualifiedname>
+        <initializer>= &quot;package&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="95" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a9549c61aa727333e5728b4b4780371a5" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::EXPRESSION_TYPE</definition>
+        <argsstring></argsstring>
+        <name>EXPRESSION_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::EXPRESSION_TYPE</qualifiedname>
+        <initializer>= &quot;expression&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="96" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a90a2603f90642a0eb4d981cc98800210" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::MULTIPLICITY_TYPE</definition>
+        <argsstring></argsstring>
+        <name>MULTIPLICITY_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::MULTIPLICITY_TYPE</qualifiedname>
+        <initializer>= &quot;multiplicity&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="97" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1ae7cdfce5cb5012474694bc4ec4e0bb20" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::DATA_TYPE_TYPE</definition>
+        <argsstring></argsstring>
+        <name>DATA_TYPE_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::DATA_TYPE_TYPE</qualifiedname>
+        <initializer>= &quot;datatype&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="98" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a86a660b493f50c3de0223fd33e64a0a9" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::RELATIONSHIP_TYPE</definition>
+        <argsstring></argsstring>
+        <name>RELATIONSHIP_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::RELATIONSHIP_TYPE</qualifiedname>
+        <initializer>=&quot;relationship&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="99" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a8a04bea3fdbaa1304b55e8f94f493456" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::COMMENT_TYPE</definition>
+        <argsstring></argsstring>
+        <name>COMMENT_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::COMMENT_TYPE</qualifiedname>
+        <initializer>=&quot;comment&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="100" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a440aa18dd16fc55a60d008d0df735a71" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::DOCUMENTATION_TYPE</definition>
+        <argsstring></argsstring>
+        <name>DOCUMENTATION_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::DOCUMENTATION_TYPE</qualifiedname>
+        <initializer>=&quot;documentation&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="101" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a78de5f175f90a5269cd46d84df38aa38" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::CLASS_TYPE</definition>
+        <argsstring></argsstring>
+        <name>CLASS_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::CLASS_TYPE</qualifiedname>
+        <initializer>= &quot;class&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="102" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a59d01f1ed3d52eb0e12a80082a280e77" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::ANNOTATING_ELEMENT_TYPE</definition>
+        <argsstring></argsstring>
+        <name>ANNOTATING_ELEMENT_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::ANNOTATING_ELEMENT_TYPE</qualifiedname>
+        <initializer>= &quot;annotatingelement&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="103" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1acab5b452f6fe99ac3250790380bb4bd4" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::TEXTUAL_REPRESENTATION_TYPE</definition>
+        <argsstring></argsstring>
+        <name>TEXTUAL_REPRESENTATION_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::TEXTUAL_REPRESENTATION_TYPE</qualifiedname>
+        <initializer>= &quot;textualrepresentation&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="104" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a5f320e9963fa5f0bb2efedec8d42bf7d" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::CLASSIFIER_TYPE</definition>
+        <argsstring></argsstring>
+        <name>CLASSIFIER_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::CLASSIFIER_TYPE</qualifiedname>
+        <initializer>= &quot;classifier&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="105" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a96b687aa184cc7da886a2f6252c6dfb1" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::NAMESPACE_TYPE</definition>
+        <argsstring></argsstring>
+        <name>NAMESPACE_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::NAMESPACE_TYPE</qualifiedname>
+        <initializer>= &quot;namespace&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="106" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a2945efe77e3ed33215390171e509c70e" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::TYPE_TYPE</definition>
+        <argsstring></argsstring>
+        <name>TYPE_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::TYPE_TYPE</qualifiedname>
+        <initializer>= &quot;type&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="107" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1ab8afb6272fa8a686e87d562de6cfa198" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::DIGITAL_TWIN_TYPE</definition>
+        <argsstring></argsstring>
+        <name>DIGITAL_TWIN_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::DIGITAL_TWIN_TYPE</qualifiedname>
+        <initializer>= &quot;digitaltwin&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="108" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a724308f0e9ead55c8348c8c3aa020bc2" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::DATA_TYPE</definition>
+        <argsstring></argsstring>
+        <name>DATA_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::DATA_TYPE</qualifiedname>
+        <initializer>= &quot;data&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="109" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1af52cb28c4bfb603ee2823bf2f0bb6ace" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::DATA_VERSION_TYPE</definition>
+        <argsstring></argsstring>
+        <name>DATA_VERSION_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::DATA_VERSION_TYPE</qualifiedname>
+        <initializer>= &quot;dataversion&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="110" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d33/namespace_sys_m_lv2_1_1_entities_1a0cac0f24fcdaf6da656e1861d8e4148c" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string SysMLv2::Entities::PAYLOAD_TYPE</definition>
+        <argsstring></argsstring>
+        <name>PAYLOAD_TYPE</name>
+        <qualifiedname>SysMLv2::Entities::PAYLOAD_TYPE</qualifiedname>
+        <initializer>= &quot;payload&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/JSONEntities.h" line="111" column="23" bodyfile="rest-api/src/entities/JSONEntities.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="rest-api/src/entities/Branch.cpp" line="11" column="1"/>
+  </compounddef>
+</doxygen>

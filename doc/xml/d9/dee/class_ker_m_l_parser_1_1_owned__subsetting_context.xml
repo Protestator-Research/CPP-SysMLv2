@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Owned_subsettingContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context_1a35f753f467ca66a2ce90412b7cd23501" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Owned_subsettingContext::Owned_subsettingContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Owned_subsettingContext</name>
+        <qualifiedname>KerMLParser::Owned_subsettingContext::Owned_subsettingContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1901" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8987" bodyend="8989"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context_1a7e923eeaece31677bd985da6addf5335" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Owned_subsettingContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Owned_subsettingContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1902" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8996" bodyend="8998"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context_1aebcf3e1199150a901a0ed45732d73257" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d9f/class_ker_m_l_parser_1_1_general__type_context" kindref="compound">General_typeContext</ref> *</type>
+        <definition>KerMLParser::General_typeContext * KerMLParser::Owned_subsettingContext::general_type</definition>
+        <argsstring>()</argsstring>
+        <name>general_type</name>
+        <qualifiedname>KerMLParser::Owned_subsettingContext::general_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1903" column="25" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8991" bodyend="8993"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context_1af0da60fe0a40b800cf8785532b05a622" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Owned_subsettingContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Owned_subsettingContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1905" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9000" bodyend="9004"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context_1a78166540164d612cda6e71828eed0c75" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Owned_subsettingContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Owned_subsettingContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1906" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9006" bodyend="9010"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Owned_subsettingContext</label>
+        <link refid="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Owned_subsettingContext</label>
+        <link refid="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="1899" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="1899" bodyend="1908"/>
+    <listofallmembers>
+      <member refid="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context_1af0da60fe0a40b800cf8785532b05a622" prot="public" virt="virtual"><scope>KerMLParser::Owned_subsettingContext</scope><name>enterRule</name></member>
+      <member refid="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context_1a78166540164d612cda6e71828eed0c75" prot="public" virt="virtual"><scope>KerMLParser::Owned_subsettingContext</scope><name>exitRule</name></member>
+      <member refid="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context_1aebcf3e1199150a901a0ed45732d73257" prot="public" virt="non-virtual"><scope>KerMLParser::Owned_subsettingContext</scope><name>general_type</name></member>
+      <member refid="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context_1a7e923eeaece31677bd985da6addf5335" prot="public" virt="virtual"><scope>KerMLParser::Owned_subsettingContext</scope><name>getRuleIndex</name></member>
+      <member refid="d9/dee/class_ker_m_l_parser_1_1_owned__subsetting_context_1a35f753f467ca66a2ce90412b7cd23501" prot="public" virt="non-virtual"><scope>KerMLParser::Owned_subsettingContext</scope><name>Owned_subsettingContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

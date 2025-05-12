@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dc/df6/class_ker_m_l_parser_1_1_item__flow__redefinition_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Item_flow_redefinitionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/df6/class_ker_m_l_parser_1_1_item__flow__redefinition_context_1a3c9f3a7a1062da3717c1f092fd7317da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Item_flow_redefinitionContext::Item_flow_redefinitionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Item_flow_redefinitionContext</name>
+        <qualifiedname>KerMLParser::Item_flow_redefinitionContext::Item_flow_redefinitionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3970" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18897" bodyend="18899"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/df6/class_ker_m_l_parser_1_1_item__flow__redefinition_context_1a8c4221edd466be51ee9f2e764df498b3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Item_flow_redefinitionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Item_flow_redefinitionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3971" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18906" bodyend="18908"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/df6/class_ker_m_l_parser_1_1_item__flow__redefinition_context_1ae852677642dc024a71e4fc934eeb4e85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>KerMLParser::Qualified_nameContext * KerMLParser::Item_flow_redefinitionContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>KerMLParser::Item_flow_redefinitionContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3972" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18901" bodyend="18903"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/df6/class_ker_m_l_parser_1_1_item__flow__redefinition_context_1a29fd66b3b12f482c202ec5382f3b1084" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Item_flow_redefinitionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Item_flow_redefinitionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3974" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18910" bodyend="18914"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/df6/class_ker_m_l_parser_1_1_item__flow__redefinition_context_1a2f247be343db993a9983be8d015b2bb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Item_flow_redefinitionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Item_flow_redefinitionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3975" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18916" bodyend="18920"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Item_flow_redefinitionContext</label>
+        <link refid="dc/df6/class_ker_m_l_parser_1_1_item__flow__redefinition_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Item_flow_redefinitionContext</label>
+        <link refid="dc/df6/class_ker_m_l_parser_1_1_item__flow__redefinition_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="3968" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="3968" bodyend="3977"/>
+    <listofallmembers>
+      <member refid="dc/df6/class_ker_m_l_parser_1_1_item__flow__redefinition_context_1a29fd66b3b12f482c202ec5382f3b1084" prot="public" virt="virtual"><scope>KerMLParser::Item_flow_redefinitionContext</scope><name>enterRule</name></member>
+      <member refid="dc/df6/class_ker_m_l_parser_1_1_item__flow__redefinition_context_1a2f247be343db993a9983be8d015b2bb8" prot="public" virt="virtual"><scope>KerMLParser::Item_flow_redefinitionContext</scope><name>exitRule</name></member>
+      <member refid="dc/df6/class_ker_m_l_parser_1_1_item__flow__redefinition_context_1a8c4221edd466be51ee9f2e764df498b3" prot="public" virt="virtual"><scope>KerMLParser::Item_flow_redefinitionContext</scope><name>getRuleIndex</name></member>
+      <member refid="dc/df6/class_ker_m_l_parser_1_1_item__flow__redefinition_context_1a3c9f3a7a1062da3717c1f092fd7317da" prot="public" virt="non-virtual"><scope>KerMLParser::Item_flow_redefinitionContext</scope><name>Item_flow_redefinitionContext</name></member>
+      <member refid="dc/df6/class_ker_m_l_parser_1_1_item__flow__redefinition_context_1ae852677642dc024a71e4fc934eeb4e85" prot="public" virt="non-virtual"><scope>KerMLParser::Item_flow_redefinitionContext</scope><name>qualified_name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

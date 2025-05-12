@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Relationship_owned_elementContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context_1ad846b969814fbe87496bc3437215cb8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Relationship_owned_elementContext::Relationship_owned_elementContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Relationship_owned_elementContext</name>
+        <qualifiedname>KerMLParser::Relationship_owned_elementContext::Relationship_owned_elementContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="521" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1443" bodyend="1445"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context_1aa4e4112722873ce4d66dd5cea0f5c6ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Relationship_owned_elementContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Relationship_owned_elementContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="522" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1456" bodyend="1458"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context_1ac2abaaea146bdff9108f84c54bc10e10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d07/class_ker_m_l_parser_1_1_owned__related__element_context" kindref="compound">Owned_related_elementContext</ref> *</type>
+        <definition>KerMLParser::Owned_related_elementContext * KerMLParser::Relationship_owned_elementContext::owned_related_element</definition>
+        <argsstring>()</argsstring>
+        <name>owned_related_element</name>
+        <qualifiedname>KerMLParser::Relationship_owned_elementContext::owned_related_element</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="523" column="34" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1447" bodyend="1449"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context_1a25efeb2192141a3b8f6452cca30112f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d92/class_ker_m_l_parser_1_1_owned__annotation_context" kindref="compound">Owned_annotationContext</ref> *</type>
+        <definition>KerMLParser::Owned_annotationContext * KerMLParser::Relationship_owned_elementContext::owned_annotation</definition>
+        <argsstring>()</argsstring>
+        <name>owned_annotation</name>
+        <qualifiedname>KerMLParser::Relationship_owned_elementContext::owned_annotation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="524" column="29" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1451" bodyend="1453"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context_1a4b291becd804e9dd86f84afea15742b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Relationship_owned_elementContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Relationship_owned_elementContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="526" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1460" bodyend="1464"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context_1abba396249e25067224826d3ea47d2c4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Relationship_owned_elementContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Relationship_owned_elementContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="527" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1466" bodyend="1470"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Relationship_owned_elementContext</label>
+        <link refid="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Relationship_owned_elementContext</label>
+        <link refid="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="519" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="519" bodyend="529"/>
+    <listofallmembers>
+      <member refid="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context_1a4b291becd804e9dd86f84afea15742b7" prot="public" virt="virtual"><scope>KerMLParser::Relationship_owned_elementContext</scope><name>enterRule</name></member>
+      <member refid="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context_1abba396249e25067224826d3ea47d2c4c" prot="public" virt="virtual"><scope>KerMLParser::Relationship_owned_elementContext</scope><name>exitRule</name></member>
+      <member refid="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context_1aa4e4112722873ce4d66dd5cea0f5c6ea" prot="public" virt="virtual"><scope>KerMLParser::Relationship_owned_elementContext</scope><name>getRuleIndex</name></member>
+      <member refid="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context_1a25efeb2192141a3b8f6452cca30112f9" prot="public" virt="non-virtual"><scope>KerMLParser::Relationship_owned_elementContext</scope><name>owned_annotation</name></member>
+      <member refid="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context_1ac2abaaea146bdff9108f84c54bc10e10" prot="public" virt="non-virtual"><scope>KerMLParser::Relationship_owned_elementContext</scope><name>owned_related_element</name></member>
+      <member refid="d6/d8f/class_ker_m_l_parser_1_1_relationship__owned__element_context_1ad846b969814fbe87496bc3437215cb8f" prot="public" virt="non-virtual"><scope>KerMLParser::Relationship_owned_elementContext</scope><name>Relationship_owned_elementContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

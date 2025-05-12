@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Conditional_binary_operator_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context_1ac0ebf7e4330dcec2bee81fbd7f6d2b34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Conditional_binary_operator_expressionContext::Conditional_binary_operator_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Conditional_binary_operator_expressionContext</name>
+        <qualifiedname>KerMLParser::Conditional_binary_operator_expressionContext::Conditional_binary_operator_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2604" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12580" bodyend="12582"/>
+      </memberdef>
+      <memberdef kind="function" id="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context_1a35b99410ce9cc9f0739bd4dcc99d7e63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Conditional_binary_operator_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Conditional_binary_operator_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2605" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12597" bodyend="12599"/>
+      </memberdef>
+      <memberdef kind="function" id="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context_1afe7736a17c4568c92bd8000c5fd6fd67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d16/class_ker_m_l_parser_1_1_argument__member_context" kindref="compound">Argument_memberContext</ref> *</type>
+        <definition>KerMLParser::Argument_memberContext * KerMLParser::Conditional_binary_operator_expressionContext::argument_member</definition>
+        <argsstring>()</argsstring>
+        <name>argument_member</name>
+        <qualifiedname>KerMLParser::Conditional_binary_operator_expressionContext::argument_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2606" column="28" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12584" bodyend="12586"/>
+      </memberdef>
+      <memberdef kind="function" id="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context_1a0c7a9ebae577a7f8b3737f0af772ac05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/da8/class_ker_m_l_parser_1_1_conditional__binary__operator_context" kindref="compound">Conditional_binary_operatorContext</ref> *</type>
+        <definition>KerMLParser::Conditional_binary_operatorContext * KerMLParser::Conditional_binary_operator_expressionContext::conditional_binary_operator</definition>
+        <argsstring>()</argsstring>
+        <name>conditional_binary_operator</name>
+        <qualifiedname>KerMLParser::Conditional_binary_operator_expressionContext::conditional_binary_operator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2607" column="40" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12588" bodyend="12590"/>
+      </memberdef>
+      <memberdef kind="function" id="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context_1ad33ba9ba6111dbfb05c84896e291cf8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/de9/class_ker_m_l_parser_1_1_argument__expression__member_context" kindref="compound">Argument_expression_memberContext</ref> *</type>
+        <definition>KerMLParser::Argument_expression_memberContext * KerMLParser::Conditional_binary_operator_expressionContext::argument_expression_member</definition>
+        <argsstring>()</argsstring>
+        <name>argument_expression_member</name>
+        <qualifiedname>KerMLParser::Conditional_binary_operator_expressionContext::argument_expression_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2608" column="39" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12592" bodyend="12594"/>
+      </memberdef>
+      <memberdef kind="function" id="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context_1aaaacb2572d85d6bbb777ccfeeb96c61b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Conditional_binary_operator_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Conditional_binary_operator_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2610" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12601" bodyend="12605"/>
+      </memberdef>
+      <memberdef kind="function" id="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context_1ae263c0589661999a7264a6e337f64978" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Conditional_binary_operator_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Conditional_binary_operator_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2611" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12607" bodyend="12611"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Conditional_binary_operator_expressionContext</label>
+        <link refid="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Conditional_binary_operator_expressionContext</label>
+        <link refid="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2602" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2602" bodyend="2613"/>
+    <listofallmembers>
+      <member refid="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context_1ad33ba9ba6111dbfb05c84896e291cf8d" prot="public" virt="non-virtual"><scope>KerMLParser::Conditional_binary_operator_expressionContext</scope><name>argument_expression_member</name></member>
+      <member refid="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context_1afe7736a17c4568c92bd8000c5fd6fd67" prot="public" virt="non-virtual"><scope>KerMLParser::Conditional_binary_operator_expressionContext</scope><name>argument_member</name></member>
+      <member refid="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context_1a0c7a9ebae577a7f8b3737f0af772ac05" prot="public" virt="non-virtual"><scope>KerMLParser::Conditional_binary_operator_expressionContext</scope><name>conditional_binary_operator</name></member>
+      <member refid="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context_1ac0ebf7e4330dcec2bee81fbd7f6d2b34" prot="public" virt="non-virtual"><scope>KerMLParser::Conditional_binary_operator_expressionContext</scope><name>Conditional_binary_operator_expressionContext</name></member>
+      <member refid="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context_1aaaacb2572d85d6bbb777ccfeeb96c61b" prot="public" virt="virtual"><scope>KerMLParser::Conditional_binary_operator_expressionContext</scope><name>enterRule</name></member>
+      <member refid="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context_1ae263c0589661999a7264a6e337f64978" prot="public" virt="virtual"><scope>KerMLParser::Conditional_binary_operator_expressionContext</scope><name>exitRule</name></member>
+      <member refid="de/de8/class_ker_m_l_parser_1_1_conditional__binary__operator__expression_context_1a35b99410ce9cc9f0739bd4dcc99d7e63" prot="public" virt="virtual"><scope>KerMLParser::Conditional_binary_operator_expressionContext</scope><name>getRuleIndex</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

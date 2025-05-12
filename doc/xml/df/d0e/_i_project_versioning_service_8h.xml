@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="df/d0e/_i_project_versioning_service_8h" kind="file" language="C++">
+    <compoundname>IProjectVersioningService.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">string</includes>
+    <includes local="no">boost/uuid/uuid.hpp</includes>
+    <includes refid="d3/dcd/_change_type_8h" local="no">entities/ChangeType.h</includes>
+    <includes refid="d8/d0c/sysmlv2service__global_8h" local="yes">../sysmlv2service_global.h</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>entities/ChangeType.h</label>
+        <link refid="d3/dcd/_change_type_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>../sysmlv2rest_global.h</label>
+        <link refid="d6/d17/sysmlv2rest__global_8h_source"/>
+      </node>
+      <node id="1">
+        <label>services/src/interfaces/IProjectVersioningService.h</label>
+        <link refid="df/d0e/_i_project_versioning_service_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>../sysmlv2service_global.h</label>
+        <link refid="d8/d0c/sysmlv2service__global_8h_source"/>
+      </node>
+      <node id="4">
+        <label>boost/uuid/uuid.hpp</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service" prot="public">SysMLv2::API::IProjectVersioningService</innerclass>
+    <innernamespace refid="d7/dba/namespace_sys_m_lv2">SysMLv2</innernamespace>
+    <innernamespace refid="d4/d33/namespace_sys_m_lv2_1_1_entities">SysMLv2::Entities</innernamespace>
+    <innernamespace refid="da/dd6/namespace_sys_m_lv2_1_1_a_p_i">SysMLv2::API</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Moritz<sp/>Herzog<sp/>on<sp/>10.03.25.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Constants,<sp/>Definitions,<sp/>Pragmas</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CPP_SYSMLV2_LIB_IPROJECTVERSIONINGSERVICE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CPP_SYSMLV2_LIB_IPROJECTVERSIONINGSERVICE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>External<sp/>Classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/uuid/uuid.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Internal<sp/>Classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;entities/ChangeType.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../sysmlv2service_global.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Forwarding</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="d4/d33/namespace_sys_m_lv2_1_1_entities" kindref="compound">SysMLv2::Entities</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">Commit</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">Project</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">Branch</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" kindref="compound">DataVersion</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d7/dab/class_sys_m_lv2_1_1_entities_1_1_tag" kindref="compound">Tag</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="dd/d36/class_sys_m_lv2_1_1_entities_1_1_merge_result" kindref="compound">MergeResult</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">Data</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">DataDifference;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="da/dd6/namespace_sys_m_lv2_1_1_a_p_i" kindref="compound">SysMLv2::API</ref><sp/>{</highlight></codeline>
+<codeline lineno="49" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">SYSMLV2SERVICE_EXPORT<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service" kindref="compound">IProjectVersioningService</ref>{</highlight></codeline>
+<codeline lineno="55" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ae21942d5131f697e47cf2cbd0de7114b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ae21942d5131f697e47cf2cbd0de7114b" kindref="member">getCommits</ref>(std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a8b9e66047199bab9ca078740734ab26e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a8b9e66047199bab9ca078740734ab26e" kindref="member">getHeadCommit</ref>(std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Branch&gt;<sp/>branch)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a2199f633b8321e446d8cd6c0dbe9e7c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a2199f633b8321e446d8cd6c0dbe9e7c9" kindref="member">getCommitById</ref>(std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project,<sp/>boost::uuids::uuid<sp/>commitId)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a5750777286948eef8640ac9c42b11204" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a5750777286948eef8640ac9c42b11204" kindref="member">createCommit</ref>(std::shared_ptr&lt;SysMLv2::Entities::DataVersion&gt;<sp/>change,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Branch&gt;<sp/>branch,<sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;&gt;<sp/>previousCommits,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a74b050e9fa93e33ad4c3b8d0474cf76d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a74b050e9fa93e33ad4c3b8d0474cf76d" kindref="member">createCommit</ref>(std::shared_ptr&lt;SysMLv2::Entities::DataVersion&gt;<sp/>change,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Branch&gt;<sp/>branch,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1abfd84006da2ad2b30e8d22fbbefcef18" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1abfd84006da2ad2b30e8d22fbbefcef18" kindref="member">createCommit</ref>(std::shared_ptr&lt;SysMLv2::Entities::DataVersion&gt;<sp/>change,<sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;&gt;<sp/>previousCommits,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ae9efc8f85d964cc81d45b7b3022c0daa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ae9efc8f85d964cc81d45b7b3022c0daa" kindref="member">createCommit</ref>(std::shared_ptr&lt;SysMLv2::Entities::DataVersion&gt;<sp/>change,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a5db644cb69f2d4238bbb4fde637260e9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::DataVersion&gt;&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a5db644cb69f2d4238bbb4fde637260e9" kindref="member">getCommitChange</ref>(std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/>commit,<sp/>std::vector&lt;SysMLv2::Entities::ChangeType&gt;<sp/>)<sp/>=<sp/>0<sp/>;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ad5aed6d4e6406ee763e405b20ce067c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::DataVersion&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ad5aed6d4e6406ee763e405b20ce067c1" kindref="member">getCommitChangeById</ref>(<ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref>*<sp/>project,<sp/><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref>*<sp/>commit,<sp/>boost::uuids::uuid<sp/>changeId<sp/>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a830a86fcb5dba953a9565abe753f33c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::Branch&gt;&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a830a86fcb5dba953a9565abe753f33c6" kindref="member">getBranches</ref>(<sp/><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref>*<sp/>project<sp/>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1adcd1823b3c38ecefb89f83ac20ee156e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Branch&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1adcd1823b3c38ecefb89f83ac20ee156e" kindref="member">getBranchById</ref>(<ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref>*<sp/>project,<sp/>boost::uuids::uuid<sp/>branchId)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a306d88518e25fe9ccff5125752a4048d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Branch&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a306d88518e25fe9ccff5125752a4048d" kindref="member">getDefaultBranch</ref>(<ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref>*<sp/>project)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a29ee13076332ea0c4291bc3203857b6e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a29ee13076332ea0c4291bc3203857b6e" kindref="member">setDefaultBranch</ref>(<ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref>*<sp/>project,<sp/>boost::uuids::uuid<sp/>branchId)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ac7d23a7513eb0e3b1345c0d734c197db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Branch&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ac7d23a7513eb0e3b1345c0d734c197db" kindref="member">createBranch</ref>(<ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref>*<sp/>project,<sp/>std::string<sp/>branchName,<sp/><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref>*<sp/>head)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1af9432d4dfb6a3ea8642690e1550dede4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Branch&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1af9432d4dfb6a3ea8642690e1550dede4" kindref="member">deleteBranch</ref>(<ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref>*<sp/>project,<sp/>boost::uuids::uuid<sp/>branchId)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a7979eb8187c4014fe341af292b2d279f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::Tag&gt;&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a7979eb8187c4014fe341af292b2d279f" kindref="member">getTags</ref>(<ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref>*<sp/>project)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ad493844a9a731cd499d0eef57b27624f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Tag&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ad493844a9a731cd499d0eef57b27624f" kindref="member">getTagById</ref>(<ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref>*<sp/>project,<sp/>boost::uuids::uuid<sp/>tagId)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a0bc679b6bbd03101ffba9ea1b436dfde" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a0bc679b6bbd03101ffba9ea1b436dfde" kindref="member">getTaggedCommit</ref>(<ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref>*<sp/>project,<sp/><ref refid="d7/dab/class_sys_m_lv2_1_1_entities_1_1_tag" kindref="compound">SysMLv2::Entities::Tag</ref>*<sp/>tag)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a0152cd2eebc1c99f60c46593604348b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Tag&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a0152cd2eebc1c99f60c46593604348b6" kindref="member">createTag</ref>(<ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref>*<sp/>project,<sp/>std::string<sp/>tagName,<sp/><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref>*<sp/>taggedCommit)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a26873f49b4c48ca34eb7ac88bdeeda96" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::MergeResult&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a26873f49b4c48ca34eb7ac88bdeeda96" kindref="member">mergeIntoBranch</ref>(<ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">SysMLv2::Entities::Branch</ref>*<sp/>baseBranch,<sp/>std::vector&lt;SysMLv2::Entities::Commit&gt;<sp/>commitsToMerge,<sp/><ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">SysMLv2::Entities::Data</ref>*<sp/>resolution,<sp/>std::string<sp/>description)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222" refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1acd7eb68ce209954eb02c6c109fa5d8b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::DataDifference&gt;&gt;<sp/><ref refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1acd7eb68ce209954eb02c6c109fa5d8b6" kindref="member">diffCommits</ref>(<ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref>*<sp/>baseCommit,<sp/><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref>*<sp/>compareCommit,<sp/>std::vector&lt;SysMLv2::Entities::ChangeType&gt;<sp/>changeType)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="224"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//CPP_SYSMLV2_LIB_IPROJECTVERSIONINGSERVICE_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="services/src/interfaces/IProjectVersioningService.h"/>
+  </compounddef>
+</doxygen>

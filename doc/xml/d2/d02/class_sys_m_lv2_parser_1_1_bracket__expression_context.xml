@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Bracket_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context_1ad0a7364ce252fd51480ffec2da8c5305" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Bracket_expressionContext::Bracket_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Bracket_expressionContext</name>
+        <qualifiedname>SysMLv2Parser::Bracket_expressionContext::Bracket_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8009" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="39451" bodyend="39453"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context_1a7dcd792c10839a02f7e1ba25684a04f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Bracket_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Bracket_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8010" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="39468" bodyend="39470"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context_1a15572f59b7f1a578632438028a1433a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Bracket_expressionContext::SYMBOL_SQUARE_BRACKET_OPEN</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_SQUARE_BRACKET_OPEN</name>
+        <qualifiedname>SysMLv2Parser::Bracket_expressionContext::SYMBOL_SQUARE_BRACKET_OPEN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8011" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="39455" bodyend="39457"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context_1afa3b4fdb721df6dceb3d0f8832dd5c23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d89/class_sys_m_lv2_parser_1_1_sequence__expression__list__member_context" kindref="compound">Sequence_expression_list_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Sequence_expression_list_memberContext * SysMLv2Parser::Bracket_expressionContext::sequence_expression_list_member</definition>
+        <argsstring>()</argsstring>
+        <name>sequence_expression_list_member</name>
+        <qualifiedname>SysMLv2Parser::Bracket_expressionContext::sequence_expression_list_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8012" column="44" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="39459" bodyend="39461"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context_1a77a5811723fce9b741e941a8a0db29fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Bracket_expressionContext::SYMBOL_SQUARE_BRACKET_CLOSE</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_SQUARE_BRACKET_CLOSE</name>
+        <qualifiedname>SysMLv2Parser::Bracket_expressionContext::SYMBOL_SQUARE_BRACKET_CLOSE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8013" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="39463" bodyend="39465"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context_1aa977014cd97545451f76f0ebb90e3ee1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Bracket_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Bracket_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8015" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="39472" bodyend="39476"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context_1a2d20a5bcbb79c01ea3b3065b2ef72efe" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Bracket_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Bracket_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8016" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="39478" bodyend="39482"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Bracket_expressionContext</label>
+        <link refid="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Bracket_expressionContext</label>
+        <link refid="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8007" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="8007" bodyend="8018"/>
+    <listofallmembers>
+      <member refid="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context_1ad0a7364ce252fd51480ffec2da8c5305" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Bracket_expressionContext</scope><name>Bracket_expressionContext</name></member>
+      <member refid="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context_1aa977014cd97545451f76f0ebb90e3ee1" prot="public" virt="virtual"><scope>SysMLv2Parser::Bracket_expressionContext</scope><name>enterRule</name></member>
+      <member refid="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context_1a2d20a5bcbb79c01ea3b3065b2ef72efe" prot="public" virt="virtual"><scope>SysMLv2Parser::Bracket_expressionContext</scope><name>exitRule</name></member>
+      <member refid="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context_1a7dcd792c10839a02f7e1ba25684a04f3" prot="public" virt="virtual"><scope>SysMLv2Parser::Bracket_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context_1afa3b4fdb721df6dceb3d0f8832dd5c23" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Bracket_expressionContext</scope><name>sequence_expression_list_member</name></member>
+      <member refid="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context_1a77a5811723fce9b741e941a8a0db29fa" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Bracket_expressionContext</scope><name>SYMBOL_SQUARE_BRACKET_CLOSE</name></member>
+      <member refid="d2/d02/class_sys_m_lv2_parser_1_1_bracket__expression_context_1a15572f59b7f1a578632438028a1433a9" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Bracket_expressionContext</scope><name>SYMBOL_SQUARE_BRACKET_OPEN</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

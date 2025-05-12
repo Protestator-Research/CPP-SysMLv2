@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Owned_expressionsContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context_1aa206a1166a0b4a7bdd383b68a8a6084b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Owned_expressionsContext::Owned_expressionsContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Owned_expressionsContext</name>
+        <qualifiedname>KerMLParser::Owned_expressionsContext::Owned_expressionsContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2536" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12187" bodyend="12189"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context_1a4482965b229455434f53b0bcf1ce0933" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Owned_expressionsContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Owned_expressionsContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2537" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12200" bodyend="12202"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context_1abcbc1dce708b131f6e015f6c4f73c39b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d0/d40/class_ker_m_l_parser_1_1_owned__expression_context" kindref="compound">Owned_expressionContext</ref> * &gt;</type>
+        <definition>std::vector&lt; KerMLParser::Owned_expressionContext * &gt; KerMLParser::Owned_expressionsContext::owned_expression</definition>
+        <argsstring>()</argsstring>
+        <name>owned_expression</name>
+        <qualifiedname>KerMLParser::Owned_expressionsContext::owned_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2538" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12191" bodyend="12193"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context_1ae824a9b5c4e4581a8abc5479644096ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/d40/class_ker_m_l_parser_1_1_owned__expression_context" kindref="compound">Owned_expressionContext</ref> *</type>
+        <definition>KerMLParser::Owned_expressionContext * KerMLParser::Owned_expressionsContext::owned_expression</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>owned_expression</name>
+        <qualifiedname>KerMLParser::Owned_expressionsContext::owned_expression</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2539" column="29" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12195" bodyend="12197"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context_1a061cbf381a57a08af3823c76e4242b94" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Owned_expressionsContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Owned_expressionsContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2541" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12204" bodyend="12208"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context_1a9c410731f2ef10cbb98dbe4a855ea2b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Owned_expressionsContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Owned_expressionsContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2542" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12210" bodyend="12214"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Owned_expressionsContext</label>
+        <link refid="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Owned_expressionsContext</label>
+        <link refid="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2534" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2534" bodyend="2544"/>
+    <listofallmembers>
+      <member refid="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context_1a061cbf381a57a08af3823c76e4242b94" prot="public" virt="virtual"><scope>KerMLParser::Owned_expressionsContext</scope><name>enterRule</name></member>
+      <member refid="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context_1a9c410731f2ef10cbb98dbe4a855ea2b5" prot="public" virt="virtual"><scope>KerMLParser::Owned_expressionsContext</scope><name>exitRule</name></member>
+      <member refid="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context_1a4482965b229455434f53b0bcf1ce0933" prot="public" virt="virtual"><scope>KerMLParser::Owned_expressionsContext</scope><name>getRuleIndex</name></member>
+      <member refid="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context_1abcbc1dce708b131f6e015f6c4f73c39b" prot="public" virt="non-virtual"><scope>KerMLParser::Owned_expressionsContext</scope><name>owned_expression</name></member>
+      <member refid="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context_1ae824a9b5c4e4581a8abc5479644096ec" prot="public" virt="non-virtual"><scope>KerMLParser::Owned_expressionsContext</scope><name>owned_expression</name></member>
+      <member refid="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context_1aa206a1166a0b4a7bdd383b68a8a6084b" prot="public" virt="non-virtual"><scope>KerMLParser::Owned_expressionsContext</scope><name>Owned_expressionsContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

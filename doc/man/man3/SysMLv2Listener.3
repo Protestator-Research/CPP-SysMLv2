@@ -1,0 +1,3211 @@
+.TH "SysMLv2Listener" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2Listener
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <SysMLv2Listener\&.h>\fP
+.PP
+Inherits antlr4::tree::ParseTreeListener\&.
+.PP
+Inherited by \fBSysMLv2BaseListener\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBenterStart\fP (\fBSysMLv2Parser::StartContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitStart\fP (\fBSysMLv2Parser::StartContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterStart_element\fP (\fBSysMLv2Parser::Start_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitStart_element\fP (\fBSysMLv2Parser::Start_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterStartRule\fP (\fBSysMLv2Parser::StartRuleContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitStartRule\fP (\fBSysMLv2Parser::StartRuleContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRelationship_body\fP (\fBSysMLv2Parser::Relationship_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRelationship_body\fP (\fBSysMLv2Parser::Relationship_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDependency\fP (\fBSysMLv2Parser::DependencyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDependency\fP (\fBSysMLv2Parser::DependencyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDependency_declaration\fP (\fBSysMLv2Parser::Dependency_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDependency_declaration\fP (\fBSysMLv2Parser::Dependency_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAnnotation\fP (\fBSysMLv2Parser::AnnotationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAnnotation\fP (\fBSysMLv2Parser::AnnotationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_annotation\fP (\fBSysMLv2Parser::Owned_annotationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_annotation\fP (\fBSysMLv2Parser::Owned_annotationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAnnotating_member\fP (\fBSysMLv2Parser::Annotating_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAnnotating_member\fP (\fBSysMLv2Parser::Annotating_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAnnotating_element\fP (\fBSysMLv2Parser::Annotating_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAnnotating_element\fP (\fBSysMLv2Parser::Annotating_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterComment\fP (\fBSysMLv2Parser::CommentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitComment\fP (\fBSysMLv2Parser::CommentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDocumentation\fP (\fBSysMLv2Parser::DocumentationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDocumentation\fP (\fBSysMLv2Parser::DocumentationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTextual_representation\fP (\fBSysMLv2Parser::Textual_representationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTextual_representation\fP (\fBSysMLv2Parser::Textual_representationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRoot_namespace\fP (\fBSysMLv2Parser::Root_namespaceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRoot_namespace\fP (\fBSysMLv2Parser::Root_namespaceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPackage\fP (\fBSysMLv2Parser::PackageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPackage\fP (\fBSysMLv2Parser::PackageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPackage_body\fP (\fBSysMLv2Parser::Package_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPackage_body\fP (\fBSysMLv2Parser::Package_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPackage_body_element\fP (\fBSysMLv2Parser::Package_body_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPackage_body_element\fP (\fBSysMLv2Parser::Package_body_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPackage_member\fP (\fBSysMLv2Parser::Package_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPackage_member\fP (\fBSysMLv2Parser::Package_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAlias_member\fP (\fBSysMLv2Parser::Alias_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAlias_member\fP (\fBSysMLv2Parser::Alias_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDefinition_element\fP (\fBSysMLv2Parser::Definition_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDefinition_element\fP (\fBSysMLv2Parser::Definition_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterUsage_element\fP (\fBSysMLv2Parser::Usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitUsage_element\fP (\fBSysMLv2Parser::Usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBasic_definition_prefix\fP (\fBSysMLv2Parser::Basic_definition_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBasic_definition_prefix\fP (\fBSysMLv2Parser::Basic_definition_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDefinition_extension_keyword\fP (\fBSysMLv2Parser::Definition_extension_keywordContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDefinition_extension_keyword\fP (\fBSysMLv2Parser::Definition_extension_keywordContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDefinition_prefix\fP (\fBSysMLv2Parser::Definition_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDefinition_prefix\fP (\fBSysMLv2Parser::Definition_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDefinition\fP (\fBSysMLv2Parser::DefinitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDefinition\fP (\fBSysMLv2Parser::DefinitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDefinition_declaration\fP (\fBSysMLv2Parser::Definition_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDefinition_declaration\fP (\fBSysMLv2Parser::Definition_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDefinition_body\fP (\fBSysMLv2Parser::Definition_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDefinition_body\fP (\fBSysMLv2Parser::Definition_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDefinition_body_item\fP (\fBSysMLv2Parser::Definition_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDefinition_body_item\fP (\fBSysMLv2Parser::Definition_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDefinition_member\fP (\fBSysMLv2Parser::Definition_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDefinition_member\fP (\fBSysMLv2Parser::Definition_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterVariant_usage_member\fP (\fBSysMLv2Parser::Variant_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitVariant_usage_member\fP (\fBSysMLv2Parser::Variant_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_occurrence_usage_member\fP (\fBSysMLv2Parser::Non_occurrence_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_occurrence_usage_member\fP (\fBSysMLv2Parser::Non_occurrence_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOccurrence_usage_member\fP (\fBSysMLv2Parser::Occurrence_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOccurrence_usage_member\fP (\fBSysMLv2Parser::Occurrence_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterStructure_usage_member\fP (\fBSysMLv2Parser::Structure_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitStructure_usage_member\fP (\fBSysMLv2Parser::Structure_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBehavior_usage_member\fP (\fBSysMLv2Parser::Behavior_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBehavior_usage_member\fP (\fBSysMLv2Parser::Behavior_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_direction\fP (\fBSysMLv2Parser::Feature_directionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_direction\fP (\fBSysMLv2Parser::Feature_directionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRef_prefix\fP (\fBSysMLv2Parser::Ref_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRef_prefix\fP (\fBSysMLv2Parser::Ref_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBasic_usage_prefix\fP (\fBSysMLv2Parser::Basic_usage_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBasic_usage_prefix\fP (\fBSysMLv2Parser::Basic_usage_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterEnd_usage_prefix\fP (\fBSysMLv2Parser::End_usage_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitEnd_usage_prefix\fP (\fBSysMLv2Parser::End_usage_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_cross_feature_member\fP (\fBSysMLv2Parser::Owned_cross_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_cross_feature_member\fP (\fBSysMLv2Parser::Owned_cross_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_cross_feature\fP (\fBSysMLv2Parser::Owned_cross_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_cross_feature\fP (\fBSysMLv2Parser::Owned_cross_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterUsage_extention_keyword\fP (\fBSysMLv2Parser::Usage_extention_keywordContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitUsage_extention_keyword\fP (\fBSysMLv2Parser::Usage_extention_keywordContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterUnextended_usage_prefix\fP (\fBSysMLv2Parser::Unextended_usage_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitUnextended_usage_prefix\fP (\fBSysMLv2Parser::Unextended_usage_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterUsage_prefix\fP (\fBSysMLv2Parser::Usage_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitUsage_prefix\fP (\fBSysMLv2Parser::Usage_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterUsage\fP (\fBSysMLv2Parser::UsageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitUsage\fP (\fBSysMLv2Parser::UsageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterUsage_declaration\fP (\fBSysMLv2Parser::Usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitUsage_declaration\fP (\fBSysMLv2Parser::Usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterUsage_completion\fP (\fBSysMLv2Parser::Usage_completionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitUsage_completion\fP (\fBSysMLv2Parser::Usage_completionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterUsage_body\fP (\fBSysMLv2Parser::Usage_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitUsage_body\fP (\fBSysMLv2Parser::Usage_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDefault_reference_usage\fP (\fBSysMLv2Parser::Default_reference_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDefault_reference_usage\fP (\fBSysMLv2Parser::Default_reference_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterReference_usage\fP (\fBSysMLv2Parser::Reference_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitReference_usage\fP (\fBSysMLv2Parser::Reference_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterVariant_reference\fP (\fBSysMLv2Parser::Variant_referenceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitVariant_reference\fP (\fBSysMLv2Parser::Variant_referenceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_occurrence_usage_element\fP (\fBSysMLv2Parser::Non_occurrence_usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_occurrence_usage_element\fP (\fBSysMLv2Parser::Non_occurrence_usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOccurrence_usage_element\fP (\fBSysMLv2Parser::Occurrence_usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOccurrence_usage_element\fP (\fBSysMLv2Parser::Occurrence_usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterStructure_usage_element\fP (\fBSysMLv2Parser::Structure_usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitStructure_usage_element\fP (\fBSysMLv2Parser::Structure_usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBehavior_usage_element\fP (\fBSysMLv2Parser::Behavior_usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBehavior_usage_element\fP (\fBSysMLv2Parser::Behavior_usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterVariant_usage_element\fP (\fBSysMLv2Parser::Variant_usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitVariant_usage_element\fP (\fBSysMLv2Parser::Variant_usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSubsclassification_part\fP (\fBSysMLv2Parser::Subsclassification_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSubsclassification_part\fP (\fBSysMLv2Parser::Subsclassification_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterCrosses\fP (\fBSysMLv2Parser::CrossesContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitCrosses\fP (\fBSysMLv2Parser::CrossesContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_cross_subsetting\fP (\fBSysMLv2Parser::Owned_cross_subsettingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_cross_subsetting\fP (\fBSysMLv2Parser::Owned_cross_subsettingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMultiplicity_part\fP (\fBSysMLv2Parser::Multiplicity_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMultiplicity_part\fP (\fBSysMLv2Parser::Multiplicity_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_multiplicity\fP (\fBSysMLv2Parser::Owned_multiplicityContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_multiplicity\fP (\fBSysMLv2Parser::Owned_multiplicityContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMultiplicity_range\fP (\fBSysMLv2Parser::Multiplicity_rangeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMultiplicity_range\fP (\fBSysMLv2Parser::Multiplicity_rangeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAttribute_definition\fP (\fBSysMLv2Parser::Attribute_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAttribute_definition\fP (\fBSysMLv2Parser::Attribute_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAttribute_usage\fP (\fBSysMLv2Parser::Attribute_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAttribute_usage\fP (\fBSysMLv2Parser::Attribute_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterEnumeration_definition\fP (\fBSysMLv2Parser::Enumeration_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitEnumeration_definition\fP (\fBSysMLv2Parser::Enumeration_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterEnumeration_body\fP (\fBSysMLv2Parser::Enumeration_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitEnumeration_body\fP (\fBSysMLv2Parser::Enumeration_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterEnumeration_usage_member\fP (\fBSysMLv2Parser::Enumeration_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitEnumeration_usage_member\fP (\fBSysMLv2Parser::Enumeration_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterEnumerated_value\fP (\fBSysMLv2Parser::Enumerated_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitEnumerated_value\fP (\fBSysMLv2Parser::Enumerated_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterEnumeration_usage\fP (\fBSysMLv2Parser::Enumeration_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitEnumeration_usage\fP (\fBSysMLv2Parser::Enumeration_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOccurrence_definition_prefix\fP (\fBSysMLv2Parser::Occurrence_definition_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOccurrence_definition_prefix\fP (\fBSysMLv2Parser::Occurrence_definition_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOccurrence_definition\fP (\fBSysMLv2Parser::Occurrence_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOccurrence_definition\fP (\fBSysMLv2Parser::Occurrence_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterIndividual_definition\fP (\fBSysMLv2Parser::Individual_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitIndividual_definition\fP (\fBSysMLv2Parser::Individual_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOccurrence_usage_prefix\fP (\fBSysMLv2Parser::Occurrence_usage_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOccurrence_usage_prefix\fP (\fBSysMLv2Parser::Occurrence_usage_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOccurrence_usage\fP (\fBSysMLv2Parser::Occurrence_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOccurrence_usage\fP (\fBSysMLv2Parser::Occurrence_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterIndividual_usage\fP (\fBSysMLv2Parser::Individual_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitIndividual_usage\fP (\fBSysMLv2Parser::Individual_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPortion_usage\fP (\fBSysMLv2Parser::Portion_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPortion_usage\fP (\fBSysMLv2Parser::Portion_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPortion_kind\fP (\fBSysMLv2Parser::Portion_kindContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPortion_kind\fP (\fBSysMLv2Parser::Portion_kindContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterEvent_occurrence_usage\fP (\fBSysMLv2Parser::Event_occurrence_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitEvent_occurrence_usage\fP (\fBSysMLv2Parser::Event_occurrence_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSource_succession_member\fP (\fBSysMLv2Parser::Source_succession_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSource_succession_member\fP (\fBSysMLv2Parser::Source_succession_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSouce_succession\fP (\fBSysMLv2Parser::Souce_successionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSouce_succession\fP (\fBSysMLv2Parser::Souce_successionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSource_end_member\fP (\fBSysMLv2Parser::Source_end_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSource_end_member\fP (\fBSysMLv2Parser::Source_end_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSource_end\fP (\fBSysMLv2Parser::Source_endContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSource_end\fP (\fBSysMLv2Parser::Source_endContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_definition\fP (\fBSysMLv2Parser::Item_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_definition\fP (\fBSysMLv2Parser::Item_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_usage\fP (\fBSysMLv2Parser::Item_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_usage\fP (\fBSysMLv2Parser::Item_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPart_definition\fP (\fBSysMLv2Parser::Part_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPart_definition\fP (\fBSysMLv2Parser::Part_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPart_usage\fP (\fBSysMLv2Parser::Part_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPart_usage\fP (\fBSysMLv2Parser::Part_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPort_definition\fP (\fBSysMLv2Parser::Port_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPort_definition\fP (\fBSysMLv2Parser::Port_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPort_usage\fP (\fBSysMLv2Parser::Port_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPort_usage\fP (\fBSysMLv2Parser::Port_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConjungated_port_typing\fP (\fBSysMLv2Parser::Conjungated_port_typingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConjungated_port_typing\fP (\fBSysMLv2Parser::Conjungated_port_typingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConnection_definition\fP (\fBSysMLv2Parser::Connection_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConnection_definition\fP (\fBSysMLv2Parser::Connection_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConnection_usage\fP (\fBSysMLv2Parser::Connection_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConnection_usage\fP (\fBSysMLv2Parser::Connection_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConnector_part\fP (\fBSysMLv2Parser::Connector_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConnector_part\fP (\fBSysMLv2Parser::Connector_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBinary_connector_part\fP (\fBSysMLv2Parser::Binary_connector_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBinary_connector_part\fP (\fBSysMLv2Parser::Binary_connector_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNary_connector_part\fP (\fBSysMLv2Parser::Nary_connector_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNary_connector_part\fP (\fBSysMLv2Parser::Nary_connector_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConnector_end_member\fP (\fBSysMLv2Parser::Connector_end_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConnector_end_member\fP (\fBSysMLv2Parser::Connector_end_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConnecotr_end\fP (\fBSysMLv2Parser::Connecotr_endContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConnecotr_end\fP (\fBSysMLv2Parser::Connecotr_endContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_cross_multiplicity_member\fP (\fBSysMLv2Parser::Owned_cross_multiplicity_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_cross_multiplicity_member\fP (\fBSysMLv2Parser::Owned_cross_multiplicity_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_cross_multiplicity\fP (\fBSysMLv2Parser::Owned_cross_multiplicityContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_cross_multiplicity\fP (\fBSysMLv2Parser::Owned_cross_multiplicityContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBinding_connector_as_usage\fP (\fBSysMLv2Parser::Binding_connector_as_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBinding_connector_as_usage\fP (\fBSysMLv2Parser::Binding_connector_as_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSuccession_as_usage\fP (\fBSysMLv2Parser::Succession_as_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSuccession_as_usage\fP (\fBSysMLv2Parser::Succession_as_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInterface_definition\fP (\fBSysMLv2Parser::Interface_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInterface_definition\fP (\fBSysMLv2Parser::Interface_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInterface_body\fP (\fBSysMLv2Parser::Interface_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInterface_body\fP (\fBSysMLv2Parser::Interface_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInterface_body_item\fP (\fBSysMLv2Parser::Interface_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInterface_body_item\fP (\fBSysMLv2Parser::Interface_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInterface_non_occurrence_usage_member\fP (\fBSysMLv2Parser::Interface_non_occurrence_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInterface_non_occurrence_usage_member\fP (\fBSysMLv2Parser::Interface_non_occurrence_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInterface_non_occurrence_usage_element\fP (\fBSysMLv2Parser::Interface_non_occurrence_usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInterface_non_occurrence_usage_element\fP (\fBSysMLv2Parser::Interface_non_occurrence_usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInterface_occurrence_usage_member\fP (\fBSysMLv2Parser::Interface_occurrence_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInterface_occurrence_usage_member\fP (\fBSysMLv2Parser::Interface_occurrence_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInterface_occurrence_usage_element\fP (\fBSysMLv2Parser::Interface_occurrence_usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInterface_occurrence_usage_element\fP (\fBSysMLv2Parser::Interface_occurrence_usage_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDefault_interface_end\fP (\fBSysMLv2Parser::Default_interface_endContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDefault_interface_end\fP (\fBSysMLv2Parser::Default_interface_endContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInterface_usage\fP (\fBSysMLv2Parser::Interface_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInterface_usage\fP (\fBSysMLv2Parser::Interface_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInterface_usage_declaration\fP (\fBSysMLv2Parser::Interface_usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInterface_usage_declaration\fP (\fBSysMLv2Parser::Interface_usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInterface_part\fP (\fBSysMLv2Parser::Interface_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInterface_part\fP (\fBSysMLv2Parser::Interface_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBinary_interface_part\fP (\fBSysMLv2Parser::Binary_interface_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBinary_interface_part\fP (\fBSysMLv2Parser::Binary_interface_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNary_interface_part\fP (\fBSysMLv2Parser::Nary_interface_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNary_interface_part\fP (\fBSysMLv2Parser::Nary_interface_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInterface_end_member\fP (\fBSysMLv2Parser::Interface_end_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInterface_end_member\fP (\fBSysMLv2Parser::Interface_end_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInterface_end\fP (\fBSysMLv2Parser::Interface_endContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInterface_end\fP (\fBSysMLv2Parser::Interface_endContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAllocation_definition\fP (\fBSysMLv2Parser::Allocation_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAllocation_definition\fP (\fBSysMLv2Parser::Allocation_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAllocation_usage\fP (\fBSysMLv2Parser::Allocation_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAllocation_usage\fP (\fBSysMLv2Parser::Allocation_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAllocation_usage_declaration\fP (\fBSysMLv2Parser::Allocation_usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAllocation_usage_declaration\fP (\fBSysMLv2Parser::Allocation_usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFlow_definition\fP (\fBSysMLv2Parser::Flow_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFlow_definition\fP (\fBSysMLv2Parser::Flow_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMessage\fP (\fBSysMLv2Parser::MessageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMessage\fP (\fBSysMLv2Parser::MessageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMessage_declaration\fP (\fBSysMLv2Parser::Message_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMessage_declaration\fP (\fBSysMLv2Parser::Message_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMessage_event_member\fP (\fBSysMLv2Parser::Message_event_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMessage_event_member\fP (\fBSysMLv2Parser::Message_event_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMessage_event\fP (\fBSysMLv2Parser::Message_eventContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMessage_event\fP (\fBSysMLv2Parser::Message_eventContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFlow_usage\fP (\fBSysMLv2Parser::Flow_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFlow_usage\fP (\fBSysMLv2Parser::Flow_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSuccession_flow_usage\fP (\fBSysMLv2Parser::Succession_flow_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSuccession_flow_usage\fP (\fBSysMLv2Parser::Succession_flow_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFlow_declaration\fP (\fBSysMLv2Parser::Flow_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFlow_declaration\fP (\fBSysMLv2Parser::Flow_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFlow_payload_feature_member\fP (\fBSysMLv2Parser::Flow_payload_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFlow_payload_feature_member\fP (\fBSysMLv2Parser::Flow_payload_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFlow_payload_feature\fP (\fBSysMLv2Parser::Flow_payload_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFlow_payload_feature\fP (\fBSysMLv2Parser::Flow_payload_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPayload_feature\fP (\fBSysMLv2Parser::Payload_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPayload_feature\fP (\fBSysMLv2Parser::Payload_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPayload_feature_specialization_part\fP (\fBSysMLv2Parser::Payload_feature_specialization_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPayload_feature_specialization_part\fP (\fBSysMLv2Parser::Payload_feature_specialization_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFlow_end_member\fP (\fBSysMLv2Parser::Flow_end_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFlow_end_member\fP (\fBSysMLv2Parser::Flow_end_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFlow_end\fP (\fBSysMLv2Parser::Flow_endContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFlow_end\fP (\fBSysMLv2Parser::Flow_endContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFlow_end_subsetting\fP (\fBSysMLv2Parser::Flow_end_subsettingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFlow_end_subsetting\fP (\fBSysMLv2Parser::Flow_end_subsettingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_chain_prefix\fP (\fBSysMLv2Parser::Feature_chain_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_chain_prefix\fP (\fBSysMLv2Parser::Feature_chain_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFlow_feature_member\fP (\fBSysMLv2Parser::Flow_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFlow_feature_member\fP (\fBSysMLv2Parser::Flow_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFlow_feature\fP (\fBSysMLv2Parser::Flow_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFlow_feature\fP (\fBSysMLv2Parser::Flow_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFlow_feature_redefinition\fP (\fBSysMLv2Parser::Flow_feature_redefinitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFlow_feature_redefinition\fP (\fBSysMLv2Parser::Flow_feature_redefinitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAction_definition\fP (\fBSysMLv2Parser::Action_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAction_definition\fP (\fBSysMLv2Parser::Action_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAction_body\fP (\fBSysMLv2Parser::Action_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAction_body\fP (\fBSysMLv2Parser::Action_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAction_body_item\fP (\fBSysMLv2Parser::Action_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAction_body_item\fP (\fBSysMLv2Parser::Action_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_behavior_body_item\fP (\fBSysMLv2Parser::Non_behavior_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_behavior_body_item\fP (\fBSysMLv2Parser::Non_behavior_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAction_behavior_member\fP (\fBSysMLv2Parser::Action_behavior_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAction_behavior_member\fP (\fBSysMLv2Parser::Action_behavior_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInitial_node_member\fP (\fBSysMLv2Parser::Initial_node_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInitial_node_member\fP (\fBSysMLv2Parser::Initial_node_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAction_node_member\fP (\fBSysMLv2Parser::Action_node_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAction_node_member\fP (\fBSysMLv2Parser::Action_node_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAction_target_succession_member\fP (\fBSysMLv2Parser::Action_target_succession_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAction_target_succession_member\fP (\fBSysMLv2Parser::Action_target_succession_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterGuarded_succession_member\fP (\fBSysMLv2Parser::Guarded_succession_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitGuarded_succession_member\fP (\fBSysMLv2Parser::Guarded_succession_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAction_usage\fP (\fBSysMLv2Parser::Action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAction_usage\fP (\fBSysMLv2Parser::Action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAction_usage_declaration\fP (\fBSysMLv2Parser::Action_usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAction_usage_declaration\fP (\fBSysMLv2Parser::Action_usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPerform_action_usage\fP (\fBSysMLv2Parser::Perform_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPerform_action_usage\fP (\fBSysMLv2Parser::Perform_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPerform_action_usage_declaration\fP (\fBSysMLv2Parser::Perform_action_usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPerform_action_usage_declaration\fP (\fBSysMLv2Parser::Perform_action_usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAction_node\fP (\fBSysMLv2Parser::Action_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAction_node\fP (\fBSysMLv2Parser::Action_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAction_node_usage_declaration\fP (\fBSysMLv2Parser::Action_node_usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAction_node_usage_declaration\fP (\fBSysMLv2Parser::Action_node_usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAction_node_prefix\fP (\fBSysMLv2Parser::Action_node_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAction_node_prefix\fP (\fBSysMLv2Parser::Action_node_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterControl_node\fP (\fBSysMLv2Parser::Control_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitControl_node\fP (\fBSysMLv2Parser::Control_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterControl_node_prefix\fP (\fBSysMLv2Parser::Control_node_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitControl_node_prefix\fP (\fBSysMLv2Parser::Control_node_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMerge_node\fP (\fBSysMLv2Parser::Merge_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMerge_node\fP (\fBSysMLv2Parser::Merge_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDecision_node\fP (\fBSysMLv2Parser::Decision_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDecision_node\fP (\fBSysMLv2Parser::Decision_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterJoin_node\fP (\fBSysMLv2Parser::Join_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitJoin_node\fP (\fBSysMLv2Parser::Join_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFork_node\fP (\fBSysMLv2Parser::Fork_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFork_node\fP (\fBSysMLv2Parser::Fork_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAccept_node\fP (\fBSysMLv2Parser::Accept_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAccept_node\fP (\fBSysMLv2Parser::Accept_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAccept_node_declaration\fP (\fBSysMLv2Parser::Accept_node_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAccept_node_declaration\fP (\fBSysMLv2Parser::Accept_node_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAccept_parameter_part\fP (\fBSysMLv2Parser::Accept_parameter_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAccept_parameter_part\fP (\fBSysMLv2Parser::Accept_parameter_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPayload_parameter_member\fP (\fBSysMLv2Parser::Payload_parameter_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPayload_parameter_member\fP (\fBSysMLv2Parser::Payload_parameter_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPayload_parameter\fP (\fBSysMLv2Parser::Payload_parameterContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPayload_parameter\fP (\fBSysMLv2Parser::Payload_parameterContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTrigger_value_part\fP (\fBSysMLv2Parser::Trigger_value_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTrigger_value_part\fP (\fBSysMLv2Parser::Trigger_value_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTrigger_expression\fP (\fBSysMLv2Parser::Trigger_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTrigger_expression\fP (\fBSysMLv2Parser::Trigger_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSend_node\fP (\fBSysMLv2Parser::Send_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSend_node\fP (\fBSysMLv2Parser::Send_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSend_node_declaration\fP (\fBSysMLv2Parser::Send_node_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSend_node_declaration\fP (\fBSysMLv2Parser::Send_node_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSender_receiver_part\fP (\fBSysMLv2Parser::Sender_receiver_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSender_receiver_part\fP (\fBSysMLv2Parser::Sender_receiver_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNode_parameter_member\fP (\fBSysMLv2Parser::Node_parameter_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNode_parameter_member\fP (\fBSysMLv2Parser::Node_parameter_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNode_parameter\fP (\fBSysMLv2Parser::Node_parameterContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNode_parameter\fP (\fBSysMLv2Parser::Node_parameterContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_binding\fP (\fBSysMLv2Parser::Feature_bindingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_binding\fP (\fBSysMLv2Parser::Feature_bindingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAssignment_node\fP (\fBSysMLv2Parser::Assignment_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAssignment_node\fP (\fBSysMLv2Parser::Assignment_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAssignment_node_declaration\fP (\fBSysMLv2Parser::Assignment_node_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAssignment_node_declaration\fP (\fBSysMLv2Parser::Assignment_node_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAssignment_target_member\fP (\fBSysMLv2Parser::Assignment_target_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAssignment_target_member\fP (\fBSysMLv2Parser::Assignment_target_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAssignment_target_parameter\fP (\fBSysMLv2Parser::Assignment_target_parameterContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAssignment_target_parameter\fP (\fBSysMLv2Parser::Assignment_target_parameterContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAssignment_target_binding\fP (\fBSysMLv2Parser::Assignment_target_bindingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAssignment_target_binding\fP (\fBSysMLv2Parser::Assignment_target_bindingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_chain_member\fP (\fBSysMLv2Parser::Feature_chain_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_chain_member\fP (\fBSysMLv2Parser::Feature_chain_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_feature_chain_member\fP (\fBSysMLv2Parser::Owned_feature_chain_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_feature_chain_member\fP (\fBSysMLv2Parser::Owned_feature_chain_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTerminate_node\fP (\fBSysMLv2Parser::Terminate_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTerminate_node\fP (\fBSysMLv2Parser::Terminate_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterIf_node\fP (\fBSysMLv2Parser::If_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitIf_node\fP (\fBSysMLv2Parser::If_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterExpression_parameter_member\fP (\fBSysMLv2Parser::Expression_parameter_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitExpression_parameter_member\fP (\fBSysMLv2Parser::Expression_parameter_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAction_body_parameter_member\fP (\fBSysMLv2Parser::Action_body_parameter_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAction_body_parameter_member\fP (\fBSysMLv2Parser::Action_body_parameter_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAction_body_parameter\fP (\fBSysMLv2Parser::Action_body_parameterContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAction_body_parameter\fP (\fBSysMLv2Parser::Action_body_parameterContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterIf_node_parameter_member\fP (\fBSysMLv2Parser::If_node_parameter_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitIf_node_parameter_member\fP (\fBSysMLv2Parser::If_node_parameter_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterWhile_loop_node\fP (\fBSysMLv2Parser::While_loop_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitWhile_loop_node\fP (\fBSysMLv2Parser::While_loop_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFor_loop_node\fP (\fBSysMLv2Parser::For_loop_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFor_loop_node\fP (\fBSysMLv2Parser::For_loop_nodeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFor_variable_declaration_member\fP (\fBSysMLv2Parser::For_variable_declaration_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFor_variable_declaration_member\fP (\fBSysMLv2Parser::For_variable_declaration_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFor_variable_declaration\fP (\fBSysMLv2Parser::For_variable_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFor_variable_declaration\fP (\fBSysMLv2Parser::For_variable_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAction_target_succession\fP (\fBSysMLv2Parser::Action_target_successionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAction_target_succession\fP (\fBSysMLv2Parser::Action_target_successionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTarget_succession\fP (\fBSysMLv2Parser::Target_successionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTarget_succession\fP (\fBSysMLv2Parser::Target_successionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterGuarded_target_succession\fP (\fBSysMLv2Parser::Guarded_target_successionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitGuarded_target_succession\fP (\fBSysMLv2Parser::Guarded_target_successionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDefault_target_succession\fP (\fBSysMLv2Parser::Default_target_successionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDefault_target_succession\fP (\fBSysMLv2Parser::Default_target_successionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterGuarded_succession\fP (\fBSysMLv2Parser::Guarded_successionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitGuarded_succession\fP (\fBSysMLv2Parser::Guarded_successionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterState_definition\fP (\fBSysMLv2Parser::State_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitState_definition\fP (\fBSysMLv2Parser::State_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterState_def_body\fP (\fBSysMLv2Parser::State_def_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitState_def_body\fP (\fBSysMLv2Parser::State_def_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterState_body_item\fP (\fBSysMLv2Parser::State_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitState_body_item\fP (\fBSysMLv2Parser::State_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterEntry_action_member\fP (\fBSysMLv2Parser::Entry_action_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitEntry_action_member\fP (\fBSysMLv2Parser::Entry_action_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDo_action_member\fP (\fBSysMLv2Parser::Do_action_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDo_action_member\fP (\fBSysMLv2Parser::Do_action_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterExit_action_member\fP (\fBSysMLv2Parser::Exit_action_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitExit_action_member\fP (\fBSysMLv2Parser::Exit_action_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterEntry_transition_member\fP (\fBSysMLv2Parser::Entry_transition_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitEntry_transition_member\fP (\fBSysMLv2Parser::Entry_transition_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterState_action_usage\fP (\fBSysMLv2Parser::State_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitState_action_usage\fP (\fBSysMLv2Parser::State_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterEmpty_action_usage\fP (\fBSysMLv2Parser::Empty_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitEmpty_action_usage\fP (\fBSysMLv2Parser::Empty_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterState_perform_action_uage\fP (\fBSysMLv2Parser::State_perform_action_uageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitState_perform_action_uage\fP (\fBSysMLv2Parser::State_perform_action_uageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterState_accept_action_usage\fP (\fBSysMLv2Parser::State_accept_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitState_accept_action_usage\fP (\fBSysMLv2Parser::State_accept_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterState_send_action_usage\fP (\fBSysMLv2Parser::State_send_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitState_send_action_usage\fP (\fBSysMLv2Parser::State_send_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterState_assignment_action_usage\fP (\fBSysMLv2Parser::State_assignment_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitState_assignment_action_usage\fP (\fBSysMLv2Parser::State_assignment_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTransition_usage_member\fP (\fBSysMLv2Parser::Transition_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTransition_usage_member\fP (\fBSysMLv2Parser::Transition_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTarget_transition_usage_member\fP (\fBSysMLv2Parser::Target_transition_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTarget_transition_usage_member\fP (\fBSysMLv2Parser::Target_transition_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterState_usage\fP (\fBSysMLv2Parser::State_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitState_usage\fP (\fBSysMLv2Parser::State_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterState_usage_body\fP (\fBSysMLv2Parser::State_usage_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitState_usage_body\fP (\fBSysMLv2Parser::State_usage_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterExhibit_state_usage\fP (\fBSysMLv2Parser::Exhibit_state_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitExhibit_state_usage\fP (\fBSysMLv2Parser::Exhibit_state_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTransition_usage\fP (\fBSysMLv2Parser::Transition_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTransition_usage\fP (\fBSysMLv2Parser::Transition_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTarget_transition_usage\fP (\fBSysMLv2Parser::Target_transition_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTarget_transition_usage\fP (\fBSysMLv2Parser::Target_transition_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTrigger_action_member\fP (\fBSysMLv2Parser::Trigger_action_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTrigger_action_member\fP (\fBSysMLv2Parser::Trigger_action_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTrigger_action\fP (\fBSysMLv2Parser::Trigger_actionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTrigger_action\fP (\fBSysMLv2Parser::Trigger_actionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterGuard_expression_member\fP (\fBSysMLv2Parser::Guard_expression_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitGuard_expression_member\fP (\fBSysMLv2Parser::Guard_expression_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterEffect_behavior_member\fP (\fBSysMLv2Parser::Effect_behavior_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitEffect_behavior_member\fP (\fBSysMLv2Parser::Effect_behavior_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterEffect_behavior_usage\fP (\fBSysMLv2Parser::Effect_behavior_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitEffect_behavior_usage\fP (\fBSysMLv2Parser::Effect_behavior_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTransition_perform_action_usage\fP (\fBSysMLv2Parser::Transition_perform_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTransition_perform_action_usage\fP (\fBSysMLv2Parser::Transition_perform_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTransition_accept_action_usage\fP (\fBSysMLv2Parser::Transition_accept_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTransition_accept_action_usage\fP (\fBSysMLv2Parser::Transition_accept_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTransition_send_action_usage\fP (\fBSysMLv2Parser::Transition_send_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTransition_send_action_usage\fP (\fBSysMLv2Parser::Transition_send_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTransition_assignment_action_usage\fP (\fBSysMLv2Parser::Transition_assignment_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTransition_assignment_action_usage\fP (\fBSysMLv2Parser::Transition_assignment_action_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTransition_succession_member\fP (\fBSysMLv2Parser::Transition_succession_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTransition_succession_member\fP (\fBSysMLv2Parser::Transition_succession_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTransition_succession\fP (\fBSysMLv2Parser::Transition_successionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTransition_succession\fP (\fBSysMLv2Parser::Transition_successionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterCalculation_definition\fP (\fBSysMLv2Parser::Calculation_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitCalculation_definition\fP (\fBSysMLv2Parser::Calculation_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterCalculation_usage\fP (\fBSysMLv2Parser::Calculation_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitCalculation_usage\fP (\fBSysMLv2Parser::Calculation_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterCalculation_body\fP (\fBSysMLv2Parser::Calculation_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitCalculation_body\fP (\fBSysMLv2Parser::Calculation_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterCalculation_body_part\fP (\fBSysMLv2Parser::Calculation_body_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitCalculation_body_part\fP (\fBSysMLv2Parser::Calculation_body_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterCalculation_body_item\fP (\fBSysMLv2Parser::Calculation_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitCalculation_body_item\fP (\fBSysMLv2Parser::Calculation_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterReturn_parameter_member\fP (\fBSysMLv2Parser::Return_parameter_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitReturn_parameter_member\fP (\fBSysMLv2Parser::Return_parameter_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterResult_expression_member\fP (\fBSysMLv2Parser::Result_expression_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitResult_expression_member\fP (\fBSysMLv2Parser::Result_expression_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConstraint_definition\fP (\fBSysMLv2Parser::Constraint_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConstraint_definition\fP (\fBSysMLv2Parser::Constraint_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConstraint_usage\fP (\fBSysMLv2Parser::Constraint_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConstraint_usage\fP (\fBSysMLv2Parser::Constraint_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAssert_constriant_usage\fP (\fBSysMLv2Parser::Assert_constriant_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAssert_constriant_usage\fP (\fBSysMLv2Parser::Assert_constriant_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConstraint_usage_declaration\fP (\fBSysMLv2Parser::Constraint_usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConstraint_usage_declaration\fP (\fBSysMLv2Parser::Constraint_usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRequirement_definition\fP (\fBSysMLv2Parser::Requirement_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRequirement_definition\fP (\fBSysMLv2Parser::Requirement_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRequirement_body\fP (\fBSysMLv2Parser::Requirement_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRequirement_body\fP (\fBSysMLv2Parser::Requirement_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRequirement_body_item\fP (\fBSysMLv2Parser::Requirement_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRequirement_body_item\fP (\fBSysMLv2Parser::Requirement_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSubject_member\fP (\fBSysMLv2Parser::Subject_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSubject_member\fP (\fBSysMLv2Parser::Subject_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSubject_usage\fP (\fBSysMLv2Parser::Subject_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSubject_usage\fP (\fBSysMLv2Parser::Subject_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRequirement_constraint_member\fP (\fBSysMLv2Parser::Requirement_constraint_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRequirement_constraint_member\fP (\fBSysMLv2Parser::Requirement_constraint_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRequriement_kind\fP (\fBSysMLv2Parser::Requriement_kindContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRequriement_kind\fP (\fBSysMLv2Parser::Requriement_kindContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRequirement_constraint_usage\fP (\fBSysMLv2Parser::Requirement_constraint_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRequirement_constraint_usage\fP (\fBSysMLv2Parser::Requirement_constraint_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFramed_concern_member\fP (\fBSysMLv2Parser::Framed_concern_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFramed_concern_member\fP (\fBSysMLv2Parser::Framed_concern_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFramed_concern_usage\fP (\fBSysMLv2Parser::Framed_concern_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFramed_concern_usage\fP (\fBSysMLv2Parser::Framed_concern_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterActor_member\fP (\fBSysMLv2Parser::Actor_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitActor_member\fP (\fBSysMLv2Parser::Actor_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterActor_usage\fP (\fBSysMLv2Parser::Actor_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitActor_usage\fP (\fBSysMLv2Parser::Actor_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterStakeholder_member\fP (\fBSysMLv2Parser::Stakeholder_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitStakeholder_member\fP (\fBSysMLv2Parser::Stakeholder_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterStakeholder_usage\fP (\fBSysMLv2Parser::Stakeholder_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitStakeholder_usage\fP (\fBSysMLv2Parser::Stakeholder_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRequirement_usage\fP (\fBSysMLv2Parser::Requirement_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRequirement_usage\fP (\fBSysMLv2Parser::Requirement_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSatisfy_requirement_usage\fP (\fBSysMLv2Parser::Satisfy_requirement_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSatisfy_requirement_usage\fP (\fBSysMLv2Parser::Satisfy_requirement_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSatisfaction_subject_member\fP (\fBSysMLv2Parser::Satisfaction_subject_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSatisfaction_subject_member\fP (\fBSysMLv2Parser::Satisfaction_subject_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSatisfaction_parameter\fP (\fBSysMLv2Parser::Satisfaction_parameterContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSatisfaction_parameter\fP (\fBSysMLv2Parser::Satisfaction_parameterContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSatisfaction_feature_value\fP (\fBSysMLv2Parser::Satisfaction_feature_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSatisfaction_feature_value\fP (\fBSysMLv2Parser::Satisfaction_feature_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSatisfaction_reference_expression\fP (\fBSysMLv2Parser::Satisfaction_reference_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSatisfaction_reference_expression\fP (\fBSysMLv2Parser::Satisfaction_reference_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConcern_definition\fP (\fBSysMLv2Parser::Concern_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConcern_definition\fP (\fBSysMLv2Parser::Concern_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConcern_usage\fP (\fBSysMLv2Parser::Concern_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConcern_usage\fP (\fBSysMLv2Parser::Concern_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterCase_definition\fP (\fBSysMLv2Parser::Case_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitCase_definition\fP (\fBSysMLv2Parser::Case_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterCase_usage\fP (\fBSysMLv2Parser::Case_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitCase_usage\fP (\fBSysMLv2Parser::Case_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterCase_body\fP (\fBSysMLv2Parser::Case_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitCase_body\fP (\fBSysMLv2Parser::Case_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterCase_body_item\fP (\fBSysMLv2Parser::Case_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitCase_body_item\fP (\fBSysMLv2Parser::Case_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterObjective_member\fP (\fBSysMLv2Parser::Objective_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitObjective_member\fP (\fBSysMLv2Parser::Objective_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterObjective_requirement_usage\fP (\fBSysMLv2Parser::Objective_requirement_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitObjective_requirement_usage\fP (\fBSysMLv2Parser::Objective_requirement_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAnalysis_case_definition\fP (\fBSysMLv2Parser::Analysis_case_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAnalysis_case_definition\fP (\fBSysMLv2Parser::Analysis_case_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAnalysis_case_usage\fP (\fBSysMLv2Parser::Analysis_case_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAnalysis_case_usage\fP (\fBSysMLv2Parser::Analysis_case_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterVerification_case_definition\fP (\fBSysMLv2Parser::Verification_case_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitVerification_case_definition\fP (\fBSysMLv2Parser::Verification_case_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterVerification_case_usage\fP (\fBSysMLv2Parser::Verification_case_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitVerification_case_usage\fP (\fBSysMLv2Parser::Verification_case_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRequirement_verification_member\fP (\fBSysMLv2Parser::Requirement_verification_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRequirement_verification_member\fP (\fBSysMLv2Parser::Requirement_verification_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRequirement_verification_usage\fP (\fBSysMLv2Parser::Requirement_verification_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRequirement_verification_usage\fP (\fBSysMLv2Parser::Requirement_verification_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterUse_case_definition\fP (\fBSysMLv2Parser::Use_case_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitUse_case_definition\fP (\fBSysMLv2Parser::Use_case_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterUse_case_usage\fP (\fBSysMLv2Parser::Use_case_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitUse_case_usage\fP (\fBSysMLv2Parser::Use_case_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInclude_use_case_usage\fP (\fBSysMLv2Parser::Include_use_case_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInclude_use_case_usage\fP (\fBSysMLv2Parser::Include_use_case_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterView_definition\fP (\fBSysMLv2Parser::View_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitView_definition\fP (\fBSysMLv2Parser::View_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterView_definition_body\fP (\fBSysMLv2Parser::View_definition_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitView_definition_body\fP (\fBSysMLv2Parser::View_definition_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterView_definition_body_item\fP (\fBSysMLv2Parser::View_definition_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitView_definition_body_item\fP (\fBSysMLv2Parser::View_definition_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterView_rendering_member\fP (\fBSysMLv2Parser::View_rendering_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitView_rendering_member\fP (\fBSysMLv2Parser::View_rendering_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterView_rendering_usage\fP (\fBSysMLv2Parser::View_rendering_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitView_rendering_usage\fP (\fBSysMLv2Parser::View_rendering_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterView_usage\fP (\fBSysMLv2Parser::View_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitView_usage\fP (\fBSysMLv2Parser::View_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterView_body\fP (\fBSysMLv2Parser::View_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitView_body\fP (\fBSysMLv2Parser::View_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterView_body_item\fP (\fBSysMLv2Parser::View_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitView_body_item\fP (\fBSysMLv2Parser::View_body_itemContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterExpose\fP (\fBSysMLv2Parser::ExposeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitExpose\fP (\fBSysMLv2Parser::ExposeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMembership_expose\fP (\fBSysMLv2Parser::Membership_exposeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMembership_expose\fP (\fBSysMLv2Parser::Membership_exposeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_expose\fP (\fBSysMLv2Parser::Namespace_exposeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_expose\fP (\fBSysMLv2Parser::Namespace_exposeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterViewpoint_definition\fP (\fBSysMLv2Parser::Viewpoint_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitViewpoint_definition\fP (\fBSysMLv2Parser::Viewpoint_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterViewpoint_usage\fP (\fBSysMLv2Parser::Viewpoint_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitViewpoint_usage\fP (\fBSysMLv2Parser::Viewpoint_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRendering_definition\fP (\fBSysMLv2Parser::Rendering_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRendering_definition\fP (\fBSysMLv2Parser::Rendering_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRendering_usage\fP (\fBSysMLv2Parser::Rendering_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRendering_usage\fP (\fBSysMLv2Parser::Rendering_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_definition\fP (\fBSysMLv2Parser::Metadata_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_definition\fP (\fBSysMLv2Parser::Metadata_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrefix_metadata_annotation\fP (\fBSysMLv2Parser::Prefix_metadata_annotationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrefix_metadata_annotation\fP (\fBSysMLv2Parser::Prefix_metadata_annotationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrefix_metadata_member\fP (\fBSysMLv2Parser::Prefix_metadata_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrefix_metadata_member\fP (\fBSysMLv2Parser::Prefix_metadata_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrefix_metadata_usage\fP (\fBSysMLv2Parser::Prefix_metadata_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrefix_metadata_usage\fP (\fBSysMLv2Parser::Prefix_metadata_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_usage\fP (\fBSysMLv2Parser::Metadata_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_usage\fP (\fBSysMLv2Parser::Metadata_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_usage_declaration\fP (\fBSysMLv2Parser::Metadata_usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_usage_declaration\fP (\fBSysMLv2Parser::Metadata_usage_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_body\fP (\fBSysMLv2Parser::Metadata_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_body\fP (\fBSysMLv2Parser::Metadata_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_body_usage_member\fP (\fBSysMLv2Parser::Metadata_body_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_body_usage_member\fP (\fBSysMLv2Parser::Metadata_body_usage_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_body_usage\fP (\fBSysMLv2Parser::Metadata_body_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_body_usage\fP (\fBSysMLv2Parser::Metadata_body_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterExtended_definition\fP (\fBSysMLv2Parser::Extended_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitExtended_definition\fP (\fBSysMLv2Parser::Extended_definitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterExtended_usage\fP (\fBSysMLv2Parser::Extended_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitExtended_usage\fP (\fBSysMLv2Parser::Extended_usageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterElements\fP (\fBSysMLv2Parser::ElementsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitElements\fP (\fBSysMLv2Parser::ElementsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterIdentification\fP (\fBSysMLv2Parser::IdentificationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitIdentification\fP (\fBSysMLv2Parser::IdentificationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRelationship_onwed_elements\fP (\fBSysMLv2Parser::Relationship_onwed_elementsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRelationship_onwed_elements\fP (\fBSysMLv2Parser::Relationship_onwed_elementsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRelationship_owned_element\fP (\fBSysMLv2Parser::Relationship_owned_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRelationship_owned_element\fP (\fBSysMLv2Parser::Relationship_owned_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_related_element\fP (\fBSysMLv2Parser::Owned_related_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_related_element\fP (\fBSysMLv2Parser::Owned_related_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace\fP (\fBSysMLv2Parser::NamespaceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace\fP (\fBSysMLv2Parser::NamespaceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_declaration\fP (\fBSysMLv2Parser::Namespace_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_declaration\fP (\fBSysMLv2Parser::Namespace_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_body\fP (\fBSysMLv2Parser::Namespace_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_body\fP (\fBSysMLv2Parser::Namespace_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_body_elements\fP (\fBSysMLv2Parser::Namespace_body_elementsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_body_elements\fP (\fBSysMLv2Parser::Namespace_body_elementsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_body_element\fP (\fBSysMLv2Parser::Namespace_body_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_body_element\fP (\fBSysMLv2Parser::Namespace_body_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMember_prefix\fP (\fBSysMLv2Parser::Member_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMember_prefix\fP (\fBSysMLv2Parser::Member_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterVisibility_indicator\fP (\fBSysMLv2Parser::Visibility_indicatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitVisibility_indicator\fP (\fBSysMLv2Parser::Visibility_indicatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_member\fP (\fBSysMLv2Parser::Namespace_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_member\fP (\fBSysMLv2Parser::Namespace_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_feature_member\fP (\fBSysMLv2Parser::Non_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_feature_member\fP (\fBSysMLv2Parser::Non_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_feature_member\fP (\fBSysMLv2Parser::Namespace_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_feature_member\fP (\fBSysMLv2Parser::Namespace_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterQualified_name\fP (\fBSysMLv2Parser::Qualified_nameContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitQualified_name\fP (\fBSysMLv2Parser::Qualified_nameContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_import\fP (\fBSysMLv2Parser::Namespace_importContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_import\fP (\fBSysMLv2Parser::Namespace_importContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterImport_declaration\fP (\fBSysMLv2Parser::Import_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitImport_declaration\fP (\fBSysMLv2Parser::Import_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMembership_import\fP (\fBSysMLv2Parser::Membership_importContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMembership_import\fP (\fBSysMLv2Parser::Membership_importContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFilter_package\fP (\fBSysMLv2Parser::Filter_packageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFilter_package\fP (\fBSysMLv2Parser::Filter_packageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFilter_package_member\fP (\fBSysMLv2Parser::Filter_package_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFilter_package_member\fP (\fBSysMLv2Parser::Filter_package_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterElement\fP (\fBSysMLv2Parser::ElementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitElement\fP (\fBSysMLv2Parser::ElementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_feature_element\fP (\fBSysMLv2Parser::Non_feature_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_feature_element\fP (\fBSysMLv2Parser::Non_feature_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_element\fP (\fBSysMLv2Parser::Feature_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_element\fP (\fBSysMLv2Parser::Feature_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAdditional_options\fP (\fBSysMLv2Parser::Additional_optionsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAdditional_options\fP (\fBSysMLv2Parser::Additional_optionsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterType\fP (\fBSysMLv2Parser::TypeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitType\fP (\fBSysMLv2Parser::TypeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_prefix\fP (\fBSysMLv2Parser::Type_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_prefix\fP (\fBSysMLv2Parser::Type_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_declaration\fP (\fBSysMLv2Parser::Type_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_declaration\fP (\fBSysMLv2Parser::Type_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSpecialization_part\fP (\fBSysMLv2Parser::Specialization_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSpecialization_part\fP (\fBSysMLv2Parser::Specialization_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConjugation_part\fP (\fBSysMLv2Parser::Conjugation_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConjugation_part\fP (\fBSysMLv2Parser::Conjugation_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_relationship_part\fP (\fBSysMLv2Parser::Type_relationship_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_relationship_part\fP (\fBSysMLv2Parser::Type_relationship_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDisjoining_part\fP (\fBSysMLv2Parser::Disjoining_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDisjoining_part\fP (\fBSysMLv2Parser::Disjoining_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterUnioning_part\fP (\fBSysMLv2Parser::Unioning_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitUnioning_part\fP (\fBSysMLv2Parser::Unioning_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterIntersecting_part\fP (\fBSysMLv2Parser::Intersecting_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitIntersecting_part\fP (\fBSysMLv2Parser::Intersecting_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDifferencing_part\fP (\fBSysMLv2Parser::Differencing_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDifferencing_part\fP (\fBSysMLv2Parser::Differencing_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_body\fP (\fBSysMLv2Parser::Type_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_body\fP (\fBSysMLv2Parser::Type_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_body_elements\fP (\fBSysMLv2Parser::Type_body_elementsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_body_elements\fP (\fBSysMLv2Parser::Type_body_elementsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_body_element\fP (\fBSysMLv2Parser::Type_body_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_body_element\fP (\fBSysMLv2Parser::Type_body_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSpecialization\fP (\fBSysMLv2Parser::SpecializationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSpecialization\fP (\fBSysMLv2Parser::SpecializationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_specialization\fP (\fBSysMLv2Parser::Owned_specializationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_specialization\fP (\fBSysMLv2Parser::Owned_specializationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSpecific_type\fP (\fBSysMLv2Parser::Specific_typeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSpecific_type\fP (\fBSysMLv2Parser::Specific_typeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterGeneral_type\fP (\fBSysMLv2Parser::General_typeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitGeneral_type\fP (\fBSysMLv2Parser::General_typeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConjunction\fP (\fBSysMLv2Parser::ConjunctionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConjunction\fP (\fBSysMLv2Parser::ConjunctionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_conjugation\fP (\fBSysMLv2Parser::Owned_conjugationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_conjugation\fP (\fBSysMLv2Parser::Owned_conjugationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDisjoining\fP (\fBSysMLv2Parser::DisjoiningContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDisjoining\fP (\fBSysMLv2Parser::DisjoiningContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_disjoining\fP (\fBSysMLv2Parser::Owned_disjoiningContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_disjoining\fP (\fBSysMLv2Parser::Owned_disjoiningContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterUnioning\fP (\fBSysMLv2Parser::UnioningContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitUnioning\fP (\fBSysMLv2Parser::UnioningContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterIntersecting\fP (\fBSysMLv2Parser::IntersectingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitIntersecting\fP (\fBSysMLv2Parser::IntersectingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterDifferencing\fP (\fBSysMLv2Parser::DifferencingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitDifferencing\fP (\fBSysMLv2Parser::DifferencingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_member\fP (\fBSysMLv2Parser::Feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_member\fP (\fBSysMLv2Parser::Feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_feature_member\fP (\fBSysMLv2Parser::Type_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_feature_member\fP (\fBSysMLv2Parser::Type_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_feature_member\fP (\fBSysMLv2Parser::Owned_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_feature_member\fP (\fBSysMLv2Parser::Owned_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterClassifier\fP (\fBSysMLv2Parser::ClassifierContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitClassifier\fP (\fBSysMLv2Parser::ClassifierContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterClassifier_declaration\fP (\fBSysMLv2Parser::Classifier_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitClassifier_declaration\fP (\fBSysMLv2Parser::Classifier_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSuperclassing_part\fP (\fBSysMLv2Parser::Superclassing_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSuperclassing_part\fP (\fBSysMLv2Parser::Superclassing_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSubclassification\fP (\fBSysMLv2Parser::SubclassificationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSubclassification\fP (\fBSysMLv2Parser::SubclassificationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_subclassification\fP (\fBSysMLv2Parser::Owned_subclassificationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_subclassification\fP (\fBSysMLv2Parser::Owned_subclassificationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature\fP (\fBSysMLv2Parser::FeatureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature\fP (\fBSysMLv2Parser::FeatureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_prefix\fP (\fBSysMLv2Parser::Feature_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_prefix\fP (\fBSysMLv2Parser::Feature_prefixContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_declaration\fP (\fBSysMLv2Parser::Feature_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_declaration\fP (\fBSysMLv2Parser::Feature_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_identification\fP (\fBSysMLv2Parser::Feature_identificationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_identification\fP (\fBSysMLv2Parser::Feature_identificationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_relationship_part\fP (\fBSysMLv2Parser::Feature_relationship_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_relationship_part\fP (\fBSysMLv2Parser::Feature_relationship_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterChaining_part\fP (\fBSysMLv2Parser::Chaining_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitChaining_part\fP (\fBSysMLv2Parser::Chaining_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInverting_part\fP (\fBSysMLv2Parser::Inverting_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInverting_part\fP (\fBSysMLv2Parser::Inverting_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_featuring_part\fP (\fBSysMLv2Parser::Type_featuring_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_featuring_part\fP (\fBSysMLv2Parser::Type_featuring_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_specialization_part\fP (\fBSysMLv2Parser::Feature_specialization_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_specialization_part\fP (\fBSysMLv2Parser::Feature_specialization_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_specilization\fP (\fBSysMLv2Parser::Feature_specilizationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_specilization\fP (\fBSysMLv2Parser::Feature_specilizationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTypings\fP (\fBSysMLv2Parser::TypingsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTypings\fP (\fBSysMLv2Parser::TypingsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterTyped_by\fP (\fBSysMLv2Parser::Typed_byContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitTyped_by\fP (\fBSysMLv2Parser::Typed_byContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSubsettings\fP (\fBSysMLv2Parser::SubsettingsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSubsettings\fP (\fBSysMLv2Parser::SubsettingsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSubsets\fP (\fBSysMLv2Parser::SubsetsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSubsets\fP (\fBSysMLv2Parser::SubsetsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterReferences\fP (\fBSysMLv2Parser::ReferencesContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitReferences\fP (\fBSysMLv2Parser::ReferencesContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRedefinitions\fP (\fBSysMLv2Parser::RedefinitionsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRedefinitions\fP (\fBSysMLv2Parser::RedefinitionsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRedefines\fP (\fBSysMLv2Parser::RedefinesContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRedefines\fP (\fBSysMLv2Parser::RedefinesContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_typing\fP (\fBSysMLv2Parser::Feature_typingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_typing\fP (\fBSysMLv2Parser::Feature_typingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_feature_typing\fP (\fBSysMLv2Parser::Owned_feature_typingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_feature_typing\fP (\fBSysMLv2Parser::Owned_feature_typingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSubsetting\fP (\fBSysMLv2Parser::SubsettingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSubsetting\fP (\fBSysMLv2Parser::SubsettingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_subsetting\fP (\fBSysMLv2Parser::Owned_subsettingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_subsetting\fP (\fBSysMLv2Parser::Owned_subsettingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_reference_subsetting\fP (\fBSysMLv2Parser::Owned_reference_subsettingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_reference_subsetting\fP (\fBSysMLv2Parser::Owned_reference_subsettingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterRedefinition\fP (\fBSysMLv2Parser::RedefinitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitRedefinition\fP (\fBSysMLv2Parser::RedefinitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_redefinition\fP (\fBSysMLv2Parser::Owned_redefinitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_redefinition\fP (\fBSysMLv2Parser::Owned_redefinitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_feature_chain\fP (\fBSysMLv2Parser::Owned_feature_chainContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_feature_chain\fP (\fBSysMLv2Parser::Owned_feature_chainContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_chain\fP (\fBSysMLv2Parser::Feature_chainContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_chain\fP (\fBSysMLv2Parser::Feature_chainContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_feature_chaining\fP (\fBSysMLv2Parser::Owned_feature_chainingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_feature_chaining\fP (\fBSysMLv2Parser::Owned_feature_chainingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_inverting\fP (\fBSysMLv2Parser::Feature_invertingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_inverting\fP (\fBSysMLv2Parser::Feature_invertingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_feature_inverting\fP (\fBSysMLv2Parser::Owned_feature_invertingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_feature_inverting\fP (\fBSysMLv2Parser::Owned_feature_invertingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_featuring\fP (\fBSysMLv2Parser::Type_featuringContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_featuring\fP (\fBSysMLv2Parser::Type_featuringContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_type_featuring\fP (\fBSysMLv2Parser::Owned_type_featuringContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_type_featuring\fP (\fBSysMLv2Parser::Owned_type_featuringContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterData_type\fP (\fBSysMLv2Parser::Data_typeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitData_type\fP (\fBSysMLv2Parser::Data_typeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterClass\fP (\fBSysMLv2Parser::ClassContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitClass\fP (\fBSysMLv2Parser::ClassContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterStructure\fP (\fBSysMLv2Parser::StructureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitStructure\fP (\fBSysMLv2Parser::StructureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAssociation\fP (\fBSysMLv2Parser::AssociationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAssociation\fP (\fBSysMLv2Parser::AssociationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterAssociation_structure\fP (\fBSysMLv2Parser::Association_structureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitAssociation_structure\fP (\fBSysMLv2Parser::Association_structureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConnector\fP (\fBSysMLv2Parser::ConnectorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConnector\fP (\fBSysMLv2Parser::ConnectorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConnector_declaration\fP (\fBSysMLv2Parser::Connector_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConnector_declaration\fP (\fBSysMLv2Parser::Connector_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBinary_connector_declaration\fP (\fBSysMLv2Parser::Binary_connector_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBinary_connector_declaration\fP (\fBSysMLv2Parser::Binary_connector_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNary_connector_declaration\fP (\fBSysMLv2Parser::Nary_connector_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNary_connector_declaration\fP (\fBSysMLv2Parser::Nary_connector_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConnector_end\fP (\fBSysMLv2Parser::Connector_endContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConnector_end\fP (\fBSysMLv2Parser::Connector_endContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBinding_connector\fP (\fBSysMLv2Parser::Binding_connectorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBinding_connector\fP (\fBSysMLv2Parser::Binding_connectorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBinding_connector_declaration\fP (\fBSysMLv2Parser::Binding_connector_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBinding_connector_declaration\fP (\fBSysMLv2Parser::Binding_connector_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSuccession\fP (\fBSysMLv2Parser::SuccessionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSuccession\fP (\fBSysMLv2Parser::SuccessionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSuccession_declaration\fP (\fBSysMLv2Parser::Succession_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSuccession_declaration\fP (\fBSysMLv2Parser::Succession_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBehavior\fP (\fBSysMLv2Parser::BehaviorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBehavior\fP (\fBSysMLv2Parser::BehaviorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterStep\fP (\fBSysMLv2Parser::StepContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitStep\fP (\fBSysMLv2Parser::StepContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction\fP (\fBSysMLv2Parser::FunctionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction\fP (\fBSysMLv2Parser::FunctionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_body\fP (\fBSysMLv2Parser::Function_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_body\fP (\fBSysMLv2Parser::Function_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_body_part\fP (\fBSysMLv2Parser::Function_body_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_body_part\fP (\fBSysMLv2Parser::Function_body_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterReturn_feature_member\fP (\fBSysMLv2Parser::Return_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitReturn_feature_member\fP (\fBSysMLv2Parser::Return_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterExpression\fP (\fBSysMLv2Parser::ExpressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitExpression\fP (\fBSysMLv2Parser::ExpressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPredicate\fP (\fBSysMLv2Parser::PredicateContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPredicate\fP (\fBSysMLv2Parser::PredicateContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBoolean_expression\fP (\fBSysMLv2Parser::Boolean_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBoolean_expression\fP (\fBSysMLv2Parser::Boolean_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInvariant\fP (\fBSysMLv2Parser::InvariantContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInvariant\fP (\fBSysMLv2Parser::InvariantContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_expression_reference_member\fP (\fBSysMLv2Parser::Owned_expression_reference_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_expression_reference_member\fP (\fBSysMLv2Parser::Owned_expression_reference_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_expression_reference\fP (\fBSysMLv2Parser::Owned_expression_referenceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_expression_reference\fP (\fBSysMLv2Parser::Owned_expression_referenceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_expression_member\fP (\fBSysMLv2Parser::Owned_expression_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_expression_member\fP (\fBSysMLv2Parser::Owned_expression_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_expressions\fP (\fBSysMLv2Parser::Owned_expressionsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_expressions\fP (\fBSysMLv2Parser::Owned_expressionsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_expression\fP (\fBSysMLv2Parser::Owned_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_expression\fP (\fBSysMLv2Parser::Owned_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterEased_owned_expression\fP (\fBSysMLv2Parser::Eased_owned_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitEased_owned_expression\fP (\fBSysMLv2Parser::Eased_owned_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConditional_expression\fP (\fBSysMLv2Parser::Conditional_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConditional_expression\fP (\fBSysMLv2Parser::Conditional_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConditional_binary_operator_expression\fP (\fBSysMLv2Parser::Conditional_binary_operator_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConditional_binary_operator_expression\fP (\fBSysMLv2Parser::Conditional_binary_operator_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterConditional_binary_operator\fP (\fBSysMLv2Parser::Conditional_binary_operatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitConditional_binary_operator\fP (\fBSysMLv2Parser::Conditional_binary_operatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBinary_operator_expression\fP (\fBSysMLv2Parser::Binary_operator_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBinary_operator_expression\fP (\fBSysMLv2Parser::Binary_operator_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBinary_operator\fP (\fBSysMLv2Parser::Binary_operatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBinary_operator\fP (\fBSysMLv2Parser::Binary_operatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterUnary_operator_expression\fP (\fBSysMLv2Parser::Unary_operator_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitUnary_operator_expression\fP (\fBSysMLv2Parser::Unary_operator_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterUnary_operator\fP (\fBSysMLv2Parser::Unary_operatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitUnary_operator\fP (\fBSysMLv2Parser::Unary_operatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterClassification_expression\fP (\fBSysMLv2Parser::Classification_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitClassification_expression\fP (\fBSysMLv2Parser::Classification_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterClassification\fP (\fBSysMLv2Parser::ClassificationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitClassification\fP (\fBSysMLv2Parser::ClassificationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterClassification_test_operator\fP (\fBSysMLv2Parser::Classification_test_operatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitClassification_test_operator\fP (\fBSysMLv2Parser::Classification_test_operatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterCast_operator\fP (\fBSysMLv2Parser::Cast_operatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitCast_operator\fP (\fBSysMLv2Parser::Cast_operatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetaclassification_expression\fP (\fBSysMLv2Parser::Metaclassification_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetaclassification_expression\fP (\fBSysMLv2Parser::Metaclassification_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterArgument_member\fP (\fBSysMLv2Parser::Argument_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitArgument_member\fP (\fBSysMLv2Parser::Argument_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterArgument\fP (\fBSysMLv2Parser::ArgumentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitArgument\fP (\fBSysMLv2Parser::ArgumentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterArgument_value\fP (\fBSysMLv2Parser::Argument_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitArgument_value\fP (\fBSysMLv2Parser::Argument_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterArgument_expression_member\fP (\fBSysMLv2Parser::Argument_expression_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitArgument_expression_member\fP (\fBSysMLv2Parser::Argument_expression_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterArgument_expression\fP (\fBSysMLv2Parser::Argument_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitArgument_expression\fP (\fBSysMLv2Parser::Argument_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterArgument_expression_value\fP (\fBSysMLv2Parser::Argument_expression_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitArgument_expression_value\fP (\fBSysMLv2Parser::Argument_expression_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_argument_member\fP (\fBSysMLv2Parser::Metadata_argument_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_argument_member\fP (\fBSysMLv2Parser::Metadata_argument_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_argument\fP (\fBSysMLv2Parser::Metadata_argumentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_argument\fP (\fBSysMLv2Parser::Metadata_argumentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_value\fP (\fBSysMLv2Parser::Metadata_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_value\fP (\fBSysMLv2Parser::Metadata_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_reference\fP (\fBSysMLv2Parser::Metadata_referenceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_reference\fP (\fBSysMLv2Parser::Metadata_referenceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadataclassification_test_operator\fP (\fBSysMLv2Parser::Metadataclassification_test_operatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadataclassification_test_operator\fP (\fBSysMLv2Parser::Metadataclassification_test_operatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMeta_cast_operator\fP (\fBSysMLv2Parser::Meta_cast_operatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMeta_cast_operator\fP (\fBSysMLv2Parser::Meta_cast_operatorContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterExtend_expression\fP (\fBSysMLv2Parser::Extend_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitExtend_expression\fP (\fBSysMLv2Parser::Extend_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_reference_member\fP (\fBSysMLv2Parser::Type_reference_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_reference_member\fP (\fBSysMLv2Parser::Type_reference_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_result_member\fP (\fBSysMLv2Parser::Type_result_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_result_member\fP (\fBSysMLv2Parser::Type_result_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_reference\fP (\fBSysMLv2Parser::Type_referenceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_reference\fP (\fBSysMLv2Parser::Type_referenceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterReference_typing\fP (\fBSysMLv2Parser::Reference_typingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitReference_typing\fP (\fBSysMLv2Parser::Reference_typingContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrimary_expressions\fP (\fBSysMLv2Parser::Primary_expressionsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrimary_expressions\fP (\fBSysMLv2Parser::Primary_expressionsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrimary_expression\fP (\fBSysMLv2Parser::Primary_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrimary_expression\fP (\fBSysMLv2Parser::Primary_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrimary_argument_value\fP (\fBSysMLv2Parser::Primary_argument_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrimary_argument_value\fP (\fBSysMLv2Parser::Primary_argument_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrimary_argument\fP (\fBSysMLv2Parser::Primary_argumentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrimary_argument\fP (\fBSysMLv2Parser::Primary_argumentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrimary_argument_member\fP (\fBSysMLv2Parser::Primary_argument_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrimary_argument_member\fP (\fBSysMLv2Parser::Primary_argument_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_feature_chain_primary_expression\fP (\fBSysMLv2Parser::Non_feature_chain_primary_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_feature_chain_primary_expression\fP (\fBSysMLv2Parser::Non_feature_chain_primary_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_feature_chain_primary_argument_value\fP (\fBSysMLv2Parser::Non_feature_chain_primary_argument_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_feature_chain_primary_argument_value\fP (\fBSysMLv2Parser::Non_feature_chain_primary_argument_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_feature_chain_primary_argument\fP (\fBSysMLv2Parser::Non_feature_chain_primary_argumentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_feature_chain_primary_argument\fP (\fBSysMLv2Parser::Non_feature_chain_primary_argumentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_feature_chain_primary_argument_member\fP (\fBSysMLv2Parser::Non_feature_chain_primary_argument_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_feature_chain_primary_argument_member\fP (\fBSysMLv2Parser::Non_feature_chain_primary_argument_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBracket_expression\fP (\fBSysMLv2Parser::Bracket_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBracket_expression\fP (\fBSysMLv2Parser::Bracket_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterIndex_expression\fP (\fBSysMLv2Parser::Index_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitIndex_expression\fP (\fBSysMLv2Parser::Index_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSequence_expression\fP (\fBSysMLv2Parser::Sequence_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSequence_expression\fP (\fBSysMLv2Parser::Sequence_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSequence_expression_list\fP (\fBSysMLv2Parser::Sequence_expression_listContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSequence_expression_list\fP (\fBSysMLv2Parser::Sequence_expression_listContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSequence_operator_expression\fP (\fBSysMLv2Parser::Sequence_operator_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSequence_operator_expression\fP (\fBSysMLv2Parser::Sequence_operator_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSequence_expression_list_member\fP (\fBSysMLv2Parser::Sequence_expression_list_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSequence_expression_list_member\fP (\fBSysMLv2Parser::Sequence_expression_list_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_chain_expression\fP (\fBSysMLv2Parser::Feature_chain_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_chain_expression\fP (\fBSysMLv2Parser::Feature_chain_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterCollect_expression\fP (\fBSysMLv2Parser::Collect_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitCollect_expression\fP (\fBSysMLv2Parser::Collect_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSelect_expression\fP (\fBSysMLv2Parser::Select_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSelect_expression\fP (\fBSysMLv2Parser::Select_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_operation_expression\fP (\fBSysMLv2Parser::Function_operation_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_operation_expression\fP (\fBSysMLv2Parser::Function_operation_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBody_argument_member\fP (\fBSysMLv2Parser::Body_argument_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBody_argument_member\fP (\fBSysMLv2Parser::Body_argument_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBody_argument\fP (\fBSysMLv2Parser::Body_argumentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBody_argument\fP (\fBSysMLv2Parser::Body_argumentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBody_argument_value\fP (\fBSysMLv2Parser::Body_argument_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBody_argument_value\fP (\fBSysMLv2Parser::Body_argument_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBody_expression_member\fP (\fBSysMLv2Parser::Body_expression_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBody_expression_member\fP (\fBSysMLv2Parser::Body_expression_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_reference_argument_member\fP (\fBSysMLv2Parser::Function_reference_argument_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_reference_argument_member\fP (\fBSysMLv2Parser::Function_reference_argument_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_reference_argument\fP (\fBSysMLv2Parser::Function_reference_argumentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_reference_argument\fP (\fBSysMLv2Parser::Function_reference_argumentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_reference_arugment_value\fP (\fBSysMLv2Parser::Function_reference_arugment_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_reference_arugment_value\fP (\fBSysMLv2Parser::Function_reference_arugment_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_reference_expression\fP (\fBSysMLv2Parser::Function_reference_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_reference_expression\fP (\fBSysMLv2Parser::Function_reference_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_reference_member\fP (\fBSysMLv2Parser::Function_reference_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_reference_member\fP (\fBSysMLv2Parser::Function_reference_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_reference\fP (\fBSysMLv2Parser::Function_referenceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_reference\fP (\fBSysMLv2Parser::Function_referenceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBase_expression\fP (\fBSysMLv2Parser::Base_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBase_expression\fP (\fBSysMLv2Parser::Base_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNull_expression\fP (\fBSysMLv2Parser::Null_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNull_expression\fP (\fBSysMLv2Parser::Null_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_reference_expression\fP (\fBSysMLv2Parser::Feature_reference_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_reference_expression\fP (\fBSysMLv2Parser::Feature_reference_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_reference_member\fP (\fBSysMLv2Parser::Feature_reference_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_reference_member\fP (\fBSysMLv2Parser::Feature_reference_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_reference\fP (\fBSysMLv2Parser::Feature_referenceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_reference\fP (\fBSysMLv2Parser::Feature_referenceContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_access_expression\fP (\fBSysMLv2Parser::Metadata_access_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_access_expression\fP (\fBSysMLv2Parser::Metadata_access_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInvocation_expression\fP (\fBSysMLv2Parser::Invocation_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInvocation_expression\fP (\fBSysMLv2Parser::Invocation_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInternal_invocation_expression\fP (\fBSysMLv2Parser::Internal_invocation_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInternal_invocation_expression\fP (\fBSysMLv2Parser::Internal_invocation_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterArgument_list\fP (\fBSysMLv2Parser::Argument_listContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitArgument_list\fP (\fBSysMLv2Parser::Argument_listContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPositional_argument_list\fP (\fBSysMLv2Parser::Positional_argument_listContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPositional_argument_list\fP (\fBSysMLv2Parser::Positional_argument_listContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamed_argument_list\fP (\fBSysMLv2Parser::Named_argument_listContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamed_argument_list\fP (\fBSysMLv2Parser::Named_argument_listContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamed_argument_member\fP (\fBSysMLv2Parser::Named_argument_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamed_argument_member\fP (\fBSysMLv2Parser::Named_argument_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamed_argument\fP (\fBSysMLv2Parser::Named_argumentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamed_argument\fP (\fBSysMLv2Parser::Named_argumentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterParamenter_redefinition\fP (\fBSysMLv2Parser::Paramenter_redefinitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitParamenter_redefinition\fP (\fBSysMLv2Parser::Paramenter_redefinitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBody_expression\fP (\fBSysMLv2Parser::Body_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBody_expression\fP (\fBSysMLv2Parser::Body_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterExpression_body_member\fP (\fBSysMLv2Parser::Expression_body_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitExpression_body_member\fP (\fBSysMLv2Parser::Expression_body_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterExpression_body\fP (\fBSysMLv2Parser::Expression_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitExpression_body\fP (\fBSysMLv2Parser::Expression_bodyContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterLiteral_expression\fP (\fBSysMLv2Parser::Literal_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitLiteral_expression\fP (\fBSysMLv2Parser::Literal_expressionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterLiteral_boolean\fP (\fBSysMLv2Parser::Literal_booleanContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitLiteral_boolean\fP (\fBSysMLv2Parser::Literal_booleanContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterBoolean_value\fP (\fBSysMLv2Parser::Boolean_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitBoolean_value\fP (\fBSysMLv2Parser::Boolean_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterLiteral_string\fP (\fBSysMLv2Parser::Literal_stringContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitLiteral_string\fP (\fBSysMLv2Parser::Literal_stringContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterLiteral_integer\fP (\fBSysMLv2Parser::Literal_integerContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitLiteral_integer\fP (\fBSysMLv2Parser::Literal_integerContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterLiteral_real\fP (\fBSysMLv2Parser::Literal_realContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitLiteral_real\fP (\fBSysMLv2Parser::Literal_realContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterReal_value\fP (\fBSysMLv2Parser::Real_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitReal_value\fP (\fBSysMLv2Parser::Real_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterLiteral_infinity\fP (\fBSysMLv2Parser::Literal_infinityContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitLiteral_infinity\fP (\fBSysMLv2Parser::Literal_infinityContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInteraction\fP (\fBSysMLv2Parser::InteractionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInteraction\fP (\fBSysMLv2Parser::InteractionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_flow\fP (\fBSysMLv2Parser::Item_flowContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_flow\fP (\fBSysMLv2Parser::Item_flowContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterSuccession_item_flow\fP (\fBSysMLv2Parser::Succession_item_flowContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitSuccession_item_flow\fP (\fBSysMLv2Parser::Succession_item_flowContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_flow_declaration\fP (\fBSysMLv2Parser::Item_flow_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_flow_declaration\fP (\fBSysMLv2Parser::Item_flow_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_feature_member\fP (\fBSysMLv2Parser::Item_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_feature_member\fP (\fBSysMLv2Parser::Item_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_feature\fP (\fBSysMLv2Parser::Item_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_feature\fP (\fBSysMLv2Parser::Item_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_feature_specilization_part\fP (\fBSysMLv2Parser::Item_feature_specilization_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_feature_specilization_part\fP (\fBSysMLv2Parser::Item_feature_specilization_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_flow_end_member\fP (\fBSysMLv2Parser::Item_flow_end_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_flow_end_member\fP (\fBSysMLv2Parser::Item_flow_end_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_flow_end\fP (\fBSysMLv2Parser::Item_flow_endContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_flow_end\fP (\fBSysMLv2Parser::Item_flow_endContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_flow_feature_member\fP (\fBSysMLv2Parser::Item_flow_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_flow_feature_member\fP (\fBSysMLv2Parser::Item_flow_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_flow_feature\fP (\fBSysMLv2Parser::Item_flow_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_flow_feature\fP (\fBSysMLv2Parser::Item_flow_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_flow_redefinition\fP (\fBSysMLv2Parser::Item_flow_redefinitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_flow_redefinition\fP (\fBSysMLv2Parser::Item_flow_redefinitionContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterValue_part\fP (\fBSysMLv2Parser::Value_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitValue_part\fP (\fBSysMLv2Parser::Value_partContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_value\fP (\fBSysMLv2Parser::Feature_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_value\fP (\fBSysMLv2Parser::Feature_valueContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_assignment\fP (\fBSysMLv2Parser::Feature_assignmentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_assignment\fP (\fBSysMLv2Parser::Feature_assignmentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMultiplicity\fP (\fBSysMLv2Parser::MultiplicityContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMultiplicity\fP (\fBSysMLv2Parser::MultiplicityContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMultiplicity_subset\fP (\fBSysMLv2Parser::Multiplicity_subsetContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMultiplicity_subset\fP (\fBSysMLv2Parser::Multiplicity_subsetContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_multiplicity_range\fP (\fBSysMLv2Parser::Owned_multiplicity_rangeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_multiplicity_range\fP (\fBSysMLv2Parser::Owned_multiplicity_rangeContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMultiplicity_bounds\fP (\fBSysMLv2Parser::Multiplicity_boundsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMultiplicity_bounds\fP (\fBSysMLv2Parser::Multiplicity_boundsContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMultiplicity_expression_member\fP (\fBSysMLv2Parser::Multiplicity_expression_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMultiplicity_expression_member\fP (\fBSysMLv2Parser::Multiplicity_expression_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterInternal_multiplicity_expression_member\fP (\fBSysMLv2Parser::Internal_multiplicity_expression_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitInternal_multiplicity_expression_member\fP (\fBSysMLv2Parser::Internal_multiplicity_expression_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetaclass\fP (\fBSysMLv2Parser::MetaclassContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetaclass\fP (\fBSysMLv2Parser::MetaclassContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrefix_metadata_feature\fP (\fBSysMLv2Parser::Prefix_metadata_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrefix_metadata_feature\fP (\fBSysMLv2Parser::Prefix_metadata_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_feature\fP (\fBSysMLv2Parser::Metadata_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_feature\fP (\fBSysMLv2Parser::Metadata_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_feature_declaration\fP (\fBSysMLv2Parser::Metadata_feature_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_feature_declaration\fP (\fBSysMLv2Parser::Metadata_feature_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_body_element\fP (\fBSysMLv2Parser::Metadata_body_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_body_element\fP (\fBSysMLv2Parser::Metadata_body_elementContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_body_feature_member\fP (\fBSysMLv2Parser::Metadata_body_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_body_feature_member\fP (\fBSysMLv2Parser::Metadata_body_feature_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_body_feature\fP (\fBSysMLv2Parser::Metadata_body_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_body_feature\fP (\fBSysMLv2Parser::Metadata_body_featureContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterLibrary_package\fP (\fBSysMLv2Parser::Library_packageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitLibrary_package\fP (\fBSysMLv2Parser::Library_packageContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterPackage_declaration\fP (\fBSysMLv2Parser::Package_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitPackage_declaration\fP (\fBSysMLv2Parser::Package_declarationContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterElement_filter_member\fP (\fBSysMLv2Parser::Element_filter_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitElement_filter_member\fP (\fBSysMLv2Parser::Element_filter_memberContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBenterMeta_assignment\fP (\fBSysMLv2Parser::Meta_assignmentContext\fP *ctx)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexitMeta_assignment\fP (\fBSysMLv2Parser::Meta_assignmentContext\fP *ctx)=0"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This interface defines an abstract listener for a parse tree produced by \fBSysMLv2Parser\fP\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

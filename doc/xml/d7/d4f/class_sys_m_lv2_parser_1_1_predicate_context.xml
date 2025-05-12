@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::PredicateContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1a3d7d8dd0d6b183e2f8c849685a88737f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::PredicateContext::PredicateContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>PredicateContext</name>
+        <qualifiedname>SysMLv2Parser::PredicateContext::PredicateContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7318" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36220" bodyend="36222"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1a079e0e29e7bae736ebd246582da656fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::PredicateContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::PredicateContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7319" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36241" bodyend="36243"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1a5fee4163dbedf0fa9ba65bf32834d667" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d2b/class_sys_m_lv2_parser_1_1_type__prefix_context" kindref="compound">Type_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::Type_prefixContext * SysMLv2Parser::PredicateContext::type_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>type_prefix</name>
+        <qualifiedname>SysMLv2Parser::PredicateContext::type_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7320" column="24" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36224" bodyend="36226"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1abc645bb56a851315aba76801ae45c827" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::PredicateContext::KEYWORD_PREDICATE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_PREDICATE</name>
+        <qualifiedname>SysMLv2Parser::PredicateContext::KEYWORD_PREDICATE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7321" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36228" bodyend="36230"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1a8b0f0ec76633f941d53aad76e31c9832" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context" kindref="compound">Classifier_declarationContext</ref> *</type>
+        <definition>SysMLv2Parser::Classifier_declarationContext * SysMLv2Parser::PredicateContext::classifier_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>classifier_declaration</name>
+        <qualifiedname>SysMLv2Parser::PredicateContext::classifier_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7322" column="35" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36232" bodyend="36234"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1a1612a26934abe754377847067f55e8ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d52/class_sys_m_lv2_parser_1_1_function__body_context" kindref="compound">Function_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Function_bodyContext * SysMLv2Parser::PredicateContext::function_body</definition>
+        <argsstring>()</argsstring>
+        <name>function_body</name>
+        <qualifiedname>SysMLv2Parser::PredicateContext::function_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7323" column="26" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36236" bodyend="36238"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1a402a45c90c6f16d07d0c0b80f9b6d5c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::PredicateContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::PredicateContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7325" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36245" bodyend="36249"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1afa91e34bfe44c7a1ce4ba02e1d83f69c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::PredicateContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::PredicateContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7326" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="36251" bodyend="36255"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::PredicateContext</label>
+        <link refid="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::PredicateContext</label>
+        <link refid="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7316" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="7316" bodyend="7328"/>
+    <listofallmembers>
+      <member refid="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1a8b0f0ec76633f941d53aad76e31c9832" prot="public" virt="non-virtual"><scope>SysMLv2Parser::PredicateContext</scope><name>classifier_declaration</name></member>
+      <member refid="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1a402a45c90c6f16d07d0c0b80f9b6d5c1" prot="public" virt="virtual"><scope>SysMLv2Parser::PredicateContext</scope><name>enterRule</name></member>
+      <member refid="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1afa91e34bfe44c7a1ce4ba02e1d83f69c" prot="public" virt="virtual"><scope>SysMLv2Parser::PredicateContext</scope><name>exitRule</name></member>
+      <member refid="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1a1612a26934abe754377847067f55e8ef" prot="public" virt="non-virtual"><scope>SysMLv2Parser::PredicateContext</scope><name>function_body</name></member>
+      <member refid="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1a079e0e29e7bae736ebd246582da656fa" prot="public" virt="virtual"><scope>SysMLv2Parser::PredicateContext</scope><name>getRuleIndex</name></member>
+      <member refid="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1abc645bb56a851315aba76801ae45c827" prot="public" virt="non-virtual"><scope>SysMLv2Parser::PredicateContext</scope><name>KEYWORD_PREDICATE</name></member>
+      <member refid="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1a3d7d8dd0d6b183e2f8c849685a88737f" prot="public" virt="non-virtual"><scope>SysMLv2Parser::PredicateContext</scope><name>PredicateContext</name></member>
+      <member refid="d7/d4f/class_sys_m_lv2_parser_1_1_predicate_context_1a5fee4163dbedf0fa9ba65bf32834d667" prot="public" virt="non-virtual"><scope>SysMLv2Parser::PredicateContext</scope><name>type_prefix</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Constraint_usage_declarationContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context_1a4a8a8383ea799ef14ad047ee46b15d68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Constraint_usage_declarationContext::Constraint_usage_declarationContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Constraint_usage_declarationContext</name>
+        <qualifiedname>SysMLv2Parser::Constraint_usage_declarationContext::Constraint_usage_declarationContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4523" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="21365" bodyend="21367"/>
+      </memberdef>
+      <memberdef kind="function" id="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context_1ac821ef2076c6413be1b8796652ff8eb2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Constraint_usage_declarationContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Constraint_usage_declarationContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4524" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="21378" bodyend="21380"/>
+      </memberdef>
+      <memberdef kind="function" id="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context_1a419cf4e5d3c8da056ed88c1c4a26c022" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d41/class_sys_m_lv2_parser_1_1_usage__declaration_context" kindref="compound">Usage_declarationContext</ref> *</type>
+        <definition>SysMLv2Parser::Usage_declarationContext * SysMLv2Parser::Constraint_usage_declarationContext::usage_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>usage_declaration</name>
+        <qualifiedname>SysMLv2Parser::Constraint_usage_declarationContext::usage_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4525" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="21369" bodyend="21371"/>
+      </memberdef>
+      <memberdef kind="function" id="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context_1a517c7452fb457af61eafa12c666cb0ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d74/class_sys_m_lv2_parser_1_1_value__part_context" kindref="compound">Value_partContext</ref> *</type>
+        <definition>SysMLv2Parser::Value_partContext * SysMLv2Parser::Constraint_usage_declarationContext::value_part</definition>
+        <argsstring>()</argsstring>
+        <name>value_part</name>
+        <qualifiedname>SysMLv2Parser::Constraint_usage_declarationContext::value_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4526" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="21373" bodyend="21375"/>
+      </memberdef>
+      <memberdef kind="function" id="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context_1a03a1bc726b68ff5cca55ff1cf4efa14f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Constraint_usage_declarationContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Constraint_usage_declarationContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4528" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="21382" bodyend="21386"/>
+      </memberdef>
+      <memberdef kind="function" id="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context_1acc5fabbbb85f24769a3af53f306ecb82" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Constraint_usage_declarationContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Constraint_usage_declarationContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4529" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="21388" bodyend="21392"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Constraint_usage_declarationContext</label>
+        <link refid="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Constraint_usage_declarationContext</label>
+        <link refid="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4521" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="4521" bodyend="4531"/>
+    <listofallmembers>
+      <member refid="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context_1a4a8a8383ea799ef14ad047ee46b15d68" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Constraint_usage_declarationContext</scope><name>Constraint_usage_declarationContext</name></member>
+      <member refid="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context_1a03a1bc726b68ff5cca55ff1cf4efa14f" prot="public" virt="virtual"><scope>SysMLv2Parser::Constraint_usage_declarationContext</scope><name>enterRule</name></member>
+      <member refid="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context_1acc5fabbbb85f24769a3af53f306ecb82" prot="public" virt="virtual"><scope>SysMLv2Parser::Constraint_usage_declarationContext</scope><name>exitRule</name></member>
+      <member refid="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context_1ac821ef2076c6413be1b8796652ff8eb2" prot="public" virt="virtual"><scope>SysMLv2Parser::Constraint_usage_declarationContext</scope><name>getRuleIndex</name></member>
+      <member refid="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context_1a419cf4e5d3c8da056ed88c1c4a26c022" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Constraint_usage_declarationContext</scope><name>usage_declaration</name></member>
+      <member refid="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context_1a517c7452fb457af61eafa12c666cb0ac" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Constraint_usage_declarationContext</scope><name>value_part</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

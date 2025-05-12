@@ -1,0 +1,238 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::While_loop_nodeContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1a552021296c8fcefc2ef4b2d81e380272" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::While_loop_nodeContext::While_loop_nodeContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>While_loop_nodeContext</name>
+        <qualifiedname>SysMLv2Parser::While_loop_nodeContext::While_loop_nodeContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3724" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="17283" bodyend="17285"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1a6ec5714cb8a5aa389a31e62ffa1ebb22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::While_loop_nodeContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::While_loop_nodeContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3725" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="17320" bodyend="17322"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1ae61675bf9f7776f3c24f0c9cc469bb00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/dcd/class_sys_m_lv2_parser_1_1_action__node__prefix_context" kindref="compound">Action_node_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::Action_node_prefixContext * SysMLv2Parser::While_loop_nodeContext::action_node_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>action_node_prefix</name>
+        <qualifiedname>SysMLv2Parser::While_loop_nodeContext::action_node_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3726" column="31" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="17287" bodyend="17289"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1aef0f4cadae2f98b77c04edd6c867cb1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/dcc/class_sys_m_lv2_parser_1_1_action__body__parameter__member_context" kindref="compound">Action_body_parameter_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Action_body_parameter_memberContext * SysMLv2Parser::While_loop_nodeContext::action_body_parameter_member</definition>
+        <argsstring>()</argsstring>
+        <name>action_body_parameter_member</name>
+        <qualifiedname>SysMLv2Parser::While_loop_nodeContext::action_body_parameter_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3727" column="41" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="17291" bodyend="17293"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1a7381b3bb43d82755b21bffbae5016e80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::While_loop_nodeContext::KEYWORD_WHILE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_WHILE</name>
+        <qualifiedname>SysMLv2Parser::While_loop_nodeContext::KEYWORD_WHILE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3728" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="17295" bodyend="17297"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1a965521d82b34465d45db637a98b8652f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d9/d64/class_sys_m_lv2_parser_1_1_expression__parameter__member_context" kindref="compound">Expression_parameter_memberContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Expression_parameter_memberContext * &gt; SysMLv2Parser::While_loop_nodeContext::expression_parameter_member</definition>
+        <argsstring>()</argsstring>
+        <name>expression_parameter_member</name>
+        <qualifiedname>SysMLv2Parser::While_loop_nodeContext::expression_parameter_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3729" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="17299" bodyend="17301"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1a18a1a3f747c0cc04bceb1a7cf781fd86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d64/class_sys_m_lv2_parser_1_1_expression__parameter__member_context" kindref="compound">Expression_parameter_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Expression_parameter_memberContext * SysMLv2Parser::While_loop_nodeContext::expression_parameter_member</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>expression_parameter_member</name>
+        <qualifiedname>SysMLv2Parser::While_loop_nodeContext::expression_parameter_member</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3730" column="40" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="17303" bodyend="17305"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1acc3363dac4b5ef0fab4f26e20b6d4ef2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::While_loop_nodeContext::KEYWORD_LOOP</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_LOOP</name>
+        <qualifiedname>SysMLv2Parser::While_loop_nodeContext::KEYWORD_LOOP</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3731" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="17307" bodyend="17309"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1a50c0fb00b31152ade42e1813101829e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::While_loop_nodeContext::KEYWORD_UNTIL</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_UNTIL</name>
+        <qualifiedname>SysMLv2Parser::While_loop_nodeContext::KEYWORD_UNTIL</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3732" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="17311" bodyend="17313"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1af9aa8366501a54d1cbecc8d423c05c65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::While_loop_nodeContext::SYMBOL_STATEMENT_DELIMITER</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_STATEMENT_DELIMITER</name>
+        <qualifiedname>SysMLv2Parser::While_loop_nodeContext::SYMBOL_STATEMENT_DELIMITER</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3733" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="17315" bodyend="17317"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1ae10b0e38b73c2da0a7d603b52b0e219d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::While_loop_nodeContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::While_loop_nodeContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3735" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="17324" bodyend="17328"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1a7b9692072c7ddf4ed064dd0ae02fa74e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::While_loop_nodeContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::While_loop_nodeContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3736" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="17330" bodyend="17334"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::While_loop_nodeContext</label>
+        <link refid="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::While_loop_nodeContext</label>
+        <link refid="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3722" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="3722" bodyend="3738"/>
+    <listofallmembers>
+      <member refid="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1aef0f4cadae2f98b77c04edd6c867cb1c" prot="public" virt="non-virtual"><scope>SysMLv2Parser::While_loop_nodeContext</scope><name>action_body_parameter_member</name></member>
+      <member refid="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1ae61675bf9f7776f3c24f0c9cc469bb00" prot="public" virt="non-virtual"><scope>SysMLv2Parser::While_loop_nodeContext</scope><name>action_node_prefix</name></member>
+      <member refid="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1ae10b0e38b73c2da0a7d603b52b0e219d" prot="public" virt="virtual"><scope>SysMLv2Parser::While_loop_nodeContext</scope><name>enterRule</name></member>
+      <member refid="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1a7b9692072c7ddf4ed064dd0ae02fa74e" prot="public" virt="virtual"><scope>SysMLv2Parser::While_loop_nodeContext</scope><name>exitRule</name></member>
+      <member refid="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1a965521d82b34465d45db637a98b8652f" prot="public" virt="non-virtual"><scope>SysMLv2Parser::While_loop_nodeContext</scope><name>expression_parameter_member</name></member>
+      <member refid="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1a18a1a3f747c0cc04bceb1a7cf781fd86" prot="public" virt="non-virtual"><scope>SysMLv2Parser::While_loop_nodeContext</scope><name>expression_parameter_member</name></member>
+      <member refid="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1a6ec5714cb8a5aa389a31e62ffa1ebb22" prot="public" virt="virtual"><scope>SysMLv2Parser::While_loop_nodeContext</scope><name>getRuleIndex</name></member>
+      <member refid="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1acc3363dac4b5ef0fab4f26e20b6d4ef2" prot="public" virt="non-virtual"><scope>SysMLv2Parser::While_loop_nodeContext</scope><name>KEYWORD_LOOP</name></member>
+      <member refid="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1a50c0fb00b31152ade42e1813101829e7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::While_loop_nodeContext</scope><name>KEYWORD_UNTIL</name></member>
+      <member refid="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1a7381b3bb43d82755b21bffbae5016e80" prot="public" virt="non-virtual"><scope>SysMLv2Parser::While_loop_nodeContext</scope><name>KEYWORD_WHILE</name></member>
+      <member refid="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1af9aa8366501a54d1cbecc8d423c05c65" prot="public" virt="non-virtual"><scope>SysMLv2Parser::While_loop_nodeContext</scope><name>SYMBOL_STATEMENT_DELIMITER</name></member>
+      <member refid="d9/d82/class_sys_m_lv2_parser_1_1_while__loop__node_context_1a552021296c8fcefc2ef4b2d81e380272" prot="public" virt="non-virtual"><scope>SysMLv2Parser::While_loop_nodeContext</scope><name>While_loop_nodeContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

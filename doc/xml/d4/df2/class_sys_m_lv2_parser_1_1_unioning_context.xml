@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::UnioningContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context_1ae0b8489b9ac083607e774dc52e8f7929" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::UnioningContext::UnioningContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>UnioningContext</name>
+        <qualifiedname>SysMLv2Parser::UnioningContext::UnioningContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6301" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="30793" bodyend="30795"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context_1ad3f652e9e6e3d937638dd94095b7fed7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::UnioningContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::UnioningContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6302" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="30806" bodyend="30808"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context_1a3e8b216b7adccca2124f9befb51a31c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dc1/class_sys_m_lv2_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>SysMLv2Parser::Qualified_nameContext * SysMLv2Parser::UnioningContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>SysMLv2Parser::UnioningContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6303" column="27" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="30797" bodyend="30799"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context_1aa04fed82fa1caa12d9ebd0b76f33d5b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context" kindref="compound">Owned_feature_chainContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_feature_chainContext * SysMLv2Parser::UnioningContext::owned_feature_chain</definition>
+        <argsstring>()</argsstring>
+        <name>owned_feature_chain</name>
+        <qualifiedname>SysMLv2Parser::UnioningContext::owned_feature_chain</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6304" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="30801" bodyend="30803"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context_1abd398b57eda13acf7504885c0cb10278" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::UnioningContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::UnioningContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6306" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="30810" bodyend="30814"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context_1aebf99d0beb06bf85c05b5aa44a7d19d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::UnioningContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::UnioningContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6307" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="30816" bodyend="30820"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::UnioningContext</label>
+        <link refid="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::UnioningContext</label>
+        <link refid="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6299" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="6299" bodyend="6309"/>
+    <listofallmembers>
+      <member refid="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context_1abd398b57eda13acf7504885c0cb10278" prot="public" virt="virtual"><scope>SysMLv2Parser::UnioningContext</scope><name>enterRule</name></member>
+      <member refid="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context_1aebf99d0beb06bf85c05b5aa44a7d19d4" prot="public" virt="virtual"><scope>SysMLv2Parser::UnioningContext</scope><name>exitRule</name></member>
+      <member refid="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context_1ad3f652e9e6e3d937638dd94095b7fed7" prot="public" virt="virtual"><scope>SysMLv2Parser::UnioningContext</scope><name>getRuleIndex</name></member>
+      <member refid="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context_1aa04fed82fa1caa12d9ebd0b76f33d5b3" prot="public" virt="non-virtual"><scope>SysMLv2Parser::UnioningContext</scope><name>owned_feature_chain</name></member>
+      <member refid="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context_1a3e8b216b7adccca2124f9befb51a31c1" prot="public" virt="non-virtual"><scope>SysMLv2Parser::UnioningContext</scope><name>qualified_name</name></member>
+      <member refid="d4/df2/class_sys_m_lv2_parser_1_1_unioning_context_1ae0b8489b9ac083607e774dc52e8f7929" prot="public" virt="non-virtual"><scope>SysMLv2Parser::UnioningContext</scope><name>UnioningContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

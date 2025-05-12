@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Item_flow_declarationContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a714dadd685eb586e89236a6b90699984" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Item_flow_declarationContext::Item_flow_declarationContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Item_flow_declarationContext</name>
+        <qualifiedname>KerMLParser::Item_flow_declarationContext::Item_flow_declarationContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3850" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18256" bodyend="18258"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a355bd04d5dbb8321646f7f93da8292f5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Item_flow_declarationContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Item_flow_declarationContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3851" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18297" bodyend="18299"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a120120ddde302c5c0253d8ff84334324" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/da8/class_ker_m_l_parser_1_1_feature__declaration_context" kindref="compound">Feature_declarationContext</ref> *</type>
+        <definition>KerMLParser::Feature_declarationContext * KerMLParser::Item_flow_declarationContext::feature_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>feature_declaration</name>
+        <qualifiedname>KerMLParser::Item_flow_declarationContext::feature_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3852" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18260" bodyend="18262"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a135820f7976ae4d5ffb1c3d5c1e187ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context" kindref="compound">Item_flow_end_memberContext</ref> * &gt;</type>
+        <definition>std::vector&lt; KerMLParser::Item_flow_end_memberContext * &gt; KerMLParser::Item_flow_declarationContext::item_flow_end_member</definition>
+        <argsstring>()</argsstring>
+        <name>item_flow_end_member</name>
+        <qualifiedname>KerMLParser::Item_flow_declarationContext::item_flow_end_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3853" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18264" bodyend="18266"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a8950677fb5a68131892c5c6bd54e9759" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context" kindref="compound">Item_flow_end_memberContext</ref> *</type>
+        <definition>KerMLParser::Item_flow_end_memberContext * KerMLParser::Item_flow_declarationContext::item_flow_end_member</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>item_flow_end_member</name>
+        <qualifiedname>KerMLParser::Item_flow_declarationContext::item_flow_end_member</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3854" column="33" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18268" bodyend="18270"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1af216dd2985d82346236a5b89528a469b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Item_flow_declarationContext::KEYWORD_TO</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_TO</name>
+        <qualifiedname>KerMLParser::Item_flow_declarationContext::KEYWORD_TO</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3855" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18272" bodyend="18274"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a6d1fb1cda0c13fdf9cc67c1e17b6ef78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d18/class_ker_m_l_parser_1_1_value__part_context" kindref="compound">Value_partContext</ref> *</type>
+        <definition>KerMLParser::Value_partContext * KerMLParser::Item_flow_declarationContext::value_part</definition>
+        <argsstring>()</argsstring>
+        <name>value_part</name>
+        <qualifiedname>KerMLParser::Item_flow_declarationContext::value_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3856" column="23" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18276" bodyend="18278"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a389d35f620f25de4a8eb30f20c1bd9c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Item_flow_declarationContext::KEYWORD_OF</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_OF</name>
+        <qualifiedname>KerMLParser::Item_flow_declarationContext::KEYWORD_OF</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3857" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18280" bodyend="18282"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1aa65c751ff113441d3295a28790dc50e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/da4/class_ker_m_l_parser_1_1_item__feature__member_context" kindref="compound">Item_feature_memberContext</ref> *</type>
+        <definition>KerMLParser::Item_feature_memberContext * KerMLParser::Item_flow_declarationContext::item_feature_member</definition>
+        <argsstring>()</argsstring>
+        <name>item_feature_member</name>
+        <qualifiedname>KerMLParser::Item_flow_declarationContext::item_feature_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3858" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18284" bodyend="18286"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a0aad74782c310a5558aee41a250ad35a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Item_flow_declarationContext::KEYWORD_FROM</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_FROM</name>
+        <qualifiedname>KerMLParser::Item_flow_declarationContext::KEYWORD_FROM</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3859" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18288" bodyend="18290"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a65e76b1c478218f626cb7adff997c86a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Item_flow_declarationContext::KEYWORD_ALL</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_ALL</name>
+        <qualifiedname>KerMLParser::Item_flow_declarationContext::KEYWORD_ALL</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3860" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18292" bodyend="18294"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a798aa77aee6c29c7ffc9dba068527322" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Item_flow_declarationContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Item_flow_declarationContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3862" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18301" bodyend="18305"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1af0e8e4b956d26af689535e6ffde34b02" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Item_flow_declarationContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Item_flow_declarationContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3863" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18307" bodyend="18311"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Item_flow_declarationContext</label>
+        <link refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Item_flow_declarationContext</label>
+        <link refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="3848" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="3848" bodyend="3865"/>
+    <listofallmembers>
+      <member refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a798aa77aee6c29c7ffc9dba068527322" prot="public" virt="virtual"><scope>KerMLParser::Item_flow_declarationContext</scope><name>enterRule</name></member>
+      <member refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1af0e8e4b956d26af689535e6ffde34b02" prot="public" virt="virtual"><scope>KerMLParser::Item_flow_declarationContext</scope><name>exitRule</name></member>
+      <member refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a120120ddde302c5c0253d8ff84334324" prot="public" virt="non-virtual"><scope>KerMLParser::Item_flow_declarationContext</scope><name>feature_declaration</name></member>
+      <member refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a355bd04d5dbb8321646f7f93da8292f5" prot="public" virt="virtual"><scope>KerMLParser::Item_flow_declarationContext</scope><name>getRuleIndex</name></member>
+      <member refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1aa65c751ff113441d3295a28790dc50e2" prot="public" virt="non-virtual"><scope>KerMLParser::Item_flow_declarationContext</scope><name>item_feature_member</name></member>
+      <member refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a714dadd685eb586e89236a6b90699984" prot="public" virt="non-virtual"><scope>KerMLParser::Item_flow_declarationContext</scope><name>Item_flow_declarationContext</name></member>
+      <member refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a135820f7976ae4d5ffb1c3d5c1e187ad" prot="public" virt="non-virtual"><scope>KerMLParser::Item_flow_declarationContext</scope><name>item_flow_end_member</name></member>
+      <member refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a8950677fb5a68131892c5c6bd54e9759" prot="public" virt="non-virtual"><scope>KerMLParser::Item_flow_declarationContext</scope><name>item_flow_end_member</name></member>
+      <member refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a65e76b1c478218f626cb7adff997c86a" prot="public" virt="non-virtual"><scope>KerMLParser::Item_flow_declarationContext</scope><name>KEYWORD_ALL</name></member>
+      <member refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a0aad74782c310a5558aee41a250ad35a" prot="public" virt="non-virtual"><scope>KerMLParser::Item_flow_declarationContext</scope><name>KEYWORD_FROM</name></member>
+      <member refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a389d35f620f25de4a8eb30f20c1bd9c6" prot="public" virt="non-virtual"><scope>KerMLParser::Item_flow_declarationContext</scope><name>KEYWORD_OF</name></member>
+      <member refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1af216dd2985d82346236a5b89528a469b" prot="public" virt="non-virtual"><scope>KerMLParser::Item_flow_declarationContext</scope><name>KEYWORD_TO</name></member>
+      <member refid="d3/d4f/class_ker_m_l_parser_1_1_item__flow__declaration_context_1a6d1fb1cda0c13fdf9cc67c1e17b6ef78" prot="public" virt="non-virtual"><scope>KerMLParser::Item_flow_declarationContext</scope><name>value_part</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

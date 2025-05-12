@@ -1,0 +1,147 @@
+.TH "SysMLv2::Entities::Tag" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::Entities::Tag
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBSysMLv2::Entities::CommitReference\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTag\fP (std::string jsonStringOrName)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBSysMLv2::Entities::CommitReference\fP
+.in +1c
+.ti -1c
+.RI "\fBCommitReference\fP (std::string jsonStringOrName)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBCommitReference\fP &other)"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.ti -1c
+.RI "void \fBsetCreated\fP (std::chrono::system_clock::time_point \fBcreated\fP)"
+.br
+.ti -1c
+.RI "std::chrono::system_clock::time_point \fBcreated\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetDeleted\fP (std::chrono::system_clock::time_point \fBdeleted\fP)"
+.br
+.ti -1c
+.RI "std::chrono::system_clock::time_point \fBdeleted\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBSysMLv2::Entities::Record\fP
+.in +1c
+.ti -1c
+.RI "\fBRecord\fP ()=delete"
+.br
+.ti -1c
+.RI "\fBRecord\fP (boost::uuids::uuid id, std::string name='', std::string description='')"
+.br
+.ti -1c
+.RI "\fBRecord\fP (std::string jsonStringOrName)"
+.br
+.ti -1c
+.RI "virtual \fB~Record\fP ()"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBRecord\fP const &other) const"
+.br
+.ti -1c
+.RI "std::string \fBgetName\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetName\fP (std::string name)"
+.br
+.ti -1c
+.RI "std::list< std::string > \fBgetAlias\fP () const"
+.br
+.ti -1c
+.RI "void \fBappendAlias\fP (std::string &alias)"
+.br
+.ti -1c
+.RI "std::string \fBgetDescription\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetDescription\fP (std::string &description)"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBgetId\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBgetType\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBSysMLv2::Entities::CommitReference\fP
+.in +1c
+.ti -1c
+.RI "std::chrono::system_clock::time_point \fBCreated\fP"
+.br
+.ti -1c
+.RI "std::chrono::system_clock::time_point \fBDeleted\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBCommit\fP > \fBReferencedCommit\fP"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBSysMLv2::Entities::Record\fP
+.in +1c
+.ti -1c
+.RI "std::string \fBType\fP"
+.br
+.ti -1c
+.RI "std::string \fBName\fP"
+.br
+.ti -1c
+.RI "std::list< std::string > \fBAlias\fP"
+.br
+.ti -1c
+.RI "std::string \fBDescription\fP"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBId\fP"
+.br
+.ti -1c
+.RI "bool \fBIsForCreation\fP = false"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBSysMLv2::Entities::IEntity\fP
+.in +1c
+.ti -1c
+.RI "const int \fBJSON_INTENT\fP = 2"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SysMLv2::Entities::Tag::Tag (std::string jsonStringOrName)"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIjsonStringOrName\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

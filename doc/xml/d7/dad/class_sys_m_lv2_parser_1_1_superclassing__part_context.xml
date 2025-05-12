@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Superclassing_partContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1a7f6766da73c82d239bcfd952dc827e25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Superclassing_partContext::Superclassing_partContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Superclassing_partContext</name>
+        <qualifiedname>SysMLv2Parser::Superclassing_partContext::Superclassing_partContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6421" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31419" bodyend="31421"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1aeb7727f1228a97c9170e1a7b155de82e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Superclassing_partContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Superclassing_partContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6422" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31444" bodyend="31446"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1ac74c296a548719154b18930ea864c40d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Superclassing_partContext::SPECIALIZES</definition>
+        <argsstring>()</argsstring>
+        <name>SPECIALIZES</name>
+        <qualifiedname>SysMLv2Parser::Superclassing_partContext::SPECIALIZES</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6423" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31423" bodyend="31425"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1add34e5cf67789827a300b0829484e2fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context" kindref="compound">Owned_subclassificationContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Owned_subclassificationContext * &gt; SysMLv2Parser::Superclassing_partContext::owned_subclassification</definition>
+        <argsstring>()</argsstring>
+        <name>owned_subclassification</name>
+        <qualifiedname>SysMLv2Parser::Superclassing_partContext::owned_subclassification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6424" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31427" bodyend="31429"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1aa108140a85bcadf0407f35d9fbaf10ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context" kindref="compound">Owned_subclassificationContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_subclassificationContext * SysMLv2Parser::Superclassing_partContext::owned_subclassification</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>owned_subclassification</name>
+        <qualifiedname>SysMLv2Parser::Superclassing_partContext::owned_subclassification</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6425" column="36" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31431" bodyend="31433"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1aaddaa0eb57abb959bda4c8674b594cbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; antlr4::tree::TerminalNode * &gt;</type>
+        <definition>std::vector&lt; tree::TerminalNode * &gt; SysMLv2Parser::Superclassing_partContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>SysMLv2Parser::Superclassing_partContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6426" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31435" bodyend="31437"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1ab6373760cd575c659d1a18863cf32e20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Superclassing_partContext::SYMBOL_COMMA</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>SysMLv2Parser::Superclassing_partContext::SYMBOL_COMMA</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6427" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31439" bodyend="31441"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1a1fe8185ab4952bfc74ef2a3232889478" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Superclassing_partContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Superclassing_partContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6429" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31448" bodyend="31452"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1ae0b911ddf565a9f9c43500663dc928b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Superclassing_partContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Superclassing_partContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6430" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31454" bodyend="31458"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Superclassing_partContext</label>
+        <link refid="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Superclassing_partContext</label>
+        <link refid="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6419" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="6419" bodyend="6432"/>
+    <listofallmembers>
+      <member refid="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1a1fe8185ab4952bfc74ef2a3232889478" prot="public" virt="virtual"><scope>SysMLv2Parser::Superclassing_partContext</scope><name>enterRule</name></member>
+      <member refid="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1ae0b911ddf565a9f9c43500663dc928b5" prot="public" virt="virtual"><scope>SysMLv2Parser::Superclassing_partContext</scope><name>exitRule</name></member>
+      <member refid="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1aeb7727f1228a97c9170e1a7b155de82e" prot="public" virt="virtual"><scope>SysMLv2Parser::Superclassing_partContext</scope><name>getRuleIndex</name></member>
+      <member refid="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1add34e5cf67789827a300b0829484e2fe" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Superclassing_partContext</scope><name>owned_subclassification</name></member>
+      <member refid="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1aa108140a85bcadf0407f35d9fbaf10ad" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Superclassing_partContext</scope><name>owned_subclassification</name></member>
+      <member refid="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1ac74c296a548719154b18930ea864c40d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Superclassing_partContext</scope><name>SPECIALIZES</name></member>
+      <member refid="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1a7f6766da73c82d239bcfd952dc827e25" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Superclassing_partContext</scope><name>Superclassing_partContext</name></member>
+      <member refid="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1aaddaa0eb57abb959bda4c8674b594cbf" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Superclassing_partContext</scope><name>SYMBOL_COMMA</name></member>
+      <member refid="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context_1ab6373760cd575c659d1a18863cf32e20" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Superclassing_partContext</scope><name>SYMBOL_COMMA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

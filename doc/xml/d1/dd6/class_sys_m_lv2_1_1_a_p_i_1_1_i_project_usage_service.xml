@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/dd6/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>SysMLv2::API::IProjectUsageService</compoundname>
+    <includes refid="d9/d8b/_i_project_usage_service_8h" local="no">IProjectUsageService.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/dd6/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_1a103f5f4b285a9268d5a18b10f9fcdfaa" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage" kindref="compound">SysMLv2::Entities::ProjectUsage</ref> &gt; &gt;</type>
+        <definition>virtual std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::ProjectUsage &gt; &gt; SysMLv2::API::IProjectUsageService::getProjectUsage</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project, std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; commit)=0</argsstring>
+        <name>getProjectUsage</name>
+        <qualifiedname>SysMLv2::API::IProjectUsageService::getProjectUsage</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+          <declname>commit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This is the interface implementation of the method, that gets all the project usages in the given project. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The project that is given by the project. If this variable is null, it might result in a segmentation fault or a exception. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The commit that is given to get the project usage. If this variable is null, it might result is a segmentation fault or a exception. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>All the project usages, that are stored in the project. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectUsageService.h" line="47" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dd6/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_1a66de0e2b291e6de2fd148d57501d9d36" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; SysMLv2::API::IProjectUsageService::deleteProjectUsage</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project, std::shared_ptr&lt; SysMLv2::Entities::Branch &gt; branch, boost::uuids::uuid projectUsageId)=0</argsstring>
+        <name>deleteProjectUsage</name>
+        <qualifiedname>SysMLv2::API::IProjectUsageService::deleteProjectUsage</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">SysMLv2::Entities::Branch</ref> &gt;</type>
+          <declname>branch</declname>
+        </param>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>projectUsageId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Interface for the method that deletes the project usage with the given id from the given project at the head commit of the given branch. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The project that is given by the User. If this is null it might result in a segmentation fault or exception. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>branch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The branch that is given by the User. This variable might be null, then the default branch is assumed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>projectUsageId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID (UUID) of the project usage that is deleted. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>returns a new commit with the given project usage. </para>
+</simplesect>
+<simplesect kind="see"><para>boost::uuids::uuid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectUsageService.h" line="57" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dd6/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_1a9c6334038c18be8a1bcd5bf7a6d3906b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; SysMLv2::API::IProjectUsageService::createProjectUsage</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project, std::shared_ptr&lt; SysMLv2::Entities::Branch &gt; branch, std::shared_ptr&lt; SysMLv2::Entities::ProjectUsage &gt; projectUsage)=0</argsstring>
+        <name>createProjectUsage</name>
+        <qualifiedname>SysMLv2::API::IProjectUsageService::createProjectUsage</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">SysMLv2::Entities::Branch</ref> &gt;</type>
+          <declname>branch</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage" kindref="compound">SysMLv2::Entities::ProjectUsage</ref> &gt;</type>
+          <declname>projectUsage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Interface of the method that creates a new project usage in the given project at the head of the given branch. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The project that is given. Please remember this could lead to segmentation fault or exception if null. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>branch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The branch that is given. This can be null, if this is null the internal default branch is used. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>projectUsage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The given project usage for the new Commit. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The new commit is now part of the project. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectUsageService.h" line="66" column="33"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This class represents an interface definition of the <ref refid="d0/d4e/class_project_usage_service" kindref="compound">ProjectUsageService</ref> according to the <ref refid="d7/dba/namespace_sys_m_lv2" kindref="compound">SysMLv2</ref> Standard Version: 1.0 Beta 3. <simplesect kind="author"><para>Moritz Herzog </para>
+</simplesect>
+<simplesect kind="version"><para>1.0 Beta 3 </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage" kindref="compound">SysMLv2::Entities::ProjectUsage</ref> </para>
+</simplesect>
+<simplesect kind="see"><para>boost::uuids::uuid </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="services/src/interfaces/IProjectUsageService.h" line="39" column="5" bodyfile="services/src/interfaces/IProjectUsageService.h" bodystart="39" bodyend="67"/>
+    <listofallmembers>
+      <member refid="d1/dd6/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_1a9c6334038c18be8a1bcd5bf7a6d3906b" prot="public" virt="pure-virtual"><scope>SysMLv2::API::IProjectUsageService</scope><name>createProjectUsage</name></member>
+      <member refid="d1/dd6/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_1a66de0e2b291e6de2fd148d57501d9d36" prot="public" virt="pure-virtual"><scope>SysMLv2::API::IProjectUsageService</scope><name>deleteProjectUsage</name></member>
+      <member refid="d1/dd6/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_usage_service_1a103f5f4b285a9268d5a18b10f9fcdfaa" prot="public" virt="pure-virtual"><scope>SysMLv2::API::IProjectUsageService</scope><name>getProjectUsage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

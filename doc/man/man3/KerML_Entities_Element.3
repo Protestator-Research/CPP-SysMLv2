@@ -1,0 +1,546 @@
+.TH "KerML::Entities::Element" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KerML::Entities::Element \- This part of the model allows the identification of all elements\&. This part of the model allows the identification of all elements\&. This is a core concept of the \fBKerML\fP and SysML syntax\&. Also this class is required for the REST-API and the parsing of the models\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Element\&.h>\fP
+.PP
+Inherited by \fBKerML::Entities::AnnotatingElement\fP, \fBKerML::Entities::Namespace\fP, and \fBKerML::Entities::Relationship\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBElement\fP (boost::uuids::uuid elementID=boost::uuids::random_generator()(), std::shared_ptr< \fBElement\fP > \fBowner\fP=nullptr)"
+.br
+.ti -1c
+.RI "\fBElement\fP (std::string elementID, std::shared_ptr< \fBElement\fP > \fBowner\fP=nullptr)"
+.br
+.ti -1c
+.RI "virtual \fB~Element\fP ()=default"
+.br
+.ti -1c
+.RI "std::string \fBelementId\fP () const"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBelementIdAsUUID\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetAliasIds\fP (std::vector< std::string > \fBaliasIds\fP)"
+.br
+.ti -1c
+.RI "void \fBappendAliasId\fP (std::string &aliasId)"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBaliasIds\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetDeclaredShortName\fP (std::string &\fBdeclaredShortName\fP)"
+.br
+.ti -1c
+.RI "std::string \fBdeclaredShortName\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetDeclaredName\fP (std::string &\fBdeclaredName\fP)"
+.br
+.ti -1c
+.RI "std::string \fBdeclaredName\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetImpliedIncluded\fP (bool &\fBisImpliedIncluded\fP)"
+.br
+.ti -1c
+.RI "bool \fBisImpliedIncluded\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBescapedName\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBeffectiveShortName\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBeffectiveName\fP () const"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBNamespace\fP > \fBlibraryNamespace\fP () const"
+.br
+.ti -1c
+.RI "\fBElement\fP & \fBoperator=\fP (const \fBElement\fP &other)=delete"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator==\fP (const \fBElement\fP &other)"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator<\fP (const \fBElement\fP &other)"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator>\fP (const \fBElement\fP &other)"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator<=\fP (const \fBElement\fP &other)"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator>=\fP (const \fBElement\fP &other)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "std::shared_ptr< \fBElement\fP > \fBowner\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetOwner\fP (std::shared_ptr< \fBElement\fP > \fBowner\fP)"
+.br
+.ti -1c
+.RI "void \fBsetOwnedElements\fP (std::vector< std::shared_ptr< \fBElement\fP > > \fBownedElements\fP)"
+.br
+.ti -1c
+.RI "void \fBappendOwnedElement\fP (std::shared_ptr< \fBElement\fP > ownedElement)"
+.br
+.ti -1c
+.RI "void \fBappendOwnedElements\fP (std::vector< std::shared_ptr< \fBElement\fP > > \fBownedElements\fP)"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBElement\fP > > \fBownedElements\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetOwningNamespace\fP (std::shared_ptr< \fBNamespace\fP > \fBowningNamespace\fP)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBNamespace\fP > \fBowningNamespace\fP ()"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsortAliasIds\fP ()"
+.br
+.ti -1c
+.RI "void \fBsortOwnedRelationships\fP ()"
+.br
+.ti -1c
+.RI "void \fBsortOwnedElements\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "const boost::uuids::uuid \fBElementId\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBAliasIds\fP"
+.br
+.ti -1c
+.RI "std::string \fBDeclaredShortName\fP"
+.br
+.ti -1c
+.RI "std::string \fBDeclaredName\fP"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBRelationship\fP > > \fBOwnedRelationships\fP"
+.br
+.ti -1c
+.RI "bool \fBIsImpliedIncluded\fP = false"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBElement\fP > \fBOwner\fP = nullptr"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBElement\fP > > \fBOwnedElements\fP"
+.br
+.ti -1c
+.RI "std::string \fBShortName\fP"
+.br
+.ti -1c
+.RI "std::string \fBName\fP"
+.br
+.ti -1c
+.RI "std::string \fBQualifiedName\fP"
+.br
+.ti -1c
+.RI "bool \fBIsLibraryElement\fP = false"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBDocumentation\fP > > \fBDocumentations\fP"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBAnnotation\fP > > \fBOwnedAnnotations\fP"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBTextualRepresentation\fP > > \fBTextualRepresentations\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBNamespace\fP > \fBOwningNamespace\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This part of the model allows the identification of all elements\&. This part of the model allows the identification of all elements\&. This is a core concept of the \fBKerML\fP and SysML syntax\&. Also this class is required for the REST-API and the parsing of the models\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 Beta 2 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "KerML::Entities::Element::Element (boost::uuids::uuid elementID = \fRboost::uuids::random_generator()()\fP, std::shared_ptr< \fBElement\fP > owner = \fRnullptr\fP)\fR [explicit]\fP"
+Constructor of the \fBElement\fP\&. This constructor does allow for an empty elementID\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIelementID\fP The \fBElement\fP ID of the \fBElement\fP\&. If no UUID is provided, a random UUID is provided by the Software\&. 
+.br
+\fIowner\fP The \fBElement\fP that owns this element\&. If no \fBElement\fP is provided the owning element is automatically set to null\&. 
+.RE
+.PP
+
+.SS "KerML::Entities::Element::Element (std::string elementID, std::shared_ptr< \fBElement\fP > owner = \fRnullptr\fP)\fR [explicit]\fP"
+Constructor of the \fBElement\fP\&. This constructor does not allow for an empty elementID\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIelementID\fP The \fBElement\fP ID of the \fBElement\fP as string\&. 
+.br
+\fIowner\fP The \fBElement\fP that owns this element\&. If no \fBElement\fP is provided the owning element is automatically set to null\&. 
+.RE
+.PP
+
+.SS "virtual KerML::Entities::Element::~Element ()\fR [virtual]\fP, \fR [default]\fP"
+Destructor\&. An implementation is not required, since shared pointers are used\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "std::vector< std::string > KerML::Entities::Element::aliasIds () const\fR [nodiscard]\fP"
+Gives access to the alternative Identifiers for one specific element\&. 
+.PP
+\fBReturns\fP
+.RS 4
+A vector of the values\&. Not possible to set values via this function\&. 
+.RE
+.PP
+
+.SS "void KerML::Entities::Element::appendAliasId (std::string & aliasId)"
+Add another alternative Identifier\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIaliasId\fP the given alternative Identifier\&. 
+.RE
+.PP
+
+.SS "void KerML::Entities::Element::appendOwnedElement (std::shared_ptr< \fBElement\fP > ownedElement)\fR [protected]\fP"
+This methods appends one owned element to the vector of the owned elements and sorts it, because the owned elements should be sorted 
+.PP
+\fBParameters\fP
+.RS 4
+\fIownedElement\fP The element that is appended to the ownedElements\&. 
+.RE
+.PP
+
+.SS "void KerML::Entities::Element::appendOwnedElements (std::vector< std::shared_ptr< \fBElement\fP > > ownedElements)\fR [protected]\fP"
+Appends owned elements to the internally managed ownedElements and sorts them afterwards\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIownedElements\fP The vector that is integrated into the ownedElements 
+.RE
+.PP
+
+.SS "std::string KerML::Entities::Element::declaredName () const\fR [nodiscard]\fP"
+Gives access to the declared name\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The internally stored declared name\&. 
+.RE
+.PP
+
+.SS "std::string KerML::Entities::Element::declaredShortName () const\fR [nodiscard]\fP"
+Returns the declared short name\&. This is a modeller-specific primary name\&. It has the responsibility of beeing unique in the specific context or within a model\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The declared short name\&. 
+.RE
+.PP
+
+.SS "std::string KerML::Entities::Element::effectiveName () const\fR [nodiscard]\fP"
+This method returns the effective name of a element\&. By default this is the \fBdeclaredName()\fP\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The effective name that is available\&. 
+.RE
+.PP
+
+.SS "std::string KerML::Entities::Element::effectiveShortName () const\fR [nodiscard]\fP"
+Returns the effective ShortName of this \fBElement\fP\&. By default it is the DeclaredShortName\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The effective short name of this \fBElement\fP\&. 
+.RE
+.PP
+
+.SS "std::string KerML::Entities::Element::elementId () const\fR [nodiscard]\fP"
+Gives access to the ElementId as a string\&. 
+.PP
+\fBReturns\fP
+.RS 4
+String of the element Id\&. 
+.RE
+.PP
+
+.SS "boost::uuids::uuid KerML::Entities::Element::elementIdAsUUID () const"
+Gives acces to the ElementId as a uuid\&. This makes the internal comparison eayser\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBElement\fP id of the \fBElement\fP as a uuid\&. 
+.RE
+.PP
+
+.SS "std::string KerML::Entities::Element::escapedName () const\fR [nodiscard]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "bool KerML::Entities::Element::isImpliedIncluded () const\fR [nodiscard]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "std::shared_ptr< \fBNamespace\fP > KerML::Entities::Element::libraryNamespace () const\fR [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Reimplemented in \fBKerML::Entities::Relationship\fP\&.
+.SS "bool KerML::Entities::Element::operator< (const \fBElement\fP & other)\fR [virtual]\fP"
+Compares one element to the other and decides which one is bigger\&. This is required for the maps between the Elements\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "bool KerML::Entities::Element::operator<= (const \fBElement\fP & other)\fR [virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "\fBElement\fP & KerML::Entities::Element::operator= (const \fBElement\fP & other)\fR [delete]\fP"
+This operator is deleted, because the ElementId can not be reset by definition\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP The element that one wants to set this element to\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+This element\&. 
+.RE
+.PP
+
+.SS "bool KerML::Entities::Element::operator== (const \fBElement\fP & other)\fR [virtual]\fP"
+Compares the equality of the elements\&. This is mainly done by the ElementId, because of the properties of the UUID\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP The other \fBElement\fP, that is to compare with this element\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+If the \fBElement\fP is the same as the other \fBElement\fP\&. 
+.RE
+.PP
+
+.SS "bool KerML::Entities::Element::operator> (const \fBElement\fP & other)\fR [virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "bool KerML::Entities::Element::operator>= (const \fBElement\fP & other)\fR [virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "std::vector< std::shared_ptr< \fBElement\fP > > KerML::Entities::Element::ownedElements ()\fR [protected]\fP"
+Returns the complete vector copy of the owned Elements\&. 
+.PP
+\fBReturns\fP
+.RS 4
+A copy of the Owned Elements\&. 
+.RE
+.PP
+
+.SS "std::shared_ptr< \fBElement\fP > KerML::Entities::Element::owner () const\fR [nodiscard]\fP, \fR [protected]\fP"
+Returns the owning \fBElement\fP\&. The owner is the element referenced in the owningRelationship as the owningRelatedElement\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Shared pointer of the Owner\&. 
+.RE
+.PP
+
+.SS "std::shared_ptr< \fBNamespace\fP > KerML::Entities::Element::owningNamespace ()\fR [protected]\fP"
+Gets you the owning \fBNamespace\fP\&. The \fBNamespace\fP that owns this \fBElement\fP, wich is the MembershipOwningNamespace of the \fBOwningMembership\fP of this \fBElement\fP 
+.PP
+\fBReturns\fP
+.RS 4
+Shared Pointer of the \fBNamespace\fP\&. 
+.RE
+.PP
+
+.SS "void KerML::Entities::Element::setAliasIds (std::vector< std::string > aliasIds)"
+Sets the various alternative Identifiers and overrides them with the given value\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIaliasIds\fP The given AliasIds\&. 
+.RE
+.PP
+
+.SS "void KerML::Entities::Element::setDeclaredName (std::string & declaredName)"
+Sets the declared name of the \fBElement\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdeclaredName\fP declared name of the \fBElement\fP\&. 
+.RE
+.PP
+
+.SS "void KerML::Entities::Element::setDeclaredShortName (std::string & declaredShortName)"
+Sets the declared short name, this is an optional alternative name of the \fBElement\fP\&. This may act as a modeller- specific identifier\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdeclaredShortName\fP The wanted declared short name\&. 
+.RE
+.PP
+
+.SS "void KerML::Entities::Element::setImpliedIncluded (bool & isImpliedIncluded)"
+Sets if element is included in a implied\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIisImpliedIncluded\fP 
+.RE
+.PP
+
+.SS "void KerML::Entities::Element::setOwnedElements (std::vector< std::shared_ptr< \fBElement\fP > > ownedElements)\fR [protected]\fP"
+This method overwrites the Elements of the owned elements\&. Warning this method deletes the old vector of owned Elements\&. If you want to append the elements of another vector please refer to \fBElement::appendOwnedElements(std::vector<std::shared_ptr<Element>> ownedElements)\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIownedElements\fP The new owned elements of the element\&. 
+.RE
+.PP
+
+.SS "void KerML::Entities::Element::setOwner (std::shared_ptr< \fBElement\fP > owner)\fR [protected]\fP"
+Sets the owner\&. The owner is the element referenced in the owningRelationship as the owningRelatedElement\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIowner\fP The related \fBElement\fP, that is represended as owningRelatedElement in the owning \fBRelationship\fP\&. 
+.RE
+.PP
+
+.SS "void KerML::Entities::Element::setOwningNamespace (std::shared_ptr< \fBNamespace\fP > owningNamespace)\fR [protected]\fP"
+Sets the owningNamespace of a \fBElement\fP\&. The \fBNamespace\fP that owns this \fBElement\fP, wich is the MembershipOwningNamespace of the \fBOwningMembership\fP of this \fBElement\fP 
+.PP
+\fBParameters\fP
+.RS 4
+\fIowningNamespace\fP 
+.RE
+.PP
+
+.SS "void KerML::Entities::Element::sortAliasIds ()\fR [private]\fP"
+Orders the AliasIds in their Array\&. Is per definition required to have the AliasIds always ordered\&. 
+.SS "void KerML::Entities::Element::sortOwnedElements ()\fR [private]\fP"
+Orders the Owned Elements\&. This is per definition required\&. With every adding and removing of one OwnedElements this function needs to be called\&. 
+.SS "void KerML::Entities::Element::sortOwnedRelationships ()\fR [private]\fP"
+Orders the OwnedRelationships in their Array\&. This is reuired per definition and needs to be called with with every adding of a relationship\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<std::string> KerML::Entities::Element::AliasIds\fR [private]\fP"
+Alternative descriptors of the specific element\&. 
+.SS "std::string KerML::Entities::Element::DeclaredShortName\fR [private]\fP"
+An optional alternative name of the 
+.SS "std::vector<std::shared_ptr<\fBDocumentation\fP> > KerML::Entities::Element::Documentations\fR [private]\fP"
+Represents the documentation, shared by this \fBElement\fP\&. This List needs to be ordered 
+.SS "const boost::uuids::uuid KerML::Entities::Element::ElementId\fR [private]\fP"
+Represents the global unique Identifier\&. In this case the ElementId is stored as a UUID, against the standard\&. Allowing us to address even more elements in an ElementId is according to the \fBKerML\fP standard not allowed to change\&. 
+.SS "bool KerML::Entities::Element::IsImpliedIncluded = false\fR [private]\fP"
+Displays if a relationship is not included in the OwnedRelationships of the element\&. 
+.SS "bool KerML::Entities::Element::IsLibraryElement = false\fR [private]\fP"
+Is true if the \fBElement\fP is contained in an ownership tree of a library\&. 
+.SS "std::vector<std::shared_ptr<\fBRelationship\fP> > KerML::Entities::Element::OwnedRelationships\fR [private]\fP"
+Represents the Relationships for which this \fBElement\fP is the owning related \fBElement\fP\&. 
+.SS "std::shared_ptr<\fBElement\fP> KerML::Entities::Element::Owner = nullptr\fR [private]\fP"
+The owner is the element referenced in the owningRelationship as the owningRelatedElement\&. 
+.SS "std::shared_ptr<\fBNamespace\fP> KerML::Entities::Element::OwningNamespace\fR [private]\fP"
+The \fBNamespace\fP that owns this \fBElement\fP, wich is the MembershipOwningNamespace of the \fBOwningMembership\fP of this \fBElement\fP 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

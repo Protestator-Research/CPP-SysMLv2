@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_231e245de55db5559bb8a07f0f433b19" kind="dir">
+    <compoundname>kerml/src/root/namespaces</compoundname>
+    <innerfile refid="d4/d8b/_import_8cpp">Import.cpp</innerfile>
+    <innerfile refid="d4/d4b/_import_8h">Import.h</innerfile>
+    <innerfile refid="dd/df6/_membership_8cpp">Membership.cpp</innerfile>
+    <innerfile refid="df/dac/_membership_8h">Membership.h</innerfile>
+    <innerfile refid="de/d05/_membership_import_8cpp">MembershipImport.cpp</innerfile>
+    <innerfile refid="d2/d16/_membership_import_8h">MembershipImport.h</innerfile>
+    <innerfile refid="da/d40/_namespace_8cpp">Namespace.cpp</innerfile>
+    <innerfile refid="dd/dfa/_namespace_8h">Namespace.h</innerfile>
+    <innerfile refid="d6/d60/_namespace_import_8cpp">NamespaceImport.cpp</innerfile>
+    <innerfile refid="df/d50/_namespace_import_8h">NamespaceImport.h</innerfile>
+    <innerfile refid="df/d6c/_owning_membership_8cpp">OwningMembership.cpp</innerfile>
+    <innerfile refid="d5/deb/_owning_membership_8h">OwningMembership.h</innerfile>
+    <innerfile refid="d7/dfa/_visibility_kind_8h">VisibilityKind.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="kerml/src/root/namespaces/"/>
+  </compounddef>
+</doxygen>

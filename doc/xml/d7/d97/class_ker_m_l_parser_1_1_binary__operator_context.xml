@@ -1,0 +1,399 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Binary_operatorContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a81aa019a505801798d86dae75448925e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Binary_operatorContext::Binary_operatorContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Binary_operatorContext</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::Binary_operatorContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2650" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12784" bodyend="12786"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a563fadc2732c16e98ba82e8ceec59925" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Binary_operatorContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2651" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12865" bodyend="12867"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1adf397e935d36138f2a4f1f5fe6166289" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_VERTICAL_LINE</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_VERTICAL_LINE</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_VERTICAL_LINE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2652" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12788" bodyend="12790"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a117b47569a8bf740b772935e7cd66ff4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_AND</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_AND</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_AND</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2653" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12792" bodyend="12794"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1ac4b08af1be0e5aaa0030bc87f5adaa00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::KEYWORD_XOR</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_XOR</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::KEYWORD_XOR</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2654" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12796" bodyend="12798"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1ad4da26b3c8013fce72fbdb29bd85a7a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_DDOT</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_DDOT</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_DDOT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2655" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12800" bodyend="12802"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a7416ea34247708f5bda48d02b78d7e0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_EQUALS</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_EQUALS</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_EQUALS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2656" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12804" bodyend="12806"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1ab554c5efa3cb078515ebae9ef6a701b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_NOT_EQUALS</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_NOT_EQUALS</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_NOT_EQUALS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2657" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12808" bodyend="12810"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1af2e132c3273b30d8a854f09b60f3007a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_IFF_EQUALS</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_IFF_EQUALS</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_IFF_EQUALS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2658" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12812" bodyend="12814"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a6c3d50807a49af68de0b60985acf9dc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_IFF_NOT_EQUALS</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_IFF_NOT_EQUALS</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_IFF_NOT_EQUALS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2659" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12816" bodyend="12818"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a5070fc4ab300f2e8398f0f766bb44f2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_GREATER</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_GREATER</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_GREATER</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2660" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12820" bodyend="12822"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a38a0ea4cb4d5ed609809ed956fa70df9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_SMALLER</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_SMALLER</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_SMALLER</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2661" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12824" bodyend="12826"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a4402d86863e2facf2a3f1cb03d95086a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_GREATER_EQUALS</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_GREATER_EQUALS</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_GREATER_EQUALS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2662" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12828" bodyend="12830"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1acecdf6bf99cf756e048e962b4629f0ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_SMALLER_EQUAL</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_SMALLER_EQUAL</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_SMALLER_EQUAL</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2663" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12832" bodyend="12834"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a96f74e2cad6dbc46a0974f61944cf267" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_PLUS</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_PLUS</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_PLUS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2664" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12836" bodyend="12838"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1acbde7eab8dfc1bb0296cd0f91670cd94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_MINUS</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_MINUS</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_MINUS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2665" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12840" bodyend="12842"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1addad940ba2ac26ed4cf176ea3b30f215" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_STAR</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_STAR</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_STAR</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2666" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12844" bodyend="12846"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1adf02a3ec47667107ffb7700a3e668731" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_SLASH</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_SLASH</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_SLASH</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2667" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12848" bodyend="12850"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1aeb5ec89eaae9c873fe52615023ad09cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_MOD</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_MOD</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_MOD</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2668" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12852" bodyend="12854"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1afaa7cfeca99766a87160b1bc265007ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_UPPER</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_UPPER</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_UPPER</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2669" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12856" bodyend="12858"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1afc655654a1f97b81f3ec9077202dc7b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Binary_operatorContext::SYMBOL_DOUBLE_STAR</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_DOUBLE_STAR</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::SYMBOL_DOUBLE_STAR</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2670" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12860" bodyend="12862"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1ada3de47c5ce15a69a61853eb81b2f786" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Binary_operatorContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2672" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12869" bodyend="12873"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a11c89eeef81a69c266078f6344da6b93" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Binary_operatorContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Binary_operatorContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2673" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12875" bodyend="12879"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Binary_operatorContext</label>
+        <link refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Binary_operatorContext</label>
+        <link refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2648" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2648" bodyend="2675"/>
+    <listofallmembers>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a81aa019a505801798d86dae75448925e" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>Binary_operatorContext</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1ada3de47c5ce15a69a61853eb81b2f786" prot="public" virt="virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>enterRule</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a11c89eeef81a69c266078f6344da6b93" prot="public" virt="virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>exitRule</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a563fadc2732c16e98ba82e8ceec59925" prot="public" virt="virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>getRuleIndex</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1ac4b08af1be0e5aaa0030bc87f5adaa00" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>KEYWORD_XOR</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a117b47569a8bf740b772935e7cd66ff4" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_AND</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1ad4da26b3c8013fce72fbdb29bd85a7a2" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_DDOT</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1afc655654a1f97b81f3ec9077202dc7b5" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_DOUBLE_STAR</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a7416ea34247708f5bda48d02b78d7e0c" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_EQUALS</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a5070fc4ab300f2e8398f0f766bb44f2d" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_GREATER</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a4402d86863e2facf2a3f1cb03d95086a" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_GREATER_EQUALS</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1af2e132c3273b30d8a854f09b60f3007a" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_IFF_EQUALS</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a6c3d50807a49af68de0b60985acf9dc7" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_IFF_NOT_EQUALS</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1acbde7eab8dfc1bb0296cd0f91670cd94" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_MINUS</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1aeb5ec89eaae9c873fe52615023ad09cb" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_MOD</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1ab554c5efa3cb078515ebae9ef6a701b2" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_NOT_EQUALS</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a96f74e2cad6dbc46a0974f61944cf267" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_PLUS</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1adf02a3ec47667107ffb7700a3e668731" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_SLASH</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1a38a0ea4cb4d5ed609809ed956fa70df9" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_SMALLER</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1acecdf6bf99cf756e048e962b4629f0ee" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_SMALLER_EQUAL</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1addad940ba2ac26ed4cf176ea3b30f215" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_STAR</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1afaa7cfeca99766a87160b1bc265007ea" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_UPPER</name></member>
+      <member refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context_1adf397e935d36138f2a4f1f5fe6166289" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operatorContext</scope><name>SYMBOL_VERTICAL_LINE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

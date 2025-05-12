@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dc/d6a/class_sys_m_lv2_parser_1_1_invocation__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Invocation_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/d6a/class_sys_m_lv2_parser_1_1_invocation__expression_context_1ae031dad5ca038257c7f0fbe12fc7eb0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Invocation_expressionContext::Invocation_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Invocation_expressionContext</name>
+        <qualifiedname>SysMLv2Parser::Invocation_expressionContext::Invocation_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8374" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41081" bodyend="41083"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d6a/class_sys_m_lv2_parser_1_1_invocation__expression_context_1a0e99a1be50fc47593c8f5a4ff366b3a0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Invocation_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Invocation_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8375" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41090" bodyend="41092"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d6a/class_sys_m_lv2_parser_1_1_invocation__expression_context_1a67bbfac66dd87ffcc4558328340d2a0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/d84/class_sys_m_lv2_parser_1_1_internal__invocation__expression_context" kindref="compound">Internal_invocation_expressionContext</ref> *</type>
+        <definition>SysMLv2Parser::Internal_invocation_expressionContext * SysMLv2Parser::Invocation_expressionContext::internal_invocation_expression</definition>
+        <argsstring>()</argsstring>
+        <name>internal_invocation_expression</name>
+        <qualifiedname>SysMLv2Parser::Invocation_expressionContext::internal_invocation_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8376" column="43" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41085" bodyend="41087"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d6a/class_sys_m_lv2_parser_1_1_invocation__expression_context_1ae87d187493e986c12f3ca9eb0b8c32ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Invocation_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Invocation_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8378" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41094" bodyend="41098"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d6a/class_sys_m_lv2_parser_1_1_invocation__expression_context_1a164680e552bd0984e37bea63bba7b982" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Invocation_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Invocation_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8379" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41100" bodyend="41104"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Invocation_expressionContext</label>
+        <link refid="dc/d6a/class_sys_m_lv2_parser_1_1_invocation__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Invocation_expressionContext</label>
+        <link refid="dc/d6a/class_sys_m_lv2_parser_1_1_invocation__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8372" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="8372" bodyend="8381"/>
+    <listofallmembers>
+      <member refid="dc/d6a/class_sys_m_lv2_parser_1_1_invocation__expression_context_1ae87d187493e986c12f3ca9eb0b8c32ab" prot="public" virt="virtual"><scope>SysMLv2Parser::Invocation_expressionContext</scope><name>enterRule</name></member>
+      <member refid="dc/d6a/class_sys_m_lv2_parser_1_1_invocation__expression_context_1a164680e552bd0984e37bea63bba7b982" prot="public" virt="virtual"><scope>SysMLv2Parser::Invocation_expressionContext</scope><name>exitRule</name></member>
+      <member refid="dc/d6a/class_sys_m_lv2_parser_1_1_invocation__expression_context_1a0e99a1be50fc47593c8f5a4ff366b3a0" prot="public" virt="virtual"><scope>SysMLv2Parser::Invocation_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="dc/d6a/class_sys_m_lv2_parser_1_1_invocation__expression_context_1a67bbfac66dd87ffcc4558328340d2a0b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Invocation_expressionContext</scope><name>internal_invocation_expression</name></member>
+      <member refid="dc/d6a/class_sys_m_lv2_parser_1_1_invocation__expression_context_1ae031dad5ca038257c7f0fbe12fc7eb0d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Invocation_expressionContext</scope><name>Invocation_expressionContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

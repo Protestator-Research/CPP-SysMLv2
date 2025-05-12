@@ -1,0 +1,14 @@
+# class `KerML::Entities::Specialization` {#db/d3c/class_ker_m_l_1_1_entities_1_1_specialization}
+
+```
+class KerML::Entities::Specialization
+  : public KerML::Entities::Relationship
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+
+## Members
+

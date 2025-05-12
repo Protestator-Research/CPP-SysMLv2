@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Differencing_partContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1ab98f9d7070b170cb39386638782a4453" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Differencing_partContext::Differencing_partContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Differencing_partContext</name>
+        <qualifiedname>SysMLv2Parser::Differencing_partContext::Differencing_partContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6111" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29785" bodyend="29787"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1a4a20b927ffb07908144aa85e12d59dff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Differencing_partContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Differencing_partContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6112" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29810" bodyend="29812"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1a70d233c1af65cf7921b00be21089c53b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Differencing_partContext::KEYWORD_DIFFERENCES</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_DIFFERENCES</name>
+        <qualifiedname>SysMLv2Parser::Differencing_partContext::KEYWORD_DIFFERENCES</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6113" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29789" bodyend="29791"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1a7570df4b5af4d446c8a1b05a6ea7bf2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d2/d53/class_sys_m_lv2_parser_1_1_differencing_context" kindref="compound">DifferencingContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::DifferencingContext * &gt; SysMLv2Parser::Differencing_partContext::differencing</definition>
+        <argsstring>()</argsstring>
+        <name>differencing</name>
+        <qualifiedname>SysMLv2Parser::Differencing_partContext::differencing</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6114" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29793" bodyend="29795"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1ae31e52994aee1eaa4fee3b92663d08d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d53/class_sys_m_lv2_parser_1_1_differencing_context" kindref="compound">DifferencingContext</ref> *</type>
+        <definition>SysMLv2Parser::DifferencingContext * SysMLv2Parser::Differencing_partContext::differencing</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>differencing</name>
+        <qualifiedname>SysMLv2Parser::Differencing_partContext::differencing</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6115" column="25" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29797" bodyend="29799"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1acebe909844fd624abb4955d6c01c603f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; antlr4::tree::TerminalNode * &gt;</type>
+        <definition>std::vector&lt; tree::TerminalNode * &gt; SysMLv2Parser::Differencing_partContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>SysMLv2Parser::Differencing_partContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6116" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29801" bodyend="29803"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1afb83322cc9a9cf99491a7fdb7e6a4ac6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Differencing_partContext::SYMBOL_COMMA</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>SysMLv2Parser::Differencing_partContext::SYMBOL_COMMA</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6117" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29805" bodyend="29807"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1a43fc9f1a5cce9c64ef88e4434c965b73" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Differencing_partContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Differencing_partContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6119" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29814" bodyend="29818"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1a6a17dcf1051748af3e132a750edfeed0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Differencing_partContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Differencing_partContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6120" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29820" bodyend="29824"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Differencing_partContext</label>
+        <link refid="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Differencing_partContext</label>
+        <link refid="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6109" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="6109" bodyend="6122"/>
+    <listofallmembers>
+      <member refid="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1a7570df4b5af4d446c8a1b05a6ea7bf2f" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Differencing_partContext</scope><name>differencing</name></member>
+      <member refid="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1ae31e52994aee1eaa4fee3b92663d08d0" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Differencing_partContext</scope><name>differencing</name></member>
+      <member refid="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1ab98f9d7070b170cb39386638782a4453" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Differencing_partContext</scope><name>Differencing_partContext</name></member>
+      <member refid="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1a43fc9f1a5cce9c64ef88e4434c965b73" prot="public" virt="virtual"><scope>SysMLv2Parser::Differencing_partContext</scope><name>enterRule</name></member>
+      <member refid="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1a6a17dcf1051748af3e132a750edfeed0" prot="public" virt="virtual"><scope>SysMLv2Parser::Differencing_partContext</scope><name>exitRule</name></member>
+      <member refid="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1a4a20b927ffb07908144aa85e12d59dff" prot="public" virt="virtual"><scope>SysMLv2Parser::Differencing_partContext</scope><name>getRuleIndex</name></member>
+      <member refid="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1a70d233c1af65cf7921b00be21089c53b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Differencing_partContext</scope><name>KEYWORD_DIFFERENCES</name></member>
+      <member refid="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1acebe909844fd624abb4955d6c01c603f" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Differencing_partContext</scope><name>SYMBOL_COMMA</name></member>
+      <member refid="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context_1afb83322cc9a9cf99491a7fdb7e6a4ac6" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Differencing_partContext</scope><name>SYMBOL_COMMA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

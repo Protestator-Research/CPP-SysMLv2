@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="db/d88/_literal_rational_8cpp" kind="file" language="C++">
+    <compoundname>LiteralRational.cpp</compoundname>
+    <includes refid="d8/dae/_literal_rational_8h" local="yes">LiteralRational.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>kerml/src/kernel/expressions/LiteralRational.cpp</label>
+        <link refid="db/d88/_literal_rational_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>LiteralRational.h</label>
+        <link refid="d8/dae/_literal_rational_8h_source"/>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="d2/d14/namespace_ker_m_l">KerML</innernamespace>
+    <innernamespace refid="db/d3a/namespace_ker_m_l_1_1_entities">KerML::Entities</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Moritz<sp/>Herzog<sp/>on<sp/>31.03.25.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;LiteralRational.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="d2/d14/namespace_ker_m_l" kindref="compound">KerML</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="db/d3a/namespace_ker_m_l_1_1_entities" kindref="compound">Entities</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>Entities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>KerML</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="kerml/src/kernel/expressions/LiteralRational.cpp"/>
+  </compounddef>
+</doxygen>

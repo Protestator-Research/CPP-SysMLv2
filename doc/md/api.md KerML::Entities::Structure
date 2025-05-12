@@ -1,0 +1,14 @@
+# class `KerML::Entities::Structure` {#dd/d1c/class_ker_m_l_1_1_entities_1_1_structure}
+
+```
+class KerML::Entities::Structure
+  : public KerML::Entities::Class
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+
+## Members
+

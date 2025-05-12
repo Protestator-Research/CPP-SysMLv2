@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="db/d3a/namespace_ker_m_l_1_1_entities" kind="namespace" language="C++">
+    <compoundname>KerML::Entities</compoundname>
+    <innerclass refid="d9/d30/class_ker_m_l_1_1_entities_1_1_annotating_element" prot="public">KerML::Entities::AnnotatingElement</innerclass>
+    <innerclass refid="de/d53/class_ker_m_l_1_1_entities_1_1_annotation" prot="public">KerML::Entities::Annotation</innerclass>
+    <innerclass refid="d5/ded/class_ker_m_l_1_1_entities_1_1_association" prot="public">KerML::Entities::Association</innerclass>
+    <innerclass refid="d1/d4c/class_ker_m_l_1_1_entities_1_1_association_structure" prot="public">KerML::Entities::AssociationStructure</innerclass>
+    <innerclass refid="d0/ddf/class_ker_m_l_1_1_entities_1_1_behavior" prot="public">KerML::Entities::Behavior</innerclass>
+    <innerclass refid="d4/df2/class_ker_m_l_1_1_entities_1_1_binding_connector" prot="public">KerML::Entities::BindingConnector</innerclass>
+    <innerclass refid="dc/d38/class_ker_m_l_1_1_entities_1_1_boolean_expression" prot="public">KerML::Entities::BooleanExpression</innerclass>
+    <innerclass refid="dd/d6e/class_ker_m_l_1_1_entities_1_1_class" prot="public">KerML::Entities::Class</innerclass>
+    <innerclass refid="df/dae/class_ker_m_l_1_1_entities_1_1_classifier" prot="public">KerML::Entities::Classifier</innerclass>
+    <innerclass refid="da/d3a/class_ker_m_l_1_1_entities_1_1_collect_expression" prot="public">KerML::Entities::CollectExpression</innerclass>
+    <innerclass refid="d3/d4d/class_ker_m_l_1_1_entities_1_1_comment" prot="public">KerML::Entities::Comment</innerclass>
+    <innerclass refid="da/dff/class_ker_m_l_1_1_entities_1_1_conjunction" prot="public">KerML::Entities::Conjunction</innerclass>
+    <innerclass refid="d8/de4/class_ker_m_l_1_1_entities_1_1_connector" prot="public">KerML::Entities::Connector</innerclass>
+    <innerclass refid="d0/da3/class_ker_m_l_1_1_entities_1_1_data_type" prot="public">KerML::Entities::DataType</innerclass>
+    <innerclass refid="d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency" prot="public">KerML::Entities::Dependency</innerclass>
+    <innerclass refid="d5/db6/class_ker_m_l_1_1_entities_1_1_differencing" prot="public">KerML::Entities::Differencing</innerclass>
+    <innerclass refid="d0/d13/class_ker_m_l_1_1_entities_1_1_disjoining" prot="public">KerML::Entities::Disjoining</innerclass>
+    <innerclass refid="d0/ded/class_ker_m_l_1_1_entities_1_1_documentation" prot="public">KerML::Entities::Documentation</innerclass>
+    <innerclass refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" prot="public">KerML::Entities::Element</innerclass>
+    <innerclass refid="d6/db4/class_ker_m_l_1_1_entities_1_1_element_filter_membership" prot="public">KerML::Entities::ElementFilterMembership</innerclass>
+    <innerclass refid="da/d8d/class_ker_m_l_1_1_entities_1_1_end_feature_membership" prot="public">KerML::Entities::EndFeatureMembership</innerclass>
+    <innerclass refid="dc/d30/class_ker_m_l_1_1_entities_1_1_expression" prot="public">KerML::Entities::Expression</innerclass>
+    <innerclass refid="d5/d86/class_ker_m_l_1_1_entities_1_1_feature" prot="public">KerML::Entities::Feature</innerclass>
+    <innerclass refid="d7/d3c/class_ker_m_l_1_1_entities_1_1_feature_chain_expression" prot="public">KerML::Entities::FeatureChainExpression</innerclass>
+    <innerclass refid="d0/d56/class_ker_m_l_1_1_entities_1_1_feature_chaining" prot="public">KerML::Entities::FeatureChaining</innerclass>
+    <innerclass refid="dc/d59/class_ker_m_l_1_1_entities_1_1_feature_inverting" prot="public">KerML::Entities::FeatureInverting</innerclass>
+    <innerclass refid="df/d5d/class_ker_m_l_1_1_entities_1_1_feature_membership" prot="public">KerML::Entities::FeatureMembership</innerclass>
+    <innerclass refid="d7/d72/class_ker_m_l_1_1_entities_1_1_feature_reference_expression" prot="public">KerML::Entities::FeatureReferenceExpression</innerclass>
+    <innerclass refid="db/d4f/class_ker_m_l_1_1_entities_1_1_feature_typing" prot="public">KerML::Entities::FeatureTyping</innerclass>
+    <innerclass refid="dd/da2/class_ker_m_l_1_1_entities_1_1_feature_value" prot="public">KerML::Entities::FeatureValue</innerclass>
+    <innerclass refid="df/dbd/class_ker_m_l_1_1_entities_1_1_featuring" prot="public">KerML::Entities::Featuring</innerclass>
+    <innerclass refid="d5/d87/class_ker_m_l_1_1_entities_1_1_function" prot="public">KerML::Entities::Function</innerclass>
+    <innerclass refid="d0/d08/class_ker_m_l_1_1_entities_1_1_import" prot="public">KerML::Entities::Import</innerclass>
+    <innerclass refid="d1/d84/class_ker_m_l_1_1_entities_1_1_interaction" prot="public">KerML::Entities::Interaction</innerclass>
+    <innerclass refid="d1/d86/class_ker_m_l_1_1_entities_1_1_intersecting" prot="public">KerML::Entities::Intersecting</innerclass>
+    <innerclass refid="db/de3/class_ker_m_l_1_1_entities_1_1_invariant" prot="public">KerML::Entities::Invariant</innerclass>
+    <innerclass refid="d0/d1c/class_ker_m_l_1_1_entities_1_1_invocation_expression" prot="public">KerML::Entities::InvocationExpression</innerclass>
+    <innerclass refid="d8/d80/class_ker_m_l_1_1_entities_1_1_item_feature" prot="public">KerML::Entities::ItemFeature</innerclass>
+    <innerclass refid="de/d45/class_ker_m_l_1_1_entities_1_1_item_flow" prot="public">KerML::Entities::ItemFlow</innerclass>
+    <innerclass refid="d4/d99/class_ker_m_l_1_1_entities_1_1_item_flow_end" prot="public">KerML::Entities::ItemFlowEnd</innerclass>
+    <innerclass refid="d3/d2e/class_ker_m_l_1_1_entities_1_1_library_package" prot="public">KerML::Entities::LibraryPackage</innerclass>
+    <innerclass refid="d4/d73/class_ker_m_l_1_1_entities_1_1_literal_boolean" prot="public">KerML::Entities::LiteralBoolean</innerclass>
+    <innerclass refid="da/d37/class_ker_m_l_1_1_entities_1_1_literal_expression" prot="public">KerML::Entities::LiteralExpression</innerclass>
+    <innerclass refid="d6/d14/class_ker_m_l_1_1_entities_1_1_literal_infinity" prot="public">KerML::Entities::LiteralInfinity</innerclass>
+    <innerclass refid="d9/dff/class_ker_m_l_1_1_entities_1_1_literal_integer" prot="public">KerML::Entities::LiteralInteger</innerclass>
+    <innerclass refid="de/ddf/class_ker_m_l_1_1_entities_1_1_literal_rational" prot="public">KerML::Entities::LiteralRational</innerclass>
+    <innerclass refid="d4/d2e/class_ker_m_l_1_1_entities_1_1_literal_string" prot="public">KerML::Entities::LiteralString</innerclass>
+    <innerclass refid="d9/d11/class_ker_m_l_1_1_entities_1_1_membership" prot="public">KerML::Entities::Membership</innerclass>
+    <innerclass refid="d1/d96/class_ker_m_l_1_1_entities_1_1_membership_import" prot="public">KerML::Entities::MembershipImport</innerclass>
+    <innerclass refid="dc/d40/class_ker_m_l_1_1_entities_1_1_metadata_access_expression" prot="public">KerML::Entities::MetadataAccessExpression</innerclass>
+    <innerclass refid="d7/deb/class_ker_m_l_1_1_entities_1_1_metadata_feature" prot="public">KerML::Entities::MetadataFeature</innerclass>
+    <innerclass refid="da/de7/class_ker_m_l_1_1_entities_1_1_multiplicity_range" prot="public">KerML::Entities::MultiplicityRange</innerclass>
+    <innerclass refid="d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace" prot="public">KerML::Entities::Namespace</innerclass>
+    <innerclass refid="d4/d59/class_ker_m_l_1_1_entities_1_1_namespace_import" prot="public">KerML::Entities::NamespaceImport</innerclass>
+    <innerclass refid="d8/dab/class_ker_m_l_1_1_entities_1_1_null_expression" prot="public">KerML::Entities::NullExpression</innerclass>
+    <innerclass refid="da/dff/class_ker_m_l_1_1_entities_1_1_operator_expression" prot="public">KerML::Entities::OperatorExpression</innerclass>
+    <innerclass refid="d3/d8d/class_ker_m_l_1_1_entities_1_1_owning_membership" prot="public">KerML::Entities::OwningMembership</innerclass>
+    <innerclass refid="d8/d3e/class_ker_m_l_1_1_entities_1_1_package" prot="public">KerML::Entities::Package</innerclass>
+    <innerclass refid="da/d24/class_ker_m_l_1_1_entities_1_1_parameter_membership" prot="public">KerML::Entities::ParameterMembership</innerclass>
+    <innerclass refid="d6/d80/class_ker_m_l_1_1_entities_1_1_predicate" prot="public">KerML::Entities::Predicate</innerclass>
+    <innerclass refid="d2/d4f/class_ker_m_l_1_1_entities_1_1_redefinition" prot="public">KerML::Entities::Redefinition</innerclass>
+    <innerclass refid="d5/d80/class_ker_m_l_1_1_entities_1_1_reference_subsetting" prot="public">KerML::Entities::ReferenceSubsetting</innerclass>
+    <innerclass refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship" prot="public">KerML::Entities::Relationship</innerclass>
+    <innerclass refid="d8/daa/class_ker_m_l_1_1_entities_1_1_result_expression_membersip" prot="public">KerML::Entities::ResultExpressionMembersip</innerclass>
+    <innerclass refid="d7/da9/class_ker_m_l_1_1_entities_1_1_return_parameter_membership" prot="public">KerML::Entities::ReturnParameterMembership</innerclass>
+    <innerclass refid="d1/d78/class_ker_m_l_1_1_entities_1_1_select_expression" prot="public">KerML::Entities::SelectExpression</innerclass>
+    <innerclass refid="db/d3c/class_ker_m_l_1_1_entities_1_1_specialization" prot="public">KerML::Entities::Specialization</innerclass>
+    <innerclass refid="da/d96/class_ker_m_l_1_1_entities_1_1_step" prot="public">KerML::Entities::Step</innerclass>
+    <innerclass refid="dd/d1c/class_ker_m_l_1_1_entities_1_1_structure" prot="public">KerML::Entities::Structure</innerclass>
+    <innerclass refid="d1/df3/class_ker_m_l_1_1_entities_1_1_subclassification" prot="public">KerML::Entities::Subclassification</innerclass>
+    <innerclass refid="d4/dd2/class_ker_m_l_1_1_entities_1_1_subsetting" prot="public">KerML::Entities::Subsetting</innerclass>
+    <innerclass refid="d0/d6d/class_ker_m_l_1_1_entities_1_1_succession" prot="public">KerML::Entities::Succession</innerclass>
+    <innerclass refid="d1/d96/class_ker_m_l_1_1_entities_1_1_succession_item_flow" prot="public">KerML::Entities::SuccessionItemFlow</innerclass>
+    <innerclass refid="d6/d87/class_ker_m_l_1_1_entities_1_1_textual_representation" prot="public">KerML::Entities::TextualRepresentation</innerclass>
+    <innerclass refid="d8/d8d/class_ker_m_l_1_1_entities_1_1_type" prot="public">KerML::Entities::Type</innerclass>
+    <innerclass refid="da/d47/class_ker_m_l_1_1_entities_1_1_type_featuring" prot="public">KerML::Entities::TypeFeaturing</innerclass>
+    <innerclass refid="dc/d7b/class_ker_m_l_1_1_entities_1_1_unioning" prot="public">KerML::Entities::Unioning</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="db/d3a/namespace_ker_m_l_1_1_entities_1af684a6c5635ea0a68236073efee63d3c" prot="public" static="no" strong="no">
+        <type></type>
+        <name>FeatureDirectionKind</name>
+        <qualifiedname>KerML::Entities::FeatureDirectionKind</qualifiedname>
+        <enumvalue id="db/d3a/namespace_ker_m_l_1_1_entities_1af684a6c5635ea0a68236073efee63d3ca5b3fea384c2ba2f187532bf981c55087" prot="public">
+          <name>IN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="db/d3a/namespace_ker_m_l_1_1_entities_1af684a6c5635ea0a68236073efee63d3ca716af7202237b1e49d145502b014abaa" prot="public">
+          <name>IN_OUT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="db/d3a/namespace_ker_m_l_1_1_entities_1af684a6c5635ea0a68236073efee63d3ca801f82fdeb0c9517f5188dc4fa2a11b2" prot="public">
+          <name>OUT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/core/features/FeatureDirectionKind.h" line="9" column="5" bodyfile="kerml/src/core/features/FeatureDirectionKind.h" bodystart="9" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="enum" id="db/d3a/namespace_ker_m_l_1_1_entities_1a663fb78f405a0b37d0a41a9cc6d31095" prot="public" static="no" strong="no">
+        <type></type>
+        <name>VisibilityKind</name>
+        <qualifiedname>KerML::Entities::VisibilityKind</qualifiedname>
+        <enumvalue id="db/d3a/namespace_ker_m_l_1_1_entities_1a663fb78f405a0b37d0a41a9cc6d31095a85e65e8c9a36e346570fbd79f6f227bf" prot="public">
+          <name>PRIVATE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="db/d3a/namespace_ker_m_l_1_1_entities_1a663fb78f405a0b37d0a41a9cc6d31095acb0dc345072b39bd18d923909f606533" prot="public">
+          <name>PROTECTED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="db/d3a/namespace_ker_m_l_1_1_entities_1a663fb78f405a0b37d0a41a9cc6d31095a0bee37e6d0947ec0de33ea42e660ee18" prot="public">
+          <name>PUBLIC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/namespaces/VisibilityKind.h" line="16" column="5" bodyfile="kerml/src/root/namespaces/VisibilityKind.h" bodystart="16" bodyend="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="filehandling/src/Parser.h" line="15" column="1"/>
+  </compounddef>
+</doxygen>

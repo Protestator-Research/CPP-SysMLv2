@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_56f8e4de31bc9461cd1b54c09b81ea81" kind="dir">
+    <compoundname>build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/packages</compoundname>
+    <innerfile refid="de/d58/_element_filter_membership_8cpp_8o_8d">ElementFilterMembership.cpp.o.d</innerfile>
+    <innerfile refid="d2/dd6/_library_package_8cpp_8o_8d">LibraryPackage.cpp.o.d</innerfile>
+    <innerfile refid="d7/d0d/_package_8cpp_8o_8d">Package.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/packages/"/>
+  </compounddef>
+</doxygen>

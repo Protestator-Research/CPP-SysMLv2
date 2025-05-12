@@ -1,0 +1,80 @@
+# class `SysMLv2::API::ElementNavigationService` {#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service}
+
+```
+class SysMLv2::API::ElementNavigationService
+  : public SysMLv2::API::IElementNavigationService
+```  
+
+1.0 Beta 3 
+
+Moritz Herzog Implementation of the [IElementNavigationService](api.md SysMLv2::API::IElementNavigationService#d4/de9/class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service)
+
+**See also**: [IElementNavigationService](api.md SysMLv2::API::IElementNavigationService#d4/de9/class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service)
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public  `[`ElementNavigationService`](#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a0ca159b87c5f027dac7d1131a2450636)`()` | 
+`public virtual  `[`~ElementNavigationService`](#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a8b578b649e3a12b99f1267ce04d7d969)`() = default` | 
+`public virtual std::vector< std::shared_ptr< `[`SysMLv2::Entities::Element`](api.md SysMLv2::Entities::Element#d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element)` > > `[`getElements`](#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1afb43b61fd6591ed0a3448d640f28e6dd)`(std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > project,std::shared_ptr< `[`SysMLv2::Entities::Commit`](api.md SysMLv2::Entities::Commit#da/da9/class_sys_m_lv2_1_1_entities_1_1_commit)` > commit)` | Gets all the elements in a given project at a given commit. 
+`public virtual std::shared_ptr< `[`SysMLv2::Entities::Element`](api.md SysMLv2::Entities::Element#d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element)` > `[`getElementById`](#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a2d96062fc0068ad1244ea66be8950571)`(std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > project,std::shared_ptr< `[`SysMLv2::Entities::Commit`](api.md SysMLv2::Entities::Commit#da/da9/class_sys_m_lv2_1_1_entities_1_1_commit)` > commit,boost::uuids::uuid elementId)` | Gets an element with the project and commit it belongs to and its specific id. 
+`public virtual std::vector< std::shared_ptr< `[`SysMLv2::Entities::Relationship`](api.md SysMLv2::Entities::Relationship#d0/dae/class_sys_m_lv2_1_1_entities_1_1_relationship)` > > `[`getRelationshipsByRelatedElement`](#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a443d608b08d8d70534788255c5172352)`(std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > project,std::shared_ptr< `[`SysMLv2::Entities::Commit`](api.md SysMLv2::Entities::Commit#da/da9/class_sys_m_lv2_1_1_entities_1_1_commit)` > commit,boost::uuids::uuid elementId,int direction)` | Gets the relationships that are incoming, outgoing, or both relative to the related element. 
+`public virtual std::vector< std::shared_ptr< `[`SysMLv2::Entities::Element`](api.md SysMLv2::Entities::Element#d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element)` > > `[`getRootElements`](#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a71986b44cd5216815efbc114d37c5d18)`(std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > project,std::shared_ptr< `[`SysMLv2::Entities::Commit`](api.md SysMLv2::Entities::Commit#da/da9/class_sys_m_lv2_1_1_entities_1_1_commit)` > commit)` | Gets all root elements in the given project at the given commit. 
+
+## Members
+
+#### `public  `[`ElementNavigationService`](#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a0ca159b87c5f027dac7d1131a2450636)`()` {#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a0ca159b87c5f027dac7d1131a2450636}
+
+#### `public virtual  `[`~ElementNavigationService`](#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a8b578b649e3a12b99f1267ce04d7d969)`() = default` {#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a8b578b649e3a12b99f1267ce04d7d969}
+
+#### `public virtual std::vector< std::shared_ptr< `[`SysMLv2::Entities::Element`](api.md SysMLv2::Entities::Element#d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element)` > > `[`getElements`](#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1afb43b61fd6591ed0a3448d640f28e6dd)`(std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > project,std::shared_ptr< `[`SysMLv2::Entities::Commit`](api.md SysMLv2::Entities::Commit#da/da9/class_sys_m_lv2_1_1_entities_1_1_commit)` > commit)` {#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1afb43b61fd6591ed0a3448d640f28e6dd}
+
+Gets all the elements in a given project at a given commit. 
+#### Parameters
+* `project` The given project. 
+
+* `commit` The given commit inside of the project. 
+
+#### Returns
+All the given that are available as a vector.
+
+#### `public virtual std::shared_ptr< `[`SysMLv2::Entities::Element`](api.md SysMLv2::Entities::Element#d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element)` > `[`getElementById`](#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a2d96062fc0068ad1244ea66be8950571)`(std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > project,std::shared_ptr< `[`SysMLv2::Entities::Commit`](api.md SysMLv2::Entities::Commit#da/da9/class_sys_m_lv2_1_1_entities_1_1_commit)` > commit,boost::uuids::uuid elementId)` {#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a2d96062fc0068ad1244ea66be8950571}
+
+Gets an element with the project and commit it belongs to and its specific id. 
+#### Parameters
+* `project` The project, where the element is located in. 
+
+* `commit` The commit where the element is located in. 
+
+* `elementId` The id of the specific element. 
+
+#### Returns
+The element that is located. Can be null if no element is found.
+
+#### `public virtual std::vector< std::shared_ptr< `[`SysMLv2::Entities::Relationship`](api.md SysMLv2::Entities::Relationship#d0/dae/class_sys_m_lv2_1_1_entities_1_1_relationship)` > > `[`getRelationshipsByRelatedElement`](#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a443d608b08d8d70534788255c5172352)`(std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > project,std::shared_ptr< `[`SysMLv2::Entities::Commit`](api.md SysMLv2::Entities::Commit#da/da9/class_sys_m_lv2_1_1_entities_1_1_commit)` > commit,boost::uuids::uuid elementId,int direction)` {#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a443d608b08d8d70534788255c5172352}
+
+Gets the relationships that are incoming, outgoing, or both relative to the related element. 
+#### Parameters
+* `project` The project where the element is located. 
+
+* `commit` The commit where the element is located. 
+
+* `elementId` The element id, allowing to specify the element to locate it. 
+
+* `direction` The direction of the relationship. Defined with the enum and can ether be in, out, or both. 
+
+#### Returns
+A vector of the relationships that are found.
+
+#### `public virtual std::vector< std::shared_ptr< `[`SysMLv2::Entities::Element`](api.md SysMLv2::Entities::Element#d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element)` > > `[`getRootElements`](#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a71986b44cd5216815efbc114d37c5d18)`(std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > project,std::shared_ptr< `[`SysMLv2::Entities::Commit`](api.md SysMLv2::Entities::Commit#da/da9/class_sys_m_lv2_1_1_entities_1_1_commit)` > commit)` {#d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a71986b44cd5216815efbc114d37c5d18}
+
+Gets all root elements in the given project at the given commit. 
+#### Parameters
+* `project` The project where the root elements are coming from. 
+
+* `commit` The commit where the root elements are located. 
+
+#### Returns
+A vector of all root elements available in the project and commit.
+

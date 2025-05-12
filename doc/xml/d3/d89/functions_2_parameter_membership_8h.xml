@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d3/d89/functions_2_parameter_membership_8h" kind="file" language="C++">
+    <compoundname>ParameterMembership.h</compoundname>
+    <includedby refid="d9/dbf/functions_2_parameter_membership_8cpp" local="yes">kerml/src/kernel/functions/ParameterMembership.cpp</includedby>
+    <innerclass refid="da/d24/class_ker_m_l_1_1_entities_1_1_parameter_membership" prot="public">KerML::Entities::ParameterMembership</innerclass>
+    <innernamespace refid="d2/d14/namespace_ker_m_l">KerML</innernamespace>
+    <innernamespace refid="db/d3a/namespace_ker_m_l_1_1_entities">KerML::Entities</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Moritz<sp/>Herzog<sp/>on<sp/>31.03.25.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SYSMLV2_PARAMETERMEMBERSHIP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYSMLV2_PARAMETERMEMBERSHIP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="db/d3a/namespace_ker_m_l_1_1_entities" kindref="compound">KerML::Entities</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="da/d24/class_ker_m_l_1_1_entities_1_1_parameter_membership" kindref="compound">ParameterMembership</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>KerML::Entities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//SYSMLV2_PARAMETERMEMBERSHIP_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="kerml/src/kernel/functions/ParameterMembership.h"/>
+  </compounddef>
+</doxygen>

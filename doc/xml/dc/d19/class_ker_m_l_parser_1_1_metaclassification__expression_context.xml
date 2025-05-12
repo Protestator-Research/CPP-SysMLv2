@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Metaclassification_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1a07195c671cab2c0a9441a10fe0d8b6a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Metaclassification_expressionContext::Metaclassification_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Metaclassification_expressionContext</name>
+        <qualifiedname>KerMLParser::Metaclassification_expressionContext::Metaclassification_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2773" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="13406" bodyend="13408"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1a882c5359e26c111941a6ae28f92b65f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Metaclassification_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Metaclassification_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2774" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="13431" bodyend="13433"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1a59bdf56a2ded70fa26f878e4b1896eb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/d46/class_ker_m_l_parser_1_1_metadata__argument__member_context" kindref="compound">Metadata_argument_memberContext</ref> *</type>
+        <definition>KerMLParser::Metadata_argument_memberContext * KerMLParser::Metaclassification_expressionContext::metadata_argument_member</definition>
+        <argsstring>()</argsstring>
+        <name>metadata_argument_member</name>
+        <qualifiedname>KerMLParser::Metaclassification_expressionContext::metadata_argument_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2775" column="37" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="13410" bodyend="13412"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1aa44a0faf324e8647b7a7d838ddb2e67a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/d9b/class_ker_m_l_parser_1_1_metadataclassification__test__operator_context" kindref="compound">Metadataclassification_test_operatorContext</ref> *</type>
+        <definition>KerMLParser::Metadataclassification_test_operatorContext * KerMLParser::Metaclassification_expressionContext::metadataclassification_test_operator</definition>
+        <argsstring>()</argsstring>
+        <name>metadataclassification_test_operator</name>
+        <qualifiedname>KerMLParser::Metaclassification_expressionContext::metadataclassification_test_operator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2776" column="49" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="13414" bodyend="13416"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1a375c2f49388ac6e0d5ea645e2e0af310" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/d35/class_ker_m_l_parser_1_1_type__reference__member_context" kindref="compound">Type_reference_memberContext</ref> *</type>
+        <definition>KerMLParser::Type_reference_memberContext * KerMLParser::Metaclassification_expressionContext::type_reference_member</definition>
+        <argsstring>()</argsstring>
+        <name>type_reference_member</name>
+        <qualifiedname>KerMLParser::Metaclassification_expressionContext::type_reference_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2777" column="34" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="13418" bodyend="13420"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1a56015e8715d47056f43005aecd035854" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d9b/class_ker_m_l_parser_1_1_meta__cast__operator_context" kindref="compound">Meta_cast_operatorContext</ref> *</type>
+        <definition>KerMLParser::Meta_cast_operatorContext * KerMLParser::Metaclassification_expressionContext::meta_cast_operator</definition>
+        <argsstring>()</argsstring>
+        <name>meta_cast_operator</name>
+        <qualifiedname>KerMLParser::Metaclassification_expressionContext::meta_cast_operator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2778" column="31" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="13422" bodyend="13424"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1a794cb1de29f0f2c5e836039be4c54ee3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/ddc/class_ker_m_l_parser_1_1_type__result__member_context" kindref="compound">Type_result_memberContext</ref> *</type>
+        <definition>KerMLParser::Type_result_memberContext * KerMLParser::Metaclassification_expressionContext::type_result_member</definition>
+        <argsstring>()</argsstring>
+        <name>type_result_member</name>
+        <qualifiedname>KerMLParser::Metaclassification_expressionContext::type_result_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2779" column="31" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="13426" bodyend="13428"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1a2a65b521d66e23303cc52e0b78473324" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Metaclassification_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Metaclassification_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2781" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="13435" bodyend="13439"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1aeb79197d9dfb19769a2b3242bac2ec46" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Metaclassification_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Metaclassification_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2782" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="13441" bodyend="13445"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Metaclassification_expressionContext</label>
+        <link refid="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Metaclassification_expressionContext</label>
+        <link refid="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2771" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2771" bodyend="2784"/>
+    <listofallmembers>
+      <member refid="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1a2a65b521d66e23303cc52e0b78473324" prot="public" virt="virtual"><scope>KerMLParser::Metaclassification_expressionContext</scope><name>enterRule</name></member>
+      <member refid="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1aeb79197d9dfb19769a2b3242bac2ec46" prot="public" virt="virtual"><scope>KerMLParser::Metaclassification_expressionContext</scope><name>exitRule</name></member>
+      <member refid="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1a882c5359e26c111941a6ae28f92b65f6" prot="public" virt="virtual"><scope>KerMLParser::Metaclassification_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1a56015e8715d47056f43005aecd035854" prot="public" virt="non-virtual"><scope>KerMLParser::Metaclassification_expressionContext</scope><name>meta_cast_operator</name></member>
+      <member refid="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1a07195c671cab2c0a9441a10fe0d8b6a7" prot="public" virt="non-virtual"><scope>KerMLParser::Metaclassification_expressionContext</scope><name>Metaclassification_expressionContext</name></member>
+      <member refid="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1a59bdf56a2ded70fa26f878e4b1896eb0" prot="public" virt="non-virtual"><scope>KerMLParser::Metaclassification_expressionContext</scope><name>metadata_argument_member</name></member>
+      <member refid="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1aa44a0faf324e8647b7a7d838ddb2e67a" prot="public" virt="non-virtual"><scope>KerMLParser::Metaclassification_expressionContext</scope><name>metadataclassification_test_operator</name></member>
+      <member refid="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1a375c2f49388ac6e0d5ea645e2e0af310" prot="public" virt="non-virtual"><scope>KerMLParser::Metaclassification_expressionContext</scope><name>type_reference_member</name></member>
+      <member refid="dc/d19/class_ker_m_l_parser_1_1_metaclassification__expression_context_1a794cb1de29f0f2c5e836039be4c54ee3" prot="public" virt="non-virtual"><scope>KerMLParser::Metaclassification_expressionContext</scope><name>type_result_member</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

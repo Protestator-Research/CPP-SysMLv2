@@ -1,0 +1,736 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship" kind="class" language="C++" prot="public">
+    <compoundname>KerML::Entities::Relationship</compoundname>
+    <basecompoundref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" prot="public" virt="non-virtual">KerML::Entities::Element</basecompoundref>
+    <derivedcompoundref refid="de/d53/class_ker_m_l_1_1_entities_1_1_annotation" prot="public" virt="non-virtual">KerML::Entities::Annotation</derivedcompoundref>
+    <derivedcompoundref refid="d5/ded/class_ker_m_l_1_1_entities_1_1_association" prot="private" virt="non-virtual">KerML::Entities::Association</derivedcompoundref>
+    <derivedcompoundref refid="da/dff/class_ker_m_l_1_1_entities_1_1_conjunction" prot="public" virt="non-virtual">KerML::Entities::Conjunction</derivedcompoundref>
+    <derivedcompoundref refid="d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency" prot="public" virt="non-virtual">KerML::Entities::Dependency</derivedcompoundref>
+    <derivedcompoundref refid="d5/db6/class_ker_m_l_1_1_entities_1_1_differencing" prot="public" virt="non-virtual">KerML::Entities::Differencing</derivedcompoundref>
+    <derivedcompoundref refid="d0/d13/class_ker_m_l_1_1_entities_1_1_disjoining" prot="public" virt="non-virtual">KerML::Entities::Disjoining</derivedcompoundref>
+    <derivedcompoundref refid="dc/d59/class_ker_m_l_1_1_entities_1_1_feature_inverting" prot="public" virt="non-virtual">KerML::Entities::FeatureInverting</derivedcompoundref>
+    <derivedcompoundref refid="df/dbd/class_ker_m_l_1_1_entities_1_1_featuring" prot="public" virt="non-virtual">KerML::Entities::Featuring</derivedcompoundref>
+    <derivedcompoundref refid="d1/d86/class_ker_m_l_1_1_entities_1_1_intersecting" prot="public" virt="non-virtual">KerML::Entities::Intersecting</derivedcompoundref>
+    <derivedcompoundref refid="db/d3c/class_ker_m_l_1_1_entities_1_1_specialization" prot="public" virt="non-virtual">KerML::Entities::Specialization</derivedcompoundref>
+    <derivedcompoundref refid="dc/d7b/class_ker_m_l_1_1_entities_1_1_unioning" prot="public" virt="non-virtual">KerML::Entities::Unioning</derivedcompoundref>
+    <includes refid="de/d8b/kerml_2src_2root_2elements_2_relationship_8h" local="no">Relationship.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ab07af90d089fb715f1e2c9ff6ee483d6" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool KerML::Entities::Relationship::IsImplied</definition>
+        <argsstring></argsstring>
+        <name>IsImplied</name>
+        <qualifiedname>KerML::Entities::Relationship::IsImplied</qualifiedname>
+        <initializer>=false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="114" column="14" bodyfile="kerml/src/root/elements/Relationship.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a22c2e7659c1495b28e82a0c9a3ffd55f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;Element&gt; &gt; KerML::Entities::Relationship::OwnedRelatedElements</definition>
+        <argsstring></argsstring>
+        <name>OwnedRelatedElements</name>
+        <qualifiedname>KerML::Entities::Relationship::OwnedRelatedElements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="115" column="21" bodyfile="kerml/src/root/elements/Relationship.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a30df93c09263660dffd9a0464a73f95e" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Element&gt; KerML::Entities::Relationship::OwningRelatedElement</definition>
+        <argsstring></argsstring>
+        <name>OwningRelatedElement</name>
+        <qualifiedname>KerML::Entities::Relationship::OwningRelatedElement</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="116" column="25" bodyfile="kerml/src/root/elements/Relationship.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ac22c74d9217d89b0761be79b6e9d620e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;Element&gt; &gt; KerML::Entities::Relationship::RelatedElements</definition>
+        <argsstring></argsstring>
+        <name>RelatedElements</name>
+        <qualifiedname>KerML::Entities::Relationship::RelatedElements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="117" column="21" bodyfile="kerml/src/root/elements/Relationship.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a579b4b6d9ece2cfb924f8b76da5bb773" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;Element&gt; &gt; KerML::Entities::Relationship::Source</definition>
+        <argsstring></argsstring>
+        <name>Source</name>
+        <qualifiedname>KerML::Entities::Relationship::Source</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="118" column="21" bodyfile="kerml/src/root/elements/Relationship.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a0f26bf3f8ab277442f978ec485b9e23d" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;Element&gt; &gt; KerML::Entities::Relationship::Target</definition>
+        <argsstring></argsstring>
+        <name>Target</name>
+        <qualifiedname>KerML::Entities::Relationship::Target</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="119" column="21" bodyfile="kerml/src/root/elements/Relationship.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a6828ab0a5934d03f6858ec84193a0ccd" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerML::Entities::Relationship::Relationship</definition>
+        <argsstring>(boost::uuids::uuid elementID=boost::uuids::random_generator()(), std::shared_ptr&lt; Element &gt; owner=nullptr)</argsstring>
+        <name>Relationship</name>
+        <qualifiedname>KerML::Entities::Relationship::Relationship</qualifiedname>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>elementID</declname>
+          <defval>boost::uuids::random_generator()()</defval>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt;</type>
+          <declname>owner</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor of the <ref refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship" kindref="compound">Relationship</ref>. This constructor does allow for an empty elementID. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>elementID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> ID of the <ref refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship" kindref="compound">Relationship</ref>. If no UUID is provided, a random UUID is provided by the Software. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>owner</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> that owns this <ref refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship" kindref="compound">Relationship</ref>. If no <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> is provided the owning element is automatically set to null. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="26" column="18" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="10" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a1e4e57db6cd1128e42fece6461fe014a" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerML::Entities::Relationship::Relationship</definition>
+        <argsstring>(std::string elementID, std::shared_ptr&lt; Element &gt; owner=nullptr)</argsstring>
+        <name>Relationship</name>
+        <qualifiedname>KerML::Entities::Relationship::Relationship</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>elementID</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt;</type>
+          <declname>owner</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor of the <ref refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship" kindref="compound">Relationship</ref>. This constructor does not allow for an empty elementID. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>elementID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> ID of the <ref refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship" kindref="compound">Relationship</ref> as string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>owner</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> that owns this relationship. If no <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> is provided the owning element is automatically set to null. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="32" column="18" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="14" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a2bf714f78b988a26b66d195b3eb19620" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual KerML::Entities::Relationship::~Relationship</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Relationship</name>
+        <qualifiedname>KerML::Entities::Relationship::~Relationship</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destructor. An implementation is not required, since shared pointer are used. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="37" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a3d040e9729b6646a83ecf85aab5192fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerML::Entities::Relationship::setIsImplied</definition>
+        <argsstring>(bool isImplied)</argsstring>
+        <name>setIsImplied</name>
+        <qualifiedname>KerML::Entities::Relationship::setIsImplied</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>isImplied</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the Implied option. This should be set true if the relationship is implied by the elements. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>isImplied</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Is set by most tools, to meet semantic rules. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="43" column="14" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a776acb680aa78ae90a282500e7565591" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool KerML::Entities::Relationship::isImplied</definition>
+        <argsstring>()</argsstring>
+        <name>isImplied</name>
+        <qualifiedname>KerML::Entities::Relationship::isImplied</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the is Implied option. This option is set by tools, to meet semantic standards. <simplesect kind="return"><para>The is Implied option. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="48" column="14" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a99569006de4a3c175ffc89576427fba1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace" kindref="compound">Namespace</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Namespace &gt; KerML::Entities::Relationship::libraryNamespace</definition>
+        <argsstring>() const override</argsstring>
+        <name>libraryNamespace</name>
+        <qualifiedname>KerML::Entities::Relationship::libraryNamespace</qualifiedname>
+        <reimplements refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac2b5f829b8ad62eaca906e7cd866d1cf">libraryNamespace</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="54" column="25" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1af29a0fc37c9162532f51eb16af05fe27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerML::Entities::Relationship::appendElementToOwnedRelatedElement</definition>
+        <argsstring>(std::shared_ptr&lt; Element &gt; element)</argsstring>
+        <name>appendElementToOwnedRelatedElement</name>
+        <qualifiedname>KerML::Entities::Relationship::appendElementToOwnedRelatedElement</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt;</type>
+          <declname>element</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Appends one <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> to the Owned Related <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> list. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>element</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Shared pointer of an element. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="60" column="14" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ad87693d6609a978e80a549fa00629f8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerML::Entities::Relationship::setOwnedRelatedElements</definition>
+        <argsstring>(std::vector&lt; std::shared_ptr&lt; Element &gt; &gt; elements)</argsstring>
+        <name>setOwnedRelatedElements</name>
+        <qualifiedname>KerML::Entities::Relationship::setOwnedRelatedElements</qualifiedname>
+        <param>
+          <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt; &gt;</type>
+          <declname>elements</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>elements</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="66" column="14" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="35" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ae6e6c82e371f43e0cdb13c16c893da24" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; Element &gt; &gt; KerML::Entities::Relationship::ownedRelatedElement</definition>
+        <argsstring>() const</argsstring>
+        <name>ownedRelatedElement</name>
+        <qualifiedname>KerML::Entities::Relationship::ownedRelatedElement</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="72" column="22" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="40" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a13fdcfa05169e037236bec0ebceb201a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerML::Entities::Relationship::setOwningRelatedElement</definition>
+        <argsstring>(std::shared_ptr&lt; Element &gt; owningRelatedElement)</argsstring>
+        <name>setOwningRelatedElement</name>
+        <qualifiedname>KerML::Entities::Relationship::setOwningRelatedElement</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt;</type>
+          <declname>owningRelatedElement</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the owning related element. This is the element that owns this specific relationship. This can also be null. This method checks also, if the given element is contained inside of the ownedRelatedElements. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>owningRelatedElement</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element that owns this relationship as shared pointer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the element is not in the ownedRelatedElements list an exception is thrown. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="80" column="14" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="44" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1adae66b24b0e92a40241844fdf14bfbed" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Element &gt; KerML::Entities::Relationship::owningRelatedElement</definition>
+        <argsstring>() const</argsstring>
+        <name>owningRelatedElement</name>
+        <qualifiedname>KerML::Entities::Relationship::owningRelatedElement</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the owning related <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref>. It is to remember that the owning related <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> can be NULL per definition. <simplesect kind="return"><para>The owningRelatedElement, if available. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="86" column="26" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="51" bodyend="53"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a4eec900254c83027498d8307579b1dba" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerML::Entities::Relationship::setRelatedElements</definition>
+        <argsstring>(std::vector&lt; std::shared_ptr&lt; Element &gt; &gt; relatedElements)</argsstring>
+        <name>setRelatedElements</name>
+        <qualifiedname>KerML::Entities::Relationship::setRelatedElements</qualifiedname>
+        <param>
+          <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt; &gt;</type>
+          <declname>relatedElements</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows to set the related Elements in bulk. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>relatedElements</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The given list of related Elements. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="94" column="14" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="87" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a6b11ba6b15aa8eaf007074d660fb46b9" prot="protected" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; Element &gt; &gt; KerML::Entities::Relationship::relatedElements</definition>
+        <argsstring>() const</argsstring>
+        <name>relatedElements</name>
+        <qualifiedname>KerML::Entities::Relationship::relatedElements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the full and sorted list of the related elements. <simplesect kind="return"><para>Returns the vectors of the related Elements. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="100" column="22" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="92" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a8da4cdd1eb513c3bb5e4fd873fd8851d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerML::Entities::Relationship::appendElementToRelatedElements</definition>
+        <argsstring>(std::shared_ptr&lt; Element &gt; element)</argsstring>
+        <name>appendElementToRelatedElements</name>
+        <qualifiedname>KerML::Entities::Relationship::appendElementToRelatedElements</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> &gt;</type>
+          <declname>element</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Appends one element to the related elements vector. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>element</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the related element. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="106" column="14" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="96" bodyend="99"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a625cd441755c2f75ca2be712d90525b2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerML::Entities::Relationship::sortOwnedRelatedElements</definition>
+        <argsstring>()</argsstring>
+        <name>sortOwnedRelatedElements</name>
+        <qualifiedname>KerML::Entities::Relationship::sortOwnedRelatedElements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="109" column="14" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="55" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a00a85edcf77bee890f724ca921fe8e0a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerML::Entities::Relationship::sortRelatedElements</definition>
+        <argsstring>()</argsstring>
+        <name>sortRelatedElements</name>
+        <qualifiedname>KerML::Entities::Relationship::sortRelatedElements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="110" column="14" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="63" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a41ae35fe5c6b9b82f7d05ab11d1e331a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerML::Entities::Relationship::sortSourceElements</definition>
+        <argsstring>()</argsstring>
+        <name>sortSourceElements</name>
+        <qualifiedname>KerML::Entities::Relationship::sortSourceElements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="111" column="14" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="71" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ad1a51df04559c620196271c4f84ccfe9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerML::Entities::Relationship::sortTargetElements</definition>
+        <argsstring>()</argsstring>
+        <name>sortTargetElements</name>
+        <qualifiedname>KerML::Entities::Relationship::sortTargetElements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kerml/src/root/elements/Relationship.h" line="112" column="14" bodyfile="kerml/src/root/elements/Relationship.cpp" bodystart="79" bodyend="85"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Moritz Herzog </para>
+</simplesect>
+<simplesect kind="version"><para>1.0 Beta 2 A <ref refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship" kindref="compound">Relationship</ref> is an <ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" kindref="compound">Element</ref> that relates two elements to each other. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>KerML::Entities::Annotation</label>
+        <link refid="de/d53/class_ker_m_l_1_1_entities_1_1_annotation"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>KerML::Entities::Association</label>
+        <link refid="d5/ded/class_ker_m_l_1_1_entities_1_1_association"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>KerML::Entities::AssociationStructure</label>
+        <link refid="d1/d4c/class_ker_m_l_1_1_entities_1_1_association_structure"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>KerML::Entities::Conjunction</label>
+        <link refid="da/dff/class_ker_m_l_1_1_entities_1_1_conjunction"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>KerML::Entities::Dependency</label>
+        <link refid="d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>KerML::Entities::Differencing</label>
+        <link refid="d5/db6/class_ker_m_l_1_1_entities_1_1_differencing"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>KerML::Entities::Disjoining</label>
+        <link refid="d0/d13/class_ker_m_l_1_1_entities_1_1_disjoining"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KerML::Entities::Element</label>
+        <link refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element"/>
+      </node>
+      <node id="10">
+        <label>KerML::Entities::FeatureInverting</label>
+        <link refid="dc/d59/class_ker_m_l_1_1_entities_1_1_feature_inverting"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>KerML::Entities::FeatureTyping</label>
+        <link refid="db/d4f/class_ker_m_l_1_1_entities_1_1_feature_typing"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>KerML::Entities::Featuring</label>
+        <link refid="df/dbd/class_ker_m_l_1_1_entities_1_1_featuring"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>KerML::Entities::Intersecting</label>
+        <link refid="d1/d86/class_ker_m_l_1_1_entities_1_1_intersecting"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>KerML::Entities::Redefinition</label>
+        <link refid="d2/d4f/class_ker_m_l_1_1_entities_1_1_redefinition"/>
+        <childnode refid="16" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>KerML::Entities::Relationship</label>
+        <link refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>KerML::Entities::Specialization</label>
+        <link refid="db/d3c/class_ker_m_l_1_1_entities_1_1_specialization"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>KerML::Entities::Subclassification</label>
+        <link refid="d1/df3/class_ker_m_l_1_1_entities_1_1_subclassification"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>KerML::Entities::Subsetting</label>
+        <link refid="d4/dd2/class_ker_m_l_1_1_entities_1_1_subsetting"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>KerML::Entities::Unioning</label>
+        <link refid="dc/d7b/class_ker_m_l_1_1_entities_1_1_unioning"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>KerML::Entities::Element</label>
+        <link refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element"/>
+      </node>
+      <node id="1">
+        <label>KerML::Entities::Relationship</label>
+        <link refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="kerml/src/root/elements/Relationship.h" line="19" column="5" bodyfile="kerml/src/root/elements/Relationship.h" bodystart="19" bodyend="120"/>
+    <listofallmembers>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a2fe9d1d9ae52170ee016a2345015a2a8" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>AliasIds</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a293a9bbdd3f766e85b33c42ed314414d" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>aliasIds</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1abc1566f2e815a6847958f5f39966b859" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>appendAliasId</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1af29a0fc37c9162532f51eb16af05fe27" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>appendElementToOwnedRelatedElement</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a8da4cdd1eb513c3bb5e4fd873fd8851d" prot="protected" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>appendElementToRelatedElements</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a694b6623e44bca317fd07f3ceb9d6bf0" prot="protected" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>appendOwnedElement</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a15b56d09276f5bcd8a8ae0bbc75a681b" prot="protected" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>appendOwnedElements</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aaaf0054dcbefdc977e5dedf37e0a7932" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>DeclaredName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5177637cac4c2f102c1ac622606fc18e" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>declaredName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a6ca5b361ceea9afd58af30dbc26c39e5" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>DeclaredShortName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8712642a475270d5caaa99fca188f07a" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>declaredShortName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a81f29ab756dad42ce6db7d2406fbf567" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>Documentations</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5303e53153fadd68bca76b5b8e06f685" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>effectiveName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5a0c3b8b6188c323aba3fe9db9dd5550" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>effectiveShortName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>Element</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a26006d0f6402324fc864bacf9f6ef29b" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>Element</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a0a07e7e3146f7d7ef7e5f6e8cc151173" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>ElementId</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a50f3f7be0b6883e97464e56fef80264e" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>elementId</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a08dfbcd5104a039aeb720d97b03eafbe" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>elementIdAsUUID</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1adebc4425108aa41e89e6282d223e1c38" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>escapedName</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ab07af90d089fb715f1e2c9ff6ee483d6" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>IsImplied</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a776acb680aa78ae90a282500e7565591" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>isImplied</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aba76f2d080c1d6527999d608041dc8b0" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>IsImpliedIncluded</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a4b6577883757e6ae2d13cda2552e1e43" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>isImpliedIncluded</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a24655d02ec0e854d9c90818cf93a98f9" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>IsLibraryElement</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a99569006de4a3c175ffc89576427fba1" prot="public" virt="virtual"><scope>KerML::Entities::Relationship</scope><name>libraryNamespace</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aec40f580554caab218120b4d81662e55" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>Name</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a62d9c4f0a7e75986bd7adf97d0e028a1" prot="public" virt="virtual"><scope>KerML::Entities::Relationship</scope><name>operator&lt;</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac385bb608aad427a079324303181132f" prot="public" virt="virtual"><scope>KerML::Entities::Relationship</scope><name>operator&lt;=</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a24ec7829b77b32369dafcb81d77af0e4" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>operator=</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a6b2eb4aeed41e45f2f14742f920dd751" prot="public" virt="virtual"><scope>KerML::Entities::Relationship</scope><name>operator==</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a704d3dedba17f3e97eb08e2116716d83" prot="public" virt="virtual"><scope>KerML::Entities::Relationship</scope><name>operator&gt;</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1af97c193ec8d513de2840ef5dd6b35ef4" prot="public" virt="virtual"><scope>KerML::Entities::Relationship</scope><name>operator&gt;=</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7931562943c16b966f424e15dcab9d0e" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>OwnedAnnotations</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a89f807371c51dc8f827f191677bbbe57" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>OwnedElements</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7ddc025c7f987b1ac7abe87b471e07fc" prot="protected" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>ownedElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ae6e6c82e371f43e0cdb13c16c893da24" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>ownedRelatedElement</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a22c2e7659c1495b28e82a0c9a3ffd55f" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>OwnedRelatedElements</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1afe41944c39ed48a58ee78560d213e5b0" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>OwnedRelationships</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a9d3b8280d23066d2621a5410910930bf" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>Owner</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aa4c9d1f4fd1506ea8d61873a2ba177c1" prot="protected" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>owner</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aa8c403722101127b06d92c5ac22467a3" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>OwningNamespace</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8518d1b35c0f41d01e57ba11a7680be0" prot="protected" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>owningNamespace</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a30df93c09263660dffd9a0464a73f95e" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>OwningRelatedElement</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1adae66b24b0e92a40241844fdf14bfbed" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>owningRelatedElement</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a596931d529bfb0afb41acbb23e8d8e7e" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>QualifiedName</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ac22c74d9217d89b0761be79b6e9d620e" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>RelatedElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a6b11ba6b15aa8eaf007074d660fb46b9" prot="protected" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>relatedElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a6828ab0a5934d03f6858ec84193a0ccd" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>Relationship</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a1e4e57db6cd1128e42fece6461fe014a" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>Relationship</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a67cd4e9242d86b6a92fb4f1b1ddbf8db" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>setAliasIds</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8686dafeedf332c846410da4d13b8aac" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>setDeclaredName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a1d57a50fdec8c10f44ab714a34d0ce74" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>setDeclaredShortName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a86d552849ed84c9631b9246662c9fa34" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>setImpliedIncluded</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a3d040e9729b6646a83ecf85aab5192fd" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>setIsImplied</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac66ccb28a7d82bd2a2629c14307b9ac4" prot="protected" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>setOwnedElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ad87693d6609a978e80a549fa00629f8e" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>setOwnedRelatedElements</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a78943db83fcff463c054ec4dccb691b6" prot="protected" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>setOwner</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7dfbb6ba5545bb37db11abbf9f44ef1b" prot="protected" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>setOwningNamespace</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a13fdcfa05169e037236bec0ebceb201a" prot="public" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>setOwningRelatedElement</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a4eec900254c83027498d8307579b1dba" prot="protected" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>setRelatedElements</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1af66371679fa6ddc033a5da748985f080" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>ShortName</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a1f31c599d9a94695386c07d1551718b8" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>sortAliasIds</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a76d905ace783221b65ebd650eeb6cf36" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>sortOwnedElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a625cd441755c2f75ca2be712d90525b2" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>sortOwnedRelatedElements</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a0c53cc502cb709f613d2869c8c94bf8b" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>sortOwnedRelationships</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a00a85edcf77bee890f724ca921fe8e0a" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>sortRelatedElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a41ae35fe5c6b9b82f7d05ab11d1e331a" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>sortSourceElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1ad1a51df04559c620196271c4f84ccfe9" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>sortTargetElements</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a579b4b6d9ece2cfb924f8b76da5bb773" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>Source</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a0f26bf3f8ab277442f978ec485b9e23d" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>Target</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad0cbcbbe93d9d501ad42b6568769d784" prot="private" virt="non-virtual"><scope>KerML::Entities::Relationship</scope><name>TextualRepresentations</name></member>
+      <member refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a9fbeffb936fcab7b70327e8f22b40c19" prot="public" virt="virtual"><scope>KerML::Entities::Relationship</scope><name>~Element</name></member>
+      <member refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship_1a2bf714f78b988a26b66d195b3eb19620" prot="public" virt="virtual"><scope>KerML::Entities::Relationship</scope><name>~Relationship</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

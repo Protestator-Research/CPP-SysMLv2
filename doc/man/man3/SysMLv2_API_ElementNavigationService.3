@@ -1,0 +1,132 @@
+.TH "SysMLv2::API::ElementNavigationService" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::API::ElementNavigationService
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <ElementNavigationService\&.h>\fP
+.PP
+Inherits \fBSysMLv2::API::IElementNavigationService\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBSysMLv2::Entities::Element\fP > > \fBgetElements\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit) override"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBSysMLv2::Entities::Element\fP > \fBgetElementById\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit, boost::uuids::uuid elementId) override"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBSysMLv2::Entities::Relationship\fP > > \fBgetRelationshipsByRelatedElement\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit, boost::uuids::uuid elementId, int direction) override"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBSysMLv2::Entities::Element\fP > > \fBgetRootElements\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit) override"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 Beta 3 
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog Implementation of the \fBIElementNavigationService\fP 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBIElementNavigationService\fP 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "std::shared_ptr< \fBSysMLv2::Entities::Element\fP > SysMLv2::API::ElementNavigationService::getElementById (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit, boost::uuids::uuid elementId)\fR [override]\fP, \fR [virtual]\fP"
+Gets an element with the project and commit it belongs to and its specific id\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The project, where the element is located in\&. 
+.br
+\fIcommit\fP The commit where the element is located in\&. 
+.br
+\fIelementId\fP The id of the specific element\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The element that is located\&. Can be null if no element is found\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::API::IElementNavigationService\fP\&.
+.SS "std::vector< std::shared_ptr< \fBSysMLv2::Entities::Element\fP > > SysMLv2::API::ElementNavigationService::getElements (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit)\fR [override]\fP, \fR [virtual]\fP"
+Gets all the elements in a given project at a given commit\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The given project\&. 
+.br
+\fIcommit\fP The given commit inside of the project\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+All the given that are available as a vector\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::API::IElementNavigationService\fP\&.
+.SS "std::vector< std::shared_ptr< \fBSysMLv2::Entities::Relationship\fP > > SysMLv2::API::ElementNavigationService::getRelationshipsByRelatedElement (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit, boost::uuids::uuid elementId, int direction)\fR [override]\fP, \fR [virtual]\fP"
+Gets the relationships that are incoming, outgoing, or both relative to the related element\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The project where the element is located\&. 
+.br
+\fIcommit\fP The commit where the element is located\&. 
+.br
+\fIelementId\fP The element id, allowing to specify the element to locate it\&. 
+.br
+\fIdirection\fP The direction of the relationship\&. Defined with the enum and can ether be in, out, or both\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A vector of the relationships that are found\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::API::IElementNavigationService\fP\&.
+.SS "std::vector< std::shared_ptr< \fBSysMLv2::Entities::Element\fP > > SysMLv2::API::ElementNavigationService::getRootElements (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit)\fR [override]\fP, \fR [virtual]\fP"
+Gets all root elements in the given project at the given commit\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The project where the root elements are coming from\&. 
+.br
+\fIcommit\fP The commit where the root elements are located\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A vector of all root elements available in the project and commit\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::API::IElementNavigationService\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

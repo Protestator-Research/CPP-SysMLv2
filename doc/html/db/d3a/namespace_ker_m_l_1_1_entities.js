@@ -14,7 +14,7 @@ var namespace_ker_m_l_1_1_entities =
     [ "Conjunction", "da/dff/class_ker_m_l_1_1_entities_1_1_conjunction.html", null ],
     [ "Connector", "d8/de4/class_ker_m_l_1_1_entities_1_1_connector.html", null ],
     [ "DataType", "d0/da3/class_ker_m_l_1_1_entities_1_1_data_type.html", null ],
-    [ "Dependency", "d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html", null ],
+    [ "Dependency", "d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html", "d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency" ],
     [ "Differencing", "d5/db6/class_ker_m_l_1_1_entities_1_1_differencing.html", null ],
     [ "Disjoining", "d0/d13/class_ker_m_l_1_1_entities_1_1_disjoining.html", null ],
     [ "Documentation", "d0/ded/class_ker_m_l_1_1_entities_1_1_documentation.html", null ],

@@ -9,5 +9,6 @@ var searchData=
   ['ownedelements_6',['ownedElements',['../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a7ddc025c7f987b1ac7abe87b471e07fc',1,'KerML::Entities::Element']]],
   ['ownedrelatedelement_7',['ownedRelatedElement',['../d0/d55/class_ker_m_l_1_1_entities_1_1_relationship.html#ae6e6c82e371f43e0cdb13c16c893da24',1,'KerML::Entities::Relationship']]],
   ['owner_8',['owner',['../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#aa4c9d1f4fd1506ea8d61873a2ba177c1',1,'KerML::Entities::Element']]],
-  ['owningrelatedelement_9',['owningRelatedElement',['../d0/d55/class_ker_m_l_1_1_entities_1_1_relationship.html#adae66b24b0e92a40241844fdf14bfbed',1,'KerML::Entities::Relationship']]]
+  ['owningnamespace_9',['owningNamespace',['../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a8518d1b35c0f41d01e57ba11a7680be0',1,'KerML::Entities::Element']]],
+  ['owningrelatedelement_10',['owningRelatedElement',['../d0/d55/class_ker_m_l_1_1_entities_1_1_relationship.html#adae66b24b0e92a40241844fdf14bfbed',1,'KerML::Entities::Relationship']]]
 ];

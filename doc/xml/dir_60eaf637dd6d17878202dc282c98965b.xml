@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_60eaf637dd6d17878202dc282c98965b" kind="dir">
+    <compoundname>build/Debug/kerml/CMakeFiles/kerml.dir/src/root/elements</compoundname>
+    <innerfile refid="da/d7a/kerml_2_c_make_files_2kerml_8dir_2src_2root_2elements_2_element_8cpp_8o_8d">Element.cpp.o.d</innerfile>
+    <innerfile refid="db/d71/kerml_2_c_make_files_2kerml_8dir_2src_2root_2elements_2_relationship_8cpp_8o_8d">Relationship.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/kerml/CMakeFiles/kerml.dir/src/root/elements/"/>
+  </compounddef>
+</doxygen>

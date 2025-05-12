@@ -142,7 +142,7 @@ $(function(){initNavTree('d0/d61/_commit_8h_source.html','../../'); initResizabl
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">// Internal Classes</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">//---------------------------------------------------------</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;Record.h&quot;</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;../sysmlv2rest_global.h&quot;</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">//---------------------------------------------------------</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// Forwarding</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">//---------------------------------------------------------</span></div>
@@ -155,7 +155,7 @@ $(function(){initNavTree('d0/d61/_commit_8h_source.html','../../'); initResizabl
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d4/d33/namespace_sys_m_lv2_1_1_entities.html">SysMLv2::Entities</a> {</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
 <div class="foldopen" id="foldopen00055" data-start="{" data-end="};">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="../../da/da9/class_sys_m_lv2_1_1_entities_1_1_commit.html">   55</a></span>    <span class="keyword">class  </span><a class="code hl_function" href="../../da/da9/class_sys_m_lv2_1_1_entities_1_1_commit.html#af2302e897a347025242c9c6dc581c24d">Commit</a> : <span class="keyword">public</span> <a class="code hl_function" href="../../d9/dad/class_sys_m_lv2_1_1_entities_1_1_record.html#a3bfd067522f0ef87a1b50c6493458a9b">Record</a> {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="../../da/da9/class_sys_m_lv2_1_1_entities_1_1_commit.html">   55</a></span>    <span class="keyword">class </span>SYSMLV2REST_EXPORT <a class="code hl_function" href="../../da/da9/class_sys_m_lv2_1_1_entities_1_1_commit.html#af2302e897a347025242c9c6dc581c24d">Commit</a> : <span class="keyword">public</span> <a class="code hl_function" href="../../d9/dad/class_sys_m_lv2_1_1_entities_1_1_record.html#a3bfd067522f0ef87a1b50c6493458a9b">Record</a> {</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="../../da/da9/class_sys_m_lv2_1_1_entities_1_1_commit.html#af2302e897a347025242c9c6dc581c24d">   60</a></span>        <a class="code hl_function" href="../../da/da9/class_sys_m_lv2_1_1_entities_1_1_commit.html#af2302e897a347025242c9c6dc581c24d">Commit</a>() = <span class="keyword">delete</span>;</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span></div>
@@ -165,7 +165,7 @@ $(function(){initNavTree('d0/d61/_commit_8h_source.html','../../'); initResizabl
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span></div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keyword">explicit</span> <a class="code hl_function" href="../../da/da9/class_sys_m_lv2_1_1_entities_1_1_commit.html#af2302e897a347025242c9c6dc581c24d">Commit</a>(std::string jsonString);</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keyword">virtual</span> <a class="code hl_function" href="../../da/da9/class_sys_m_lv2_1_1_entities_1_1_commit.html#a214b0b53822c120196cebc603c03eaf9">~Commit</a>();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keyword">virtual</span> <a class="code hl_function" href="../../da/da9/class_sys_m_lv2_1_1_entities_1_1_commit.html#af2302e897a347025242c9c6dc581c24d">~Commit</a>();</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordtype">void</span> setChange(std::vector&lt;std::shared_ptr&lt;DataVersion&gt;&gt; change);</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordtype">void</span> addChange(std::shared_ptr&lt;DataVersion&gt; dataVersion);</div>
@@ -186,13 +186,12 @@ $(function(){initNavTree('d0/d61/_commit_8h_source.html','../../'); initResizabl
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">#endif </span><span class="comment">//DIGITALTWIN_COMMIT_H</span></div>
-<div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_commit_html_a214b0b53822c120196cebc603c03eaf9"><div class="ttname"><a href="../../da/da9/class_sys_m_lv2_1_1_entities_1_1_commit.html#a214b0b53822c120196cebc603c03eaf9">SysMLv2::Entities::Commit::~Commit</a></div><div class="ttdeci">virtual ~Commit()</div><div class="ttdef"><b>Definition</b> Commit.cpp:50</div></div>
 <div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_commit_html_abdcba8ede41175531d3d17d3de0dee49"><div class="ttname"><a href="../../da/da9/class_sys_m_lv2_1_1_entities_1_1_commit.html#abdcba8ede41175531d3d17d3de0dee49">SysMLv2::Entities::Commit::serializeToJson</a></div><div class="ttdeci">std::string serializeToJson() override</div><div class="ttdef"><b>Definition</b> Commit.cpp:75</div></div>
 <div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_commit_html_af2302e897a347025242c9c6dc581c24d"><div class="ttname"><a href="../../da/da9/class_sys_m_lv2_1_1_entities_1_1_commit.html#af2302e897a347025242c9c6dc581c24d">SysMLv2::Entities::Commit::Commit</a></div><div class="ttdeci">Commit()=delete</div></div>
-<div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_data_version_html"><div class="ttname"><a href="../../de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version.html">SysMLv2::Entities::DataVersion</a></div><div class="ttdef"><b>Definition</b> DataVersion.h:34</div></div>
-<div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_project_html"><div class="ttname"><a href="../../d0/d86/class_sys_m_lv2_1_1_entities_1_1_project.html">SysMLv2::Entities::Project</a></div><div class="ttdef"><b>Definition</b> Project.h:43</div></div>
+<div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_data_version_html"><div class="ttname"><a href="../../de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version.html">SysMLv2::Entities::DataVersion</a></div><div class="ttdef"><b>Definition</b> DataVersion.h:35</div></div>
+<div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_project_html"><div class="ttname"><a href="../../d0/d86/class_sys_m_lv2_1_1_entities_1_1_project.html">SysMLv2::Entities::Project</a></div><div class="ttdef"><b>Definition</b> Project.h:44</div></div>
 <div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_record_html_a3bfd067522f0ef87a1b50c6493458a9b"><div class="ttname"><a href="../../d9/dad/class_sys_m_lv2_1_1_entities_1_1_record.html#a3bfd067522f0ef87a1b50c6493458a9b">SysMLv2::Entities::Record::Record</a></div><div class="ttdeci">Record()=delete</div></div>
-<div class="ttc" id="anamespace_sys_m_lv2_1_1_entities_html"><div class="ttname"><a href="../../d4/d33/namespace_sys_m_lv2_1_1_entities.html">SysMLv2::Entities</a></div><div class="ttdef"><b>Definition</b> IEntity.h:22</div></div>
+<div class="ttc" id="anamespace_sys_m_lv2_1_1_entities_html"><div class="ttname"><a href="../../d4/d33/namespace_sys_m_lv2_1_1_entities.html">SysMLv2::Entities</a></div><div class="ttdef"><b>Definition</b> Branch.cpp:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

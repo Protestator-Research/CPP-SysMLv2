@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d3/dcc/md__r_e_a_d_m_e" kind="page">
+    <compoundname>md__r_e_a_d_m_e</compoundname>
+    <title>C++ SysML v2 Implementation</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="d3/dcc/md__r_e_a_d_m_e_1autotoc_md0"/></para>
+<para>This library gives an implementation of the SysML v2 standard and <ref refid="d2/d14/namespace_ker_m_l" kindref="compound">KerML</ref> standard. This allows developers to implment own applications with this library. The existence of this library is the proof, that SysML v2 can be implemented in C++.</para>
+<sect1 id="d3/dcc/md__r_e_a_d_m_e_1autotoc_md1">
+<title>Table of Contents</title><para>[toc]</para>
+</sect1>
+<sect1 id="d3/dcc/md__r_e_a_d_m_e_1autotoc_md2">
+<title>Build Status</title><para>The System and Tests: <ulink url="https://github.com/Protestator-Research/CPP-SysMLv2/actions/workflows/c-cpp.yml"><image type="html" name="https://github.com/Protestator-Research/CPP-SysMLv2/actions/workflows/c-cpp.yml/badge.svg" alt="C/C++ CI" inline="yes"></image>
+</ulink></para>
+</sect1>
+<sect1 id="d3/dcc/md__r_e_a_d_m_e_1autotoc_md3">
+<title>Licensing</title><para>This software is licensed under the GPL v3, allowing a free and open source editing of the code. We want to offer you the option to use this libary also for commercial project. This will be done in a later step, since we are currently developing this from the ground up.</para>
+</sect1>
+<sect1 id="d3/dcc/md__r_e_a_d_m_e_1autotoc_md4">
+<title>Building and usage</title><para>We offer the build work flow with conan and standalone.</para>
+<sect2 id="d3/dcc/md__r_e_a_d_m_e_1autotoc_md5">
+<title>Conan Build</title><para>One of the Todos we have is to offer this library in the conan central repositories. But this can be done, if the implementation is done. You will be informed.</para>
+<para>With this build the conan file is provided, allowing you to install the dependencies and then to build the files.</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">mkdir<sp/>build<sp/>&amp;&amp;<sp/>cd<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">conan<sp/>install<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">conan<sp/>build<sp/>..</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="d3/dcc/md__r_e_a_d_m_e_1autotoc_md6">
+<title>Standalone Build</title><para>Please install the dependencies required for the build:</para>
+<sect3 id="d3/dcc/md__r_e_a_d_m_e_1autotoc_md7">
+<title>Dependencies</title><para><table rows="6" cols="2"><row>
+<entry thead="yes"><para>Dependency   </para>
+</entry><entry thead="yes"><para>Version    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>antlr4-cppruntime   </para>
+</entry><entry thead="no"><para>4.13.1    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>boost   </para>
+</entry><entry thead="no"><para>Min 1.83.0    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>nlohmann_json   </para>
+</entry><entry thead="no"><para>Min 3.11.2    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>date   </para>
+</entry><entry thead="no"><para>3.0.1    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>gtest   </para>
+</entry><entry thead="no"><para>1.14.0   </para>
+</entry></row>
+</table>
+</para>
+<para>We are working on an option to only use a part of the dependencies. This will be depended on the modules that are used.</para>
+</sect3>
+<sect3 id="d3/dcc/md__r_e_a_d_m_e_1autotoc_md8">
+<title>Build</title><para>For the build we require you to have CMake installed. This allows to have one implementation for all operating systems.</para>
+<para>To generate the build files for your system use the following command.</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">mkdir<sp/>build<sp/>&amp;&amp;<sp/>cd<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">make</highlight></codeline>
+</programlisting></para>
+<para>For the install option use the following command install.</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">make<sp/>install<sp/></highlight></codeline>
+</programlisting> </para>
+</sect3>
+</sect2>
+</sect1>
+    </detaileddescription>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

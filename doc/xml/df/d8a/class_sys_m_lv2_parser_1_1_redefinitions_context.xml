@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::RedefinitionsContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context_1a2db091d9d6775db3af29613181c586b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::RedefinitionsContext::RedefinitionsContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>RedefinitionsContext</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionsContext::RedefinitionsContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6718" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33135" bodyend="33137"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context_1a94c1b3068f57ef73c49c7c66ff18f4ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::RedefinitionsContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionsContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6719" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33152" bodyend="33154"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context_1a61fa40644ad8050b00af13e6ad3503dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/d7b/class_sys_m_lv2_parser_1_1_redefines_context" kindref="compound">RedefinesContext</ref> *</type>
+        <definition>SysMLv2Parser::RedefinesContext * SysMLv2Parser::RedefinitionsContext::redefines</definition>
+        <argsstring>()</argsstring>
+        <name>redefines</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionsContext::redefines</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6720" column="22" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33139" bodyend="33141"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context_1a434d31563766f5f8e2081565ffe1efc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::RedefinitionsContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionsContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6721" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33143" bodyend="33145"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context_1a1064b259c64db81f98a37ec1bfd50834" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/d2b/class_sys_m_lv2_parser_1_1_owned__redefinition_context" kindref="compound">Owned_redefinitionContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_redefinitionContext * SysMLv2Parser::RedefinitionsContext::owned_redefinition</definition>
+        <argsstring>()</argsstring>
+        <name>owned_redefinition</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionsContext::owned_redefinition</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6722" column="31" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33147" bodyend="33149"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context_1aa0149acdbbfb9d86cb6b6e23de974994" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::RedefinitionsContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionsContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6724" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33156" bodyend="33160"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context_1a9bd8ad3d617b29f7e72a8b94760bccc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::RedefinitionsContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionsContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6725" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33162" bodyend="33166"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::RedefinitionsContext</label>
+        <link refid="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::RedefinitionsContext</label>
+        <link refid="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6716" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="6716" bodyend="6727"/>
+    <listofallmembers>
+      <member refid="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context_1aa0149acdbbfb9d86cb6b6e23de974994" prot="public" virt="virtual"><scope>SysMLv2Parser::RedefinitionsContext</scope><name>enterRule</name></member>
+      <member refid="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context_1a9bd8ad3d617b29f7e72a8b94760bccc6" prot="public" virt="virtual"><scope>SysMLv2Parser::RedefinitionsContext</scope><name>exitRule</name></member>
+      <member refid="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context_1a94c1b3068f57ef73c49c7c66ff18f4ff" prot="public" virt="virtual"><scope>SysMLv2Parser::RedefinitionsContext</scope><name>getRuleIndex</name></member>
+      <member refid="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context_1a1064b259c64db81f98a37ec1bfd50834" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionsContext</scope><name>owned_redefinition</name></member>
+      <member refid="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context_1a61fa40644ad8050b00af13e6ad3503dc" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionsContext</scope><name>redefines</name></member>
+      <member refid="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context_1a2db091d9d6775db3af29613181c586b0" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionsContext</scope><name>RedefinitionsContext</name></member>
+      <member refid="df/d8a/class_sys_m_lv2_parser_1_1_redefinitions_context_1a434d31563766f5f8e2081565ffe1efc4" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionsContext</scope><name>SYMBOL_COMMA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

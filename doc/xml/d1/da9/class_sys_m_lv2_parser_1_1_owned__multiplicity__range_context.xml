@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/da9/class_sys_m_lv2_parser_1_1_owned__multiplicity__range_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Owned_multiplicity_rangeContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/da9/class_sys_m_lv2_parser_1_1_owned__multiplicity__range_context_1af80de2ea6f8c7f280e098a02e3ed2e27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Owned_multiplicity_rangeContext::Owned_multiplicity_rangeContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Owned_multiplicity_rangeContext</name>
+        <qualifiedname>SysMLv2Parser::Owned_multiplicity_rangeContext::Owned_multiplicity_rangeContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8902" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43649" bodyend="43651"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/da9/class_sys_m_lv2_parser_1_1_owned__multiplicity__range_context_1a36fd374a6538cc679fd4b1e348d57eba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Owned_multiplicity_rangeContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Owned_multiplicity_rangeContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8903" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43658" bodyend="43660"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/da9/class_sys_m_lv2_parser_1_1_owned__multiplicity__range_context_1a8c1016b335a5edc320434803dfa5652d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d3c/class_sys_m_lv2_parser_1_1_multiplicity__bounds_context" kindref="compound">Multiplicity_boundsContext</ref> *</type>
+        <definition>SysMLv2Parser::Multiplicity_boundsContext * SysMLv2Parser::Owned_multiplicity_rangeContext::multiplicity_bounds</definition>
+        <argsstring>()</argsstring>
+        <name>multiplicity_bounds</name>
+        <qualifiedname>SysMLv2Parser::Owned_multiplicity_rangeContext::multiplicity_bounds</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8904" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43653" bodyend="43655"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/da9/class_sys_m_lv2_parser_1_1_owned__multiplicity__range_context_1ad0a0c8e245ad8156ba9e7e5264ba9f51" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_multiplicity_rangeContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_multiplicity_rangeContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8906" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43662" bodyend="43666"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/da9/class_sys_m_lv2_parser_1_1_owned__multiplicity__range_context_1a81e263de17ce9a81a068042797abb0c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_multiplicity_rangeContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_multiplicity_rangeContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8907" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43668" bodyend="43672"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_multiplicity_rangeContext</label>
+        <link refid="d1/da9/class_sys_m_lv2_parser_1_1_owned__multiplicity__range_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_multiplicity_rangeContext</label>
+        <link refid="d1/da9/class_sys_m_lv2_parser_1_1_owned__multiplicity__range_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8900" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="8900" bodyend="8909"/>
+    <listofallmembers>
+      <member refid="d1/da9/class_sys_m_lv2_parser_1_1_owned__multiplicity__range_context_1ad0a0c8e245ad8156ba9e7e5264ba9f51" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_multiplicity_rangeContext</scope><name>enterRule</name></member>
+      <member refid="d1/da9/class_sys_m_lv2_parser_1_1_owned__multiplicity__range_context_1a81e263de17ce9a81a068042797abb0c1" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_multiplicity_rangeContext</scope><name>exitRule</name></member>
+      <member refid="d1/da9/class_sys_m_lv2_parser_1_1_owned__multiplicity__range_context_1a36fd374a6538cc679fd4b1e348d57eba" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_multiplicity_rangeContext</scope><name>getRuleIndex</name></member>
+      <member refid="d1/da9/class_sys_m_lv2_parser_1_1_owned__multiplicity__range_context_1a8c1016b335a5edc320434803dfa5652d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_multiplicity_rangeContext</scope><name>multiplicity_bounds</name></member>
+      <member refid="d1/da9/class_sys_m_lv2_parser_1_1_owned__multiplicity__range_context_1af80de2ea6f8c7f280e098a02e3ed2e27" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_multiplicity_rangeContext</scope><name>Owned_multiplicity_rangeContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

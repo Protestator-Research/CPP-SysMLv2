@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Terminate_nodeContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1ac0fd17dbf9eb8fd4a6ce788692878878" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Terminate_nodeContext::Terminate_nodeContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Terminate_nodeContext</name>
+        <qualifiedname>SysMLv2Parser::Terminate_nodeContext::Terminate_nodeContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3631" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16817" bodyend="16819"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1a37c9b625fb8ba7cf27436f61f297ad22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Terminate_nodeContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Terminate_nodeContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3632" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16842" bodyend="16844"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1a83da4a6544ad2690362633ccd13030ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/dcb/class_sys_m_lv2_parser_1_1_occurrence__usage__prefix_context" kindref="compound">Occurrence_usage_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::Occurrence_usage_prefixContext * SysMLv2Parser::Terminate_nodeContext::occurrence_usage_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>occurrence_usage_prefix</name>
+        <qualifiedname>SysMLv2Parser::Terminate_nodeContext::occurrence_usage_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3633" column="36" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16821" bodyend="16823"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1a515098ba4ef93e46bf62848887d0dd1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Terminate_nodeContext::KEYWORD_TERMINATE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_TERMINATE</name>
+        <qualifiedname>SysMLv2Parser::Terminate_nodeContext::KEYWORD_TERMINATE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3634" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16825" bodyend="16827"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1afe0abbd50e8f08a4b5375dcd01502cbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/d01/class_sys_m_lv2_parser_1_1_action__body_context" kindref="compound">Action_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Action_bodyContext * SysMLv2Parser::Terminate_nodeContext::action_body</definition>
+        <argsstring>()</argsstring>
+        <name>action_body</name>
+        <qualifiedname>SysMLv2Parser::Terminate_nodeContext::action_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3635" column="24" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16829" bodyend="16831"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1a4ee978465b52a6928190b89ba4eaa794" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d64/class_sys_m_lv2_parser_1_1_action__node__usage__declaration_context" kindref="compound">Action_node_usage_declarationContext</ref> *</type>
+        <definition>SysMLv2Parser::Action_node_usage_declarationContext * SysMLv2Parser::Terminate_nodeContext::action_node_usage_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>action_node_usage_declaration</name>
+        <qualifiedname>SysMLv2Parser::Terminate_nodeContext::action_node_usage_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3636" column="42" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16833" bodyend="16835"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1ae31746f250340be655c2532a5b82cf4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/d1e/class_sys_m_lv2_parser_1_1_node__parameter__member_context" kindref="compound">Node_parameter_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Node_parameter_memberContext * SysMLv2Parser::Terminate_nodeContext::node_parameter_member</definition>
+        <argsstring>()</argsstring>
+        <name>node_parameter_member</name>
+        <qualifiedname>SysMLv2Parser::Terminate_nodeContext::node_parameter_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3637" column="34" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16837" bodyend="16839"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1ad899628f8d938f56ce9f5d4477fd2f31" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Terminate_nodeContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Terminate_nodeContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3639" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16846" bodyend="16850"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1a2fd0cade1fdfe6e514806a630570683e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Terminate_nodeContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Terminate_nodeContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3640" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="16852" bodyend="16856"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Terminate_nodeContext</label>
+        <link refid="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Terminate_nodeContext</label>
+        <link refid="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3629" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="3629" bodyend="3642"/>
+    <listofallmembers>
+      <member refid="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1afe0abbd50e8f08a4b5375dcd01502cbb" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Terminate_nodeContext</scope><name>action_body</name></member>
+      <member refid="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1a4ee978465b52a6928190b89ba4eaa794" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Terminate_nodeContext</scope><name>action_node_usage_declaration</name></member>
+      <member refid="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1ad899628f8d938f56ce9f5d4477fd2f31" prot="public" virt="virtual"><scope>SysMLv2Parser::Terminate_nodeContext</scope><name>enterRule</name></member>
+      <member refid="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1a2fd0cade1fdfe6e514806a630570683e" prot="public" virt="virtual"><scope>SysMLv2Parser::Terminate_nodeContext</scope><name>exitRule</name></member>
+      <member refid="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1a37c9b625fb8ba7cf27436f61f297ad22" prot="public" virt="virtual"><scope>SysMLv2Parser::Terminate_nodeContext</scope><name>getRuleIndex</name></member>
+      <member refid="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1a515098ba4ef93e46bf62848887d0dd1e" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Terminate_nodeContext</scope><name>KEYWORD_TERMINATE</name></member>
+      <member refid="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1ae31746f250340be655c2532a5b82cf4f" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Terminate_nodeContext</scope><name>node_parameter_member</name></member>
+      <member refid="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1a83da4a6544ad2690362633ccd13030ff" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Terminate_nodeContext</scope><name>occurrence_usage_prefix</name></member>
+      <member refid="d7/d22/class_sys_m_lv2_parser_1_1_terminate__node_context_1ac0fd17dbf9eb8fd4a6ce788692878878" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Terminate_nodeContext</scope><name>Terminate_nodeContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

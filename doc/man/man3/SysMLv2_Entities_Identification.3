@@ -1,0 +1,128 @@
+.TH "SysMLv2::Entities::Identification" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::Entities::Identification
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Identification\&.h>\fP
+.PP
+Inherits \fBSysMLv2::Entities::IEntity\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIdentification\fP ()=default"
+.br
+.ti -1c
+.RI "\fBIdentification\fP (boost::uuids::uuid id)"
+.br
+.ti -1c
+.RI "\fBIdentification\fP (std::string JSONstring)"
+.br
+.ti -1c
+.RI "virtual \fB~Identification\fP ()=default"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBgetID\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.ti -1c
+.RI "\fBIdentification\fP & \fBoperator=\fP (const \fBIdentification\fP &other)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "boost::uuids::uuid \fBId\fP = boost::uuids::random_generator()()"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBSysMLv2::Entities::IEntity\fP
+.in +1c
+.ti -1c
+.RI "const int \fBJSON_INTENT\fP = 2"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the \fBIdentification\fP between Objects of the REST \fBAPI\fP\&. This not in accordance with the SysML standardization, but needed for the compatibility to the AGILA Backend\&. 
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SysMLv2::Entities::Identification::Identification ()\fR [default]\fP"
+CTOR deleted 
+.SS "SysMLv2::Entities::Identification::Identification (boost::uuids::uuid id)\fR [explicit]\fP"
+Builds the Idenfication object from the uuid 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP The uuid of the object 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+boost::uuids::uuid 
+.RE
+.PP
+
+.SS "SysMLv2::Entities::Identification::Identification (std::string JSONstring)\fR [explicit]\fP"
+C-Tor for the parsing of the \fBIdentification\fP object\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIJSONstring\fP JSON string of the object\&. 
+.RE
+.PP
+
+.SS "virtual SysMLv2::Entities::Identification::~Identification ()\fR [virtual]\fP, \fR [default]\fP"
+D-Tor 
+.SH "Member Function Documentation"
+.PP 
+.SS "boost::uuids::uuid SysMLv2::Entities::Identification::getID () const"
+Returns the Id of the given Object\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Id of the object as uuid 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+boost::uuids::uuid 
+.RE
+.PP
+
+.SS "std::string SysMLv2::Entities::Identification::serializeToJson ()\fR [override]\fP, \fR [virtual]\fP"
+Allows the serialization of the Object to a JSON String\&. 
+.PP
+\fBReturns\fP
+.RS 4
+JSON String of the Object 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::Entities::IEntity\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

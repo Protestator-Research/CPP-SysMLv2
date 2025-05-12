@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_32debb9151ec0c0400c4c5fca8de5913" kind="dir">
+    <compoundname>kerml/src/kernel/multiplicities</compoundname>
+    <innerfile refid="d2/dfe/_multiplicity_range_8cpp">MultiplicityRange.cpp</innerfile>
+    <innerfile refid="d7/d04/_multiplicity_range_8h">MultiplicityRange.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="kerml/src/kernel/multiplicities/"/>
+  </compounddef>
+</doxygen>

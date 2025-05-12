@@ -1,0 +1,328 @@
+.TH "SysMLv2::API::SysMLAPIImplementation" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::API::SysMLAPIImplementation
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <SysMLAPIImplementation\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSysMLAPIImplementation\fP ()=delete"
+.br
+.ti -1c
+.RI "\fBSysMLAPIImplementation\fP (std::string serverAddress)"
+.br
+.ti -1c
+.RI "virtual \fB~SysMLAPIImplementation\fP ()"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > > \fBgetAllProjects\fP (std::string barrierString)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > \fBpostProject\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::string barrierString)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > \fBpostCommit\fP (std::string projectId, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit, std::string barrierString)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > \fBgetCommit\fP (std::string projectId, std::string commitId, std::string barrierString)"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > > \fBgetAllElementsFromCommit\fP (std::string projectId, std::string commitId, std::string barrierString)"
+.br
+.ti -1c
+.RI "std::string \fBloginUserWithPassword\fP (const std::string &username, const std::string &password)"
+.br
+.ti -1c
+.RI "std::string \fBgetVersionOfBackend\fP ()"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > > \fBgetAllBranchesFroProject\fP (const std::string &projectId, std::string barrierString)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "CURL * \fBsetUpServerConnection\fP (const char *urlAppendix, const char *barrierString, const char *postPayload)"
+.br
+.ti -1c
+.RI "INTERNAL_STATUS_CODE \fBtryToResolveHTTPError\fP (long httpErrorCode, void *instance)"
+.br
+.ti -1c
+.RI "std::string \fBloginToBackendVersion3\fP (std::string const &username, std::string const &password)"
+.br
+.ti -1c
+.RI "std::string \fBloginToBackendVersion2\fP (std::string const &username, std::string const &password)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "std::vector< std::string > \fBsplittString\fP (std::string value, char delimiter)"
+.br
+.in -1c
+.SS "Static Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static size_t \fBWriteBufferCallback\fP (char *contents, size_t size, size_t nmemb, void *userp)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBServerAddress\fP"
+.br
+.ti -1c
+.RI "std::string \fBReturnedHeaderData\fP"
+.br
+.ti -1c
+.RI "std::string \fBData\fP"
+.br
+.ti -1c
+.RI "struct curl_slist * \fBHeaderList\fP = NULL"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implements the Protocol of the \fBSysMLv2\fP \fBAPI\fP Standard\&. 
+.PP
+\fBVersion\fP
+.RS 4
+1\&.1 
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog herzogm@rptu.de 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SysMLv2::API::SysMLAPIImplementation::SysMLAPIImplementation ()\fR [delete]\fP"
+Deleted Constructorr 
+.SS "SysMLv2::API::SysMLAPIImplementation::SysMLAPIImplementation (std::string serverAddress)"
+The constructor that allows the needed server address\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIserverAddress\fP Server address as a string\&. 
+.RE
+.PP
+
+.SS "SysMLv2::API::SysMLAPIImplementation::~SysMLAPIImplementation ()\fR [virtual]\fP"
+D-TOR 
+.SH "Member Function Documentation"
+.PP 
+.SS "std::vector< std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > > SysMLv2::API::SysMLAPIImplementation::getAllBranchesFroProject (const std::string & projectId, std::string barrierString)"
+Downloads all the Branches that belong to a specific project with a specific ID\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIprojectId\fP Displays the string of the Project UUID 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+JSON of the all the Branches\&. 
+.RE
+.PP
+
+.SS "std::vector< std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > > SysMLv2::API::SysMLAPIImplementation::getAllElementsFromCommit (std::string projectId, std::string commitId, std::string barrierString)"
+Downloads and returns all elements of a commit from a specific project\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIprojectId\fP The UUID of the Project as a String 
+.br
+\fIcommitId\fP The UUID of the Commit as a String 
+.br
+\fIbarrierString\fP The Barrier-String given after login\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+All elements received from the backend\&. 
+.RE
+.PP
+
+.SS "std::vector< std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > > SysMLv2::API::SysMLAPIImplementation::getAllProjects (std::string barrierString)"
+Returns a std::vector of all projects that are available within the backend\&. The data is returned as elements from type std::vector<SysMLv2:Entities:Project*>, please consider the polimorphism of all SysMLV2 elements\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIbarrierString\fP The barrier authentication that is provided by the server\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A list of all Projects\&. 
+.RE
+.PP
+
+.SS "std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > SysMLv2::API::SysMLAPIImplementation::getCommit (std::string projectId, std::string commitId, std::string barrierString)"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIprojectId\fP 
+.br
+\fIcommitId\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "std::string SysMLv2::API::SysMLAPIImplementation::getVersionOfBackend ()"
+Downloads the version of the backend\&. Version 3 of the backend has an endpoint to download the version of the Backend\&. Whereas the backend Version 2\&.X does not have the option\&. Thus the error is returning version 2\&.x\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The version of the Backend\&. 
+.RE
+.PP
+
+.SS "std::string SysMLv2::API::SysMLAPIImplementation::loginToBackendVersion2 (std::string const & username, std::string const & password)\fR [protected]\fP"
+Performs the login into the backend version 2\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIusername\fP The username given as a string\&. 
+.br
+\fIpassword\fP The password of the user given as a string\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The barrier string from the server\&. 
+.RE
+.PP
+
+.SS "std::string SysMLv2::API::SysMLAPIImplementation::loginToBackendVersion3 (std::string const & username, std::string const & password)\fR [protected]\fP"
+Performs the login in to the AGILA backend from Version 3 and upwards 
+.PP
+\fBParameters\fP
+.RS 4
+\fIusername\fP The username given as a string\&. 
+.br
+\fIpasswod\fP The password of the user given as a string\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The barrier string from the server\&. 
+.RE
+.PP
+
+.SS "std::string SysMLv2::API::SysMLAPIImplementation::loginUserWithPassword (const std::string & username, const std::string & password)"
+Performs the login of the digital twin client and server at the backend\&. This login is also automatically algorithmically changed dependent on the version of the Backend\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIusername\fP The username as a string\&. 
+.br
+\fIpassword\fP Password of the user\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Barrier string after the login\&. 
+.RE
+.PP
+
+.SS "std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > SysMLv2::API::SysMLAPIImplementation::postCommit (std::string projectId, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit, std::string barrierString)"
+Posts a commit to the Backend to add changes to a project or a branch\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIprojectId\fP 
+.br
+\fIcommit\fP 
+.br
+\fIbarrierString\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "std::shared_ptr< \fBSysMLv2::Entities::IEntity\fP > SysMLv2::API::SysMLAPIImplementation::postProject (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::string barrierString)"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.br
+\fIbarrierString\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "CURL * SysMLv2::API::SysMLAPIImplementation::setUpServerConnection (const char * urlAppendix, const char * barrierString, const char * postPayload)\fR [protected]\fP"
+Sets up the server connection and creates the necessary CURL calls\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIurlAppendix\fP The appendix to the url that is required to access the different folders for the Standard\&. 
+.br
+\fIbarrierString\fP The Barrier login string, this string might be required for login\&. 
+.br
+\fIpostPayload\fP The payload that is posted to the server\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The CURL connection resulting from the properties\&. 
+.RE
+.PP
+
+.SS "std::vector< std::string > SysMLv2::API::SysMLAPIImplementation::splittString (std::string value, char delimiter)\fR [private]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP 
+.br
+\fIdelimiter\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "INTERNAL_STATUS_CODE SysMLv2::API::SysMLAPIImplementation::tryToResolveHTTPError (long httpErrorCode, void * instance)\fR [protected]\fP"
+In this method a internal resolvement of the HTTP connection error is tried\&. If this fails the exception is rethrown\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIhttpErrorCode\fP The HTTP error code that was thrown\&. 
+.br
+\fIinstance\fP The curl instance pointer\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Returns an internal status code that can be referenced externally\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d7/de8/class_sys_m_lv2_parser_1_1_meta__cast__operator_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Meta_cast_operatorContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d7/de8/class_sys_m_lv2_parser_1_1_meta__cast__operator_context_1a264a2b5e7f4a6163c5e4bfccd97524ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Meta_cast_operatorContext::Meta_cast_operatorContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Meta_cast_operatorContext</name>
+        <qualifiedname>SysMLv2Parser::Meta_cast_operatorContext::Meta_cast_operatorContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7806" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="38542" bodyend="38544"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de8/class_sys_m_lv2_parser_1_1_meta__cast__operator_context_1a85763b9bd4e94c08f30552bfd231450c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Meta_cast_operatorContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Meta_cast_operatorContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7807" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="38547" bodyend="38549"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de8/class_sys_m_lv2_parser_1_1_meta__cast__operator_context_1a57d47b2edb75f27f13823e933c0fa9fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Meta_cast_operatorContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Meta_cast_operatorContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7809" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="38551" bodyend="38555"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de8/class_sys_m_lv2_parser_1_1_meta__cast__operator_context_1ab268153f47efd691d6ae29d75d48f670" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Meta_cast_operatorContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Meta_cast_operatorContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7810" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="38557" bodyend="38561"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Meta_cast_operatorContext</label>
+        <link refid="d7/de8/class_sys_m_lv2_parser_1_1_meta__cast__operator_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Meta_cast_operatorContext</label>
+        <link refid="d7/de8/class_sys_m_lv2_parser_1_1_meta__cast__operator_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7804" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="7804" bodyend="7812"/>
+    <listofallmembers>
+      <member refid="d7/de8/class_sys_m_lv2_parser_1_1_meta__cast__operator_context_1a57d47b2edb75f27f13823e933c0fa9fd" prot="public" virt="virtual"><scope>SysMLv2Parser::Meta_cast_operatorContext</scope><name>enterRule</name></member>
+      <member refid="d7/de8/class_sys_m_lv2_parser_1_1_meta__cast__operator_context_1ab268153f47efd691d6ae29d75d48f670" prot="public" virt="virtual"><scope>SysMLv2Parser::Meta_cast_operatorContext</scope><name>exitRule</name></member>
+      <member refid="d7/de8/class_sys_m_lv2_parser_1_1_meta__cast__operator_context_1a85763b9bd4e94c08f30552bfd231450c" prot="public" virt="virtual"><scope>SysMLv2Parser::Meta_cast_operatorContext</scope><name>getRuleIndex</name></member>
+      <member refid="d7/de8/class_sys_m_lv2_parser_1_1_meta__cast__operator_context_1a264a2b5e7f4a6163c5e4bfccd97524ef" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Meta_cast_operatorContext</scope><name>Meta_cast_operatorContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dd/dda/_sys_m_l_a_p_i_implementation_8h" kind="file" language="C++">
+    <compoundname>SysMLAPIImplementation.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">string</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">curl/curl.h</includes>
+    <includes refid="d5/ddd/_status_code_8h" local="yes">StatusCode.h</includes>
+    <includedby refid="de/d22/_sys_m_l_a_p_i_implementation_8cpp" local="yes">services/src/online/SysMLAPIImplementation.cpp</includedby>
+    <incdepgraph>
+      <node id="6">
+        <label>StatusCode.h</label>
+        <link refid="d5/ddd/_status_code_8h_source"/>
+      </node>
+      <node id="1">
+        <label>services/src/online/SysMLAPIImplementation.h</label>
+        <link refid="dd/dda/_sys_m_l_a_p_i_implementation_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>curl/curl.h</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation" prot="public">SysMLv2::API::SysMLAPIImplementation</innerclass>
+    <innernamespace refid="d7/dba/namespace_sys_m_lv2">SysMLv2</innernamespace>
+    <innernamespace refid="d4/d33/namespace_sys_m_lv2_1_1_entities">SysMLv2::Entities</innernamespace>
+    <innernamespace refid="da/dd6/namespace_sys_m_lv2_1_1_a_p_i">SysMLv2::API</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Moritz<sp/>Herzog<sp/>on<sp/>14.12.23.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Constants,<sp/>Definitions,<sp/>Pragmas</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>External<sp/>Classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;curl/curl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Internal<sp/>Classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;StatusCode.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Forwarding</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="d4/d33/namespace_sys_m_lv2_1_1_entities" kindref="compound">SysMLv2::Entities</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity" kindref="compound">IEntity</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">Project</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">Commit</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="da/dd6/namespace_sys_m_lv2_1_1_a_p_i" kindref="compound">SysMLv2::API</ref><sp/>{</highlight></codeline>
+<codeline lineno="35" refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a490fb7dd3547ade6388e8ddb65274600" kindref="member">SysMLAPIImplementation</ref><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="40" refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a490fb7dd3547ade6388e8ddb65274600" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a490fb7dd3547ade6388e8ddb65274600" kindref="member">SysMLAPIImplementation</ref>()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a490fb7dd3547ade6388e8ddb65274600" kindref="member">SysMLAPIImplementation</ref>(std::string<sp/>serverAddress);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aa3a47d80eab4749f340431456750407b" kindref="member">~SysMLAPIImplementation</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::IEntity&gt;&gt;<sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a7aff8d7083626ad3fdc098d5829fa053" kindref="member">getAllProjects</ref>(std::string<sp/>barrierString);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;SysMLv2::Entities::IEntity&gt;<sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a2bc833c848eade9b262f9aaf9969f237" kindref="member">postProject</ref>(std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project,<sp/>std::string<sp/>barrierString);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;SysMLv2::Entities::IEntity&gt;<sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aae4f66884d39ad59e13e757fd369c9c0" kindref="member">postCommit</ref>(std::string<sp/>projectId,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/>commit,<sp/>std::string<sp/>barrierString);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;SysMLv2::Entities::IEntity&gt;<sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1abdedcdb8045d6870a97ce0b6070be011" kindref="member">getCommit</ref>(std::string<sp/>projectId,<sp/>std::string<sp/>commitId,<sp/>std::string<sp/>barrierString);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::IEntity&gt;&gt;<sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1ac6972290b0f22d89c77adb82d38f1b7c" kindref="member">getAllElementsFromCommit</ref>(std::string<sp/>projectId,std::string<sp/>commitId,<sp/>std::string<sp/>barrierString);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a53ff16a81eb1b63c54f9f17bb85a3c51" kindref="member">loginUserWithPassword</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>username,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>password);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a9593a716d3803b6f7cef52b4666090eb" kindref="member">getVersionOfBackend</ref>();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::IEntity&gt;&gt;<sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a25deafb21e326702fdaf9aa8c2dfc98d" kindref="member">getAllBranchesFroProject</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>projectId,<sp/>std::string<sp/>barrierString);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CURL*<sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a0b0cf217f8070c40ab2c7b53c1ecbc6e" kindref="member">setUpServerConnection</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>urlAppendix,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>barrierString,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>postPayload);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>INTERNAL_STATUS_CODE<sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a65ce5ce019bd0587bf535a29f5bdff20" kindref="member">tryToResolveHTTPError</ref>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>httpErrorCode,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>instance);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a369dd53f66b47d9fe7f426b665e391f1" kindref="member">loginToBackendVersion3</ref>(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>username,<sp/>std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>password);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a967d4aace66f869f0dbe1424eca0cbde" kindref="member">loginToBackendVersion2</ref>(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>username,<sp/>std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>password);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1ac242edd5436e4c63f09a0aa6635591cd" kindref="member">splittString</ref>(std::string<sp/>value,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>delimiter);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>WriteBufferCallback(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*contents,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nmemb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>userp);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>ServerAddress;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>ReturnedHeaderData;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>Data;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">curl_slist<sp/>*HeaderList<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="services/src/online/SysMLAPIImplementation.h"/>
+  </compounddef>
+</doxygen>

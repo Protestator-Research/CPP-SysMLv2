@@ -1,0 +1,63 @@
+# class `SysMLv2::Entities::Identification` {#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification}
+
+```
+class SysMLv2::Entities::Identification
+  : public SysMLv2::Entities::IEntity
+```  
+
+Defines the [Identification](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification) between Objects of the REST [API](api.md SysMLv2::API#da/dd6/namespace_sys_m_lv2_1_1_a_p_i). This not in accordance with the SysML standardization, but needed for the compatibility to the AGILA Backend. 1.0 
+
+Moritz Herzog
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public  `[`Identification`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a162d246c07fe7a42eeca1b7d6c9c41bd)`() = default` | CTOR deleted
+`public  explicit `[`Identification`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1ad2d1809088eb936ef0147bf6d272fbd3)`(boost::uuids::uuid id)` | Builds the Idenfication object from the uuid 
+`public  explicit `[`Identification`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a7ae2ab11bdce0db1c98f613fce797a79)`(std::string JSONstring)` | C-Tor for the parsing of the [Identification](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification) object. 
+`public virtual  `[`~Identification`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1afccffeb614e580d720a04e1b3e7fff88)`() = default` | D-Tor
+`public boost::uuids::uuid `[`getID`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a0824bd94a9c077c81ff213885b9bb5fa)`() const` | Returns the Id of the given Object. 
+`public virtual std::string `[`serializeToJson`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a8517173a49bfc74893219a6465394383)`()` | Allows the serialization of the Object to a JSON String. 
+`public `[`Identification`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification)` & `[`operator=`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a8fb5f7d31f12c84905678a7238d63d39)`(const `[`Identification`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification)` & other)` | 
+
+## Members
+
+#### `public  `[`Identification`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a162d246c07fe7a42eeca1b7d6c9c41bd)`() = default` {#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a162d246c07fe7a42eeca1b7d6c9c41bd}
+
+CTOR deleted
+
+#### `public  explicit `[`Identification`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1ad2d1809088eb936ef0147bf6d272fbd3)`(boost::uuids::uuid id)` {#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1ad2d1809088eb936ef0147bf6d272fbd3}
+
+Builds the Idenfication object from the uuid 
+#### Parameters
+* `id` The uuid of the object 
+
+**See also**: boost::uuids::uuid
+
+#### `public  explicit `[`Identification`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a7ae2ab11bdce0db1c98f613fce797a79)`(std::string JSONstring)` {#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a7ae2ab11bdce0db1c98f613fce797a79}
+
+C-Tor for the parsing of the [Identification](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification) object. 
+#### Parameters
+* `JSONstring` JSON string of the object.
+
+#### `public virtual  `[`~Identification`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1afccffeb614e580d720a04e1b3e7fff88)`() = default` {#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1afccffeb614e580d720a04e1b3e7fff88}
+
+D-Tor
+
+#### `public boost::uuids::uuid `[`getID`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a0824bd94a9c077c81ff213885b9bb5fa)`() const` {#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a0824bd94a9c077c81ff213885b9bb5fa}
+
+Returns the Id of the given Object. 
+#### Returns
+Id of the object as uuid 
+
+**See also**: boost::uuids::uuid
+
+#### `public virtual std::string `[`serializeToJson`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a8517173a49bfc74893219a6465394383)`()` {#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a8517173a49bfc74893219a6465394383}
+
+Allows the serialization of the Object to a JSON String. 
+#### Returns
+JSON String of the Object
+
+#### `public `[`Identification`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification)` & `[`operator=`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a8fb5f7d31f12c84905678a7238d63d39)`(const `[`Identification`](#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification)` & other)` {#dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification_1a8fb5f7d31f12c84905678a7238d63d39}
+

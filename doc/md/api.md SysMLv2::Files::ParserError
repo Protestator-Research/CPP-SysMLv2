@@ -1,0 +1,27 @@
+# class `SysMLv2::Files::ParserError` {#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error}
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public  `[`ParserError`](#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a661123b6d99a1e0cc38a791fa4cf6e01)`(boost::uuids::uuid elementId,std::string projectName,ErrorType type,std::string description)` | 
+`public  `[`~ParserError`](#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a5c1022911bc71e064561ca4c338937fb)`() = default` | 
+`public boost::uuids::uuid `[`getElementID`](#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a8d9ad235005e201f8a445841f553705e)`()` | 
+`public std::string `[`getProjectName`](#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a994d6bf5a428464414087509bbefd79e)`()` | 
+`public ErrorType `[`errorType`](#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a85b327c5e9dfa46f6a9f9b156810e3b4)`()` | 
+`public std::string `[`description`](#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1aedcc8cea7af68f6429f1df2e74edd743)`()` | 
+
+## Members
+
+#### `public  `[`ParserError`](#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a661123b6d99a1e0cc38a791fa4cf6e01)`(boost::uuids::uuid elementId,std::string projectName,ErrorType type,std::string description)` {#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a661123b6d99a1e0cc38a791fa4cf6e01}
+
+#### `public  `[`~ParserError`](#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a5c1022911bc71e064561ca4c338937fb)`() = default` {#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a5c1022911bc71e064561ca4c338937fb}
+
+#### `public boost::uuids::uuid `[`getElementID`](#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a8d9ad235005e201f8a445841f553705e)`()` {#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a8d9ad235005e201f8a445841f553705e}
+
+#### `public std::string `[`getProjectName`](#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a994d6bf5a428464414087509bbefd79e)`()` {#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a994d6bf5a428464414087509bbefd79e}
+
+#### `public ErrorType `[`errorType`](#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a85b327c5e9dfa46f6a9f9b156810e3b4)`()` {#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1a85b327c5e9dfa46f6a9f9b156810e3b4}
+
+#### `public std::string `[`description`](#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1aedcc8cea7af68f6429f1df2e74edd743)`()` {#d6/d67/class_sys_m_lv2_1_1_files_1_1_parser_error_1aedcc8cea7af68f6429f1df2e74edd743}
+

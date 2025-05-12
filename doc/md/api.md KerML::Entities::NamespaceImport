@@ -1,0 +1,14 @@
+# class `KerML::Entities::NamespaceImport` {#d4/d59/class_ker_m_l_1_1_entities_1_1_namespace_import}
+
+```
+class KerML::Entities::NamespaceImport
+  : public KerML::Entities::Import
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+
+## Members
+

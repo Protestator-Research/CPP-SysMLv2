@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/df8/class_sys_m_lv2_1_1_entities_1_1_external_data" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2::Entities::ExternalData</compoundname>
+    <basecompoundref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" prot="public" virt="non-virtual">SysMLv2::Entities::Data</basecompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>SysMLv2::Entities::Data</label>
+        <link refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>SysMLv2::Entities::ExternalData</label>
+        <link refid="d1/df8/class_sys_m_lv2_1_1_entities_1_1_external_data"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>SysMLv2::Entities::Data</label>
+        <link refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>SysMLv2::Entities::ExternalData</label>
+        <link refid="d1/df8/class_sys_m_lv2_1_1_entities_1_1_external_data"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+    </collaborationgraph>
+    <location file="rest-api/src/entities/ExternalData.h" line="23" column="5" bodyfile="rest-api/src/entities/ExternalData.h" bodystart="23" bodyend="25"/>
+    <listofallmembers>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a8764b2cee063c5961f2423bb61394398" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ExternalData</scope><name>Data</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1ab11291a4106304308b94f4a827e97f5d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ExternalData</scope><name>Data</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a3ead38504d0fac260222ef510223492f" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ExternalData</scope><name>Data</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a4d8b6e86e67395a6e8ca0afb22ea01eb" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ExternalData</scope><name>getId</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1ac0624bb99650ed554d1e78ce17d93c4d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ExternalData</scope><name>getType</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1abeee9acd12e31beb38e59d8d0e94bc34" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::ExternalData</scope><name>Id</name></member>
+      <member refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1ac3f7cba2488d110b820614b9cb709808" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::ExternalData</scope><name>JSON_INTENT</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a01a079b57d6cadb79794f04edaadc3e4" prot="public" virt="virtual"><scope>SysMLv2::Entities::ExternalData</scope><name>serializeToJson</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a0e94702de18580a2d5b79ed0d59d0157" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::ExternalData</scope><name>Type</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a410a285059373318b7742b9ddf47a978" prot="public" virt="virtual"><scope>SysMLv2::Entities::ExternalData</scope><name>~Data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

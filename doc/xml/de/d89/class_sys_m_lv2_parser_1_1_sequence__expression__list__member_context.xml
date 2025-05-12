@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="de/d89/class_sys_m_lv2_parser_1_1_sequence__expression__list__member_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Sequence_expression_list_memberContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d89/class_sys_m_lv2_parser_1_1_sequence__expression__list__member_context_1aba698e0ff7707bcd2e5f41afebfb344f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Sequence_expression_list_memberContext::Sequence_expression_list_memberContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Sequence_expression_list_memberContext</name>
+        <qualifiedname>SysMLv2Parser::Sequence_expression_list_memberContext::Sequence_expression_list_memberContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8085" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="39804" bodyend="39806"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d89/class_sys_m_lv2_parser_1_1_sequence__expression__list__member_context_1a639397d9831841100dd39409e37be6fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Sequence_expression_list_memberContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Sequence_expression_list_memberContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8086" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="39813" bodyend="39815"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d89/class_sys_m_lv2_parser_1_1_sequence__expression__list__member_context_1ab177a306965125acb860557b5a8c270c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d28/class_sys_m_lv2_parser_1_1_sequence__expression__list_context" kindref="compound">Sequence_expression_listContext</ref> *</type>
+        <definition>SysMLv2Parser::Sequence_expression_listContext * SysMLv2Parser::Sequence_expression_list_memberContext::sequence_expression_list</definition>
+        <argsstring>()</argsstring>
+        <name>sequence_expression_list</name>
+        <qualifiedname>SysMLv2Parser::Sequence_expression_list_memberContext::sequence_expression_list</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8087" column="37" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="39808" bodyend="39810"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d89/class_sys_m_lv2_parser_1_1_sequence__expression__list__member_context_1a552cc27531a0c4beaedf991bfd4b027d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Sequence_expression_list_memberContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Sequence_expression_list_memberContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8089" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="39817" bodyend="39821"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d89/class_sys_m_lv2_parser_1_1_sequence__expression__list__member_context_1a0afe5f740f8c18ea8e648a917b21574b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Sequence_expression_list_memberContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Sequence_expression_list_memberContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8090" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="39823" bodyend="39827"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Sequence_expression_list_memberContext</label>
+        <link refid="de/d89/class_sys_m_lv2_parser_1_1_sequence__expression__list__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Sequence_expression_list_memberContext</label>
+        <link refid="de/d89/class_sys_m_lv2_parser_1_1_sequence__expression__list__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8083" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="8083" bodyend="8092"/>
+    <listofallmembers>
+      <member refid="de/d89/class_sys_m_lv2_parser_1_1_sequence__expression__list__member_context_1a552cc27531a0c4beaedf991bfd4b027d" prot="public" virt="virtual"><scope>SysMLv2Parser::Sequence_expression_list_memberContext</scope><name>enterRule</name></member>
+      <member refid="de/d89/class_sys_m_lv2_parser_1_1_sequence__expression__list__member_context_1a0afe5f740f8c18ea8e648a917b21574b" prot="public" virt="virtual"><scope>SysMLv2Parser::Sequence_expression_list_memberContext</scope><name>exitRule</name></member>
+      <member refid="de/d89/class_sys_m_lv2_parser_1_1_sequence__expression__list__member_context_1a639397d9831841100dd39409e37be6fa" prot="public" virt="virtual"><scope>SysMLv2Parser::Sequence_expression_list_memberContext</scope><name>getRuleIndex</name></member>
+      <member refid="de/d89/class_sys_m_lv2_parser_1_1_sequence__expression__list__member_context_1ab177a306965125acb860557b5a8c270c" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Sequence_expression_list_memberContext</scope><name>sequence_expression_list</name></member>
+      <member refid="de/d89/class_sys_m_lv2_parser_1_1_sequence__expression__list__member_context_1aba698e0ff7707bcd2e5f41afebfb344f" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Sequence_expression_list_memberContext</scope><name>Sequence_expression_list_memberContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

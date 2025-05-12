@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_fe74201cdf272a19b36d2b414032ee4a" kind="dir">
+    <compoundname>build/Debug/filehandling/CMakeFiles/sysmlv2file.dir/src/parsing/kermlv2</compoundname>
+    <innerfile refid="d3/d1f/parsing_2kermlv2_2_ker_ml_error_8cpp_8o_8d">KerMlError.cpp.o.d</innerfile>
+    <innerfile refid="dd/df2/parsing_2kermlv2_2_ker_m_l_lexer_8cpp_8o_8d">KerMlLexer.cpp.o.d</innerfile>
+    <innerfile refid="df/dad/parsing_2kermlv2_2_ker_m_l_listener_8cpp_8o_8d">KerMlListener.cpp.o.d</innerfile>
+    <innerfile refid="d2/d38/parsing_2kermlv2_2_ker_m_l_parser_8cpp_8o_8d">KerMLParser.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/filehandling/CMakeFiles/sysmlv2file.dir/src/parsing/kermlv2/"/>
+  </compounddef>
+</doxygen>

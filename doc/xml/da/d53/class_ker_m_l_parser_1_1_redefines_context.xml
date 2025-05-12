@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="da/d53/class_ker_m_l_parser_1_1_redefines_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::RedefinesContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="da/d53/class_ker_m_l_parser_1_1_redefines_context_1a85ebfa5096c5cd548cd9d85db1808c9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::RedefinesContext::RedefinesContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>RedefinesContext</name>
+        <qualifiedname>KerMLParser::RedefinesContext::RedefinesContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1833" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8633" bodyend="8635"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d53/class_ker_m_l_parser_1_1_redefines_context_1a8cd818ef8d9cd591c978c19658004f1e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::RedefinesContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::RedefinesContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1834" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8650" bodyend="8652"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d53/class_ker_m_l_parser_1_1_redefines_context_1abf4bd3dc79219927c98427a451eb2215" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::RedefinesContext::REDEFINES</definition>
+        <argsstring>()</argsstring>
+        <name>REDEFINES</name>
+        <qualifiedname>KerMLParser::RedefinesContext::REDEFINES</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1835" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8637" bodyend="8639"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d53/class_ker_m_l_parser_1_1_redefines_context_1ac11514fa29963bbd3451261aff8196f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/df0/class_ker_m_l_parser_1_1_owned__redefinition_context" kindref="compound">Owned_redefinitionContext</ref> *</type>
+        <definition>KerMLParser::Owned_redefinitionContext * KerMLParser::RedefinesContext::owned_redefinition</definition>
+        <argsstring>()</argsstring>
+        <name>owned_redefinition</name>
+        <qualifiedname>KerMLParser::RedefinesContext::owned_redefinition</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1836" column="31" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8641" bodyend="8643"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d53/class_ker_m_l_parser_1_1_redefines_context_1a5b1bf1b013e45fbe24597aeb420c91be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context" kindref="compound">Feature_directionContext</ref> *</type>
+        <definition>KerMLParser::Feature_directionContext * KerMLParser::RedefinesContext::feature_direction</definition>
+        <argsstring>()</argsstring>
+        <name>feature_direction</name>
+        <qualifiedname>KerMLParser::RedefinesContext::feature_direction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1837" column="30" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8645" bodyend="8647"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d53/class_ker_m_l_parser_1_1_redefines_context_1a9d25a6f6f99dfe4918881034cb563c01" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::RedefinesContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::RedefinesContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1839" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8654" bodyend="8658"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d53/class_ker_m_l_parser_1_1_redefines_context_1aad0503ed43796dbf5ddec98bb37ec7e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::RedefinesContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::RedefinesContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1840" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8660" bodyend="8664"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::RedefinesContext</label>
+        <link refid="da/d53/class_ker_m_l_parser_1_1_redefines_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::RedefinesContext</label>
+        <link refid="da/d53/class_ker_m_l_parser_1_1_redefines_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="1831" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="1831" bodyend="1842"/>
+    <listofallmembers>
+      <member refid="da/d53/class_ker_m_l_parser_1_1_redefines_context_1a9d25a6f6f99dfe4918881034cb563c01" prot="public" virt="virtual"><scope>KerMLParser::RedefinesContext</scope><name>enterRule</name></member>
+      <member refid="da/d53/class_ker_m_l_parser_1_1_redefines_context_1aad0503ed43796dbf5ddec98bb37ec7e2" prot="public" virt="virtual"><scope>KerMLParser::RedefinesContext</scope><name>exitRule</name></member>
+      <member refid="da/d53/class_ker_m_l_parser_1_1_redefines_context_1a5b1bf1b013e45fbe24597aeb420c91be" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinesContext</scope><name>feature_direction</name></member>
+      <member refid="da/d53/class_ker_m_l_parser_1_1_redefines_context_1a8cd818ef8d9cd591c978c19658004f1e" prot="public" virt="virtual"><scope>KerMLParser::RedefinesContext</scope><name>getRuleIndex</name></member>
+      <member refid="da/d53/class_ker_m_l_parser_1_1_redefines_context_1ac11514fa29963bbd3451261aff8196f1" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinesContext</scope><name>owned_redefinition</name></member>
+      <member refid="da/d53/class_ker_m_l_parser_1_1_redefines_context_1abf4bd3dc79219927c98427a451eb2215" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinesContext</scope><name>REDEFINES</name></member>
+      <member refid="da/d53/class_ker_m_l_parser_1_1_redefines_context_1a85ebfa5096c5cd548cd9d85db1808c9c" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinesContext</scope><name>RedefinesContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

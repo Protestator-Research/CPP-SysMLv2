@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/dd6/_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>C++<sp/>SysML<sp/>v2<sp/>Implementation</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>library<sp/>gives<sp/>an<sp/>implementation<sp/>of<sp/>the<sp/>SysML<sp/>v2<sp/>standard<sp/>and<sp/>KerML<sp/>standard.<sp/>This<sp/>allows<sp/>developers<sp/>to<sp/>implment<sp/>own<sp/>applications<sp/>with<sp/>this<sp/>library.<sp/>The<sp/>existence<sp/>of<sp/>this<sp/>library<sp/>is<sp/>the<sp/>proof,<sp/>that<sp/>SysML<sp/>v2<sp/>can<sp/>be<sp/>implemented<sp/>in<sp/>C++.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Table<sp/>of<sp/>Contents</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[toc]</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Build<sp/>Status</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>System<sp/>and<sp/>Tests:<sp/>[![C/C++<sp/>CI](https://github.com/Protestator-Research/CPP-SysMLv2/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/Protestator-Research/CPP-SysMLv2/actions/workflows/c-cpp.yml)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Licensing<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>software<sp/>is<sp/>licensed<sp/>under<sp/>the<sp/>GPL<sp/>v3,<sp/>allowing<sp/>a<sp/>free<sp/>and<sp/>open<sp/>source<sp/>editing<sp/>of<sp/>the<sp/>code.<sp/>We<sp/>want<sp/>to<sp/>offer<sp/>you<sp/>the<sp/>option<sp/>to<sp/>use<sp/>this<sp/>libary<sp/>also<sp/>for<sp/>commercial<sp/>project.<sp/>This<sp/>will<sp/>be<sp/>done<sp/>in<sp/>a<sp/>later<sp/>step,<sp/>since<sp/>we<sp/>are<sp/>currently<sp/>developing<sp/>this<sp/>from<sp/>the<sp/>ground<sp/>up.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Building<sp/>and<sp/>usage</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">We<sp/>offer<sp/>the<sp/>build<sp/>work<sp/>flow<sp/>with<sp/>conan<sp/>and<sp/>standalone.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Conan<sp/>Build</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">One<sp/>of<sp/>the<sp/>Todos<sp/>we<sp/>have<sp/>is<sp/>to<sp/>offer<sp/>this<sp/>library<sp/>in<sp/>the<sp/>conan<sp/>central<sp/>repositories.<sp/>But<sp/>this<sp/>can<sp/>be<sp/>done,<sp/>if<sp/>the<sp/>implementation<sp/>is<sp/>done.<sp/>You<sp/>will<sp/>be<sp/>informed.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">With<sp/>this<sp/>build<sp/>the<sp/>conan<sp/>file<sp/>is<sp/>provided,<sp/>allowing<sp/>you<sp/>to<sp/>install<sp/>the<sp/>dependencies<sp/>and<sp/>then<sp/>to<sp/>build<sp/>the<sp/>files.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">mkdir<sp/>build<sp/>&amp;&amp;<sp/>cd<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">conan<sp/>install<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">conan<sp/>build<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Standalone<sp/>Build</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Please<sp/>install<sp/>the<sp/>dependencies<sp/>required<sp/>for<sp/>the<sp/>build:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Dependencies</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Dependency<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Version<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>-----------------<sp/>|<sp/>----------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>antlr4-cppruntime<sp/>|<sp/>4.13.1<sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>boost<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Min<sp/>1.83.0<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>nlohmann_json<sp/><sp/><sp/><sp/><sp/>|<sp/>Min<sp/>3.11.2<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>date<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>3.0.1<sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>gtest<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>1.14.0<sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">We<sp/>are<sp/>working<sp/>on<sp/>an<sp/>option<sp/>to<sp/>only<sp/>use<sp/>a<sp/>part<sp/>of<sp/>the<sp/>dependencies.<sp/>This<sp/>will<sp/>be<sp/>depended<sp/>on<sp/>the<sp/>modules<sp/>that<sp/>are<sp/>used.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Build</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>the<sp/>build<sp/>we<sp/>require<sp/>you<sp/>to<sp/>have<sp/>CMake<sp/>installed.<sp/>This<sp/>allows<sp/>to<sp/>have<sp/>one<sp/>implementation<sp/>for<sp/>all<sp/>operating<sp/>systems.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">To<sp/>generate<sp/>the<sp/>build<sp/>files<sp/>for<sp/>your<sp/>system<sp/>use<sp/>the<sp/>following<sp/>command.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">mkdir<sp/>build<sp/>&amp;&amp;<sp/>cd<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">make</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>the<sp/>install<sp/>option<sp/>use<sp/>the<sp/>following<sp/>command<sp/>install.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">make<sp/>install<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_6293e30ca8ba51ca3e75c2c6ee7790b4" kind="dir">
+    <compoundname>build/Debug/kerml/CMakeFiles/kerml.dir/src/root/annotations</compoundname>
+    <innerfile refid="df/d86/_annotating_element_8cpp_8o_8d">AnnotatingElement.cpp.o.d</innerfile>
+    <innerfile refid="d3/d69/_annotation_8cpp_8o_8d">Annotation.cpp.o.d</innerfile>
+    <innerfile refid="d5/d47/_comment_8cpp_8o_8d">Comment.cpp.o.d</innerfile>
+    <innerfile refid="d8/d7b/_documentation_8cpp_8o_8d">Documentation.cpp.o.d</innerfile>
+    <innerfile refid="d1/dd9/_textual_representation_8cpp_8o_8d">TextualRepresentation.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/kerml/CMakeFiles/kerml.dir/src/root/annotations/"/>
+  </compounddef>
+</doxygen>

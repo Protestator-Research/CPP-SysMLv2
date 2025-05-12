@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d0/d73/class_ker_m_l_error" kind="class" language="C++" prot="public">
+    <compoundname>KerMLError</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d0/d73/class_ker_m_l_error_1a0da9e4b00f67d4efed5c03596046990e" prot="private" static="no" mutable="no">
+        <type>KerMLErrorType</type>
+        <definition>KerMLErrorType KerMLError::ErrorType</definition>
+        <argsstring></argsstring>
+        <name>ErrorType</name>
+        <qualifiedname>KerMLError::ErrorType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlError.h" line="32" column="20" bodyfile="filehandling/src/kerml/KerMlError.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d0/d73/class_ker_m_l_error_1a14eb6aa72459ab73ddbe70c5fcf7cec4" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string KerMLError::ErrorMessage</definition>
+        <argsstring></argsstring>
+        <name>ErrorMessage</name>
+        <qualifiedname>KerMLError::ErrorMessage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlError.h" line="33" column="17" bodyfile="filehandling/src/kerml/KerMlError.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d0/d73/class_ker_m_l_error_1a1b5b8b65362c5b4dbc0a744b1acad222" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int KerMLError::Line</definition>
+        <argsstring></argsstring>
+        <name>Line</name>
+        <qualifiedname>KerMLError::Line</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlError.h" line="34" column="9" bodyfile="filehandling/src/kerml/KerMlError.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d0/d73/class_ker_m_l_error_1a683fd20ae5f2de8c031b51861197c4b8" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int KerMLError::PositionInLine</definition>
+        <argsstring></argsstring>
+        <name>PositionInLine</name>
+        <qualifiedname>KerMLError::PositionInLine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlError.h" line="35" column="9" bodyfile="filehandling/src/kerml/KerMlError.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d0/d73/class_ker_m_l_error_1a8cd2d81a8d231ea5a91c2ccf5725ed94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLError::KerMLError</definition>
+        <argsstring>()=delete</argsstring>
+        <name>KerMLError</name>
+        <qualifiedname>KerMLError::KerMLError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlError.h" line="21" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d73/class_ker_m_l_error_1a297c8df9d41762e80dd7794dca3d4cca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLError::KerMLError</definition>
+        <argsstring>(KerMLErrorType errorType, int line, int postionInLine, std::string message)</argsstring>
+        <name>KerMLError</name>
+        <qualifiedname>KerMLError::KerMLError</qualifiedname>
+        <param>
+          <type>KerMLErrorType</type>
+          <declname>errorType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>postionInLine</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlError.h" line="22" column="5" bodyfile="filehandling/src/kerml/KerMlError.cpp" bodystart="7" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d73/class_ker_m_l_error_1af00f6e808d4cc86f715ee07616efa031" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual KerMLError::~KerMLError</definition>
+        <argsstring>()=default</argsstring>
+        <name>~KerMLError</name>
+        <qualifiedname>KerMLError::~KerMLError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlError.h" line="23" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d73/class_ker_m_l_error_1ac62221e7688b613d1f76c53044bb644a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string KerMLError::message</definition>
+        <argsstring>()</argsstring>
+        <name>message</name>
+        <qualifiedname>KerMLError::message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlError.h" line="25" column="17" bodyfile="filehandling/src/kerml/KerMlError.cpp" bodystart="14" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d73/class_ker_m_l_error_1aee3b70425da51e70986885ec019a8b99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int KerMLError::line</definition>
+        <argsstring>()</argsstring>
+        <name>line</name>
+        <qualifiedname>KerMLError::line</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlError.h" line="26" column="9" bodyfile="filehandling/src/kerml/KerMlError.cpp" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d73/class_ker_m_l_error_1a910951421803560558a4b1de5879f02c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int KerMLError::positionInLine</definition>
+        <argsstring>()</argsstring>
+        <name>positionInLine</name>
+        <qualifiedname>KerMLError::positionInLine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlError.h" line="27" column="9" bodyfile="filehandling/src/kerml/KerMlError.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d73/class_ker_m_l_error_1ae11a16027d4d5fb8b6dc6bf8649ef188" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KerMLErrorType</type>
+        <definition>KerMLErrorType KerMLError::errorType</definition>
+        <argsstring>()</argsstring>
+        <name>errorType</name>
+        <qualifiedname>KerMLError::errorType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlError.h" line="29" column="20" bodyfile="filehandling/src/kerml/KerMlError.cpp" bodystart="26" bodyend="28"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="filehandling/src/kerml/KerMlError.h" line="19" column="1" bodyfile="filehandling/src/kerml/KerMlError.h" bodystart="19" bodyend="37"/>
+    <listofallmembers>
+      <member refid="d0/d73/class_ker_m_l_error_1a14eb6aa72459ab73ddbe70c5fcf7cec4" prot="private" virt="non-virtual"><scope>KerMLError</scope><name>ErrorMessage</name></member>
+      <member refid="d0/d73/class_ker_m_l_error_1a0da9e4b00f67d4efed5c03596046990e" prot="private" virt="non-virtual"><scope>KerMLError</scope><name>ErrorType</name></member>
+      <member refid="d0/d73/class_ker_m_l_error_1ae11a16027d4d5fb8b6dc6bf8649ef188" prot="public" virt="non-virtual"><scope>KerMLError</scope><name>errorType</name></member>
+      <member refid="d0/d73/class_ker_m_l_error_1a8cd2d81a8d231ea5a91c2ccf5725ed94" prot="public" virt="non-virtual"><scope>KerMLError</scope><name>KerMLError</name></member>
+      <member refid="d0/d73/class_ker_m_l_error_1a297c8df9d41762e80dd7794dca3d4cca" prot="public" virt="non-virtual"><scope>KerMLError</scope><name>KerMLError</name></member>
+      <member refid="d0/d73/class_ker_m_l_error_1a1b5b8b65362c5b4dbc0a744b1acad222" prot="private" virt="non-virtual"><scope>KerMLError</scope><name>Line</name></member>
+      <member refid="d0/d73/class_ker_m_l_error_1aee3b70425da51e70986885ec019a8b99" prot="public" virt="non-virtual"><scope>KerMLError</scope><name>line</name></member>
+      <member refid="d0/d73/class_ker_m_l_error_1ac62221e7688b613d1f76c53044bb644a" prot="public" virt="non-virtual"><scope>KerMLError</scope><name>message</name></member>
+      <member refid="d0/d73/class_ker_m_l_error_1a683fd20ae5f2de8c031b51861197c4b8" prot="private" virt="non-virtual"><scope>KerMLError</scope><name>PositionInLine</name></member>
+      <member refid="d0/d73/class_ker_m_l_error_1a910951421803560558a4b1de5879f02c" prot="public" virt="non-virtual"><scope>KerMLError</scope><name>positionInLine</name></member>
+      <member refid="d0/d73/class_ker_m_l_error_1af00f6e808d4cc86f715ee07616efa031" prot="public" virt="virtual"><scope>KerMLError</scope><name>~KerMLError</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

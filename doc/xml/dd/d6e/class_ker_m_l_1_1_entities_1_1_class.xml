@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dd/d6e/class_ker_m_l_1_1_entities_1_1_class" kind="class" language="C++" prot="public">
+    <compoundname>KerML::Entities::Class</compoundname>
+    <basecompoundref refid="df/dae/class_ker_m_l_1_1_entities_1_1_classifier" prot="public" virt="non-virtual">KerML::Entities::Classifier</basecompoundref>
+    <derivedcompoundref refid="dd/d1c/class_ker_m_l_1_1_entities_1_1_structure" prot="public" virt="non-virtual">KerML::Entities::Structure</derivedcompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>KerML::Entities::AssociationStructure</label>
+        <link refid="d1/d4c/class_ker_m_l_1_1_entities_1_1_association_structure"/>
+        <childnode refid="3" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>KerML::Entities::Class</label>
+        <link refid="dd/d6e/class_ker_m_l_1_1_entities_1_1_class"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KerML::Entities::Classifier</label>
+        <link refid="df/dae/class_ker_m_l_1_1_entities_1_1_classifier"/>
+      </node>
+      <node id="3">
+        <label>KerML::Entities::Structure</label>
+        <link refid="dd/d1c/class_ker_m_l_1_1_entities_1_1_structure"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerML::Entities::Class</label>
+        <link refid="dd/d6e/class_ker_m_l_1_1_entities_1_1_class"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KerML::Entities::Classifier</label>
+        <link refid="df/dae/class_ker_m_l_1_1_entities_1_1_classifier"/>
+      </node>
+    </collaborationgraph>
+    <location file="kerml/src/kernel/classes/Class.h" line="11" column="5" bodyfile="kerml/src/kernel/classes/Class.h" bodystart="11" bodyend="13"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

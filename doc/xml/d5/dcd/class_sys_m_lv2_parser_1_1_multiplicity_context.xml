@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::MultiplicityContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context_1a5fcf1e602e683cadea172142423b68a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::MultiplicityContext::MultiplicityContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>MultiplicityContext</name>
+        <qualifiedname>SysMLv2Parser::MultiplicityContext::MultiplicityContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8872" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43504" bodyend="43506"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context_1a081ba1c9ee058a8081aa2d53e305e48c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::MultiplicityContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::MultiplicityContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8873" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43517" bodyend="43519"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context_1adaa4ab8b0981f29547c1e2055ff1f6d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d5d/class_sys_m_lv2_parser_1_1_multiplicity__subset_context" kindref="compound">Multiplicity_subsetContext</ref> *</type>
+        <definition>SysMLv2Parser::Multiplicity_subsetContext * SysMLv2Parser::MultiplicityContext::multiplicity_subset</definition>
+        <argsstring>()</argsstring>
+        <name>multiplicity_subset</name>
+        <qualifiedname>SysMLv2Parser::MultiplicityContext::multiplicity_subset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8874" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43508" bodyend="43510"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context_1a8042ddeb541b8910620415a19779e810" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d5c/class_sys_m_lv2_parser_1_1_multiplicity__range_context" kindref="compound">Multiplicity_rangeContext</ref> *</type>
+        <definition>SysMLv2Parser::Multiplicity_rangeContext * SysMLv2Parser::MultiplicityContext::multiplicity_range</definition>
+        <argsstring>()</argsstring>
+        <name>multiplicity_range</name>
+        <qualifiedname>SysMLv2Parser::MultiplicityContext::multiplicity_range</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8875" column="31" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43512" bodyend="43514"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context_1a3a1b67f588c6c412008d3aa348e9847d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::MultiplicityContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::MultiplicityContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8877" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43521" bodyend="43525"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context_1a18464ec8ad4f40fbea5e3666905894a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::MultiplicityContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::MultiplicityContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8878" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43527" bodyend="43531"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::MultiplicityContext</label>
+        <link refid="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::MultiplicityContext</label>
+        <link refid="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8870" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="8870" bodyend="8880"/>
+    <listofallmembers>
+      <member refid="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context_1a3a1b67f588c6c412008d3aa348e9847d" prot="public" virt="virtual"><scope>SysMLv2Parser::MultiplicityContext</scope><name>enterRule</name></member>
+      <member refid="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context_1a18464ec8ad4f40fbea5e3666905894a4" prot="public" virt="virtual"><scope>SysMLv2Parser::MultiplicityContext</scope><name>exitRule</name></member>
+      <member refid="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context_1a081ba1c9ee058a8081aa2d53e305e48c" prot="public" virt="virtual"><scope>SysMLv2Parser::MultiplicityContext</scope><name>getRuleIndex</name></member>
+      <member refid="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context_1a8042ddeb541b8910620415a19779e810" prot="public" virt="non-virtual"><scope>SysMLv2Parser::MultiplicityContext</scope><name>multiplicity_range</name></member>
+      <member refid="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context_1adaa4ab8b0981f29547c1e2055ff1f6d2" prot="public" virt="non-virtual"><scope>SysMLv2Parser::MultiplicityContext</scope><name>multiplicity_subset</name></member>
+      <member refid="d5/dcd/class_sys_m_lv2_parser_1_1_multiplicity_context_1a5fcf1e602e683cadea172142423b68a9" prot="public" virt="non-virtual"><scope>SysMLv2Parser::MultiplicityContext</scope><name>MultiplicityContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SysMLv2 C++ Implementation: filehandling/src/parsing/kerml/KerMLLexer.h Source File</title>
+<title>SysMLv2 C++ Implementation: filehandling/src/kerml/KerMLLexer.h Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -121,91 +121,93 @@ $(function(){initNavTree('df/d29/_ker_m_l_lexer_8h_source.html','../../'); initR
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../d4/de4/class_ker_m_l_lexer.html">   12</a></span><span class="keyword">class  </span>KerMLLexer : <span class="keyword">public</span> antlr4::Lexer {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  <span class="keyword">enum</span> {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, TYPED_BY = 5, SPECIALIZES = 6, </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    SUBSETS = 7, REFERENCES = 8, REDEFINES = 9, CONJUNGATES = 10, KEYWORD_ABOUT = 11, </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    KEYWORD_ABSTRACT = 12, KEYWORD_ALIAS = 13, KEYWORD_ALL = 14, KEYWORD_AND = 15, </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    KEYWORD_AS = 16, KEYWORD_ASSOC = 17, KEYWORD_BEHAVIOR = 18, KEYWORD_BINDING = 19, </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    KEYWORD_BOOL = 20, KEYWORD_BY = 21, KEYWORD_CHAINS = 22, KEYWORD_CLASS = 23, </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    KEYWORD_CLASSIFIER = 24, KEYWORD_COMMENT = 25, KEYWORD_COMPOSITE = 26, </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    KEYWORD_CONJUGATE = 27, KEYWORD_CONJUGATES = 28, KEYWORD_CONJUGATION = 29, </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    KEYWORD_CONNECTOR = 30, KEYWORD_DATATYPE = 31, KEYWORD_DEFAULT = 32, </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    KEYWORD_DEPENDENCY = 33, KEYWORD_DERIVED = 34, KEYWORD_DIFFERENCES = 35, </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    KEYWORD_DISJOINING = 36, KEYWORD_DISJOINT = 37, KEYWORD_DOC = 38, KEYWORD_ELSE = 39, </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    KEYWORD_END = 40, KEYWORD_EXPR = 41, KEYWORD_FALSE = 42, KEYWORD_FEATURE = 43, </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    KEYWORD_FEATURED = 44, KEYWORD_FEATURING = 45, KEYWORD_FILTER = 46, </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    KEYWORD_FIRST = 47, KEYWORD_FLOW = 48, KEYWORD_FOR = 49, KEYWORD_FROM = 50, </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    KEYWORD_FUNCTION = 51, KEYWORD_HASTYPE = 52, KEYWORD_IF = 53, KEYWORD_INTERSECTS = 54, </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    KEYWORD_IMPLIES = 55, KEYWORD_IMPORT = 56, KEYWORD_IN = 57, KEYWORD_INOUT = 58, </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    KEYWORD_INTERACTION = 59, KEYWORD_INV = 60, KEYWORD_INVERSE = 61, KEYWORD_INVERTING = 62, </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    KEYWORD_ISTYPE = 63, KEYWORD_LANGUAGE = 64, KEYWORD_MEMBER = 65, KEYWORD_METACLASS = 66, </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    KEYWORD_METADATA = 67, KEYWORD_MULTIPLICITY = 68, KEYWORD_NAMESPACE = 69, </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    KEYWORD_NONUNIQUE = 70, KEYWORD_NOT = 71, KEYWORD_NULL = 72, KEYWORD_OF = 73, </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    KEYWORD_OR = 74, KEYWORD_ORDERED = 75, KEYWORD_OUT = 76, KEYWORD_PACKAGE = 77, </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    KEYWORD_PORTION = 78, KEYWORD_PREDICATE = 79, KEYWORD_PRIVATE = 80, </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    KEYWORD_PROTECTED = 81, KEYWORD_PUBLIC = 82, KEYWORD_READONLY = 83, </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    KEYWORD_REDEFINES = 84, KEYWORD_REDEFINITION = 85, KEYWORD_REFERENCES = 86, </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    KEYWORD_REP = 87, KEYWORD_RETURN = 88, KEYWORD_SPECILIZATION = 89, KEYWORD_SPECIALIZES = 90, </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    KEYWORD_STEP = 91, KEYWORD_STRUCT = 92, KEYWORD_SUBCLASSIFIER = 93, </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    KEYWORD_SUBSET = 94, KEYWORD_SUBSETS = 95, KEYWORD_SUBTYPE = 96, KEYWORD_SUCCSESSION = 97, </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    KEYWORD_THEN = 98, KEYWORD_TO = 99, KEYWORD_TRUE = 100, KEYWORD_TYPE = 101, </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    KEYWORD_TYPED = 102, KEYWORD_TYPING = 103, KEYWORD_UNIONS = 104, KEYWORD_XOR = 105, </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    SINGLE_LINE_NOTE = 106, MULTI_LINE_NOTE = 107, REGULAR_COMMENT = 108, </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    SYMBOL_COMMENT_BLOCK_START = 109, SYMBOL_NOTE_BLOCK_START = 110, SYMBOL_COMMENT_BLOCK_END = 111, </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    SYMBOL_STATEMENT_DELIMITER = 112, SYMBOL_STAR = 113, SYMBOL_NAMESPACE_SUBSET = 114, </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    SYMBOL_TYPED_BY = 115, SYMBOL_SPECIALIZES = 116, SYMBOL_REFERENCES = 117, </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    SYMBOL_REDEFINES = 118, SYMBOL_CONJUNGATES = 119, SYMBOL_ROUND_BRACKET_OPEN = 120, </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    SYMBOL_ROUND_BRACKET_CLOSE = 121, SYMBOL_CURLY_BRACKET_OPEN = 122, SYMBOL_CURLY_BRACKET_CLOSE = 123, </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    SYMBOL_SQUARE_BRACKET_OPEN = 124, SYMBOL_SQUARE_BRACKET_CLOSE = 125, </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    SYMBOL_COMMA = 126, SYMBOL_AT = 127, SYMBOL_HASHTAG = 128, SYMBOL_MOD = 129, </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    SYMBOL_AND = 130, SYMBOL_UPPER = 131, SYMBOL_VERTICAL_LINE = 132, SYMBOL_DOUBLE_STAR = 133, </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    SYMBOL_PLUS = 134, SYMBOL_MINUS = 135, SYMBOL_SLASH = 136, SYMBOL_ARROOW = 137, </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    SYMBOL_DOT = 138, SYMBOL_DDOT = 139, SYMBOL_SMALLER = 140, SYMBOL_SMALLER_EQUAL = 141, </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    SYMBOL_ASSIGN = 142, SYMBOL_DEF_ASSIGN = 143, SYMBOL_EQUALS = 144, SYMBOL_IFF_EQUALS = 145, </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    SYMBOL_NOT_EQUALS = 146, SYMBOL_IFF_NOT_EQUALS = 147, SYMBOL_GREATER = 148, </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    SYMBOL_GREATER_EQUALS = 149, SYMBOL_QUESTION = 150, SYMBOL_DQUESTION = 151, </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    SYMBOL_DOT_QUESTION = 152, NAME = 153, BASIC_NAME = 154, UNRESTRICTED_NAME = 155, </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    DECIMAL_VALUE = 156, EXPONENTIAL_VALUE = 157, STRING_VALUE = 158, WS = 159</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  };</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keyword">explicit</span> KerMLLexer(antlr4::CharStream *input);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    T__0 = 1, TYPED_BY = 2, SPECIALIZES = 3, SUBSETS = 4, REFERENCES = 5, </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    REDEFINES = 6, CONJUNGATES = 7, KEYWORD_ABOUT = 8, KEYWORD_ABSTRACT = 9, </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    KEYWORD_ALIAS = 10, KEYWORD_ALL = 11, KEYWORD_AND = 12, KEYWORD_AS = 13, </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    KEYWORD_ASSOC = 14, KEYWORD_BEHAVIOR = 15, KEYWORD_BINDING = 16, KEYWORD_BOOL = 17, </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    KEYWORD_BY = 18, KEYWORD_CHAINS = 19, KEYWORD_CLASS = 20, KEYWORD_CLASSIFIER = 21, </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    KEYWORD_COMMENT = 22, KEYWORD_COMPOSITE = 23, KEYWORD_CONJUGATE = 24, </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    KEYWORD_CONJUGATES = 25, KEYWORD_CONJUGATION = 26, KEYWORD_CONNECTOR = 27, </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    KEYWORD_DATATYPE = 28, KEYWORD_DEFAULT = 29, KEYWORD_DEPENDENCY = 30, </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    KEYWORD_DERIVED = 31, KEYWORD_DIFFERENCES = 32, KEYWORD_DISJOINING = 33, </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    KEYWORD_DISJOINT = 34, KEYWORD_DOC = 35, KEYWORD_ELSE = 36, KEYWORD_END = 37, </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    KEYWORD_EXPR = 38, KEYWORD_FALSE = 39, KEYWORD_FEATURE = 40, KEYWORD_FEATURED = 41, </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    KEYWORD_FEATURING = 42, KEYWORD_FILTER = 43, KEYWORD_FIRST = 44, KEYWORD_FLOW = 45, </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    KEYWORD_FOR = 46, KEYWORD_FROM = 47, KEYWORD_FUNCTION = 48, KEYWORD_HASTYPE = 49, </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    KEYWORD_IF = 50, KEYWORD_INTERSECTS = 51, KEYWORD_IMPLIES = 52, KEYWORD_IMPORT = 53, </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    KEYWORD_IN = 54, KEYWORD_INOUT = 55, KEYWORD_INTERACTION = 56, KEYWORD_INV = 57, </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    KEYWORD_INVERSE = 58, KEYWORD_INVERTING = 59, KEYWORD_ISTYPE = 60, KEYWORD_LANGUAGE = 61, </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    KEYWORD_MEMBER = 62, KEYWORD_METACLASS = 63, KEYWORD_METADATA = 64, </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    KEYWORD_MULTIPLICITY = 65, KEYWORD_NAMESPACE = 66, KEYWORD_NONUNIQUE = 67, </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    KEYWORD_NOT = 68, KEYWORD_NULL = 69, KEYWORD_OF = 70, KEYWORD_OR = 71, </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    KEYWORD_ORDERED = 72, KEYWORD_OUT = 73, KEYWORD_PACKAGE = 74, KEYWORD_PORTION = 75, </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    KEYWORD_PREDICATE = 76, KEYWORD_PRIVATE = 77, KEYWORD_PROTECTED = 78, </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    KEYWORD_PUBLIC = 79, KEYWORD_READONLY = 80, KEYWORD_REDEFINES = 81, </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    KEYWORD_REDEFINITION = 82, KEYWORD_REFERENCES = 83, KEYWORD_REP = 84, </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    KEYWORD_RETURN = 85, KEYWORD_SPECILIZATION = 86, KEYWORD_SPECIALIZES = 87, </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    KEYWORD_STEP = 88, KEYWORD_STRUCT = 89, KEYWORD_SUBCLASSIFIER = 90, </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    KEYWORD_SUBSET = 91, KEYWORD_SUBSETS = 92, KEYWORD_SUBTYPE = 93, KEYWORD_SUCCSESSION = 94, </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    KEYWORD_THEN = 95, KEYWORD_TO = 96, KEYWORD_TRUE = 97, KEYWORD_TYPE = 98, </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    KEYWORD_TYPED = 99, KEYWORD_TYPING = 100, KEYWORD_UNIONS = 101, KEYWORD_XOR = 102, </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    KEYWORD_VAR = 103, KEYWORD_LOCALE = 104, KEYWORD_STANDARD = 105, KEYWORD_LIBRARY = 106, </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    KEYWORD_CONSTANT = 107, SINGLE_LINE_NOTE = 108, MULTI_LINE_NOTE = 109, </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    REGULAR_COMMENT = 110, SYMBOL_COMMENT_BLOCK_START = 111, SYMBOL_NOTE_BLOCK_START = 112, </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    SYMBOL_COMMENT_BLOCK_END = 113, SYMBOL_STATEMENT_DELIMITER = 114, SYMBOL_STAR = 115, </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    SYMBOL_NAMESPACE_SUBSET = 116, SYMBOL_TYPED_BY = 117, SYMBOL_SPECIALIZES = 118, </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    SYMBOL_REFERENCES = 119, SYMBOL_REDEFINES = 120, SYMBOL_CONJUNGATES = 121, </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    SYMBOL_ROUND_BRACKET_OPEN = 122, SYMBOL_ROUND_BRACKET_CLOSE = 123, SYMBOL_CURLY_BRACKET_OPEN = 124, </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    SYMBOL_CURLY_BRACKET_CLOSE = 125, SYMBOL_SQUARE_BRACKET_OPEN = 126, </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    SYMBOL_SQUARE_BRACKET_CLOSE = 127, SYMBOL_COMMA = 128, SYMBOL_AT = 129, </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    SYMBOL_HASHTAG = 130, SYMBOL_MOD = 131, SYMBOL_AND = 132, SYMBOL_UPPER = 133, </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    SYMBOL_VERTICAL_LINE = 134, SYMBOL_DOUBLE_STAR = 135, SYMBOL_PLUS = 136, </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    SYMBOL_MINUS = 137, SYMBOL_SLASH = 138, SYMBOL_ARROOW = 139, SYMBOL_DOT = 140, </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    SYMBOL_DDOT = 141, SYMBOL_SMALLER = 142, SYMBOL_SMALLER_EQUAL = 143, </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    SYMBOL_ASSIGN = 144, SYMBOL_DEF_ASSIGN = 145, SYMBOL_EQUALS = 146, SYMBOL_IFF_EQUALS = 147, </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    SYMBOL_NOT_EQUALS = 148, SYMBOL_IFF_NOT_EQUALS = 149, SYMBOL_GREATER = 150, </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    SYMBOL_GREATER_EQUALS = 151, SYMBOL_QUESTION = 152, SYMBOL_DQUESTION = 153, </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    SYMBOL_DOT_QUESTION = 154, NAME = 155, BASIC_NAME = 156, UNRESTRICTED_NAME = 157, </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    DECIMAL_VALUE = 158, EXPONENTIAL_VALUE = 159, STRING_VALUE = 160, WS = 161</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  };</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  ~KerMLLexer() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keyword">explicit</span> KerMLLexer(antlr4::CharStream *input);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  std::string getGrammarFileName() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  ~KerMLLexer() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; getRuleNames() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  std::string getGrammarFileName() <span class="keyword">const override</span>;</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; getChannelNames() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; getRuleNames() <span class="keyword">const override</span>;</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; getModeNames() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; getChannelNames() <span class="keyword">const override</span>;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keyword">const</span> antlr4::dfa::Vocabulary&amp; getVocabulary() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; getModeNames() <span class="keyword">const override</span>;</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  antlr4::atn::SerializedATNView getSerializedATN() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  <span class="keyword">const</span> antlr4::dfa::Vocabulary&amp; getVocabulary() <span class="keyword">const override</span>;</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <span class="keyword">const</span> antlr4::atn::ATN&amp; getATN() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  antlr4::atn::SerializedATNView getSerializedATN() <span class="keyword">const override</span>;</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="comment">// By default the static state used to implement the lexer is lazily initialized during the first</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <span class="comment">// call to the constructor. You can call this function if you wish to initialize the static state</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  <span class="comment">// ahead of time.</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  <span class="keyword">static</span> <span class="keywordtype">void</span> initialize();</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keyword">const</span> antlr4::atn::ATN&amp; getATN() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  <span class="comment">// By default the static state used to implement the lexer is lazily initialized during the first</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  <span class="comment">// call to the constructor. You can call this function if you wish to initialize the static state</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  <span class="comment">// ahead of time.</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  <span class="keyword">static</span> <span class="keywordtype">void</span> initialize();</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  <span class="comment">// Individual action functions triggered by action() above.</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="comment">// Individual semantic predicate functions triggered by sempred() above.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="comment">// Individual action functions triggered by action() above.</span></div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>};</div>
-</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  <span class="comment">// Individual semantic predicate functions triggered by sempred() above.</span></div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>};</div>
+</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_27c7dd57e3f3420e6ab9e33c71031b75.html">filehandling</a></li><li class="navelem"><a class="el" href="../../dir_b30de7736e28f42a7b5cf6cab6f994ce.html">src</a></li><li class="navelem"><a class="el" href="../../dir_696bb6d7a20c4561b559cede41c2dedc.html">parsing</a></li><li class="navelem"><a class="el" href="../../dir_7b70efd17058c52298e189e15878dbe4.html">kerml</a></li><li class="navelem"><b>KerMLLexer.h</b></li>
+    <li class="navelem"><a class="el" href="../../dir_27c7dd57e3f3420e6ab9e33c71031b75.html">filehandling</a></li><li class="navelem"><a class="el" href="../../dir_b30de7736e28f42a7b5cf6cab6f994ce.html">src</a></li><li class="navelem"><a class="el" href="../../dir_55099eb752da7fe1d1361d689198e7ef.html">kerml</a></li><li class="navelem"><b>KerMLLexer.h</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

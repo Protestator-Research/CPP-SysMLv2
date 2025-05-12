@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_2d939e323e768936e47d341f9d63995e" kind="dir">
+    <compoundname>build/Debug/kerml/CMakeFiles/kerml.dir/src/core/types</compoundname>
+    <innerfile refid="db/dfe/_conjunction_8cpp_8o_8d">Conjunction.cpp.o.d</innerfile>
+    <innerfile refid="d8/dcd/_differencing_8cpp_8o_8d">Differencing.cpp.o.d</innerfile>
+    <innerfile refid="d1/ddc/_disjoining_8cpp_8o_8d">Disjoining.cpp.o.d</innerfile>
+    <innerfile refid="d5/dad/_intersecting_8cpp_8o_8d">Intersecting.cpp.o.d</innerfile>
+    <innerfile refid="d7/d63/_specialization_8cpp_8o_8d">Specialization.cpp.o.d</innerfile>
+    <innerfile refid="d3/dda/_type_8cpp_8o_8d">Type.cpp.o.d</innerfile>
+    <innerfile refid="d1/d51/_unioning_8cpp_8o_8d">Unioning.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/kerml/CMakeFiles/kerml.dir/src/core/types/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="df/d4a/class_sys_m_lv2_parser_1_1_metadataclassification__test__operator_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Metadataclassification_test_operatorContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/d4a/class_sys_m_lv2_parser_1_1_metadataclassification__test__operator_context_1a41be56ce02c44c016bbc1343d7feacad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Metadataclassification_test_operatorContext::Metadataclassification_test_operatorContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Metadataclassification_test_operatorContext</name>
+        <qualifiedname>SysMLv2Parser::Metadataclassification_test_operatorContext::Metadataclassification_test_operatorContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7793" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="38489" bodyend="38491"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d4a/class_sys_m_lv2_parser_1_1_metadataclassification__test__operator_context_1a24f02b4a89d5b02087d80efd54abb93c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Metadataclassification_test_operatorContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Metadataclassification_test_operatorContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7794" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="38498" bodyend="38500"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d4a/class_sys_m_lv2_parser_1_1_metadataclassification__test__operator_context_1ab4fd5c2e9eb332e5b37e83d1d5a85f40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Metadataclassification_test_operatorContext::SYMBOL_DOT</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_DOT</name>
+        <qualifiedname>SysMLv2Parser::Metadataclassification_test_operatorContext::SYMBOL_DOT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7795" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="38493" bodyend="38495"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d4a/class_sys_m_lv2_parser_1_1_metadataclassification__test__operator_context_1a0a565ca8e7f7d4a3ac03e5d1016add8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Metadataclassification_test_operatorContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Metadataclassification_test_operatorContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7797" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="38502" bodyend="38506"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d4a/class_sys_m_lv2_parser_1_1_metadataclassification__test__operator_context_1aa69835c9e7781963e7129f6bc613467d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Metadataclassification_test_operatorContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Metadataclassification_test_operatorContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7798" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="38508" bodyend="38512"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Metadataclassification_test_operatorContext</label>
+        <link refid="df/d4a/class_sys_m_lv2_parser_1_1_metadataclassification__test__operator_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Metadataclassification_test_operatorContext</label>
+        <link refid="df/d4a/class_sys_m_lv2_parser_1_1_metadataclassification__test__operator_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7791" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="7791" bodyend="7800"/>
+    <listofallmembers>
+      <member refid="df/d4a/class_sys_m_lv2_parser_1_1_metadataclassification__test__operator_context_1a0a565ca8e7f7d4a3ac03e5d1016add8f" prot="public" virt="virtual"><scope>SysMLv2Parser::Metadataclassification_test_operatorContext</scope><name>enterRule</name></member>
+      <member refid="df/d4a/class_sys_m_lv2_parser_1_1_metadataclassification__test__operator_context_1aa69835c9e7781963e7129f6bc613467d" prot="public" virt="virtual"><scope>SysMLv2Parser::Metadataclassification_test_operatorContext</scope><name>exitRule</name></member>
+      <member refid="df/d4a/class_sys_m_lv2_parser_1_1_metadataclassification__test__operator_context_1a24f02b4a89d5b02087d80efd54abb93c" prot="public" virt="virtual"><scope>SysMLv2Parser::Metadataclassification_test_operatorContext</scope><name>getRuleIndex</name></member>
+      <member refid="df/d4a/class_sys_m_lv2_parser_1_1_metadataclassification__test__operator_context_1a41be56ce02c44c016bbc1343d7feacad" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadataclassification_test_operatorContext</scope><name>Metadataclassification_test_operatorContext</name></member>
+      <member refid="df/d4a/class_sys_m_lv2_parser_1_1_metadataclassification__test__operator_context_1ab4fd5c2e9eb332e5b37e83d1d5a85f40" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadataclassification_test_operatorContext</scope><name>SYMBOL_DOT</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

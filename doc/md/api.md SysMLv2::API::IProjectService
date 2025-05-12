@@ -1,0 +1,76 @@
+# class `SysMLv2::API::IProjectService` {#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service}
+
+This represents the interface definition for the [ProjectService](api.md SysMLv2::API::ProjectService#d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service) according to the [SysMLv2](api.md SysMLv2#d7/dba/namespace_sys_m_lv2) Standard Version: 1.0 Beta 3. Moritz Herzog 
+
+1.0 Beta 3 
+
+**See also**: [SysMLv2::Entities::Project](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)
+
+**See also**: [SysMLv2::Entities::Branch](api.md SysMLv2::Entities::Branch#d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch)
+
+**See also**: boost::uuids::uuid
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public std::vector< std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > > `[`getProjects`](#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a1eb13566a71209d65dd34e20e7624612)`()` | Gets all Projects 
+`public std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > `[`getProjectById`](#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a9b2699f484a2f6f5b1b18ea51e56dece)`(boost::uuids::uuid projectId)` | Gets a project from the given UUID. 
+`public std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > `[`createProject`](#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a95b27490b85bc900dba2342ecde40003)`(std::string projectName,std::string description)` | Creates a project with the given name and description. 
+`public std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > `[`updateProject`](#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a4c86f79b7cfd8c6e2f52e82ca328ce86)`(boost::uuids::uuid projectId,std::string projectName,std::string description,std::shared_ptr< `[`SysMLv2::Entities::Branch`](api.md SysMLv2::Entities::Branch#d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch)` > branch)` | Updates a project with the given branch. This can be update with the project Name, Description and default branch. 
+`public std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > `[`deleteProject`](#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a59e33c42e9197d0c701e5ae14e1c3b19)`(boost::uuids::uuid projectId)` | Deletes a project. It is to remember that elements inside of a project should also be deleted to, except they are used inside of references 
+
+## Members
+
+#### `public std::vector< std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > > `[`getProjects`](#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a1eb13566a71209d65dd34e20e7624612)`()` {#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a1eb13566a71209d65dd34e20e7624612}
+
+Gets all Projects 
+#### Returns
+A vector with all projects as pointer. 
+
+**See also**: std::vector<T>
+
+#### `public std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > `[`getProjectById`](#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a9b2699f484a2f6f5b1b18ea51e56dece)`(boost::uuids::uuid projectId)` {#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a9b2699f484a2f6f5b1b18ea51e56dece}
+
+Gets a project from the given UUID. 
+#### Parameters
+* `projectId` the project id of the project to search for. 
+
+#### Returns
+A pointer to the given project.
+
+#### `public std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > `[`createProject`](#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a95b27490b85bc900dba2342ecde40003)`(std::string projectName,std::string description)` {#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a95b27490b85bc900dba2342ecde40003}
+
+Creates a project with the given name and description. 
+#### Parameters
+* `projectName` Name of the project as std::string 
+
+* `description` Description of the project as std::string 
+
+#### Returns
+A Pointer to the new project.
+
+#### `public std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > `[`updateProject`](#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a4c86f79b7cfd8c6e2f52e82ca328ce86)`(boost::uuids::uuid projectId,std::string projectName,std::string description,std::shared_ptr< `[`SysMLv2::Entities::Branch`](api.md SysMLv2::Entities::Branch#d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch)` > branch)` {#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a4c86f79b7cfd8c6e2f52e82ca328ce86}
+
+Updates a project with the given branch. This can be update with the project Name, Description and default branch. 
+#### Parameters
+* `projectId` The given project ID. 
+
+* `projectName` The new project name. 
+
+* `description` The new project description. 
+
+* `branch` Pointer to the new default branch. 
+
+#### Returns
+A Pointer to the updated project.
+
+#### `public std::shared_ptr< `[`SysMLv2::Entities::Project`](api.md SysMLv2::Entities::Project#d0/d86/class_sys_m_lv2_1_1_entities_1_1_project)` > `[`deleteProject`](#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a59e33c42e9197d0c701e5ae14e1c3b19)`(boost::uuids::uuid projectId)` {#d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a59e33c42e9197d0c701e5ae14e1c3b19}
+
+Deletes a project. It is to remember that elements inside of a project should also be deleted to, except they are used inside of references 
+#### Parameters
+* `projectId` The id of the project, that is to be deleted 
+
+#### Returns
+The project that is now deleted inside of the controller. You should delete the project it self.
+

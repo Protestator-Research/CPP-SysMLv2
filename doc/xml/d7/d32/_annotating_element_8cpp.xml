@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d7/d32/_annotating_element_8cpp" kind="file" language="C++">
+    <compoundname>AnnotatingElement.cpp</compoundname>
+    <includes refid="d3/dcf/_annotating_element_8h" local="yes">AnnotatingElement.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>kerml/src/root/annotations/AnnotatingElement.cpp</label>
+        <link refid="d7/d32/_annotating_element_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AnnotatingElement.h</label>
+        <link refid="d3/dcf/_annotating_element_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>root/elements/Element.h</label>
+        <link refid="dd/dcc/kerml_2src_2root_2elements_2_element_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>boost/uuid/random_generator.hpp</label>
+      </node>
+      <node id="5">
+        <label>boost/uuid/uuid.hpp</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Moritz<sp/>Herzog<sp/>on<sp/>24.03.25.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;AnnotatingElement.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="kerml/src/root/annotations/AnnotatingElement.cpp"/>
+  </compounddef>
+</doxygen>

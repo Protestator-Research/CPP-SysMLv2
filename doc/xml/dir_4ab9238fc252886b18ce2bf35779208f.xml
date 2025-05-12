@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_4ab9238fc252886b18ce2bf35779208f" kind="dir">
+    <compoundname>build/Debug/rest-api/CMakeFiles/sysmlv2rest.dir/src/entities</compoundname>
+    <innerfile refid="db/d76/_branch_8cpp_8o_8d">Branch.cpp.o.d</innerfile>
+    <innerfile refid="d3/d83/_commit_8cpp_8o_8d">Commit.cpp.o.d</innerfile>
+    <innerfile refid="d5/d77/_commit_reference_8cpp_8o_8d">CommitReference.cpp.o.d</innerfile>
+    <innerfile refid="d1/d41/_data_8cpp_8o_8d">Data.cpp.o.d</innerfile>
+    <innerfile refid="d7/de8/_data_difference_8cpp_8o_8d">DataDifference.cpp.o.d</innerfile>
+    <innerfile refid="de/dbd/_data_identity_8cpp_8o_8d">DataIdentity.cpp.o.d</innerfile>
+    <innerfile refid="dc/d99/_data_version_8cpp_8o_8d">DataVersion.cpp.o.d</innerfile>
+    <innerfile refid="d4/d56/rest-api_2_c_make_files_2sysmlv2rest_8dir_2src_2entities_2_element_8cpp_8o_8d">Element.cpp.o.d</innerfile>
+    <innerfile refid="dd/de3/_external_data_8cpp_8o_8d">ExternalData.cpp.o.d</innerfile>
+    <innerfile refid="d4/d47/_external_relationship_8cpp_8o_8d">ExternalRelationship.cpp.o.d</innerfile>
+    <innerfile refid="dd/d08/_identification_8cpp_8o_8d">Identification.cpp.o.d</innerfile>
+    <innerfile refid="d7/d68/_merge_result_8cpp_8o_8d">MergeResult.cpp.o.d</innerfile>
+    <innerfile refid="d2/d16/_project_8cpp_8o_8d">Project.cpp.o.d</innerfile>
+    <innerfile refid="de/d09/_project_usage_8cpp_8o_8d">ProjectUsage.cpp.o.d</innerfile>
+    <innerfile refid="da/df9/_query_8cpp_8o_8d">Query.cpp.o.d</innerfile>
+    <innerfile refid="d4/ddb/_record_8cpp_8o_8d">Record.cpp.o.d</innerfile>
+    <innerfile refid="dd/d53/rest-api_2_c_make_files_2sysmlv2rest_8dir_2src_2entities_2_relationship_8cpp_8o_8d">Relationship.cpp.o.d</innerfile>
+    <innerfile refid="db/d8b/_tag_8cpp_8o_8d">Tag.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/rest-api/CMakeFiles/sysmlv2rest.dir/src/entities/"/>
+  </compounddef>
+</doxygen>

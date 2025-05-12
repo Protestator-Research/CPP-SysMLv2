@@ -13,6 +13,7 @@ var class_sys_m_lv2_1_1_entities_1_1_record =
     [ "operator==", "d9/dad/class_sys_m_lv2_1_1_entities_1_1_record.html#a44938fd7ae4280fa0473484273b4d431", null ],
     [ "serializeToJson", "d9/dad/class_sys_m_lv2_1_1_entities_1_1_record.html#a2a10fcc6f27a921cd60517703dfd3f2b", null ],
     [ "setDescription", "d9/dad/class_sys_m_lv2_1_1_entities_1_1_record.html#ad826fec2e174a534cad1351750175c28", null ],
+    [ "setName", "d9/dad/class_sys_m_lv2_1_1_entities_1_1_record.html#ac7666583958bc98be3e6f2da3880454c", null ],
     [ "Alias", "d9/dad/class_sys_m_lv2_1_1_entities_1_1_record.html#a023b2aa15c7192d9af732ee3e7e84a56", null ],
     [ "Description", "d9/dad/class_sys_m_lv2_1_1_entities_1_1_record.html#a6e2c0a9b166510546f567a25a64e2c80", null ],
     [ "Id", "d9/dad/class_sys_m_lv2_1_1_entities_1_1_record.html#a077d9e6a406a07331d43abcfe3fd2a20", null ],

@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="df/d04/class_ker_m_l_parser_1_1_redefinition_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::RedefinitionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a8e13c6ea5e50438b9395d4f9c820d220" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::RedefinitionContext::RedefinitionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>RedefinitionContext</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::RedefinitionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1927" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9093" bodyend="9095"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a16f41ccdf0abf7a36ef7fa598e0f04a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::RedefinitionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1928" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9146" bodyend="9148"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1aa5106eb840dcc77d1d31bfa7f49d7b04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::RedefinitionContext::REDEFINES</definition>
+        <argsstring>()</argsstring>
+        <name>REDEFINES</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::REDEFINES</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1929" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9097" bodyend="9099"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1afcd24003e67a1427673f0992781a1326" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>KerMLParser::Qualified_nameContext * KerMLParser::RedefinitionContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1930" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9101" bodyend="9103"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a2e0e2d0783b8616653017829327a5b99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context" kindref="compound">Relationship_bodyContext</ref> *</type>
+        <definition>KerMLParser::Relationship_bodyContext * KerMLParser::RedefinitionContext::relationship_body</definition>
+        <argsstring>()</argsstring>
+        <name>relationship_body</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::relationship_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1931" column="30" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9105" bodyend="9107"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a441e3c4afc6e6cf5542a68bce02aa2ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context" kindref="compound">Feature_directionContext</ref> *</type>
+        <definition>KerMLParser::Feature_directionContext * KerMLParser::RedefinitionContext::feature_direction</definition>
+        <argsstring>()</argsstring>
+        <name>feature_direction</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::feature_direction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1932" column="30" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9109" bodyend="9111"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1acc5d375134c70d8826feff7490b4f5b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::RedefinitionContext::KEYWORD_SPECILIZATION</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_SPECILIZATION</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::KEYWORD_SPECILIZATION</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1933" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9113" bodyend="9115"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1ac73932bcdd3a6f873264fbabfd85c20e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d18/class_ker_m_l_parser_1_1_identification_context" kindref="compound">IdentificationContext</ref> *</type>
+        <definition>KerMLParser::IdentificationContext * KerMLParser::RedefinitionContext::identification</definition>
+        <argsstring>()</argsstring>
+        <name>identification</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::identification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1934" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9117" bodyend="9119"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a25d976c49dd3b79cf46a1170dd9d27bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::RedefinitionContext::KEYWORD_REDEFINITION</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_REDEFINITION</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::KEYWORD_REDEFINITION</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1935" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9121" bodyend="9123"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a6d6f9ca5fabb9492098f7c3e6cac9add" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/dd3/class_ker_m_l_parser_1_1_specific__type_context" kindref="compound">Specific_typeContext</ref> *</type>
+        <definition>KerMLParser::Specific_typeContext * KerMLParser::RedefinitionContext::specific_type</definition>
+        <argsstring>()</argsstring>
+        <name>specific_type</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::specific_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1936" column="26" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9125" bodyend="9127"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1ae0ffb350e94d99b658decb748ee5caf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/df2/class_ker_m_l_parser_1_1_typed__by_context" kindref="compound">Typed_byContext</ref> *</type>
+        <definition>KerMLParser::Typed_byContext * KerMLParser::RedefinitionContext::typed_by</definition>
+        <argsstring>()</argsstring>
+        <name>typed_by</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::typed_by</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1937" column="21" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9129" bodyend="9131"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a5cf243e2049700bf1e35d37fa9e7c7c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/d38/class_ker_m_l_parser_1_1_multiplicity__part_context" kindref="compound">Multiplicity_partContext</ref> *</type>
+        <definition>KerMLParser::Multiplicity_partContext * KerMLParser::RedefinitionContext::multiplicity_part</definition>
+        <argsstring>()</argsstring>
+        <name>multiplicity_part</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::multiplicity_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1938" column="30" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9133" bodyend="9135"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1aef53a28189745aeb24ed9e302385d5c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/dae/class_ker_m_l_parser_1_1_subsets_context" kindref="compound">SubsetsContext</ref> *</type>
+        <definition>KerMLParser::SubsetsContext * KerMLParser::RedefinitionContext::subsets</definition>
+        <argsstring>()</argsstring>
+        <name>subsets</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::subsets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1939" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9137" bodyend="9139"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a9e1c13df7acc456484e9b1c64504d69d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context" kindref="compound">Feature_assignmentContext</ref> *</type>
+        <definition>KerMLParser::Feature_assignmentContext * KerMLParser::RedefinitionContext::feature_assignment</definition>
+        <argsstring>()</argsstring>
+        <name>feature_assignment</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::feature_assignment</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1940" column="31" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9141" bodyend="9143"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1abb36b540514115510ad69b2878a812de" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::RedefinitionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1942" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9150" bodyend="9154"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1aebf00faa4cd06b05fb16753ef864a543" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::RedefinitionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::RedefinitionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1943" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="9156" bodyend="9160"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::RedefinitionContext</label>
+        <link refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::RedefinitionContext</label>
+        <link refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="1925" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="1925" bodyend="1945"/>
+    <listofallmembers>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1abb36b540514115510ad69b2878a812de" prot="public" virt="virtual"><scope>KerMLParser::RedefinitionContext</scope><name>enterRule</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1aebf00faa4cd06b05fb16753ef864a543" prot="public" virt="virtual"><scope>KerMLParser::RedefinitionContext</scope><name>exitRule</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a9e1c13df7acc456484e9b1c64504d69d" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionContext</scope><name>feature_assignment</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a441e3c4afc6e6cf5542a68bce02aa2ae" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionContext</scope><name>feature_direction</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a16f41ccdf0abf7a36ef7fa598e0f04a9" prot="public" virt="virtual"><scope>KerMLParser::RedefinitionContext</scope><name>getRuleIndex</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1ac73932bcdd3a6f873264fbabfd85c20e" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionContext</scope><name>identification</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a25d976c49dd3b79cf46a1170dd9d27bb" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionContext</scope><name>KEYWORD_REDEFINITION</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1acc5d375134c70d8826feff7490b4f5b6" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionContext</scope><name>KEYWORD_SPECILIZATION</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a5cf243e2049700bf1e35d37fa9e7c7c7" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionContext</scope><name>multiplicity_part</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1afcd24003e67a1427673f0992781a1326" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionContext</scope><name>qualified_name</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1aa5106eb840dcc77d1d31bfa7f49d7b04" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionContext</scope><name>REDEFINES</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a8e13c6ea5e50438b9395d4f9c820d220" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionContext</scope><name>RedefinitionContext</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a2e0e2d0783b8616653017829327a5b99" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionContext</scope><name>relationship_body</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1a6d6f9ca5fabb9492098f7c3e6cac9add" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionContext</scope><name>specific_type</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1aef53a28189745aeb24ed9e302385d5c3" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionContext</scope><name>subsets</name></member>
+      <member refid="df/d04/class_ker_m_l_parser_1_1_redefinition_context_1ae0ffb350e94d99b658decb748ee5caf5" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionContext</scope><name>typed_by</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,14 @@
+# class `KerML::Entities::DataType` {#d0/da3/class_ker_m_l_1_1_entities_1_1_data_type}
+
+```
+class KerML::Entities::DataType
+  : public KerML::Entities::Classifier
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+
+## Members
+

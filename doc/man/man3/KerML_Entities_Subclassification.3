@@ -1,0 +1,167 @@
+.TH "KerML::Entities::Subclassification" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KerML::Entities::Subclassification
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBKerML::Entities::Specialization\fP\&.
+.SS "Additional Inherited Members"
+
+
+Public Member Functions inherited from \fBKerML::Entities::Relationship\fP
+.in +1c
+.ti -1c
+.RI "\fBRelationship\fP (boost::uuids::uuid elementID=boost::uuids::random_generator()(), std::shared_ptr< \fBElement\fP > \fBowner\fP=nullptr)"
+.br
+.ti -1c
+.RI "\fBRelationship\fP (std::string elementID, std::shared_ptr< \fBElement\fP > \fBowner\fP=nullptr)"
+.br
+.ti -1c
+.RI "virtual \fB~Relationship\fP ()=default"
+.br
+.ti -1c
+.RI "void \fBsetIsImplied\fP (bool \fBisImplied\fP)"
+.br
+.ti -1c
+.RI "bool \fBisImplied\fP ()"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBNamespace\fP > \fBlibraryNamespace\fP () const override"
+.br
+.ti -1c
+.RI "void \fBappendElementToOwnedRelatedElement\fP (std::shared_ptr< \fBElement\fP > element)"
+.br
+.ti -1c
+.RI "void \fBsetOwnedRelatedElements\fP (std::vector< std::shared_ptr< \fBElement\fP > > elements)"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBElement\fP > > \fBownedRelatedElement\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetOwningRelatedElement\fP (std::shared_ptr< \fBElement\fP > \fBowningRelatedElement\fP)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBElement\fP > \fBowningRelatedElement\fP () const"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBKerML::Entities::Element\fP
+.in +1c
+.ti -1c
+.RI "\fBElement\fP (boost::uuids::uuid elementID=boost::uuids::random_generator()(), std::shared_ptr< \fBElement\fP > \fBowner\fP=nullptr)"
+.br
+.ti -1c
+.RI "\fBElement\fP (std::string elementID, std::shared_ptr< \fBElement\fP > \fBowner\fP=nullptr)"
+.br
+.ti -1c
+.RI "virtual \fB~Element\fP ()=default"
+.br
+.ti -1c
+.RI "std::string \fBelementId\fP () const"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBelementIdAsUUID\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetAliasIds\fP (std::vector< std::string > \fBaliasIds\fP)"
+.br
+.ti -1c
+.RI "void \fBappendAliasId\fP (std::string &aliasId)"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBaliasIds\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetDeclaredShortName\fP (std::string &\fBdeclaredShortName\fP)"
+.br
+.ti -1c
+.RI "std::string \fBdeclaredShortName\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetDeclaredName\fP (std::string &\fBdeclaredName\fP)"
+.br
+.ti -1c
+.RI "std::string \fBdeclaredName\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetImpliedIncluded\fP (bool &\fBisImpliedIncluded\fP)"
+.br
+.ti -1c
+.RI "bool \fBisImpliedIncluded\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBescapedName\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBeffectiveShortName\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBeffectiveName\fP () const"
+.br
+.ti -1c
+.RI "\fBElement\fP & \fBoperator=\fP (const \fBElement\fP &other)=delete"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator==\fP (const \fBElement\fP &other)"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator<\fP (const \fBElement\fP &other)"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator>\fP (const \fBElement\fP &other)"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator<=\fP (const \fBElement\fP &other)"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator>=\fP (const \fBElement\fP &other)"
+.br
+.in -1c
+
+Protected Member Functions inherited from \fBKerML::Entities::Relationship\fP
+.in +1c
+.ti -1c
+.RI "void \fBsetRelatedElements\fP (std::vector< std::shared_ptr< \fBElement\fP > > \fBrelatedElements\fP)"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBElement\fP > > \fBrelatedElements\fP () const"
+.br
+.ti -1c
+.RI "void \fBappendElementToRelatedElements\fP (std::shared_ptr< \fBElement\fP > element)"
+.br
+.in -1c
+
+Protected Member Functions inherited from \fBKerML::Entities::Element\fP
+.in +1c
+.ti -1c
+.RI "std::shared_ptr< \fBElement\fP > \fBowner\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetOwner\fP (std::shared_ptr< \fBElement\fP > \fBowner\fP)"
+.br
+.ti -1c
+.RI "void \fBsetOwnedElements\fP (std::vector< std::shared_ptr< \fBElement\fP > > \fBownedElements\fP)"
+.br
+.ti -1c
+.RI "void \fBappendOwnedElement\fP (std::shared_ptr< \fBElement\fP > ownedElement)"
+.br
+.ti -1c
+.RI "void \fBappendOwnedElements\fP (std::vector< std::shared_ptr< \fBElement\fP > > \fBownedElements\fP)"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBElement\fP > > \fBownedElements\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetOwningNamespace\fP (std::shared_ptr< \fBNamespace\fP > \fBowningNamespace\fP)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBNamespace\fP > \fBowningNamespace\fP ()"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

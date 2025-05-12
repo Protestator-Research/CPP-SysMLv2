@@ -1,0 +1,53 @@
+# class `KerML::Entities::Dependency` {#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency}
+
+```
+class KerML::Entities::Dependency
+  : public KerML::Entities::Relationship
+```  
+
+Moritz Herzog [herzogm@rptu.de](mailto:herzogm@rptu.de)
+
+1.0 Beta 2
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public  explicit `[`Dependency`](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a4e5d2b2e49c2b6da2db0742209f9344d)`(boost::uuids::uuid elementID,std::shared_ptr< `[`Element`](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > owner)` | Constructor of the [Dependency](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency). This constructor does allow for an empty elementID. 
+`public  explicit `[`Dependency`](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1afb9989e06829bc5a9509408cc74dcec6)`(std::string elementID,std::shared_ptr< `[`Element`](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > owner)` | Constructor of the [Element](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). This constructor does not allow for an empty elementID. 
+`public virtual  `[`~Dependency`](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a1a076462b41ef016d7b74e7d87f37085)`() = default` | Destructor
+`public void `[`setClient`](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1ac696e813fb1db0261420306d58450176)`(std::shared_ptr< `[`Element`](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > client)` | 
+`public std::shared_ptr< `[`Element`](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > `[`client`](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a92034d1e5f2e65c365f26467fb3bd234)`() const` | 
+`public void `[`setSupplier`](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a4094f6bb60d53b1edbd8e525298c81ae)`(std::shared_ptr< `[`Element`](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > supplier)` | 
+`public std::shared_ptr< `[`Element`](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > `[`supplier`](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a3e38e481b0f0811e687c27fc5998d16d)`() const` | 
+
+## Members
+
+#### `public  explicit `[`Dependency`](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a4e5d2b2e49c2b6da2db0742209f9344d)`(boost::uuids::uuid elementID,std::shared_ptr< `[`Element`](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > owner)` {#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a4e5d2b2e49c2b6da2db0742209f9344d}
+
+Constructor of the [Dependency](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency). This constructor does allow for an empty elementID. 
+#### Parameters
+* `elementID` The [Element](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) ID of the [Element](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). If no UUID is provided, a random UUID is provided by the Software. 
+
+* `owner` The [Element](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) that owns this element. If no [Element](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) is provided the owning element is automatically set to null.
+
+#### `public  explicit `[`Dependency`](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1afb9989e06829bc5a9509408cc74dcec6)`(std::string elementID,std::shared_ptr< `[`Element`](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > owner)` {#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1afb9989e06829bc5a9509408cc74dcec6}
+
+Constructor of the [Element](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element). This constructor does not allow for an empty elementID. 
+#### Parameters
+* `elementID` The [Element](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) ID of the [Element](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) as string. 
+
+* `owner` The [Element](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) that owns this element. If no [Element](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element) is provided the owning element is automatically set to null.
+
+#### `public virtual  `[`~Dependency`](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a1a076462b41ef016d7b74e7d87f37085)`() = default` {#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a1a076462b41ef016d7b74e7d87f37085}
+
+Destructor
+
+#### `public void `[`setClient`](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1ac696e813fb1db0261420306d58450176)`(std::shared_ptr< `[`Element`](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > client)` {#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1ac696e813fb1db0261420306d58450176}
+
+#### `public std::shared_ptr< `[`Element`](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > `[`client`](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a92034d1e5f2e65c365f26467fb3bd234)`() const` {#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a92034d1e5f2e65c365f26467fb3bd234}
+
+#### `public void `[`setSupplier`](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a4094f6bb60d53b1edbd8e525298c81ae)`(std::shared_ptr< `[`Element`](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > supplier)` {#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a4094f6bb60d53b1edbd8e525298c81ae}
+
+#### `public std::shared_ptr< `[`Element`](api.md KerML::Entities::Element#d3/dc7/class_ker_m_l_1_1_entities_1_1_element)` > `[`supplier`](#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a3e38e481b0f0811e687c27fc5998d16d)`() const` {#d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency_1a3e38e481b0f0811e687c27fc5998d16d}
+

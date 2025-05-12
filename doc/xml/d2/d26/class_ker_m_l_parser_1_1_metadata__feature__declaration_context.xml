@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Metadata_feature_declarationContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a40815e5ba7a19e3b45fb8e2728626ff1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Metadata_feature_declarationContext::Metadata_feature_declarationContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Metadata_feature_declarationContext</name>
+        <qualifiedname>KerMLParser::Metadata_feature_declarationContext::Metadata_feature_declarationContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4224" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="20132" bodyend="20134"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a4863b12b8c16cd5f28aff47dd040662d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Metadata_feature_declarationContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Metadata_feature_declarationContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4225" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="20157" bodyend="20159"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1ae3d8f76110bc169c01b83ffacb7425f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/d7c/class_ker_m_l_parser_1_1_owned__feature__typing_context" kindref="compound">Owned_feature_typingContext</ref> *</type>
+        <definition>KerMLParser::Owned_feature_typingContext * KerMLParser::Metadata_feature_declarationContext::owned_feature_typing</definition>
+        <argsstring>()</argsstring>
+        <name>owned_feature_typing</name>
+        <qualifiedname>KerMLParser::Metadata_feature_declarationContext::owned_feature_typing</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4226" column="33" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="20136" bodyend="20138"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a10b1e7fe3088af1c021f48082352c61b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d18/class_ker_m_l_parser_1_1_identification_context" kindref="compound">IdentificationContext</ref> *</type>
+        <definition>KerMLParser::IdentificationContext * KerMLParser::Metadata_feature_declarationContext::identification</definition>
+        <argsstring>()</argsstring>
+        <name>identification</name>
+        <qualifiedname>KerMLParser::Metadata_feature_declarationContext::identification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4227" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="20140" bodyend="20142"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a37ff1076666faaa33eb76b71a8346551" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Metadata_feature_declarationContext::SYMBOL_TYPED_BY</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_TYPED_BY</name>
+        <qualifiedname>KerMLParser::Metadata_feature_declarationContext::SYMBOL_TYPED_BY</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4228" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="20144" bodyend="20146"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a4fad158cde3386634b82ac7a41ac9c45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Metadata_feature_declarationContext::KEYWORD_TYPED</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_TYPED</name>
+        <qualifiedname>KerMLParser::Metadata_feature_declarationContext::KEYWORD_TYPED</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4229" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="20148" bodyend="20150"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a3c081d62d889a673b6baa82f42c17808" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Metadata_feature_declarationContext::KEYWORD_BY</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_BY</name>
+        <qualifiedname>KerMLParser::Metadata_feature_declarationContext::KEYWORD_BY</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4230" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="20152" bodyend="20154"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a603ef51befae4dda37f6ac82a0f114b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Metadata_feature_declarationContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Metadata_feature_declarationContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4232" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="20161" bodyend="20165"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a42bcb25fb9dd93b21f3f694559fc96c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Metadata_feature_declarationContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Metadata_feature_declarationContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4233" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="20167" bodyend="20171"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Metadata_feature_declarationContext</label>
+        <link refid="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Metadata_feature_declarationContext</label>
+        <link refid="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="4222" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="4222" bodyend="4235"/>
+    <listofallmembers>
+      <member refid="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a603ef51befae4dda37f6ac82a0f114b1" prot="public" virt="virtual"><scope>KerMLParser::Metadata_feature_declarationContext</scope><name>enterRule</name></member>
+      <member refid="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a42bcb25fb9dd93b21f3f694559fc96c5" prot="public" virt="virtual"><scope>KerMLParser::Metadata_feature_declarationContext</scope><name>exitRule</name></member>
+      <member refid="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a4863b12b8c16cd5f28aff47dd040662d" prot="public" virt="virtual"><scope>KerMLParser::Metadata_feature_declarationContext</scope><name>getRuleIndex</name></member>
+      <member refid="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a10b1e7fe3088af1c021f48082352c61b" prot="public" virt="non-virtual"><scope>KerMLParser::Metadata_feature_declarationContext</scope><name>identification</name></member>
+      <member refid="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a3c081d62d889a673b6baa82f42c17808" prot="public" virt="non-virtual"><scope>KerMLParser::Metadata_feature_declarationContext</scope><name>KEYWORD_BY</name></member>
+      <member refid="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a4fad158cde3386634b82ac7a41ac9c45" prot="public" virt="non-virtual"><scope>KerMLParser::Metadata_feature_declarationContext</scope><name>KEYWORD_TYPED</name></member>
+      <member refid="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a40815e5ba7a19e3b45fb8e2728626ff1" prot="public" virt="non-virtual"><scope>KerMLParser::Metadata_feature_declarationContext</scope><name>Metadata_feature_declarationContext</name></member>
+      <member refid="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1ae3d8f76110bc169c01b83ffacb7425f7" prot="public" virt="non-virtual"><scope>KerMLParser::Metadata_feature_declarationContext</scope><name>owned_feature_typing</name></member>
+      <member refid="d2/d26/class_ker_m_l_parser_1_1_metadata__feature__declaration_context_1a37ff1076666faaa33eb76b71a8346551" prot="public" virt="non-virtual"><scope>KerMLParser::Metadata_feature_declarationContext</scope><name>SYMBOL_TYPED_BY</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

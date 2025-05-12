@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/dfd/_i_query_service_8h" kind="file" language="C++">
+    <compoundname>IQueryService.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">boost/uuid/uuid.hpp</includes>
+    <includes local="no">string</includes>
+    <includes local="no">memory</includes>
+    <includes refid="d8/d0c/sysmlv2service__global_8h" local="yes">../sysmlv2service_global.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>services/src/interfaces/IQueryService.h</label>
+        <link refid="d1/dfd/_i_query_service_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>../sysmlv2service_global.h</label>
+        <link refid="d8/d0c/sysmlv2service__global_8h_source"/>
+      </node>
+      <node id="3">
+        <label>boost/uuid/uuid.hpp</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service" prot="public">SysMLv2::API::IQueryService</innerclass>
+    <innernamespace refid="d7/dba/namespace_sys_m_lv2">SysMLv2</innernamespace>
+    <innernamespace refid="d4/d33/namespace_sys_m_lv2_1_1_entities">SysMLv2::Entities</innernamespace>
+    <innernamespace refid="da/dd6/namespace_sys_m_lv2_1_1_a_p_i">SysMLv2::API</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Moritz<sp/>Herzog<sp/>on<sp/>10.03.25.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CPP_SYSMLV2_LIB_IQUERYSERVICE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CPP_SYSMLV2_LIB_IQUERYSERVICE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/uuid/uuid.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../sysmlv2service_global.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="d4/d33/namespace_sys_m_lv2_1_1_entities" kindref="compound">SysMLv2::Entities</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query" kindref="compound">Query</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">Project</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">Data</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Constraint;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">Commit</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="da/dd6/namespace_sys_m_lv2_1_1_a_p_i" kindref="compound">SysMLv2::API</ref><sp/>{</highlight></codeline>
+<codeline lineno="26" refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">SYSMLV2SERVICE_EXPORT<sp/><ref refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service" kindref="compound">IQueryService</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33" refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a1389f9981436289d3112a8ea08335ae7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::Query&gt;&gt;<sp/><ref refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a1389f9981436289d3112a8ea08335ae7" kindref="member">getQueries</ref>(std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1af88f152027f34f678815f7f3d8db5673" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Query&gt;<sp/><ref refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1af88f152027f34f678815f7f3d8db5673" kindref="member">getQueryById</ref>(std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project,<sp/>boost::uuids::uuid<sp/>queryId)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a8673a987cd74faa0e6578cca19ef806e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Query&gt;<sp/><ref refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a8673a987cd74faa0e6578cca19ef806e" kindref="member">createQuery</ref>(std::string<sp/>name,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project,<sp/>std::vector&lt;std::string&gt;<sp/>select,<sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::Data&gt;&gt;<sp/>scope,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Constraint&gt;<sp/>where,<sp/>std::vector&lt;std::string&gt;<sp/>orderBy)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a93e8f8174d161a84a7d94d4e915b1b65" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Query&gt;<sp/><ref refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a93e8f8174d161a84a7d94d4e915b1b65" kindref="member">updateQuery</ref>(std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Query&gt;<sp/>updatedQuery)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a0a0a3104baa72e7d1ff79a0172e3cbc7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;SysMLv2::Entities::Query&gt;<sp/><ref refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a0a0a3104baa72e7d1ff79a0172e3cbc7" kindref="member">deleteQuery</ref>(std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project,<sp/>boost::uuids::uuid<sp/>queryId)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1ae52d2e1b71a88326fe0eda15efe61578" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::Data&gt;&gt;<sp/><ref refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1ae52d2e1b71a88326fe0eda15efe61578" kindref="member">executeQueryById</ref>(boost::uuids::uuid<sp/>queryId,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/>commit)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1ac26c931299eaa8a0dd0a49240741b716" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::Data&gt;&gt;<sp/><ref refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1ac26c931299eaa8a0dd0a49240741b716" kindref="member">executeQuery</ref>(std::shared_ptr&lt;SysMLv2::Entities::Query&gt;<sp/>query,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/>commit)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//CPP_SYSMLV2_LIB_IQUERYSERVICE_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="services/src/interfaces/IQueryService.h"/>
+  </compounddef>
+</doxygen>

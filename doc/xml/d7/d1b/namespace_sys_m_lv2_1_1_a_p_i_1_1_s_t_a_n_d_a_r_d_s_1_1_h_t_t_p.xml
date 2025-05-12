@@ -1,0 +1,483 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p" kind="namespace" language="C++">
+    <compoundname>SysMLv2::API::STANDARDS::HTTP</compoundname>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5" prot="public" static="no" strong="no">
+        <type></type>
+        <name>HTTP_RETURN_CODES</name>
+        <qualifiedname>SysMLv2::API::STANDARDS::HTTP::HTTP_RETURN_CODES</qualifiedname>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a81820c7a807e3ae2063680c1f27717b1" prot="public">
+          <name>HTTP_CONTINUE</name>
+          <initializer>= 100</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a3bf7cdf6b8aebd913c0c1d2990916f4b" prot="public">
+          <name>HTTP_PROTOCOL_SWITCH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5ac1ffdbecf9dcf517599a0529da38c85d" prot="public">
+          <name>HTTP_PROCESSING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a460bd2ec03ef2e0cab6731de30377554" prot="public">
+          <name>HTTP_EARLY_HINTS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a578f2d0f6594653bd7d48f4170a69e65" prot="public">
+          <name>HTTP_OK</name>
+          <initializer>= 200</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a7dd9c2c33fc63c2495b07c668ffff0d8" prot="public">
+          <name>HTTP_CREATED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a0c1189afd3c7a6463120660335ad566d" prot="public">
+          <name>HTTP_ACCEPTED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5affcc8e5a2bd8a5084a4aa1790f68ab71" prot="public">
+          <name>HTTP_NON_AUTHORITATIVE_INFORMATION</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5ad745bdb69fcacda2cecd70d6a0c21164" prot="public">
+          <name>HTTP_NO_CONTENT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a77411316bc5add055712d0ee4454d067" prot="public">
+          <name>HTTP_RESET_CONTENT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5aaadcd207e3635109d1d959bc1c925f69" prot="public">
+          <name>HTTP_PARTIAL_CONTENT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a06d9014e7af15404e9b15038a6d6865b" prot="public">
+          <name>HTTP_MULTI_STATUS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a914b829be770df3a81172cd0f125344c" prot="public">
+          <name>HTTP_ALREADY_REPORTED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a7b91a4f7c9c0c393fbf6f48439725c0c" prot="public">
+          <name>HTTP_IM_USED</name>
+          <initializer>= 226</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5ae77ffbaaa4959eb2bb67a5899e264e9b" prot="public">
+          <name>HTTP_MULTIPLE_CHOICES</name>
+          <initializer>= 300</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a413836ab400c61b103816c5074f861c7" prot="public">
+          <name>HTTP_MOVED_PERMANENTLY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a8fd054c8d92dc38cc9a67cc216a02876" prot="public">
+          <name>HTTP_FOUND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a66561fadd820cbf425746592568d0040" prot="public">
+          <name>HTTP_SEE_OTHER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5ae3278415abc267e26b4c01a685b61787" prot="public">
+          <name>HTTP_NOT_MODIFIED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a88daa88465ca00fe6ab2c923c0d6d917" prot="public">
+          <name>HTTP_USE_PROXY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5aedda694edc5b23ff48c8ce0e72ac95a5" prot="public">
+          <name>HTTP_SWITCH_PROXY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a6f66538b8c7463f35bd8efcf429e07f5" prot="public">
+          <name>HTTP_TEMPORARY_REDIRECT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a7a2df9ac4cda5d3646ea061c58ced8da" prot="public">
+          <name>HTTP_PERMANENT_REDIRECT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a5028eecdef19d485002807baec193051" prot="public">
+          <name>HTTP_BAD_REQUEST</name>
+          <initializer>= 400</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a38252bd23ae3289d72878d7cf1f141cd" prot="public">
+          <name>HTTP_UNAUTHORIZED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5ace01239d02343fc15440b72aa53303a9" prot="public">
+          <name>HTTP_PAYMENT_REQUIRED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5aed336b43f052cdd178ec964c27bb9abc" prot="public">
+          <name>HTTP_FORBIDDEN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a3bcae37a8a99c18689db96177e32267d" prot="public">
+          <name>HTTP_NOT_FOUND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5afa44cb1baf873417a383e1568d72935c" prot="public">
+          <name>HTTP_METHOD_NOT_ALLOWED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a1b6a7a26381c061ab25740e85fe1d23f" prot="public">
+          <name>HTTP_NOT_ACCEPTABLE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5afd87bfd389dd247ef655f34fed64b62b" prot="public">
+          <name>HTTP_PROXY_AUTHENTICATION_REQUIRED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a641aeff88c2b382d82fbef6122ca23e5" prot="public">
+          <name>HTTP_REQUEST_TIMEOUT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5aa116e923566dd7669fbbb76cbe11888f" prot="public">
+          <name>HTTP_CONFLICT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a19efc97ded759fe70c0e4bd988ce0485" prot="public">
+          <name>HTTP_GONE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5af13dd0a7617d6578f6e2f485767e9635" prot="public">
+          <name>HTTP_LENGTH_REQUIRED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a16b4730c5ebbb222df5268c4a0133016" prot="public">
+          <name>HTTP_PRECONDITION_FIELD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a60903ea96953a6b398ef77df83cefede" prot="public">
+          <name>HTTP_PAYLOAD_TOO_LARGE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5ac4ccdc4efd96bd0bf37e7c4e31c702b0" prot="public">
+          <name>HTTP_URI_TOO_LONG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5ab143f84d4757e4a5046c299590edb3f7" prot="public">
+          <name>HTTP_UNSUPPORTED_MEDIA_TYPE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5ae9fbc136426307d6a866a0b14596ad09" prot="public">
+          <name>HTTP_RANGE_NOT_SATISFIABLE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5af8521de88a6c870c9aa5adf7f7c652d1" prot="public">
+          <name>HTTP_EXPECTATION_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5aed2ec67ad327e8c8906ef639c2c0b27d" prot="public">
+          <name>HTTP_MISDIRECTED_REQUEST</name>
+          <initializer>= 421</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5ab314f208c0d578599082229e63ae6396" prot="public">
+          <name>HTTP_UNPROCESSABLE_ENTITY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a2c3413a29f33fb0a904e81bd29c2d2a5" prot="public">
+          <name>HTTP_LOCKED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5ac5df483bb46ad48657e66785ed24cbef" prot="public">
+          <name>HTTP_FAILED_DEPENDENCY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a765f76b7a0021935954c8ce9235fb994" prot="public">
+          <name>HTTP_TOO_EARLY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5aec4e32b140bbce2faa5d6789952c2ab5" prot="public">
+          <name>HTTP_UPGRADE_REQUIRED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5ac63dd55c98f6c7ca1539c76dd8a05f62" prot="public">
+          <name>HTTP_PRECONDITION_REQUIRED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a215ff5fc8762408b14341818bcdcca60" prot="public">
+          <name>HTTP_TOO_MANY_REQUESTS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a35f03f52898140e321db1af9c504d4ce" prot="public">
+          <name>HTTP_REQUEST_HEADER_FIELDS</name>
+          <initializer>= 431</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a7832c730c3598b82d0322cf71f711966" prot="public">
+          <name>HTTP_UNAVAILABLE_FOR_LEGAL_REASONS</name>
+          <initializer>= 451</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5ac50614b8957af608fab6751bb5b28076" prot="public">
+          <name>HTTP_INTERNAL_SERVER_ERROR</name>
+          <initializer>= 500</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a8032b27b158bf7b4d29e543fcfe9e353" prot="public">
+          <name>HTTP_NOT_IMPLEMENTED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a63778c40ad36d0678205545dab6ed4b2" prot="public">
+          <name>HTTP_BAD_GATEWAY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5abcd429b3048722f40e8a9fcd7e866907" prot="public">
+          <name>HTTP_SERVICE_UNAVAILABLE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5aa57abd4665e87f88acbebd0030f2d8b3" prot="public">
+          <name>HTTP_GATEWAY_TIMEOUT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5ad194f98d9691cbd3215436def5cc7a5a" prot="public">
+          <name>HTTP_VERSION_NOT_SUPPORTED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a6f827ade743eb320e58970fa953281fa" prot="public">
+          <name>HTTP_VARIANT_ALSO_NEGOTIATES</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a8ef90d1f86e9758191b6fb4df6cf8a10" prot="public">
+          <name>HTTP_INSUFFCIENT_STORAGE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5af376e25b456e38b86fababb9d4536b69" prot="public">
+          <name>HTTP_LOOP_DETECTED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5aed5ff255b658d9e249a1152845e0e664" prot="public">
+          <name>HTTP_BANDWIDTH_LIMIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5aa7224cbfacd057aff217e4e4e8d96038" prot="public">
+          <name>HTTP_NOT_EXTENDED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a35a4195e60c0a9fc9adbc4c06338956a" prot="public">
+          <name>HTTP_NETWORK_AUTHENTICATION_REQUIRED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d7/d1b/namespace_sys_m_lv2_1_1_a_p_i_1_1_s_t_a_n_d_a_r_d_s_1_1_h_t_t_p_1ae631c99f25badbcff2dffab67753d4e5a253a72eb780bcc0172947d88d9871be9" prot="public">
+          <name>HTTP_PROPRIATARY</name>
+          <initializer>= 900</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/HttpReturnCodes.h" line="17" column="5" bodyfile="services/src/online/HttpReturnCodes.h" bodystart="17" bodyend="93"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="services/src/online/HttpReturnCodes.h" line="8" column="1"/>
+  </compounddef>
+</doxygen>

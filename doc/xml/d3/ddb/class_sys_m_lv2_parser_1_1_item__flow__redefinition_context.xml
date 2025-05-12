@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d3/ddb/class_sys_m_lv2_parser_1_1_item__flow__redefinition_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Item_flow_redefinitionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/ddb/class_sys_m_lv2_parser_1_1_item__flow__redefinition_context_1a4456e4b53f788058a06a5bab516bd290" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Item_flow_redefinitionContext::Item_flow_redefinitionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Item_flow_redefinitionContext</name>
+        <qualifiedname>SysMLv2Parser::Item_flow_redefinitionContext::Item_flow_redefinitionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8816" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43230" bodyend="43232"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/ddb/class_sys_m_lv2_parser_1_1_item__flow__redefinition_context_1a126c9b26e7140428dbd05a7f471f559b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Item_flow_redefinitionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Item_flow_redefinitionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8817" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43239" bodyend="43241"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/ddb/class_sys_m_lv2_parser_1_1_item__flow__redefinition_context_1a576ec23ec464097959b0a7f55c6eed0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dc1/class_sys_m_lv2_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>SysMLv2Parser::Qualified_nameContext * SysMLv2Parser::Item_flow_redefinitionContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>SysMLv2Parser::Item_flow_redefinitionContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8818" column="27" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43234" bodyend="43236"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/ddb/class_sys_m_lv2_parser_1_1_item__flow__redefinition_context_1a6c0f68a94f27e767dddb08bafc4a49d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Item_flow_redefinitionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Item_flow_redefinitionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8820" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43243" bodyend="43247"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/ddb/class_sys_m_lv2_parser_1_1_item__flow__redefinition_context_1a4706fdfb76630e51e5e36192275ed219" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Item_flow_redefinitionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Item_flow_redefinitionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8821" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43249" bodyend="43253"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Item_flow_redefinitionContext</label>
+        <link refid="d3/ddb/class_sys_m_lv2_parser_1_1_item__flow__redefinition_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Item_flow_redefinitionContext</label>
+        <link refid="d3/ddb/class_sys_m_lv2_parser_1_1_item__flow__redefinition_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8814" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="8814" bodyend="8823"/>
+    <listofallmembers>
+      <member refid="d3/ddb/class_sys_m_lv2_parser_1_1_item__flow__redefinition_context_1a6c0f68a94f27e767dddb08bafc4a49d0" prot="public" virt="virtual"><scope>SysMLv2Parser::Item_flow_redefinitionContext</scope><name>enterRule</name></member>
+      <member refid="d3/ddb/class_sys_m_lv2_parser_1_1_item__flow__redefinition_context_1a4706fdfb76630e51e5e36192275ed219" prot="public" virt="virtual"><scope>SysMLv2Parser::Item_flow_redefinitionContext</scope><name>exitRule</name></member>
+      <member refid="d3/ddb/class_sys_m_lv2_parser_1_1_item__flow__redefinition_context_1a126c9b26e7140428dbd05a7f471f559b" prot="public" virt="virtual"><scope>SysMLv2Parser::Item_flow_redefinitionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d3/ddb/class_sys_m_lv2_parser_1_1_item__flow__redefinition_context_1a4456e4b53f788058a06a5bab516bd290" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Item_flow_redefinitionContext</scope><name>Item_flow_redefinitionContext</name></member>
+      <member refid="d3/ddb/class_sys_m_lv2_parser_1_1_item__flow__redefinition_context_1a576ec23ec464097959b0a7f55c6eed0f" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Item_flow_redefinitionContext</scope><name>qualified_name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

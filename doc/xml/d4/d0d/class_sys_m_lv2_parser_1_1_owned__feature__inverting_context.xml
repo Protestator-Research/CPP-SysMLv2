@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Owned_feature_invertingContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context_1a448c49a8816cd72a04bc9d3fe12ec0c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Owned_feature_invertingContext::Owned_feature_invertingContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Owned_feature_invertingContext</name>
+        <qualifiedname>SysMLv2Parser::Owned_feature_invertingContext::Owned_feature_invertingContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6927" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="34205" bodyend="34207"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context_1a02ba0fbf196a68451151ac4eedd463cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Owned_feature_invertingContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Owned_feature_invertingContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6928" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="34218" bodyend="34220"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context_1a776074048faf58a97b235ee36f28866b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dc1/class_sys_m_lv2_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>SysMLv2Parser::Qualified_nameContext * SysMLv2Parser::Owned_feature_invertingContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>SysMLv2Parser::Owned_feature_invertingContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6929" column="27" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="34209" bodyend="34211"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context_1a93fe0668594f698adb151fd39aad8842" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context" kindref="compound">Owned_feature_chainContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_feature_chainContext * SysMLv2Parser::Owned_feature_invertingContext::owned_feature_chain</definition>
+        <argsstring>()</argsstring>
+        <name>owned_feature_chain</name>
+        <qualifiedname>SysMLv2Parser::Owned_feature_invertingContext::owned_feature_chain</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6930" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="34213" bodyend="34215"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context_1ad9fe56160913cc0ff488afeb4fd9f3ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_feature_invertingContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_feature_invertingContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6932" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="34222" bodyend="34226"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context_1af43dccf366e87679962e0e9fee2a57a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_feature_invertingContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_feature_invertingContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6933" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="34228" bodyend="34232"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_feature_invertingContext</label>
+        <link refid="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_feature_invertingContext</label>
+        <link refid="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6925" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="6925" bodyend="6935"/>
+    <listofallmembers>
+      <member refid="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context_1ad9fe56160913cc0ff488afeb4fd9f3ed" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_feature_invertingContext</scope><name>enterRule</name></member>
+      <member refid="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context_1af43dccf366e87679962e0e9fee2a57a4" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_feature_invertingContext</scope><name>exitRule</name></member>
+      <member refid="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context_1a02ba0fbf196a68451151ac4eedd463cb" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_feature_invertingContext</scope><name>getRuleIndex</name></member>
+      <member refid="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context_1a93fe0668594f698adb151fd39aad8842" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_feature_invertingContext</scope><name>owned_feature_chain</name></member>
+      <member refid="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context_1a448c49a8816cd72a04bc9d3fe12ec0c7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_feature_invertingContext</scope><name>Owned_feature_invertingContext</name></member>
+      <member refid="d4/d0d/class_sys_m_lv2_parser_1_1_owned__feature__inverting_context_1a776074048faf58a97b235ee36f28866b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_feature_invertingContext</scope><name>qualified_name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

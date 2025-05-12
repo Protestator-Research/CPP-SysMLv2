@@ -1,0 +1,14 @@
+# class `KerML::Entities::Annotation` {#de/d53/class_ker_m_l_1_1_entities_1_1_annotation}
+
+```
+class KerML::Entities::Annotation
+  : public KerML::Entities::Relationship
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+
+## Members
+

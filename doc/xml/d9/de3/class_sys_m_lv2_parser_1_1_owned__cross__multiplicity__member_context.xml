@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/de3/class_sys_m_lv2_parser_1_1_owned__cross__multiplicity__member_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Owned_cross_multiplicity_memberContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/de3/class_sys_m_lv2_parser_1_1_owned__cross__multiplicity__member_context_1a63e2f8813af36585eb65bf216c27815c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Owned_cross_multiplicity_memberContext::Owned_cross_multiplicity_memberContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Owned_cross_multiplicity_memberContext</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_multiplicity_memberContext::Owned_cross_multiplicity_memberContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2351" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10269" bodyend="10271"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/de3/class_sys_m_lv2_parser_1_1_owned__cross__multiplicity__member_context_1a8f45aa3cb5993993039527f872b24c01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Owned_cross_multiplicity_memberContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_multiplicity_memberContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2352" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10278" bodyend="10280"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/de3/class_sys_m_lv2_parser_1_1_owned__cross__multiplicity__member_context_1a1981bccc3626dff0879ce4f564084991" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/d6e/class_sys_m_lv2_parser_1_1_owned__cross__multiplicity_context" kindref="compound">Owned_cross_multiplicityContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_cross_multiplicityContext * SysMLv2Parser::Owned_cross_multiplicity_memberContext::owned_cross_multiplicity</definition>
+        <argsstring>()</argsstring>
+        <name>owned_cross_multiplicity</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_multiplicity_memberContext::owned_cross_multiplicity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2353" column="37" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10273" bodyend="10275"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/de3/class_sys_m_lv2_parser_1_1_owned__cross__multiplicity__member_context_1aaf5cf7be2fe3b7427d1e1e086bceb766" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_cross_multiplicity_memberContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_multiplicity_memberContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2355" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10282" bodyend="10286"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/de3/class_sys_m_lv2_parser_1_1_owned__cross__multiplicity__member_context_1ab0444c13755075c22645d90ca5981300" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_cross_multiplicity_memberContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_cross_multiplicity_memberContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2356" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10288" bodyend="10292"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_cross_multiplicity_memberContext</label>
+        <link refid="d9/de3/class_sys_m_lv2_parser_1_1_owned__cross__multiplicity__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_cross_multiplicity_memberContext</label>
+        <link refid="d9/de3/class_sys_m_lv2_parser_1_1_owned__cross__multiplicity__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2349" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="2349" bodyend="2358"/>
+    <listofallmembers>
+      <member refid="d9/de3/class_sys_m_lv2_parser_1_1_owned__cross__multiplicity__member_context_1aaf5cf7be2fe3b7427d1e1e086bceb766" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_cross_multiplicity_memberContext</scope><name>enterRule</name></member>
+      <member refid="d9/de3/class_sys_m_lv2_parser_1_1_owned__cross__multiplicity__member_context_1ab0444c13755075c22645d90ca5981300" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_cross_multiplicity_memberContext</scope><name>exitRule</name></member>
+      <member refid="d9/de3/class_sys_m_lv2_parser_1_1_owned__cross__multiplicity__member_context_1a8f45aa3cb5993993039527f872b24c01" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_cross_multiplicity_memberContext</scope><name>getRuleIndex</name></member>
+      <member refid="d9/de3/class_sys_m_lv2_parser_1_1_owned__cross__multiplicity__member_context_1a1981bccc3626dff0879ce4f564084991" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_cross_multiplicity_memberContext</scope><name>owned_cross_multiplicity</name></member>
+      <member refid="d9/de3/class_sys_m_lv2_parser_1_1_owned__cross__multiplicity__member_context_1a63e2f8813af36585eb65bf216c27815c" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_cross_multiplicity_memberContext</scope><name>Owned_cross_multiplicity_memberContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

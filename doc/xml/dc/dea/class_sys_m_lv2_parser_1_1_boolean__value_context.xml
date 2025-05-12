@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Boolean_valueContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context_1a6167d14179995572463433cbe01ae44a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Boolean_valueContext::Boolean_valueContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Boolean_valueContext</name>
+        <qualifiedname>SysMLv2Parser::Boolean_valueContext::Boolean_valueContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8565" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41988" bodyend="41990"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context_1a71e22c9471284918e0d4020ae611012b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Boolean_valueContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Boolean_valueContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8566" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="42001" bodyend="42003"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context_1adb8b6a318b4cdea7078ad761f7403f21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Boolean_valueContext::KEYWORD_TRUE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_TRUE</name>
+        <qualifiedname>SysMLv2Parser::Boolean_valueContext::KEYWORD_TRUE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8567" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41992" bodyend="41994"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context_1adafe5b7936e60aa02ce37b89bb62f641" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Boolean_valueContext::KEYWORD_FALSE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_FALSE</name>
+        <qualifiedname>SysMLv2Parser::Boolean_valueContext::KEYWORD_FALSE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8568" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="41996" bodyend="41998"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context_1a7f5317fc0620fff9aab213068db61044" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Boolean_valueContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Boolean_valueContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8570" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="42005" bodyend="42009"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context_1af2905dbdc84e95a62423abf99c819600" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Boolean_valueContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Boolean_valueContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8571" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="42011" bodyend="42015"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Boolean_valueContext</label>
+        <link refid="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Boolean_valueContext</label>
+        <link refid="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8563" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="8563" bodyend="8573"/>
+    <listofallmembers>
+      <member refid="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context_1a6167d14179995572463433cbe01ae44a" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Boolean_valueContext</scope><name>Boolean_valueContext</name></member>
+      <member refid="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context_1a7f5317fc0620fff9aab213068db61044" prot="public" virt="virtual"><scope>SysMLv2Parser::Boolean_valueContext</scope><name>enterRule</name></member>
+      <member refid="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context_1af2905dbdc84e95a62423abf99c819600" prot="public" virt="virtual"><scope>SysMLv2Parser::Boolean_valueContext</scope><name>exitRule</name></member>
+      <member refid="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context_1a71e22c9471284918e0d4020ae611012b" prot="public" virt="virtual"><scope>SysMLv2Parser::Boolean_valueContext</scope><name>getRuleIndex</name></member>
+      <member refid="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context_1adafe5b7936e60aa02ce37b89bb62f641" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Boolean_valueContext</scope><name>KEYWORD_FALSE</name></member>
+      <member refid="dc/dea/class_sys_m_lv2_parser_1_1_boolean__value_context_1adb8b6a318b4cdea7078ad761f7403f21" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Boolean_valueContext</scope><name>KEYWORD_TRUE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

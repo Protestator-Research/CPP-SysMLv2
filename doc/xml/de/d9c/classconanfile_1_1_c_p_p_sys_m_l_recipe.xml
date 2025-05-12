@@ -1,0 +1,406 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe" kind="class" language="Python" prot="public">
+    <compoundname>conanfile::CPPSysMLRecipe</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ConanFile</basecompoundref>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a738d16643cf3ae228802ad3fc4fc5b60" prot="public" static="yes" mutable="no">
+        <type>str</type>
+        <definition>str conanfile.CPPSysMLRecipe::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.name</qualifiedname>
+        <initializer>=  &quot;sysmllib&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="10" column="1" bodyfile="conanfile.py" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1ac13f073d126d0b814a9b813bf28467e5" prot="public" static="yes" mutable="no">
+        <type>str</type>
+        <definition>str conanfile.CPPSysMLRecipe::package_type</definition>
+        <argsstring></argsstring>
+        <name>package_type</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.package_type</qualifiedname>
+        <initializer>=  &quot;library&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="12" column="1" bodyfile="conanfile.py" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a894dfd51942cb6ba8b8e99e699d3d410" prot="public" static="yes" mutable="no">
+        <type>str</type>
+        <definition>str conanfile.CPPSysMLRecipe::license</definition>
+        <argsstring></argsstring>
+        <name>license</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.license</qualifiedname>
+        <initializer>=  &quot;&lt;Put the package license here&gt;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="15" column="1" bodyfile="conanfile.py" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a9b4fe1fb57258abb6d67829cbc7578c2" prot="public" static="yes" mutable="no">
+        <type>str</type>
+        <definition>str conanfile.CPPSysMLRecipe::author</definition>
+        <argsstring></argsstring>
+        <name>author</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.author</qualifiedname>
+        <initializer>=  &quot;Moritz Herzog&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="16" column="1" bodyfile="conanfile.py" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a3ef9ba8ac3d5d47e6ebe5facc0a89a78" prot="public" static="yes" mutable="no">
+        <type>str</type>
+        <definition>str conanfile.CPPSysMLRecipe::url</definition>
+        <argsstring></argsstring>
+        <name>url</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.url</qualifiedname>
+        <initializer>=  &quot;https://github.com/Protestator-Research/CPP-SysMLv2&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="17" column="1" bodyfile="conanfile.py" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a4359bf7727b80be9d296d4d627a1b3f1" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple conanfile.CPPSysMLRecipe::description</definition>
+        <argsstring></argsstring>
+        <name>description</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.description</qualifiedname>
+        <initializer>=  (&quot;This library defines a SysMLv2 C++ Library allowing the usage of this for other projects.&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="18" column="1" bodyfile="conanfile.py" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a32f4061ab069570af91f9c0b2d80ae50" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple conanfile.CPPSysMLRecipe::topics</definition>
+        <argsstring></argsstring>
+        <name>topics</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.topics</qualifiedname>
+        <initializer>=  (&quot;SysMLv2&quot;, &quot;modeling&quot;, &quot;library&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="19" column="1" bodyfile="conanfile.py" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a53606ef027a2adf833d1cc84fd76cc23" prot="public" static="yes" mutable="no">
+        <type>str</type>
+        <definition>str conanfile.CPPSysMLRecipe::settings</definition>
+        <argsstring></argsstring>
+        <name>settings</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.settings</qualifiedname>
+        <initializer>=  &quot;os&quot;, &quot;compiler&quot;, &quot;build_type&quot;, &quot;arch&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="22" column="1" bodyfile="conanfile.py" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1ab654c5523e6b449ffdddabe33ba379ef" prot="public" static="yes" mutable="no">
+        <type>dict</type>
+        <definition>dict conanfile.CPPSysMLRecipe::options</definition>
+        <argsstring></argsstring>
+        <name>options</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.options</qualifiedname>
+        <initializer>=  {&quot;shared&quot;: [True, False], &quot;fPIC&quot;: [True, False], &quot;with_rest&quot;: [True, False], &quot;with_services&quot;:[True, False], &quot;with_parsing&quot;:[True,False]}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="23" column="1" bodyfile="conanfile.py" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1ad76600c91663085b18fc5511127ee570" prot="public" static="yes" mutable="no">
+        <type>dict</type>
+        <definition>dict conanfile.CPPSysMLRecipe::default_options</definition>
+        <argsstring></argsstring>
+        <name>default_options</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.default_options</qualifiedname>
+        <initializer>=  {&quot;shared&quot;: True, &quot;fPIC&quot;: False, &quot;with_rest&quot;: True, &quot;with_services&quot;: True, &quot;with_parsing&quot;: True}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="24" column="1" bodyfile="conanfile.py" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a14634f205642233e548a424ef7863cf8" prot="public" static="yes" mutable="no">
+        <type>str</type>
+        <definition>str conanfile.CPPSysMLRecipe::exports_sources</definition>
+        <argsstring></argsstring>
+        <name>exports_sources</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.exports_sources</qualifiedname>
+        <initializer>=  &quot;CMakeLists.txt&quot;, &quot;interfaces/*&quot;, &quot;conformance-test/*&quot;, &quot;filehandling/*&quot;, &quot;kerml/*&quot;, &quot;rest-api/*&quot;, &quot;services/*&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="27" column="1" bodyfile="conanfile.py" bodystart="27" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a3d74e864172e1b94827483b575d267cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>conanfile.CPPSysMLRecipe.requirements</definition>
+        <argsstring>(self)</argsstring>
+        <name>requirements</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.requirements</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="29" column="1" bodyfile="conanfile.py" bodystart="29" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a5f0ad8f09a0ee5d980d7e811d2e05dc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>conanfile.CPPSysMLRecipe.config_options</definition>
+        <argsstring>(self)</argsstring>
+        <name>config_options</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.config_options</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="37" column="1" bodyfile="conanfile.py" bodystart="37" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1ab9786abdaac7faad934c2ff8d4b0f573" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>conanfile.CPPSysMLRecipe.configure</definition>
+        <argsstring>(self)</argsstring>
+        <name>configure</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.configure</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="41" column="1" bodyfile="conanfile.py" bodystart="41" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1af7cd62e53a603229bb2de274fb3114e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>conanfile.CPPSysMLRecipe.layout</definition>
+        <argsstring>(self)</argsstring>
+        <name>layout</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.layout</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="60" column="1" bodyfile="conanfile.py" bodystart="60" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1ac1713d484cd0600705b18db96565c500" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>conanfile.CPPSysMLRecipe.generate</definition>
+        <argsstring>(self)</argsstring>
+        <name>generate</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.generate</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="63" column="1" bodyfile="conanfile.py" bodystart="63" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1aa1c7e15486db4d413bae9e6706f4c1dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>conanfile.CPPSysMLRecipe.build</definition>
+        <argsstring>(self)</argsstring>
+        <name>build</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.build</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="74" column="1" bodyfile="conanfile.py" bodystart="74" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a99b792fa5143dfe2a067e7fa0ef29147" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>conanfile.CPPSysMLRecipe.build_requirements</definition>
+        <argsstring>(self)</argsstring>
+        <name>build_requirements</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.build_requirements</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="79" column="1" bodyfile="conanfile.py" bodystart="79" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a5ed586de590612992325532d7845efc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>conanfile.CPPSysMLRecipe.test</definition>
+        <argsstring>(self)</argsstring>
+        <name>test</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.test</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="83" column="1" bodyfile="conanfile.py" bodystart="83" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a889c93d6222f743f22e05e811c6806df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>conanfile.CPPSysMLRecipe.package</definition>
+        <argsstring>(self)</argsstring>
+        <name>package</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.package</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="88" column="1" bodyfile="conanfile.py" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1ae35fd920895f65e7be799b1d963a1379" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>conanfile.CPPSysMLRecipe.package_info</definition>
+        <argsstring>(self)</argsstring>
+        <name>package_info</name>
+        <qualifiedname>conanfile.CPPSysMLRecipe.package_info</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="conanfile.py" line="92" column="1" bodyfile="conanfile.py" bodystart="92" bodyend="99"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ConanFile</label>
+      </node>
+      <node id="1">
+        <label>conanfile.CPPSysMLRecipe</label>
+        <link refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ConanFile</label>
+      </node>
+      <node id="1">
+        <label>conanfile.CPPSysMLRecipe</label>
+        <link refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="conanfile.py" line="9" column="1" bodyfile="conanfile.py" bodystart="9" bodyend="99"/>
+    <listofallmembers>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a9b4fe1fb57258abb6d67829cbc7578c2" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>author</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1aa1c7e15486db4d413bae9e6706f4c1dc" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>build</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a99b792fa5143dfe2a067e7fa0ef29147" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>build_requirements</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a5f0ad8f09a0ee5d980d7e811d2e05dc8" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>config_options</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1ab9786abdaac7faad934c2ff8d4b0f573" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>configure</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1ad76600c91663085b18fc5511127ee570" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>default_options</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a4359bf7727b80be9d296d4d627a1b3f1" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>description</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a14634f205642233e548a424ef7863cf8" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>exports_sources</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1ac1713d484cd0600705b18db96565c500" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>generate</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1af7cd62e53a603229bb2de274fb3114e3" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>layout</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a894dfd51942cb6ba8b8e99e699d3d410" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>license</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a738d16643cf3ae228802ad3fc4fc5b60" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>name</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1ab654c5523e6b449ffdddabe33ba379ef" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>options</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a889c93d6222f743f22e05e811c6806df" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>package</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1ae35fd920895f65e7be799b1d963a1379" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>package_info</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1ac13f073d126d0b814a9b813bf28467e5" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>package_type</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a3d74e864172e1b94827483b575d267cb" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>requirements</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a53606ef027a2adf833d1cc84fd76cc23" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>settings</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a5ed586de590612992325532d7845efc9" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>test</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a32f4061ab069570af91f9c0b2d80ae50" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>topics</name></member>
+      <member refid="de/d9c/classconanfile_1_1_c_p_p_sys_m_l_recipe_1a3ef9ba8ac3d5d47e6ebe5facc0a89a78" prot="public" virt="non-virtual"><scope>conanfile::CPPSysMLRecipe</scope><name>url</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

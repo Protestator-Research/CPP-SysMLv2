@@ -1,0 +1,69 @@
+# class `SysMLv2::Entities::Data` {#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data}
+
+```
+class SysMLv2::Entities::Data
+  : public SysMLv2::Entities::IEntity
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public  `[`Data`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a8764b2cee063c5961f2423bb61394398)`()` | C-Tor
+`public  explicit `[`Data`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1ab11291a4106304308b94f4a827e97f5d)`(boost::uuids::uuid id)` | C-Tor with the option to set the id. 
+`public  explicit `[`Data`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a3ead38504d0fac260222ef510223492f)`(std::string jsonString)` | C-Tor allowing for the parsing of the JSON String. 
+`public virtual  `[`~Data`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a410a285059373318b7742b9ddf47a978)`() = default` | D-Tor
+`public boost::uuids::uuid `[`getId`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a4d8b6e86e67395a6e8ca0afb22ea01eb)`()` | Returns the Id that was given. 
+`public std::string `[`getType`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1ac0624bb99650ed554d1e78ce17d93c4d)`()` | Returns the type of the data element. 
+`public virtual std::string `[`serializeToJson`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a01a079b57d6cadb79794f04edaadc3e4)`()` | Allows the serialization of the Object to a JSON String. 
+`protected std::string `[`Type`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a0e94702de18580a2d5b79ed0d59d0157) | Type of the element.
+`protected boost::uuids::uuid `[`Id`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1abeee9acd12e31beb38e59d8d0e94bc34) | 
+
+## Members
+
+#### `public  `[`Data`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a8764b2cee063c5961f2423bb61394398)`()` {#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a8764b2cee063c5961f2423bb61394398}
+
+C-Tor
+
+#### `public  explicit `[`Data`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1ab11291a4106304308b94f4a827e97f5d)`(boost::uuids::uuid id)` {#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1ab11291a4106304308b94f4a827e97f5d}
+
+C-Tor with the option to set the id. 
+#### Parameters
+* `id` The given ID of the [Data](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data) element
+
+#### `public  explicit `[`Data`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a3ead38504d0fac260222ef510223492f)`(std::string jsonString)` {#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a3ead38504d0fac260222ef510223492f}
+
+C-Tor allowing for the parsing of the JSON String. 
+#### Parameters
+* `jsonString` The JSON string that is to be parsed.
+
+#### `public virtual  `[`~Data`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a410a285059373318b7742b9ddf47a978)`() = default` {#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a410a285059373318b7742b9ddf47a978}
+
+D-Tor
+
+#### `public boost::uuids::uuid `[`getId`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a4d8b6e86e67395a6e8ca0afb22ea01eb)`()` {#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a4d8b6e86e67395a6e8ca0afb22ea01eb}
+
+Returns the Id that was given. 
+#### Returns
+The Id as a UUID 
+
+**See also**: boost::uuids::uuid
+
+#### `public std::string `[`getType`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1ac0624bb99650ed554d1e78ce17d93c4d)`()` {#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1ac0624bb99650ed554d1e78ce17d93c4d}
+
+Returns the type of the data element. 
+#### Returns
+Type as a String
+
+#### `public virtual std::string `[`serializeToJson`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a01a079b57d6cadb79794f04edaadc3e4)`()` {#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a01a079b57d6cadb79794f04edaadc3e4}
+
+Allows the serialization of the Object to a JSON String. 
+#### Returns
+JSON String of the Object
+
+#### `protected std::string `[`Type`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a0e94702de18580a2d5b79ed0d59d0157) {#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a0e94702de18580a2d5b79ed0d59d0157}
+
+Type of the element.
+
+#### `protected boost::uuids::uuid `[`Id`](#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1abeee9acd12e31beb38e59d8d0e94bc34) {#dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1abeee9acd12e31beb38e59d8d0e94bc34}
+

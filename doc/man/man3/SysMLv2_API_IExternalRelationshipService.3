@@ -1,0 +1,116 @@
+.TH "SysMLv2::API::IExternalRelationshipService" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::API::IExternalRelationshipService
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::ExternalRelationship\fP > > \fBgetExternalRelationships\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit)=0"
+.br
+.ti -1c
+.RI "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::ExternalRelationship\fP > > \fBgetExternalRelationshipsByElement\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit, boost::uuids::uuid elementId)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::ExternalRelationship\fP > \fBgetExternalRelationshipById\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit, boost::uuids::uuid externalRelationshipId)=0"
+.br
+.ti -1c
+.RI "virtual void \fBcreateExternalRelationship\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch, std::shared_ptr< \fBSysMLv2::Entities::ExternalRelationship\fP > externalRelationship)=0"
+.br
+.ti -1c
+.RI "virtual void \fBdeleteExternalRelationship\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch, boost::uuids::uuid externalRelationshipId)=0"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void SysMLv2::API::IExternalRelationshipService::createExternalRelationship (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch, std::shared_ptr< \fBSysMLv2::Entities::ExternalRelationship\fP > externalRelationship)\fR [pure virtual]\fP"
+Creates the eternal relationship in the given project and branch\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The given project where the external relationship is required\&. 
+.br
+\fIbranch\fP The given branch, where the commit is located\&. If is given as null, the program will resort to the default branch\&. 
+.br
+\fIexternalRelationship\fP The external relationship that is filled by the program\&. Can not be null\&. 
+.RE
+.PP
+
+.SS "virtual void SysMLv2::API::IExternalRelationshipService::deleteExternalRelationship (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch, boost::uuids::uuid externalRelationshipId)\fR [pure virtual]\fP"
+Deletes the external relationship, in the given project and branch and commit\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The project where the external relationship is located\&. 
+.br
+\fIbranch\fP The branch where the external relationship is located\&. If this is null, the program resorts to the default branch\&. 
+.br
+\fIexternalRelationshipId\fP The if of the external relationship, that is deleted\&. 
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::ExternalRelationship\fP > SysMLv2::API::IExternalRelationshipService::getExternalRelationshipById (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit, boost::uuids::uuid externalRelationshipId)\fR [pure virtual]\fP"
+Get the external relationship with the given id, which is located in the given project and commit\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The given project, where the commit is located\&. 
+.br
+\fIcommit\fP The given commit, where the external relationship is located\&. 
+.br
+\fIexternalRelationshipId\fP The id of the external relationship, that is searched for\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Can be null, if no external relationship is found, otherwise a pointer to the external relationship\&. 
+.RE
+.PP
+
+.SS "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::ExternalRelationship\fP > > SysMLv2::API::IExternalRelationshipService::getExternalRelationships (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit)\fR [pure virtual]\fP"
+This is a interface for the method implementation that returns all all the external relationships for one specific commit in one project\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The project where the commit and the external relationships are located\&. 
+.br
+\fIcommit\fP The commit where the external relationships are located\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A vector of all external relationships\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+std::vector 
+.RE
+.PP
+
+.SS "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::ExternalRelationship\fP > > SysMLv2::API::IExternalRelationshipService::getExternalRelationshipsByElement (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit, boost::uuids::uuid elementId)\fR [pure virtual]\fP"
+This is a interface for the method that get all the external relationships in the given commit where the id of the end element equals the given id\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The given project, where the commit is located\&. 
+.br
+\fIcommit\fP The given commit that in which it is looked\&. 
+.br
+\fIelementId\fP The given element id, for which is searched\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A vector of all matching external relationships\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

@@ -1,0 +1,14 @@
+# class `KerML::Entities::Documentation` {#d0/ded/class_ker_m_l_1_1_entities_1_1_documentation}
+
+```
+class KerML::Entities::Documentation
+  : public KerML::Entities::Comment
+```  
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+
+## Members
+

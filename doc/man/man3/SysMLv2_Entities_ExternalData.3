@@ -1,0 +1,58 @@
+.TH "SysMLv2::Entities::ExternalData" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::Entities::ExternalData
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBSysMLv2::Entities::Data\fP\&.
+.SS "Additional Inherited Members"
+
+
+Public Member Functions inherited from \fBSysMLv2::Entities::Data\fP
+.in +1c
+.ti -1c
+.RI "\fBData\fP ()"
+.br
+.ti -1c
+.RI "\fBData\fP (boost::uuids::uuid id)"
+.br
+.ti -1c
+.RI "\fBData\fP (std::string jsonString)"
+.br
+.ti -1c
+.RI "virtual \fB~Data\fP ()=default"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBgetId\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBgetType\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBSysMLv2::Entities::Data\fP
+.in +1c
+.ti -1c
+.RI "std::string \fBType\fP"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBId\fP"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBSysMLv2::Entities::IEntity\fP
+.in +1c
+.ti -1c
+.RI "const int \fBJSON_INTENT\fP = 2"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

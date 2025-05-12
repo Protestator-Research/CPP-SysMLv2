@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_c995cdcd5e6b18860bc000689e9842db" kind="dir">
+    <compoundname>services/src/online</compoundname>
+    <innerfile refid="d1/dfa/_connection_error_8cpp">ConnectionError.cpp</innerfile>
+    <innerfile refid="d2/dbb/_connection_error_8h">ConnectionError.h</innerfile>
+    <innerfile refid="dd/ddb/_http_exception_8cpp">HttpException.cpp</innerfile>
+    <innerfile refid="df/dc1/_http_exception_8h">HttpException.h</innerfile>
+    <innerfile refid="d9/ddd/_http_return_codes_8h">HttpReturnCodes.h</innerfile>
+    <innerfile refid="db/d38/_not_enough_memory_error_8cpp">NotEnoughMemoryError.cpp</innerfile>
+    <innerfile refid="d2/d3b/_not_enough_memory_error_8h">NotEnoughMemoryError.h</innerfile>
+    <innerfile refid="d5/ddd/_status_code_8h">StatusCode.h</innerfile>
+    <innerfile refid="de/d22/_sys_m_l_a_p_i_implementation_8cpp">SysMLAPIImplementation.cpp</innerfile>
+    <innerfile refid="dd/dda/_sys_m_l_a_p_i_implementation_8h">SysMLAPIImplementation.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="services/src/online/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="da/d9b/class_ker_m_l_parser_1_1_connector__end_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Connector_endContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1a75415284b62bee3eaa0bf799a22d6f9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Connector_endContext::Connector_endContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Connector_endContext</name>
+        <qualifiedname>KerMLParser::Connector_endContext::Connector_endContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2233" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="10623" bodyend="10625"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1a16a820148f45593a56b516288a346052" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Connector_endContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Connector_endContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2234" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="10644" bodyend="10646"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1a9c9121c6a0695c2cf79aa2a5c46f5b86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="db/dbf/class_ker_m_l_parser_1_1_owned__reference__subsetting_context" kindref="compound">Owned_reference_subsettingContext</ref> *</type>
+        <definition>KerMLParser::Owned_reference_subsettingContext * KerMLParser::Connector_endContext::owned_reference_subsetting</definition>
+        <argsstring>()</argsstring>
+        <name>owned_reference_subsetting</name>
+        <qualifiedname>KerMLParser::Connector_endContext::owned_reference_subsetting</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2235" column="39" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="10627" bodyend="10629"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1a03e8b11c3e5afc481e2c31e3830b7391" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Connector_endContext::NAME</definition>
+        <argsstring>()</argsstring>
+        <name>NAME</name>
+        <qualifiedname>KerMLParser::Connector_endContext::NAME</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2236" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="10631" bodyend="10633"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1af3d414f72578b6d74c5299bd35384cca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Connector_endContext::REFERENCES</definition>
+        <argsstring>()</argsstring>
+        <name>REFERENCES</name>
+        <qualifiedname>KerMLParser::Connector_endContext::REFERENCES</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2237" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="10635" bodyend="10637"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1affa46e18e534f71a10e0a11460a12952" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d28/class_ker_m_l_parser_1_1_multiplicity__bounds_context" kindref="compound">Multiplicity_boundsContext</ref> *</type>
+        <definition>KerMLParser::Multiplicity_boundsContext * KerMLParser::Connector_endContext::multiplicity_bounds</definition>
+        <argsstring>()</argsstring>
+        <name>multiplicity_bounds</name>
+        <qualifiedname>KerMLParser::Connector_endContext::multiplicity_bounds</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2238" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="10639" bodyend="10641"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1aa4bd975137496670d65e10e0f28befbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Connector_endContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Connector_endContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2240" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="10648" bodyend="10652"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1a93cd1947ce690b7125c714acc6396e38" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Connector_endContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Connector_endContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2241" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="10654" bodyend="10658"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Connector_endContext</label>
+        <link refid="da/d9b/class_ker_m_l_parser_1_1_connector__end_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Connector_endContext</label>
+        <link refid="da/d9b/class_ker_m_l_parser_1_1_connector__end_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2231" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2231" bodyend="2243"/>
+    <listofallmembers>
+      <member refid="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1a75415284b62bee3eaa0bf799a22d6f9d" prot="public" virt="non-virtual"><scope>KerMLParser::Connector_endContext</scope><name>Connector_endContext</name></member>
+      <member refid="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1aa4bd975137496670d65e10e0f28befbf" prot="public" virt="virtual"><scope>KerMLParser::Connector_endContext</scope><name>enterRule</name></member>
+      <member refid="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1a93cd1947ce690b7125c714acc6396e38" prot="public" virt="virtual"><scope>KerMLParser::Connector_endContext</scope><name>exitRule</name></member>
+      <member refid="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1a16a820148f45593a56b516288a346052" prot="public" virt="virtual"><scope>KerMLParser::Connector_endContext</scope><name>getRuleIndex</name></member>
+      <member refid="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1affa46e18e534f71a10e0a11460a12952" prot="public" virt="non-virtual"><scope>KerMLParser::Connector_endContext</scope><name>multiplicity_bounds</name></member>
+      <member refid="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1a03e8b11c3e5afc481e2c31e3830b7391" prot="public" virt="non-virtual"><scope>KerMLParser::Connector_endContext</scope><name>NAME</name></member>
+      <member refid="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1a9c9121c6a0695c2cf79aa2a5c46f5b86" prot="public" virt="non-virtual"><scope>KerMLParser::Connector_endContext</scope><name>owned_reference_subsetting</name></member>
+      <member refid="da/d9b/class_ker_m_l_parser_1_1_connector__end_context_1af3d414f72578b6d74c5299bd35384cca" prot="public" virt="non-virtual"><scope>KerMLParser::Connector_endContext</scope><name>REFERENCES</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
