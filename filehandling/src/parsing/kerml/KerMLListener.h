@@ -13,6 +13,8 @@
  */
 class SYSMLV2FILE_EXPORT KerMLListener : public antlr4::tree::ParseTreeListener {
 public:
+  KerMLListener() = default;
+  virtual ~KerMLListener() = default;
 
   virtual void enterStart(KerMLParser::StartContext *ctx) = 0;
   virtual void exitStart(KerMLParser::StartContext *ctx) = 0;
@@ -758,6 +760,7 @@ public:
   virtual void enterMeta_assignment(KerMLParser::Meta_assignmentContext *ctx) = 0;
   virtual void exitMeta_assignment(KerMLParser::Meta_assignmentContext *ctx) = 0;
 
+private:
 
 };
 

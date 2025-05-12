@@ -8,9 +8,14 @@
 #include <root/elements/Relationship.h>
 
 namespace KerML::Entities{
+    /**
+     * @class Dependency
+     * @author 
+     */
     class Dependency : public Relationship{
     public:
-
+        Dependency();
+        virtual ~Dependency();
     private:
         std::shared_ptr<Element> Client;
         std::shared_ptr<Element> Supplier;

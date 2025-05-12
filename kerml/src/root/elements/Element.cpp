@@ -163,4 +163,12 @@ namespace KerML::Entities {
         return OwnedElements;
     }
 
+    void Element::setOwningNamespace(std::shared_ptr<Namespace> owningNamespace) {
+        OwningNamespace = owningNamespace;
+    }
+
+    std::shared_ptr<Namespace> Element::owningNamespace() {
+        return OwningNamespace;
+    }
+
 } // KerML::Entities

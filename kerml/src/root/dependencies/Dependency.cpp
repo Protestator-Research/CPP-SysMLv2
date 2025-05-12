@@ -6,5 +6,12 @@
 
 namespace KerML {
     namespace Entities {
+        Dependency::Dependency() {
+
+        }
+
+        Dependency::~Dependency() {
+
+        }
     } // Entities
 } // KerML

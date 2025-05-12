@@ -231,7 +231,16 @@ namespace KerML::Entities {
          */
         std::vector<std::shared_ptr<Element>> ownedElements();
 
-
+        /**
+         * Sets the owningNamespace of a Element. The Namespace that owns this Element, wich is the MembershipOwningNamespace of the OwningMembership of this Element
+         * @param owningNamespace
+         */
+        void setOwningNamespace(std::shared_ptr<Namespace> owningNamespace);
+        /**
+         * Gets you the owning Namespace. The Namespace that owns this Element, wich is the MembershipOwningNamespace of the OwningMembership of this Element
+         * @return Shared Pointer of the Namespace.
+         */
+        std::shared_ptr<Namespace> owningNamespace();
     private:
         /**
         * Orders the AliasIds in their Array. Is per definition required to have the AliasIds always ordered.
@@ -314,6 +323,11 @@ namespace KerML::Entities {
          * this function needs to be called.
          */
         void sortOwnedElements();
+
+        /**
+         * The Namespace that owns this Element, wich is the MembershipOwningNamespace of the OwningMembership of this Element
+         */
+        std::shared_ptr<Namespace> OwningNamespace;
     };
 
 } // KerML::Entities
