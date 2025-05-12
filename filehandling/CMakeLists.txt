@@ -41,9 +41,7 @@ add_library(sysmlv2file
         src/kerml/KerMlErrorListener.cpp
         src/kerml/KerMlError.cpp
         src/Parser.cpp
-        src/ParserError.cpp
-        src/kerml/KerMlListenerImplementation.cpp
-        src/kerml/KerMlListenerImplementation.h)
+        src/ParserError.cpp)
 
 target_link_libraries(sysmlv2file
         boost::boost

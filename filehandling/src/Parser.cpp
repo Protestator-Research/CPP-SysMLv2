@@ -22,30 +22,7 @@ namespace SysMLv2::Files {
         KerMLParser parser(&tokens);
         parser.addErrorListener(listener);
         std::cout << parser.start()->toStringTree() << std::endl;
-
         std::vector<std::shared_ptr<KerML::Entities::Element>> elements;
-
-        const auto& start_context = parser.start();
-        std::cout<< start_context->getText() << std::endl;
-        const auto& elements_context =  parser.start()->elements();
-        std::cout<< elements_context->getText() << std::endl;
-        const auto& element_context = elements_context->element();
-
-        for(auto& element : element_context) {
-            if(element->non_feature_element()) {
-                std::cout << "Non Feature Element"<<std::endl;
-            }
-            if(element->additional_options()) {
-                std::cout << "Additional Options"<<std::endl;
-            }
-            if(element->annotating_element()) {
-                std::cout << "Annotating Element"<<std::endl;
-            }
-            if(element->feature_element()) {
-                std::cout << "Feature Element"<<std::endl;
-            }
-        }
-
         auto syntaxErrors  = listener->getSyntaxErrors();
         std::vector<std::shared_ptr<ParserError>> errorVector = std::vector<std::shared_ptr<SysMLv2::Files::ParserError>>(syntaxErrors.size());
         for(const auto& error:syntaxErrors) {

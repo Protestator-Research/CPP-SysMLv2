@@ -5,12 +5,11 @@
 
 
 #include "antlr4-runtime.h"
-#include "root/elements/Element.h"
-#include "../../sysmlv2file_global.h"
 
 
 
-class SYSMLV2FILE_EXPORT KerMLParser : public antlr4::Parser {
+
+class  KerMLParser : public antlr4::Parser {
 public:
   enum {
     T__0 = 1, TYPED_BY = 2, SPECIALIZES = 3, SUBSETS = 4, REFERENCES = 5, 
@@ -512,17 +511,7 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-      virtual std::shared_ptr<KerML::Entities::Element> getParentElement() const {
-          return ParentElement;
-      }
-
-      virtual void setParentElement(std::shared_ptr<KerML::Entities::Element> element){
-          ParentElement = element;
-      }
-
-  private:
-      std::shared_ptr<KerML::Entities::Element> ParentElement;
+   
   };
 
   Relationship_onwed_elementsContext* relationship_onwed_elements();
@@ -536,17 +525,7 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual std::shared_ptr<KerML::Entities::Element> getParentElement() const {
-        return ParentElement;
-    }
-
-    virtual void setParentElement(std::shared_ptr<KerML::Entities::Element> element){
-        ParentElement = element;
-    }
-
-  private:
-      std::shared_ptr<KerML::Entities::Element> ParentElement;
+   
   };
 
   Relationship_owned_elementContext* relationship_owned_element();
@@ -560,8 +539,7 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-
+   
   };
 
   Owned_related_elementContext* owned_related_element();
