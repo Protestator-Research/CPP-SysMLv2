@@ -166,7 +166,7 @@ namespace KerML::Entities {
         virtual bool operator==(const Element& other);
 
         /**
-         * Compares one element to the other and decides which one is bigger. This is required
+         * Compares one element to the other and decides which one is bigger. This is required for the maps between the Elements.
          * @param other
          * @return
          */

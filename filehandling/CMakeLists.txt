@@ -18,7 +18,8 @@ set(KERML_PARSER_HEADER
         src/kerml/KerMLListener.h
         src/kerml/KerMLParser.h
         src/kerml/KerMlError.h
-        src/kerml/KerMlErrorListener.h)
+        src/kerml/KerMlErrorListener.h
+        src/kerml/KerMlListenerImplementation.h)
 
 set(SYSML_PARSER_HEADER
         src/sysml2/SysMLv2BaseListener.h
@@ -41,7 +42,8 @@ add_library(sysmlv2file
         src/kerml/KerMlErrorListener.cpp
         src/kerml/KerMlError.cpp
         src/Parser.cpp
-        src/ParserError.cpp)
+        src/ParserError.cpp
+        src/kerml/KerMlListenerImplementation.cpp)
 
 target_link_libraries(sysmlv2file
         boost::boost

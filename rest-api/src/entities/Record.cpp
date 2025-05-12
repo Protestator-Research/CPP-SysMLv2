@@ -30,7 +30,6 @@ namespace SysMLv2::Entities {
     }
 
     Record::Record(std::string jsonString) {
-        std::cout<<"Constructor of Record: " << jsonString << std::endl;
         try {
             nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
 
