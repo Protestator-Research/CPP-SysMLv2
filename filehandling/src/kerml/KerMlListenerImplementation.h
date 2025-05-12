@@ -6,6 +6,11 @@
 #define SYSML_KERMLLISTENERIMPLEMENTATION_H
 
 #include "KerMLListener.h"
+#include <memory>
+
+namespace KerML::Entities {
+    class Element;
+}
 
 /**
  * Implementation of the KerMLListener interface.
@@ -645,11 +650,9 @@ public:
 
     void exitMetadata_reference(KerMLParser::Metadata_referenceContext *ctx) override;
 
-    void
-    enterMetadataclassification_test_operator(KerMLParser::Metadataclassification_test_operatorContext *ctx) override;
+    void enterMetadataclassification_test_operator(KerMLParser::Metadataclassification_test_operatorContext *ctx) override;
 
-    void
-    exitMetadataclassification_test_operator(KerMLParser::Metadataclassification_test_operatorContext *ctx) override;
+    void exitMetadataclassification_test_operator(KerMLParser::Metadataclassification_test_operatorContext *ctx) override;
 
     void enterMeta_cast_operator(KerMLParser::Meta_cast_operatorContext *ctx) override;
 
@@ -1072,7 +1075,7 @@ public:
     void exitEveryRule(antlr4::ParserRuleContext *ctx) override;
 
 private:
-
+    std::vector<std::shared_ptr<KerML::Entities::Element>> Elements;
 };
 
 

@@ -3167,7 +3167,6 @@ KerMLParser::Qualified_nameContext* KerMLParser::qualified_name() {
       _errHandler->sync(this);
       alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 26, _ctx);
     }
-   
   }
   catch (RecognitionException &e) {
     _errHandler->reportError(this, e);
@@ -3177,6 +3176,11 @@ KerMLParser::Qualified_nameContext* KerMLParser::qualified_name() {
 
   return _localctx;
 }
+
+std::string KerMLParser::Qualified_nameContext::getQualifiedName(){
+  return QualifiedName;
+}
+
 
 //----------------- Namespace_importContext ------------------------------------------------------------------
 
@@ -3672,6 +3676,21 @@ KerMLParser::ElementContext* KerMLParser::element() {
   }
 
   return _localctx;
+}
+
+std::shared_ptr<KerML::Entities::Element> KerMLParser::ElementContext::getElement(){
+    if (annotating_element()!=nullptr)
+        return annotating_element()->getElement();
+    else if (non_feature_element()!=nullptr)
+      return non_feature_element()->getElement();
+    else if (feature_element()!=nullptr)
+      return feature_element()->getElement();
+    else if (feature_element()!=nullptr)
+      return feature_element()->getElement();
+    else if (additional_options()!=nullptr)
+        return additional_options()->getElement();
+
+    return nullptr;
 }
 
 //----------------- Non_feature_elementContext ------------------------------------------------------------------
@@ -4236,6 +4255,10 @@ KerMLParser::Additional_optionsContext* KerMLParser::additional_options() {
   }
 
   return _localctx;
+}
+
+std::shared_ptr<KerML::Entities::Element> KerMLParser::Additional_optionsContext::getElement(){
+    return (meta_assignment()!=nullptr)? meta_assignment()->getElement() : nullptr;
 }
 
 //----------------- TypeContext ------------------------------------------------------------------
@@ -5195,6 +5218,11 @@ KerMLParser::Type_bodyContext* KerMLParser::type_body() {
   return _localctx;
 }
 
+std::vector<std::shared_ptr<KerML::Entities::Element>> KerMLParser::Type_bodyContext::getElementsFromTypeBody(){
+    return type_body_elements()->getElementsFromElement();
+}
+
+
 //----------------- Type_body_elementsContext ------------------------------------------------------------------
 
 KerMLParser::Type_body_elementsContext::Type_body_elementsContext(ParserRuleContext *parent, size_t invokingState)
@@ -5262,6 +5290,14 @@ KerMLParser::Type_body_elementsContext* KerMLParser::type_body_elements() {
   }
 
   return _localctx;
+}
+
+std::vector<std::shared_ptr<KerML::Entities::Element>> KerMLParser::Type_body_elementsContext::getElementsFromElement(){
+    std::vector<std::shared_ptr<KerML::Entities::Element>> elements;
+    for(auto &element : element()){
+        elements.push_back(element->getElement());
+    }
+    return elements;
 }
 
 //----------------- Type_body_elementContext ------------------------------------------------------------------
@@ -21132,6 +21168,11 @@ KerMLParser::Meta_assignmentContext* KerMLParser::meta_assignment() {
   return _localctx;
 }
 
+std::shared_ptr<KerML::Entities::Element> KerMLParser::Meta_assignmentContext::getElement(){
+    return Element;
+}
+
+
 void KerMLParser::initialize() {
 #if ANTLR4_USE_THREAD_LOCAL_CACHE
   kermlParserInitialize();
@@ -21139,3 +21180,13 @@ void KerMLParser::initialize() {
   ::antlr4::internal::call_once(kermlParserOnceFlag, kermlParserInitialize);
 #endif
 }
+    std::shared_ptr<KerML::Entities::Element> KerMLParser::Annotating_elementContext::getElement(){
+    return std::shared_ptr<KerML::Entities::Element>();
+    }
+    std::shared_ptr<KerML::Entities::Element> KerMLParser::Non_feature_elementContext::getElement(){
+    return std::shared_ptr<KerML::Entities::Element>();
+    }
+    std::shared_ptr<KerML::Entities::Element> KerMLParser::Feature_elementContext::getElement(){
+    return std::shared_ptr<KerML::Entities::Element>();
+    }
+
