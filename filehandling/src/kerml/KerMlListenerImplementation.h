@@ -1,0 +1,14 @@
+//
+// Created by Moritz Herzog on 09.05.25.
+//
+
+#ifndef SYSML_KERMLLISTENERIMPLEMENTATION_H
+#define SYSML_KERMLLISTENERIMPLEMENTATION_H
+
+
+class KerMLListenerImplementation {
+
+};
+
+
+#endif //SYSML_KERMLLISTENERIMPLEMENTATION_H
