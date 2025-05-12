@@ -41,7 +41,7 @@ namespace KerML::Entities {
     class Element {
     public:
         /**
-         * Constructor of the Element. This constructor does not allow for an empty elementID.
+         * Constructor of the Element. This constructor does allow for an empty elementID.
          * @param elementID The Element ID of the Element. If no UUID is provided, a random UUID is provided by the Software.
          * @param owner The Element that owns this element. If no Element is provided the owning element is automatically set to null.
          */

@@ -19,7 +19,7 @@ namespace KerML::Entities {
     class Relationship : public Element {
     public:
         /**
-         * Constructor of the Relationship. This constructor does not allow for an empty elementID.
+         * Constructor of the Relationship. This constructor does allow for an empty elementID.
          * @param elementID The Element ID of the Relationship. If no UUID is provided, a random UUID is provided by the Software.
          * @param owner The Element that owns this Relationship. If no Element is provided the owning element is automatically set to null.
          */
