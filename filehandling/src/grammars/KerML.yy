@@ -1,7 +1,9 @@
 %require "3.2"
 %language "c++"
+%define api.token.constructor
 %define api.value.type variant
 %define parse.error verbose
+%define parse.assert
 %define api.namespace {KerML::Parser}  // Kein Namespace
 %parse-param { KerMLFlexScanner* lexer }
 %lex-param   { KerMLFlexScanner* lexer }
@@ -14,6 +16,10 @@
 %}
 
 %code requires {
+    class KerMLFlexScanner;
+}
+
+%code {
     #include "KerMLFlexScanner.h"
 }
 
@@ -628,7 +634,7 @@
     about_annotation_mutliplicity: SYMBOL_COMMA qualified_name about_annotation_mutliplicity | /*empty*/;
     metadata_feature_declaration: identification_annotation owned_feature_typing;
     identification_annotation: identification SYMBOL_TYPED_BY | identification KEYWORD_TYPED KEYWORD_BY | /*empty*/
-    metadata_body: ';' | SYMBOL_CURLY_BRACKET_OPEN metadata_body_elements SYMBOL_CURLY_BRACKET_CLOSE;
+    metadata_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN metadata_body_elements SYMBOL_CURLY_BRACKET_CLOSE;
     metadata_body_elements: metadata_body_element metadata_body_elements | /*empty*/;
     metadata_body_element: non_feature_member |
                            metadata_body_feature_member |
@@ -648,9 +654,9 @@
     | SYMBOL_CURLY_BRACKET_OPEN element_filter_members SYMBOL_CURLY_BRACKET_CLOSE
     | SYMBOL_CURLY_BRACKET_OPEN elements SYMBOL_CURLY_BRACKET_CLOSE;
     element_filter_members: element_filter_members element_filter_member | /*empty*/;
-    element_filter_member: member_prefix KEYWORD_FILTER owned_expression ';';
+    element_filter_member: member_prefix KEYWORD_FILTER owned_expression SYMBOL_STATEMENT_DELIMITER;
 
-    meta_assignment: qualified_name SYMBOL_ASSIGN identification KEYWORD_META qualified_name ';';
+    meta_assignment: qualified_name SYMBOL_ASSIGN identification KEYWORD_META qualified_name SYMBOL_STATEMENT_DELIMITER;
 %%
 
 void KerML::Parser::parser::error(const std::string& msg) {

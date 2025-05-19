@@ -15,28 +15,6 @@ set(BISON_VARS
     BISON_VERSION
 )
 
-# foreach(BISON_VAR ${BISON_VARS})
-#     message("${BISON_VAR}: ${${BISON_VAR}}")
-#     if(NOT ${BISON_VAR})
-#         message(FATAL_ERROR "${BISON_VAR} NOT FOUND")
-#     endif()
-# endforeach()
-
-# bison_target(KerMLParser KerML.y "${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLBisonParser.cpp")
-
-SET(BisonOutput ${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLBisonParser.cpp)
-IF(BISON_FOUND)
-    ADD_CUSTOM_COMMAND(
-            OUTPUT ${BisonOutput}
-            COMMAND bison
-            --defines=${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLBisonParser.h
-            --output=${BisonOutput}
-            ${CMAKE_SOURCE_DIR}/filehandling/src/grammars/KerML.y
-            COMMENT "Generating KerMLBisonParser.cpp")
-ENDIF()
-
-# flex_target(KerMLFlexLexer ${CMAKE_SOURCE_DIR}/filehandling/src/grammars/KerML.l ${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLFlexLexer.cpp)
-
 FIND_PACKAGE(FLEX REQUIRED)
 SET(FlexOutput ${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLFlexLexer.cpp)
 IF(FLEX_FOUND)
@@ -47,6 +25,17 @@ IF(FLEX_FOUND)
             ${CMAKE_SOURCE_DIR}/filehandling/src/grammars/KerML.l
             COMMENT "Generating KerMLFlexLexer.cpp"
     )
+ENDIF()
+
+SET(BisonOutput ${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLBisonParser.cpp)
+IF(BISON_FOUND)
+    ADD_CUSTOM_COMMAND(
+            OUTPUT ${BisonOutput}
+            COMMAND bison
+            --defines=${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLBisonParser.h
+            --output=${BisonOutput}
+            ${CMAKE_SOURCE_DIR}/filehandling/src/grammars/KerML.yy
+            COMMENT "Generating KerMLBisonParser.cpp")
 ENDIF()
 
 set(GLOBAL_HEADER
@@ -87,9 +76,9 @@ add_library(sysmlv2file
         src/Parser.cpp
         src/ParserError.cpp
         src/kerml/KerMlListenerImplementation.cpp
-        ${BisonOutput}
         src/kerml/KerMLFlexScanner.cpp
-        ${FlexOutput})
+        ${FlexOutput}
+        ${BisonOutput}   )
 
 target_link_libraries(sysmlv2file
         boost::boost

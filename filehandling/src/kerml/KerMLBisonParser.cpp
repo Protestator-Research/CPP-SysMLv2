@@ -37,7 +37,7 @@
 
 
 // First part of user prologue.
-#line 8 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 10 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
 
     #include <string>
     #include <vector>
@@ -45,12 +45,18 @@
     #include <root/namespaces/Namespace.h>
     #include <root/elements/Element.h>
 
-#line 49 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 49 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
 
 
 #include "KerMLBisonParser.h"
 
 
+// Unqualified %code blocks.
+#line 22 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
+
+    #include "KerMLFlexScanner.h"
+
+#line 60 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
 
 
 #ifndef YY_
@@ -122,9 +128,9 @@
 #define YYERROR         goto yyerrorlab
 #define YYRECOVERING()  (!!yyerrstatus_)
 
-#line 5 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 7 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
 namespace KerML { namespace Parser {
-#line 128 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 134 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
 
   /// Build a parser object.
   parser::parser (KerMLFlexScanner* lexer_yyarg)
@@ -146,172 +152,6 @@ namespace KerML { namespace Parser {
   /*---------.
   | symbol.  |
   `---------*/
-
-  // basic_symbol.
-  template <typename Base>
-  parser::basic_symbol<Base>::basic_symbol (const basic_symbol& that)
-    : Base (that)
-    , value ()
-  {
-    switch (this->kind ())
-    {
-      case symbol_kind::S_abstract_modifier: // abstract_modifier
-      case symbol_kind::S_all_modifier: // all_modifier
-        value.copy< bool > (YY_MOVE (that.value));
-        break;
-
-      case symbol_kind::S_DECIMAL_VALUE: // DECIMAL_VALUE
-      case symbol_kind::S_EXPONENTIAL_VALUE: // EXPONENTIAL_VALUE
-        value.copy< double > (YY_MOVE (that.value));
-        break;
-
-      case symbol_kind::S_NUMBER: // NUMBER
-        value.copy< int > (YY_MOVE (that.value));
-        break;
-
-      case symbol_kind::S_BASIC_NAME: // BASIC_NAME
-      case symbol_kind::S_SINGLE_LINE_COMMENT: // SINGLE_LINE_COMMENT
-      case symbol_kind::S_UNRESTRICTED_NAME: // UNRESTRICTED_NAME
-      case symbol_kind::S_BLOCK_COMMENT: // BLOCK_COMMENT
-      case symbol_kind::S_STRING: // STRING
-      case symbol_kind::S_type_prefix: // type_prefix
-      case symbol_kind::S_prefix_metadata_annotation: // prefix_metadata_annotation
-      case symbol_kind::S_qualified_name: // qualified_name
-      case symbol_kind::S_qualified_name_tail: // qualified_name_tail
-      case symbol_kind::S_identification: // identification
-      case symbol_kind::S_mutliplicity_bounds: // mutliplicity_bounds
-      case symbol_kind::S_specialization_option: // specialization_option
-      case symbol_kind::S_conjugation_option: // conjugation_option
-      case symbol_kind::S_type_body: // type_body
-      case symbol_kind::S_relationship_body: // relationship_body
-      case symbol_kind::S_from_option: // from_option
-      case symbol_kind::S_comment_option: // comment_option
-      case symbol_kind::S_specific_type: // specific_type
-      case symbol_kind::S_general_type: // general_type
-        value.copy< std::string > (YY_MOVE (that.value));
-        break;
-
-      default:
-        break;
-    }
-
-  }
-
-
-
-
-  template <typename Base>
-  parser::symbol_kind_type
-  parser::basic_symbol<Base>::type_get () const YY_NOEXCEPT
-  {
-    return this->kind ();
-  }
-
-
-  template <typename Base>
-  bool
-  parser::basic_symbol<Base>::empty () const YY_NOEXCEPT
-  {
-    return this->kind () == symbol_kind::S_YYEMPTY;
-  }
-
-  template <typename Base>
-  void
-  parser::basic_symbol<Base>::move (basic_symbol& s)
-  {
-    super_type::move (s);
-    switch (this->kind ())
-    {
-      case symbol_kind::S_abstract_modifier: // abstract_modifier
-      case symbol_kind::S_all_modifier: // all_modifier
-        value.move< bool > (YY_MOVE (s.value));
-        break;
-
-      case symbol_kind::S_DECIMAL_VALUE: // DECIMAL_VALUE
-      case symbol_kind::S_EXPONENTIAL_VALUE: // EXPONENTIAL_VALUE
-        value.move< double > (YY_MOVE (s.value));
-        break;
-
-      case symbol_kind::S_NUMBER: // NUMBER
-        value.move< int > (YY_MOVE (s.value));
-        break;
-
-      case symbol_kind::S_BASIC_NAME: // BASIC_NAME
-      case symbol_kind::S_SINGLE_LINE_COMMENT: // SINGLE_LINE_COMMENT
-      case symbol_kind::S_UNRESTRICTED_NAME: // UNRESTRICTED_NAME
-      case symbol_kind::S_BLOCK_COMMENT: // BLOCK_COMMENT
-      case symbol_kind::S_STRING: // STRING
-      case symbol_kind::S_type_prefix: // type_prefix
-      case symbol_kind::S_prefix_metadata_annotation: // prefix_metadata_annotation
-      case symbol_kind::S_qualified_name: // qualified_name
-      case symbol_kind::S_qualified_name_tail: // qualified_name_tail
-      case symbol_kind::S_identification: // identification
-      case symbol_kind::S_mutliplicity_bounds: // mutliplicity_bounds
-      case symbol_kind::S_specialization_option: // specialization_option
-      case symbol_kind::S_conjugation_option: // conjugation_option
-      case symbol_kind::S_type_body: // type_body
-      case symbol_kind::S_relationship_body: // relationship_body
-      case symbol_kind::S_from_option: // from_option
-      case symbol_kind::S_comment_option: // comment_option
-      case symbol_kind::S_specific_type: // specific_type
-      case symbol_kind::S_general_type: // general_type
-        value.move< std::string > (YY_MOVE (s.value));
-        break;
-
-      default:
-        break;
-    }
-
-  }
-
-  // by_kind.
-  parser::by_kind::by_kind () YY_NOEXCEPT
-    : kind_ (symbol_kind::S_YYEMPTY)
-  {}
-
-#if 201103L <= YY_CPLUSPLUS
-  parser::by_kind::by_kind (by_kind&& that) YY_NOEXCEPT
-    : kind_ (that.kind_)
-  {
-    that.clear ();
-  }
-#endif
-
-  parser::by_kind::by_kind (const by_kind& that) YY_NOEXCEPT
-    : kind_ (that.kind_)
-  {}
-
-  parser::by_kind::by_kind (token_kind_type t) YY_NOEXCEPT
-    : kind_ (yytranslate_ (t))
-  {}
-
-
-
-  void
-  parser::by_kind::clear () YY_NOEXCEPT
-  {
-    kind_ = symbol_kind::S_YYEMPTY;
-  }
-
-  void
-  parser::by_kind::move (by_kind& that)
-  {
-    kind_ = that.kind_;
-    that.clear ();
-  }
-
-  parser::symbol_kind_type
-  parser::by_kind::kind () const YY_NOEXCEPT
-  {
-    return kind_;
-  }
-
-
-  parser::symbol_kind_type
-  parser::by_kind::type_get () const YY_NOEXCEPT
-  {
-    return this->kind ();
-  }
 
 
 
@@ -725,7 +565,8 @@ namespace KerML { namespace Parser {
         try
 #endif // YY_EXCEPTIONS
           {
-            yyla.kind_ = yytranslate_ (yylex (&yyla.value, lexer));
+            symbol_type yylookahead (yylex (lexer));
+            yyla.move (yylookahead);
           }
 #if YY_EXCEPTIONS
         catch (const syntax_error& yyexc)
@@ -849,56 +690,56 @@ namespace KerML { namespace Parser {
           switch (yyn)
             {
   case 47: // type_prefix: abstract_modifier prefix_metadata_annotation
-#line 94 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 100 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                                               {
         if(yystack_[1].value.as < bool > ()) std::cout<<"isAbstract: true \n"<<std::endl;
         if(!yystack_[0].value.as < std::string > ().empty()) std::cout<<"metadata_member: "<<yystack_[0].value.as < std::string > ()<<std::endl;
     }
-#line 858 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 699 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 48: // type_prefix: abstract_modifier
-#line 98 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 104 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                         {
         if(yystack_[0].value.as < bool > ()) std::cout<<"isAbstract: true"<<std::endl;
     }
-#line 866 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 707 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 49: // type_prefix: %empty
-#line 101 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 107 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                   {}
-#line 872 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 713 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 50: // prefix_metadata_annotation: SYMBOL_HASHTAG qualified_name
-#line 103 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 109 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                                               {
         yylhs.value.as < std::string > () = yystack_[0].value.as < std::string > ();
     }
-#line 880 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 721 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 51: // prefix_metadata_annotation: %empty
-#line 106 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 112 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                 {yylhs.value.as < std::string > () = "";}
-#line 886 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 727 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 52: // abstract_modifier: KEYWORD_ABSTRACT
-#line 109 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 115 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                      {yylhs.value.as < bool > () = true;}
-#line 892 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 733 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 53: // abstract_modifier: %empty
-#line 110 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 116 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                 {yylhs.value.as < bool > () = false;}
-#line 898 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 739 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 54: // qualified_name: BASIC_NAME qualified_name_tail
-#line 115 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 121 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
     {
         if (!yystack_[0].value.as < std::string > ().empty()) {
             yylhs.value.as < std::string > () = yystack_[1].value.as < std::string > ().append(yystack_[0].value.as < std::string > ());
@@ -906,11 +747,11 @@ namespace KerML { namespace Parser {
             yylhs.value.as < std::string > () = yystack_[1].value.as < std::string > ();
         }
     }
-#line 910 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 751 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 55: // qualified_name: UNRESTRICTED_NAME qualified_name_tail
-#line 122 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 128 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                             {
         if (!yystack_[0].value.as < std::string > ().empty()) {
             yylhs.value.as < std::string > () = yystack_[1].value.as < std::string > ().append(yystack_[0].value.as < std::string > ());
@@ -918,19 +759,19 @@ namespace KerML { namespace Parser {
             yylhs.value.as < std::string > () = yystack_[1].value.as < std::string > ();
         }
     }
-#line 922 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 763 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 56: // qualified_name: %empty
-#line 129 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 135 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                {
         yylhs.value.as < std::string > ()="";
     }
-#line 930 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 771 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 57: // qualified_name_tail: SYMBOL_DDOT BASIC_NAME qualified_name_tail
-#line 137 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 143 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
     {
         std::string full;
         if (!yystack_[0].value.as < std::string > ().empty()) {
@@ -940,11 +781,11 @@ namespace KerML { namespace Parser {
         }
         yylhs.value.as < std::string > () = full;
     }
-#line 944 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 785 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 58: // qualified_name_tail: SYMBOL_DDOT UNRESTRICTED_NAME qualified_name_tail
-#line 146 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 152 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                                         {
         std::string full;
         if (!yystack_[0].value.as < std::string > ().empty()) {
@@ -954,188 +795,188 @@ namespace KerML { namespace Parser {
         }
         yylhs.value.as < std::string > () = full;
     }
-#line 958 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 799 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 59: // qualified_name_tail: %empty
-#line 156 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 162 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
     {
         yylhs.value.as < std::string > () = "";
     }
-#line 966 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 807 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 60: // all_modifier: KEYWORD_ALL
-#line 162 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 168 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                 {yylhs.value.as < bool > () = true;}
-#line 972 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 813 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 61: // all_modifier: %empty
-#line 163 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 169 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                 {yylhs.value.as < bool > () = false;}
-#line 978 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 819 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 62: // identification: SYMBOL_SMALLER BASIC_NAME SYMBOL_GREATER
-#line 166 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 172 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                                              {
         yylhs.value.as < std::string > () = yystack_[1].value.as < std::string > ();
     }
-#line 986 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 827 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 63: // identification: BASIC_NAME
-#line 169 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 175 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                  {
         yylhs.value.as < std::string > () = yystack_[0].value.as < std::string > ();
     }
-#line 994 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 835 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 64: // mutliplicity_bounds: SYMBOL_SQUARE_BRACKET_OPEN NUMBER SYMBOL_DDOT NUMBER SYMBOL_SQUARE_BRACKET_OPEN
-#line 173 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 179 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                                                                                          {
         std::cout<<"lower bound: "<< yystack_[3].value.as < int > () <<std::endl;
         std::cout<<"upper bound: "<< yystack_[3].value.as < int > () <<std::endl;
     }
-#line 1003 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 844 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 65: // mutliplicity_bounds: SYMBOL_SQUARE_BRACKET_OPEN NUMBER SYMBOL_SQUARE_BRACKET_OPEN
-#line 177 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 183 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                                                    {
         std::cout<<"multiplicity: "<< yystack_[1].value.as < int > () <<std::endl;
     }
-#line 1011 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 852 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 66: // mutliplicity_bounds: %empty
-#line 180 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 186 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                   {yylhs.value.as < std::string > ()="";}
-#line 1017 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 858 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 67: // specialization_option: KEYWORD_SPECIALIZES identification
-#line 182 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 188 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                                               {
         std::cout<<"specialization: "<< yystack_[0].value.as < std::string > () <<std::endl;
         yylhs.value.as < std::string > () = yystack_[0].value.as < std::string > ();
     }
-#line 1026 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 867 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 68: // specialization_option: SYMBOL_SPECIALIZES identification
-#line 186 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 192 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                         {
         std::cout<<"specialization: "<< yystack_[0].value.as < std::string > () <<std::endl;
         yylhs.value.as < std::string > () = yystack_[0].value.as < std::string > ();
     }
-#line 1035 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 876 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 69: // conjugation_option: KEYWORD_CONJUGATES qualified_name
-#line 191 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 197 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                                           {
          std::cout<< "conjugation: "<< yystack_[0].value.as < std::string > () <<std::endl;
         yylhs.value.as < std::string > () = yystack_[0].value.as < std::string > ();
     }
-#line 1044 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 885 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 70: // conjugation_option: SYMBOL_CONJUNGATES qualified_name
-#line 195 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 201 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                         {
         std::cout<< "conjugation: "<< yystack_[0].value.as < std::string > () <<std::endl;
         yylhs.value.as < std::string > () = yystack_[0].value.as < std::string > ();
     }
-#line 1053 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 894 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 71: // type_body: SYMBOL_STATEMENT_DELIMITER
-#line 200 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 206 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                           {yylhs.value.as < std::string > () = "";}
-#line 1059 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 900 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 72: // type_body: SYMBOL_CURLY_BRACKET_OPEN type_body_elements SYMBOL_CURLY_BRACKET_CLOSE
-#line 201 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 207 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                                                               {
         yylhs.value.as < std::string > () = "$2";
     }
-#line 1067 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 908 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 98: // relationship_body: SYMBOL_STATEMENT_DELIMITER
-#line 233 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 239 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                                   {yylhs.value.as < std::string > () = "";}
-#line 1073 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 914 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 99: // relationship_body: SYMBOL_CURLY_BRACKET_OPEN relationship_body_elements SYMBOL_CURLY_BRACKET_CLOSE
-#line 234 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 240 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                                                                        {
         yylhs.value.as < std::string > ()="";
     }
-#line 1081 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 922 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 106: // from_option: KEYWORD_FROM qualified_name
-#line 242 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 248 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                              {
         yylhs.value.as < std::string > () = yystack_[0].value.as < std::string > ();
     }
-#line 1089 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 930 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 107: // from_option: %empty
-#line 244 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 250 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                   {yylhs.value.as < std::string > () = "";}
-#line 1095 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 936 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 117: // comment_option: SINGLE_LINE_COMMENT
-#line 253 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 259 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                         {
         yylhs.value.as < std::string > ()=yystack_[0].value.as < std::string > ();
     }
-#line 1103 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 944 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 118: // comment_option: BLOCK_COMMENT
-#line 256 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 262 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                   {
         yylhs.value.as < std::string > ()=yystack_[0].value.as < std::string > ();
     }
-#line 1111 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 952 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 145: // specific_type: general_type
-#line 283 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 289 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                 {
         yylhs.value.as < std::string > () = yystack_[1].value.as< std::string > ();
     }
-#line 1119 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 960 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 146: // general_type: qualified_name
-#line 286 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 292 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                                  {
         yylhs.value.as < std::string > () = yystack_[1].value.as< std::string > ();
     }
-#line 1127 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 968 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
   case 147: // general_type: owned_feature_chain
-#line 288 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 294 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
                             {
         yylhs.value.as < std::string > ()="";
     }
-#line 1135 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 976 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
     break;
 
 
-#line 1139 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 980 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
 
             default:
               break;
@@ -1533,7 +1374,7 @@ namespace KerML { namespace Parser {
      282,  -700,   363,  -700,   435,  -700,  -700,   292,   435,  -700,
      323,  -700,  -700,  -700,  1711,  -700,  -700,  -700,  -700,  -700,
     -700,    24,   353,   475,   353,   513,   353,  -700,  1088,  -700,
-     435,   400,   363,   363,   446,   435,   446,   446,   104,  -700,
+     435,   507,   363,   363,   446,   435,   446,   446,   104,  -700,
     -700,   542,  -700,  -700,   435,   467,   435,   418,   453,   435,
      435,  -700,  -700,  -700,  -700,  -700,  -700,  -700,  -700,  -700,
     -700,  -700,   305,  -700,  -700,   435,   435,   435,    55,  -700,
@@ -1572,9 +1413,9 @@ namespace KerML { namespace Parser {
      512,   512,  -700,  -700,  -700,  -700,  1457,  -700,  -700,  1457,
      428,  -700,  -700,  -700,  -700,  -700,  -700,  -700,  -700,  -700,
      534,  -700,   528,    36,  -700,  -700,  -700,   582,   541,  -700,
-      63,  -700,   550,  -700,  -700,   541,   551,   489,  -700,   566,
-     535,  -700,  -700,   435,   435,   615,   616,   435,  -700,  -700,
-    -700,  -700,  -700,   538,  1594,   623,  -700,  -700,  -700,  -700,
+      63,  -700,   550,  -700,  -700,   541,   551,   613,  -700,   566,
+     531,  -700,  -700,   435,   435,   615,   616,   435,  -700,  -700,
+    -700,  -700,  -700,   525,  1594,   623,  -700,  -700,  -700,  -700,
      435,  -700,  -700,   472,  -700,  -700,  -700,  -700,  -700,   435,
     -700,  -700,   435,   435,  -700,  1457,   629,  -700,   460,  -700,
      363,   363,  -700,  -700,  -700,  1457,  -700,  -700,  -700
@@ -1808,9 +1649,9 @@ namespace KerML { namespace Parser {
      252,   773,   766,   117,     4,   790,     5,   791,   271,   272,
      793,   476,   818,   487,   825,   794,   751,   795,   828,   823,
      161,   167,   833,  -254,   276,   477,   478,   834,   479,   480,
-     774,   489,   837,   840,   489,   481,   857,   850,  -406,   482,
-     859,   862,   863,   483,   484,  -254,   267,   489,   876,   877,
-     273,   488,   274,   865,   867,   875,   390,   597,   748,   162,
+     774,   489,   837,   840,   489,   481,   859,   850,  -406,   482,
+     865,   862,   863,   483,   484,  -254,   267,   489,   876,   877,
+     273,   488,   274,   857,   867,   875,   390,   597,   748,   162,
      141,   306,   831,   350,   398,   275,   740,   873,  -254,   142,
      143,   860,   821,   861,   864,   641,   858,   489,   489,   641,
      829,   641,   641,   870,   809,   463,   489,   749,   715,   838,
@@ -1991,7 +1832,7 @@ namespace KerML { namespace Parser {
        8,    65,    10,   142,    48,     3,   117,    24,    65,    69,
       36,   533,   165,   166,   536,   537,    24,    25,    78,    27,
       28,    91,    91,   130,     3,   142,    34,   759,   114,    37,
-      38,    76,    39,    41,    42,    43,    14,   157,    91,   537,
+      38,    76,    39,    41,    42,    43,    14,    50,    91,   537,
      142,    49,    36,    51,    18,    42,    38,   114,   706,   547,
       36,    42,    42,    45,    46,    47,    64,     3,   211,    47,
      114,   124,   538,     3,   586,   587,    36,    36,   813,   591,
@@ -2000,9 +1841,9 @@ namespace KerML { namespace Parser {
      167,    66,   614,   615,     3,    36,     5,    36,     7,     8,
       37,    10,    18,   111,    65,    41,   582,    41,    38,    41,
      151,   134,    36,    24,   122,    24,    25,    36,    27,    28,
-     642,   643,    36,    41,   646,    34,   157,    65,    37,    38,
-     115,    36,    36,    42,    43,    46,   658,   659,   870,   871,
-      49,   149,    51,   125,    41,    36,   259,   428,   581,    59,
+     642,   643,    36,    41,   646,    34,   115,    65,    37,    38,
+     125,    36,    36,    42,    43,    46,   658,   659,   870,   871,
+      49,   149,    51,    50,    41,    36,   259,   428,   581,    59,
       61,   200,   754,   230,   269,    64,   570,   863,    69,    70,
       71,   833,   718,   834,   837,   687,   829,   689,   690,   691,
      745,   693,   694,   853,   696,   339,   698,   581,   549,   772,
@@ -2128,154 +1969,154 @@ namespace KerML { namespace Parser {
   const short
   parser::yystos_[] =
   {
-       0,   159,   160,     0,     3,     5,    34,    46,    52,    56,
+       0,   158,   159,     0,     3,     5,    34,    46,    52,    56,
       57,    68,    74,    75,    77,    82,    83,    84,    88,    96,
      100,   102,   106,   107,   119,   126,   127,   128,   136,   138,
-     139,   151,   161,   162,   163,   164,   165,   166,   167,   168,
-     173,   178,   194,   197,   198,   200,   201,   202,   203,   206,
-     207,   208,   214,   217,   220,   228,   231,   235,   236,   246,
-     266,   269,   275,   281,   282,   283,   286,   287,   288,   289,
-     290,   291,   292,   300,   303,   306,   307,   308,   314,   316,
-     317,   318,   399,   400,   401,   418,   419,   420,   424,   429,
-     430,   435,   436,   437,   442,    23,   169,   169,   168,     3,
-      22,   171,   171,    51,   168,   215,   216,   278,   279,   171,
-     171,   171,   171,    51,   171,   171,   171,   168,   221,   279,
-     171,   168,   218,   279,   168,   149,   170,   230,    63,    85,
-     105,   113,   133,   139,   140,   145,   146,    95,   131,   166,
-      20,    61,    70,    71,   267,   270,     4,     6,   199,   108,
-      34,    67,    73,   104,   116,   121,   123,   143,   144,   242,
-     427,   151,   173,   237,   103,    72,    98,   134,    35,    87,
-      97,   427,   438,    55,     3,     5,     3,   136,    24,   280,
-      46,    74,   213,    68,   100,    38,    46,    69,   262,   421,
-     199,    91,   284,   197,   114,   127,   135,   152,   196,   171,
-      40,    50,   175,   170,   230,   230,   230,   230,   230,   230,
-     230,    72,   230,   171,   171,   171,   168,   168,   215,   170,
-     216,   268,   428,   116,   170,   247,   304,   247,    64,   122,
-     319,   170,   247,   402,   247,   247,   247,   247,   301,   243,
-     261,   262,    79,   276,    58,    86,   137,   241,   216,   230,
-     171,   230,   247,   293,   171,   433,   434,   171,   433,    40,
-      50,   439,   430,   169,   169,    14,   218,   168,   216,   215,
-      51,     7,     8,    49,    51,    64,   122,   168,   374,   375,
-     376,   391,   392,   393,   394,   395,   396,   397,   398,   422,
-     423,   216,   273,   273,   175,   175,   168,   142,   199,   221,
-     221,   218,   168,   197,    38,   172,   176,   171,    40,    50,
-     309,   175,   309,   175,   175,   175,   175,   230,   175,    40,
-      50,   204,   114,   193,    53,    46,    74,    47,    62,    46,
-      69,   168,   209,   402,     3,    22,    43,   135,   219,   248,
-     256,   257,   170,   175,    18,    19,   132,   315,   414,   415,
-     247,     3,   168,   216,   409,   410,   411,   412,   413,   315,
-     175,   315,   315,   170,   175,    20,   244,   417,   272,   273,
-     215,    44,    81,   238,    91,   175,     3,   425,   425,    42,
-     170,   294,   295,   175,    47,    62,   152,   431,   268,   431,
-     160,   440,   438,   135,   280,    40,    50,   189,   213,   199,
-      23,    37,   168,   189,   114,   189,   199,     9,    46,   219,
-     229,   232,    39,   177,   206,   208,   211,   212,   225,   226,
-     227,   172,   176,   206,   310,   311,   312,   175,   205,   168,
-      65,   168,   168,   168,   216,   142,   216,   216,    48,   210,
-     175,     3,   218,   218,    60,   103,   110,   120,   127,   129,
-     141,   180,   181,   183,   185,   187,   250,   251,   252,   253,
-     254,   219,   249,   256,   250,    45,    47,    78,   172,   258,
-     259,   261,   264,   265,   117,   305,    10,    24,    25,    27,
-      28,    34,    38,    42,    43,    92,    93,   111,   149,   168,
-     268,   323,   324,   325,   327,   329,   330,   331,   333,   334,
-     335,   336,   340,   341,   342,   343,   345,   350,   351,   352,
-     353,   354,   358,   359,   360,   361,   372,   373,   374,   377,
-     378,   379,   381,   385,   386,   387,   388,   389,   390,   391,
-     323,    18,    19,   416,   175,   315,    24,    65,    91,   403,
-     309,   309,    91,   302,   323,   245,   415,    36,   263,   168,
-     130,   239,   216,    46,    74,   426,   426,     3,   297,   298,
-     299,   114,   142,   168,    39,    39,   206,   441,   439,   218,
-     190,   216,   422,   189,   221,    23,    38,   168,   234,   179,
-     180,    99,   150,   162,   163,   430,    43,   135,   174,   206,
-     310,    76,   206,   313,    39,   310,    39,   161,   168,   157,
-     189,   189,   264,   216,   264,   264,    29,    49,    14,   216,
-     222,    91,   216,   223,   142,   114,   216,   224,   168,   278,
-     279,   250,   216,   274,   268,   274,    89,    94,    36,   260,
-     257,   297,    42,   365,   388,   168,   279,   365,   370,   371,
-     375,   168,   349,    42,   321,   322,   323,   355,   356,   357,
-      41,   311,   355,   323,   334,   346,   348,   349,    24,    42,
-     380,   322,    11,    13,    14,    15,    16,    17,    18,    21,
+     139,   151,   160,   161,   162,   163,   164,   165,   166,   167,
+     172,   177,   193,   196,   197,   199,   200,   201,   202,   205,
+     206,   207,   213,   216,   219,   227,   230,   234,   235,   245,
+     265,   268,   274,   280,   281,   282,   285,   286,   287,   288,
+     289,   290,   291,   299,   302,   305,   306,   307,   313,   315,
+     316,   317,   398,   399,   400,   417,   418,   419,   423,   428,
+     429,   434,   435,   436,   441,    23,   168,   168,   167,     3,
+      22,   170,   170,    51,   167,   214,   215,   277,   278,   170,
+     170,   170,   170,    51,   170,   170,   170,   167,   220,   278,
+     170,   167,   217,   278,   167,   149,   169,   229,    63,    85,
+     105,   113,   133,   139,   140,   145,   146,    95,   131,   165,
+      20,    61,    70,    71,   266,   269,     4,     6,   198,   108,
+      34,    67,    73,   104,   116,   121,   123,   143,   144,   241,
+     426,   151,   172,   236,   103,    72,    98,   134,    35,    87,
+      97,   426,   437,    55,     3,     5,     3,   136,    24,   279,
+      46,    74,   212,    68,   100,    38,    46,    69,   261,   420,
+     198,    91,   283,   196,   114,   127,   135,   152,   195,   170,
+      40,    50,   174,   169,   229,   229,   229,   229,   229,   229,
+     229,    72,   229,   170,   170,   170,   167,   167,   214,   169,
+     215,   267,   427,   116,   169,   246,   303,   246,    64,   122,
+     318,   169,   246,   401,   246,   246,   246,   246,   300,   242,
+     260,   261,    79,   275,    58,    86,   137,   240,   215,   229,
+     170,   229,   246,   292,   170,   432,   433,   170,   432,    40,
+      50,   438,   429,   168,   168,    14,   217,   167,   215,   214,
+      51,     7,     8,    49,    51,    64,   122,   167,   373,   374,
+     375,   390,   391,   392,   393,   394,   395,   396,   397,   421,
+     422,   215,   272,   272,   174,   174,   167,   142,   198,   220,
+     220,   217,   167,   196,    38,   171,   175,   170,    40,    50,
+     308,   174,   308,   174,   174,   174,   174,   229,   174,    40,
+      50,   203,   114,   192,    53,    46,    74,    47,    62,    46,
+      69,   167,   208,   401,     3,    22,    43,   135,   218,   247,
+     255,   256,   169,   174,    18,    19,   132,   314,   413,   414,
+     246,     3,   167,   215,   408,   409,   410,   411,   412,   314,
+     174,   314,   314,   169,   174,    20,   243,   416,   271,   272,
+     214,    44,    81,   237,    91,   174,     3,   424,   424,    42,
+     169,   293,   294,   174,    47,    62,   152,   430,   267,   430,
+     159,   439,   437,   135,   279,    40,    50,   188,   212,   198,
+      23,    37,   167,   188,   114,   188,   198,     9,    46,   218,
+     228,   231,    39,   176,   205,   207,   210,   211,   224,   225,
+     226,   171,   175,   205,   309,   310,   311,   174,   204,   167,
+      65,   167,   167,   167,   215,   142,   215,   215,    48,   209,
+     174,     3,   217,   217,    60,   103,   110,   120,   127,   129,
+     141,   179,   180,   182,   184,   186,   249,   250,   251,   252,
+     253,   218,   248,   255,   249,    45,    47,    78,   171,   257,
+     258,   260,   263,   264,   117,   304,    10,    24,    25,    27,
+      28,    34,    38,    42,    43,    92,    93,   111,   149,   167,
+     267,   322,   323,   324,   326,   328,   329,   330,   332,   333,
+     334,   335,   339,   340,   341,   342,   344,   349,   350,   351,
+     352,   353,   357,   358,   359,   360,   371,   372,   373,   376,
+     377,   378,   380,   384,   385,   386,   387,   388,   389,   390,
+     322,    18,    19,   415,   174,   314,    24,    65,    91,   402,
+     308,   308,    91,   301,   322,   244,   414,    36,   262,   167,
+     130,   238,   215,    46,    74,   425,   425,     3,   296,   297,
+     298,   114,   142,   167,    39,    39,   205,   440,   438,   217,
+     189,   215,   421,   188,   220,    23,    38,   167,   233,   178,
+     179,    99,   150,   161,   162,   429,    43,   135,   173,   205,
+     309,    76,   205,   312,    39,   309,    39,   160,   167,    50,
+     188,   188,   263,   215,   263,   263,    29,    49,    14,   215,
+     221,    91,   215,   222,   142,   114,   215,   223,   167,   277,
+     278,   249,   215,   273,   267,   273,    89,    94,    36,   259,
+     256,   296,    42,   364,   387,   167,   278,   364,   369,   370,
+     374,   167,   348,    42,   320,   321,   322,   354,   355,   356,
+      41,   310,   354,   322,   333,   345,   347,   348,    24,    42,
+     379,   321,    11,    13,    14,    15,    16,    17,    18,    21,
       22,    23,    26,    27,    28,    29,    30,    31,    32,    33,
-      35,    49,    59,    90,   101,   109,   112,   147,   148,   326,
-     328,   332,    24,    53,   344,   380,    36,   382,    18,   323,
-     309,   168,   411,   409,     3,   171,   172,   268,   405,   406,
-     114,   404,   297,   175,   273,   259,   271,   124,   240,   189,
-       3,     3,   175,   175,    45,    78,    36,   296,   172,   297,
-      36,   432,   118,   189,    39,   162,   163,   191,   192,   195,
-     198,   189,    37,   189,     9,    36,   233,   163,   165,   246,
-     291,   171,   168,   168,   175,   323,   323,   189,   189,   264,
-     189,   189,     3,   184,   278,   186,   168,   285,   221,   188,
-      94,    89,   268,    66,   168,   320,   321,   322,   338,   339,
-     349,   362,   363,   364,   366,   367,   368,   369,   388,   357,
-      36,    36,   322,    37,    41,    41,    12,    97,    41,   322,
-     381,   347,   348,   337,   338,   322,   346,   347,   346,   168,
-     385,   322,   257,   408,   268,   407,   172,   409,    18,   272,
-     264,   166,   297,    41,   274,    65,   168,   323,    38,   234,
-     425,   179,   189,    36,    36,   255,   182,    36,   260,   297,
-      41,   357,   355,   337,   334,   383,    41,   382,   264,   315,
-      65,   297,   262,   277,   296,   297,   432,   157,   233,   115,
-     222,   223,    36,    36,   224,   125,   384,    41,   257,   409,
-     244,   168,   285,   221,   337,    36,   189,   189,   322
+      35,    49,    59,    90,   101,   109,   112,   147,   148,   325,
+     327,   331,    24,    53,   343,   379,    36,   381,    18,   322,
+     308,   167,   410,   408,     3,   170,   171,   267,   404,   405,
+     114,   403,   296,   174,   272,   258,   270,   124,   239,   188,
+       3,     3,   174,   174,    45,    78,    36,   295,   171,   296,
+      36,   431,   118,   188,    39,   161,   162,   190,   191,   194,
+     197,   188,    37,   188,     9,    36,   232,   162,   164,   245,
+     290,   170,   167,   167,   174,   322,   322,   188,   188,   263,
+     188,   188,     3,   183,   277,   185,   167,   284,   220,   187,
+      94,    89,   267,    66,   167,   319,   320,   321,   337,   338,
+     348,   361,   362,   363,   365,   366,   367,   368,   387,   356,
+      36,    36,   321,    37,    41,    41,    12,    97,    41,   321,
+     380,   346,   347,   336,   337,   321,   345,   346,   345,   167,
+     384,   321,   256,   407,   267,   406,   171,   408,    18,   271,
+     263,   165,   296,    41,   273,    65,   167,   322,    38,   233,
+     424,   178,   188,    36,    36,   254,   181,    36,   259,   296,
+      41,   356,   354,   336,   333,   382,    41,   381,   263,   314,
+      65,   296,   261,   276,   295,   296,   431,    50,   232,   115,
+     221,   222,    36,    36,   223,   125,   383,    41,   256,   408,
+     243,   167,   284,   220,   336,    36,   188,   188,   321
   };
 
   const short
   parser::yyr1_[] =
   {
-       0,   158,   159,   160,   160,   161,   161,   161,   161,   162,
-     162,   162,   162,   162,   162,   162,   162,   162,   162,   162,
-     162,   162,   162,   162,   162,   162,   162,   162,   162,   162,
-     162,   162,   162,   162,   162,   162,   163,   163,   163,   163,
-     163,   163,   163,   163,   163,   163,   164,   165,   165,   165,
-     166,   166,   167,   167,   168,   168,   168,   169,   169,   169,
-     170,   170,   171,   171,   172,   172,   172,   173,   173,   174,
-     174,   175,   175,   176,   176,   177,   177,   177,   177,   178,
-     179,   179,   180,   180,   180,   180,   181,   182,   182,   183,
-     184,   184,   185,   186,   186,   187,   188,   188,   189,   189,
-     190,   190,   191,   191,   192,   192,   193,   193,   194,   195,
-     196,   197,   197,   198,   198,   198,   198,   199,   199,   200,
-     200,   201,   202,   202,   203,   204,   204,   205,   205,   206,
-     206,   207,   207,   207,   208,   209,   210,   210,   210,   211,
-     212,   213,   213,   214,   214,   215,   216,   216,   217,   217,
-     218,   218,   219,   219,   220,   220,   221,   221,   222,   223,
-     224,   225,   225,   226,   227,   228,   228,   229,   229,   229,
-     230,   231,   231,   232,   233,   233,   234,   235,   236,   237,
-     237,   238,   238,   239,   239,   240,   240,   241,   241,   241,
-     241,   242,   242,   242,   243,   243,   244,   244,   245,   245,
-     246,   246,   246,   246,   247,   247,   247,   248,   248,   248,
-     249,   249,   249,   250,   250,   251,   251,   251,   251,   252,
-     252,   253,   254,   255,   255,   256,   257,   257,   257,   257,
-     258,   259,   260,   260,   261,   262,   262,   263,   263,   264,
-     264,   264,   264,   264,   265,   265,   266,   266,   267,   267,
-     268,   269,   269,   270,   270,   271,   271,   272,   272,   273,
-     274,   275,   276,   276,   277,   277,   278,   279,   280,   280,
-     281,   282,   282,   283,   284,   284,   285,   286,   287,   288,
-     289,   290,   291,   291,   292,   293,   293,   294,   295,   296,
-     296,   297,   298,   299,   299,   299,   300,   301,   302,   302,
-     303,   304,   305,   305,   306,   307,   308,   309,   309,   310,
-     310,   310,   311,   312,   313,   313,   314,   315,   315,   316,
-     317,   318,   319,   319,   319,   320,   321,   322,   322,   323,
-     323,   323,   323,   323,   323,   323,   323,   324,   325,   326,
-     326,   326,   326,   327,   328,   328,   328,   328,   328,   328,
-     328,   328,   328,   328,   328,   328,   328,   328,   328,   328,
-     328,   328,   328,   329,   330,   330,   330,   330,   331,   331,
-     332,   332,   332,   333,   333,   334,   334,   335,   336,   337,
-     338,   339,   340,   341,   342,   343,   344,   345,   346,   347,
-     348,   349,   350,   350,   351,   351,   351,   351,   351,   351,
-     351,   352,   353,   354,   355,   355,   355,   356,   357,   358,
-     359,   360,   361,   361,   361,   362,   363,   364,   365,   366,
-     367,   368,   369,   370,   370,   371,   372,   372,   372,   372,
-     372,   372,   373,   373,   374,   375,   376,   377,   378,   379,
-     379,   380,   380,   380,   381,   382,   382,   383,   384,   384,
-     385,   386,   387,   388,   389,   390,   391,   391,   391,   391,
-     391,   391,   392,   393,   393,   394,   395,   396,   397,   397,
-     398,   399,   400,   401,   402,   402,   403,   403,   404,   404,
-     405,   406,   406,   406,   407,   407,   408,   409,   410,   410,
-     411,   412,   413,   414,   415,   415,   415,   416,   416,   416,
-     417,   418,   418,   419,   420,   421,   421,   422,   423,   423,
-     424,   424,   425,   425,   426,   426,   426,   427,   428,   429,
-     429,   430,   430,   431,   432,   432,   433,   434,   434,   434,
-     435,   436,   437,   437,   438,   439,   439,   439,   439,   440,
-     440,   441,   442
+       0,   157,   158,   159,   159,   160,   160,   160,   160,   161,
+     161,   161,   161,   161,   161,   161,   161,   161,   161,   161,
+     161,   161,   161,   161,   161,   161,   161,   161,   161,   161,
+     161,   161,   161,   161,   161,   161,   162,   162,   162,   162,
+     162,   162,   162,   162,   162,   162,   163,   164,   164,   164,
+     165,   165,   166,   166,   167,   167,   167,   168,   168,   168,
+     169,   169,   170,   170,   171,   171,   171,   172,   172,   173,
+     173,   174,   174,   175,   175,   176,   176,   176,   176,   177,
+     178,   178,   179,   179,   179,   179,   180,   181,   181,   182,
+     183,   183,   184,   185,   185,   186,   187,   187,   188,   188,
+     189,   189,   190,   190,   191,   191,   192,   192,   193,   194,
+     195,   196,   196,   197,   197,   197,   197,   198,   198,   199,
+     199,   200,   201,   201,   202,   203,   203,   204,   204,   205,
+     205,   206,   206,   206,   207,   208,   209,   209,   209,   210,
+     211,   212,   212,   213,   213,   214,   215,   215,   216,   216,
+     217,   217,   218,   218,   219,   219,   220,   220,   221,   222,
+     223,   224,   224,   225,   226,   227,   227,   228,   228,   228,
+     229,   230,   230,   231,   232,   232,   233,   234,   235,   236,
+     236,   237,   237,   238,   238,   239,   239,   240,   240,   240,
+     240,   241,   241,   241,   242,   242,   243,   243,   244,   244,
+     245,   245,   245,   245,   246,   246,   246,   247,   247,   247,
+     248,   248,   248,   249,   249,   250,   250,   250,   250,   251,
+     251,   252,   253,   254,   254,   255,   256,   256,   256,   256,
+     257,   258,   259,   259,   260,   261,   261,   262,   262,   263,
+     263,   263,   263,   263,   264,   264,   265,   265,   266,   266,
+     267,   268,   268,   269,   269,   270,   270,   271,   271,   272,
+     273,   274,   275,   275,   276,   276,   277,   278,   279,   279,
+     280,   281,   281,   282,   283,   283,   284,   285,   286,   287,
+     288,   289,   290,   290,   291,   292,   292,   293,   294,   295,
+     295,   296,   297,   298,   298,   298,   299,   300,   301,   301,
+     302,   303,   304,   304,   305,   306,   307,   308,   308,   309,
+     309,   309,   310,   311,   312,   312,   313,   314,   314,   315,
+     316,   317,   318,   318,   318,   319,   320,   321,   321,   322,
+     322,   322,   322,   322,   322,   322,   322,   323,   324,   325,
+     325,   325,   325,   326,   327,   327,   327,   327,   327,   327,
+     327,   327,   327,   327,   327,   327,   327,   327,   327,   327,
+     327,   327,   327,   328,   329,   329,   329,   329,   330,   330,
+     331,   331,   331,   332,   332,   333,   333,   334,   335,   336,
+     337,   338,   339,   340,   341,   342,   343,   344,   345,   346,
+     347,   348,   349,   349,   350,   350,   350,   350,   350,   350,
+     350,   351,   352,   353,   354,   354,   354,   355,   356,   357,
+     358,   359,   360,   360,   360,   361,   362,   363,   364,   365,
+     366,   367,   368,   369,   369,   370,   371,   371,   371,   371,
+     371,   371,   372,   372,   373,   374,   375,   376,   377,   378,
+     378,   379,   379,   379,   380,   381,   381,   382,   383,   383,
+     384,   385,   386,   387,   388,   389,   390,   390,   390,   390,
+     390,   390,   391,   392,   392,   393,   394,   395,   396,   396,
+     397,   398,   399,   400,   401,   401,   402,   402,   403,   403,
+     404,   405,   405,   405,   406,   406,   407,   408,   409,   409,
+     410,   411,   412,   413,   414,   414,   414,   415,   415,   415,
+     416,   417,   417,   418,   419,   420,   420,   421,   422,   422,
+     423,   423,   424,   424,   425,   425,   425,   426,   427,   428,
+     428,   429,   429,   430,   431,   431,   432,   433,   433,   433,
+     434,   435,   436,   436,   437,   438,   438,   438,   438,   439,
+     439,   440,   441
   };
 
   const signed char
@@ -2390,8 +2231,8 @@ namespace KerML { namespace Parser {
   "KEYWORD_CLASS", "KEYWORD_CHAINS", "KEYWORD_BY", "KEYWORD_BOOL",
   "KEYWORD_BINDING", "KEYWORD_BEHAVIOR", "KEYWORD_ASSOC", "KEYWORD_AS",
   "KEYWORD_AND", "KEYWORD_ALL", "KEYWORD_ALIAS", "KEYWORD_ABSTRACT",
-  "KEYWORD_ABOUT", "TPLUS", "TMINUS", "TMUL", "TDIV", "';'", "$accept",
-  "model", "elements", "element", "non_feature_element", "feature_element",
+  "KEYWORD_ABOUT", "TPLUS", "TMINUS", "TMUL", "TDIV", "$accept", "model",
+  "elements", "element", "non_feature_element", "feature_element",
   "additional_options", "type_prefix", "prefix_metadata_annotation",
   "abstract_modifier", "qualified_name", "qualified_name_tail",
   "all_modifier", "identification", "mutliplicity_bounds",
@@ -2503,61 +2344,61 @@ namespace KerML { namespace Parser {
   const short
   parser::yyrline_[] =
   {
-       0,    40,    40,    43,    44,    46,    47,    48,    49,    51,
-      52,    53,    54,    55,    56,    57,    58,    59,    60,    61,
-      62,    63,    64,    65,    66,    67,    68,    69,    70,    71,
-      72,    73,    74,    75,    76,    77,    79,    80,    81,    82,
-      83,    84,    85,    86,    87,    88,    90,    94,    98,   101,
-     103,   106,   109,   110,   114,   122,   129,   136,   146,   156,
-     162,   163,   166,   169,   173,   177,   180,   182,   186,   191,
-     195,   200,   201,   206,   207,   209,   210,   211,   212,   215,
-     217,   217,   219,   220,   221,   222,   224,   225,   225,   226,
-     227,   227,   228,   229,   229,   230,   231,   231,   233,   234,
-     238,   238,   239,   239,   240,   240,   242,   244,   246,   248,
-     249,   250,   251,   252,   252,   252,   252,   253,   256,   259,
-     260,   261,   262,   263,   264,   265,   265,   266,   266,   267,
-     267,   268,   268,   268,   269,   270,   271,   271,   271,   274,
-     276,   280,   280,   281,   282,   283,   286,   288,   292,   293,
-     294,   294,   295,   296,   297,   298,   299,   299,   301,   302,
-     303,   305,   305,   306,   307,   309,   310,   311,   311,   311,
-     312,   313,   314,   315,   316,   316,   317,   319,   320,   321,
-     321,   322,   322,   323,   323,   324,   324,   325,   325,   325,
-     325,   326,   327,   328,   329,   329,   330,   330,   331,   331,
-     332,   332,   332,   332,   333,   334,   335,   337,   337,   337,
-     338,   338,   338,   339,   339,   340,   340,   340,   340,   341,
-     342,   343,   344,   345,   345,   346,   347,   347,   347,   347,
-     348,   349,   350,   350,   351,   352,   352,   353,   353,   354,
-     355,   356,   357,   358,   359,   360,   367,   368,   369,   369,
-     370,   372,   373,   374,   374,   375,   375,   376,   376,   377,
-     378,   380,   381,   381,   382,   382,   385,   386,   387,   387,
-     390,   391,   391,   394,   395,   395,   396,   398,   400,   402,
-     404,   405,   406,   406,   408,   409,   410,   411,   412,   413,
-     413,   414,   415,   416,   417,   418,   420,   421,   422,   422,
-     424,   425,   426,   426,   428,   430,   432,   433,   433,   434,
-     435,   436,   437,   438,   439,   440,   442,   443,   443,   445,
-     447,   448,   449,   449,   449,   452,   453,   454,   454,   455,
-     456,   457,   458,   459,   460,   461,   462,   463,   464,   465,
-     465,   465,   465,   466,   467,   467,   467,   467,   467,   467,
-     467,   467,   467,   467,   467,   467,   467,   467,   467,   467,
-     467,   467,   467,   468,   469,   469,   469,   469,   470,   471,
-     474,   474,   474,   475,   476,   477,   477,   478,   479,   480,
-     481,   482,   483,   484,   485,   486,   487,   488,   489,   490,
-     491,   492,   495,   495,   499,   500,   501,   502,   503,   504,
-     505,   509,   510,   511,   512,   513,   514,   515,   516,   517,
-     518,   519,   520,   521,   522,   523,   524,   525,   526,   527,
-     528,   531,   532,   533,   533,   534,   536,   537,   538,   539,
-     540,   541,   542,   542,   543,   544,   545,   547,   548,   549,
-     550,   551,   552,   553,   554,   555,   555,   556,   557,   557,
-     558,   559,   560,   561,   562,   563,   565,   566,   567,   568,
-     569,   570,   571,   572,   572,   573,   574,   575,   576,   576,
-     577,   579,   581,   582,   583,   584,   585,   585,   586,   586,
-     587,   588,   589,   590,   591,   591,   592,   593,   594,   595,
-     596,   597,   598,   600,   601,   602,   603,   604,   604,   604,
-     605,   607,   607,   608,   609,   612,   613,   614,   615,   615,
-     617,   618,   619,   619,   620,   620,   620,   622,   623,   624,
-     625,   626,   626,   627,   628,   628,   629,   630,   630,   630,
-     643,   644,   645,   645,   646,   647,   647,   648,   649,   650,
-     650,   651,   653
+       0,    46,    46,    49,    50,    52,    53,    54,    55,    57,
+      58,    59,    60,    61,    62,    63,    64,    65,    66,    67,
+      68,    69,    70,    71,    72,    73,    74,    75,    76,    77,
+      78,    79,    80,    81,    82,    83,    85,    86,    87,    88,
+      89,    90,    91,    92,    93,    94,    96,   100,   104,   107,
+     109,   112,   115,   116,   120,   128,   135,   142,   152,   162,
+     168,   169,   172,   175,   179,   183,   186,   188,   192,   197,
+     201,   206,   207,   212,   213,   215,   216,   217,   218,   221,
+     223,   223,   225,   226,   227,   228,   230,   231,   231,   232,
+     233,   233,   234,   235,   235,   236,   237,   237,   239,   240,
+     244,   244,   245,   245,   246,   246,   248,   250,   252,   254,
+     255,   256,   257,   258,   258,   258,   258,   259,   262,   265,
+     266,   267,   268,   269,   270,   271,   271,   272,   272,   273,
+     273,   274,   274,   274,   275,   276,   277,   277,   277,   280,
+     282,   286,   286,   287,   288,   289,   292,   294,   298,   299,
+     300,   300,   301,   302,   303,   304,   305,   305,   307,   308,
+     309,   311,   311,   312,   313,   315,   316,   317,   317,   317,
+     318,   319,   320,   321,   322,   322,   323,   325,   326,   327,
+     327,   328,   328,   329,   329,   330,   330,   331,   331,   331,
+     331,   332,   333,   334,   335,   335,   336,   336,   337,   337,
+     338,   338,   338,   338,   339,   340,   341,   343,   343,   343,
+     344,   344,   344,   345,   345,   346,   346,   346,   346,   347,
+     348,   349,   350,   351,   351,   352,   353,   353,   353,   353,
+     354,   355,   356,   356,   357,   358,   358,   359,   359,   360,
+     361,   362,   363,   364,   365,   366,   373,   374,   375,   375,
+     376,   378,   379,   380,   380,   381,   381,   382,   382,   383,
+     384,   386,   387,   387,   388,   388,   391,   392,   393,   393,
+     396,   397,   397,   400,   401,   401,   402,   404,   406,   408,
+     410,   411,   412,   412,   414,   415,   416,   417,   418,   419,
+     419,   420,   421,   422,   423,   424,   426,   427,   428,   428,
+     430,   431,   432,   432,   434,   436,   438,   439,   439,   440,
+     441,   442,   443,   444,   445,   446,   448,   449,   449,   451,
+     453,   454,   455,   455,   455,   458,   459,   460,   460,   461,
+     462,   463,   464,   465,   466,   467,   468,   469,   470,   471,
+     471,   471,   471,   472,   473,   473,   473,   473,   473,   473,
+     473,   473,   473,   473,   473,   473,   473,   473,   473,   473,
+     473,   473,   473,   474,   475,   475,   475,   475,   476,   477,
+     480,   480,   480,   481,   482,   483,   483,   484,   485,   486,
+     487,   488,   489,   490,   491,   492,   493,   494,   495,   496,
+     497,   498,   501,   501,   505,   506,   507,   508,   509,   510,
+     511,   515,   516,   517,   518,   519,   520,   521,   522,   523,
+     524,   525,   526,   527,   528,   529,   530,   531,   532,   533,
+     534,   537,   538,   539,   539,   540,   542,   543,   544,   545,
+     546,   547,   548,   548,   549,   550,   551,   553,   554,   555,
+     556,   557,   558,   559,   560,   561,   561,   562,   563,   563,
+     564,   565,   566,   567,   568,   569,   571,   572,   573,   574,
+     575,   576,   577,   578,   578,   579,   580,   581,   582,   582,
+     583,   585,   587,   588,   589,   590,   591,   591,   592,   592,
+     593,   594,   595,   596,   597,   597,   598,   599,   600,   601,
+     602,   603,   604,   606,   607,   608,   609,   610,   610,   610,
+     611,   613,   613,   614,   615,   618,   619,   620,   621,   621,
+     623,   624,   625,   625,   626,   626,   626,   628,   629,   630,
+     631,   632,   632,   633,   634,   634,   635,   636,   636,   636,
+     649,   650,   651,   651,   652,   653,   653,   654,   655,   656,
+     656,   657,   659
   };
 
   void
@@ -2587,74 +2428,12 @@ namespace KerML { namespace Parser {
   }
 #endif // YYDEBUG
 
-  parser::symbol_kind_type
-  parser::yytranslate_ (int t) YY_NOEXCEPT
-  {
-    // YYTRANSLATE[TOKEN-NUM] -- Symbol number corresponding to
-    // TOKEN-NUM as returned by yylex.
-    static
-    const unsigned char
-    translate_table[] =
-    {
-       0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,   157,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
-      25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
-      35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
-      45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
-      55,    56,    57,    58,    59,    60,    61,    62,    63,    64,
-      65,    66,    67,    68,    69,    70,    71,    72,    73,    74,
-      75,    76,    77,    78,    79,    80,    81,    82,    83,    84,
-      85,    86,    87,    88,    89,    90,    91,    92,    93,    94,
-      95,    96,    97,    98,    99,   100,   101,   102,   103,   104,
-     105,   106,   107,   108,   109,   110,   111,   112,   113,   114,
-     115,   116,   117,   118,   119,   120,   121,   122,   123,   124,
-     125,   126,   127,   128,   129,   130,   131,   132,   133,   134,
-     135,   136,   137,   138,   139,   140,   141,   142,   143,   144,
-     145,   146,   147,   148,   149,   150,   151,   152,   153,   154,
-     155,   156
-    };
-    // Last valid token kind.
-    const int code_max = 411;
 
-    if (t <= 0)
-      return symbol_kind::S_YYEOF;
-    else if (t <= code_max)
-      return static_cast <symbol_kind_type> (translate_table[t]);
-    else
-      return symbol_kind::S_YYUNDEF;
-  }
-
-#line 5 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 7 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
 } } // KerML::Parser
-#line 2656 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
+#line 2435 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.cpp"
 
-#line 654 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 660 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
 
 
 void KerML::Parser::parser::error(const std::string& msg) {

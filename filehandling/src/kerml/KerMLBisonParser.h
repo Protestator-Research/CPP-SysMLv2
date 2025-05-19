@@ -32,7 +32,7 @@
 
 
 /**
- ** \file /Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.h
+ ** \file /home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.h
  ** Define the KerML::Parser::parser class.
  */
 
@@ -42,16 +42,16 @@
 // especially those whose name start with YY_ or yy_.  They are
 // private implementation details that can be changed or removed.
 
-#ifndef YY_YY_USERS_HERZOG_DOCUMENTS_PROJEKTE_CPP_SYSMLV2_FILEHANDLING_SRC_KERML_KERMLBISONPARSER_H_INCLUDED
-# define YY_YY_USERS_HERZOG_DOCUMENTS_PROJEKTE_CPP_SYSMLV2_FILEHANDLING_SRC_KERML_KERMLBISONPARSER_H_INCLUDED
+#ifndef YY_YY_HOME_PARALLELS_DOCUMENTS_PROJEKTE_CPP_SYSMLV2_FILEHANDLING_SRC_KERML_KERMLBISONPARSER_H_INCLUDED
+# define YY_YY_HOME_PARALLELS_DOCUMENTS_PROJEKTE_CPP_SYSMLV2_FILEHANDLING_SRC_KERML_KERMLBISONPARSER_H_INCLUDED
 // "%code requires" blocks.
-#line 16 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 18 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
 
-    #include "KerMLFlexScanner.h"
+    class KerMLFlexScanner;
 
-#line 53 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.h"
+#line 53 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.h"
 
-
+# include <cassert>
 # include <cstdlib> // std::abort
 # include <iostream>
 # include <stdexcept>
@@ -95,6 +95,11 @@
 # define YY_CONSTEXPR
 #endif
 
+#include <typeinfo>
+#ifndef YY_ASSERT
+# include <cassert>
+# define YY_ASSERT assert
+#endif
 
 
 #ifndef YY_ATTRIBUTE_PURE
@@ -183,9 +188,9 @@
 # define YYDEBUG 0
 #endif
 
-#line 5 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+#line 7 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
 namespace KerML { namespace Parser {
-#line 189 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.h"
+#line 194 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.h"
 
 
 
@@ -214,12 +219,15 @@ namespace KerML { namespace Parser {
     /// Empty construction.
     value_type () YY_NOEXCEPT
       : yyraw_ ()
+      , yytypeid_ (YY_NULLPTR)
     {}
 
     /// Construct and fill.
     template <typename T>
     value_type (YY_RVREF (T) t)
+      : yytypeid_ (&typeid (T))
     {
+      YY_ASSERT (sizeof (T) <= size);
       new (yyas_<T> ()) T (YY_MOVE (t));
     }
 
@@ -232,7 +240,9 @@ namespace KerML { namespace Parser {
 
     /// Destruction, allowed only if empty.
     ~value_type () YY_NOEXCEPT
-    {}
+    {
+      YY_ASSERT (!yytypeid_);
+    }
 
 # if 201103L <= YY_CPLUSPLUS
     /// Instantiate a \a T in here from \a t.
@@ -240,6 +250,9 @@ namespace KerML { namespace Parser {
     T&
     emplace (U&&... u)
     {
+      YY_ASSERT (!yytypeid_);
+      YY_ASSERT (sizeof (T) <= size);
+      yytypeid_ = & typeid (T);
       return *new (yyas_<T> ()) T (std::forward <U>(u)...);
     }
 # else
@@ -248,6 +261,9 @@ namespace KerML { namespace Parser {
     T&
     emplace ()
     {
+      YY_ASSERT (!yytypeid_);
+      YY_ASSERT (sizeof (T) <= size);
+      yytypeid_ = & typeid (T);
       return *new (yyas_<T> ()) T ();
     }
 
@@ -256,6 +272,9 @@ namespace KerML { namespace Parser {
     T&
     emplace (const T& t)
     {
+      YY_ASSERT (!yytypeid_);
+      YY_ASSERT (sizeof (T) <= size);
+      yytypeid_ = & typeid (T);
       return *new (yyas_<T> ()) T (t);
     }
 # endif
@@ -283,6 +302,9 @@ namespace KerML { namespace Parser {
     T&
     as () YY_NOEXCEPT
     {
+      YY_ASSERT (yytypeid_);
+      YY_ASSERT (*yytypeid_ == typeid (T));
+      YY_ASSERT (sizeof (T) <= size);
       return *yyas_<T> ();
     }
 
@@ -291,6 +313,9 @@ namespace KerML { namespace Parser {
     const T&
     as () const YY_NOEXCEPT
     {
+      YY_ASSERT (yytypeid_);
+      YY_ASSERT (*yytypeid_ == typeid (T));
+      YY_ASSERT (sizeof (T) <= size);
       return *yyas_<T> ();
     }
 
@@ -306,6 +331,8 @@ namespace KerML { namespace Parser {
     void
     swap (self_type& that) YY_NOEXCEPT
     {
+      YY_ASSERT (yytypeid_);
+      YY_ASSERT (*yytypeid_ == *that.yytypeid_);
       std::swap (as<T> (), that.as<T> ());
     }
 
@@ -350,6 +377,7 @@ namespace KerML { namespace Parser {
     destroy ()
     {
       as<T> ().~T ();
+      yytypeid_ = YY_NULLPTR;
     }
 
   private:
@@ -425,6 +453,9 @@ namespace KerML { namespace Parser {
       /// A buffer large enough to store any of the semantic values.
       char yyraw_[size];
     };
+
+    /// Whether the content is built: if defined, the name of the stored type.
+    const std::type_info *yytypeid_;
   };
 
 #endif
@@ -625,7 +656,7 @@ namespace KerML { namespace Parser {
     {
       enum symbol_kind_type
       {
-        YYNTOKENS = 158, ///< Number of tokens.
+        YYNTOKENS = 157, ///< Number of tokens.
         S_YYEMPTY = -2,
         S_YYEOF = 0,                             // "end of file"
         S_YYerror = 1,                           // error
@@ -784,292 +815,291 @@ namespace KerML { namespace Parser {
         S_TMINUS = 154,                          // TMINUS
         S_TMUL = 155,                            // TMUL
         S_TDIV = 156,                            // TDIV
-        S_157_ = 157,                            // ';'
-        S_YYACCEPT = 158,                        // $accept
-        S_model = 159,                           // model
-        S_elements = 160,                        // elements
-        S_element = 161,                         // element
-        S_non_feature_element = 162,             // non_feature_element
-        S_feature_element = 163,                 // feature_element
-        S_additional_options = 164,              // additional_options
-        S_type_prefix = 165,                     // type_prefix
-        S_prefix_metadata_annotation = 166,      // prefix_metadata_annotation
-        S_abstract_modifier = 167,               // abstract_modifier
-        S_qualified_name = 168,                  // qualified_name
-        S_qualified_name_tail = 169,             // qualified_name_tail
-        S_all_modifier = 170,                    // all_modifier
-        S_identification = 171,                  // identification
-        S_mutliplicity_bounds = 172,             // mutliplicity_bounds
-        S_specialization_option = 173,           // specialization_option
-        S_conjugation_option = 174,              // conjugation_option
-        S_type_body = 175,                       // type_body
-        S_type_body_elements = 176,              // type_body_elements
-        S_type_body_element = 177,               // type_body_element
-        S_type = 178,                            // type
-        S_type_relationship_part_option = 179,   // type_relationship_part_option
-        S_type_relationship_part = 180,          // type_relationship_part
-        S_disjoining_part = 181,                 // disjoining_part
-        S_disjoining_part_multiplicity = 182,    // disjoining_part_multiplicity
-        S_unioning_part = 183,                   // unioning_part
-        S_unioning_part_multiplicity = 184,      // unioning_part_multiplicity
-        S_intersecting_part = 185,               // intersecting_part
-        S_intersecting_part_multiplicity = 186,  // intersecting_part_multiplicity
-        S_differencing_part = 187,               // differencing_part
-        S_differencing_part_multiplicity = 188,  // differencing_part_multiplicity
-        S_relationship_body = 189,               // relationship_body
-        S_relationship_body_elements = 190,      // relationship_body_elements
-        S_relationship_body_element = 191,       // relationship_body_element
-        S_owned_related_element = 192,           // owned_related_element
-        S_from_option = 193,                     // from_option
-        S_dependency = 194,                      // dependency
-        S_owned_annotation = 195,                // owned_annotation
-        S_about_option = 196,                    // about_option
-        S_locale_option = 197,                   // locale_option
-        S_annotating_element = 198,              // annotating_element
-        S_comment_option = 199,                  // comment_option
-        S_comment = 200,                         // comment
-        S_documentation = 201,                   // documentation
-        S_textual_representation = 202,          // textual_representation
-        S_namespace = 203,                       // namespace
-        S_namespace_body = 204,                  // namespace_body
-        S_namesapce_body_elements = 205,         // namesapce_body_elements
-        S_member_prefix = 206,                   // member_prefix
-        S_visiblity_indicator = 207,             // visiblity_indicator
-        S_import = 208,                          // import
-        S_import_declaration = 209,              // import_declaration
-        S_complete_namespace_import = 210,       // complete_namespace_import
-        S_non_feature_member = 211,              // non_feature_member
-        S_alias_member = 212,                    // alias_member
-        S_specializes = 213,                     // specializes
-        S_specialization = 214,                  // specialization
-        S_specific_type = 215,                   // specific_type
-        S_general_type = 216,                    // general_type
-        S_conjunction = 217,                     // conjunction
-        S_owned_conjungation = 218,              // owned_conjungation
-        S_conjugation_part = 219,                // conjugation_part
-        S_disjoining = 220,                      // disjoining
-        S_owned_disjoining = 221,                // owned_disjoining
-        S_unioning = 222,                        // unioning
-        S_intersecting = 223,                    // intersecting
-        S_differencing = 224,                    // differencing
-        S_feature_member = 225,                  // feature_member
-        S_type_feature_member = 226,             // type_feature_member
-        S_owned_feature_member = 227,            // owned_feature_member
-        S_classifier = 228,                      // classifier
-        S_superclassing_conjunction_option = 229, // superclassing_conjunction_option
-        S_classifier_declaration = 230,          // classifier_declaration
-        S_subclassification = 231,               // subclassification
-        S_superclassing_part = 232,              // superclassing_part
-        S_multible_superclasses_option = 233,    // multible_superclasses_option
-        S_owned_subclassification = 234,         // owned_subclassification
-        S_feature = 235,                         // feature
-        S_feature_prefix = 236,                  // feature_prefix
-        S_abstract_option = 237,                 // abstract_option
-        S_readonly_option = 238,                 // readonly_option
-        S_derived_option = 239,                  // derived_option
-        S_end_option = 240,                      // end_option
-        S_feature_type_option = 241,             // feature_type_option
-        S_feature_descriptor = 242,              // feature_descriptor
-        S_subsettings_option = 243,              // subsettings_option
-        S_feature_assignment_option = 244,       // feature_assignment_option
-        S_feature_value_option = 245,            // feature_value_option
-        S_feature_direction_option = 246,        // feature_direction_option
-        S_feature_declaration = 247,             // feature_declaration
-        S_feature_identification = 248,          // feature_identification
-        S_feature_specialization_conjungation_option = 249, // feature_specialization_conjungation_option
-        S_feature_relationship_part_option = 250, // feature_relationship_part_option
-        S_feature_relationship_part = 251,       // feature_relationship_part
-        S_chaining_part = 252,                   // chaining_part
-        S_inverting_part = 253,                  // inverting_part
-        S_type_featuring_part = 254,             // type_featuring_part
-        S_type_featuting_part_multiplicity = 255, // type_featuting_part_multiplicity
-        S_feature_specialization_part = 256,     // feature_specialization_part
-        S_feature_specialization_option = 257,   // feature_specialization_option
-        S_typings = 258,                         // typings
-        S_typed_by = 259,                        // typed_by
-        S_typed_by_mutliplicity = 260,           // typed_by_mutliplicity
-        S_subsettings = 261,                     // subsettings
-        S_subsets = 262,                         // subsets
-        S_subsetting_multiplictiy = 263,         // subsetting_multiplictiy
-        S_multiplicity_part = 264,               // multiplicity_part
-        S_references = 265,                      // references
-        S_feature_typing = 266,                  // feature_typing
-        S_typing_option = 267,                   // typing_option
-        S_owned_feature_typing = 268,            // owned_feature_typing
-        S_subsetting = 269,                      // subsetting
-        S_subset_option = 270,                   // subset_option
-        S_typed_by_option = 271,                 // typed_by_option
-        S_owned_subsetting_option = 272,         // owned_subsetting_option
-        S_owned_subsetting = 273,                // owned_subsetting
-        S_owned_reference_subsettings = 274,     // owned_reference_subsettings
-        S_redefinition = 275,                    // redefinition
-        S_redefinition_option = 276,             // redefinition_option
-        S_subsets_option = 277,                  // subsets_option
-        S_owned_feature_chain = 278,             // owned_feature_chain
-        S_feature_chain = 279,                   // feature_chain
-        S_feature_chain_part = 280,              // feature_chain_part
-        S_feature_inverting = 281,               // feature_inverting
-        S_inverting_option = 282,                // inverting_option
-        S_type_featuring = 283,                  // type_featuring
-        S_of_option = 284,                       // of_option
-        S_owned_type_featuring = 285,            // owned_type_featuring
-        S_data_type = 286,                       // data_type
-        S_class = 287,                           // class
-        S_structure = 288,                       // structure
-        S_association = 289,                     // association
-        S_association_structure = 290,           // association_structure
-        S_type_prefix_option = 291,              // type_prefix_option
-        S_connector = 292,                       // connector
-        S_connector_declaration = 293,           // connector_declaration
-        S_binary_connector_declaration = 294,    // binary_connector_declaration
-        S_nary_connector_declaration = 295,      // nary_connector_declaration
-        S_nary_connector_declaration_additional_member = 296, // nary_connector_declaration_additional_member
-        S_connector_end_member = 297,            // connector_end_member
-        S_connector_end = 298,                   // connector_end
-        S_name_reference_option = 299,           // name_reference_option
-        S_binding_connector = 300,               // binding_connector
-        S_binding_connector_declaration = 301,   // binding_connector_declaration
-        S_connector_end_member_of_option = 302,  // connector_end_member_of_option
-        S_succession = 303,                      // succession
-        S_succession_declaration = 304,          // succession_declaration
-        S_connector_end_member_first_option = 305, // connector_end_member_first_option
-        S_behavior = 306,                        // behavior
-        S_step = 307,                            // step
-        S_function = 308,                        // function
-        S_function_body = 309,                   // function_body
-        S_function_body_part_multiplicity = 310, // function_body_part_multiplicity
-        S_function_body_part = 311,              // function_body_part
-        S_return_feature_element = 312,          // return_feature_element
-        S_result_expression_member = 313,        // result_expression_member
-        S_expression = 314,                      // expression
-        S_value_part_option = 315,               // value_part_option
-        S_predicate = 316,                       // predicate
-        S_boolean_expression = 317,              // boolean_expression
-        S_invariant = 318,                       // invariant
-        S_invariant_option = 319,                // invariant_option
-        S_owned_expression_reference = 320,      // owned_expression_reference
-        S_owned_expression_member = 321,         // owned_expression_member
-        S_owned_expressions = 322,               // owned_expressions
-        S_owned_expression = 323,                // owned_expression
-        S_conditional_expression = 324,          // conditional_expression
-        S_conditional_binary_operator_expression = 325, // conditional_binary_operator_expression
-        S_conditional_binary_operator = 326,     // conditional_binary_operator
-        S_binary_operator_expression = 327,      // binary_operator_expression
-        S_binary_operator = 328,                 // binary_operator
-        S_unary_operator_expression = 329,       // unary_operator_expression
-        S_unary_operator = 330,                  // unary_operator
-        S_classification_expression = 331,       // classification_expression
-        S_classification_test_operator = 332,    // classification_test_operator
-        S_metaclassification_expression = 333,   // metaclassification_expression
-        S_argument_member = 334,                 // argument_member
-        S_argument = 335,                        // argument
-        S_argument_value = 336,                  // argument_value
-        S_argument_expression_member = 337,      // argument_expression_member
-        S_argument_expression = 338,             // argument_expression
-        S_argument_expression_value = 339,       // argument_expression_value
-        S_metadata_argument_member = 340,        // metadata_argument_member
-        S_metadata_argument = 341,               // metadata_argument
-        S_metadata_value = 342,                  // metadata_value
-        S_metadata_reference = 343,              // metadata_reference
-        S_metadataclassification_test_operator = 344, // metadataclassification_test_operator
-        S_extend_expression = 345,               // extend_expression
-        S_type_reference_member = 346,           // type_reference_member
-        S_type_result_member = 347,              // type_result_member
-        S_type_reference = 348,                  // type_reference
-        S_reference_typing = 349,                // reference_typing
-        S_primary_expression = 350,              // primary_expression
-        S_non_feature_chain_primary_expression = 351, // non_feature_chain_primary_expression
-        S_bracket_expression = 352,              // bracket_expression
-        S_index_expression = 353,                // index_expression
-        S_sequence_expression = 354,             // sequence_expression
-        S_sequence_expression_list = 355,        // sequence_expression_list
-        S_sequence_operator_expression = 356,    // sequence_operator_expression
-        S_sequence_expression_list_member = 357, // sequence_expression_list_member
-        S_feature_chain_expression = 358,        // feature_chain_expression
-        S_collect_expression = 359,              // collect_expression
-        S_select_expression = 360,               // select_expression
-        S_function_operation_expression = 361,   // function_operation_expression
-        S_body_argument_member = 362,            // body_argument_member
-        S_body_argument = 363,                   // body_argument
-        S_body_argument_value = 364,             // body_argument_value
-        S_body_expression_member = 365,          // body_expression_member
-        S_function_reference_argument_member = 366, // function_reference_argument_member
-        S_function_reference_argument = 367,     // function_reference_argument
-        S_function_reference_member = 368,       // function_reference_member
-        S_function_reference = 369,              // function_reference
-        S_feature_chain_member = 370,            // feature_chain_member
-        S_owned_feature_chain_member = 371,      // owned_feature_chain_member
-        S_base_expression = 372,                 // base_expression
-        S_null_expression = 373,                 // null_expression
-        S_feature_reference_expression = 374,    // feature_reference_expression
-        S_feature_reference_member = 375,        // feature_reference_member
-        S_feature_reference = 376,               // feature_reference
-        S_metadata_access_expression = 377,      // metadata_access_expression
-        S_invocation_expression = 378,           // invocation_expression
-        S_internal_invocation_expression = 379,  // internal_invocation_expression
-        S_argument_list = 380,                   // argument_list
-        S_named_argument_list_option = 381,      // named_argument_list_option
-        S_named_argument_list_mutliplicity = 382, // named_argument_list_mutliplicity
-        S_positional_argument_list = 383,        // positional_argument_list
-        S_positional_argument_list_multible = 384, // positional_argument_list_multible
-        S_named_argument_member = 385,           // named_argument_member
-        S_named_argument = 386,                  // named_argument
-        S_paramenter_redefinition = 387,         // paramenter_redefinition
-        S_body_expression = 388,                 // body_expression
-        S_expression_body_member = 389,          // expression_body_member
-        S_expression_body = 390,                 // expression_body
-        S_literal_expression = 391,              // literal_expression
-        S_literal_boolean = 392,                 // literal_boolean
-        S_boolean_value = 393,                   // boolean_value
-        S_literal_string = 394,                  // literal_string
-        S_literal_integer = 395,                 // literal_integer
-        S_literal_real = 396,                    // literal_real
-        S_real_value = 397,                      // real_value
-        S_literal_infinity = 398,                // literal_infinity
-        S_interaction = 399,                     // interaction
-        S_item_flow = 400,                       // item_flow
-        S_succession_item_flow = 401,            // succession_item_flow
-        S_item_flow_declaration = 402,           // item_flow_declaration
-        S_item_flow_of_option = 403,             // item_flow_of_option
-        S_item_flow_from_to_option = 404,        // item_flow_from_to_option
-        S_item_feature_member = 405,             // item_feature_member
-        S_item_feature = 406,                    // item_feature
-        S_owned_feature_typing_option = 407,     // owned_feature_typing_option
-        S_item_feature_specilization_part = 408, // item_feature_specilization_part
-        S_item_flow_end_member = 409,            // item_flow_end_member
-        S_item_flow_end = 410,                   // item_flow_end
-        S_item_flow_feature_member = 411,        // item_flow_feature_member
-        S_item_flow_feature = 412,               // item_flow_feature
-        S_item_flow_redefinition = 413,          // item_flow_redefinition
-        S_value_part = 414,                      // value_part
-        S_feature_value = 415,                   // feature_value
-        S_euqals_assign_option = 416,            // euqals_assign_option
-        S_feature_assignment = 417,              // feature_assignment
-        S_multiplicity = 418,                    // multiplicity
-        S_multiplicity_subset = 419,             // multiplicity_subset
-        S_multiplicity_range = 420,              // multiplicity_range
-        S_multiplicity_bounds = 421,             // multiplicity_bounds
-        S_multiplicity_expression_member = 422,  // multiplicity_expression_member
-        S_internal_multiplicity_expression_member = 423, // internal_multiplicity_expression_member
-        S_metaclass = 424,                       // metaclass
-        S_name_option = 425,                     // name_option
-        S_meta_specialization_option = 426,      // meta_specialization_option
-        S_prefix_metadata_member = 427,          // prefix_metadata_member
-        S_prefix_metadata_feature = 428,         // prefix_metadata_feature
-        S_metadata_feature = 429,                // metadata_feature
-        S_prefix_metadata_member_multiplicity = 430, // prefix_metadata_member_multiplicity
-        S_about_annotation = 431,                // about_annotation
-        S_about_annotation_mutliplicity = 432,   // about_annotation_mutliplicity
-        S_metadata_feature_declaration = 433,    // metadata_feature_declaration
-        S_identification_annotation = 434,       // identification_annotation
-        S_package = 435,                         // package
-        S_library_package = 436,                 // library_package
-        S_standard_option = 437,                 // standard_option
-        S_package_declaration = 438,             // package_declaration
-        S_package_body = 439,                    // package_body
-        S_element_filter_members = 440,          // element_filter_members
-        S_element_filter_member = 441,           // element_filter_member
-        S_meta_assignment = 442                  // meta_assignment
+        S_YYACCEPT = 157,                        // $accept
+        S_model = 158,                           // model
+        S_elements = 159,                        // elements
+        S_element = 160,                         // element
+        S_non_feature_element = 161,             // non_feature_element
+        S_feature_element = 162,                 // feature_element
+        S_additional_options = 163,              // additional_options
+        S_type_prefix = 164,                     // type_prefix
+        S_prefix_metadata_annotation = 165,      // prefix_metadata_annotation
+        S_abstract_modifier = 166,               // abstract_modifier
+        S_qualified_name = 167,                  // qualified_name
+        S_qualified_name_tail = 168,             // qualified_name_tail
+        S_all_modifier = 169,                    // all_modifier
+        S_identification = 170,                  // identification
+        S_mutliplicity_bounds = 171,             // mutliplicity_bounds
+        S_specialization_option = 172,           // specialization_option
+        S_conjugation_option = 173,              // conjugation_option
+        S_type_body = 174,                       // type_body
+        S_type_body_elements = 175,              // type_body_elements
+        S_type_body_element = 176,               // type_body_element
+        S_type = 177,                            // type
+        S_type_relationship_part_option = 178,   // type_relationship_part_option
+        S_type_relationship_part = 179,          // type_relationship_part
+        S_disjoining_part = 180,                 // disjoining_part
+        S_disjoining_part_multiplicity = 181,    // disjoining_part_multiplicity
+        S_unioning_part = 182,                   // unioning_part
+        S_unioning_part_multiplicity = 183,      // unioning_part_multiplicity
+        S_intersecting_part = 184,               // intersecting_part
+        S_intersecting_part_multiplicity = 185,  // intersecting_part_multiplicity
+        S_differencing_part = 186,               // differencing_part
+        S_differencing_part_multiplicity = 187,  // differencing_part_multiplicity
+        S_relationship_body = 188,               // relationship_body
+        S_relationship_body_elements = 189,      // relationship_body_elements
+        S_relationship_body_element = 190,       // relationship_body_element
+        S_owned_related_element = 191,           // owned_related_element
+        S_from_option = 192,                     // from_option
+        S_dependency = 193,                      // dependency
+        S_owned_annotation = 194,                // owned_annotation
+        S_about_option = 195,                    // about_option
+        S_locale_option = 196,                   // locale_option
+        S_annotating_element = 197,              // annotating_element
+        S_comment_option = 198,                  // comment_option
+        S_comment = 199,                         // comment
+        S_documentation = 200,                   // documentation
+        S_textual_representation = 201,          // textual_representation
+        S_namespace = 202,                       // namespace
+        S_namespace_body = 203,                  // namespace_body
+        S_namesapce_body_elements = 204,         // namesapce_body_elements
+        S_member_prefix = 205,                   // member_prefix
+        S_visiblity_indicator = 206,             // visiblity_indicator
+        S_import = 207,                          // import
+        S_import_declaration = 208,              // import_declaration
+        S_complete_namespace_import = 209,       // complete_namespace_import
+        S_non_feature_member = 210,              // non_feature_member
+        S_alias_member = 211,                    // alias_member
+        S_specializes = 212,                     // specializes
+        S_specialization = 213,                  // specialization
+        S_specific_type = 214,                   // specific_type
+        S_general_type = 215,                    // general_type
+        S_conjunction = 216,                     // conjunction
+        S_owned_conjungation = 217,              // owned_conjungation
+        S_conjugation_part = 218,                // conjugation_part
+        S_disjoining = 219,                      // disjoining
+        S_owned_disjoining = 220,                // owned_disjoining
+        S_unioning = 221,                        // unioning
+        S_intersecting = 222,                    // intersecting
+        S_differencing = 223,                    // differencing
+        S_feature_member = 224,                  // feature_member
+        S_type_feature_member = 225,             // type_feature_member
+        S_owned_feature_member = 226,            // owned_feature_member
+        S_classifier = 227,                      // classifier
+        S_superclassing_conjunction_option = 228, // superclassing_conjunction_option
+        S_classifier_declaration = 229,          // classifier_declaration
+        S_subclassification = 230,               // subclassification
+        S_superclassing_part = 231,              // superclassing_part
+        S_multible_superclasses_option = 232,    // multible_superclasses_option
+        S_owned_subclassification = 233,         // owned_subclassification
+        S_feature = 234,                         // feature
+        S_feature_prefix = 235,                  // feature_prefix
+        S_abstract_option = 236,                 // abstract_option
+        S_readonly_option = 237,                 // readonly_option
+        S_derived_option = 238,                  // derived_option
+        S_end_option = 239,                      // end_option
+        S_feature_type_option = 240,             // feature_type_option
+        S_feature_descriptor = 241,              // feature_descriptor
+        S_subsettings_option = 242,              // subsettings_option
+        S_feature_assignment_option = 243,       // feature_assignment_option
+        S_feature_value_option = 244,            // feature_value_option
+        S_feature_direction_option = 245,        // feature_direction_option
+        S_feature_declaration = 246,             // feature_declaration
+        S_feature_identification = 247,          // feature_identification
+        S_feature_specialization_conjungation_option = 248, // feature_specialization_conjungation_option
+        S_feature_relationship_part_option = 249, // feature_relationship_part_option
+        S_feature_relationship_part = 250,       // feature_relationship_part
+        S_chaining_part = 251,                   // chaining_part
+        S_inverting_part = 252,                  // inverting_part
+        S_type_featuring_part = 253,             // type_featuring_part
+        S_type_featuting_part_multiplicity = 254, // type_featuting_part_multiplicity
+        S_feature_specialization_part = 255,     // feature_specialization_part
+        S_feature_specialization_option = 256,   // feature_specialization_option
+        S_typings = 257,                         // typings
+        S_typed_by = 258,                        // typed_by
+        S_typed_by_mutliplicity = 259,           // typed_by_mutliplicity
+        S_subsettings = 260,                     // subsettings
+        S_subsets = 261,                         // subsets
+        S_subsetting_multiplictiy = 262,         // subsetting_multiplictiy
+        S_multiplicity_part = 263,               // multiplicity_part
+        S_references = 264,                      // references
+        S_feature_typing = 265,                  // feature_typing
+        S_typing_option = 266,                   // typing_option
+        S_owned_feature_typing = 267,            // owned_feature_typing
+        S_subsetting = 268,                      // subsetting
+        S_subset_option = 269,                   // subset_option
+        S_typed_by_option = 270,                 // typed_by_option
+        S_owned_subsetting_option = 271,         // owned_subsetting_option
+        S_owned_subsetting = 272,                // owned_subsetting
+        S_owned_reference_subsettings = 273,     // owned_reference_subsettings
+        S_redefinition = 274,                    // redefinition
+        S_redefinition_option = 275,             // redefinition_option
+        S_subsets_option = 276,                  // subsets_option
+        S_owned_feature_chain = 277,             // owned_feature_chain
+        S_feature_chain = 278,                   // feature_chain
+        S_feature_chain_part = 279,              // feature_chain_part
+        S_feature_inverting = 280,               // feature_inverting
+        S_inverting_option = 281,                // inverting_option
+        S_type_featuring = 282,                  // type_featuring
+        S_of_option = 283,                       // of_option
+        S_owned_type_featuring = 284,            // owned_type_featuring
+        S_data_type = 285,                       // data_type
+        S_class = 286,                           // class
+        S_structure = 287,                       // structure
+        S_association = 288,                     // association
+        S_association_structure = 289,           // association_structure
+        S_type_prefix_option = 290,              // type_prefix_option
+        S_connector = 291,                       // connector
+        S_connector_declaration = 292,           // connector_declaration
+        S_binary_connector_declaration = 293,    // binary_connector_declaration
+        S_nary_connector_declaration = 294,      // nary_connector_declaration
+        S_nary_connector_declaration_additional_member = 295, // nary_connector_declaration_additional_member
+        S_connector_end_member = 296,            // connector_end_member
+        S_connector_end = 297,                   // connector_end
+        S_name_reference_option = 298,           // name_reference_option
+        S_binding_connector = 299,               // binding_connector
+        S_binding_connector_declaration = 300,   // binding_connector_declaration
+        S_connector_end_member_of_option = 301,  // connector_end_member_of_option
+        S_succession = 302,                      // succession
+        S_succession_declaration = 303,          // succession_declaration
+        S_connector_end_member_first_option = 304, // connector_end_member_first_option
+        S_behavior = 305,                        // behavior
+        S_step = 306,                            // step
+        S_function = 307,                        // function
+        S_function_body = 308,                   // function_body
+        S_function_body_part_multiplicity = 309, // function_body_part_multiplicity
+        S_function_body_part = 310,              // function_body_part
+        S_return_feature_element = 311,          // return_feature_element
+        S_result_expression_member = 312,        // result_expression_member
+        S_expression = 313,                      // expression
+        S_value_part_option = 314,               // value_part_option
+        S_predicate = 315,                       // predicate
+        S_boolean_expression = 316,              // boolean_expression
+        S_invariant = 317,                       // invariant
+        S_invariant_option = 318,                // invariant_option
+        S_owned_expression_reference = 319,      // owned_expression_reference
+        S_owned_expression_member = 320,         // owned_expression_member
+        S_owned_expressions = 321,               // owned_expressions
+        S_owned_expression = 322,                // owned_expression
+        S_conditional_expression = 323,          // conditional_expression
+        S_conditional_binary_operator_expression = 324, // conditional_binary_operator_expression
+        S_conditional_binary_operator = 325,     // conditional_binary_operator
+        S_binary_operator_expression = 326,      // binary_operator_expression
+        S_binary_operator = 327,                 // binary_operator
+        S_unary_operator_expression = 328,       // unary_operator_expression
+        S_unary_operator = 329,                  // unary_operator
+        S_classification_expression = 330,       // classification_expression
+        S_classification_test_operator = 331,    // classification_test_operator
+        S_metaclassification_expression = 332,   // metaclassification_expression
+        S_argument_member = 333,                 // argument_member
+        S_argument = 334,                        // argument
+        S_argument_value = 335,                  // argument_value
+        S_argument_expression_member = 336,      // argument_expression_member
+        S_argument_expression = 337,             // argument_expression
+        S_argument_expression_value = 338,       // argument_expression_value
+        S_metadata_argument_member = 339,        // metadata_argument_member
+        S_metadata_argument = 340,               // metadata_argument
+        S_metadata_value = 341,                  // metadata_value
+        S_metadata_reference = 342,              // metadata_reference
+        S_metadataclassification_test_operator = 343, // metadataclassification_test_operator
+        S_extend_expression = 344,               // extend_expression
+        S_type_reference_member = 345,           // type_reference_member
+        S_type_result_member = 346,              // type_result_member
+        S_type_reference = 347,                  // type_reference
+        S_reference_typing = 348,                // reference_typing
+        S_primary_expression = 349,              // primary_expression
+        S_non_feature_chain_primary_expression = 350, // non_feature_chain_primary_expression
+        S_bracket_expression = 351,              // bracket_expression
+        S_index_expression = 352,                // index_expression
+        S_sequence_expression = 353,             // sequence_expression
+        S_sequence_expression_list = 354,        // sequence_expression_list
+        S_sequence_operator_expression = 355,    // sequence_operator_expression
+        S_sequence_expression_list_member = 356, // sequence_expression_list_member
+        S_feature_chain_expression = 357,        // feature_chain_expression
+        S_collect_expression = 358,              // collect_expression
+        S_select_expression = 359,               // select_expression
+        S_function_operation_expression = 360,   // function_operation_expression
+        S_body_argument_member = 361,            // body_argument_member
+        S_body_argument = 362,                   // body_argument
+        S_body_argument_value = 363,             // body_argument_value
+        S_body_expression_member = 364,          // body_expression_member
+        S_function_reference_argument_member = 365, // function_reference_argument_member
+        S_function_reference_argument = 366,     // function_reference_argument
+        S_function_reference_member = 367,       // function_reference_member
+        S_function_reference = 368,              // function_reference
+        S_feature_chain_member = 369,            // feature_chain_member
+        S_owned_feature_chain_member = 370,      // owned_feature_chain_member
+        S_base_expression = 371,                 // base_expression
+        S_null_expression = 372,                 // null_expression
+        S_feature_reference_expression = 373,    // feature_reference_expression
+        S_feature_reference_member = 374,        // feature_reference_member
+        S_feature_reference = 375,               // feature_reference
+        S_metadata_access_expression = 376,      // metadata_access_expression
+        S_invocation_expression = 377,           // invocation_expression
+        S_internal_invocation_expression = 378,  // internal_invocation_expression
+        S_argument_list = 379,                   // argument_list
+        S_named_argument_list_option = 380,      // named_argument_list_option
+        S_named_argument_list_mutliplicity = 381, // named_argument_list_mutliplicity
+        S_positional_argument_list = 382,        // positional_argument_list
+        S_positional_argument_list_multible = 383, // positional_argument_list_multible
+        S_named_argument_member = 384,           // named_argument_member
+        S_named_argument = 385,                  // named_argument
+        S_paramenter_redefinition = 386,         // paramenter_redefinition
+        S_body_expression = 387,                 // body_expression
+        S_expression_body_member = 388,          // expression_body_member
+        S_expression_body = 389,                 // expression_body
+        S_literal_expression = 390,              // literal_expression
+        S_literal_boolean = 391,                 // literal_boolean
+        S_boolean_value = 392,                   // boolean_value
+        S_literal_string = 393,                  // literal_string
+        S_literal_integer = 394,                 // literal_integer
+        S_literal_real = 395,                    // literal_real
+        S_real_value = 396,                      // real_value
+        S_literal_infinity = 397,                // literal_infinity
+        S_interaction = 398,                     // interaction
+        S_item_flow = 399,                       // item_flow
+        S_succession_item_flow = 400,            // succession_item_flow
+        S_item_flow_declaration = 401,           // item_flow_declaration
+        S_item_flow_of_option = 402,             // item_flow_of_option
+        S_item_flow_from_to_option = 403,        // item_flow_from_to_option
+        S_item_feature_member = 404,             // item_feature_member
+        S_item_feature = 405,                    // item_feature
+        S_owned_feature_typing_option = 406,     // owned_feature_typing_option
+        S_item_feature_specilization_part = 407, // item_feature_specilization_part
+        S_item_flow_end_member = 408,            // item_flow_end_member
+        S_item_flow_end = 409,                   // item_flow_end
+        S_item_flow_feature_member = 410,        // item_flow_feature_member
+        S_item_flow_feature = 411,               // item_flow_feature
+        S_item_flow_redefinition = 412,          // item_flow_redefinition
+        S_value_part = 413,                      // value_part
+        S_feature_value = 414,                   // feature_value
+        S_euqals_assign_option = 415,            // euqals_assign_option
+        S_feature_assignment = 416,              // feature_assignment
+        S_multiplicity = 417,                    // multiplicity
+        S_multiplicity_subset = 418,             // multiplicity_subset
+        S_multiplicity_range = 419,              // multiplicity_range
+        S_multiplicity_bounds = 420,             // multiplicity_bounds
+        S_multiplicity_expression_member = 421,  // multiplicity_expression_member
+        S_internal_multiplicity_expression_member = 422, // internal_multiplicity_expression_member
+        S_metaclass = 423,                       // metaclass
+        S_name_option = 424,                     // name_option
+        S_meta_specialization_option = 425,      // meta_specialization_option
+        S_prefix_metadata_member = 426,          // prefix_metadata_member
+        S_prefix_metadata_feature = 427,         // prefix_metadata_feature
+        S_metadata_feature = 428,                // metadata_feature
+        S_prefix_metadata_member_multiplicity = 429, // prefix_metadata_member_multiplicity
+        S_about_annotation = 430,                // about_annotation
+        S_about_annotation_mutliplicity = 431,   // about_annotation_mutliplicity
+        S_metadata_feature_declaration = 432,    // metadata_feature_declaration
+        S_identification_annotation = 433,       // identification_annotation
+        S_package = 434,                         // package
+        S_library_package = 435,                 // library_package
+        S_standard_option = 436,                 // standard_option
+        S_package_declaration = 437,             // package_declaration
+        S_package_body = 438,                    // package_body
+        S_element_filter_members = 439,          // element_filter_members
+        S_element_filter_member = 440,           // element_filter_member
+        S_meta_assignment = 441                  // meta_assignment
       };
     };
 
@@ -1361,7 +1391,14 @@ switch (yykind)
       symbol_type (int tok)
         : super_type (token_kind_type (tok))
 #endif
-      {}
+      {
+#if !defined _MSC_VER || defined __clang__
+        YY_ASSERT (tok == token::YYEOF
+                   || (token::YYerror <= tok && tok <= token::YYUNDEF)
+                   || (token::SYMBOL_DOT_QUESTION <= tok && tok <= token::SYMBOL_STATEMENT_DELIMITER)
+                   || (token::KEYWORD_CONJUGATION <= tok && tok <= token::TDIV));
+#endif
+      }
 #if 201103L <= YY_CPLUSPLUS
       symbol_type (int tok, double v)
         : super_type (token_kind_type (tok), std::move (v))
@@ -1369,7 +1406,11 @@ switch (yykind)
       symbol_type (int tok, const double& v)
         : super_type (token_kind_type (tok), v)
 #endif
-      {}
+      {
+#if !defined _MSC_VER || defined __clang__
+        YY_ASSERT ((token::DECIMAL_VALUE <= tok && tok <= token::EXPONENTIAL_VALUE));
+#endif
+      }
 #if 201103L <= YY_CPLUSPLUS
       symbol_type (int tok, int v)
         : super_type (token_kind_type (tok), std::move (v))
@@ -1377,7 +1418,11 @@ switch (yykind)
       symbol_type (int tok, const int& v)
         : super_type (token_kind_type (tok), v)
 #endif
-      {}
+      {
+#if !defined _MSC_VER || defined __clang__
+        YY_ASSERT (tok == token::NUMBER);
+#endif
+      }
 #if 201103L <= YY_CPLUSPLUS
       symbol_type (int tok, std::string v)
         : super_type (token_kind_type (tok), std::move (v))
@@ -1385,7 +1430,12 @@ switch (yykind)
       symbol_type (int tok, const std::string& v)
         : super_type (token_kind_type (tok), v)
 #endif
-      {}
+      {
+#if !defined _MSC_VER || defined __clang__
+        YY_ASSERT ((token::BASIC_NAME <= tok && tok <= token::BLOCK_COMMENT)
+                   || tok == token::STRING);
+#endif
+      }
     };
 
     /// Build a parser object.
@@ -4127,12 +4177,250 @@ switch (yykind)
 
   };
 
+  inline
+  parser::symbol_kind_type
+  parser::yytranslate_ (int t) YY_NOEXCEPT
+  {
+    // YYTRANSLATE[TOKEN-NUM] -- Symbol number corresponding to
+    // TOKEN-NUM as returned by yylex.
+    static
+    const unsigned char
+    translate_table[] =
+    {
+       0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
+       5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
+      15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
+      25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
+      35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
+      45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
+      55,    56,    57,    58,    59,    60,    61,    62,    63,    64,
+      65,    66,    67,    68,    69,    70,    71,    72,    73,    74,
+      75,    76,    77,    78,    79,    80,    81,    82,    83,    84,
+      85,    86,    87,    88,    89,    90,    91,    92,    93,    94,
+      95,    96,    97,    98,    99,   100,   101,   102,   103,   104,
+     105,   106,   107,   108,   109,   110,   111,   112,   113,   114,
+     115,   116,   117,   118,   119,   120,   121,   122,   123,   124,
+     125,   126,   127,   128,   129,   130,   131,   132,   133,   134,
+     135,   136,   137,   138,   139,   140,   141,   142,   143,   144,
+     145,   146,   147,   148,   149,   150,   151,   152,   153,   154,
+     155,   156
+    };
+    // Last valid token kind.
+    const int code_max = 411;
 
-#line 5 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.y"
+    if (t <= 0)
+      return symbol_kind::S_YYEOF;
+    else if (t <= code_max)
+      return static_cast <symbol_kind_type> (translate_table[t]);
+    else
+      return symbol_kind::S_YYUNDEF;
+  }
+
+  // basic_symbol.
+  template <typename Base>
+  parser::basic_symbol<Base>::basic_symbol (const basic_symbol& that)
+    : Base (that)
+    , value ()
+  {
+    switch (this->kind ())
+    {
+      case symbol_kind::S_abstract_modifier: // abstract_modifier
+      case symbol_kind::S_all_modifier: // all_modifier
+        value.copy< bool > (YY_MOVE (that.value));
+        break;
+
+      case symbol_kind::S_DECIMAL_VALUE: // DECIMAL_VALUE
+      case symbol_kind::S_EXPONENTIAL_VALUE: // EXPONENTIAL_VALUE
+        value.copy< double > (YY_MOVE (that.value));
+        break;
+
+      case symbol_kind::S_NUMBER: // NUMBER
+        value.copy< int > (YY_MOVE (that.value));
+        break;
+
+      case symbol_kind::S_BASIC_NAME: // BASIC_NAME
+      case symbol_kind::S_SINGLE_LINE_COMMENT: // SINGLE_LINE_COMMENT
+      case symbol_kind::S_UNRESTRICTED_NAME: // UNRESTRICTED_NAME
+      case symbol_kind::S_BLOCK_COMMENT: // BLOCK_COMMENT
+      case symbol_kind::S_STRING: // STRING
+      case symbol_kind::S_type_prefix: // type_prefix
+      case symbol_kind::S_prefix_metadata_annotation: // prefix_metadata_annotation
+      case symbol_kind::S_qualified_name: // qualified_name
+      case symbol_kind::S_qualified_name_tail: // qualified_name_tail
+      case symbol_kind::S_identification: // identification
+      case symbol_kind::S_mutliplicity_bounds: // mutliplicity_bounds
+      case symbol_kind::S_specialization_option: // specialization_option
+      case symbol_kind::S_conjugation_option: // conjugation_option
+      case symbol_kind::S_type_body: // type_body
+      case symbol_kind::S_relationship_body: // relationship_body
+      case symbol_kind::S_from_option: // from_option
+      case symbol_kind::S_comment_option: // comment_option
+      case symbol_kind::S_specific_type: // specific_type
+      case symbol_kind::S_general_type: // general_type
+        value.copy< std::string > (YY_MOVE (that.value));
+        break;
+
+      default:
+        break;
+    }
+
+  }
+
+
+
+
+  template <typename Base>
+  parser::symbol_kind_type
+  parser::basic_symbol<Base>::type_get () const YY_NOEXCEPT
+  {
+    return this->kind ();
+  }
+
+
+  template <typename Base>
+  bool
+  parser::basic_symbol<Base>::empty () const YY_NOEXCEPT
+  {
+    return this->kind () == symbol_kind::S_YYEMPTY;
+  }
+
+  template <typename Base>
+  void
+  parser::basic_symbol<Base>::move (basic_symbol& s)
+  {
+    super_type::move (s);
+    switch (this->kind ())
+    {
+      case symbol_kind::S_abstract_modifier: // abstract_modifier
+      case symbol_kind::S_all_modifier: // all_modifier
+        value.move< bool > (YY_MOVE (s.value));
+        break;
+
+      case symbol_kind::S_DECIMAL_VALUE: // DECIMAL_VALUE
+      case symbol_kind::S_EXPONENTIAL_VALUE: // EXPONENTIAL_VALUE
+        value.move< double > (YY_MOVE (s.value));
+        break;
+
+      case symbol_kind::S_NUMBER: // NUMBER
+        value.move< int > (YY_MOVE (s.value));
+        break;
+
+      case symbol_kind::S_BASIC_NAME: // BASIC_NAME
+      case symbol_kind::S_SINGLE_LINE_COMMENT: // SINGLE_LINE_COMMENT
+      case symbol_kind::S_UNRESTRICTED_NAME: // UNRESTRICTED_NAME
+      case symbol_kind::S_BLOCK_COMMENT: // BLOCK_COMMENT
+      case symbol_kind::S_STRING: // STRING
+      case symbol_kind::S_type_prefix: // type_prefix
+      case symbol_kind::S_prefix_metadata_annotation: // prefix_metadata_annotation
+      case symbol_kind::S_qualified_name: // qualified_name
+      case symbol_kind::S_qualified_name_tail: // qualified_name_tail
+      case symbol_kind::S_identification: // identification
+      case symbol_kind::S_mutliplicity_bounds: // mutliplicity_bounds
+      case symbol_kind::S_specialization_option: // specialization_option
+      case symbol_kind::S_conjugation_option: // conjugation_option
+      case symbol_kind::S_type_body: // type_body
+      case symbol_kind::S_relationship_body: // relationship_body
+      case symbol_kind::S_from_option: // from_option
+      case symbol_kind::S_comment_option: // comment_option
+      case symbol_kind::S_specific_type: // specific_type
+      case symbol_kind::S_general_type: // general_type
+        value.move< std::string > (YY_MOVE (s.value));
+        break;
+
+      default:
+        break;
+    }
+
+  }
+
+  // by_kind.
+  inline
+  parser::by_kind::by_kind () YY_NOEXCEPT
+    : kind_ (symbol_kind::S_YYEMPTY)
+  {}
+
+#if 201103L <= YY_CPLUSPLUS
+  inline
+  parser::by_kind::by_kind (by_kind&& that) YY_NOEXCEPT
+    : kind_ (that.kind_)
+  {
+    that.clear ();
+  }
+#endif
+
+  inline
+  parser::by_kind::by_kind (const by_kind& that) YY_NOEXCEPT
+    : kind_ (that.kind_)
+  {}
+
+  inline
+  parser::by_kind::by_kind (token_kind_type t) YY_NOEXCEPT
+    : kind_ (yytranslate_ (t))
+  {}
+
+
+
+  inline
+  void
+  parser::by_kind::clear () YY_NOEXCEPT
+  {
+    kind_ = symbol_kind::S_YYEMPTY;
+  }
+
+  inline
+  void
+  parser::by_kind::move (by_kind& that)
+  {
+    kind_ = that.kind_;
+    that.clear ();
+  }
+
+  inline
+  parser::symbol_kind_type
+  parser::by_kind::kind () const YY_NOEXCEPT
+  {
+    return kind_;
+  }
+
+
+  inline
+  parser::symbol_kind_type
+  parser::by_kind::type_get () const YY_NOEXCEPT
+  {
+    return this->kind ();
+  }
+
+
+#line 7 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/grammars/KerML.yy"
 } } // KerML::Parser
-#line 4134 "/Users/herzog/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.h"
+#line 4422 "/home/parallels/Documents/Projekte/CPP-SysMLv2/filehandling/src/kerml/KerMLBisonParser.h"
 
 
 
 
-#endif // !YY_YY_USERS_HERZOG_DOCUMENTS_PROJEKTE_CPP_SYSMLV2_FILEHANDLING_SRC_KERML_KERMLBISONPARSER_H_INCLUDED
+#endif // !YY_YY_HOME_PARALLELS_DOCUMENTS_PROJEKTE_CPP_SYSMLV2_FILEHANDLING_SRC_KERML_KERMLBISONPARSER_H_INCLUDED
