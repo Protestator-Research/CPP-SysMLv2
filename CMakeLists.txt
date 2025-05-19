@@ -27,3 +27,5 @@ endif ()
 
 add_subdirectory(kerml)
 add_subdirectory(conformance-test)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

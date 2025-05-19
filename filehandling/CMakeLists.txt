@@ -6,6 +6,48 @@ find_package(nlohmann_json REQUIRED)
 find_package(Boost REQUIRED)
 find_package(date REQUIRED)
 find_package(antlr4-runtime REQUIRED)
+find_package(BISON REQUIRED)
+find_package(FLEX REQUIRED)
+
+set(BISON_VARS
+    BISON_FOUND
+    BISON_EXECUTABLE
+    BISON_VERSION
+)
+
+# foreach(BISON_VAR ${BISON_VARS})
+#     message("${BISON_VAR}: ${${BISON_VAR}}")
+#     if(NOT ${BISON_VAR})
+#         message(FATAL_ERROR "${BISON_VAR} NOT FOUND")
+#     endif()
+# endforeach()
+
+# bison_target(KerMLParser KerML.y "${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLBisonParser.cpp")
+
+SET(BisonOutput ${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLBisonParser.cpp)
+IF(BISON_FOUND)
+    ADD_CUSTOM_COMMAND(
+            OUTPUT ${BisonOutput}
+            COMMAND bison
+            --defines=${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLBisonParser.h
+            --output=${BisonOutput}
+            ${CMAKE_SOURCE_DIR}/filehandling/src/grammars/KerML.y
+            COMMENT "Generating KerMLBisonParser.cpp")
+ENDIF()
+
+# flex_target(KerMLFlexLexer ${CMAKE_SOURCE_DIR}/filehandling/src/grammars/KerML.l ${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLFlexLexer.cpp)
+
+FIND_PACKAGE(FLEX REQUIRED)
+SET(FlexOutput ${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLFlexLexer.cpp)
+IF(FLEX_FOUND)
+    ADD_CUSTOM_COMMAND(
+            OUTPUT ${FlexOutput}
+            COMMAND flex++
+            --outfile=${FlexOutput}
+            ${CMAKE_SOURCE_DIR}/filehandling/src/grammars/KerML.l
+            COMMENT "Generating KerMLFlexLexer.cpp"
+    )
+ENDIF()
 
 set(GLOBAL_HEADER
         src/sysmlv2file_global.h
@@ -19,7 +61,8 @@ set(KERML_PARSER_HEADER
         src/kerml/KerMLParser.h
         src/kerml/KerMlError.h
         src/kerml/KerMlErrorListener.h
-        src/kerml/KerMlListenerImplementation.h)
+        src/kerml/KerMlListenerImplementation.h
+        src/kerml/KerMLFlexScanner.h)
 
 set(SYSML_PARSER_HEADER
         src/sysml2/SysMLv2BaseListener.h
@@ -43,17 +86,22 @@ add_library(sysmlv2file
         src/kerml/KerMlError.cpp
         src/Parser.cpp
         src/ParserError.cpp
-        src/kerml/KerMlListenerImplementation.cpp)
+        src/kerml/KerMlListenerImplementation.cpp
+        ${BisonOutput}
+        src/kerml/KerMLFlexScanner.cpp
+        ${FlexOutput})
 
 target_link_libraries(sysmlv2file
         boost::boost
         nlohmann_json::nlohmann_json
         date::date
         antlr4_shared
-        kerml)
+        kerml
+        ${FLEX_LIBRARIES})
 
 target_include_directories(sysmlv2file PUBLIC
-        ../kerml/src)
+        ../kerml/src
+        ${FLEX_INCLUDE_DIRS})
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2file ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})

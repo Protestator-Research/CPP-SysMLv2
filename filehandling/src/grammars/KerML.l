@@ -1,170 +1,200 @@
+%option nodefault
+%option noinput
+%option noyywrap
+%option c++
+%option yyclass="KerMLFlexScanner"
 %{
-    #include "kerml.tab.h"
-    #include <string.h>
-    #include <stdlib.h>
-    #include <stdbool.h>
+    #include "KerMLBisonParser.h"
+    #include <string>
+    #include <cstdlib>
+    #include "KerMLFlexScanner.h"
+
+    #ifndef YY_DECL
+        #define YY_DECL KerML::Parser::parser::symbol_type KerMLFlexScanner::yylex()
+    #endif
 %}
 
 /* Definitionen von regulären Ausdrücken */
 
 %%
-"about" { return KEYWORD_ABOUT; }
-"abstract" { return KEYWORD_ABSTRACT; }
-"alias" { return KEYWORD_ALIAS; }
-"all" { return KEYWORD_ALL; }
-"and" { return KEYWORD_AND; }
-"as" { return KEYWORD_AS; }
-"assoc" { return KEYWORD_ASSOC; }
-"behavior" { return KEYWORD_BEHAVIOR; }
-"binding" { return KEYWORD_BINDING; }
-"bool" { return KEYWORD_BOOL; }
-"by" { return KEYWORD_BY; }
-"chains" { return KEYWORD_CHAINS; }
-"class" { return KEYWORD_CLASS; }
-"classifier" { return KEYWORD_CLASSIFIER; }
-"comment" { return KEYWORD_COMMENT; }
-"composite" { return KEYWORD_COMPOSITE; }
-"conjugate" { return KEYWORD_CONJUGATE; }
-"conjugates" { return KEYWORD_CONJUGATES; }
-"conjugation" { return KEYWORD_CONJUGATION; }
-"connector" { return KEYWORD_CONNECTOR; }
-"datatype" { return KEYWORD_DATATYPE; }
-"default" { return KEYWORD_DEFAULT; }
-"dependency" { return KEYWORD_DEPENDENCY; }
-"derived" { return KEYWORD_DERIVED; }
-"differences" { return KEYWORD_DIFFERENCES; }
-"disjoining" { return KEYWORD_DISJOINING; }
-"disjoint" { return KEYWORD_DISJOINT; }
-"doc" { return KEYWORD_DOC; }
-"else" { return KEYWORD_ELSE; }
-"end" { return KEYWORD_END; }
-"expr" { return KEYWORD_EXPR; }
-"false" { return KEYWORD_FALSE; }
-"feature" { return KEYWORD_FEATURE; }
-"featured" { return KEYWORD_FEATURED; }
-"featuring" { return KEYWORD_FEATURING; }
-"filter" { return KEYWORD_FILTER; }
-"first" { return KEYWORD_FIRST; }
-"flow" { return KEYWORD_FLOW; }
-"for" { return KEYWORD_FOR; }
-"from" { return KEYWORD_FROM; }
-"function" { return KEYWORD_FUNCTION; }
-"hastype" { return KEYWORD_HASTYPE; }
-"if" { return KEYWORD_IF; }
-"intersects" { return KEYWORD_INTERSECTS; }
-"implies" { return KEYWORD_IMPLIES; }
-"import" { return KEYWORD_IMPORT; }
-"in" { return KEYWORD_IN; }
-"inout" { return KEYWORD_INOUT; }
-"interaction" { return KEYWORD_INTERACTION; }
-"inv" { return KEYWORD_INV; }
-"inverse" { return KEYWORD_INVERSE; }
-"inverting" { return KEYWORD_INVERTING; }
-"istype" { return KEYWORD_ISTYPE; }
-"language" { return KEYWORD_LANGUAGE; }
-"member" { return KEYWORD_MEMBER; }
-"metaclass" { return KEYWORD_METACLASS; }
-"metadata" { return KEYWORD_METADATA; }
-"multiplicity" { return KEYWORD_MULTIPLICITY; }
-"namespace" { return KEYWORD_NAMESPACE; }
-"nonunique" { return KEYWORD_NONUNIQUE; }
-"not" { return KEYWORD_NOT; }
-"null" { return KEYWORD_NULL; }
-"of" { return KEYWORD_OF; }
-"or" { return KEYWORD_OR; }
-"ordered" { return KEYWORD_ORDERED; }
-"out" { return KEYWORD_OUT; }
-"package" { return KEYWORD_PACKAGE; }
-"potion" { return KEYWORD_PORTION; }
-"predicate" { return KEYWORD_PREDICATE; }
-"private" { return KEYWORD_PRIVATE; }
-"protected" { return KEYWORD_PROTECTED; }
-"public" { return KEYWORD_PUBLIC; }
-"readonly" { return KEYWORD_READONLY; }
-"redefines" { return KEYWORD_REDEFINES; }
-"redefinition" { return KEYWORD_REDEFINITION; }
-"references" { return KEYWORD_REFERENCES; }
-"rep" { return KEYWORD_REP; }
-"return" { return KEYWORD_RETURN; }
-"specialization" { return KEYWORD_SPECILIZATION; }
-"specializes" { return KEYWORD_SPECIALIZES; }
-"step" { return KEYWORD_STEP; }
-"struct" { return KEYWORD_STRUCT; }
-"subclassifier" { return KEYWORD_SUBCLASSIFIER; }
-"subset" { return KEYWORD_SUBSET; }
-"subsets" { return KEYWORD_SUBSETS; }
-"subtype" { return KEYWORD_SUBTYPE; }
-"succession" { return KEYWORD_SUCCSESSION; }
-"then" { return KEYWORD_THEN; }
-"to" { return KEYWORD_TO; }
-"true" { return KEYWORD_TRUE; }
-"type" { return KEYWORD_TYPE; }
-"typed" { return KEYWORD_TYPED; }
-"typing" { return KEYWORD_TYPING; }
-"unions" { return KEYWORD_UNIONS; }
-"xor" { return KEYWORD_XOR; }
-"var" { return KEYWORD_VAR; }
-"locale" { return KEYWORD_LOCALE; }
-"standard" { return KEYWORD_STANDARD; }
-"library" { return KEYWORD_LIBRARY; }
-"constant" { return KEYWORD_CONSTANT; }
-"meta" {return KEYWORD_META;}
+"about" { return KerML::Parser::parser::token::make_KEYWORD_ABOUT(); }
+"abstract" { return KerML::Parser::parser::token::make_KEYWORD_ABSTRACT(); }
+"alias" { return KerML::Parser::parser::token::make_KEYWORD_ALIAS(); }
+"all" { return KerML::Parser::parser::token::make_KEYWORD_ALL(); }
+"and" { return KerML::Parser::parser::token::make_KEYWORD_AND(); }
+"as" { return KerML::Parser::parser::token::make_KEYWORD_AS(); }
+"assoc" { return KerML::Parser::parser::token::make_KEYWORD_ASSOC(); }
+"behavior" { return KerML::Parser::parser::token::make_KEYWORD_BEHAVIOR(); }
+"binding" { return KerML::Parser::parser::token::make_KEYWORD_BINDING(); }
+"bool" { return KerML::Parser::parser::token::make_KEYWORD_BOOL(); }
+"by" { return KerML::Parser::parser::token::make_KEYWORD_BY(); }
+"chains" { return KerML::Parser::parser::token::make_KEYWORD_CHAINS(); }
+"class" { return KerML::Parser::parser::token::make_KEYWORD_CLASS(); }
+"classifier" { return KerML::Parser::parser::token::make_KEYWORD_CLASSIFIER(); }
+"comment" { return KerML::Parser::parser::token::make_KEYWORD_COMMENT(); }
+"composite" { return KerML::Parser::parser::token::make_KEYWORD_COMPOSITE(); }
+"conjugate" { return KerML::Parser::parser::token::make_KEYWORD_CONJUGATE(); }
+"conjugates" { return KerML::Parser::parser::token::make_KEYWORD_CONJUGATES(); }
+"conjugation" { return KerML::Parser::parser::token::make_KEYWORD_CONJUGATION(); }
+"connector" { return KerML::Parser::parser::token::make_KEYWORD_CONNECTOR(); }
+"datatype" { return KerML::Parser::parser::token::make_KEYWORD_DATATYPE(); }
+"default" { return KerML::Parser::parser::token::make_KEYWORD_DEFAULT(); }
+"dependency" { return KerML::Parser::parser::token::make_KEYWORD_DEPENDENCY(); }
+"derived" { return KerML::Parser::parser::token::make_KEYWORD_DERIVED(); }
+"differences" { return KerML::Parser::parser::token::make_KEYWORD_DIFFERENCES(); }
+"disjoining" { return KerML::Parser::parser::token::make_KEYWORD_DISJOINING(); }
+"disjoint" { return KerML::Parser::parser::token::make_KEYWORD_DISJOINT(); }
+"doc" { return KerML::Parser::parser::token::make_KEYWORD_DOC(); }
+"else" { return KerML::Parser::parser::token::make_KEYWORD_ELSE(); }
+"end" { return KerML::Parser::parser::token::make_KEYWORD_END(); }
+"expr" { return KerML::Parser::parser::token::make_KEYWORD_EXPR(); }
+"false" { return KerML::Parser::parser::token::make_KEYWORD_FALSE(); }
+"feature" { return KerML::Parser::parser::token::make_KEYWORD_FEATURE(); }
+"featured" { return KerML::Parser::parser::token::make_KEYWORD_FEATURED(); }
+"featuring" { return KerML::Parser::parser::token::make_KEYWORD_FEATURING(); }
+"filter" { return KerML::Parser::parser::token::make_KEYWORD_FILTER(); }
+"first" { return KerML::Parser::parser::token::make_KEYWORD_FIRST(); }
+"flow" { return KerML::Parser::parser::token::make_KEYWORD_FLOW(); }
+"for" { return KerML::Parser::parser::token::make_KEYWORD_FOR(); }
+"from" { return KerML::Parser::parser::token::make_KEYWORD_FROM(); }
+"function" { return KerML::Parser::parser::token::make_KEYWORD_FUNCTION(); }
+"hastype" { return KerML::Parser::parser::token::make_KEYWORD_HASTYPE(); }
+"if" { return KerML::Parser::parser::token::make_KEYWORD_IF(); }
+"intersects" { return KerML::Parser::parser::token::make_KEYWORD_INTERSECTS(); }
+"implies" { return KerML::Parser::parser::token::make_KEYWORD_IMPLIES(); }
+"import" { return KerML::Parser::parser::token::make_KEYWORD_IMPORT(); }
+"in" { return KerML::Parser::parser::token::make_KEYWORD_IN(); }
+"inout" { return KerML::Parser::parser::token::make_KEYWORD_INOUT(); }
+"interaction" { return KerML::Parser::parser::token::make_KEYWORD_INTERACTION(); }
+"inv" { return KerML::Parser::parser::token::make_KEYWORD_INV(); }
+"inverse" { return KerML::Parser::parser::token::make_KEYWORD_INVERSE(); }
+"inverting" { return KerML::Parser::parser::token::make_KEYWORD_INVERTING(); }
+"istype" { return KerML::Parser::parser::token::make_KEYWORD_ISTYPE(); }
+"language" { return KerML::Parser::parser::token::make_KEYWORD_LANGUAGE(); }
+"member" { return KerML::Parser::parser::token::make_KEYWORD_MEMBER(); }
+"metaclass" { return KerML::Parser::parser::token::make_KEYWORD_METACLASS(); }
+"metadata" { return KerML::Parser::parser::token::make_KEYWORD_METADATA(); }
+"multiplicity" { return KerML::Parser::parser::token::make_KEYWORD_MULTIPLICITY(); }
+"namespace" { return KerML::Parser::parser::token::make_KEYWORD_NAMESPACE(); }
+"nonunique" { return KerML::Parser::parser::token::make_KEYWORD_NONUNIQUE(); }
+"not" { return KerML::Parser::parser::token::make_KEYWORD_NOT(); }
+"null" { return KerML::Parser::parser::token::make_KEYWORD_NULL(); }
+"of" { return KerML::Parser::parser::token::make_KEYWORD_OF(); }
+"or" { return KerML::Parser::parser::token::make_KEYWORD_OR(); }
+"ordered" { return KerML::Parser::parser::token::make_KEYWORD_ORDERED(); }
+"out" { return KerML::Parser::parser::token::make_KEYWORD_OUT(); }
+"package" { return KerML::Parser::parser::token::make_KEYWORD_PACKAGE(); }
+"potion" { return KerML::Parser::parser::token::make_KEYWORD_PORTION(); }
+"predicate" { return KerML::Parser::parser::token::make_KEYWORD_PREDICATE(); }
+"private" { return KerML::Parser::parser::token::make_KEYWORD_PRIVATE(); }
+"protected" { return KerML::Parser::parser::token::make_KEYWORD_PROTECTED(); }
+"public" { return KerML::Parser::parser::token::make_KEYWORD_PUBLIC(); }
+"readonly" { return KerML::Parser::parser::token::make_KEYWORD_READONLY(); }
+"redefines" { return KerML::Parser::parser::token::make_KEYWORD_REDEFINES(); }
+"redefinition" { return KerML::Parser::parser::token::make_KEYWORD_REDEFINITION(); }
+"references" { return KerML::Parser::parser::token::make_KEYWORD_REFERENCES(); }
+"rep" { return KerML::Parser::parser::token::make_KEYWORD_REP(); }
+"return" { return KerML::Parser::parser::token::make_KEYWORD_RETURN(); }
+"specialization" { return KerML::Parser::parser::token::make_KEYWORD_SPECILIZATION(); }
+"specializes" { return KerML::Parser::parser::token::make_KEYWORD_SPECIALIZES(); }
+"step" { return KerML::Parser::parser::token::make_KEYWORD_STEP(); }
+"struct" { return KerML::Parser::parser::token::make_KEYWORD_STRUCT(); }
+"subclassifier" { return KerML::Parser::parser::token::make_KEYWORD_SUBCLASSIFIER(); }
+"subset" { return KerML::Parser::parser::token::make_KEYWORD_SUBSET(); }
+"subsets" { return KerML::Parser::parser::token::make_KEYWORD_SUBSETS(); }
+"subtype" { return KerML::Parser::parser::token::make_KEYWORD_SUBTYPE(); }
+"succession" { return KerML::Parser::parser::token::make_KEYWORD_SUCCSESSION(); }
+"then" { return KerML::Parser::parser::token::make_KEYWORD_THEN(); }
+"to" { return KerML::Parser::parser::token::make_KEYWORD_TO(); }
+"true" { return KerML::Parser::parser::token::make_KEYWORD_TRUE(); }
+"type" { return KerML::Parser::parser::token::make_KEYWORD_TYPE(); }
+"typed" { return KerML::Parser::parser::token::make_KEYWORD_TYPED(); }
+"typing" { return KerML::Parser::parser::token::make_KEYWORD_TYPING(); }
+"unions" { return KerML::Parser::parser::token::make_KEYWORD_UNIONS(); }
+"xor" { return KerML::Parser::parser::token::make_KEYWORD_XOR(); }
+"var" { return KerML::Parser::parser::token::make_KEYWORD_VAR(); }
+"locale" { return KerML::Parser::parser::token::make_KEYWORD_LOCALE(); }
+"standard" { return KerML::Parser::parser::token::make_KEYWORD_STANDARD(); }
+"library" { return KerML::Parser::parser::token::make_KEYWORD_LIBRARY(); }
+"constant" { return KerML::Parser::parser::token::make_KEYWORD_CONSTANT(); }
+"meta" {return KerML::Parser::parser::token::make_KEYWORD_META();}
 
-";" { return SYMBOL_STATEMENT_DELIMITER; }
-"*" { return SYMBOL_STAR; }
-"::" { return SYMBOL_NAMESPACE_SUBSET; }
-":" { return SYMBOL_TYPED_BY; }
-":>" { return SYMBOL_SPECIALIZES; }
-"::>" { return SYMBOL_REFERENCES; }
-":>>" { return SYMBOL_REDEFINES; }
-"~" { return SYMBOL_CONJUNGATES; }
-"(" { return SYMBOL_ROUND_BRACKET_OPEN; }
-")" { return SYMBOL_ROUND_BRACKET_CLOSE; }
-"\{" { return SYMBOL_CURLY_BRACKET_OPEN; }
-"\}" { return SYMBOL_CURLY_BRACKET_CLOSE; }
-"[" { return SYMBOL_SQUARE_BRACKET_OPEN; }
-"]" { return SYMBOL_SQUARE_BRACKET_CLOSE; }
-"," { return SYMBOL_COMMA; }
-"@" { return SYMBOL_AT; }
-"#" { return SYMBOL_HASHTAG; }
-"%" { return SYMBOL_MOD; }
-"&" { return SYMBOL_AND; }
-"^" { return SYMBOL_UPPER; }
-"|" { return SYMBOL_VERTICAL_LINE; }
-"**" { return SYMBOL_DOUBLE_STAR; }
-"+" { return SYMBOL_PLUS; }
-"-" { return SYMBOL_MINUS; }
-"/" { return SYMBOL_SLASH; }
-"->" { return SYMBOL_ARROOW; }
-"." { return SYMBOL_DOT; }
-".." { return SYMBOL_DDOT; }
-"<" { return SYMBOL_SMALLER; }
-"<=" { return SYMBOL_SMALLER_EQUAL; }
-"=" { return SYMBOL_ASSIGN; }
-":=" { return SYMBOL_DEF_ASSIGN; }
-"==" { return SYMBOL_EQUALS; }
-"===" { return SYMBOL_IFF_EQUALS; }
-"!=" { return SYMBOL_NOT_EQUALS; }
-"!==" { return SYMBOL_IFF_NOT_EQUALS; }
-">" { return SYMBOL_GREATER; }
-">=" { return SYMBOL_GREATER_EQUALS; }
-"?" { return SYMBOL_QUESTION; }
-"??" { return SYMBOL_DQUESTION; }
-".?" { return SYMBOL_DOT_QUESTION; }
+";" { return KerML::Parser::parser::token::make_SYMBOL_STATEMENT_DELIMITER(); }
+"*" { return KerML::Parser::parser::token::make_SYMBOL_STAR(); }
+"::" { return KerML::Parser::parser::token::make_SYMBOL_NAMESPACE_SUBSET(); }
+":" { return KerML::Parser::parser::token::make_SYMBOL_TYPED_BY(); }
+":>" { return KerML::Parser::parser::token::make_SYMBOL_SPECIALIZES(); }
+"::>" { return KerML::Parser::parser::token::make_SYMBOL_REFERENCES(); }
+":>>" { return KerML::Parser::parser::token::make_SYMBOL_REDEFINES(); }
+"~" { return KerML::Parser::parser::token::make_SYMBOL_CONJUNGATES(); }
+"(" { return KerML::Parser::parser::token::make_SYMBOL_ROUND_BRACKET_OPEN(); }
+")" { return KerML::Parser::parser::token::make_SYMBOL_ROUND_BRACKET_CLOSE(); }
+"\{" { return KerML::Parser::parser::token::make_SYMBOL_CURLY_BRACKET_OPEN(); }
+"\}" { return KerML::Parser::parser::token::make_SYMBOL_CURLY_BRACKET_CLOSE(); }
+"[" { return KerML::Parser::parser::token::make_SYMBOL_SQUARE_BRACKET_OPEN(); }
+"]" { return KerML::Parser::parser::token::make_SYMBOL_SQUARE_BRACKET_CLOSE(); }
+"," { return KerML::Parser::parser::token::make_SYMBOL_COMMA(); }
+"@" { return KerML::Parser::parser::token::make_SYMBOL_AT(); }
+"#" { return KerML::Parser::parser::token::make_SYMBOL_HASHTAG(); }
+"%" { return KerML::Parser::parser::token::make_SYMBOL_MOD(); }
+"&" { return KerML::Parser::parser::token::make_SYMBOL_AND(); }
+"^" { return KerML::Parser::parser::token::make_SYMBOL_UPPER(); }
+"|" { return KerML::Parser::parser::token::make_SYMBOL_VERTICAL_LINE(); }
+"**" { return KerML::Parser::parser::token::make_SYMBOL_DOUBLE_STAR(); }
+"+" { return KerML::Parser::parser::token::make_SYMBOL_PLUS(); }
+"-" { return KerML::Parser::parser::token::make_SYMBOL_MINUS(); }
+"/" { return KerML::Parser::parser::token::make_SYMBOL_SLASH(); }
+"->" { return KerML::Parser::parser::token::make_SYMBOL_ARROOW(); }
+"." { return KerML::Parser::parser::token::make_SYMBOL_DOT(); }
+".." { return KerML::Parser::parser::token::make_SYMBOL_DDOT(); }
+"<" { return KerML::Parser::parser::token::make_SYMBOL_SMALLER(); }
+"<=" { return KerML::Parser::parser::token::make_SYMBOL_SMALLER_EQUAL(); }
+"=" { return KerML::Parser::parser::token::make_SYMBOL_ASSIGN(); }
+":=" { return KerML::Parser::parser::token::make_SYMBOL_DEF_ASSIGN(); }
+"==" { return KerML::Parser::parser::token::make_SYMBOL_EQUALS(); }
+"===" { return KerML::Parser::parser::token::make_SYMBOL_IFF_EQUALS(); }
+"!=" { return KerML::Parser::parser::token::make_SYMBOL_NOT_EQUALS(); }
+"!==" { return KerML::Parser::parser::token::make_SYMBOL_IFF_NOT_EQUALS(); }
+">" { return KerML::Parser::parser::token::make_SYMBOL_GREATER(); }
+">=" { return KerML::Parser::parser::token::make_SYMBOL_GREATER_EQUALS(); }
+"?" { return KerML::Parser::parser::token::make_SYMBOL_QUESTION(); }
+"??" { return KerML::Parser::parser::token::make_SYMBOL_DQUESTION(); }
+".?" { return KerML::Parser::parser::token::make_SYMBOL_DOT_QUESTION(); }
 
-[a-zA-Z_][a-zA-Z0-9_]*   { yylval.str = strdup(yytext); return BASIC_NAME; }
-[0-9]+                  { yylval.num = atoi(yytext); return NUMBER; }
-"\'"[a-zA-Z_][a-zA-Z0-9_.-]* "\'" { yylval.str = strdup(yytext);  return UNRESTRICTED_NAME; }
-[-+]?[0-9]+"."[0-9]+      { yylval.doubleValue = stod(yytext); return DECIMAL_VALUE; }
-[-+]?[0-9]+(\.[0-9]+)?[eE][-+]?[0-9]+ {yylval.doubleValue = stod(yytext); return EXPONENTIAL_VALUE;}
+[a-zA-Z_][a-zA-Z0-9_]*   { 
+    std::string ident(yytext, yyleng);  // yytext → std::string
+    return KerML::Parser::parser::make_BASIC_NAME(ident);
+}
+[0-9]+ { 
+    int value = std::stoi(std::string(yytext, yyleng));
+    return KerML::Parser::parser::make_NUMBER(value);
+}
+"\'"[a-zA-Z_][a-zA-Z0-9_.-]* "\'" { 
+    std::string ident(yytext, yyleng);  // yytext → std::string
+    return KerML::Parser::parser::make_UNRESTRICTED_NAME(ident);
+}
+[-+]?[0-9]+"."[0-9]+      { 
+    double value = std::stod(std::string(yytext, yyleng));
+    return KerML::Parser::parser::make_DECIMAL_VALUE(value);
+}
+[-+]?[0-9]+(\.[0-9]+)?[eE][-+]?[0-9]+ {
+    double value = std::stod(std::string(yytext, yyleng));
+    return KerML::Parser::parser::make_EXPONENTIAL_VALUE(value);
+}
 
 [ \t\r\n]+         { }
 
-"//".*   {yylval.str = strdup(yytext); return SINGLE_LINE_COMMENT;}
-"/*"([^*]|\*+[^*/])*\*+"\\"   {yylval.str = strdup(yytext); return BLOCK_COMMENT;}
+"//".*   {
+    std::string ident(yytext, yyleng);  // yytext → std::string
+    return KerML::Parser::parser::make_SINGLE_LINE_COMMENT(ident);
+}
+"/*"([^*]|\*+[^*/])*\*+"\\"   {
+    std::string ident(yytext, yyleng);  // yytext → std::string
+    return KerML::Parser::parser::make_BLOCK_COMMENT(ident);
+}
 "\""([^\"\\]|\\.)*"\"" {
-    yylval.str = strdup(yytext); // Übergabe des Strings an Bison
-    return STRING;
+    std::string ident(yytext, yyleng);  // yytext → std::string
+    return KerML::Parser::parser::make_STRING(ident);
 }
 
 %%

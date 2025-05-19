@@ -1,34 +1,36 @@
 %require "3.2"
 %language "c++"
+%define api.value.type variant
+%define parse.error verbose
+%define api.namespace {KerML::Parser}  // Kein Namespace
+%parse-param { KerMLFlexScanner* lexer }
+%lex-param   { KerMLFlexScanner* lexer }
 %{
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <stdbool.h>
-
-    void yyerror(const char* s) {};
-    extern int yylex(void);
+    #include <string>
+    #include <vector>
+    #include <iostream>
+    #include <root/namespaces/Namespace.h>
+    #include <root/elements/Element.h>
 %}
 
-%union {
-    int num;
-    double doubleValue;
-    char* str;
-    bool truth;
+%code requires {
+    #include "KerMLFlexScanner.h"
 }
 
-%token <str> BASIC_NAME SINGLE_LINE_COMMENT UNRESTRICTED_NAME BLOCK_COMMENT
-%token <doubleValue> DECIMAL_VALUE
-%token <doubleValue> EXPONENTIAL_VALUE
-%token <num> NUMBER
+%token <std::string> BASIC_NAME SINGLE_LINE_COMMENT UNRESTRICTED_NAME BLOCK_COMMENT
+%token <double> DECIMAL_VALUE
+%token <double> EXPONENTIAL_VALUE
+%token <int> NUMBER
 %token SYMBOL_DOT_QUESTION SYMBOL_DQUESTION SYMBOL_QUESTION SYMBOL_GREATER_EQUALS SYMBOL_GREATER SYMBOL_IFF_NOT_EQUALS SYMBOL_NOT_EQUALS SYMBOL_IFF_EQUALS SYMBOL_EQUALS SYMBOL_DEF_ASSIGN SYMBOL_ASSIGN SYMBOL_SMALLER_EQUAL SYMBOL_SMALLER SYMBOL_DDOT SYMBOL_DOT SYMBOL_ARROOW SYMBOL_SLASH SYMBOL_MINUS SYMBOL_PLUS SYMBOL_DOUBLE_STAR SYMBOL_VERTICAL_LINE SYMBOL_UPPER SYMBOL_AND SYMBOL_MOD SYMBOL_HASHTAG SYMBOL_AT SYMBOL_COMMA SYMBOL_SQUARE_BRACKET_CLOSE SYMBOL_SQUARE_BRACKET_OPEN SYMBOL_CURLY_BRACKET_CLOSE SYMBOL_CURLY_BRACKET_OPEN SYMBOL_ROUND_BRACKET_CLOSE SYMBOL_ROUND_BRACKET_OPEN SYMBOL_CONJUNGATES SYMBOL_REDEFINES SYMBOL_REFERENCES SYMBOL_SPECIALIZES SYMBOL_TYPED_BY SYMBOL_NAMESPACE_SUBSET SYMBOL_STAR SYMBOL_STATEMENT_DELIMITER
-%token <str> STRING
+%token <std::string> STRING
 %token KEYWORD_CONJUGATION KEYWORD_META KEYWORD_CONSTANT KEYWORD_LIBRARY KEYWORD_STANDARD KEYWORD_LOCALE KEYWORD_VAR KEYWORD_XOR KEYWORD_UNIONS KEYWORD_TYPING KEYWORD_TYPED KEYWORD_TYPE KEYWORD_TRUE KEYWORD_TO KEYWORD_THEN KEYWORD_SUCCSESSION KEYWORD_SUBTYPE KEYWORD_SUBSETS KEYWORD_SUBSET KEYWORD_SUBCLASSIFIER KEYWORD_STRUCT KEYWORD_STEP KEYWORD_SPECIALIZES KEYWORD_SPECILIZATION KEYWORD_RETURN KEYWORD_REP KEYWORD_REFERENCES KEYWORD_REDEFINITION KEYWORD_REDEFINES KEYWORD_READONLY KEYWORD_PUBLIC KEYWORD_PROTECTED KEYWORD_PRIVATE KEYWORD_PREDICATE KEYWORD_PORTION KEYWORD_PACKAGE KEYWORD_OUT KEYWORD_ORDERED KEYWORD_OR KEYWORD_OF KEYWORD_NULL KEYWORD_NOT KEYWORD_NONUNIQUE KEYWORD_NAMESPACE KEYWORD_MULTIPLICITY KEYWORD_METADATA KEYWORD_METACLASS KEYWORD_MEMBER KEYWORD_LANGUAGE KEYWORD_ISTYPE KEYWORD_INVERTING KEYWORD_INVERSE KEYWORD_INV KEYWORD_INTERACTION KEYWORD_INOUT KEYWORD_IN KEYWORD_IMPORT KEYWORD_IMPLIES KEYWORD_INTERSECTS KEYWORD_IF KEYWORD_HASTYPE KEYWORD_FUNCTION KEYWORD_FROM KEYWORD_FOR KEYWORD_FLOW KEYWORD_FIRST KEYWORD_FILTER KEYWORD_FEATURING KEYWORD_FEATURED KEYWORD_FEATURE KEYWORD_FALSE KEYWORD_EXPR KEYWORD_END KEYWORD_ELSE KEYWORD_DOC KEYWORD_DISJOINT KEYWORD_DISJOINING KEYWORD_DIFFERENCES KEYWORD_DERIVED KEYWORD_DEPENDENCY KEYWORD_DEFAULT KEYWORD_DATATYPE KEYWORD_CONNECTOR KEYWORD_CONJUGATES KEYWORD_CONJUGATE KEYWORD_COMPOSITE KEYWORD_COMMENT KEYWORD_CLASSIFIER KEYWORD_CLASS KEYWORD_CHAINS KEYWORD_BY KEYWORD_BOOL KEYWORD_BINDING KEYWORD_BEHAVIOR KEYWORD_ASSOC KEYWORD_AS KEYWORD_AND KEYWORD_ALL KEYWORD_ALIAS KEYWORD_ABSTRACT KEYWORD_ABOUT
 
 %left TPLUS TMINUS
 %left TMUL TDIV
 
-%type <str> relationship_body comment_option from_option prefix_metadata_annotation type_prefix qualified_name qualified_name_tail identification mutliplicity_bounds specialization_option conjugation_option type_body;
-%type <truth> abstract_modifier all_modifier;
+%type <std::string> relationship_body comment_option from_option prefix_metadata_annotation type_prefix qualified_name qualified_name_tail identification mutliplicity_bounds specialization_option conjugation_option type_body;
+%type <bool> abstract_modifier all_modifier;
+%type <std::string> specific_type general_type;
 
 
 %start model
@@ -90,47 +92,61 @@
 
     
     type_prefix: abstract_modifier prefix_metadata_annotation {
-        if($1) printf("isAbstract: true \n");
-        if($2) printf("metadata_member: %s\n", $2);
-        free($2);
+        if($1) std::cout<<"isAbstract: true \n"<<std::endl;
+        if(!$2.empty()) std::cout<<"metadata_member: "<<$2<<std::endl;
     }
     | abstract_modifier {
-        if($1) printf("isAbstract: true \n");
+        if($1) std::cout<<"isAbstract: true"<<std::endl;
     }
-    | /* empty */ {$$=NULL;}
+    | /* empty */ {}
     
     prefix_metadata_annotation: SYMBOL_HASHTAG qualified_name {
         $$ = $2;
     }
-    | /*empty*/;
+    | /*empty*/ {$$ = "";};
     
     abstract_modifier:
-    KEYWORD_ABSTRACT {$$ = true} |
-    /* empty */ {$$ = false};
+    KEYWORD_ABSTRACT {$$ = true;} |
+    /* empty */ {$$ = false;};
     
     //TODO: Basic Name muss mit unrestricted name unterschieden werden.
     qualified_name:
     BASIC_NAME qualified_name_tail
     {
-        if ($2) {
-            char* full;
-            asprintf(&full, "%s::%s", $1, $2);
-            free($1); free($2);
-            $$ = full;
+        if (!$2.empty()) {
+            $$ = $1.append($2);
         } else {
             $$ = $1;
         }
     }
+    | UNRESTRICTED_NAME qualified_name_tail {
+        if (!$2.empty()) {
+            $$ = $1.append($2);
+        } else {
+            $$ = $1;
+        }
+    }
+    |/*empty*/ {
+        $$="";
+    }
+
     ;
     
     qualified_name_tail:
     SYMBOL_DDOT BASIC_NAME qualified_name_tail
     {
-        char* rest = $3;
-        char* full;
-        if (rest) {
-            asprintf(&full, "%s::%s", $2, rest);
-            free($2); free(rest);
+        std::string full;
+        if (!$3.empty()) {
+            full = $2.append($3);
+        } else {
+            full = $2;
+        }
+        $$ = full;
+    }
+    | SYMBOL_DDOT UNRESTRICTED_NAME qualified_name_tail {
+        std::string full;
+        if (!$3.empty()) {
+            full = $2.append($3);
         } else {
             full = $2;
         }
@@ -138,7 +154,7 @@
     }
     | /* empty */
     {
-        $$ = NULL;
+        $$ = "";
     }
     ;
     
@@ -155,41 +171,46 @@
     };
     
     mutliplicity_bounds: SYMBOL_SQUARE_BRACKET_OPEN NUMBER SYMBOL_DDOT NUMBER SYMBOL_SQUARE_BRACKET_OPEN {
-        printf("lower bound: %d\n", $2);
-        printf("upper bound: %d\n", $4);
+        std::cout<<"lower bound: "<< $2 <<std::endl;
+        std::cout<<"upper bound: "<< $2 <<std::endl;
     }
     | SYMBOL_SQUARE_BRACKET_OPEN NUMBER SYMBOL_SQUARE_BRACKET_OPEN {
-        printf("multiplicity: %d\n", $2);
+        std::cout<<"multiplicity: "<< $2 <<std::endl;
     }
-    | /* empty */ {$$=NULL;};
+    | /* empty */ {$$="";};
     
     specialization_option: KEYWORD_SPECIALIZES identification {
-        printf("specialization: %s", $2);
+        std::cout<<"specialization: "<< $2 <<std::endl;
         $$ = $2;
     }
     | SYMBOL_SPECIALIZES identification {
-        printf("specialization: %s", $2);
+        std::cout<<"specialization: "<< $2 <<std::endl;
         $$ = $2;
     };
     
     conjugation_option: KEYWORD_CONJUGATES qualified_name {
-        printf("conjugation: %s", $2);
-        $$ = $2
+         std::cout<< "conjugation: "<< $2 <<std::endl;
+        $$ = $2;
     }
     | SYMBOL_CONJUNGATES qualified_name {
-        printf("conjugation: %s", $2);
-        $$ = $2
+        std::cout<< "conjugation: "<< $2 <<std::endl;
+        $$ = $2;
     };
     
-    type_body: SYMBOL_STATEMENT_DELIMITER {$$ = NULL}
+    type_body: SYMBOL_STATEMENT_DELIMITER {$$ = "";}
     | SYMBOL_CURLY_BRACKET_OPEN type_body_elements SYMBOL_CURLY_BRACKET_CLOSE {
         $$ = "$2";
     };
     
     type_body_elements:
-    type_body_elements element
+    type_body_elements type_body_element
     | /*empty*/ ;
     
+    type_body_element: non_feature_member
+                     | feature_member
+                     | alias_member
+                     | import;
+
     type:
     type_prefix KEYWORD_TYPE all_modifier identification mutliplicity_bounds conjugation_option type_body type_relationship_part_option;
     
@@ -209,9 +230,9 @@
     differencing_part: KEYWORD_DIFFERENCES differencing differencing_part_multiplicity;
     differencing_part_multiplicity: differencing_part_multiplicity SYMBOL_COMMA differencing | /*empty*/;
     
-    relationship_body: SYMBOL_STATEMENT_DELIMITER {$$ = NULL;}
+    relationship_body: SYMBOL_STATEMENT_DELIMITER {$$ = "";}
     |  SYMBOL_CURLY_BRACKET_OPEN relationship_body_elements SYMBOL_CURLY_BRACKET_CLOSE {
-        $$=NULL;
+        $$="";
     };
     
     relationship_body_elements: relationship_body_elements relationship_body_element | /*empty*/;
@@ -220,7 +241,7 @@
     
     from_option: KEYWORD_FROM qualified_name {
         $$ = $2;
-    } | /*empty*/;
+    } | /*empty*/ {$$ = "";};
     
     dependency: prefix_metadata_annotation KEYWORD_DEPENDENCY identification from_option KEYWORD_TO qualified_name relationship_body;
     
@@ -259,8 +280,14 @@
     specializes: KEYWORD_SPECIALIZES | SYMBOL_SPECIALIZES;
     specialization: KEYWORD_SPECILIZATION identification KEYWORD_SUBTYPE specific_type specializes general_type relationship_body
     | KEYWORD_SUBTYPE specific_type specializes general_type relationship_body;
-    specific_type: general_type;
-    general_type: qualified_name | owned_feature_chain;
+    specific_type: general_type {
+        $$ = $<std::string>0;
+    };
+    general_type: qualified_name {
+        $$ = $<std::string>0;
+    } | owned_feature_chain {
+        $$="";
+    };
     
     conjunction: KEYWORD_CONJUGATION identification KEYWORD_CONJUGATE owned_conjungation KEYWORD_CONJUGATES owned_conjungation relationship_body
     | KEYWORD_CONJUGATE owned_conjungation KEYWORD_CONJUGATES owned_conjungation relationship_body;
@@ -618,7 +645,7 @@
     standard_option: KEYWORD_STANDARD | /*empty*/;
     package_declaration: KEYWORD_PACKAGE identification;
     package_body: SYMBOL_STATEMENT_DELIMITER |
-    | SYMBOL_CURLY_BRACKET_OPEN element_filter_members SYMBOL_CURLY_BRACKET_CLOSE;
+    | SYMBOL_CURLY_BRACKET_OPEN element_filter_members SYMBOL_CURLY_BRACKET_CLOSE
     | SYMBOL_CURLY_BRACKET_OPEN elements SYMBOL_CURLY_BRACKET_CLOSE;
     element_filter_members: element_filter_members element_filter_member | /*empty*/;
     element_filter_member: member_prefix KEYWORD_FILTER owned_expression ';';
@@ -626,6 +653,6 @@
     meta_assignment: qualified_name SYMBOL_ASSIGN identification KEYWORD_META qualified_name ';';
 %%
 
-void yyerror(const char* s) {
-    fprintf(stderr, "Error: %s\n", s);
-}
+void KerML::Parser::parser::error(const std::string& msg) {
+        std::cerr << "Parser-Fehler: " << msg << std::endl;
+    }
