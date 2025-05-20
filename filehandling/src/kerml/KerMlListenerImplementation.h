@@ -24,6 +24,14 @@ public:
     KerMLListenerImplementation();
     ~KerMLListenerImplementation();
 
+    void visitTerminal(antlr4::tree::TerminalNode *node) override;
+
+    void visitErrorNode(antlr4::tree::ErrorNode *node) override;
+
+    void enterEveryRule(antlr4::ParserRuleContext *ctx) override;
+
+    void exitEveryRule(antlr4::ParserRuleContext *ctx) override;
+
     void enterStart(KerMLParser::StartContext *ctx) override;
 
     void exitStart(KerMLParser::StartContext *ctx) override;
@@ -71,10 +79,6 @@ public:
     void enterAnnotating_element(KerMLParser::Annotating_elementContext *ctx) override;
 
     void exitAnnotating_element(KerMLParser::Annotating_elementContext *ctx) override;
-
-    void enterComment(KerMLParser::CommentContext *ctx) override;
-
-    void exitComment(KerMLParser::CommentContext *ctx) override;
 
     void enterDocumentation(KerMLParser::DocumentationContext *ctx) override;
 
@@ -650,9 +654,11 @@ public:
 
     void exitMetadata_reference(KerMLParser::Metadata_referenceContext *ctx) override;
 
-    void enterMetadataclassification_test_operator(KerMLParser::Metadataclassification_test_operatorContext *ctx) override;
+    void
+    enterMetadataclassification_test_operator(KerMLParser::Metadataclassification_test_operatorContext *ctx) override;
 
-    void exitMetadataclassification_test_operator(KerMLParser::Metadataclassification_test_operatorContext *ctx) override;
+    void
+    exitMetadataclassification_test_operator(KerMLParser::Metadataclassification_test_operatorContext *ctx) override;
 
     void enterMeta_cast_operator(KerMLParser::Meta_cast_operatorContext *ctx) override;
 
@@ -1066,13 +1072,11 @@ public:
 
     void exitMeta_assignment(KerMLParser::Meta_assignmentContext *ctx) override;
 
-    void visitTerminal(antlr4::tree::TerminalNode *node) override;
+    void enterComment(KerMLParser::CommentContext *ctx) override;
 
-    void visitErrorNode(antlr4::tree::ErrorNode *node) override;
+    void exitComment(KerMLParser::CommentContext *ctx) override;
 
-    void enterEveryRule(antlr4::ParserRuleContext *ctx) override;
-
-    void exitEveryRule(antlr4::ParserRuleContext *ctx) override;
+    std::vector<std::shared_ptr<KerML::Entities::Element>> getElements();
 
 private:
     std::vector<std::shared_ptr<KerML::Entities::Element>> Elements;

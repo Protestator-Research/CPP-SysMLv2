@@ -9,6 +9,7 @@
 #include <kerml/KerMLListener.h>
 #include <kerml/KerMlErrorListener.h>
 #include <Parser.h>
+#include "kerml/KerMlListenerImplementation.h"
 
 TEST(TestKerMLParser, TestAddressBookModel) {
     std::string valueToParse = "private import ScalarValues::*;\n"
@@ -261,6 +262,7 @@ TEST(TestKerMLParser, ConformanceTestA2ModelinInstances) {
     antlr4::ANTLRInputStream input(valueToParse);
 
     auto listener = new KerMLErrorListener();
+    auto listenerImplementation = new KerMLListenerImplementation();
 
     // Create a lexer from the input
     KerMLLexer lexer(&input);
@@ -273,6 +275,7 @@ TEST(TestKerMLParser, ConformanceTestA2ModelinInstances) {
     // Create a parser from the token stream
     KerMLParser parser(&tokens);
     parser.addErrorListener(listener);
+    parser.addParseListener(listenerImplementation);
 
     // Display the parse tree
     parser.start()->toStringTree();

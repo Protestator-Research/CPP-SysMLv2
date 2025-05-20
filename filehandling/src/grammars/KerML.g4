@@ -23,7 +23,7 @@ annotation: qualified_name;
 owned_annotation: annotating_element;
 annotating_element: comment | documentation | textual_representation | metadata_feature;
 comment: (KEYWORD_COMMENT identification (KEYWORD_ABOUT annotation (SYMBOL_COMMA  annotation)*)?)? (KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
-documentation: KEYWORD_DOC identification (KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
+documentation: KEYWORD_DOC identification? (KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
 textual_representation: (KEYWORD_REP identification)? KEYWORD_LANGUAGE STRING_VALUE REGULAR_COMMENT;
 
 root_namespace: namespace_body_elements;

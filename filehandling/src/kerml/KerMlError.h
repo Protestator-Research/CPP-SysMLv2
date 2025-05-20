@@ -7,34 +7,38 @@
 
 #include <string>
 #include "../sysmlv2file_global.h"
+//namespace KerML::Parser {
+    enum KerMLErrorType {
+        SYNTAX_ERROR,
+        AMBIGUITY_ERROR,
+        CONTEXT_SENSITIVITY_ERROR,
+        ATTEMPTING_FULL_CONTEXT_ERROR
+    };
 
-enum KerMLErrorType {
-    SYNTAX_ERROR,
-    AMBIGUITY_ERROR,
-    CONTEXT_SENSITIVITY_ERROR,
-    ATTEMPTING_FULL_CONTEXT_ERROR
-};
 
+    class SYSMLV2FILE_EXPORT KerMLError {
+    public:
+        KerMLError() = delete;
 
-class SYSMLV2FILE_EXPORT KerMLError {
-public:
-    KerMLError() = delete;
-    KerMLError(KerMLErrorType errorType, int line, int postionInLine, std::string message);
-    virtual ~KerMLError() = default;
+        KerMLError(KerMLErrorType errorType, int line, int postionInLine, std::string message);
 
-    std::string message();
-    int line();
-    int positionInLine();
+        virtual ~KerMLError() = default;
 
-    KerMLErrorType errorType();
+        std::string message();
 
-private:
-    KerMLErrorType ErrorType;
-    std::string ErrorMessage;
-    int Line;
-    int PositionInLine;
+        int line();
 
-};
+        int positionInLine();
 
+        KerMLErrorType errorType();
+
+    private:
+        KerMLErrorType ErrorType;
+        std::string ErrorMessage;
+        int Line;
+        int PositionInLine;
+
+    };
+//}
 
 #endif //SYSMLV2_KERMLERROR_H

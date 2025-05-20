@@ -6,9 +6,6 @@
 
 #include "antlr4-runtime.h"
 
-namespace KerML::Entities {
-    class Element;
-}
 
 
 
@@ -604,7 +601,6 @@ public:
     DocumentationContext *documentation();
     Textual_representationContext *textual_representation();
     Metadata_featureContext *metadata_feature();
-    std::shared_ptr<KerML::Entities::Element> getElement();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -640,8 +636,8 @@ public:
     DocumentationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *KEYWORD_DOC();
-    IdentificationContext *identification();
     antlr4::tree::TerminalNode *REGULAR_COMMENT();
+    IdentificationContext *identification();
     antlr4::tree::TerminalNode *KEYWORD_LOCALE();
     antlr4::tree::TerminalNode *STRING_VALUE();
 
@@ -858,10 +854,7 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    std::string getQualifiedName();
-    private:
-    std::string QualifiedName = "";
+   
   };
 
   Qualified_nameContext* qualified_name();
@@ -951,11 +944,9 @@ public:
     Feature_elementContext *feature_element();
     Additional_optionsContext *additional_options();
 
-    std::shared_ptr<KerML::Entities::Element> getElement();
-
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
+   
   };
 
   ElementContext* element();
@@ -994,8 +985,7 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    std::shared_ptr<KerML::Entities::Element> getElement();
+   
   };
 
   Non_feature_elementContext* non_feature_element();
@@ -1015,8 +1005,6 @@ public:
     Item_flowContext *item_flow();
     Succession_item_flowContext *succession_item_flow();
 
-    std::shared_ptr<KerML::Entities::Element> getElement();
-
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
    
@@ -1029,8 +1017,6 @@ public:
     Additional_optionsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Meta_assignmentContext *meta_assignment();
-
-    std::shared_ptr<KerML::Entities::Element> getElement();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1215,7 +1201,6 @@ public:
     antlr4::tree::TerminalNode *SYMBOL_CURLY_BRACKET_OPEN();
     Type_body_elementsContext *type_body_elements();
     antlr4::tree::TerminalNode *SYMBOL_CURLY_BRACKET_CLOSE();
-    std::vector<std::shared_ptr<KerML::Entities::Element>> getElementsFromTypeBody();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1230,8 +1215,6 @@ public:
     virtual size_t getRuleIndex() const override;
     std::vector<ElementContext *> element();
     ElementContext* element(size_t i);
-
-      std::vector<std::shared_ptr<KerML::Entities::Element>> getElementsFromElement();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -4413,12 +4396,9 @@ public:
     IdentificationContext *identification();
     antlr4::tree::TerminalNode *SYMBOL_STATEMENT_DELIMITER();
 
-    std::shared_ptr<KerML::Entities::Element> getElement();
-
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-  private:
-      std::shared_ptr<KerML::Entities::Element> Element = nullptr;
+   
   };
 
   Meta_assignmentContext* meta_assignment();

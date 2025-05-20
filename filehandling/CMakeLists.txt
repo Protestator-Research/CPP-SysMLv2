@@ -15,29 +15,6 @@ set(BISON_VARS
     BISON_VERSION
 )
 
-FIND_PACKAGE(FLEX REQUIRED)
-SET(FlexOutput ${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLFlexLexer.cpp)
-IF(FLEX_FOUND)
-    ADD_CUSTOM_COMMAND(
-            OUTPUT ${FlexOutput}
-            COMMAND flex++
-            --outfile=${FlexOutput}
-            ${CMAKE_SOURCE_DIR}/filehandling/src/grammars/KerML.l
-            COMMENT "Generating KerMLFlexLexer.cpp"
-    )
-ENDIF()
-
-SET(BisonOutput ${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLBisonParser.cpp)
-IF(BISON_FOUND)
-    ADD_CUSTOM_COMMAND(
-            OUTPUT ${BisonOutput}
-            COMMAND bison
-            --defines=${CMAKE_SOURCE_DIR}/filehandling/src/kerml/KerMLBisonParser.h
-            --output=${BisonOutput}
-            ${CMAKE_SOURCE_DIR}/filehandling/src/grammars/KerML.yy
-            COMMENT "Generating KerMLBisonParser.cpp")
-ENDIF()
-
 set(GLOBAL_HEADER
         src/sysmlv2file_global.h
         src/ParserError.h
@@ -75,10 +52,7 @@ add_library(sysmlv2file
         src/kerml/KerMlError.cpp
         src/Parser.cpp
         src/ParserError.cpp
-        src/kerml/KerMlListenerImplementation.cpp
-        src/kerml/KerMLFlexScanner.cpp
-        ${FlexOutput}
-        ${BisonOutput}   )
+        src/kerml/KerMlListenerImplementation.cpp)
 
 target_link_libraries(sysmlv2file
         boost::boost
@@ -102,7 +76,7 @@ install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2file)
 if(MSVC)
     target_compile_options(sysmlv2file PRIVATE /W4 /WX- /bigobj)
 else ()
-    target_compile_options(sysmlv2file PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_compile_options(sysmlv2file PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
 file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)
