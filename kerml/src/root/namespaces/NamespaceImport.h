@@ -6,7 +6,10 @@
 #define SYSMLV2_NAMESPACEIMPORT_H
 
 #include "Import.h"
+#include "../elements/Relationship.h"
 #include "VisibilityKind.h"
+
+#include <boost/uuid/uuid.hpp>
 
 namespace KerML::Entities {
     class Namespace;
@@ -18,18 +21,19 @@ namespace KerML::Entities {
      */
     class NamespaceImport : public Import {
     public:
-        NamespaceImport(boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
-        NamespaceImport(std::string elementID, std::shared_ptr<Element> owner = nullptr);
+        explicit NamespaceImport(boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
+        explicit NamespaceImport(std::string elementID, std::shared_ptr<Element> owner = nullptr);
         NamespaceImport(VisibilityKind visibility, bool isRecursive, bool isImportAll, std::shared_ptr<Namespace> importOwningNamespace, std::shared_ptr<Namespace> importedNamespace, boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
 
         ~NamespaceImport() override = default;
 
-        std::shared_ptr<Namespace> import();
-        void setImport(std::shared_ptr<Namespace> import);
+        std::shared_ptr<Namespace> importedNamespace();
+        void setImportedNamespace(std::shared_ptr<Namespace> importedNamespace);
 
         std::vector<std::shared_ptr<Membership>> importedMemberships(std::shared_ptr<Namespace> excluded) override;
     private:
-        std::shared_ptr<Namespace> Import;
+
+        std::shared_ptr<Namespace> ImportedNamespace;
     };
 }
 

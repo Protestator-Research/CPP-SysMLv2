@@ -29,7 +29,7 @@ namespace KerML::Entities {
          * @brief Destructor
          * The destructor can be default, because we are using shared_prts thruout the whole library
          */
-        ~AnnotatingElement() = default;
+        virtual ~AnnotatingElement() = default;
 
     protected:
         /**

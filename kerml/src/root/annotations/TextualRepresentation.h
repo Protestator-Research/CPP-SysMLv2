@@ -10,9 +10,22 @@
 
 
 namespace KerML::Entities {
+    /**
+     * @class TextualRepresentation
+     * @author Moritz Herzog
+     */
     class TextualRepresentation : public AnnotatingElement{
     public:
+        TextualRepresentation();
+        TextualRepresentation(std::string  language, std::string body);
 
+        ~TextualRepresentation() override = default;
+
+        std::string language();
+        void setLanguage(std::string language);
+
+        std::string body();
+        void setBody(std::string body);
     private:
         std::string Language;
         std::string Body;

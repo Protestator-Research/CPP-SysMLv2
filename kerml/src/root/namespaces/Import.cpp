@@ -3,12 +3,23 @@
 //
 
 #include "Import.h"
+#include "Namespace.h"
 
 namespace KerML {
     namespace Entities {
-        Import::Import(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) : Relationship(elementID, owner) { }
+        Import::Import(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) : Relationship(elementID, owner) {
+            ImportOwningNamespace = nullptr;
+            Visibility = VisibilityKind::PRIVATE;
+            IsImportAll = false;
+            IsRecursive = false;
+        }
 
-        Import::Import(std::string elementID, std::shared_ptr<Element> owner) : Relationship(elementID, owner) { }
+        Import::Import(std::string elementID, std::shared_ptr<Element> owner) : Relationship(elementID, owner) {
+            ImportOwningNamespace = nullptr;
+            Visibility = VisibilityKind::PRIVATE;
+            IsImportAll = false;
+            IsRecursive = false;
+        }
 
         Import::Import(VisibilityKind visibility, bool isRecursive, bool isImportAll,
                        std::shared_ptr<Namespace> importOwningNamespace, boost::uuids::uuid elementID,
@@ -16,7 +27,7 @@ namespace KerML {
             Visibility = visibility;
             IsImportAll = isImportAll;
             IsRecursive = isRecursive;
-            ImportOwningNamespace = importOwningNamespace;
+            ImportOwningNamespace = std::move(importOwningNamespace);
         }
 
         void Import::setVisibility(VisibilityKind visibility) {

@@ -12,6 +12,17 @@
 namespace KerML::Entities {
     class Comment  : public AnnotatingElement{
     public:
+        Comment();
+        Comment(std::string locale, std::string body);
+        ~Comment() override = default;
+
+        std::string locale();
+        void setLocale(std::string locale);
+
+        std::string body();
+        void setBody(std::string body);
+
+    protected:
 
     private:
         std::string Locale;

@@ -5,7 +5,6 @@
 #include "KerMlListenerImplementation.h"
 #include <root/elements/Element.h>
 #include <root/annotations/Comment.h>
-#include <root/
 
 KerMLListenerImplementation::KerMLListenerImplementation() {
 }

@@ -4,7 +4,21 @@
 
 #include "Documentation.h"
 
-namespace KerML {
-    namespace Entities {
-    } // Entities
-} // KerML
+namespace KerML::Entities {
+
+    Documentation::Documentation() : Comment() {
+
+    }
+
+    Documentation::Documentation(std::shared_ptr<Element> documentedElement, std::string locale, std::string body) : Comment(locale, body){
+        DocumentedElement = documentedElement;
+    }
+
+    std::shared_ptr<Element> Documentation::documentedElement() {
+        return DocumentedElement;
+    }
+
+    void Documentation::setDocumentedElement(std::shared_ptr<Element> documentedElement) {
+        DocumentedElement = documentedElement;
+    }
+} // KerML::Entities

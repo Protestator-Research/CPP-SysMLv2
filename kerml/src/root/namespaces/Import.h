@@ -8,6 +8,7 @@
 #include "../elements/Relationship.h"
 #include "VisibilityKind.h"
 #include <memory>
+#include <boost/uuid/uuid.hpp>
 
 namespace KerML::Entities {
     class Namespace;
@@ -20,12 +21,38 @@ namespace KerML::Entities {
      */
     class Import : public Relationship{
     public:
-        Import(boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
-        Import(std::string elementID, std::shared_ptr<Element> owner = nullptr);
+        /**
+         *
+         * @param elementID
+         * @param owner
+         */
+        explicit Import(boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
+        /**
+         *
+         * @param elementID
+         * @param owner
+         */
+        explicit Import(std::string elementID, std::shared_ptr<Element> owner = nullptr);
+        /**
+         *
+         * @param visibility
+         * @param isRecursive
+         * @param isImportAll
+         * @param importOwningNamespace
+         * @param elementID
+         * @param owner
+         */
         Import(VisibilityKind visibility, bool isRecursive, bool isImportAll, std::shared_ptr<Namespace> importOwningNamespace, boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
 
+        /**
+         * Destructor
+         */
         virtual ~Import() = default;
 
+        /**
+         *
+         * @return
+         */
         VisibilityKind visibility() const;
         void setVisibility(VisibilityKind visibility);
 

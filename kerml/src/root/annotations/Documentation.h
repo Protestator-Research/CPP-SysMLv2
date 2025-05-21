@@ -9,7 +9,19 @@
 
 namespace KerML::Entities {
     class Documentation : public Comment {
+    public:
+        Documentation();
+        explicit Documentation(std::shared_ptr<Element> documentedElement, std::string locale = "", std::string body = "");
 
+        ~Documentation() override = default;
+
+        std::shared_ptr<Element> documentedElement();
+
+    protected:
+        void setDocumentedElement(std::shared_ptr<Element> documentedElement);
+
+    private:
+        std::shared_ptr<Element> DocumentedElement;
     };
 } // KerML::Entities
 
