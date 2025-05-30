@@ -7,6 +7,7 @@
 
 #include "KerMLListener.h"
 #include <memory>
+#include <stack>
 
 namespace KerML::Entities {
     class Element;
@@ -1079,7 +1080,9 @@ public:
     std::vector<std::shared_ptr<KerML::Entities::Element>> getElements();
 
 private:
+    std::shared_ptr<KerML::Entities::Element> findElementWithName(std::string identification);
     std::vector<std::shared_ptr<KerML::Entities::Element>> Elements;
+    std::stack<std::shared_ptr<KerML::Entities::Element>> ParentStack;
 };
 
 

@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.15)
 
 project(sysml CXX C)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 find_package(nlohmann_json REQUIRED)
 find_package(Boost REQUIRED)
 find_package(date REQUIRED)

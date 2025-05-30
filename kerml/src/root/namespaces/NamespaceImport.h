@@ -30,7 +30,7 @@ namespace KerML::Entities {
         std::shared_ptr<Namespace> importedNamespace();
         void setImportedNamespace(std::shared_ptr<Namespace> importedNamespace);
 
-        std::vector<std::shared_ptr<Membership>> importedMemberships(std::shared_ptr<Namespace> excluded) override;
+        std::vector<std::shared_ptr<Membership>> importedMemberships(std::vector<std::shared_ptr<Namespace>> excluded) override;
     private:
 
         std::shared_ptr<Namespace> ImportedNamespace;

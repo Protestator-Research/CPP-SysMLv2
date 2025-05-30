@@ -69,7 +69,7 @@ namespace KerML::Entities {
          * Gives acces to the ElementId as a uuid. This makes the internal comparison eayser.
          * @return Element id of the Element as a uuid.
          */
-        boost::uuids::uuid elementIdAsUUID() const;
+        [[nodiscard]] boost::uuids::uuid elementIdAsUUID() const;
 
         /**
          * Sets the various alternative Identifiers and overrides them with the given value.
@@ -149,7 +149,7 @@ namespace KerML::Entities {
          *
          * @return
          */
-        virtual std::shared_ptr<Namespace> libraryNamespace() const;
+        [[nodiscard]] virtual std::shared_ptr<Namespace> libraryNamespace() const;
 
         /**
          * This operator is deleted, because the ElementId can not be reset by definition.
@@ -193,7 +193,6 @@ namespace KerML::Entities {
          */
         virtual bool operator>=(const Element& other);
 
-    protected:
         /**
          * Returns the owning Element. The owner is the element referenced in the owningRelationship as the owningRelatedElement.
          * @return Shared pointer of the Owner.
@@ -241,6 +240,13 @@ namespace KerML::Entities {
          * @return Shared Pointer of the Namespace.
          */
         std::shared_ptr<Namespace> owningNamespace();
+
+    protected:
+        std::vector<std::shared_ptr<Relationship>> ownedRelationships();
+
+
+
+
     private:
         /**
         * Orders the AliasIds in their Array. Is per definition required to have the AliasIds always ordered.

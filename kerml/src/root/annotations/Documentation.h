@@ -17,7 +17,6 @@ namespace KerML::Entities {
 
         std::shared_ptr<Element> documentedElement();
 
-    protected:
         void setDocumentedElement(std::shared_ptr<Element> documentedElement);
 
     private:

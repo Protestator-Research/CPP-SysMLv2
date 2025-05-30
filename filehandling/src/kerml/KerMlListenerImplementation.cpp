@@ -5,6 +5,9 @@
 #include "KerMlListenerImplementation.h"
 #include <root/elements/Element.h>
 #include <root/annotations/Comment.h>
+#include <root/annotations/Documentation.h>
+#include <root/namespaces/Namespace.h>
+#include <root/namespaces/NamespaceImport.h>
 
 KerMLListenerImplementation::KerMLListenerImplementation() {
 }
@@ -18,53 +21,79 @@ void KerMLListenerImplementation::enterComment(KerMLParser::CommentContext *) {
 }
 
 void KerMLListenerImplementation::exitComment(KerMLParser::CommentContext *context) {
+
     std::cout<<"Parsing Comment with:"<<std::endl;
 
-    if(context->identification() != nullptr)
-        std::cout<<"\t Identification: " << context->identification()->getText() << std::endl;
+    std::string identification="";
+    if(context->identification() != nullptr) {
+        std::cout << "\t Identification: " << context->identification()->getText() << std::endl;
+        identification =  context->identification()->getText();
+    }
 
+    std::vector<std::shared_ptr<KerML::Entities::Element>> annotatedElements;
     if(context->KEYWORD_ABOUT() != nullptr) {
         std::cout << "About: " << std::endl;
         for(auto& about : context->annotation()) {
             std::cout << "\t" << about->getText() << std::endl;
+            const auto& annotatedElement = findElementWithName(about->getText());
+
+            if(annotatedElement != nullptr)
+                annotatedElements.push_back(annotatedElement);
         }
     }
-    if(context->KEYWORD_LOCALE() != nullptr)
-        std::cout << "Locale: "<<context->STRING_VALUE()->getText() << std::endl;
+    std::string locale = "";
+    if(context->KEYWORD_LOCALE() != nullptr) {
+        std::cout << "Locale: " << context->STRING_VALUE()->getText() << std::endl;
+        locale = context->STRING_VALUE()->getText();
+    }
 
-    std::cout << context->REGULAR_COMMENT()->getSymbol() << std::endl;
-    //const auto& comment = std::shared_ptr<KerML::Entities::Comment>();
+    std::cout <<"Body: "<< context->REGULAR_COMMENT()->getText() << std::endl;
+    std::string body = context->REGULAR_COMMENT()->getText();
+
+    const auto& comment = std::make_shared<KerML::Entities::Comment>(locale, body);
+    Elements.push_back(comment);
+
+
+    if(!identification.empty())
+        comment->setDeclaredName(identification);
+
+    if(!annotatedElements.empty())
+        comment->appendAnnotatedElements(annotatedElements);
+    else
+        comment->appendAnnotatedElement(ParentStack.top());
+
+    ParentStack.top()->appendOwnedElement(comment);
 }
 
-void KerMLListenerImplementation::enterStart(KerMLParser::StartContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::exitStart(KerMLParser::StartContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::enterStartRule(KerMLParser::StartRuleContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::exitStartRule(KerMLParser::StartRuleContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::enterElements(KerMLParser::ElementsContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::exitElements(KerMLParser::ElementsContext *ctx) {
+void KerMLListenerImplementation::enterStart(KerMLParser::StartContext *) {
 
 }
 
-void KerMLListenerImplementation::enterIdentification(KerMLParser::IdentificationContext *ctx) {
+void KerMLListenerImplementation::exitStart(KerMLParser::StartContext *) {
 
 }
 
-void KerMLListenerImplementation::exitIdentification(KerMLParser::IdentificationContext *ctx) {
+void KerMLListenerImplementation::enterStartRule(KerMLParser::StartRuleContext *) {
+
+}
+
+void KerMLListenerImplementation::exitStartRule(KerMLParser::StartRuleContext *) {
+
+}
+
+void KerMLListenerImplementation::enterElements(KerMLParser::ElementsContext *) {
+
+}
+
+void KerMLListenerImplementation::exitElements(KerMLParser::ElementsContext *) {
+
+}
+
+void KerMLListenerImplementation::enterIdentification(KerMLParser::IdentificationContext *) {
+
+}
+
+void KerMLListenerImplementation::exitIdentification(KerMLParser::IdentificationContext *) {
 
 }
 
@@ -110,45 +139,58 @@ void KerMLListenerImplementation::exitDependency(KerMLParser::DependencyContext 
 
 }
 
-void KerMLListenerImplementation::enterAnnotation(KerMLParser::AnnotationContext *ctx) {
+void KerMLListenerImplementation::enterAnnotation(KerMLParser::AnnotationContext *) {
 
 }
 
-void KerMLListenerImplementation::exitAnnotation(KerMLParser::AnnotationContext *ctx) {
+void KerMLListenerImplementation::exitAnnotation(KerMLParser::AnnotationContext *) {
 
 
 }
 
-void KerMLListenerImplementation::enterOwned_annotation(KerMLParser::Owned_annotationContext *ctx) {
+void KerMLListenerImplementation::enterOwned_annotation(KerMLParser::Owned_annotationContext *) {
 
 }
 
-void KerMLListenerImplementation::exitOwned_annotation(KerMLParser::Owned_annotationContext *ctx) {
+void KerMLListenerImplementation::exitOwned_annotation(KerMLParser::Owned_annotationContext *) {
 
 }
 
-void KerMLListenerImplementation::enterAnnotating_element(KerMLParser::Annotating_elementContext *ctx) {
+void KerMLListenerImplementation::enterAnnotating_element(KerMLParser::Annotating_elementContext *) {
 
 }
 
-void KerMLListenerImplementation::exitAnnotating_element(KerMLParser::Annotating_elementContext *ctx) {
+void KerMLListenerImplementation::exitAnnotating_element(KerMLParser::Annotating_elementContext *) {
 
 }
 
-void KerMLListenerImplementation::enterDocumentation(KerMLParser::DocumentationContext *ctx) {
+void KerMLListenerImplementation::enterDocumentation(KerMLParser::DocumentationContext *) {
 
 }
 
-void KerMLListenerImplementation::exitDocumentation(KerMLParser::DocumentationContext *ctx) {
+void KerMLListenerImplementation::exitDocumentation(KerMLParser::DocumentationContext *context) {
     std::cout<<"documentation: "<<std::endl;
 
-    if(ctx->identification()!=nullptr)
-        std::cout<<"\tidentification: "<<ctx->identification()->getText()<<std::endl;
+    std::string identification = "";
+    if(context->identification()!=nullptr) {
+        std::cout << "\tidentification: " << context->identification()->getText() << std::endl;
+        identification = context->identification()->getText();
+    }
 
-    if(ctx->KEYWORD_LOCALE()!=nullptr)
-        std::cout<<"\tlocale: "<<ctx->STRING_VALUE()->getText()<<std::endl;
+    std::string locale = "";
+    if(context->KEYWORD_LOCALE()!=nullptr) {
+        std::cout<<"\tlocale: "<<context->STRING_VALUE()->getText()<<std::endl;
+        locale = context->STRING_VALUE()->getText();
+    }
 
-    std::cout<<"\t body: "<<ctx->REGULAR_COMMENT()->getText()<<std::endl;
+
+    std::cout<<"\t body: "<<context->REGULAR_COMMENT()->getText()<<std::endl;
+    std::string body = context->REGULAR_COMMENT()->getText();
+
+    auto documentation = std::make_shared<KerML::Entities::Documentation>(ParentStack.top(), locale, body);
+    documentation->setDeclaredName(identification);
+
+    ParentStack.top()->appendOwnedElement(documentation);
 }
 
 void KerMLListenerImplementation::enterTextual_representation(KerMLParser::Textual_representationContext *ctx) {
@@ -159,11 +201,11 @@ void KerMLListenerImplementation::exitTextual_representation(KerMLParser::Textua
 
 }
 
-void KerMLListenerImplementation::enterRoot_namespace(KerMLParser::Root_namespaceContext *ctx) {
+void KerMLListenerImplementation::enterRoot_namespace(KerMLParser::Root_namespaceContext *) {
 
 }
 
-void KerMLListenerImplementation::exitRoot_namespace(KerMLParser::Root_namespaceContext *ctx) {
+void KerMLListenerImplementation::exitRoot_namespace(KerMLParser::Root_namespaceContext *) {
 
 }
 
@@ -255,48 +297,54 @@ void KerMLListenerImplementation::exitAlias_member(KerMLParser::Alias_memberCont
 
 }
 
-void KerMLListenerImplementation::enterQualified_name(KerMLParser::Qualified_nameContext *ctx) {
+void KerMLListenerImplementation::enterQualified_name(KerMLParser::Qualified_nameContext *) {
 
 }
 
-void KerMLListenerImplementation::exitQualified_name(KerMLParser::Qualified_nameContext *ctx) {
+void KerMLListenerImplementation::exitQualified_name(KerMLParser::Qualified_nameContext *) {
 
 }
 
-void KerMLListenerImplementation::enterNamespace_import(KerMLParser::Namespace_importContext *ctx) {
+void KerMLListenerImplementation::enterNamespace_import(KerMLParser::Namespace_importContext *) {
 
 }
 
 void KerMLListenerImplementation::exitNamespace_import(KerMLParser::Namespace_importContext *ctx) {
+
     std::cout << "Namespace import:" << std::endl;
+
+    KerML::Entities::VisibilityKind visibilityKind = KerML::Entities::VisibilityKind::PRIVATE;
     if(ctx->visibility_indicator() != nullptr) {
         std::cout << "\tVisibility indicator: " << ctx->visibility_indicator()->getText() << std::endl;
+        visibilityKind = ctx->visibility_indicator()->getVisibilityKind();
     }
+    bool isAll = ctx->KEYWORD_ALL() != nullptr;
     if(ctx->KEYWORD_ALL())
         std::cout<<"\timport All from Namespace activated"<<std::endl;
+
+    bool isRecursive = false;
+    if(ctx->import_declaration()->membership_import())
+        isRecursive = ctx->import_declaration()->membership_import()->SYMBOL_DOUBLE_STAR() != nullptr;
 
     std::cout<<"\tImporting namespace: " << ctx->import_declaration()->getText() << std::endl;
     if(ctx->relationship_body()->SYMBOL_STATEMENT_DELIMITER()== nullptr){
         std::cout<<"\t NammespaceNotClosed"<<std::endl;
     }
 
+
+    auto importedNamespace = std::make_shared<KerML::Entities::Namespace>(ctx->import_declaration()->getText(),true);
+    auto namespaceImport = std::make_shared<KerML::Entities::NamespaceImport>(visibilityKind, isRecursive, isAll, std::dynamic_pointer_cast<KerML::Entities::Namespace>(ParentStack.top()), importedNamespace);
+    Elements.push_back(namespaceImport);
+    ParentStack.top()->appendOwnedElement(namespaceImport);
 }
 
-void KerMLListenerImplementation::enterImport_declaration(KerMLParser::Import_declarationContext *ctx) {
+void KerMLListenerImplementation::enterImport_declaration(KerMLParser::Import_declarationContext *) { }
 
-}
+void KerMLListenerImplementation::exitImport_declaration(KerMLParser::Import_declarationContext *) { }
 
-void KerMLListenerImplementation::exitImport_declaration(KerMLParser::Import_declarationContext *ctx) {
+void KerMLListenerImplementation::enterMembership_import(KerMLParser::Membership_importContext *) { }
 
-}
-
-void KerMLListenerImplementation::enterMembership_import(KerMLParser::Membership_importContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::exitMembership_import(KerMLParser::Membership_importContext *ctx) {
-
-}
+void KerMLListenerImplementation::exitMembership_import(KerMLParser::Membership_importContext *) { }
 
 void KerMLListenerImplementation::enterFilter_package(KerMLParser::Filter_packageContext *ctx) {
 
@@ -314,37 +362,21 @@ void KerMLListenerImplementation::exitFilter_package_member(KerMLParser::Filter_
 
 }
 
-void KerMLListenerImplementation::enterElement(KerMLParser::ElementContext *ctx) {
+void KerMLListenerImplementation::enterElement(KerMLParser::ElementContext *) { }
 
-}
+void KerMLListenerImplementation::exitElement(KerMLParser::ElementContext *) { }
 
-void KerMLListenerImplementation::exitElement(KerMLParser::ElementContext *ctx) {
+void KerMLListenerImplementation::enterNon_feature_element(KerMLParser::Non_feature_elementContext *) { }
 
-}
+void KerMLListenerImplementation::exitNon_feature_element(KerMLParser::Non_feature_elementContext *) { }
 
-void KerMLListenerImplementation::enterNon_feature_element(KerMLParser::Non_feature_elementContext *ctx) {
+void KerMLListenerImplementation::enterFeature_element(KerMLParser::Feature_elementContext *) { }
 
-}
+void KerMLListenerImplementation::exitFeature_element(KerMLParser::Feature_elementContext *) { }
 
-void KerMLListenerImplementation::exitNon_feature_element(KerMLParser::Non_feature_elementContext *ctx) {
+void KerMLListenerImplementation::enterAdditional_options(KerMLParser::Additional_optionsContext *) { }
 
-}
-
-void KerMLListenerImplementation::enterFeature_element(KerMLParser::Feature_elementContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::exitFeature_element(KerMLParser::Feature_elementContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::enterAdditional_options(KerMLParser::Additional_optionsContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::exitAdditional_options(KerMLParser::Additional_optionsContext *ctx) {
-
-}
+void KerMLListenerImplementation::exitAdditional_options(KerMLParser::Additional_optionsContext *) { }
 
 void KerMLListenerImplementation::enterType(KerMLParser::TypeContext *ctx) {
 
@@ -2186,4 +2218,13 @@ void KerMLListenerImplementation::exitEveryRule(antlr4::ParserRuleContext *ctx) 
 
 std::vector<std::shared_ptr<KerML::Entities::Element>> KerMLListenerImplementation::getElements() {
     return Elements;
+}
+
+std::shared_ptr<KerML::Entities::Element> KerMLListenerImplementation::findElementWithName(std::string identification) {
+    for (const auto &element: Elements) {
+        if(element->declaredName()==identification)
+            return element;
+    }
+    std::cout << "Element with name " << identification << " not found" << std::endl;
+    return nullptr;
 }

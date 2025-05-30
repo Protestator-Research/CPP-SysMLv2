@@ -5,8 +5,16 @@
 #ifndef SYSMLV2_MEMBERSHIP_H
 #define SYSMLV2_MEMBERSHIP_H
 
+#include "../elements/Relationship.h"
+#include "VisibilityKind.h"
+
 namespace KerML::Entities {
-    class Membership {
+    class Membership : public Relationship {
+    public:
+        Membership();
+        ~Membership();
+
+        VisibilityKind visibility();
 
     };
 } // KerML::Entities

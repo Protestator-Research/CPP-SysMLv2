@@ -62,7 +62,7 @@ namespace KerML::Entities {
         bool isImportAll() const;
         void setIsImportAll(bool isImportAll);
 
-        virtual std::vector<std::shared_ptr<Membership>> importedMemberships(std::shared_ptr<Namespace> excluded) = 0;
+        virtual std::vector<std::shared_ptr<Membership>> importedMemberships(std::vector<std::shared_ptr<Namespace>> excluded) = 0;
 
     protected:
         std::shared_ptr<Namespace> importOwningNamespace() const;

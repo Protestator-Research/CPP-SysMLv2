@@ -16,10 +16,14 @@ namespace KerML::Entities {
 
     void AnnotatingElement::appendAnnotatedElement(std::shared_ptr<Element> element) {
         AnnotatedElements.push_back(element);
+        setOwner(element);
     }
 
     void AnnotatingElement::appendAnnotatedElements(std::vector<std::shared_ptr<Element>> elements) {
         AnnotatedElements.insert(AnnotatedElements.end(), elements.begin(), elements.end());
+        for(auto element : elements) {
+            setOwner(element);
+        }
     }
 
     std::vector<std::shared_ptr<Annotation>> AnnotatingElement::annotations() {

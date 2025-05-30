@@ -31,7 +31,6 @@ namespace KerML::Entities {
          */
         virtual ~AnnotatingElement() = default;
 
-    protected:
         /**
          * Represents the elements that are annotated by this AnnotatingElement. 
          */

@@ -27,8 +27,7 @@ set(KERML_PARSER_HEADER
         src/kerml/KerMLParser.h
         src/kerml/KerMlError.h
         src/kerml/KerMlErrorListener.h
-        src/kerml/KerMlListenerImplementation.h
-        src/kerml/KerMLFlexScanner.h)
+        src/kerml/KerMlListenerImplementation.h)
 
 set(SYSML_PARSER_HEADER
         src/sysml2/SysMLv2BaseListener.h

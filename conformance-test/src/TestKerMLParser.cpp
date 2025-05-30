@@ -30,26 +30,6 @@ TEST(TestKerMLParser, TestAddressBookModel) {
     const auto returnValue = SysMLv2::Files::Parser::parseKerML(valueToParse);
     EXPECT_EQ(returnValue.first.size(), 0);
 
-    // Provide the input text in a stream
-//    antlr4::ANTLRInputStream input(valueToParse);
-//
-//    KerMLErrorListener *listener = new KerMLErrorListener();
-//
-//     Create a lexer from the input
-//    KerMLLexer lexer(&input);
-//    lexer.addErrorListener(listener);
-//
-//     Create a token stream from the lexer
-//    antlr4::CommonTokenStream tokens(&lexer);
-//
-//
-//     Create a parser from the token stream
-//    KerMLParser parser(&tokens);
-//    parser.addErrorListener(listener);
-//
-//     Display the parse tree
-//    parser.start()->toStringTree();
-//    EXPECT_EQ(listener->getSyntaxErrors().size(),0);
 }
 
 TEST(TestKerMLParser, ConformanceTestA2Atoms) {
@@ -68,26 +48,8 @@ TEST(TestKerMLParser, ConformanceTestA2Atoms) {
                                "\t}\n"
                                "}";
 
-    // Provide the input text in a stream
-    antlr4::ANTLRInputStream input(valueToParse);
-
-    KerMLErrorListener *listener = new KerMLErrorListener();
-
-    // Create a lexer from the input
-    KerMLLexer lexer(&input);
-    lexer.addErrorListener(listener);
-
-    // Create a token stream from the lexer
-    antlr4::CommonTokenStream tokens(&lexer);
-
-
-    // Create a parser from the token stream
-    KerMLParser parser(&tokens);
-    parser.addErrorListener(listener);
-
-    // Display the parse tree
-    parser.start()->toStringTree();
-    EXPECT_EQ(listener->getSyntaxErrors().size(),0);
+    const auto returnValue = SysMLv2::Files::Parser::parseKerML(valueToParse);
+    EXPECT_EQ(returnValue.first.size(),0);
 }
 
 //TEST(TestKerMLParser, TestJohnIndividualModel) {
@@ -258,28 +220,8 @@ TEST(TestKerMLParser, ConformanceTestA2ModelinInstances) {
                                "\t}\n"
                                "}";
 
-    // Provide the input text in a stream
-    antlr4::ANTLRInputStream input(valueToParse);
-
-    auto listener = new KerMLErrorListener();
-    auto listenerImplementation = new KerMLListenerImplementation();
-
-    // Create a lexer from the input
-    KerMLLexer lexer(&input);
-    lexer.addErrorListener(listener);
-
-    // Create a token stream from the lexer
-    antlr4::CommonTokenStream tokens(&lexer);
-
-
-    // Create a parser from the token stream
-    KerMLParser parser(&tokens);
-    parser.addErrorListener(listener);
-    parser.addParseListener(listenerImplementation);
-
-    // Display the parse tree
-    parser.start()->toStringTree();
-    EXPECT_EQ(listener->getSyntaxErrors().size(),0);
+    const auto returnValue = SysMLv2::Files::Parser::parseKerML(valueToParse);
+    EXPECT_EQ(returnValue.first.size(),0);
 }
 
 TEST(TestKerMLParser, ConformanceTestA32WithoutConnectors) {
@@ -320,26 +262,8 @@ TEST(TestKerMLParser, ConformanceTestA32WithoutConnectors) {
                                "\n"
                                "";
 
-    // Provide the input text in a stream
-    antlr4::ANTLRInputStream input(valueToParse);
-
-    auto listener = new KerMLErrorListener();
-
-    // Create a lexer from the input
-    KerMLLexer lexer(&input);
-    lexer.addErrorListener(listener);
-
-    // Create a token stream from the lexer
-    antlr4::CommonTokenStream tokens(&lexer);
-
-
-    // Create a parser from the token stream
-    KerMLParser parser(&tokens);
-    parser.addErrorListener(listener);
-
-    // Display the parse tree
-    parser.start()->toStringTree();
-    EXPECT_EQ(listener->getSyntaxErrors().size(),0);
+    const auto returnValue = SysMLv2::Files::Parser::parseKerML(valueToParse);
+    EXPECT_EQ(returnValue.first.size(),0);
 }
 
 TEST(TestKerMLParser, ConformanceTestA33OneToOneConnectors) {
@@ -402,26 +326,8 @@ TEST(TestKerMLParser, ConformanceTestA33OneToOneConnectors) {
                                "\t}\n"
                                "}";
 
-    // Provide the input text in a stream
-    antlr4::ANTLRInputStream input(valueToParse);
-
-    auto listener = new KerMLErrorListener();
-
-    // Create a lexer from the input
-    KerMLLexer lexer(&input);
-    lexer.addErrorListener(listener);
-
-    // Create a token stream from the lexer
-    antlr4::CommonTokenStream tokens(&lexer);
-
-
-    // Create a parser from the token stream
-    KerMLParser parser(&tokens);
-    parser.addErrorListener(listener);
-
-    // Display the parse tree
-    parser.start()->toStringTree();
-    EXPECT_EQ(listener->getSyntaxErrors().size(),0);
+    const auto returnValue = SysMLv2::Files::Parser::parseKerML(valueToParse);
+    EXPECT_EQ(returnValue.first.size(),0);
 }
 
 TEST(TestKerMLParser, ConformanceTestA34OneeToUnrestrictedConnectors) {
@@ -485,26 +391,8 @@ TEST(TestKerMLParser, ConformanceTestA34OneeToUnrestrictedConnectors) {
         "    }\n"
         "}";
 
-    // Provide the input text in a stream
-    antlr4::ANTLRInputStream input(valueToParse);
-
-    auto listener = new KerMLErrorListener();
-
-    // Create a lexer from the input
-    KerMLLexer lexer(&input);
-    lexer.addErrorListener(listener);
-
-    // Create a token stream from the lexer
-    antlr4::CommonTokenStream tokens(&lexer);
-
-
-    // Create a parser from the token stream
-    KerMLParser parser(&tokens);
-    parser.addErrorListener(listener);
-
-    // Display the parse tree
-    parser.start()->toStringTree();
-    EXPECT_EQ(listener->getSyntaxErrors().size(), 0);
+    const auto returnValue = SysMLv2::Files::Parser::parseKerML(valueToParse);
+    EXPECT_EQ(returnValue.first.size(), 0);
 }
 
 TEST(TestKerMLParser, ConformanceTestA35TimingForStructures) {
@@ -710,26 +598,8 @@ TEST(TestKerMLParser, ConformanceTestA35TimingForStructures) {
                                "\t}\n"
                                "}";
 
-    // Provide the input text in a stream
-    antlr4::ANTLRInputStream input(valueToParse);
-
-    auto listener = new KerMLErrorListener();
-
-    // Create a lexer from the input
-    KerMLLexer lexer(&input);
-    lexer.addErrorListener(listener);
-
-    // Create a token stream from the lexer
-    antlr4::CommonTokenStream tokens(&lexer);
-
-
-    // Create a parser from the token stream
-    KerMLParser parser(&tokens);
-    parser.addErrorListener(listener);
-
-    // Display the parse tree
-    parser.start()->toStringTree();
-    EXPECT_EQ(listener->getSyntaxErrors().size(), 0);
+    const auto returnValue = SysMLv2::Files::Parser::parseKerML(valueToParse);
+    EXPECT_EQ(returnValue.first.size(), 0);
 }
 
 TEST(TestKerMLParser, ConformanceTestA36Sequences) {
@@ -796,26 +666,8 @@ TEST(TestKerMLParser, ConformanceTestA36Sequences) {
                                "\t}\n"
                                "}";
 
-    // Provide the input text in a stream
-    antlr4::ANTLRInputStream input(valueToParse);
-
-    auto listener = new KerMLErrorListener();
-
-    // Create a lexer from the input
-    KerMLLexer lexer(&input);
-    lexer.addErrorListener(listener);
-
-    // Create a token stream from the lexer
-    antlr4::CommonTokenStream tokens(&lexer);
-
-
-    // Create a parser from the token stream
-    KerMLParser parser(&tokens);
-    parser.addErrorListener(listener);
-
-    // Display the parse tree
-    parser.start()->toStringTree();
-    EXPECT_EQ(listener->getSyntaxErrors().size(), 0);
+    const auto returnValue = SysMLv2::Files::Parser::parseKerML(valueToParse);
+    EXPECT_EQ(returnValue.first.size(), 0);
 }
 
 
@@ -953,26 +805,8 @@ TEST(TestKerMLParser, ConformanceTestA37DecisionsAndMerges) {
                                "\t}\n"
                                "}";
 
-    // Provide the input text in a stream
-    antlr4::ANTLRInputStream input(valueToParse);
-
-    auto listener = new KerMLErrorListener();
-
-    // Create a lexer from the input
-    KerMLLexer lexer(&input);
-    lexer.addErrorListener(listener);
-
-    // Create a token stream from the lexer
-    antlr4::CommonTokenStream tokens(&lexer);
-
-
-    // Create a parser from the token stream
-    KerMLParser parser(&tokens);
-    parser.addErrorListener(listener);
-
-    // Display the parse tree
-    parser.start()->toStringTree();
-    EXPECT_EQ(listener->getSyntaxErrors().size(), 0);
+    const auto returnValue = SysMLv2::Files::Parser::parseKerML(valueToParse);
+    EXPECT_EQ(returnValue.first.size(), 0);
 }
 
 TEST(TestKerMLParser, ConformanceTestA38ChangingFeatureValues) {
@@ -1161,24 +995,6 @@ TEST(TestKerMLParser, ConformanceTestA38ChangingFeatureValues) {
                                "\t}\n"
                                "}";
 
-    // Provide the input text in a stream
-    antlr4::ANTLRInputStream input(valueToParse);
-
-    auto listener = new KerMLErrorListener();
-
-    // Create a lexer from the input
-    KerMLLexer lexer(&input);
-    lexer.addErrorListener(listener);
-
-    // Create a token stream from the lexer
-    antlr4::CommonTokenStream tokens(&lexer);
-
-
-    // Create a parser from the token stream
-    KerMLParser parser(&tokens);
-    parser.addErrorListener(listener);
-
-    // Display the parse tree
-    parser.start()->toStringTree();
-    EXPECT_EQ(listener->getSyntaxErrors().size(), 0);
+    const auto returnValue = SysMLv2::Files::Parser::parseKerML(valueToParse);
+    EXPECT_EQ(returnValue.first.size(), 0);
 }
