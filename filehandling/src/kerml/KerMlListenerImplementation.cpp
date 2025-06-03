@@ -8,6 +8,7 @@
 #include <root/annotations/Documentation.h>
 #include <root/namespaces/Namespace.h>
 #include <root/namespaces/NamespaceImport.h>
+#include <string>
 
 KerMLListenerImplementation::KerMLListenerImplementation() {
 }
@@ -209,43 +210,57 @@ void KerMLListenerImplementation::exitRoot_namespace(KerMLParser::Root_namespace
 
 }
 
-void KerMLListenerImplementation::enterNamespace(KerMLParser::NamespaceContext *ctx) {
+void KerMLListenerImplementation::enterNamespace(KerMLParser::NamespaceContext *) {
+    const auto namespaceElement = std::make_shared<KerML::Entities::Namespace>();
 
+    if(!ParentStack.empty())
+        ParentStack.top()->appendOwnedElement(namespaceElement);
+
+    ParentStack.push(namespaceElement);
 }
 
 void KerMLListenerImplementation::exitNamespace(KerMLParser::NamespaceContext *ctx) {
+    const auto namespaceElement = std::dynamic_pointer_cast<KerML::Entities::Namespace>(ParentStack.top());
+    ParentStack.pop();
+
+    if(namespaceElement != nullptr) {
+        if(ctx->prefix_metadata_member().size() > 0) {
+            //TODO Think about implementation, since I am either missing something in the Standard or the standard is missing something.
+        }
+        std::string name = ctx->namespace_declaration()->identification()->getText();
+        namespaceElement->setDeclaredName(name);
+    }
+}
+
+void KerMLListenerImplementation::enterNamespace_declaration(KerMLParser::Namespace_declarationContext *) {
 
 }
 
-void KerMLListenerImplementation::enterNamespace_declaration(KerMLParser::Namespace_declarationContext *ctx) {
+void KerMLListenerImplementation::exitNamespace_declaration(KerMLParser::Namespace_declarationContext *) {
 
 }
 
-void KerMLListenerImplementation::exitNamespace_declaration(KerMLParser::Namespace_declarationContext *ctx) {
+void KerMLListenerImplementation::enterNamespace_body(KerMLParser::Namespace_bodyContext *) {
 
 }
 
-void KerMLListenerImplementation::enterNamespace_body(KerMLParser::Namespace_bodyContext *ctx) {
+void KerMLListenerImplementation::exitNamespace_body(KerMLParser::Namespace_bodyContext *) {
 
 }
 
-void KerMLListenerImplementation::exitNamespace_body(KerMLParser::Namespace_bodyContext *ctx) {
+void KerMLListenerImplementation::enterNamespace_body_elements(KerMLParser::Namespace_body_elementsContext *) {
 
 }
 
-void KerMLListenerImplementation::enterNamespace_body_elements(KerMLParser::Namespace_body_elementsContext *ctx) {
+void KerMLListenerImplementation::exitNamespace_body_elements(KerMLParser::Namespace_body_elementsContext *) {
 
 }
 
-void KerMLListenerImplementation::exitNamespace_body_elements(KerMLParser::Namespace_body_elementsContext *ctx) {
+void KerMLListenerImplementation::enterNamespace_body_element(KerMLParser::Namespace_body_elementContext *) {
 
 }
 
-void KerMLListenerImplementation::enterNamespace_body_element(KerMLParser::Namespace_body_elementContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::exitNamespace_body_element(KerMLParser::Namespace_body_elementContext *ctx) {
+void KerMLListenerImplementation::exitNamespace_body_element(KerMLParser::Namespace_body_elementContext *) {
 
 }
 

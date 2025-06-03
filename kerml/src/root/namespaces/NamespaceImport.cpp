@@ -16,8 +16,8 @@ namespace KerML::Entities {
         ImportedNamespace = nullptr;
     }
 
-    std::vector<std::shared_ptr<Membership>> NamespaceImport::importedMemberships(std::shared_ptr<Namespace> excluded) {
-        if( ImportedNamespace == excluded )
+    std::vector<std::shared_ptr<Membership>> NamespaceImport::importedMemberships(std::vector<std::shared_ptr<Namespace>> excluded) {
+        if(std::find(excluded.begin(), excluded.end(),ImportedNamespace) != excluded.end() )
             return {nullptr};
 
         //TODO: Implement

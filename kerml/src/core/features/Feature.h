@@ -9,7 +9,6 @@
 
 namespace KerML::Entities {
     class Feature : public Type {
-
     };
 }
 

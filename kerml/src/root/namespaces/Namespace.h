@@ -73,7 +73,7 @@ namespace KerML::Entities {
          * @param includeAll
          * @return
          */
-        std::vector<std::shared_ptr<Membership>> visibleMemberships(std::vector<std::shared_ptr<Namespace>> excluded, bool isRecursive, bool includeAll);
+        virtual std::vector<std::shared_ptr<Membership>> visibleMemberships(std::vector<std::shared_ptr<Namespace>> excluded, bool isRecursive, bool includeAll);
 
         /**
          *

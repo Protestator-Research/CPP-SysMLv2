@@ -5,6 +5,7 @@
 #include "Namespace.h"
 #include "Membership.h"
 #include "Import.h"
+#include <vector>
 
 namespace KerML::Entities {
 
@@ -28,7 +29,12 @@ namespace KerML::Entities {
     }
 
     std::vector<std::string> Namespace::namesOf(std::shared_ptr<Element> element) {
-        return std::vector<std::string>();
+        std::vector<std::string> returnValue;
+        returnValue.push_back(declaredName() + "::" + element->declaredName());
+        returnValue.push_back(declaredName() + "::" + element->declaredShortName());
+        returnValue.push_back(declaredName() + "::" + element->effectiveName());
+        returnValue.push_back(declaredName() + "::" + element->effectiveShortName());
+        return returnValue;
     }
 
     VisibilityKind Namespace::visibilityOff(std::shared_ptr<Membership> mem) {
@@ -128,11 +134,11 @@ namespace KerML::Entities {
         return { };
     }
 
-    std::string Namespace::qualificationOf(std::string qualifiedName) {
+    std::string Namespace::qualificationOf(std::string ) {
         return std::string();
     }
 
-    std::string Namespace::unqualifiedName(std::string qualifiedName) {
+    std::string Namespace::unqualifiedName(std::string ) {
         return std::string();
     }
 
