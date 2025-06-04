@@ -1,25 +1,40 @@
 //
 // Created by Moritz Herzog on 25.03.25.
 //
-
+//---------------------------------------------------------
+// Constants, Definitions, Pragmas
+//---------------------------------------------------------
 #ifndef SYSMLV2_IMPORT_H
 #define SYSMLV2_IMPORT_H
-
-#include "../elements/Relationship.h"
-#include "VisibilityKind.h"
+//---------------------------------------------------------
+// External Classes
+//---------------------------------------------------------
 #include <memory>
 #include <boost/uuid/uuid.hpp>
-
-namespace KerML::Entities {
+//---------------------------------------------------------
+// Internal Classes
+//---------------------------------------------------------
+#include "../elements/Relationship.h"
+#include "VisibilityKind.h"
+#include "../../kerml_global.h"
+//---------------------------------------------------------
+// Forwarding
+//---------------------------------------------------------
+namespace KerML::Entities
+{
     class Namespace;
     class Membership;
+}
+
+
+namespace KerML::Entities {
     /**
      * @class Import
      * @author Moritz Herzog
      * @version 1.0 Beta 3
      *
      */
-    class Import : public Relationship{
+    class KERML_EXPORT Import : public Relationship{
     public:
         /**
          *

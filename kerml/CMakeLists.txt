@@ -45,6 +45,7 @@ set(CORE_FEATURES_HEADER
         src/core/features/TypeFeaturing.h
         src/core/features/FeatureDirectionKind.h
         src/core/features/Feature.h
+        src/core/features/Multiplicity.h
         src/core/features/FeatureInverting.h
         src/core/features/Subsetting.h
         src/core/features/FeatureTyping.h
@@ -173,6 +174,7 @@ add_library(kerml
         src/core/classifiers/Classifier.cpp
         src/core/features/TypeFeaturing.cpp
         src/core/features/Feature.cpp
+        src/core/features/Multiplicity.cpp
         src/core/features/FeatureInverting.cpp
         src/core/classifiers/Subclassification.cpp
         src/core/features/FeatureTyping.cpp

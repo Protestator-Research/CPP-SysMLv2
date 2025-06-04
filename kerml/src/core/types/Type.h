@@ -55,7 +55,7 @@ namespace KerML::Entities {
         void setIsSufficient(bool isSufficient);
     protected:
         void setIsConjugated(bool isConjugated);
-        bool isConjugated();Í
+        bool isConjugated();
 
         std::vector<std::shared_ptr<Type>> differencingType() const;
         void setDifferencingType(std::vector<std::shared_ptr<Type>> differencingType);

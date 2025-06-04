@@ -6,14 +6,7 @@ find_package(nlohmann_json REQUIRED)
 find_package(Boost REQUIRED)
 find_package(date REQUIRED)
 find_package(antlr4-runtime REQUIRED)
-find_package(BISON REQUIRED)
-find_package(FLEX REQUIRED)
 
-set(BISON_VARS
-    BISON_FOUND
-    BISON_EXECUTABLE
-    BISON_VERSION
-)
 
 set(GLOBAL_HEADER
         src/sysmlv2file_global.h

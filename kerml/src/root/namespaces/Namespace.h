@@ -1,24 +1,38 @@
 //
 // Created by Moritz Herzog on 25.03.25.
 //
-
+//---------------------------------------------------------
+// Constants, Definitions, Pragmas
+//---------------------------------------------------------
 #ifndef SYSMLV2_NAMESPACE_H
 #define SYSMLV2_NAMESPACE_H
-
+//---------------------------------------------------------
+// External Classes
+//---------------------------------------------------------
 #include <root/elements/Element.h>
 #include <optional>
+//---------------------------------------------------------
+// Internal Classes
+//---------------------------------------------------------
 #include "VisibilityKind.h"
-
-namespace KerML::Entities {
+#include "../../kerml_global.h"
+//---------------------------------------------------------
+// Forwarding
+//---------------------------------------------------------
+namespace KerML::Entities
+{
     class Membership;
     class Import;
+}
+
+namespace KerML::Entities {
     /**
      * @class Namespace
      * @author Moritz Herzog
      * @version 1.0 Beta 3
-     *
+     * Defines the Namespace Class accoding to the KerML Abstract Syntax.
      */
-    class Namespace : public Element {
+    class KERML_EXPORT Namespace : public Element {
     public:
         /**
          * Constructor of the Element. This constructor does allow for an empty elementID.

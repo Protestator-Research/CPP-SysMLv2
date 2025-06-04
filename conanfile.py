@@ -32,8 +32,6 @@ class CPPSysMLRecipe(ConanFile):
         self.requires("date/3.0.1")
         self.requires("libcurl/8.4.0")
         if(self.options.with_parsing):
-            self.requires("flex/2.6.4")
-            self.requires("bison/3.8.2")
             self.requires("antlr4-cppruntime/4.13.1")
 
     def config_options(self):

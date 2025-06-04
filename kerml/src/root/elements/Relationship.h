@@ -1,22 +1,36 @@
 //
 // Created by Moritz Herzog on 24.03.25.
 //
-
+//---------------------------------------------------------
+// Constants, Definitions, Pragmas
+//---------------------------------------------------------
 #ifndef SYSMLV2_RELATIONSHIP_H
 #define SYSMLV2_RELATIONSHIP_H
-
-#include "Element.h"
+//---------------------------------------------------------
+// External Classes
+//---------------------------------------------------------
 #include <memory>
+//---------------------------------------------------------
+// Internal Classes
+//---------------------------------------------------------
+#include "Element.h"
+#include "../../kerml_global.h"
+//---------------------------------------------------------
+// Forwarding
+//---------------------------------------------------------
+namespace KerML::Entities
+{
+    class Namespace;
+}
 
 namespace KerML::Entities {
-    class Namespace;
     /**
      * @class Relationship
      * @author Moritz Herzog
      * @version 1.0 Beta 2
      * A Relationship is an Element that relates two elements to each other.
      */
-    class Relationship : public Element {
+    class KERML_EXPORT Relationship : public Element {
     public:
         /**
          * Constructor of the Relationship. This constructor does allow for an empty elementID.

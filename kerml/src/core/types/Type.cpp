@@ -3,6 +3,7 @@
 //
 
 #include "Type.h"
+#include "../features/Multiplicity.h"
 
 namespace KerML {
     namespace Entities {
@@ -78,7 +79,7 @@ namespace KerML {
         }
 
         std::vector<std::shared_ptr<Multiplicity>> Type::multiplicities() {
-            return std::vector<std::shared_ptr<Multiplicity>>();
+            return { };
         }
 
         bool Type::isAbstract() {

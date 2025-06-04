@@ -1,12 +1,23 @@
 //
 // Created by Moritz Herzog on 24.03.25.
 //
-
+//---------------------------------------------------------
+// Constants, Definitions, Pragmas
+//---------------------------------------------------------
 #ifndef SYSMLV2_TEXTUALREPRESENTATION_H
 #define SYSMLV2_TEXTUALREPRESENTATION_H
-
+//---------------------------------------------------------
+// External Classes
+//---------------------------------------------------------
 #include "AnnotatingElement.h"
 #include <string>
+//---------------------------------------------------------
+// Internal Classes
+//---------------------------------------------------------
+#include "../../kerml_global.h"
+//---------------------------------------------------------
+// Forwarding
+//---------------------------------------------------------
 
 
 namespace KerML::Entities {
@@ -14,7 +25,7 @@ namespace KerML::Entities {
      * @class TextualRepresentation
      * @author Moritz Herzog
      */
-    class TextualRepresentation : public AnnotatingElement{
+    class KERML_EXPORT TextualRepresentation : public AnnotatingElement{
     public:
         TextualRepresentation();
         TextualRepresentation(std::string  language, std::string body);
