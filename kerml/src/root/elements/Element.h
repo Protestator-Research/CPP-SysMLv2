@@ -33,7 +33,7 @@ namespace KerML::Entities {
     /**
      * @class Element
      * @author Moritz Herzog
-     * @version 1.0 Beta 2
+     * @version 1.0 Beta 3
      * @brief This part of the model allows the identification of all elements.
      * This part of the model allows the identification of all elements. This is a core concept of the KerML and SysML syntax.
      * Also this class is required for the REST-API and the parsing of the models.

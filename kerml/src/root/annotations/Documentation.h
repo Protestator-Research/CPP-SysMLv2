@@ -1,17 +1,35 @@
 //
 // Created by Moritz Herzog on 24.03.25.
 //
-
+//---------------------------------------------------------
+// Constants, Definitions, Pragmas
+//---------------------------------------------------------
 #ifndef SYSMLV2_DOCUMENTATION_H
 #define SYSMLV2_DOCUMENTATION_H
-
+//---------------------------------------------------------
+// External Classes
+//---------------------------------------------------------
 #include "Comment.h"
+//---------------------------------------------------------
+// Internal Classes
+//---------------------------------------------------------
+#include "../../kerml_global.h"
+//---------------------------------------------------------
+// Forwarding
+//---------------------------------------------------------
+
 
 namespace KerML::Entities {
-    class Documentation : public Comment {
+	/**
+	 * @class Documentation
+	 * @author Moritz Herzog
+	 * @version 1.0 Beta 3
+	 * @brief Abstract representation of the Documentation element.
+	 * 
+	 */
+	class KERML_EXPORT Documentation : public Comment {
     public:
-        Documentation();
-        explicit Documentation(std::shared_ptr<Element> documentedElement, std::string locale = "", std::string body = "");
+		explicit Documentation(std::shared_ptr<Element> documentedElement = nullptr, std::string locale = "", std::string body = "");
 
         ~Documentation() override = default;
 

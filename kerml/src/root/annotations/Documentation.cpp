@@ -6,11 +6,8 @@
 
 namespace KerML::Entities {
 
-    Documentation::Documentation() : Comment() {
-
-    }
-
-    Documentation::Documentation(std::shared_ptr<Element> documentedElement, std::string locale, std::string body) : Comment(locale, body){
+    Documentation::Documentation(std::shared_ptr<Element> documentedElement, std::string locale, std::string body) :
+	Comment(locale, body){
         DocumentedElement = documentedElement;
     }
 

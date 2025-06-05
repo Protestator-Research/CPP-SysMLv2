@@ -1,13 +1,23 @@
 //
 // Created by Moritz Herzog on 24.03.25.
 //
-
+//---------------------------------------------------------
+// Constants, Definitions, Pragmas
+//---------------------------------------------------------
 #ifndef SYSMLV2_ANNOTATION_H
 #define SYSMLV2_ANNOTATION_H
-
+//---------------------------------------------------------
+// External Classes
+//---------------------------------------------------------
 #include <root/elements/Relationship.h>
 #include <memory>
-
+//---------------------------------------------------------
+// Internal Classes
+//---------------------------------------------------------
+#include "../../kerml_global.h"
+//---------------------------------------------------------
+// Forwarding
+//---------------------------------------------------------
 
 namespace KerML::Entities {
     class Element;
@@ -15,7 +25,7 @@ namespace KerML::Entities {
     /**
      *
      */
-    class Annotation : public Relationship {
+    class KERML_EXPORT Annotation : public Relationship {
     public:
         /**
          * Constructor of the Relationship. This constructor does allow for an empty elementID.

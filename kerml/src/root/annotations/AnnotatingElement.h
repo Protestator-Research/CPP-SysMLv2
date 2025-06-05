@@ -1,25 +1,36 @@
 //
 // Created by Moritz Herzog on 24.03.25.
 //
-
+//---------------------------------------------------------
+// Constants, Definitions, Pragmas
+//---------------------------------------------------------
 #ifndef SYSMLV2_ANNOTATINGELEMENT_H
 #define SYSMLV2_ANNOTATINGELEMENT_H
-
+//---------------------------------------------------------
+// External Classes
+//---------------------------------------------------------
 #include <root/elements/Element.h>
 #include <boost/uuid/uuid.hpp>
 #include <memory>
 #include <vector>
+//---------------------------------------------------------
+// Internal Classes
+//---------------------------------------------------------
+#include "../../kerml_global.h"
+//---------------------------------------------------------
+// Forwarding
+//---------------------------------------------------------
 
 namespace KerML::Entities {
     class Annotation;
 
     /**
-     * @brief Represents an element that allows for anntoations.
      * @class AnnotatingElement
      * @author Moritz Herzog <herzogm@rptu.de>
      * @version Version 1.0 Beta 3
+     * @brief Represents an element that allows for anntoations.
      */
-    class AnnotatingElement : public Element{
+    class KERML_EXPORT AnnotatingElement : public Element{
     public:
         /**
          * @brief Constructor
