@@ -21,11 +21,20 @@ namespace KerML::Entities {
     class Unioning;
 
     /**
-     *
+     * @class Type
+     * @author Moritz Herzog
+     * @version 1.0 Beta 3
+     * @brief Represents the Type Class according to the SysMLv2 Standard.
+     * 
      */
     class Type : public Namespace{
     public:
-        explicit Type(boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
+	    /**
+	     * 
+	     * @param elementID 
+	     * @param owner 
+	     */
+	    explicit Type(boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
         explicit Type(std::string namespaceName, boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
         ~Type() override = default;
 
@@ -53,6 +62,7 @@ namespace KerML::Entities {
 
         bool isSufficient();
         void setIsSufficient(bool isSufficient);
+
     protected:
         void setIsConjugated(bool isConjugated);
         bool isConjugated();
@@ -128,7 +138,7 @@ namespace KerML::Entities {
         void appendOwnedEndFeature(std::shared_ptr<Feature> ownedEndFeature);
         void appendOwnedEndFeature(std::vector<std::shared_ptr<Feature>> ownedEndFeature);
 
-        std::vector<std::shared_ptr<Feature>> ownedOwnedFeature() const;
+        std::vector<std::shared_ptr<Feature>> ownedFeature() const;
         void setOwnedFeature(std::vector<std::shared_ptr<Feature>> ownedFeature);
         void appendOwnedFeature(std::shared_ptr<Feature> ownedFeature);
         void appendOwnedFeature(std::vector<std::shared_ptr<Feature>> ownedFeature);
@@ -149,14 +159,14 @@ namespace KerML::Entities {
         void appendOwnedSpecialization(std::vector<std::shared_ptr<Specialization>> ownedSpecialization);
 
         std::vector<std::shared_ptr<Unioning>> ownedUnioning() const;
-        void setOwnedUnioning(std::vector<std::shared_ptr<Unioning>> ownedEndFeature);
-        void appendOwnedUnioning(std::shared_ptr<Unioning> ownedEndFeature);
-        void appendOwnedUnioning(std::vector<std::shared_ptr<Unioning>> ownedEndFeature);
+        void setOwnedUnioning(std::vector<std::shared_ptr<Unioning>> ownedUnioning);
+        void appendOwnedUnioning(std::shared_ptr<Unioning> ownedUnioning);
+        void appendOwnedUnioning(std::vector<std::shared_ptr<Unioning>> ownedUnioning);
 
         std::vector<std::shared_ptr<Type>> unioningType() const;
-        void setUnioningType(std::vector<std::shared_ptr<Type>> ownedEndFeature);
-        void appendUnioningType(std::shared_ptr<Type> ownedEndFeature);
-        void appendUnioningType(std::vector<std::shared_ptr<Type>> ownedEndFeature);
+        void setUnioningType(std::vector<std::shared_ptr<Type>> unioningType);
+        void appendUnioningType(std::shared_ptr<Type> unioningType);
+        void appendUnioningType(std::vector<std::shared_ptr<Type>> unioningType);
     private:
         bool IsAbstract;
         bool IsSufficient;
