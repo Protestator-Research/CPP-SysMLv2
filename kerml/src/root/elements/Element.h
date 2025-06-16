@@ -122,13 +122,13 @@ namespace KerML::Entities {
         void setImpliedIncluded(bool& isImpliedIncluded);
 
         /**
-         *
-         * @return
+         * Defines if the relationships to / from this element are implied by the relationships.
+         * @return True if any relationship to this element is implied.
          */
         [[nodiscard]] bool isImpliedIncluded() const;
 
         /**
-         *
+         * 
          * @return
          */
         [[nodiscard]] std::string escapedName() const;
@@ -146,8 +146,8 @@ namespace KerML::Entities {
         [[nodiscard]] std::string effectiveName() const;
 
         /**
-         *
-         * @return
+         * If this Element has a owningRelationship, the Namespace of this Relationship is returned.
+         * @return Namespace of the  owningRelationship, if available.
          */
         [[nodiscard]] virtual std::shared_ptr<Namespace> libraryNamespace() const;
 
@@ -166,16 +166,22 @@ namespace KerML::Entities {
         virtual bool operator==(const Element& other);
 
         /**
-         * Compares one element to the other and decides which one is bigger. This is required for the maps between the Elements.
-         * @param other
-         * @return
+         * Compares one element to the other and decides which one is smaller. 
+         * This is required for the std::map, therefore a comparison between the elements is required. Not part of the Standard!
+         * To compare the two elements the compare function of boost::uuids::uuid is used.
+         * @param other The other Element that is compared against.
+         * @return True if the current element has a smaller UUID than the other element.
+         * @see boost::uuids::uuid::operator<
          */
         virtual bool operator<(const Element& other);
 
         /**
-         *
-         * @param other
-         * @return
+         * Compares one element to the other and decides which one is bigger.
+         * This is required for the std::map, therefore a comparison between the elements is required. Not part of the Standard!
+         * To compare the two elements the compare function of boost::uuids::uuid is used.
+         * @param other The other Element that is compared against.
+         * @return True if the current element has a bigger UUID than the other element.
+         * @see boost::uuids::uuid::operator>
          */
         virtual bool operator>(const Element& other);
 

@@ -27,7 +27,7 @@ namespace KerML::Entities {
     class KERML_EXPORT Membership : public Relationship {
     public:
         Membership();
-        ~Membership() = default;
+        ~Membership() override = default;
 
         VisibilityKind visibility();
         void setVisibility(VisibilityKind visibility);
