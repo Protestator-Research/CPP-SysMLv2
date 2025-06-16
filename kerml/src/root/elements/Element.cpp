@@ -4,6 +4,7 @@
 
 #include "Element.h"
 #include "Relationship.h"
+#include "../namespaces/Namespace.h"
 
 #include <utility>
 #include <boost/uuid/string_generator.hpp>
@@ -171,4 +172,11 @@ namespace KerML::Entities {
         return OwningNamespace;
     }
 
+    std::string Element::path()
+    {
+        if (libraryNamespace())
+            return libraryNamespace()->path() + "::" + escapedName();
+        else
+            return escapedName();
+    }
 } // KerML::Entities

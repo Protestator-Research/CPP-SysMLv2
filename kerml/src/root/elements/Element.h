@@ -33,7 +33,7 @@ namespace KerML::Entities {
     /**
      * @class Element
      * @author Moritz Herzog
-     * @version 1.0 Beta 3
+     * @version 1.0 Beta 4
      * @brief This part of the model allows the identification of all elements.
      * This part of the model allows the identification of all elements. This is a core concept of the KerML and SysML syntax.
      * Also this class is required for the REST-API and the parsing of the models.
@@ -247,6 +247,11 @@ namespace KerML::Entities {
          */
         std::shared_ptr<Namespace> owningNamespace();
 
+        /**
+         * Returns a unique description of the location of this specific element. Herby the conatining Structure is to consider.
+         * @return Description where the element is to be found.
+         */
+        virtual std::string path();
     protected:
         std::vector<std::shared_ptr<Relationship>> ownedRelationships();
 
