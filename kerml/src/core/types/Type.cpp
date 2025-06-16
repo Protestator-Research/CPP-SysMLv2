@@ -23,42 +23,42 @@ namespace KerML::Entities {
 	}
 
 	std::vector<std::shared_ptr<Membership>>
-		Type::inheritedMemberships(std::vector<std::shared_ptr<Namespace>> excludedNamespace,
-			std::vector<std::shared_ptr<Type>> excludedTypes, bool excludeImplied) {
+		Type::inheritedMemberships(std::vector<std::shared_ptr<Namespace>> ,
+			std::vector<std::shared_ptr<Type>> , bool ) {
 		return std::vector<std::shared_ptr<Membership>>();
 	}
 
 	std::vector<std::shared_ptr<Membership>>
-		Type::inheritableMemberships(std::vector<std::shared_ptr<Namespace>> excludedNamespace,
-			std::vector<std::shared_ptr<Type>> excludedTypes, bool excludeImplied) {
+		Type::inheritableMemberships(std::vector<std::shared_ptr<Namespace>> ,
+			std::vector<std::shared_ptr<Type>> , bool ) {
 		return std::vector<std::shared_ptr<Membership>>();
 	}
 
 	std::vector<std::shared_ptr<Membership>>
-		Type::nonPrivateMemberships(std::vector<std::shared_ptr<Namespace>> excludedNamespace,
-			std::vector<std::shared_ptr<Type>> excludedTypes, bool excludeImplied) {
+		Type::nonPrivateMemberships(std::vector<std::shared_ptr<Namespace>> ,
+			std::vector<std::shared_ptr<Type>> , bool ) {
 		return std::vector<std::shared_ptr<Membership>>();
 	}
 
 	std::vector<std::shared_ptr<Membership>>
-		Type::removeRedefinedFeature(std::vector<std::shared_ptr<Membership>> memberships) {
+		Type::removeRedefinedFeature(std::vector<std::shared_ptr<Membership>> ) {
 		return std::vector<std::shared_ptr<Membership>>();
 	}
 
-	std::vector<std::shared_ptr<Feature>> Type::allRedefinedFeaturesOf(std::shared_ptr<Membership> membership) {
+	std::vector<std::shared_ptr<Feature>> Type::allRedefinedFeaturesOf(std::shared_ptr<Membership> ) {
 		return std::vector<std::shared_ptr<Feature>>();
 	}
 
-	FeatureDirectionKind Type::directionOf(std::shared_ptr<Feature> feature) {
+	FeatureDirectionKind Type::directionOf(std::shared_ptr<Feature> ) {
 		return OUT;
 	}
 
 	FeatureDirectionKind
-		Type::directionOfExcluding(std::shared_ptr<Feature> feature, std::vector<std::shared_ptr<Type>> excluded) {
+		Type::directionOfExcluding(std::shared_ptr<Feature> , std::vector<std::shared_ptr<Type>> ) {
 		return OUT;
 	}
 
-	std::vector<std::shared_ptr<Type>> Type::supertypes(bool excludeImplied) {
+	std::vector<std::shared_ptr<Type>> Type::supertypes(bool ) {
 		return std::vector<std::shared_ptr<Type>>();
 	}
 
@@ -66,15 +66,15 @@ namespace KerML::Entities {
 		return std::vector<std::shared_ptr<Type>>();
 	}
 
-	bool Type::specializes(std::shared_ptr<Type> supertype) {
+	bool Type::specializes(std::shared_ptr<Type> ) {
 		return false;
 	}
 
-	bool Type::specializesFromLibrary(std::string libraryTypeName) {
+	bool Type::specializesFromLibrary(std::string ) {
 		return false;
 	}
 
-	void Type::isCompatibleWith(std::shared_ptr<Type> otherType) {
+	void Type::isCompatibleWith(std::shared_ptr<Type> ) {
 
 	}
 

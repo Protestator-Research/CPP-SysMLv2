@@ -10,9 +10,10 @@ namespace KerML::Entities {
 	}
 
 	std::vector<std::shared_ptr<Membership>> MembershipImport::importedMemberships(
-		std::vector<std::shared_ptr<Namespace>> excluded)
+		std::vector<std::shared_ptr<Namespace>>)
 	{
 		//TODO Implement
+        return std::vector<std::shared_ptr<Membership>>();
 	}
 
 	std::shared_ptr<Membership> MembershipImport::importedMembership() const
