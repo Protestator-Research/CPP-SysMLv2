@@ -31,7 +31,7 @@ set(ROOT_NAMESPACES_HEADER
 set(CORE_TYPES_HEADER
         src/core/types/Type.h
         src/core/types/Specialization.h
-        src/core/types/Conjunction.h
+        src/core/types/Conjugation.h
         src/core/types/Disjoining.h
         src/core/types/Unioning.h
         src/core/types/Intersecting.h
@@ -166,7 +166,7 @@ add_library(kerml
         src/root/namespaces/Import.cpp
         src/core/types/Type.cpp
         src/core/types/Specialization.cpp
-        src/core/types/Conjunction.cpp
+        src/core/types/Conjugation.cpp
         src/core/types/Disjoining.cpp
         src/core/types/Unioning.cpp
         src/core/types/Intersecting.cpp
