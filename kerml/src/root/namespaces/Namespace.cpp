@@ -30,10 +30,23 @@ namespace KerML::Entities {
 
     std::vector<std::string> Namespace::namesOf(std::shared_ptr<Element> element) {
         std::vector<std::string> returnValue;
-        returnValue.push_back(declaredName() + "::" + element->declaredName());
-        returnValue.push_back(declaredName() + "::" + element->declaredShortName());
-        returnValue.push_back(declaredName() + "::" + element->effectiveName());
-        returnValue.push_back(declaredName() + "::" + element->effectiveShortName());
+
+        std::string prefix = "";
+        if (declaredName().has_value())
+            prefix = declaredName().value() + "::";
+
+        if (element->declaredName().has_value())
+			returnValue.push_back(prefix + element->declaredName().value());
+
+        if (element->declaredShortName().has_value())
+			returnValue.push_back(prefix + element->declaredShortName().value());
+
+        if (element->effectiveName().has_value())
+			returnValue.push_back(prefix + element->effectiveName().value());
+
+        if (element->effectiveShortName().has_value())
+			returnValue.push_back(prefix + element->effectiveShortName().value());
+
         return returnValue;
     }
 
@@ -99,12 +112,12 @@ namespace KerML::Entities {
 
     std::optional<std::shared_ptr<Membership>> Namespace::resolveGlobal(std::string qualifiedName) {
         for(const auto& ownedImport: ImportedMemberships) {
-            if(qualifiedName.find(ownedImport->declaredName())!=std::string::npos)
+            if(qualifiedName.find(ownedImport->declaredName().value())!=std::string::npos)
                 return ownedImport;
         }
 
         for(const auto& ownedMembership: OwnedMembership) {
-            if(qualifiedName.find(ownedMembership->declaredName())!=std::string::npos)
+            if(qualifiedName.find(ownedMembership->declaredName().value())!=std::string::npos)
                 return ownedMembership;
         }
 
@@ -114,7 +127,7 @@ namespace KerML::Entities {
     std::optional<std::shared_ptr<Membership>> Namespace::resolveLocal(std::string qualifiedName) {
 
         for(const auto& ownedMembership: OwnedMembership) {
-            if(qualifiedName.find(ownedMembership->declaredName())!=std::string::npos)
+            if(qualifiedName.find(ownedMembership->declaredName().value())!=std::string::npos)
                 return ownedMembership;
         }
         return { };
@@ -122,12 +135,12 @@ namespace KerML::Entities {
 
     std::optional<std::shared_ptr<Membership>> Namespace::resolveVisible(std::string qualifiedName) {
         for(const auto& ownedImport: ImportedMemberships) {
-            if((qualifiedName.find(ownedImport->declaredName())!=std::string::npos)&&(ownedImport->visibility()!=PRIVATE))
+            if((qualifiedName.find(ownedImport->declaredName().value())!=std::string::npos)&&(ownedImport->visibility()!=PRIVATE))
                 return ownedImport;
         }
 
         for(const auto& ownedMembership: OwnedMembership) {
-            if((qualifiedName.find(ownedMembership->declaredName())!=std::string::npos)&&(ownedMembership->visibility()!=PRIVATE))
+            if((qualifiedName.find(ownedMembership->declaredName().value())!=std::string::npos)&&(ownedMembership->visibility()!=PRIVATE))
                 return ownedMembership;
         }
 

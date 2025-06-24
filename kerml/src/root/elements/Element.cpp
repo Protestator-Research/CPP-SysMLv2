@@ -173,19 +173,11 @@ namespace KerML::Entities {
         return OwnedElements;
     }
 
-    void Element::setOwningNamespace(std::shared_ptr<Namespace> owningNamespace) {
-        OwningNamespace = owningNamespace;
-    }
-
-    std::shared_ptr<Namespace> Element::owningNamespace() {
-        return OwningNamespace;
-    }
-
     std::string Element::path()
     {
         if (libraryNamespace())
-            return libraryNamespace()->path() + "::" + escapedName();
+            return libraryNamespace()->path() + "::" + escapedName().value();
         else
-            return escapedName();
+            return escapedName().value();
     }
 } // KerML::Entities

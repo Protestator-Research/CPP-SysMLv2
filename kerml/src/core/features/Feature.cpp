@@ -150,6 +150,11 @@ namespace KerML::Entities
 		_TypeFeaturing.push_back(typeFeaturing);
 	}
 
+	std::optional<std::string> Feature::effectiveShortName() const
+	{
+		return Element::effectiveShortName();
+	}
+
 	void Feature::setFeaturingType(std::vector<std::shared_ptr<Type>> featuringType)
 	{
 		FeaturingType = featuringType;

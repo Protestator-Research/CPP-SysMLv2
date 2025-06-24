@@ -41,8 +41,8 @@ namespace KerML::Entities
 
 	void Differencing::setTypeDifferenced(std::shared_ptr<Type> typeDifferenced)
 	{
-		if (differencingType == nullptr)
-			std::runtime_error("Differencing type is not allwed to be null");
+		if (typeDifferenced == nullptr)
+			std::runtime_error("Type differenced is not allwed to be null");
 
 		TypeDifferenced = typeDifferenced;
 	}

@@ -62,7 +62,7 @@ namespace KerML::Entities {
         void appendTypeFeaturing(std::shared_ptr<TypeFeaturing> typeFeaturing);
 
         FeatureDirectionKind directionFor(std::shared_ptr<Type> type);
-        std::optional<std::string> effectiveShortName() override;
+        [[nodiscard]] std::optional<std::string> effectiveShortName() const override;
 
     protected:
         void setFeaturingType(std::vector<std::shared_ptr<Type>> featuringType);

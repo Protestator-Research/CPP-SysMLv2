@@ -12,7 +12,7 @@ namespace KerML::Entities
 		if (originalType == nullptr)
 			throw std::runtime_error("Original Type is not allowed to be a nullptr");
 
-		if (conjungatedType == nullptr)
+		if (conjugatedType == nullptr)
 			throw std::runtime_error("Conjungated Type is not allowed to be a nullptr");
 
 		OriginalType = originalType;

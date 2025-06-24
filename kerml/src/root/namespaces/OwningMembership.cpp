@@ -9,6 +9,7 @@
 // External Classes
 //---------------------------------------------------------
 #include <boost/lexical_cast.hpp>
+#include <boost/uuid/uuid_io.hpp>
 #include <boost/uuid/string_generator.hpp>
 //---------------------------------------------------------
 // Internal Classes

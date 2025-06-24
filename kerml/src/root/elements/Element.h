@@ -138,7 +138,7 @@ namespace KerML::Entities {
          * Returns the effective ShortName of this Element. By default it is the DeclaredShortName.
          * @return The effective short name of this Element.
          */
-        [[nodiscard]] std::optional<std::string> effectiveShortName() const;
+        [[nodiscard]] virtual std::optional<std::string> effectiveShortName() const;
 
         /**
          * This method returns the effective name of a element. By default this is the declaredName().
@@ -237,16 +237,6 @@ namespace KerML::Entities {
          */
         std::vector<std::shared_ptr<Element>> ownedElements();
 
-        /**
-         * Sets the owningNamespace of a Element. The Namespace that owns this Element, wich is the MembershipOwningNamespace of the OwningMembership of this Element
-         * @param owningNamespace
-         */
-        void setOwningNamespace(std::shared_ptr<Namespace> owningNamespace);
-        /**
-         * Gets you the owning Namespace. The Namespace that owns this Element, wich is the MembershipOwningNamespace of the OwningMembership of this Element
-         * @return Shared Pointer of the Namespace.
-         */
-        std::shared_ptr<Namespace> owningNamespace();
 
         /**
          * Returns a unique description of the location of this specific element. Herby the conatining Structure is to consider.

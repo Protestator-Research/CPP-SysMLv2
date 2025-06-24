@@ -5,8 +5,8 @@
 #ifndef SYSMLV2_ASSOCIATION_H
 #define SYSMLV2_ASSOCIATION_H
 
-#include <core/classifiers/Classifier.h>
-#include <root/elements/Relationship.h>
+#include "../../core/classifiers/Classifier.h"
+#include "../../root/elements/Relationship.h"
 
 namespace KerML::Entities {
     class Association : public Classifier, Relationship{
