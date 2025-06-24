@@ -13,6 +13,7 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/random_generator.hpp>
 #include <vector>
+#include <optional>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
@@ -101,7 +102,7 @@ namespace KerML::Entities {
          * unique in the specific context or within a model.
          * @return The declared short name.
          */
-        [[nodiscard]] std::string declaredShortName() const;
+        [[nodiscard]] std::optional<std::string> declaredShortName() const;
 
         /**
          * Sets the declared name of the Element.
@@ -113,7 +114,7 @@ namespace KerML::Entities {
          * Gives access to the declared name.
          * @return The internally stored declared name.
          */
-        [[nodiscard]] std::string declaredName() const;
+        [[nodiscard]] std::optional<std::string> declaredName() const;
 
         /**
          * Sets if element is included in a implied.
@@ -131,19 +132,19 @@ namespace KerML::Entities {
          * 
          * @return
          */
-        [[nodiscard]] std::string escapedName() const;
+        [[nodiscard]] std::optional<std::string> escapedName() const;
 
         /**
          * Returns the effective ShortName of this Element. By default it is the DeclaredShortName.
          * @return The effective short name of this Element.
          */
-        [[nodiscard]] std::string effectiveShortName() const;
+        [[nodiscard]] std::optional<std::string> effectiveShortName() const;
 
         /**
          * This method returns the effective name of a element. By default this is the declaredName().
          * @return The effective name that is available.
          */
-        [[nodiscard]] std::string effectiveName() const;
+        [[nodiscard]] std::optional<std::string> effectiveName() const;
 
         /**
          * If this Element has a owningRelationship, the Namespace of this Relationship is returned.
@@ -301,9 +302,7 @@ namespace KerML::Entities {
          */
         std::shared_ptr<Element> Owner = nullptr;
 
-        /**
-         *
-         */
+
         std::vector<std::shared_ptr<Element>> OwnedElements;
         std::string ShortName;
         std::string Name;
@@ -342,9 +341,9 @@ namespace KerML::Entities {
         void sortOwnedElements();
 
         /**
-         * The Namespace that owns this Element, wich is the MembershipOwningNamespace of the OwningMembership of this Element
+         * 
          */
-        std::shared_ptr<Namespace> OwningNamespace;
+        std::shared_ptr<Relationship> OwningRelationship;
     };
 
 } // KerML::Entities

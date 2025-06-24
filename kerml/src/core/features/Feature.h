@@ -12,7 +12,14 @@
 #include "FeatureDirectionKind.h"
 
 namespace KerML::Entities {
-    class Feature : public Type {
+    class TypeFeaturing;
+
+	/**
+	 * @class Feature
+	 * @version 1.0 Beta 4
+	 * @brief Describes the Feature class according to the Standard.
+	 */
+	class Feature : public Type {
     public:
         Feature();
         ~Feature() override = default;
@@ -49,11 +56,25 @@ namespace KerML::Entities {
         void appendType(std::vector<std::shared_ptr<Type>> type);
         void appendType(std::shared_ptr<Type> type);
 
+        void setTypeFeaturing(std::vector<std::shared_ptr<TypeFeaturing>> typeFeaturing);
+        std::vector<std::shared_ptr<TypeFeaturing>> typeFeaturing() const;
+        void appendTypeFeatuing(std::vector<std::shared_ptr<TypeFeaturing>> typeFeaturing);
+        void appendTypeFeaturing(std::shared_ptr<TypeFeaturing> typeFeaturing);
+
+        FeatureDirectionKind directionFor(std::shared_ptr<Type> type);
+        std::optional<std::string> effectiveShortName() override;
+
     protected:
         void setFeaturingType(std::vector<std::shared_ptr<Type>> featuringType);
         std::vector<std::shared_ptr<Type>> featuringType() const;
         void appendFeaturingType(std::vector<std::shared_ptr<Type>> featuringType);
         void appendFeaturingType(std::shared_ptr<Type> featuringType);
+
+        void setOwnedTypeFeaturing(std::vector<std::shared_ptr<TypeFeaturing>> ownedTypeFeaturing);
+        std::vector<std::shared_ptr<TypeFeaturing>> ownedTypeFeaturing() const;
+        void appendOwnedTypeFeaturing(std::vector<std::shared_ptr<TypeFeaturing>> ownedTypeFeaturing);
+        void appendOwnedTypeFeaturing(std::shared_ptr<TypeFeaturing> ownedTypeFeaturing);
+
 
     private:
         bool IsUnique;
@@ -69,6 +90,9 @@ namespace KerML::Entities {
 
         std::vector<std::shared_ptr<Type>> _Type;
         std::vector<std::shared_ptr<Type>> FeaturingType;
+
+        std::vector<std::shared_ptr<TypeFeaturing>> _TypeFeaturing;
+        std::vector<std::shared_ptr<TypeFeaturing>> OwnedTypeFeaturing;
     };
 }
 

@@ -130,6 +130,26 @@ namespace KerML::Entities
 		_Type.push_back(type);
 	}
 
+	void Feature::setTypeFeaturing(std::vector<std::shared_ptr<TypeFeaturing>> typeFeaturing)
+	{
+		_TypeFeaturing = typeFeaturing;
+	}
+
+	std::vector<std::shared_ptr<TypeFeaturing>> Feature::typeFeaturing() const
+	{
+		return _TypeFeaturing;
+	}
+
+	void Feature::appendTypeFeatuing(std::vector<std::shared_ptr<TypeFeaturing>> typeFeaturing)
+	{
+		_TypeFeaturing.insert(_TypeFeaturing.end(), typeFeaturing.begin(), typeFeaturing.end());
+	}
+
+	void Feature::appendTypeFeaturing(std::shared_ptr<TypeFeaturing> typeFeaturing)
+	{
+		_TypeFeaturing.push_back(typeFeaturing);
+	}
+
 	void Feature::setFeaturingType(std::vector<std::shared_ptr<Type>> featuringType)
 	{
 		FeaturingType = featuringType;
@@ -148,5 +168,25 @@ namespace KerML::Entities
 	void Feature::appendFeaturingType(std::shared_ptr<Type> featuringType)
 	{
 		FeaturingType.push_back(featuringType);
+	}
+
+	void Feature::setOwnedTypeFeaturing(std::vector<std::shared_ptr<TypeFeaturing>> ownedTypeFeaturing)
+	{
+		OwnedTypeFeaturing = ownedTypeFeaturing;
+	}
+
+	std::vector<std::shared_ptr<TypeFeaturing>> Feature::ownedTypeFeaturing() const
+	{
+		return OwnedTypeFeaturing;
+	}
+
+	void Feature::appendOwnedTypeFeaturing(std::vector<std::shared_ptr<TypeFeaturing>> ownedTypeFeaturing)
+	{
+		OwnedTypeFeaturing.insert(OwnedTypeFeaturing.end(), ownedTypeFeaturing.begin(), ownedTypeFeaturing.end());
+	}
+
+	void Feature::appendOwnedTypeFeaturing(std::shared_ptr<TypeFeaturing> ownedTypeFeaturing)
+	{
+		OwnedTypeFeaturing.push_back(ownedTypeFeaturing);
 	}
 }
