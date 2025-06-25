@@ -13,6 +13,9 @@
 
 namespace KerML::Entities {
     class TypeFeaturing;
+    class Subsetting;
+    class Redefintion;
+
 
 	/**
 	 * @class Feature
@@ -63,6 +66,23 @@ namespace KerML::Entities {
 
         FeatureDirectionKind directionFor(std::shared_ptr<Type> type);
         [[nodiscard]] std::optional<std::string> effectiveShortName() const override;
+        [[nodiscard]] std::optional<std::string> effectiveName() const override;
+
+        std::optional<Feature> namingFeature();
+        std::vector<std::shared_ptr<Type>> supertypes(bool excludeImplied) override;
+        bool redefinedFeature(std::shared_ptr<Feature> redefinedFeature);
+        bool redefinesFromLibrary(std::string libraryFeatureName);
+        bool subsetsChain(std::shared_ptr<Feature> first, std::shared_ptr<Feature> second);
+        void isCompatibleWith(std::shared_ptr<Type> otherType) override;
+        std::vector<std::shared_ptr<Feature>> typingFeatures();
+        std::vector<std::shared_ptr<Type>> asCartesianProduct();
+        bool isCartesianProduct();
+        bool isOwnedCrossFeature();
+        std::optional<std::shared_ptr<Feature>> ownedCrossFeature();
+        std::vector<std::shared_ptr<Feature>> allRedefinedFeatures();
+        bool isFeaturedWithin(std::optional<std::shared_ptr<Type>>);
+        bool canAccess(std::shared_ptr<Feature> feature);
+        bool isFeaturingType(std::shared_ptr<Type> type);
 
     protected:
         void setFeaturingType(std::vector<std::shared_ptr<Type>> featuringType);

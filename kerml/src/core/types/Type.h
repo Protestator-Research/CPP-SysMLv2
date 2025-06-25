@@ -48,12 +48,12 @@ namespace KerML::Entities {
         FeatureDirectionKind directionOf(std::shared_ptr<Feature> feature);
         FeatureDirectionKind directionOfExcluding(std::shared_ptr<Feature> feature, std::vector<std::shared_ptr<Type>> excluded);
 
-        std::vector<std::shared_ptr<Type>> supertypes(bool excludeImplied);
+        virtual std::vector<std::shared_ptr<Type>> supertypes(bool excludeImplied);
         std::vector<std::shared_ptr<Type>> allSupertypes();
 
         bool specializes(std::shared_ptr<Type> supertype);
         bool specializesFromLibrary(std::string libraryTypeName);
-        void isCompatibleWith(std::shared_ptr<Type> otherType);
+        virtual void isCompatibleWith(std::shared_ptr<Type> otherType);
 
         std::vector<std::shared_ptr<Multiplicity>> multiplicities();
 

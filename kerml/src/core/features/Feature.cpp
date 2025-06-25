@@ -150,9 +150,88 @@ namespace KerML::Entities
 		_TypeFeaturing.push_back(typeFeaturing);
 	}
 
+	FeatureDirectionKind Feature::directionFor(std::shared_ptr<Type> type)
+	{
+		return ;
+	}
+
 	std::optional<std::string> Feature::effectiveShortName() const
 	{
+		if (declaredShortName().has_value() && declaredName().has_value())
+			return declaredName();
+		else
+		{
+			if (namingFeature())
+		}
 		return Element::effectiveShortName();
+	}
+
+	std::optional<std::string> Feature::effectiveName() const
+	{
+		return Type::effectiveName();
+	}
+
+	std::optional<Feature> Feature::namingFeature()
+	{
+		if (ownedRe)
+	}
+
+	std::vector<std::shared_ptr<Type>> Feature::supertypes(bool excludeImplied)
+	{
+		return Type::supertypes(excludeImplied);
+	}
+
+	bool Feature::redefinedFeature(std::shared_ptr<Feature> redefinedFeature)
+	{
+	}
+
+	bool Feature::redefinesFromLibrary(std::string libraryFeatureName)
+	{
+	}
+
+	bool Feature::subsetsChain(std::shared_ptr<Feature> first, std::shared_ptr<Feature> second)
+	{
+	}
+
+	void Feature::isCompatibleWith(std::shared_ptr<Type> otherType)
+	{
+		Type::isCompatibleWith(otherType);
+	}
+
+	std::vector<std::shared_ptr<Feature>> Feature::typingFeatures()
+	{
+	}
+
+	std::vector<std::shared_ptr<Type>> Feature::asCartesianProduct()
+	{
+	}
+
+	bool Feature::isCartesianProduct()
+	{
+	}
+
+	bool Feature::isOwnedCrossFeature()
+	{
+	}
+
+	std::optional<std::shared_ptr<Feature>> Feature::ownedCrossFeature()
+	{
+	}
+
+	std::vector<std::shared_ptr<Feature>> Feature::allRedefinedFeatures()
+	{
+	}
+
+	bool Feature::isFeaturedWithin(std::optional<std::shared_ptr<Type>>)
+	{
+	}
+
+	bool Feature::canAccess(std::shared_ptr<Feature> feature)
+	{
+	}
+
+	bool Feature::isFeaturingType(std::shared_ptr<Type> type)
+	{
 	}
 
 	void Feature::setFeaturingType(std::vector<std::shared_ptr<Type>> featuringType)

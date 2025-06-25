@@ -144,7 +144,7 @@ namespace KerML::Entities {
          * This method returns the effective name of a element. By default this is the declaredName().
          * @return The effective name that is available.
          */
-        [[nodiscard]] std::optional<std::string> effectiveName() const;
+        [[nodiscard]] virtual std::optional<std::string> effectiveName() const;
 
         /**
          * If this Element has a owningRelationship, the Namespace of this Relationship is returned.
