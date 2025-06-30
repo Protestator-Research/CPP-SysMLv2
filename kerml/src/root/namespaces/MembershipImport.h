@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef SYSMLV2_MEMBERSHIPIMPORT_H
-#define SYSMLV2_MEMBERSHIPIMPORT_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -37,5 +36,3 @@ namespace KerML::Entities {
         std::shared_ptr<Membership> ImportedMembership;
     };
 } // KerML::Entities
-
-#endif //SYSMLV2_MEMBERSHIPIMPORT_H

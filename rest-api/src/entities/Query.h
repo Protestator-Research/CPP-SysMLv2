@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_QUERY_H
-#define DIGITALTWIN_QUERY_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -33,5 +32,3 @@ namespace SysMLv2::Entities {
         std::string serializeToJson() override;
     };
 }
-
-#endif //DIGITALTWIN_QUERY_H

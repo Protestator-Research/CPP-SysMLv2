@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef SYSMLV2_ANNOTATION_H
-#define SYSMLV2_ANNOTATION_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -64,5 +63,3 @@ namespace KerML::Entities {
         std::shared_ptr<AnnotatingElement> OwningAnnotatingElement;
     };
 } // KerML::Entities
-
-#endif //SYSMLV2_ANNOTATION_H

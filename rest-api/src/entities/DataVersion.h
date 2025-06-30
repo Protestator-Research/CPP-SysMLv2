@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_DATAVERSION_H
-#define DIGITALTWIN_DATAVERSION_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -52,5 +51,3 @@ namespace SysMLv2::Entities {
         std::shared_ptr<Data> Payload;
     };
 }
-
-#endif //DIGITALTWIN_DATAVERSION_H

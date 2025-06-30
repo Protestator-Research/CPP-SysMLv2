@@ -2,8 +2,7 @@
 // Created by Moritz Herzog on 25.03.25.
 //
 
-#ifndef SYSMLV2_FEATURE_H
-#define SYSMLV2_FEATURE_H
+#pragma once
 
 #include <optional>
 
@@ -14,15 +13,21 @@
 namespace KerML::Entities {
     class TypeFeaturing;
     class Subsetting;
-    class Redefintion;
-
+    class Redefinition;
+    class ReferenceSubsetting;
+    class FeatureChaining;
+    class FeatureInverting;
+    class FreatureEndMember;
+    class FeatureTyping;
+    class CrossSubsetting;
 
 	/**
 	 * @class Feature
 	 * @version 1.0 Beta 4
+	 * @author Moritz Herzog <herzogm@rptu.de>
 	 * @brief Describes the Feature class according to the Standard.
 	 */
-	class Feature : public Type {
+	class Feature : public Type, public std::enable_shared_from_this<Feature> {
     public:
         Feature();
         ~Feature() override = default;
@@ -68,7 +73,7 @@ namespace KerML::Entities {
         [[nodiscard]] std::optional<std::string> effectiveShortName() const override;
         [[nodiscard]] std::optional<std::string> effectiveName() const override;
 
-        std::optional<Feature> namingFeature();
+        std::optional<std::shared_ptr<Feature>> namingFeature() const;
         std::vector<std::shared_ptr<Type>> supertypes(bool excludeImplied) override;
         bool redefinedFeature(std::shared_ptr<Feature> redefinedFeature);
         bool redefinesFromLibrary(std::string libraryFeatureName);
@@ -95,6 +100,55 @@ namespace KerML::Entities {
         void appendOwnedTypeFeaturing(std::vector<std::shared_ptr<TypeFeaturing>> ownedTypeFeaturing);
         void appendOwnedTypeFeaturing(std::shared_ptr<TypeFeaturing> ownedTypeFeaturing);
 
+        void setChainingFeature(std::vector<std::shared_ptr<Feature>> chainingFeature);
+        std::vector<std::shared_ptr<Feature>> chainingFeature() const;
+        void appendChainingFeature(std::vector<std::shared_ptr<Feature>> chainingFeature);
+        void appendChainingFeature(std::shared_ptr<Feature> chainingFeature);
+
+        std::optional<std::shared_ptr<Feature>> crossFeature() const;
+		void setCrossFeature(std::optional<std::shared_ptr<Feature>> crossFeature);
+
+        std::optional<std::shared_ptr<Type>> endOwningType() const;
+        void setEndOwningType(std::optional<std::shared_ptr<Type>> crossFeature);
+
+        std::shared_ptr<Feature> featureTarget();
+
+        std::optional<std::shared_ptr<CrossSubsetting>> ownedCrossSubsetting() const;
+        void setOwnedCrossSubsetting(std::optional<std::shared_ptr<CrossSubsetting>> ownedCrossSubsetting);
+
+        void setOwnedFeatureChaining(std::vector<std::shared_ptr<FeatureChaining>> ownedFeatureChaining);
+        std::vector<std::shared_ptr<FeatureChaining>> ownedFeatureChaining() const;
+        void appendOwnedFeatureChaining(std::vector<std::shared_ptr<FeatureChaining>> ownedFeatureChaining);
+        void appendOwnedFeatureChaining(std::shared_ptr<FeatureChaining> ownedFeatureChaining);
+
+        void setOwnedFeatureInverting(std::vector<std::shared_ptr<FeatureInverting>> ownedFeatureInverting);
+        std::vector<std::shared_ptr<FeatureInverting>> ownedFeatureInverting() const;
+        void appendOwnedFeatureInverting(std::vector<std::shared_ptr<FeatureInverting>> ownedFeaureInverting);
+        void appendOwnedFeatureInverting(std::shared_ptr<FeatureTyping> ownedFeatureInverting);
+
+        void setOwnedRedefinition(std::vector<std::shared_ptr<Redefinition>> ownedRedefinition);
+        std::vector<std::shared_ptr<Redefinition>> ownedRedefinition() const;
+        void appendOwnedRedefinition(std::vector<std::shared_ptr<Redefinition>> ownedRedefinition);
+        void appendOwnedRedefinition(std::shared_ptr<Redefinition> ownedRedefinition);
+
+        void setOwnedReferenceSubsetting(std::optional<std::shared_ptr<ReferenceSubsetting>> referenceSubsetting);
+        std::optional<std::shared_ptr<ReferenceSubsetting>> ownedReferenceSubsetting() const;
+
+        void setOwendSubsetting(std::vector<std::shared_ptr<Subsetting>> ownedSubsetting);
+        std::vector<std::shared_ptr<Subsetting>> ownedSubsetting() const;
+        void appendOwnedSubsetting(std::vector<std::shared_ptr<Subsetting>> ownedSubsetting);
+        void appendOwnedSubsetting(std::shared_ptr<Subsetting> ownedSubsetting);
+
+        void setOwnedTyping(std::vector<std::shared_ptr<FeatureTyping>> ownedTyping);
+        std::vector<std::shared_ptr<FeatureTyping>> ownedTyping() const;
+        void appendOwnedTyping(std::vector<std::shared_ptr<FeatureTyping>> ownedTyping);
+        void appendOwnedTyping(std::shared_ptr<FeatureTyping> ownedTyping);
+
+        void setOwningFeatureMembership(std::optional<std::shared_ptr<FeatureMembership>> owningMembership);
+        std::optional<std::shared_ptr<FeatureMembership>> owningFeatureMembership() const;
+
+        void setOwningType(std::optional<std::shared_ptr<Type>> owningType);
+        std::optional<std::shared_ptr<Type>> owningType() const;
 
     private:
         bool IsUnique;
@@ -113,7 +167,21 @@ namespace KerML::Entities {
 
         std::vector<std::shared_ptr<TypeFeaturing>> _TypeFeaturing;
         std::vector<std::shared_ptr<TypeFeaturing>> OwnedTypeFeaturing;
-    };
-}
 
-#endif //SYSMLV2_FEATURE_H
+        std::vector<std::shared_ptr<Feature>> ChainingFeature;
+        std::shared_ptr<Feature> CrossFeature;
+
+        std::shared_ptr<Type> EndOwningType;
+
+        std::shared_ptr<CrossSubsetting> OwnedCrossSubsetting;
+        std::vector<std::shared_ptr<FeatureChaining>> OwnedFeatureChaining;
+        std::vector<std::shared_ptr<FeatureInverting>> OwnedFeatureInverting;
+        std::vector<std::shared_ptr<Redefinition>> OwnedRedefinition;
+        std::shared_ptr<ReferenceSubsetting> OwnedReferenceSubsetting;
+        std::vector<std::shared_ptr<Subsetting>> OwnedSubsetting;
+        std::vector<std::shared_ptr<FeatureTyping>> OwnedTyping;
+        std::shared_ptr<FeatureMembership> OwningFeatureMembership;
+        std::shared_ptr<Type> OwningType;
+        
+	};
+}

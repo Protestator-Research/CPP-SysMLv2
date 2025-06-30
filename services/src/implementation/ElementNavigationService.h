@@ -2,8 +2,7 @@
 // Created by Moritz Herzog on 19.03.25.
 //
 
-#ifndef SYSMLV2_ELEMENTNAVIGATIONSERVICE_H
-#define SYSMLV2_ELEMENTNAVIGATIONSERVICE_H
+#pragma once
 
 #include <map>
 
@@ -40,5 +39,3 @@ namespace SysMLv2::API {
 
     };
 }
-
-#endif //SYSMLV2_ELEMENTNAVIGATIONSERVICE_H

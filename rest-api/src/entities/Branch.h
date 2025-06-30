@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_BRANCH_H
-#define DIGITALTWIN_BRANCH_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -57,5 +56,3 @@ namespace SysMLv2::Entities {
         std::shared_ptr<Commit> Head;
     };
 }
-
-#endif //DIGITALTWIN_BRANCH_H

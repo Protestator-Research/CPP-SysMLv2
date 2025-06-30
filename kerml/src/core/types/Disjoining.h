@@ -2,8 +2,8 @@
 // Created by Moritz Herzog on 25.03.25.
 //
 
-#ifndef SYSMLV2_DISJOINING_H
-#define SYSMLV2_DISJOINING_H
+#pragma once
+
 
 #include <root/elements/Relationship.h>
 
@@ -45,5 +45,3 @@ namespace KerML::Entities {
         std::shared_ptr<Type> OwningType;
     };
 }
-
-#endif //SYSMLV2_DISJOINING_H

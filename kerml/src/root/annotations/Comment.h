@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef SYSMLV2_COMMENT_H
-#define SYSMLV2_COMMENT_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -40,5 +39,3 @@ namespace KerML::Entities {
         std::string Body;
     };
 } // KerML::Entities
-
-#endif //SYSMLV2_COMMENT_H

@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_ELEMENT_H
-#define DIGITALTWIN_ELEMENT_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -135,6 +134,4 @@ namespace SysMLv2::Entities {
         std::vector<std::shared_ptr<Identification>> Source;
         std::vector<std::shared_ptr<Identification>> Target;
     };
-} // SysMLv2
-
-#endif //DIGITALTWIN_ELEMENT_H
+} // SysMLv2::Entities

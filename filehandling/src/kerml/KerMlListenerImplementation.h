@@ -2,8 +2,8 @@
 // Created by Moritz Herzog on 09.05.25.
 //
 
-#ifndef SYSML_KERMLLISTENERIMPLEMENTATION_H
-#define SYSML_KERMLLISTENERIMPLEMENTATION_H
+#pragma once
+
 
 #include "KerMLListener.h"
 #include <memory>
@@ -1085,5 +1085,3 @@ private:
     std::stack<std::shared_ptr<KerML::Entities::Element>> ParentStack;
 };
 
-
-#endif //SYSML_KERMLLISTENERIMPLEMENTATION_H

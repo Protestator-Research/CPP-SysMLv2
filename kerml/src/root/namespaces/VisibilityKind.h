@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef SYSMLV2_VISIBILITYKIND_H
-#define SYSMLV2_VISIBILITYKIND_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -32,5 +31,3 @@ namespace KerML::Entities {
         PUBLIC
     };
 } // KerML::Enitties
-
-#endif //SYSMLV2_VISIBILITYKIND_H

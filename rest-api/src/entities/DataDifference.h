@@ -1,9 +1,7 @@
 //
 // Created by Moritz Herzog on 11.03.25.
 //
-
-#ifndef CPP_SYSMLV2_LIB_DATADIFFERENCE_H
-#define CPP_SYSMLV2_LIB_DATADIFFERENCE_H
+#pragma once
 
 #include <memory>
 #include "DataVersion.h"
@@ -26,5 +24,3 @@ namespace SysMLv2 ::Entities {
         std::shared_ptr<DataVersion> CompareData = nullptr;
     };
 } // SysMLv2
-
-#endif //CPP_SYSMLV2_LIB_DATADIFFERENCE_H

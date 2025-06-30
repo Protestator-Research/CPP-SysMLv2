@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_PROJECT_H
-#define DIGITALTWIN_PROJECT_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -84,5 +83,3 @@ namespace SysMLv2::Entities {
         std::vector<std::shared_ptr<Query>> Querries;
     };
 }
-
-#endif //DIGITALTWIN_PROJECT_H

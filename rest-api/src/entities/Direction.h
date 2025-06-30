@@ -1,11 +1,10 @@
 //
 // Created by Moritz Herzog on 11.03.25.
 //
+#pragma once
 
 #include "../sysmlv2rest_global.h"
 
-#ifndef CPP_SYSMLV2_LIB_DIRECTION_H
-#define CPP_SYSMLV2_LIB_DIRECTION_H
 namespace SysMLv2::Entities {
     enum SYSMLV2REST_EXPORT Direction {
         in,
@@ -13,4 +12,3 @@ namespace SysMLv2::Entities {
         both
     };
 }
-#endif //CPP_SYSMLV2_LIB_DIRECTION_H

@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef SYSMLV2_RELATIONSHIP_H
-#define SYSMLV2_RELATIONSHIP_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -133,5 +132,3 @@ namespace KerML::Entities {
         std::vector<std::shared_ptr<Element>> Target;
     };
 } // KerML::Entities
-
-#endif //SYSMLV2_RELATIONSHIP_H

@@ -37,7 +37,7 @@ namespace KerML::Entities
 		return ReferencingFeature;
 	}
 
-	void ReferenceSubsetting::setReferencingFeature(std::shared_ptr<Feature> referencingFeautre)
+	void ReferenceSubsetting::setReferencingFeature(std::shared_ptr<Feature> referencingFeature)
 	{
 		if (referencingFeature == nullptr)
 			throw std::invalid_argument("Referencing Feature to be null is not allowed, according to the standard.");

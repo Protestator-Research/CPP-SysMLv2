@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef SYSMLV2_DOCUMENTATION_H
-#define SYSMLV2_DOCUMENTATION_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -41,5 +40,3 @@ namespace KerML::Entities {
         std::shared_ptr<Element> DocumentedElement;
     };
 } // KerML::Entities
-
-#endif //SYSMLV2_DOCUMENTATION_H

@@ -1,9 +1,7 @@
 //
 // Created by Moritz Herzog on 25.03.25.
 //
-
-#ifndef SYSMLV2_TYPE_H
-#define SYSMLV2_TYPE_H
+#pragma once
 
 #include "../../root/namespaces/Namespace.h"
 #include "../features/FeatureDirectionKind.h"
@@ -198,5 +196,3 @@ namespace KerML::Entities {
 
     };
 } // KerML::Entities
-
-#endif //SYSMLV2_TYPE_H

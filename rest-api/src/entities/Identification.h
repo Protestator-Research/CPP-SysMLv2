@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_IDENTIFICATION_H
-#define DIGITALTWIN_IDENTIFICATION_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -89,6 +88,3 @@ inline void to_json(nlohmann::json &j, const SysMLv2::Entities::Identification* 
 inline void from_json(const nlohmann::json &j, SysMLv2::Entities::Identification &ident) {
     ident = SysMLv2::Entities::Identification(boost::uuids::string_generator()(j[SysMLv2::Entities::JSON_ID_ENTITY].get<std::string>()));
 }
-
-
-#endif //DIGITALTWIN_IDENTIFICATION_H

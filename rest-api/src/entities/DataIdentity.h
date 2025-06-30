@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_DATAIDENTITY_H
-#define DIGITALTWIN_DATAIDENTITY_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -87,5 +86,3 @@ namespace SysMLv2::Entities {
         std::vector<std::shared_ptr<DataVersion>> Version;
     };
 }
-
-#endif //DIGITALTWIN_DATAIDENTITY_H

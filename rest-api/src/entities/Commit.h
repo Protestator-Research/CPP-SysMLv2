@@ -21,8 +21,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_COMMIT_H
-#define DIGITALTWIN_COMMIT_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -105,5 +104,3 @@ namespace SysMLv2::Entities {
         std::vector<std::shared_ptr<DataVersion>> Change;
     };
 }
-
-#endif //DIGITALTWIN_COMMIT_H

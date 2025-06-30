@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef SYSMLV2_OWNINGMEMBERSHIP_H
-#define SYSMLV2_OWNINGMEMBERSHIP_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -48,5 +47,3 @@ namespace KerML::Entities{
         std::string OwnedMemberName;
     };
 }
-
-#endif //SYSMLV2_OWNINGMEMBERSHIP_H

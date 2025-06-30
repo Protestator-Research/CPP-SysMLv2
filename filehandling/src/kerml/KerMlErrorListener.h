@@ -2,8 +2,8 @@
 // Created by Moritz Herzog on 08.04.25.
 //
 
-#ifndef SYSMLV2_KERMLERRORLISTENER_H
-#define SYSMLV2_KERMLERRORLISTENER_H
+#pragma once
+
 
 #include <antlr4-runtime/BaseErrorListener.h>
 #include <vector>
@@ -30,6 +30,3 @@ public:
 private:
     std::vector<std::shared_ptr<KerMLError>> SyntaxErrors;
 };
-
-
-#endif //SYSMLV2_KERMLERRORLISTENER_H

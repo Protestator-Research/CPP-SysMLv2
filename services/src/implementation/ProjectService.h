@@ -2,8 +2,7 @@
 // Created by Moritz Herzog on 09.04.25.
 //
 
-#ifndef SYSML_PROJECTSERVICE_H
-#define SYSML_PROJECTSERVICE_H
+#pragma once
 
 #include "../interfaces/IProjectService.h"
 #include "../sysmlv2service_global.h"
@@ -34,5 +33,3 @@ namespace SysMLv2::API {
         std::map<boost::uuids::uuid,std::shared_ptr<SysMLv2::Entities::Project>> ProjectMap;
     };
 }
-
-#endif //SYSML_PROJECTSERVICE_H

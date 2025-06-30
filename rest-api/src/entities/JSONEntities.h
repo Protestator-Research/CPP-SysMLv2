@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_JSONENTITIES_H
-#define DIGITALTWIN_JSONENTITIES_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -110,6 +109,3 @@ namespace SysMLv2::Entities {
     const std::string DATA_VERSION_TYPE = "dataversion";
     const std::string PAYLOAD_TYPE = "payload";
 }
-
-
-#endif //DIGITALTWIN_JSONENTITIES_H

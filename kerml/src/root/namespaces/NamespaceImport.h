@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef SYSMLV2_NAMESPACEIMPORT_H
-#define SYSMLV2_NAMESPACEIMPORT_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -51,5 +50,3 @@ namespace KerML::Entities {
     };
 }
 
-
-#endif //SYSMLV2_NAMESPACEIMPORT_H

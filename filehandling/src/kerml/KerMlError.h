@@ -2,11 +2,11 @@
 // Created by Moritz Herzog on 08.04.25.
 //
 
-#ifndef SYSMLV2_KERMLERROR_H
-#define SYSMLV2_KERMLERROR_H
+#pragma once
 
 #include <string>
 #include "../sysmlv2file_global.h"
+
 //namespace KerML::Parser {
     enum KerMLErrorType {
         SYNTAX_ERROR,
@@ -40,5 +40,3 @@
 
     };
 //}
-
-#endif //SYSMLV2_KERMLERROR_H

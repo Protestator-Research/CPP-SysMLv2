@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_RECORD_H
-#define DIGITALTWIN_RECORD_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -150,5 +149,3 @@ namespace SysMLv2::Entities {
         bool IsForCreation = false;
     };
 }
-
-#endif //DIGITALTWIN_RECORD_H

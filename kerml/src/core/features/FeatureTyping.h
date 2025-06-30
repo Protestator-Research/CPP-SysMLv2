@@ -2,8 +2,7 @@
 // Created by Moritz Herzog on 25.03.25.
 //
 
-#ifndef SYSMLV2_FEATURETYPING_H
-#define SYSMLV2_FEATURETYPING_H
+#pragma once
 
 #include <core/types/Specialization.h>
 
@@ -12,5 +11,3 @@ namespace KerML::Entities {
 
     };
 }
-
-#endif //SYSMLV2_FEATURETYPING_H

@@ -5,6 +5,8 @@
 #include "Feature.h"
 #include <vector>
 
+#include "ReferenceSubsetting.h"
+
 namespace KerML::Entities
 {
 	Feature::Feature() :
@@ -152,7 +154,7 @@ namespace KerML::Entities
 
 	FeatureDirectionKind Feature::directionFor(std::shared_ptr<Type> type)
 	{
-		return ;
+		return FeatureDirectionKind::IN_OUT;
 	}
 
 	std::optional<std::string> Feature::effectiveShortName() const
@@ -161,9 +163,12 @@ namespace KerML::Entities
 			return declaredName();
 		else
 		{
-			if (namingFeature())
+			if (namingFeature().has_value())
+				return namingFeature().value()->effectiveName();
+			else
+				return {};
+
 		}
-		return Element::effectiveShortName();
 	}
 
 	std::optional<std::string> Feature::effectiveName() const
@@ -171,9 +176,9 @@ namespace KerML::Entities
 		return Type::effectiveName();
 	}
 
-	std::optional<Feature> Feature::namingFeature()
+	std::optional<std::shared_ptr<Feature>> Feature::namingFeature() const
 	{
-		if (ownedRe)
+		if ()
 	}
 
 	std::vector<std::shared_ptr<Type>> Feature::supertypes(bool excludeImplied)
@@ -272,5 +277,162 @@ namespace KerML::Entities
 	void Feature::appendOwnedTypeFeaturing(std::shared_ptr<TypeFeaturing> ownedTypeFeaturing)
 	{
 		OwnedTypeFeaturing.push_back(ownedTypeFeaturing);
+	}
+
+	void Feature::setChainingFeature(std::vector<std::shared_ptr<Feature>> chainingFeature)
+	{
+	}
+
+	std::vector<std::shared_ptr<Feature>> Feature::chainingFeature() const
+	{
+	}
+
+	void Feature::appendChainingFeature(std::vector<std::shared_ptr<Feature>> chainingFeature)
+	{
+	}
+
+	void Feature::appendChainingFeature(std::shared_ptr<Feature> chainingFeature)
+	{
+	}
+
+	std::optional<std::shared_ptr<Feature>> Feature::crossFeature() const
+	{
+	}
+
+	void Feature::setCrossFeature(std::optional<std::shared_ptr<Feature>> crossFeature)
+	{
+	}
+
+	std::optional<std::shared_ptr<Type>> Feature::endOwningType() const
+	{
+	}
+
+	void Feature::setEndOwningType(std::optional<std::shared_ptr<Type>> crossFeature)
+	{
+	}
+
+	std::shared_ptr<Feature> Feature::featureTarget()
+	{
+		if (ChainingFeature.size() > 0)
+			return ChainingFeature.back();
+
+		return shared_from_this();
+	}
+
+	std::optional<std::shared_ptr<CrossSubsetting>> Feature::ownedCrossSubsetting() const
+	{
+	}
+
+	void Feature::setOwnedCrossSubsetting(std::optional<std::shared_ptr<CrossSubsetting>> ownedCrossSubsetting)
+	{
+	}
+
+	void Feature::setOwnedFeatureChaining(std::vector<std::shared_ptr<FeatureChaining>> ownedFeatureChaining)
+	{
+	}
+
+	std::vector<std::shared_ptr<FeatureChaining>> Feature::ownedFeatureChaining() const
+	{
+	}
+
+	void Feature::appendOwnedFeatureChaining(std::vector<std::shared_ptr<FeatureChaining>> ownedFeatureChaining)
+	{
+	}
+
+	void Feature::appendOwnedFeatureChaining(std::shared_ptr<FeatureChaining> ownedFeatureChaining)
+	{
+	}
+
+	void Feature::setOwnedFeatureInverting(std::vector<std::shared_ptr<FeatureInverting>> ownedFeatureInverting)
+	{
+	}
+
+	std::vector<std::shared_ptr<FeatureInverting>> Feature::ownedFeatureInverting() const
+	{
+	}
+
+	void Feature::appendOwnedFeatureInverting(std::vector<std::shared_ptr<FeatureInverting>> ownedFeaureInverting)
+	{
+	}
+
+	void Feature::appendOwnedFeatureInverting(std::shared_ptr<FeatureTyping> ownedFeatureInverting)
+	{
+	}
+
+	void Feature::setOwnedRedefinition(std::vector<std::shared_ptr<Redefinition>> ownedRedefinition)
+	{
+	}
+
+	std::vector<std::shared_ptr<Redefinition>> Feature::ownedRedefinition() const
+	{
+	}
+
+	void Feature::appendOwnedRedefinition(std::vector<std::shared_ptr<Redefinition>> ownedRedefinition)
+	{
+	}
+
+	void Feature::appendOwnedRedefinition(std::shared_ptr<Redefinition> ownedRedefinition)
+	{
+	}
+
+	void Feature::setOwnedReferenceSubsetting(
+		std::optional<std::shared_ptr<Entities::ReferenceSubsetting>> referenceSubsetting)
+	{
+		if (referenceSubsetting.has_value() && (referenceSubsetting != nullptr))
+			OwnedReferenceSubsetting = referenceSubsetting.value();
+	}
+
+	std::optional<std::shared_ptr<ReferenceSubsetting>> Feature::ownedReferenceSubsetting() const
+	{
+		if (OwnedReferenceSubsetting == nullptr)
+			return {};
+	}
+
+	void Feature::setOwendSubsetting(std::vector<std::shared_ptr<Subsetting>> ownedSubsetting)
+	{
+	}
+
+	std::vector<std::shared_ptr<Subsetting>> Feature::ownedSubsetting() const
+	{
+	}
+
+	void Feature::appendOwnedSubsetting(std::vector<std::shared_ptr<Subsetting>> ownedSubsetting)
+	{
+	}
+
+	void Feature::appendOwnedSubsetting(std::shared_ptr<Subsetting> ownedSubsetting)
+	{
+	}
+
+	void Feature::setOwnedTyping(std::vector<std::shared_ptr<FeatureTyping>> ownedTyping)
+	{
+	}
+
+	std::vector<std::shared_ptr<FeatureTyping>> Feature::ownedTyping() const
+	{
+	}
+
+	void Feature::appendOwnedTyping(std::vector<std::shared_ptr<FeatureTyping>> ownedTyping)
+	{
+	}
+
+	void Feature::appendOwnedTyping(std::shared_ptr<FeatureTyping> ownedTyping)
+	{
+	}
+
+	void Feature::setOwningFeatureMembership(std::optional<std::shared_ptr<FeatureMembership>> owningMembership)
+	{
+	}
+
+	std::optional<std::shared_ptr<FeatureMembership>> Feature::owningFeatureMembership() const
+	{
+	}
+
+	void Feature::setOwningType(std::optional<std::shared_ptr<Type>> owningType)
+	{
+	}
+
+	std::optional<std::shared_ptr<Type>> Feature::owningType() const
+	{
 	}
 }

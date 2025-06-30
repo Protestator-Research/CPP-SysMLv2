@@ -20,8 +20,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_COMMITREFERENCE_H
-#define DIGITALTWIN_COMMITREFERENCE_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -91,5 +90,3 @@ namespace SysMLv2::Entities {
         std::shared_ptr<Commit> ReferencedCommit;
     };
 }
-
-#endif //DIGITALTWIN_COMMITREFERENCE_H

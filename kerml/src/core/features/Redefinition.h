@@ -2,8 +2,7 @@
 // Created by Moritz Herzog on 25.03.25.
 //
 
-#ifndef SYSMLV2_REDEFINITION_H
-#define SYSMLV2_REDEFINITION_H
+#pragma once
 
 #include <core/features/Subsetting.h>
 
@@ -32,5 +31,3 @@ namespace KerML::Entities {
     };
 }
 
-
-#endif //SYSMLV2_REDEFINITION_H

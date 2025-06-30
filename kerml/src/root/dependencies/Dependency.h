@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef SYSMLV2_DEPENDENCY_H
-#define SYSMLV2_DEPENDENCY_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -61,5 +60,3 @@ namespace KerML::Entities{
         std::shared_ptr<Element> Supplier;
     };
 } // KerML::Entities
-
-#endif //SYSMLV2_DEPENDENCY_H

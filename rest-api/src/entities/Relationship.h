@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_RELATIONSHIP_H
-#define DIGITALTWIN_RELATIONSHIP_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -24,5 +23,3 @@ namespace SysMLv2::Entities {
 
     };
 } // SysMLv2
-
-#endif //DIGITALTWIN_RELATIONSHIP_H

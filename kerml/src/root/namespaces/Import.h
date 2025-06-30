@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef SYSMLV2_IMPORT_H
-#define SYSMLV2_IMPORT_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -90,5 +89,3 @@ namespace KerML::Entities {
         std::shared_ptr<Namespace> ImportOwningNamespace;
     };
 } // KerML::Entities
-
-#endif //SYSMLV2_IMPORT_H

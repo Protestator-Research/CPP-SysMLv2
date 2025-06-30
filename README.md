@@ -66,3 +66,16 @@ For the install option use the following command install.
 make install 
 ```
 
+# Autors
+
+## Main Authors:
+
+- Moritz Herzog
+
+## Other Authors:
+
+- Tizian Hoffmann
+
+## SysML v2
+
+The SysML v2 Standard is developed and published by the Object Modelling Group (OMG).

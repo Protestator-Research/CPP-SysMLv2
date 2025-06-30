@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_SYSMLV2DESERIALIZER_H
-#define DIGITALTWIN_SYSMLV2DESERIALIZER_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -45,5 +44,3 @@ namespace SysMLv2 {
     };
 
 } // SysMLv2
-
-#endif //DIGITALTWIN_SYSMLV2DESERIALIZER_H

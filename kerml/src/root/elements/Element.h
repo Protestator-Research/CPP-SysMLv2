@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef SYSMLV2_ELEMENT_H
-#define SYSMLV2_ELEMENT_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -273,7 +272,7 @@ namespace KerML::Entities {
         std::string DeclaredShortName;
 
         /**
-         *
+         * 
          */
         std::string DeclaredName;
 
@@ -338,5 +337,3 @@ namespace KerML::Entities {
 
 } // KerML::Entities
 
-
-#endif //SYSMLV2_ELEMENT_H
