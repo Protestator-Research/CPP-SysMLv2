@@ -27,7 +27,7 @@ namespace KerML::Entities {
     class Relationship;
     class TextualRepresentation;
 }
-
+//---------------------------------------------------------
 
 namespace KerML::Entities {
     /**
@@ -242,6 +242,13 @@ namespace KerML::Entities {
          * @return Description where the element is to be found.
          */
         virtual std::string path();
+
+        /**
+         * 
+         * @param element 
+         * @return 
+         */
+        virtual bool includes(std::shared_ptr<Element> element);
     protected:
         std::vector<std::shared_ptr<Relationship>> ownedRelationships();
 

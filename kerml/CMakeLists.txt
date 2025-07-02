@@ -54,7 +54,8 @@ set(CORE_FEATURES_HEADER
         src/core/features/ReferenceSubsetting.h
         src/core/features/FeatureChaining.h
         src/core/features/FeatureMembership.h
-        src/core/features/EndFeatureMembership.h)
+        src/core/features/EndFeatureMembership.h
+        src/core/features/CrossSubsetting.h)
 
 set(KERNEL_DATATYPES_HEADER
         src/kernel/datatypes/DataType.h)
@@ -185,6 +186,7 @@ add_library(kerml
         src/core/features/FeatureChaining.cpp
         src/core/features/FeatureMembership.cpp
         src/core/features/EndFeatureMembership.cpp
+        src/core/features/CrossSubsetting.cpp
         src/kernel/datatypes/DataType.cpp
         src/kernel/classes/Class.cpp
         src/kernel/associations/Association.cpp

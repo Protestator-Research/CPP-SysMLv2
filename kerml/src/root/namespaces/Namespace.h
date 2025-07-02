@@ -292,7 +292,7 @@ namespace KerML::Entities {
         void appendOwnedMembership(std::vector<std::shared_ptr<Membership>> ownedMembership);
     private:
         /**
-         * Is Imported is only a variable that might be subject zo change since this is a variable to indicate an instance,
+         * Is Imported is only a variable that might be subject to change since this is a variable to indicate an instance,
          * that this namespace is imported.
          */
         bool IsImported;

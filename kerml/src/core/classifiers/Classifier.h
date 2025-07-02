@@ -16,10 +16,12 @@
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
+namespace KerML::Entities
+{
+	class Subclassification;
+}
+//---------------------------------------------------------
 namespace KerML::Entities {
-    class Subclassification;
-
-
     /**
      * @class Classifier
      * @version 1.0 Beta 4
@@ -27,7 +29,8 @@ namespace KerML::Entities {
      * @brief Representation of the Abstract Syntax of one Classifier.
      * @see Type
      */
-    class Classifier : public Type{
+    class Classifier : public Type
+	{
     public:
 	    /**
 	     * Constructor, with default values to be initialied
@@ -36,10 +39,19 @@ namespace KerML::Entities {
 	     * @see boost::uuids::random_generator
 	     */
 	    explicit Classifier(boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
+	    /**
+	     * Constructor, allowing to set a classifier name.
+	     * @param classifierName The name of the Classifier, stemming from the Constructor of the Namespace class.
+		 * @param elementID The Id of the specific element. This is initialized by a random UUID.
+		 * @param owner The owner of the element, given as a shared pointer. By default initialized by a nullptr.
+		 * @see KerML::Entities::Namespace
+	     */
+	    explicit Classifier(std::string classifierName, boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
 
-    	explicit Classifier(std::string namespaceName, boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
-
-    	~Classifier() override = default;
+	    /**
+	     * Destructor
+	     */
+	    ~Classifier() override = default;
 
     protected:
 	    /**

@@ -5,7 +5,9 @@
 #include "Feature.h"
 #include <vector>
 
+#include "Redefinition.h"
 #include "ReferenceSubsetting.h"
+#include "CrossSubsetting.h"
 
 namespace KerML::Entities
 {
@@ -178,7 +180,10 @@ namespace KerML::Entities
 
 	std::optional<std::shared_ptr<Feature>> Feature::namingFeature() const
 	{
-		if ()
+		if (OwnedRedefinition.empty())
+			return {};
+
+		return OwnedRedefinition.front()->redefinedFeature();
 	}
 
 	std::vector<std::shared_ptr<Type>> Feature::supertypes(bool excludeImplied)
@@ -186,12 +191,18 @@ namespace KerML::Entities
 		return Type::supertypes(excludeImplied);
 	}
 
-	bool Feature::redefinedFeature(std::shared_ptr<Feature> redefinedFeature)
+	bool Feature::redefines(std::shared_ptr<Feature> redefinedFeature)
 	{
+		for (const auto& redefinition : OwnedRedefinition)
+			if (redefinition->redefinedFeature()->includes(redefinedFeature))
+				return true;
+
+		return false;
 	}
 
 	bool Feature::redefinesFromLibrary(std::string libraryFeatureName)
 	{
+
 	}
 
 	bool Feature::subsetsChain(std::shared_ptr<Feature> first, std::shared_ptr<Feature> second)
@@ -297,10 +308,25 @@ namespace KerML::Entities
 
 	std::optional<std::shared_ptr<Feature>> Feature::crossFeature() const
 	{
+		if (OwnedCrossSubsetting == nullptr)
+			return {};
+
+		const int CrossFeatureIndexInChainingFeature = 1;
+
+		//TODO Too sketchy for me, this needs fixing. Implementation according to the Standard. This might cause many issues. 
+		return OwnedCrossSubsetting->crossedFeature()->ChainingFeature.at(CrossFeatureIndexInChainingFeature);
 	}
 
 	void Feature::setCrossFeature(std::optional<std::shared_ptr<Feature>> crossFeature)
 	{
+		//TODO Too sketchy for me, this needs fixing. Implementation according to the Standard. This might cause many issues. 
+		if (crossFeature.has_value())
+			return;
+
+        const int CrossFeatureIndexInChainingFeature = 1;
+
+		if (OwnedCrossSubsetting)
+            OwnedCrossSubsetting->crossedFeature()->ChainingFeature[CrossFeatureIndexInChainingFeature] = crossFeature.value();
 	}
 
 	std::optional<std::shared_ptr<Type>> Feature::endOwningType() const

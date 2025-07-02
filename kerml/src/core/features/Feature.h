@@ -29,10 +29,20 @@ namespace KerML::Entities {
 	 */
 	class Feature : public Type, public std::enable_shared_from_this<Feature> {
     public:
-        Feature();
-        ~Feature() override = default;
+		/**
+		 * Constuctor
+		 */
+		Feature();
+		/**
+		 * Destructor
+		 */
+		~Feature() override = default;
 
-        void setIsUnique(bool isUnique);
+		/**
+		 * 
+		 * @param isUnique 
+		 */
+		void setIsUnique(bool isUnique);
         bool isUnique();
 
         void setIsOrdered(bool isOrdered);
@@ -75,7 +85,7 @@ namespace KerML::Entities {
 
         std::optional<std::shared_ptr<Feature>> namingFeature() const;
         std::vector<std::shared_ptr<Type>> supertypes(bool excludeImplied) override;
-        bool redefinedFeature(std::shared_ptr<Feature> redefinedFeature);
+        bool redefines(std::shared_ptr<Feature> redefinedFeature);
         bool redefinesFromLibrary(std::string libraryFeatureName);
         bool subsetsChain(std::shared_ptr<Feature> first, std::shared_ptr<Feature> second);
         void isCompatibleWith(std::shared_ptr<Type> otherType) override;
@@ -169,7 +179,6 @@ namespace KerML::Entities {
         std::vector<std::shared_ptr<TypeFeaturing>> OwnedTypeFeaturing;
 
         std::vector<std::shared_ptr<Feature>> ChainingFeature;
-        std::shared_ptr<Feature> CrossFeature;
 
         std::shared_ptr<Type> EndOwningType;
 

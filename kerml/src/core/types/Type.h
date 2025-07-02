@@ -33,27 +33,27 @@ namespace KerML::Entities {
 	     * @param owner 
 	     */
 	    explicit Type(boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
-        explicit Type(std::string namespaceName, boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
+        explicit Type(std::string typeName, boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
         ~Type() override = default;
 
-        std::vector<std::shared_ptr<Membership>> visibleMemberships(std::vector<std::shared_ptr<Namespace>> excluded, bool isRecursive, bool includeAll) override;
-        std::vector<std::shared_ptr<Membership>> inheritedMemberships(std::vector<std::shared_ptr<Namespace>> excludedNamespace, std::vector<std::shared_ptr<Type>> excludedTypes, bool excludeImplied);
-        std::vector<std::shared_ptr<Membership>> inheritableMemberships(std::vector<std::shared_ptr<Namespace>> excludedNamespace, std::vector<std::shared_ptr<Type>> excludedTypes, bool excludeImplied);
-        std::vector<std::shared_ptr<Membership>> nonPrivateMemberships(std::vector<std::shared_ptr<Namespace>> excludedNamespace, std::vector<std::shared_ptr<Type>> excludedTypes, bool excludeImplied);
-        std::vector<std::shared_ptr<Membership>> removeRedefinedFeature(std::vector<std::shared_ptr<Membership>> memberships);
-        std::vector<std::shared_ptr<Feature>> allRedefinedFeaturesOf(std::shared_ptr<Membership> membership);
+        [[nodiscard]] std::vector<std::shared_ptr<Membership>> visibleMemberships(std::vector<std::shared_ptr<Namespace>> excluded, bool isRecursive, bool includeAll) override;
+        [[nodiscard]] std::vector<std::shared_ptr<Membership>> inheritedMemberships(std::vector<std::shared_ptr<Namespace>> excludedNamespace, std::vector<std::shared_ptr<Type>> excludedTypes, bool excludeImplied);
+        [[nodiscard]] std::vector<std::shared_ptr<Membership>> inheritableMemberships(std::vector<std::shared_ptr<Namespace>> excludedNamespace, std::vector<std::shared_ptr<Type>> excludedTypes, bool excludeImplied);
+        [[nodiscard]] std::vector<std::shared_ptr<Membership>> nonPrivateMemberships(std::vector<std::shared_ptr<Namespace>> excludedNamespace, std::vector<std::shared_ptr<Type>> excludedTypes, bool excludeImplied);
+        [[nodiscard]] std::vector<std::shared_ptr<Membership>> removeRedefinedFeature(std::vector<std::shared_ptr<Membership>> memberships);
+        [[nodiscard]] std::vector<std::shared_ptr<Feature>> allRedefinedFeaturesOf(std::shared_ptr<Membership> membership);
 
         FeatureDirectionKind directionOf(std::shared_ptr<Feature> feature);
         FeatureDirectionKind directionOfExcluding(std::shared_ptr<Feature> feature, std::vector<std::shared_ptr<Type>> excluded);
 
-        virtual std::vector<std::shared_ptr<Type>> supertypes(bool excludeImplied);
-        std::vector<std::shared_ptr<Type>> allSupertypes();
+        [[nodiscard]] virtual std::vector<std::shared_ptr<Type>> supertypes(bool excludeImplied);
+        [[nodiscard]] std::vector<std::shared_ptr<Type>> allSupertypes();
 
         bool specializes(std::shared_ptr<Type> supertype);
         bool specializesFromLibrary(std::string libraryTypeName);
         virtual void isCompatibleWith(std::shared_ptr<Type> otherType);
 
-        std::vector<std::shared_ptr<Multiplicity>> multiplicities();
+        [[nodiscard]] std::vector<std::shared_ptr<Multiplicity>> multiplicities();
 
         bool isAbstract();
         void setAbstract(bool isAbstract);
@@ -65,47 +65,47 @@ namespace KerML::Entities {
         void setIsConjugated(bool isConjugated);
         bool isConjugated();
 
-        std::vector<std::shared_ptr<Type>> differencingType() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Type>> differencingType() const;
         void setDifferencingType(std::vector<std::shared_ptr<Type>> differencingType);
         void appendDifferencingType(std::shared_ptr<Type> differencingType);
         void appendDifferencingType(std::vector<std::shared_ptr<Type>> differencingType);
 
-        std::vector<std::shared_ptr<Feature>> directedFeature() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Feature>> directedFeature() const;
         void setDirectedFeature(std::vector<std::shared_ptr<Feature>> directedFeature);
         void appendDirectedFeature(std::shared_ptr<Feature> directedFeature);
         void appendDirectedFeature(std::vector<std::shared_ptr<Feature>> directedFeature);
 
-        std::vector<std::shared_ptr<Feature>> endFeature() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Feature>> endFeature() const;
         void setEndFeatures(std::vector<std::shared_ptr<Feature>> endFeatures);
         void appendEndFeatures(std::shared_ptr<Feature> endFeature);
         void appendEndFeatures(std::vector<std::shared_ptr<Feature>> endFeatures);
 
-        std::vector<std::shared_ptr<Feature>> features() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Feature>> features() const;
         void setFeatures(std::vector<std::shared_ptr<Feature>> features);
         void appendFeatures(std::shared_ptr<Feature> feature);
         void appendFeatures(std::vector<std::shared_ptr<Feature>> features);
 
-        std::vector<std::shared_ptr<FeatureMembership>> featureMemberships() const;
+        [[nodiscard]] std::vector<std::shared_ptr<FeatureMembership>> featureMemberships() const;
         void setFeatureMemberships(std::vector<std::shared_ptr<FeatureMembership>> featureMemberships);
         void appendFeatureMemberships(std::shared_ptr<FeatureMembership> featureMembership);
         void appendFeatureMemberships(std::vector<std::shared_ptr<FeatureMembership>> featureMemberships);
 
-        std::vector<std::shared_ptr<Feature>> inheritedFeature() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Feature>> inheritedFeature() const;
         void setInheritedFeature(std::vector<std::shared_ptr<Feature>> inheritedFeature);
         void appendInheritedFeature(std::shared_ptr<Feature> inheritedFeature);
         void appendInheritedFeature(std::vector<std::shared_ptr<Feature>> inheritedFeature);
 
-        std::vector<std::shared_ptr<Membership>> inheritedMemberships() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Membership>> inheritedMemberships() const;
         void setInheritedMembership(std::vector<std::shared_ptr<Membership>> inheritedMembership);
         void appendInheritedMembership(std::shared_ptr<Membership> inheritedMembership);
         void appendInheritedMembership(std::vector<std::shared_ptr<Membership>> inheritedMembership);
 
-        std::vector<std::shared_ptr<Feature>> input() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Feature>> input() const;
         void setInput(std::vector<std::shared_ptr<Feature>> input);
         void appendInput(std::shared_ptr<Feature> input);
         void appendInput(std::vector<std::shared_ptr<Feature>> input);
 
-        std::vector<std::shared_ptr<Type>> intersectingType() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Type>> intersectingType() const;
         void setIntersectingType(std::vector<std::shared_ptr<Type>> intersectingType);
         void appendIntersectingType(std::shared_ptr<Type> intersectingType);
         void appendIntersectingType(std::vector<std::shared_ptr<Type>> intersectingType);
@@ -113,7 +113,7 @@ namespace KerML::Entities {
         std::optional<std::shared_ptr<Multiplicity>> multiplicity();
         void setMultiplicity(std::shared_ptr<Multiplicity> multiplicity);
 
-        std::vector<std::shared_ptr<Feature>> output() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Feature>> output() const;
         void setOutput(std::vector<std::shared_ptr<Feature>> output);
         void appendOutput(std::shared_ptr<Feature> output);
         void appendOutput(std::vector<std::shared_ptr<Feature>> output);
@@ -121,47 +121,47 @@ namespace KerML::Entities {
         std::optional<std::shared_ptr<Conjugation>> conjugation();
         void setConjugation(std::shared_ptr<Conjugation> conjugation);
 
-        std::vector<std::shared_ptr<Differencing>> ownedDifferencing() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Differencing>> ownedDifferencing() const;
         void setOwnedDifferencing(std::vector<std::shared_ptr<Differencing>> ownedDifferencing);
         void appendOwnedDifferencing(std::shared_ptr<Differencing> ownedDifferencing);
         void appendOwnedDifferencing(std::vector<std::shared_ptr<Differencing>> ownedDifferencing);
 
-        std::vector<std::shared_ptr<Disjoining>> ownedDisjoining() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Disjoining>> ownedDisjoining() const;
         void setOwnedDisjoining(std::vector<std::shared_ptr<Disjoining>> ownedDisjoining);
         void appendOwnedDisjoining(std::shared_ptr<Disjoining> ownedDisjoining);
         void appendOwnedDisjoining(std::vector<std::shared_ptr<Disjoining>> ownedDisjoining);
 
-        std::vector<std::shared_ptr<Feature>> ownedEndFeature() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Feature>> ownedEndFeature() const;
         void setOwnedEndFeature(std::vector<std::shared_ptr<Feature>> ownedEndFeature);
         void appendOwnedEndFeature(std::shared_ptr<Feature> ownedEndFeature);
         void appendOwnedEndFeature(std::vector<std::shared_ptr<Feature>> ownedEndFeature);
 
-        std::vector<std::shared_ptr<Feature>> ownedFeature() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Feature>> ownedFeature() const;
         void setOwnedFeature(std::vector<std::shared_ptr<Feature>> ownedFeature);
         void appendOwnedFeature(std::shared_ptr<Feature> ownedFeature);
         void appendOwnedFeature(std::vector<std::shared_ptr<Feature>> ownedFeature);
 
-        std::vector<std::shared_ptr<FeatureMembership>> ownedFeatureMembership() const;
+        [[nodiscard]] std::vector<std::shared_ptr<FeatureMembership>> ownedFeatureMembership() const;
         void setOwnedFeatureMembership(std::vector<std::shared_ptr<FeatureMembership>> ownedFeatureMembership);
         void appendOwnedFeatureMembership(std::shared_ptr<FeatureMembership> ownedFeatureMembership);
         void appendOwnedFeatureMembership(std::vector<std::shared_ptr<FeatureMembership>> ownedFeatureMembership);
 
-        std::vector<std::shared_ptr<Intersecting>> ownedIntersecting() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Intersecting>> ownedIntersecting() const;
         void setOwnedIntersecting(std::vector<std::shared_ptr<Intersecting>> ownedIntersecting);
         void appendOwnedIntersecting(std::shared_ptr<Intersecting> ownedIntersecting);
         void appendOwnedIntersecting(std::vector<std::shared_ptr<Intersecting>> ownedIntersecting);
 
-        std::vector<std::shared_ptr<Specialization>> ownedSpecialization() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Specialization>> ownedSpecialization() const;
         void setOwnedSpecialization(std::vector<std::shared_ptr<Specialization>> ownedSpecialization);
         void appendOwnedSpecialization(std::shared_ptr<Specialization> ownedSpecialization);
         void appendOwnedSpecialization(std::vector<std::shared_ptr<Specialization>> ownedSpecialization);
 
-        std::vector<std::shared_ptr<Unioning>> ownedUnioning() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Unioning>> ownedUnioning() const;
         void setOwnedUnioning(std::vector<std::shared_ptr<Unioning>> ownedUnioning);
         void appendOwnedUnioning(std::shared_ptr<Unioning> ownedUnioning);
         void appendOwnedUnioning(std::vector<std::shared_ptr<Unioning>> ownedUnioning);
 
-        std::vector<std::shared_ptr<Type>> unioningType() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Type>> unioningType() const;
         void setUnioningType(std::vector<std::shared_ptr<Type>> unioningType);
         void appendUnioningType(std::shared_ptr<Type> unioningType);
         void appendUnioningType(std::vector<std::shared_ptr<Type>> unioningType);
@@ -191,8 +191,5 @@ namespace KerML::Entities {
         std::vector<std::shared_ptr<Specialization>> OwnedSpecialization;
         std::vector<std::shared_ptr<Unioning>> OwnedUnioning;
         std::vector<std::shared_ptr<Type>> UnioningType;
-
-
-
     };
 } // KerML::Entities
