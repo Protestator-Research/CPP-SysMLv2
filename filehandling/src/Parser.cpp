@@ -24,7 +24,8 @@ namespace SysMLv2::Files {
         std::cout << parser.start()->toStringTree() << std::endl;
         std::vector<std::shared_ptr<KerML::Entities::Element>> elements;
         auto syntaxErrors  = listener->getSyntaxErrors();
-        std::vector<std::shared_ptr<ParserError>> errorVector = std::vector<std::shared_ptr<SysMLv2::Files::ParserError>>(syntaxErrors.size());
+        std::vector<std::shared_ptr<ParserError>> errorVector;
+        errorVector.reserve(syntaxErrors.size());
         for(const auto& error:syntaxErrors) {
             errorVector.push_back(std::make_shared<ParserError>(boost::uuids::random_generator()(),"",ErrorType::ERROR, error->message()));
         }
