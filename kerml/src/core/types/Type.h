@@ -6,6 +6,7 @@
 #include "../../root/namespaces/Namespace.h"
 #include "../features/FeatureDirectionKind.h"
 
+
 namespace KerML::Entities {
     class Membership;
     class Feature;
@@ -17,13 +18,14 @@ namespace KerML::Entities {
     class Intersecting;
     class Specialization;
     class Unioning;
+}
 
+namespace KerML::Entities {
     /**
      * @class Type
      * @author Moritz Herzog
      * @version 1.0 Beta 3
      * @brief Represents the Type Class according to the SysMLv2 Standard.
-     * 
      */
     class Type : public Namespace{
     public:
@@ -33,10 +35,33 @@ namespace KerML::Entities {
 	     * @param owner 
 	     */
 	    explicit Type(boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
+        /**
+         * Constructor to allow
+         * @param typeName
+         * @param elementID
+         * @param owner
+         */
         explicit Type(std::string typeName, boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
+        /**
+         * Destructor
+         */
         ~Type() override = default;
 
+        /**
+         *
+         * @param excluded
+         * @param isRecursive
+         * @param includeAll
+         * @return
+         */
         [[nodiscard]] std::vector<std::shared_ptr<Membership>> visibleMemberships(std::vector<std::shared_ptr<Namespace>> excluded, bool isRecursive, bool includeAll) override;
+        /**
+         *
+         * @param excludedNamespace
+         * @param excludedTypes
+         * @param excludeImplied
+         * @return
+         */
         [[nodiscard]] std::vector<std::shared_ptr<Membership>> inheritedMemberships(std::vector<std::shared_ptr<Namespace>> excludedNamespace, std::vector<std::shared_ptr<Type>> excludedTypes, bool excludeImplied);
         [[nodiscard]] std::vector<std::shared_ptr<Membership>> inheritableMemberships(std::vector<std::shared_ptr<Namespace>> excludedNamespace, std::vector<std::shared_ptr<Type>> excludedTypes, bool excludeImplied);
         [[nodiscard]] std::vector<std::shared_ptr<Membership>> nonPrivateMemberships(std::vector<std::shared_ptr<Namespace>> excludedNamespace, std::vector<std::shared_ptr<Type>> excludedTypes, bool excludeImplied);
@@ -165,6 +190,7 @@ namespace KerML::Entities {
         void setUnioningType(std::vector<std::shared_ptr<Type>> unioningType);
         void appendUnioningType(std::shared_ptr<Type> unioningType);
         void appendUnioningType(std::vector<std::shared_ptr<Type>> unioningType);
+
     private:
         bool IsAbstract;
         bool IsSufficient;

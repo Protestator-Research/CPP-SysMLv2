@@ -4,10 +4,15 @@
 
 #include "Feature.h"
 #include <vector>
+#include <unordered_set>
+#include <stack>
 
 #include "Redefinition.h"
 #include "ReferenceSubsetting.h"
 #include "CrossSubsetting.h"
+#include "Subsetting.h"
+#include "../../root/namespaces/Membership.h"
+#include "../../root/namespaces/VisibilityKind.h"
 
 namespace KerML::Entities
 {
@@ -104,7 +109,7 @@ namespace KerML::Entities
 		return IsConstant;
 	}
 
-	void Feature::setDirection(FeatureDirectionKind direction)
+	void Feature::setDirection(std::optional<FeatureDirectionKind> direction)
 	{
 		Direction = direction;
 	}
@@ -154,7 +159,7 @@ namespace KerML::Entities
 		_TypeFeaturing.push_back(typeFeaturing);
 	}
 
-	FeatureDirectionKind Feature::directionFor(std::shared_ptr<Type> type)
+	FeatureDirectionKind Feature::directionFor(std::shared_ptr<Type>)
 	{
 		return FeatureDirectionKind::IN_OUT;
 	}
@@ -188,7 +193,21 @@ namespace KerML::Entities
 
 	std::vector<std::shared_ptr<Type>> Feature::supertypes(bool excludeImplied)
 	{
-		return Type::supertypes(excludeImplied);
+        if(featureTarget()==shared_from_this())
+            return supertypes(excludeImplied);
+
+        std::vector<std::shared_ptr<Type>> returnValue;
+
+        for(const auto& element : Type::supertypes(excludeImplied)){
+            try {
+                const auto value = std::dynamic_pointer_cast<Feature>(element);
+                if(value)
+                    returnValue.push_back(value);
+            }catch (...){
+
+            }
+        }
+		return returnValue;
 	}
 
 	bool Feature::redefines(std::shared_ptr<Feature> redefinedFeature)
@@ -202,11 +221,41 @@ namespace KerML::Entities
 
 	bool Feature::redefinesFromLibrary(std::string libraryFeatureName)
 	{
+        if(libraryFeatureName.empty())
+            return false;
 
+        for(const auto& redefinition : ownedRedefinition()){
+            if(redefinition->effectiveName()==libraryFeatureName)
+                return true;
+        }
+
+        return false;
 	}
 
 	bool Feature::subsetsChain(std::shared_ptr<Feature> first, std::shared_ptr<Feature> second)
 	{
+        if( !first || !second || first == second)
+            return false;
+
+        std::unordered_set<std::shared_ptr<Feature>> visited;
+        std::stack<std::shared_ptr<Feature>> toVisit;
+        toVisit.push(first);
+
+        while (!toVisit.empty()) {
+            const auto current = toVisit.top();
+            toVisit.pop();
+
+            if(!current || visited.contains(current))
+                continue;
+
+            for(const auto& subSetting : current->OwnedSubsetting) {
+                if(subSetting->subsettedFeature() == second)
+                    return true;
+
+                toVisit.push(subSetting->subsettedFeature());
+            }
+        }
+        return false;
 	}
 
 	void Feature::isCompatibleWith(std::shared_ptr<Type> otherType)
@@ -216,38 +265,137 @@ namespace KerML::Entities
 
 	std::vector<std::shared_ptr<Feature>> Feature::typingFeatures()
 	{
+        if(isConjugated()) {
+            std::vector<std::shared_ptr<Feature>> typingFeatures;
+            for(const auto& supertype : Type::supertypes(false)) {
+                const auto value = std::dynamic_pointer_cast<Feature>(supertype);
+                if(value)
+                    typingFeatures.push_back(value);
+            }
+            return typingFeatures;
+        }
+
+        std::vector<std::shared_ptr<Feature>> typingFeatures;
+        for(const auto & subsetting : ownedSubsetting()){
+            typingFeatures.push_back(subsetting->subsettedFeature());
+        }
+
+        return typingFeatures;
 	}
 
 	std::vector<std::shared_ptr<Type>> Feature::asCartesianProduct()
 	{
+        if(isCartesianProduct()) {
+            std::vector<std::shared_ptr<Type>> value = {OwnedCrossSubsetting->crossedFeature()};
+            value.insert(value.end(), ownedEndFeature().begin(), ownedEndFeature().end());
+            return value;
+        }
+
+        return std::vector<std::shared_ptr<Type>>();
 	}
 
 	bool Feature::isCartesianProduct()
 	{
+        return IsCartesianProduct;
 	}
 
 	bool Feature::isOwnedCrossFeature()
 	{
+        return (OwnedCrossSubsetting!= nullptr);
 	}
 
 	std::optional<std::shared_ptr<Feature>> Feature::ownedCrossFeature()
 	{
+        return OwnedCrossSubsetting->crossedFeature();
 	}
 
 	std::vector<std::shared_ptr<Feature>> Feature::allRedefinedFeatures()
 	{
+        std::vector<std::shared_ptr<Feature>> redefinitions;
+        for(const auto& redefinition : OwnedRedefinition)
+            redefinitions.push_back(redefinition->redefinedFeature());
+
+        return redefinitions;
 	}
 
-	bool Feature::isFeaturedWithin(std::optional<std::shared_ptr<Type>>)
+	bool Feature::isFeaturedWithin(std::optional<std::shared_ptr<Type>> type)
 	{
+        bool returnValue = false;
+        if(!type.has_value()) {
+            const std::string namespaceSearchedFor = "Base::Anything";
+            const auto baseAnythingResolved = resolveGlobal(namespaceSearchedFor);
+            if(baseAnythingResolved.has_value()) {
+                const auto value = baseAnythingResolved.value()->ownedElements()[0];
+                const auto AnythingType = std::dynamic_pointer_cast<Type>(value);
+                for(const auto& featuredType : featuringType()){
+                    returnValue|=std::dynamic_pointer_cast<Feature>(featuredType)->isFeaturedWithin(AnythingType);
+                }
+            }
+        }else {
+            if(shared_from_this() == type.value())
+                return true;
+
+            for(const auto& featuredType : featuringType()){
+                returnValue|=std::dynamic_pointer_cast<Feature>(featuredType)->isFeaturedWithin(type.value());
+            }
+        }
+        return returnValue;
 	}
 
 	bool Feature::canAccess(std::shared_ptr<Feature> feature)
 	{
-	}
+        if(!feature)
+            return false;
+
+        if(feature.get() == this)
+            return true;
+
+        for(const auto& membership : memberships()) {
+            if (membership->includes(feature)) {
+                switch (membership->visibility()) {
+                    case VisibilityKind::PUBLIC:
+                    case VisibilityKind::PROTECTED:
+                        return true;
+                    case VisibilityKind::PRIVATE:
+                        return false;
+                }
+            }
+        }
+        return false;
+    }
 
 	bool Feature::isFeaturingType(std::shared_ptr<Type> type)
 	{
+        if(!type)
+            return false;
+
+        std::unordered_set<std::shared_ptr<Type>> visited;
+        std::stack<std::shared_ptr<Type>> toVisit;
+
+        for(const auto& featuredType : featuringType())
+            if(featuredType)
+                toVisit.push(featuredType);
+
+        while (!toVisit.empty()) {
+            std::shared_ptr<Type> current = toVisit.top();
+            toVisit.pop();
+
+            if(!current || visited.contains(current))
+                continue;
+
+            visited.insert(current);
+
+            if(current==type)
+                return true;
+
+            if(std::dynamic_pointer_cast<Feature>(current)) {
+                for (const auto &superType: std::dynamic_pointer_cast<Feature>(current)->featuringType())
+                    if(superType)
+                        toVisit.push(superType);Í
+            }
+        }
+
+        return false;
 	}
 
 	void Feature::setFeaturingType(std::vector<std::shared_ptr<Type>> featuringType)
@@ -292,18 +440,22 @@ namespace KerML::Entities
 
 	void Feature::setChainingFeature(std::vector<std::shared_ptr<Feature>> chainingFeature)
 	{
+        ChainingFeature = chainingFeature;
 	}
 
 	std::vector<std::shared_ptr<Feature>> Feature::chainingFeature() const
 	{
+        return ChainingFeature;
 	}
 
 	void Feature::appendChainingFeature(std::vector<std::shared_ptr<Feature>> chainingFeature)
 	{
+        ChainingFeature.insert(ChainingFeature.end(), chainingFeature.begin(), chainingFeature.end());
 	}
 
 	void Feature::appendChainingFeature(std::shared_ptr<Feature> chainingFeature)
 	{
+        ChainingFeature.push_back(chainingFeature);
 	}
 
 	std::optional<std::shared_ptr<Feature>> Feature::crossFeature() const
@@ -331,10 +483,16 @@ namespace KerML::Entities
 
 	std::optional<std::shared_ptr<Type>> Feature::endOwningType() const
 	{
+        if(EndOwningType== nullptr)
+            return {};
+
+        return EndOwningType;
 	}
 
-	void Feature::setEndOwningType(std::optional<std::shared_ptr<Type>> crossFeature)
+	void Feature::setEndOwningType(std::optional<std::shared_ptr<Type>> endOwningType)
 	{
+        if(endOwningType.has_value())
+            EndOwningType = *endOwningType;
 	}
 
 	std::shared_ptr<Feature> Feature::featureTarget()
@@ -347,58 +505,76 @@ namespace KerML::Entities
 
 	std::optional<std::shared_ptr<CrossSubsetting>> Feature::ownedCrossSubsetting() const
 	{
+        if(OwnedCrossSubsetting == nullptr)
+            return {};
+
+        return OwnedCrossSubsetting;
 	}
 
 	void Feature::setOwnedCrossSubsetting(std::optional<std::shared_ptr<CrossSubsetting>> ownedCrossSubsetting)
 	{
+        if(ownedCrossSubsetting.has_value())
+            OwnedCrossSubsetting = *ownedCrossSubsetting;
 	}
 
 	void Feature::setOwnedFeatureChaining(std::vector<std::shared_ptr<FeatureChaining>> ownedFeatureChaining)
 	{
+        OwnedFeatureChaining = ownedFeatureChaining;
 	}
 
 	std::vector<std::shared_ptr<FeatureChaining>> Feature::ownedFeatureChaining() const
 	{
+        return OwnedFeatureChaining;
 	}
 
 	void Feature::appendOwnedFeatureChaining(std::vector<std::shared_ptr<FeatureChaining>> ownedFeatureChaining)
 	{
+        OwnedFeatureChaining.insert(OwnedFeatureChaining.end(),ownedFeatureChaining.begin(), ownedFeatureChaining.end());
 	}
 
 	void Feature::appendOwnedFeatureChaining(std::shared_ptr<FeatureChaining> ownedFeatureChaining)
 	{
+        OwnedFeatureChaining.push_back(ownedFeatureChaining);
 	}
 
 	void Feature::setOwnedFeatureInverting(std::vector<std::shared_ptr<FeatureInverting>> ownedFeatureInverting)
 	{
+        OwnedFeatureInverting = ownedFeatureInverting;
 	}
 
 	std::vector<std::shared_ptr<FeatureInverting>> Feature::ownedFeatureInverting() const
 	{
+        return OwnedFeatureInverting;
 	}
 
 	void Feature::appendOwnedFeatureInverting(std::vector<std::shared_ptr<FeatureInverting>> ownedFeaureInverting)
 	{
+        OwnedFeatureInverting.insert(OwnedFeatureInverting.end(), ownedFeaureInverting.begin(), ownedFeaureInverting.end());
 	}
 
-	void Feature::appendOwnedFeatureInverting(std::shared_ptr<FeatureTyping> ownedFeatureInverting)
+	void Feature::appendOwnedFeatureInverting(std::shared_ptr<FeatureInverting> ownedFeatureInverting)
 	{
+        OwnedFeatureInverting.push_back(ownedFeatureInverting);
 	}
 
 	void Feature::setOwnedRedefinition(std::vector<std::shared_ptr<Redefinition>> ownedRedefinition)
 	{
+        OwnedRedefinition = ownedRedefinition;
 	}
 
 	std::vector<std::shared_ptr<Redefinition>> Feature::ownedRedefinition() const
 	{
+        return OwnedRedefinition;
 	}
 
 	void Feature::appendOwnedRedefinition(std::vector<std::shared_ptr<Redefinition>> ownedRedefinition)
 	{
+        OwnedRedefinition.insert(OwnedRedefinition.end(), ownedRedefinition.begin(), ownedRedefinition.end());
 	}
 
 	void Feature::appendOwnedRedefinition(std::shared_ptr<Redefinition> ownedRedefinition)
 	{
+        OwnedRedefinition.push_back(ownedRedefinition);
 	}
 
 	void Feature::setOwnedReferenceSubsetting(
@@ -412,53 +588,75 @@ namespace KerML::Entities
 	{
 		if (OwnedReferenceSubsetting == nullptr)
 			return {};
+
+        return OwnedReferenceSubsetting;
 	}
 
 	void Feature::setOwendSubsetting(std::vector<std::shared_ptr<Subsetting>> ownedSubsetting)
 	{
+        OwnedSubsetting = ownedSubsetting;
 	}
 
 	std::vector<std::shared_ptr<Subsetting>> Feature::ownedSubsetting() const
 	{
+        return OwnedSubsetting;
 	}
 
 	void Feature::appendOwnedSubsetting(std::vector<std::shared_ptr<Subsetting>> ownedSubsetting)
 	{
+        OwnedSubsetting.insert(OwnedSubsetting.begin(), ownedSubsetting.begin(), ownedSubsetting.end());
 	}
 
 	void Feature::appendOwnedSubsetting(std::shared_ptr<Subsetting> ownedSubsetting)
 	{
+        OwnedSubsetting.push_back(ownedSubsetting);
 	}
 
 	void Feature::setOwnedTyping(std::vector<std::shared_ptr<FeatureTyping>> ownedTyping)
 	{
+        OwnedTyping = ownedTyping;
 	}
 
 	std::vector<std::shared_ptr<FeatureTyping>> Feature::ownedTyping() const
 	{
+        return OwnedTyping;
 	}
 
 	void Feature::appendOwnedTyping(std::vector<std::shared_ptr<FeatureTyping>> ownedTyping)
 	{
+        OwnedTyping.insert(OwnedTyping.end(), ownedTyping.begin(), ownedTyping.end());
 	}
 
 	void Feature::appendOwnedTyping(std::shared_ptr<FeatureTyping> ownedTyping)
 	{
+        OwnedTyping.push_back(ownedTyping);
 	}
 
 	void Feature::setOwningFeatureMembership(std::optional<std::shared_ptr<FeatureMembership>> owningMembership)
 	{
+        if(owningMembership.has_value())
+            OwningFeatureMembership = *owningMembership;
 	}
 
 	std::optional<std::shared_ptr<FeatureMembership>> Feature::owningFeatureMembership() const
 	{
+        if(OwningFeatureMembership == nullptr)
+            return {};
+
+        return OwningFeatureMembership;
 	}
 
 	void Feature::setOwningType(std::optional<std::shared_ptr<Type>> owningType)
 	{
+        if(owningType.has_value())
+            OwningType = *owningType;
 	}
 
 	std::optional<std::shared_ptr<Type>> Feature::owningType() const
 	{
+        if(OwningType == nullptr)
+            return {};
+
+        return OwningType;
 	}
 }
