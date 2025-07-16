@@ -8,6 +8,11 @@
 
 namespace KerML::Entities {
     class EndFeatureMembership : public FeatureMembership {
+    public:
+        EndFeatureMembership() = delete;
+        EndFeatureMembership(std::shared_ptr<Feature> ownedMemberFeature, std::shared_ptr<Type> owningType,  std::vector<std::shared_ptr<Type>> type);
+        ~EndFeatureMembership() override = default;
 
+        bool isEnd();
     };
 }
