@@ -391,7 +391,7 @@ namespace KerML::Entities
             if(std::dynamic_pointer_cast<Feature>(current)) {
                 for (const auto &superType: std::dynamic_pointer_cast<Feature>(current)->featuringType())
                     if(superType)
-                        toVisit.push(superType);Í
+                        toVisit.push(superType);
             }
         }
 

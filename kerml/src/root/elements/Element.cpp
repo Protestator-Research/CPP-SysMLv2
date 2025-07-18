@@ -180,4 +180,8 @@ namespace KerML::Entities {
         else
             return escapedName().value();
     }
+
+    bool Element::includes(std::shared_ptr<Element>) {
+        return false;
+    }
 } // KerML::Entities
