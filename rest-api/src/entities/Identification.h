@@ -25,7 +25,7 @@
 //---------------------------------------------------------
 
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     /**
      * Defines the Identification between Objects of the REST API. This not in accordance with the SysML standardization,
      * but needed for the compatibility to the AGILA Backend.
@@ -74,17 +74,17 @@ namespace SysMLv2::Entities {
     };
 }
 
-inline void to_json(nlohmann::json &j, const SysMLv2::Entities::Identification &ident) {
-    j = nlohmann::json{{SysMLv2::Entities::JSON_ID_ENTITY, boost::lexical_cast<std::string>(ident.getID())}};
+inline void to_json(nlohmann::json &j, const SysMLv2::REST::Identification &ident) {
+    j = nlohmann::json{{SysMLv2::REST::JSON_ID_ENTITY, boost::lexical_cast<std::string>(ident.getID())}};
 }
 
-inline void to_json(nlohmann::json &j, const SysMLv2::Entities::Identification* ident) {
+inline void to_json(nlohmann::json &j, const SysMLv2::REST::Identification* ident) {
     if(ident != nullptr)
-        j = nlohmann::json{{SysMLv2::Entities::JSON_ID_ENTITY, boost::lexical_cast<std::string>(ident->getID())}};
+        j = nlohmann::json{{SysMLv2::REST::JSON_ID_ENTITY, boost::lexical_cast<std::string>(ident->getID())}};
     else
         j = nlohmann::json(nlohmann::detail::value_t::null);
 }
 
-inline void from_json(const nlohmann::json &j, SysMLv2::Entities::Identification &ident) {
-    ident = SysMLv2::Entities::Identification(boost::uuids::string_generator()(j[SysMLv2::Entities::JSON_ID_ENTITY].get<std::string>()));
+inline void from_json(const nlohmann::json &j, SysMLv2::REST::Identification &ident) {
+    ident = SysMLv2::REST::Identification(boost::uuids::string_generator()(j[SysMLv2::REST::JSON_ID_ENTITY].get<std::string>()));
 }

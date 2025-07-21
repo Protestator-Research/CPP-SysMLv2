@@ -8,7 +8,7 @@
 #include <iostream>
 #include <nlohmann/json.hpp>
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     Branch::Branch(std::string jsonStringOrName) : CommitReference(jsonStringOrName) {
         try {
             nlohmann::json parsedJson = nlohmann::json::parse(jsonStringOrName);

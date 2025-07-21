@@ -30,7 +30,7 @@
 #include "Query.h"
 
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     Project::Project(Project &other) : Record(other) {
         Created = other.Created;
 

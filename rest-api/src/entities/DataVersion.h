@@ -18,13 +18,13 @@
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     class DataIdentity;
     class Data;
 }
 
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     /**
      * The class DataVersion represents a specific version of the Data in its lifecycle
      * @class DataVersion

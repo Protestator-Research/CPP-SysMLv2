@@ -7,7 +7,7 @@
 #include "DataVersion.h"
 #include "../sysmlv2rest_global.h"
 
-namespace SysMLv2 ::Entities {
+namespace SysMLv2::REST {
     class DataVersion;
 
     class SYSMLV2REST_EXPORT DataDifference {

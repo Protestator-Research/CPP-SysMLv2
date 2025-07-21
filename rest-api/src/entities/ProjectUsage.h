@@ -17,12 +17,12 @@
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     class Commit;
     class Project;
 }
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     /**
      * Defines the Project Usage according to the SysML v2 Standard
      * @author Moritz Herzog

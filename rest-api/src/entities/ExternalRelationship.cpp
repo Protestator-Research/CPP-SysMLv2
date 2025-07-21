@@ -4,6 +4,6 @@
 
 #include "ExternalRelationship.h"
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
 
 } // SysMLv2

@@ -21,7 +21,7 @@
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     class DataVersion;
     class DataIdentity;
     class Commit;
@@ -33,7 +33,7 @@ namespace SysMLv2::Entities {
 }
 
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     /**
      * Represents the object of the Project entity.
      * @class Project

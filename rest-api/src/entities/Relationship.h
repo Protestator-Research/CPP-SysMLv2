@@ -18,7 +18,7 @@
 // Forwarding
 //---------------------------------------------------------
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     class SYSMLV2REST_EXPORT Relationship : public Element {
 
     };

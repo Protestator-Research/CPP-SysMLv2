@@ -20,7 +20,7 @@
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     class IEntity;
     class Project;
     class Commit;
@@ -57,7 +57,7 @@ namespace SysMLv2::API {
          * @param barrierString The barrier authentication that is provided by the server.
          * @return A list of all Projects.
          */
-        std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> getAllProjects(std::string barrierString);
+        std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> getAllProjects(std::string barrierString);
 
         /**
          *
@@ -65,7 +65,7 @@ namespace SysMLv2::API {
          * @param barrierString 
          * @return 
          */
-        std::shared_ptr<SysMLv2::Entities::IEntity> postProject(std::shared_ptr<SysMLv2::Entities::Project> project, std::string barrierString);
+        std::shared_ptr<SysMLv2::REST::IEntity> postProject(std::shared_ptr<SysMLv2::REST::Project> project, std::string barrierString);
 
         /**
          * Posts a commit to the Backend to add changes to a project or a branch.
@@ -74,7 +74,7 @@ namespace SysMLv2::API {
          * @param barrierString 
          * @return 
          */
-        std::shared_ptr<SysMLv2::Entities::IEntity> postCommit(std::string projectId, std::shared_ptr<SysMLv2::Entities::Commit> commit, std::string barrierString);
+        std::shared_ptr<SysMLv2::REST::IEntity> postCommit(std::string projectId, std::shared_ptr<SysMLv2::REST::Commit> commit, std::string barrierString);
 
         /**
          *
@@ -82,7 +82,7 @@ namespace SysMLv2::API {
          * @param commitId
          * @return
          */
-        std::shared_ptr<SysMLv2::Entities::IEntity> getCommit(std::string projectId, std::string commitId, std::string barrierString);
+        std::shared_ptr<SysMLv2::REST::IEntity> getCommit(std::string projectId, std::string commitId, std::string barrierString);
 
         /**
          * Downloads and returns all elements of a commit from a specific project.
@@ -91,7 +91,7 @@ namespace SysMLv2::API {
          * @param barrierString The Barrier-String given after login.
          * @return All elements received from the backend.
          */
-        std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> getAllElementsFromCommit(std::string projectId,std::string commitId, std::string barrierString);
+        std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> getAllElementsFromCommit(std::string projectId,std::string commitId, std::string barrierString);
 
         /**
          * Performs the login of the digital twin client and server at the backend. This login is also automatically
@@ -114,7 +114,7 @@ namespace SysMLv2::API {
          * @param projectId Displays the string of the Project UUID
          * @return JSON of the all the Branches.
          */
-        std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> getAllBranchesFroProject(const std::string& projectId, std::string barrierString);
+        std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> getAllBranchesFroProject(const std::string& projectId, std::string barrierString);
 
     protected:
         /**

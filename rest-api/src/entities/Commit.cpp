@@ -18,6 +18,7 @@
 //---------------------------------------------------------
 #include "Commit.h"
 
+#include <iostream>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <nlohmann/detail/meta/std_fs.hpp>
@@ -29,7 +30,7 @@
 #include "JSONEntities.h"
 
 
-namespace SysMLv2::Entities{
+namespace SysMLv2::REST{
     Commit::Commit(boost::uuids::uuid id, std::string name, std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits) : Record(id,name,description){
         Type = "Commit";
         PreviusCommits = previusCommits;
@@ -74,11 +75,14 @@ namespace SysMLv2::Entities{
 
     std::string Commit::serializeToJson() {
         nlohmann::json json = nlohmann::json::parse(Record::serializeToJson());
-
+        std::cout << "Record already done." << std::endl;
         json.erase(JSON_ID_ENTITY);
+        std::cout << "ID Erased" << std::endl;
         std::string jsonElements = "[\r\n";
         for (size_t i = 0; i < Change.size(); i++) {
+            std::cout << "Adding JSON ELEMENT "<< i << std::endl;
             jsonElements += Change[i]->serializeToJson();
+            std::cout << "\r" << jsonElements << std::endl;
 
             if (i != (Change.size()-1))
                 jsonElements += ",\r\n";
@@ -86,7 +90,10 @@ namespace SysMLv2::Entities{
         jsonElements += "]\r\n";
 
         json[JSON_CHANGE_ENTITY] = nlohmann::json::parse(jsonElements);
-        return json.dump(JSON_INTENT);
+        std::cout << "JSON elements added" << std::endl;
+        std::string jsonString = json.dump(JSON_INTENT);
+        std::cout << "Json String created." << std::endl;
+        return jsonString;
     }
 
 }

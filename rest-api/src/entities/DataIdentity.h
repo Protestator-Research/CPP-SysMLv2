@@ -20,13 +20,13 @@
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     class DataVersion;
     class Project;
 }
 
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     /**
      * The class Data Identity is a subclass of Record that represents a unique, version-independent representation of
      * Data through its lifecycle.A Data Identity is associated with 1 or more Data Version records that represent

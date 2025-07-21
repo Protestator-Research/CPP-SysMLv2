@@ -34,12 +34,12 @@
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
-namespace SysMLv2::Entities{
+namespace SysMLv2::REST{
     class Commit;
 }
 
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     /**
      * Represents an abstract baseclass that is used for the SysMLv2 API
      * @class Record

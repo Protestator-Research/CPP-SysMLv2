@@ -11,7 +11,7 @@
 #include <memory>
 #include "../sysmlv2service_global.h"
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     class Query;
     class Project;
     class Data;
@@ -30,7 +30,7 @@ namespace SysMLv2::API {
          * @param project
          * @return
          */
-        virtual std::vector<std::shared_ptr<SysMLv2::Entities::Query>> getQueries(std::shared_ptr<SysMLv2::Entities::Project> project) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::REST::Query>> getQueries(std::shared_ptr<SysMLv2::REST::Project> project) = 0;
 
         /**
          *
@@ -38,7 +38,7 @@ namespace SysMLv2::API {
          * @param queryId
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::Entities::Query> getQueryById(std::shared_ptr<SysMLv2::Entities::Project> project, boost::uuids::uuid queryId) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Query> getQueryById(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid queryId) = 0;
 
         /**
          *
@@ -50,7 +50,7 @@ namespace SysMLv2::API {
          * @param orderBy
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::Entities::Query> createQuery(std::string name, std::shared_ptr<SysMLv2::Entities::Project> project, std::vector<std::string> select, std::vector<std::shared_ptr<SysMLv2::Entities::Data>> scope, std::shared_ptr<SysMLv2::Entities::Constraint> where, std::vector<std::string> orderBy) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Query> createQuery(std::string name, std::shared_ptr<SysMLv2::REST::Project> project, std::vector<std::string> select, std::vector<std::shared_ptr<SysMLv2::REST::Data>> scope, std::shared_ptr<SysMLv2::REST::Constraint> where, std::vector<std::string> orderBy) = 0;
 
         /**
          *
@@ -58,7 +58,7 @@ namespace SysMLv2::API {
          * @param updatedQuery
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::Entities::Query> updateQuery(std::shared_ptr<SysMLv2::Entities::Project> project, std::shared_ptr<SysMLv2::Entities::Query> updatedQuery) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Query> updateQuery(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Query> updatedQuery) = 0;
 
         /**
          *
@@ -66,7 +66,7 @@ namespace SysMLv2::API {
          * @param queryId
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::Entities::Query> deleteQuery(std::shared_ptr<SysMLv2::Entities::Project> project, boost::uuids::uuid queryId) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Query> deleteQuery(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid queryId) = 0;
 
         /**
          *
@@ -74,7 +74,7 @@ namespace SysMLv2::API {
          * @param commit
          * @return
          */
-        virtual std::vector<std::shared_ptr<SysMLv2::Entities::Data>> executeQueryById(boost::uuids::uuid queryId, std::shared_ptr<SysMLv2::Entities::Commit> commit) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::REST::Data>> executeQueryById(boost::uuids::uuid queryId, std::shared_ptr<SysMLv2::REST::Commit> commit) = 0;
 
         /**
          *
@@ -82,7 +82,7 @@ namespace SysMLv2::API {
          * @param commit
          * @return
          */
-        virtual std::vector<std::shared_ptr<SysMLv2::Entities::Data>> executeQuery(std::shared_ptr<SysMLv2::Entities::Query> query, std::shared_ptr<SysMLv2::Entities::Commit> commit) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::REST::Data>> executeQuery(std::shared_ptr<SysMLv2::REST::Query> query, std::shared_ptr<SysMLv2::REST::Commit> commit) = 0;
     };
 }
 

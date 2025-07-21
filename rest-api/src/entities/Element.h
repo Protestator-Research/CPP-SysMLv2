@@ -20,11 +20,11 @@
 // Forwarding
 //---------------------------------------------------------
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     class Identification;
 }
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     /**
      * This class is not an exact, but a compatible Representation of the SysMLv2 Element class. This implementation
      * stems from the AGILA Backend implementation of the Element class.

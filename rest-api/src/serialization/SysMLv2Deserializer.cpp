@@ -20,41 +20,41 @@
 #include <string>
 
 namespace SysMLv2 {
-    std::shared_ptr<SysMLv2::Entities::IEntity> SysMLv2Deserializer::deserializeJsonString(std::string inputValue) {
+    std::shared_ptr<SysMLv2::REST::IEntity> SysMLv2Deserializer::deserializeJsonString(std::string inputValue) {
 
         nlohmann::json json = nlohmann::json::parse(inputValue);
 
-        std::string type = json[Entities::JSON_TYPE_ENTITY].get<std::string>();
+        std::string type = json[REST::JSON_TYPE_ENTITY].get<std::string>();
         std::transform(type.begin(), type.end(), type.begin(), [](unsigned char c){ return std::tolower(c); });
 
-        if(type==Entities::PROJECT_TYPE)
-            return std::make_shared<Entities::Project>(inputValue);
+        if(type==REST::PROJECT_TYPE)
+            return std::make_shared<REST::Project>(inputValue);
 
-        if(type==Entities::DATA_IDENTITY_TYPE)
-            return std::make_shared<Entities::DataIdentity>(inputValue);
+        if(type==REST::DATA_IDENTITY_TYPE)
+            return std::make_shared<REST::DataIdentity>(inputValue);
 
-        if(type==Entities::BRANCH_TYPE)
-            return std::make_shared<Entities::Branch>(inputValue);
+        if(type==REST::BRANCH_TYPE)
+            return std::make_shared<REST::Branch>(inputValue);
 
-        if(type==Entities::TAG_TYPE)
-            return std::make_shared<Entities::Tag>(inputValue);
+        if(type==REST::TAG_TYPE)
+            return std::make_shared<REST::Tag>(inputValue);
 
-        if(type==Entities::QUERY_TYPE)
-            return std::make_shared<Entities::Query>(inputValue);
+        if(type==REST::QUERY_TYPE)
+            return std::make_shared<REST::Query>(inputValue);
 
-        if(type==Entities::COMMIT_TYPE)
-            return std::make_shared<Entities::Commit>(inputValue);
+        if(type==REST::COMMIT_TYPE)
+            return std::make_shared<REST::Commit>(inputValue);
 
         if(checkIfIsElementType(type))
-            return std::make_shared<Entities::Element>(inputValue);
+            return std::make_shared<REST::Element>(inputValue);
 
         return nullptr;
     }
 
-    std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> SysMLv2Deserializer::deserializeJsonArray(std::string inputValue) {
+    std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> SysMLv2Deserializer::deserializeJsonArray(std::string inputValue) {
         nlohmann::json json = nlohmann::json::parse(inputValue);
         std::vector<nlohmann::json> arrayValues = json.get<std::vector<nlohmann::json>>();
-        std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> returnValues;
+        std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> returnValues;
         returnValues.reserve(arrayValues.size());
         for(const nlohmann::json& elem : arrayValues) {
             returnValues.emplace_back(SysMLv2Deserializer::deserializeJsonString(elem.dump()));

@@ -21,7 +21,7 @@
 #include "CommitReference.h"
 #include "Commit.h"
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     CommitReference::CommitReference(std::string jsonStringOrName) : Record(jsonStringOrName) { }
 
     bool CommitReference::operator==(CommitReference &other) {

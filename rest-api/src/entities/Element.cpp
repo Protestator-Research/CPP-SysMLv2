@@ -5,11 +5,14 @@
 #include <nlohmann/json.hpp>
 
 #include "Element.h"
+
+#include <iostream>
+
 #include "JSONEntities.h"
 #include "Identification.h"
 
 namespace SysMLv2 {
-    namespace Entities {
+    namespace REST {
         Element::Element() : Data()
         {
             Type = "TextualRepresentation";
@@ -125,52 +128,60 @@ namespace SysMLv2 {
         }
 
         std::string Element::serializeToJson() {
-            nlohmann::json json = nlohmann::json ::parse(Data::serializeToJson());
+            std::cout << "Element::serializeToJson" << std::endl;
+            nlohmann::json json = nlohmann::json::parse(Data::serializeToJson());
 
             serializeNullString(json,Name,JSON_NAME_ENTITY);
             serializeNullString(json,ShortName,JSON_SHORT_NAME_ENTITY);
             serializeNullString(json,DeclaredName,JSON_DECLARED_NAME_ENTITY);
             serializeNullString(json,DeclaredShortName,JSON_DECLARED_SHORT_NAME_ENTITY);
-
+            std::cout << "Element::serializeToJson Strings are done" << std::endl;
             for(const auto &elem : OwnedElements){
                 nlohmann::json json_elem;
                 to_json(json_elem,*elem);
                 json[JSON_OWNED_ELEMENTS_ENTITY].push_back(json_elem);
             }
 
-            to_json(json[JSON_OWNER_ENTITY],*Owner);
-            to_json(json[JSON_OWNING_MEMBERSHIP_ENTITY], *OwningMembership);
-            to_json(json[JSON_OWNING_NAMESPACE_ENTITY], *OwningNamespace);
-            to_json(json[JSON_OWNING_RELATIONSHIP_ENTITY], *OwningRelationship);
+            if (Owner)
+                to_json(json[JSON_OWNER_ENTITY],*Owner);
+            if (OwningMembership)
+                to_json(json[JSON_OWNING_MEMBERSHIP_ENTITY], *OwningMembership);
+            if (OwningNamespace)
+                to_json(json[JSON_OWNING_NAMESPACE_ENTITY], *OwningNamespace);
+            if (OwningRelationship)
+                to_json(json[JSON_OWNING_RELATIONSHIP_ENTITY], *OwningRelationship);
 
+            std::cout << "Element::serializeToJson owning Elements are done" << std::endl;
             serializeNullString(json,Direction,JSON_DIRECTION_ENTITY);
             serializeNullString(json,ImportedMemberName,JSON_IMPORTED_MEMBER_NAME_ENTITY);
             serializeNullString(json,ImportedNamespace,JSON_IMPORTED_NAMESPACE_ENTITY);
-            
-
+            std::cout << "Element::serializeToJson Imports are done" << std::endl;
             serializeNullString(json,ValueStr,JSON_VALUE_STRING_ENTITY);
             serializeNullString(json,Language,JSON_LANGUAGE_ENTITY);
             serializeNullString(json,Body,JSON_BODY_ENTITY);
-
+            std::cout << "Element::serializeToJson textual Representations" << std::endl;
             json[JSON_IS_IMPLIED_ELEMENT_ENTITY] = IsImplied;
             json[JSON_IS_IMPLIED_INCLUDED_ENTITY] = IsImpliedIncluded;
             json[JSON_IS_STANDARD_ENTITY] = IsStandard;
             json[JSON_IS_LIBRARY_ELEMENT_ENTITY] = IsLibraryElement;
+            std::cout << "Element::serializeToJson Boolean Tings is done" << std::endl;
 
-            to_json(json[JSON_DOCUMENTATION_ENTITY], *Documentation);
+            if (Documentation)
+                to_json(json[JSON_DOCUMENTATION_ENTITY], *Documentation);
 
+            std::cout << "Element::serializeToJson Documentation is done" << std::endl;
             for(const auto& elem : TextualRepresentation){
                 nlohmann::json json_elem;
                 to_json(json_elem,*elem);
                 json[JSON_TEXTUAL_REPRESENTATION_ENTITY].push_back(json_elem);
             }
-
+            std::cout << "Element::serializeToJson Textual REpresentations done" << std::endl;
             for(const auto &elem : Source){
                 nlohmann::json json_elem;
                 to_json(json_elem,*elem);
                 json[JSON_SOURCE_ENTITY].push_back(json_elem);
             }
-
+            std::cout << "Element::serializeToJson Source is done" << std::endl;
             for(const auto &elem : Target){
                 nlohmann::json json_elem;
                 to_json(json_elem,*elem);
@@ -178,6 +189,7 @@ namespace SysMLv2 {
                 json[JSON_TARGET_ENTITY].push_back(json_elem);
             }
 
+            std::cout << "Finished Element::serializeToJson" << std::endl;
             return json.dump();
         }
 

@@ -3,7 +3,8 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "~/.conan2/**"
             ],
             "defines": [],
             "intelliSenseMode": "macos-clang-arm64",

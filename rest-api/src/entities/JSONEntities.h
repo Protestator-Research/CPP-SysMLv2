@@ -17,7 +17,7 @@
 // Forwarding
 //---------------------------------------------------------
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     // Generally used
     const std::string JSON_ID_ENTITY = "@id";
     const std::string JSON_TYPE_ENTITY = "@type";

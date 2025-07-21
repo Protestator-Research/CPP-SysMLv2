@@ -18,7 +18,7 @@
 //---------------------------------------------------------
 
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     /**
      * Defines the interface for all SysMLv2 classes.
      * @class IEntity

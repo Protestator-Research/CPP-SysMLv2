@@ -4,7 +4,7 @@
 
 #include "MergeResult.h"
 
-namespace SysMLv2::Entities{
+namespace SysMLv2::REST{
 
     MergeResult::MergeResult(std::shared_ptr<Commit> mergeCommit, std::vector<std::shared_ptr<DataIdentity>> conflict) {
         MergeCommit = mergeCommit;
