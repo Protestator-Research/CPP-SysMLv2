@@ -25,7 +25,7 @@ namespace SysMLv2::REST {
      * @author Moritz Herzog
      * @version 1.0
      */
-    class IEntity {
+    class SYSMLV2REST_EXPORT IEntity {
     public:
 
         /**

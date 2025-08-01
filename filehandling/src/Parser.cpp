@@ -36,4 +36,8 @@ namespace SysMLv2::Files {
         return std::make_pair(elements, errorVector);
     }
 
+    std::pair<std::vector<std::shared_ptr<KerML::Entities::Element>>, std::vector<std::shared_ptr<ParserError>>> Parser
+    ::parseSysMLv2(std::string text) {
+        return std::pair<std::vector<std::shared_ptr<KerML::Entities::Element>>, std::vector<std::shared_ptr<ParserError>>>();
+    }
 }

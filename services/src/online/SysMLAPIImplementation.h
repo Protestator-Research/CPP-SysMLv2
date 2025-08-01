@@ -16,7 +16,7 @@
 // Internal Classes
 //---------------------------------------------------------
 #include "StatusCode.h"
-
+#include "../sysmlv2service_global.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -32,7 +32,7 @@ namespace SysMLv2::API {
      * @version 1.1
      * @author Moritz Herzog <herzogm@rptu.de>
      */
-    class SysMLAPIImplementation {
+    class SYSMLV2SERVICE_EXPORT SysMLAPIImplementation {
     public:
         /**
          * Deleted Constructorr
@@ -116,6 +116,14 @@ namespace SysMLv2::API {
          */
         std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> getAllBranchesFroProject(const std::string& projectId, std::string barrierString);
 
+        /**
+         * Posts a custom request to the Server.
+         * @param endpoint The endpoint everything is pushed to
+         * @param payload The given payload for the push
+         * @param barrierString The current Barrierstring.
+         * @return The given Returnvalue.
+         */
+        std::string postCustomRequest(std::string const& endpoint, std::string const& payload, std::string const& barrierString);
     protected:
         /**
          * Sets up the server connection and creates the necessary CURL calls.

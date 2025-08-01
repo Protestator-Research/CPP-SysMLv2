@@ -33,7 +33,7 @@ namespace SysMLv2::REST {
      * @class Element
      * @deprecated This should be a representation of the KerML Element Class, therefore see
      */
-    class Element : public Data {
+    class SYSMLV2REST_EXPORT Element : public Data {
     public:
         /**
          * C-Tor

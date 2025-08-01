@@ -20,7 +20,7 @@
 
 namespace SysMLv2::REST {
 
-    class ExternalRelationship : public Data {
+    class SYSMLV2REST_EXPORT ExternalRelationship : public Data {
 
     };
 } // SysMLv2
