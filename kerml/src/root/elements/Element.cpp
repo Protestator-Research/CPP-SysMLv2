@@ -7,6 +7,7 @@
 #include "../namespaces/Namespace.h"
 
 #include <utility>
+#include <functional>
 #include <boost/uuid/string_generator.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include <boost/lexical_cast.hpp>

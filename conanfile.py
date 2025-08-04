@@ -27,7 +27,7 @@ class CPPSysMLRecipe(ConanFile):
     exports_sources = "CMakeLists.txt", "interfaces/*", "conformance-test/*", "filehandling/*", "kerml/*", "rest-api/*", "services/*"
 
     def requirements(self):
-        self.requires("boost/1.84.0")
+        self.requires("boost/1.86.0")
         self.requires("nlohmann_json/3.11.3")
         self.requires("date/3.0.1")
         self.requires("libcurl/8.4.0")
