@@ -205,7 +205,7 @@ namespace KerML::Entities {
         std::vector<std::shared_ptr<Membership>> InheritedMembership;
         std::vector<std::shared_ptr<Feature>> Input;
         std::vector<std::shared_ptr<Type>> IntersectingType;
-        std::shared_ptr<Multiplicity> Multiplicity;
+        std::shared_ptr<Multiplicity> _Multiplicity;
         std::vector<std::shared_ptr<Feature>> Output;
         std::shared_ptr<Conjugation> OwnedConjugator;
         std::vector<std::shared_ptr<Differencing>> OwnedDifferencing;

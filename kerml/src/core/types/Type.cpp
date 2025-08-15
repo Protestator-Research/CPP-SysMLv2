@@ -79,7 +79,7 @@ namespace KerML::Entities {
 	}
 
 	std::vector<std::shared_ptr<Multiplicity>> Type::multiplicities() {
-		return { };
+		return { _Multiplicity };
 	}
 
 	bool Type::isAbstract() {
@@ -283,15 +283,15 @@ namespace KerML::Entities {
 
 	std::optional<std::shared_ptr<Multiplicity>> Type::multiplicity()
 	{
-		if (Multiplicity!=nullptr)
-			return Multiplicity;
+		if (_Multiplicity!=nullptr)
+			return _Multiplicity;
 
 		return {};
 	}
 
 	void Type::setMultiplicity(std::shared_ptr<Entities::Multiplicity> multiplicity)
 	{
-		Multiplicity = multiplicity;
+		_Multiplicity = multiplicity;
 	}
 
 	std::vector<std::shared_ptr<Feature>> Type::output() const
