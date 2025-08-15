@@ -23,7 +23,7 @@ jobs:
     - name: build
       run: |
        mkdir build && cd build
-       conan install ..
+       conan install .. --build missing
        conan build .. --version=1.0-beta-3
    # - name: test
    #   run: |
