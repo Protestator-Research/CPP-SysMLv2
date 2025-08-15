@@ -98,7 +98,7 @@ namespace SysMLv2::REST {
 
         std::string serializeToJson() override;
 
-    private:
+    protected:
         std::vector<std::shared_ptr<Commit>> PreviusCommits;
         std::shared_ptr<Project> OwningProject;
         std::vector<std::shared_ptr<DataVersion>> Change;

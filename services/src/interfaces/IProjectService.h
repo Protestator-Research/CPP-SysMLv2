@@ -37,6 +37,8 @@ namespace SysMLv2::API {
      */
     class SYSMLV2SERVICE_EXPORT IProjectService {
     public:
+        virtual ~IProjectService() = default;
+
         /**
          * Gets all Projects
          * @return A vector with all projects as pointer.

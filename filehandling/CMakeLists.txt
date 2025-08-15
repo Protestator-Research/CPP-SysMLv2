@@ -61,9 +61,9 @@ target_include_directories(sysmlv2file PUBLIC
 include(GNUInstallDirs)
 install(TARGETS sysmlv2file ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS sysmlv2file RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES ${KERML_PARSER_HEADER} DESTINATION include/sysmlv2file/kerml)
-install(FILES ${SYSML_PARSER_HEADER} DESTINATION include/sysmlv2file/sysmlv2)
-install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2file)
+install(FILES ${KERML_PARSER_HEADER} DESTINATION include/sysmlv2/file/kerml)
+install(FILES ${SYSML_PARSER_HEADER} DESTINATION include/sysmlv2/file/sysmlv2)
+install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2/file)
 
 if(MSVC)
     target_compile_options(sysmlv2file PRIVATE /W4 /WX- /bigobj)
