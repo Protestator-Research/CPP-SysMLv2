@@ -54,7 +54,7 @@ namespace SysMLv2::REST {
          * @return The project from the connected commit.
          */
         std::shared_ptr<Project> getUsedProject() const;
-    private:
+    protected:
         std::shared_ptr<Commit> UsedProjectCommit;
 
     };

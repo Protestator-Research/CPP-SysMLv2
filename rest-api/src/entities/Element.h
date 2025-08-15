@@ -95,9 +95,8 @@ namespace SysMLv2::REST {
         std::vector<std::shared_ptr<Identification>> target();
 
         std::string getMarkdownString();
-    protected:
 
-    private:
+    protected:
         void serializeNullString(nlohmann::json& json, const std::string& value, const std::string& entity_value);
 
         std::string Name;

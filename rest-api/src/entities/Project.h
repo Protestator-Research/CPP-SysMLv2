@@ -68,7 +68,7 @@ namespace SysMLv2::REST {
 
         std::string serializeToJson() override;
 
-    private:
+    protected:
         std::shared_ptr<DataVersion> m_DataVersion;
 
 

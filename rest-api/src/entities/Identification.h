@@ -69,7 +69,7 @@ namespace SysMLv2::REST {
 
         Identification& operator=(const Identification& other);
 
-    private:
+    protected:
         boost::uuids::uuid Id = boost::uuids::random_generator()();
     };
 }

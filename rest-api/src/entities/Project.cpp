@@ -61,6 +61,7 @@ namespace SysMLv2::REST {
         }
         catch (...) {
             Name = JsonString;
+            Type = "Project";
         }
     }
 

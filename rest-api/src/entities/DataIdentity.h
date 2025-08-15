@@ -82,7 +82,7 @@ namespace SysMLv2::REST {
 
         bool operator==(DataIdentity const &other);
 
-    private:
+    protected:
         std::vector<std::shared_ptr<DataVersion>> Version;
     };
 }

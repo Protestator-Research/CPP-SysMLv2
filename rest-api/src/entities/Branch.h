@@ -52,7 +52,7 @@ namespace SysMLv2::REST {
         std::shared_ptr<Commit> getHead();
 
         void setHead(std::shared_ptr<Commit> head);
-    private:
+    protected:
         std::shared_ptr<Commit> Head;
     };
 }

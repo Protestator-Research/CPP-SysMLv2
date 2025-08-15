@@ -19,7 +19,7 @@ namespace SysMLv2::REST {
         std::shared_ptr<DataVersion> baseData();
         std::shared_ptr<DataVersion> comparedData();
 
-    private:
+    protected:
         std::shared_ptr<DataVersion> BaseData = nullptr;
         std::shared_ptr<DataVersion> CompareData = nullptr;
     };

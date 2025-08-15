@@ -45,7 +45,7 @@ namespace SysMLv2::REST {
 
         std::string serializeToJson();
 
-    private:
+    protected:
         std::shared_ptr<DataIdentity> Identity;
 
         std::shared_ptr<Data> Payload;

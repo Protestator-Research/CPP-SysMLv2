@@ -49,6 +49,8 @@ namespace SysMLv2::REST {
         }
         catch (...) {
             Name = jsonString;
+            Id = boost::uuids::random_generator()();
+            
         }
 
     }

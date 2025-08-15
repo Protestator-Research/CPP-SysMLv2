@@ -22,7 +22,7 @@ namespace SysMLv2::REST {
         std::vector<std::shared_ptr<DataIdentity>> conflict();
         std::shared_ptr<Commit> mergeCommit();
 
-    private:
+    protected:
         std::shared_ptr<Commit> MergeCommit = nullptr;
         std::vector<std::shared_ptr<DataIdentity>> Conflict;
     };
