@@ -20,11 +20,12 @@ jobs:
         conan profile detect
         conan remote add cps-artifactory http://v2202410237013289389.luckysrv.de:8081/artifactory/api/conan/conan
         conan remote login -p $ARTIFACTORY_TOKEN cps-artifactory cps-gitlab-runner
-    - name: build
+    - name: prepare dependencies
       run: |
        mkdir build && cd build
        conan install .. --build missing
-       conan build .. --version=1.0-beta-3
+    - name: build sysmlv2lib
+      run: conan build .. --version=1.0-beta-3
    # - name: test
    #   run: |
    #     cd build

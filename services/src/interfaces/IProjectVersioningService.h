@@ -47,7 +47,9 @@ namespace SysMLv2::API {
      * @see SysMLv2::Entities::DataDifference
      */
     class SYSMLV2SERVICE_EXPORT IProjectVersioningService{
-        /**
+    public:
+	    virtual ~IProjectVersioningService() = default;
+	    /**
          * Gets all the commits from the given project.
          * @param project The given project, where the commits are returned.
          * @return A vector of the commits that are given.
@@ -121,29 +123,14 @@ namespace SysMLv2::API {
          * @param changeId
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::DataVersion> getCommitChangeById(SysMLv2::REST::Project* project, SysMLv2::REST::Commit* commit, boost::uuids::uuid changeId ) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::DataVersion> getCommitChangeById(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, boost::uuids::uuid changeId ) = 0;
 
         /**
          *
          * @param project
          * @return
          */
-        virtual std::vector<std::shared_ptr<SysMLv2::REST::Branch>> getBranches( SysMLv2::REST::Project* project ) = 0;
-
-        /**
-         *
-         * @param project
-         * @param branchId
-         * @return
-         */
-        virtual std::shared_ptr<SysMLv2::REST::Branch> getBranchById(SysMLv2::REST::Project* project, boost::uuids::uuid branchId) = 0;
-
-        /**
-         *
-         * @param project
-         * @return
-         */
-        virtual std::shared_ptr<SysMLv2::REST::Branch> getDefaultBranch(SysMLv2::REST::Project* project) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::REST::Branch>> getBranches(std::shared_ptr<SysMLv2::REST::Project> project ) = 0;
 
         /**
          *
@@ -151,7 +138,22 @@ namespace SysMLv2::API {
          * @param branchId
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::Project> setDefaultBranch(SysMLv2::REST::Project* project, boost::uuids::uuid branchId) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Branch> getBranchById(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid branchId) = 0;
+
+        /**
+         *
+         * @param project
+         * @return
+         */
+        virtual std::shared_ptr<SysMLv2::REST::Branch> getDefaultBranch(std::shared_ptr<SysMLv2::REST::Project> project) = 0;
+
+        /**
+         *
+         * @param project
+         * @param branchId
+         * @return
+         */
+        virtual std::shared_ptr<SysMLv2::REST::Project> setDefaultBranch(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid branchId) = 0;
 
         /**
          *
@@ -160,7 +162,7 @@ namespace SysMLv2::API {
          * @param head
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::Branch> createBranch(SysMLv2::REST::Project* project, std::string branchName, SysMLv2::REST::Commit* head) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Branch> createBranch(std::shared_ptr<SysMLv2::REST::Project> project, std::string branchName, std::shared_ptr<SysMLv2::REST::Commit> head) = 0;
 
         /**
          *
@@ -168,14 +170,14 @@ namespace SysMLv2::API {
          * @param branchId
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::Branch> deleteBranch(SysMLv2::REST::Project* project, boost::uuids::uuid branchId) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Branch> deleteBranch(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid branchId) = 0;
 
         /**
          *
          * @param project
          * @return
          */
-        virtual std::vector<std::shared_ptr<SysMLv2::REST::Tag>> getTags(SysMLv2::REST::Project* project) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::REST::Tag>> getTags(std::shared_ptr<SysMLv2::REST::Project> project) = 0;
 
         /**
          *
@@ -183,7 +185,7 @@ namespace SysMLv2::API {
          * @param tagId
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::Tag> getTagById(SysMLv2::REST::Project* project, boost::uuids::uuid tagId) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Tag> getTagById(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid tagId) = 0;
 
         /**
          *
@@ -191,7 +193,7 @@ namespace SysMLv2::API {
          * @param tag
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::Commit> getTaggedCommit(SysMLv2::REST::Project* project, SysMLv2::REST::Tag* tag) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Commit> getTaggedCommit(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Tag> tag) = 0;
 
         /**
          *
@@ -200,7 +202,7 @@ namespace SysMLv2::API {
          * @param taggedCommit
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::Tag> createTag(SysMLv2::REST::Project* project, std::string tagName, SysMLv2::REST::Commit* taggedCommit) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Tag> createTag(std::shared_ptr<SysMLv2::REST::Project> project, std::string tagName, std::shared_ptr<SysMLv2::REST::Commit> taggedCommit) = 0;
 
         /**
          *
@@ -210,7 +212,7 @@ namespace SysMLv2::API {
          * @param description
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::MergeResult> mergeIntoBranch(SysMLv2::REST::Branch* baseBranch, std::vector<SysMLv2::REST::Commit> commitsToMerge, SysMLv2::REST::Data* resolution, std::string description) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::MergeResult> mergeIntoBranch(std::shared_ptr<SysMLv2::REST::Branch> baseBranch, std::vector<std::shared_ptr<SysMLv2::REST::Commit>> commitsToMerge, std::shared_ptr<SysMLv2::REST::Data> resolution, std::string description) = 0;
 
         /**
          *
@@ -219,7 +221,7 @@ namespace SysMLv2::API {
          * @param changeType
          * @return
          */
-        virtual std::vector<std::shared_ptr<SysMLv2::REST::DataDifference>> diffCommits(SysMLv2::REST::Commit* baseCommit, SysMLv2::REST::Commit* compareCommit, std::vector<SysMLv2::REST::ChangeType> changeType) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::REST::DataDifference>> diffCommits(std::shared_ptr<SysMLv2::REST::Commit> baseCommit, std::shared_ptr<SysMLv2::REST::Commit> compareCommit, std::vector<SysMLv2::REST::ChangeType> changeType) = 0;
     };
 }
 #endif //CPP_SYSMLV2_LIB_IPROJECTVERSIONINGSERVICE_H
