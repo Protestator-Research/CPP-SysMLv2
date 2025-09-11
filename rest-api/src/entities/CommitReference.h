@@ -84,6 +84,17 @@ namespace SysMLv2::REST {
          * @return
          */
         std::chrono::system_clock::time_point deleted();
+
+        /**
+         * 
+         * @return 
+         */
+        std::shared_ptr<Commit> referencedCommit();
+        /**
+         * 
+         * @param referencedCommit 
+         */
+        void setReferencedCommit(std::shared_ptr<Commit> referencedCommit);
     protected:
         std::chrono::system_clock::time_point Created;
         std::chrono::system_clock::time_point Deleted;

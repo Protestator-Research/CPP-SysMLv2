@@ -123,7 +123,7 @@ namespace SysMLv2::API {
          * @param changeId
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::DataVersion> getCommitChangeById(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, boost::uuids::uuid changeId ) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::DataVersion> getCommitChangeById(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, boost::uuids::uuid& changeId ) = 0;
 
         /**
          *
@@ -138,7 +138,7 @@ namespace SysMLv2::API {
          * @param branchId
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::Branch> getBranchById(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid branchId) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Branch> getBranchById(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid& branchId) = 0;
 
         /**
          *
@@ -153,7 +153,7 @@ namespace SysMLv2::API {
          * @param branchId
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::Project> setDefaultBranch(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid branchId) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Project> setDefaultBranch(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid& branchId) = 0;
 
         /**
          *
@@ -170,7 +170,7 @@ namespace SysMLv2::API {
          * @param branchId
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::Branch> deleteBranch(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid branchId) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Branch> deleteBranch(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid& branchId) = 0;
 
         /**
          *
@@ -185,7 +185,7 @@ namespace SysMLv2::API {
          * @param tagId
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::Tag> getTagById(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid tagId) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Tag> getTagById(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid& tagId) = 0;
 
         /**
          *
@@ -202,7 +202,7 @@ namespace SysMLv2::API {
          * @param taggedCommit
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::Tag> createTag(std::shared_ptr<SysMLv2::REST::Project> project, std::string tagName, std::shared_ptr<SysMLv2::REST::Commit> taggedCommit) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Tag> createTag(std::shared_ptr<SysMLv2::REST::Project> project, std::string& tagName, std::shared_ptr<SysMLv2::REST::Commit> taggedCommit) = 0;
 
         /**
          *
@@ -212,7 +212,7 @@ namespace SysMLv2::API {
          * @param description
          * @return
          */
-        virtual std::shared_ptr<SysMLv2::REST::MergeResult> mergeIntoBranch(std::shared_ptr<SysMLv2::REST::Branch> baseBranch, std::vector<std::shared_ptr<SysMLv2::REST::Commit>> commitsToMerge, std::shared_ptr<SysMLv2::REST::Data> resolution, std::string description) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::MergeResult> mergeIntoBranch(std::shared_ptr<SysMLv2::REST::Branch> baseBranch, std::vector<std::shared_ptr<SysMLv2::REST::Commit>> commitsToMerge, std::shared_ptr<SysMLv2::REST::Data> resolution, std::string& description) = 0;
 
         /**
          *

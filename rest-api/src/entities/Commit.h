@@ -86,21 +86,58 @@ namespace SysMLv2::REST {
         /**
          * Destructor
          */
-        virtual ~Commit();
+        virtual ~Commit() = default;
 
+        /**
+         *
+         * @param change
+         */
         void setChange(std::vector<std::shared_ptr<DataVersion>> change);
+
+        /**
+         *
+         * @param dataVersion
+         */
         void addChange(std::shared_ptr<DataVersion> dataVersion);
+
+        /**
+         *
+         * @return
+         */
         std::vector<std::shared_ptr<DataVersion>> getDataVersion();
 
+        /**
+         *
+         * @return
+         */
         [[nodiscard]] std::vector<std::shared_ptr<Commit>> getPreviusCommits() const;
 
+        /**
+         *
+         * @return
+         */
         [[nodiscard]] std::shared_ptr<Project> getOwningProject() const;
 
         std::string serializeToJson() override;
 
+        [[nodiscard]] std::chrono::system_clock::time_point getCreated() const;
+
     protected:
+        /**
+         *
+         */
         std::vector<std::shared_ptr<Commit>> PreviusCommits;
+        /**
+         *
+         */
         std::shared_ptr<Project> OwningProject;
+        /**
+         *
+         */
         std::vector<std::shared_ptr<DataVersion>> Change;
+        /**
+         *
+         */
+        std::chrono::system_clock::time_point Created;
     };
 }

@@ -35,6 +35,7 @@ namespace SysMLv2::REST{
         Type = "Commit";
         PreviusCommits = previusCommits;
         OwningProject = owningProject;
+        Created = std::chrono::system_clock::now();
     }
 
     Commit::Commit(std::string name, std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits) :
@@ -42,14 +43,11 @@ namespace SysMLv2::REST{
         Type = "Commit";
     	OwningProject = owningProject;
         PreviusCommits = previusCommits;
+        Created = std::chrono::system_clock::now();
     }
 
     Commit::Commit(std::string jsonString) : Record(jsonString) {
         Type = "Commit";
-    }
-
-    Commit::~Commit() {
-
     }
 
     void Commit::setChange(std::vector<std::shared_ptr<DataVersion>> change)
@@ -96,5 +94,8 @@ namespace SysMLv2::REST{
         return jsonString;
     }
 
+    std::chrono::system_clock::time_point Commit::getCreated() const {
+        return Created;
+    }
 }
 

@@ -51,6 +51,7 @@ namespace SysMLv2::REST {
 
     // Used for Commit
     const std::string JSON_CHANGE_ENTITY = "change";
+    const std::string JSON_TIMESTAMP_ENTITY = "timestamp";
 
     // Used for the element implementation of the Agila Backend
     const std::string JSON_SHORT_NAME_ENTITY = "shortName";

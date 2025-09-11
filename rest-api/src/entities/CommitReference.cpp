@@ -17,12 +17,30 @@
 //You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //---------------------------------------------------------
+//---------------------------------------------------------
+// Constants, Definitions, Pragmas
+//---------------------------------------------------------
 
+//---------------------------------------------------------
+// External Classes
+//---------------------------------------------------------
+
+//---------------------------------------------------------
+// Internal Classes
+//---------------------------------------------------------
 #include "CommitReference.h"
 #include "Commit.h"
+//---------------------------------------------------------
+// Forwarding
+//---------------------------------------------------------
+
 
 namespace SysMLv2::REST {
-    CommitReference::CommitReference(std::string jsonStringOrName) : Record(jsonStringOrName) { }
+    CommitReference::CommitReference(std::string jsonStringOrName) : Record(jsonStringOrName)
+    {
+        Created = std::chrono::system_clock::now();
+        Deleted = std::chrono::time_point<std::chrono::system_clock>::min();
+    }
 
     bool CommitReference::operator==(CommitReference &other) {
         if(Record::operator==(other))
@@ -44,6 +62,16 @@ namespace SysMLv2::REST {
 
     std::chrono::system_clock::time_point CommitReference::deleted() {
         return Deleted;
+    }
+
+    std::shared_ptr<Commit> CommitReference::referencedCommit()
+    {
+        return ReferencedCommit;
+    }
+
+    void CommitReference::setReferencedCommit(std::shared_ptr<Commit> referencedCommit)
+    {
+        ReferencedCommit = referencedCommit;
     }
 
     std::chrono::system_clock::time_point CommitReference::created() {
