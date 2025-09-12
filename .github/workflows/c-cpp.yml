@@ -18,14 +18,17 @@ jobs:
         sudo apt update && sudo apt -y install make autoconf python3 python3-pip cmake libgl-dev libgl1-mesa-dev xkb-data libx11-xcb-dev libfontenc-dev libxaw7-dev libxcomposite-dev libxcursor-dev libxdamage-dev libxfixes-dev libxi-dev libxinerama-dev libxkbfile-dev libxmu-dev libxmuu-dev libxpm-dev libxrandr-dev libxres-dev libxss-dev libxtst-dev libxv-dev libxxf86vm-dev libxcb-glx0-dev libxcb-render-util0-dev libxcb-xkb-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-shape0-dev libxcb-sync-dev libxcb-xfixes0-dev libxcb-xinerama0-dev libxcb-dri3-dev libxcb-cursor-dev libxcb-dri2-0-dev libxcb-dri3-dev libxcb-present-dev libxcb-composite0-dev libxcb-ewmh-dev libxcb-res0-dev libxcb-util-dev uuid-dev
         sudo pip install --ignore-installed --upgrade conan
         conan profile detect
-        conan remote add cps-artifactory http://v2202410237013289389.luckysrv.de:8081/artifactory/api/conan/conan
-        conan remote login -p $ARTIFACTORY_TOKEN cps-artifactory cps-gitlab-runner
+        conan remote add prartifactory http://v2202410237013289389.luckysrv.de:8081/artifactory/api/conan/conan
+        conan remote login -p $ARTIFACTORY_TOKEN prartifactory cps-gitlab-runner
     - name: prepare dependencies
       run: |
        mkdir build && cd build
        conan install .. --build missing
     - name: build sysmlv2lib
-      run: conan build .. --version=1.0-beta-3
+      run: |
+        ls -al
+        cd build
+        conan build .. --version=1.0-beta-3
    # - name: test
    #   run: |
    #     cd build

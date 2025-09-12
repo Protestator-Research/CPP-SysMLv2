@@ -59,10 +59,23 @@ namespace SysMLv2::REST {
          */
         explicit Project(std::string JsonString);
 
+        /**
+         * Creates a project from the given elements.
+         * @param projectName The name of the Project that is given by the user.
+         * @param projectDescription The description of the Project, given by the user.
+         * @param branchName The default branch name, that can be changed.
+         */
         Project(std::string projectName, std::string projectDescription, std::string branchName);
 
-        virtual ~Project();
+        /**
+         * Destructor.
+         */
+        ~Project() override;
 
+        /**
+         * Allows to get the default branch.
+         * @return
+         */
         std::shared_ptr<Branch> getDefaultBranch();
         void setDefaultBranch(std::shared_ptr<Branch> branch);
 
