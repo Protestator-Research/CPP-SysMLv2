@@ -6,6 +6,7 @@
 #define DIGITALTWIN_HTTPEXCEPTION_H
 
 #include <exception>
+#include "../sysmlv2service_global.h"
 
 #include "../sysmlv2service_global.h"
 

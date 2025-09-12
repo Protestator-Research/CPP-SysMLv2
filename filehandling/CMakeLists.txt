@@ -51,12 +51,10 @@ target_link_libraries(sysmlv2file
         nlohmann_json::nlohmann_json
         date::date
         antlr4_shared
-        kerml
-        ${FLEX_LIBRARIES})
+        kerml)
 
 target_include_directories(sysmlv2file PUBLIC
-        ../kerml/src
-        ${FLEX_INCLUDE_DIRS})
+        ../kerml/src)
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2file ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})

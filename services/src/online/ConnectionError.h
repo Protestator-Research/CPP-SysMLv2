@@ -5,6 +5,7 @@
 #pragma once
 
 #include <stdexcept>
+#include "../sysmlv2service_global.h"
 
 #include "../sysmlv2service_global.h"
 
@@ -97,7 +98,7 @@ namespace SysMLv2::API::EXCEPTIONS {
         UNRECOVERABLE_POLL,
         TOO_LARGE
     };
-    class ConnectionError : public std::runtime_error {
+    class SYSMLV2SERVICE_EXPORT ConnectionError : public std::runtime_error {
     public:
         ConnectionError() = delete;
         ConnectionError(SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE errorType);
