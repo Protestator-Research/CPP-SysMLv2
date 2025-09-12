@@ -38,6 +38,8 @@ namespace SysMLv2::API {
      */
     class SYSMLV2SERVICE_EXPORT IProjectUsageService {
     public:
+        virtual ~IProjectUsageService() = default;
+
         /**
          * This is the interface implementation of the method, that gets all the project usages in the given project.
          * @param project The project that is given by the project. If this variable is null, it might result in a segmentation fault or a exception.
@@ -54,7 +56,7 @@ namespace SysMLv2::API {
          * @return returns a new commit with the given project usage.
          * @see boost::uuids::uuid
          */
-        virtual std::shared_ptr<SysMLv2::REST::Commit> deleteProjectUsage(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Branch> branch, boost::uuids::uuid projectUsageId) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Commit> deleteProjectUsage(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Branch> branch, boost::uuids::uuid& projectUsageId) = 0;
 
         /**
          * Interface of the method that creates a new project usage in the given project at the head of the given branch.
