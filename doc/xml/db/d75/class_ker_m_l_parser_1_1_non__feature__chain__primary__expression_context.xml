@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Non_feature_chain_primary_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1aaf9ca5cb5992f366185d5260a7dff6ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Non_feature_chain_primary_expressionContext::Non_feature_chain_primary_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Non_feature_chain_primary_expressionContext</name>
+        <qualifiedname>KerMLParser::Non_feature_chain_primary_expressionContext::Non_feature_chain_primary_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3078" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14703" bodyend="14705"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1ae975ec604fcb82d9d71c9118b0c250fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Non_feature_chain_primary_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Non_feature_chain_primary_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3079" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14736" bodyend="14738"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1a7ea5eff09d43243af3b61899ff75cd56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d0b/class_ker_m_l_parser_1_1_bracket__expression_context" kindref="compound">Bracket_expressionContext</ref> *</type>
+        <definition>KerMLParser::Bracket_expressionContext * KerMLParser::Non_feature_chain_primary_expressionContext::bracket_expression</definition>
+        <argsstring>()</argsstring>
+        <name>bracket_expression</name>
+        <qualifiedname>KerMLParser::Non_feature_chain_primary_expressionContext::bracket_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3080" column="31" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14707" bodyend="14709"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1a1cc8bda0eba44a7def8ca439be9ecc44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/d9b/class_ker_m_l_parser_1_1_index__expression_context" kindref="compound">Index_expressionContext</ref> *</type>
+        <definition>KerMLParser::Index_expressionContext * KerMLParser::Non_feature_chain_primary_expressionContext::index_expression</definition>
+        <argsstring>()</argsstring>
+        <name>index_expression</name>
+        <qualifiedname>KerMLParser::Non_feature_chain_primary_expressionContext::index_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3081" column="29" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14711" bodyend="14713"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1a0838c7c48057fb061c9df3fd86657b2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dd0/class_ker_m_l_parser_1_1_sequence__expression_context" kindref="compound">Sequence_expressionContext</ref> *</type>
+        <definition>KerMLParser::Sequence_expressionContext * KerMLParser::Non_feature_chain_primary_expressionContext::sequence_expression</definition>
+        <argsstring>()</argsstring>
+        <name>sequence_expression</name>
+        <qualifiedname>KerMLParser::Non_feature_chain_primary_expressionContext::sequence_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3082" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14715" bodyend="14717"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1a8fbefec8476e1b810887536dafcde1ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d9c/class_ker_m_l_parser_1_1_select__expression_context" kindref="compound">Select_expressionContext</ref> *</type>
+        <definition>KerMLParser::Select_expressionContext * KerMLParser::Non_feature_chain_primary_expressionContext::select_expression</definition>
+        <argsstring>()</argsstring>
+        <name>select_expression</name>
+        <qualifiedname>KerMLParser::Non_feature_chain_primary_expressionContext::select_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3083" column="30" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14719" bodyend="14721"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1a8a4103c81792760a4a9d7d0895d5cf51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d89/class_ker_m_l_parser_1_1_collect__expression_context" kindref="compound">Collect_expressionContext</ref> *</type>
+        <definition>KerMLParser::Collect_expressionContext * KerMLParser::Non_feature_chain_primary_expressionContext::collect_expression</definition>
+        <argsstring>()</argsstring>
+        <name>collect_expression</name>
+        <qualifiedname>KerMLParser::Non_feature_chain_primary_expressionContext::collect_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3084" column="31" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14723" bodyend="14725"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1ae578e7d4d1da1ea21a697c283ea5d7af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d05/class_ker_m_l_parser_1_1_function__operation__expression_context" kindref="compound">Function_operation_expressionContext</ref> *</type>
+        <definition>KerMLParser::Function_operation_expressionContext * KerMLParser::Non_feature_chain_primary_expressionContext::function_operation_expression</definition>
+        <argsstring>()</argsstring>
+        <name>function_operation_expression</name>
+        <qualifiedname>KerMLParser::Non_feature_chain_primary_expressionContext::function_operation_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3085" column="42" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14727" bodyend="14729"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1a2f49db45483af2bda56fed1ca84c1001" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/dc9/class_ker_m_l_parser_1_1_base__expression_context" kindref="compound">Base_expressionContext</ref> *</type>
+        <definition>KerMLParser::Base_expressionContext * KerMLParser::Non_feature_chain_primary_expressionContext::base_expression</definition>
+        <argsstring>()</argsstring>
+        <name>base_expression</name>
+        <qualifiedname>KerMLParser::Non_feature_chain_primary_expressionContext::base_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3086" column="28" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14731" bodyend="14733"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1aa411989eaabc7dfe5a23d9533ba8c3e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Non_feature_chain_primary_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Non_feature_chain_primary_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3088" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14740" bodyend="14744"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1a5cb3bb77752a96a3efd5e2ec3a80f6c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Non_feature_chain_primary_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Non_feature_chain_primary_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3089" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14746" bodyend="14750"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Non_feature_chain_primary_expressionContext</label>
+        <link refid="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Non_feature_chain_primary_expressionContext</label>
+        <link refid="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="3076" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="3076" bodyend="3091"/>
+    <listofallmembers>
+      <member refid="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1a2f49db45483af2bda56fed1ca84c1001" prot="public" virt="non-virtual"><scope>KerMLParser::Non_feature_chain_primary_expressionContext</scope><name>base_expression</name></member>
+      <member refid="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1a7ea5eff09d43243af3b61899ff75cd56" prot="public" virt="non-virtual"><scope>KerMLParser::Non_feature_chain_primary_expressionContext</scope><name>bracket_expression</name></member>
+      <member refid="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1a8a4103c81792760a4a9d7d0895d5cf51" prot="public" virt="non-virtual"><scope>KerMLParser::Non_feature_chain_primary_expressionContext</scope><name>collect_expression</name></member>
+      <member refid="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1aa411989eaabc7dfe5a23d9533ba8c3e7" prot="public" virt="virtual"><scope>KerMLParser::Non_feature_chain_primary_expressionContext</scope><name>enterRule</name></member>
+      <member refid="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1a5cb3bb77752a96a3efd5e2ec3a80f6c7" prot="public" virt="virtual"><scope>KerMLParser::Non_feature_chain_primary_expressionContext</scope><name>exitRule</name></member>
+      <member refid="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1ae578e7d4d1da1ea21a697c283ea5d7af" prot="public" virt="non-virtual"><scope>KerMLParser::Non_feature_chain_primary_expressionContext</scope><name>function_operation_expression</name></member>
+      <member refid="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1ae975ec604fcb82d9d71c9118b0c250fc" prot="public" virt="virtual"><scope>KerMLParser::Non_feature_chain_primary_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1a1cc8bda0eba44a7def8ca439be9ecc44" prot="public" virt="non-virtual"><scope>KerMLParser::Non_feature_chain_primary_expressionContext</scope><name>index_expression</name></member>
+      <member refid="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1aaf9ca5cb5992f366185d5260a7dff6ed" prot="public" virt="non-virtual"><scope>KerMLParser::Non_feature_chain_primary_expressionContext</scope><name>Non_feature_chain_primary_expressionContext</name></member>
+      <member refid="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1a8fbefec8476e1b810887536dafcde1ea" prot="public" virt="non-virtual"><scope>KerMLParser::Non_feature_chain_primary_expressionContext</scope><name>select_expression</name></member>
+      <member refid="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context_1a0838c7c48057fb061c9df3fd86657b2c" prot="public" virt="non-virtual"><scope>KerMLParser::Non_feature_chain_primary_expressionContext</scope><name>sequence_expression</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

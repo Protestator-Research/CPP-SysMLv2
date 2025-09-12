@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_BRANCH_H
-#define DIGITALTWIN_BRANCH_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -19,7 +18,7 @@
 // Forwarding
 //---------------------------------------------------------
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     class Commit;
 
     /**
@@ -53,9 +52,7 @@ namespace SysMLv2::Entities {
         std::shared_ptr<Commit> getHead();
 
         void setHead(std::shared_ptr<Commit> head);
-    private:
+    protected:
         std::shared_ptr<Commit> Head;
     };
 }
-
-#endif //DIGITALTWIN_BRANCH_H

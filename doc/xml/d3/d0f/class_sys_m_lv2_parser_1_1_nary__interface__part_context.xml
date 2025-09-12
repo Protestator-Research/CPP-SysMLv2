@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Nary_interface_partContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1a96af0b7e9bbdcc5898ea46262da1f7a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Nary_interface_partContext::Nary_interface_partContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Nary_interface_partContext</name>
+        <qualifiedname>SysMLv2Parser::Nary_interface_partContext::Nary_interface_partContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2605" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11573" bodyend="11575"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1ae1ef5a95ecc82ef5cf9f2b7dbd536bb7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Nary_interface_partContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Nary_interface_partContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2606" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11602" bodyend="11604"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1a8a9c21efc63b1f71ca85e10de231aa43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Nary_interface_partContext::SYMBOL_ROUND_BRACKET_OPEN</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_ROUND_BRACKET_OPEN</name>
+        <qualifiedname>SysMLv2Parser::Nary_interface_partContext::SYMBOL_ROUND_BRACKET_OPEN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2607" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11577" bodyend="11579"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1a2d8c1a5689ce055627f3076708edd4f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d6/deb/class_sys_m_lv2_parser_1_1_interface__end__member_context" kindref="compound">Interface_end_memberContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Interface_end_memberContext * &gt; SysMLv2Parser::Nary_interface_partContext::interface_end_member</definition>
+        <argsstring>()</argsstring>
+        <name>interface_end_member</name>
+        <qualifiedname>SysMLv2Parser::Nary_interface_partContext::interface_end_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2608" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11581" bodyend="11583"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1aa570e19fadc101e1891f9133b07fb768" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/deb/class_sys_m_lv2_parser_1_1_interface__end__member_context" kindref="compound">Interface_end_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Interface_end_memberContext * SysMLv2Parser::Nary_interface_partContext::interface_end_member</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>interface_end_member</name>
+        <qualifiedname>SysMLv2Parser::Nary_interface_partContext::interface_end_member</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2609" column="33" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11585" bodyend="11587"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1a385f5c8fa776a1e8d167c1d3bacabdfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Nary_interface_partContext::SYMBOL_ROUND_BRACKET_CLOSE</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_ROUND_BRACKET_CLOSE</name>
+        <qualifiedname>SysMLv2Parser::Nary_interface_partContext::SYMBOL_ROUND_BRACKET_CLOSE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2610" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11589" bodyend="11591"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1a7958e943605fd8b9d0ad2e404e1b0d4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; antlr4::tree::TerminalNode * &gt;</type>
+        <definition>std::vector&lt; tree::TerminalNode * &gt; SysMLv2Parser::Nary_interface_partContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>SysMLv2Parser::Nary_interface_partContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2611" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11593" bodyend="11595"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1a7c097ac132c1ad6cd73c781bbc947175" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Nary_interface_partContext::SYMBOL_COMMA</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>SysMLv2Parser::Nary_interface_partContext::SYMBOL_COMMA</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2612" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11597" bodyend="11599"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1afedc4ea94047ff4515e86d23314a081b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Nary_interface_partContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Nary_interface_partContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2614" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11606" bodyend="11610"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1ac8cb849fa9dc1fa6a942952753822fdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Nary_interface_partContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Nary_interface_partContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2615" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11612" bodyend="11616"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Nary_interface_partContext</label>
+        <link refid="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Nary_interface_partContext</label>
+        <link refid="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2603" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="2603" bodyend="2617"/>
+    <listofallmembers>
+      <member refid="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1afedc4ea94047ff4515e86d23314a081b" prot="public" virt="virtual"><scope>SysMLv2Parser::Nary_interface_partContext</scope><name>enterRule</name></member>
+      <member refid="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1ac8cb849fa9dc1fa6a942952753822fdb" prot="public" virt="virtual"><scope>SysMLv2Parser::Nary_interface_partContext</scope><name>exitRule</name></member>
+      <member refid="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1ae1ef5a95ecc82ef5cf9f2b7dbd536bb7" prot="public" virt="virtual"><scope>SysMLv2Parser::Nary_interface_partContext</scope><name>getRuleIndex</name></member>
+      <member refid="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1a2d8c1a5689ce055627f3076708edd4f3" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Nary_interface_partContext</scope><name>interface_end_member</name></member>
+      <member refid="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1aa570e19fadc101e1891f9133b07fb768" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Nary_interface_partContext</scope><name>interface_end_member</name></member>
+      <member refid="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1a96af0b7e9bbdcc5898ea46262da1f7a1" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Nary_interface_partContext</scope><name>Nary_interface_partContext</name></member>
+      <member refid="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1a7958e943605fd8b9d0ad2e404e1b0d4c" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Nary_interface_partContext</scope><name>SYMBOL_COMMA</name></member>
+      <member refid="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1a7c097ac132c1ad6cd73c781bbc947175" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Nary_interface_partContext</scope><name>SYMBOL_COMMA</name></member>
+      <member refid="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1a385f5c8fa776a1e8d167c1d3bacabdfd" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Nary_interface_partContext</scope><name>SYMBOL_ROUND_BRACKET_CLOSE</name></member>
+      <member refid="d3/d0f/class_sys_m_lv2_parser_1_1_nary__interface__part_context_1a8a9c21efc63b1f71ca85e10de231aa43" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Nary_interface_partContext</scope><name>SYMBOL_ROUND_BRACKET_OPEN</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

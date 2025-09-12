@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="df/d29/_ker_m_l_lexer_8h" kind="file" language="C++">
+    <compoundname>KerMLLexer.h</compoundname>
+    <includes local="yes">antlr4-runtime.h</includes>
+    <includedby refid="d3/d1c/_test_ker_m_l_parser_8cpp" local="no">conformance-test/src/TestKerMLParser.cpp</includedby>
+    <includedby refid="de/df6/_parser_8cpp" local="yes">filehandling/src/Parser.cpp</includedby>
+    <includedby refid="d1/d7e/_ker_m_l_lexer_8cpp" local="yes">filehandling/src/kerml/KerMLLexer.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>filehandling/src/kerml/KerMLLexer.h</label>
+        <link refid="df/d29/_ker_m_l_lexer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4-runtime.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="d4/de4/class_ker_m_l_lexer" prot="public">KerMLLexer</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Generated<sp/>from<sp/>KerML.g4<sp/>by<sp/>ANTLR<sp/>4.13.2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;antlr4-runtime.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="d4/de4/class_ker_m_l_lexer" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/><sp/></highlight><highlight class="normal">KerMLLexer<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>antlr4::Lexer<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>T__0<sp/>=<sp/>1,<sp/>TYPED_BY<sp/>=<sp/>2,<sp/>SPECIALIZES<sp/>=<sp/>3,<sp/>SUBSETS<sp/>=<sp/>4,<sp/>REFERENCES<sp/>=<sp/>5,<sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>REDEFINES<sp/>=<sp/>6,<sp/>CONJUNGATES<sp/>=<sp/>7,<sp/>KEYWORD_ABOUT<sp/>=<sp/>8,<sp/>KEYWORD_ABSTRACT<sp/>=<sp/>9,<sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_ALIAS<sp/>=<sp/>10,<sp/>KEYWORD_ALL<sp/>=<sp/>11,<sp/>KEYWORD_AND<sp/>=<sp/>12,<sp/>KEYWORD_AS<sp/>=<sp/>13,<sp/></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_ASSOC<sp/>=<sp/>14,<sp/>KEYWORD_BEHAVIOR<sp/>=<sp/>15,<sp/>KEYWORD_BINDING<sp/>=<sp/>16,<sp/>KEYWORD_BOOL<sp/>=<sp/>17,<sp/></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_BY<sp/>=<sp/>18,<sp/>KEYWORD_CHAINS<sp/>=<sp/>19,<sp/>KEYWORD_CLASS<sp/>=<sp/>20,<sp/>KEYWORD_CLASSIFIER<sp/>=<sp/>21,<sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_COMMENT<sp/>=<sp/>22,<sp/>KEYWORD_COMPOSITE<sp/>=<sp/>23,<sp/>KEYWORD_CONJUGATE<sp/>=<sp/>24,<sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_CONJUGATES<sp/>=<sp/>25,<sp/>KEYWORD_CONJUGATION<sp/>=<sp/>26,<sp/>KEYWORD_CONNECTOR<sp/>=<sp/>27,<sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_DATATYPE<sp/>=<sp/>28,<sp/>KEYWORD_DEFAULT<sp/>=<sp/>29,<sp/>KEYWORD_DEPENDENCY<sp/>=<sp/>30,<sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_DERIVED<sp/>=<sp/>31,<sp/>KEYWORD_DIFFERENCES<sp/>=<sp/>32,<sp/>KEYWORD_DISJOINING<sp/>=<sp/>33,<sp/></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_DISJOINT<sp/>=<sp/>34,<sp/>KEYWORD_DOC<sp/>=<sp/>35,<sp/>KEYWORD_ELSE<sp/>=<sp/>36,<sp/>KEYWORD_END<sp/>=<sp/>37,<sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_EXPR<sp/>=<sp/>38,<sp/>KEYWORD_FALSE<sp/>=<sp/>39,<sp/>KEYWORD_FEATURE<sp/>=<sp/>40,<sp/>KEYWORD_FEATURED<sp/>=<sp/>41,<sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_FEATURING<sp/>=<sp/>42,<sp/>KEYWORD_FILTER<sp/>=<sp/>43,<sp/>KEYWORD_FIRST<sp/>=<sp/>44,<sp/>KEYWORD_FLOW<sp/>=<sp/>45,<sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_FOR<sp/>=<sp/>46,<sp/>KEYWORD_FROM<sp/>=<sp/>47,<sp/>KEYWORD_FUNCTION<sp/>=<sp/>48,<sp/>KEYWORD_HASTYPE<sp/>=<sp/>49,<sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_IF<sp/>=<sp/>50,<sp/>KEYWORD_INTERSECTS<sp/>=<sp/>51,<sp/>KEYWORD_IMPLIES<sp/>=<sp/>52,<sp/>KEYWORD_IMPORT<sp/>=<sp/>53,<sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_IN<sp/>=<sp/>54,<sp/>KEYWORD_INOUT<sp/>=<sp/>55,<sp/>KEYWORD_INTERACTION<sp/>=<sp/>56,<sp/>KEYWORD_INV<sp/>=<sp/>57,<sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_INVERSE<sp/>=<sp/>58,<sp/>KEYWORD_INVERTING<sp/>=<sp/>59,<sp/>KEYWORD_ISTYPE<sp/>=<sp/>60,<sp/>KEYWORD_LANGUAGE<sp/>=<sp/>61,<sp/></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_MEMBER<sp/>=<sp/>62,<sp/>KEYWORD_METACLASS<sp/>=<sp/>63,<sp/>KEYWORD_METADATA<sp/>=<sp/>64,<sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_MULTIPLICITY<sp/>=<sp/>65,<sp/>KEYWORD_NAMESPACE<sp/>=<sp/>66,<sp/>KEYWORD_NONUNIQUE<sp/>=<sp/>67,<sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_NOT<sp/>=<sp/>68,<sp/>KEYWORD_NULL<sp/>=<sp/>69,<sp/>KEYWORD_OF<sp/>=<sp/>70,<sp/>KEYWORD_OR<sp/>=<sp/>71,<sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_ORDERED<sp/>=<sp/>72,<sp/>KEYWORD_OUT<sp/>=<sp/>73,<sp/>KEYWORD_PACKAGE<sp/>=<sp/>74,<sp/>KEYWORD_PORTION<sp/>=<sp/>75,<sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_PREDICATE<sp/>=<sp/>76,<sp/>KEYWORD_PRIVATE<sp/>=<sp/>77,<sp/>KEYWORD_PROTECTED<sp/>=<sp/>78,<sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_PUBLIC<sp/>=<sp/>79,<sp/>KEYWORD_READONLY<sp/>=<sp/>80,<sp/>KEYWORD_REDEFINES<sp/>=<sp/>81,<sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_REDEFINITION<sp/>=<sp/>82,<sp/>KEYWORD_REFERENCES<sp/>=<sp/>83,<sp/>KEYWORD_REP<sp/>=<sp/>84,<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_RETURN<sp/>=<sp/>85,<sp/>KEYWORD_SPECILIZATION<sp/>=<sp/>86,<sp/>KEYWORD_SPECIALIZES<sp/>=<sp/>87,<sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_STEP<sp/>=<sp/>88,<sp/>KEYWORD_STRUCT<sp/>=<sp/>89,<sp/>KEYWORD_SUBCLASSIFIER<sp/>=<sp/>90,<sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_SUBSET<sp/>=<sp/>91,<sp/>KEYWORD_SUBSETS<sp/>=<sp/>92,<sp/>KEYWORD_SUBTYPE<sp/>=<sp/>93,<sp/>KEYWORD_SUCCSESSION<sp/>=<sp/>94,<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_THEN<sp/>=<sp/>95,<sp/>KEYWORD_TO<sp/>=<sp/>96,<sp/>KEYWORD_TRUE<sp/>=<sp/>97,<sp/>KEYWORD_TYPE<sp/>=<sp/>98,<sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_TYPED<sp/>=<sp/>99,<sp/>KEYWORD_TYPING<sp/>=<sp/>100,<sp/>KEYWORD_UNIONS<sp/>=<sp/>101,<sp/>KEYWORD_XOR<sp/>=<sp/>102,<sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_VAR<sp/>=<sp/>103,<sp/>KEYWORD_LOCALE<sp/>=<sp/>104,<sp/>KEYWORD_STANDARD<sp/>=<sp/>105,<sp/>KEYWORD_LIBRARY<sp/>=<sp/>106,<sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>KEYWORD_CONSTANT<sp/>=<sp/>107,<sp/>SINGLE_LINE_NOTE<sp/>=<sp/>108,<sp/>MULTI_LINE_NOTE<sp/>=<sp/>109,<sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>REGULAR_COMMENT<sp/>=<sp/>110,<sp/>SYMBOL_COMMENT_BLOCK_START<sp/>=<sp/>111,<sp/>SYMBOL_NOTE_BLOCK_START<sp/>=<sp/>112,<sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>SYMBOL_COMMENT_BLOCK_END<sp/>=<sp/>113,<sp/>SYMBOL_STATEMENT_DELIMITER<sp/>=<sp/>114,<sp/>SYMBOL_STAR<sp/>=<sp/>115,<sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>SYMBOL_NAMESPACE_SUBSET<sp/>=<sp/>116,<sp/>SYMBOL_TYPED_BY<sp/>=<sp/>117,<sp/>SYMBOL_SPECIALIZES<sp/>=<sp/>118,<sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>SYMBOL_REFERENCES<sp/>=<sp/>119,<sp/>SYMBOL_REDEFINES<sp/>=<sp/>120,<sp/>SYMBOL_CONJUNGATES<sp/>=<sp/>121,<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>SYMBOL_ROUND_BRACKET_OPEN<sp/>=<sp/>122,<sp/>SYMBOL_ROUND_BRACKET_CLOSE<sp/>=<sp/>123,<sp/>SYMBOL_CURLY_BRACKET_OPEN<sp/>=<sp/>124,<sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>SYMBOL_CURLY_BRACKET_CLOSE<sp/>=<sp/>125,<sp/>SYMBOL_SQUARE_BRACKET_OPEN<sp/>=<sp/>126,<sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>SYMBOL_SQUARE_BRACKET_CLOSE<sp/>=<sp/>127,<sp/>SYMBOL_COMMA<sp/>=<sp/>128,<sp/>SYMBOL_AT<sp/>=<sp/>129,<sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>SYMBOL_HASHTAG<sp/>=<sp/>130,<sp/>SYMBOL_MOD<sp/>=<sp/>131,<sp/>SYMBOL_AND<sp/>=<sp/>132,<sp/>SYMBOL_UPPER<sp/>=<sp/>133,<sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>SYMBOL_VERTICAL_LINE<sp/>=<sp/>134,<sp/>SYMBOL_DOUBLE_STAR<sp/>=<sp/>135,<sp/>SYMBOL_PLUS<sp/>=<sp/>136,<sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>SYMBOL_MINUS<sp/>=<sp/>137,<sp/>SYMBOL_SLASH<sp/>=<sp/>138,<sp/>SYMBOL_ARROOW<sp/>=<sp/>139,<sp/>SYMBOL_DOT<sp/>=<sp/>140,<sp/></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>SYMBOL_DDOT<sp/>=<sp/>141,<sp/>SYMBOL_SMALLER<sp/>=<sp/>142,<sp/>SYMBOL_SMALLER_EQUAL<sp/>=<sp/>143,<sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>SYMBOL_ASSIGN<sp/>=<sp/>144,<sp/>SYMBOL_DEF_ASSIGN<sp/>=<sp/>145,<sp/>SYMBOL_EQUALS<sp/>=<sp/>146,<sp/>SYMBOL_IFF_EQUALS<sp/>=<sp/>147,<sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>SYMBOL_NOT_EQUALS<sp/>=<sp/>148,<sp/>SYMBOL_IFF_NOT_EQUALS<sp/>=<sp/>149,<sp/>SYMBOL_GREATER<sp/>=<sp/>150,<sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>SYMBOL_GREATER_EQUALS<sp/>=<sp/>151,<sp/>SYMBOL_QUESTION<sp/>=<sp/>152,<sp/>SYMBOL_DQUESTION<sp/>=<sp/>153,<sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>SYMBOL_DOT_QUESTION<sp/>=<sp/>154,<sp/>NAME<sp/>=<sp/>155,<sp/>BASIC_NAME<sp/>=<sp/>156,<sp/>UNRESTRICTED_NAME<sp/>=<sp/>157,<sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>DECIMAL_VALUE<sp/>=<sp/>158,<sp/>EXPONENTIAL_VALUE<sp/>=<sp/>159,<sp/>STRING_VALUE<sp/>=<sp/>160,<sp/>WS<sp/>=<sp/>161</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/>KerMLLexer(antlr4::CharStream<sp/>*input);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>~KerMLLexer()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>std::string<sp/>getGrammarFileName()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;<sp/>getRuleNames()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;<sp/>getChannelNames()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;<sp/>getModeNames()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>antlr4::dfa::Vocabulary&amp;<sp/>getVocabulary()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>antlr4::atn::SerializedATNView<sp/>getSerializedATN()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>antlr4::atn::ATN&amp;<sp/>getATN()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>By<sp/>default<sp/>the<sp/>static<sp/>state<sp/>used<sp/>to<sp/>implement<sp/>the<sp/>lexer<sp/>is<sp/>lazily<sp/>initialized<sp/>during<sp/>the<sp/>first</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>call<sp/>to<sp/>the<sp/>constructor.<sp/>You<sp/>can<sp/>call<sp/>this<sp/>function<sp/>if<sp/>you<sp/>wish<sp/>to<sp/>initialize<sp/>the<sp/>static<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ahead<sp/>of<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>initialize();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Individual<sp/>action<sp/>functions<sp/>triggered<sp/>by<sp/>action()<sp/>above.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Individual<sp/>semantic<sp/>predicate<sp/>functions<sp/>triggered<sp/>by<sp/>sempred()<sp/>above.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="filehandling/src/kerml/KerMLLexer.h"/>
+  </compounddef>
+</doxygen>

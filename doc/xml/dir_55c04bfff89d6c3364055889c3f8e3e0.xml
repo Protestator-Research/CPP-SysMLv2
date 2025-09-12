@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_55c04bfff89d6c3364055889c3f8e3e0" kind="dir">
+    <compoundname>build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/interactions</compoundname>
+    <innerfile refid="da/dda/_interaction_8cpp_8o_8d">Interaction.cpp.o.d</innerfile>
+    <innerfile refid="d1/d9d/_item_feature_8cpp_8o_8d">ItemFeature.cpp.o.d</innerfile>
+    <innerfile refid="d6/d4d/_item_flow_8cpp_8o_8d">ItemFlow.cpp.o.d</innerfile>
+    <innerfile refid="d4/d40/_item_flow_end_8cpp_8o_8d">ItemFlowEnd.cpp.o.d</innerfile>
+    <innerfile refid="d3/d30/_succession_item_flow_8cpp_8o_8d">SuccessionItemFlow.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/interactions/"/>
+  </compounddef>
+</doxygen>

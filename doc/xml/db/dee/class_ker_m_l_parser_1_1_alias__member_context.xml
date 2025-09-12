@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="db/dee/class_ker_m_l_parser_1_1_alias__member_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Alias_memberContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a523d0c661272673b3ffb180f01482d70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Alias_memberContext::Alias_memberContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Alias_memberContext</name>
+        <qualifiedname>KerMLParser::Alias_memberContext::Alias_memberContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="827" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="2989" bodyend="2991"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a909f964fd504dbd6d6bc37e603e0076c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Alias_memberContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Alias_memberContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="828" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3030" bodyend="3032"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a38d55e02803a6bfb96b9195325b28bc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d96/class_ker_m_l_parser_1_1_member__prefix_context" kindref="compound">Member_prefixContext</ref> *</type>
+        <definition>KerMLParser::Member_prefixContext * KerMLParser::Alias_memberContext::member_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>member_prefix</name>
+        <qualifiedname>KerMLParser::Alias_memberContext::member_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="829" column="26" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="2993" bodyend="2995"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1aef69c10e111f77293b51eaacdd5f5140" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Alias_memberContext::KEYWORD_ALIAS</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_ALIAS</name>
+        <qualifiedname>KerMLParser::Alias_memberContext::KEYWORD_ALIAS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="830" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="2997" bodyend="2999"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a0713503487800fbd5f9f52e583fd5cf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Alias_memberContext::KEYWORD_FOR</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_FOR</name>
+        <qualifiedname>KerMLParser::Alias_memberContext::KEYWORD_FOR</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="831" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3001" bodyend="3003"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a555fe044ba7e33ce274515ffd2e1512d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>KerMLParser::Qualified_nameContext * KerMLParser::Alias_memberContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>KerMLParser::Alias_memberContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="832" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3005" bodyend="3007"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1aad8a2826ba9ba03d7c4fb3c8e9e5cde4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context" kindref="compound">Relationship_bodyContext</ref> *</type>
+        <definition>KerMLParser::Relationship_bodyContext * KerMLParser::Alias_memberContext::relationship_body</definition>
+        <argsstring>()</argsstring>
+        <name>relationship_body</name>
+        <qualifiedname>KerMLParser::Alias_memberContext::relationship_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="833" column="30" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3009" bodyend="3011"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a99f27a7220830c72cfef2aac0d519239" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Alias_memberContext::SYMBOL_SMALLER</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_SMALLER</name>
+        <qualifiedname>KerMLParser::Alias_memberContext::SYMBOL_SMALLER</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="834" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3013" bodyend="3015"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a902aa9f3edf34005215c0042869b6800" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; antlr4::tree::TerminalNode * &gt;</type>
+        <definition>std::vector&lt; tree::TerminalNode * &gt; KerMLParser::Alias_memberContext::NAME</definition>
+        <argsstring>()</argsstring>
+        <name>NAME</name>
+        <qualifiedname>KerMLParser::Alias_memberContext::NAME</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="835" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3017" bodyend="3019"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1aede2b6ff78605ad2fc9e468992ceed60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Alias_memberContext::NAME</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>NAME</name>
+        <qualifiedname>KerMLParser::Alias_memberContext::NAME</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="836" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3021" bodyend="3023"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a61c530a2d964a1964cd582291219d209" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Alias_memberContext::SYMBOL_GREATER</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_GREATER</name>
+        <qualifiedname>KerMLParser::Alias_memberContext::SYMBOL_GREATER</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="837" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3025" bodyend="3027"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a97b25d87e870fcc6deea28e1f81bb332" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Alias_memberContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Alias_memberContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="839" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3034" bodyend="3038"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a85906f8ba7f0b7c8393c5da1cb88c4e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Alias_memberContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Alias_memberContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="840" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3040" bodyend="3044"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Alias_memberContext</label>
+        <link refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Alias_memberContext</label>
+        <link refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="825" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="825" bodyend="842"/>
+    <listofallmembers>
+      <member refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a523d0c661272673b3ffb180f01482d70" prot="public" virt="non-virtual"><scope>KerMLParser::Alias_memberContext</scope><name>Alias_memberContext</name></member>
+      <member refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a97b25d87e870fcc6deea28e1f81bb332" prot="public" virt="virtual"><scope>KerMLParser::Alias_memberContext</scope><name>enterRule</name></member>
+      <member refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a85906f8ba7f0b7c8393c5da1cb88c4e3" prot="public" virt="virtual"><scope>KerMLParser::Alias_memberContext</scope><name>exitRule</name></member>
+      <member refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a909f964fd504dbd6d6bc37e603e0076c" prot="public" virt="virtual"><scope>KerMLParser::Alias_memberContext</scope><name>getRuleIndex</name></member>
+      <member refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1aef69c10e111f77293b51eaacdd5f5140" prot="public" virt="non-virtual"><scope>KerMLParser::Alias_memberContext</scope><name>KEYWORD_ALIAS</name></member>
+      <member refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a0713503487800fbd5f9f52e583fd5cf1" prot="public" virt="non-virtual"><scope>KerMLParser::Alias_memberContext</scope><name>KEYWORD_FOR</name></member>
+      <member refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a38d55e02803a6bfb96b9195325b28bc8" prot="public" virt="non-virtual"><scope>KerMLParser::Alias_memberContext</scope><name>member_prefix</name></member>
+      <member refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a902aa9f3edf34005215c0042869b6800" prot="public" virt="non-virtual"><scope>KerMLParser::Alias_memberContext</scope><name>NAME</name></member>
+      <member refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1aede2b6ff78605ad2fc9e468992ceed60" prot="public" virt="non-virtual"><scope>KerMLParser::Alias_memberContext</scope><name>NAME</name></member>
+      <member refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a555fe044ba7e33ce274515ffd2e1512d" prot="public" virt="non-virtual"><scope>KerMLParser::Alias_memberContext</scope><name>qualified_name</name></member>
+      <member refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1aad8a2826ba9ba03d7c4fb3c8e9e5cde4" prot="public" virt="non-virtual"><scope>KerMLParser::Alias_memberContext</scope><name>relationship_body</name></member>
+      <member refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a61c530a2d964a1964cd582291219d209" prot="public" virt="non-virtual"><scope>KerMLParser::Alias_memberContext</scope><name>SYMBOL_GREATER</name></member>
+      <member refid="db/dee/class_ker_m_l_parser_1_1_alias__member_context_1a99f27a7220830c72cfef2aac0d519239" prot="public" virt="non-virtual"><scope>KerMLParser::Alias_memberContext</scope><name>SYMBOL_SMALLER</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

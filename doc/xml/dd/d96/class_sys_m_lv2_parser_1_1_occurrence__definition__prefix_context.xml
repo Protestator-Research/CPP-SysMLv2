@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Occurrence_definition_prefixContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1a296081b27155329683cecb0d26997910" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Occurrence_definition_prefixContext::Occurrence_definition_prefixContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Occurrence_definition_prefixContext</name>
+        <qualifiedname>SysMLv2Parser::Occurrence_definition_prefixContext::Occurrence_definition_prefixContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1930" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8228" bodyend="8230"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1a1277f327ffe541e9104c6f866134693c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Occurrence_definition_prefixContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Occurrence_definition_prefixContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1931" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8249" bodyend="8251"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1a2c6e5d4298188c67925c9c1c982f50fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d92/class_sys_m_lv2_parser_1_1_basic__definition__prefix_context" kindref="compound">Basic_definition_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::Basic_definition_prefixContext * SysMLv2Parser::Occurrence_definition_prefixContext::basic_definition_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>basic_definition_prefix</name>
+        <qualifiedname>SysMLv2Parser::Occurrence_definition_prefixContext::basic_definition_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1932" column="36" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8232" bodyend="8234"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1aa740789c607b32f38611923142917655" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Occurrence_definition_prefixContext::KEYWORD_INDIVIDIAL</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_INDIVIDIAL</name>
+        <qualifiedname>SysMLv2Parser::Occurrence_definition_prefixContext::KEYWORD_INDIVIDIAL</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1933" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8236" bodyend="8238"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1a7dfc66f9b9ab6061a42c2a03dba8d4c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d0/d6b/class_sys_m_lv2_parser_1_1_definition__extension__keyword_context" kindref="compound">Definition_extension_keywordContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Definition_extension_keywordContext * &gt; SysMLv2Parser::Occurrence_definition_prefixContext::definition_extension_keyword</definition>
+        <argsstring>()</argsstring>
+        <name>definition_extension_keyword</name>
+        <qualifiedname>SysMLv2Parser::Occurrence_definition_prefixContext::definition_extension_keyword</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1934" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8240" bodyend="8242"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1a560ea09c80ae31d9af757ad6d8586907" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/d6b/class_sys_m_lv2_parser_1_1_definition__extension__keyword_context" kindref="compound">Definition_extension_keywordContext</ref> *</type>
+        <definition>SysMLv2Parser::Definition_extension_keywordContext * SysMLv2Parser::Occurrence_definition_prefixContext::definition_extension_keyword</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>definition_extension_keyword</name>
+        <qualifiedname>SysMLv2Parser::Occurrence_definition_prefixContext::definition_extension_keyword</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1935" column="41" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8244" bodyend="8246"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1a3e7888a5caaabb0bbed2eecc174c9345" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Occurrence_definition_prefixContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Occurrence_definition_prefixContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1937" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8253" bodyend="8257"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1a78ddd59279668a42afe10ee9b8e3fa39" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Occurrence_definition_prefixContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Occurrence_definition_prefixContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1938" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8259" bodyend="8263"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Occurrence_definition_prefixContext</label>
+        <link refid="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Occurrence_definition_prefixContext</label>
+        <link refid="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1928" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="1928" bodyend="1940"/>
+    <listofallmembers>
+      <member refid="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1a2c6e5d4298188c67925c9c1c982f50fc" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Occurrence_definition_prefixContext</scope><name>basic_definition_prefix</name></member>
+      <member refid="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1a7dfc66f9b9ab6061a42c2a03dba8d4c7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Occurrence_definition_prefixContext</scope><name>definition_extension_keyword</name></member>
+      <member refid="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1a560ea09c80ae31d9af757ad6d8586907" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Occurrence_definition_prefixContext</scope><name>definition_extension_keyword</name></member>
+      <member refid="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1a3e7888a5caaabb0bbed2eecc174c9345" prot="public" virt="virtual"><scope>SysMLv2Parser::Occurrence_definition_prefixContext</scope><name>enterRule</name></member>
+      <member refid="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1a78ddd59279668a42afe10ee9b8e3fa39" prot="public" virt="virtual"><scope>SysMLv2Parser::Occurrence_definition_prefixContext</scope><name>exitRule</name></member>
+      <member refid="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1a1277f327ffe541e9104c6f866134693c" prot="public" virt="virtual"><scope>SysMLv2Parser::Occurrence_definition_prefixContext</scope><name>getRuleIndex</name></member>
+      <member refid="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1aa740789c607b32f38611923142917655" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Occurrence_definition_prefixContext</scope><name>KEYWORD_INDIVIDIAL</name></member>
+      <member refid="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context_1a296081b27155329683cecb0d26997910" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Occurrence_definition_prefixContext</scope><name>Occurrence_definition_prefixContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

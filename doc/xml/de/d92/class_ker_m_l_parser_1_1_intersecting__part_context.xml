@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Intersecting_partContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1afadb9c64f1c6db7785ccb8da32464bb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Intersecting_partContext::Intersecting_partContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Intersecting_partContext</name>
+        <qualifiedname>KerMLParser::Intersecting_partContext::Intersecting_partContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1164" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4946" bodyend="4948"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1a7d9c23b82e639e889dc16eb8114f1490" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Intersecting_partContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Intersecting_partContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1165" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4971" bodyend="4973"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1a3840ed318da70216b16dee6ad2ba0bb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Intersecting_partContext::KEYWORD_INTERSECTS</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_INTERSECTS</name>
+        <qualifiedname>KerMLParser::Intersecting_partContext::KEYWORD_INTERSECTS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1166" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4950" bodyend="4952"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1a61893ef7a355a2b06694669338749aa7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d1/d5d/class_ker_m_l_parser_1_1_intersecting_context" kindref="compound">IntersectingContext</ref> * &gt;</type>
+        <definition>std::vector&lt; KerMLParser::IntersectingContext * &gt; KerMLParser::Intersecting_partContext::intersecting</definition>
+        <argsstring>()</argsstring>
+        <name>intersecting</name>
+        <qualifiedname>KerMLParser::Intersecting_partContext::intersecting</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1167" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4954" bodyend="4956"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1a1bebd4e8946d83d4db6efe1397092231" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d5d/class_ker_m_l_parser_1_1_intersecting_context" kindref="compound">IntersectingContext</ref> *</type>
+        <definition>KerMLParser::IntersectingContext * KerMLParser::Intersecting_partContext::intersecting</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>intersecting</name>
+        <qualifiedname>KerMLParser::Intersecting_partContext::intersecting</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1168" column="25" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4958" bodyend="4960"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1a91c552c85caaae804857b2bf75c80b4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; antlr4::tree::TerminalNode * &gt;</type>
+        <definition>std::vector&lt; tree::TerminalNode * &gt; KerMLParser::Intersecting_partContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>KerMLParser::Intersecting_partContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1169" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4962" bodyend="4964"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1a4bfc4032227d32d6faf8dae9b3f18cba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Intersecting_partContext::SYMBOL_COMMA</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>KerMLParser::Intersecting_partContext::SYMBOL_COMMA</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1170" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4966" bodyend="4968"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1abbd3df2477ee801d40c193c1b6470e7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Intersecting_partContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Intersecting_partContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1172" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4975" bodyend="4979"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1aec8aeb80400b7a3222b8100ee4bccc79" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Intersecting_partContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Intersecting_partContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1173" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4981" bodyend="4985"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Intersecting_partContext</label>
+        <link refid="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Intersecting_partContext</label>
+        <link refid="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="1162" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="1162" bodyend="1175"/>
+    <listofallmembers>
+      <member refid="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1abbd3df2477ee801d40c193c1b6470e7a" prot="public" virt="virtual"><scope>KerMLParser::Intersecting_partContext</scope><name>enterRule</name></member>
+      <member refid="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1aec8aeb80400b7a3222b8100ee4bccc79" prot="public" virt="virtual"><scope>KerMLParser::Intersecting_partContext</scope><name>exitRule</name></member>
+      <member refid="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1a7d9c23b82e639e889dc16eb8114f1490" prot="public" virt="virtual"><scope>KerMLParser::Intersecting_partContext</scope><name>getRuleIndex</name></member>
+      <member refid="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1a61893ef7a355a2b06694669338749aa7" prot="public" virt="non-virtual"><scope>KerMLParser::Intersecting_partContext</scope><name>intersecting</name></member>
+      <member refid="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1a1bebd4e8946d83d4db6efe1397092231" prot="public" virt="non-virtual"><scope>KerMLParser::Intersecting_partContext</scope><name>intersecting</name></member>
+      <member refid="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1afadb9c64f1c6db7785ccb8da32464bb2" prot="public" virt="non-virtual"><scope>KerMLParser::Intersecting_partContext</scope><name>Intersecting_partContext</name></member>
+      <member refid="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1a3840ed318da70216b16dee6ad2ba0bb8" prot="public" virt="non-virtual"><scope>KerMLParser::Intersecting_partContext</scope><name>KEYWORD_INTERSECTS</name></member>
+      <member refid="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1a91c552c85caaae804857b2bf75c80b4c" prot="public" virt="non-virtual"><scope>KerMLParser::Intersecting_partContext</scope><name>SYMBOL_COMMA</name></member>
+      <member refid="de/d92/class_ker_m_l_parser_1_1_intersecting__part_context_1a4bfc4032227d32d6faf8dae9b3f18cba" prot="public" virt="non-virtual"><scope>KerMLParser::Intersecting_partContext</scope><name>SYMBOL_COMMA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

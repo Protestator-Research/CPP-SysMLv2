@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_PROJECT_H
-#define DIGITALTWIN_PROJECT_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -22,7 +21,7 @@
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     class DataVersion;
     class DataIdentity;
     class Commit;
@@ -34,7 +33,7 @@ namespace SysMLv2::Entities {
 }
 
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     /**
      * Represents the object of the Project entity.
      * @class Project
@@ -60,16 +59,29 @@ namespace SysMLv2::Entities {
          */
         explicit Project(std::string JsonString);
 
+        /**
+         * Creates a project from the given elements.
+         * @param projectName The name of the Project that is given by the user.
+         * @param projectDescription The description of the Project, given by the user.
+         * @param branchName The default branch name, that can be changed.
+         */
         Project(std::string projectName, std::string projectDescription, std::string branchName);
 
-        virtual ~Project();
+        /**
+         * Destructor.
+         */
+        ~Project() override;
 
+        /**
+         * Allows to get the default branch.
+         * @return
+         */
         std::shared_ptr<Branch> getDefaultBranch();
         void setDefaultBranch(std::shared_ptr<Branch> branch);
 
         std::string serializeToJson() override;
 
-    private:
+    protected:
         std::shared_ptr<DataVersion> m_DataVersion;
 
 
@@ -84,5 +96,3 @@ namespace SysMLv2::Entities {
         std::vector<std::shared_ptr<Query>> Querries;
     };
 }
-
-#endif //DIGITALTWIN_PROJECT_H

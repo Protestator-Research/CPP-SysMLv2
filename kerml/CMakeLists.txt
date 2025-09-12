@@ -31,7 +31,7 @@ set(ROOT_NAMESPACES_HEADER
 set(CORE_TYPES_HEADER
         src/core/types/Type.h
         src/core/types/Specialization.h
-        src/core/types/Conjunction.h
+        src/core/types/Conjugation.h
         src/core/types/Disjoining.h
         src/core/types/Unioning.h
         src/core/types/Intersecting.h
@@ -45,6 +45,7 @@ set(CORE_FEATURES_HEADER
         src/core/features/TypeFeaturing.h
         src/core/features/FeatureDirectionKind.h
         src/core/features/Feature.h
+        src/core/features/Multiplicity.h
         src/core/features/FeatureInverting.h
         src/core/features/Subsetting.h
         src/core/features/FeatureTyping.h
@@ -53,7 +54,8 @@ set(CORE_FEATURES_HEADER
         src/core/features/ReferenceSubsetting.h
         src/core/features/FeatureChaining.h
         src/core/features/FeatureMembership.h
-        src/core/features/EndFeatureMembership.h)
+        src/core/features/EndFeatureMembership.h
+        src/core/features/CrossSubsetting.h)
 
 set(KERNEL_DATATYPES_HEADER
         src/kernel/datatypes/DataType.h)
@@ -165,7 +167,7 @@ add_library(kerml
         src/root/namespaces/Import.cpp
         src/core/types/Type.cpp
         src/core/types/Specialization.cpp
-        src/core/types/Conjunction.cpp
+        src/core/types/Conjugation.cpp
         src/core/types/Disjoining.cpp
         src/core/types/Unioning.cpp
         src/core/types/Intersecting.cpp
@@ -173,6 +175,7 @@ add_library(kerml
         src/core/classifiers/Classifier.cpp
         src/core/features/TypeFeaturing.cpp
         src/core/features/Feature.cpp
+        src/core/features/Multiplicity.cpp
         src/core/features/FeatureInverting.cpp
         src/core/classifiers/Subclassification.cpp
         src/core/features/FeatureTyping.cpp
@@ -183,6 +186,7 @@ add_library(kerml
         src/core/features/FeatureChaining.cpp
         src/core/features/FeatureMembership.cpp
         src/core/features/EndFeatureMembership.cpp
+        src/core/features/CrossSubsetting.cpp
         src/kernel/datatypes/DataType.cpp
         src/kernel/classes/Class.cpp
         src/kernel/associations/Association.cpp

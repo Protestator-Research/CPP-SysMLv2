@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_ec8bb04ec4a4d197c7db04e6a7919fe5" kind="dir">
+    <compoundname>build/Debug/services/CMakeFiles/sysmlv2service.dir/src/implementation</compoundname>
+    <innerfile refid="d3/d4c/_element_navigation_service_8cpp_8o_8d">ElementNavigationService.cpp.o.d</innerfile>
+    <innerfile refid="d9/d3a/_project_service_8cpp_8o_8d">ProjectService.cpp.o.d</innerfile>
+    <innerfile refid="d6/dd7/_project_usage_service_8cpp_8o_8d">ProjectUsageService.cpp.o.d</innerfile>
+    <innerfile refid="de/d99/_project_versioning_service_8cpp_8o_8d">ProjectVersioningService.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/services/CMakeFiles/sysmlv2service.dir/src/implementation/"/>
+  </compounddef>
+</doxygen>

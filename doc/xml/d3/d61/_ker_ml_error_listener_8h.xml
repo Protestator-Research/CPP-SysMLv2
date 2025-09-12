@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d3/d61/_ker_ml_error_listener_8h" kind="file" language="C++">
+    <compoundname>KerMlErrorListener.h</compoundname>
+    <includes local="no">antlr4-runtime/BaseErrorListener.h</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">memory</includes>
+    <includes refid="d3/da6/_ker_ml_error_8h" local="yes">KerMlError.h</includes>
+    <includes refid="d4/d76/sysmlv2file__global_8h" local="yes">../sysmlv2file_global.h</includes>
+    <includedby refid="d3/d1c/_test_ker_m_l_parser_8cpp" local="no">conformance-test/src/TestKerMLParser.cpp</includedby>
+    <includedby refid="de/df6/_parser_8cpp" local="yes">filehandling/src/Parser.cpp</includedby>
+    <includedby refid="d1/dff/_ker_ml_error_listener_8cpp" local="yes">filehandling/src/kerml/KerMlErrorListener.cpp</includedby>
+    <incdepgraph>
+      <node id="5">
+        <label>KerMlError.h</label>
+        <link refid="d3/da6/_ker_ml_error_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>filehandling/src/kerml/KerMlErrorListener.h</label>
+        <link refid="d3/d61/_ker_ml_error_listener_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>../sysmlv2file_global.h</label>
+        <link refid="d4/d76/sysmlv2file__global_8h_source"/>
+      </node>
+      <node id="2">
+        <label>antlr4-runtime/BaseErrorListener.h</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="dc/ded/class_ker_m_l_error_listener" prot="public">KerMLErrorListener</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Moritz<sp/>Herzog<sp/>on<sp/>08.04.25.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SYSMLV2_KERMLERRORLISTENER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYSMLV2_KERMLERRORLISTENER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;antlr4-runtime/BaseErrorListener.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;KerMlError.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../sysmlv2file_global.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="dc/ded/class_ker_m_l_error_listener" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">SYSMLV2FILE_EXPORT<sp/>KerMLErrorListener<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>antlr4::BaseErrorListener<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>KerMLErrorListener();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~KerMLErrorListener()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>syntaxError(antlr4::Recognizer<sp/>*recognizer,<sp/>antlr4::Token<sp/>*<sp/>offendingSymbol,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>line,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>charPositionInLine,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;msg,<sp/>std::exception_ptr<sp/>e)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;KerMLError&gt;&gt;<sp/>getSyntaxErrors()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>reportAmbiguity(antlr4::Parser<sp/>*recognizer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>antlr4::dfa::DFA<sp/>&amp;dfa,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>startIndex,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>stopIndex,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exact,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>antlrcpp::BitSet<sp/>&amp;ambigAlts,<sp/>antlr4::atn::ATNConfigSet<sp/>*configs)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>reportAttemptingFullContext(antlr4::Parser<sp/>*recognizer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>antlr4::dfa::DFA<sp/>&amp;dfa,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>startIndex,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>stopIndex,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>antlrcpp::BitSet<sp/>&amp;conflictingAlts,<sp/>antlr4::atn::ATNConfigSet<sp/>*configs)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>reportContextSensitivity(antlr4::Parser<sp/>*recognizer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>antlr4::dfa::DFA<sp/>&amp;dfa,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>startIndex,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>stopIndex,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>prediction,<sp/>antlr4::atn::ATNConfigSet<sp/>*configs)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;KerMLError&gt;&gt;<sp/>SyntaxErrors;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//SYSMLV2_KERMLERRORLISTENER_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="filehandling/src/kerml/KerMlErrorListener.h"/>
+  </compounddef>
+</doxygen>

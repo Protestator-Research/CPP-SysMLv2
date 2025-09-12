@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Effect_behavior_usageContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1adb674ba53c669ecbfd427c9467d7bbf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Effect_behavior_usageContext::Effect_behavior_usageContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Effect_behavior_usageContext</name>
+        <qualifiedname>SysMLv2Parser::Effect_behavior_usageContext::Effect_behavior_usageContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4254" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19955" bodyend="19957"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1a697a0a4ee136f0f15ee2cfd97a78c970" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Effect_behavior_usageContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Effect_behavior_usageContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4255" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19980" bodyend="19982"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1ae013a5b9d660455d46153731fa9fad18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d23/class_sys_m_lv2_parser_1_1_empty__action__usage_context" kindref="compound">Empty_action_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Empty_action_usageContext * SysMLv2Parser::Effect_behavior_usageContext::empty_action_usage</definition>
+        <argsstring>()</argsstring>
+        <name>empty_action_usage</name>
+        <qualifiedname>SysMLv2Parser::Effect_behavior_usageContext::empty_action_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4256" column="31" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19959" bodyend="19961"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1a9536fca9c9c7fd1af4bf3cb464a66eab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/dfc/class_sys_m_lv2_parser_1_1_transition__perform__action__usage_context" kindref="compound">Transition_perform_action_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Transition_perform_action_usageContext * SysMLv2Parser::Effect_behavior_usageContext::transition_perform_action_usage</definition>
+        <argsstring>()</argsstring>
+        <name>transition_perform_action_usage</name>
+        <qualifiedname>SysMLv2Parser::Effect_behavior_usageContext::transition_perform_action_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4257" column="44" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19963" bodyend="19965"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1aed5056f4aad3be464ae63d248c5f7692" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d59/class_sys_m_lv2_parser_1_1_transition__accept__action__usage_context" kindref="compound">Transition_accept_action_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Transition_accept_action_usageContext * SysMLv2Parser::Effect_behavior_usageContext::transition_accept_action_usage</definition>
+        <argsstring>()</argsstring>
+        <name>transition_accept_action_usage</name>
+        <qualifiedname>SysMLv2Parser::Effect_behavior_usageContext::transition_accept_action_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4258" column="43" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19967" bodyend="19969"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1a1358bd9ca387749377779aef18770174" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/deb/class_sys_m_lv2_parser_1_1_transition__send__action__usage_context" kindref="compound">Transition_send_action_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Transition_send_action_usageContext * SysMLv2Parser::Effect_behavior_usageContext::transition_send_action_usage</definition>
+        <argsstring>()</argsstring>
+        <name>transition_send_action_usage</name>
+        <qualifiedname>SysMLv2Parser::Effect_behavior_usageContext::transition_send_action_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4259" column="41" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19971" bodyend="19973"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1a1c8765ed0a247f28fc21849c7144f294" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/dd2/class_sys_m_lv2_parser_1_1_transition__assignment__action__usage_context" kindref="compound">Transition_assignment_action_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Transition_assignment_action_usageContext * SysMLv2Parser::Effect_behavior_usageContext::transition_assignment_action_usage</definition>
+        <argsstring>()</argsstring>
+        <name>transition_assignment_action_usage</name>
+        <qualifiedname>SysMLv2Parser::Effect_behavior_usageContext::transition_assignment_action_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4260" column="47" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19975" bodyend="19977"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1a3c8ed884056079587a17f8c5f9229c2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Effect_behavior_usageContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Effect_behavior_usageContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4262" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19984" bodyend="19988"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1a02f7f67048721afd2e7f10f537bbe980" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Effect_behavior_usageContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Effect_behavior_usageContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4263" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19990" bodyend="19994"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Effect_behavior_usageContext</label>
+        <link refid="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Effect_behavior_usageContext</label>
+        <link refid="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4252" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="4252" bodyend="4265"/>
+    <listofallmembers>
+      <member refid="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1adb674ba53c669ecbfd427c9467d7bbf7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Effect_behavior_usageContext</scope><name>Effect_behavior_usageContext</name></member>
+      <member refid="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1ae013a5b9d660455d46153731fa9fad18" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Effect_behavior_usageContext</scope><name>empty_action_usage</name></member>
+      <member refid="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1a3c8ed884056079587a17f8c5f9229c2c" prot="public" virt="virtual"><scope>SysMLv2Parser::Effect_behavior_usageContext</scope><name>enterRule</name></member>
+      <member refid="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1a02f7f67048721afd2e7f10f537bbe980" prot="public" virt="virtual"><scope>SysMLv2Parser::Effect_behavior_usageContext</scope><name>exitRule</name></member>
+      <member refid="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1a697a0a4ee136f0f15ee2cfd97a78c970" prot="public" virt="virtual"><scope>SysMLv2Parser::Effect_behavior_usageContext</scope><name>getRuleIndex</name></member>
+      <member refid="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1aed5056f4aad3be464ae63d248c5f7692" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Effect_behavior_usageContext</scope><name>transition_accept_action_usage</name></member>
+      <member refid="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1a1c8765ed0a247f28fc21849c7144f294" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Effect_behavior_usageContext</scope><name>transition_assignment_action_usage</name></member>
+      <member refid="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1a9536fca9c9c7fd1af4bf3cb464a66eab" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Effect_behavior_usageContext</scope><name>transition_perform_action_usage</name></member>
+      <member refid="dc/d2c/class_sys_m_lv2_parser_1_1_effect__behavior__usage_context_1a1358bd9ca387749377779aef18770174" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Effect_behavior_usageContext</scope><name>transition_send_action_usage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

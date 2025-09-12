@@ -1,0 +1,560 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2::Entities::Record</compoundname>
+    <basecompoundref refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity" prot="public" virt="non-virtual">SysMLv2::Entities::IEntity</basecompoundref>
+    <derivedcompoundref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" prot="public" virt="non-virtual">SysMLv2::Entities::Commit</derivedcompoundref>
+    <derivedcompoundref refid="d3/daf/class_sys_m_lv2_1_1_entities_1_1_commit_reference" prot="public" virt="non-virtual">SysMLv2::Entities::CommitReference</derivedcompoundref>
+    <derivedcompoundref refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity" prot="public" virt="non-virtual">SysMLv2::Entities::DataIdentity</derivedcompoundref>
+    <derivedcompoundref refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" prot="public" virt="non-virtual">SysMLv2::Entities::DataVersion</derivedcompoundref>
+    <derivedcompoundref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" prot="public" virt="non-virtual">SysMLv2::Entities::Project</derivedcompoundref>
+    <derivedcompoundref refid="d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query" prot="public" virt="non-virtual">SysMLv2::Entities::Query</derivedcompoundref>
+    <includes refid="df/da8/_commit_reference_8h" local="no">CommitReference.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a4fbf73e50a3dffee7e40393ce1db6508" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Record::Type</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <qualifiedname>SysMLv2::Entities::Record::Type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type of the generated class. This also enables the parsing of the element. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="130" column="21" bodyfile="rest-api/src/entities/Record.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ad1599c8728bec68fe1291f51b9d0a04b" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Record::Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <qualifiedname>SysMLv2::Entities::Record::Name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Contains the name of the <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref> Class. This is also called human identifier within the <ref refid="d7/dba/namespace_sys_m_lv2" kindref="compound">SysMLv2</ref> Documentation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="134" column="21" bodyfile="rest-api/src/entities/Record.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a023b2aa15c7192d9af732ee3e7e84a56" prot="protected" static="no" mutable="no">
+        <type>std::list&lt; std::string &gt;</type>
+        <definition>std::list&lt;std::string&gt; SysMLv2::Entities::Record::Alias</definition>
+        <argsstring></argsstring>
+        <name>Alias</name>
+        <qualifiedname>SysMLv2::Entities::Record::Alias</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Contains all Aliases of the object. Also within the Aliases the human identifier needs to be contained, according to the <ref refid="d7/dba/namespace_sys_m_lv2" kindref="compound">SysMLv2</ref> standard. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="139" column="19" bodyfile="rest-api/src/entities/Record.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a6e2c0a9b166510546f567a25a64e2c80" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Record::Description</definition>
+        <argsstring></argsstring>
+        <name>Description</name>
+        <qualifiedname>SysMLv2::Entities::Record::Description</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Contains the description of a single <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="143" column="21" bodyfile="rest-api/src/entities/Record.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a077d9e6a406a07331d43abcfe3fd2a20" prot="protected" static="no" mutable="no">
+        <type>boost::uuids::uuid</type>
+        <definition>boost::uuids::uuid SysMLv2::Entities::Record::Id</definition>
+        <argsstring></argsstring>
+        <name>Id</name>
+        <qualifiedname>SysMLv2::Entities::Record::Id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Contains the ID of a single <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref>. This is also stored as a UUID. <simplesect kind="see"><para>boost::uuids::uuid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="148" column="28" bodyfile="rest-api/src/entities/Record.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a06c5038dc6f912801a70e6c3fd7a52e0" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SysMLv2::Entities::Record::IsForCreation</definition>
+        <argsstring></argsstring>
+        <name>IsForCreation</name>
+        <qualifiedname>SysMLv2::Entities::Record::IsForCreation</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="150" column="14" bodyfile="rest-api/src/entities/Record.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a3bfd067522f0ef87a1b50c6493458a9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::Record::Record</definition>
+        <argsstring>()=delete</argsstring>
+        <name>Record</name>
+        <qualifiedname>SysMLv2::Entities::Record::Record</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generalized Constructor is deleted According to the <ref refid="d7/dba/namespace_sys_m_lv2" kindref="compound">SysMLv2</ref> Standard. This requires a human Identifier, that is read only. This can not be realized by a general constructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="39" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a51b38a3923a662061d8f647aa172ce4e" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::Record::Record</definition>
+        <argsstring>(boost::uuids::uuid id, std::string name=&quot;&quot;, std::string description=&quot;&quot;)</argsstring>
+        <name>Record</name>
+        <qualifiedname>SysMLv2::Entities::Record::Record</qualifiedname>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>description</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Init the <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref> Object with all the nesecary objects. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the Object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the Object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the Object </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="47" column="18" bodyfile="rest-api/src/entities/Record.cpp" bodystart="24" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ae6e096d934f6107cd2585081bc59da10" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::Record::Record</definition>
+        <argsstring>(std::string jsonStringOrName)</argsstring>
+        <name>Record</name>
+        <qualifiedname>SysMLv2::Entities::Record::Record</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>jsonStringOrName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Converts a JSON String into a valid <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref> <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>jsonString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The JSON String that is converted to a <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref> or a valid name of the <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="53" column="18" bodyfile="rest-api/src/entities/Record.cpp" bodystart="32" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1abccd189ffb39f8f1728b1a646cae7a3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::Record::~Record</definition>
+        <argsstring>()</argsstring>
+        <name>~Record</name>
+        <qualifiedname>SysMLv2::Entities::Record::~Record</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="58" column="17" bodyfile="rest-api/src/entities/Record.cpp" bodystart="115" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a44938fd7ae4280fa0473484273b4d431" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SysMLv2::Entities::Record::operator==</definition>
+        <argsstring>(Record const &amp;other) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>SysMLv2::Entities::Record::operator==</qualifiedname>
+        <param>
+          <type><ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref> const &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Checks the equality of the individual Records. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The other <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref> object to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the objects are identical. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="65" column="14" bodyfile="rest-api/src/entities/Record.cpp" bodystart="56" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1aa619b90ce3e937a75a22854f3107ebc5" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Record::getName</definition>
+        <argsstring>() const</argsstring>
+        <name>getName</name>
+        <qualifiedname>SysMLv2::Entities::Record::getName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the human identifier according to the <ref refid="d7/dba/namespace_sys_m_lv2" kindref="compound">SysMLv2</ref> standard. <simplesect kind="return"><para>Human Identifier. </para>
+</simplesect>
+<simplesect kind="see"><para>std::string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="72" column="22" bodyfile="rest-api/src/entities/Record.cpp" bodystart="69" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ac7666583958bc98be3e6f2da3880454c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SysMLv2::Entities::Record::setName</definition>
+        <argsstring>(std::string name)</argsstring>
+        <name>setName</name>
+        <qualifiedname>SysMLv2::Entities::Record::setName</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets a new Human Identifier. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new Human Identifier. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="78" column="14" bodyfile="rest-api/src/entities/Record.cpp" bodystart="119" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a727329cbcf2499bff14edcdcb4735dfc" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::list&lt; std::string &gt;</type>
+        <definition>std::list&lt; std::string &gt; SysMLv2::Entities::Record::getAlias</definition>
+        <argsstring>() const</argsstring>
+        <name>getAlias</name>
+        <qualifiedname>SysMLv2::Entities::Record::getAlias</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the list of all Aliases according ot the SysML Standard. Hereby also holds that the name aka. the human identifier is part of the alias list. <simplesect kind="return"><para>All available Aliases. </para>
+</simplesect>
+<simplesect kind="see"><para>std::list </para>
+</simplesect>
+<simplesect kind="see"><para>std::string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="87" column="20" bodyfile="rest-api/src/entities/Record.cpp" bodystart="73" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a45b598f62d5fec7657728708ed8d5aa8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SysMLv2::Entities::Record::appendAlias</definition>
+        <argsstring>(std::string &amp;alias)</argsstring>
+        <name>appendAlias</name>
+        <qualifiedname>SysMLv2::Entities::Record::appendAlias</qualifiedname>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>alias</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Appends an single alias to the aliases list of a single <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>alias</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Additional alias, that will be stored in tha alias list. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="93" column="14" bodyfile="rest-api/src/entities/Record.cpp" bodystart="77" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a28e97d4f86b1f57bd1a7f0e6e2c47e9e" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Record::getDescription</definition>
+        <argsstring>() const</argsstring>
+        <name>getDescription</name>
+        <qualifiedname>SysMLv2::Entities::Record::getDescription</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the description of a <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref> according to the <ref refid="d7/dba/namespace_sys_m_lv2" kindref="compound">SysMLv2</ref> standard. <simplesect kind="return"><para>A std::string containing the Description of the <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="99" column="22" bodyfile="rest-api/src/entities/Record.cpp" bodystart="81" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ad826fec2e174a534cad1351750175c28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SysMLv2::Entities::Record::setDescription</definition>
+        <argsstring>(std::string &amp;description)</argsstring>
+        <name>setDescription</name>
+        <qualifiedname>SysMLv2::Entities::Record::setDescription</qualifiedname>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets a new description of the <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The description is given as a std::string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="105" column="14" bodyfile="rest-api/src/entities/Record.cpp" bodystart="85" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1aa503f01b715d59b29654fdd4ee2ade28" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::uuids::uuid</type>
+        <definition>boost::uuids::uuid SysMLv2::Entities::Record::getId</definition>
+        <argsstring>() const</argsstring>
+        <name>getId</name>
+        <qualifiedname>SysMLv2::Entities::Record::getId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the ID of the <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref>. The ID is only gettable and not settable except the option to set the ID in the constructor according to the <ref refid="d7/dba/namespace_sys_m_lv2" kindref="compound">SysMLv2</ref> Standard. <simplesect kind="return"><para>A boost::uuids::uuid, as the ID. </para>
+</simplesect>
+<simplesect kind="see"><para>boost::uuids::uuid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="113" column="29" bodyfile="rest-api/src/entities/Record.cpp" bodystart="89" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a61bfd3751bc3c11628008337b1caf24b" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Record::getType</definition>
+        <argsstring>() const</argsstring>
+        <name>getType</name>
+        <qualifiedname>SysMLv2::Entities::Record::getType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the type of the <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref>. The type is a complexity that is needed to parse an object. Also there is no point in making the type settable, since the type is dependent on the subclass of the <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref> that is used. <simplesect kind="return"><para>String representation of the Type. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="120" column="22" bodyfile="rest-api/src/entities/Record.cpp" bodystart="111" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a2a10fcc6f27a921cd60517703dfd3f2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Record::serializeToJson</definition>
+        <argsstring>() override</argsstring>
+        <name>serializeToJson</name>
+        <qualifiedname>SysMLv2::Entities::Record::serializeToJson</qualifiedname>
+        <reimplements refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1a21ebb7ed491edd322301c7ba20cf66dc">serializeToJson</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows the serialization of the Object to a JSON String. <simplesect kind="return"><para>JSON String of the Object </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Record.h" line="122" column="21" bodyfile="rest-api/src/entities/Record.cpp" bodystart="93" bodyend="109"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Represents an abstract baseclass that is used for the <ref refid="d7/dba/namespace_sys_m_lv2" kindref="compound">SysMLv2</ref> <ref refid="da/dd6/namespace_sys_m_lv2_1_1_a_p_i" kindref="compound">API</ref></para>
+<para><simplesect kind="author"><para>Moritz Herzog </para>
+</simplesect>
+<simplesect kind="version"><para>1.0</para>
+</simplesect>
+Represents an abstract baseclass that is used for the <ref refid="d7/dba/namespace_sys_m_lv2" kindref="compound">SysMLv2</ref> <ref refid="da/dd6/namespace_sys_m_lv2_1_1_a_p_i" kindref="compound">API</ref></para>
+<para><simplesect kind="author"><para>Moritz Herzog </para>
+</simplesect>
+<simplesect kind="version"><para>1.0 </para>
+</simplesect>
+<simplesect kind="see"><para>boost::uuids::uuid </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>SysMLv2::Entities::Branch</label>
+        <link refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>SysMLv2::Entities::Commit</label>
+        <link refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>SysMLv2::Entities::CommitReference</label>
+        <link refid="d3/daf/class_sys_m_lv2_1_1_entities_1_1_commit_reference"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>SysMLv2::Entities::DataIdentity</label>
+        <link refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>SysMLv2::Entities::DataVersion</label>
+        <link refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+      <node id="9">
+        <label>SysMLv2::Entities::Project</label>
+        <link refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>SysMLv2::Entities::Query</label>
+        <link refid="d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>SysMLv2::Entities::Record</label>
+        <link refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>SysMLv2::Entities::Tag</label>
+        <link refid="d7/dab/class_sys_m_lv2_1_1_entities_1_1_tag"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+      <node id="1">
+        <label>SysMLv2::Entities::Record</label>
+        <link refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="rest-api/src/entities/Record.h" line="33" column="5" bodyfile="rest-api/src/entities/Record.h" bodystart="33" bodyend="151"/>
+    <listofallmembers>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a023b2aa15c7192d9af732ee3e7e84a56" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>Alias</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a45b598f62d5fec7657728708ed8d5aa8" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>appendAlias</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a6e2c0a9b166510546f567a25a64e2c80" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>Description</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a727329cbcf2499bff14edcdcb4735dfc" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>getAlias</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a28e97d4f86b1f57bd1a7f0e6e2c47e9e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>getDescription</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1aa503f01b715d59b29654fdd4ee2ade28" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>getId</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1aa619b90ce3e937a75a22854f3107ebc5" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>getName</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a61bfd3751bc3c11628008337b1caf24b" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>getType</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a077d9e6a406a07331d43abcfe3fd2a20" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>Id</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a06c5038dc6f912801a70e6c3fd7a52e0" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>IsForCreation</name></member>
+      <member refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1ac3f7cba2488d110b820614b9cb709808" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>JSON_INTENT</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ad1599c8728bec68fe1291f51b9d0a04b" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>Name</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a44938fd7ae4280fa0473484273b4d431" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>operator==</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a3bfd067522f0ef87a1b50c6493458a9b" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>Record</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a51b38a3923a662061d8f647aa172ce4e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>Record</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ae6e096d934f6107cd2585081bc59da10" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>Record</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a2a10fcc6f27a921cd60517703dfd3f2b" prot="public" virt="virtual"><scope>SysMLv2::Entities::Record</scope><name>serializeToJson</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ad826fec2e174a534cad1351750175c28" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>setDescription</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ac7666583958bc98be3e6f2da3880454c" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>setName</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a4fbf73e50a3dffee7e40393ce1db6508" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::Record</scope><name>Type</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1abccd189ffb39f8f1728b1a646cae7a3e" prot="public" virt="virtual"><scope>SysMLv2::Entities::Record</scope><name>~Record</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

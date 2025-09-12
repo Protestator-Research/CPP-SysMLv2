@@ -7,6 +7,8 @@
 #include <stdexcept>
 #include "../sysmlv2service_global.h"
 
+#include "../sysmlv2service_global.h"
+
 namespace SysMLv2::API::EXCEPTIONS {
     enum SYSMLV2SERVICE_EXPORT CONNECTION_ERROR_TYPE {
         UNSUPPORTED_PROTOCOL = 1,

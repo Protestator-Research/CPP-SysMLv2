@@ -123,7 +123,7 @@ $(function(){initNavTree('d2/d8f/_i_external_releationship_service_8h_source.htm
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">//---------------------------------------------------------</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// Internal Classes</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">//---------------------------------------------------------</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;../sysmlv2service_global.h&quot;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">//---------------------------------------------------------</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">// Forwarding</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">//---------------------------------------------------------</span></div>
@@ -136,7 +136,7 @@ $(function(){initNavTree('d2/d8f/_i_external_releationship_service_8h_source.htm
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../da/dd6/namespace_sys_m_lv2_1_1_a_p_i.html">SysMLv2::API</a> {</div>
 <div class="foldopen" id="foldopen00040" data-start="{" data-end="};">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="../../da/df6/class_sys_m_lv2_1_1_a_p_i_1_1_i_external_relationship_service.html">   40</a></span>    <span class="keyword">class </span><a class="code hl_class" href="../../da/df6/class_sys_m_lv2_1_1_a_p_i_1_1_i_external_relationship_service.html">IExternalRelationshipService</a> {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="../../da/df6/class_sys_m_lv2_1_1_a_p_i_1_1_i_external_relationship_service.html">   40</a></span>    <span class="keyword">class </span>SYSMLV2SERVICE_EXPORT <a class="code hl_class" href="../../da/df6/class_sys_m_lv2_1_1_a_p_i_1_1_i_external_relationship_service.html">IExternalRelationshipService</a> {</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="../../da/df6/class_sys_m_lv2_1_1_a_p_i_1_1_i_external_relationship_service.html#a8ef0d6a5e87b8ba20671ca42822a5884">   49</a></span>        <span class="keyword">virtual</span> std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::ExternalRelationship&gt;&gt; <a class="code hl_function" href="../../da/df6/class_sys_m_lv2_1_1_a_p_i_1_1_i_external_relationship_service.html#a8ef0d6a5e87b8ba20671ca42822a5884">getExternalRelationships</a>(std::shared_ptr&lt;SysMLv2::Entities::Project&gt; project, std::shared_ptr&lt;SysMLv2::Entities::Commit&gt; commit) = 0;</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span></div>
@@ -160,9 +160,9 @@ $(function(){initNavTree('d2/d8f/_i_external_releationship_service_8h_source.htm
 <div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_branch_html"><div class="ttname"><a href="../../d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch.html">SysMLv2::Entities::Branch</a></div><div class="ttdef"><b>Definition</b> Branch.h:31</div></div>
 <div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_commit_html"><div class="ttname"><a href="../../da/da9/class_sys_m_lv2_1_1_entities_1_1_commit.html">SysMLv2::Entities::Commit</a></div><div class="ttdef"><b>Definition</b> Commit.h:55</div></div>
 <div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_external_relationship_html"><div class="ttname"><a href="../../dc/d95/class_sys_m_lv2_1_1_entities_1_1_external_relationship.html">SysMLv2::Entities::ExternalRelationship</a></div><div class="ttdef"><b>Definition</b> ExternalRelationship.h:24</div></div>
-<div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_project_html"><div class="ttname"><a href="../../d0/d86/class_sys_m_lv2_1_1_entities_1_1_project.html">SysMLv2::Entities::Project</a></div><div class="ttdef"><b>Definition</b> Project.h:43</div></div>
-<div class="ttc" id="anamespace_sys_m_lv2_1_1_a_p_i_html"><div class="ttname"><a href="../../da/dd6/namespace_sys_m_lv2_1_1_a_p_i.html">SysMLv2::API</a></div><div class="ttdef"><b>Definition</b> ElementNavigationService.h:10</div></div>
-<div class="ttc" id="anamespace_sys_m_lv2_1_1_entities_html"><div class="ttname"><a href="../../d4/d33/namespace_sys_m_lv2_1_1_entities.html">SysMLv2::Entities</a></div><div class="ttdef"><b>Definition</b> IEntity.h:22</div></div>
+<div class="ttc" id="aclass_sys_m_lv2_1_1_entities_1_1_project_html"><div class="ttname"><a href="../../d0/d86/class_sys_m_lv2_1_1_entities_1_1_project.html">SysMLv2::Entities::Project</a></div><div class="ttdef"><b>Definition</b> Project.h:44</div></div>
+<div class="ttc" id="anamespace_sys_m_lv2_1_1_a_p_i_html"><div class="ttname"><a href="../../da/dd6/namespace_sys_m_lv2_1_1_a_p_i.html">SysMLv2::API</a></div><div class="ttdef"><b>Definition</b> ElementNavigationService.cpp:13</div></div>
+<div class="ttc" id="anamespace_sys_m_lv2_1_1_entities_html"><div class="ttname"><a href="../../d4/d33/namespace_sys_m_lv2_1_1_entities.html">SysMLv2::Entities</a></div><div class="ttdef"><b>Definition</b> Branch.cpp:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

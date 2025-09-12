@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2::Entities::DataIdentity</compoundname>
+    <basecompoundref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" prot="public" virt="non-virtual">SysMLv2::Entities::Record</basecompoundref>
+    <includes refid="df/dc0/_data_identity_8h" local="no">DataIdentity.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1a9b648fbe4a4a9e40e32813bc75bb7e42" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" kindref="compound">DataVersion</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;DataVersion&gt; &gt; SysMLv2::Entities::DataIdentity::Version</definition>
+        <argsstring></argsstring>
+        <name>Version</name>
+        <qualifiedname>SysMLv2::Entities::DataIdentity::Version</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataIdentity.h" line="87" column="21" bodyfile="rest-api/src/entities/DataIdentity.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1aac067a5bafbb7bb13722726f252cc00d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::DataIdentity::DataIdentity</definition>
+        <argsstring>()=delete</argsstring>
+        <name>DataIdentity</name>
+        <qualifiedname>SysMLv2::Entities::DataIdentity::DataIdentity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default constructor is delted. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataIdentity.h" line="46" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1aaa6f79202fe1b922fd6e659a2a22aa42" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::DataIdentity::DataIdentity</definition>
+        <argsstring>(boost::uuids::uuid id)</argsstring>
+        <name>DataIdentity</name>
+        <qualifiedname>SysMLv2::Entities::DataIdentity::DataIdentity</qualifiedname>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor. Generates a <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataIdentity.h" line="52" column="18" bodyfile="rest-api/src/entities/DataIdentity.cpp" bodystart="25" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1a0dc8f01e9054fab7768bcc74614fb62a" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::DataIdentity::DataIdentity</definition>
+        <argsstring>(std::string jsonStringOrName)</argsstring>
+        <name>DataIdentity</name>
+        <qualifiedname>SysMLv2::Entities::DataIdentity::DataIdentity</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>jsonStringOrName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constuctor for JSON Parsing <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>jsonStringOrName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataIdentity.h" line="58" column="18" bodyfile="rest-api/src/entities/DataIdentity.cpp" bodystart="30" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1ad645fbc99c1bb094b173fc06e6cb64f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::DataIdentity::~DataIdentity</definition>
+        <argsstring>()</argsstring>
+        <name>~DataIdentity</name>
+        <qualifiedname>SysMLv2::Entities::DataIdentity::~DataIdentity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataIdentity.h" line="64" column="17" bodyfile="rest-api/src/entities/DataIdentity.cpp" bodystart="34" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1a827e2607d5161b84ff52290e5d7fca50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" kindref="compound">DataVersion</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; DataVersion &gt; &gt; SysMLv2::Entities::DataIdentity::getDataVersions</definition>
+        <argsstring>() const</argsstring>
+        <name>getDataVersions</name>
+        <qualifiedname>SysMLv2::Entities::DataIdentity::getDataVersions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataIdentity.h" line="66" column="21" bodyfile="rest-api/src/entities/DataIdentity.cpp" bodystart="38" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1a87392e568433119d64f7ae4a6a195a4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SysMLv2::Entities::DataIdentity::setDataVersions</definition>
+        <argsstring>(std::vector&lt; std::shared_ptr&lt; DataVersion &gt; &gt; versions)</argsstring>
+        <name>setDataVersions</name>
+        <qualifiedname>SysMLv2::Entities::DataIdentity::setDataVersions</qualifiedname>
+        <param>
+          <type>std::vector&lt; std::shared_ptr&lt; <ref refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" kindref="compound">DataVersion</ref> &gt; &gt;</type>
+          <declname>versions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataIdentity.h" line="67" column="14" bodyfile="rest-api/src/entities/DataIdentity.cpp" bodystart="73" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1a254bbaaeeee734746ff42e2b350f0a9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::chrono::system_clock::time_point</type>
+        <definition>std::chrono::system_clock::time_point SysMLv2::Entities::DataIdentity::createdAt</definition>
+        <argsstring>()</argsstring>
+        <name>createdAt</name>
+        <qualifiedname>SysMLv2::Entities::DataIdentity::createdAt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the creation date of the data. This translations to the point in time, where the first commit is created, representing then the creation of the specified Dataset. <simplesect kind="return"><para><ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">Data</ref> creation date. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataIdentity.h" line="74" column="47" bodyfile="rest-api/src/entities/DataIdentity.cpp" bodystart="42" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1ad4cb4d76a4213c2cd1001a27612b4ca4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::chrono::system_clock::time_point</type>
+        <definition>std::chrono::system_clock::time_point SysMLv2::Entities::DataIdentity::deletedAt</definition>
+        <argsstring>()</argsstring>
+        <name>deletedAt</name>
+        <qualifiedname>SysMLv2::Entities::DataIdentity::deletedAt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the date, where the data is deleted. Thus this represents the commit, that deletes the data set. <simplesect kind="return"><para>The time, where the data is delted. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataIdentity.h" line="80" column="47" bodyfile="rest-api/src/entities/DataIdentity.cpp" bodystart="46" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1abaaf39353f7c4e099a136d067237bc85" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::DataIdentity::serializeToJson</definition>
+        <argsstring>() override</argsstring>
+        <name>serializeToJson</name>
+        <qualifiedname>SysMLv2::Entities::DataIdentity::serializeToJson</qualifiedname>
+        <reimplements refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1a21ebb7ed491edd322301c7ba20cf66dc">serializeToJson</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows the serialization of the Object to a JSON String. <simplesect kind="return"><para>JSON String of the Object </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataIdentity.h" line="82" column="21" bodyfile="rest-api/src/entities/DataIdentity.cpp" bodystart="50" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1a3f177759ae65edf2dca607e99a1abb1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SysMLv2::Entities::DataIdentity::operator==</definition>
+        <argsstring>(DataIdentity const &amp;other)</argsstring>
+        <name>operator==</name>
+        <qualifiedname>SysMLv2::Entities::DataIdentity::operator==</qualifiedname>
+        <param>
+          <type><ref refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity" kindref="compound">DataIdentity</ref> const &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataIdentity.h" line="84" column="14" bodyfile="rest-api/src/entities/DataIdentity.cpp" bodystart="59" bodyend="71"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The class <ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">Data</ref> Identity is a subclass of <ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">Record</ref> that represents a unique, version-independent representation of <ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">Data</ref> through its lifecycle.A <ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">Data</ref> Identity is associated with 1 or more <ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">Data</ref> Version records that represent different versions of the same <ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">Data</ref>.</para>
+<para><simplesect kind="author"><para>Moritz Herzog </para>
+</simplesect>
+<simplesect kind="version"><para>1.0 </para>
+</simplesect>
+<simplesect kind="see"><para>boost::uuids::uuid </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" kindref="compound">SysMLv2::Entities::Record</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2::Entities::DataIdentity</label>
+        <link refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+      <node id="2">
+        <label>SysMLv2::Entities::Record</label>
+        <link refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2::Entities::DataIdentity</label>
+        <link refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+      <node id="2">
+        <label>SysMLv2::Entities::Record</label>
+        <link refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="rest-api/src/entities/DataIdentity.h" line="41" column="5" bodyfile="rest-api/src/entities/DataIdentity.h" bodystart="41" bodyend="88"/>
+    <listofallmembers>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a023b2aa15c7192d9af732ee3e7e84a56" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>Alias</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a45b598f62d5fec7657728708ed8d5aa8" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>appendAlias</name></member>
+      <member refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1a254bbaaeeee734746ff42e2b350f0a9b" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>createdAt</name></member>
+      <member refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1aac067a5bafbb7bb13722726f252cc00d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>DataIdentity</name></member>
+      <member refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1aaa6f79202fe1b922fd6e659a2a22aa42" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>DataIdentity</name></member>
+      <member refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1a0dc8f01e9054fab7768bcc74614fb62a" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>DataIdentity</name></member>
+      <member refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1ad4cb4d76a4213c2cd1001a27612b4ca4" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>deletedAt</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a6e2c0a9b166510546f567a25a64e2c80" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>Description</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a727329cbcf2499bff14edcdcb4735dfc" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>getAlias</name></member>
+      <member refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1a827e2607d5161b84ff52290e5d7fca50" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>getDataVersions</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a28e97d4f86b1f57bd1a7f0e6e2c47e9e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>getDescription</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1aa503f01b715d59b29654fdd4ee2ade28" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>getId</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1aa619b90ce3e937a75a22854f3107ebc5" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>getName</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a61bfd3751bc3c11628008337b1caf24b" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>getType</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a077d9e6a406a07331d43abcfe3fd2a20" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>Id</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a06c5038dc6f912801a70e6c3fd7a52e0" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>IsForCreation</name></member>
+      <member refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1ac3f7cba2488d110b820614b9cb709808" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>JSON_INTENT</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ad1599c8728bec68fe1291f51b9d0a04b" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>Name</name></member>
+      <member refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1a3f177759ae65edf2dca607e99a1abb1e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>operator==</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a44938fd7ae4280fa0473484273b4d431" prot="public" virt="non-virtual" ambiguityscope="SysMLv2::Entities::Record::"><scope>SysMLv2::Entities::DataIdentity</scope><name>operator==</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a3bfd067522f0ef87a1b50c6493458a9b" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>Record</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a51b38a3923a662061d8f647aa172ce4e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>Record</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ae6e096d934f6107cd2585081bc59da10" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>Record</name></member>
+      <member refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1abaaf39353f7c4e099a136d067237bc85" prot="public" virt="virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>serializeToJson</name></member>
+      <member refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1a87392e568433119d64f7ae4a6a195a4e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>setDataVersions</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ad826fec2e174a534cad1351750175c28" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>setDescription</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ac7666583958bc98be3e6f2da3880454c" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>setName</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a4fbf73e50a3dffee7e40393ce1db6508" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>Type</name></member>
+      <member refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1a9b648fbe4a4a9e40e32813bc75bb7e42" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>Version</name></member>
+      <member refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity_1ad645fbc99c1bb094b173fc06e6cb64f9" prot="public" virt="virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>~DataIdentity</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1abccd189ffb39f8f1728b1a646cae7a3e" prot="public" virt="virtual"><scope>SysMLv2::Entities::DataIdentity</scope><name>~Record</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

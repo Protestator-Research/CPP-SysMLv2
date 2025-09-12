@@ -13,6 +13,7 @@ var dir_01212c9f911fb66b13b358af68967643 =
     [ "ExternalData.h", "d4/d8a/_external_data_8h_source.html", null ],
     [ "ExternalRelationship.h", "d8/dca/_external_relationship_8h_source.html", null ],
     [ "Identification.h", "db/d89/_identification_8h_source.html", null ],
+    [ "IEntity.h", "d9/d45/_i_entity_8h_source.html", null ],
     [ "JSONEntities.h", "d1/d4c/_j_s_o_n_entities_8h_source.html", null ],
     [ "MergeResult.h", "d4/dc7/_merge_result_8h_source.html", null ],
     [ "Project.h", "d9/d8d/_project_8h_source.html", null ],

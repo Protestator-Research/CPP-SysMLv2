@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d6/d64/class_ker_m_l_parser_1_1_argument_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::ArgumentContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d6/d64/class_ker_m_l_parser_1_1_argument_context_1a9025d893f51b9c334604b98fea02eff1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::ArgumentContext::ArgumentContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>ArgumentContext</name>
+        <qualifiedname>KerMLParser::ArgumentContext::ArgumentContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2803" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="13552" bodyend="13554"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d64/class_ker_m_l_parser_1_1_argument_context_1a9efff039111c2c37fdf6e77ea949f464" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::ArgumentContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::ArgumentContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2804" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="13561" bodyend="13563"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d64/class_ker_m_l_parser_1_1_argument_context_1afd30325f5682eb6ef9145181565dbdca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/dc9/class_ker_m_l_parser_1_1_argument__value_context" kindref="compound">Argument_valueContext</ref> *</type>
+        <definition>KerMLParser::Argument_valueContext * KerMLParser::ArgumentContext::argument_value</definition>
+        <argsstring>()</argsstring>
+        <name>argument_value</name>
+        <qualifiedname>KerMLParser::ArgumentContext::argument_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2805" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="13556" bodyend="13558"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d64/class_ker_m_l_parser_1_1_argument_context_1a1a9a4a0ad6a349e1f2cd25c31bd181cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::ArgumentContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::ArgumentContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2807" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="13565" bodyend="13569"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d64/class_ker_m_l_parser_1_1_argument_context_1a583d4164776d7fdd3f5c1c94a42b10e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::ArgumentContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::ArgumentContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2808" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="13571" bodyend="13575"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::ArgumentContext</label>
+        <link refid="d6/d64/class_ker_m_l_parser_1_1_argument_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::ArgumentContext</label>
+        <link refid="d6/d64/class_ker_m_l_parser_1_1_argument_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2801" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2801" bodyend="2810"/>
+    <listofallmembers>
+      <member refid="d6/d64/class_ker_m_l_parser_1_1_argument_context_1afd30325f5682eb6ef9145181565dbdca" prot="public" virt="non-virtual"><scope>KerMLParser::ArgumentContext</scope><name>argument_value</name></member>
+      <member refid="d6/d64/class_ker_m_l_parser_1_1_argument_context_1a9025d893f51b9c334604b98fea02eff1" prot="public" virt="non-virtual"><scope>KerMLParser::ArgumentContext</scope><name>ArgumentContext</name></member>
+      <member refid="d6/d64/class_ker_m_l_parser_1_1_argument_context_1a1a9a4a0ad6a349e1f2cd25c31bd181cb" prot="public" virt="virtual"><scope>KerMLParser::ArgumentContext</scope><name>enterRule</name></member>
+      <member refid="d6/d64/class_ker_m_l_parser_1_1_argument_context_1a583d4164776d7fdd3f5c1c94a42b10e7" prot="public" virt="virtual"><scope>KerMLParser::ArgumentContext</scope><name>exitRule</name></member>
+      <member refid="d6/d64/class_ker_m_l_parser_1_1_argument_context_1a9efff039111c2c37fdf6e77ea949f464" prot="public" virt="virtual"><scope>KerMLParser::ArgumentContext</scope><name>getRuleIndex</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

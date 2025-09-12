@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_f8c8135b15c87de09fad204db04fe084" kind="dir">
+    <compoundname>rest-api</compoundname>
+    <innerdir refid="dir_0d0ae774bd891a8acf5890442e726a0b">rest-api/src</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="rest-api/"/>
+  </compounddef>
+</doxygen>

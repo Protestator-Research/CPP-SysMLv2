@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Boolean_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1aab0aa41bd69ee592ca4a3fa542ff0951" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Boolean_expressionContext::Boolean_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Boolean_expressionContext</name>
+        <qualifiedname>KerMLParser::Boolean_expressionContext::Boolean_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2461" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11829" bodyend="11831"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1a03734fcf5796f1ede677d4bfa39cba18" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Boolean_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Boolean_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2462" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11854" bodyend="11856"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1ab4e709de0b60258e739e749af963a3ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/dfb/class_ker_m_l_parser_1_1_feature__prefix_context" kindref="compound">Feature_prefixContext</ref> *</type>
+        <definition>KerMLParser::Feature_prefixContext * KerMLParser::Boolean_expressionContext::feature_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>feature_prefix</name>
+        <qualifiedname>KerMLParser::Boolean_expressionContext::feature_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2463" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11833" bodyend="11835"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1a2d74fc4cfb9ca625c75e0be103e6a4c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Boolean_expressionContext::KEYWORD_BOOL</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_BOOL</name>
+        <qualifiedname>KerMLParser::Boolean_expressionContext::KEYWORD_BOOL</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2464" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11837" bodyend="11839"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1a575d729becae96785d5e0ecf69abe119" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/da8/class_ker_m_l_parser_1_1_feature__declaration_context" kindref="compound">Feature_declarationContext</ref> *</type>
+        <definition>KerMLParser::Feature_declarationContext * KerMLParser::Boolean_expressionContext::feature_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>feature_declaration</name>
+        <qualifiedname>KerMLParser::Boolean_expressionContext::feature_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2465" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11841" bodyend="11843"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1a256b382bf55454ce3b27280e9249afbe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d27/class_ker_m_l_parser_1_1_function__body_context" kindref="compound">Function_bodyContext</ref> *</type>
+        <definition>KerMLParser::Function_bodyContext * KerMLParser::Boolean_expressionContext::function_body</definition>
+        <argsstring>()</argsstring>
+        <name>function_body</name>
+        <qualifiedname>KerMLParser::Boolean_expressionContext::function_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2466" column="26" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11845" bodyend="11847"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1a247daea337cd71d0bc703dbf703b4dc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d18/class_ker_m_l_parser_1_1_value__part_context" kindref="compound">Value_partContext</ref> *</type>
+        <definition>KerMLParser::Value_partContext * KerMLParser::Boolean_expressionContext::value_part</definition>
+        <argsstring>()</argsstring>
+        <name>value_part</name>
+        <qualifiedname>KerMLParser::Boolean_expressionContext::value_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2467" column="23" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11849" bodyend="11851"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1a00b9db45fd99f51892f9f6e504ece1fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Boolean_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Boolean_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2469" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11858" bodyend="11862"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1a3e8b147a9d5834247b30bd6a135483f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Boolean_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Boolean_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2470" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11864" bodyend="11868"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Boolean_expressionContext</label>
+        <link refid="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Boolean_expressionContext</label>
+        <link refid="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2459" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2459" bodyend="2472"/>
+    <listofallmembers>
+      <member refid="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1aab0aa41bd69ee592ca4a3fa542ff0951" prot="public" virt="non-virtual"><scope>KerMLParser::Boolean_expressionContext</scope><name>Boolean_expressionContext</name></member>
+      <member refid="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1a00b9db45fd99f51892f9f6e504ece1fe" prot="public" virt="virtual"><scope>KerMLParser::Boolean_expressionContext</scope><name>enterRule</name></member>
+      <member refid="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1a3e8b147a9d5834247b30bd6a135483f7" prot="public" virt="virtual"><scope>KerMLParser::Boolean_expressionContext</scope><name>exitRule</name></member>
+      <member refid="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1a575d729becae96785d5e0ecf69abe119" prot="public" virt="non-virtual"><scope>KerMLParser::Boolean_expressionContext</scope><name>feature_declaration</name></member>
+      <member refid="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1ab4e709de0b60258e739e749af963a3ec" prot="public" virt="non-virtual"><scope>KerMLParser::Boolean_expressionContext</scope><name>feature_prefix</name></member>
+      <member refid="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1a256b382bf55454ce3b27280e9249afbe" prot="public" virt="non-virtual"><scope>KerMLParser::Boolean_expressionContext</scope><name>function_body</name></member>
+      <member refid="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1a03734fcf5796f1ede677d4bfa39cba18" prot="public" virt="virtual"><scope>KerMLParser::Boolean_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1a2d74fc4cfb9ca625c75e0be103e6a4c4" prot="public" virt="non-virtual"><scope>KerMLParser::Boolean_expressionContext</scope><name>KEYWORD_BOOL</name></member>
+      <member refid="db/d65/class_ker_m_l_parser_1_1_boolean__expression_context_1a247daea337cd71d0bc703dbf703b4dc0" prot="public" virt="non-virtual"><scope>KerMLParser::Boolean_expressionContext</scope><name>value_part</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

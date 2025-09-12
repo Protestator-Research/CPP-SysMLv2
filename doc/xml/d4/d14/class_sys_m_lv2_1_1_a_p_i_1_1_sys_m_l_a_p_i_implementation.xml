@@ -1,0 +1,736 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2::API::SysMLAPIImplementation</compoundname>
+    <includes refid="dd/dda/_sys_m_l_a_p_i_implementation_8h" local="no">SysMLAPIImplementation.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a5480f961d4d682b6afb26e72e2ebe725" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::API::SysMLAPIImplementation::ServerAddress</definition>
+        <argsstring></argsstring>
+        <name>ServerAddress</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::ServerAddress</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="164" column="21" bodyfile="services/src/online/SysMLAPIImplementation.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aa326fbed867de6bcb55d559e95c5c2bc" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::API::SysMLAPIImplementation::ReturnedHeaderData</definition>
+        <argsstring></argsstring>
+        <name>ReturnedHeaderData</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::ReturnedHeaderData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="165" column="21" bodyfile="services/src/online/SysMLAPIImplementation.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aa5bee9e8294070ec55e6deb4ebca35b7" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::API::SysMLAPIImplementation::Data</definition>
+        <argsstring></argsstring>
+        <name>Data</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::Data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="166" column="21" bodyfile="services/src/online/SysMLAPIImplementation.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a7aa462e94fa7c65479d2f860a3d3f18a" prot="private" static="no" mutable="no">
+        <type>struct curl_slist *</type>
+        <definition>struct curl_slist* SysMLv2::API::SysMLAPIImplementation::HeaderList</definition>
+        <argsstring></argsstring>
+        <name>HeaderList</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::HeaderList</qualifiedname>
+        <initializer>= NULL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="167" column="25" bodyfile="services/src/online/SysMLAPIImplementation.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a490fb7dd3547ade6388e8ddb65274600" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::API::SysMLAPIImplementation::SysMLAPIImplementation</definition>
+        <argsstring>()=delete</argsstring>
+        <name>SysMLAPIImplementation</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::SysMLAPIImplementation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Deleted Constructorr </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="40" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a4fb54c6c240a6bbab5926d93d7b531f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::API::SysMLAPIImplementation::SysMLAPIImplementation</definition>
+        <argsstring>(std::string serverAddress)</argsstring>
+        <name>SysMLAPIImplementation</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::SysMLAPIImplementation</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>serverAddress</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The constructor that allows the needed server address. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>serverAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Server address as a string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="46" column="9" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="34" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aa3a47d80eab4749f340431456750407b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>SysMLv2::API::SysMLAPIImplementation::~SysMLAPIImplementation</definition>
+        <argsstring>()</argsstring>
+        <name>~SysMLAPIImplementation</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::~SysMLAPIImplementation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>D-TOR </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="51" column="17" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="40" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a7aff8d7083626ad3fdc098d5829fa053" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity" kindref="compound">SysMLv2::Entities::IEntity</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::IEntity &gt; &gt; SysMLv2::API::SysMLAPIImplementation::getAllProjects</definition>
+        <argsstring>(std::string barrierString)</argsstring>
+        <name>getAllProjects</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::getAllProjects</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>barrierString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a std::vector of all projects that are available within the backend. The data is returned as elements from type std::vector&lt;SysMLv2:Entities:Project*&gt;, please consider the polimorphism of all SysMLV2 elements. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>barrierString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The barrier authentication that is provided by the server. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A list of all Projects. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="60" column="21" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="51" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a2bc833c848eade9b262f9aaf9969f237" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity" kindref="compound">SysMLv2::Entities::IEntity</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; SysMLv2::Entities::IEntity &gt; SysMLv2::API::SysMLAPIImplementation::postProject</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project, std::string barrierString)</argsstring>
+        <name>postProject</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::postProject</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>barrierString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>barrierString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="68" column="25" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="321" bodyend="349"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aae4f66884d39ad59e13e757fd369c9c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity" kindref="compound">SysMLv2::Entities::IEntity</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; SysMLv2::Entities::IEntity &gt; SysMLv2::API::SysMLAPIImplementation::postCommit</definition>
+        <argsstring>(std::string projectId, std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; commit, std::string barrierString)</argsstring>
+        <name>postCommit</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::postCommit</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>projectId</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+          <declname>commit</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>barrierString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Posts a commit to the Backend to add changes to a project or a branch. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>projectId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>barrierString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="77" column="25" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="351" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1abdedcdb8045d6870a97ce0b6070be011" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity" kindref="compound">SysMLv2::Entities::IEntity</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; SysMLv2::Entities::IEntity &gt; SysMLv2::API::SysMLAPIImplementation::getCommit</definition>
+        <argsstring>(std::string projectId, std::string commitId, std::string barrierString)</argsstring>
+        <name>getCommit</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::getCommit</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>projectId</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>commitId</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>barrierString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>projectId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commitId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="85" column="25" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="389" bodyend="416"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1ac6972290b0f22d89c77adb82d38f1b7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity" kindref="compound">SysMLv2::Entities::IEntity</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::IEntity &gt; &gt; SysMLv2::API::SysMLAPIImplementation::getAllElementsFromCommit</definition>
+        <argsstring>(std::string projectId, std::string commitId, std::string barrierString)</argsstring>
+        <name>getAllElementsFromCommit</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::getAllElementsFromCommit</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>projectId</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>commitId</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>barrierString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Downloads and returns all elements of a commit from a specific project. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>projectId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The UUID of the Project as a String </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commitId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The UUID of the Commit as a String </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>barrierString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Barrier-String given after login. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>All elements received from the backend. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="94" column="21" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="207" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a53ff16a81eb1b63c54f9f17bb85a3c51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::API::SysMLAPIImplementation::loginUserWithPassword</definition>
+        <argsstring>(const std::string &amp;username, const std::string &amp;password)</argsstring>
+        <name>loginUserWithPassword</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::loginUserWithPassword</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>username</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>password</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Performs the login of the digital twin client and server at the backend. This login is also automatically algorithmically changed dependent on the version of the Backend. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>username</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The username as a string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>password</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Password of the user. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Barrier string after the login. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="103" column="21" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="44" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a9593a716d3803b6f7cef52b4666090eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::API::SysMLAPIImplementation::getVersionOfBackend</definition>
+        <argsstring>()</argsstring>
+        <name>getVersionOfBackend</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::getVersionOfBackend</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Downloads the version of the backend. Version 3 of the backend has an endpoint to download the version of the Backend. Whereas the backend Version 2.X does not have the option. Thus the error is returning version 2.x. <simplesect kind="return"><para>The version of the Backend. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="110" column="21" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="236" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a25deafb21e326702fdaf9aa8c2dfc98d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity" kindref="compound">SysMLv2::Entities::IEntity</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::IEntity &gt; &gt; SysMLv2::API::SysMLAPIImplementation::getAllBranchesFroProject</definition>
+        <argsstring>(const std::string &amp;projectId, std::string barrierString)</argsstring>
+        <name>getAllBranchesFroProject</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::getAllBranchesFroProject</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>projectId</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>barrierString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Downloads all the Branches that belong to a specific project with a specific ID. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>projectId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Displays the string of the Project UUID </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>JSON of the all the Branches. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="117" column="21" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="290" bodyend="318"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a0b0cf217f8070c40ab2c7b53c1ecbc6e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>CURL *</type>
+        <definition>CURL * SysMLv2::API::SysMLAPIImplementation::setUpServerConnection</definition>
+        <argsstring>(const char *urlAppendix, const char *barrierString, const char *postPayload)</argsstring>
+        <name>setUpServerConnection</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::setUpServerConnection</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>urlAppendix</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>barrierString</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>postPayload</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets up the server connection and creates the necessary CURL calls. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>urlAppendix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The appendix to the url that is required to access the different folders for the Standard. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>barrierString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Barrier login string, this string might be required for login. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>postPayload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The payload that is posted to the server. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The CURL connection resulting from the properties. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="127" column="14" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="79" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a65ce5ce019bd0587bf535a29f5bdff20" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>INTERNAL_STATUS_CODE</type>
+        <definition>INTERNAL_STATUS_CODE SysMLv2::API::SysMLAPIImplementation::tryToResolveHTTPError</definition>
+        <argsstring>(long httpErrorCode, void *instance)</argsstring>
+        <name>tryToResolveHTTPError</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::tryToResolveHTTPError</qualifiedname>
+        <param>
+          <type>long</type>
+          <declname>httpErrorCode</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>instance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>In this method a internal resolvement of the HTTP connection error is tried. If this fails the exception is rethrown. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>httpErrorCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The HTTP error code that was thrown. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>instance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The curl instance pointer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns an internal status code that can be referenced externally. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="135" column="30" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="120" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a369dd53f66b47d9fe7f426b665e391f1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::API::SysMLAPIImplementation::loginToBackendVersion3</definition>
+        <argsstring>(std::string const &amp;username, std::string const &amp;password)</argsstring>
+        <name>loginToBackendVersion3</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::loginToBackendVersion3</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>username</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>password</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Performs the login in to the AGILA backend from Version 3 and upwards <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>username</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The username given as a string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>passwod</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The password of the user given as a string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The barrier string from the server. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="143" column="21" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="266" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a967d4aace66f869f0dbe1424eca0cbde" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::API::SysMLAPIImplementation::loginToBackendVersion2</definition>
+        <argsstring>(std::string const &amp;username, std::string const &amp;password)</argsstring>
+        <name>loginToBackendVersion2</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::loginToBackendVersion2</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>username</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>password</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Performs the login into the backend version 2. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>username</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The username given as a string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>password</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The password of the user given as a string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The barrier string from the server. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="151" column="21" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="419" bodyend="441"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1ac242edd5436e4c63f09a0aa6635591cd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; SysMLv2::API::SysMLAPIImplementation::splittString</definition>
+        <argsstring>(std::string value, char delimiter)</argsstring>
+        <name>splittString</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::splittString</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>delimiter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delimiter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="160" column="21" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="443" bodyend="452"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a06935b7479ed32a4f799d66bbd45fd28" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2::API::SysMLAPIImplementation::WriteBufferCallback</definition>
+        <argsstring>(char *contents, size_t size, size_t nmemb, void *userp)</argsstring>
+        <name>WriteBufferCallback</name>
+        <qualifiedname>SysMLv2::API::SysMLAPIImplementation::WriteBufferCallback</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>contents</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>nmemb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>userp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/online/SysMLAPIImplementation.h" line="162" column="23" bodyfile="services/src/online/SysMLAPIImplementation.cpp" bodystart="383" bodyend="386"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Implements the Protocol of the <ref refid="d7/dba/namespace_sys_m_lv2" kindref="compound">SysMLv2</ref> <ref refid="da/dd6/namespace_sys_m_lv2_1_1_a_p_i" kindref="compound">API</ref> Standard. <simplesect kind="version"><para>1.1 </para>
+</simplesect>
+<simplesect kind="author"><para>Moritz Herzog <ulink url="mailto:herzogm@rptu.de">herzogm@rptu.de</ulink> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="services/src/online/SysMLAPIImplementation.h" line="35" column="5" bodyfile="services/src/online/SysMLAPIImplementation.h" bodystart="35" bodyend="168"/>
+    <listofallmembers>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aa5bee9e8294070ec55e6deb4ebca35b7" prot="private" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>Data</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a25deafb21e326702fdaf9aa8c2dfc98d" prot="public" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>getAllBranchesFroProject</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1ac6972290b0f22d89c77adb82d38f1b7c" prot="public" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>getAllElementsFromCommit</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a7aff8d7083626ad3fdc098d5829fa053" prot="public" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>getAllProjects</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1abdedcdb8045d6870a97ce0b6070be011" prot="public" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>getCommit</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a9593a716d3803b6f7cef52b4666090eb" prot="public" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>getVersionOfBackend</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a7aa462e94fa7c65479d2f860a3d3f18a" prot="private" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>HeaderList</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a967d4aace66f869f0dbe1424eca0cbde" prot="protected" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>loginToBackendVersion2</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a369dd53f66b47d9fe7f426b665e391f1" prot="protected" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>loginToBackendVersion3</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a53ff16a81eb1b63c54f9f17bb85a3c51" prot="public" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>loginUserWithPassword</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aae4f66884d39ad59e13e757fd369c9c0" prot="public" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>postCommit</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a2bc833c848eade9b262f9aaf9969f237" prot="public" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>postProject</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aa326fbed867de6bcb55d559e95c5c2bc" prot="private" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>ReturnedHeaderData</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a5480f961d4d682b6afb26e72e2ebe725" prot="private" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>ServerAddress</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a0b0cf217f8070c40ab2c7b53c1ecbc6e" prot="protected" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>setUpServerConnection</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1ac242edd5436e4c63f09a0aa6635591cd" prot="private" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>splittString</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a490fb7dd3547ade6388e8ddb65274600" prot="public" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>SysMLAPIImplementation</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a4fb54c6c240a6bbab5926d93d7b531f7" prot="public" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>SysMLAPIImplementation</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a65ce5ce019bd0587bf535a29f5bdff20" prot="protected" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>tryToResolveHTTPError</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1a06935b7479ed32a4f799d66bbd45fd28" prot="private" virt="non-virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>WriteBufferCallback</name></member>
+      <member refid="d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation_1aa3a47d80eab4749f340431456750407b" prot="public" virt="virtual"><scope>SysMLv2::API::SysMLAPIImplementation</scope><name>~SysMLAPIImplementation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

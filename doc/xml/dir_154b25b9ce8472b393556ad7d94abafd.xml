@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_154b25b9ce8472b393556ad7d94abafd" kind="dir">
+    <compoundname>kerml/src/core/types</compoundname>
+    <innerfile refid="d4/d11/_conjunction_8cpp">Conjunction.cpp</innerfile>
+    <innerfile refid="dd/dd5/_conjunction_8h">Conjunction.h</innerfile>
+    <innerfile refid="db/d8c/_differencing_8cpp">Differencing.cpp</innerfile>
+    <innerfile refid="d1/def/_differencing_8h">Differencing.h</innerfile>
+    <innerfile refid="dc/ded/_disjoining_8cpp">Disjoining.cpp</innerfile>
+    <innerfile refid="db/dc8/_disjoining_8h">Disjoining.h</innerfile>
+    <innerfile refid="d5/d27/_intersecting_8cpp">Intersecting.cpp</innerfile>
+    <innerfile refid="d1/d46/_intersecting_8h">Intersecting.h</innerfile>
+    <innerfile refid="d5/d99/_specialization_8cpp">Specialization.cpp</innerfile>
+    <innerfile refid="d1/db2/_specialization_8h">Specialization.h</innerfile>
+    <innerfile refid="d7/d91/_type_8cpp">Type.cpp</innerfile>
+    <innerfile refid="d0/d89/_type_8h">Type.h</innerfile>
+    <innerfile refid="d9/d13/_unioning_8cpp">Unioning.cpp</innerfile>
+    <innerfile refid="de/daf/_unioning_8h">Unioning.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="kerml/src/core/types/"/>
+  </compounddef>
+</doxygen>

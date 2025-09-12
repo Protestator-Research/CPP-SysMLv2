@@ -17,13 +17,13 @@ relationship_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN relat
 relationship_onwed_elements: relationship_owned_element*;
 relationship_owned_element: owned_related_element | owned_annotation;
 owned_related_element: non_feature_element | feature_element;
-dependency: (prefix_metadata_annotation)* KEYWORD_DEPENDENCY (identification KEYWORD_FROM)? qualified_name (SYMBOL_COMMA qualified_name)* KEYWORD_TO qualified_name (SYMBOL_COMMA qualified_name)* relationship_body;
+dependency: (prefix_metadata_annotation)* KEYWORD_DEPENDENCY identification? KEYWORD_FROM? qualified_name (SYMBOL_COMMA qualified_name)* KEYWORD_TO qualified_name (SYMBOL_COMMA qualified_name)* relationship_body;
 
 annotation: qualified_name;
 owned_annotation: annotating_element;
 annotating_element: comment | documentation | textual_representation | metadata_feature;
 comment: (KEYWORD_COMMENT identification (KEYWORD_ABOUT annotation (SYMBOL_COMMA  annotation)*)?)? (KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
-documentation: KEYWORD_DOC identification (KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
+documentation: KEYWORD_DOC identification? (KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
 textual_representation: (KEYWORD_REP identification)? KEYWORD_LANGUAGE STRING_VALUE REGULAR_COMMENT;
 
 root_namespace: namespace_body_elements;
@@ -41,40 +41,40 @@ alias_member: member_prefix KEYWORD_ALIAS (SYMBOL_SMALLER NAME SYMBOL_GREATER)? 
 qualified_name: NAME  (SYMBOL_NAMESPACE_SUBSET NAME)*;
 
 namespace_import: visibility_indicator? KEYWORD_IMPORT KEYWORD_ALL? import_declaration relationship_body?;
-import_declaration: membership_import | namespace_import;
+import_declaration: membership_import | filter_package;
 membership_import: qualified_name (SYMBOL_NAMESPACE_SUBSET? (SYMBOL_DOUBLE_STAR|SYMBOL_STAR)?);
-filter_package: import_declaration filter_package_member;
+filter_package: membership_import filter_package_member;
 filter_package_member: SYMBOL_SQUARE_BRACKET_OPEN owned_expression SYMBOL_SQUARE_BRACKET_CLOSE;
 
 element: annotating_element | non_feature_element | feature_element | additional_options;
 
 non_feature_element: dependency |
-                    type |
-                    classifier |
-                    data_type |
-                    namespace |
-                    class |
-                    structure |
-                    metaclass |
-                    association |
-                    association_structure |
-                    interaction |
-                    behavior |
-                    function |
-                    predicate |
-                    multiplicity |
-                    package |
-                    library_package |
-                    specialization |
-                    conjunction |
-                    subclassification |
-                    disjoining |
-                    feature_inverting |
-                    feature_typing |
-                    subsetting |
-                    redefinition |
-                    type_featuring |
-                    namespace_import;
+                     type |
+                     classifier |
+                     data_type |
+                     namespace |
+                     class |
+                     structure |
+                     metaclass |
+                     association |
+                     association_structure |
+                     interaction |
+                     behavior |
+                     function |
+                     predicate |
+                     multiplicity |
+                     package |
+                     library_package |
+                     specialization |
+                     conjunction |
+                     subclassification |
+                     disjoining |
+                     feature_inverting |
+                     feature_typing |
+                     subsetting |
+                     redefinition |
+                     type_featuring |
+                     namespace_import;
 
 feature_element: feature |
                  step |

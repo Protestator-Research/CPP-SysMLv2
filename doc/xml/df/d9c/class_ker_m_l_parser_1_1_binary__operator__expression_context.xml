@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Binary_operator_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context_1a6c9880c49c164b3496bf8b3a8ddebea6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Binary_operator_expressionContext::Binary_operator_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Binary_operator_expressionContext</name>
+        <qualifiedname>KerMLParser::Binary_operator_expressionContext::Binary_operator_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2635" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12719" bodyend="12721"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context_1ad890c6aee43ec4e5afa0f8e416cca1e9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Binary_operator_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Binary_operator_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2636" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12736" bodyend="12738"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context_1a0f883a277f81673beb60915bd929c1fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d16/class_ker_m_l_parser_1_1_argument__member_context" kindref="compound">Argument_memberContext</ref> *</type>
+        <definition>KerMLParser::Argument_memberContext * KerMLParser::Binary_operator_expressionContext::argument_member</definition>
+        <argsstring>()</argsstring>
+        <name>argument_member</name>
+        <qualifiedname>KerMLParser::Binary_operator_expressionContext::argument_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2637" column="28" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12723" bodyend="12725"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context_1af2701ae6c395357265857ebe68574154" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d97/class_ker_m_l_parser_1_1_binary__operator_context" kindref="compound">Binary_operatorContext</ref> *</type>
+        <definition>KerMLParser::Binary_operatorContext * KerMLParser::Binary_operator_expressionContext::binary_operator</definition>
+        <argsstring>()</argsstring>
+        <name>binary_operator</name>
+        <qualifiedname>KerMLParser::Binary_operator_expressionContext::binary_operator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2638" column="28" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12727" bodyend="12729"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context_1a53888964723385fd58a2c659b98f445d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context" kindref="compound">Owned_expressionsContext</ref> *</type>
+        <definition>KerMLParser::Owned_expressionsContext * KerMLParser::Binary_operator_expressionContext::owned_expressions</definition>
+        <argsstring>()</argsstring>
+        <name>owned_expressions</name>
+        <qualifiedname>KerMLParser::Binary_operator_expressionContext::owned_expressions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2639" column="30" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12731" bodyend="12733"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context_1ae435d3c6e9b44a546402bed03776ee18" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Binary_operator_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Binary_operator_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2641" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12740" bodyend="12744"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context_1ac50b5ab9ade1eea414192d8f1dd72fe9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Binary_operator_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Binary_operator_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2642" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12746" bodyend="12750"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Binary_operator_expressionContext</label>
+        <link refid="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Binary_operator_expressionContext</label>
+        <link refid="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2633" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2633" bodyend="2644"/>
+    <listofallmembers>
+      <member refid="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context_1a0f883a277f81673beb60915bd929c1fb" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operator_expressionContext</scope><name>argument_member</name></member>
+      <member refid="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context_1af2701ae6c395357265857ebe68574154" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operator_expressionContext</scope><name>binary_operator</name></member>
+      <member refid="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context_1a6c9880c49c164b3496bf8b3a8ddebea6" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operator_expressionContext</scope><name>Binary_operator_expressionContext</name></member>
+      <member refid="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context_1ae435d3c6e9b44a546402bed03776ee18" prot="public" virt="virtual"><scope>KerMLParser::Binary_operator_expressionContext</scope><name>enterRule</name></member>
+      <member refid="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context_1ac50b5ab9ade1eea414192d8f1dd72fe9" prot="public" virt="virtual"><scope>KerMLParser::Binary_operator_expressionContext</scope><name>exitRule</name></member>
+      <member refid="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context_1ad890c6aee43ec4e5afa0f8e416cca1e9" prot="public" virt="virtual"><scope>KerMLParser::Binary_operator_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="df/d9c/class_ker_m_l_parser_1_1_binary__operator__expression_context_1a53888964723385fd58a2c659b98f445d" prot="public" virt="non-virtual"><scope>KerMLParser::Binary_operator_expressionContext</scope><name>owned_expressions</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

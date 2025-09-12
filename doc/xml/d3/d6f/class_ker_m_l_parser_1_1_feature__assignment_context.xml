@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Feature_assignmentContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context_1ad1523c210bb9daf3a9e586450c33668d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Feature_assignmentContext::Feature_assignmentContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Feature_assignmentContext</name>
+        <qualifiedname>KerMLParser::Feature_assignmentContext::Feature_assignmentContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4012" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19112" bodyend="19114"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context_1aef3424ab05f920425527db6cb2508392" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Feature_assignmentContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Feature_assignmentContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4013" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19125" bodyend="19127"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context_1ade5239e565970c7e6d84d00b893d3e83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Feature_assignmentContext::SYMBOL_ASSIGN</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_ASSIGN</name>
+        <qualifiedname>KerMLParser::Feature_assignmentContext::SYMBOL_ASSIGN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4014" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19116" bodyend="19118"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context_1a77d559073059d5c5f2ce6b8de52cf14c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/d40/class_ker_m_l_parser_1_1_owned__expression_context" kindref="compound">Owned_expressionContext</ref> *</type>
+        <definition>KerMLParser::Owned_expressionContext * KerMLParser::Feature_assignmentContext::owned_expression</definition>
+        <argsstring>()</argsstring>
+        <name>owned_expression</name>
+        <qualifiedname>KerMLParser::Feature_assignmentContext::owned_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4015" column="29" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19120" bodyend="19122"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context_1a2fb1a448b8ad93c64866474bb6c65625" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Feature_assignmentContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Feature_assignmentContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4017" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19129" bodyend="19133"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context_1a0d69accc02317548e20465378f53743b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Feature_assignmentContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Feature_assignmentContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4018" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19135" bodyend="19139"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Feature_assignmentContext</label>
+        <link refid="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Feature_assignmentContext</label>
+        <link refid="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="4010" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="4010" bodyend="4020"/>
+    <listofallmembers>
+      <member refid="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context_1a2fb1a448b8ad93c64866474bb6c65625" prot="public" virt="virtual"><scope>KerMLParser::Feature_assignmentContext</scope><name>enterRule</name></member>
+      <member refid="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context_1a0d69accc02317548e20465378f53743b" prot="public" virt="virtual"><scope>KerMLParser::Feature_assignmentContext</scope><name>exitRule</name></member>
+      <member refid="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context_1ad1523c210bb9daf3a9e586450c33668d" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_assignmentContext</scope><name>Feature_assignmentContext</name></member>
+      <member refid="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context_1aef3424ab05f920425527db6cb2508392" prot="public" virt="virtual"><scope>KerMLParser::Feature_assignmentContext</scope><name>getRuleIndex</name></member>
+      <member refid="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context_1a77d559073059d5c5f2ce6b8de52cf14c" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_assignmentContext</scope><name>owned_expression</name></member>
+      <member refid="d3/d6f/class_ker_m_l_parser_1_1_feature__assignment_context_1ade5239e565970c7e6d84d00b893d3e83" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_assignmentContext</scope><name>SYMBOL_ASSIGN</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

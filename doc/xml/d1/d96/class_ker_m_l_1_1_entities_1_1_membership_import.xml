@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/d96/class_ker_m_l_1_1_entities_1_1_membership_import" kind="class" language="C++" prot="public">
+    <compoundname>KerML::Entities::MembershipImport</compoundname>
+    <basecompoundref refid="d0/d08/class_ker_m_l_1_1_entities_1_1_import" prot="public" virt="non-virtual">KerML::Entities::Import</basecompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>KerML::Entities::Import</label>
+        <link refid="d0/d08/class_ker_m_l_1_1_entities_1_1_import"/>
+      </node>
+      <node id="1">
+        <label>KerML::Entities::MembershipImport</label>
+        <link refid="d1/d96/class_ker_m_l_1_1_entities_1_1_membership_import"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>KerML::Entities::Import</label>
+        <link refid="d0/d08/class_ker_m_l_1_1_entities_1_1_import"/>
+      </node>
+      <node id="1">
+        <label>KerML::Entities::MembershipImport</label>
+        <link refid="d1/d96/class_ker_m_l_1_1_entities_1_1_membership_import"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="kerml/src/root/namespaces/MembershipImport.h" line="11" column="5" bodyfile="kerml/src/root/namespaces/MembershipImport.h" bodystart="11" bodyend="13"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

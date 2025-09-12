@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="de/d91/_project_usage_8h" kind="file" language="C++">
+    <compoundname>ProjectUsage.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes refid="df/dc1/_data_8h" local="yes">Data.h</includes>
+    <includes refid="d6/d17/sysmlv2rest__global_8h" local="yes">../sysmlv2rest_global.h</includes>
+    <includedby refid="d1/d49/_project_8cpp" local="yes">rest-api/src/entities/Project.cpp</includedby>
+    <includedby refid="de/dca/_project_usage_8cpp" local="yes">rest-api/src/entities/ProjectUsage.cpp</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>Data.h</label>
+        <link refid="df/dc1/_data_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>IEntity.h</label>
+        <link refid="d9/d45/_i_entity_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>rest-api/src/entities/ProjectUsage.h</label>
+        <link refid="de/d91/_project_usage_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>../sysmlv2rest_global.h</label>
+        <link refid="d6/d17/sysmlv2rest__global_8h_source"/>
+      </node>
+      <node id="4">
+        <label>boost/uuid/uuid.hpp</label>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage" prot="public">SysMLv2::Entities::ProjectUsage</innerclass>
+    <innernamespace refid="d7/dba/namespace_sys_m_lv2">SysMLv2</innernamespace>
+    <innernamespace refid="d4/d33/namespace_sys_m_lv2_1_1_entities">SysMLv2::Entities</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Moritz<sp/>Herzog<sp/>on<sp/>27.02.24.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Constants,<sp/>Definitions,<sp/>Pragmas</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>DIGITALTWIN_PROJECTUSAGE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DIGITALTWIN_PROJECTUSAGE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>External<sp/>Classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Internal<sp/>Classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Data.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../sysmlv2rest_global.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Forwarding</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="d4/d33/namespace_sys_m_lv2_1_1_entities" kindref="compound">SysMLv2::Entities</ref><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">Commit</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">Project</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="d4/d33/namespace_sys_m_lv2_1_1_entities" kindref="compound">SysMLv2::Entities</ref><sp/>{</highlight></codeline>
+<codeline lineno="31" refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">SYSMLV2REST_EXPORT<sp/><ref refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1a7fa4787666e84d5dbcf2e4efee83fe29" kindref="member">ProjectUsage</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a8764b2cee063c5961f2423bb61394398" kindref="member">Data</ref><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1a7fa4787666e84d5dbcf2e4efee83fe29" kindref="member">ProjectUsage</ref>();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1a7fa4787666e84d5dbcf2e4efee83fe29" kindref="member">~ProjectUsage</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;Commit&gt;<sp/><ref refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1a152230c65937a030861298433ce6f626" kindref="member">getUsedProjectCommit</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1ac60a8b41ca7e7f7d730f1566112b3754" kindref="member">setUsedProjectCommit</ref>(std::shared_ptr&lt;Commit&gt;<sp/>usedCommit);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;Project&gt;<sp/><ref refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1aef8cb33656314548aec516ac832df1a5" kindref="member">getUsedProject</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;Commit&gt;<sp/>UsedProjectCommit;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>SysMLv2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//DIGITALTWIN_PROJECTUSAGE_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="rest-api/src/entities/ProjectUsage.h"/>
+  </compounddef>
+</doxygen>

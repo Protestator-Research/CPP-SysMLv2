@@ -6,7 +6,7 @@
 
 #include "antlr4-runtime.h"
 
-
+#include <root/namespaces/VisibilityKind.h>
 
 
 class  KerMLParser : public antlr4::Parser {
@@ -636,8 +636,8 @@ public:
     DocumentationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *KEYWORD_DOC();
-    IdentificationContext *identification();
     antlr4::tree::TerminalNode *REGULAR_COMMENT();
+    IdentificationContext *identification();
     antlr4::tree::TerminalNode *KEYWORD_LOCALE();
     antlr4::tree::TerminalNode *STRING_VALUE();
 
@@ -775,7 +775,18 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
+
+    KerML::Entities::VisibilityKind getVisibilityKind() {
+      if(KEYWORD_PRIVATE() != nullptr)
+        return KerML::Entities::VisibilityKind::PRIVATE;
+      if(KEYWORD_PROTECTED() != nullptr)
+        return KerML::Entities::VisibilityKind::PROTECTED;
+      if(KEYWORD_PUBLIC() != nullptr)
+        return KerML::Entities::PUBLIC;
+
+      return KerML::Entities::VisibilityKind::PRIVATE;
+    }
+
   };
 
   Visibility_indicatorContext* visibility_indicator();

@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Owned_subclassificationContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context_1a746421fa94c6245892fb3ed399311b9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Owned_subclassificationContext::Owned_subclassificationContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Owned_subclassificationContext</name>
+        <qualifiedname>SysMLv2Parser::Owned_subclassificationContext::Owned_subclassificationContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6457" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31599" bodyend="31601"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context_1a8eb9d8f2b239ebb7de5c38c3245888cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Owned_subclassificationContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Owned_subclassificationContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6458" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31608" bodyend="31610"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context_1ab47062975257ee0e1235672cbbbdebc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dc1/class_sys_m_lv2_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>SysMLv2Parser::Qualified_nameContext * SysMLv2Parser::Owned_subclassificationContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>SysMLv2Parser::Owned_subclassificationContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6459" column="27" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31603" bodyend="31605"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context_1a81c90de031fa05e331ba8e1f8c945479" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_subclassificationContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_subclassificationContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6461" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31612" bodyend="31616"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context_1af457451b56a547f5ad4552927b42b916" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_subclassificationContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_subclassificationContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6462" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31618" bodyend="31622"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_subclassificationContext</label>
+        <link refid="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_subclassificationContext</label>
+        <link refid="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6455" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="6455" bodyend="6464"/>
+    <listofallmembers>
+      <member refid="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context_1a81c90de031fa05e331ba8e1f8c945479" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_subclassificationContext</scope><name>enterRule</name></member>
+      <member refid="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context_1af457451b56a547f5ad4552927b42b916" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_subclassificationContext</scope><name>exitRule</name></member>
+      <member refid="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context_1a8eb9d8f2b239ebb7de5c38c3245888cb" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_subclassificationContext</scope><name>getRuleIndex</name></member>
+      <member refid="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context_1a746421fa94c6245892fb3ed399311b9d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_subclassificationContext</scope><name>Owned_subclassificationContext</name></member>
+      <member refid="d1/d5e/class_sys_m_lv2_parser_1_1_owned__subclassification_context_1ab47062975257ee0e1235672cbbbdebc8" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_subclassificationContext</scope><name>qualified_name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

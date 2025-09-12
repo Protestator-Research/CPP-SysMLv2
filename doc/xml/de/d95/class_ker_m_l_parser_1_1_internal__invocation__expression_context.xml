@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Internal_invocation_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context_1ac28fb67dec7caa0770a4c918ce9feecf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Internal_invocation_expressionContext::Internal_invocation_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Internal_invocation_expressionContext</name>
+        <qualifiedname>KerMLParser::Internal_invocation_expressionContext::Internal_invocation_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3541" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16801" bodyend="16803"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context_1a10fca9f3b4634c4935a40a35f9795063" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Internal_invocation_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Internal_invocation_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3542" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16818" bodyend="16820"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context_1ae43406c3a133b16a90d33f4421b35edb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d15/class_ker_m_l_parser_1_1_argument__list_context" kindref="compound">Argument_listContext</ref> *</type>
+        <definition>KerMLParser::Argument_listContext * KerMLParser::Internal_invocation_expressionContext::argument_list</definition>
+        <argsstring>()</argsstring>
+        <name>argument_list</name>
+        <qualifiedname>KerMLParser::Internal_invocation_expressionContext::argument_list</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3543" column="26" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16805" bodyend="16807"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context_1a95f9aaf35323d9f941d1a8f28ee03862" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/d7c/class_ker_m_l_parser_1_1_owned__feature__typing_context" kindref="compound">Owned_feature_typingContext</ref> *</type>
+        <definition>KerMLParser::Owned_feature_typingContext * KerMLParser::Internal_invocation_expressionContext::owned_feature_typing</definition>
+        <argsstring>()</argsstring>
+        <name>owned_feature_typing</name>
+        <qualifiedname>KerMLParser::Internal_invocation_expressionContext::owned_feature_typing</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3544" column="33" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16809" bodyend="16811"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context_1ae32efb72cff1dbcc58bc40f6265ad208" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d71/class_ker_m_l_parser_1_1_named__argument__list_context" kindref="compound">Named_argument_listContext</ref> *</type>
+        <definition>KerMLParser::Named_argument_listContext * KerMLParser::Internal_invocation_expressionContext::named_argument_list</definition>
+        <argsstring>()</argsstring>
+        <name>named_argument_list</name>
+        <qualifiedname>KerMLParser::Internal_invocation_expressionContext::named_argument_list</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3545" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16813" bodyend="16815"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context_1a26d6bdb83990264e54e66cdc84a7b640" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Internal_invocation_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Internal_invocation_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3547" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16822" bodyend="16826"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context_1ae519bc326b6f7a059af5d3bf4f9f5077" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Internal_invocation_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Internal_invocation_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3548" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16828" bodyend="16832"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Internal_invocation_expressionContext</label>
+        <link refid="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Internal_invocation_expressionContext</label>
+        <link refid="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="3539" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="3539" bodyend="3550"/>
+    <listofallmembers>
+      <member refid="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context_1ae43406c3a133b16a90d33f4421b35edb" prot="public" virt="non-virtual"><scope>KerMLParser::Internal_invocation_expressionContext</scope><name>argument_list</name></member>
+      <member refid="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context_1a26d6bdb83990264e54e66cdc84a7b640" prot="public" virt="virtual"><scope>KerMLParser::Internal_invocation_expressionContext</scope><name>enterRule</name></member>
+      <member refid="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context_1ae519bc326b6f7a059af5d3bf4f9f5077" prot="public" virt="virtual"><scope>KerMLParser::Internal_invocation_expressionContext</scope><name>exitRule</name></member>
+      <member refid="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context_1a10fca9f3b4634c4935a40a35f9795063" prot="public" virt="virtual"><scope>KerMLParser::Internal_invocation_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context_1ac28fb67dec7caa0770a4c918ce9feecf" prot="public" virt="non-virtual"><scope>KerMLParser::Internal_invocation_expressionContext</scope><name>Internal_invocation_expressionContext</name></member>
+      <member refid="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context_1ae32efb72cff1dbcc58bc40f6265ad208" prot="public" virt="non-virtual"><scope>KerMLParser::Internal_invocation_expressionContext</scope><name>named_argument_list</name></member>
+      <member refid="de/d95/class_ker_m_l_parser_1_1_internal__invocation__expression_context_1a95f9aaf35323d9f941d1a8f28ee03862" prot="public" virt="non-virtual"><scope>KerMLParser::Internal_invocation_expressionContext</scope><name>owned_feature_typing</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,297 @@
+.TH "SysMLv2::Entities::Element" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::Entities::Element
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Element\&.h>\fP
+.PP
+Inherits \fBSysMLv2::Entities::Data\fP\&.
+.PP
+Inherited by \fBSysMLv2::Entities::Relationship\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBElement\fP ()"
+.br
+.ti -1c
+.RI "\fBElement\fP (std::string jsonString)"
+.br
+.ti -1c
+.RI "\fB~Element\fP () override"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.ti -1c
+.RI "void \fBsetName\fP (std::string name)"
+.br
+.ti -1c
+.RI "std::string \fBname\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetShortName\fP (std::string shortName)"
+.br
+.ti -1c
+.RI "std::string \fBshortName\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetDeclaredName\fP (std::string declaredName)"
+.br
+.ti -1c
+.RI "std::string \fBdeclaredName\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetDeclaredShortName\fP (std::string declaredShortName)"
+.br
+.ti -1c
+.RI "std::string \fBgetDeclaredShortName\fP ()"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBIdentification\fP > > \fBownedElements\fP ()"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBIdentification\fP > \fBowner\fP () const"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBIdentification\fP > \fBowningMembership\fP () const"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBIdentification\fP > \fBowningNamespace\fP () const"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBIdentification\fP > \fBowningRelationship\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBdirection\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBimportedMemberName\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBimportedNamespace\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBvalueString\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetLanguage\fP (std::string language)"
+.br
+.ti -1c
+.RI "std::string \fBlanguage\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetBody\fP (std::string body)"
+.br
+.ti -1c
+.RI "std::string \fBbody\fP ()"
+.br
+.ti -1c
+.RI "bool \fBisImplied\fP ()"
+.br
+.ti -1c
+.RI "bool \fBisImpliedIncluded\fP ()"
+.br
+.ti -1c
+.RI "bool \fBisStandard\fP ()"
+.br
+.ti -1c
+.RI "bool \fBisLibrary\fP ()"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBIdentification\fP > \fBdocumentation\fP () const"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBIdentification\fP > > \fBtextualRepresentation\fP ()"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBIdentification\fP > > \fBsource\fP ()"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBIdentification\fP > > \fBtarget\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBgetMarkdownString\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBSysMLv2::Entities::Data\fP
+.in +1c
+.ti -1c
+.RI "\fBData\fP ()"
+.br
+.ti -1c
+.RI "\fBData\fP (boost::uuids::uuid id)"
+.br
+.ti -1c
+.RI "\fBData\fP (std::string jsonString)"
+.br
+.ti -1c
+.RI "virtual \fB~Data\fP ()=default"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBgetId\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBgetType\fP ()"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBserializeNullString\fP (nlohmann::json &json, const std::string &value, const std::string &entity_value)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBName\fP"
+.br
+.ti -1c
+.RI "std::string \fBShortName\fP"
+.br
+.ti -1c
+.RI "std::string \fBDeclaredName\fP"
+.br
+.ti -1c
+.RI "std::string \fBDeclaredShortName\fP"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBIdentification\fP > > \fBOwnedElements\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBIdentification\fP > \fBOwner\fP = nullptr"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBIdentification\fP > \fBOwningMembership\fP = nullptr"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBIdentification\fP > \fBOwningNamespace\fP = nullptr"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBIdentification\fP > \fBOwningRelationship\fP = nullptr"
+.br
+.ti -1c
+.RI "std::string \fBDirection\fP"
+.br
+.ti -1c
+.RI "std::string \fBImportedMemberName\fP"
+.br
+.ti -1c
+.RI "std::string \fBImportedNamespace\fP"
+.br
+.ti -1c
+.RI "std::string \fBValueStr\fP"
+.br
+.ti -1c
+.RI "std::string \fBLanguage\fP"
+.br
+.ti -1c
+.RI "std::string \fBBody\fP"
+.br
+.ti -1c
+.RI "bool \fBIsImplied\fP = false"
+.br
+.ti -1c
+.RI "bool \fBIsImpliedIncluded\fP = false"
+.br
+.ti -1c
+.RI "bool \fBIsStandard\fP = false"
+.br
+.ti -1c
+.RI "bool \fBIsLibraryElement\fP = false"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBIdentification\fP > \fBDocumentation\fP = nullptr"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBIdentification\fP > > \fBTextualRepresentation\fP"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBIdentification\fP > > \fBSource\fP"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBIdentification\fP > > \fBTarget\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBSysMLv2::Entities::Data\fP
+.in +1c
+.ti -1c
+.RI "std::string \fBType\fP"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBId\fP"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBSysMLv2::Entities::IEntity\fP
+.in +1c
+.ti -1c
+.RI "const int \fBJSON_INTENT\fP = 2"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class is not an exact, but a compatible Representation of the \fBSysMLv2\fP \fBElement\fP class\&. This implementation stems from the AGILA Backend implementation of the \fBElement\fP class\&. 
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog
+.RE
+.PP
+\fBDeprecated\fP
+.RS 4
+This should be a representation of the \fBKerML\fP \fBElement\fP Class, therefore see 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SysMLv2::Entities::Element::Element ()"
+C-Tor 
+.SS "SysMLv2::Entities::Element::Element (std::string jsonString)"
+C-Tor for the parsing\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIjsonString\fP JSON string to 
+.RE
+.PP
+
+.SS "SysMLv2::Entities::Element::~Element ()\fR [override]\fP"
+D-Tor 
+.SH "Member Function Documentation"
+.PP 
+.SS "std::string SysMLv2::Entities::Element::serializeToJson ()\fR [override]\fP, \fR [virtual]\fP"
+Allows the serialization of the Object to a JSON String\&. 
+.PP
+\fBReturns\fP
+.RS 4
+JSON String of the Object 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBSysMLv2::Entities::Data\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string SysMLv2::Entities::Element::ValueStr\fR [private]\fP"
+Value String only there for the Compatibility to the AGILA Backend Version 2 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

@@ -1,0 +1,224 @@
+.TH "SysMLv2::Entities::Branch" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::Entities::Branch
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Branch\&.h>\fP
+.PP
+Inherits \fBSysMLv2::Entities::CommitReference\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBranch\fP (std::string jsonStringOrName)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBBranch\fP &other)"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBCommit\fP > \fBgetHead\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetHead\fP (std::shared_ptr< \fBCommit\fP > head)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBSysMLv2::Entities::CommitReference\fP
+.in +1c
+.ti -1c
+.RI "\fBCommitReference\fP (std::string jsonStringOrName)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBCommitReference\fP &other)"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.ti -1c
+.RI "void \fBsetCreated\fP (std::chrono::system_clock::time_point \fBcreated\fP)"
+.br
+.ti -1c
+.RI "std::chrono::system_clock::time_point \fBcreated\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetDeleted\fP (std::chrono::system_clock::time_point \fBdeleted\fP)"
+.br
+.ti -1c
+.RI "std::chrono::system_clock::time_point \fBdeleted\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBSysMLv2::Entities::Record\fP
+.in +1c
+.ti -1c
+.RI "\fBRecord\fP ()=delete"
+.br
+.ti -1c
+.RI "\fBRecord\fP (boost::uuids::uuid id, std::string name='', std::string description='')"
+.br
+.ti -1c
+.RI "\fBRecord\fP (std::string jsonStringOrName)"
+.br
+.ti -1c
+.RI "virtual \fB~Record\fP ()"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBRecord\fP const &other) const"
+.br
+.ti -1c
+.RI "std::string \fBgetName\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetName\fP (std::string name)"
+.br
+.ti -1c
+.RI "std::list< std::string > \fBgetAlias\fP () const"
+.br
+.ti -1c
+.RI "void \fBappendAlias\fP (std::string &alias)"
+.br
+.ti -1c
+.RI "std::string \fBgetDescription\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetDescription\fP (std::string &description)"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBgetId\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBgetType\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::shared_ptr< \fBCommit\fP > \fBHead\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBSysMLv2::Entities::CommitReference\fP
+.in +1c
+.ti -1c
+.RI "std::chrono::system_clock::time_point \fBCreated\fP"
+.br
+.ti -1c
+.RI "std::chrono::system_clock::time_point \fBDeleted\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBCommit\fP > \fBReferencedCommit\fP"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBSysMLv2::Entities::Record\fP
+.in +1c
+.ti -1c
+.RI "std::string \fBType\fP"
+.br
+.ti -1c
+.RI "std::string \fBName\fP"
+.br
+.ti -1c
+.RI "std::list< std::string > \fBAlias\fP"
+.br
+.ti -1c
+.RI "std::string \fBDescription\fP"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBId\fP"
+.br
+.ti -1c
+.RI "bool \fBIsForCreation\fP = false"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBSysMLv2::Entities::IEntity\fP
+.in +1c
+.ti -1c
+.RI "const int \fBJSON_INTENT\fP = 2"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents an \fBBranch\fP that is used for the \fBSysMLv2\fP \fBAPI\fP
+
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SysMLv2::Entities::Branch::Branch (std::string jsonStringOrName)"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIjsonStringOrName\fP 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "std::shared_ptr< \fBCommit\fP > SysMLv2::Entities::Branch::getHead ()"
+Returns the Current head of the given \fBBranch\fP\&. 
+.PP
+\fBReturns\fP
+.RS 4
+A \fBCommit\fP 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBSysMLv2::Entities::Commit\fP 
+.RE
+.PP
+
+.SS "bool SysMLv2::Entities::Branch::operator== (\fBBranch\fP & other)"
+Compares the two Branches 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "std::string SysMLv2::Entities::Branch::serializeToJson ()\fR [override]\fP, \fR [virtual]\fP"
+Allows the serialization of the Object to a JSON String\&. 
+.PP
+\fBReturns\fP
+.RS 4
+JSON String of the Object 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::Entities::IEntity\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_d682bb51f56908b8acd54aac7d107234" kind="dir">
+    <compoundname>build/Debug/filehandling/CMakeFiles</compoundname>
+    <innerdir refid="dir_6ec62173841abb1d82142fc7cd873542">build/Debug/filehandling/CMakeFiles/sysmlv2file.dir</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/filehandling/CMakeFiles/"/>
+  </compounddef>
+</doxygen>

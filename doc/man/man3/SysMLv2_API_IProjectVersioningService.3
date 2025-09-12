@@ -1,0 +1,454 @@
+.TH "SysMLv2::API::IProjectVersioningService" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::API::IProjectVersioningService
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <IProjectVersioningService\&.h>\fP
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > > \fBgetCommits\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > \fBgetHeadCommit\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > \fBgetCommitById\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, boost::uuids::uuid commitId)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > \fBcreateCommit\fP (std::shared_ptr< \fBSysMLv2::Entities::DataVersion\fP > change, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch, std::vector< std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > > previousCommits, std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > \fBcreateCommit\fP (std::shared_ptr< \fBSysMLv2::Entities::DataVersion\fP > change, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch, std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > \fBcreateCommit\fP (std::shared_ptr< \fBSysMLv2::Entities::DataVersion\fP > change, std::vector< std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > > previousCommits, std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > \fBcreateCommit\fP (std::shared_ptr< \fBSysMLv2::Entities::DataVersion\fP > change, std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project)=0"
+.br
+.ti -1c
+.RI "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::DataVersion\fP > > \fBgetCommitChange\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit, std::vector< SysMLv2::Entities::ChangeType >)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::DataVersion\fP > \fBgetCommitChangeById\fP (\fBSysMLv2::Entities::Project\fP *project, \fBSysMLv2::Entities::Commit\fP *commit, boost::uuids::uuid changeId)=0"
+.br
+.ti -1c
+.RI "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > > \fBgetBranches\fP (\fBSysMLv2::Entities::Project\fP *project)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > \fBgetBranchById\fP (\fBSysMLv2::Entities::Project\fP *project, boost::uuids::uuid branchId)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > \fBgetDefaultBranch\fP (\fBSysMLv2::Entities::Project\fP *project)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Project\fP > \fBsetDefaultBranch\fP (\fBSysMLv2::Entities::Project\fP *project, boost::uuids::uuid branchId)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > \fBcreateBranch\fP (\fBSysMLv2::Entities::Project\fP *project, std::string branchName, \fBSysMLv2::Entities::Commit\fP *head)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > \fBdeleteBranch\fP (\fBSysMLv2::Entities::Project\fP *project, boost::uuids::uuid branchId)=0"
+.br
+.ti -1c
+.RI "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::Tag\fP > > \fBgetTags\fP (\fBSysMLv2::Entities::Project\fP *project)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Tag\fP > \fBgetTagById\fP (\fBSysMLv2::Entities::Project\fP *project, boost::uuids::uuid tagId)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > \fBgetTaggedCommit\fP (\fBSysMLv2::Entities::Project\fP *project, \fBSysMLv2::Entities::Tag\fP *tag)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Tag\fP > \fBcreateTag\fP (\fBSysMLv2::Entities::Project\fP *project, std::string tagName, \fBSysMLv2::Entities::Commit\fP *taggedCommit)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::MergeResult\fP > \fBmergeIntoBranch\fP (\fBSysMLv2::Entities::Branch\fP *baseBranch, std::vector< \fBSysMLv2::Entities::Commit\fP > commitsToMerge, \fBSysMLv2::Entities::Data\fP *resolution, std::string description)=0"
+.br
+.ti -1c
+.RI "virtual std::vector< std::shared_ptr< SysMLv2::Entities::DataDifference > > \fBdiffCommits\fP (\fBSysMLv2::Entities::Commit\fP *baseCommit, \fBSysMLv2::Entities::Commit\fP *compareCommit, std::vector< SysMLv2::Entities::ChangeType > changeType)=0"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface of the Project Versioning Service from the \fBSysMLv2\fP Standard 
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 Beta 3 
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBSysMLv2::Entities::Commit\fP 
+
+.PP
+SysMlv2::Entities::Project 
+
+.PP
+\fBSysMLv2::Entities::Branch\fP 
+
+.PP
+\fBSysMLv2::Entities::DataVersion\fP 
+
+.PP
+\fBSysMLv2::Entities::Tag\fP 
+
+.PP
+SysMlv2::Entities::MergeResult 
+
+.PP
+\fBSysMLv2::Entities::Data\fP 
+
+.PP
+SysMLv2::Entities::DataDifference 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > SysMLv2::API::IProjectVersioningService::createBranch (\fBSysMLv2::Entities::Project\fP * project, std::string branchName, \fBSysMLv2::Entities::Commit\fP * head)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.br
+\fIbranchName\fP 
+.br
+\fIhead\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > SysMLv2::API::IProjectVersioningService::createCommit (std::shared_ptr< \fBSysMLv2::Entities::DataVersion\fP > change, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch, std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIchange\fP 
+.br
+\fIbranch\fP 
+.br
+\fIproject\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > SysMLv2::API::IProjectVersioningService::createCommit (std::shared_ptr< \fBSysMLv2::Entities::DataVersion\fP > change, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch, std::vector< std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > > previousCommits, std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIchange\fP 
+.br
+\fIbranch\fP 
+.br
+\fIpreviousCommits\fP 
+.br
+\fIproject\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > SysMLv2::API::IProjectVersioningService::createCommit (std::shared_ptr< \fBSysMLv2::Entities::DataVersion\fP > change, std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIchange\fP 
+.br
+\fIproject\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > SysMLv2::API::IProjectVersioningService::createCommit (std::shared_ptr< \fBSysMLv2::Entities::DataVersion\fP > change, std::vector< std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > > previousCommits, std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIchange\fP 
+.br
+\fIpreviousCommits\fP 
+.br
+\fIproject\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Tag\fP > SysMLv2::API::IProjectVersioningService::createTag (\fBSysMLv2::Entities::Project\fP * project, std::string tagName, \fBSysMLv2::Entities::Commit\fP * taggedCommit)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.br
+\fItagName\fP 
+.br
+\fItaggedCommit\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > SysMLv2::API::IProjectVersioningService::deleteBranch (\fBSysMLv2::Entities::Project\fP * project, boost::uuids::uuid branchId)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.br
+\fIbranchId\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::vector< std::shared_ptr< SysMLv2::Entities::DataDifference > > SysMLv2::API::IProjectVersioningService::diffCommits (\fBSysMLv2::Entities::Commit\fP * baseCommit, \fBSysMLv2::Entities::Commit\fP * compareCommit, std::vector< SysMLv2::Entities::ChangeType > changeType)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIbaseCommit\fP 
+.br
+\fIcompareCommit\fP 
+.br
+\fIchangeType\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > SysMLv2::API::IProjectVersioningService::getBranchById (\fBSysMLv2::Entities::Project\fP * project, boost::uuids::uuid branchId)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.br
+\fIbranchId\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > > SysMLv2::API::IProjectVersioningService::getBranches (\fBSysMLv2::Entities::Project\fP * project)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > SysMLv2::API::IProjectVersioningService::getCommitById (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, boost::uuids::uuid commitId)\fR [private]\fP, \fR [pure virtual]\fP"
+Gets the specific commit from the project with the given UUID\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The project where the commit is located\&. 
+.br
+\fIcommitId\fP The id of the commit\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The specified commit by the project and the commit id\&. 
+.RE
+.PP
+
+.SS "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::DataVersion\fP > > SysMLv2::API::IProjectVersioningService::getCommitChange (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit, std::vector< SysMLv2::Entities::ChangeType > )\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.br
+\fIcommit\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::DataVersion\fP > SysMLv2::API::IProjectVersioningService::getCommitChangeById (\fBSysMLv2::Entities::Project\fP * project, \fBSysMLv2::Entities::Commit\fP * commit, boost::uuids::uuid changeId)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.br
+\fIcommit\fP 
+.br
+\fIchangeId\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > > SysMLv2::API::IProjectVersioningService::getCommits (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project)\fR [private]\fP, \fR [pure virtual]\fP"
+Gets all the commits from the given project\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The given project, where the commits are returned\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A vector of the commits that are given\&. 
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > SysMLv2::API::IProjectVersioningService::getDefaultBranch (\fBSysMLv2::Entities::Project\fP * project)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > SysMLv2::API::IProjectVersioningService::getHeadCommit (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch)\fR [private]\fP, \fR [pure virtual]\fP"
+Gets the head commit of the branch that is given and placed inside of the project\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP The project where the branch is located\&. 
+.br
+\fIbranch\fP The branch that is inside of the project\&. If this is not specified (null) then the default branch is chosen\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The head commit of the branch as a pointer\&. 
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Tag\fP > SysMLv2::API::IProjectVersioningService::getTagById (\fBSysMLv2::Entities::Project\fP * project, boost::uuids::uuid tagId)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.br
+\fItagId\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > SysMLv2::API::IProjectVersioningService::getTaggedCommit (\fBSysMLv2::Entities::Project\fP * project, \fBSysMLv2::Entities::Tag\fP * tag)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.br
+\fItag\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::Tag\fP > > SysMLv2::API::IProjectVersioningService::getTags (\fBSysMLv2::Entities::Project\fP * project)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::MergeResult\fP > SysMLv2::API::IProjectVersioningService::mergeIntoBranch (\fBSysMLv2::Entities::Branch\fP * baseBranch, std::vector< \fBSysMLv2::Entities::Commit\fP > commitsToMerge, \fBSysMLv2::Entities::Data\fP * resolution, std::string description)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIbaseBranch\fP 
+.br
+\fIcommitsToMerge\fP 
+.br
+\fIresolution\fP 
+.br
+\fIdescription\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Project\fP > SysMLv2::API::IProjectVersioningService::setDefaultBranch (\fBSysMLv2::Entities::Project\fP * project, boost::uuids::uuid branchId)\fR [private]\fP, \fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.br
+\fIbranchId\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Case_definitionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1afd5bacfa9db45edeea02204525534858" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Case_definitionContext::Case_definitionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Case_definitionContext</name>
+        <qualifiedname>SysMLv2Parser::Case_definitionContext::Case_definitionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4886" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="23254" bodyend="23256"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1a17c01995dbbdd19ef0bc0663c3d1239a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Case_definitionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Case_definitionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4887" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="23279" bodyend="23281"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1a2556348b266193517ffe98a6daa08288" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/d96/class_sys_m_lv2_parser_1_1_occurrence__definition__prefix_context" kindref="compound">Occurrence_definition_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::Occurrence_definition_prefixContext * SysMLv2Parser::Case_definitionContext::occurrence_definition_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>occurrence_definition_prefix</name>
+        <qualifiedname>SysMLv2Parser::Case_definitionContext::occurrence_definition_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4888" column="41" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="23258" bodyend="23260"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1abc3d9ea2dbb6235ef42f46d036b7cb7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Case_definitionContext::KEYWORD_CASE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_CASE</name>
+        <qualifiedname>SysMLv2Parser::Case_definitionContext::KEYWORD_CASE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4889" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="23262" bodyend="23264"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1a053f54dbc17306b2f7baf69f0e909e17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Case_definitionContext::KEYWORD_DEF</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_DEF</name>
+        <qualifiedname>SysMLv2Parser::Case_definitionContext::KEYWORD_DEF</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4890" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="23266" bodyend="23268"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1a59ab3003efdc69ed5ea00ea647251c9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d5e/class_sys_m_lv2_parser_1_1_definition__declaration_context" kindref="compound">Definition_declarationContext</ref> *</type>
+        <definition>SysMLv2Parser::Definition_declarationContext * SysMLv2Parser::Case_definitionContext::definition_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>definition_declaration</name>
+        <qualifiedname>SysMLv2Parser::Case_definitionContext::definition_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4891" column="35" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="23270" bodyend="23272"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1a6d41adc51daaea3fe2490312bdfd3869" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/d85/class_sys_m_lv2_parser_1_1_case__body_context" kindref="compound">Case_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Case_bodyContext * SysMLv2Parser::Case_definitionContext::case_body</definition>
+        <argsstring>()</argsstring>
+        <name>case_body</name>
+        <qualifiedname>SysMLv2Parser::Case_definitionContext::case_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4892" column="22" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="23274" bodyend="23276"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1ae3bd945212f7711a228808d433ce1e6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Case_definitionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Case_definitionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4894" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="23283" bodyend="23287"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1a7fcd43625f86f78c05429b0dc88c0ed3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Case_definitionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Case_definitionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4895" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="23289" bodyend="23293"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Case_definitionContext</label>
+        <link refid="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Case_definitionContext</label>
+        <link refid="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4884" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="4884" bodyend="4897"/>
+    <listofallmembers>
+      <member refid="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1a6d41adc51daaea3fe2490312bdfd3869" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Case_definitionContext</scope><name>case_body</name></member>
+      <member refid="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1afd5bacfa9db45edeea02204525534858" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Case_definitionContext</scope><name>Case_definitionContext</name></member>
+      <member refid="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1a59ab3003efdc69ed5ea00ea647251c9d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Case_definitionContext</scope><name>definition_declaration</name></member>
+      <member refid="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1ae3bd945212f7711a228808d433ce1e6b" prot="public" virt="virtual"><scope>SysMLv2Parser::Case_definitionContext</scope><name>enterRule</name></member>
+      <member refid="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1a7fcd43625f86f78c05429b0dc88c0ed3" prot="public" virt="virtual"><scope>SysMLv2Parser::Case_definitionContext</scope><name>exitRule</name></member>
+      <member refid="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1a17c01995dbbdd19ef0bc0663c3d1239a" prot="public" virt="virtual"><scope>SysMLv2Parser::Case_definitionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1abc3d9ea2dbb6235ef42f46d036b7cb7b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Case_definitionContext</scope><name>KEYWORD_CASE</name></member>
+      <member refid="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1a053f54dbc17306b2f7baf69f0e909e17" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Case_definitionContext</scope><name>KEYWORD_DEF</name></member>
+      <member refid="d2/d59/class_sys_m_lv2_parser_1_1_case__definition_context_1a2556348b266193517ffe98a6daa08288" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Case_definitionContext</scope><name>occurrence_definition_prefix</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

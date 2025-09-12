@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Type_relationship_partContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1aa7be3a5d493fccc02f91e259fdf4a3ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Type_relationship_partContext::Type_relationship_partContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Type_relationship_partContext</name>
+        <qualifiedname>SysMLv2Parser::Type_relationship_partContext::Type_relationship_partContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6043" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29431" bodyend="29433"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1aba92709b880f4c94e40bfa9680efe230" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Type_relationship_partContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Type_relationship_partContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6044" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29452" bodyend="29454"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1acb35d737bd9b6838abcf990b7bedc7de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/d92/class_sys_m_lv2_parser_1_1_disjoining__part_context" kindref="compound">Disjoining_partContext</ref> *</type>
+        <definition>SysMLv2Parser::Disjoining_partContext * SysMLv2Parser::Type_relationship_partContext::disjoining_part</definition>
+        <argsstring>()</argsstring>
+        <name>disjoining_part</name>
+        <qualifiedname>SysMLv2Parser::Type_relationship_partContext::disjoining_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6045" column="28" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29435" bodyend="29437"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1a64004a410f2975e4d951f868325ac5e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/da3/class_sys_m_lv2_parser_1_1_unioning__part_context" kindref="compound">Unioning_partContext</ref> *</type>
+        <definition>SysMLv2Parser::Unioning_partContext * SysMLv2Parser::Type_relationship_partContext::unioning_part</definition>
+        <argsstring>()</argsstring>
+        <name>unioning_part</name>
+        <qualifiedname>SysMLv2Parser::Type_relationship_partContext::unioning_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6046" column="26" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29439" bodyend="29441"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1a44c44f1b506cdb202e74c8be785688c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context" kindref="compound">Intersecting_partContext</ref> *</type>
+        <definition>SysMLv2Parser::Intersecting_partContext * SysMLv2Parser::Type_relationship_partContext::intersecting_part</definition>
+        <argsstring>()</argsstring>
+        <name>intersecting_part</name>
+        <qualifiedname>SysMLv2Parser::Type_relationship_partContext::intersecting_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6047" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29443" bodyend="29445"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1af780ef42e1c026f564d7ec97da13965a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/da2/class_sys_m_lv2_parser_1_1_differencing__part_context" kindref="compound">Differencing_partContext</ref> *</type>
+        <definition>SysMLv2Parser::Differencing_partContext * SysMLv2Parser::Type_relationship_partContext::differencing_part</definition>
+        <argsstring>()</argsstring>
+        <name>differencing_part</name>
+        <qualifiedname>SysMLv2Parser::Type_relationship_partContext::differencing_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6048" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29447" bodyend="29449"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1a0d1adf9aeb212da1857ad5326f8df379" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Type_relationship_partContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Type_relationship_partContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6050" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29456" bodyend="29460"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1a4d4cf1c7436f92b8acf9e63ebfb5e362" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Type_relationship_partContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Type_relationship_partContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6051" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29462" bodyend="29466"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Type_relationship_partContext</label>
+        <link refid="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Type_relationship_partContext</label>
+        <link refid="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6041" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="6041" bodyend="6053"/>
+    <listofallmembers>
+      <member refid="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1af780ef42e1c026f564d7ec97da13965a" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Type_relationship_partContext</scope><name>differencing_part</name></member>
+      <member refid="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1acb35d737bd9b6838abcf990b7bedc7de" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Type_relationship_partContext</scope><name>disjoining_part</name></member>
+      <member refid="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1a0d1adf9aeb212da1857ad5326f8df379" prot="public" virt="virtual"><scope>SysMLv2Parser::Type_relationship_partContext</scope><name>enterRule</name></member>
+      <member refid="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1a4d4cf1c7436f92b8acf9e63ebfb5e362" prot="public" virt="virtual"><scope>SysMLv2Parser::Type_relationship_partContext</scope><name>exitRule</name></member>
+      <member refid="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1aba92709b880f4c94e40bfa9680efe230" prot="public" virt="virtual"><scope>SysMLv2Parser::Type_relationship_partContext</scope><name>getRuleIndex</name></member>
+      <member refid="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1a44c44f1b506cdb202e74c8be785688c6" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Type_relationship_partContext</scope><name>intersecting_part</name></member>
+      <member refid="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1aa7be3a5d493fccc02f91e259fdf4a3ab" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Type_relationship_partContext</scope><name>Type_relationship_partContext</name></member>
+      <member refid="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context_1a64004a410f2975e4d951f868325ac5e5" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Type_relationship_partContext</scope><name>unioning_part</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

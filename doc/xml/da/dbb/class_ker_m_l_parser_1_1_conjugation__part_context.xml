@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Conjugation_partContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context_1ae26cacf937b365563419d7905f8fbb4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Conjugation_partContext::Conjugation_partContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Conjugation_partContext</name>
+        <qualifiedname>KerMLParser::Conjugation_partContext::Conjugation_partContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1099" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4617" bodyend="4619"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context_1a9eb0a0687db4bde6bcdcb4cd32fc6182" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Conjugation_partContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Conjugation_partContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1100" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4630" bodyend="4632"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context_1a8302d97d31cd60ef22781f45710d4a93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Conjugation_partContext::CONJUNGATES</definition>
+        <argsstring>()</argsstring>
+        <name>CONJUNGATES</name>
+        <qualifiedname>KerMLParser::Conjugation_partContext::CONJUNGATES</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1101" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4621" bodyend="4623"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context_1ad8bc595dc558634d14aeb38bbc6dcf39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/d75/class_ker_m_l_parser_1_1_owned__conjugation_context" kindref="compound">Owned_conjugationContext</ref> *</type>
+        <definition>KerMLParser::Owned_conjugationContext * KerMLParser::Conjugation_partContext::owned_conjugation</definition>
+        <argsstring>()</argsstring>
+        <name>owned_conjugation</name>
+        <qualifiedname>KerMLParser::Conjugation_partContext::owned_conjugation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1102" column="30" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4625" bodyend="4627"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context_1a0b96ed2eb593b52ee64748e02cca93b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Conjugation_partContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Conjugation_partContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1104" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4634" bodyend="4638"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context_1a7997c1394c834c603e56b4fae44a825f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Conjugation_partContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Conjugation_partContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1105" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4640" bodyend="4644"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Conjugation_partContext</label>
+        <link refid="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Conjugation_partContext</label>
+        <link refid="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="1097" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="1097" bodyend="1107"/>
+    <listofallmembers>
+      <member refid="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context_1ae26cacf937b365563419d7905f8fbb4e" prot="public" virt="non-virtual"><scope>KerMLParser::Conjugation_partContext</scope><name>Conjugation_partContext</name></member>
+      <member refid="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context_1a8302d97d31cd60ef22781f45710d4a93" prot="public" virt="non-virtual"><scope>KerMLParser::Conjugation_partContext</scope><name>CONJUNGATES</name></member>
+      <member refid="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context_1a0b96ed2eb593b52ee64748e02cca93b0" prot="public" virt="virtual"><scope>KerMLParser::Conjugation_partContext</scope><name>enterRule</name></member>
+      <member refid="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context_1a7997c1394c834c603e56b4fae44a825f" prot="public" virt="virtual"><scope>KerMLParser::Conjugation_partContext</scope><name>exitRule</name></member>
+      <member refid="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context_1a9eb0a0687db4bde6bcdcb4cd32fc6182" prot="public" virt="virtual"><scope>KerMLParser::Conjugation_partContext</scope><name>getRuleIndex</name></member>
+      <member refid="da/dbb/class_ker_m_l_parser_1_1_conjugation__part_context_1ad8bc595dc558634d14aeb38bbc6dcf39" prot="public" virt="non-virtual"><scope>KerMLParser::Conjugation_partContext</scope><name>owned_conjugation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

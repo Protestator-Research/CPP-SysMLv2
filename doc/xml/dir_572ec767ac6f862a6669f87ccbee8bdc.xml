@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_572ec767ac6f862a6669f87ccbee8bdc" kind="dir">
+    <compoundname>services/src/implementation</compoundname>
+    <innerfile refid="d1/d70/_element_navigation_service_8cpp">ElementNavigationService.cpp</innerfile>
+    <innerfile refid="d5/d34/_element_navigation_service_8h">ElementNavigationService.h</innerfile>
+    <innerfile refid="db/d81/_project_service_8cpp">ProjectService.cpp</innerfile>
+    <innerfile refid="df/d33/_project_service_8h">ProjectService.h</innerfile>
+    <innerfile refid="d6/d67/_project_usage_service_8cpp">ProjectUsageService.cpp</innerfile>
+    <innerfile refid="db/d0a/_project_usage_service_8h">ProjectUsageService.h</innerfile>
+    <innerfile refid="d9/df6/_project_versioning_service_8cpp">ProjectVersioningService.cpp</innerfile>
+    <innerfile refid="d2/d24/_project_versioning_service_8h">ProjectVersioningService.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="services/src/implementation/"/>
+  </compounddef>
+</doxygen>

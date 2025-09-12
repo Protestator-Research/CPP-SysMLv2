@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Sequence_expression_listContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context_1a9f967b39b953d4ae4e12aeaef341ad9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Sequence_expression_listContext::Sequence_expression_listContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Sequence_expression_listContext</name>
+        <qualifiedname>KerMLParser::Sequence_expression_listContext::Sequence_expression_listContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3182" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="15192" bodyend="15194"/>
+      </memberdef>
+      <memberdef kind="function" id="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context_1ad45029bca3ca556c02b589596828a177" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Sequence_expression_listContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Sequence_expression_listContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3183" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="15209" bodyend="15211"/>
+      </memberdef>
+      <memberdef kind="function" id="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context_1ae6cc7ab10ebf45ecbb9c4f5ef80b7b15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context" kindref="compound">Owned_expressionsContext</ref> *</type>
+        <definition>KerMLParser::Owned_expressionsContext * KerMLParser::Sequence_expression_listContext::owned_expressions</definition>
+        <argsstring>()</argsstring>
+        <name>owned_expressions</name>
+        <qualifiedname>KerMLParser::Sequence_expression_listContext::owned_expressions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3184" column="30" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="15196" bodyend="15198"/>
+      </memberdef>
+      <memberdef kind="function" id="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context_1a24fe019cf1db5b3595340862940340a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Sequence_expression_listContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>KerMLParser::Sequence_expression_listContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3185" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="15200" bodyend="15202"/>
+      </memberdef>
+      <memberdef kind="function" id="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context_1a1f152b76eda33e45403e8f426bc1da63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/dfb/class_ker_m_l_parser_1_1_sequence__operator__expression_context" kindref="compound">Sequence_operator_expressionContext</ref> *</type>
+        <definition>KerMLParser::Sequence_operator_expressionContext * KerMLParser::Sequence_expression_listContext::sequence_operator_expression</definition>
+        <argsstring>()</argsstring>
+        <name>sequence_operator_expression</name>
+        <qualifiedname>KerMLParser::Sequence_expression_listContext::sequence_operator_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3186" column="41" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="15204" bodyend="15206"/>
+      </memberdef>
+      <memberdef kind="function" id="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context_1a8da7dfca4b2fafaed70d0a682388b4a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Sequence_expression_listContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Sequence_expression_listContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3188" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="15213" bodyend="15217"/>
+      </memberdef>
+      <memberdef kind="function" id="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context_1a5f60b9170910b03bd6922693d378c991" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Sequence_expression_listContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Sequence_expression_listContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3189" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="15219" bodyend="15223"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Sequence_expression_listContext</label>
+        <link refid="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Sequence_expression_listContext</label>
+        <link refid="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="3180" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="3180" bodyend="3191"/>
+    <listofallmembers>
+      <member refid="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context_1a8da7dfca4b2fafaed70d0a682388b4a2" prot="public" virt="virtual"><scope>KerMLParser::Sequence_expression_listContext</scope><name>enterRule</name></member>
+      <member refid="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context_1a5f60b9170910b03bd6922693d378c991" prot="public" virt="virtual"><scope>KerMLParser::Sequence_expression_listContext</scope><name>exitRule</name></member>
+      <member refid="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context_1ad45029bca3ca556c02b589596828a177" prot="public" virt="virtual"><scope>KerMLParser::Sequence_expression_listContext</scope><name>getRuleIndex</name></member>
+      <member refid="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context_1ae6cc7ab10ebf45ecbb9c4f5ef80b7b15" prot="public" virt="non-virtual"><scope>KerMLParser::Sequence_expression_listContext</scope><name>owned_expressions</name></member>
+      <member refid="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context_1a9f967b39b953d4ae4e12aeaef341ad9c" prot="public" virt="non-virtual"><scope>KerMLParser::Sequence_expression_listContext</scope><name>Sequence_expression_listContext</name></member>
+      <member refid="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context_1a1f152b76eda33e45403e8f426bc1da63" prot="public" virt="non-virtual"><scope>KerMLParser::Sequence_expression_listContext</scope><name>sequence_operator_expression</name></member>
+      <member refid="de/db1/class_ker_m_l_parser_1_1_sequence__expression__list_context_1a24fe019cf1db5b3595340862940340a8" prot="public" virt="non-virtual"><scope>KerMLParser::Sequence_expression_listContext</scope><name>SYMBOL_COMMA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -20,7 +20,7 @@
 #include "Project.h"
 #include "JSONEntities.h"
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
 
     DataIdentity::DataIdentity(boost::uuids::uuid id) :
             Record(id){
@@ -48,12 +48,7 @@ namespace SysMLv2::Entities {
     }
 
     std::string DataIdentity::serializeToJson() {
-        nlohmann::json jsonGeneration;
-
-        jsonGeneration[JSON_ID_ENTITY] = boost::uuids::to_string(Id);
-        jsonGeneration[JSON_TYPE_ENTITY] = Type;
-
-        return jsonGeneration.dump(JSON_INTENT);
+        return Record::serializeToJson();
     }
 
     bool DataIdentity::operator==(const DataIdentity &other) {

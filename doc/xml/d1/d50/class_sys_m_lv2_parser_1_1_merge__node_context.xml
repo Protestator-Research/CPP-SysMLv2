@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Merge_nodeContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1a85f7da50064917258063c9fa7cca7b54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Merge_nodeContext::Merge_nodeContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Merge_nodeContext</name>
+        <qualifiedname>SysMLv2Parser::Merge_nodeContext::Merge_nodeContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3272" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="15047" bodyend="15049"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1afdf35cbc18d4aba37d8a4cecc647d778" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Merge_nodeContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Merge_nodeContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3273" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="15068" bodyend="15070"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1a50f4f810b8f6907961e1ea853b550a5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d4b/class_sys_m_lv2_parser_1_1_control__node__prefix_context" kindref="compound">Control_node_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::Control_node_prefixContext * SysMLv2Parser::Merge_nodeContext::control_node_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>control_node_prefix</name>
+        <qualifiedname>SysMLv2Parser::Merge_nodeContext::control_node_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3274" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="15051" bodyend="15053"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1a0faae30e830f56b231faae904e5b8268" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d41/class_sys_m_lv2_parser_1_1_usage__declaration_context" kindref="compound">Usage_declarationContext</ref> *</type>
+        <definition>SysMLv2Parser::Usage_declarationContext * SysMLv2Parser::Merge_nodeContext::usage_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>usage_declaration</name>
+        <qualifiedname>SysMLv2Parser::Merge_nodeContext::usage_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3275" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="15055" bodyend="15057"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1a244687b21adfc10363af2300c33e233d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/d01/class_sys_m_lv2_parser_1_1_action__body_context" kindref="compound">Action_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Action_bodyContext * SysMLv2Parser::Merge_nodeContext::action_body</definition>
+        <argsstring>()</argsstring>
+        <name>action_body</name>
+        <qualifiedname>SysMLv2Parser::Merge_nodeContext::action_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3276" column="24" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="15059" bodyend="15061"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1aadf6f9ed420cc69b04d2793ec62b3d61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Merge_nodeContext::KEYWORD_MERGE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_MERGE</name>
+        <qualifiedname>SysMLv2Parser::Merge_nodeContext::KEYWORD_MERGE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3277" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="15063" bodyend="15065"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1aef27add06f322c6d1d84cfd503dfd3d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Merge_nodeContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Merge_nodeContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3279" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="15072" bodyend="15076"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1ac43b56d7cdcb2d58f00bfab84672d74d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Merge_nodeContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Merge_nodeContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3280" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="15078" bodyend="15082"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Merge_nodeContext</label>
+        <link refid="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Merge_nodeContext</label>
+        <link refid="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="3270" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="3270" bodyend="3282"/>
+    <listofallmembers>
+      <member refid="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1a244687b21adfc10363af2300c33e233d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Merge_nodeContext</scope><name>action_body</name></member>
+      <member refid="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1a50f4f810b8f6907961e1ea853b550a5a" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Merge_nodeContext</scope><name>control_node_prefix</name></member>
+      <member refid="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1aef27add06f322c6d1d84cfd503dfd3d0" prot="public" virt="virtual"><scope>SysMLv2Parser::Merge_nodeContext</scope><name>enterRule</name></member>
+      <member refid="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1ac43b56d7cdcb2d58f00bfab84672d74d" prot="public" virt="virtual"><scope>SysMLv2Parser::Merge_nodeContext</scope><name>exitRule</name></member>
+      <member refid="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1afdf35cbc18d4aba37d8a4cecc647d778" prot="public" virt="virtual"><scope>SysMLv2Parser::Merge_nodeContext</scope><name>getRuleIndex</name></member>
+      <member refid="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1aadf6f9ed420cc69b04d2793ec62b3d61" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Merge_nodeContext</scope><name>KEYWORD_MERGE</name></member>
+      <member refid="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1a85f7da50064917258063c9fa7cca7b54" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Merge_nodeContext</scope><name>Merge_nodeContext</name></member>
+      <member refid="d1/d50/class_sys_m_lv2_parser_1_1_merge__node_context_1a0faae30e830f56b231faae904e5b8268" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Merge_nodeContext</scope><name>usage_declaration</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

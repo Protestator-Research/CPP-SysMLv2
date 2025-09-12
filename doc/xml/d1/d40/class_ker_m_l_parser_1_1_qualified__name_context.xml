@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Qualified_nameContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1aee4de983ffa7928245d8f27f1be83663" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Qualified_nameContext::Qualified_nameContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Qualified_nameContext</name>
+        <qualifiedname>KerMLParser::Qualified_nameContext::Qualified_nameContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="848" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3103" bodyend="3105"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1aa51610c0a70adda4a3834338e56facb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Qualified_nameContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Qualified_nameContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="849" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3124" bodyend="3126"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1acb78df84042f9c2360259da2fa8d7978" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; antlr4::tree::TerminalNode * &gt;</type>
+        <definition>std::vector&lt; tree::TerminalNode * &gt; KerMLParser::Qualified_nameContext::NAME</definition>
+        <argsstring>()</argsstring>
+        <name>NAME</name>
+        <qualifiedname>KerMLParser::Qualified_nameContext::NAME</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="850" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3107" bodyend="3109"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1addac30fdc3aaf9a62f32261c894497d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Qualified_nameContext::NAME</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>NAME</name>
+        <qualifiedname>KerMLParser::Qualified_nameContext::NAME</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="851" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3111" bodyend="3113"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1a6fbf4d97ab1663f67098bfbb7ff16b8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; antlr4::tree::TerminalNode * &gt;</type>
+        <definition>std::vector&lt; tree::TerminalNode * &gt; KerMLParser::Qualified_nameContext::SYMBOL_NAMESPACE_SUBSET</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_NAMESPACE_SUBSET</name>
+        <qualifiedname>KerMLParser::Qualified_nameContext::SYMBOL_NAMESPACE_SUBSET</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="852" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3115" bodyend="3117"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1abfd6b6d178f3d3cea1bc22da85cdd263" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Qualified_nameContext::SYMBOL_NAMESPACE_SUBSET</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>SYMBOL_NAMESPACE_SUBSET</name>
+        <qualifiedname>KerMLParser::Qualified_nameContext::SYMBOL_NAMESPACE_SUBSET</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="853" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3119" bodyend="3121"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1a123d7b0bae1ccb0dfeef54d931beb073" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Qualified_nameContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Qualified_nameContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="855" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3128" bodyend="3132"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1a04a13f36af822a18a97c13986d307202" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Qualified_nameContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Qualified_nameContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="856" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3134" bodyend="3138"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Qualified_nameContext</label>
+        <link refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Qualified_nameContext</label>
+        <link refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="846" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="846" bodyend="858"/>
+    <listofallmembers>
+      <member refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1a123d7b0bae1ccb0dfeef54d931beb073" prot="public" virt="virtual"><scope>KerMLParser::Qualified_nameContext</scope><name>enterRule</name></member>
+      <member refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1a04a13f36af822a18a97c13986d307202" prot="public" virt="virtual"><scope>KerMLParser::Qualified_nameContext</scope><name>exitRule</name></member>
+      <member refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1aa51610c0a70adda4a3834338e56facb9" prot="public" virt="virtual"><scope>KerMLParser::Qualified_nameContext</scope><name>getRuleIndex</name></member>
+      <member refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1acb78df84042f9c2360259da2fa8d7978" prot="public" virt="non-virtual"><scope>KerMLParser::Qualified_nameContext</scope><name>NAME</name></member>
+      <member refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1addac30fdc3aaf9a62f32261c894497d8" prot="public" virt="non-virtual"><scope>KerMLParser::Qualified_nameContext</scope><name>NAME</name></member>
+      <member refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1aee4de983ffa7928245d8f27f1be83663" prot="public" virt="non-virtual"><scope>KerMLParser::Qualified_nameContext</scope><name>Qualified_nameContext</name></member>
+      <member refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1a6fbf4d97ab1663f67098bfbb7ff16b8a" prot="public" virt="non-virtual"><scope>KerMLParser::Qualified_nameContext</scope><name>SYMBOL_NAMESPACE_SUBSET</name></member>
+      <member refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context_1abfd6b6d178f3d3cea1bc22da85cdd263" prot="public" virt="non-virtual"><scope>KerMLParser::Qualified_nameContext</scope><name>SYMBOL_NAMESPACE_SUBSET</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

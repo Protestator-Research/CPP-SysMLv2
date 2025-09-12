@@ -1,0 +1,1015 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2::Entities::Element</compoundname>
+    <basecompoundref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" prot="public" virt="non-virtual">SysMLv2::Entities::Data</basecompoundref>
+    <derivedcompoundref refid="d0/dae/class_sys_m_lv2_1_1_entities_1_1_relationship" prot="public" virt="non-virtual">SysMLv2::Entities::Relationship</derivedcompoundref>
+    <includes refid="dd/d61/rest-api_2src_2entities_2_element_8h" local="no">Element.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1afa7588e1a6146958a17eec45759626fa" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <qualifiedname>SysMLv2::Entities::Element::Name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="104" column="21" bodyfile="rest-api/src/entities/Element.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a7489480889da4ea81170b97935a74875" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::ShortName</definition>
+        <argsstring></argsstring>
+        <name>ShortName</name>
+        <qualifiedname>SysMLv2::Entities::Element::ShortName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="105" column="21" bodyfile="rest-api/src/entities/Element.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a00a9fede477c04fed7ba8c003bf3747d" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::DeclaredName</definition>
+        <argsstring></argsstring>
+        <name>DeclaredName</name>
+        <qualifiedname>SysMLv2::Entities::Element::DeclaredName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="106" column="21" bodyfile="rest-api/src/entities/Element.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1abdc9520ec6f22063d124a49f883331e1" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::DeclaredShortName</definition>
+        <argsstring></argsstring>
+        <name>DeclaredShortName</name>
+        <qualifiedname>SysMLv2::Entities::Element::DeclaredShortName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="107" column="21" bodyfile="rest-api/src/entities/Element.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a78908e207102048ed0a67bac76a9e8ce" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;Identification&gt; &gt; SysMLv2::Entities::Element::OwnedElements</definition>
+        <argsstring></argsstring>
+        <name>OwnedElements</name>
+        <qualifiedname>SysMLv2::Entities::Element::OwnedElements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="109" column="21" bodyfile="rest-api/src/entities/Element.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a674e4877b5298caeeb76a54c4aaa70a2" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Identification&gt; SysMLv2::Entities::Element::Owner</definition>
+        <argsstring></argsstring>
+        <name>Owner</name>
+        <qualifiedname>SysMLv2::Entities::Element::Owner</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="110" column="25" bodyfile="rest-api/src/entities/Element.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1ad92c711a45f54db1df1adb16c476836e" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Identification&gt; SysMLv2::Entities::Element::OwningMembership</definition>
+        <argsstring></argsstring>
+        <name>OwningMembership</name>
+        <qualifiedname>SysMLv2::Entities::Element::OwningMembership</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="111" column="25" bodyfile="rest-api/src/entities/Element.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a6d4583847e1d11ed806a695190222b84" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Identification&gt; SysMLv2::Entities::Element::OwningNamespace</definition>
+        <argsstring></argsstring>
+        <name>OwningNamespace</name>
+        <qualifiedname>SysMLv2::Entities::Element::OwningNamespace</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="112" column="25" bodyfile="rest-api/src/entities/Element.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a175fe21e480d5255f80bde82f61c8ba7" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Identification&gt; SysMLv2::Entities::Element::OwningRelationship</definition>
+        <argsstring></argsstring>
+        <name>OwningRelationship</name>
+        <qualifiedname>SysMLv2::Entities::Element::OwningRelationship</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="113" column="25" bodyfile="rest-api/src/entities/Element.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a77ee3e8d294a22254c52a2fb89a352c6" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::Direction</definition>
+        <argsstring></argsstring>
+        <name>Direction</name>
+        <qualifiedname>SysMLv2::Entities::Element::Direction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="115" column="21" bodyfile="rest-api/src/entities/Element.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a72ea17afe9abb68bb89ef48ef0e1ff4a" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::ImportedMemberName</definition>
+        <argsstring></argsstring>
+        <name>ImportedMemberName</name>
+        <qualifiedname>SysMLv2::Entities::Element::ImportedMemberName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="116" column="21" bodyfile="rest-api/src/entities/Element.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a6b96b4cf7b05ac093b27c144e87548e2" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::ImportedNamespace</definition>
+        <argsstring></argsstring>
+        <name>ImportedNamespace</name>
+        <qualifiedname>SysMLv2::Entities::Element::ImportedNamespace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="117" column="21" bodyfile="rest-api/src/entities/Element.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a3b5411c254e49b8934fdb1435f8f2658" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::ValueStr</definition>
+        <argsstring></argsstring>
+        <name>ValueStr</name>
+        <qualifiedname>SysMLv2::Entities::Element::ValueStr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Value String only there for the Compatibility to the AGILA Backend Version 2 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="122" column="21" bodyfile="rest-api/src/entities/Element.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1ab68f31f6eec774d45df518cc8da19030" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::Language</definition>
+        <argsstring></argsstring>
+        <name>Language</name>
+        <qualifiedname>SysMLv2::Entities::Element::Language</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="124" column="21" bodyfile="rest-api/src/entities/Element.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a89a746eeed5e9283d04ca67e710436a9" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::Body</definition>
+        <argsstring></argsstring>
+        <name>Body</name>
+        <qualifiedname>SysMLv2::Entities::Element::Body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="125" column="21" bodyfile="rest-api/src/entities/Element.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a80001a97b99b634c7a2b5b5deed02930" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SysMLv2::Entities::Element::IsImplied</definition>
+        <argsstring></argsstring>
+        <name>IsImplied</name>
+        <qualifiedname>SysMLv2::Entities::Element::IsImplied</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="127" column="14" bodyfile="rest-api/src/entities/Element.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a6d55bf2cef559c4410a51eb4740a56ad" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SysMLv2::Entities::Element::IsImpliedIncluded</definition>
+        <argsstring></argsstring>
+        <name>IsImpliedIncluded</name>
+        <qualifiedname>SysMLv2::Entities::Element::IsImpliedIncluded</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="128" column="14" bodyfile="rest-api/src/entities/Element.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1af90390883b170ae851a5573436f6b4c2" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SysMLv2::Entities::Element::IsStandard</definition>
+        <argsstring></argsstring>
+        <name>IsStandard</name>
+        <qualifiedname>SysMLv2::Entities::Element::IsStandard</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="129" column="14" bodyfile="rest-api/src/entities/Element.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a2ee5b2682af6b1904b9dc9d26c2a4a0c" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SysMLv2::Entities::Element::IsLibraryElement</definition>
+        <argsstring></argsstring>
+        <name>IsLibraryElement</name>
+        <qualifiedname>SysMLv2::Entities::Element::IsLibraryElement</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="130" column="14" bodyfile="rest-api/src/entities/Element.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a564b8c28929e262f2144bda546249ddc" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Identification&gt; SysMLv2::Entities::Element::Documentation</definition>
+        <argsstring></argsstring>
+        <name>Documentation</name>
+        <qualifiedname>SysMLv2::Entities::Element::Documentation</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="132" column="25" bodyfile="rest-api/src/entities/Element.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a553727ac4451e90fe0508972d2180d3e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;Identification&gt; &gt; SysMLv2::Entities::Element::TextualRepresentation</definition>
+        <argsstring></argsstring>
+        <name>TextualRepresentation</name>
+        <qualifiedname>SysMLv2::Entities::Element::TextualRepresentation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="133" column="21" bodyfile="rest-api/src/entities/Element.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a4078de3165069e1cc54601c29f6806ab" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;Identification&gt; &gt; SysMLv2::Entities::Element::Source</definition>
+        <argsstring></argsstring>
+        <name>Source</name>
+        <qualifiedname>SysMLv2::Entities::Element::Source</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="135" column="21" bodyfile="rest-api/src/entities/Element.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a3678b89e6c64f094f4804c3740ae6672" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;Identification&gt; &gt; SysMLv2::Entities::Element::Target</definition>
+        <argsstring></argsstring>
+        <name>Target</name>
+        <qualifiedname>SysMLv2::Entities::Element::Target</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="136" column="21" bodyfile="rest-api/src/entities/Element.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1ac38206319dd34ba75c7b309b682e3eb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::Element::Element</definition>
+        <argsstring>()</argsstring>
+        <name>Element</name>
+        <qualifiedname>SysMLv2::Entities::Element::Element</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>C-Tor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="42" column="10" bodyfile="rest-api/src/entities/Element.cpp" bodystart="13" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1ab52d4fadfa618985c015c52a5397fbf8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::Element::Element</definition>
+        <argsstring>(std::string jsonString)</argsstring>
+        <name>Element</name>
+        <qualifiedname>SysMLv2::Entities::Element::Element</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>jsonString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>C-Tor for the parsing. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>jsonString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON string to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="48" column="10" bodyfile="rest-api/src/entities/Element.cpp" bodystart="18" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a17366e6ae069e4f67d31ace64c30dfaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::Element::~Element</definition>
+        <argsstring>() override</argsstring>
+        <name>~Element</name>
+        <qualifiedname>SysMLv2::Entities::Element::~Element</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>D-Tor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="53" column="10" bodyfile="rest-api/src/entities/Element.cpp" bodystart="120" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a94e32065cdd1b4e5392bf766318440fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::serializeToJson</definition>
+        <argsstring>() override</argsstring>
+        <name>serializeToJson</name>
+        <qualifiedname>SysMLv2::Entities::Element::serializeToJson</qualifiedname>
+        <reimplements refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a01a079b57d6cadb79794f04edaadc3e4">serializeToJson</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows the serialization of the Object to a JSON String. <simplesect kind="return"><para>JSON String of the Object </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="55" column="22" bodyfile="rest-api/src/entities/Element.cpp" bodystart="127" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1aabc44d232e30ca108fb102de0fb955e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SysMLv2::Entities::Element::setName</definition>
+        <argsstring>(std::string name)</argsstring>
+        <name>setName</name>
+        <qualifiedname>SysMLv2::Entities::Element::setName</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="57" column="15" bodyfile="rest-api/src/entities/Element.cpp" bodystart="199" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a00348c6da8696b689cf69fabca48a659" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::name</definition>
+        <argsstring>()</argsstring>
+        <name>name</name>
+        <qualifiedname>SysMLv2::Entities::Element::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="58" column="22" bodyfile="rest-api/src/entities/Element.cpp" bodystart="203" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a9044f3767424a229d127bcf8259a0b2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SysMLv2::Entities::Element::setShortName</definition>
+        <argsstring>(std::string shortName)</argsstring>
+        <name>setShortName</name>
+        <qualifiedname>SysMLv2::Entities::Element::setShortName</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>shortName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="60" column="15" bodyfile="rest-api/src/entities/Element.cpp" bodystart="207" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a36aa9e5c22aef7c72b63efda8d0d649d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::shortName</definition>
+        <argsstring>()</argsstring>
+        <name>shortName</name>
+        <qualifiedname>SysMLv2::Entities::Element::shortName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="61" column="22" bodyfile="rest-api/src/entities/Element.cpp" bodystart="211" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a51d1071ba63aacab2cf08d01c64fe322" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SysMLv2::Entities::Element::setDeclaredName</definition>
+        <argsstring>(std::string declaredName)</argsstring>
+        <name>setDeclaredName</name>
+        <qualifiedname>SysMLv2::Entities::Element::setDeclaredName</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>declaredName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="63" column="15" bodyfile="rest-api/src/entities/Element.cpp" bodystart="215" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a9b1f0490928e6a7e30e3a4bc85f5e01d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::declaredName</definition>
+        <argsstring>()</argsstring>
+        <name>declaredName</name>
+        <qualifiedname>SysMLv2::Entities::Element::declaredName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="64" column="22" bodyfile="rest-api/src/entities/Element.cpp" bodystart="219" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a8552b7ae460de1989895c588849a3dac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SysMLv2::Entities::Element::setDeclaredShortName</definition>
+        <argsstring>(std::string declaredShortName)</argsstring>
+        <name>setDeclaredShortName</name>
+        <qualifiedname>SysMLv2::Entities::Element::setDeclaredShortName</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>declaredShortName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="66" column="15" bodyfile="rest-api/src/entities/Element.cpp" bodystart="223" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a561417401849a71d18b72ec6af0a619e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::getDeclaredShortName</definition>
+        <argsstring>()</argsstring>
+        <name>getDeclaredShortName</name>
+        <qualifiedname>SysMLv2::Entities::Element::getDeclaredShortName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="67" column="22" bodyfile="rest-api/src/entities/Element.cpp" bodystart="227" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a5ef804b54248b5761bc85a7ca948910a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; Identification &gt; &gt; SysMLv2::Entities::Element::ownedElements</definition>
+        <argsstring>()</argsstring>
+        <name>ownedElements</name>
+        <qualifiedname>SysMLv2::Entities::Element::ownedElements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="69" column="22" bodyfile="rest-api/src/entities/Element.cpp" bodystart="231" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1add2cfbc0ac3b8e3178201fb972a7ae4f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Identification &gt; SysMLv2::Entities::Element::owner</definition>
+        <argsstring>() const</argsstring>
+        <name>owner</name>
+        <qualifiedname>SysMLv2::Entities::Element::owner</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="70" column="26" bodyfile="rest-api/src/entities/Element.cpp" bodystart="235" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1adf4485f5e0d329348c9b055e0fd4d60f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Identification &gt; SysMLv2::Entities::Element::owningMembership</definition>
+        <argsstring>() const</argsstring>
+        <name>owningMembership</name>
+        <qualifiedname>SysMLv2::Entities::Element::owningMembership</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="71" column="26" bodyfile="rest-api/src/entities/Element.cpp" bodystart="239" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1aad67da6ae56d01c17a90b272aeaa60fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Identification &gt; SysMLv2::Entities::Element::owningNamespace</definition>
+        <argsstring>() const</argsstring>
+        <name>owningNamespace</name>
+        <qualifiedname>SysMLv2::Entities::Element::owningNamespace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="72" column="26" bodyfile="rest-api/src/entities/Element.cpp" bodystart="243" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a6f30dccf381411b869a573e2bb69ccda" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Identification &gt; SysMLv2::Entities::Element::owningRelationship</definition>
+        <argsstring>() const</argsstring>
+        <name>owningRelationship</name>
+        <qualifiedname>SysMLv2::Entities::Element::owningRelationship</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="73" column="26" bodyfile="rest-api/src/entities/Element.cpp" bodystart="247" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a4734cf79f652c29216a9e417c7d368ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::direction</definition>
+        <argsstring>()</argsstring>
+        <name>direction</name>
+        <qualifiedname>SysMLv2::Entities::Element::direction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="75" column="22" bodyfile="rest-api/src/entities/Element.cpp" bodystart="251" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1af0defb2c9b35e5df30a4adf9d02aacc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::importedMemberName</definition>
+        <argsstring>()</argsstring>
+        <name>importedMemberName</name>
+        <qualifiedname>SysMLv2::Entities::Element::importedMemberName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="76" column="22" bodyfile="rest-api/src/entities/Element.cpp" bodystart="255" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1abb4a1b01fa2b6b75a931c4dae5b6b689" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::importedNamespace</definition>
+        <argsstring>()</argsstring>
+        <name>importedNamespace</name>
+        <qualifiedname>SysMLv2::Entities::Element::importedNamespace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="77" column="22" bodyfile="rest-api/src/entities/Element.cpp" bodystart="259" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a3e55d66547e7194c6f22921eaf072f8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::valueString</definition>
+        <argsstring>()</argsstring>
+        <name>valueString</name>
+        <qualifiedname>SysMLv2::Entities::Element::valueString</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="79" column="22" bodyfile="rest-api/src/entities/Element.cpp" bodystart="263" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a62611f66bba151fa02c8e88208bde067" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SysMLv2::Entities::Element::setLanguage</definition>
+        <argsstring>(std::string language)</argsstring>
+        <name>setLanguage</name>
+        <qualifiedname>SysMLv2::Entities::Element::setLanguage</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>language</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="81" column="15" bodyfile="rest-api/src/entities/Element.cpp" bodystart="195" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1aa3ecb14df01181008ce55714bbaf786e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::language</definition>
+        <argsstring>()</argsstring>
+        <name>language</name>
+        <qualifiedname>SysMLv2::Entities::Element::language</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="82" column="22" bodyfile="rest-api/src/entities/Element.cpp" bodystart="267" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a35027800e4c68806f4348488cb5aefc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SysMLv2::Entities::Element::setBody</definition>
+        <argsstring>(std::string body)</argsstring>
+        <name>setBody</name>
+        <qualifiedname>SysMLv2::Entities::Element::setBody</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>body</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="83" column="15" bodyfile="rest-api/src/entities/Element.cpp" bodystart="191" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a92aac1595d0922015b783c5d2ec7d3e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::body</definition>
+        <argsstring>()</argsstring>
+        <name>body</name>
+        <qualifiedname>SysMLv2::Entities::Element::body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="84" column="22" bodyfile="rest-api/src/entities/Element.cpp" bodystart="271" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a70d0e0b63f43d645350ac00afb3ebeb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SysMLv2::Entities::Element::isImplied</definition>
+        <argsstring>()</argsstring>
+        <name>isImplied</name>
+        <qualifiedname>SysMLv2::Entities::Element::isImplied</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="86" column="15" bodyfile="rest-api/src/entities/Element.cpp" bodystart="275" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a91cdfcfba2eec9f47314c239d669c909" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SysMLv2::Entities::Element::isImpliedIncluded</definition>
+        <argsstring>()</argsstring>
+        <name>isImpliedIncluded</name>
+        <qualifiedname>SysMLv2::Entities::Element::isImpliedIncluded</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="87" column="15" bodyfile="rest-api/src/entities/Element.cpp" bodystart="279" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a9237c6a86478ae0b4e933d99c9e0080d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SysMLv2::Entities::Element::isStandard</definition>
+        <argsstring>()</argsstring>
+        <name>isStandard</name>
+        <qualifiedname>SysMLv2::Entities::Element::isStandard</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="88" column="15" bodyfile="rest-api/src/entities/Element.cpp" bodystart="283" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a59de2fd6bebc24bfb3c8a17eb8242e6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SysMLv2::Entities::Element::isLibrary</definition>
+        <argsstring>()</argsstring>
+        <name>isLibrary</name>
+        <qualifiedname>SysMLv2::Entities::Element::isLibrary</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="89" column="15" bodyfile="rest-api/src/entities/Element.cpp" bodystart="287" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a4e1adfb03abc0d1541b1a242b11a246a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Identification &gt; SysMLv2::Entities::Element::documentation</definition>
+        <argsstring>() const</argsstring>
+        <name>documentation</name>
+        <qualifiedname>SysMLv2::Entities::Element::documentation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="91" column="26" bodyfile="rest-api/src/entities/Element.cpp" bodystart="291" bodyend="293"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1abd72d64f195abda58d64b3f7a720ab36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; Identification &gt; &gt; SysMLv2::Entities::Element::textualRepresentation</definition>
+        <argsstring>()</argsstring>
+        <name>textualRepresentation</name>
+        <qualifiedname>SysMLv2::Entities::Element::textualRepresentation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="93" column="22" bodyfile="rest-api/src/entities/Element.cpp" bodystart="295" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a31ae2aba1f54f5222c7152e609e96e1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; Identification &gt; &gt; SysMLv2::Entities::Element::source</definition>
+        <argsstring>()</argsstring>
+        <name>source</name>
+        <qualifiedname>SysMLv2::Entities::Element::source</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="95" column="21" bodyfile="rest-api/src/entities/Element.cpp" bodystart="299" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1af929761459c0fb145ecafb80337d65be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="dd/da1/class_sys_m_lv2_1_1_entities_1_1_identification" kindref="compound">Identification</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; Identification &gt; &gt; SysMLv2::Entities::Element::target</definition>
+        <argsstring>()</argsstring>
+        <name>target</name>
+        <qualifiedname>SysMLv2::Entities::Element::target</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="96" column="21" bodyfile="rest-api/src/entities/Element.cpp" bodystart="303" bodyend="305"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a8f77044960ecad333be620c13a733350" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::Element::getMarkdownString</definition>
+        <argsstring>()</argsstring>
+        <name>getMarkdownString</name>
+        <qualifiedname>SysMLv2::Entities::Element::getMarkdownString</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="98" column="21" bodyfile="rest-api/src/entities/Element.cpp" bodystart="307" bodyend="316"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1aab8d641c1794f975cf522bdf30ff9712" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SysMLv2::Entities::Element::serializeNullString</definition>
+        <argsstring>(nlohmann::json &amp;json, const std::string &amp;value, const std::string &amp;entity_value)</argsstring>
+        <name>serializeNullString</name>
+        <qualifiedname>SysMLv2::Entities::Element::serializeNullString</qualifiedname>
+        <param>
+          <type>nlohmann::json &amp;</type>
+          <declname>json</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>entity_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/Element.h" line="102" column="14" bodyfile="rest-api/src/entities/Element.cpp" bodystart="184" bodyend="189"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This class is not an exact, but a compatible Representation of the <ref refid="d7/dba/namespace_sys_m_lv2" kindref="compound">SysMLv2</ref> <ref refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element" kindref="compound">Element</ref> class. This implementation stems from the AGILA Backend implementation of the <ref refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element" kindref="compound">Element</ref> class. <simplesect kind="version"><para>1.0 </para>
+</simplesect>
+<simplesect kind="author"><para>Moritz Herzog</para>
+</simplesect>
+<xrefsect id="da/d58/deprecated_1_deprecated000001"><xreftitle>Deprecated</xreftitle><xrefdescription><para>This should be a representation of the <ref refid="d2/d14/namespace_ker_m_l" kindref="compound">KerML</ref> <ref refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element" kindref="compound">Element</ref> Class, therefore see </para>
+</xrefdescription></xrefsect></para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>SysMLv2::Entities::Data</label>
+        <link refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>SysMLv2::Entities::Element</label>
+        <link refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+      <node id="4">
+        <label>SysMLv2::Entities::Relationship</label>
+        <link refid="d0/dae/class_sys_m_lv2_1_1_entities_1_1_relationship"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>SysMLv2::Entities::Data</label>
+        <link refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>SysMLv2::Entities::Element</label>
+        <link refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+    </collaborationgraph>
+    <location file="rest-api/src/entities/Element.h" line="37" column="5" bodyfile="rest-api/src/entities/Element.h" bodystart="37" bodyend="137"/>
+    <listofallmembers>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a89a746eeed5e9283d04ca67e710436a9" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Body</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a92aac1595d0922015b783c5d2ec7d3e8" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>body</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a8764b2cee063c5961f2423bb61394398" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Data</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1ab11291a4106304308b94f4a827e97f5d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Data</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a3ead38504d0fac260222ef510223492f" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Data</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a00a9fede477c04fed7ba8c003bf3747d" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>DeclaredName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a9b1f0490928e6a7e30e3a4bc85f5e01d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>declaredName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1abdc9520ec6f22063d124a49f883331e1" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>DeclaredShortName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a77ee3e8d294a22254c52a2fb89a352c6" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Direction</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a4734cf79f652c29216a9e417c7d368ab" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>direction</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a564b8c28929e262f2144bda546249ddc" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Documentation</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a4e1adfb03abc0d1541b1a242b11a246a" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>documentation</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1ac38206319dd34ba75c7b309b682e3eb8" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Element</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1ab52d4fadfa618985c015c52a5397fbf8" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Element</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a561417401849a71d18b72ec6af0a619e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>getDeclaredShortName</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a4d8b6e86e67395a6e8ca0afb22ea01eb" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>getId</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a8f77044960ecad333be620c13a733350" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>getMarkdownString</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1ac0624bb99650ed554d1e78ce17d93c4d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>getType</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1abeee9acd12e31beb38e59d8d0e94bc34" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Id</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a72ea17afe9abb68bb89ef48ef0e1ff4a" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>ImportedMemberName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1af0defb2c9b35e5df30a4adf9d02aacc2" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>importedMemberName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a6b96b4cf7b05ac093b27c144e87548e2" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>ImportedNamespace</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1abb4a1b01fa2b6b75a931c4dae5b6b689" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>importedNamespace</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a80001a97b99b634c7a2b5b5deed02930" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>IsImplied</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a70d0e0b63f43d645350ac00afb3ebeb4" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>isImplied</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a6d55bf2cef559c4410a51eb4740a56ad" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>IsImpliedIncluded</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a91cdfcfba2eec9f47314c239d669c909" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>isImpliedIncluded</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a59de2fd6bebc24bfb3c8a17eb8242e6e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>isLibrary</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a2ee5b2682af6b1904b9dc9d26c2a4a0c" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>IsLibraryElement</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1af90390883b170ae851a5573436f6b4c2" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>IsStandard</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a9237c6a86478ae0b4e933d99c9e0080d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>isStandard</name></member>
+      <member refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1ac3f7cba2488d110b820614b9cb709808" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>JSON_INTENT</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1ab68f31f6eec774d45df518cc8da19030" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Language</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1aa3ecb14df01181008ce55714bbaf786e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>language</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1afa7588e1a6146958a17eec45759626fa" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Name</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a00348c6da8696b689cf69fabca48a659" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>name</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a78908e207102048ed0a67bac76a9e8ce" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>OwnedElements</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a5ef804b54248b5761bc85a7ca948910a" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>ownedElements</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a674e4877b5298caeeb76a54c4aaa70a2" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Owner</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1add2cfbc0ac3b8e3178201fb972a7ae4f" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>owner</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1ad92c711a45f54db1df1adb16c476836e" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>OwningMembership</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1adf4485f5e0d329348c9b055e0fd4d60f" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>owningMembership</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a6d4583847e1d11ed806a695190222b84" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>OwningNamespace</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1aad67da6ae56d01c17a90b272aeaa60fa" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>owningNamespace</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a175fe21e480d5255f80bde82f61c8ba7" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>OwningRelationship</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a6f30dccf381411b869a573e2bb69ccda" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>owningRelationship</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1aab8d641c1794f975cf522bdf30ff9712" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>serializeNullString</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a94e32065cdd1b4e5392bf766318440fc" prot="public" virt="virtual"><scope>SysMLv2::Entities::Element</scope><name>serializeToJson</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a35027800e4c68806f4348488cb5aefc0" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>setBody</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a51d1071ba63aacab2cf08d01c64fe322" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>setDeclaredName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a8552b7ae460de1989895c588849a3dac" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>setDeclaredShortName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a62611f66bba151fa02c8e88208bde067" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>setLanguage</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1aabc44d232e30ca108fb102de0fb955e1" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>setName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a9044f3767424a229d127bcf8259a0b2b" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>setShortName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a7489480889da4ea81170b97935a74875" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>ShortName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a36aa9e5c22aef7c72b63efda8d0d649d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>shortName</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a4078de3165069e1cc54601c29f6806ab" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Source</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a31ae2aba1f54f5222c7152e609e96e1a" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>source</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a3678b89e6c64f094f4804c3740ae6672" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Target</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1af929761459c0fb145ecafb80337d65be" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>target</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a553727ac4451e90fe0508972d2180d3e" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>TextualRepresentation</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1abd72d64f195abda58d64b3f7a720ab36" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>textualRepresentation</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a0e94702de18580a2d5b79ed0d59d0157" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>Type</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a3b5411c254e49b8934fdb1435f8f2658" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>ValueStr</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a3e55d66547e7194c6f22921eaf072f8e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>valueString</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a410a285059373318b7742b9ddf47a978" prot="public" virt="virtual"><scope>SysMLv2::Entities::Element</scope><name>~Data</name></member>
+      <member refid="d9/dd4/class_sys_m_lv2_1_1_entities_1_1_element_1a17366e6ae069e4f67d31ace64c30dfaf" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::Element</scope><name>~Element</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

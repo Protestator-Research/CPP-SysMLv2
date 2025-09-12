@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Relationship_bodyContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1a2593325115096aa3ebd99204372d78a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Relationship_bodyContext::Relationship_bodyContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Relationship_bodyContext</name>
+        <qualifiedname>KerMLParser::Relationship_bodyContext::Relationship_bodyContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="491" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1288" bodyend="1290"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1a94b2a6dd6e5a4adec7c39b35db2ad30a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Relationship_bodyContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Relationship_bodyContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="492" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1309" bodyend="1311"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1ac640cf6b1b2ac9dde652c7060a770491" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Relationship_bodyContext::SYMBOL_STATEMENT_DELIMITER</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_STATEMENT_DELIMITER</name>
+        <qualifiedname>KerMLParser::Relationship_bodyContext::SYMBOL_STATEMENT_DELIMITER</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="493" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1292" bodyend="1294"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1a1ca94f8dd950e7a3e22043d6cae1d63a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Relationship_bodyContext::SYMBOL_CURLY_BRACKET_OPEN</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_CURLY_BRACKET_OPEN</name>
+        <qualifiedname>KerMLParser::Relationship_bodyContext::SYMBOL_CURLY_BRACKET_OPEN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="494" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1296" bodyend="1298"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1a16af5341094d358f4f26c4a2f28460ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/dbb/class_ker_m_l_parser_1_1_relationship__onwed__elements_context" kindref="compound">Relationship_onwed_elementsContext</ref> *</type>
+        <definition>KerMLParser::Relationship_onwed_elementsContext * KerMLParser::Relationship_bodyContext::relationship_onwed_elements</definition>
+        <argsstring>()</argsstring>
+        <name>relationship_onwed_elements</name>
+        <qualifiedname>KerMLParser::Relationship_bodyContext::relationship_onwed_elements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="495" column="40" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1300" bodyend="1302"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1a39c597d7903b41d67e1084d6db184600" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Relationship_bodyContext::SYMBOL_CURLY_BRACKET_CLOSE</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_CURLY_BRACKET_CLOSE</name>
+        <qualifiedname>KerMLParser::Relationship_bodyContext::SYMBOL_CURLY_BRACKET_CLOSE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="496" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1304" bodyend="1306"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1a20ca27eeabb17d2c7f2feba68865d356" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Relationship_bodyContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Relationship_bodyContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="498" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1313" bodyend="1317"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1a029cc482b3a2cadc189ce18b31b4805a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Relationship_bodyContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Relationship_bodyContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="499" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1319" bodyend="1323"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Relationship_bodyContext</label>
+        <link refid="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Relationship_bodyContext</label>
+        <link refid="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="489" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="489" bodyend="501"/>
+    <listofallmembers>
+      <member refid="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1a20ca27eeabb17d2c7f2feba68865d356" prot="public" virt="virtual"><scope>KerMLParser::Relationship_bodyContext</scope><name>enterRule</name></member>
+      <member refid="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1a029cc482b3a2cadc189ce18b31b4805a" prot="public" virt="virtual"><scope>KerMLParser::Relationship_bodyContext</scope><name>exitRule</name></member>
+      <member refid="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1a94b2a6dd6e5a4adec7c39b35db2ad30a" prot="public" virt="virtual"><scope>KerMLParser::Relationship_bodyContext</scope><name>getRuleIndex</name></member>
+      <member refid="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1a2593325115096aa3ebd99204372d78a8" prot="public" virt="non-virtual"><scope>KerMLParser::Relationship_bodyContext</scope><name>Relationship_bodyContext</name></member>
+      <member refid="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1a16af5341094d358f4f26c4a2f28460ab" prot="public" virt="non-virtual"><scope>KerMLParser::Relationship_bodyContext</scope><name>relationship_onwed_elements</name></member>
+      <member refid="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1a39c597d7903b41d67e1084d6db184600" prot="public" virt="non-virtual"><scope>KerMLParser::Relationship_bodyContext</scope><name>SYMBOL_CURLY_BRACKET_CLOSE</name></member>
+      <member refid="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1a1ca94f8dd950e7a3e22043d6cae1d63a" prot="public" virt="non-virtual"><scope>KerMLParser::Relationship_bodyContext</scope><name>SYMBOL_CURLY_BRACKET_OPEN</name></member>
+      <member refid="d2/d81/class_ker_m_l_parser_1_1_relationship__body_context_1ac640cf6b1b2ac9dde652c7060a770491" prot="public" virt="non-virtual"><scope>KerMLParser::Relationship_bodyContext</scope><name>SYMBOL_STATEMENT_DELIMITER</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

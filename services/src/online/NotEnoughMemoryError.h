@@ -5,6 +5,7 @@
 #pragma once
 
 #include <stdexcept>
+
 #include "../sysmlv2service_global.h"
 
 namespace SysMLv2::API::EXCEPTIONS {

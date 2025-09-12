@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Item_flow_end_memberContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context_1ab9ad276dcbbca6edc220986abac90b8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Item_flow_end_memberContext::Item_flow_end_memberContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Item_flow_end_memberContext</name>
+        <qualifiedname>KerMLParser::Item_flow_end_memberContext::Item_flow_end_memberContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3916" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18662" bodyend="18664"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context_1a7c75a8ad26ae80d525cae1504b69d942" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Item_flow_end_memberContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Item_flow_end_memberContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3917" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18671" bodyend="18673"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context_1a1ea08e3506a138e185a7bf37ed9529b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d62/class_ker_m_l_parser_1_1_item__flow__end_context" kindref="compound">Item_flow_endContext</ref> *</type>
+        <definition>KerMLParser::Item_flow_endContext * KerMLParser::Item_flow_end_memberContext::item_flow_end</definition>
+        <argsstring>()</argsstring>
+        <name>item_flow_end</name>
+        <qualifiedname>KerMLParser::Item_flow_end_memberContext::item_flow_end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3918" column="26" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18666" bodyend="18668"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context_1ab3b10e9e795e05272b7215a4f422e106" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Item_flow_end_memberContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Item_flow_end_memberContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3920" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18675" bodyend="18679"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context_1afcfb51749a8694848538dcf6a82ebd1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Item_flow_end_memberContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Item_flow_end_memberContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3921" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18681" bodyend="18685"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Item_flow_end_memberContext</label>
+        <link refid="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Item_flow_end_memberContext</label>
+        <link refid="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="3914" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="3914" bodyend="3923"/>
+    <listofallmembers>
+      <member refid="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context_1ab3b10e9e795e05272b7215a4f422e106" prot="public" virt="virtual"><scope>KerMLParser::Item_flow_end_memberContext</scope><name>enterRule</name></member>
+      <member refid="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context_1afcfb51749a8694848538dcf6a82ebd1c" prot="public" virt="virtual"><scope>KerMLParser::Item_flow_end_memberContext</scope><name>exitRule</name></member>
+      <member refid="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context_1a7c75a8ad26ae80d525cae1504b69d942" prot="public" virt="virtual"><scope>KerMLParser::Item_flow_end_memberContext</scope><name>getRuleIndex</name></member>
+      <member refid="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context_1a1ea08e3506a138e185a7bf37ed9529b7" prot="public" virt="non-virtual"><scope>KerMLParser::Item_flow_end_memberContext</scope><name>item_flow_end</name></member>
+      <member refid="d5/d67/class_ker_m_l_parser_1_1_item__flow__end__member_context_1ab9ad276dcbbca6edc220986abac90b8b" prot="public" virt="non-virtual"><scope>KerMLParser::Item_flow_end_memberContext</scope><name>Item_flow_end_memberContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

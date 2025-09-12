@@ -1,0 +1,1608 @@
+.TH "KerMLParser" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KerMLParser
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits antlr4::Parser\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAdditional_optionsContext\fP"
+.br
+.ti -1c
+.RI "class \fBAlias_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBAnnotating_elementContext\fP"
+.br
+.ti -1c
+.RI "class \fBAnnotationContext\fP"
+.br
+.ti -1c
+.RI "class \fBArgument_expression_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBArgument_expression_valueContext\fP"
+.br
+.ti -1c
+.RI "class \fBArgument_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBArgument_listContext\fP"
+.br
+.ti -1c
+.RI "class \fBArgument_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBArgument_valueContext\fP"
+.br
+.ti -1c
+.RI "class \fBArgumentContext\fP"
+.br
+.ti -1c
+.RI "class \fBAssociation_structureContext\fP"
+.br
+.ti -1c
+.RI "class \fBAssociationContext\fP"
+.br
+.ti -1c
+.RI "class \fBBase_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBBehaviorContext\fP"
+.br
+.ti -1c
+.RI "class \fBBinary_connector_declarationContext\fP"
+.br
+.ti -1c
+.RI "class \fBBinary_operator_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBBinary_operatorContext\fP"
+.br
+.ti -1c
+.RI "class \fBBinding_connector_declarationContext\fP"
+.br
+.ti -1c
+.RI "class \fBBinding_connectorContext\fP"
+.br
+.ti -1c
+.RI "class \fBBody_argument_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBBody_argument_valueContext\fP"
+.br
+.ti -1c
+.RI "class \fBBody_argumentContext\fP"
+.br
+.ti -1c
+.RI "class \fBBody_expression_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBBody_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBBoolean_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBBoolean_valueContext\fP"
+.br
+.ti -1c
+.RI "class \fBBracket_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBCast_operatorContext\fP"
+.br
+.ti -1c
+.RI "class \fBChaining_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBClassContext\fP"
+.br
+.ti -1c
+.RI "class \fBClassification_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBClassification_test_operatorContext\fP"
+.br
+.ti -1c
+.RI "class \fBClassificationContext\fP"
+.br
+.ti -1c
+.RI "class \fBClassifier_declarationContext\fP"
+.br
+.ti -1c
+.RI "class \fBClassifierContext\fP"
+.br
+.ti -1c
+.RI "class \fBCollect_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBCommentContext\fP"
+.br
+.ti -1c
+.RI "class \fBConditional_binary_operator_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBConditional_binary_operatorContext\fP"
+.br
+.ti -1c
+.RI "class \fBConditional_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBConjugation_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBConjunctionContext\fP"
+.br
+.ti -1c
+.RI "class \fBConnector_declarationContext\fP"
+.br
+.ti -1c
+.RI "class \fBConnector_end_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBConnector_endContext\fP"
+.br
+.ti -1c
+.RI "class \fBConnectorContext\fP"
+.br
+.ti -1c
+.RI "class \fBData_typeContext\fP"
+.br
+.ti -1c
+.RI "class \fBDependencyContext\fP"
+.br
+.ti -1c
+.RI "class \fBDifferencing_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBDifferencingContext\fP"
+.br
+.ti -1c
+.RI "class \fBDisjoining_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBDisjoiningContext\fP"
+.br
+.ti -1c
+.RI "class \fBDocumentationContext\fP"
+.br
+.ti -1c
+.RI "class \fBEased_owned_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBElement_filter_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBElementContext\fP"
+.br
+.ti -1c
+.RI "class \fBElementsContext\fP"
+.br
+.ti -1c
+.RI "class \fBExpression_body_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBExpression_bodyContext\fP"
+.br
+.ti -1c
+.RI "class \fBExpressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBExtend_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_assignmentContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_chain_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_chain_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_chainContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_declarationContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_directionContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_elementContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_identificationContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_invertingContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_prefixContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_reference_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_reference_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_referenceContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_relationship_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_specialization_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_specilizationContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_typingContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeature_valueContext\fP"
+.br
+.ti -1c
+.RI "class \fBFeatureContext\fP"
+.br
+.ti -1c
+.RI "class \fBFilter_package_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBFilter_packageContext\fP"
+.br
+.ti -1c
+.RI "class \fBFunction_body_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBFunction_bodyContext\fP"
+.br
+.ti -1c
+.RI "class \fBFunction_operation_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBFunction_reference_argument_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBFunction_reference_argumentContext\fP"
+.br
+.ti -1c
+.RI "class \fBFunction_reference_arugment_valueContext\fP"
+.br
+.ti -1c
+.RI "class \fBFunction_reference_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBFunction_reference_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBFunction_referenceContext\fP"
+.br
+.ti -1c
+.RI "class \fBFunctionContext\fP"
+.br
+.ti -1c
+.RI "class \fBGeneral_typeContext\fP"
+.br
+.ti -1c
+.RI "class \fBIdentificationContext\fP"
+.br
+.ti -1c
+.RI "class \fBImport_declarationContext\fP"
+.br
+.ti -1c
+.RI "class \fBIndex_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBInteractionContext\fP"
+.br
+.ti -1c
+.RI "class \fBInternal_invocation_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBInternal_multiplicity_expression_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBIntersecting_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBIntersectingContext\fP"
+.br
+.ti -1c
+.RI "class \fBInvariantContext\fP"
+.br
+.ti -1c
+.RI "class \fBInverting_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBInvocation_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBItem_feature_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBItem_feature_specilization_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBItem_featureContext\fP"
+.br
+.ti -1c
+.RI "class \fBItem_flow_declarationContext\fP"
+.br
+.ti -1c
+.RI "class \fBItem_flow_end_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBItem_flow_endContext\fP"
+.br
+.ti -1c
+.RI "class \fBItem_flow_feature_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBItem_flow_featureContext\fP"
+.br
+.ti -1c
+.RI "class \fBItem_flow_redefinitionContext\fP"
+.br
+.ti -1c
+.RI "class \fBItem_flowContext\fP"
+.br
+.ti -1c
+.RI "class \fBLibrary_packageContext\fP"
+.br
+.ti -1c
+.RI "class \fBLiteral_booleanContext\fP"
+.br
+.ti -1c
+.RI "class \fBLiteral_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBLiteral_infinityContext\fP"
+.br
+.ti -1c
+.RI "class \fBLiteral_integerContext\fP"
+.br
+.ti -1c
+.RI "class \fBLiteral_realContext\fP"
+.br
+.ti -1c
+.RI "class \fBLiteral_stringContext\fP"
+.br
+.ti -1c
+.RI "class \fBMember_prefixContext\fP"
+.br
+.ti -1c
+.RI "class \fBMembership_importContext\fP"
+.br
+.ti -1c
+.RI "class \fBMeta_assignmentContext\fP"
+.br
+.ti -1c
+.RI "class \fBMeta_cast_operatorContext\fP"
+.br
+.ti -1c
+.RI "class \fBMetaclassContext\fP"
+.br
+.ti -1c
+.RI "class \fBMetaclassification_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBMetadata_access_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBMetadata_argument_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBMetadata_argumentContext\fP"
+.br
+.ti -1c
+.RI "class \fBMetadata_body_elementContext\fP"
+.br
+.ti -1c
+.RI "class \fBMetadata_body_feature_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBMetadata_body_featureContext\fP"
+.br
+.ti -1c
+.RI "class \fBMetadata_bodyContext\fP"
+.br
+.ti -1c
+.RI "class \fBMetadata_feature_declarationContext\fP"
+.br
+.ti -1c
+.RI "class \fBMetadata_featureContext\fP"
+.br
+.ti -1c
+.RI "class \fBMetadata_referenceContext\fP"
+.br
+.ti -1c
+.RI "class \fBMetadata_valueContext\fP"
+.br
+.ti -1c
+.RI "class \fBMetadataclassification_test_operatorContext\fP"
+.br
+.ti -1c
+.RI "class \fBMultiplicity_boundsContext\fP"
+.br
+.ti -1c
+.RI "class \fBMultiplicity_expression_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBMultiplicity_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBMultiplicity_rangeContext\fP"
+.br
+.ti -1c
+.RI "class \fBMultiplicity_subsetContext\fP"
+.br
+.ti -1c
+.RI "class \fBMultiplicityContext\fP"
+.br
+.ti -1c
+.RI "class \fBNamed_argument_listContext\fP"
+.br
+.ti -1c
+.RI "class \fBNamed_argument_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBNamed_argumentContext\fP"
+.br
+.ti -1c
+.RI "class \fBNamespace_body_elementContext\fP"
+.br
+.ti -1c
+.RI "class \fBNamespace_body_elementsContext\fP"
+.br
+.ti -1c
+.RI "class \fBNamespace_bodyContext\fP"
+.br
+.ti -1c
+.RI "class \fBNamespace_declarationContext\fP"
+.br
+.ti -1c
+.RI "class \fBNamespace_feature_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBNamespace_importContext\fP"
+.br
+.ti -1c
+.RI "class \fBNamespace_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBNamespaceContext\fP"
+.br
+.ti -1c
+.RI "class \fBNary_connector_declarationContext\fP"
+.br
+.ti -1c
+.RI "class \fBNon_feature_chain_primary_argument_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBNon_feature_chain_primary_argument_valueContext\fP"
+.br
+.ti -1c
+.RI "class \fBNon_feature_chain_primary_argumentContext\fP"
+.br
+.ti -1c
+.RI "class \fBNon_feature_chain_primary_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBNon_feature_elementContext\fP"
+.br
+.ti -1c
+.RI "class \fBNon_feature_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBNull_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_annotationContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_conjugationContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_disjoiningContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_expression_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_expression_reference_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_expression_referenceContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_expressionsContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_feature_chain_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_feature_chainContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_feature_chainingContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_feature_invertingContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_feature_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_feature_typingContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_multiplicity_rangeContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_multiplicityContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_redefinitionContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_reference_subsettingContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_related_elementContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_specializationContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_subclassificationContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_subsettingContext\fP"
+.br
+.ti -1c
+.RI "class \fBOwned_type_featuringContext\fP"
+.br
+.ti -1c
+.RI "class \fBPackage_bodyContext\fP"
+.br
+.ti -1c
+.RI "class \fBPackage_declarationContext\fP"
+.br
+.ti -1c
+.RI "class \fBPackageContext\fP"
+.br
+.ti -1c
+.RI "class \fBParamenter_redefinitionContext\fP"
+.br
+.ti -1c
+.RI "class \fBPositional_argument_listContext\fP"
+.br
+.ti -1c
+.RI "class \fBPredicateContext\fP"
+.br
+.ti -1c
+.RI "class \fBPrefix_metadata_annotationContext\fP"
+.br
+.ti -1c
+.RI "class \fBPrefix_metadata_featureContext\fP"
+.br
+.ti -1c
+.RI "class \fBPrefix_metadata_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBPrimary_argument_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBPrimary_argument_valueContext\fP"
+.br
+.ti -1c
+.RI "class \fBPrimary_argumentContext\fP"
+.br
+.ti -1c
+.RI "class \fBPrimary_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBPrimary_expressionsContext\fP"
+.br
+.ti -1c
+.RI "class \fBQualified_nameContext\fP"
+.br
+.ti -1c
+.RI "class \fBReal_valueContext\fP"
+.br
+.ti -1c
+.RI "class \fBRedefinesContext\fP"
+.br
+.ti -1c
+.RI "class \fBRedefinitionContext\fP"
+.br
+.ti -1c
+.RI "class \fBRedefinitionsContext\fP"
+.br
+.ti -1c
+.RI "class \fBReference_typingContext\fP"
+.br
+.ti -1c
+.RI "class \fBReferencesContext\fP"
+.br
+.ti -1c
+.RI "class \fBRelationship_bodyContext\fP"
+.br
+.ti -1c
+.RI "class \fBRelationship_onwed_elementsContext\fP"
+.br
+.ti -1c
+.RI "class \fBRelationship_owned_elementContext\fP"
+.br
+.ti -1c
+.RI "class \fBResult_expression_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBReturn_feature_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBRoot_namespaceContext\fP"
+.br
+.ti -1c
+.RI "class \fBSelect_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBSequence_expression_list_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBSequence_expression_listContext\fP"
+.br
+.ti -1c
+.RI "class \fBSequence_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBSequence_operator_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBSpecialization_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBSpecializationContext\fP"
+.br
+.ti -1c
+.RI "class \fBSpecific_typeContext\fP"
+.br
+.ti -1c
+.RI "class \fBStartContext\fP"
+.br
+.ti -1c
+.RI "class \fBStartRuleContext\fP"
+.br
+.ti -1c
+.RI "class \fBStepContext\fP"
+.br
+.ti -1c
+.RI "class \fBStructureContext\fP"
+.br
+.ti -1c
+.RI "class \fBSubclassificationContext\fP"
+.br
+.ti -1c
+.RI "class \fBSubsetsContext\fP"
+.br
+.ti -1c
+.RI "class \fBSubsettingContext\fP"
+.br
+.ti -1c
+.RI "class \fBSubsettingsContext\fP"
+.br
+.ti -1c
+.RI "class \fBSuccession_declarationContext\fP"
+.br
+.ti -1c
+.RI "class \fBSuccession_item_flowContext\fP"
+.br
+.ti -1c
+.RI "class \fBSuccessionContext\fP"
+.br
+.ti -1c
+.RI "class \fBSuperclassing_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBTextual_representationContext\fP"
+.br
+.ti -1c
+.RI "class \fBType_body_elementContext\fP"
+.br
+.ti -1c
+.RI "class \fBType_body_elementsContext\fP"
+.br
+.ti -1c
+.RI "class \fBType_bodyContext\fP"
+.br
+.ti -1c
+.RI "class \fBType_declarationContext\fP"
+.br
+.ti -1c
+.RI "class \fBType_feature_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBType_featuring_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBType_featuringContext\fP"
+.br
+.ti -1c
+.RI "class \fBType_prefixContext\fP"
+.br
+.ti -1c
+.RI "class \fBType_reference_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBType_referenceContext\fP"
+.br
+.ti -1c
+.RI "class \fBType_relationship_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBType_result_memberContext\fP"
+.br
+.ti -1c
+.RI "class \fBTypeContext\fP"
+.br
+.ti -1c
+.RI "class \fBTyped_byContext\fP"
+.br
+.ti -1c
+.RI "class \fBTypingsContext\fP"
+.br
+.ti -1c
+.RI "class \fBUnary_operator_expressionContext\fP"
+.br
+.ti -1c
+.RI "class \fBUnary_operatorContext\fP"
+.br
+.ti -1c
+.RI "class \fBUnioning_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBUnioningContext\fP"
+.br
+.ti -1c
+.RI "class \fBValue_partContext\fP"
+.br
+.ti -1c
+.RI "class \fBVisibility_indicatorContext\fP"
+.br
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBT__0\fP = 1, \fBTYPED_BY\fP = 2, \fBSPECIALIZES\fP = 3, \fBSUBSETS\fP = 4, \fBREFERENCES\fP = 5, \fBREDEFINES\fP = 6, \fBCONJUNGATES\fP = 7, \fBKEYWORD_ABOUT\fP = 8, \fBKEYWORD_ABSTRACT\fP = 9, \fBKEYWORD_ALIAS\fP = 10, \fBKEYWORD_ALL\fP = 11, \fBKEYWORD_AND\fP = 12, \fBKEYWORD_AS\fP = 13, \fBKEYWORD_ASSOC\fP = 14, \fBKEYWORD_BEHAVIOR\fP = 15, \fBKEYWORD_BINDING\fP = 16, \fBKEYWORD_BOOL\fP = 17, \fBKEYWORD_BY\fP = 18, \fBKEYWORD_CHAINS\fP = 19, \fBKEYWORD_CLASS\fP = 20, \fBKEYWORD_CLASSIFIER\fP = 21, \fBKEYWORD_COMMENT\fP = 22, \fBKEYWORD_COMPOSITE\fP = 23, \fBKEYWORD_CONJUGATE\fP = 24, \fBKEYWORD_CONJUGATES\fP = 25, \fBKEYWORD_CONJUGATION\fP = 26, \fBKEYWORD_CONNECTOR\fP = 27, \fBKEYWORD_DATATYPE\fP = 28, \fBKEYWORD_DEFAULT\fP = 29, \fBKEYWORD_DEPENDENCY\fP = 30, \fBKEYWORD_DERIVED\fP = 31, \fBKEYWORD_DIFFERENCES\fP = 32, \fBKEYWORD_DISJOINING\fP = 33, \fBKEYWORD_DISJOINT\fP = 34, \fBKEYWORD_DOC\fP = 35, \fBKEYWORD_ELSE\fP = 36, \fBKEYWORD_END\fP = 37, \fBKEYWORD_EXPR\fP = 38, \fBKEYWORD_FALSE\fP = 39, \fBKEYWORD_FEATURE\fP = 40, \fBKEYWORD_FEATURED\fP = 41, \fBKEYWORD_FEATURING\fP = 42, \fBKEYWORD_FILTER\fP = 43, \fBKEYWORD_FIRST\fP = 44, \fBKEYWORD_FLOW\fP = 45, \fBKEYWORD_FOR\fP = 46, \fBKEYWORD_FROM\fP = 47, \fBKEYWORD_FUNCTION\fP = 48, \fBKEYWORD_HASTYPE\fP = 49, \fBKEYWORD_IF\fP = 50, \fBKEYWORD_INTERSECTS\fP = 51, \fBKEYWORD_IMPLIES\fP = 52, \fBKEYWORD_IMPORT\fP = 53, \fBKEYWORD_IN\fP = 54, \fBKEYWORD_INOUT\fP = 55, \fBKEYWORD_INTERACTION\fP = 56, \fBKEYWORD_INV\fP = 57, \fBKEYWORD_INVERSE\fP = 58, \fBKEYWORD_INVERTING\fP = 59, \fBKEYWORD_ISTYPE\fP = 60, \fBKEYWORD_LANGUAGE\fP = 61, \fBKEYWORD_MEMBER\fP = 62, \fBKEYWORD_METACLASS\fP = 63, \fBKEYWORD_METADATA\fP = 64, \fBKEYWORD_MULTIPLICITY\fP = 65, \fBKEYWORD_NAMESPACE\fP = 66, \fBKEYWORD_NONUNIQUE\fP = 67, \fBKEYWORD_NOT\fP = 68, \fBKEYWORD_NULL\fP = 69, \fBKEYWORD_OF\fP = 70, \fBKEYWORD_OR\fP = 71, \fBKEYWORD_ORDERED\fP = 72, \fBKEYWORD_OUT\fP = 73, \fBKEYWORD_PACKAGE\fP = 74, \fBKEYWORD_PORTION\fP = 75, \fBKEYWORD_PREDICATE\fP = 76, \fBKEYWORD_PRIVATE\fP = 77, \fBKEYWORD_PROTECTED\fP = 78, \fBKEYWORD_PUBLIC\fP = 79, \fBKEYWORD_READONLY\fP = 80, \fBKEYWORD_REDEFINES\fP = 81, \fBKEYWORD_REDEFINITION\fP = 82, \fBKEYWORD_REFERENCES\fP = 83, \fBKEYWORD_REP\fP = 84, \fBKEYWORD_RETURN\fP = 85, \fBKEYWORD_SPECILIZATION\fP = 86, \fBKEYWORD_SPECIALIZES\fP = 87, \fBKEYWORD_STEP\fP = 88, \fBKEYWORD_STRUCT\fP = 89, \fBKEYWORD_SUBCLASSIFIER\fP = 90, \fBKEYWORD_SUBSET\fP = 91, \fBKEYWORD_SUBSETS\fP = 92, \fBKEYWORD_SUBTYPE\fP = 93, \fBKEYWORD_SUCCSESSION\fP = 94, \fBKEYWORD_THEN\fP = 95, \fBKEYWORD_TO\fP = 96, \fBKEYWORD_TRUE\fP = 97, \fBKEYWORD_TYPE\fP = 98, \fBKEYWORD_TYPED\fP = 99, \fBKEYWORD_TYPING\fP = 100, \fBKEYWORD_UNIONS\fP = 101, \fBKEYWORD_XOR\fP = 102, \fBKEYWORD_VAR\fP = 103, \fBKEYWORD_LOCALE\fP = 104, \fBKEYWORD_STANDARD\fP = 105, \fBKEYWORD_LIBRARY\fP = 106, \fBKEYWORD_CONSTANT\fP = 107, \fBSINGLE_LINE_NOTE\fP = 108, \fBMULTI_LINE_NOTE\fP = 109, \fBREGULAR_COMMENT\fP = 110, \fBSYMBOL_COMMENT_BLOCK_START\fP = 111, \fBSYMBOL_NOTE_BLOCK_START\fP = 112, \fBSYMBOL_COMMENT_BLOCK_END\fP = 113, \fBSYMBOL_STATEMENT_DELIMITER\fP = 114, \fBSYMBOL_STAR\fP = 115, \fBSYMBOL_NAMESPACE_SUBSET\fP = 116, \fBSYMBOL_TYPED_BY\fP = 117, \fBSYMBOL_SPECIALIZES\fP = 118, \fBSYMBOL_REFERENCES\fP = 119, \fBSYMBOL_REDEFINES\fP = 120, \fBSYMBOL_CONJUNGATES\fP = 121, \fBSYMBOL_ROUND_BRACKET_OPEN\fP = 122, \fBSYMBOL_ROUND_BRACKET_CLOSE\fP = 123, \fBSYMBOL_CURLY_BRACKET_OPEN\fP = 124, \fBSYMBOL_CURLY_BRACKET_CLOSE\fP = 125, \fBSYMBOL_SQUARE_BRACKET_OPEN\fP = 126, \fBSYMBOL_SQUARE_BRACKET_CLOSE\fP = 127, \fBSYMBOL_COMMA\fP = 128, \fBSYMBOL_AT\fP = 129, \fBSYMBOL_HASHTAG\fP = 130, \fBSYMBOL_MOD\fP = 131, \fBSYMBOL_AND\fP = 132, \fBSYMBOL_UPPER\fP = 133, \fBSYMBOL_VERTICAL_LINE\fP = 134, \fBSYMBOL_DOUBLE_STAR\fP = 135, \fBSYMBOL_PLUS\fP = 136, \fBSYMBOL_MINUS\fP = 137, \fBSYMBOL_SLASH\fP = 138, \fBSYMBOL_ARROOW\fP = 139, \fBSYMBOL_DOT\fP = 140, \fBSYMBOL_DDOT\fP = 141, \fBSYMBOL_SMALLER\fP = 142, \fBSYMBOL_SMALLER_EQUAL\fP = 143, \fBSYMBOL_ASSIGN\fP = 144, \fBSYMBOL_DEF_ASSIGN\fP = 145, \fBSYMBOL_EQUALS\fP = 146, \fBSYMBOL_IFF_EQUALS\fP = 147, \fBSYMBOL_NOT_EQUALS\fP = 148, \fBSYMBOL_IFF_NOT_EQUALS\fP = 149, \fBSYMBOL_GREATER\fP = 150, \fBSYMBOL_GREATER_EQUALS\fP = 151, \fBSYMBOL_QUESTION\fP = 152, \fBSYMBOL_DQUESTION\fP = 153, \fBSYMBOL_DOT_QUESTION\fP = 154, \fBNAME\fP = 155, \fBBASIC_NAME\fP = 156, \fBUNRESTRICTED_NAME\fP = 157, \fBDECIMAL_VALUE\fP = 158, \fBEXPONENTIAL_VALUE\fP = 159, \fBSTRING_VALUE\fP = 160, \fBWS\fP = 161 }"
+.br
+.ti -1c
+.RI "enum { \fBRuleStart\fP = 0, \fBRuleStartRule\fP = 1, \fBRuleElements\fP = 2, \fBRuleIdentification\fP = 3, \fBRuleRelationship_body\fP = 4, \fBRuleRelationship_onwed_elements\fP = 5, \fBRuleRelationship_owned_element\fP = 6, \fBRuleOwned_related_element\fP = 7, \fBRuleDependency\fP = 8, \fBRuleAnnotation\fP = 9, \fBRuleOwned_annotation\fP = 10, \fBRuleAnnotating_element\fP = 11, \fBRuleComment\fP = 12, \fBRuleDocumentation\fP = 13, \fBRuleTextual_representation\fP = 14, \fBRuleRoot_namespace\fP = 15, \fBRuleNamespace\fP = 16, \fBRuleNamespace_declaration\fP = 17, \fBRuleNamespace_body\fP = 18, \fBRuleNamespace_body_elements\fP = 19, \fBRuleNamespace_body_element\fP = 20, \fBRuleMember_prefix\fP = 21, \fBRuleVisibility_indicator\fP = 22, \fBRuleNamespace_member\fP = 23, \fBRuleNon_feature_member\fP = 24, \fBRuleNamespace_feature_member\fP = 25, \fBRuleAlias_member\fP = 26, \fBRuleQualified_name\fP = 27, \fBRuleNamespace_import\fP = 28, \fBRuleImport_declaration\fP = 29, \fBRuleMembership_import\fP = 30, \fBRuleFilter_package\fP = 31, \fBRuleFilter_package_member\fP = 32, \fBRuleElement\fP = 33, \fBRuleNon_feature_element\fP = 34, \fBRuleFeature_element\fP = 35, \fBRuleAdditional_options\fP = 36, \fBRuleType\fP = 37, \fBRuleType_prefix\fP = 38, \fBRuleType_declaration\fP = 39, \fBRuleSpecialization_part\fP = 40, \fBRuleConjugation_part\fP = 41, \fBRuleType_relationship_part\fP = 42, \fBRuleDisjoining_part\fP = 43, \fBRuleUnioning_part\fP = 44, \fBRuleIntersecting_part\fP = 45, \fBRuleDifferencing_part\fP = 46, \fBRuleType_body\fP = 47, \fBRuleType_body_elements\fP = 48, \fBRuleType_body_element\fP = 49, \fBRuleSpecialization\fP = 50, \fBRuleOwned_specialization\fP = 51, \fBRuleSpecific_type\fP = 52, \fBRuleGeneral_type\fP = 53, \fBRuleConjunction\fP = 54, \fBRuleOwned_conjugation\fP = 55, \fBRuleDisjoining\fP = 56, \fBRuleOwned_disjoining\fP = 57, \fBRuleUnioning\fP = 58, \fBRuleIntersecting\fP = 59, \fBRuleDifferencing\fP = 60, \fBRuleFeature_member\fP = 61, \fBRuleType_feature_member\fP = 62, \fBRuleOwned_feature_member\fP = 63, \fBRuleClassifier\fP = 64, \fBRuleClassifier_declaration\fP = 65, \fBRuleSuperclassing_part\fP = 66, \fBRuleSubclassification\fP = 67, \fBRuleOwned_subclassification\fP = 68, \fBRuleFeature\fP = 69, \fBRuleFeature_prefix\fP = 70, \fBRuleFeature_direction\fP = 71, \fBRuleFeature_declaration\fP = 72, \fBRuleFeature_identification\fP = 73, \fBRuleFeature_relationship_part\fP = 74, \fBRuleChaining_part\fP = 75, \fBRuleInverting_part\fP = 76, \fBRuleType_featuring_part\fP = 77, \fBRuleFeature_specialization_part\fP = 78, \fBRuleMultiplicity_part\fP = 79, \fBRuleFeature_specilization\fP = 80, \fBRuleTypings\fP = 81, \fBRuleTyped_by\fP = 82, \fBRuleSubsettings\fP = 83, \fBRuleSubsets\fP = 84, \fBRuleReferences\fP = 85, \fBRuleRedefinitions\fP = 86, \fBRuleRedefines\fP = 87, \fBRuleFeature_typing\fP = 88, \fBRuleOwned_feature_typing\fP = 89, \fBRuleSubsetting\fP = 90, \fBRuleOwned_subsetting\fP = 91, \fBRuleOwned_reference_subsetting\fP = 92, \fBRuleRedefinition\fP = 93, \fBRuleOwned_redefinition\fP = 94, \fBRuleOwned_feature_chain\fP = 95, \fBRuleFeature_chain\fP = 96, \fBRuleOwned_feature_chaining\fP = 97, \fBRuleFeature_inverting\fP = 98, \fBRuleOwned_feature_inverting\fP = 99, \fBRuleType_featuring\fP = 100, \fBRuleOwned_type_featuring\fP = 101, \fBRuleData_type\fP = 102, \fBRuleClass\fP = 103, \fBRuleStructure\fP = 104, \fBRuleAssociation\fP = 105, \fBRuleAssociation_structure\fP = 106, \fBRuleConnector\fP = 107, \fBRuleConnector_declaration\fP = 108, \fBRuleBinary_connector_declaration\fP = 109, \fBRuleNary_connector_declaration\fP = 110, \fBRuleConnector_end_member\fP = 111, \fBRuleConnector_end\fP = 112, \fBRuleBinding_connector\fP = 113, \fBRuleBinding_connector_declaration\fP = 114, \fBRuleSuccession\fP = 115, \fBRuleSuccession_declaration\fP = 116, \fBRuleBehavior\fP = 117, \fBRuleStep\fP = 118, \fBRuleFunction\fP = 119, \fBRuleFunction_body\fP = 120, \fBRuleFunction_body_part\fP = 121, \fBRuleReturn_feature_member\fP = 122, \fBRuleResult_expression_member\fP = 123, \fBRuleExpression\fP = 124, \fBRulePredicate\fP = 125, \fBRuleBoolean_expression\fP = 126, \fBRuleInvariant\fP = 127, \fBRuleOwned_expression_reference_member\fP = 128, \fBRuleOwned_expression_reference\fP = 129, \fBRuleOwned_expression_member\fP = 130, \fBRuleOwned_expressions\fP = 131, \fBRuleOwned_expression\fP = 132, \fBRuleEased_owned_expression\fP = 133, \fBRuleConditional_expression\fP = 134, \fBRuleConditional_binary_operator_expression\fP = 135, \fBRuleConditional_binary_operator\fP = 136, \fBRuleBinary_operator_expression\fP = 137, \fBRuleBinary_operator\fP = 138, \fBRuleUnary_operator_expression\fP = 139, \fBRuleUnary_operator\fP = 140, \fBRuleClassification_expression\fP = 141, \fBRuleClassification\fP = 142, \fBRuleClassification_test_operator\fP = 143, \fBRuleCast_operator\fP = 144, \fBRuleMetaclassification_expression\fP = 145, \fBRuleArgument_member\fP = 146, \fBRuleArgument\fP = 147, \fBRuleArgument_value\fP = 148, \fBRuleArgument_expression_member\fP = 149, \fBRuleArgument_expression\fP = 150, \fBRuleArgument_expression_value\fP = 151, \fBRuleMetadata_argument_member\fP = 152, \fBRuleMetadata_argument\fP = 153, \fBRuleMetadata_value\fP = 154, \fBRuleMetadata_reference\fP = 155, \fBRuleMetadataclassification_test_operator\fP = 156, \fBRuleMeta_cast_operator\fP = 157, \fBRuleExtend_expression\fP = 158, \fBRuleType_reference_member\fP = 159, \fBRuleType_result_member\fP = 160, \fBRuleType_reference\fP = 161, \fBRuleReference_typing\fP = 162, \fBRulePrimary_expressions\fP = 163, \fBRulePrimary_expression\fP = 164, \fBRulePrimary_argument_value\fP = 165, \fBRulePrimary_argument\fP = 166, \fBRulePrimary_argument_member\fP = 167, \fBRuleNon_feature_chain_primary_expression\fP = 168, \fBRuleNon_feature_chain_primary_argument_value\fP = 169, \fBRuleNon_feature_chain_primary_argument\fP = 170, \fBRuleNon_feature_chain_primary_argument_member\fP = 171, \fBRuleBracket_expression\fP = 172, \fBRuleIndex_expression\fP = 173, \fBRuleSequence_expression\fP = 174, \fBRuleSequence_expression_list\fP = 175, \fBRuleSequence_operator_expression\fP = 176, \fBRuleSequence_expression_list_member\fP = 177, \fBRuleFeature_chain_expression\fP = 178, \fBRuleCollect_expression\fP = 179, \fBRuleSelect_expression\fP = 180, \fBRuleFunction_operation_expression\fP = 181, \fBRuleBody_argument_member\fP = 182, \fBRuleBody_argument\fP = 183, \fBRuleBody_argument_value\fP = 184, \fBRuleBody_expression_member\fP = 185, \fBRuleFunction_reference_argument_member\fP = 186, \fBRuleFunction_reference_argument\fP = 187, \fBRuleFunction_reference_arugment_value\fP = 188, \fBRuleFunction_reference_expression\fP = 189, \fBRuleFunction_reference_member\fP = 190, \fBRuleFunction_reference\fP = 191, \fBRuleFeature_chain_member\fP = 192, \fBRuleOwned_feature_chain_member\fP = 193, \fBRuleBase_expression\fP = 194, \fBRuleNull_expression\fP = 195, \fBRuleFeature_reference_expression\fP = 196, \fBRuleFeature_reference_member\fP = 197, \fBRuleFeature_reference\fP = 198, \fBRuleMetadata_access_expression\fP = 199, \fBRuleInvocation_expression\fP = 200, \fBRuleInternal_invocation_expression\fP = 201, \fBRuleArgument_list\fP = 202, \fBRulePositional_argument_list\fP = 203, \fBRuleNamed_argument_list\fP = 204, \fBRuleNamed_argument_member\fP = 205, \fBRuleNamed_argument\fP = 206, \fBRuleParamenter_redefinition\fP = 207, \fBRuleBody_expression\fP = 208, \fBRuleExpression_body_member\fP = 209, \fBRuleExpression_body\fP = 210, \fBRuleLiteral_expression\fP = 211, \fBRuleLiteral_boolean\fP = 212, \fBRuleBoolean_value\fP = 213, \fBRuleLiteral_string\fP = 214, \fBRuleLiteral_integer\fP = 215, \fBRuleLiteral_real\fP = 216, \fBRuleReal_value\fP = 217, \fBRuleLiteral_infinity\fP = 218, \fBRuleInteraction\fP = 219, \fBRuleItem_flow\fP = 220, \fBRuleSuccession_item_flow\fP = 221, \fBRuleItem_flow_declaration\fP = 222, \fBRuleItem_feature_member\fP = 223, \fBRuleItem_feature\fP = 224, \fBRuleItem_feature_specilization_part\fP = 225, \fBRuleItem_flow_end_member\fP = 226, \fBRuleItem_flow_end\fP = 227, \fBRuleItem_flow_feature_member\fP = 228, \fBRuleItem_flow_feature\fP = 229, \fBRuleItem_flow_redefinition\fP = 230, \fBRuleValue_part\fP = 231, \fBRuleFeature_value\fP = 232, \fBRuleFeature_assignment\fP = 233, \fBRuleMultiplicity\fP = 234, \fBRuleMultiplicity_subset\fP = 235, \fBRuleMultiplicity_range\fP = 236, \fBRuleOwned_multiplicity\fP = 237, \fBRuleOwned_multiplicity_range\fP = 238, \fBRuleMultiplicity_bounds\fP = 239, \fBRuleMultiplicity_expression_member\fP = 240, \fBRuleInternal_multiplicity_expression_member\fP = 241, \fBRuleMetaclass\fP = 242, \fBRulePrefix_metadata_annotation\fP = 243, \fBRulePrefix_metadata_member\fP = 244, \fBRulePrefix_metadata_feature\fP = 245, \fBRuleMetadata_feature\fP = 246, \fBRuleMetadata_feature_declaration\fP = 247, \fBRuleMetadata_body\fP = 248, \fBRuleMetadata_body_element\fP = 249, \fBRuleMetadata_body_feature_member\fP = 250, \fBRuleMetadata_body_feature\fP = 251, \fBRulePackage\fP = 252, \fBRuleLibrary_package\fP = 253, \fBRulePackage_declaration\fP = 254, \fBRulePackage_body\fP = 255, \fBRuleElement_filter_member\fP = 256, \fBRuleMeta_assignment\fP = 257 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBKerMLParser\fP (antlr4::TokenStream *input)"
+.br
+.ti -1c
+.RI "\fBKerMLParser\fP (antlr4::TokenStream *input, const antlr4::atn::ParserATNSimulatorOptions &options)"
+.br
+.ti -1c
+.RI "std::string \fBgetGrammarFileName\fP () const override"
+.br
+.ti -1c
+.RI "const antlr4::atn::ATN & \fBgetATN\fP () const override"
+.br
+.ti -1c
+.RI "const std::vector< std::string > & \fBgetRuleNames\fP () const override"
+.br
+.ti -1c
+.RI "const antlr4::dfa::Vocabulary & \fBgetVocabulary\fP () const override"
+.br
+.ti -1c
+.RI "antlr4::atn::SerializedATNView \fBgetSerializedATN\fP () const override"
+.br
+.ti -1c
+.RI "\fBStartContext\fP * \fBstart\fP ()"
+.br
+.ti -1c
+.RI "\fBStartRuleContext\fP * \fBstartRule\fP ()"
+.br
+.ti -1c
+.RI "\fBElementsContext\fP * \fBelements\fP ()"
+.br
+.ti -1c
+.RI "\fBIdentificationContext\fP * \fBidentification\fP ()"
+.br
+.ti -1c
+.RI "\fBRelationship_bodyContext\fP * \fBrelationship_body\fP ()"
+.br
+.ti -1c
+.RI "\fBRelationship_onwed_elementsContext\fP * \fBrelationship_onwed_elements\fP ()"
+.br
+.ti -1c
+.RI "\fBRelationship_owned_elementContext\fP * \fBrelationship_owned_element\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_related_elementContext\fP * \fBowned_related_element\fP ()"
+.br
+.ti -1c
+.RI "\fBDependencyContext\fP * \fBdependency\fP ()"
+.br
+.ti -1c
+.RI "\fBAnnotationContext\fP * \fBannotation\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_annotationContext\fP * \fBowned_annotation\fP ()"
+.br
+.ti -1c
+.RI "\fBAnnotating_elementContext\fP * \fBannotating_element\fP ()"
+.br
+.ti -1c
+.RI "\fBCommentContext\fP * \fBcomment\fP ()"
+.br
+.ti -1c
+.RI "\fBDocumentationContext\fP * \fBdocumentation\fP ()"
+.br
+.ti -1c
+.RI "\fBTextual_representationContext\fP * \fBtextual_representation\fP ()"
+.br
+.ti -1c
+.RI "\fBRoot_namespaceContext\fP * \fBroot_namespace\fP ()"
+.br
+.ti -1c
+.RI "\fBNamespaceContext\fP * \fBnamespace_\fP ()"
+.br
+.ti -1c
+.RI "\fBNamespace_declarationContext\fP * \fBnamespace_declaration\fP ()"
+.br
+.ti -1c
+.RI "\fBNamespace_bodyContext\fP * \fBnamespace_body\fP ()"
+.br
+.ti -1c
+.RI "\fBNamespace_body_elementsContext\fP * \fBnamespace_body_elements\fP ()"
+.br
+.ti -1c
+.RI "\fBNamespace_body_elementContext\fP * \fBnamespace_body_element\fP ()"
+.br
+.ti -1c
+.RI "\fBMember_prefixContext\fP * \fBmember_prefix\fP ()"
+.br
+.ti -1c
+.RI "\fBVisibility_indicatorContext\fP * \fBvisibility_indicator\fP ()"
+.br
+.ti -1c
+.RI "\fBNamespace_memberContext\fP * \fBnamespace_member\fP ()"
+.br
+.ti -1c
+.RI "\fBNon_feature_memberContext\fP * \fBnon_feature_member\fP ()"
+.br
+.ti -1c
+.RI "\fBNamespace_feature_memberContext\fP * \fBnamespace_feature_member\fP ()"
+.br
+.ti -1c
+.RI "\fBAlias_memberContext\fP * \fBalias_member\fP ()"
+.br
+.ti -1c
+.RI "\fBQualified_nameContext\fP * \fBqualified_name\fP ()"
+.br
+.ti -1c
+.RI "\fBNamespace_importContext\fP * \fBnamespace_import\fP ()"
+.br
+.ti -1c
+.RI "\fBImport_declarationContext\fP * \fBimport_declaration\fP ()"
+.br
+.ti -1c
+.RI "\fBMembership_importContext\fP * \fBmembership_import\fP ()"
+.br
+.ti -1c
+.RI "\fBFilter_packageContext\fP * \fBfilter_package\fP ()"
+.br
+.ti -1c
+.RI "\fBFilter_package_memberContext\fP * \fBfilter_package_member\fP ()"
+.br
+.ti -1c
+.RI "\fBElementContext\fP * \fBelement\fP ()"
+.br
+.ti -1c
+.RI "\fBNon_feature_elementContext\fP * \fBnon_feature_element\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_elementContext\fP * \fBfeature_element\fP ()"
+.br
+.ti -1c
+.RI "\fBAdditional_optionsContext\fP * \fBadditional_options\fP ()"
+.br
+.ti -1c
+.RI "\fBTypeContext\fP * \fBtype\fP ()"
+.br
+.ti -1c
+.RI "\fBType_prefixContext\fP * \fBtype_prefix\fP ()"
+.br
+.ti -1c
+.RI "\fBType_declarationContext\fP * \fBtype_declaration\fP ()"
+.br
+.ti -1c
+.RI "\fBSpecialization_partContext\fP * \fBspecialization_part\fP ()"
+.br
+.ti -1c
+.RI "\fBConjugation_partContext\fP * \fBconjugation_part\fP ()"
+.br
+.ti -1c
+.RI "\fBType_relationship_partContext\fP * \fBtype_relationship_part\fP ()"
+.br
+.ti -1c
+.RI "\fBDisjoining_partContext\fP * \fBdisjoining_part\fP ()"
+.br
+.ti -1c
+.RI "\fBUnioning_partContext\fP * \fBunioning_part\fP ()"
+.br
+.ti -1c
+.RI "\fBIntersecting_partContext\fP * \fBintersecting_part\fP ()"
+.br
+.ti -1c
+.RI "\fBDifferencing_partContext\fP * \fBdifferencing_part\fP ()"
+.br
+.ti -1c
+.RI "\fBType_bodyContext\fP * \fBtype_body\fP ()"
+.br
+.ti -1c
+.RI "\fBType_body_elementsContext\fP * \fBtype_body_elements\fP ()"
+.br
+.ti -1c
+.RI "\fBType_body_elementContext\fP * \fBtype_body_element\fP ()"
+.br
+.ti -1c
+.RI "\fBSpecializationContext\fP * \fBspecialization\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_specializationContext\fP * \fBowned_specialization\fP ()"
+.br
+.ti -1c
+.RI "\fBSpecific_typeContext\fP * \fBspecific_type\fP ()"
+.br
+.ti -1c
+.RI "\fBGeneral_typeContext\fP * \fBgeneral_type\fP ()"
+.br
+.ti -1c
+.RI "\fBConjunctionContext\fP * \fBconjunction\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_conjugationContext\fP * \fBowned_conjugation\fP ()"
+.br
+.ti -1c
+.RI "\fBDisjoiningContext\fP * \fBdisjoining\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_disjoiningContext\fP * \fBowned_disjoining\fP ()"
+.br
+.ti -1c
+.RI "\fBUnioningContext\fP * \fBunioning\fP ()"
+.br
+.ti -1c
+.RI "\fBIntersectingContext\fP * \fBintersecting\fP ()"
+.br
+.ti -1c
+.RI "\fBDifferencingContext\fP * \fBdifferencing\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_memberContext\fP * \fBfeature_member\fP ()"
+.br
+.ti -1c
+.RI "\fBType_feature_memberContext\fP * \fBtype_feature_member\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_feature_memberContext\fP * \fBowned_feature_member\fP ()"
+.br
+.ti -1c
+.RI "\fBClassifierContext\fP * \fBclassifier\fP ()"
+.br
+.ti -1c
+.RI "\fBClassifier_declarationContext\fP * \fBclassifier_declaration\fP ()"
+.br
+.ti -1c
+.RI "\fBSuperclassing_partContext\fP * \fBsuperclassing_part\fP ()"
+.br
+.ti -1c
+.RI "\fBSubclassificationContext\fP * \fBsubclassification\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_subclassificationContext\fP * \fBowned_subclassification\fP ()"
+.br
+.ti -1c
+.RI "\fBFeatureContext\fP * \fBfeature\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_prefixContext\fP * \fBfeature_prefix\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_directionContext\fP * \fBfeature_direction\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_declarationContext\fP * \fBfeature_declaration\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_identificationContext\fP * \fBfeature_identification\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_relationship_partContext\fP * \fBfeature_relationship_part\fP ()"
+.br
+.ti -1c
+.RI "\fBChaining_partContext\fP * \fBchaining_part\fP ()"
+.br
+.ti -1c
+.RI "\fBInverting_partContext\fP * \fBinverting_part\fP ()"
+.br
+.ti -1c
+.RI "\fBType_featuring_partContext\fP * \fBtype_featuring_part\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_specialization_partContext\fP * \fBfeature_specialization_part\fP ()"
+.br
+.ti -1c
+.RI "\fBMultiplicity_partContext\fP * \fBmultiplicity_part\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_specilizationContext\fP * \fBfeature_specilization\fP ()"
+.br
+.ti -1c
+.RI "\fBTypingsContext\fP * \fBtypings\fP ()"
+.br
+.ti -1c
+.RI "\fBTyped_byContext\fP * \fBtyped_by\fP ()"
+.br
+.ti -1c
+.RI "\fBSubsettingsContext\fP * \fBsubsettings\fP ()"
+.br
+.ti -1c
+.RI "\fBSubsetsContext\fP * \fBsubsets\fP ()"
+.br
+.ti -1c
+.RI "\fBReferencesContext\fP * \fBreferences\fP ()"
+.br
+.ti -1c
+.RI "\fBRedefinitionsContext\fP * \fBredefinitions\fP ()"
+.br
+.ti -1c
+.RI "\fBRedefinesContext\fP * \fBredefines\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_typingContext\fP * \fBfeature_typing\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_feature_typingContext\fP * \fBowned_feature_typing\fP ()"
+.br
+.ti -1c
+.RI "\fBSubsettingContext\fP * \fBsubsetting\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_subsettingContext\fP * \fBowned_subsetting\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_reference_subsettingContext\fP * \fBowned_reference_subsetting\fP ()"
+.br
+.ti -1c
+.RI "\fBRedefinitionContext\fP * \fBredefinition\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_redefinitionContext\fP * \fBowned_redefinition\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_feature_chainContext\fP * \fBowned_feature_chain\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_chainContext\fP * \fBfeature_chain\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_feature_chainingContext\fP * \fBowned_feature_chaining\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_invertingContext\fP * \fBfeature_inverting\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_feature_invertingContext\fP * \fBowned_feature_inverting\fP ()"
+.br
+.ti -1c
+.RI "\fBType_featuringContext\fP * \fBtype_featuring\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_type_featuringContext\fP * \fBowned_type_featuring\fP ()"
+.br
+.ti -1c
+.RI "\fBData_typeContext\fP * \fBdata_type\fP ()"
+.br
+.ti -1c
+.RI "\fBClassContext\fP * \fBclass_\fP ()"
+.br
+.ti -1c
+.RI "\fBStructureContext\fP * \fBstructure\fP ()"
+.br
+.ti -1c
+.RI "\fBAssociationContext\fP * \fBassociation\fP ()"
+.br
+.ti -1c
+.RI "\fBAssociation_structureContext\fP * \fBassociation_structure\fP ()"
+.br
+.ti -1c
+.RI "\fBConnectorContext\fP * \fBconnector\fP ()"
+.br
+.ti -1c
+.RI "\fBConnector_declarationContext\fP * \fBconnector_declaration\fP ()"
+.br
+.ti -1c
+.RI "\fBBinary_connector_declarationContext\fP * \fBbinary_connector_declaration\fP ()"
+.br
+.ti -1c
+.RI "\fBNary_connector_declarationContext\fP * \fBnary_connector_declaration\fP ()"
+.br
+.ti -1c
+.RI "\fBConnector_end_memberContext\fP * \fBconnector_end_member\fP ()"
+.br
+.ti -1c
+.RI "\fBConnector_endContext\fP * \fBconnector_end\fP ()"
+.br
+.ti -1c
+.RI "\fBBinding_connectorContext\fP * \fBbinding_connector\fP ()"
+.br
+.ti -1c
+.RI "\fBBinding_connector_declarationContext\fP * \fBbinding_connector_declaration\fP ()"
+.br
+.ti -1c
+.RI "\fBSuccessionContext\fP * \fBsuccession\fP ()"
+.br
+.ti -1c
+.RI "\fBSuccession_declarationContext\fP * \fBsuccession_declaration\fP ()"
+.br
+.ti -1c
+.RI "\fBBehaviorContext\fP * \fBbehavior\fP ()"
+.br
+.ti -1c
+.RI "\fBStepContext\fP * \fBstep\fP ()"
+.br
+.ti -1c
+.RI "\fBFunctionContext\fP * \fBfunction\fP ()"
+.br
+.ti -1c
+.RI "\fBFunction_bodyContext\fP * \fBfunction_body\fP ()"
+.br
+.ti -1c
+.RI "\fBFunction_body_partContext\fP * \fBfunction_body_part\fP ()"
+.br
+.ti -1c
+.RI "\fBReturn_feature_memberContext\fP * \fBreturn_feature_member\fP ()"
+.br
+.ti -1c
+.RI "\fBResult_expression_memberContext\fP * \fBresult_expression_member\fP ()"
+.br
+.ti -1c
+.RI "\fBExpressionContext\fP * \fBexpression\fP ()"
+.br
+.ti -1c
+.RI "\fBPredicateContext\fP * \fBpredicate\fP ()"
+.br
+.ti -1c
+.RI "\fBBoolean_expressionContext\fP * \fBboolean_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBInvariantContext\fP * \fBinvariant\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_expression_reference_memberContext\fP * \fBowned_expression_reference_member\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_expression_referenceContext\fP * \fBowned_expression_reference\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_expression_memberContext\fP * \fBowned_expression_member\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_expressionsContext\fP * \fBowned_expressions\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_expressionContext\fP * \fBowned_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBEased_owned_expressionContext\fP * \fBeased_owned_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBConditional_expressionContext\fP * \fBconditional_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBConditional_binary_operator_expressionContext\fP * \fBconditional_binary_operator_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBConditional_binary_operatorContext\fP * \fBconditional_binary_operator\fP ()"
+.br
+.ti -1c
+.RI "\fBBinary_operator_expressionContext\fP * \fBbinary_operator_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBBinary_operatorContext\fP * \fBbinary_operator\fP ()"
+.br
+.ti -1c
+.RI "\fBUnary_operator_expressionContext\fP * \fBunary_operator_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBUnary_operatorContext\fP * \fBunary_operator\fP ()"
+.br
+.ti -1c
+.RI "\fBClassification_expressionContext\fP * \fBclassification_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBClassificationContext\fP * \fBclassification\fP ()"
+.br
+.ti -1c
+.RI "\fBClassification_test_operatorContext\fP * \fBclassification_test_operator\fP ()"
+.br
+.ti -1c
+.RI "\fBCast_operatorContext\fP * \fBcast_operator\fP ()"
+.br
+.ti -1c
+.RI "\fBMetaclassification_expressionContext\fP * \fBmetaclassification_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBArgument_memberContext\fP * \fBargument_member\fP ()"
+.br
+.ti -1c
+.RI "\fBArgumentContext\fP * \fBargument\fP ()"
+.br
+.ti -1c
+.RI "\fBArgument_valueContext\fP * \fBargument_value\fP ()"
+.br
+.ti -1c
+.RI "\fBArgument_expression_memberContext\fP * \fBargument_expression_member\fP ()"
+.br
+.ti -1c
+.RI "\fBArgument_expressionContext\fP * \fBargument_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBArgument_expression_valueContext\fP * \fBargument_expression_value\fP ()"
+.br
+.ti -1c
+.RI "\fBMetadata_argument_memberContext\fP * \fBmetadata_argument_member\fP ()"
+.br
+.ti -1c
+.RI "\fBMetadata_argumentContext\fP * \fBmetadata_argument\fP ()"
+.br
+.ti -1c
+.RI "\fBMetadata_valueContext\fP * \fBmetadata_value\fP ()"
+.br
+.ti -1c
+.RI "\fBMetadata_referenceContext\fP * \fBmetadata_reference\fP ()"
+.br
+.ti -1c
+.RI "\fBMetadataclassification_test_operatorContext\fP * \fBmetadataclassification_test_operator\fP ()"
+.br
+.ti -1c
+.RI "\fBMeta_cast_operatorContext\fP * \fBmeta_cast_operator\fP ()"
+.br
+.ti -1c
+.RI "\fBExtend_expressionContext\fP * \fBextend_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBType_reference_memberContext\fP * \fBtype_reference_member\fP ()"
+.br
+.ti -1c
+.RI "\fBType_result_memberContext\fP * \fBtype_result_member\fP ()"
+.br
+.ti -1c
+.RI "\fBType_referenceContext\fP * \fBtype_reference\fP ()"
+.br
+.ti -1c
+.RI "\fBReference_typingContext\fP * \fBreference_typing\fP ()"
+.br
+.ti -1c
+.RI "\fBPrimary_expressionsContext\fP * \fBprimary_expressions\fP ()"
+.br
+.ti -1c
+.RI "\fBPrimary_expressionContext\fP * \fBprimary_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBPrimary_argument_valueContext\fP * \fBprimary_argument_value\fP ()"
+.br
+.ti -1c
+.RI "\fBPrimary_argumentContext\fP * \fBprimary_argument\fP ()"
+.br
+.ti -1c
+.RI "\fBPrimary_argument_memberContext\fP * \fBprimary_argument_member\fP ()"
+.br
+.ti -1c
+.RI "\fBNon_feature_chain_primary_expressionContext\fP * \fBnon_feature_chain_primary_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBNon_feature_chain_primary_argument_valueContext\fP * \fBnon_feature_chain_primary_argument_value\fP ()"
+.br
+.ti -1c
+.RI "\fBNon_feature_chain_primary_argumentContext\fP * \fBnon_feature_chain_primary_argument\fP ()"
+.br
+.ti -1c
+.RI "\fBNon_feature_chain_primary_argument_memberContext\fP * \fBnon_feature_chain_primary_argument_member\fP ()"
+.br
+.ti -1c
+.RI "\fBBracket_expressionContext\fP * \fBbracket_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBIndex_expressionContext\fP * \fBindex_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBSequence_expressionContext\fP * \fBsequence_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBSequence_expression_listContext\fP * \fBsequence_expression_list\fP ()"
+.br
+.ti -1c
+.RI "\fBSequence_operator_expressionContext\fP * \fBsequence_operator_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBSequence_expression_list_memberContext\fP * \fBsequence_expression_list_member\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_chain_expressionContext\fP * \fBfeature_chain_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBCollect_expressionContext\fP * \fBcollect_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBSelect_expressionContext\fP * \fBselect_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBFunction_operation_expressionContext\fP * \fBfunction_operation_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBBody_argument_memberContext\fP * \fBbody_argument_member\fP ()"
+.br
+.ti -1c
+.RI "\fBBody_argumentContext\fP * \fBbody_argument\fP ()"
+.br
+.ti -1c
+.RI "\fBBody_argument_valueContext\fP * \fBbody_argument_value\fP ()"
+.br
+.ti -1c
+.RI "\fBBody_expression_memberContext\fP * \fBbody_expression_member\fP ()"
+.br
+.ti -1c
+.RI "\fBFunction_reference_argument_memberContext\fP * \fBfunction_reference_argument_member\fP ()"
+.br
+.ti -1c
+.RI "\fBFunction_reference_argumentContext\fP * \fBfunction_reference_argument\fP ()"
+.br
+.ti -1c
+.RI "\fBFunction_reference_arugment_valueContext\fP * \fBfunction_reference_arugment_value\fP ()"
+.br
+.ti -1c
+.RI "\fBFunction_reference_expressionContext\fP * \fBfunction_reference_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBFunction_reference_memberContext\fP * \fBfunction_reference_member\fP ()"
+.br
+.ti -1c
+.RI "\fBFunction_referenceContext\fP * \fBfunction_reference\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_chain_memberContext\fP * \fBfeature_chain_member\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_feature_chain_memberContext\fP * \fBowned_feature_chain_member\fP ()"
+.br
+.ti -1c
+.RI "\fBBase_expressionContext\fP * \fBbase_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBNull_expressionContext\fP * \fBnull_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_reference_expressionContext\fP * \fBfeature_reference_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_reference_memberContext\fP * \fBfeature_reference_member\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_referenceContext\fP * \fBfeature_reference\fP ()"
+.br
+.ti -1c
+.RI "\fBMetadata_access_expressionContext\fP * \fBmetadata_access_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBInvocation_expressionContext\fP * \fBinvocation_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBInternal_invocation_expressionContext\fP * \fBinternal_invocation_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBArgument_listContext\fP * \fBargument_list\fP ()"
+.br
+.ti -1c
+.RI "\fBPositional_argument_listContext\fP * \fBpositional_argument_list\fP ()"
+.br
+.ti -1c
+.RI "\fBNamed_argument_listContext\fP * \fBnamed_argument_list\fP ()"
+.br
+.ti -1c
+.RI "\fBNamed_argument_memberContext\fP * \fBnamed_argument_member\fP ()"
+.br
+.ti -1c
+.RI "\fBNamed_argumentContext\fP * \fBnamed_argument\fP ()"
+.br
+.ti -1c
+.RI "\fBParamenter_redefinitionContext\fP * \fBparamenter_redefinition\fP ()"
+.br
+.ti -1c
+.RI "\fBBody_expressionContext\fP * \fBbody_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBExpression_body_memberContext\fP * \fBexpression_body_member\fP ()"
+.br
+.ti -1c
+.RI "\fBExpression_bodyContext\fP * \fBexpression_body\fP ()"
+.br
+.ti -1c
+.RI "\fBLiteral_expressionContext\fP * \fBliteral_expression\fP ()"
+.br
+.ti -1c
+.RI "\fBLiteral_booleanContext\fP * \fBliteral_boolean\fP ()"
+.br
+.ti -1c
+.RI "\fBBoolean_valueContext\fP * \fBboolean_value\fP ()"
+.br
+.ti -1c
+.RI "\fBLiteral_stringContext\fP * \fBliteral_string\fP ()"
+.br
+.ti -1c
+.RI "\fBLiteral_integerContext\fP * \fBliteral_integer\fP ()"
+.br
+.ti -1c
+.RI "\fBLiteral_realContext\fP * \fBliteral_real\fP ()"
+.br
+.ti -1c
+.RI "\fBReal_valueContext\fP * \fBreal_value\fP ()"
+.br
+.ti -1c
+.RI "\fBLiteral_infinityContext\fP * \fBliteral_infinity\fP ()"
+.br
+.ti -1c
+.RI "\fBInteractionContext\fP * \fBinteraction\fP ()"
+.br
+.ti -1c
+.RI "\fBItem_flowContext\fP * \fBitem_flow\fP ()"
+.br
+.ti -1c
+.RI "\fBSuccession_item_flowContext\fP * \fBsuccession_item_flow\fP ()"
+.br
+.ti -1c
+.RI "\fBItem_flow_declarationContext\fP * \fBitem_flow_declaration\fP ()"
+.br
+.ti -1c
+.RI "\fBItem_feature_memberContext\fP * \fBitem_feature_member\fP ()"
+.br
+.ti -1c
+.RI "\fBItem_featureContext\fP * \fBitem_feature\fP ()"
+.br
+.ti -1c
+.RI "\fBItem_feature_specilization_partContext\fP * \fBitem_feature_specilization_part\fP ()"
+.br
+.ti -1c
+.RI "\fBItem_flow_end_memberContext\fP * \fBitem_flow_end_member\fP ()"
+.br
+.ti -1c
+.RI "\fBItem_flow_endContext\fP * \fBitem_flow_end\fP ()"
+.br
+.ti -1c
+.RI "\fBItem_flow_feature_memberContext\fP * \fBitem_flow_feature_member\fP ()"
+.br
+.ti -1c
+.RI "\fBItem_flow_featureContext\fP * \fBitem_flow_feature\fP ()"
+.br
+.ti -1c
+.RI "\fBItem_flow_redefinitionContext\fP * \fBitem_flow_redefinition\fP ()"
+.br
+.ti -1c
+.RI "\fBValue_partContext\fP * \fBvalue_part\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_valueContext\fP * \fBfeature_value\fP ()"
+.br
+.ti -1c
+.RI "\fBFeature_assignmentContext\fP * \fBfeature_assignment\fP ()"
+.br
+.ti -1c
+.RI "\fBMultiplicityContext\fP * \fBmultiplicity\fP ()"
+.br
+.ti -1c
+.RI "\fBMultiplicity_subsetContext\fP * \fBmultiplicity_subset\fP ()"
+.br
+.ti -1c
+.RI "\fBMultiplicity_rangeContext\fP * \fBmultiplicity_range\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_multiplicityContext\fP * \fBowned_multiplicity\fP ()"
+.br
+.ti -1c
+.RI "\fBOwned_multiplicity_rangeContext\fP * \fBowned_multiplicity_range\fP ()"
+.br
+.ti -1c
+.RI "\fBMultiplicity_boundsContext\fP * \fBmultiplicity_bounds\fP ()"
+.br
+.ti -1c
+.RI "\fBMultiplicity_expression_memberContext\fP * \fBmultiplicity_expression_member\fP ()"
+.br
+.ti -1c
+.RI "\fBInternal_multiplicity_expression_memberContext\fP * \fBinternal_multiplicity_expression_member\fP ()"
+.br
+.ti -1c
+.RI "\fBMetaclassContext\fP * \fBmetaclass\fP ()"
+.br
+.ti -1c
+.RI "\fBPrefix_metadata_annotationContext\fP * \fBprefix_metadata_annotation\fP ()"
+.br
+.ti -1c
+.RI "\fBPrefix_metadata_memberContext\fP * \fBprefix_metadata_member\fP ()"
+.br
+.ti -1c
+.RI "\fBPrefix_metadata_featureContext\fP * \fBprefix_metadata_feature\fP ()"
+.br
+.ti -1c
+.RI "\fBMetadata_featureContext\fP * \fBmetadata_feature\fP ()"
+.br
+.ti -1c
+.RI "\fBMetadata_feature_declarationContext\fP * \fBmetadata_feature_declaration\fP ()"
+.br
+.ti -1c
+.RI "\fBMetadata_bodyContext\fP * \fBmetadata_body\fP ()"
+.br
+.ti -1c
+.RI "\fBMetadata_body_elementContext\fP * \fBmetadata_body_element\fP ()"
+.br
+.ti -1c
+.RI "\fBMetadata_body_feature_memberContext\fP * \fBmetadata_body_feature_member\fP ()"
+.br
+.ti -1c
+.RI "\fBMetadata_body_featureContext\fP * \fBmetadata_body_feature\fP ()"
+.br
+.ti -1c
+.RI "\fBPackageContext\fP * \fBpackage\fP ()"
+.br
+.ti -1c
+.RI "\fBLibrary_packageContext\fP * \fBlibrary_package\fP ()"
+.br
+.ti -1c
+.RI "\fBPackage_declarationContext\fP * \fBpackage_declaration\fP ()"
+.br
+.ti -1c
+.RI "\fBPackage_bodyContext\fP * \fBpackage_body\fP ()"
+.br
+.ti -1c
+.RI "\fBElement_filter_memberContext\fP * \fBelement_filter_member\fP ()"
+.br
+.ti -1c
+.RI "\fBMeta_assignmentContext\fP * \fBmeta_assignment\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBinitialize\fP ()"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

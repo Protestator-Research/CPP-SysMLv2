@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Specialization_partContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1a7540e2fa13f0d88e05cc62ed743a1bd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Specialization_partContext::Specialization_partContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Specialization_partContext</name>
+        <qualifiedname>KerMLParser::Specialization_partContext::Specialization_partContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1082" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4533" bodyend="4535"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1a5dcde09b3049026b3b160aca1cddb1a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Specialization_partContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Specialization_partContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1083" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4558" bodyend="4560"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1aace910ff260d7f7ef0dd8f3e9ded6053" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Specialization_partContext::SPECIALIZES</definition>
+        <argsstring>()</argsstring>
+        <name>SPECIALIZES</name>
+        <qualifiedname>KerMLParser::Specialization_partContext::SPECIALIZES</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1084" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4537" bodyend="4539"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1ad94fd6551ce6df00714900afdf6ec468" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d8/ded/class_ker_m_l_parser_1_1_owned__specialization_context" kindref="compound">Owned_specializationContext</ref> * &gt;</type>
+        <definition>std::vector&lt; KerMLParser::Owned_specializationContext * &gt; KerMLParser::Specialization_partContext::owned_specialization</definition>
+        <argsstring>()</argsstring>
+        <name>owned_specialization</name>
+        <qualifiedname>KerMLParser::Specialization_partContext::owned_specialization</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1085" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4541" bodyend="4543"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1af990823edf3eb9a59206e8fd2f346c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/ded/class_ker_m_l_parser_1_1_owned__specialization_context" kindref="compound">Owned_specializationContext</ref> *</type>
+        <definition>KerMLParser::Owned_specializationContext * KerMLParser::Specialization_partContext::owned_specialization</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>owned_specialization</name>
+        <qualifiedname>KerMLParser::Specialization_partContext::owned_specialization</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1086" column="33" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4545" bodyend="4547"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1a57a61209e2a7a783b1741ce5391971ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; antlr4::tree::TerminalNode * &gt;</type>
+        <definition>std::vector&lt; tree::TerminalNode * &gt; KerMLParser::Specialization_partContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>KerMLParser::Specialization_partContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1087" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4549" bodyend="4551"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1ae609e5a048c1f5803b4a5a6ed6483fc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Specialization_partContext::SYMBOL_COMMA</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>KerMLParser::Specialization_partContext::SYMBOL_COMMA</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1088" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4553" bodyend="4555"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1ad4917e12dd9fcd0fd54981b8c7ffbb78" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Specialization_partContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Specialization_partContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1090" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4562" bodyend="4566"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1af5fc5bc3844797f3f12c8f7b2dd32f26" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Specialization_partContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Specialization_partContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1091" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="4568" bodyend="4572"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Specialization_partContext</label>
+        <link refid="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Specialization_partContext</label>
+        <link refid="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="1080" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="1080" bodyend="1093"/>
+    <listofallmembers>
+      <member refid="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1ad4917e12dd9fcd0fd54981b8c7ffbb78" prot="public" virt="virtual"><scope>KerMLParser::Specialization_partContext</scope><name>enterRule</name></member>
+      <member refid="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1af5fc5bc3844797f3f12c8f7b2dd32f26" prot="public" virt="virtual"><scope>KerMLParser::Specialization_partContext</scope><name>exitRule</name></member>
+      <member refid="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1a5dcde09b3049026b3b160aca1cddb1a2" prot="public" virt="virtual"><scope>KerMLParser::Specialization_partContext</scope><name>getRuleIndex</name></member>
+      <member refid="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1ad94fd6551ce6df00714900afdf6ec468" prot="public" virt="non-virtual"><scope>KerMLParser::Specialization_partContext</scope><name>owned_specialization</name></member>
+      <member refid="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1af990823edf3eb9a59206e8fd2f346c31" prot="public" virt="non-virtual"><scope>KerMLParser::Specialization_partContext</scope><name>owned_specialization</name></member>
+      <member refid="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1a7540e2fa13f0d88e05cc62ed743a1bd7" prot="public" virt="non-virtual"><scope>KerMLParser::Specialization_partContext</scope><name>Specialization_partContext</name></member>
+      <member refid="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1aace910ff260d7f7ef0dd8f3e9ded6053" prot="public" virt="non-virtual"><scope>KerMLParser::Specialization_partContext</scope><name>SPECIALIZES</name></member>
+      <member refid="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1a57a61209e2a7a783b1741ce5391971ae" prot="public" virt="non-virtual"><scope>KerMLParser::Specialization_partContext</scope><name>SYMBOL_COMMA</name></member>
+      <member refid="db/d0d/class_ker_m_l_parser_1_1_specialization__part_context_1ae609e5a048c1f5803b4a5a6ed6483fc8" prot="public" virt="non-virtual"><scope>KerMLParser::Specialization_partContext</scope><name>SYMBOL_COMMA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

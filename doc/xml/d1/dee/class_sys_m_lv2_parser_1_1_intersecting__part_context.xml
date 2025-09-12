@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Intersecting_partContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1ac8ef0c8f9c0ec798f5d15bce37f0a0b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Intersecting_partContext::Intersecting_partContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Intersecting_partContext</name>
+        <qualifiedname>SysMLv2Parser::Intersecting_partContext::Intersecting_partContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6094" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29701" bodyend="29703"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1ac73adb67f8360fbf212c608a5d5eb160" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Intersecting_partContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Intersecting_partContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6095" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29726" bodyend="29728"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1a591c01b32ed139607462ed1b05315bbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Intersecting_partContext::KEYWORD_INTERSECTS</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_INTERSECTS</name>
+        <qualifiedname>SysMLv2Parser::Intersecting_partContext::KEYWORD_INTERSECTS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6096" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29705" bodyend="29707"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1ae7981fad0535ffa1fe5bd57f79f532a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="db/d01/class_sys_m_lv2_parser_1_1_intersecting_context" kindref="compound">IntersectingContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::IntersectingContext * &gt; SysMLv2Parser::Intersecting_partContext::intersecting</definition>
+        <argsstring>()</argsstring>
+        <name>intersecting</name>
+        <qualifiedname>SysMLv2Parser::Intersecting_partContext::intersecting</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6097" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29709" bodyend="29711"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1a4532a41ea195a60ed3a48f50ef37edcc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="db/d01/class_sys_m_lv2_parser_1_1_intersecting_context" kindref="compound">IntersectingContext</ref> *</type>
+        <definition>SysMLv2Parser::IntersectingContext * SysMLv2Parser::Intersecting_partContext::intersecting</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>intersecting</name>
+        <qualifiedname>SysMLv2Parser::Intersecting_partContext::intersecting</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6098" column="25" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29713" bodyend="29715"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1aa12b6226d2d3e6b155461f74f18a2a70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; antlr4::tree::TerminalNode * &gt;</type>
+        <definition>std::vector&lt; tree::TerminalNode * &gt; SysMLv2Parser::Intersecting_partContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>SysMLv2Parser::Intersecting_partContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6099" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29717" bodyend="29719"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1acbea306267f851bf19220be61c1c1215" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Intersecting_partContext::SYMBOL_COMMA</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>SysMLv2Parser::Intersecting_partContext::SYMBOL_COMMA</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6100" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29721" bodyend="29723"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1ada601c08f805c6371571d671bf65b33c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Intersecting_partContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Intersecting_partContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6102" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29730" bodyend="29734"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1aa5adb7adf93f90ea8c096bae0ae0e94a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Intersecting_partContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Intersecting_partContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6103" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="29736" bodyend="29740"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Intersecting_partContext</label>
+        <link refid="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Intersecting_partContext</label>
+        <link refid="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6092" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="6092" bodyend="6105"/>
+    <listofallmembers>
+      <member refid="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1ada601c08f805c6371571d671bf65b33c" prot="public" virt="virtual"><scope>SysMLv2Parser::Intersecting_partContext</scope><name>enterRule</name></member>
+      <member refid="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1aa5adb7adf93f90ea8c096bae0ae0e94a" prot="public" virt="virtual"><scope>SysMLv2Parser::Intersecting_partContext</scope><name>exitRule</name></member>
+      <member refid="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1ac73adb67f8360fbf212c608a5d5eb160" prot="public" virt="virtual"><scope>SysMLv2Parser::Intersecting_partContext</scope><name>getRuleIndex</name></member>
+      <member refid="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1ae7981fad0535ffa1fe5bd57f79f532a3" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Intersecting_partContext</scope><name>intersecting</name></member>
+      <member refid="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1a4532a41ea195a60ed3a48f50ef37edcc" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Intersecting_partContext</scope><name>intersecting</name></member>
+      <member refid="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1ac8ef0c8f9c0ec798f5d15bce37f0a0b5" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Intersecting_partContext</scope><name>Intersecting_partContext</name></member>
+      <member refid="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1a591c01b32ed139607462ed1b05315bbc" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Intersecting_partContext</scope><name>KEYWORD_INTERSECTS</name></member>
+      <member refid="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1aa12b6226d2d3e6b155461f74f18a2a70" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Intersecting_partContext</scope><name>SYMBOL_COMMA</name></member>
+      <member refid="d1/dee/class_sys_m_lv2_parser_1_1_intersecting__part_context_1acbea306267f851bf19220be61c1c1215" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Intersecting_partContext</scope><name>SYMBOL_COMMA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_39fe91a3090eed2e435c48e621a4e6c2" kind="dir">
+    <compoundname>build/Debug/conformance-test/CMakeFiles</compoundname>
+    <innerdir refid="dir_83d3976754d2e67eb1f00fda68c08ee1">build/Debug/conformance-test/CMakeFiles/conformance-test.dir</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/conformance-test/CMakeFiles/"/>
+  </compounddef>
+</doxygen>

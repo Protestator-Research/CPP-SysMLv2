@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Viewpoint_usageContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1a194e130d471b4f0c8547edd6f93d6668" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Viewpoint_usageContext::Viewpoint_usageContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Viewpoint_usageContext</name>
+        <qualifiedname>SysMLv2Parser::Viewpoint_usageContext::Viewpoint_usageContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5333" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25604" bodyend="25606"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1a533811afc2f0c46f05cc32751c5e5823" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Viewpoint_usageContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Viewpoint_usageContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5334" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25625" bodyend="25627"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1a7d04eda9889a5e404e2cd9f4b12bf705" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/dcb/class_sys_m_lv2_parser_1_1_occurrence__usage__prefix_context" kindref="compound">Occurrence_usage_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::Occurrence_usage_prefixContext * SysMLv2Parser::Viewpoint_usageContext::occurrence_usage_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>occurrence_usage_prefix</name>
+        <qualifiedname>SysMLv2Parser::Viewpoint_usageContext::occurrence_usage_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5335" column="36" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25608" bodyend="25610"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1aaa7aa2dddb4f24446d5bfab74f67f3df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Viewpoint_usageContext::KEYWORD_VIEWPOINT</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_VIEWPOINT</name>
+        <qualifiedname>SysMLv2Parser::Viewpoint_usageContext::KEYWORD_VIEWPOINT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5336" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25612" bodyend="25614"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1abd3ca3e925177a459aff2633492c1508" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context" kindref="compound">Constraint_usage_declarationContext</ref> *</type>
+        <definition>SysMLv2Parser::Constraint_usage_declarationContext * SysMLv2Parser::Viewpoint_usageContext::constraint_usage_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>constraint_usage_declaration</name>
+        <qualifiedname>SysMLv2Parser::Viewpoint_usageContext::constraint_usage_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5337" column="41" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25616" bodyend="25618"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1a98c29608406ae92ac9772977462d8be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d10/class_sys_m_lv2_parser_1_1_requirement__body_context" kindref="compound">Requirement_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Requirement_bodyContext * SysMLv2Parser::Viewpoint_usageContext::requirement_body</definition>
+        <argsstring>()</argsstring>
+        <name>requirement_body</name>
+        <qualifiedname>SysMLv2Parser::Viewpoint_usageContext::requirement_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5338" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25620" bodyend="25622"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1a7fc061df2b4a35c46c00da6c01877b46" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Viewpoint_usageContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Viewpoint_usageContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5340" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25629" bodyend="25633"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1aa1e715fc1e5b7f148c09a4ad1dad6e6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Viewpoint_usageContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Viewpoint_usageContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5341" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="25635" bodyend="25639"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Viewpoint_usageContext</label>
+        <link refid="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Viewpoint_usageContext</label>
+        <link refid="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5331" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="5331" bodyend="5343"/>
+    <listofallmembers>
+      <member refid="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1abd3ca3e925177a459aff2633492c1508" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Viewpoint_usageContext</scope><name>constraint_usage_declaration</name></member>
+      <member refid="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1a7fc061df2b4a35c46c00da6c01877b46" prot="public" virt="virtual"><scope>SysMLv2Parser::Viewpoint_usageContext</scope><name>enterRule</name></member>
+      <member refid="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1aa1e715fc1e5b7f148c09a4ad1dad6e6c" prot="public" virt="virtual"><scope>SysMLv2Parser::Viewpoint_usageContext</scope><name>exitRule</name></member>
+      <member refid="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1a533811afc2f0c46f05cc32751c5e5823" prot="public" virt="virtual"><scope>SysMLv2Parser::Viewpoint_usageContext</scope><name>getRuleIndex</name></member>
+      <member refid="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1aaa7aa2dddb4f24446d5bfab74f67f3df" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Viewpoint_usageContext</scope><name>KEYWORD_VIEWPOINT</name></member>
+      <member refid="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1a7d04eda9889a5e404e2cd9f4b12bf705" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Viewpoint_usageContext</scope><name>occurrence_usage_prefix</name></member>
+      <member refid="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1a98c29608406ae92ac9772977462d8be7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Viewpoint_usageContext</scope><name>requirement_body</name></member>
+      <member refid="d9/d70/class_sys_m_lv2_parser_1_1_viewpoint__usage_context_1a194e130d471b4f0c8547edd6f93d6668" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Viewpoint_usageContext</scope><name>Viewpoint_usageContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Owned_feature_chainContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context_1a2a99df3ea7298794f652ecf71cdd64bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Owned_feature_chainContext::Owned_feature_chainContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Owned_feature_chainContext</name>
+        <qualifiedname>SysMLv2Parser::Owned_feature_chainContext::Owned_feature_chainContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6864" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33883" bodyend="33885"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context_1a33deba479d79133952abfd35291b2f91" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Owned_feature_chainContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Owned_feature_chainContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6865" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33892" bodyend="33894"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context_1a4d4a658f49c019a07afa19b31d8d92e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d70/class_sys_m_lv2_parser_1_1_feature__chain_context" kindref="compound">Feature_chainContext</ref> *</type>
+        <definition>SysMLv2Parser::Feature_chainContext * SysMLv2Parser::Owned_feature_chainContext::feature_chain</definition>
+        <argsstring>()</argsstring>
+        <name>feature_chain</name>
+        <qualifiedname>SysMLv2Parser::Owned_feature_chainContext::feature_chain</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6866" column="26" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33887" bodyend="33889"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context_1a818cf53d372f1cef04f1ff1562c2b133" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_feature_chainContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_feature_chainContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6868" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33896" bodyend="33900"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context_1aadffc1910e8409f22c1f107a5028182d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_feature_chainContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_feature_chainContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6869" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33902" bodyend="33906"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_feature_chainContext</label>
+        <link refid="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_feature_chainContext</label>
+        <link refid="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6862" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="6862" bodyend="6871"/>
+    <listofallmembers>
+      <member refid="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context_1a818cf53d372f1cef04f1ff1562c2b133" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_feature_chainContext</scope><name>enterRule</name></member>
+      <member refid="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context_1aadffc1910e8409f22c1f107a5028182d" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_feature_chainContext</scope><name>exitRule</name></member>
+      <member refid="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context_1a4d4a658f49c019a07afa19b31d8d92e3" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_feature_chainContext</scope><name>feature_chain</name></member>
+      <member refid="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context_1a33deba479d79133952abfd35291b2f91" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_feature_chainContext</scope><name>getRuleIndex</name></member>
+      <member refid="da/d07/class_sys_m_lv2_parser_1_1_owned__feature__chain_context_1a2a99df3ea7298794f652ecf71cdd64bf" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_feature_chainContext</scope><name>Owned_feature_chainContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_SYSMLV2DESERIALIZER_H
-#define DIGITALTWIN_SYSMLV2DESERIALIZER_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -29,7 +28,7 @@ namespace SysMLv2 {
          * @return the Element given as an IEntity.
          * @see SysMLv2::Entities::IEntity
          */
-        static std::shared_ptr<SysMLv2::Entities::IEntity> deserializeJsonString(std::string inputValue);
+        static std::shared_ptr<SysMLv2::REST::IEntity> deserializeJsonString(std::string inputValue);
 
         /**
          * Deserializes a JSON Array, containing any number of Elements.
@@ -38,12 +37,10 @@ namespace SysMLv2 {
          * @see std::vector
          * @see SysMLv2::Entities::IEntity
          */
-        static std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> deserializeJsonArray(std::string inputValue);
+        static std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> deserializeJsonArray(std::string inputValue);
 
     private:
         static bool checkIfIsElementType(std::string type);
     };
 
 } // SysMLv2
-
-#endif //DIGITALTWIN_SYSMLV2DESERIALIZER_H

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_0d0ae774bd891a8acf5890442e726a0b" kind="dir">
+    <compoundname>rest-api/src</compoundname>
+    <innerdir refid="dir_01212c9f911fb66b13b358af68967643">rest-api/src/entities</innerdir>
+    <innerdir refid="dir_853422bacd868037474b2eba35462dc0">rest-api/src/serialization</innerdir>
+    <innerfile refid="d6/d17/sysmlv2rest__global_8h">sysmlv2rest_global.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="rest-api/src/"/>
+  </compounddef>
+</doxygen>

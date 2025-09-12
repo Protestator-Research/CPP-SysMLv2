@@ -21,8 +21,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_COMMIT_H
-#define DIGITALTWIN_COMMIT_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -38,13 +37,13 @@
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
-namespace SysMLv2::Entities{
+namespace SysMLv2::REST{
     class Project;
     class DataVersion;
 }
 
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
 
     /**
      * Represents an abstract baseclass that is used for the SysMLv2 API
@@ -87,23 +86,58 @@ namespace SysMLv2::Entities {
         /**
          * Destructor
          */
-        virtual ~Commit();
+        virtual ~Commit() = default;
 
+        /**
+         *
+         * @param change
+         */
         void setChange(std::vector<std::shared_ptr<DataVersion>> change);
+
+        /**
+         *
+         * @param dataVersion
+         */
         void addChange(std::shared_ptr<DataVersion> dataVersion);
+
+        /**
+         *
+         * @return
+         */
         std::vector<std::shared_ptr<DataVersion>> getDataVersion();
 
+        /**
+         *
+         * @return
+         */
         [[nodiscard]] std::vector<std::shared_ptr<Commit>> getPreviusCommits() const;
 
+        /**
+         *
+         * @return
+         */
         [[nodiscard]] std::shared_ptr<Project> getOwningProject() const;
 
         std::string serializeToJson() override;
 
-    private:
+        [[nodiscard]] std::chrono::system_clock::time_point getCreated() const;
+
+    protected:
+        /**
+         *
+         */
         std::vector<std::shared_ptr<Commit>> PreviusCommits;
+        /**
+         *
+         */
         std::shared_ptr<Project> OwningProject;
+        /**
+         *
+         */
         std::vector<std::shared_ptr<DataVersion>> Change;
+        /**
+         *
+         */
+        std::chrono::system_clock::time_point Created;
     };
 }
-
-#endif //DIGITALTWIN_COMMIT_H

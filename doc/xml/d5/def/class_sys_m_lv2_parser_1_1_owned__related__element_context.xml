@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Owned_related_elementContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context_1a79e97bc8db656db2533c376dd1dac46b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Owned_related_elementContext::Owned_related_elementContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Owned_related_elementContext</name>
+        <qualifiedname>SysMLv2Parser::Owned_related_elementContext::Owned_related_elementContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5620" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="27097" bodyend="27099"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context_1ae2859676d6f2ce94fdc166f863ecf245" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Owned_related_elementContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Owned_related_elementContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5621" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="27110" bodyend="27112"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context_1a7fedcbff9fe04968811f4deeb570751c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d91/class_sys_m_lv2_parser_1_1_non__feature__element_context" kindref="compound">Non_feature_elementContext</ref> *</type>
+        <definition>SysMLv2Parser::Non_feature_elementContext * SysMLv2Parser::Owned_related_elementContext::non_feature_element</definition>
+        <argsstring>()</argsstring>
+        <name>non_feature_element</name>
+        <qualifiedname>SysMLv2Parser::Owned_related_elementContext::non_feature_element</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5622" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="27101" bodyend="27103"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context_1ae6bac8e625a9003caf1a2f7c7874a225" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/d9d/class_sys_m_lv2_parser_1_1_feature__element_context" kindref="compound">Feature_elementContext</ref> *</type>
+        <definition>SysMLv2Parser::Feature_elementContext * SysMLv2Parser::Owned_related_elementContext::feature_element</definition>
+        <argsstring>()</argsstring>
+        <name>feature_element</name>
+        <qualifiedname>SysMLv2Parser::Owned_related_elementContext::feature_element</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5623" column="28" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="27105" bodyend="27107"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context_1a9a742c37077bd5b9b49bb6af3101b63f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_related_elementContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_related_elementContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5625" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="27114" bodyend="27118"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context_1aeb07cdc2e68f7d81ce7f936d3356d0fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Owned_related_elementContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Owned_related_elementContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5626" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="27120" bodyend="27124"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_related_elementContext</label>
+        <link refid="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Owned_related_elementContext</label>
+        <link refid="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5618" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="5618" bodyend="5628"/>
+    <listofallmembers>
+      <member refid="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context_1a9a742c37077bd5b9b49bb6af3101b63f" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_related_elementContext</scope><name>enterRule</name></member>
+      <member refid="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context_1aeb07cdc2e68f7d81ce7f936d3356d0fc" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_related_elementContext</scope><name>exitRule</name></member>
+      <member refid="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context_1ae6bac8e625a9003caf1a2f7c7874a225" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_related_elementContext</scope><name>feature_element</name></member>
+      <member refid="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context_1ae2859676d6f2ce94fdc166f863ecf245" prot="public" virt="virtual"><scope>SysMLv2Parser::Owned_related_elementContext</scope><name>getRuleIndex</name></member>
+      <member refid="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context_1a7fedcbff9fe04968811f4deeb570751c" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_related_elementContext</scope><name>non_feature_element</name></member>
+      <member refid="d5/def/class_sys_m_lv2_parser_1_1_owned__related__element_context_1a79e97bc8db656db2533c376dd1dac46b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Owned_related_elementContext</scope><name>Owned_related_elementContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

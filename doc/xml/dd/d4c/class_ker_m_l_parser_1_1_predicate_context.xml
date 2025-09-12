@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dd/d4c/class_ker_m_l_parser_1_1_predicate_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::PredicateContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1a143a83b0fabf2b7bb88a9b9ee31a3c0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::PredicateContext::PredicateContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>PredicateContext</name>
+        <qualifiedname>KerMLParser::PredicateContext::PredicateContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2445" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11758" bodyend="11760"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1a2578172c0ecd2481ae1efb954b95865b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::PredicateContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::PredicateContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2446" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11779" bodyend="11781"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1a49b95ffc18487ab4cac3d3e9b9abd3eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/db9/class_ker_m_l_parser_1_1_type__prefix_context" kindref="compound">Type_prefixContext</ref> *</type>
+        <definition>KerMLParser::Type_prefixContext * KerMLParser::PredicateContext::type_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>type_prefix</name>
+        <qualifiedname>KerMLParser::PredicateContext::type_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2447" column="24" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11762" bodyend="11764"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1a42d155eda734268ad0dc312870e50a98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::PredicateContext::KEYWORD_PREDICATE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_PREDICATE</name>
+        <qualifiedname>KerMLParser::PredicateContext::KEYWORD_PREDICATE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2448" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11766" bodyend="11768"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1a39c7c307ea41f2979db13030b775c7ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d4d/class_ker_m_l_parser_1_1_classifier__declaration_context" kindref="compound">Classifier_declarationContext</ref> *</type>
+        <definition>KerMLParser::Classifier_declarationContext * KerMLParser::PredicateContext::classifier_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>classifier_declaration</name>
+        <qualifiedname>KerMLParser::PredicateContext::classifier_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2449" column="35" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11770" bodyend="11772"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1a81183ffd4a93a21470282f48a09e8b84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d27/class_ker_m_l_parser_1_1_function__body_context" kindref="compound">Function_bodyContext</ref> *</type>
+        <definition>KerMLParser::Function_bodyContext * KerMLParser::PredicateContext::function_body</definition>
+        <argsstring>()</argsstring>
+        <name>function_body</name>
+        <qualifiedname>KerMLParser::PredicateContext::function_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2450" column="26" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11774" bodyend="11776"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1a6dd84e6ae84d30a24c54c962a8bc54a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::PredicateContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::PredicateContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2452" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11783" bodyend="11787"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1afa58f431dd48382f2aa868eca64607ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::PredicateContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::PredicateContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2453" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11789" bodyend="11793"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::PredicateContext</label>
+        <link refid="dd/d4c/class_ker_m_l_parser_1_1_predicate_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::PredicateContext</label>
+        <link refid="dd/d4c/class_ker_m_l_parser_1_1_predicate_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2443" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2443" bodyend="2455"/>
+    <listofallmembers>
+      <member refid="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1a39c7c307ea41f2979db13030b775c7ca" prot="public" virt="non-virtual"><scope>KerMLParser::PredicateContext</scope><name>classifier_declaration</name></member>
+      <member refid="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1a6dd84e6ae84d30a24c54c962a8bc54a8" prot="public" virt="virtual"><scope>KerMLParser::PredicateContext</scope><name>enterRule</name></member>
+      <member refid="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1afa58f431dd48382f2aa868eca64607ed" prot="public" virt="virtual"><scope>KerMLParser::PredicateContext</scope><name>exitRule</name></member>
+      <member refid="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1a81183ffd4a93a21470282f48a09e8b84" prot="public" virt="non-virtual"><scope>KerMLParser::PredicateContext</scope><name>function_body</name></member>
+      <member refid="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1a2578172c0ecd2481ae1efb954b95865b" prot="public" virt="virtual"><scope>KerMLParser::PredicateContext</scope><name>getRuleIndex</name></member>
+      <member refid="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1a42d155eda734268ad0dc312870e50a98" prot="public" virt="non-virtual"><scope>KerMLParser::PredicateContext</scope><name>KEYWORD_PREDICATE</name></member>
+      <member refid="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1a143a83b0fabf2b7bb88a9b9ee31a3c0b" prot="public" virt="non-virtual"><scope>KerMLParser::PredicateContext</scope><name>PredicateContext</name></member>
+      <member refid="dd/d4c/class_ker_m_l_parser_1_1_predicate_context_1a49b95ffc18487ab4cac3d3e9b9abd3eb" prot="public" virt="non-virtual"><scope>KerMLParser::PredicateContext</scope><name>type_prefix</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

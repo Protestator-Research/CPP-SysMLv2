@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Primary_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context_1a6a81356c9ba2f8e1c24f39ed94f183c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Primary_expressionContext::Primary_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Primary_expressionContext</name>
+        <qualifiedname>KerMLParser::Primary_expressionContext::Primary_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3025" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14470" bodyend="14472"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context_1a04535e5a75b9a34844ebe9f7c2a13bcc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Primary_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Primary_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3026" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14483" bodyend="14485"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context_1ae8b88e4699f61ba696a59d86492885bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d8d/class_ker_m_l_parser_1_1_feature__chain__expression_context" kindref="compound">Feature_chain_expressionContext</ref> *</type>
+        <definition>KerMLParser::Feature_chain_expressionContext * KerMLParser::Primary_expressionContext::feature_chain_expression</definition>
+        <argsstring>()</argsstring>
+        <name>feature_chain_expression</name>
+        <qualifiedname>KerMLParser::Primary_expressionContext::feature_chain_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3027" column="37" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14474" bodyend="14476"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context_1ac713674a7df134d5c07ac134659df798" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="db/d75/class_ker_m_l_parser_1_1_non__feature__chain__primary__expression_context" kindref="compound">Non_feature_chain_primary_expressionContext</ref> *</type>
+        <definition>KerMLParser::Non_feature_chain_primary_expressionContext * KerMLParser::Primary_expressionContext::non_feature_chain_primary_expression</definition>
+        <argsstring>()</argsstring>
+        <name>non_feature_chain_primary_expression</name>
+        <qualifiedname>KerMLParser::Primary_expressionContext::non_feature_chain_primary_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3028" column="49" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14478" bodyend="14480"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context_1ade225a3f5667c7757f80b3c57590cf4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Primary_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Primary_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3030" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14487" bodyend="14491"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context_1a1aea9d092805938d2e3a35e311bdbdb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Primary_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Primary_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3031" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14493" bodyend="14497"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Primary_expressionContext</label>
+        <link refid="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Primary_expressionContext</label>
+        <link refid="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="3023" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="3023" bodyend="3033"/>
+    <listofallmembers>
+      <member refid="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context_1ade225a3f5667c7757f80b3c57590cf4e" prot="public" virt="virtual"><scope>KerMLParser::Primary_expressionContext</scope><name>enterRule</name></member>
+      <member refid="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context_1a1aea9d092805938d2e3a35e311bdbdb0" prot="public" virt="virtual"><scope>KerMLParser::Primary_expressionContext</scope><name>exitRule</name></member>
+      <member refid="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context_1ae8b88e4699f61ba696a59d86492885bc" prot="public" virt="non-virtual"><scope>KerMLParser::Primary_expressionContext</scope><name>feature_chain_expression</name></member>
+      <member refid="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context_1a04535e5a75b9a34844ebe9f7c2a13bcc" prot="public" virt="virtual"><scope>KerMLParser::Primary_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context_1ac713674a7df134d5c07ac134659df798" prot="public" virt="non-virtual"><scope>KerMLParser::Primary_expressionContext</scope><name>non_feature_chain_primary_expression</name></member>
+      <member refid="d6/df3/class_ker_m_l_parser_1_1_primary__expression_context_1a6a81356c9ba2f8e1c24f39ed94f183c3" prot="public" virt="non-virtual"><scope>KerMLParser::Primary_expressionContext</scope><name>Primary_expressionContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

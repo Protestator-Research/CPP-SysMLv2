@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_PROJECTUSAGE_H
-#define DIGITALTWIN_PROJECTUSAGE_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -18,12 +17,12 @@
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     class Commit;
     class Project;
 }
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     /**
      * Defines the Project Usage according to the SysML v2 Standard
      * @author Moritz Herzog
@@ -55,11 +54,9 @@ namespace SysMLv2::Entities {
          * @return The project from the connected commit.
          */
         std::shared_ptr<Project> getUsedProject() const;
-    private:
+    protected:
         std::shared_ptr<Commit> UsedProjectCommit;
 
     };
 
 } // SysMLv2
-
-#endif //DIGITALTWIN_PROJECTUSAGE_H

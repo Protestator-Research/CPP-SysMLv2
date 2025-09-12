@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="da/d8d/class_ker_m_l_1_1_entities_1_1_end_feature_membership" kind="class" language="C++" prot="public">
+    <compoundname>KerML::Entities::EndFeatureMembership</compoundname>
+    <basecompoundref refid="df/d5d/class_ker_m_l_1_1_entities_1_1_feature_membership" prot="public" virt="non-virtual">KerML::Entities::FeatureMembership</basecompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerML::Entities::EndFeatureMembership</label>
+        <link refid="da/d8d/class_ker_m_l_1_1_entities_1_1_end_feature_membership"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KerML::Entities::FeatureMembership</label>
+        <link refid="df/d5d/class_ker_m_l_1_1_entities_1_1_feature_membership"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerML::Entities::EndFeatureMembership</label>
+        <link refid="da/d8d/class_ker_m_l_1_1_entities_1_1_end_feature_membership"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KerML::Entities::FeatureMembership</label>
+        <link refid="df/d5d/class_ker_m_l_1_1_entities_1_1_feature_membership"/>
+      </node>
+    </collaborationgraph>
+    <location file="kerml/src/core/features/EndFeatureMembership.h" line="11" column="5" bodyfile="kerml/src/core/features/EndFeatureMembership.h" bodystart="11" bodyend="13"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,339 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Structure_usage_elementContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1ac79c084afcb8f58945814c226cd017bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Structure_usage_elementContext::Structure_usage_elementContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Structure_usage_elementContext</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::Structure_usage_elementContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1641" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6472" bodyend="6474"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a759ab18d0b5a07453c170047d5168547" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Structure_usage_elementContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1642" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6537" bodyend="6539"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a7e33f16821f02f0b390659b9b3d6d4a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/dd0/class_sys_m_lv2_parser_1_1_occurrence__usage_context" kindref="compound">Occurrence_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Occurrence_usageContext * SysMLv2Parser::Structure_usage_elementContext::occurrence_usage</definition>
+        <argsstring>()</argsstring>
+        <name>occurrence_usage</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::occurrence_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1643" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6476" bodyend="6478"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a9cb98b29fb69d4eba213b29f39895b41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/df3/class_sys_m_lv2_parser_1_1_individual__usage_context" kindref="compound">Individual_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Individual_usageContext * SysMLv2Parser::Structure_usage_elementContext::individual_usage</definition>
+        <argsstring>()</argsstring>
+        <name>individual_usage</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::individual_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1644" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6480" bodyend="6482"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a625b7206f34713e6417635c28088f19d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/de2/class_sys_m_lv2_parser_1_1_portion__usage_context" kindref="compound">Portion_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Portion_usageContext * SysMLv2Parser::Structure_usage_elementContext::portion_usage</definition>
+        <argsstring>()</argsstring>
+        <name>portion_usage</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::portion_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1645" column="26" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6484" bodyend="6486"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a1379bd806417612bdf2866142f6300dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context" kindref="compound">Event_occurrence_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Event_occurrence_usageContext * SysMLv2Parser::Structure_usage_elementContext::event_occurrence_usage</definition>
+        <argsstring>()</argsstring>
+        <name>event_occurrence_usage</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::event_occurrence_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1646" column="35" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6488" bodyend="6490"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a4e2d1cd24f89e2f241f64733209834d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/dff/class_sys_m_lv2_parser_1_1_item__usage_context" kindref="compound">Item_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Item_usageContext * SysMLv2Parser::Structure_usage_elementContext::item_usage</definition>
+        <argsstring>()</argsstring>
+        <name>item_usage</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::item_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1647" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6492" bodyend="6494"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a4c1d0b0a39b2a22cf59d2621af7d3485" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/db5/class_sys_m_lv2_parser_1_1_part__usage_context" kindref="compound">Part_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Part_usageContext * SysMLv2Parser::Structure_usage_elementContext::part_usage</definition>
+        <argsstring>()</argsstring>
+        <name>part_usage</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::part_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1648" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6496" bodyend="6498"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a9a4aa271822138ed7aa523971133aaea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dc2/class_sys_m_lv2_parser_1_1_view__usage_context" kindref="compound">View_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::View_usageContext * SysMLv2Parser::Structure_usage_elementContext::view_usage</definition>
+        <argsstring>()</argsstring>
+        <name>view_usage</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::view_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1649" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6500" bodyend="6502"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a074778b6ffbeed81c6237a353c506838" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/de0/class_sys_m_lv2_parser_1_1_rendering__usage_context" kindref="compound">Rendering_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Rendering_usageContext * SysMLv2Parser::Structure_usage_elementContext::rendering_usage</definition>
+        <argsstring>()</argsstring>
+        <name>rendering_usage</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::rendering_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1650" column="28" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6504" bodyend="6506"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a420b0bc7434936a5fb9456bcf99453bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d78/class_sys_m_lv2_parser_1_1_port__usage_context" kindref="compound">Port_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Port_usageContext * SysMLv2Parser::Structure_usage_elementContext::port_usage</definition>
+        <argsstring>()</argsstring>
+        <name>port_usage</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::port_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1651" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6508" bodyend="6510"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1aff4f7d31c562f8a954e6f801cd857e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/de5/class_sys_m_lv2_parser_1_1_connection__usage_context" kindref="compound">Connection_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Connection_usageContext * SysMLv2Parser::Structure_usage_elementContext::connection_usage</definition>
+        <argsstring>()</argsstring>
+        <name>connection_usage</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::connection_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1652" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6512" bodyend="6514"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a62f0580f809e534562824b38b55354b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/da3/class_sys_m_lv2_parser_1_1_interface__usage_context" kindref="compound">Interface_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Interface_usageContext * SysMLv2Parser::Structure_usage_elementContext::interface_usage</definition>
+        <argsstring>()</argsstring>
+        <name>interface_usage</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::interface_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1653" column="28" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6516" bodyend="6518"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a31aed4f893d1b77257e3431a7f89d8a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d18/class_sys_m_lv2_parser_1_1_allocation__usage_context" kindref="compound">Allocation_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Allocation_usageContext * SysMLv2Parser::Structure_usage_elementContext::allocation_usage</definition>
+        <argsstring>()</argsstring>
+        <name>allocation_usage</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::allocation_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1654" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6520" bodyend="6522"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a680df9d7d3a518361da12f0065aa4aee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/d74/class_sys_m_lv2_parser_1_1_message_context" kindref="compound">MessageContext</ref> *</type>
+        <definition>SysMLv2Parser::MessageContext * SysMLv2Parser::Structure_usage_elementContext::message</definition>
+        <argsstring>()</argsstring>
+        <name>message</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1655" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6524" bodyend="6526"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a27a7c5b398a3dd7d66bb6d10dd09faaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/df1/class_sys_m_lv2_parser_1_1_flow__usage_context" kindref="compound">Flow_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Flow_usageContext * SysMLv2Parser::Structure_usage_elementContext::flow_usage</definition>
+        <argsstring>()</argsstring>
+        <name>flow_usage</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::flow_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1656" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6528" bodyend="6530"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1ace0e43c6bb341ca8aa00fed9178cf6f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/dec/class_sys_m_lv2_parser_1_1_succession__flow__usage_context" kindref="compound">Succession_flow_usageContext</ref> *</type>
+        <definition>SysMLv2Parser::Succession_flow_usageContext * SysMLv2Parser::Structure_usage_elementContext::succession_flow_usage</definition>
+        <argsstring>()</argsstring>
+        <name>succession_flow_usage</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::succession_flow_usage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1657" column="34" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6532" bodyend="6534"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a74d7cc3e0fb1be5c6a2544ab3cc3e8db" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Structure_usage_elementContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1659" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6541" bodyend="6545"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1ad9ad262564ca526c5f0019755f365337" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Structure_usage_elementContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Structure_usage_elementContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1660" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6547" bodyend="6551"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Structure_usage_elementContext</label>
+        <link refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Structure_usage_elementContext</label>
+        <link refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1639" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="1639" bodyend="1662"/>
+    <listofallmembers>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a31aed4f893d1b77257e3431a7f89d8a8" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>allocation_usage</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1aff4f7d31c562f8a954e6f801cd857e55" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>connection_usage</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a74d7cc3e0fb1be5c6a2544ab3cc3e8db" prot="public" virt="virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>enterRule</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a1379bd806417612bdf2866142f6300dc" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>event_occurrence_usage</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1ad9ad262564ca526c5f0019755f365337" prot="public" virt="virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>exitRule</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a27a7c5b398a3dd7d66bb6d10dd09faaf" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>flow_usage</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a759ab18d0b5a07453c170047d5168547" prot="public" virt="virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>getRuleIndex</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a9cb98b29fb69d4eba213b29f39895b41" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>individual_usage</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a62f0580f809e534562824b38b55354b7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>interface_usage</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a4e2d1cd24f89e2f241f64733209834d7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>item_usage</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a680df9d7d3a518361da12f0065aa4aee" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>message</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a7e33f16821f02f0b390659b9b3d6d4a2" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>occurrence_usage</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a4c1d0b0a39b2a22cf59d2621af7d3485" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>part_usage</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a420b0bc7434936a5fb9456bcf99453bf" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>port_usage</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a625b7206f34713e6417635c28088f19d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>portion_usage</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a074778b6ffbeed81c6237a353c506838" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>rendering_usage</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1ac79c084afcb8f58945814c226cd017bf" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>Structure_usage_elementContext</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1ace0e43c6bb341ca8aa00fed9178cf6f9" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>succession_flow_usage</name></member>
+      <member refid="df/d55/class_sys_m_lv2_parser_1_1_structure__usage__element_context_1a9a4aa271822138ed7aa523971133aaea" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Structure_usage_elementContext</scope><name>view_usage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

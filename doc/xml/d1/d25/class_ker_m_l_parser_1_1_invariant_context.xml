@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/d25/class_ker_m_l_parser_1_1_invariant_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::InvariantContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a74985f4a296b4b40ea0a27ddebfe56a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::InvariantContext::InvariantContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>InvariantContext</name>
+        <qualifiedname>KerMLParser::InvariantContext::InvariantContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2478" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11915" bodyend="11917"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a74c8cdddb64877da403e125a465a28f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::InvariantContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::InvariantContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2479" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11948" bodyend="11950"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1ad01682103b30c6bd1346223d4c42d24b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/dfb/class_ker_m_l_parser_1_1_feature__prefix_context" kindref="compound">Feature_prefixContext</ref> *</type>
+        <definition>KerMLParser::Feature_prefixContext * KerMLParser::InvariantContext::feature_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>feature_prefix</name>
+        <qualifiedname>KerMLParser::InvariantContext::feature_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2480" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11919" bodyend="11921"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a4ba0daeb101e487c37f63e1f2016a532" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::InvariantContext::KEYWORD_INV</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_INV</name>
+        <qualifiedname>KerMLParser::InvariantContext::KEYWORD_INV</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2481" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11923" bodyend="11925"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1aec541044ca4ef562ff23a02f7c7b1655" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/da8/class_ker_m_l_parser_1_1_feature__declaration_context" kindref="compound">Feature_declarationContext</ref> *</type>
+        <definition>KerMLParser::Feature_declarationContext * KerMLParser::InvariantContext::feature_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>feature_declaration</name>
+        <qualifiedname>KerMLParser::InvariantContext::feature_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2482" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11927" bodyend="11929"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a777c78ec4fac531e475f6744c8359463" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d27/class_ker_m_l_parser_1_1_function__body_context" kindref="compound">Function_bodyContext</ref> *</type>
+        <definition>KerMLParser::Function_bodyContext * KerMLParser::InvariantContext::function_body</definition>
+        <argsstring>()</argsstring>
+        <name>function_body</name>
+        <qualifiedname>KerMLParser::InvariantContext::function_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2483" column="26" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11931" bodyend="11933"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a39d2e193497f9b71bdf681a81355deca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d18/class_ker_m_l_parser_1_1_value__part_context" kindref="compound">Value_partContext</ref> *</type>
+        <definition>KerMLParser::Value_partContext * KerMLParser::InvariantContext::value_part</definition>
+        <argsstring>()</argsstring>
+        <name>value_part</name>
+        <qualifiedname>KerMLParser::InvariantContext::value_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2484" column="23" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11935" bodyend="11937"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a31d7977010bc8250243ac53a6b8af80d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::InvariantContext::KEYWORD_TRUE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_TRUE</name>
+        <qualifiedname>KerMLParser::InvariantContext::KEYWORD_TRUE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2485" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11939" bodyend="11941"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a8ec848a78d90cf52dcb7ab8ff69267c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::InvariantContext::KEYWORD_FALSE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_FALSE</name>
+        <qualifiedname>KerMLParser::InvariantContext::KEYWORD_FALSE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2486" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11943" bodyend="11945"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1afdf977af6695098bc78520f73d901848" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::InvariantContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::InvariantContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2488" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11952" bodyend="11956"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a0e303b5b131ebbc8d00a7470e4fea7b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::InvariantContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::InvariantContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2489" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11958" bodyend="11962"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::InvariantContext</label>
+        <link refid="d1/d25/class_ker_m_l_parser_1_1_invariant_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::InvariantContext</label>
+        <link refid="d1/d25/class_ker_m_l_parser_1_1_invariant_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2476" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2476" bodyend="2491"/>
+    <listofallmembers>
+      <member refid="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1afdf977af6695098bc78520f73d901848" prot="public" virt="virtual"><scope>KerMLParser::InvariantContext</scope><name>enterRule</name></member>
+      <member refid="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a0e303b5b131ebbc8d00a7470e4fea7b0" prot="public" virt="virtual"><scope>KerMLParser::InvariantContext</scope><name>exitRule</name></member>
+      <member refid="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1aec541044ca4ef562ff23a02f7c7b1655" prot="public" virt="non-virtual"><scope>KerMLParser::InvariantContext</scope><name>feature_declaration</name></member>
+      <member refid="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1ad01682103b30c6bd1346223d4c42d24b" prot="public" virt="non-virtual"><scope>KerMLParser::InvariantContext</scope><name>feature_prefix</name></member>
+      <member refid="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a777c78ec4fac531e475f6744c8359463" prot="public" virt="non-virtual"><scope>KerMLParser::InvariantContext</scope><name>function_body</name></member>
+      <member refid="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a74c8cdddb64877da403e125a465a28f0" prot="public" virt="virtual"><scope>KerMLParser::InvariantContext</scope><name>getRuleIndex</name></member>
+      <member refid="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a74985f4a296b4b40ea0a27ddebfe56a9" prot="public" virt="non-virtual"><scope>KerMLParser::InvariantContext</scope><name>InvariantContext</name></member>
+      <member refid="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a8ec848a78d90cf52dcb7ab8ff69267c9" prot="public" virt="non-virtual"><scope>KerMLParser::InvariantContext</scope><name>KEYWORD_FALSE</name></member>
+      <member refid="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a4ba0daeb101e487c37f63e1f2016a532" prot="public" virt="non-virtual"><scope>KerMLParser::InvariantContext</scope><name>KEYWORD_INV</name></member>
+      <member refid="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a31d7977010bc8250243ac53a6b8af80d" prot="public" virt="non-virtual"><scope>KerMLParser::InvariantContext</scope><name>KEYWORD_TRUE</name></member>
+      <member refid="d1/d25/class_ker_m_l_parser_1_1_invariant_context_1a39d2e193497f9b71bdf681a81355deca" prot="public" virt="non-virtual"><scope>KerMLParser::InvariantContext</scope><name>value_part</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

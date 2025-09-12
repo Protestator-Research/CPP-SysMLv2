@@ -1,0 +1,352 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>SysMLv2::API::IQueryService</compoundname>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a1389f9981436289d3112a8ea08335ae7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query" kindref="compound">SysMLv2::Entities::Query</ref> &gt; &gt;</type>
+        <definition>virtual std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::Query &gt; &gt; SysMLv2::API::IQueryService::getQueries</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project)=0</argsstring>
+        <name>getQueries</name>
+        <qualifiedname>SysMLv2::API::IQueryService::getQueries</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IQueryService.h" line="33" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1af88f152027f34f678815f7f3d8db5673" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query" kindref="compound">SysMLv2::Entities::Query</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Query &gt; SysMLv2::API::IQueryService::getQueryById</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project, boost::uuids::uuid queryId)=0</argsstring>
+        <name>getQueryById</name>
+        <qualifiedname>SysMLv2::API::IQueryService::getQueryById</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>queryId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>queryId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IQueryService.h" line="41" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a8673a987cd74faa0e6578cca19ef806e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query" kindref="compound">SysMLv2::Entities::Query</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Query &gt; SysMLv2::API::IQueryService::createQuery</definition>
+        <argsstring>(std::string name, std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project, std::vector&lt; std::string &gt; select, std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::Data &gt; &gt; scope, std::shared_ptr&lt; SysMLv2::Entities::Constraint &gt; where, std::vector&lt; std::string &gt; orderBy)=0</argsstring>
+        <name>createQuery</name>
+        <qualifiedname>SysMLv2::API::IQueryService::createQuery</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>select</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::shared_ptr&lt; <ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">SysMLv2::Entities::Data</ref> &gt; &gt;</type>
+          <declname>scope</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; SysMLv2::Entities::Constraint &gt;</type>
+          <declname>where</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>orderBy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>select</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scope</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>where</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>orderBy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IQueryService.h" line="53" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a93e8f8174d161a84a7d94d4e915b1b65" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query" kindref="compound">SysMLv2::Entities::Query</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Query &gt; SysMLv2::API::IQueryService::updateQuery</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project, std::shared_ptr&lt; SysMLv2::Entities::Query &gt; updatedQuery)=0</argsstring>
+        <name>updateQuery</name>
+        <qualifiedname>SysMLv2::API::IQueryService::updateQuery</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query" kindref="compound">SysMLv2::Entities::Query</ref> &gt;</type>
+          <declname>updatedQuery</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>updatedQuery</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IQueryService.h" line="61" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a0a0a3104baa72e7d1ff79a0172e3cbc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query" kindref="compound">SysMLv2::Entities::Query</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Query &gt; SysMLv2::API::IQueryService::deleteQuery</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project, boost::uuids::uuid queryId)=0</argsstring>
+        <name>deleteQuery</name>
+        <qualifiedname>SysMLv2::API::IQueryService::deleteQuery</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>queryId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>queryId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IQueryService.h" line="69" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1ae52d2e1b71a88326fe0eda15efe61578" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">SysMLv2::Entities::Data</ref> &gt; &gt;</type>
+        <definition>virtual std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::Data &gt; &gt; SysMLv2::API::IQueryService::executeQueryById</definition>
+        <argsstring>(boost::uuids::uuid queryId, std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; commit)=0</argsstring>
+        <name>executeQueryById</name>
+        <qualifiedname>SysMLv2::API::IQueryService::executeQueryById</qualifiedname>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>queryId</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+          <declname>commit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>queryId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IQueryService.h" line="77" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1ac26c931299eaa8a0dd0a49240741b716" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">SysMLv2::Entities::Data</ref> &gt; &gt;</type>
+        <definition>virtual std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::Data &gt; &gt; SysMLv2::API::IQueryService::executeQuery</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::Query &gt; query, std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; commit)=0</argsstring>
+        <name>executeQuery</name>
+        <qualifiedname>SysMLv2::API::IQueryService::executeQuery</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d8/dcd/class_sys_m_lv2_1_1_entities_1_1_query" kindref="compound">SysMLv2::Entities::Query</ref> &gt;</type>
+          <declname>query</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+          <declname>commit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>query</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IQueryService.h" line="85" column="29"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="services/src/interfaces/IQueryService.h" line="26" column="5" bodyfile="services/src/interfaces/IQueryService.h" bodystart="26" bodyend="86"/>
+    <listofallmembers>
+      <member refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a8673a987cd74faa0e6578cca19ef806e" prot="public" virt="pure-virtual"><scope>SysMLv2::API::IQueryService</scope><name>createQuery</name></member>
+      <member refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a0a0a3104baa72e7d1ff79a0172e3cbc7" prot="public" virt="pure-virtual"><scope>SysMLv2::API::IQueryService</scope><name>deleteQuery</name></member>
+      <member refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1ac26c931299eaa8a0dd0a49240741b716" prot="public" virt="pure-virtual"><scope>SysMLv2::API::IQueryService</scope><name>executeQuery</name></member>
+      <member refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1ae52d2e1b71a88326fe0eda15efe61578" prot="public" virt="pure-virtual"><scope>SysMLv2::API::IQueryService</scope><name>executeQueryById</name></member>
+      <member refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a1389f9981436289d3112a8ea08335ae7" prot="public" virt="pure-virtual"><scope>SysMLv2::API::IQueryService</scope><name>getQueries</name></member>
+      <member refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1af88f152027f34f678815f7f3d8db5673" prot="public" virt="pure-virtual"><scope>SysMLv2::API::IQueryService</scope><name>getQueryById</name></member>
+      <member refid="d8/d0e/class_sys_m_lv2_1_1_a_p_i_1_1_i_query_service_1a93e8f8174d161a84a7d94d4e915b1b65" prot="public" virt="pure-virtual"><scope>SysMLv2::API::IQueryService</scope><name>updateQuery</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

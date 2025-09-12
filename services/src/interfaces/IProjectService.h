@@ -20,7 +20,7 @@
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     class Project;
     class Branch;
 }
@@ -37,19 +37,21 @@ namespace SysMLv2::API {
      */
     class SYSMLV2SERVICE_EXPORT IProjectService {
     public:
+        virtual ~IProjectService() = default;
+
         /**
          * Gets all Projects
          * @return A vector with all projects as pointer.
          * @see std::vector<T>
          */
-        virtual std::vector<std::shared_ptr<SysMLv2::Entities::Project>> getProjects() =  0;
+        virtual std::vector<std::shared_ptr<SysMLv2::REST::Project>> getProjects() =  0;
 
         /**
          * Gets a project from the given UUID.
          * @param projectId the project id of the project to search for.
          * @return A pointer to the given project.
          */
-        virtual std::shared_ptr<SysMLv2::Entities::Project> getProjectById(boost::uuids::uuid projectId) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Project> getProjectById(boost::uuids::uuid projectId) = 0;
 
         /**
          * Creates a project with the given name and description.
@@ -57,7 +59,7 @@ namespace SysMLv2::API {
          * @param description Description of the project as std::string
          * @return A Pointer to the new project.
          */
-        virtual std::shared_ptr<SysMLv2::Entities::Project> createProject(std::string projectName, std::string description = "") = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Project> createProject(std::string projectName, std::string description = "") = 0;
 
         /**
          * Updates a project with the given branch. This can be update with the project Name, Description and default branch.
@@ -67,14 +69,14 @@ namespace SysMLv2::API {
          * @param branch Pointer to the new default branch.
          * @return A Pointer to the updated project.
          */
-        virtual std::shared_ptr<SysMLv2::Entities::Project> updateProject(boost::uuids::uuid projectId, std::string projectName = "", std::string description = "", std::shared_ptr<SysMLv2::Entities::Branch> branch = nullptr) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Project> updateProject(boost::uuids::uuid projectId, std::string projectName = "", std::string description = "", std::shared_ptr<SysMLv2::REST::Branch> branch = nullptr) = 0;
 
         /**
          * Deletes a project. It is to remember that elements inside of a project should also be deleted to, except they are used inside of references
          * @param projectId The id of the project, that is to be deleted
          * @return The project that is now deleted inside of the controller. You should delete the project it self.
          */
-        virtual std::shared_ptr<SysMLv2::Entities::Project> deleteProject(boost::uuids::uuid projectId) = 0;
+        virtual std::shared_ptr<SysMLv2::REST::Project> deleteProject(boost::uuids::uuid projectId) = 0;
     };
 }
 

@@ -5,6 +5,6 @@
 #include "ExternalData.h"
 
 namespace SysMLv2 {
-    namespace Entities {
+    namespace REST {
     } // Entities
 } // SysMLv2

@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_JSONENTITIES_H
-#define DIGITALTWIN_JSONENTITIES_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -18,7 +17,7 @@
 // Forwarding
 //---------------------------------------------------------
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     // Generally used
     const std::string JSON_ID_ENTITY = "@id";
     const std::string JSON_TYPE_ENTITY = "@type";
@@ -52,6 +51,7 @@ namespace SysMLv2::Entities {
 
     // Used for Commit
     const std::string JSON_CHANGE_ENTITY = "change";
+    const std::string JSON_TIMESTAMP_ENTITY = "timestamp";
 
     // Used for the element implementation of the Agila Backend
     const std::string JSON_SHORT_NAME_ENTITY = "shortName";
@@ -110,6 +110,3 @@ namespace SysMLv2::Entities {
     const std::string DATA_VERSION_TYPE = "dataversion";
     const std::string PAYLOAD_TYPE = "payload";
 }
-
-
-#endif //DIGITALTWIN_JSONENTITIES_H

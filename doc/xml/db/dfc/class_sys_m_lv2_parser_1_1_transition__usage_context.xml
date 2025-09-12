@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Transition_usageContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a5ead8c6c34025ddcacda173f42e3126d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Transition_usageContext::Transition_usageContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Transition_usageContext</name>
+        <qualifiedname>SysMLv2Parser::Transition_usageContext::Transition_usageContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4158" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19427" bodyend="19429"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1adcecf7bc397ae7e186f868db546aaab5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Transition_usageContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Transition_usageContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4159" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19472" bodyend="19474"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a9e0e208987fb11e8c7f796098601cd5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Transition_usageContext::KEYWORD_TRANSISTION</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_TRANSISTION</name>
+        <qualifiedname>SysMLv2Parser::Transition_usageContext::KEYWORD_TRANSISTION</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4160" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19431" bodyend="19433"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a28ce1c55bdf22e9856036156be104d70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d29/class_sys_m_lv2_parser_1_1_feature__chain__member_context" kindref="compound">Feature_chain_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Feature_chain_memberContext * SysMLv2Parser::Transition_usageContext::feature_chain_member</definition>
+        <argsstring>()</argsstring>
+        <name>feature_chain_member</name>
+        <qualifiedname>SysMLv2Parser::Transition_usageContext::feature_chain_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4161" column="33" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19435" bodyend="19437"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a1e83fa2329bcae63b0d1bdecda3663da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Transition_usageContext::KEYWORD_THEN</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_THEN</name>
+        <qualifiedname>SysMLv2Parser::Transition_usageContext::KEYWORD_THEN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4162" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19439" bodyend="19441"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a7574ca60c8ed1d854412594cc0b486f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/da3/class_sys_m_lv2_parser_1_1_transition__succession__member_context" kindref="compound">Transition_succession_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Transition_succession_memberContext * SysMLv2Parser::Transition_usageContext::transition_succession_member</definition>
+        <argsstring>()</argsstring>
+        <name>transition_succession_member</name>
+        <qualifiedname>SysMLv2Parser::Transition_usageContext::transition_succession_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4163" column="41" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19443" bodyend="19445"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1aea88cac04b018b81a4d07be53940592d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/d01/class_sys_m_lv2_parser_1_1_action__body_context" kindref="compound">Action_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Action_bodyContext * SysMLv2Parser::Transition_usageContext::action_body</definition>
+        <argsstring>()</argsstring>
+        <name>action_body</name>
+        <qualifiedname>SysMLv2Parser::Transition_usageContext::action_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4164" column="24" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19447" bodyend="19449"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a4a9b09091791825b6180f5097ecde814" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d41/class_sys_m_lv2_parser_1_1_usage__declaration_context" kindref="compound">Usage_declarationContext</ref> *</type>
+        <definition>SysMLv2Parser::Usage_declarationContext * SysMLv2Parser::Transition_usageContext::usage_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>usage_declaration</name>
+        <qualifiedname>SysMLv2Parser::Transition_usageContext::usage_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4165" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19451" bodyend="19453"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1ac49f536bb6c22e532db11f79011892a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Transition_usageContext::KEYWORD_FROM</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_FROM</name>
+        <qualifiedname>SysMLv2Parser::Transition_usageContext::KEYWORD_FROM</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4166" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19455" bodyend="19457"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a74b58ae08459b210507ce338a130214a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd1/class_sys_m_lv2_parser_1_1_trigger__action__member_context" kindref="compound">Trigger_action_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Trigger_action_memberContext * SysMLv2Parser::Transition_usageContext::trigger_action_member</definition>
+        <argsstring>()</argsstring>
+        <name>trigger_action_member</name>
+        <qualifiedname>SysMLv2Parser::Transition_usageContext::trigger_action_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4167" column="34" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19459" bodyend="19461"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a9207cd602d9ea4ba9db0f96901f1400d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/d64/class_sys_m_lv2_parser_1_1_guard__expression__member_context" kindref="compound">Guard_expression_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Guard_expression_memberContext * SysMLv2Parser::Transition_usageContext::guard_expression_member</definition>
+        <argsstring>()</argsstring>
+        <name>guard_expression_member</name>
+        <qualifiedname>SysMLv2Parser::Transition_usageContext::guard_expression_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4168" column="36" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19463" bodyend="19465"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1afab0e2ef3bb9855ac239f90d9cb89eda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/d0c/class_sys_m_lv2_parser_1_1_effect__behavior__member_context" kindref="compound">Effect_behavior_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Effect_behavior_memberContext * SysMLv2Parser::Transition_usageContext::effect_behavior_member</definition>
+        <argsstring>()</argsstring>
+        <name>effect_behavior_member</name>
+        <qualifiedname>SysMLv2Parser::Transition_usageContext::effect_behavior_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4169" column="35" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19467" bodyend="19469"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a353fc2ff1653a87d27651bd1840c02d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Transition_usageContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Transition_usageContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4171" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19476" bodyend="19480"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1aa930ca98d208ada63e6723894dc1cfbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Transition_usageContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Transition_usageContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4172" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="19482" bodyend="19486"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Transition_usageContext</label>
+        <link refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Transition_usageContext</label>
+        <link refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4156" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="4156" bodyend="4174"/>
+    <listofallmembers>
+      <member refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1aea88cac04b018b81a4d07be53940592d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Transition_usageContext</scope><name>action_body</name></member>
+      <member refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1afab0e2ef3bb9855ac239f90d9cb89eda" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Transition_usageContext</scope><name>effect_behavior_member</name></member>
+      <member refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a353fc2ff1653a87d27651bd1840c02d4" prot="public" virt="virtual"><scope>SysMLv2Parser::Transition_usageContext</scope><name>enterRule</name></member>
+      <member refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1aa930ca98d208ada63e6723894dc1cfbb" prot="public" virt="virtual"><scope>SysMLv2Parser::Transition_usageContext</scope><name>exitRule</name></member>
+      <member refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a28ce1c55bdf22e9856036156be104d70" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Transition_usageContext</scope><name>feature_chain_member</name></member>
+      <member refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1adcecf7bc397ae7e186f868db546aaab5" prot="public" virt="virtual"><scope>SysMLv2Parser::Transition_usageContext</scope><name>getRuleIndex</name></member>
+      <member refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a9207cd602d9ea4ba9db0f96901f1400d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Transition_usageContext</scope><name>guard_expression_member</name></member>
+      <member refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1ac49f536bb6c22e532db11f79011892a9" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Transition_usageContext</scope><name>KEYWORD_FROM</name></member>
+      <member refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a1e83fa2329bcae63b0d1bdecda3663da" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Transition_usageContext</scope><name>KEYWORD_THEN</name></member>
+      <member refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a9e0e208987fb11e8c7f796098601cd5e" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Transition_usageContext</scope><name>KEYWORD_TRANSISTION</name></member>
+      <member refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a7574ca60c8ed1d854412594cc0b486f5" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Transition_usageContext</scope><name>transition_succession_member</name></member>
+      <member refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a5ead8c6c34025ddcacda173f42e3126d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Transition_usageContext</scope><name>Transition_usageContext</name></member>
+      <member refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a74b58ae08459b210507ce338a130214a" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Transition_usageContext</scope><name>trigger_action_member</name></member>
+      <member refid="db/dfc/class_sys_m_lv2_parser_1_1_transition__usage_context_1a4a9b09091791825b6180f5097ecde814" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Transition_usageContext</scope><name>usage_declaration</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

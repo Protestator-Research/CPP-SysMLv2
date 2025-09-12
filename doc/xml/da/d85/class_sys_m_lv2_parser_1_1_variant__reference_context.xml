@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Variant_referenceContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1a017f366c70c04b9e088cddb9999c4de7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Variant_referenceContext::Variant_referenceContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Variant_referenceContext</name>
+        <qualifiedname>SysMLv2Parser::Variant_referenceContext::Variant_referenceContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1592" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6190" bodyend="6192"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1ad82e5e3f65328084f15e627d703571b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Variant_referenceContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Variant_referenceContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1593" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6211" bodyend="6213"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1a42f8f1b87b2bc268adff7e7476502a5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/d89/class_sys_m_lv2_parser_1_1_owned__reference__subsetting_context" kindref="compound">Owned_reference_subsettingContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_reference_subsettingContext * SysMLv2Parser::Variant_referenceContext::owned_reference_subsetting</definition>
+        <argsstring>()</argsstring>
+        <name>owned_reference_subsetting</name>
+        <qualifiedname>SysMLv2Parser::Variant_referenceContext::owned_reference_subsetting</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1594" column="39" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6194" bodyend="6196"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1a2a7ae4d48becfdd20677e73458880c15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/dc9/class_sys_m_lv2_parser_1_1_usage__body_context" kindref="compound">Usage_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Usage_bodyContext * SysMLv2Parser::Variant_referenceContext::usage_body</definition>
+        <argsstring>()</argsstring>
+        <name>usage_body</name>
+        <qualifiedname>SysMLv2Parser::Variant_referenceContext::usage_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1595" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6198" bodyend="6200"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1abfecb2a2ee9a19b23249983cb2ebd6ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d7/dd0/class_sys_m_lv2_parser_1_1_feature__specilization_context" kindref="compound">Feature_specilizationContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Feature_specilizationContext * &gt; SysMLv2Parser::Variant_referenceContext::feature_specilization</definition>
+        <argsstring>()</argsstring>
+        <name>feature_specilization</name>
+        <qualifiedname>SysMLv2Parser::Variant_referenceContext::feature_specilization</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1596" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6202" bodyend="6204"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1ac9236422552e3c49b712f469b4970c14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/dd0/class_sys_m_lv2_parser_1_1_feature__specilization_context" kindref="compound">Feature_specilizationContext</ref> *</type>
+        <definition>SysMLv2Parser::Feature_specilizationContext * SysMLv2Parser::Variant_referenceContext::feature_specilization</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>feature_specilization</name>
+        <qualifiedname>SysMLv2Parser::Variant_referenceContext::feature_specilization</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1597" column="34" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6206" bodyend="6208"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1a974a1235fc34f591c9f297381da548c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Variant_referenceContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Variant_referenceContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1599" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6215" bodyend="6219"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1a17c436d40cb36686ac21b6c40794821d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Variant_referenceContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Variant_referenceContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1600" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="6221" bodyend="6225"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Variant_referenceContext</label>
+        <link refid="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Variant_referenceContext</label>
+        <link refid="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1590" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="1590" bodyend="1602"/>
+    <listofallmembers>
+      <member refid="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1a974a1235fc34f591c9f297381da548c0" prot="public" virt="virtual"><scope>SysMLv2Parser::Variant_referenceContext</scope><name>enterRule</name></member>
+      <member refid="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1a17c436d40cb36686ac21b6c40794821d" prot="public" virt="virtual"><scope>SysMLv2Parser::Variant_referenceContext</scope><name>exitRule</name></member>
+      <member refid="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1abfecb2a2ee9a19b23249983cb2ebd6ae" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_referenceContext</scope><name>feature_specilization</name></member>
+      <member refid="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1ac9236422552e3c49b712f469b4970c14" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_referenceContext</scope><name>feature_specilization</name></member>
+      <member refid="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1ad82e5e3f65328084f15e627d703571b1" prot="public" virt="virtual"><scope>SysMLv2Parser::Variant_referenceContext</scope><name>getRuleIndex</name></member>
+      <member refid="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1a42f8f1b87b2bc268adff7e7476502a5d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_referenceContext</scope><name>owned_reference_subsetting</name></member>
+      <member refid="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1a2a7ae4d48becfdd20677e73458880c15" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_referenceContext</scope><name>usage_body</name></member>
+      <member refid="da/d85/class_sys_m_lv2_parser_1_1_variant__reference_context_1a017f366c70c04b9e088cddb9999c4de7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Variant_referenceContext</scope><name>Variant_referenceContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

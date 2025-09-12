@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_EXTERNALDATA_H
-#define DIGITALTWIN_EXTERNALDATA_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -19,10 +18,8 @@
 // Forwarding
 //---------------------------------------------------------
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     class SYSMLV2REST_EXPORT ExternalData : public Data{
 
     };
 } // SysMLv2
-
-#endif //DIGITALTWIN_EXTERNALDATA_H

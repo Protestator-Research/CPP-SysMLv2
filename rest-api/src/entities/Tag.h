@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_TAG_H
-#define DIGITALTWIN_TAG_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -19,7 +18,7 @@
 // Forwarding
 //---------------------------------------------------------
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
 
     /**
      * Represents an abstract baseclass that is used for the SysMLv2 API
@@ -38,5 +37,3 @@ namespace SysMLv2::Entities {
 
     };
 }
-
-#endif //DIGITALTWIN_TAG_H

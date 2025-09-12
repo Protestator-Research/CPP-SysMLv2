@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_ELEMENT_H
-#define DIGITALTWIN_ELEMENT_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -21,11 +20,11 @@
 // Forwarding
 //---------------------------------------------------------
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     class Identification;
 }
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     /**
      * This class is not an exact, but a compatible Representation of the SysMLv2 Element class. This implementation
      * stems from the AGILA Backend implementation of the Element class.
@@ -96,9 +95,8 @@ namespace SysMLv2::Entities {
         std::vector<std::shared_ptr<Identification>> target();
 
         std::string getMarkdownString();
-    protected:
 
-    private:
+    protected:
         void serializeNullString(nlohmann::json& json, const std::string& value, const std::string& entity_value);
 
         std::string Name;
@@ -135,6 +133,4 @@ namespace SysMLv2::Entities {
         std::vector<std::shared_ptr<Identification>> Source;
         std::vector<std::shared_ptr<Identification>> Target;
     };
-} // SysMLv2
-
-#endif //DIGITALTWIN_ELEMENT_H
+} // SysMLv2::Entities

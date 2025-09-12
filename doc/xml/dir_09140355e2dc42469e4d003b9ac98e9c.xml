@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_09140355e2dc42469e4d003b9ac98e9c" kind="dir">
+    <compoundname>kerml/src/kernel/datatypes</compoundname>
+    <innerfile refid="de/ddd/_data_type_8cpp">DataType.cpp</innerfile>
+    <innerfile refid="db/da7/_data_type_8h">DataType.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="kerml/src/kernel/datatypes/"/>
+  </compounddef>
+</doxygen>

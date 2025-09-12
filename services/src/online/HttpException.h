@@ -8,6 +8,8 @@
 #include <exception>
 #include "../sysmlv2service_global.h"
 
+#include "../sysmlv2service_global.h"
+
 namespace SysMLv2::API::EXCEPTIONS {
     class SYSMLV2SERVICE_EXPORT HTTPException : std::exception {
     public:

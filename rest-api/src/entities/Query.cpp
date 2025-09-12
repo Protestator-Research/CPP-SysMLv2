@@ -4,7 +4,7 @@
 
 #include "Query.h"
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     Query::Query(std::string jsonString) : Record(jsonString) {
 
     }

@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d0/d0c/class_sys_m_lv2_parser_1_1_item__flow__feature__member_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Item_flow_feature_memberContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d0/d0c/class_sys_m_lv2_parser_1_1_item__flow__feature__member_context_1a31be066a07b2698343b73750cc4a29e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Item_flow_feature_memberContext::Item_flow_feature_memberContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Item_flow_feature_memberContext</name>
+        <qualifiedname>SysMLv2Parser::Item_flow_feature_memberContext::Item_flow_feature_memberContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8790" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43124" bodyend="43126"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d0c/class_sys_m_lv2_parser_1_1_item__flow__feature__member_context_1aaca74d6b1296f1774964ee4d0efe2513" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Item_flow_feature_memberContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Item_flow_feature_memberContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8791" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43133" bodyend="43135"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d0c/class_sys_m_lv2_parser_1_1_item__flow__feature__member_context_1a94fc4e4758f22cb6601deb44d6966e88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d9e/class_sys_m_lv2_parser_1_1_item__flow__feature_context" kindref="compound">Item_flow_featureContext</ref> *</type>
+        <definition>SysMLv2Parser::Item_flow_featureContext * SysMLv2Parser::Item_flow_feature_memberContext::item_flow_feature</definition>
+        <argsstring>()</argsstring>
+        <name>item_flow_feature</name>
+        <qualifiedname>SysMLv2Parser::Item_flow_feature_memberContext::item_flow_feature</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8792" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43128" bodyend="43130"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d0c/class_sys_m_lv2_parser_1_1_item__flow__feature__member_context_1a86d0afebfea15a09cec52b02a8675eff" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Item_flow_feature_memberContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Item_flow_feature_memberContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8794" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43137" bodyend="43141"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d0c/class_sys_m_lv2_parser_1_1_item__flow__feature__member_context_1a980871bd185df6940d26e90d9d809349" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Item_flow_feature_memberContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Item_flow_feature_memberContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8795" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="43143" bodyend="43147"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Item_flow_feature_memberContext</label>
+        <link refid="d0/d0c/class_sys_m_lv2_parser_1_1_item__flow__feature__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Item_flow_feature_memberContext</label>
+        <link refid="d0/d0c/class_sys_m_lv2_parser_1_1_item__flow__feature__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8788" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="8788" bodyend="8797"/>
+    <listofallmembers>
+      <member refid="d0/d0c/class_sys_m_lv2_parser_1_1_item__flow__feature__member_context_1a86d0afebfea15a09cec52b02a8675eff" prot="public" virt="virtual"><scope>SysMLv2Parser::Item_flow_feature_memberContext</scope><name>enterRule</name></member>
+      <member refid="d0/d0c/class_sys_m_lv2_parser_1_1_item__flow__feature__member_context_1a980871bd185df6940d26e90d9d809349" prot="public" virt="virtual"><scope>SysMLv2Parser::Item_flow_feature_memberContext</scope><name>exitRule</name></member>
+      <member refid="d0/d0c/class_sys_m_lv2_parser_1_1_item__flow__feature__member_context_1aaca74d6b1296f1774964ee4d0efe2513" prot="public" virt="virtual"><scope>SysMLv2Parser::Item_flow_feature_memberContext</scope><name>getRuleIndex</name></member>
+      <member refid="d0/d0c/class_sys_m_lv2_parser_1_1_item__flow__feature__member_context_1a94fc4e4758f22cb6601deb44d6966e88" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Item_flow_feature_memberContext</scope><name>item_flow_feature</name></member>
+      <member refid="d0/d0c/class_sys_m_lv2_parser_1_1_item__flow__feature__member_context_1a31be066a07b2698343b73750cc4a29e6" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Item_flow_feature_memberContext</scope><name>Item_flow_feature_memberContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

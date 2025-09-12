@@ -1,0 +1,150 @@
+.TH "SysMLv2::API::IQueryService" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::API::IQueryService
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::Query\fP > > \fBgetQueries\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Query\fP > \fBgetQueryById\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, boost::uuids::uuid queryId)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Query\fP > \fBcreateQuery\fP (std::string name, std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::vector< std::string > select, std::vector< std::shared_ptr< \fBSysMLv2::Entities::Data\fP > > scope, std::shared_ptr< SysMLv2::Entities::Constraint > where, std::vector< std::string > orderBy)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Query\fP > \fBupdateQuery\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Query\fP > updatedQuery)=0"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Query\fP > \fBdeleteQuery\fP (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, boost::uuids::uuid queryId)=0"
+.br
+.ti -1c
+.RI "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::Data\fP > > \fBexecuteQueryById\fP (boost::uuids::uuid queryId, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit)=0"
+.br
+.ti -1c
+.RI "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::Data\fP > > \fBexecuteQuery\fP (std::shared_ptr< \fBSysMLv2::Entities::Query\fP > query, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit)=0"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Query\fP > SysMLv2::API::IQueryService::createQuery (std::string name, std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::vector< std::string > select, std::vector< std::shared_ptr< \fBSysMLv2::Entities::Data\fP > > scope, std::shared_ptr< SysMLv2::Entities::Constraint > where, std::vector< std::string > orderBy)\fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP 
+.br
+\fIproject\fP 
+.br
+\fIselect\fP 
+.br
+\fIscope\fP 
+.br
+\fIwhere\fP 
+.br
+\fIorderBy\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Query\fP > SysMLv2::API::IQueryService::deleteQuery (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, boost::uuids::uuid queryId)\fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.br
+\fIqueryId\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::Data\fP > > SysMLv2::API::IQueryService::executeQuery (std::shared_ptr< \fBSysMLv2::Entities::Query\fP > query, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit)\fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIquery\fP 
+.br
+\fIcommit\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::Data\fP > > SysMLv2::API::IQueryService::executeQueryById (boost::uuids::uuid queryId, std::shared_ptr< \fBSysMLv2::Entities::Commit\fP > commit)\fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIqueryId\fP 
+.br
+\fIcommit\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::Query\fP > > SysMLv2::API::IQueryService::getQueries (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project)\fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Query\fP > SysMLv2::API::IQueryService::getQueryById (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, boost::uuids::uuid queryId)\fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.br
+\fIqueryId\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "virtual std::shared_ptr< \fBSysMLv2::Entities::Query\fP > SysMLv2::API::IQueryService::updateQuery (std::shared_ptr< \fBSysMLv2::Entities::Project\fP > project, std::shared_ptr< \fBSysMLv2::Entities::Query\fP > updatedQuery)\fR [pure virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIproject\fP 
+.br
+\fIupdatedQuery\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

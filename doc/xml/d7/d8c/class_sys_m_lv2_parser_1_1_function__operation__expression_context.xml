@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Function_operation_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1a2dcd81a0dccc6d82e374aadefac45e11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Function_operation_expressionContext::Function_operation_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Function_operation_expressionContext</name>
+        <qualifiedname>SysMLv2Parser::Function_operation_expressionContext::Function_operation_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8140" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="40034" bodyend="40036"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1a45181b90464a0a8991e201065197148c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Function_operation_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Function_operation_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8141" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="40059" bodyend="40061"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1aef7983740e4711ab011644c29a78ebb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Function_operation_expressionContext::SYMBOL_ARROOW</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_ARROOW</name>
+        <qualifiedname>SysMLv2Parser::Function_operation_expressionContext::SYMBOL_ARROOW</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8142" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="40038" bodyend="40040"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1aff7e6fa8c146d3e2f2552fd771dc5859" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/de7/class_sys_m_lv2_parser_1_1_reference__typing_context" kindref="compound">Reference_typingContext</ref> *</type>
+        <definition>SysMLv2Parser::Reference_typingContext * SysMLv2Parser::Function_operation_expressionContext::reference_typing</definition>
+        <argsstring>()</argsstring>
+        <name>reference_typing</name>
+        <qualifiedname>SysMLv2Parser::Function_operation_expressionContext::reference_typing</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8143" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="40042" bodyend="40044"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1aba644b7a930502a94239946f7a9e6a42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/dac/class_sys_m_lv2_parser_1_1_body__argument__member_context" kindref="compound">Body_argument_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Body_argument_memberContext * SysMLv2Parser::Function_operation_expressionContext::body_argument_member</definition>
+        <argsstring>()</argsstring>
+        <name>body_argument_member</name>
+        <qualifiedname>SysMLv2Parser::Function_operation_expressionContext::body_argument_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8144" column="33" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="40046" bodyend="40048"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1a399a29e3524d041711a3c70bb503d253" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d18/class_sys_m_lv2_parser_1_1_function__reference__argument__member_context" kindref="compound">Function_reference_argument_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Function_reference_argument_memberContext * SysMLv2Parser::Function_operation_expressionContext::function_reference_argument_member</definition>
+        <argsstring>()</argsstring>
+        <name>function_reference_argument_member</name>
+        <qualifiedname>SysMLv2Parser::Function_operation_expressionContext::function_reference_argument_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8145" column="47" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="40050" bodyend="40052"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1a1417b8d17add5c1bf2268fe75ccd94fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d43/class_sys_m_lv2_parser_1_1_argument__expression_context" kindref="compound">Argument_expressionContext</ref> *</type>
+        <definition>SysMLv2Parser::Argument_expressionContext * SysMLv2Parser::Function_operation_expressionContext::argument_expression</definition>
+        <argsstring>()</argsstring>
+        <name>argument_expression</name>
+        <qualifiedname>SysMLv2Parser::Function_operation_expressionContext::argument_expression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8146" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="40054" bodyend="40056"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1ae5b6b0b280d88436239546457e07bebe" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Function_operation_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Function_operation_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8148" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="40063" bodyend="40067"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1a9302cdb9abae28dcb0be5aa426262ea3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Function_operation_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Function_operation_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8149" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="40069" bodyend="40073"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Function_operation_expressionContext</label>
+        <link refid="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Function_operation_expressionContext</label>
+        <link refid="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8138" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="8138" bodyend="8151"/>
+    <listofallmembers>
+      <member refid="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1a1417b8d17add5c1bf2268fe75ccd94fa" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Function_operation_expressionContext</scope><name>argument_expression</name></member>
+      <member refid="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1aba644b7a930502a94239946f7a9e6a42" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Function_operation_expressionContext</scope><name>body_argument_member</name></member>
+      <member refid="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1ae5b6b0b280d88436239546457e07bebe" prot="public" virt="virtual"><scope>SysMLv2Parser::Function_operation_expressionContext</scope><name>enterRule</name></member>
+      <member refid="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1a9302cdb9abae28dcb0be5aa426262ea3" prot="public" virt="virtual"><scope>SysMLv2Parser::Function_operation_expressionContext</scope><name>exitRule</name></member>
+      <member refid="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1a2dcd81a0dccc6d82e374aadefac45e11" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Function_operation_expressionContext</scope><name>Function_operation_expressionContext</name></member>
+      <member refid="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1a399a29e3524d041711a3c70bb503d253" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Function_operation_expressionContext</scope><name>function_reference_argument_member</name></member>
+      <member refid="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1a45181b90464a0a8991e201065197148c" prot="public" virt="virtual"><scope>SysMLv2Parser::Function_operation_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1aff7e6fa8c146d3e2f2552fd771dc5859" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Function_operation_expressionContext</scope><name>reference_typing</name></member>
+      <member refid="d7/d8c/class_sys_m_lv2_parser_1_1_function__operation__expression_context_1aef7983740e4711ab011644c29a78ebb4" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Function_operation_expressionContext</scope><name>SYMBOL_ARROOW</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

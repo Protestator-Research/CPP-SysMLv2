@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Metadata_featureContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1abfc138fbf64b253b6d2b4ca3aabbea32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Metadata_featureContext::Metadata_featureContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Metadata_featureContext</name>
+        <qualifiedname>SysMLv2Parser::Metadata_featureContext::Metadata_featureContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8992" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="44108" bodyend="44110"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a6753b7933e82ab8bbc331dc769446f9b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Metadata_featureContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Metadata_featureContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8993" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="44149" bodyend="44151"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a99f40f7cf97a030387d82c7a527eeea7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/da6/class_sys_m_lv2_parser_1_1_metadata__feature__declaration_context" kindref="compound">Metadata_feature_declarationContext</ref> *</type>
+        <definition>SysMLv2Parser::Metadata_feature_declarationContext * SysMLv2Parser::Metadata_featureContext::metadata_feature_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>metadata_feature_declaration</name>
+        <qualifiedname>SysMLv2Parser::Metadata_featureContext::metadata_feature_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8994" column="41" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="44112" bodyend="44114"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1abcd8628ded4251870c0c39184dc8e68c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Metadata_featureContext::SYMBOL_AT</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_AT</name>
+        <qualifiedname>SysMLv2Parser::Metadata_featureContext::SYMBOL_AT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8995" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="44116" bodyend="44118"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1aaa5457570529de0072b2d3fbd5452ca3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Metadata_featureContext::KEYWORD_METADATA</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_METADATA</name>
+        <qualifiedname>SysMLv2Parser::Metadata_featureContext::KEYWORD_METADATA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8996" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="44120" bodyend="44122"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a041da8b05886ead247b09fa42cc8eb67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Metadata_featureContext::KEYWORD_ABOUT</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_ABOUT</name>
+        <qualifiedname>SysMLv2Parser::Metadata_featureContext::KEYWORD_ABOUT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8997" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="44124" bodyend="44126"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a0d354f2b9febd36e886b2eb517cadb70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d5/d3d/class_sys_m_lv2_parser_1_1_annotation_context" kindref="compound">AnnotationContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::AnnotationContext * &gt; SysMLv2Parser::Metadata_featureContext::annotation</definition>
+        <argsstring>()</argsstring>
+        <name>annotation</name>
+        <qualifiedname>SysMLv2Parser::Metadata_featureContext::annotation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8998" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="44128" bodyend="44130"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a6ce0ebd6c7334851c8937604f4b014ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/d3d/class_sys_m_lv2_parser_1_1_annotation_context" kindref="compound">AnnotationContext</ref> *</type>
+        <definition>SysMLv2Parser::AnnotationContext * SysMLv2Parser::Metadata_featureContext::annotation</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>annotation</name>
+        <qualifiedname>SysMLv2Parser::Metadata_featureContext::annotation</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8999" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="44132" bodyend="44134"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1aa2e9dea8ce30d15fae7df776b4ccf214" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d2/d81/class_sys_m_lv2_parser_1_1_prefix__metadata__member_context" kindref="compound">Prefix_metadata_memberContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Prefix_metadata_memberContext * &gt; SysMLv2Parser::Metadata_featureContext::prefix_metadata_member</definition>
+        <argsstring>()</argsstring>
+        <name>prefix_metadata_member</name>
+        <qualifiedname>SysMLv2Parser::Metadata_featureContext::prefix_metadata_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="9000" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="44136" bodyend="44138"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a65c49e798851905bc7fcdcae8218130b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d81/class_sys_m_lv2_parser_1_1_prefix__metadata__member_context" kindref="compound">Prefix_metadata_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Prefix_metadata_memberContext * SysMLv2Parser::Metadata_featureContext::prefix_metadata_member</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>prefix_metadata_member</name>
+        <qualifiedname>SysMLv2Parser::Metadata_featureContext::prefix_metadata_member</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="9001" column="35" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="44140" bodyend="44142"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a0b7172f029813ca842291a0197e24e31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Metadata_featureContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>SysMLv2Parser::Metadata_featureContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="9002" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="44144" bodyend="44146"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a738af6447eaa9bf0abb9bc1a7ff5517b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Metadata_featureContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Metadata_featureContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="9004" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="44153" bodyend="44157"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1ae9560758f05310b1fbe2afacb1f4ae61" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Metadata_featureContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Metadata_featureContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="9005" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="44159" bodyend="44163"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Metadata_featureContext</label>
+        <link refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Metadata_featureContext</label>
+        <link refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8990" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="8990" bodyend="9007"/>
+    <listofallmembers>
+      <member refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a0d354f2b9febd36e886b2eb517cadb70" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadata_featureContext</scope><name>annotation</name></member>
+      <member refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a6ce0ebd6c7334851c8937604f4b014ed" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadata_featureContext</scope><name>annotation</name></member>
+      <member refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a738af6447eaa9bf0abb9bc1a7ff5517b" prot="public" virt="virtual"><scope>SysMLv2Parser::Metadata_featureContext</scope><name>enterRule</name></member>
+      <member refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1ae9560758f05310b1fbe2afacb1f4ae61" prot="public" virt="virtual"><scope>SysMLv2Parser::Metadata_featureContext</scope><name>exitRule</name></member>
+      <member refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a6753b7933e82ab8bbc331dc769446f9b" prot="public" virt="virtual"><scope>SysMLv2Parser::Metadata_featureContext</scope><name>getRuleIndex</name></member>
+      <member refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a041da8b05886ead247b09fa42cc8eb67" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadata_featureContext</scope><name>KEYWORD_ABOUT</name></member>
+      <member refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1aaa5457570529de0072b2d3fbd5452ca3" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadata_featureContext</scope><name>KEYWORD_METADATA</name></member>
+      <member refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a99f40f7cf97a030387d82c7a527eeea7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadata_featureContext</scope><name>metadata_feature_declaration</name></member>
+      <member refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1abfc138fbf64b253b6d2b4ca3aabbea32" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadata_featureContext</scope><name>Metadata_featureContext</name></member>
+      <member refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1aa2e9dea8ce30d15fae7df776b4ccf214" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadata_featureContext</scope><name>prefix_metadata_member</name></member>
+      <member refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a65c49e798851905bc7fcdcae8218130b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadata_featureContext</scope><name>prefix_metadata_member</name></member>
+      <member refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1abcd8628ded4251870c0c39184dc8e68c" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadata_featureContext</scope><name>SYMBOL_AT</name></member>
+      <member refid="d1/dfa/class_sys_m_lv2_parser_1_1_metadata__feature_context_1a0b7172f029813ca842291a0197e24e31" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Metadata_featureContext</scope><name>SYMBOL_COMMA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

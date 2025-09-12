@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_fd7da27072e1ba382b32f9c507e53144" kind="dir">
+    <compoundname>build/Debug</compoundname>
+    <innerdir refid="dir_78954a4ba382ed5380c1067b36774bb3">build/Debug/CMakeFiles</innerdir>
+    <innerdir refid="dir_692535d9c079343c3ab9874d9f8af59d">build/Debug/conformance-test</innerdir>
+    <innerdir refid="dir_c64ca92a0ab3a14acf101b4259615c5d">build/Debug/filehandling</innerdir>
+    <innerdir refid="dir_cfa1be960683754c2506f074d65c4406">build/Debug/kerml</innerdir>
+    <innerdir refid="dir_3c8286e0fdb72c0eb87feeeb272ee7a4">build/Debug/rest-api</innerdir>
+    <innerdir refid="dir_9b772541b9aabc8fe00f0ee32b214054">build/Debug/services</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/"/>
+  </compounddef>
+</doxygen>

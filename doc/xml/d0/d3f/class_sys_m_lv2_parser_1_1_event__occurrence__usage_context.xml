@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Event_occurrence_usageContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1a5f45884986d109491256b648edad1ae2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Event_occurrence_usageContext::Event_occurrence_usageContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Event_occurrence_usageContext</name>
+        <qualifiedname>SysMLv2Parser::Event_occurrence_usageContext::Event_occurrence_usageContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2060" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8895" bodyend="8897"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1aef2da791529597df8d4ddbbef71df6af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Event_occurrence_usageContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Event_occurrence_usageContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2061" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8928" bodyend="8930"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1aa3d02613144cab00ce960c84bd04df16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/dcb/class_sys_m_lv2_parser_1_1_occurrence__usage__prefix_context" kindref="compound">Occurrence_usage_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::Occurrence_usage_prefixContext * SysMLv2Parser::Event_occurrence_usageContext::occurrence_usage_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>occurrence_usage_prefix</name>
+        <qualifiedname>SysMLv2Parser::Event_occurrence_usageContext::occurrence_usage_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2062" column="36" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8899" bodyend="8901"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1a08f51118105d1e15a4ee23329cb1de6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Event_occurrence_usageContext::KEYWORD_EVENT</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_EVENT</name>
+        <qualifiedname>SysMLv2Parser::Event_occurrence_usageContext::KEYWORD_EVENT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2063" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8903" bodyend="8905"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1af6fa5d0e3f4d9932426ac71009c3512f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context" kindref="compound">Usage_completionContext</ref> *</type>
+        <definition>SysMLv2Parser::Usage_completionContext * SysMLv2Parser::Event_occurrence_usageContext::usage_completion</definition>
+        <argsstring>()</argsstring>
+        <name>usage_completion</name>
+        <qualifiedname>SysMLv2Parser::Event_occurrence_usageContext::usage_completion</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2064" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8907" bodyend="8909"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1a3278d3bbde60104697531a6b69b7f50a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/d89/class_sys_m_lv2_parser_1_1_owned__reference__subsetting_context" kindref="compound">Owned_reference_subsettingContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_reference_subsettingContext * SysMLv2Parser::Event_occurrence_usageContext::owned_reference_subsetting</definition>
+        <argsstring>()</argsstring>
+        <name>owned_reference_subsetting</name>
+        <qualifiedname>SysMLv2Parser::Event_occurrence_usageContext::owned_reference_subsetting</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2065" column="39" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8911" bodyend="8913"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1ae7ea940696a724183ca37cb28cff35c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Event_occurrence_usageContext::KEYWORD_OCCURRENCE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_OCCURRENCE</name>
+        <qualifiedname>SysMLv2Parser::Event_occurrence_usageContext::KEYWORD_OCCURRENCE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2066" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8915" bodyend="8917"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1a7442303259b74ac664c0e8c7112aafb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d41/class_sys_m_lv2_parser_1_1_usage__declaration_context" kindref="compound">Usage_declarationContext</ref> *</type>
+        <definition>SysMLv2Parser::Usage_declarationContext * SysMLv2Parser::Event_occurrence_usageContext::usage_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>usage_declaration</name>
+        <qualifiedname>SysMLv2Parser::Event_occurrence_usageContext::usage_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2067" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8919" bodyend="8921"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1a6e04aee8312e0f0ea5bee32d0e7f6d41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/dcd/class_sys_m_lv2_parser_1_1_feature__specialization__part_context" kindref="compound">Feature_specialization_partContext</ref> *</type>
+        <definition>SysMLv2Parser::Feature_specialization_partContext * SysMLv2Parser::Event_occurrence_usageContext::feature_specialization_part</definition>
+        <argsstring>()</argsstring>
+        <name>feature_specialization_part</name>
+        <qualifiedname>SysMLv2Parser::Event_occurrence_usageContext::feature_specialization_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2068" column="40" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8923" bodyend="8925"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1a2b7ff9def2dca37649406bc1e3cdbf52" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Event_occurrence_usageContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Event_occurrence_usageContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2070" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8932" bodyend="8936"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1a6b158273d17a528909f1836eadbc0a1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Event_occurrence_usageContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Event_occurrence_usageContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2071" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="8938" bodyend="8942"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Event_occurrence_usageContext</label>
+        <link refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Event_occurrence_usageContext</label>
+        <link refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2058" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="2058" bodyend="2073"/>
+    <listofallmembers>
+      <member refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1a2b7ff9def2dca37649406bc1e3cdbf52" prot="public" virt="virtual"><scope>SysMLv2Parser::Event_occurrence_usageContext</scope><name>enterRule</name></member>
+      <member refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1a5f45884986d109491256b648edad1ae2" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Event_occurrence_usageContext</scope><name>Event_occurrence_usageContext</name></member>
+      <member refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1a6b158273d17a528909f1836eadbc0a1d" prot="public" virt="virtual"><scope>SysMLv2Parser::Event_occurrence_usageContext</scope><name>exitRule</name></member>
+      <member refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1a6e04aee8312e0f0ea5bee32d0e7f6d41" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Event_occurrence_usageContext</scope><name>feature_specialization_part</name></member>
+      <member refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1aef2da791529597df8d4ddbbef71df6af" prot="public" virt="virtual"><scope>SysMLv2Parser::Event_occurrence_usageContext</scope><name>getRuleIndex</name></member>
+      <member refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1a08f51118105d1e15a4ee23329cb1de6a" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Event_occurrence_usageContext</scope><name>KEYWORD_EVENT</name></member>
+      <member refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1ae7ea940696a724183ca37cb28cff35c1" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Event_occurrence_usageContext</scope><name>KEYWORD_OCCURRENCE</name></member>
+      <member refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1aa3d02613144cab00ce960c84bd04df16" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Event_occurrence_usageContext</scope><name>occurrence_usage_prefix</name></member>
+      <member refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1a3278d3bbde60104697531a6b69b7f50a" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Event_occurrence_usageContext</scope><name>owned_reference_subsetting</name></member>
+      <member refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1af6fa5d0e3f4d9932426ac71009c3512f" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Event_occurrence_usageContext</scope><name>usage_completion</name></member>
+      <member refid="d0/d3f/class_sys_m_lv2_parser_1_1_event__occurrence__usage_context_1a7442303259b74ac664c0e8c7112aafb1" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Event_occurrence_usageContext</scope><name>usage_declaration</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

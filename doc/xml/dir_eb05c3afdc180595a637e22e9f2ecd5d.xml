@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_eb05c3afdc180595a637e22e9f2ecd5d" kind="dir">
+    <compoundname>kerml/src/kernel/connectors</compoundname>
+    <innerfile refid="de/d8b/_binding_connector_8cpp">BindingConnector.cpp</innerfile>
+    <innerfile refid="df/ded/_binding_connector_8h">BindingConnector.h</innerfile>
+    <innerfile refid="db/d14/_connector_8cpp">Connector.cpp</innerfile>
+    <innerfile refid="d3/d04/_connector_8h">Connector.h</innerfile>
+    <innerfile refid="de/d07/connectors_2_expression_8cpp">Expression.cpp</innerfile>
+    <innerfile refid="d1/d26/connectors_2_expression_8h">Expression.h</innerfile>
+    <innerfile refid="d5/d7d/connectors_2_parameter_membership_8cpp">ParameterMembership.cpp</innerfile>
+    <innerfile refid="de/d2d/connectors_2_parameter_membership_8h">ParameterMembership.h</innerfile>
+    <innerfile refid="db/d3b/_succession_8cpp">Succession.cpp</innerfile>
+    <innerfile refid="d9/da0/_succession_8h">Succession.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="kerml/src/kernel/connectors/"/>
+  </compounddef>
+</doxygen>

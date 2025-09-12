@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_38f3bd8285a8f6aee89ed35cb8791fde" kind="dir">
+    <compoundname>services/src/interfaces</compoundname>
+    <innerfile refid="da/d88/_i_element_navigation_service_8h">IElementNavigationService.h</innerfile>
+    <innerfile refid="d2/d8f/_i_external_releationship_service_8h">IExternalReleationshipService.h</innerfile>
+    <innerfile refid="d8/df7/_i_project_service_8h">IProjectService.h</innerfile>
+    <innerfile refid="d9/d8b/_i_project_usage_service_8h">IProjectUsageService.h</innerfile>
+    <innerfile refid="df/d0e/_i_project_versioning_service_8h">IProjectVersioningService.h</innerfile>
+    <innerfile refid="d1/dfd/_i_query_service_8h">IQueryService.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="services/src/interfaces/"/>
+  </compounddef>
+</doxygen>

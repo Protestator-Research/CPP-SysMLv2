@@ -1,0 +1,1657 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d4/de4/class_ker_m_l_lexer" kind="class" language="C++" prot="public">
+    <compoundname>KerMLLexer</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::Lexer</basecompoundref>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfd" prot="public" static="no" strong="no">
+        <type></type>
+        <name></name>
+        <qualifiedname>KerMLLexer</qualifiedname>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda3cb71a0145f44498e3422e2e1ba713a6" prot="public">
+          <name>T__0</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda1d00797564c5875756bdd1a665c04666" prot="public">
+          <name>TYPED_BY</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda5342c08f60bc056590a10abc1535a17e" prot="public">
+          <name>SPECIALIZES</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda7d4ebb554e3f97abfa071d47e87f7c54" prot="public">
+          <name>SUBSETS</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda70fff6cbb655fe93804ae0ad10c1ba39" prot="public">
+          <name>REFERENCES</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda18dcf7e12dab5b7cfdac2e32b440b637" prot="public">
+          <name>REDEFINES</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdafff3f1059b7eebf8ccc6eedbe807d0e9" prot="public">
+          <name>CONJUNGATES</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda215cc4573553dbcab2186119188fff54" prot="public">
+          <name>KEYWORD_ABOUT</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdababa99f844b9188e84a23041201b0912" prot="public">
+          <name>KEYWORD_ABSTRACT</name>
+          <initializer>= 9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdabd99d83bbd3bacb428d9fdeac2f54b45" prot="public">
+          <name>KEYWORD_ALIAS</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda90bbbbb7b5a232fea5fc9078c896f8d0" prot="public">
+          <name>KEYWORD_ALL</name>
+          <initializer>= 11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda7c42da89195b6c27831cf4a748136410" prot="public">
+          <name>KEYWORD_AND</name>
+          <initializer>= 12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda21b881436c9da8469123077d1c7780f8" prot="public">
+          <name>KEYWORD_AS</name>
+          <initializer>= 13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda4c3d44b263c5803a3d068daff93e266a" prot="public">
+          <name>KEYWORD_ASSOC</name>
+          <initializer>= 14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda3b83c4bd3aa348a727c86b37f97294ff" prot="public">
+          <name>KEYWORD_BEHAVIOR</name>
+          <initializer>= 15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaddc372b446a7489ea363736e1032e50f" prot="public">
+          <name>KEYWORD_BINDING</name>
+          <initializer>= 16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaf898ceafe7e84898e76ec24d8c9d085d" prot="public">
+          <name>KEYWORD_BOOL</name>
+          <initializer>= 17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaf3d60abac93a6aa9e400670d5e1b40de" prot="public">
+          <name>KEYWORD_BY</name>
+          <initializer>= 18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdada11a25f5e9059413699af372a12c49a" prot="public">
+          <name>KEYWORD_CHAINS</name>
+          <initializer>= 19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaee551eb5bde3f9112038a707ed1e4d21" prot="public">
+          <name>KEYWORD_CLASS</name>
+          <initializer>= 20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdad9abbdc7e94ce8a46b28027efc16bc51" prot="public">
+          <name>KEYWORD_CLASSIFIER</name>
+          <initializer>= 21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda0de0b8dce5c63ef9265eb30df2fffd6c" prot="public">
+          <name>KEYWORD_COMMENT</name>
+          <initializer>= 22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda770b6d225a02cb480845ab67b46fcb39" prot="public">
+          <name>KEYWORD_COMPOSITE</name>
+          <initializer>= 23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda3f0d15ff01889e8b90b9309c1f6f2a3a" prot="public">
+          <name>KEYWORD_CONJUGATE</name>
+          <initializer>= 24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda08db91e7abdb7622c9a1722e0d2d9caf" prot="public">
+          <name>KEYWORD_CONJUGATES</name>
+          <initializer>= 25</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda9258335014c77f58888bdd122f70378b" prot="public">
+          <name>KEYWORD_CONJUGATION</name>
+          <initializer>= 26</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdab4b548d042a13bc1dbf949bd96f36bd2" prot="public">
+          <name>KEYWORD_CONNECTOR</name>
+          <initializer>= 27</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda6571d0c048bec9ff3fa6728972113937" prot="public">
+          <name>KEYWORD_DATATYPE</name>
+          <initializer>= 28</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdac640022338cbf7109713223c5bf693e3" prot="public">
+          <name>KEYWORD_DEFAULT</name>
+          <initializer>= 29</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaf5ab4794b3c5782e34bd8a45b99075da" prot="public">
+          <name>KEYWORD_DEPENDENCY</name>
+          <initializer>= 30</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda8d1f0cdd4ccf1bbe24ba0b07ed51e2dd" prot="public">
+          <name>KEYWORD_DERIVED</name>
+          <initializer>= 31</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda9775290b234c076bd5736988ec24294d" prot="public">
+          <name>KEYWORD_DIFFERENCES</name>
+          <initializer>= 32</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda26274e176cd3398215230072ff37fb0e" prot="public">
+          <name>KEYWORD_DISJOINING</name>
+          <initializer>= 33</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda9ea50f577bab53abc4eea1ca8faa0d7a" prot="public">
+          <name>KEYWORD_DISJOINT</name>
+          <initializer>= 34</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda10573ae1d92d1926481ecb4082f28daa" prot="public">
+          <name>KEYWORD_DOC</name>
+          <initializer>= 35</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaa176fb1826189a2fb6be4beb74fddeea" prot="public">
+          <name>KEYWORD_ELSE</name>
+          <initializer>= 36</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda1e7a376b7661a2b59a3a6b6c068c127e" prot="public">
+          <name>KEYWORD_END</name>
+          <initializer>= 37</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda8f08c3594d69a9fb6adfe181839c5cfc" prot="public">
+          <name>KEYWORD_EXPR</name>
+          <initializer>= 38</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda9c572809b9379cfb6f756f749187d3cc" prot="public">
+          <name>KEYWORD_FALSE</name>
+          <initializer>= 39</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda87b9c6b8f03738f2a03a3e6039f0aaed" prot="public">
+          <name>KEYWORD_FEATURE</name>
+          <initializer>= 40</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda95b8dcdae30305626f6bdaaf2e45ba95" prot="public">
+          <name>KEYWORD_FEATURED</name>
+          <initializer>= 41</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdafc1fde4ad4ca60e14301bc49c754ad7c" prot="public">
+          <name>KEYWORD_FEATURING</name>
+          <initializer>= 42</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdad36c3c7b0ae6ec88dbafcbac8f3c7b74" prot="public">
+          <name>KEYWORD_FILTER</name>
+          <initializer>= 43</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda8c4489981106da96c587f38c18e7b578" prot="public">
+          <name>KEYWORD_FIRST</name>
+          <initializer>= 44</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda54cf1be8303f9581564c8b0c026476ec" prot="public">
+          <name>KEYWORD_FLOW</name>
+          <initializer>= 45</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda3a7b79ca943d42fbc5fa2609b6fd873e" prot="public">
+          <name>KEYWORD_FOR</name>
+          <initializer>= 46</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda9bd7a5eb3d4aded2e24002eb3d53c88e" prot="public">
+          <name>KEYWORD_FROM</name>
+          <initializer>= 47</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda468320b76c68fe2f7681e95e23a3aa41" prot="public">
+          <name>KEYWORD_FUNCTION</name>
+          <initializer>= 48</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda010afdaa4b5819c8c7921d5e4dab65e9" prot="public">
+          <name>KEYWORD_HASTYPE</name>
+          <initializer>= 49</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda69b90d474074cf10589153f030c50250" prot="public">
+          <name>KEYWORD_IF</name>
+          <initializer>= 50</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdac0fac81a6a5f74551fcbee68d12c0aff" prot="public">
+          <name>KEYWORD_INTERSECTS</name>
+          <initializer>= 51</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdabb9c133075aa0b06b9e7aa44d0b8f75d" prot="public">
+          <name>KEYWORD_IMPLIES</name>
+          <initializer>= 52</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda1f8095d5167befac2db63fbbebfee554" prot="public">
+          <name>KEYWORD_IMPORT</name>
+          <initializer>= 53</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda8468df0f1930b42b0a30c0cdb72713df" prot="public">
+          <name>KEYWORD_IN</name>
+          <initializer>= 54</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda66b0a26d5fde6600fe1004cde188f2d8" prot="public">
+          <name>KEYWORD_INOUT</name>
+          <initializer>= 55</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdabbb247ccd91fa9063f1c4c7b9af7eb59" prot="public">
+          <name>KEYWORD_INTERACTION</name>
+          <initializer>= 56</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdad50ebd4851edff03eb0d0be70747a1e9" prot="public">
+          <name>KEYWORD_INV</name>
+          <initializer>= 57</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdab5c790b18f9eb7d88eda13b269e1b89a" prot="public">
+          <name>KEYWORD_INVERSE</name>
+          <initializer>= 58</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda2cf8dd7c728265f1486c4cb4d0e6d6c4" prot="public">
+          <name>KEYWORD_INVERTING</name>
+          <initializer>= 59</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda498861edf917f8e68d3e07f504d5a1b1" prot="public">
+          <name>KEYWORD_ISTYPE</name>
+          <initializer>= 60</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda86f9113371129f98d599d31e83ccc2ca" prot="public">
+          <name>KEYWORD_LANGUAGE</name>
+          <initializer>= 61</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaa05123b31ae539e88b58896165874ab2" prot="public">
+          <name>KEYWORD_MEMBER</name>
+          <initializer>= 62</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda3e73fc2374547832feb6127e186ab6a3" prot="public">
+          <name>KEYWORD_METACLASS</name>
+          <initializer>= 63</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda17c7796f78cea217959a44dc910e3229" prot="public">
+          <name>KEYWORD_METADATA</name>
+          <initializer>= 64</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda7cff67bd77ee0b61b52e719c5edf4dce" prot="public">
+          <name>KEYWORD_MULTIPLICITY</name>
+          <initializer>= 65</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda844ca79eb417765f0b49cc2b52f3138c" prot="public">
+          <name>KEYWORD_NAMESPACE</name>
+          <initializer>= 66</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdac30d496dec4b65d09dbe61e5a96c3774" prot="public">
+          <name>KEYWORD_NONUNIQUE</name>
+          <initializer>= 67</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda2ef55c0230dcaa30927bf3f661a4959a" prot="public">
+          <name>KEYWORD_NOT</name>
+          <initializer>= 68</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda759d31bb1a20ceed519ed23c0e3cf2cf" prot="public">
+          <name>KEYWORD_NULL</name>
+          <initializer>= 69</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda39129cfee8d5fd014c9fa5aa14dcdb4c" prot="public">
+          <name>KEYWORD_OF</name>
+          <initializer>= 70</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda7702a272c773a4e26b29241f9ed92cbf" prot="public">
+          <name>KEYWORD_OR</name>
+          <initializer>= 71</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda6cefc533e0ed6702a43e6c9e84653636" prot="public">
+          <name>KEYWORD_ORDERED</name>
+          <initializer>= 72</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda039010c24da908852053af4829addf78" prot="public">
+          <name>KEYWORD_OUT</name>
+          <initializer>= 73</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdadd840a9adaf2cac5e32f8adb8de4c5ff" prot="public">
+          <name>KEYWORD_PACKAGE</name>
+          <initializer>= 74</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdad587753823639be4c0a7d9b7a58cf0af" prot="public">
+          <name>KEYWORD_PORTION</name>
+          <initializer>= 75</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda94809bf8dfce1ec292518327434a6302" prot="public">
+          <name>KEYWORD_PREDICATE</name>
+          <initializer>= 76</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda51bf630b786dacd655d9a708cde30a03" prot="public">
+          <name>KEYWORD_PRIVATE</name>
+          <initializer>= 77</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda373f6df99e5c6c2e583b57e53ea233ac" prot="public">
+          <name>KEYWORD_PROTECTED</name>
+          <initializer>= 78</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda79287caf2170173863756740e1f15aa6" prot="public">
+          <name>KEYWORD_PUBLIC</name>
+          <initializer>= 79</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdae906becfa488db9dc2b83649bc20d944" prot="public">
+          <name>KEYWORD_READONLY</name>
+          <initializer>= 80</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdadf25fda9b3bb446e490ca58317db1aa0" prot="public">
+          <name>KEYWORD_REDEFINES</name>
+          <initializer>= 81</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda0c22a2d3ac7d6b51a6850d311955b588" prot="public">
+          <name>KEYWORD_REDEFINITION</name>
+          <initializer>= 82</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda5b79089958ff57c6d472ec58182ea856" prot="public">
+          <name>KEYWORD_REFERENCES</name>
+          <initializer>= 83</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda144f2fe13c3fe430ca48148450a5709f" prot="public">
+          <name>KEYWORD_REP</name>
+          <initializer>= 84</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda65a3ca8e32a6fdad44b979c91f0100c8" prot="public">
+          <name>KEYWORD_RETURN</name>
+          <initializer>= 85</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda388c593c2e28466aaf7359287aed8ec1" prot="public">
+          <name>KEYWORD_SPECILIZATION</name>
+          <initializer>= 86</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda83aad4a96ba245b6892e645c49ec3db0" prot="public">
+          <name>KEYWORD_SPECIALIZES</name>
+          <initializer>= 87</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda548d5754fc12b86fd84449761b1635e5" prot="public">
+          <name>KEYWORD_STEP</name>
+          <initializer>= 88</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda66b7a8f9a9cad6650578f39d2bac4559" prot="public">
+          <name>KEYWORD_STRUCT</name>
+          <initializer>= 89</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaf253ba83ff30315302568ed520ecbf15" prot="public">
+          <name>KEYWORD_SUBCLASSIFIER</name>
+          <initializer>= 90</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda532768e7fda93d0b7ac8652788f38dfd" prot="public">
+          <name>KEYWORD_SUBSET</name>
+          <initializer>= 91</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaabfe10fd32e51713070fa1315a8a4b98" prot="public">
+          <name>KEYWORD_SUBSETS</name>
+          <initializer>= 92</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaafb4d0b45c8102ff8d50206d7e28bc30" prot="public">
+          <name>KEYWORD_SUBTYPE</name>
+          <initializer>= 93</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaccf5e7a60a59b9004c25800e66556b58" prot="public">
+          <name>KEYWORD_SUCCSESSION</name>
+          <initializer>= 94</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda55e735c4339be97fc83bf435abb192f3" prot="public">
+          <name>KEYWORD_THEN</name>
+          <initializer>= 95</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdae16906c000d66be5d16ba48e7e7f6220" prot="public">
+          <name>KEYWORD_TO</name>
+          <initializer>= 96</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda5a45804672dc0a4075680a28b18786e6" prot="public">
+          <name>KEYWORD_TRUE</name>
+          <initializer>= 97</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaf35380216bfccb49c09f157def9da350" prot="public">
+          <name>KEYWORD_TYPE</name>
+          <initializer>= 98</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdae3bcecbd4ad836f99b68ba5a1fdeda7a" prot="public">
+          <name>KEYWORD_TYPED</name>
+          <initializer>= 99</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda8ce781d824108c33700fe69f651dc299" prot="public">
+          <name>KEYWORD_TYPING</name>
+          <initializer>= 100</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda32afd4ba015e193fd66ba48688f383fa" prot="public">
+          <name>KEYWORD_UNIONS</name>
+          <initializer>= 101</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda8f53feeba688d14cf2ce871a822f3117" prot="public">
+          <name>KEYWORD_XOR</name>
+          <initializer>= 102</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda09af5c178fd0022d03b795be283add92" prot="public">
+          <name>KEYWORD_VAR</name>
+          <initializer>= 103</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda48b02fcf7058d64f347b2b297ec38842" prot="public">
+          <name>KEYWORD_LOCALE</name>
+          <initializer>= 104</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda90252634f927c36999cf09a855c97560" prot="public">
+          <name>KEYWORD_STANDARD</name>
+          <initializer>= 105</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda73359ff87e9213b0c6c12e2043f5bc68" prot="public">
+          <name>KEYWORD_LIBRARY</name>
+          <initializer>= 106</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdab6c10ce7401c694ded419e2e5dee122b" prot="public">
+          <name>KEYWORD_CONSTANT</name>
+          <initializer>= 107</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaa0f3f685180a8d870eaf6e9729d870da" prot="public">
+          <name>SINGLE_LINE_NOTE</name>
+          <initializer>= 108</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda28833a429f077eb41d171038b47fb83f" prot="public">
+          <name>MULTI_LINE_NOTE</name>
+          <initializer>= 109</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda7d8ad8943dbb03414e9c38494931b7c1" prot="public">
+          <name>REGULAR_COMMENT</name>
+          <initializer>= 110</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda39d0334ebf2b13573eb14ec9f738bfa2" prot="public">
+          <name>SYMBOL_COMMENT_BLOCK_START</name>
+          <initializer>= 111</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda0d4b12871c75ed8a48e892cc59d84041" prot="public">
+          <name>SYMBOL_NOTE_BLOCK_START</name>
+          <initializer>= 112</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda42469f8d746a7b1fa075a16246a1ac76" prot="public">
+          <name>SYMBOL_COMMENT_BLOCK_END</name>
+          <initializer>= 113</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda5e84d4c225165d3c2312f1f3eebc3a44" prot="public">
+          <name>SYMBOL_STATEMENT_DELIMITER</name>
+          <initializer>= 114</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda1c326099a47686db9acf0add1949fdd9" prot="public">
+          <name>SYMBOL_STAR</name>
+          <initializer>= 115</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdac0ee8642c1bf49a99677d5c1e121ae19" prot="public">
+          <name>SYMBOL_NAMESPACE_SUBSET</name>
+          <initializer>= 116</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda99e9ed8560f342b729d7ad5efdcf25a3" prot="public">
+          <name>SYMBOL_TYPED_BY</name>
+          <initializer>= 117</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda6067e4b93a900c6e1ac49f5011823a34" prot="public">
+          <name>SYMBOL_SPECIALIZES</name>
+          <initializer>= 118</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaf504615296cdcb46c74548326988da71" prot="public">
+          <name>SYMBOL_REFERENCES</name>
+          <initializer>= 119</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda1837381bc51638d17e0de1c8900ffde0" prot="public">
+          <name>SYMBOL_REDEFINES</name>
+          <initializer>= 120</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda5e5b39b373679250dda064fc65a176fe" prot="public">
+          <name>SYMBOL_CONJUNGATES</name>
+          <initializer>= 121</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda0d2f30e098ad645b35755ae2de1a02c8" prot="public">
+          <name>SYMBOL_ROUND_BRACKET_OPEN</name>
+          <initializer>= 122</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdad2e76f74dee383e82de980adba108340" prot="public">
+          <name>SYMBOL_ROUND_BRACKET_CLOSE</name>
+          <initializer>= 123</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdad8bd0c5c219052b5fe8cc3410bb37fbe" prot="public">
+          <name>SYMBOL_CURLY_BRACKET_OPEN</name>
+          <initializer>= 124</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdada5bd7b3254c746eee179c57a70788b3" prot="public">
+          <name>SYMBOL_CURLY_BRACKET_CLOSE</name>
+          <initializer>= 125</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdab74e8bddd50472b0ba744e00501c47a6" prot="public">
+          <name>SYMBOL_SQUARE_BRACKET_OPEN</name>
+          <initializer>= 126</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdac1b70fa2a43b507525f6f959e33ed5b3" prot="public">
+          <name>SYMBOL_SQUARE_BRACKET_CLOSE</name>
+          <initializer>= 127</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda673b15e286921ca84314a2e07c5da34c" prot="public">
+          <name>SYMBOL_COMMA</name>
+          <initializer>= 128</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda100969973ac46adc5f60a5163cfed49f" prot="public">
+          <name>SYMBOL_AT</name>
+          <initializer>= 129</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda685fe5f828da150668901c6f9962eef0" prot="public">
+          <name>SYMBOL_HASHTAG</name>
+          <initializer>= 130</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda15c166f6ce2e146c1b323cc92b5785a3" prot="public">
+          <name>SYMBOL_MOD</name>
+          <initializer>= 131</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda7e04714b469b7212a17cbb0459fcd2c0" prot="public">
+          <name>SYMBOL_AND</name>
+          <initializer>= 132</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda53517929eee0f07f5c6040ec82fdac37" prot="public">
+          <name>SYMBOL_UPPER</name>
+          <initializer>= 133</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdad7b76f6b22e7c778ce4c8b22388059d5" prot="public">
+          <name>SYMBOL_VERTICAL_LINE</name>
+          <initializer>= 134</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaaefe3343f6248163187705555db4f174" prot="public">
+          <name>SYMBOL_DOUBLE_STAR</name>
+          <initializer>= 135</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaa9ab0d96e871fdae0f1d881f8f78f40f" prot="public">
+          <name>SYMBOL_PLUS</name>
+          <initializer>= 136</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda57367085dad7e4de26f5cf6f2d4c58cf" prot="public">
+          <name>SYMBOL_MINUS</name>
+          <initializer>= 137</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda9cb44c8cc73fed1f0005c5035d8f82a9" prot="public">
+          <name>SYMBOL_SLASH</name>
+          <initializer>= 138</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda0f8c1feac26078757267ae0928df13c1" prot="public">
+          <name>SYMBOL_ARROOW</name>
+          <initializer>= 139</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda560a7d07aaac1de7b9f4becc426a449e" prot="public">
+          <name>SYMBOL_DOT</name>
+          <initializer>= 140</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda1c50a85ca73356ffc04667b5c62023a2" prot="public">
+          <name>SYMBOL_DDOT</name>
+          <initializer>= 141</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaae4a53c22881e590ceddeada17531269" prot="public">
+          <name>SYMBOL_SMALLER</name>
+          <initializer>= 142</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdabe6a2417c5ef81515eed2796b8625d4d" prot="public">
+          <name>SYMBOL_SMALLER_EQUAL</name>
+          <initializer>= 143</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaea418b5937408b703ea733d3c90693ee" prot="public">
+          <name>SYMBOL_ASSIGN</name>
+          <initializer>= 144</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda2a50805afc03b74045b17f4216d58cf1" prot="public">
+          <name>SYMBOL_DEF_ASSIGN</name>
+          <initializer>= 145</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda14c8188823f4df2f037b52ab93060483" prot="public">
+          <name>SYMBOL_EQUALS</name>
+          <initializer>= 146</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda0262f692ed537d74076afc0df3f931ab" prot="public">
+          <name>SYMBOL_IFF_EQUALS</name>
+          <initializer>= 147</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda711f4d492069c9dd0af478ddd2bbcb13" prot="public">
+          <name>SYMBOL_NOT_EQUALS</name>
+          <initializer>= 148</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda9d837e9a8915baf08efea6ad0b7c73fa" prot="public">
+          <name>SYMBOL_IFF_NOT_EQUALS</name>
+          <initializer>= 149</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda3cfbc6200c24195e2b94efa8fd0c9cfe" prot="public">
+          <name>SYMBOL_GREATER</name>
+          <initializer>= 150</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaa222debf1818e6f4ebfda15f5a7602ed" prot="public">
+          <name>SYMBOL_GREATER_EQUALS</name>
+          <initializer>= 151</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda5c0d78aa3153e8455d6f9e3a5e2317a4" prot="public">
+          <name>SYMBOL_QUESTION</name>
+          <initializer>= 152</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda54e10eb6149b4e247068c4c33eeb966a" prot="public">
+          <name>SYMBOL_DQUESTION</name>
+          <initializer>= 153</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaabf9def2b6de1b0c83d015e0b3f06e87" prot="public">
+          <name>SYMBOL_DOT_QUESTION</name>
+          <initializer>= 154</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdac4f9432e6fc5faa3d7f782aa53bc31c3" prot="public">
+          <name>NAME</name>
+          <initializer>= 155</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaed2a6193ae25e0b8b6364bf2b1b07974" prot="public">
+          <name>BASIC_NAME</name>
+          <initializer>= 156</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda11c83072958ace265cc24847b7a6859f" prot="public">
+          <name>UNRESTRICTED_NAME</name>
+          <initializer>= 157</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaec6b747c8c315de33b15ac72d12951d1" prot="public">
+          <name>DECIMAL_VALUE</name>
+          <initializer>= 158</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdab9a7cfaab9acb975d6443baafd5bd8fb" prot="public">
+          <name>EXPONENTIAL_VALUE</name>
+          <initializer>= 159</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda6a07786e617d544b624b651a4ea22f14" prot="public">
+          <name>STRING_VALUE</name>
+          <initializer>= 160</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda93660bb8af5cbf391a03f823c67ec1e4" prot="public">
+          <name>WS</name>
+          <initializer>= 161</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLLexer.h" line="14" column="3" bodyfile="filehandling/src/kerml/KerMLLexer.h" bodystart="14" bodyend="61"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d4/de4/class_ker_m_l_lexer_1a2e30b3c2e307ea50edef1718dea49714" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLLexer::KerMLLexer</definition>
+        <argsstring>(antlr4::CharStream *input)</argsstring>
+        <name>KerMLLexer</name>
+        <qualifiedname>KerMLLexer::KerMLLexer</qualifiedname>
+        <param>
+          <type>antlr4::CharStream *</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLLexer.h" line="63" column="12" bodyfile="filehandling/src/kerml/KerMLLexer.cpp" bodystart="628" bodyend="631"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/de4/class_ker_m_l_lexer_1a9a210e7cfb0b788f1dc17b9535a78c78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLLexer::~KerMLLexer</definition>
+        <argsstring>() override</argsstring>
+        <name>~KerMLLexer</name>
+        <qualifiedname>KerMLLexer::~KerMLLexer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLLexer.h" line="65" column="3" bodyfile="filehandling/src/kerml/KerMLLexer.cpp" bodystart="633" bodyend="635"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/de4/class_ker_m_l_lexer_1a6aac8130f8a5cd7b528ed6a93758d53f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string KerMLLexer::getGrammarFileName</definition>
+        <argsstring>() const override</argsstring>
+        <name>getGrammarFileName</name>
+        <qualifiedname>KerMLLexer::getGrammarFileName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLLexer.h" line="68" column="15" bodyfile="filehandling/src/kerml/KerMLLexer.cpp" bodystart="637" bodyend="639"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/de4/class_ker_m_l_lexer_1a8ea20ef08a386d473ea500d6e0d83b99" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; std::string &gt; &amp;</type>
+        <definition>const std::vector&lt; std::string &gt; &amp; KerMLLexer::getRuleNames</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleNames</name>
+        <qualifiedname>KerMLLexer::getRuleNames</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLLexer.h" line="70" column="21" bodyfile="filehandling/src/kerml/KerMLLexer.cpp" bodystart="641" bodyend="643"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/de4/class_ker_m_l_lexer_1a5f22e0c82d195ed2afaae5e3a1087479" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; std::string &gt; &amp;</type>
+        <definition>const std::vector&lt; std::string &gt; &amp; KerMLLexer::getChannelNames</definition>
+        <argsstring>() const override</argsstring>
+        <name>getChannelNames</name>
+        <qualifiedname>KerMLLexer::getChannelNames</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLLexer.h" line="72" column="21" bodyfile="filehandling/src/kerml/KerMLLexer.cpp" bodystart="645" bodyend="647"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/de4/class_ker_m_l_lexer_1afd909b01894217f3d7a8ded267791cdf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; std::string &gt; &amp;</type>
+        <definition>const std::vector&lt; std::string &gt; &amp; KerMLLexer::getModeNames</definition>
+        <argsstring>() const override</argsstring>
+        <name>getModeNames</name>
+        <qualifiedname>KerMLLexer::getModeNames</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLLexer.h" line="74" column="21" bodyfile="filehandling/src/kerml/KerMLLexer.cpp" bodystart="649" bodyend="651"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/de4/class_ker_m_l_lexer_1a554ca5a0dc3012259d9be5ccf3f7da12" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const antlr4::dfa::Vocabulary &amp;</type>
+        <definition>const dfa::Vocabulary &amp; KerMLLexer::getVocabulary</definition>
+        <argsstring>() const override</argsstring>
+        <name>getVocabulary</name>
+        <qualifiedname>KerMLLexer::getVocabulary</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLLexer.h" line="76" column="33" bodyfile="filehandling/src/kerml/KerMLLexer.cpp" bodystart="653" bodyend="655"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/de4/class_ker_m_l_lexer_1ac0c0b1c0e4f35a22157acfac398e4d42" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::atn::SerializedATNView</type>
+        <definition>antlr4::atn::SerializedATNView KerMLLexer::getSerializedATN</definition>
+        <argsstring>() const override</argsstring>
+        <name>getSerializedATN</name>
+        <qualifiedname>KerMLLexer::getSerializedATN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLLexer.h" line="78" column="34" bodyfile="filehandling/src/kerml/KerMLLexer.cpp" bodystart="657" bodyend="659"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/de4/class_ker_m_l_lexer_1a244011dc49546ab8458458cb49def24f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const antlr4::atn::ATN &amp;</type>
+        <definition>const atn::ATN &amp; KerMLLexer::getATN</definition>
+        <argsstring>() const override</argsstring>
+        <name>getATN</name>
+        <qualifiedname>KerMLLexer::getATN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLLexer.h" line="80" column="26" bodyfile="filehandling/src/kerml/KerMLLexer.cpp" bodystart="661" bodyend="663"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="d4/de4/class_ker_m_l_lexer_1a418518bcddd0cf77085f2e59969d599a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerMLLexer::initialize</definition>
+        <argsstring>()</argsstring>
+        <name>initialize</name>
+        <qualifiedname>KerMLLexer::initialize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLLexer.h" line="85" column="15" bodyfile="filehandling/src/kerml/KerMLLexer.cpp" bodystart="668" bodyend="674"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLLexer</label>
+        <link refid="d4/de4/class_ker_m_l_lexer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::Lexer</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLLexer</label>
+        <link refid="d4/de4/class_ker_m_l_lexer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::Lexer</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLLexer.h" line="12" column="1" bodyfile="filehandling/src/kerml/KerMLLexer.h" bodystart="12" bodyend="93"/>
+    <listofallmembers>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaed2a6193ae25e0b8b6364bf2b1b07974" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>BASIC_NAME</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdafff3f1059b7eebf8ccc6eedbe807d0e9" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>CONJUNGATES</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaec6b747c8c315de33b15ac72d12951d1" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>DECIMAL_VALUE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdab9a7cfaab9acb975d6443baafd5bd8fb" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>EXPONENTIAL_VALUE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1a244011dc49546ab8458458cb49def24f" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>getATN</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1a5f22e0c82d195ed2afaae5e3a1087479" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>getChannelNames</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1a6aac8130f8a5cd7b528ed6a93758d53f" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>getGrammarFileName</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1afd909b01894217f3d7a8ded267791cdf" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>getModeNames</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1a8ea20ef08a386d473ea500d6e0d83b99" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>getRuleNames</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1ac0c0b1c0e4f35a22157acfac398e4d42" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>getSerializedATN</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1a554ca5a0dc3012259d9be5ccf3f7da12" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>getVocabulary</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1a418518bcddd0cf77085f2e59969d599a" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>initialize</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1a2e30b3c2e307ea50edef1718dea49714" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KerMLLexer</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda215cc4573553dbcab2186119188fff54" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_ABOUT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdababa99f844b9188e84a23041201b0912" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_ABSTRACT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdabd99d83bbd3bacb428d9fdeac2f54b45" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_ALIAS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda90bbbbb7b5a232fea5fc9078c896f8d0" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_ALL</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda7c42da89195b6c27831cf4a748136410" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_AND</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda21b881436c9da8469123077d1c7780f8" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_AS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda4c3d44b263c5803a3d068daff93e266a" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_ASSOC</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda3b83c4bd3aa348a727c86b37f97294ff" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_BEHAVIOR</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaddc372b446a7489ea363736e1032e50f" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_BINDING</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaf898ceafe7e84898e76ec24d8c9d085d" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_BOOL</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaf3d60abac93a6aa9e400670d5e1b40de" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_BY</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdada11a25f5e9059413699af372a12c49a" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_CHAINS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaee551eb5bde3f9112038a707ed1e4d21" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_CLASS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdad9abbdc7e94ce8a46b28027efc16bc51" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_CLASSIFIER</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda0de0b8dce5c63ef9265eb30df2fffd6c" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_COMMENT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda770b6d225a02cb480845ab67b46fcb39" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_COMPOSITE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda3f0d15ff01889e8b90b9309c1f6f2a3a" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_CONJUGATE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda08db91e7abdb7622c9a1722e0d2d9caf" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_CONJUGATES</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda9258335014c77f58888bdd122f70378b" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_CONJUGATION</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdab4b548d042a13bc1dbf949bd96f36bd2" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_CONNECTOR</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdab6c10ce7401c694ded419e2e5dee122b" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_CONSTANT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda6571d0c048bec9ff3fa6728972113937" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_DATATYPE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdac640022338cbf7109713223c5bf693e3" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_DEFAULT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaf5ab4794b3c5782e34bd8a45b99075da" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_DEPENDENCY</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda8d1f0cdd4ccf1bbe24ba0b07ed51e2dd" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_DERIVED</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda9775290b234c076bd5736988ec24294d" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_DIFFERENCES</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda26274e176cd3398215230072ff37fb0e" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_DISJOINING</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda9ea50f577bab53abc4eea1ca8faa0d7a" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_DISJOINT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda10573ae1d92d1926481ecb4082f28daa" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_DOC</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaa176fb1826189a2fb6be4beb74fddeea" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_ELSE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda1e7a376b7661a2b59a3a6b6c068c127e" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_END</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda8f08c3594d69a9fb6adfe181839c5cfc" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_EXPR</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda9c572809b9379cfb6f756f749187d3cc" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_FALSE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda87b9c6b8f03738f2a03a3e6039f0aaed" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_FEATURE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda95b8dcdae30305626f6bdaaf2e45ba95" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_FEATURED</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdafc1fde4ad4ca60e14301bc49c754ad7c" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_FEATURING</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdad36c3c7b0ae6ec88dbafcbac8f3c7b74" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_FILTER</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda8c4489981106da96c587f38c18e7b578" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_FIRST</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda54cf1be8303f9581564c8b0c026476ec" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_FLOW</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda3a7b79ca943d42fbc5fa2609b6fd873e" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_FOR</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda9bd7a5eb3d4aded2e24002eb3d53c88e" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_FROM</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda468320b76c68fe2f7681e95e23a3aa41" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_FUNCTION</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda010afdaa4b5819c8c7921d5e4dab65e9" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_HASTYPE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda69b90d474074cf10589153f030c50250" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_IF</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdabb9c133075aa0b06b9e7aa44d0b8f75d" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_IMPLIES</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda1f8095d5167befac2db63fbbebfee554" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_IMPORT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda8468df0f1930b42b0a30c0cdb72713df" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_IN</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda66b0a26d5fde6600fe1004cde188f2d8" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_INOUT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdabbb247ccd91fa9063f1c4c7b9af7eb59" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_INTERACTION</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdac0fac81a6a5f74551fcbee68d12c0aff" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_INTERSECTS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdad50ebd4851edff03eb0d0be70747a1e9" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_INV</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdab5c790b18f9eb7d88eda13b269e1b89a" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_INVERSE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda2cf8dd7c728265f1486c4cb4d0e6d6c4" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_INVERTING</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda498861edf917f8e68d3e07f504d5a1b1" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_ISTYPE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda86f9113371129f98d599d31e83ccc2ca" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_LANGUAGE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda73359ff87e9213b0c6c12e2043f5bc68" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_LIBRARY</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda48b02fcf7058d64f347b2b297ec38842" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_LOCALE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaa05123b31ae539e88b58896165874ab2" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_MEMBER</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda3e73fc2374547832feb6127e186ab6a3" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_METACLASS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda17c7796f78cea217959a44dc910e3229" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_METADATA</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda7cff67bd77ee0b61b52e719c5edf4dce" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_MULTIPLICITY</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda844ca79eb417765f0b49cc2b52f3138c" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_NAMESPACE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdac30d496dec4b65d09dbe61e5a96c3774" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_NONUNIQUE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda2ef55c0230dcaa30927bf3f661a4959a" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_NOT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda759d31bb1a20ceed519ed23c0e3cf2cf" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_NULL</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda39129cfee8d5fd014c9fa5aa14dcdb4c" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_OF</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda7702a272c773a4e26b29241f9ed92cbf" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_OR</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda6cefc533e0ed6702a43e6c9e84653636" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_ORDERED</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda039010c24da908852053af4829addf78" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_OUT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdadd840a9adaf2cac5e32f8adb8de4c5ff" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_PACKAGE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdad587753823639be4c0a7d9b7a58cf0af" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_PORTION</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda94809bf8dfce1ec292518327434a6302" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_PREDICATE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda51bf630b786dacd655d9a708cde30a03" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_PRIVATE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda373f6df99e5c6c2e583b57e53ea233ac" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_PROTECTED</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda79287caf2170173863756740e1f15aa6" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_PUBLIC</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdae906becfa488db9dc2b83649bc20d944" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_READONLY</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdadf25fda9b3bb446e490ca58317db1aa0" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_REDEFINES</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda0c22a2d3ac7d6b51a6850d311955b588" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_REDEFINITION</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda5b79089958ff57c6d472ec58182ea856" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_REFERENCES</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda144f2fe13c3fe430ca48148450a5709f" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_REP</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda65a3ca8e32a6fdad44b979c91f0100c8" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_RETURN</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda83aad4a96ba245b6892e645c49ec3db0" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_SPECIALIZES</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda388c593c2e28466aaf7359287aed8ec1" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_SPECILIZATION</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda90252634f927c36999cf09a855c97560" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_STANDARD</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda548d5754fc12b86fd84449761b1635e5" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_STEP</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda66b7a8f9a9cad6650578f39d2bac4559" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_STRUCT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaf253ba83ff30315302568ed520ecbf15" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_SUBCLASSIFIER</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda532768e7fda93d0b7ac8652788f38dfd" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_SUBSET</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaabfe10fd32e51713070fa1315a8a4b98" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_SUBSETS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaafb4d0b45c8102ff8d50206d7e28bc30" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_SUBTYPE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaccf5e7a60a59b9004c25800e66556b58" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_SUCCSESSION</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda55e735c4339be97fc83bf435abb192f3" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_THEN</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdae16906c000d66be5d16ba48e7e7f6220" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_TO</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda5a45804672dc0a4075680a28b18786e6" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_TRUE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaf35380216bfccb49c09f157def9da350" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_TYPE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdae3bcecbd4ad836f99b68ba5a1fdeda7a" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_TYPED</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda8ce781d824108c33700fe69f651dc299" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_TYPING</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda32afd4ba015e193fd66ba48688f383fa" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_UNIONS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda09af5c178fd0022d03b795be283add92" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_VAR</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda8f53feeba688d14cf2ce871a822f3117" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>KEYWORD_XOR</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda28833a429f077eb41d171038b47fb83f" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>MULTI_LINE_NOTE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdac4f9432e6fc5faa3d7f782aa53bc31c3" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>NAME</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda18dcf7e12dab5b7cfdac2e32b440b637" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>REDEFINES</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda70fff6cbb655fe93804ae0ad10c1ba39" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>REFERENCES</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda7d8ad8943dbb03414e9c38494931b7c1" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>REGULAR_COMMENT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaa0f3f685180a8d870eaf6e9729d870da" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SINGLE_LINE_NOTE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda5342c08f60bc056590a10abc1535a17e" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SPECIALIZES</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda6a07786e617d544b624b651a4ea22f14" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>STRING_VALUE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda7d4ebb554e3f97abfa071d47e87f7c54" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SUBSETS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda7e04714b469b7212a17cbb0459fcd2c0" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_AND</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda0f8c1feac26078757267ae0928df13c1" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_ARROOW</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaea418b5937408b703ea733d3c90693ee" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_ASSIGN</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda100969973ac46adc5f60a5163cfed49f" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_AT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda673b15e286921ca84314a2e07c5da34c" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_COMMA</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda42469f8d746a7b1fa075a16246a1ac76" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_COMMENT_BLOCK_END</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda39d0334ebf2b13573eb14ec9f738bfa2" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_COMMENT_BLOCK_START</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda5e5b39b373679250dda064fc65a176fe" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_CONJUNGATES</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdada5bd7b3254c746eee179c57a70788b3" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_CURLY_BRACKET_CLOSE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdad8bd0c5c219052b5fe8cc3410bb37fbe" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_CURLY_BRACKET_OPEN</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda1c50a85ca73356ffc04667b5c62023a2" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_DDOT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda2a50805afc03b74045b17f4216d58cf1" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_DEF_ASSIGN</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda560a7d07aaac1de7b9f4becc426a449e" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_DOT</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaabf9def2b6de1b0c83d015e0b3f06e87" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_DOT_QUESTION</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaaefe3343f6248163187705555db4f174" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_DOUBLE_STAR</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda54e10eb6149b4e247068c4c33eeb966a" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_DQUESTION</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda14c8188823f4df2f037b52ab93060483" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_EQUALS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda3cfbc6200c24195e2b94efa8fd0c9cfe" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_GREATER</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaa222debf1818e6f4ebfda15f5a7602ed" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_GREATER_EQUALS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda685fe5f828da150668901c6f9962eef0" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_HASHTAG</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda0262f692ed537d74076afc0df3f931ab" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_IFF_EQUALS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda9d837e9a8915baf08efea6ad0b7c73fa" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_IFF_NOT_EQUALS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda57367085dad7e4de26f5cf6f2d4c58cf" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_MINUS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda15c166f6ce2e146c1b323cc92b5785a3" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_MOD</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdac0ee8642c1bf49a99677d5c1e121ae19" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_NAMESPACE_SUBSET</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda711f4d492069c9dd0af478ddd2bbcb13" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_NOT_EQUALS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda0d4b12871c75ed8a48e892cc59d84041" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_NOTE_BLOCK_START</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaa9ab0d96e871fdae0f1d881f8f78f40f" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_PLUS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda5c0d78aa3153e8455d6f9e3a5e2317a4" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_QUESTION</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda1837381bc51638d17e0de1c8900ffde0" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_REDEFINES</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaf504615296cdcb46c74548326988da71" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_REFERENCES</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdad2e76f74dee383e82de980adba108340" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_ROUND_BRACKET_CLOSE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda0d2f30e098ad645b35755ae2de1a02c8" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_ROUND_BRACKET_OPEN</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda9cb44c8cc73fed1f0005c5035d8f82a9" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_SLASH</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdaae4a53c22881e590ceddeada17531269" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_SMALLER</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdabe6a2417c5ef81515eed2796b8625d4d" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_SMALLER_EQUAL</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda6067e4b93a900c6e1ac49f5011823a34" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_SPECIALIZES</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdac1b70fa2a43b507525f6f959e33ed5b3" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_SQUARE_BRACKET_CLOSE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdab74e8bddd50472b0ba744e00501c47a6" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_SQUARE_BRACKET_OPEN</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda1c326099a47686db9acf0add1949fdd9" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_STAR</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda5e84d4c225165d3c2312f1f3eebc3a44" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_STATEMENT_DELIMITER</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda99e9ed8560f342b729d7ad5efdcf25a3" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_TYPED_BY</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda53517929eee0f07f5c6040ec82fdac37" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_UPPER</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfdad7b76f6b22e7c778ce4c8b22388059d5" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>SYMBOL_VERTICAL_LINE</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda3cb71a0145f44498e3422e2e1ba713a6" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>T__0</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda1d00797564c5875756bdd1a665c04666" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>TYPED_BY</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda11c83072958ace265cc24847b7a6859f" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>UNRESTRICTED_NAME</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1af54e68478fd4a33bb46e1a578a603bfda93660bb8af5cbf391a03f823c67ec1e4" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>WS</name></member>
+      <member refid="d4/de4/class_ker_m_l_lexer_1a9a210e7cfb0b788f1dc17b9535a78c78" prot="public" virt="non-virtual"><scope>KerMLLexer</scope><name>~KerMLLexer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

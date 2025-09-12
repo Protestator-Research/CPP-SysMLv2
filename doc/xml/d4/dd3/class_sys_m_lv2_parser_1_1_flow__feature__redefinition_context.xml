@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d4/dd3/class_sys_m_lv2_parser_1_1_flow__feature__redefinition_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Flow_feature_redefinitionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d4/dd3/class_sys_m_lv2_parser_1_1_flow__feature__redefinition_context_1a9fc14a5d730e579fbc740ff6f89e6489" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Flow_feature_redefinitionContext::Flow_feature_redefinitionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Flow_feature_redefinitionContext</name>
+        <qualifiedname>SysMLv2Parser::Flow_feature_redefinitionContext::Flow_feature_redefinitionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2973" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="13445" bodyend="13447"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd3/class_sys_m_lv2_parser_1_1_flow__feature__redefinition_context_1ab7d5e38b37553f05c84f7a8ed8620c25" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Flow_feature_redefinitionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Flow_feature_redefinitionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2974" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="13454" bodyend="13456"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd3/class_sys_m_lv2_parser_1_1_flow__feature__redefinition_context_1a9ec7459ef0b457b7aa89b2e44fe8851c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dc1/class_sys_m_lv2_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>SysMLv2Parser::Qualified_nameContext * SysMLv2Parser::Flow_feature_redefinitionContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>SysMLv2Parser::Flow_feature_redefinitionContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2975" column="27" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="13449" bodyend="13451"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd3/class_sys_m_lv2_parser_1_1_flow__feature__redefinition_context_1ac29e292dba94741d7c87af809ad94e26" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Flow_feature_redefinitionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Flow_feature_redefinitionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2977" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="13458" bodyend="13462"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd3/class_sys_m_lv2_parser_1_1_flow__feature__redefinition_context_1a92bb8122aa5d7cc7cf9950fceccc71ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Flow_feature_redefinitionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Flow_feature_redefinitionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2978" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="13464" bodyend="13468"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Flow_feature_redefinitionContext</label>
+        <link refid="d4/dd3/class_sys_m_lv2_parser_1_1_flow__feature__redefinition_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Flow_feature_redefinitionContext</label>
+        <link refid="d4/dd3/class_sys_m_lv2_parser_1_1_flow__feature__redefinition_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2971" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="2971" bodyend="2980"/>
+    <listofallmembers>
+      <member refid="d4/dd3/class_sys_m_lv2_parser_1_1_flow__feature__redefinition_context_1ac29e292dba94741d7c87af809ad94e26" prot="public" virt="virtual"><scope>SysMLv2Parser::Flow_feature_redefinitionContext</scope><name>enterRule</name></member>
+      <member refid="d4/dd3/class_sys_m_lv2_parser_1_1_flow__feature__redefinition_context_1a92bb8122aa5d7cc7cf9950fceccc71ff" prot="public" virt="virtual"><scope>SysMLv2Parser::Flow_feature_redefinitionContext</scope><name>exitRule</name></member>
+      <member refid="d4/dd3/class_sys_m_lv2_parser_1_1_flow__feature__redefinition_context_1a9fc14a5d730e579fbc740ff6f89e6489" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Flow_feature_redefinitionContext</scope><name>Flow_feature_redefinitionContext</name></member>
+      <member refid="d4/dd3/class_sys_m_lv2_parser_1_1_flow__feature__redefinition_context_1ab7d5e38b37553f05c84f7a8ed8620c25" prot="public" virt="virtual"><scope>SysMLv2Parser::Flow_feature_redefinitionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d4/dd3/class_sys_m_lv2_parser_1_1_flow__feature__redefinition_context_1a9ec7459ef0b457b7aa89b2e44fe8851c" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Flow_feature_redefinitionContext</scope><name>qualified_name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

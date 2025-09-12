@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Conditional_binary_operator_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context_1a0c82b683bedb831c578c0b1101a6cb2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Conditional_binary_operator_expressionContext::Conditional_binary_operator_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Conditional_binary_operator_expressionContext</name>
+        <qualifiedname>SysMLv2Parser::Conditional_binary_operator_expressionContext::Conditional_binary_operator_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7477" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37042" bodyend="37044"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context_1ac992f6baec4e707778c9b96032e685d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Conditional_binary_operator_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Conditional_binary_operator_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7478" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37059" bodyend="37061"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context_1af3d45f614972bd4ff98cd41c9110ee13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/da6/class_sys_m_lv2_parser_1_1_argument__member_context" kindref="compound">Argument_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Argument_memberContext * SysMLv2Parser::Conditional_binary_operator_expressionContext::argument_member</definition>
+        <argsstring>()</argsstring>
+        <name>argument_member</name>
+        <qualifiedname>SysMLv2Parser::Conditional_binary_operator_expressionContext::argument_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7479" column="28" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37046" bodyend="37048"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context_1af4a7c2cdcdb375e107d3b9ead0d3303f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/d5c/class_sys_m_lv2_parser_1_1_conditional__binary__operator_context" kindref="compound">Conditional_binary_operatorContext</ref> *</type>
+        <definition>SysMLv2Parser::Conditional_binary_operatorContext * SysMLv2Parser::Conditional_binary_operator_expressionContext::conditional_binary_operator</definition>
+        <argsstring>()</argsstring>
+        <name>conditional_binary_operator</name>
+        <qualifiedname>SysMLv2Parser::Conditional_binary_operator_expressionContext::conditional_binary_operator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7480" column="40" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37050" bodyend="37052"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context_1ac22b782053e116ac257aa3ab67f0ae73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/da1/class_sys_m_lv2_parser_1_1_argument__expression__member_context" kindref="compound">Argument_expression_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Argument_expression_memberContext * SysMLv2Parser::Conditional_binary_operator_expressionContext::argument_expression_member</definition>
+        <argsstring>()</argsstring>
+        <name>argument_expression_member</name>
+        <qualifiedname>SysMLv2Parser::Conditional_binary_operator_expressionContext::argument_expression_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7481" column="39" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37054" bodyend="37056"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context_1a4bb7311eee126503f1ed44cdfc4d6a47" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Conditional_binary_operator_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Conditional_binary_operator_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7483" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37063" bodyend="37067"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context_1a23eef309756fce1631ca6e040c48ca2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Conditional_binary_operator_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Conditional_binary_operator_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7484" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37069" bodyend="37073"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Conditional_binary_operator_expressionContext</label>
+        <link refid="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Conditional_binary_operator_expressionContext</label>
+        <link refid="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7475" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="7475" bodyend="7486"/>
+    <listofallmembers>
+      <member refid="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context_1ac22b782053e116ac257aa3ab67f0ae73" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Conditional_binary_operator_expressionContext</scope><name>argument_expression_member</name></member>
+      <member refid="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context_1af3d45f614972bd4ff98cd41c9110ee13" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Conditional_binary_operator_expressionContext</scope><name>argument_member</name></member>
+      <member refid="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context_1af4a7c2cdcdb375e107d3b9ead0d3303f" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Conditional_binary_operator_expressionContext</scope><name>conditional_binary_operator</name></member>
+      <member refid="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context_1a0c82b683bedb831c578c0b1101a6cb2b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Conditional_binary_operator_expressionContext</scope><name>Conditional_binary_operator_expressionContext</name></member>
+      <member refid="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context_1a4bb7311eee126503f1ed44cdfc4d6a47" prot="public" virt="virtual"><scope>SysMLv2Parser::Conditional_binary_operator_expressionContext</scope><name>enterRule</name></member>
+      <member refid="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context_1a23eef309756fce1631ca6e040c48ca2a" prot="public" virt="virtual"><scope>SysMLv2Parser::Conditional_binary_operator_expressionContext</scope><name>exitRule</name></member>
+      <member refid="da/dda/class_sys_m_lv2_parser_1_1_conditional__binary__operator__expression_context_1ac992f6baec4e707778c9b96032e685d1" prot="public" virt="virtual"><scope>SysMLv2Parser::Conditional_binary_operator_expressionContext</scope><name>getRuleIndex</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

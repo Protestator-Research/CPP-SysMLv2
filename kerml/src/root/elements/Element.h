@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef SYSMLV2_ELEMENT_H
-#define SYSMLV2_ELEMENT_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -13,6 +12,7 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/random_generator.hpp>
 #include <vector>
+#include <optional>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
@@ -27,13 +27,13 @@ namespace KerML::Entities {
     class Relationship;
     class TextualRepresentation;
 }
-
+//---------------------------------------------------------
 
 namespace KerML::Entities {
     /**
      * @class Element
      * @author Moritz Herzog
-     * @version 1.0 Beta 2
+     * @version 1.0 Beta 4
      * @brief This part of the model allows the identification of all elements.
      * This part of the model allows the identification of all elements. This is a core concept of the KerML and SysML syntax.
      * Also this class is required for the REST-API and the parsing of the models.
@@ -41,7 +41,7 @@ namespace KerML::Entities {
     class KERML_EXPORT Element {
     public:
         /**
-         * Constructor of the Element. This constructor does not allow for an empty elementID.
+         * Constructor of the Element. This constructor does allow for an empty elementID.
          * @param elementID The Element ID of the Element. If no UUID is provided, a random UUID is provided by the Software.
          * @param owner The Element that owns this element. If no Element is provided the owning element is automatically set to null.
          */
@@ -69,7 +69,7 @@ namespace KerML::Entities {
          * Gives acces to the ElementId as a uuid. This makes the internal comparison eayser.
          * @return Element id of the Element as a uuid.
          */
-        boost::uuids::uuid elementIdAsUUID() const;
+        [[nodiscard]] boost::uuids::uuid elementIdAsUUID() const;
 
         /**
          * Sets the various alternative Identifiers and overrides them with the given value.
@@ -101,7 +101,7 @@ namespace KerML::Entities {
          * unique in the specific context or within a model.
          * @return The declared short name.
          */
-        [[nodiscard]] std::string declaredShortName() const;
+        [[nodiscard]] std::optional<std::string> declaredShortName() const;
 
         /**
          * Sets the declared name of the Element.
@@ -113,7 +113,7 @@ namespace KerML::Entities {
          * Gives access to the declared name.
          * @return The internally stored declared name.
          */
-        [[nodiscard]] std::string declaredName() const;
+        [[nodiscard]] std::optional<std::string> declaredName() const;
 
         /**
          * Sets if element is included in a implied.
@@ -122,34 +122,34 @@ namespace KerML::Entities {
         void setImpliedIncluded(bool& isImpliedIncluded);
 
         /**
-         *
-         * @return
+         * Defines if the relationships to / from this element are implied by the relationships.
+         * @return True if any relationship to this element is implied.
          */
         [[nodiscard]] bool isImpliedIncluded() const;
 
         /**
-         *
+         * 
          * @return
          */
-        [[nodiscard]] std::string escapedName() const;
+        [[nodiscard]] std::optional<std::string> escapedName() const;
 
         /**
          * Returns the effective ShortName of this Element. By default it is the DeclaredShortName.
          * @return The effective short name of this Element.
          */
-        [[nodiscard]] std::string effectiveShortName() const;
+        [[nodiscard]] virtual std::optional<std::string> effectiveShortName() const;
 
         /**
          * This method returns the effective name of a element. By default this is the declaredName().
          * @return The effective name that is available.
          */
-        [[nodiscard]] std::string effectiveName() const;
+        [[nodiscard]] virtual std::optional<std::string> effectiveName() const;
 
         /**
-         *
-         * @return
+         * If this Element has a owningRelationship, the Namespace of this Relationship is returned.
+         * @return Namespace of the  owningRelationship, if available.
          */
-        virtual std::shared_ptr<Namespace> libraryNamespace() const;
+        [[nodiscard]] virtual std::shared_ptr<Namespace> libraryNamespace() const;
 
         /**
          * This operator is deleted, because the ElementId can not be reset by definition.
@@ -166,16 +166,22 @@ namespace KerML::Entities {
         virtual bool operator==(const Element& other);
 
         /**
-         * Compares one element to the other and decides which one is bigger. This is required
-         * @param other
-         * @return
+         * Compares one element to the other and decides which one is smaller. 
+         * This is required for the std::map, therefore a comparison between the elements is required. Not part of the Standard!
+         * To compare the two elements the compare function of boost::uuids::uuid is used.
+         * @param other The other Element that is compared against.
+         * @return True if the current element has a smaller UUID than the other element.
+         * @see boost::uuids::uuid::operator<
          */
         virtual bool operator<(const Element& other);
 
         /**
-         *
-         * @param other
-         * @return
+         * Compares one element to the other and decides which one is bigger.
+         * This is required for the std::map, therefore a comparison between the elements is required. Not part of the Standard!
+         * To compare the two elements the compare function of boost::uuids::uuid is used.
+         * @param other The other Element that is compared against.
+         * @return True if the current element has a bigger UUID than the other element.
+         * @see boost::uuids::uuid::operator>
          */
         virtual bool operator>(const Element& other);
 
@@ -193,7 +199,6 @@ namespace KerML::Entities {
          */
         virtual bool operator>=(const Element& other);
 
-    protected:
         /**
          * Returns the owning Element. The owner is the element referenced in the owningRelationship as the owningRelatedElement.
          * @return Shared pointer of the Owner.
@@ -232,6 +237,24 @@ namespace KerML::Entities {
         std::vector<std::shared_ptr<Element>> ownedElements();
 
 
+        /**
+         * Returns a unique description of the location of this specific element. Herby the conatining Structure is to consider.
+         * @return Description where the element is to be found.
+         */
+        virtual std::string path();
+
+        /**
+         * 
+         * @param element 
+         * @return 
+         */
+        virtual bool includes(std::shared_ptr<Element> element);
+    protected:
+        std::vector<std::shared_ptr<Relationship>> ownedRelationships();
+
+
+
+
     private:
         /**
         * Orders the AliasIds in their Array. Is per definition required to have the AliasIds always ordered.
@@ -256,7 +279,7 @@ namespace KerML::Entities {
         std::string DeclaredShortName;
 
         /**
-         *
+         * 
          */
         std::string DeclaredName;
 
@@ -275,9 +298,7 @@ namespace KerML::Entities {
          */
         std::shared_ptr<Element> Owner = nullptr;
 
-        /**
-         *
-         */
+
         std::vector<std::shared_ptr<Element>> OwnedElements;
         std::string ShortName;
         std::string Name;
@@ -314,9 +335,12 @@ namespace KerML::Entities {
          * this function needs to be called.
          */
         void sortOwnedElements();
+
+        /**
+         * 
+         */
+        std::shared_ptr<Relationship> OwningRelationship;
     };
 
 } // KerML::Entities
 
-
-#endif //SYSMLV2_ELEMENT_H

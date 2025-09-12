@@ -1,0 +1,131 @@
+.TH "SysMLv2::Entities::ProjectUsage" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::Entities::ProjectUsage
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <ProjectUsage\&.h>\fP
+.PP
+Inherits \fBSysMLv2::Entities::Data\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBProjectUsage\fP ()"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBCommit\fP > \fBgetUsedProjectCommit\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetUsedProjectCommit\fP (std::shared_ptr< \fBCommit\fP > usedCommit)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBProject\fP > \fBgetUsedProject\fP () const"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBSysMLv2::Entities::Data\fP
+.in +1c
+.ti -1c
+.RI "\fBData\fP ()"
+.br
+.ti -1c
+.RI "\fBData\fP (boost::uuids::uuid id)"
+.br
+.ti -1c
+.RI "\fBData\fP (std::string jsonString)"
+.br
+.ti -1c
+.RI "virtual \fB~Data\fP ()=default"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBgetId\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBgetType\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::shared_ptr< \fBCommit\fP > \fBUsedProjectCommit\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBSysMLv2::Entities::Data\fP
+.in +1c
+.ti -1c
+.RI "std::string \fBType\fP"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBId\fP"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBSysMLv2::Entities::IEntity\fP
+.in +1c
+.ti -1c
+.RI "const int \fBJSON_INTENT\fP = 2"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the \fBProject\fP Usage according to the SysML v2 Standard 
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SysMLv2::Entities::ProjectUsage::ProjectUsage ()"
+Constructor 
+.SH "Member Function Documentation"
+.PP 
+.SS "std::shared_ptr< \fBProject\fP > SysMLv2::Entities::ProjectUsage::getUsedProject () const"
+Returns the connected project according to the SysML v2 Standard 
+.PP
+\fBSee also\fP
+.RS 4
+\fBCommit\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The project from the connected commit\&. 
+.RE
+.PP
+
+.SS "std::shared_ptr< \fBCommit\fP > SysMLv2::Entities::ProjectUsage::getUsedProjectCommit () const"
+Returns the commit of the given \fBProject\fP\&. 
+.PP
+\fBReturns\fP
+.RS 4
+the Related \fBCommit\fP 
+.RE
+.PP
+
+.SS "void SysMLv2::Entities::ProjectUsage::setUsedProjectCommit (std::shared_ptr< \fBCommit\fP > usedCommit)"
+Allows to set the used \fBProject\fP commit\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIusedCommit\fP used \fBProject\fP commit\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d2/d20/class_ker_m_l_parser_1_1_literal__integer_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Literal_integerContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d2/d20/class_ker_m_l_parser_1_1_literal__integer_context_1ae2163195048ebc7df7d9507aa8fdbc65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Literal_integerContext::Literal_integerContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Literal_integerContext</name>
+        <qualifiedname>KerMLParser::Literal_integerContext::Literal_integerContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3746" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="17775" bodyend="17777"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d20/class_ker_m_l_parser_1_1_literal__integer_context_1ab68f1902041a6e33f40059f66a64ff86" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Literal_integerContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Literal_integerContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3747" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="17784" bodyend="17786"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d20/class_ker_m_l_parser_1_1_literal__integer_context_1aec51e34ec159f3a4f6a67c84688f2297" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Literal_integerContext::DECIMAL_VALUE</definition>
+        <argsstring>()</argsstring>
+        <name>DECIMAL_VALUE</name>
+        <qualifiedname>KerMLParser::Literal_integerContext::DECIMAL_VALUE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3748" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="17779" bodyend="17781"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d20/class_ker_m_l_parser_1_1_literal__integer_context_1a4e5e6c305c5b1588d0fc1bf4e78cc835" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Literal_integerContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Literal_integerContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3750" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="17788" bodyend="17792"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d20/class_ker_m_l_parser_1_1_literal__integer_context_1a1e1ea147f76e8897ec8523fe0b253367" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Literal_integerContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Literal_integerContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3751" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="17794" bodyend="17798"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Literal_integerContext</label>
+        <link refid="d2/d20/class_ker_m_l_parser_1_1_literal__integer_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Literal_integerContext</label>
+        <link refid="d2/d20/class_ker_m_l_parser_1_1_literal__integer_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="3744" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="3744" bodyend="3753"/>
+    <listofallmembers>
+      <member refid="d2/d20/class_ker_m_l_parser_1_1_literal__integer_context_1aec51e34ec159f3a4f6a67c84688f2297" prot="public" virt="non-virtual"><scope>KerMLParser::Literal_integerContext</scope><name>DECIMAL_VALUE</name></member>
+      <member refid="d2/d20/class_ker_m_l_parser_1_1_literal__integer_context_1a4e5e6c305c5b1588d0fc1bf4e78cc835" prot="public" virt="virtual"><scope>KerMLParser::Literal_integerContext</scope><name>enterRule</name></member>
+      <member refid="d2/d20/class_ker_m_l_parser_1_1_literal__integer_context_1a1e1ea147f76e8897ec8523fe0b253367" prot="public" virt="virtual"><scope>KerMLParser::Literal_integerContext</scope><name>exitRule</name></member>
+      <member refid="d2/d20/class_ker_m_l_parser_1_1_literal__integer_context_1ab68f1902041a6e33f40059f66a64ff86" prot="public" virt="virtual"><scope>KerMLParser::Literal_integerContext</scope><name>getRuleIndex</name></member>
+      <member refid="d2/d20/class_ker_m_l_parser_1_1_literal__integer_context_1ae2163195048ebc7df7d9507aa8fdbc65" prot="public" virt="non-virtual"><scope>KerMLParser::Literal_integerContext</scope><name>Literal_integerContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

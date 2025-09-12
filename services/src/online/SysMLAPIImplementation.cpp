@@ -48,8 +48,8 @@ namespace SysMLv2::API {
             return loginToBackendVersion3(username,passwod);
     }
 
-    std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> SysMLAPIImplementation::getAllProjects(std::string barrierString) {
-        std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> returnValue;
+    std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> SysMLAPIImplementation::getAllProjects(std::string barrierString) {
+        std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> returnValue;
         CURLcode ServerResult;
         std::cout << "getAllProjects: "<<ServerAddress<<"projects"<<std::endl;
         auto serverConnection = setUpServerConnection("projects", barrierString.c_str(), "");
@@ -93,6 +93,7 @@ namespace SysMLv2::API {
 
         const char* serverAddress = ServerAddress.c_str();
         char* completeServerAddress = new char[std::strlen(serverAddress)+std::strlen(urlAppendix)+1];
+        std::cout<<"Server Address: "<<completeServerAddress<<std::endl;
         std::strcpy(completeServerAddress,serverAddress);
         std::strcat(completeServerAddress,urlAppendix);
 
@@ -203,10 +204,10 @@ namespace SysMLv2::API {
         return INTERNAL_STATUS_CODE::THROW_ERROR;
     }
 
-    std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>>
+    std::vector<std::shared_ptr<SysMLv2::REST::IEntity>>
     SysMLAPIImplementation::getAllElementsFromCommit(std::string projectId, std::string commitId, std::string barrierString) {
 
-        std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> returnValue;
+        std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> returnValue;
         CURLcode ServerResult;
 
         std::string urlAppendix = "projects/" + projectId + "/commits/" + commitId + "/elements";
@@ -234,7 +235,7 @@ namespace SysMLv2::API {
     }
 
     std::string SysMLAPIImplementation::getVersionOfBackend() {
-        std::string returnValue;
+        std::string returnValue = "2.X";
 
         CURLcode ServerResult;
 
@@ -248,13 +249,10 @@ namespace SysMLv2::API {
 
             if(httpResult==STANDARDS::HTTP::HTTP_OK)
                 returnValue = Data;
-            else {
-                returnValue = "2.X";
-                ServerAddress += "agila-server/";
-            }
         }
 
-
+        if (returnValue == "2.X")
+            ServerAddress += "agila-server/";
 
         curl_slist_free_all(HeaderList);
         curl_easy_cleanup(serverConnection);
@@ -287,9 +285,9 @@ namespace SysMLv2::API {
         return barrierString;
     }
 
-    std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> SysMLAPIImplementation::getAllBranchesFroProject(const std::string& projectId, std::string barrierString)
+    std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> SysMLAPIImplementation::getAllBranchesFroProject(const std::string& projectId, std::string barrierString)
     {
-        std::vector<std::shared_ptr<SysMLv2::Entities::IEntity>> returnValue;
+        std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> returnValue;
         CURLcode ServerResult;
 
         std::string urlAppendix = "projects/" + projectId + "/branches";
@@ -317,9 +315,9 @@ namespace SysMLv2::API {
         return returnValue;
     }
 
-    std::shared_ptr<SysMLv2::Entities::IEntity>
-    SysMLAPIImplementation::postProject(std::shared_ptr<SysMLv2::Entities::Project> project, std::string barrierString) {
-        std::shared_ptr<SysMLv2::Entities::IEntity> returnValue = nullptr;
+    std::shared_ptr<SysMLv2::REST::IEntity>
+    SysMLAPIImplementation::postProject(std::shared_ptr<SysMLv2::REST::Project> project, std::string barrierString) {
+        std::shared_ptr<SysMLv2::REST::IEntity> returnValue = nullptr;
         CURLcode ServerResult;
 
         std::string urlAppendix = "projects";
@@ -348,14 +346,15 @@ namespace SysMLv2::API {
 
     }
 
-    std::shared_ptr<SysMLv2::Entities::IEntity> SysMLAPIImplementation::postCommit(std::string projectId,
-	    std::shared_ptr<SysMLv2::Entities::Commit> commit, std::string barrierString)
+    std::shared_ptr<SysMLv2::REST::IEntity> SysMLAPIImplementation::postCommit(std::string projectId,
+	    std::shared_ptr<SysMLv2::REST::Commit> commit, std::string barrierString)
     {
-        std::shared_ptr<SysMLv2::Entities::IEntity> returnValue = nullptr;
+        std::shared_ptr<SysMLv2::REST::IEntity> returnValue = nullptr;
         CURLcode ServerResult;
 
         std::string urlAppendix = "projects/" + projectId + "/commits";
         std::string jsonDump = commit->serializeToJson();
+        std::cout << "Commit Data" << jsonDump << std::endl;
 
         auto serverConnection = setUpServerConnection(urlAppendix.c_str(), barrierString.c_str(), jsonDump.c_str());
 
@@ -364,7 +363,7 @@ namespace SysMLv2::API {
         if (ServerResult == CURLE_OK) {
             long httpResult;
             curl_easy_getinfo(serverConnection, CURLINFO_RESPONSE_CODE, &httpResult);
-
+            std::cout<<"Data Result: "<<Data<<std::endl;
             if (tryToResolveHTTPError(httpResult, serverConnection) == INTERNAL_STATUS_CODE::SUCCESS) {
                 returnValue = SysMLv2::SysMLv2Deserializer::deserializeJsonString(Data);
             }
@@ -385,9 +384,9 @@ namespace SysMLv2::API {
         return size * nmemb;
     }
 
-    std::shared_ptr<SysMLv2::Entities::IEntity>
+    std::shared_ptr<SysMLv2::REST::IEntity>
     SysMLAPIImplementation::getCommit(std::string projectId, std::string commitId, std::string barrierString) {
-        std::shared_ptr<SysMLv2::Entities::IEntity> returnValue;
+        std::shared_ptr<SysMLv2::REST::IEntity> returnValue;
         CURLcode ServerResult;
 
         std::string urlAppendix = "projects/" + projectId + "/commits/" + commitId;
@@ -428,6 +427,7 @@ namespace SysMLv2::API {
         auto serverConnection = setUpServerConnection("users/login", "", jsonData.dump().c_str());
 
         ServerResult = curl_easy_perform(serverConnection);
+        std::cout<<"Server Result: "<<ServerResult<<std::endl;
         if (ServerResult == CURLE_OK) {
             auto splittedAnswer = splittString(Data, ' ');
             barrierString = splittedAnswer[2];
@@ -438,6 +438,28 @@ namespace SysMLv2::API {
 
         curl_easy_cleanup(serverConnection);
         return barrierString;
+    }
+
+    std::string SysMLAPIImplementation::postCustomRequest(std::string const &endpoint, std::string const &payload,
+        std::string const &barrierString) {
+        CURLcode ServerResult;
+
+        auto serverConnection = setUpServerConnection(endpoint.c_str(), barrierString.c_str(), payload.c_str());
+
+        ServerResult = curl_easy_perform(serverConnection);
+
+        if (ServerResult == CURLE_OK) {
+            long httpResult;
+            curl_easy_getinfo(serverConnection, CURLINFO_RESPONSE_CODE, &httpResult);
+        }
+        else {
+            throw SysMLv2::API::EXCEPTIONS::ConnectionError(
+                    static_cast<SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
+        }
+        curl_slist_free_all(HeaderList);
+        curl_easy_cleanup(serverConnection);
+
+        return Data;
     }
 
     std::vector<std::string> SysMLAPIImplementation::splittString(std::string value, char delimiter) {

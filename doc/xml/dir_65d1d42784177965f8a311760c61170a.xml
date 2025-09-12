@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_65d1d42784177965f8a311760c61170a" kind="dir">
+    <compoundname>build/Debug/kerml/CMakeFiles/kerml.dir</compoundname>
+    <innerdir refid="dir_860f11da7b26545b1b62a8d054bad697">build/Debug/kerml/CMakeFiles/kerml.dir/src</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/kerml/CMakeFiles/kerml.dir/"/>
+  </compounddef>
+</doxygen>

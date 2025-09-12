@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Succession_declarationContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a9aa492a3b7cc58da5d37ed6db4c79bbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Succession_declarationContext::Succession_declarationContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Succession_declarationContext</name>
+        <qualifiedname>KerMLParser::Succession_declarationContext::Succession_declarationContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2299" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="10987" bodyend="10989"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a56e51ae11de2640de80474ef86169a8d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Succession_declarationContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Succession_declarationContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2300" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11016" bodyend="11018"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a830fef38ed047ef7b9cca921ff38a628" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/da8/class_ker_m_l_parser_1_1_feature__declaration_context" kindref="compound">Feature_declarationContext</ref> *</type>
+        <definition>KerMLParser::Feature_declarationContext * KerMLParser::Succession_declarationContext::feature_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>feature_declaration</name>
+        <qualifiedname>KerMLParser::Succession_declarationContext::feature_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2301" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="10991" bodyend="10993"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a2eacfffc310afe64957a46988b92314a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Succession_declarationContext::KEYWORD_FIRST</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_FIRST</name>
+        <qualifiedname>KerMLParser::Succession_declarationContext::KEYWORD_FIRST</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2302" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="10995" bodyend="10997"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a7e73c9dc1f8460fea79cd3be3e980337" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d8/d07/class_ker_m_l_parser_1_1_connector__end__member_context" kindref="compound">Connector_end_memberContext</ref> * &gt;</type>
+        <definition>std::vector&lt; KerMLParser::Connector_end_memberContext * &gt; KerMLParser::Succession_declarationContext::connector_end_member</definition>
+        <argsstring>()</argsstring>
+        <name>connector_end_member</name>
+        <qualifiedname>KerMLParser::Succession_declarationContext::connector_end_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2303" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="10999" bodyend="11001"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a24ad107eaaa6f6b65c313c869c320da6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d07/class_ker_m_l_parser_1_1_connector__end__member_context" kindref="compound">Connector_end_memberContext</ref> *</type>
+        <definition>KerMLParser::Connector_end_memberContext * KerMLParser::Succession_declarationContext::connector_end_member</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>connector_end_member</name>
+        <qualifiedname>KerMLParser::Succession_declarationContext::connector_end_member</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2304" column="33" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11003" bodyend="11005"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a5d2ce2b9781e48ee074a03b7b677bdfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Succession_declarationContext::KEYWORD_THEN</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_THEN</name>
+        <qualifiedname>KerMLParser::Succession_declarationContext::KEYWORD_THEN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2305" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11007" bodyend="11009"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1abb7931645e1b5a21ba130c428c7d1d8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Succession_declarationContext::KEYWORD_ALL</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_ALL</name>
+        <qualifiedname>KerMLParser::Succession_declarationContext::KEYWORD_ALL</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2306" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11011" bodyend="11013"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a873d744cbfc958b52833b9d0b953d08f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Succession_declarationContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Succession_declarationContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2308" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11020" bodyend="11024"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a1c02ccbcf2df3aa5e4e9fc2fb17c11c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Succession_declarationContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Succession_declarationContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2309" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="11026" bodyend="11030"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Succession_declarationContext</label>
+        <link refid="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Succession_declarationContext</label>
+        <link refid="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2297" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2297" bodyend="2311"/>
+    <listofallmembers>
+      <member refid="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a7e73c9dc1f8460fea79cd3be3e980337" prot="public" virt="non-virtual"><scope>KerMLParser::Succession_declarationContext</scope><name>connector_end_member</name></member>
+      <member refid="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a24ad107eaaa6f6b65c313c869c320da6" prot="public" virt="non-virtual"><scope>KerMLParser::Succession_declarationContext</scope><name>connector_end_member</name></member>
+      <member refid="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a873d744cbfc958b52833b9d0b953d08f" prot="public" virt="virtual"><scope>KerMLParser::Succession_declarationContext</scope><name>enterRule</name></member>
+      <member refid="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a1c02ccbcf2df3aa5e4e9fc2fb17c11c4" prot="public" virt="virtual"><scope>KerMLParser::Succession_declarationContext</scope><name>exitRule</name></member>
+      <member refid="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a830fef38ed047ef7b9cca921ff38a628" prot="public" virt="non-virtual"><scope>KerMLParser::Succession_declarationContext</scope><name>feature_declaration</name></member>
+      <member refid="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a56e51ae11de2640de80474ef86169a8d" prot="public" virt="virtual"><scope>KerMLParser::Succession_declarationContext</scope><name>getRuleIndex</name></member>
+      <member refid="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1abb7931645e1b5a21ba130c428c7d1d8d" prot="public" virt="non-virtual"><scope>KerMLParser::Succession_declarationContext</scope><name>KEYWORD_ALL</name></member>
+      <member refid="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a2eacfffc310afe64957a46988b92314a" prot="public" virt="non-virtual"><scope>KerMLParser::Succession_declarationContext</scope><name>KEYWORD_FIRST</name></member>
+      <member refid="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a5d2ce2b9781e48ee074a03b7b677bdfc" prot="public" virt="non-virtual"><scope>KerMLParser::Succession_declarationContext</scope><name>KEYWORD_THEN</name></member>
+      <member refid="d9/dc8/class_ker_m_l_parser_1_1_succession__declaration_context_1a9aa492a3b7cc58da5d37ed6db4c79bbf" prot="public" virt="non-virtual"><scope>KerMLParser::Succession_declarationContext</scope><name>Succession_declarationContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

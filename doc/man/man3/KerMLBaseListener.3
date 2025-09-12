@@ -1,0 +1,3649 @@
+.TH "KerMLBaseListener" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KerMLBaseListener
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <KerMLBaseListener\&.h>\fP
+.PP
+Inherits \fBKerMLListener\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBenterStart\fP (\fBKerMLParser::StartContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitStart\fP (\fBKerMLParser::StartContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterStartRule\fP (\fBKerMLParser::StartRuleContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitStartRule\fP (\fBKerMLParser::StartRuleContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterElements\fP (\fBKerMLParser::ElementsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitElements\fP (\fBKerMLParser::ElementsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterIdentification\fP (\fBKerMLParser::IdentificationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitIdentification\fP (\fBKerMLParser::IdentificationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterRelationship_body\fP (\fBKerMLParser::Relationship_bodyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitRelationship_body\fP (\fBKerMLParser::Relationship_bodyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterRelationship_onwed_elements\fP (\fBKerMLParser::Relationship_onwed_elementsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitRelationship_onwed_elements\fP (\fBKerMLParser::Relationship_onwed_elementsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterRelationship_owned_element\fP (\fBKerMLParser::Relationship_owned_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitRelationship_owned_element\fP (\fBKerMLParser::Relationship_owned_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_related_element\fP (\fBKerMLParser::Owned_related_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_related_element\fP (\fBKerMLParser::Owned_related_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterDependency\fP (\fBKerMLParser::DependencyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitDependency\fP (\fBKerMLParser::DependencyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterAnnotation\fP (\fBKerMLParser::AnnotationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitAnnotation\fP (\fBKerMLParser::AnnotationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_annotation\fP (\fBKerMLParser::Owned_annotationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_annotation\fP (\fBKerMLParser::Owned_annotationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterAnnotating_element\fP (\fBKerMLParser::Annotating_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitAnnotating_element\fP (\fBKerMLParser::Annotating_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterComment\fP (\fBKerMLParser::CommentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitComment\fP (\fBKerMLParser::CommentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterDocumentation\fP (\fBKerMLParser::DocumentationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitDocumentation\fP (\fBKerMLParser::DocumentationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterTextual_representation\fP (\fBKerMLParser::Textual_representationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitTextual_representation\fP (\fBKerMLParser::Textual_representationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterRoot_namespace\fP (\fBKerMLParser::Root_namespaceContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitRoot_namespace\fP (\fBKerMLParser::Root_namespaceContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace\fP (\fBKerMLParser::NamespaceContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace\fP (\fBKerMLParser::NamespaceContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_declaration\fP (\fBKerMLParser::Namespace_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_declaration\fP (\fBKerMLParser::Namespace_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_body\fP (\fBKerMLParser::Namespace_bodyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_body\fP (\fBKerMLParser::Namespace_bodyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_body_elements\fP (\fBKerMLParser::Namespace_body_elementsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_body_elements\fP (\fBKerMLParser::Namespace_body_elementsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_body_element\fP (\fBKerMLParser::Namespace_body_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_body_element\fP (\fBKerMLParser::Namespace_body_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMember_prefix\fP (\fBKerMLParser::Member_prefixContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMember_prefix\fP (\fBKerMLParser::Member_prefixContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterVisibility_indicator\fP (\fBKerMLParser::Visibility_indicatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitVisibility_indicator\fP (\fBKerMLParser::Visibility_indicatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_member\fP (\fBKerMLParser::Namespace_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_member\fP (\fBKerMLParser::Namespace_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_feature_member\fP (\fBKerMLParser::Non_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_feature_member\fP (\fBKerMLParser::Non_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_feature_member\fP (\fBKerMLParser::Namespace_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_feature_member\fP (\fBKerMLParser::Namespace_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterAlias_member\fP (\fBKerMLParser::Alias_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitAlias_member\fP (\fBKerMLParser::Alias_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterQualified_name\fP (\fBKerMLParser::Qualified_nameContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitQualified_name\fP (\fBKerMLParser::Qualified_nameContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamespace_import\fP (\fBKerMLParser::Namespace_importContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamespace_import\fP (\fBKerMLParser::Namespace_importContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterImport_declaration\fP (\fBKerMLParser::Import_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitImport_declaration\fP (\fBKerMLParser::Import_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMembership_import\fP (\fBKerMLParser::Membership_importContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMembership_import\fP (\fBKerMLParser::Membership_importContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFilter_package\fP (\fBKerMLParser::Filter_packageContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFilter_package\fP (\fBKerMLParser::Filter_packageContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFilter_package_member\fP (\fBKerMLParser::Filter_package_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFilter_package_member\fP (\fBKerMLParser::Filter_package_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterElement\fP (\fBKerMLParser::ElementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitElement\fP (\fBKerMLParser::ElementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_feature_element\fP (\fBKerMLParser::Non_feature_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_feature_element\fP (\fBKerMLParser::Non_feature_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_element\fP (\fBKerMLParser::Feature_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_element\fP (\fBKerMLParser::Feature_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterAdditional_options\fP (\fBKerMLParser::Additional_optionsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitAdditional_options\fP (\fBKerMLParser::Additional_optionsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterType\fP (\fBKerMLParser::TypeContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitType\fP (\fBKerMLParser::TypeContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_prefix\fP (\fBKerMLParser::Type_prefixContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_prefix\fP (\fBKerMLParser::Type_prefixContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_declaration\fP (\fBKerMLParser::Type_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_declaration\fP (\fBKerMLParser::Type_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSpecialization_part\fP (\fBKerMLParser::Specialization_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSpecialization_part\fP (\fBKerMLParser::Specialization_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterConjugation_part\fP (\fBKerMLParser::Conjugation_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitConjugation_part\fP (\fBKerMLParser::Conjugation_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_relationship_part\fP (\fBKerMLParser::Type_relationship_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_relationship_part\fP (\fBKerMLParser::Type_relationship_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterDisjoining_part\fP (\fBKerMLParser::Disjoining_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitDisjoining_part\fP (\fBKerMLParser::Disjoining_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterUnioning_part\fP (\fBKerMLParser::Unioning_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitUnioning_part\fP (\fBKerMLParser::Unioning_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterIntersecting_part\fP (\fBKerMLParser::Intersecting_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitIntersecting_part\fP (\fBKerMLParser::Intersecting_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterDifferencing_part\fP (\fBKerMLParser::Differencing_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitDifferencing_part\fP (\fBKerMLParser::Differencing_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_body\fP (\fBKerMLParser::Type_bodyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_body\fP (\fBKerMLParser::Type_bodyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_body_elements\fP (\fBKerMLParser::Type_body_elementsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_body_elements\fP (\fBKerMLParser::Type_body_elementsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_body_element\fP (\fBKerMLParser::Type_body_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_body_element\fP (\fBKerMLParser::Type_body_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSpecialization\fP (\fBKerMLParser::SpecializationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSpecialization\fP (\fBKerMLParser::SpecializationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_specialization\fP (\fBKerMLParser::Owned_specializationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_specialization\fP (\fBKerMLParser::Owned_specializationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSpecific_type\fP (\fBKerMLParser::Specific_typeContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSpecific_type\fP (\fBKerMLParser::Specific_typeContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterGeneral_type\fP (\fBKerMLParser::General_typeContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitGeneral_type\fP (\fBKerMLParser::General_typeContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterConjunction\fP (\fBKerMLParser::ConjunctionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitConjunction\fP (\fBKerMLParser::ConjunctionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_conjugation\fP (\fBKerMLParser::Owned_conjugationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_conjugation\fP (\fBKerMLParser::Owned_conjugationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterDisjoining\fP (\fBKerMLParser::DisjoiningContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitDisjoining\fP (\fBKerMLParser::DisjoiningContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_disjoining\fP (\fBKerMLParser::Owned_disjoiningContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_disjoining\fP (\fBKerMLParser::Owned_disjoiningContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterUnioning\fP (\fBKerMLParser::UnioningContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitUnioning\fP (\fBKerMLParser::UnioningContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterIntersecting\fP (\fBKerMLParser::IntersectingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitIntersecting\fP (\fBKerMLParser::IntersectingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterDifferencing\fP (\fBKerMLParser::DifferencingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitDifferencing\fP (\fBKerMLParser::DifferencingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_member\fP (\fBKerMLParser::Feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_member\fP (\fBKerMLParser::Feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_feature_member\fP (\fBKerMLParser::Type_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_feature_member\fP (\fBKerMLParser::Type_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_feature_member\fP (\fBKerMLParser::Owned_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_feature_member\fP (\fBKerMLParser::Owned_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterClassifier\fP (\fBKerMLParser::ClassifierContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitClassifier\fP (\fBKerMLParser::ClassifierContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterClassifier_declaration\fP (\fBKerMLParser::Classifier_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitClassifier_declaration\fP (\fBKerMLParser::Classifier_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSuperclassing_part\fP (\fBKerMLParser::Superclassing_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSuperclassing_part\fP (\fBKerMLParser::Superclassing_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSubclassification\fP (\fBKerMLParser::SubclassificationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSubclassification\fP (\fBKerMLParser::SubclassificationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_subclassification\fP (\fBKerMLParser::Owned_subclassificationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_subclassification\fP (\fBKerMLParser::Owned_subclassificationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature\fP (\fBKerMLParser::FeatureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature\fP (\fBKerMLParser::FeatureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_prefix\fP (\fBKerMLParser::Feature_prefixContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_prefix\fP (\fBKerMLParser::Feature_prefixContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_direction\fP (\fBKerMLParser::Feature_directionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_direction\fP (\fBKerMLParser::Feature_directionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_declaration\fP (\fBKerMLParser::Feature_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_declaration\fP (\fBKerMLParser::Feature_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_identification\fP (\fBKerMLParser::Feature_identificationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_identification\fP (\fBKerMLParser::Feature_identificationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_relationship_part\fP (\fBKerMLParser::Feature_relationship_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_relationship_part\fP (\fBKerMLParser::Feature_relationship_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterChaining_part\fP (\fBKerMLParser::Chaining_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitChaining_part\fP (\fBKerMLParser::Chaining_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterInverting_part\fP (\fBKerMLParser::Inverting_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitInverting_part\fP (\fBKerMLParser::Inverting_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_featuring_part\fP (\fBKerMLParser::Type_featuring_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_featuring_part\fP (\fBKerMLParser::Type_featuring_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_specialization_part\fP (\fBKerMLParser::Feature_specialization_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_specialization_part\fP (\fBKerMLParser::Feature_specialization_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMultiplicity_part\fP (\fBKerMLParser::Multiplicity_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMultiplicity_part\fP (\fBKerMLParser::Multiplicity_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_specilization\fP (\fBKerMLParser::Feature_specilizationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_specilization\fP (\fBKerMLParser::Feature_specilizationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterTypings\fP (\fBKerMLParser::TypingsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitTypings\fP (\fBKerMLParser::TypingsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterTyped_by\fP (\fBKerMLParser::Typed_byContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitTyped_by\fP (\fBKerMLParser::Typed_byContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSubsettings\fP (\fBKerMLParser::SubsettingsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSubsettings\fP (\fBKerMLParser::SubsettingsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSubsets\fP (\fBKerMLParser::SubsetsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSubsets\fP (\fBKerMLParser::SubsetsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterReferences\fP (\fBKerMLParser::ReferencesContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitReferences\fP (\fBKerMLParser::ReferencesContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterRedefinitions\fP (\fBKerMLParser::RedefinitionsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitRedefinitions\fP (\fBKerMLParser::RedefinitionsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterRedefines\fP (\fBKerMLParser::RedefinesContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitRedefines\fP (\fBKerMLParser::RedefinesContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_typing\fP (\fBKerMLParser::Feature_typingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_typing\fP (\fBKerMLParser::Feature_typingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_feature_typing\fP (\fBKerMLParser::Owned_feature_typingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_feature_typing\fP (\fBKerMLParser::Owned_feature_typingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSubsetting\fP (\fBKerMLParser::SubsettingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSubsetting\fP (\fBKerMLParser::SubsettingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_subsetting\fP (\fBKerMLParser::Owned_subsettingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_subsetting\fP (\fBKerMLParser::Owned_subsettingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_reference_subsetting\fP (\fBKerMLParser::Owned_reference_subsettingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_reference_subsetting\fP (\fBKerMLParser::Owned_reference_subsettingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterRedefinition\fP (\fBKerMLParser::RedefinitionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitRedefinition\fP (\fBKerMLParser::RedefinitionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_redefinition\fP (\fBKerMLParser::Owned_redefinitionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_redefinition\fP (\fBKerMLParser::Owned_redefinitionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_feature_chain\fP (\fBKerMLParser::Owned_feature_chainContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_feature_chain\fP (\fBKerMLParser::Owned_feature_chainContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_chain\fP (\fBKerMLParser::Feature_chainContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_chain\fP (\fBKerMLParser::Feature_chainContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_feature_chaining\fP (\fBKerMLParser::Owned_feature_chainingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_feature_chaining\fP (\fBKerMLParser::Owned_feature_chainingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_inverting\fP (\fBKerMLParser::Feature_invertingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_inverting\fP (\fBKerMLParser::Feature_invertingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_feature_inverting\fP (\fBKerMLParser::Owned_feature_invertingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_feature_inverting\fP (\fBKerMLParser::Owned_feature_invertingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_featuring\fP (\fBKerMLParser::Type_featuringContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_featuring\fP (\fBKerMLParser::Type_featuringContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_type_featuring\fP (\fBKerMLParser::Owned_type_featuringContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_type_featuring\fP (\fBKerMLParser::Owned_type_featuringContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterData_type\fP (\fBKerMLParser::Data_typeContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitData_type\fP (\fBKerMLParser::Data_typeContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterClass\fP (\fBKerMLParser::ClassContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitClass\fP (\fBKerMLParser::ClassContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterStructure\fP (\fBKerMLParser::StructureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitStructure\fP (\fBKerMLParser::StructureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterAssociation\fP (\fBKerMLParser::AssociationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitAssociation\fP (\fBKerMLParser::AssociationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterAssociation_structure\fP (\fBKerMLParser::Association_structureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitAssociation_structure\fP (\fBKerMLParser::Association_structureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterConnector\fP (\fBKerMLParser::ConnectorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitConnector\fP (\fBKerMLParser::ConnectorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterConnector_declaration\fP (\fBKerMLParser::Connector_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitConnector_declaration\fP (\fBKerMLParser::Connector_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBinary_connector_declaration\fP (\fBKerMLParser::Binary_connector_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBinary_connector_declaration\fP (\fBKerMLParser::Binary_connector_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNary_connector_declaration\fP (\fBKerMLParser::Nary_connector_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNary_connector_declaration\fP (\fBKerMLParser::Nary_connector_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterConnector_end_member\fP (\fBKerMLParser::Connector_end_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitConnector_end_member\fP (\fBKerMLParser::Connector_end_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterConnector_end\fP (\fBKerMLParser::Connector_endContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitConnector_end\fP (\fBKerMLParser::Connector_endContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBinding_connector\fP (\fBKerMLParser::Binding_connectorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBinding_connector\fP (\fBKerMLParser::Binding_connectorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBinding_connector_declaration\fP (\fBKerMLParser::Binding_connector_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBinding_connector_declaration\fP (\fBKerMLParser::Binding_connector_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSuccession\fP (\fBKerMLParser::SuccessionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSuccession\fP (\fBKerMLParser::SuccessionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSuccession_declaration\fP (\fBKerMLParser::Succession_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSuccession_declaration\fP (\fBKerMLParser::Succession_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBehavior\fP (\fBKerMLParser::BehaviorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBehavior\fP (\fBKerMLParser::BehaviorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterStep\fP (\fBKerMLParser::StepContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitStep\fP (\fBKerMLParser::StepContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction\fP (\fBKerMLParser::FunctionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction\fP (\fBKerMLParser::FunctionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_body\fP (\fBKerMLParser::Function_bodyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_body\fP (\fBKerMLParser::Function_bodyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_body_part\fP (\fBKerMLParser::Function_body_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_body_part\fP (\fBKerMLParser::Function_body_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterReturn_feature_member\fP (\fBKerMLParser::Return_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitReturn_feature_member\fP (\fBKerMLParser::Return_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterResult_expression_member\fP (\fBKerMLParser::Result_expression_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitResult_expression_member\fP (\fBKerMLParser::Result_expression_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterExpression\fP (\fBKerMLParser::ExpressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitExpression\fP (\fBKerMLParser::ExpressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterPredicate\fP (\fBKerMLParser::PredicateContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitPredicate\fP (\fBKerMLParser::PredicateContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBoolean_expression\fP (\fBKerMLParser::Boolean_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBoolean_expression\fP (\fBKerMLParser::Boolean_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterInvariant\fP (\fBKerMLParser::InvariantContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitInvariant\fP (\fBKerMLParser::InvariantContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_expression_reference_member\fP (\fBKerMLParser::Owned_expression_reference_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_expression_reference_member\fP (\fBKerMLParser::Owned_expression_reference_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_expression_reference\fP (\fBKerMLParser::Owned_expression_referenceContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_expression_reference\fP (\fBKerMLParser::Owned_expression_referenceContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_expression_member\fP (\fBKerMLParser::Owned_expression_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_expression_member\fP (\fBKerMLParser::Owned_expression_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_expressions\fP (\fBKerMLParser::Owned_expressionsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_expressions\fP (\fBKerMLParser::Owned_expressionsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_expression\fP (\fBKerMLParser::Owned_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_expression\fP (\fBKerMLParser::Owned_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterEased_owned_expression\fP (\fBKerMLParser::Eased_owned_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitEased_owned_expression\fP (\fBKerMLParser::Eased_owned_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterConditional_expression\fP (\fBKerMLParser::Conditional_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitConditional_expression\fP (\fBKerMLParser::Conditional_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterConditional_binary_operator_expression\fP (\fBKerMLParser::Conditional_binary_operator_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitConditional_binary_operator_expression\fP (\fBKerMLParser::Conditional_binary_operator_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterConditional_binary_operator\fP (\fBKerMLParser::Conditional_binary_operatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitConditional_binary_operator\fP (\fBKerMLParser::Conditional_binary_operatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBinary_operator_expression\fP (\fBKerMLParser::Binary_operator_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBinary_operator_expression\fP (\fBKerMLParser::Binary_operator_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBinary_operator\fP (\fBKerMLParser::Binary_operatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBinary_operator\fP (\fBKerMLParser::Binary_operatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterUnary_operator_expression\fP (\fBKerMLParser::Unary_operator_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitUnary_operator_expression\fP (\fBKerMLParser::Unary_operator_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterUnary_operator\fP (\fBKerMLParser::Unary_operatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitUnary_operator\fP (\fBKerMLParser::Unary_operatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterClassification_expression\fP (\fBKerMLParser::Classification_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitClassification_expression\fP (\fBKerMLParser::Classification_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterClassification\fP (\fBKerMLParser::ClassificationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitClassification\fP (\fBKerMLParser::ClassificationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterClassification_test_operator\fP (\fBKerMLParser::Classification_test_operatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitClassification_test_operator\fP (\fBKerMLParser::Classification_test_operatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterCast_operator\fP (\fBKerMLParser::Cast_operatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitCast_operator\fP (\fBKerMLParser::Cast_operatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetaclassification_expression\fP (\fBKerMLParser::Metaclassification_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetaclassification_expression\fP (\fBKerMLParser::Metaclassification_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterArgument_member\fP (\fBKerMLParser::Argument_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitArgument_member\fP (\fBKerMLParser::Argument_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterArgument\fP (\fBKerMLParser::ArgumentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitArgument\fP (\fBKerMLParser::ArgumentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterArgument_value\fP (\fBKerMLParser::Argument_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitArgument_value\fP (\fBKerMLParser::Argument_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterArgument_expression_member\fP (\fBKerMLParser::Argument_expression_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitArgument_expression_member\fP (\fBKerMLParser::Argument_expression_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterArgument_expression\fP (\fBKerMLParser::Argument_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitArgument_expression\fP (\fBKerMLParser::Argument_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterArgument_expression_value\fP (\fBKerMLParser::Argument_expression_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitArgument_expression_value\fP (\fBKerMLParser::Argument_expression_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_argument_member\fP (\fBKerMLParser::Metadata_argument_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_argument_member\fP (\fBKerMLParser::Metadata_argument_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_argument\fP (\fBKerMLParser::Metadata_argumentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_argument\fP (\fBKerMLParser::Metadata_argumentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_value\fP (\fBKerMLParser::Metadata_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_value\fP (\fBKerMLParser::Metadata_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_reference\fP (\fBKerMLParser::Metadata_referenceContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_reference\fP (\fBKerMLParser::Metadata_referenceContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadataclassification_test_operator\fP (\fBKerMLParser::Metadataclassification_test_operatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadataclassification_test_operator\fP (\fBKerMLParser::Metadataclassification_test_operatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMeta_cast_operator\fP (\fBKerMLParser::Meta_cast_operatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMeta_cast_operator\fP (\fBKerMLParser::Meta_cast_operatorContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterExtend_expression\fP (\fBKerMLParser::Extend_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitExtend_expression\fP (\fBKerMLParser::Extend_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_reference_member\fP (\fBKerMLParser::Type_reference_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_reference_member\fP (\fBKerMLParser::Type_reference_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_result_member\fP (\fBKerMLParser::Type_result_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_result_member\fP (\fBKerMLParser::Type_result_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterType_reference\fP (\fBKerMLParser::Type_referenceContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitType_reference\fP (\fBKerMLParser::Type_referenceContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterReference_typing\fP (\fBKerMLParser::Reference_typingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitReference_typing\fP (\fBKerMLParser::Reference_typingContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrimary_expressions\fP (\fBKerMLParser::Primary_expressionsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrimary_expressions\fP (\fBKerMLParser::Primary_expressionsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrimary_expression\fP (\fBKerMLParser::Primary_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrimary_expression\fP (\fBKerMLParser::Primary_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrimary_argument_value\fP (\fBKerMLParser::Primary_argument_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrimary_argument_value\fP (\fBKerMLParser::Primary_argument_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrimary_argument\fP (\fBKerMLParser::Primary_argumentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrimary_argument\fP (\fBKerMLParser::Primary_argumentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrimary_argument_member\fP (\fBKerMLParser::Primary_argument_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrimary_argument_member\fP (\fBKerMLParser::Primary_argument_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_feature_chain_primary_expression\fP (\fBKerMLParser::Non_feature_chain_primary_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_feature_chain_primary_expression\fP (\fBKerMLParser::Non_feature_chain_primary_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_feature_chain_primary_argument_value\fP (\fBKerMLParser::Non_feature_chain_primary_argument_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_feature_chain_primary_argument_value\fP (\fBKerMLParser::Non_feature_chain_primary_argument_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_feature_chain_primary_argument\fP (\fBKerMLParser::Non_feature_chain_primary_argumentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_feature_chain_primary_argument\fP (\fBKerMLParser::Non_feature_chain_primary_argumentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNon_feature_chain_primary_argument_member\fP (\fBKerMLParser::Non_feature_chain_primary_argument_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNon_feature_chain_primary_argument_member\fP (\fBKerMLParser::Non_feature_chain_primary_argument_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBracket_expression\fP (\fBKerMLParser::Bracket_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBracket_expression\fP (\fBKerMLParser::Bracket_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterIndex_expression\fP (\fBKerMLParser::Index_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitIndex_expression\fP (\fBKerMLParser::Index_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSequence_expression\fP (\fBKerMLParser::Sequence_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSequence_expression\fP (\fBKerMLParser::Sequence_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSequence_expression_list\fP (\fBKerMLParser::Sequence_expression_listContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSequence_expression_list\fP (\fBKerMLParser::Sequence_expression_listContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSequence_operator_expression\fP (\fBKerMLParser::Sequence_operator_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSequence_operator_expression\fP (\fBKerMLParser::Sequence_operator_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSequence_expression_list_member\fP (\fBKerMLParser::Sequence_expression_list_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSequence_expression_list_member\fP (\fBKerMLParser::Sequence_expression_list_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_chain_expression\fP (\fBKerMLParser::Feature_chain_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_chain_expression\fP (\fBKerMLParser::Feature_chain_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterCollect_expression\fP (\fBKerMLParser::Collect_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitCollect_expression\fP (\fBKerMLParser::Collect_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSelect_expression\fP (\fBKerMLParser::Select_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSelect_expression\fP (\fBKerMLParser::Select_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_operation_expression\fP (\fBKerMLParser::Function_operation_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_operation_expression\fP (\fBKerMLParser::Function_operation_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBody_argument_member\fP (\fBKerMLParser::Body_argument_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBody_argument_member\fP (\fBKerMLParser::Body_argument_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBody_argument\fP (\fBKerMLParser::Body_argumentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBody_argument\fP (\fBKerMLParser::Body_argumentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBody_argument_value\fP (\fBKerMLParser::Body_argument_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBody_argument_value\fP (\fBKerMLParser::Body_argument_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBody_expression_member\fP (\fBKerMLParser::Body_expression_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBody_expression_member\fP (\fBKerMLParser::Body_expression_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_reference_argument_member\fP (\fBKerMLParser::Function_reference_argument_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_reference_argument_member\fP (\fBKerMLParser::Function_reference_argument_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_reference_argument\fP (\fBKerMLParser::Function_reference_argumentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_reference_argument\fP (\fBKerMLParser::Function_reference_argumentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_reference_arugment_value\fP (\fBKerMLParser::Function_reference_arugment_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_reference_arugment_value\fP (\fBKerMLParser::Function_reference_arugment_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_reference_expression\fP (\fBKerMLParser::Function_reference_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_reference_expression\fP (\fBKerMLParser::Function_reference_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_reference_member\fP (\fBKerMLParser::Function_reference_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_reference_member\fP (\fBKerMLParser::Function_reference_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFunction_reference\fP (\fBKerMLParser::Function_referenceContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFunction_reference\fP (\fBKerMLParser::Function_referenceContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_chain_member\fP (\fBKerMLParser::Feature_chain_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_chain_member\fP (\fBKerMLParser::Feature_chain_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_feature_chain_member\fP (\fBKerMLParser::Owned_feature_chain_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_feature_chain_member\fP (\fBKerMLParser::Owned_feature_chain_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBase_expression\fP (\fBKerMLParser::Base_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBase_expression\fP (\fBKerMLParser::Base_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNull_expression\fP (\fBKerMLParser::Null_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNull_expression\fP (\fBKerMLParser::Null_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_reference_expression\fP (\fBKerMLParser::Feature_reference_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_reference_expression\fP (\fBKerMLParser::Feature_reference_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_reference_member\fP (\fBKerMLParser::Feature_reference_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_reference_member\fP (\fBKerMLParser::Feature_reference_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_reference\fP (\fBKerMLParser::Feature_referenceContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_reference\fP (\fBKerMLParser::Feature_referenceContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_access_expression\fP (\fBKerMLParser::Metadata_access_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_access_expression\fP (\fBKerMLParser::Metadata_access_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterInvocation_expression\fP (\fBKerMLParser::Invocation_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitInvocation_expression\fP (\fBKerMLParser::Invocation_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterInternal_invocation_expression\fP (\fBKerMLParser::Internal_invocation_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitInternal_invocation_expression\fP (\fBKerMLParser::Internal_invocation_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterArgument_list\fP (\fBKerMLParser::Argument_listContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitArgument_list\fP (\fBKerMLParser::Argument_listContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterPositional_argument_list\fP (\fBKerMLParser::Positional_argument_listContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitPositional_argument_list\fP (\fBKerMLParser::Positional_argument_listContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamed_argument_list\fP (\fBKerMLParser::Named_argument_listContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamed_argument_list\fP (\fBKerMLParser::Named_argument_listContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamed_argument_member\fP (\fBKerMLParser::Named_argument_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamed_argument_member\fP (\fBKerMLParser::Named_argument_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterNamed_argument\fP (\fBKerMLParser::Named_argumentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitNamed_argument\fP (\fBKerMLParser::Named_argumentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterParamenter_redefinition\fP (\fBKerMLParser::Paramenter_redefinitionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitParamenter_redefinition\fP (\fBKerMLParser::Paramenter_redefinitionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBody_expression\fP (\fBKerMLParser::Body_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBody_expression\fP (\fBKerMLParser::Body_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterExpression_body_member\fP (\fBKerMLParser::Expression_body_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitExpression_body_member\fP (\fBKerMLParser::Expression_body_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterExpression_body\fP (\fBKerMLParser::Expression_bodyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitExpression_body\fP (\fBKerMLParser::Expression_bodyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterLiteral_expression\fP (\fBKerMLParser::Literal_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitLiteral_expression\fP (\fBKerMLParser::Literal_expressionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterLiteral_boolean\fP (\fBKerMLParser::Literal_booleanContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitLiteral_boolean\fP (\fBKerMLParser::Literal_booleanContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterBoolean_value\fP (\fBKerMLParser::Boolean_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitBoolean_value\fP (\fBKerMLParser::Boolean_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterLiteral_string\fP (\fBKerMLParser::Literal_stringContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitLiteral_string\fP (\fBKerMLParser::Literal_stringContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterLiteral_integer\fP (\fBKerMLParser::Literal_integerContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitLiteral_integer\fP (\fBKerMLParser::Literal_integerContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterLiteral_real\fP (\fBKerMLParser::Literal_realContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitLiteral_real\fP (\fBKerMLParser::Literal_realContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterReal_value\fP (\fBKerMLParser::Real_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitReal_value\fP (\fBKerMLParser::Real_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterLiteral_infinity\fP (\fBKerMLParser::Literal_infinityContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitLiteral_infinity\fP (\fBKerMLParser::Literal_infinityContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterInteraction\fP (\fBKerMLParser::InteractionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitInteraction\fP (\fBKerMLParser::InteractionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_flow\fP (\fBKerMLParser::Item_flowContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_flow\fP (\fBKerMLParser::Item_flowContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterSuccession_item_flow\fP (\fBKerMLParser::Succession_item_flowContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitSuccession_item_flow\fP (\fBKerMLParser::Succession_item_flowContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_flow_declaration\fP (\fBKerMLParser::Item_flow_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_flow_declaration\fP (\fBKerMLParser::Item_flow_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_feature_member\fP (\fBKerMLParser::Item_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_feature_member\fP (\fBKerMLParser::Item_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_feature\fP (\fBKerMLParser::Item_featureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_feature\fP (\fBKerMLParser::Item_featureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_feature_specilization_part\fP (\fBKerMLParser::Item_feature_specilization_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_feature_specilization_part\fP (\fBKerMLParser::Item_feature_specilization_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_flow_end_member\fP (\fBKerMLParser::Item_flow_end_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_flow_end_member\fP (\fBKerMLParser::Item_flow_end_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_flow_end\fP (\fBKerMLParser::Item_flow_endContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_flow_end\fP (\fBKerMLParser::Item_flow_endContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_flow_feature_member\fP (\fBKerMLParser::Item_flow_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_flow_feature_member\fP (\fBKerMLParser::Item_flow_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_flow_feature\fP (\fBKerMLParser::Item_flow_featureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_flow_feature\fP (\fBKerMLParser::Item_flow_featureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterItem_flow_redefinition\fP (\fBKerMLParser::Item_flow_redefinitionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitItem_flow_redefinition\fP (\fBKerMLParser::Item_flow_redefinitionContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterValue_part\fP (\fBKerMLParser::Value_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitValue_part\fP (\fBKerMLParser::Value_partContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_value\fP (\fBKerMLParser::Feature_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_value\fP (\fBKerMLParser::Feature_valueContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterFeature_assignment\fP (\fBKerMLParser::Feature_assignmentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitFeature_assignment\fP (\fBKerMLParser::Feature_assignmentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMultiplicity\fP (\fBKerMLParser::MultiplicityContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMultiplicity\fP (\fBKerMLParser::MultiplicityContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMultiplicity_subset\fP (\fBKerMLParser::Multiplicity_subsetContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMultiplicity_subset\fP (\fBKerMLParser::Multiplicity_subsetContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMultiplicity_range\fP (\fBKerMLParser::Multiplicity_rangeContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMultiplicity_range\fP (\fBKerMLParser::Multiplicity_rangeContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_multiplicity\fP (\fBKerMLParser::Owned_multiplicityContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_multiplicity\fP (\fBKerMLParser::Owned_multiplicityContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterOwned_multiplicity_range\fP (\fBKerMLParser::Owned_multiplicity_rangeContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitOwned_multiplicity_range\fP (\fBKerMLParser::Owned_multiplicity_rangeContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMultiplicity_bounds\fP (\fBKerMLParser::Multiplicity_boundsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMultiplicity_bounds\fP (\fBKerMLParser::Multiplicity_boundsContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMultiplicity_expression_member\fP (\fBKerMLParser::Multiplicity_expression_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMultiplicity_expression_member\fP (\fBKerMLParser::Multiplicity_expression_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterInternal_multiplicity_expression_member\fP (\fBKerMLParser::Internal_multiplicity_expression_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitInternal_multiplicity_expression_member\fP (\fBKerMLParser::Internal_multiplicity_expression_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetaclass\fP (\fBKerMLParser::MetaclassContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetaclass\fP (\fBKerMLParser::MetaclassContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrefix_metadata_annotation\fP (\fBKerMLParser::Prefix_metadata_annotationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrefix_metadata_annotation\fP (\fBKerMLParser::Prefix_metadata_annotationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrefix_metadata_member\fP (\fBKerMLParser::Prefix_metadata_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrefix_metadata_member\fP (\fBKerMLParser::Prefix_metadata_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterPrefix_metadata_feature\fP (\fBKerMLParser::Prefix_metadata_featureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitPrefix_metadata_feature\fP (\fBKerMLParser::Prefix_metadata_featureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_feature\fP (\fBKerMLParser::Metadata_featureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_feature\fP (\fBKerMLParser::Metadata_featureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_feature_declaration\fP (\fBKerMLParser::Metadata_feature_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_feature_declaration\fP (\fBKerMLParser::Metadata_feature_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_body\fP (\fBKerMLParser::Metadata_bodyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_body\fP (\fBKerMLParser::Metadata_bodyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_body_element\fP (\fBKerMLParser::Metadata_body_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_body_element\fP (\fBKerMLParser::Metadata_body_elementContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_body_feature_member\fP (\fBKerMLParser::Metadata_body_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_body_feature_member\fP (\fBKerMLParser::Metadata_body_feature_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMetadata_body_feature\fP (\fBKerMLParser::Metadata_body_featureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMetadata_body_feature\fP (\fBKerMLParser::Metadata_body_featureContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterPackage\fP (\fBKerMLParser::PackageContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitPackage\fP (\fBKerMLParser::PackageContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterLibrary_package\fP (\fBKerMLParser::Library_packageContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitLibrary_package\fP (\fBKerMLParser::Library_packageContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterPackage_declaration\fP (\fBKerMLParser::Package_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitPackage_declaration\fP (\fBKerMLParser::Package_declarationContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterPackage_body\fP (\fBKerMLParser::Package_bodyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitPackage_body\fP (\fBKerMLParser::Package_bodyContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterElement_filter_member\fP (\fBKerMLParser::Element_filter_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitElement_filter_member\fP (\fBKerMLParser::Element_filter_memberContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterMeta_assignment\fP (\fBKerMLParser::Meta_assignmentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitMeta_assignment\fP (\fBKerMLParser::Meta_assignmentContext\fP *) override"
+.br
+.ti -1c
+.RI "virtual void \fBenterEveryRule\fP (antlr4::ParserRuleContext *) override"
+.br
+.ti -1c
+.RI "virtual void \fBexitEveryRule\fP (antlr4::ParserRuleContext *) override"
+.br
+.ti -1c
+.RI "virtual void \fBvisitTerminal\fP (antlr4::tree::TerminalNode *) override"
+.br
+.ti -1c
+.RI "virtual void \fBvisitErrorNode\fP (antlr4::tree::ErrorNode *) override"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class provides an empty implementation of \fBKerMLListener\fP, which can be extended to create a listener which only needs to handle a subset of the available methods\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void KerMLBaseListener::enterAdditional_options (\fBKerMLParser::Additional_optionsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterAlias_member (\fBKerMLParser::Alias_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterAnnotating_element (\fBKerMLParser::Annotating_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterAnnotation (\fBKerMLParser::AnnotationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterArgument (\fBKerMLParser::ArgumentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterArgument_expression (\fBKerMLParser::Argument_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterArgument_expression_member (\fBKerMLParser::Argument_expression_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterArgument_expression_value (\fBKerMLParser::Argument_expression_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterArgument_list (\fBKerMLParser::Argument_listContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterArgument_member (\fBKerMLParser::Argument_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterArgument_value (\fBKerMLParser::Argument_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterAssociation (\fBKerMLParser::AssociationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterAssociation_structure (\fBKerMLParser::Association_structureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBase_expression (\fBKerMLParser::Base_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBehavior (\fBKerMLParser::BehaviorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBinary_connector_declaration (\fBKerMLParser::Binary_connector_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBinary_operator (\fBKerMLParser::Binary_operatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBinary_operator_expression (\fBKerMLParser::Binary_operator_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBinding_connector (\fBKerMLParser::Binding_connectorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBinding_connector_declaration (\fBKerMLParser::Binding_connector_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBody_argument (\fBKerMLParser::Body_argumentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBody_argument_member (\fBKerMLParser::Body_argument_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBody_argument_value (\fBKerMLParser::Body_argument_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBody_expression (\fBKerMLParser::Body_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBody_expression_member (\fBKerMLParser::Body_expression_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBoolean_expression (\fBKerMLParser::Boolean_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBoolean_value (\fBKerMLParser::Boolean_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterBracket_expression (\fBKerMLParser::Bracket_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterCast_operator (\fBKerMLParser::Cast_operatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterChaining_part (\fBKerMLParser::Chaining_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterClass (\fBKerMLParser::ClassContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterClassification (\fBKerMLParser::ClassificationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterClassification_expression (\fBKerMLParser::Classification_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterClassification_test_operator (\fBKerMLParser::Classification_test_operatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterClassifier (\fBKerMLParser::ClassifierContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterClassifier_declaration (\fBKerMLParser::Classifier_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterCollect_expression (\fBKerMLParser::Collect_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterComment (\fBKerMLParser::CommentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterConditional_binary_operator (\fBKerMLParser::Conditional_binary_operatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterConditional_binary_operator_expression (\fBKerMLParser::Conditional_binary_operator_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterConditional_expression (\fBKerMLParser::Conditional_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterConjugation_part (\fBKerMLParser::Conjugation_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterConjunction (\fBKerMLParser::ConjunctionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterConnector (\fBKerMLParser::ConnectorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterConnector_declaration (\fBKerMLParser::Connector_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterConnector_end (\fBKerMLParser::Connector_endContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterConnector_end_member (\fBKerMLParser::Connector_end_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterData_type (\fBKerMLParser::Data_typeContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterDependency (\fBKerMLParser::DependencyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterDifferencing (\fBKerMLParser::DifferencingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterDifferencing_part (\fBKerMLParser::Differencing_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterDisjoining (\fBKerMLParser::DisjoiningContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterDisjoining_part (\fBKerMLParser::Disjoining_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterDocumentation (\fBKerMLParser::DocumentationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterEased_owned_expression (\fBKerMLParser::Eased_owned_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterElement (\fBKerMLParser::ElementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterElement_filter_member (\fBKerMLParser::Element_filter_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterElements (\fBKerMLParser::ElementsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterExpression (\fBKerMLParser::ExpressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterExpression_body (\fBKerMLParser::Expression_bodyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterExpression_body_member (\fBKerMLParser::Expression_body_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterExtend_expression (\fBKerMLParser::Extend_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature (\fBKerMLParser::FeatureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_assignment (\fBKerMLParser::Feature_assignmentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_chain (\fBKerMLParser::Feature_chainContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_chain_expression (\fBKerMLParser::Feature_chain_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_chain_member (\fBKerMLParser::Feature_chain_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_declaration (\fBKerMLParser::Feature_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_direction (\fBKerMLParser::Feature_directionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_element (\fBKerMLParser::Feature_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_identification (\fBKerMLParser::Feature_identificationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_inverting (\fBKerMLParser::Feature_invertingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_member (\fBKerMLParser::Feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_prefix (\fBKerMLParser::Feature_prefixContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_reference (\fBKerMLParser::Feature_referenceContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_reference_expression (\fBKerMLParser::Feature_reference_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_reference_member (\fBKerMLParser::Feature_reference_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_relationship_part (\fBKerMLParser::Feature_relationship_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_specialization_part (\fBKerMLParser::Feature_specialization_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_specilization (\fBKerMLParser::Feature_specilizationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_typing (\fBKerMLParser::Feature_typingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFeature_value (\fBKerMLParser::Feature_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFilter_package (\fBKerMLParser::Filter_packageContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFilter_package_member (\fBKerMLParser::Filter_package_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFunction (\fBKerMLParser::FunctionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFunction_body (\fBKerMLParser::Function_bodyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFunction_body_part (\fBKerMLParser::Function_body_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFunction_operation_expression (\fBKerMLParser::Function_operation_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFunction_reference (\fBKerMLParser::Function_referenceContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFunction_reference_argument (\fBKerMLParser::Function_reference_argumentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFunction_reference_argument_member (\fBKerMLParser::Function_reference_argument_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFunction_reference_arugment_value (\fBKerMLParser::Function_reference_arugment_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFunction_reference_expression (\fBKerMLParser::Function_reference_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterFunction_reference_member (\fBKerMLParser::Function_reference_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterGeneral_type (\fBKerMLParser::General_typeContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterIdentification (\fBKerMLParser::IdentificationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterImport_declaration (\fBKerMLParser::Import_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterIndex_expression (\fBKerMLParser::Index_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterInteraction (\fBKerMLParser::InteractionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterInternal_invocation_expression (\fBKerMLParser::Internal_invocation_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterInternal_multiplicity_expression_member (\fBKerMLParser::Internal_multiplicity_expression_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterIntersecting (\fBKerMLParser::IntersectingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterIntersecting_part (\fBKerMLParser::Intersecting_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterInvariant (\fBKerMLParser::InvariantContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterInverting_part (\fBKerMLParser::Inverting_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterInvocation_expression (\fBKerMLParser::Invocation_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterItem_feature (\fBKerMLParser::Item_featureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterItem_feature_member (\fBKerMLParser::Item_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterItem_feature_specilization_part (\fBKerMLParser::Item_feature_specilization_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterItem_flow (\fBKerMLParser::Item_flowContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterItem_flow_declaration (\fBKerMLParser::Item_flow_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterItem_flow_end (\fBKerMLParser::Item_flow_endContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterItem_flow_end_member (\fBKerMLParser::Item_flow_end_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterItem_flow_feature (\fBKerMLParser::Item_flow_featureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterItem_flow_feature_member (\fBKerMLParser::Item_flow_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterItem_flow_redefinition (\fBKerMLParser::Item_flow_redefinitionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterLibrary_package (\fBKerMLParser::Library_packageContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterLiteral_boolean (\fBKerMLParser::Literal_booleanContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterLiteral_expression (\fBKerMLParser::Literal_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterLiteral_infinity (\fBKerMLParser::Literal_infinityContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterLiteral_integer (\fBKerMLParser::Literal_integerContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterLiteral_real (\fBKerMLParser::Literal_realContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterLiteral_string (\fBKerMLParser::Literal_stringContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMember_prefix (\fBKerMLParser::Member_prefixContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMembership_import (\fBKerMLParser::Membership_importContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMeta_assignment (\fBKerMLParser::Meta_assignmentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMeta_cast_operator (\fBKerMLParser::Meta_cast_operatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMetaclass (\fBKerMLParser::MetaclassContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMetaclassification_expression (\fBKerMLParser::Metaclassification_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMetadata_access_expression (\fBKerMLParser::Metadata_access_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMetadata_argument (\fBKerMLParser::Metadata_argumentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMetadata_argument_member (\fBKerMLParser::Metadata_argument_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMetadata_body (\fBKerMLParser::Metadata_bodyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMetadata_body_element (\fBKerMLParser::Metadata_body_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMetadata_body_feature (\fBKerMLParser::Metadata_body_featureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMetadata_body_feature_member (\fBKerMLParser::Metadata_body_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMetadata_feature (\fBKerMLParser::Metadata_featureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMetadata_feature_declaration (\fBKerMLParser::Metadata_feature_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMetadata_reference (\fBKerMLParser::Metadata_referenceContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMetadata_value (\fBKerMLParser::Metadata_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMetadataclassification_test_operator (\fBKerMLParser::Metadataclassification_test_operatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMultiplicity (\fBKerMLParser::MultiplicityContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMultiplicity_bounds (\fBKerMLParser::Multiplicity_boundsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMultiplicity_expression_member (\fBKerMLParser::Multiplicity_expression_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMultiplicity_part (\fBKerMLParser::Multiplicity_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMultiplicity_range (\fBKerMLParser::Multiplicity_rangeContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterMultiplicity_subset (\fBKerMLParser::Multiplicity_subsetContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNamed_argument (\fBKerMLParser::Named_argumentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNamed_argument_list (\fBKerMLParser::Named_argument_listContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNamed_argument_member (\fBKerMLParser::Named_argument_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNamespace (\fBKerMLParser::NamespaceContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNamespace_body (\fBKerMLParser::Namespace_bodyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNamespace_body_element (\fBKerMLParser::Namespace_body_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNamespace_body_elements (\fBKerMLParser::Namespace_body_elementsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNamespace_declaration (\fBKerMLParser::Namespace_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNamespace_feature_member (\fBKerMLParser::Namespace_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNamespace_import (\fBKerMLParser::Namespace_importContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNamespace_member (\fBKerMLParser::Namespace_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNary_connector_declaration (\fBKerMLParser::Nary_connector_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNon_feature_chain_primary_argument (\fBKerMLParser::Non_feature_chain_primary_argumentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNon_feature_chain_primary_argument_member (\fBKerMLParser::Non_feature_chain_primary_argument_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNon_feature_chain_primary_argument_value (\fBKerMLParser::Non_feature_chain_primary_argument_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNon_feature_chain_primary_expression (\fBKerMLParser::Non_feature_chain_primary_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNon_feature_element (\fBKerMLParser::Non_feature_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNon_feature_member (\fBKerMLParser::Non_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterNull_expression (\fBKerMLParser::Null_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_annotation (\fBKerMLParser::Owned_annotationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_conjugation (\fBKerMLParser::Owned_conjugationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_disjoining (\fBKerMLParser::Owned_disjoiningContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_expression (\fBKerMLParser::Owned_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_expression_member (\fBKerMLParser::Owned_expression_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_expression_reference (\fBKerMLParser::Owned_expression_referenceContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_expression_reference_member (\fBKerMLParser::Owned_expression_reference_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_expressions (\fBKerMLParser::Owned_expressionsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_feature_chain (\fBKerMLParser::Owned_feature_chainContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_feature_chain_member (\fBKerMLParser::Owned_feature_chain_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_feature_chaining (\fBKerMLParser::Owned_feature_chainingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_feature_inverting (\fBKerMLParser::Owned_feature_invertingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_feature_member (\fBKerMLParser::Owned_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_feature_typing (\fBKerMLParser::Owned_feature_typingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_multiplicity (\fBKerMLParser::Owned_multiplicityContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_multiplicity_range (\fBKerMLParser::Owned_multiplicity_rangeContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_redefinition (\fBKerMLParser::Owned_redefinitionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_reference_subsetting (\fBKerMLParser::Owned_reference_subsettingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_related_element (\fBKerMLParser::Owned_related_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_specialization (\fBKerMLParser::Owned_specializationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_subclassification (\fBKerMLParser::Owned_subclassificationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_subsetting (\fBKerMLParser::Owned_subsettingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterOwned_type_featuring (\fBKerMLParser::Owned_type_featuringContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterPackage (\fBKerMLParser::PackageContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterPackage_body (\fBKerMLParser::Package_bodyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterPackage_declaration (\fBKerMLParser::Package_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterParamenter_redefinition (\fBKerMLParser::Paramenter_redefinitionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterPositional_argument_list (\fBKerMLParser::Positional_argument_listContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterPredicate (\fBKerMLParser::PredicateContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterPrefix_metadata_annotation (\fBKerMLParser::Prefix_metadata_annotationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterPrefix_metadata_feature (\fBKerMLParser::Prefix_metadata_featureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterPrefix_metadata_member (\fBKerMLParser::Prefix_metadata_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterPrimary_argument (\fBKerMLParser::Primary_argumentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterPrimary_argument_member (\fBKerMLParser::Primary_argument_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterPrimary_argument_value (\fBKerMLParser::Primary_argument_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterPrimary_expression (\fBKerMLParser::Primary_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterPrimary_expressions (\fBKerMLParser::Primary_expressionsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterQualified_name (\fBKerMLParser::Qualified_nameContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterReal_value (\fBKerMLParser::Real_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterRedefines (\fBKerMLParser::RedefinesContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterRedefinition (\fBKerMLParser::RedefinitionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterRedefinitions (\fBKerMLParser::RedefinitionsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterReference_typing (\fBKerMLParser::Reference_typingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterReferences (\fBKerMLParser::ReferencesContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterRelationship_body (\fBKerMLParser::Relationship_bodyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterRelationship_onwed_elements (\fBKerMLParser::Relationship_onwed_elementsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterRelationship_owned_element (\fBKerMLParser::Relationship_owned_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterResult_expression_member (\fBKerMLParser::Result_expression_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterReturn_feature_member (\fBKerMLParser::Return_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterRoot_namespace (\fBKerMLParser::Root_namespaceContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSelect_expression (\fBKerMLParser::Select_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSequence_expression (\fBKerMLParser::Sequence_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSequence_expression_list (\fBKerMLParser::Sequence_expression_listContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSequence_expression_list_member (\fBKerMLParser::Sequence_expression_list_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSequence_operator_expression (\fBKerMLParser::Sequence_operator_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSpecialization (\fBKerMLParser::SpecializationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSpecialization_part (\fBKerMLParser::Specialization_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSpecific_type (\fBKerMLParser::Specific_typeContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterStart (\fBKerMLParser::StartContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterStartRule (\fBKerMLParser::StartRuleContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterStep (\fBKerMLParser::StepContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterStructure (\fBKerMLParser::StructureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSubclassification (\fBKerMLParser::SubclassificationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSubsets (\fBKerMLParser::SubsetsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSubsetting (\fBKerMLParser::SubsettingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSubsettings (\fBKerMLParser::SubsettingsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSuccession (\fBKerMLParser::SuccessionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSuccession_declaration (\fBKerMLParser::Succession_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSuccession_item_flow (\fBKerMLParser::Succession_item_flowContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterSuperclassing_part (\fBKerMLParser::Superclassing_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterTextual_representation (\fBKerMLParser::Textual_representationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterType (\fBKerMLParser::TypeContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterType_body (\fBKerMLParser::Type_bodyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterType_body_element (\fBKerMLParser::Type_body_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterType_body_elements (\fBKerMLParser::Type_body_elementsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterType_declaration (\fBKerMLParser::Type_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterType_feature_member (\fBKerMLParser::Type_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterType_featuring (\fBKerMLParser::Type_featuringContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterType_featuring_part (\fBKerMLParser::Type_featuring_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterType_prefix (\fBKerMLParser::Type_prefixContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterType_reference (\fBKerMLParser::Type_referenceContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterType_reference_member (\fBKerMLParser::Type_reference_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterType_relationship_part (\fBKerMLParser::Type_relationship_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterType_result_member (\fBKerMLParser::Type_result_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterTyped_by (\fBKerMLParser::Typed_byContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterTypings (\fBKerMLParser::TypingsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterUnary_operator (\fBKerMLParser::Unary_operatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterUnary_operator_expression (\fBKerMLParser::Unary_operator_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterUnioning (\fBKerMLParser::UnioningContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterUnioning_part (\fBKerMLParser::Unioning_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterValue_part (\fBKerMLParser::Value_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::enterVisibility_indicator (\fBKerMLParser::Visibility_indicatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitAdditional_options (\fBKerMLParser::Additional_optionsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitAlias_member (\fBKerMLParser::Alias_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitAnnotating_element (\fBKerMLParser::Annotating_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitAnnotation (\fBKerMLParser::AnnotationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitArgument (\fBKerMLParser::ArgumentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitArgument_expression (\fBKerMLParser::Argument_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitArgument_expression_member (\fBKerMLParser::Argument_expression_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitArgument_expression_value (\fBKerMLParser::Argument_expression_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitArgument_list (\fBKerMLParser::Argument_listContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitArgument_member (\fBKerMLParser::Argument_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitArgument_value (\fBKerMLParser::Argument_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitAssociation (\fBKerMLParser::AssociationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitAssociation_structure (\fBKerMLParser::Association_structureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBase_expression (\fBKerMLParser::Base_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBehavior (\fBKerMLParser::BehaviorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBinary_connector_declaration (\fBKerMLParser::Binary_connector_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBinary_operator (\fBKerMLParser::Binary_operatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBinary_operator_expression (\fBKerMLParser::Binary_operator_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBinding_connector (\fBKerMLParser::Binding_connectorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBinding_connector_declaration (\fBKerMLParser::Binding_connector_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBody_argument (\fBKerMLParser::Body_argumentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBody_argument_member (\fBKerMLParser::Body_argument_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBody_argument_value (\fBKerMLParser::Body_argument_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBody_expression (\fBKerMLParser::Body_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBody_expression_member (\fBKerMLParser::Body_expression_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBoolean_expression (\fBKerMLParser::Boolean_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBoolean_value (\fBKerMLParser::Boolean_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitBracket_expression (\fBKerMLParser::Bracket_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitCast_operator (\fBKerMLParser::Cast_operatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitChaining_part (\fBKerMLParser::Chaining_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitClass (\fBKerMLParser::ClassContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitClassification (\fBKerMLParser::ClassificationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitClassification_expression (\fBKerMLParser::Classification_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitClassification_test_operator (\fBKerMLParser::Classification_test_operatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitClassifier (\fBKerMLParser::ClassifierContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitClassifier_declaration (\fBKerMLParser::Classifier_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitCollect_expression (\fBKerMLParser::Collect_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitComment (\fBKerMLParser::CommentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitConditional_binary_operator (\fBKerMLParser::Conditional_binary_operatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitConditional_binary_operator_expression (\fBKerMLParser::Conditional_binary_operator_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitConditional_expression (\fBKerMLParser::Conditional_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitConjugation_part (\fBKerMLParser::Conjugation_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitConjunction (\fBKerMLParser::ConjunctionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitConnector (\fBKerMLParser::ConnectorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitConnector_declaration (\fBKerMLParser::Connector_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitConnector_end (\fBKerMLParser::Connector_endContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitConnector_end_member (\fBKerMLParser::Connector_end_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitData_type (\fBKerMLParser::Data_typeContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitDependency (\fBKerMLParser::DependencyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitDifferencing (\fBKerMLParser::DifferencingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitDifferencing_part (\fBKerMLParser::Differencing_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitDisjoining (\fBKerMLParser::DisjoiningContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitDisjoining_part (\fBKerMLParser::Disjoining_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitDocumentation (\fBKerMLParser::DocumentationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitEased_owned_expression (\fBKerMLParser::Eased_owned_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitElement (\fBKerMLParser::ElementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitElement_filter_member (\fBKerMLParser::Element_filter_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitElements (\fBKerMLParser::ElementsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitExpression (\fBKerMLParser::ExpressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitExpression_body (\fBKerMLParser::Expression_bodyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitExpression_body_member (\fBKerMLParser::Expression_body_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitExtend_expression (\fBKerMLParser::Extend_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature (\fBKerMLParser::FeatureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_assignment (\fBKerMLParser::Feature_assignmentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_chain (\fBKerMLParser::Feature_chainContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_chain_expression (\fBKerMLParser::Feature_chain_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_chain_member (\fBKerMLParser::Feature_chain_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_declaration (\fBKerMLParser::Feature_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_direction (\fBKerMLParser::Feature_directionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_element (\fBKerMLParser::Feature_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_identification (\fBKerMLParser::Feature_identificationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_inverting (\fBKerMLParser::Feature_invertingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_member (\fBKerMLParser::Feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_prefix (\fBKerMLParser::Feature_prefixContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_reference (\fBKerMLParser::Feature_referenceContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_reference_expression (\fBKerMLParser::Feature_reference_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_reference_member (\fBKerMLParser::Feature_reference_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_relationship_part (\fBKerMLParser::Feature_relationship_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_specialization_part (\fBKerMLParser::Feature_specialization_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_specilization (\fBKerMLParser::Feature_specilizationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_typing (\fBKerMLParser::Feature_typingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFeature_value (\fBKerMLParser::Feature_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFilter_package (\fBKerMLParser::Filter_packageContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFilter_package_member (\fBKerMLParser::Filter_package_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFunction (\fBKerMLParser::FunctionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFunction_body (\fBKerMLParser::Function_bodyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFunction_body_part (\fBKerMLParser::Function_body_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFunction_operation_expression (\fBKerMLParser::Function_operation_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFunction_reference (\fBKerMLParser::Function_referenceContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFunction_reference_argument (\fBKerMLParser::Function_reference_argumentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFunction_reference_argument_member (\fBKerMLParser::Function_reference_argument_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFunction_reference_arugment_value (\fBKerMLParser::Function_reference_arugment_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFunction_reference_expression (\fBKerMLParser::Function_reference_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitFunction_reference_member (\fBKerMLParser::Function_reference_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitGeneral_type (\fBKerMLParser::General_typeContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitIdentification (\fBKerMLParser::IdentificationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitImport_declaration (\fBKerMLParser::Import_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitIndex_expression (\fBKerMLParser::Index_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitInteraction (\fBKerMLParser::InteractionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitInternal_invocation_expression (\fBKerMLParser::Internal_invocation_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitInternal_multiplicity_expression_member (\fBKerMLParser::Internal_multiplicity_expression_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitIntersecting (\fBKerMLParser::IntersectingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitIntersecting_part (\fBKerMLParser::Intersecting_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitInvariant (\fBKerMLParser::InvariantContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitInverting_part (\fBKerMLParser::Inverting_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitInvocation_expression (\fBKerMLParser::Invocation_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitItem_feature (\fBKerMLParser::Item_featureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitItem_feature_member (\fBKerMLParser::Item_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitItem_feature_specilization_part (\fBKerMLParser::Item_feature_specilization_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitItem_flow (\fBKerMLParser::Item_flowContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitItem_flow_declaration (\fBKerMLParser::Item_flow_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitItem_flow_end (\fBKerMLParser::Item_flow_endContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitItem_flow_end_member (\fBKerMLParser::Item_flow_end_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitItem_flow_feature (\fBKerMLParser::Item_flow_featureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitItem_flow_feature_member (\fBKerMLParser::Item_flow_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitItem_flow_redefinition (\fBKerMLParser::Item_flow_redefinitionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitLibrary_package (\fBKerMLParser::Library_packageContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitLiteral_boolean (\fBKerMLParser::Literal_booleanContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitLiteral_expression (\fBKerMLParser::Literal_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitLiteral_infinity (\fBKerMLParser::Literal_infinityContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitLiteral_integer (\fBKerMLParser::Literal_integerContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitLiteral_real (\fBKerMLParser::Literal_realContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitLiteral_string (\fBKerMLParser::Literal_stringContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMember_prefix (\fBKerMLParser::Member_prefixContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMembership_import (\fBKerMLParser::Membership_importContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMeta_assignment (\fBKerMLParser::Meta_assignmentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMeta_cast_operator (\fBKerMLParser::Meta_cast_operatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMetaclass (\fBKerMLParser::MetaclassContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMetaclassification_expression (\fBKerMLParser::Metaclassification_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMetadata_access_expression (\fBKerMLParser::Metadata_access_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMetadata_argument (\fBKerMLParser::Metadata_argumentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMetadata_argument_member (\fBKerMLParser::Metadata_argument_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMetadata_body (\fBKerMLParser::Metadata_bodyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMetadata_body_element (\fBKerMLParser::Metadata_body_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMetadata_body_feature (\fBKerMLParser::Metadata_body_featureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMetadata_body_feature_member (\fBKerMLParser::Metadata_body_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMetadata_feature (\fBKerMLParser::Metadata_featureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMetadata_feature_declaration (\fBKerMLParser::Metadata_feature_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMetadata_reference (\fBKerMLParser::Metadata_referenceContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMetadata_value (\fBKerMLParser::Metadata_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMetadataclassification_test_operator (\fBKerMLParser::Metadataclassification_test_operatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMultiplicity (\fBKerMLParser::MultiplicityContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMultiplicity_bounds (\fBKerMLParser::Multiplicity_boundsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMultiplicity_expression_member (\fBKerMLParser::Multiplicity_expression_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMultiplicity_part (\fBKerMLParser::Multiplicity_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMultiplicity_range (\fBKerMLParser::Multiplicity_rangeContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitMultiplicity_subset (\fBKerMLParser::Multiplicity_subsetContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNamed_argument (\fBKerMLParser::Named_argumentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNamed_argument_list (\fBKerMLParser::Named_argument_listContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNamed_argument_member (\fBKerMLParser::Named_argument_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNamespace (\fBKerMLParser::NamespaceContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNamespace_body (\fBKerMLParser::Namespace_bodyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNamespace_body_element (\fBKerMLParser::Namespace_body_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNamespace_body_elements (\fBKerMLParser::Namespace_body_elementsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNamespace_declaration (\fBKerMLParser::Namespace_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNamespace_feature_member (\fBKerMLParser::Namespace_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNamespace_import (\fBKerMLParser::Namespace_importContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNamespace_member (\fBKerMLParser::Namespace_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNary_connector_declaration (\fBKerMLParser::Nary_connector_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNon_feature_chain_primary_argument (\fBKerMLParser::Non_feature_chain_primary_argumentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNon_feature_chain_primary_argument_member (\fBKerMLParser::Non_feature_chain_primary_argument_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNon_feature_chain_primary_argument_value (\fBKerMLParser::Non_feature_chain_primary_argument_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNon_feature_chain_primary_expression (\fBKerMLParser::Non_feature_chain_primary_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNon_feature_element (\fBKerMLParser::Non_feature_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNon_feature_member (\fBKerMLParser::Non_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitNull_expression (\fBKerMLParser::Null_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_annotation (\fBKerMLParser::Owned_annotationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_conjugation (\fBKerMLParser::Owned_conjugationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_disjoining (\fBKerMLParser::Owned_disjoiningContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_expression (\fBKerMLParser::Owned_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_expression_member (\fBKerMLParser::Owned_expression_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_expression_reference (\fBKerMLParser::Owned_expression_referenceContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_expression_reference_member (\fBKerMLParser::Owned_expression_reference_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_expressions (\fBKerMLParser::Owned_expressionsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_feature_chain (\fBKerMLParser::Owned_feature_chainContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_feature_chain_member (\fBKerMLParser::Owned_feature_chain_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_feature_chaining (\fBKerMLParser::Owned_feature_chainingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_feature_inverting (\fBKerMLParser::Owned_feature_invertingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_feature_member (\fBKerMLParser::Owned_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_feature_typing (\fBKerMLParser::Owned_feature_typingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_multiplicity (\fBKerMLParser::Owned_multiplicityContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_multiplicity_range (\fBKerMLParser::Owned_multiplicity_rangeContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_redefinition (\fBKerMLParser::Owned_redefinitionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_reference_subsetting (\fBKerMLParser::Owned_reference_subsettingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_related_element (\fBKerMLParser::Owned_related_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_specialization (\fBKerMLParser::Owned_specializationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_subclassification (\fBKerMLParser::Owned_subclassificationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_subsetting (\fBKerMLParser::Owned_subsettingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitOwned_type_featuring (\fBKerMLParser::Owned_type_featuringContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitPackage (\fBKerMLParser::PackageContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitPackage_body (\fBKerMLParser::Package_bodyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitPackage_declaration (\fBKerMLParser::Package_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitParamenter_redefinition (\fBKerMLParser::Paramenter_redefinitionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitPositional_argument_list (\fBKerMLParser::Positional_argument_listContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitPredicate (\fBKerMLParser::PredicateContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitPrefix_metadata_annotation (\fBKerMLParser::Prefix_metadata_annotationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitPrefix_metadata_feature (\fBKerMLParser::Prefix_metadata_featureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitPrefix_metadata_member (\fBKerMLParser::Prefix_metadata_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitPrimary_argument (\fBKerMLParser::Primary_argumentContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitPrimary_argument_member (\fBKerMLParser::Primary_argument_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitPrimary_argument_value (\fBKerMLParser::Primary_argument_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitPrimary_expression (\fBKerMLParser::Primary_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitPrimary_expressions (\fBKerMLParser::Primary_expressionsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitQualified_name (\fBKerMLParser::Qualified_nameContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitReal_value (\fBKerMLParser::Real_valueContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitRedefines (\fBKerMLParser::RedefinesContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitRedefinition (\fBKerMLParser::RedefinitionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitRedefinitions (\fBKerMLParser::RedefinitionsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitReference_typing (\fBKerMLParser::Reference_typingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitReferences (\fBKerMLParser::ReferencesContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitRelationship_body (\fBKerMLParser::Relationship_bodyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitRelationship_onwed_elements (\fBKerMLParser::Relationship_onwed_elementsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitRelationship_owned_element (\fBKerMLParser::Relationship_owned_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitResult_expression_member (\fBKerMLParser::Result_expression_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitReturn_feature_member (\fBKerMLParser::Return_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitRoot_namespace (\fBKerMLParser::Root_namespaceContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSelect_expression (\fBKerMLParser::Select_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSequence_expression (\fBKerMLParser::Sequence_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSequence_expression_list (\fBKerMLParser::Sequence_expression_listContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSequence_expression_list_member (\fBKerMLParser::Sequence_expression_list_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSequence_operator_expression (\fBKerMLParser::Sequence_operator_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSpecialization (\fBKerMLParser::SpecializationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSpecialization_part (\fBKerMLParser::Specialization_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSpecific_type (\fBKerMLParser::Specific_typeContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitStart (\fBKerMLParser::StartContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitStartRule (\fBKerMLParser::StartRuleContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitStep (\fBKerMLParser::StepContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitStructure (\fBKerMLParser::StructureContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSubclassification (\fBKerMLParser::SubclassificationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSubsets (\fBKerMLParser::SubsetsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSubsetting (\fBKerMLParser::SubsettingContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSubsettings (\fBKerMLParser::SubsettingsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSuccession (\fBKerMLParser::SuccessionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSuccession_declaration (\fBKerMLParser::Succession_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSuccession_item_flow (\fBKerMLParser::Succession_item_flowContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitSuperclassing_part (\fBKerMLParser::Superclassing_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitTextual_representation (\fBKerMLParser::Textual_representationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitType (\fBKerMLParser::TypeContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitType_body (\fBKerMLParser::Type_bodyContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitType_body_element (\fBKerMLParser::Type_body_elementContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitType_body_elements (\fBKerMLParser::Type_body_elementsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitType_declaration (\fBKerMLParser::Type_declarationContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitType_feature_member (\fBKerMLParser::Type_feature_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitType_featuring (\fBKerMLParser::Type_featuringContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitType_featuring_part (\fBKerMLParser::Type_featuring_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitType_prefix (\fBKerMLParser::Type_prefixContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitType_reference (\fBKerMLParser::Type_referenceContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitType_reference_member (\fBKerMLParser::Type_reference_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitType_relationship_part (\fBKerMLParser::Type_relationship_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitType_result_member (\fBKerMLParser::Type_result_memberContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitTyped_by (\fBKerMLParser::Typed_byContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitTypings (\fBKerMLParser::TypingsContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitUnary_operator (\fBKerMLParser::Unary_operatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitUnary_operator_expression (\fBKerMLParser::Unary_operator_expressionContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitUnioning (\fBKerMLParser::UnioningContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitUnioning_part (\fBKerMLParser::Unioning_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitValue_part (\fBKerMLParser::Value_partContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "virtual void KerMLBaseListener::exitVisibility_indicator (\fBKerMLParser::Visibility_indicatorContext\fP * )\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

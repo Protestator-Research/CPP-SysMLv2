@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d6/d82/class_sys_m_lv2_parser_1_1_literal__integer_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Literal_integerContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d6/d82/class_sys_m_lv2_parser_1_1_literal__integer_context_1a9365de1bf12ba1d5ec79975ebee993d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Literal_integerContext::Literal_integerContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Literal_integerContext</name>
+        <qualifiedname>SysMLv2Parser::Literal_integerContext::Literal_integerContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8592" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="42108" bodyend="42110"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d82/class_sys_m_lv2_parser_1_1_literal__integer_context_1abc5a37ffb33bd29c766d5df1559844ce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Literal_integerContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Literal_integerContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8593" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="42117" bodyend="42119"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d82/class_sys_m_lv2_parser_1_1_literal__integer_context_1acac4ad8ac52793a5272b51913951cdf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Literal_integerContext::DECIMAL_VALUE</definition>
+        <argsstring>()</argsstring>
+        <name>DECIMAL_VALUE</name>
+        <qualifiedname>SysMLv2Parser::Literal_integerContext::DECIMAL_VALUE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8594" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="42112" bodyend="42114"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d82/class_sys_m_lv2_parser_1_1_literal__integer_context_1afc05148e34bd554ed8f733e37f40d10c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Literal_integerContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Literal_integerContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8596" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="42121" bodyend="42125"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d82/class_sys_m_lv2_parser_1_1_literal__integer_context_1a01add833843141502244b8a100c91b3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Literal_integerContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Literal_integerContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8597" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="42127" bodyend="42131"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Literal_integerContext</label>
+        <link refid="d6/d82/class_sys_m_lv2_parser_1_1_literal__integer_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Literal_integerContext</label>
+        <link refid="d6/d82/class_sys_m_lv2_parser_1_1_literal__integer_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="8590" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="8590" bodyend="8599"/>
+    <listofallmembers>
+      <member refid="d6/d82/class_sys_m_lv2_parser_1_1_literal__integer_context_1acac4ad8ac52793a5272b51913951cdf5" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Literal_integerContext</scope><name>DECIMAL_VALUE</name></member>
+      <member refid="d6/d82/class_sys_m_lv2_parser_1_1_literal__integer_context_1afc05148e34bd554ed8f733e37f40d10c" prot="public" virt="virtual"><scope>SysMLv2Parser::Literal_integerContext</scope><name>enterRule</name></member>
+      <member refid="d6/d82/class_sys_m_lv2_parser_1_1_literal__integer_context_1a01add833843141502244b8a100c91b3e" prot="public" virt="virtual"><scope>SysMLv2Parser::Literal_integerContext</scope><name>exitRule</name></member>
+      <member refid="d6/d82/class_sys_m_lv2_parser_1_1_literal__integer_context_1abc5a37ffb33bd29c766d5df1559844ce" prot="public" virt="virtual"><scope>SysMLv2Parser::Literal_integerContext</scope><name>getRuleIndex</name></member>
+      <member refid="d6/d82/class_sys_m_lv2_parser_1_1_literal__integer_context_1a9365de1bf12ba1d5ec79975ebee993d7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Literal_integerContext</scope><name>Literal_integerContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,378 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dd/dcc/kerml_2src_2root_2elements_2_element_8h" kind="file" language="C++">
+    <compoundname>Element.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">boost/uuid/uuid.hpp</includes>
+    <includes local="no">boost/uuid/random_generator.hpp</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="d3/dcf/_annotating_element_8h" local="no">kerml/src/root/annotations/AnnotatingElement.h</includedby>
+    <includedby refid="db/dfb/kerml_2src_2root_2elements_2_element_8cpp" local="yes">kerml/src/root/elements/Element.cpp</includedby>
+    <includedby refid="de/d8b/kerml_2src_2root_2elements_2_relationship_8h" local="yes">kerml/src/root/elements/Relationship.h</includedby>
+    <includedby refid="dd/dfa/_namespace_8h" local="no">kerml/src/root/namespaces/Namespace.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>kerml/src/root/elements/Element.h</label>
+        <link refid="dd/dcc/kerml_2src_2root_2elements_2_element_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>boost/uuid/random_generator.hpp</label>
+      </node>
+      <node id="3">
+        <label>boost/uuid/uuid.hpp</label>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+      <node id="5">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="27">
+        <label>kerml/src/core/classifiers/Classifier.h</label>
+        <link refid="d7/dc1/_classifier_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>kerml/src/core/classifiers/Subclassification.h</label>
+        <link refid="d0/d08/_subclassification_8h_source"/>
+      </node>
+      <node id="31">
+        <label>kerml/src/core/features/Feature.h</label>
+        <link refid="da/dc4/_feature_8h_source"/>
+      </node>
+      <node id="7">
+        <label>kerml/src/core/features/FeatureChaining.h</label>
+        <link refid="d6/d24/_feature_chaining_8h_source"/>
+      </node>
+      <node id="8">
+        <label>kerml/src/core/features/FeatureInverting.h</label>
+        <link refid="da/d66/_feature_inverting_8h_source"/>
+      </node>
+      <node id="17">
+        <label>kerml/src/core/features/FeatureTyping.h</label>
+        <link refid="d8/d32/_feature_typing_8h_source"/>
+      </node>
+      <node id="9">
+        <label>kerml/src/core/features/Featuring.h</label>
+        <link refid="d2/d1c/_featuring_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>kerml/src/core/features/Redefinition.h</label>
+        <link refid="dd/d91/_redefinition_8h_source"/>
+      </node>
+      <node id="18">
+        <label>kerml/src/core/features/Subsetting.h</label>
+        <link refid="d3/db7/_subsetting_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>kerml/src/core/features/TypeFeaturing.h</label>
+        <link refid="db/d67/_type_featuring_8h_source"/>
+      </node>
+      <node id="11">
+        <label>kerml/src/core/types/Conjunction.h</label>
+        <link refid="dd/dd5/_conjunction_8h_source"/>
+      </node>
+      <node id="12">
+        <label>kerml/src/core/types/Differencing.h</label>
+        <link refid="d1/def/_differencing_8h_source"/>
+      </node>
+      <node id="13">
+        <label>kerml/src/core/types/Disjoining.h</label>
+        <link refid="db/dc8/_disjoining_8h_source"/>
+      </node>
+      <node id="14">
+        <label>kerml/src/core/types/Intersecting.h</label>
+        <link refid="d1/d46/_intersecting_8h_source"/>
+      </node>
+      <node id="15">
+        <label>kerml/src/core/types/Specialization.h</label>
+        <link refid="d1/db2/_specialization_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>kerml/src/core/types/Type.h</label>
+        <link refid="d0/d89/_type_8h_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>kerml/src/core/types/Unioning.h</label>
+        <link refid="de/daf/_unioning_8h_source"/>
+      </node>
+      <node id="21">
+        <label>kerml/src/kernel/associations/Association.h</label>
+        <link refid="dc/d7c/_association_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>kerml/src/kernel/associations/AssociationStructure.h</label>
+        <link refid="d7/dd5/_association_structure_8h_source"/>
+      </node>
+      <node id="28">
+        <label>kerml/src/kernel/classes/Class.h</label>
+        <link refid="de/d5d/_class_8h_source"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>kerml/src/kernel/datatypes/DataType.h</label>
+        <link refid="db/da7/_data_type_8h_source"/>
+      </node>
+      <node id="29">
+        <label>kerml/src/kernel/structures/Structure.h</label>
+        <link refid="de/d13/_structure_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>kerml/src/root/annotations/AnnotatingElement.h</label>
+        <link refid="d3/dcf/_annotating_element_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>kerml/src/root/annotations/Annotation.h</label>
+        <link refid="d3/d0f/_annotation_8h_source"/>
+      </node>
+      <node id="3">
+        <label>kerml/src/root/annotations/Comment.h</label>
+        <link refid="d3/d93/_comment_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>kerml/src/root/annotations/Documentation.h</label>
+        <link refid="d1/d6b/_documentation_8h_source"/>
+      </node>
+      <node id="5">
+        <label>kerml/src/root/annotations/TextualRepresentation.h</label>
+        <link refid="d4/dc4/_textual_representation_8h_source"/>
+      </node>
+      <node id="24">
+        <label>kerml/src/root/dependencies/Dependency.h</label>
+        <link refid="d4/d90/_dependency_8h_source"/>
+      </node>
+      <node id="1">
+        <label>kerml/src/root/elements/Element.h</label>
+        <link refid="dd/dcc/kerml_2src_2root_2elements_2_element_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>kerml/src/root/elements/Relationship.h</label>
+        <link refid="de/d8b/kerml_2src_2root_2elements_2_relationship_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>kerml/src/root/namespaces/Namespace.h</label>
+        <link refid="dd/dfa/_namespace_8h_source"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" prot="public">KerML::Entities::Element</innerclass>
+    <innernamespace refid="d2/d14/namespace_ker_m_l">KerML</innernamespace>
+    <innernamespace refid="db/d3a/namespace_ker_m_l_1_1_entities">KerML::Entities</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Moritz<sp/>Herzog<sp/>on<sp/>20.03.25.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Constants,<sp/>Definitions,<sp/>Pragmas</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SYSMLV2_ELEMENT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYSMLV2_ELEMENT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>External<sp/>Classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/uuid/uuid.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/uuid/random_generator.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Internal<sp/>Classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Forwarding</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="db/d3a/namespace_ker_m_l_1_1_entities" kindref="compound">KerML::Entities</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace" kindref="compound">Namespace</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d0/ded/class_ker_m_l_1_1_entities_1_1_documentation" kindref="compound">Documentation</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="de/d53/class_ker_m_l_1_1_entities_1_1_annotation" kindref="compound">Annotation</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d0/d55/class_ker_m_l_1_1_entities_1_1_relationship" kindref="compound">Relationship</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d6/d87/class_ker_m_l_1_1_entities_1_1_textual_representation" kindref="compound">TextualRepresentation</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="db/d3a/namespace_ker_m_l_1_1_entities" kindref="compound">KerML::Entities</ref><sp/>{</highlight></codeline>
+<codeline lineno="41" refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c" kindref="member">Element</ref><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c" kindref="member">Element</ref>(boost::uuids::uuid<sp/>elementID<sp/>=<sp/>boost::uuids::random_generator()(),<sp/>std::shared_ptr&lt;Element&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aa4c9d1f4fd1506ea8d61873a2ba177c1" kindref="member">owner</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c" kindref="member">Element</ref>(std::string<sp/>elementID,<sp/>std::shared_ptr&lt;Element&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aa4c9d1f4fd1506ea8d61873a2ba177c1" kindref="member">owner</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a9fbeffb936fcab7b70327e8f22b40c19" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a9fbeffb936fcab7b70327e8f22b40c19" kindref="member">~Element</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a50f3f7be0b6883e97464e56fef80264e" kindref="member">elementId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::uuids::uuid<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a08dfbcd5104a039aeb720d97b03eafbe" kindref="member">elementIdAsUUID</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a67cd4e9242d86b6a92fb4f1b1ddbf8db" kindref="member">setAliasIds</ref>(std::vector&lt;std::string&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a293a9bbdd3f766e85b33c42ed314414d" kindref="member">aliasIds</ref>);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1abc1566f2e815a6847958f5f39966b859" kindref="member">appendAliasId</ref>(std::string&amp;<sp/>aliasId);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::vector&lt;std::string&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a293a9bbdd3f766e85b33c42ed314414d" kindref="member">aliasIds</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a1d57a50fdec8c10f44ab714a34d0ce74" kindref="member">setDeclaredShortName</ref>(std::string&amp;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8712642a475270d5caaa99fca188f07a" kindref="member">declaredShortName</ref>);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8712642a475270d5caaa99fca188f07a" kindref="member">declaredShortName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8686dafeedf332c846410da4d13b8aac" kindref="member">setDeclaredName</ref>(std::string&amp;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5177637cac4c2f102c1ac622606fc18e" kindref="member">declaredName</ref>);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5177637cac4c2f102c1ac622606fc18e" kindref="member">declaredName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a86d552849ed84c9631b9246662c9fa34" kindref="member">setImpliedIncluded</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&amp;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a4b6577883757e6ae2d13cda2552e1e43" kindref="member">isImpliedIncluded</ref>);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a4b6577883757e6ae2d13cda2552e1e43" kindref="member">isImpliedIncluded</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1adebc4425108aa41e89e6282d223e1c38" kindref="member">escapedName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5a0c3b8b6188c323aba3fe9db9dd5550" kindref="member">effectiveShortName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a5303e53153fadd68bca76b5b8e06f685" kindref="member">effectiveName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Namespace&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac2b5f829b8ad62eaca906e7cd866d1cf" kindref="member">libraryNamespace</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a24ec7829b77b32369dafcb81d77af0e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c" kindref="member">Element</ref>&amp;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a24ec7829b77b32369dafcb81d77af0e4" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c" kindref="member">Element</ref>&amp;<sp/>other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a6b2eb4aeed41e45f2f14742f920dd751" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c" kindref="member">Element</ref>&amp;<sp/>other);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a62d9c4f0a7e75986bd7adf97d0e028a1" kindref="member">operator&lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c" kindref="member">Element</ref>&amp;<sp/>other);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a704d3dedba17f3e97eb08e2116716d83" kindref="member">operator&gt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c" kindref="member">Element</ref>&amp;<sp/>other);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac385bb608aad427a079324303181132f" kindref="member">operator&lt;=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c" kindref="member">Element</ref>&amp;<sp/>other);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1af97c193ec8d513de2840ef5dd6b35ef4" kindref="member">operator&gt;=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ad54e5f092ef2e35ce397222d0abfdb4c" kindref="member">Element</ref>&amp;<sp/>other);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::shared_ptr&lt;Element&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aa4c9d1f4fd1506ea8d61873a2ba177c1" kindref="member">owner</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a78943db83fcff463c054ec4dccb691b6" kindref="member">setOwner</ref>(std::shared_ptr&lt;Element&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aa4c9d1f4fd1506ea8d61873a2ba177c1" kindref="member">owner</ref>);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1ac66ccb28a7d82bd2a2629c14307b9ac4" kindref="member">setOwnedElements</ref>(std::vector&lt;std::shared_ptr&lt;Element&gt;&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7ddc025c7f987b1ac7abe87b471e07fc" kindref="member">ownedElements</ref>);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a694b6623e44bca317fd07f3ceb9d6bf0" kindref="member">appendOwnedElement</ref>(std::shared_ptr&lt;Element&gt;<sp/>ownedElement);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a15b56d09276f5bcd8a8ae0bbc75a681b" kindref="member">appendOwnedElements</ref>(std::vector&lt;std::shared_ptr&lt;Element&gt;&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7ddc025c7f987b1ac7abe87b471e07fc" kindref="member">ownedElements</ref>);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;Element&gt;&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7ddc025c7f987b1ac7abe87b471e07fc" kindref="member">ownedElements</ref>();</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a7dfbb6ba5545bb37db11abbf9f44ef1b" kindref="member">setOwningNamespace</ref>(std::shared_ptr&lt;Namespace&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8518d1b35c0f41d01e57ba11a7680be0" kindref="member">owningNamespace</ref>);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;Namespace&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a8518d1b35c0f41d01e57ba11a7680be0" kindref="member">owningNamespace</ref>();</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a1f31c599d9a94695386c07d1551718b8" kindref="member">sortAliasIds</ref>();</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255" refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a0a07e7e3146f7d7ef7e5f6e8cc151173" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>boost::uuids::uuid<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a0a07e7e3146f7d7ef7e5f6e8cc151173" kindref="member">ElementId</ref>;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260" refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a2fe9d1d9ae52170ee016a2345015a2a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a2fe9d1d9ae52170ee016a2345015a2a8" kindref="member">AliasIds</ref>;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265" refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a6ca5b361ceea9afd58af30dbc26c39e5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a6ca5b361ceea9afd58af30dbc26c39e5" kindref="member">DeclaredShortName</ref>;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>DeclaredName;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275" refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1afe41944c39ed48a58ee78560d213e5b0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;Relationship&gt;&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1afe41944c39ed48a58ee78560d213e5b0" kindref="member">OwnedRelationships</ref>;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280" refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aba76f2d080c1d6527999d608041dc8b0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aba76f2d080c1d6527999d608041dc8b0" kindref="member">IsImpliedIncluded</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285" refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a9d3b8280d23066d2621a5410910930bf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;Element&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a9d3b8280d23066d2621a5410910930bf" kindref="member">Owner</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;Element&gt;&gt;<sp/>OwnedElements;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>ShortName;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>Name;</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>QualifiedName;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298" refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a24655d02ec0e854d9c90818cf93a98f9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a24655d02ec0e854d9c90818cf93a98f9" kindref="member">IsLibraryElement</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303" refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a81f29ab756dad42ce6db7d2406fbf567" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;Documentation&gt;&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a81f29ab756dad42ce6db7d2406fbf567" kindref="member">Documentations</ref>;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;Annotation&gt;&gt;<sp/>OwnedAnnotations;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;TextualRepresentation&gt;&gt;<sp/>TextualRepresentations;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a0c53cc502cb709f613d2869c8c94bf8b" kindref="member">sortOwnedRelationships</ref>();</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1a76d905ace783221b65ebd650eeb6cf36" kindref="member">sortOwnedElements</ref>();</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330" refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aa8c403722101127b06d92c5ac22467a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;Namespace&gt;<sp/><ref refid="d3/dc7/class_ker_m_l_1_1_entities_1_1_element_1aa8c403722101127b06d92c5ac22467a3" kindref="member">OwningNamespace</ref>;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>KerML::Entities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//SYSMLV2_ELEMENT_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="kerml/src/root/elements/Element.h"/>
+  </compounddef>
+</doxygen>

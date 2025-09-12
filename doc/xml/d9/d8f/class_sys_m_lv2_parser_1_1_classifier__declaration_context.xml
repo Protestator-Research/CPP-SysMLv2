@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Classifier_declarationContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1ac6387d1ccac668551cc26822eb8084d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Classifier_declarationContext::Classifier_declarationContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Classifier_declarationContext</name>
+        <qualifiedname>SysMLv2Parser::Classifier_declarationContext::Classifier_declarationContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6402" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31295" bodyend="31297"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a720e8c1b2bf4e2ac1d90c221b49c1076" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Classifier_declarationContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Classifier_declarationContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6403" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31328" bodyend="31330"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a03f7f1e815ef5631f3621f8e218bf9fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/dce/class_sys_m_lv2_parser_1_1_identification_context" kindref="compound">IdentificationContext</ref> *</type>
+        <definition>SysMLv2Parser::IdentificationContext * SysMLv2Parser::Classifier_declarationContext::identification</definition>
+        <argsstring>()</argsstring>
+        <name>identification</name>
+        <qualifiedname>SysMLv2Parser::Classifier_declarationContext::identification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6404" column="27" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31299" bodyend="31301"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1adf58a86ccfca135efa76762c6b5167a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Classifier_declarationContext::KEYWORD_ALL</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_ALL</name>
+        <qualifiedname>SysMLv2Parser::Classifier_declarationContext::KEYWORD_ALL</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6405" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31303" bodyend="31305"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a0805277bb96fc5a140931339edd2243d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d3c/class_sys_m_lv2_parser_1_1_multiplicity__bounds_context" kindref="compound">Multiplicity_boundsContext</ref> *</type>
+        <definition>SysMLv2Parser::Multiplicity_boundsContext * SysMLv2Parser::Classifier_declarationContext::multiplicity_bounds</definition>
+        <argsstring>()</argsstring>
+        <name>multiplicity_bounds</name>
+        <qualifiedname>SysMLv2Parser::Classifier_declarationContext::multiplicity_bounds</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6406" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31307" bodyend="31309"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a6a3532bc4900198c8cc0afe1324979a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/dad/class_sys_m_lv2_parser_1_1_superclassing__part_context" kindref="compound">Superclassing_partContext</ref> *</type>
+        <definition>SysMLv2Parser::Superclassing_partContext * SysMLv2Parser::Classifier_declarationContext::superclassing_part</definition>
+        <argsstring>()</argsstring>
+        <name>superclassing_part</name>
+        <qualifiedname>SysMLv2Parser::Classifier_declarationContext::superclassing_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6407" column="31" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31311" bodyend="31313"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a124b616311600326b870619b9d1b3751" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/d8d/class_sys_m_lv2_parser_1_1_conjugation__part_context" kindref="compound">Conjugation_partContext</ref> *</type>
+        <definition>SysMLv2Parser::Conjugation_partContext * SysMLv2Parser::Classifier_declarationContext::conjugation_part</definition>
+        <argsstring>()</argsstring>
+        <name>conjugation_part</name>
+        <qualifiedname>SysMLv2Parser::Classifier_declarationContext::conjugation_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6408" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31315" bodyend="31317"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1ac6ddb44fe66e0bd4d2d48241ca5c11b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context" kindref="compound">Type_relationship_partContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Type_relationship_partContext * &gt; SysMLv2Parser::Classifier_declarationContext::type_relationship_part</definition>
+        <argsstring>()</argsstring>
+        <name>type_relationship_part</name>
+        <qualifiedname>SysMLv2Parser::Classifier_declarationContext::type_relationship_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6409" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31319" bodyend="31321"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a2bc482642ad8d4224a8d07461dd85e2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/d56/class_sys_m_lv2_parser_1_1_type__relationship__part_context" kindref="compound">Type_relationship_partContext</ref> *</type>
+        <definition>SysMLv2Parser::Type_relationship_partContext * SysMLv2Parser::Classifier_declarationContext::type_relationship_part</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>type_relationship_part</name>
+        <qualifiedname>SysMLv2Parser::Classifier_declarationContext::type_relationship_part</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6410" column="35" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31323" bodyend="31325"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a590251567011915ddeb6745d028e4652" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Classifier_declarationContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Classifier_declarationContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6412" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31332" bodyend="31336"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a1ba923bf21b10f65d540ecc783b4ad1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Classifier_declarationContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Classifier_declarationContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6413" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="31338" bodyend="31342"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Classifier_declarationContext</label>
+        <link refid="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Classifier_declarationContext</label>
+        <link refid="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6400" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="6400" bodyend="6415"/>
+    <listofallmembers>
+      <member refid="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1ac6387d1ccac668551cc26822eb8084d5" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Classifier_declarationContext</scope><name>Classifier_declarationContext</name></member>
+      <member refid="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a124b616311600326b870619b9d1b3751" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Classifier_declarationContext</scope><name>conjugation_part</name></member>
+      <member refid="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a590251567011915ddeb6745d028e4652" prot="public" virt="virtual"><scope>SysMLv2Parser::Classifier_declarationContext</scope><name>enterRule</name></member>
+      <member refid="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a1ba923bf21b10f65d540ecc783b4ad1d" prot="public" virt="virtual"><scope>SysMLv2Parser::Classifier_declarationContext</scope><name>exitRule</name></member>
+      <member refid="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a720e8c1b2bf4e2ac1d90c221b49c1076" prot="public" virt="virtual"><scope>SysMLv2Parser::Classifier_declarationContext</scope><name>getRuleIndex</name></member>
+      <member refid="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a03f7f1e815ef5631f3621f8e218bf9fc" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Classifier_declarationContext</scope><name>identification</name></member>
+      <member refid="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1adf58a86ccfca135efa76762c6b5167a1" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Classifier_declarationContext</scope><name>KEYWORD_ALL</name></member>
+      <member refid="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a0805277bb96fc5a140931339edd2243d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Classifier_declarationContext</scope><name>multiplicity_bounds</name></member>
+      <member refid="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a6a3532bc4900198c8cc0afe1324979a7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Classifier_declarationContext</scope><name>superclassing_part</name></member>
+      <member refid="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1ac6ddb44fe66e0bd4d2d48241ca5c11b0" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Classifier_declarationContext</scope><name>type_relationship_part</name></member>
+      <member refid="d9/d8f/class_sys_m_lv2_parser_1_1_classifier__declaration_context_1a2bc482642ad8d4224a8d07461dd85e2c" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Classifier_declarationContext</scope><name>type_relationship_part</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

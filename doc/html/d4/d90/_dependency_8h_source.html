@@ -116,21 +116,37 @@ $(function(){initNavTree('d4/d90/_dependency_8h_source.html','../../'); initResi
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;root/elements/Relationship.h&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../db/d3a/namespace_ker_m_l_1_1_entities.html">KerML::Entities</a>{</div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="../../d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html">   11</a></span>    <span class="keyword">class </span><a class="code hl_class" href="../../d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html">Dependency</a> : <span class="keyword">public</span> <a class="code hl_function" href="../../d0/d55/class_ker_m_l_1_1_entities_1_1_relationship.html#a6828ab0a5934d03f6858ec84193a0ccd">Relationship</a>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        std::shared_ptr&lt;Element&gt; Client;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        std::shared_ptr&lt;Element&gt; Supplier;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    };</div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="../../d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html">   17</a></span>    <span class="keyword">class </span><a class="code hl_function" href="../../d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html#a4e5d2b2e49c2b6da2db0742209f9344d">Dependency</a> : <span class="keyword">public</span> <a class="code hl_function" href="../../d0/d55/class_ker_m_l_1_1_entities_1_1_relationship.html#a6828ab0a5934d03f6858ec84193a0ccd">Relationship</a>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">explicit</span> <a class="code hl_function" href="../../d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html#a4e5d2b2e49c2b6da2db0742209f9344d">Dependency</a>(boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr&lt;Element&gt; <a class="code hl_function" href="../../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#aa4c9d1f4fd1506ea8d61873a2ba177c1">owner</a> = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keyword">explicit</span> <a class="code hl_function" href="../../d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html#a4e5d2b2e49c2b6da2db0742209f9344d">Dependency</a>(std::string elementID, std::shared_ptr&lt;Element&gt; <a class="code hl_function" href="../../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#aa4c9d1f4fd1506ea8d61873a2ba177c1">owner</a> = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="../../d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html#a1a076462b41ef016d7b74e7d87f37085">   36</a></span>        <span class="keyword">virtual</span> <a class="code hl_function" href="../../d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html#a1a076462b41ef016d7b74e7d87f37085">~Dependency</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">void</span> setClient(std::shared_ptr&lt;Element&gt; client);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        std::shared_ptr&lt;Element&gt; client() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">void</span> setSupplier(std::shared_ptr&lt;Element&gt; supplier);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        std::shared_ptr&lt;Element&gt; supplier() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">void</span> initialize();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        std::shared_ptr&lt;Element&gt; Client;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        std::shared_ptr&lt;Element&gt; Supplier;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    };</div>
 </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>} <span class="comment">// KerML::Entities</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif </span><span class="comment">//SYSMLV2_DEPENDENCY_H</span></div>
-<div class="ttc" id="aclass_ker_m_l_1_1_entities_1_1_dependency_html"><div class="ttname"><a href="../../d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html">KerML::Entities::Dependency</a></div><div class="ttdef"><b>Definition</b> Dependency.h:11</div></div>
-<div class="ttc" id="aclass_ker_m_l_1_1_entities_1_1_relationship_html_a6828ab0a5934d03f6858ec84193a0ccd"><div class="ttname"><a href="../../d0/d55/class_ker_m_l_1_1_entities_1_1_relationship.html#a6828ab0a5934d03f6858ec84193a0ccd">KerML::Entities::Relationship::Relationship</a></div><div class="ttdeci">Relationship(boost::uuids::uuid elementID=boost::uuids::random_generator()(), std::shared_ptr&lt; Element &gt; owner=nullptr)</div><div class="ttdef"><b>Definition</b> Relationship.cpp:9</div></div>
-<div class="ttc" id="anamespace_ker_m_l_1_1_entities_html"><div class="ttname"><a href="../../db/d3a/namespace_ker_m_l_1_1_entities.html">KerML::Entities</a></div><div class="ttdef"><b>Definition</b> Classifier.h:10</div></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>} <span class="comment">// KerML::Entities</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif </span><span class="comment">//SYSMLV2_DEPENDENCY_H</span></div>
+<div class="ttc" id="aclass_ker_m_l_1_1_entities_1_1_dependency_html_a1a076462b41ef016d7b74e7d87f37085"><div class="ttname"><a href="../../d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html#a1a076462b41ef016d7b74e7d87f37085">KerML::Entities::Dependency::~Dependency</a></div><div class="ttdeci">virtual ~Dependency()=default</div></div>
+<div class="ttc" id="aclass_ker_m_l_1_1_entities_1_1_dependency_html_a4e5d2b2e49c2b6da2db0742209f9344d"><div class="ttname"><a href="../../d0/dd9/class_ker_m_l_1_1_entities_1_1_dependency.html#a4e5d2b2e49c2b6da2db0742209f9344d">KerML::Entities::Dependency::Dependency</a></div><div class="ttdeci">Dependency(boost::uuids::uuid elementID=boost::uuids::random_generator()(), std::shared_ptr&lt; Element &gt; owner=nullptr)</div><div class="ttdef"><b>Definition</b> Dependency.cpp:27</div></div>
+<div class="ttc" id="aclass_ker_m_l_1_1_entities_1_1_element_html_aa4c9d1f4fd1506ea8d61873a2ba177c1"><div class="ttname"><a href="../../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#aa4c9d1f4fd1506ea8d61873a2ba177c1">KerML::Entities::Element::owner</a></div><div class="ttdeci">std::shared_ptr&lt; Element &gt; owner() const</div><div class="ttdef"><b>Definition</b> Element.cpp:139</div></div>
+<div class="ttc" id="aclass_ker_m_l_1_1_entities_1_1_relationship_html_a6828ab0a5934d03f6858ec84193a0ccd"><div class="ttname"><a href="../../d0/d55/class_ker_m_l_1_1_entities_1_1_relationship.html#a6828ab0a5934d03f6858ec84193a0ccd">KerML::Entities::Relationship::Relationship</a></div><div class="ttdeci">Relationship(boost::uuids::uuid elementID=boost::uuids::random_generator()(), std::shared_ptr&lt; Element &gt; owner=nullptr)</div><div class="ttdef"><b>Definition</b> Relationship.cpp:10</div></div>
+<div class="ttc" id="anamespace_ker_m_l_1_1_entities_html"><div class="ttname"><a href="../../db/d3a/namespace_ker_m_l_1_1_entities.html">KerML::Entities</a></div><div class="ttdef"><b>Definition</b> Parser.h:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -2,8 +2,7 @@
 // Created by Moritz Herzog on 31.03.25.
 //
 
-#ifndef SYSMLV2_LITERALEXPRESSION_H
-#define SYSMLV2_LITERALEXPRESSION_H
+#pragma once
 
 namespace KerML::Entities {
     class LiteralExpression {
@@ -11,5 +10,3 @@ namespace KerML::Entities {
     };
 }
 
-
-#endif //SYSMLV2_LITERALEXPRESSION_H

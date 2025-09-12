@@ -25,9 +25,17 @@
 var NAVTREE =
 [
   [ "SysMLv2 C++ Implementation", "index.html", [
-    [ "C++ SysMLv2 Implementation", "d3/dcc/md__r_e_a_d_m_e.html", [
-      [ "Licensing", "d3/dcc/md__r_e_a_d_m_e.html#autotoc_md1", null ],
-      [ "Contact", "d3/dcc/md__r_e_a_d_m_e.html#autotoc_md2", null ]
+    [ "C++ SysML v2 Implementation", "d3/dcc/md__r_e_a_d_m_e.html", [
+      [ "Table of Contents", "d3/dcc/md__r_e_a_d_m_e.html#autotoc_md1", null ],
+      [ "Build Status", "d3/dcc/md__r_e_a_d_m_e.html#autotoc_md2", null ],
+      [ "Licensing", "d3/dcc/md__r_e_a_d_m_e.html#autotoc_md3", null ],
+      [ "Building and usage", "d3/dcc/md__r_e_a_d_m_e.html#autotoc_md4", [
+        [ "Conan Build", "d3/dcc/md__r_e_a_d_m_e.html#autotoc_md5", null ],
+        [ "Standalone Build", "d3/dcc/md__r_e_a_d_m_e.html#autotoc_md6", [
+          [ "Dependencies", "d3/dcc/md__r_e_a_d_m_e.html#autotoc_md7", null ],
+          [ "Build", "d3/dcc/md__r_e_a_d_m_e.html#autotoc_md8", null ]
+        ] ]
+      ] ]
     ] ],
     [ "Deprecated List", "da/d58/deprecated.html", null ],
     [ "Namespaces", "namespaces.html", [
@@ -38,7 +46,7 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
+        [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ]
       ] ]
@@ -52,10 +60,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a6ca5b361ceea9afd58af30dbc26c39e5",
-"d6/dbb/_item_feature_8h_source.html",
-"da/de7/class_i_external_relation_ship_service.html",
-"df/dd0/class_sys_m_lv2_parser_1_1_alias_context.html"
+"d2/d3a/class_sys_m_lv2_parser_1_1_guarded__succession_context.html",
+"d4/d14/class_sys_m_lv2_1_1_a_p_i_1_1_sys_m_l_a_p_i_implementation.html#a967d4aace66f869f0dbe1424eca0cbde",
+"d6/d82/class_ker_m_l_parser_1_1_named__argument__member_context.html",
+"d9/d4a/class_sys_m_lv2_parser_1_1_connection__definition_context.html",
+"db/d9d/class_sys_m_lv2_parser_1_1_variant__usage__member_context.html",
+"de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

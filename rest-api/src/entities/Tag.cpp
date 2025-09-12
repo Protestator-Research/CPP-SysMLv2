@@ -4,7 +4,7 @@
 
 #include "Tag.h"
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     Tag::Tag(std::string jsonStringOrName) : CommitReference(jsonStringOrName) {
 
     }

@@ -27,12 +27,12 @@ class CPPSysMLRecipe(ConanFile):
     exports_sources = "CMakeLists.txt", "interfaces/*", "conformance-test/*", "filehandling/*", "kerml/*", "rest-api/*", "services/*"
 
     def requirements(self):
-        self.requires("boost/1.84.0")
-        self.requires("nlohmann_json/3.11.3")
-        self.requires("date/3.0.1")
-        self.requires("libcurl/8.4.0")
+        self.requires("boost/[>=1.86.0 <2]")
+        self.requires("nlohmann_json/[>=3.11.3 <3.13]")
+        self.requires("date/3.0.4")
+        self.requires("libcurl/[>=8.4.0 <9]")
         if(self.options.with_parsing):
-            self.requires("antlr4-cppruntime/4.13.1")
+            self.requires("antlr4-cppruntime/4.13.2")
 
     def config_options(self):
         if self.settings.os == "Windows":

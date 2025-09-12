@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_fddf0afa95c39e263e95d489e2efb214" kind="dir">
+    <compoundname>kerml/src/kernel/featurevalues</compoundname>
+    <innerfile refid="d1/de4/_feature_value_8cpp">FeatureValue.cpp</innerfile>
+    <innerfile refid="d5/d89/_feature_value_8h">FeatureValue.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="kerml/src/kernel/featurevalues/"/>
+  </compounddef>
+</doxygen>

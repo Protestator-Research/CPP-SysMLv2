@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_766ea4f83fe7cbd01aafed60d2a867f6" kind="dir">
+    <compoundname>build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/connectors</compoundname>
+    <innerfile refid="dd/d30/_binding_connector_8cpp_8o_8d">BindingConnector.cpp.o.d</innerfile>
+    <innerfile refid="dc/d3e/connectors_2_expression_8cpp_8o_8d">Expression.cpp.o.d</innerfile>
+    <innerfile refid="d8/d63/connectors_2_parameter_membership_8cpp_8o_8d">ParameterMembership.cpp.o.d</innerfile>
+    <innerfile refid="d5/d27/_succession_8cpp_8o_8d">Succession.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/connectors/"/>
+  </compounddef>
+</doxygen>

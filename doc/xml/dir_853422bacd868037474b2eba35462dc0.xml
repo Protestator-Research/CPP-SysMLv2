@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_853422bacd868037474b2eba35462dc0" kind="dir">
+    <compoundname>rest-api/src/serialization</compoundname>
+    <innerfile refid="dc/d66/_sys_m_lv2_deserializer_8cpp">SysMLv2Deserializer.cpp</innerfile>
+    <innerfile refid="da/d6c/_sys_m_lv2_deserializer_8h">SysMLv2Deserializer.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="rest-api/src/serialization/"/>
+  </compounddef>
+</doxygen>

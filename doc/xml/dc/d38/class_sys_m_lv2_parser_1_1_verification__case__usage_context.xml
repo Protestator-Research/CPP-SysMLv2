@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Verification_case_usageContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1aa823a52cb1e43c296ceb25050a82d867" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Verification_case_usageContext::Verification_case_usageContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Verification_case_usageContext</name>
+        <qualifiedname>SysMLv2Parser::Verification_case_usageContext::Verification_case_usageContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5034" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="23983" bodyend="23985"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1a5824c4ca14d2b04e0fb4dbab5d1c2588" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Verification_case_usageContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Verification_case_usageContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5035" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="24004" bodyend="24006"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1ae445200e37d876eafc1f9ffc61d5f430" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/dcb/class_sys_m_lv2_parser_1_1_occurrence__usage__prefix_context" kindref="compound">Occurrence_usage_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::Occurrence_usage_prefixContext * SysMLv2Parser::Verification_case_usageContext::occurrence_usage_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>occurrence_usage_prefix</name>
+        <qualifiedname>SysMLv2Parser::Verification_case_usageContext::occurrence_usage_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5036" column="36" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="23987" bodyend="23989"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1a261bdd1d71e98ffa35e0d22636440cf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Verification_case_usageContext::KEYWORD_VERIFICATION</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_VERIFICATION</name>
+        <qualifiedname>SysMLv2Parser::Verification_case_usageContext::KEYWORD_VERIFICATION</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5037" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="23991" bodyend="23993"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1a9c0547c9af20647d4dcb73815fc4ecde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context" kindref="compound">Constraint_usage_declarationContext</ref> *</type>
+        <definition>SysMLv2Parser::Constraint_usage_declarationContext * SysMLv2Parser::Verification_case_usageContext::constraint_usage_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>constraint_usage_declaration</name>
+        <qualifiedname>SysMLv2Parser::Verification_case_usageContext::constraint_usage_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5038" column="41" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="23995" bodyend="23997"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1a372c5b4c40b205342c69bfe689158d61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/d85/class_sys_m_lv2_parser_1_1_case__body_context" kindref="compound">Case_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Case_bodyContext * SysMLv2Parser::Verification_case_usageContext::case_body</definition>
+        <argsstring>()</argsstring>
+        <name>case_body</name>
+        <qualifiedname>SysMLv2Parser::Verification_case_usageContext::case_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5039" column="22" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="23999" bodyend="24001"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1ab2fb7b686a733305b66257b988ee13ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Verification_case_usageContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Verification_case_usageContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5041" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="24008" bodyend="24012"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1a7bf278f97bb49413cff3894dd6e0a047" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Verification_case_usageContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Verification_case_usageContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5042" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="24014" bodyend="24018"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Verification_case_usageContext</label>
+        <link refid="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Verification_case_usageContext</label>
+        <link refid="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="5032" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="5032" bodyend="5044"/>
+    <listofallmembers>
+      <member refid="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1a372c5b4c40b205342c69bfe689158d61" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Verification_case_usageContext</scope><name>case_body</name></member>
+      <member refid="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1a9c0547c9af20647d4dcb73815fc4ecde" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Verification_case_usageContext</scope><name>constraint_usage_declaration</name></member>
+      <member refid="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1ab2fb7b686a733305b66257b988ee13ea" prot="public" virt="virtual"><scope>SysMLv2Parser::Verification_case_usageContext</scope><name>enterRule</name></member>
+      <member refid="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1a7bf278f97bb49413cff3894dd6e0a047" prot="public" virt="virtual"><scope>SysMLv2Parser::Verification_case_usageContext</scope><name>exitRule</name></member>
+      <member refid="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1a5824c4ca14d2b04e0fb4dbab5d1c2588" prot="public" virt="virtual"><scope>SysMLv2Parser::Verification_case_usageContext</scope><name>getRuleIndex</name></member>
+      <member refid="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1a261bdd1d71e98ffa35e0d22636440cf3" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Verification_case_usageContext</scope><name>KEYWORD_VERIFICATION</name></member>
+      <member refid="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1ae445200e37d876eafc1f9ffc61d5f430" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Verification_case_usageContext</scope><name>occurrence_usage_prefix</name></member>
+      <member refid="dc/d38/class_sys_m_lv2_parser_1_1_verification__case__usage_context_1aa823a52cb1e43c296ceb25050a82d867" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Verification_case_usageContext</scope><name>Verification_case_usageContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

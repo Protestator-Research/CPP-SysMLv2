@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::RedefinitionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1ae3071a306835db115a1d80888142e547" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::RedefinitionContext::RedefinitionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>RedefinitionContext</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::RedefinitionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6827" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33667" bodyend="33669"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a8eda189f2a2861496b574882c1c663ac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::RedefinitionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6828" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33720" bodyend="33722"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a4db010e0da59ada814fea41507651c0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::RedefinitionContext::REDEFINES</definition>
+        <argsstring>()</argsstring>
+        <name>REDEFINES</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::REDEFINES</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6829" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33671" bodyend="33673"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a9d4809c6f56c4bca8b95cc355a90939f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dc1/class_sys_m_lv2_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>SysMLv2Parser::Qualified_nameContext * SysMLv2Parser::RedefinitionContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6830" column="27" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33675" bodyend="33677"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1aa5aaf6b57873509186d24a9f8bdce1ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/d7e/class_sys_m_lv2_parser_1_1_relationship__body_context" kindref="compound">Relationship_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Relationship_bodyContext * SysMLv2Parser::RedefinitionContext::relationship_body</definition>
+        <argsstring>()</argsstring>
+        <name>relationship_body</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::relationship_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6831" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33679" bodyend="33681"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a608618b04927755c0958743a94695858" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context" kindref="compound">Feature_directionContext</ref> *</type>
+        <definition>SysMLv2Parser::Feature_directionContext * SysMLv2Parser::RedefinitionContext::feature_direction</definition>
+        <argsstring>()</argsstring>
+        <name>feature_direction</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::feature_direction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6832" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33683" bodyend="33685"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a43a04795bfb7770598dfd79a15a955ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::RedefinitionContext::KEYWORD_SPECILIZATION</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_SPECILIZATION</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::KEYWORD_SPECILIZATION</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6833" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33687" bodyend="33689"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1aeb46991310b7c6ea0bba67b4d8e0dcee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d3/dce/class_sys_m_lv2_parser_1_1_identification_context" kindref="compound">IdentificationContext</ref> *</type>
+        <definition>SysMLv2Parser::IdentificationContext * SysMLv2Parser::RedefinitionContext::identification</definition>
+        <argsstring>()</argsstring>
+        <name>identification</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::identification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6834" column="27" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33691" bodyend="33693"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a20ead8869aa59dbefb50d536486fd233" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::RedefinitionContext::KEYWORD_REDEFINITION</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_REDEFINITION</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::KEYWORD_REDEFINITION</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6835" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33695" bodyend="33697"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a23059288068d940f78667c29ba05d611" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/dab/class_sys_m_lv2_parser_1_1_specific__type_context" kindref="compound">Specific_typeContext</ref> *</type>
+        <definition>SysMLv2Parser::Specific_typeContext * SysMLv2Parser::RedefinitionContext::specific_type</definition>
+        <argsstring>()</argsstring>
+        <name>specific_type</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::specific_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6836" column="26" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33699" bodyend="33701"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a7e12c0b0b2c8b52d22387ad28f87b6cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d69/class_sys_m_lv2_parser_1_1_typed__by_context" kindref="compound">Typed_byContext</ref> *</type>
+        <definition>SysMLv2Parser::Typed_byContext * SysMLv2Parser::RedefinitionContext::typed_by</definition>
+        <argsstring>()</argsstring>
+        <name>typed_by</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::typed_by</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6837" column="21" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33703" bodyend="33705"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a6dec539938877247d914207ff6402f4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d5b/class_sys_m_lv2_parser_1_1_multiplicity__part_context" kindref="compound">Multiplicity_partContext</ref> *</type>
+        <definition>SysMLv2Parser::Multiplicity_partContext * SysMLv2Parser::RedefinitionContext::multiplicity_part</definition>
+        <argsstring>()</argsstring>
+        <name>multiplicity_part</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::multiplicity_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6838" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33707" bodyend="33709"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1affe3cf71c4b5f50e2f6d998dfaefa4d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dd2/class_sys_m_lv2_parser_1_1_subsets_context" kindref="compound">SubsetsContext</ref> *</type>
+        <definition>SysMLv2Parser::SubsetsContext * SysMLv2Parser::RedefinitionContext::subsets</definition>
+        <argsstring>()</argsstring>
+        <name>subsets</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::subsets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6839" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33711" bodyend="33713"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1acc3f3875e9a6ec570d6e86dc66c503a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/dbc/class_sys_m_lv2_parser_1_1_feature__assignment_context" kindref="compound">Feature_assignmentContext</ref> *</type>
+        <definition>SysMLv2Parser::Feature_assignmentContext * SysMLv2Parser::RedefinitionContext::feature_assignment</definition>
+        <argsstring>()</argsstring>
+        <name>feature_assignment</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::feature_assignment</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6840" column="31" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33715" bodyend="33717"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a38562041f0bb04458348daf05976fba7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::RedefinitionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6842" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33724" bodyend="33728"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1ac17bfb5d4348431d89530485ad5d21c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::RedefinitionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::RedefinitionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6843" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="33730" bodyend="33734"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::RedefinitionContext</label>
+        <link refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::RedefinitionContext</label>
+        <link refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6825" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="6825" bodyend="6845"/>
+    <listofallmembers>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a38562041f0bb04458348daf05976fba7" prot="public" virt="virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>enterRule</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1ac17bfb5d4348431d89530485ad5d21c3" prot="public" virt="virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>exitRule</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1acc3f3875e9a6ec570d6e86dc66c503a1" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>feature_assignment</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a608618b04927755c0958743a94695858" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>feature_direction</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a8eda189f2a2861496b574882c1c663ac" prot="public" virt="virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>getRuleIndex</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1aeb46991310b7c6ea0bba67b4d8e0dcee" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>identification</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a20ead8869aa59dbefb50d536486fd233" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>KEYWORD_REDEFINITION</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a43a04795bfb7770598dfd79a15a955ca" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>KEYWORD_SPECILIZATION</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a6dec539938877247d914207ff6402f4f" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>multiplicity_part</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a9d4809c6f56c4bca8b95cc355a90939f" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>qualified_name</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a4db010e0da59ada814fea41507651c0b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>REDEFINES</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1ae3071a306835db115a1d80888142e547" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>RedefinitionContext</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1aa5aaf6b57873509186d24a9f8bdce1ed" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>relationship_body</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a23059288068d940f78667c29ba05d611" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>specific_type</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1affe3cf71c4b5f50e2f6d998dfaefa4d3" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>subsets</name></member>
+      <member refid="df/dbb/class_sys_m_lv2_parser_1_1_redefinition_context_1a7e12c0b0b2c8b52d22387ad28f87b6cf" prot="public" virt="non-virtual"><scope>SysMLv2Parser::RedefinitionContext</scope><name>typed_by</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1015 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>SysMLv2::API::IProjectVersioningService</compoundname>
+    <includes refid="df/d0e/_i_project_versioning_service_8h" local="no">IProjectVersioningService.h</includes>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ae21942d5131f697e47cf2cbd0de7114b" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt; &gt;</type>
+        <definition>virtual std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; &gt; SysMLv2::API::IProjectVersioningService::getCommits</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project)=0</argsstring>
+        <name>getCommits</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::getCommits</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets all the commits from the given project. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The given project, where the commits are returned. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A vector of the commits that are given. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="55" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a8b9e66047199bab9ca078740734ab26e" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; SysMLv2::API::IProjectVersioningService::getHeadCommit</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project, std::shared_ptr&lt; SysMLv2::Entities::Branch &gt; branch)=0</argsstring>
+        <name>getHeadCommit</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::getHeadCommit</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">SysMLv2::Entities::Branch</ref> &gt;</type>
+          <declname>branch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the head commit of the branch that is given and placed inside of the project. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The project where the branch is located. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>branch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The branch that is inside of the project. If this is not specified (null) then the default branch is chosen. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The head commit of the branch as a pointer. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="63" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a2199f633b8321e446d8cd6c0dbe9e7c9" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; SysMLv2::API::IProjectVersioningService::getCommitById</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project, boost::uuids::uuid commitId)=0</argsstring>
+        <name>getCommitById</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::getCommitById</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>commitId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the specific commit from the project with the given UUID. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The project where the commit is located. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commitId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The id of the commit. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The specified commit by the project and the commit id. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="71" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a5750777286948eef8640ac9c42b11204" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; SysMLv2::API::IProjectVersioningService::createCommit</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::DataVersion &gt; change, std::shared_ptr&lt; SysMLv2::Entities::Branch &gt; branch, std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; &gt; previousCommits, std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project)=0</argsstring>
+        <name>createCommit</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::createCommit</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" kindref="compound">SysMLv2::Entities::DataVersion</ref> &gt;</type>
+          <declname>change</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">SysMLv2::Entities::Branch</ref> &gt;</type>
+          <declname>branch</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt; &gt;</type>
+          <declname>previousCommits</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>change</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>branch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>previousCommits</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="81" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a74b050e9fa93e33ad4c3b8d0474cf76d" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; SysMLv2::API::IProjectVersioningService::createCommit</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::DataVersion &gt; change, std::shared_ptr&lt; SysMLv2::Entities::Branch &gt; branch, std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project)=0</argsstring>
+        <name>createCommit</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::createCommit</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" kindref="compound">SysMLv2::Entities::DataVersion</ref> &gt;</type>
+          <declname>change</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">SysMLv2::Entities::Branch</ref> &gt;</type>
+          <declname>branch</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>change</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>branch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="90" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1abfd84006da2ad2b30e8d22fbbefcef18" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; SysMLv2::API::IProjectVersioningService::createCommit</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::DataVersion &gt; change, std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; &gt; previousCommits, std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project)=0</argsstring>
+        <name>createCommit</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::createCommit</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" kindref="compound">SysMLv2::Entities::DataVersion</ref> &gt;</type>
+          <declname>change</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt; &gt;</type>
+          <declname>previousCommits</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>change</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>previousCommits</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="99" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ae9efc8f85d964cc81d45b7b3022c0daa" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; SysMLv2::API::IProjectVersioningService::createCommit</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::DataVersion &gt; change, std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project)=0</argsstring>
+        <name>createCommit</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::createCommit</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" kindref="compound">SysMLv2::Entities::DataVersion</ref> &gt;</type>
+          <declname>change</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>change</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="107" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a5db644cb69f2d4238bbb4fde637260e9" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" kindref="compound">SysMLv2::Entities::DataVersion</ref> &gt; &gt;</type>
+        <definition>virtual std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::DataVersion &gt; &gt; SysMLv2::API::IProjectVersioningService::getCommitChange</definition>
+        <argsstring>(std::shared_ptr&lt; SysMLv2::Entities::Project &gt; project, std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; commit, std::vector&lt; SysMLv2::Entities::ChangeType &gt;)=0</argsstring>
+        <name>getCommitChange</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::getCommitChange</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+          <declname>commit</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; SysMLv2::Entities::ChangeType &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="115" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ad5aed6d4e6406ee763e405b20ce067c1" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" kindref="compound">SysMLv2::Entities::DataVersion</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::DataVersion &gt; SysMLv2::API::IProjectVersioningService::getCommitChangeById</definition>
+        <argsstring>(SysMLv2::Entities::Project *project, SysMLv2::Entities::Commit *commit, boost::uuids::uuid changeId)=0</argsstring>
+        <name>getCommitChangeById</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::getCommitChangeById</qualifiedname>
+        <param>
+          <type><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> *</type>
+          <declname>commit</declname>
+        </param>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>changeId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>changeId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="124" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a830a86fcb5dba953a9565abe753f33c6" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">SysMLv2::Entities::Branch</ref> &gt; &gt;</type>
+        <definition>virtual std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::Branch &gt; &gt; SysMLv2::API::IProjectVersioningService::getBranches</definition>
+        <argsstring>(SysMLv2::Entities::Project *project)=0</argsstring>
+        <name>getBranches</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::getBranches</qualifiedname>
+        <param>
+          <type><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="131" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1adcd1823b3c38ecefb89f83ac20ee156e" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">SysMLv2::Entities::Branch</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Branch &gt; SysMLv2::API::IProjectVersioningService::getBranchById</definition>
+        <argsstring>(SysMLv2::Entities::Project *project, boost::uuids::uuid branchId)=0</argsstring>
+        <name>getBranchById</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::getBranchById</qualifiedname>
+        <param>
+          <type><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>branchId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>branchId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="139" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a306d88518e25fe9ccff5125752a4048d" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">SysMLv2::Entities::Branch</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Branch &gt; SysMLv2::API::IProjectVersioningService::getDefaultBranch</definition>
+        <argsstring>(SysMLv2::Entities::Project *project)=0</argsstring>
+        <name>getDefaultBranch</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::getDefaultBranch</qualifiedname>
+        <param>
+          <type><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="146" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a29ee13076332ea0c4291bc3203857b6e" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Project &gt; SysMLv2::API::IProjectVersioningService::setDefaultBranch</definition>
+        <argsstring>(SysMLv2::Entities::Project *project, boost::uuids::uuid branchId)=0</argsstring>
+        <name>setDefaultBranch</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::setDefaultBranch</qualifiedname>
+        <param>
+          <type><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>branchId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>branchId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="154" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ac7d23a7513eb0e3b1345c0d734c197db" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">SysMLv2::Entities::Branch</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Branch &gt; SysMLv2::API::IProjectVersioningService::createBranch</definition>
+        <argsstring>(SysMLv2::Entities::Project *project, std::string branchName, SysMLv2::Entities::Commit *head)=0</argsstring>
+        <name>createBranch</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::createBranch</qualifiedname>
+        <param>
+          <type><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>branchName</declname>
+        </param>
+        <param>
+          <type><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> *</type>
+          <declname>head</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>branchName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>head</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="163" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1af9432d4dfb6a3ea8642690e1550dede4" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">SysMLv2::Entities::Branch</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Branch &gt; SysMLv2::API::IProjectVersioningService::deleteBranch</definition>
+        <argsstring>(SysMLv2::Entities::Project *project, boost::uuids::uuid branchId)=0</argsstring>
+        <name>deleteBranch</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::deleteBranch</qualifiedname>
+        <param>
+          <type><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>branchId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>branchId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="171" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a7979eb8187c4014fe341af292b2d279f" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d7/dab/class_sys_m_lv2_1_1_entities_1_1_tag" kindref="compound">SysMLv2::Entities::Tag</ref> &gt; &gt;</type>
+        <definition>virtual std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::Tag &gt; &gt; SysMLv2::API::IProjectVersioningService::getTags</definition>
+        <argsstring>(SysMLv2::Entities::Project *project)=0</argsstring>
+        <name>getTags</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::getTags</qualifiedname>
+        <param>
+          <type><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="178" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ad493844a9a731cd499d0eef57b27624f" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d7/dab/class_sys_m_lv2_1_1_entities_1_1_tag" kindref="compound">SysMLv2::Entities::Tag</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Tag &gt; SysMLv2::API::IProjectVersioningService::getTagById</definition>
+        <argsstring>(SysMLv2::Entities::Project *project, boost::uuids::uuid tagId)=0</argsstring>
+        <name>getTagById</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::getTagById</qualifiedname>
+        <param>
+          <type><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>tagId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tagId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="186" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a0bc679b6bbd03101ffba9ea1b436dfde" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Commit &gt; SysMLv2::API::IProjectVersioningService::getTaggedCommit</definition>
+        <argsstring>(SysMLv2::Entities::Project *project, SysMLv2::Entities::Tag *tag)=0</argsstring>
+        <name>getTaggedCommit</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::getTaggedCommit</qualifiedname>
+        <param>
+          <type><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type><ref refid="d7/dab/class_sys_m_lv2_1_1_entities_1_1_tag" kindref="compound">SysMLv2::Entities::Tag</ref> *</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="194" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a0152cd2eebc1c99f60c46593604348b6" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d7/dab/class_sys_m_lv2_1_1_entities_1_1_tag" kindref="compound">SysMLv2::Entities::Tag</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::Tag &gt; SysMLv2::API::IProjectVersioningService::createTag</definition>
+        <argsstring>(SysMLv2::Entities::Project *project, std::string tagName, SysMLv2::Entities::Commit *taggedCommit)=0</argsstring>
+        <name>createTag</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::createTag</qualifiedname>
+        <param>
+          <type><ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>tagName</declname>
+        </param>
+        <param>
+          <type><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> *</type>
+          <declname>taggedCommit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tagName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>taggedCommit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="203" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a26873f49b4c48ca34eb7ac88bdeeda96" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="dd/d36/class_sys_m_lv2_1_1_entities_1_1_merge_result" kindref="compound">SysMLv2::Entities::MergeResult</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; SysMLv2::Entities::MergeResult &gt; SysMLv2::API::IProjectVersioningService::mergeIntoBranch</definition>
+        <argsstring>(SysMLv2::Entities::Branch *baseBranch, std::vector&lt; SysMLv2::Entities::Commit &gt; commitsToMerge, SysMLv2::Entities::Data *resolution, std::string description)=0</argsstring>
+        <name>mergeIntoBranch</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::mergeIntoBranch</qualifiedname>
+        <param>
+          <type><ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">SysMLv2::Entities::Branch</ref> *</type>
+          <declname>baseBranch</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> &gt;</type>
+          <declname>commitsToMerge</declname>
+        </param>
+        <param>
+          <type><ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">SysMLv2::Entities::Data</ref> *</type>
+          <declname>resolution</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>baseBranch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commitsToMerge</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>resolution</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="213" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1acd7eb68ce209954eb02c6c109fa5d8b6" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::DataDifference &gt; &gt;</type>
+        <definition>virtual std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::DataDifference &gt; &gt; SysMLv2::API::IProjectVersioningService::diffCommits</definition>
+        <argsstring>(SysMLv2::Entities::Commit *baseCommit, SysMLv2::Entities::Commit *compareCommit, std::vector&lt; SysMLv2::Entities::ChangeType &gt; changeType)=0</argsstring>
+        <name>diffCommits</name>
+        <qualifiedname>SysMLv2::API::IProjectVersioningService::diffCommits</qualifiedname>
+        <param>
+          <type><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> *</type>
+          <declname>baseCommit</declname>
+        </param>
+        <param>
+          <type><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> *</type>
+          <declname>compareCommit</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; SysMLv2::Entities::ChangeType &gt;</type>
+          <declname>changeType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>baseCommit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>compareCommit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>changeType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/interfaces/IProjectVersioningService.h" line="222" column="29"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Interface of the Project Versioning Service from the <ref refid="d7/dba/namespace_sys_m_lv2" kindref="compound">SysMLv2</ref> Standard <simplesect kind="version"><para>1.0 Beta 3 </para>
+</simplesect>
+<simplesect kind="author"><para>Moritz Herzog </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">SysMLv2::Entities::Commit</ref> </para>
+</simplesect>
+<simplesect kind="see"><para>SysMlv2::Entities::Project </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">SysMLv2::Entities::Branch</ref> </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" kindref="compound">SysMLv2::Entities::DataVersion</ref> </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="d7/dab/class_sys_m_lv2_1_1_entities_1_1_tag" kindref="compound">SysMLv2::Entities::Tag</ref> </para>
+</simplesect>
+<simplesect kind="see"><para>SysMlv2::Entities::MergeResult </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">SysMLv2::Entities::Data</ref> </para>
+</simplesect>
+<simplesect kind="see"><para>SysMLv2::Entities::DataDifference </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="services/src/interfaces/IProjectVersioningService.h" line="49" column="5" bodyfile="services/src/interfaces/IProjectVersioningService.h" bodystart="49" bodyend="223"/>
+    <listofallmembers>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ac7d23a7513eb0e3b1345c0d734c197db" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>createBranch</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a5750777286948eef8640ac9c42b11204" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>createCommit</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a74b050e9fa93e33ad4c3b8d0474cf76d" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>createCommit</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1abfd84006da2ad2b30e8d22fbbefcef18" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>createCommit</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ae9efc8f85d964cc81d45b7b3022c0daa" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>createCommit</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a0152cd2eebc1c99f60c46593604348b6" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>createTag</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1af9432d4dfb6a3ea8642690e1550dede4" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>deleteBranch</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1acd7eb68ce209954eb02c6c109fa5d8b6" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>diffCommits</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1adcd1823b3c38ecefb89f83ac20ee156e" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>getBranchById</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a830a86fcb5dba953a9565abe753f33c6" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>getBranches</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a2199f633b8321e446d8cd6c0dbe9e7c9" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>getCommitById</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a5db644cb69f2d4238bbb4fde637260e9" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>getCommitChange</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ad5aed6d4e6406ee763e405b20ce067c1" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>getCommitChangeById</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ae21942d5131f697e47cf2cbd0de7114b" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>getCommits</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a306d88518e25fe9ccff5125752a4048d" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>getDefaultBranch</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a8b9e66047199bab9ca078740734ab26e" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>getHeadCommit</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1ad493844a9a731cd499d0eef57b27624f" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>getTagById</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a0bc679b6bbd03101ffba9ea1b436dfde" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>getTaggedCommit</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a7979eb8187c4014fe341af292b2d279f" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>getTags</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a26873f49b4c48ca34eb7ac88bdeeda96" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>mergeIntoBranch</name></member>
+      <member refid="d4/d21/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_versioning_service_1a29ee13076332ea0c4291bc3203857b6e" prot="private" virt="pure-virtual"><scope>SysMLv2::API::IProjectVersioningService</scope><name>setDefaultBranch</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

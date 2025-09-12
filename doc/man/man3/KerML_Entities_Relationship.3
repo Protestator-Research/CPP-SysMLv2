@@ -1,0 +1,356 @@
+.TH "KerML::Entities::Relationship" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KerML::Entities::Relationship
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Relationship\&.h>\fP
+.PP
+Inherits \fBKerML::Entities::Element\fP\&.
+.PP
+Inherited by \fBKerML::Entities::Annotation\fP, \fBKerML::Entities::Association\fP\fR [private]\fP, \fBKerML::Entities::Conjunction\fP, \fBKerML::Entities::Dependency\fP, \fBKerML::Entities::Differencing\fP, \fBKerML::Entities::Disjoining\fP, \fBKerML::Entities::FeatureInverting\fP, \fBKerML::Entities::Featuring\fP, \fBKerML::Entities::Intersecting\fP, \fBKerML::Entities::Specialization\fP, and \fBKerML::Entities::Unioning\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRelationship\fP (boost::uuids::uuid elementID=boost::uuids::random_generator()(), std::shared_ptr< \fBElement\fP > \fBowner\fP=nullptr)"
+.br
+.ti -1c
+.RI "\fBRelationship\fP (std::string elementID, std::shared_ptr< \fBElement\fP > \fBowner\fP=nullptr)"
+.br
+.ti -1c
+.RI "virtual \fB~Relationship\fP ()=default"
+.br
+.ti -1c
+.RI "void \fBsetIsImplied\fP (bool \fBisImplied\fP)"
+.br
+.ti -1c
+.RI "bool \fBisImplied\fP ()"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBNamespace\fP > \fBlibraryNamespace\fP () const override"
+.br
+.ti -1c
+.RI "void \fBappendElementToOwnedRelatedElement\fP (std::shared_ptr< \fBElement\fP > element)"
+.br
+.ti -1c
+.RI "void \fBsetOwnedRelatedElements\fP (std::vector< std::shared_ptr< \fBElement\fP > > elements)"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBElement\fP > > \fBownedRelatedElement\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetOwningRelatedElement\fP (std::shared_ptr< \fBElement\fP > \fBowningRelatedElement\fP)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBElement\fP > \fBowningRelatedElement\fP () const"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBKerML::Entities::Element\fP
+.in +1c
+.ti -1c
+.RI "\fBElement\fP (boost::uuids::uuid elementID=boost::uuids::random_generator()(), std::shared_ptr< \fBElement\fP > \fBowner\fP=nullptr)"
+.br
+.ti -1c
+.RI "\fBElement\fP (std::string elementID, std::shared_ptr< \fBElement\fP > \fBowner\fP=nullptr)"
+.br
+.ti -1c
+.RI "virtual \fB~Element\fP ()=default"
+.br
+.ti -1c
+.RI "std::string \fBelementId\fP () const"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBelementIdAsUUID\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetAliasIds\fP (std::vector< std::string > \fBaliasIds\fP)"
+.br
+.ti -1c
+.RI "void \fBappendAliasId\fP (std::string &aliasId)"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBaliasIds\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetDeclaredShortName\fP (std::string &\fBdeclaredShortName\fP)"
+.br
+.ti -1c
+.RI "std::string \fBdeclaredShortName\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetDeclaredName\fP (std::string &\fBdeclaredName\fP)"
+.br
+.ti -1c
+.RI "std::string \fBdeclaredName\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetImpliedIncluded\fP (bool &\fBisImpliedIncluded\fP)"
+.br
+.ti -1c
+.RI "bool \fBisImpliedIncluded\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBescapedName\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBeffectiveShortName\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBeffectiveName\fP () const"
+.br
+.ti -1c
+.RI "\fBElement\fP & \fBoperator=\fP (const \fBElement\fP &other)=delete"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator==\fP (const \fBElement\fP &other)"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator<\fP (const \fBElement\fP &other)"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator>\fP (const \fBElement\fP &other)"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator<=\fP (const \fBElement\fP &other)"
+.br
+.ti -1c
+.RI "virtual bool \fBoperator>=\fP (const \fBElement\fP &other)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetRelatedElements\fP (std::vector< std::shared_ptr< \fBElement\fP > > \fBrelatedElements\fP)"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBElement\fP > > \fBrelatedElements\fP () const"
+.br
+.ti -1c
+.RI "void \fBappendElementToRelatedElements\fP (std::shared_ptr< \fBElement\fP > element)"
+.br
+.in -1c
+
+Protected Member Functions inherited from \fBKerML::Entities::Element\fP
+.in +1c
+.ti -1c
+.RI "std::shared_ptr< \fBElement\fP > \fBowner\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetOwner\fP (std::shared_ptr< \fBElement\fP > \fBowner\fP)"
+.br
+.ti -1c
+.RI "void \fBsetOwnedElements\fP (std::vector< std::shared_ptr< \fBElement\fP > > \fBownedElements\fP)"
+.br
+.ti -1c
+.RI "void \fBappendOwnedElement\fP (std::shared_ptr< \fBElement\fP > ownedElement)"
+.br
+.ti -1c
+.RI "void \fBappendOwnedElements\fP (std::vector< std::shared_ptr< \fBElement\fP > > \fBownedElements\fP)"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBElement\fP > > \fBownedElements\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetOwningNamespace\fP (std::shared_ptr< \fBNamespace\fP > \fBowningNamespace\fP)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBNamespace\fP > \fBowningNamespace\fP ()"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsortOwnedRelatedElements\fP ()"
+.br
+.ti -1c
+.RI "void \fBsortRelatedElements\fP ()"
+.br
+.ti -1c
+.RI "void \fBsortSourceElements\fP ()"
+.br
+.ti -1c
+.RI "void \fBsortTargetElements\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsImplied\fP =false"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBElement\fP > > \fBOwnedRelatedElements\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBElement\fP > \fBOwningRelatedElement\fP = nullptr"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBElement\fP > > \fBRelatedElements\fP"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBElement\fP > > \fBSource\fP"
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBElement\fP > > \fBTarget\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 Beta 2 A \fBRelationship\fP is an \fBElement\fP that relates two elements to each other\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "KerML::Entities::Relationship::Relationship (boost::uuids::uuid elementID = \fRboost::uuids::random_generator()()\fP, std::shared_ptr< \fBElement\fP > owner = \fRnullptr\fP)\fR [explicit]\fP"
+Constructor of the \fBRelationship\fP\&. This constructor does allow for an empty elementID\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIelementID\fP The \fBElement\fP ID of the \fBRelationship\fP\&. If no UUID is provided, a random UUID is provided by the Software\&. 
+.br
+\fIowner\fP The \fBElement\fP that owns this \fBRelationship\fP\&. If no \fBElement\fP is provided the owning element is automatically set to null\&. 
+.RE
+.PP
+
+.SS "KerML::Entities::Relationship::Relationship (std::string elementID, std::shared_ptr< \fBElement\fP > owner = \fRnullptr\fP)\fR [explicit]\fP"
+Constructor of the \fBRelationship\fP\&. This constructor does not allow for an empty elementID\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIelementID\fP The \fBElement\fP ID of the \fBRelationship\fP as string\&. 
+.br
+\fIowner\fP The \fBElement\fP that owns this relationship\&. If no \fBElement\fP is provided the owning element is automatically set to null\&. 
+.RE
+.PP
+
+.SS "virtual KerML::Entities::Relationship::~Relationship ()\fR [virtual]\fP, \fR [default]\fP"
+Destructor\&. An implementation is not required, since shared pointer are used\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void KerML::Entities::Relationship::appendElementToOwnedRelatedElement (std::shared_ptr< \fBElement\fP > element)"
+Appends one \fBElement\fP to the Owned Related \fBElement\fP list\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIelement\fP Shared pointer of an element\&. 
+.RE
+.PP
+
+.SS "void KerML::Entities::Relationship::appendElementToRelatedElements (std::shared_ptr< \fBElement\fP > element)\fR [protected]\fP"
+Appends one element to the related elements vector\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIelement\fP A shared pointer to the related element\&. 
+.RE
+.PP
+
+.SS "bool KerML::Entities::Relationship::isImplied ()"
+Returns the is Implied option\&. This option is set by tools, to meet semantic standards\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The is Implied option\&. 
+.RE
+.PP
+
+.SS "std::shared_ptr< \fBNamespace\fP > KerML::Entities::Relationship::libraryNamespace () const\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Reimplemented from \fBKerML::Entities::Element\fP\&.
+.SS "std::vector< std::shared_ptr< \fBElement\fP > > KerML::Entities::Relationship::ownedRelatedElement () const\fR [nodiscard]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "std::shared_ptr< \fBElement\fP > KerML::Entities::Relationship::owningRelatedElement () const\fR [nodiscard]\fP"
+Returns the owning related \fBElement\fP\&. It is to remember that the owning related \fBElement\fP can be NULL per definition\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The owningRelatedElement, if available\&. 
+.RE
+.PP
+
+.SS "std::vector< std::shared_ptr< \fBElement\fP > > KerML::Entities::Relationship::relatedElements () const\fR [nodiscard]\fP, \fR [protected]\fP"
+Returns the full and sorted list of the related elements\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Returns the vectors of the related Elements\&. 
+.RE
+.PP
+
+.SS "void KerML::Entities::Relationship::setIsImplied (bool isImplied)"
+Sets the Implied option\&. This should be set true if the relationship is implied by the elements\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIisImplied\fP Is set by most tools, to meet semantic rules\&. 
+.RE
+.PP
+
+.SS "void KerML::Entities::Relationship::setOwnedRelatedElements (std::vector< std::shared_ptr< \fBElement\fP > > elements)"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIelements\fP 
+.RE
+.PP
+
+.SS "void KerML::Entities::Relationship::setOwningRelatedElement (std::shared_ptr< \fBElement\fP > owningRelatedElement)"
+Sets the owning related element\&. This is the element that owns this specific relationship\&. This can also be null\&. This method checks also, if the given element is contained inside of the ownedRelatedElements\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIowningRelatedElement\fP The element that owns this relationship as shared pointer\&. 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIstd::exception\fP If the element is not in the ownedRelatedElements list an exception is thrown\&. 
+.RE
+.PP
+
+.SS "void KerML::Entities::Relationship::setRelatedElements (std::vector< std::shared_ptr< \fBElement\fP > > relatedElements)\fR [protected]\fP"
+Allows to set the related Elements in bulk\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrelatedElements\fP The given list of related Elements\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="df/d28/class_ker_m_l_parser_1_1_owned__subclassification_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Owned_subclassificationContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/d28/class_ker_m_l_parser_1_1_owned__subclassification_context_1a9631a547e3cbf7c60d23cabce25a2567" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Owned_subclassificationContext::Owned_subclassificationContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Owned_subclassificationContext</name>
+        <qualifiedname>KerMLParser::Owned_subclassificationContext::Owned_subclassificationContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1527" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="6845" bodyend="6847"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d28/class_ker_m_l_parser_1_1_owned__subclassification_context_1aa8493716b63d67bbea3d9687982d2593" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Owned_subclassificationContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Owned_subclassificationContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1528" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="6854" bodyend="6856"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d28/class_ker_m_l_parser_1_1_owned__subclassification_context_1a92685e4daa4fd6b28df62cdb51ffce07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>KerMLParser::Qualified_nameContext * KerMLParser::Owned_subclassificationContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>KerMLParser::Owned_subclassificationContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1529" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="6849" bodyend="6851"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d28/class_ker_m_l_parser_1_1_owned__subclassification_context_1aeb3453426a295a0ae43390f23d24e994" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Owned_subclassificationContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Owned_subclassificationContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1531" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="6858" bodyend="6862"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d28/class_ker_m_l_parser_1_1_owned__subclassification_context_1ad0bedfbe7b87e5789ee7f70ab0d515e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Owned_subclassificationContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Owned_subclassificationContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1532" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="6864" bodyend="6868"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Owned_subclassificationContext</label>
+        <link refid="df/d28/class_ker_m_l_parser_1_1_owned__subclassification_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Owned_subclassificationContext</label>
+        <link refid="df/d28/class_ker_m_l_parser_1_1_owned__subclassification_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="1525" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="1525" bodyend="1534"/>
+    <listofallmembers>
+      <member refid="df/d28/class_ker_m_l_parser_1_1_owned__subclassification_context_1aeb3453426a295a0ae43390f23d24e994" prot="public" virt="virtual"><scope>KerMLParser::Owned_subclassificationContext</scope><name>enterRule</name></member>
+      <member refid="df/d28/class_ker_m_l_parser_1_1_owned__subclassification_context_1ad0bedfbe7b87e5789ee7f70ab0d515e4" prot="public" virt="virtual"><scope>KerMLParser::Owned_subclassificationContext</scope><name>exitRule</name></member>
+      <member refid="df/d28/class_ker_m_l_parser_1_1_owned__subclassification_context_1aa8493716b63d67bbea3d9687982d2593" prot="public" virt="virtual"><scope>KerMLParser::Owned_subclassificationContext</scope><name>getRuleIndex</name></member>
+      <member refid="df/d28/class_ker_m_l_parser_1_1_owned__subclassification_context_1a9631a547e3cbf7c60d23cabce25a2567" prot="public" virt="non-virtual"><scope>KerMLParser::Owned_subclassificationContext</scope><name>Owned_subclassificationContext</name></member>
+      <member refid="df/d28/class_ker_m_l_parser_1_1_owned__subclassification_context_1a92685e4daa4fd6b28df62cdb51ffce07" prot="public" virt="non-virtual"><scope>KerMLParser::Owned_subclassificationContext</scope><name>qualified_name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

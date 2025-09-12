@@ -1,0 +1,289 @@
+.TH "SysMLv2::Entities" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::Entities
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBBranch\fP"
+.br
+.ti -1c
+.RI "class \fBCommit\fP"
+.br
+.ti -1c
+.RI "class \fBCommitReference\fP"
+.br
+.ti -1c
+.RI "class \fBData\fP"
+.br
+.ti -1c
+.RI "class \fBDataIdentity\fP"
+.br
+.ti -1c
+.RI "class \fBDataVersion\fP"
+.br
+.ti -1c
+.RI "class \fBElement\fP"
+.br
+.ti -1c
+.RI "class \fBExternalData\fP"
+.br
+.ti -1c
+.RI "class \fBExternalRelationship\fP"
+.br
+.ti -1c
+.RI "class \fBIdentification\fP"
+.br
+.ti -1c
+.RI "class \fBIEntity\fP"
+.br
+.ti -1c
+.RI "class \fBMergeResult\fP"
+.br
+.ti -1c
+.RI "class \fBProject\fP"
+.br
+.ti -1c
+.RI "class \fBProjectUsage\fP"
+.br
+.ti -1c
+.RI "class \fBQuery\fP"
+.br
+.ti -1c
+.RI "class \fBRecord\fP"
+.br
+.ti -1c
+.RI "class \fBRelationship\fP"
+.br
+.ti -1c
+.RI "class \fBTag\fP"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const std::string \fBJSON_ID_ENTITY\fP = '@id'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_TYPE_ENTITY\fP = '@type'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_NAME_ENTITY\fP = 'name'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_ALIAS_ENTITY\fP = 'alias'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_DESCRIPTION_ENTITY\fP = 'description'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_DEFAULT_BRANCH_ENTITY\fP = 'defaultBranch'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_CREATION_ENTITY\fP = 'created'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_BRANCHES_LIST\fP = 'branches_list'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_COMMIT_LIST\fP = 'commits'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_HEAD_ID_LIST\fP = 'heads'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_CONNECTED_MODELS\fP = 'connectedModels'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_PARENT_PROJECT\fP = 'parentProject'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_BRANCH_ID\fP = 'branchId'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_COMMIT_ID\fP = 'commitId'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_HEAD_ID\fP = 'head'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_OWNING_PROJECT\fP = 'owningProject'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_REFERENCE_COMMIT\fP = 'referencedCommit'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_IDENTITY_ENTITY\fP = 'identity'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_PAYLOAD_ENTITY\fP = 'payload'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_CHANGE_ENTITY\fP = 'change'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_SHORT_NAME_ENTITY\fP = 'shortName'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_DECLARED_NAME_ENTITY\fP = 'declaredName'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_DECLARED_SHORT_NAME_ENTITY\fP = 'declaredShortName'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_OWNED_ELEMENTS_ENTITY\fP = 'ownedElements'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_OWNER_ENTITY\fP = 'owner'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_OWNING_MEMBERSHIP_ENTITY\fP = 'owningMembership'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_OWNING_NAMESPACE_ENTITY\fP = 'owningNamespace'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_OWNING_RELATIONSHIP_ENTITY\fP = 'owningRelationship'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_DIRECTION_ENTITY\fP = 'direction'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_VALUE_STRING_ENTITY\fP = 'valueStr'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_IMPORTED_MEMBER_NAME_ENTITY\fP = 'importedMemberName'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_IMPORTED_NAMESPACE_ENTITY\fP = 'importedNamespace'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_LANGUAGE_ENTITY\fP = 'language'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_BODY_ENTITY\fP = 'body'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_SOURCE_ENTITY\fP = 'source'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_TARGET_ENTITY\fP = 'target'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_IS_STANDARD_ENTITY\fP = 'isStandard'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_IS_LIBRARY_ELEMENT_ENTITY\fP = 'isLibraryElement'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_IS_IMPLIED_ELEMENT_ENTITY\fP = 'isImplied'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_IS_IMPLIED_INCLUDED_ENTITY\fP = 'isImpliedIncluded'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_DOCUMENTATION_ENTITY\fP = 'documentation'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_TEXTUAL_REPRESENTATION_ENTITY\fP = 'textualRepresentation'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_ALIAS_ID_ENTITY\fP = 'aliasIds'"
+.br
+.ti -1c
+.RI "const std::string \fBJSON_ELEMENT_ID_ENTITY\fP = 'elementId'"
+.br
+.ti -1c
+.RI "const std::string \fBPROJECT_TYPE\fP ='project'"
+.br
+.ti -1c
+.RI "const std::string \fBDATA_IDENTITY_TYPE\fP ='dataidentity'"
+.br
+.ti -1c
+.RI "const std::string \fBBRANCH_TYPE\fP ='branch'"
+.br
+.ti -1c
+.RI "const std::string \fBTAG_TYPE\fP = 'tag'"
+.br
+.ti -1c
+.RI "const std::string \fBQUERY_TYPE\fP = 'query'"
+.br
+.ti -1c
+.RI "const std::string \fBCOMMIT_TYPE\fP = 'commit'"
+.br
+.ti -1c
+.RI "const std::string \fBFEATURE_TYPE\fP = 'feature'"
+.br
+.ti -1c
+.RI "const std::string \fBFEATURE_TYPE_TYPE\fP = 'featuretyping'"
+.br
+.ti -1c
+.RI "const std::string \fBASSOCIATION_TYPE\fP = 'association'"
+.br
+.ti -1c
+.RI "const std::string \fBELEMENT_TYPE\fP = 'element'"
+.br
+.ti -1c
+.RI "const std::string \fBSPECIALIZATION_TYPE\fP = 'specialization'"
+.br
+.ti -1c
+.RI "const std::string \fBPACKAGE_TYPE\fP = 'package'"
+.br
+.ti -1c
+.RI "const std::string \fBEXPRESSION_TYPE\fP = 'expression'"
+.br
+.ti -1c
+.RI "const std::string \fBMULTIPLICITY_TYPE\fP = 'multiplicity'"
+.br
+.ti -1c
+.RI "const std::string \fBDATA_TYPE_TYPE\fP = 'datatype'"
+.br
+.ti -1c
+.RI "const std::string \fBRELATIONSHIP_TYPE\fP ='relationship'"
+.br
+.ti -1c
+.RI "const std::string \fBCOMMENT_TYPE\fP ='comment'"
+.br
+.ti -1c
+.RI "const std::string \fBDOCUMENTATION_TYPE\fP ='documentation'"
+.br
+.ti -1c
+.RI "const std::string \fBCLASS_TYPE\fP = 'class'"
+.br
+.ti -1c
+.RI "const std::string \fBANNOTATING_ELEMENT_TYPE\fP = 'annotatingelement'"
+.br
+.ti -1c
+.RI "const std::string \fBTEXTUAL_REPRESENTATION_TYPE\fP = 'textualrepresentation'"
+.br
+.ti -1c
+.RI "const std::string \fBCLASSIFIER_TYPE\fP = 'classifier'"
+.br
+.ti -1c
+.RI "const std::string \fBNAMESPACE_TYPE\fP = 'namespace'"
+.br
+.ti -1c
+.RI "const std::string \fBTYPE_TYPE\fP = 'type'"
+.br
+.ti -1c
+.RI "const std::string \fBDIGITAL_TWIN_TYPE\fP = 'digitaltwin'"
+.br
+.ti -1c
+.RI "const std::string \fBDATA_TYPE\fP = 'data'"
+.br
+.ti -1c
+.RI "const std::string \fBDATA_VERSION_TYPE\fP = 'dataversion'"
+.br
+.ti -1c
+.RI "const std::string \fBPAYLOAD_TYPE\fP = 'payload'"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

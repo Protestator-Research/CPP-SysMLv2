@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="df/d2f/class_ker_m_l_parser_1_1_membership__import_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Membership_importContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1a2fa26c02f5cdc70bc7c3082782055d04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Membership_importContext::Membership_importContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Membership_importContext</name>
+        <qualifiedname>KerMLParser::Membership_importContext::Membership_importContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="895" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3362" bodyend="3364"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1a7926ffee5a423caf93ba96d55ec45546" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Membership_importContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Membership_importContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="896" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3383" bodyend="3385"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1a8413921adbdfdf5309080d93ed0eb0c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>KerMLParser::Qualified_nameContext * KerMLParser::Membership_importContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>KerMLParser::Membership_importContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="897" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3366" bodyend="3368"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1a0eb2a2ce2b96accd7ef85b4b3211aaab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Membership_importContext::SYMBOL_NAMESPACE_SUBSET</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_NAMESPACE_SUBSET</name>
+        <qualifiedname>KerMLParser::Membership_importContext::SYMBOL_NAMESPACE_SUBSET</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="898" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3370" bodyend="3372"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1a322a143fcd000b58024d63c5c4238729" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Membership_importContext::SYMBOL_DOUBLE_STAR</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_DOUBLE_STAR</name>
+        <qualifiedname>KerMLParser::Membership_importContext::SYMBOL_DOUBLE_STAR</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="899" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3374" bodyend="3376"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1ae78e2f8532a51760367b69f4ac54bedf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Membership_importContext::SYMBOL_STAR</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_STAR</name>
+        <qualifiedname>KerMLParser::Membership_importContext::SYMBOL_STAR</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="900" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3378" bodyend="3380"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1a9c0628510826a24ba30c6d9fce48920c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Membership_importContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Membership_importContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="902" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3387" bodyend="3391"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1aba63a9b121217b4b784969a0a216e1b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Membership_importContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Membership_importContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="903" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="3393" bodyend="3397"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Membership_importContext</label>
+        <link refid="df/d2f/class_ker_m_l_parser_1_1_membership__import_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Membership_importContext</label>
+        <link refid="df/d2f/class_ker_m_l_parser_1_1_membership__import_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="893" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="893" bodyend="905"/>
+    <listofallmembers>
+      <member refid="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1a9c0628510826a24ba30c6d9fce48920c" prot="public" virt="virtual"><scope>KerMLParser::Membership_importContext</scope><name>enterRule</name></member>
+      <member refid="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1aba63a9b121217b4b784969a0a216e1b9" prot="public" virt="virtual"><scope>KerMLParser::Membership_importContext</scope><name>exitRule</name></member>
+      <member refid="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1a7926ffee5a423caf93ba96d55ec45546" prot="public" virt="virtual"><scope>KerMLParser::Membership_importContext</scope><name>getRuleIndex</name></member>
+      <member refid="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1a2fa26c02f5cdc70bc7c3082782055d04" prot="public" virt="non-virtual"><scope>KerMLParser::Membership_importContext</scope><name>Membership_importContext</name></member>
+      <member refid="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1a8413921adbdfdf5309080d93ed0eb0c3" prot="public" virt="non-virtual"><scope>KerMLParser::Membership_importContext</scope><name>qualified_name</name></member>
+      <member refid="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1a322a143fcd000b58024d63c5c4238729" prot="public" virt="non-virtual"><scope>KerMLParser::Membership_importContext</scope><name>SYMBOL_DOUBLE_STAR</name></member>
+      <member refid="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1a0eb2a2ce2b96accd7ef85b4b3211aaab" prot="public" virt="non-virtual"><scope>KerMLParser::Membership_importContext</scope><name>SYMBOL_NAMESPACE_SUBSET</name></member>
+      <member refid="df/d2f/class_ker_m_l_parser_1_1_membership__import_context_1ae78e2f8532a51760367b69f4ac54bedf" prot="public" virt="non-virtual"><scope>KerMLParser::Membership_importContext</scope><name>SYMBOL_STAR</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

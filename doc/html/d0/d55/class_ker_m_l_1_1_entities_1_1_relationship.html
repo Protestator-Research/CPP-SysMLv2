@@ -228,6 +228,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a15b56d09276f5bcd8a8ae0bbc75a681b inherit pro_methods_class_ker_m_l_1_1_entities_1_1_element"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ddc025c7f987b1ac7abe87b471e07fc inherit pro_methods_class_ker_m_l_1_1_entities_1_1_element" id="r_a7ddc025c7f987b1ac7abe87b471e07fc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html">Element</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a7ddc025c7f987b1ac7abe87b471e07fc">ownedElements</a> ()</td></tr>
 <tr class="separator:a7ddc025c7f987b1ac7abe87b471e07fc inherit pro_methods_class_ker_m_l_1_1_entities_1_1_element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dfbb6ba5545bb37db11abbf9f44ef1b inherit pro_methods_class_ker_m_l_1_1_entities_1_1_element" id="r_a7dfbb6ba5545bb37db11abbf9f44ef1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a7dfbb6ba5545bb37db11abbf9f44ef1b">setOwningNamespace</a> (std::shared_ptr&lt; <a class="el" href="../../d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace.html">Namespace</a> &gt; <a class="el" href="../../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a8518d1b35c0f41d01e57ba11a7680be0">owningNamespace</a>)</td></tr>
+<tr class="separator:a7dfbb6ba5545bb37db11abbf9f44ef1b inherit pro_methods_class_ker_m_l_1_1_entities_1_1_element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8518d1b35c0f41d01e57ba11a7680be0 inherit pro_methods_class_ker_m_l_1_1_entities_1_1_element" id="r_a8518d1b35c0f41d01e57ba11a7680be0"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="../../d4/dbb/class_ker_m_l_1_1_entities_1_1_namespace.html">Namespace</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html#a8518d1b35c0f41d01e57ba11a7680be0">owningNamespace</a> ()</td></tr>
+<tr class="separator:a8518d1b35c0f41d01e57ba11a7680be0 inherit pro_methods_class_ker_m_l_1_1_entities_1_1_element"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -295,7 +299,7 @@ std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../d3/dc7/class_ker_m
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructor of the <a class="el" href="../../d0/d55/class_ker_m_l_1_1_entities_1_1_relationship.html">Relationship</a>. This constructor does not allow for an empty elementID. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Constructor of the <a class="el" href="../../d0/d55/class_ker_m_l_1_1_entities_1_1_relationship.html">Relationship</a>. This constructor does allow for an empty elementID. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">elementID</td><td>The <a class="el" href="../../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html" title="This part of the model allows the identification of all elements. This part of the model allows the i...">Element</a> ID of the <a class="el" href="../../d0/d55/class_ker_m_l_1_1_entities_1_1_relationship.html">Relationship</a>. If no UUID is provided, a random UUID is provided by the Software. </td></tr>
     <tr><td class="paramname">owner</td><td>The <a class="el" href="../../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html" title="This part of the model allows the identification of all elements. This part of the model allows the i...">Element</a> that owns this <a class="el" href="../../d0/d55/class_ker_m_l_1_1_entities_1_1_relationship.html">Relationship</a>. If no <a class="el" href="../../d3/dc7/class_ker_m_l_1_1_entities_1_1_element.html" title="This part of the model allows the identification of all elements. This part of the model allows the i...">Element</a> is provided the owning element is automatically set to null. </td></tr>
@@ -413,9 +417,9 @@ std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../d3/dc7/class_ker_m
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Appends one element to the related elements vector. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">element</td><td></td></tr>
+    <tr><td class="paramname">element</td><td>A shared pointer to the related element. </td></tr>
   </table>
   </dd>
 </dl>
@@ -542,7 +546,7 @@ std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../d3/dc7/class_ker_m
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>Returns the full and sorted list of the related elements. </p><dl class="section return"><dt>Returns</dt><dd>Returns the vectors of the related Elements. </dd></dl>
 
 </div>
 </div>
@@ -643,10 +647,9 @@ std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../d3/dc7/class_ker_m
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Allows to set the related Elements. </p><dl class="section warning"><dt>Warning</dt><dd>This will overwrite the </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Allows to set the related Elements in bulk. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">relatedElements</td><td></td></tr>
+    <tr><td class="paramname">relatedElements</td><td>The given list of related Elements. </td></tr>
   </table>
   </dd>
 </dl>

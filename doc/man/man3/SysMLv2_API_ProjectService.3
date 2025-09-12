@@ -1,0 +1,130 @@
+.TH "SysMLv2::API::ProjectService" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::API::ProjectService
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBSysMLv2::API::IProjectService\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual std::vector< std::shared_ptr< \fBSysMLv2::Entities::Project\fP > > \fBgetProjects\fP () override"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Project\fP > \fBgetProjectById\fP (boost::uuids::uuid projectId) override"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Project\fP > \fBcreateProject\fP (std::string projectName, std::string description='') override"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Project\fP > \fBupdateProject\fP (boost::uuids::uuid projectId, std::string projectName='', std::string description='', std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch=nullptr) override"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBSysMLv2::Entities::Project\fP > \fBdeleteProject\fP (boost::uuids::uuid projectId) override"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::map< boost::uuids::uuid, std::shared_ptr< \fBSysMLv2::Entities::Project\fP > > \fBProjectMap\fP"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "std::shared_ptr< \fBSysMLv2::Entities::Project\fP > SysMLv2::API::ProjectService::createProject (std::string projectName, std::string description = \fR''\fP)\fR [override]\fP, \fR [virtual]\fP"
+Creates a project with the given name and description\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIprojectName\fP Name of the project as std::string 
+.br
+\fIdescription\fP Description of the project as std::string 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A Pointer to the new project\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::API::IProjectService\fP\&.
+.SS "std::shared_ptr< \fBSysMLv2::Entities::Project\fP > SysMLv2::API::ProjectService::deleteProject (boost::uuids::uuid projectId)\fR [override]\fP, \fR [virtual]\fP"
+Deletes a project\&. It is to remember that elements inside of a project should also be deleted to, except they are used inside of references 
+.PP
+\fBParameters\fP
+.RS 4
+\fIprojectId\fP The id of the project, that is to be deleted 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The project that is now deleted inside of the controller\&. You should delete the project it self\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::API::IProjectService\fP\&.
+.SS "std::shared_ptr< \fBSysMLv2::Entities::Project\fP > SysMLv2::API::ProjectService::getProjectById (boost::uuids::uuid projectId)\fR [override]\fP, \fR [virtual]\fP"
+Gets a project from the given UUID\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIprojectId\fP the project id of the project to search for\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A pointer to the given project\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::API::IProjectService\fP\&.
+.SS "std::vector< std::shared_ptr< \fBSysMLv2::Entities::Project\fP > > SysMLv2::API::ProjectService::getProjects ()\fR [override]\fP, \fR [virtual]\fP"
+Gets all Projects 
+.PP
+\fBReturns\fP
+.RS 4
+A vector with all projects as pointer\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+std::vector<T> 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::API::IProjectService\fP\&.
+.SS "std::shared_ptr< \fBSysMLv2::Entities::Project\fP > SysMLv2::API::ProjectService::updateProject (boost::uuids::uuid projectId, std::string projectName = \fR''\fP, std::string description = \fR''\fP, std::shared_ptr< \fBSysMLv2::Entities::Branch\fP > branch = \fRnullptr\fP)\fR [override]\fP, \fR [virtual]\fP"
+Updates a project with the given branch\&. This can be update with the project Name, Description and default branch\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIprojectId\fP The given project ID\&. 
+.br
+\fIprojectName\fP The new project name\&. 
+.br
+\fIdescription\fP The new project description\&. 
+.br
+\fIbranch\fP Pointer to the new default branch\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A Pointer to the updated project\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::API::IProjectService\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

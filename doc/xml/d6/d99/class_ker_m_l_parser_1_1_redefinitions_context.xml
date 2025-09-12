@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::RedefinitionsContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context_1a1d82120a0b324622b5265b72d4322f5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::RedefinitionsContext::RedefinitionsContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>RedefinitionsContext</name>
+        <qualifiedname>KerMLParser::RedefinitionsContext::RedefinitionsContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1818" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8561" bodyend="8563"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context_1a76eca1e0df8df2078311b6ea820e4ade" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::RedefinitionsContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::RedefinitionsContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1819" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8578" bodyend="8580"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context_1a95200bbdc42e13985d38d246f754544f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d53/class_ker_m_l_parser_1_1_redefines_context" kindref="compound">RedefinesContext</ref> *</type>
+        <definition>KerMLParser::RedefinesContext * KerMLParser::RedefinitionsContext::redefines</definition>
+        <argsstring>()</argsstring>
+        <name>redefines</name>
+        <qualifiedname>KerMLParser::RedefinitionsContext::redefines</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1820" column="22" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8565" bodyend="8567"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context_1a380c7613a268f398bd29fef6e0c77db1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::RedefinitionsContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>KerMLParser::RedefinitionsContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1821" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8569" bodyend="8571"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context_1a115aabe1a982f2df1659ab894908a315" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d0/df0/class_ker_m_l_parser_1_1_owned__redefinition_context" kindref="compound">Owned_redefinitionContext</ref> *</type>
+        <definition>KerMLParser::Owned_redefinitionContext * KerMLParser::RedefinitionsContext::owned_redefinition</definition>
+        <argsstring>()</argsstring>
+        <name>owned_redefinition</name>
+        <qualifiedname>KerMLParser::RedefinitionsContext::owned_redefinition</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1822" column="31" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8573" bodyend="8575"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context_1a1bb0de635e7ca5b113903b43ab6a58da" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::RedefinitionsContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::RedefinitionsContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1824" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8582" bodyend="8586"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context_1a3bf1995cf6a945037a1c32c40c8f84f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::RedefinitionsContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::RedefinitionsContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1825" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="8588" bodyend="8592"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::RedefinitionsContext</label>
+        <link refid="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::RedefinitionsContext</label>
+        <link refid="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="1816" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="1816" bodyend="1827"/>
+    <listofallmembers>
+      <member refid="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context_1a1bb0de635e7ca5b113903b43ab6a58da" prot="public" virt="virtual"><scope>KerMLParser::RedefinitionsContext</scope><name>enterRule</name></member>
+      <member refid="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context_1a3bf1995cf6a945037a1c32c40c8f84f1" prot="public" virt="virtual"><scope>KerMLParser::RedefinitionsContext</scope><name>exitRule</name></member>
+      <member refid="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context_1a76eca1e0df8df2078311b6ea820e4ade" prot="public" virt="virtual"><scope>KerMLParser::RedefinitionsContext</scope><name>getRuleIndex</name></member>
+      <member refid="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context_1a115aabe1a982f2df1659ab894908a315" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionsContext</scope><name>owned_redefinition</name></member>
+      <member refid="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context_1a95200bbdc42e13985d38d246f754544f" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionsContext</scope><name>redefines</name></member>
+      <member refid="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context_1a1d82120a0b324622b5265b72d4322f5d" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionsContext</scope><name>RedefinitionsContext</name></member>
+      <member refid="d6/d99/class_ker_m_l_parser_1_1_redefinitions_context_1a380c7613a268f398bd29fef6e0c77db1" prot="public" virt="non-virtual"><scope>KerMLParser::RedefinitionsContext</scope><name>SYMBOL_COMMA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

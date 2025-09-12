@@ -1,9 +1,7 @@
 //
 // Created by Moritz Herzog on 30.04.25.
 //
-
-#ifndef SYSML_PARSERERROR_H
-#define SYSML_PARSERERROR_H
+#pragma once
 
 #include <string>
 #include <boost/uuid/uuid.hpp>
@@ -33,4 +31,3 @@ namespace SysMLv2::Files {
     };
 }
 
-#endif //SYSML_PARSERERROR_H

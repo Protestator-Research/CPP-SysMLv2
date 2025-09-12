@@ -1,0 +1,238 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Requirement_constraint_usageContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a3e4449373483911f5173d5d45996bf98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Requirement_constraint_usageContext::Requirement_constraint_usageContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Requirement_constraint_usageContext</name>
+        <qualifiedname>SysMLv2Parser::Requirement_constraint_usageContext::Requirement_constraint_usageContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4649" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="22031" bodyend="22033"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a19a37b93849bb780545825f9b41e28f7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Requirement_constraint_usageContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Requirement_constraint_usageContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4650" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="22068" bodyend="22070"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a07bed6191d670c11de06a63b59b69cb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/d89/class_sys_m_lv2_parser_1_1_owned__reference__subsetting_context" kindref="compound">Owned_reference_subsettingContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_reference_subsettingContext * SysMLv2Parser::Requirement_constraint_usageContext::owned_reference_subsetting</definition>
+        <argsstring>()</argsstring>
+        <name>owned_reference_subsetting</name>
+        <qualifiedname>SysMLv2Parser::Requirement_constraint_usageContext::owned_reference_subsetting</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4651" column="39" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="22035" bodyend="22037"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a68fa8043a4865b082cdad9b21dcaa3b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d10/class_sys_m_lv2_parser_1_1_requirement__body_context" kindref="compound">Requirement_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Requirement_bodyContext * SysMLv2Parser::Requirement_constraint_usageContext::requirement_body</definition>
+        <argsstring>()</argsstring>
+        <name>requirement_body</name>
+        <qualifiedname>SysMLv2Parser::Requirement_constraint_usageContext::requirement_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4652" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="22039" bodyend="22041"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1aad95a117a88b37b3a82e328f43894ccc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/dcd/class_sys_m_lv2_parser_1_1_feature__specialization__part_context" kindref="compound">Feature_specialization_partContext</ref> *</type>
+        <definition>SysMLv2Parser::Feature_specialization_partContext * SysMLv2Parser::Requirement_constraint_usageContext::feature_specialization_part</definition>
+        <argsstring>()</argsstring>
+        <name>feature_specialization_part</name>
+        <qualifiedname>SysMLv2Parser::Requirement_constraint_usageContext::feature_specialization_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4653" column="40" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="22043" bodyend="22045"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a97c7f4c37c333ed35b9f73e206bf0537" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/def/class_sys_m_lv2_parser_1_1_constraint__usage__declaration_context" kindref="compound">Constraint_usage_declarationContext</ref> *</type>
+        <definition>SysMLv2Parser::Constraint_usage_declarationContext * SysMLv2Parser::Requirement_constraint_usageContext::constraint_usage_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>constraint_usage_declaration</name>
+        <qualifiedname>SysMLv2Parser::Requirement_constraint_usageContext::constraint_usage_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4654" column="41" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="22047" bodyend="22049"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a5e6509416e98c2d64f386f9faeb77ac9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/dbd/class_sys_m_lv2_parser_1_1_calculation__body_context" kindref="compound">Calculation_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Calculation_bodyContext * SysMLv2Parser::Requirement_constraint_usageContext::calculation_body</definition>
+        <argsstring>()</argsstring>
+        <name>calculation_body</name>
+        <qualifiedname>SysMLv2Parser::Requirement_constraint_usageContext::calculation_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4655" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="22051" bodyend="22053"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a4b494c5d9c9d3801a62b6f4dffe87658" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Requirement_constraint_usageContext::KEYWORD_CONSTRAINT</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_CONSTRAINT</name>
+        <qualifiedname>SysMLv2Parser::Requirement_constraint_usageContext::KEYWORD_CONSTRAINT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4656" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="22055" bodyend="22057"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1ad478db9d17d02b59e01bed03d0a8453b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d5/d42/class_sys_m_lv2_parser_1_1_usage__extention__keyword_context" kindref="compound">Usage_extention_keywordContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Usage_extention_keywordContext * &gt; SysMLv2Parser::Requirement_constraint_usageContext::usage_extention_keyword</definition>
+        <argsstring>()</argsstring>
+        <name>usage_extention_keyword</name>
+        <qualifiedname>SysMLv2Parser::Requirement_constraint_usageContext::usage_extention_keyword</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4657" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="22059" bodyend="22061"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1ab4a3a541ee47d9f9460e4e49bf316f43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/d42/class_sys_m_lv2_parser_1_1_usage__extention__keyword_context" kindref="compound">Usage_extention_keywordContext</ref> *</type>
+        <definition>SysMLv2Parser::Usage_extention_keywordContext * SysMLv2Parser::Requirement_constraint_usageContext::usage_extention_keyword</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>usage_extention_keyword</name>
+        <qualifiedname>SysMLv2Parser::Requirement_constraint_usageContext::usage_extention_keyword</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4658" column="36" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="22063" bodyend="22065"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1ad10bd0f5f5c15b32910c4b8aa4f8d948" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Requirement_constraint_usageContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Requirement_constraint_usageContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4660" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="22072" bodyend="22076"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a24433db9f01b8be6411e303a2b1a2aa8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Requirement_constraint_usageContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Requirement_constraint_usageContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4661" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="22078" bodyend="22082"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Requirement_constraint_usageContext</label>
+        <link refid="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Requirement_constraint_usageContext</label>
+        <link refid="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4647" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="4647" bodyend="4663"/>
+    <listofallmembers>
+      <member refid="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a5e6509416e98c2d64f386f9faeb77ac9" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Requirement_constraint_usageContext</scope><name>calculation_body</name></member>
+      <member refid="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a97c7f4c37c333ed35b9f73e206bf0537" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Requirement_constraint_usageContext</scope><name>constraint_usage_declaration</name></member>
+      <member refid="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1ad10bd0f5f5c15b32910c4b8aa4f8d948" prot="public" virt="virtual"><scope>SysMLv2Parser::Requirement_constraint_usageContext</scope><name>enterRule</name></member>
+      <member refid="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a24433db9f01b8be6411e303a2b1a2aa8" prot="public" virt="virtual"><scope>SysMLv2Parser::Requirement_constraint_usageContext</scope><name>exitRule</name></member>
+      <member refid="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1aad95a117a88b37b3a82e328f43894ccc" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Requirement_constraint_usageContext</scope><name>feature_specialization_part</name></member>
+      <member refid="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a19a37b93849bb780545825f9b41e28f7" prot="public" virt="virtual"><scope>SysMLv2Parser::Requirement_constraint_usageContext</scope><name>getRuleIndex</name></member>
+      <member refid="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a4b494c5d9c9d3801a62b6f4dffe87658" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Requirement_constraint_usageContext</scope><name>KEYWORD_CONSTRAINT</name></member>
+      <member refid="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a07bed6191d670c11de06a63b59b69cb0" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Requirement_constraint_usageContext</scope><name>owned_reference_subsetting</name></member>
+      <member refid="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a68fa8043a4865b082cdad9b21dcaa3b1" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Requirement_constraint_usageContext</scope><name>requirement_body</name></member>
+      <member refid="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1a3e4449373483911f5173d5d45996bf98" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Requirement_constraint_usageContext</scope><name>Requirement_constraint_usageContext</name></member>
+      <member refid="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1ad478db9d17d02b59e01bed03d0a8453b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Requirement_constraint_usageContext</scope><name>usage_extention_keyword</name></member>
+      <member refid="dd/d83/class_sys_m_lv2_parser_1_1_requirement__constraint__usage_context_1ab4a3a541ee47d9f9460e4e49bf316f43" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Requirement_constraint_usageContext</scope><name>usage_extention_keyword</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

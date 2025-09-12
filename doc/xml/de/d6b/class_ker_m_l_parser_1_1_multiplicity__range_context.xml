@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Multiplicity_rangeContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1ade89e76995ade6fd95913d3e78da2317" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Multiplicity_rangeContext::Multiplicity_rangeContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Multiplicity_rangeContext</name>
+        <qualifiedname>KerMLParser::Multiplicity_rangeContext::Multiplicity_rangeContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4056" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19316" bodyend="19318"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1a5abde5a1bd3546dc4f5c20b23a8f38d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Multiplicity_rangeContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Multiplicity_rangeContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4057" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19337" bodyend="19339"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1a61bbd0630e43e6ad9c363c30cb94b59d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Multiplicity_rangeContext::KEYWORD_MULTIPLICITY</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_MULTIPLICITY</name>
+        <qualifiedname>KerMLParser::Multiplicity_rangeContext::KEYWORD_MULTIPLICITY</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4058" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19320" bodyend="19322"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1a69ebd8b0c535959aad63b2ac05b8e2b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d18/class_ker_m_l_parser_1_1_identification_context" kindref="compound">IdentificationContext</ref> *</type>
+        <definition>KerMLParser::IdentificationContext * KerMLParser::Multiplicity_rangeContext::identification</definition>
+        <argsstring>()</argsstring>
+        <name>identification</name>
+        <qualifiedname>KerMLParser::Multiplicity_rangeContext::identification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4059" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19324" bodyend="19326"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1aacbfed48243b9b17cd9236e847abb4db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d28/class_ker_m_l_parser_1_1_multiplicity__bounds_context" kindref="compound">Multiplicity_boundsContext</ref> *</type>
+        <definition>KerMLParser::Multiplicity_boundsContext * KerMLParser::Multiplicity_rangeContext::multiplicity_bounds</definition>
+        <argsstring>()</argsstring>
+        <name>multiplicity_bounds</name>
+        <qualifiedname>KerMLParser::Multiplicity_rangeContext::multiplicity_bounds</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4060" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19328" bodyend="19330"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1a8f40fb11a5f11c4a591e416202d98be1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/dc4/class_ker_m_l_parser_1_1_type__body_context" kindref="compound">Type_bodyContext</ref> *</type>
+        <definition>KerMLParser::Type_bodyContext * KerMLParser::Multiplicity_rangeContext::type_body</definition>
+        <argsstring>()</argsstring>
+        <name>type_body</name>
+        <qualifiedname>KerMLParser::Multiplicity_rangeContext::type_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4061" column="22" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19332" bodyend="19334"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1a88657247bb4e6800c8f8f17f317d42aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Multiplicity_rangeContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Multiplicity_rangeContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4063" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19341" bodyend="19345"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1a125c216929bc333c8fac31bb30a22082" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Multiplicity_rangeContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Multiplicity_rangeContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="4064" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="19347" bodyend="19351"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Multiplicity_rangeContext</label>
+        <link refid="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Multiplicity_rangeContext</label>
+        <link refid="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="4054" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="4054" bodyend="4066"/>
+    <listofallmembers>
+      <member refid="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1a88657247bb4e6800c8f8f17f317d42aa" prot="public" virt="virtual"><scope>KerMLParser::Multiplicity_rangeContext</scope><name>enterRule</name></member>
+      <member refid="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1a125c216929bc333c8fac31bb30a22082" prot="public" virt="virtual"><scope>KerMLParser::Multiplicity_rangeContext</scope><name>exitRule</name></member>
+      <member refid="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1a5abde5a1bd3546dc4f5c20b23a8f38d6" prot="public" virt="virtual"><scope>KerMLParser::Multiplicity_rangeContext</scope><name>getRuleIndex</name></member>
+      <member refid="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1a69ebd8b0c535959aad63b2ac05b8e2b9" prot="public" virt="non-virtual"><scope>KerMLParser::Multiplicity_rangeContext</scope><name>identification</name></member>
+      <member refid="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1a61bbd0630e43e6ad9c363c30cb94b59d" prot="public" virt="non-virtual"><scope>KerMLParser::Multiplicity_rangeContext</scope><name>KEYWORD_MULTIPLICITY</name></member>
+      <member refid="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1aacbfed48243b9b17cd9236e847abb4db" prot="public" virt="non-virtual"><scope>KerMLParser::Multiplicity_rangeContext</scope><name>multiplicity_bounds</name></member>
+      <member refid="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1ade89e76995ade6fd95913d3e78da2317" prot="public" virt="non-virtual"><scope>KerMLParser::Multiplicity_rangeContext</scope><name>Multiplicity_rangeContext</name></member>
+      <member refid="de/d6b/class_ker_m_l_parser_1_1_multiplicity__range_context_1a8f40fb11a5f11c4a591e416202d98be1" prot="public" virt="non-virtual"><scope>KerMLParser::Multiplicity_rangeContext</scope><name>type_body</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Classification_test_operatorContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context_1a32a335981ab8e7283957cdee4e147595" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Classification_test_operatorContext::Classification_test_operatorContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Classification_test_operatorContext</name>
+        <qualifiedname>SysMLv2Parser::Classification_test_operatorContext::Classification_test_operatorContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7618" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37742" bodyend="37744"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context_1a9de1732626d7976290ed01afea48f56e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Classification_test_operatorContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Classification_test_operatorContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7619" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37759" bodyend="37761"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context_1aa7ea423e7dd3170dc797fff9fd6a5d62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Classification_test_operatorContext::KEYWORD_ISTYPE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_ISTYPE</name>
+        <qualifiedname>SysMLv2Parser::Classification_test_operatorContext::KEYWORD_ISTYPE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7620" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37746" bodyend="37748"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context_1a6cace5e56b38fe13243f3e7f6ed5003b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Classification_test_operatorContext::KEYWORD_HASTYPE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_HASTYPE</name>
+        <qualifiedname>SysMLv2Parser::Classification_test_operatorContext::KEYWORD_HASTYPE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7621" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37750" bodyend="37752"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context_1a54926beb6a724e29854e0f72a291d839" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Classification_test_operatorContext::SYMBOL_AT</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_AT</name>
+        <qualifiedname>SysMLv2Parser::Classification_test_operatorContext::SYMBOL_AT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7622" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37754" bodyend="37756"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context_1aea370e67d1eba2fd53b82812081a8a01" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Classification_test_operatorContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Classification_test_operatorContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7624" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37763" bodyend="37767"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context_1a3d326a8243a0a25b6529e0554983792e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Classification_test_operatorContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Classification_test_operatorContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7625" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="37769" bodyend="37773"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Classification_test_operatorContext</label>
+        <link refid="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Classification_test_operatorContext</label>
+        <link refid="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="7616" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="7616" bodyend="7627"/>
+    <listofallmembers>
+      <member refid="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context_1a32a335981ab8e7283957cdee4e147595" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Classification_test_operatorContext</scope><name>Classification_test_operatorContext</name></member>
+      <member refid="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context_1aea370e67d1eba2fd53b82812081a8a01" prot="public" virt="virtual"><scope>SysMLv2Parser::Classification_test_operatorContext</scope><name>enterRule</name></member>
+      <member refid="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context_1a3d326a8243a0a25b6529e0554983792e" prot="public" virt="virtual"><scope>SysMLv2Parser::Classification_test_operatorContext</scope><name>exitRule</name></member>
+      <member refid="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context_1a9de1732626d7976290ed01afea48f56e" prot="public" virt="virtual"><scope>SysMLv2Parser::Classification_test_operatorContext</scope><name>getRuleIndex</name></member>
+      <member refid="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context_1a6cace5e56b38fe13243f3e7f6ed5003b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Classification_test_operatorContext</scope><name>KEYWORD_HASTYPE</name></member>
+      <member refid="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context_1aa7ea423e7dd3170dc797fff9fd6a5d62" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Classification_test_operatorContext</scope><name>KEYWORD_ISTYPE</name></member>
+      <member refid="d0/d69/class_sys_m_lv2_parser_1_1_classification__test__operator_context_1a54926beb6a724e29854e0f72a291d839" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Classification_test_operatorContext</scope><name>SYMBOL_AT</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

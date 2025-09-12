@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d7/de6/class_ker_m_l_parser_1_1_comment_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::CommentContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a912a3e3b4cceea6ae185cc548ee5bf9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::CommentContext::CommentContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>CommentContext</name>
+        <qualifiedname>KerMLParser::CommentContext::CommentContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="614" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1949" bodyend="1951"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a4c137fc6d1984f078eb432d7895aaeeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::CommentContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::CommentContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="615" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1994" bodyend="1996"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a7bc8fe609ac2787f20dbdebc40be073d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::CommentContext::REGULAR_COMMENT</definition>
+        <argsstring>()</argsstring>
+        <name>REGULAR_COMMENT</name>
+        <qualifiedname>KerMLParser::CommentContext::REGULAR_COMMENT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="616" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1953" bodyend="1955"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a8672bdc4c13084ff46e3634f2eb6cf4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::CommentContext::KEYWORD_COMMENT</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_COMMENT</name>
+        <qualifiedname>KerMLParser::CommentContext::KEYWORD_COMMENT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="617" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1957" bodyend="1959"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a8c8af4115d2dbf15fbec091c45146a75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d18/class_ker_m_l_parser_1_1_identification_context" kindref="compound">IdentificationContext</ref> *</type>
+        <definition>KerMLParser::IdentificationContext * KerMLParser::CommentContext::identification</definition>
+        <argsstring>()</argsstring>
+        <name>identification</name>
+        <qualifiedname>KerMLParser::CommentContext::identification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="618" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1961" bodyend="1963"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a93967fcc12bf24a306ed2089d01f6a74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::CommentContext::KEYWORD_LOCALE</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_LOCALE</name>
+        <qualifiedname>KerMLParser::CommentContext::KEYWORD_LOCALE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="619" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1965" bodyend="1967"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a3813ef696ca8fff5421850434260008c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::CommentContext::STRING_VALUE</definition>
+        <argsstring>()</argsstring>
+        <name>STRING_VALUE</name>
+        <qualifiedname>KerMLParser::CommentContext::STRING_VALUE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="620" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1969" bodyend="1971"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a5761ca2f3101945cd48e063a4bef580a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::CommentContext::KEYWORD_ABOUT</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_ABOUT</name>
+        <qualifiedname>KerMLParser::CommentContext::KEYWORD_ABOUT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="621" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1973" bodyend="1975"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de6/class_ker_m_l_parser_1_1_comment_context_1aa5885bd16536d5b0f8817819282457ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="db/dba/class_ker_m_l_parser_1_1_annotation_context" kindref="compound">AnnotationContext</ref> * &gt;</type>
+        <definition>std::vector&lt; KerMLParser::AnnotationContext * &gt; KerMLParser::CommentContext::annotation</definition>
+        <argsstring>()</argsstring>
+        <name>annotation</name>
+        <qualifiedname>KerMLParser::CommentContext::annotation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="622" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1977" bodyend="1979"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a3f8f9a4667ee28bc42eced828a8bbd1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="db/dba/class_ker_m_l_parser_1_1_annotation_context" kindref="compound">AnnotationContext</ref> *</type>
+        <definition>KerMLParser::AnnotationContext * KerMLParser::CommentContext::annotation</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>annotation</name>
+        <qualifiedname>KerMLParser::CommentContext::annotation</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="623" column="23" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1981" bodyend="1983"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a8d18a529121e73414d3e3a9a7abf2d36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; antlr4::tree::TerminalNode * &gt;</type>
+        <definition>std::vector&lt; tree::TerminalNode * &gt; KerMLParser::CommentContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>KerMLParser::CommentContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="624" column="17" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1985" bodyend="1987"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de6/class_ker_m_l_parser_1_1_comment_context_1aac2e518c585d88605463436e250100fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::CommentContext::SYMBOL_COMMA</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>KerMLParser::CommentContext::SYMBOL_COMMA</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="625" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1989" bodyend="1991"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a92c43bb2ac5d83bd37a53e76d78a8388" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::CommentContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::CommentContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="627" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1998" bodyend="2002"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/de6/class_ker_m_l_parser_1_1_comment_context_1acc724ab51b4a2fe8b755e07cc229ddfa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::CommentContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::CommentContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="628" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="2004" bodyend="2008"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::CommentContext</label>
+        <link refid="d7/de6/class_ker_m_l_parser_1_1_comment_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::CommentContext</label>
+        <link refid="d7/de6/class_ker_m_l_parser_1_1_comment_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="612" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="612" bodyend="630"/>
+    <listofallmembers>
+      <member refid="d7/de6/class_ker_m_l_parser_1_1_comment_context_1aa5885bd16536d5b0f8817819282457ed" prot="public" virt="non-virtual"><scope>KerMLParser::CommentContext</scope><name>annotation</name></member>
+      <member refid="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a3f8f9a4667ee28bc42eced828a8bbd1b" prot="public" virt="non-virtual"><scope>KerMLParser::CommentContext</scope><name>annotation</name></member>
+      <member refid="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a912a3e3b4cceea6ae185cc548ee5bf9c" prot="public" virt="non-virtual"><scope>KerMLParser::CommentContext</scope><name>CommentContext</name></member>
+      <member refid="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a92c43bb2ac5d83bd37a53e76d78a8388" prot="public" virt="virtual"><scope>KerMLParser::CommentContext</scope><name>enterRule</name></member>
+      <member refid="d7/de6/class_ker_m_l_parser_1_1_comment_context_1acc724ab51b4a2fe8b755e07cc229ddfa" prot="public" virt="virtual"><scope>KerMLParser::CommentContext</scope><name>exitRule</name></member>
+      <member refid="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a4c137fc6d1984f078eb432d7895aaeeb" prot="public" virt="virtual"><scope>KerMLParser::CommentContext</scope><name>getRuleIndex</name></member>
+      <member refid="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a8c8af4115d2dbf15fbec091c45146a75" prot="public" virt="non-virtual"><scope>KerMLParser::CommentContext</scope><name>identification</name></member>
+      <member refid="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a5761ca2f3101945cd48e063a4bef580a" prot="public" virt="non-virtual"><scope>KerMLParser::CommentContext</scope><name>KEYWORD_ABOUT</name></member>
+      <member refid="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a8672bdc4c13084ff46e3634f2eb6cf4b" prot="public" virt="non-virtual"><scope>KerMLParser::CommentContext</scope><name>KEYWORD_COMMENT</name></member>
+      <member refid="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a93967fcc12bf24a306ed2089d01f6a74" prot="public" virt="non-virtual"><scope>KerMLParser::CommentContext</scope><name>KEYWORD_LOCALE</name></member>
+      <member refid="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a7bc8fe609ac2787f20dbdebc40be073d" prot="public" virt="non-virtual"><scope>KerMLParser::CommentContext</scope><name>REGULAR_COMMENT</name></member>
+      <member refid="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a3813ef696ca8fff5421850434260008c" prot="public" virt="non-virtual"><scope>KerMLParser::CommentContext</scope><name>STRING_VALUE</name></member>
+      <member refid="d7/de6/class_ker_m_l_parser_1_1_comment_context_1a8d18a529121e73414d3e3a9a7abf2d36" prot="public" virt="non-virtual"><scope>KerMLParser::CommentContext</scope><name>SYMBOL_COMMA</name></member>
+      <member refid="d7/de6/class_ker_m_l_parser_1_1_comment_context_1aac2e518c585d88605463436e250100fd" prot="public" virt="non-virtual"><scope>KerMLParser::CommentContext</scope><name>SYMBOL_COMMA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

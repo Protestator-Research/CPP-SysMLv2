@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dc/ded/class_ker_m_l_error_listener" kind="class" language="C++" prot="public">
+    <compoundname>KerMLErrorListener</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::BaseErrorListener</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="dc/ded/class_ker_m_l_error_listener_1a1ff390eee113ca20e0a99780117e6a9b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d0/d73/class_ker_m_l_error" kindref="compound">KerMLError</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;KerMLError&gt; &gt; KerMLErrorListener::SyntaxErrors</definition>
+        <argsstring></argsstring>
+        <name>SyntaxErrors</name>
+        <qualifiedname>KerMLErrorListener::SyntaxErrors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlErrorListener.h" line="31" column="17" bodyfile="filehandling/src/kerml/KerMlErrorListener.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/ded/class_ker_m_l_error_listener_1a4d34943ffea60cf0e08d4d1af8ffe9cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLErrorListener::KerMLErrorListener</definition>
+        <argsstring>()</argsstring>
+        <name>KerMLErrorListener</name>
+        <qualifiedname>KerMLErrorListener::KerMLErrorListener</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlErrorListener.h" line="17" column="5" bodyfile="filehandling/src/kerml/KerMlErrorListener.cpp" bodystart="7" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/ded/class_ker_m_l_error_listener_1a52c0ef71811005b5d81d8c12577520a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual KerMLErrorListener::~KerMLErrorListener</definition>
+        <argsstring>()=default</argsstring>
+        <name>~KerMLErrorListener</name>
+        <qualifiedname>KerMLErrorListener::~KerMLErrorListener</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlErrorListener.h" line="18" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/ded/class_ker_m_l_error_listener_1a80bba06735fdbea638539fbc7e6d3c5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerMLErrorListener::syntaxError</definition>
+        <argsstring>(antlr4::Recognizer *recognizer, antlr4::Token *offendingSymbol, size_t line, size_t charPositionInLine, const std::string &amp;msg, std::exception_ptr e) override</argsstring>
+        <name>syntaxError</name>
+        <qualifiedname>KerMLErrorListener::syntaxError</qualifiedname>
+        <param>
+          <type>antlr4::Recognizer *</type>
+          <declname>recognizer</declname>
+        </param>
+        <param>
+          <type>antlr4::Token *</type>
+          <declname>offendingSymbol</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>charPositionInLine</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>std::exception_ptr</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlErrorListener.h" line="20" column="10" bodyfile="filehandling/src/kerml/KerMlErrorListener.cpp" bodystart="11" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/ded/class_ker_m_l_error_listener_1a92aa6bdf91fb1454c8113e436669c293" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d0/d73/class_ker_m_l_error" kindref="compound">KerMLError</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; KerMLError &gt; &gt; KerMLErrorListener::getSyntaxErrors</definition>
+        <argsstring>() const</argsstring>
+        <name>getSyntaxErrors</name>
+        <qualifiedname>KerMLErrorListener::getSyntaxErrors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlErrorListener.h" line="22" column="17" bodyfile="filehandling/src/kerml/KerMlErrorListener.cpp" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/ded/class_ker_m_l_error_listener_1a431722a9d31d0264f7bd2e002f198ec0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerMLErrorListener::reportAmbiguity</definition>
+        <argsstring>(antlr4::Parser *recognizer, const antlr4::dfa::DFA &amp;dfa, size_t startIndex, size_t stopIndex, bool exact, const antlrcpp::BitSet &amp;ambigAlts, antlr4::atn::ATNConfigSet *configs) override</argsstring>
+        <name>reportAmbiguity</name>
+        <qualifiedname>KerMLErrorListener::reportAmbiguity</qualifiedname>
+        <param>
+          <type>antlr4::Parser *</type>
+          <declname>recognizer</declname>
+        </param>
+        <param>
+          <type>const antlr4::dfa::DFA &amp;</type>
+          <declname>dfa</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>startIndex</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>stopIndex</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>exact</declname>
+        </param>
+        <param>
+          <type>const antlrcpp::BitSet &amp;</type>
+          <declname>ambigAlts</declname>
+        </param>
+        <param>
+          <type>antlr4::atn::ATNConfigSet *</type>
+          <declname>configs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlErrorListener.h" line="24" column="10" bodyfile="filehandling/src/kerml/KerMlErrorListener.cpp" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/ded/class_ker_m_l_error_listener_1a046cb34ca56b44c051098a8eda0f277d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerMLErrorListener::reportAttemptingFullContext</definition>
+        <argsstring>(antlr4::Parser *recognizer, const antlr4::dfa::DFA &amp;dfa, size_t startIndex, size_t stopIndex, const antlrcpp::BitSet &amp;conflictingAlts, antlr4::atn::ATNConfigSet *configs) override</argsstring>
+        <name>reportAttemptingFullContext</name>
+        <qualifiedname>KerMLErrorListener::reportAttemptingFullContext</qualifiedname>
+        <param>
+          <type>antlr4::Parser *</type>
+          <declname>recognizer</declname>
+        </param>
+        <param>
+          <type>const antlr4::dfa::DFA &amp;</type>
+          <declname>dfa</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>startIndex</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>stopIndex</declname>
+        </param>
+        <param>
+          <type>const antlrcpp::BitSet &amp;</type>
+          <declname>conflictingAlts</declname>
+        </param>
+        <param>
+          <type>antlr4::atn::ATNConfigSet *</type>
+          <declname>configs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlErrorListener.h" line="26" column="10" bodyfile="filehandling/src/kerml/KerMlErrorListener.cpp" bodystart="16" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/ded/class_ker_m_l_error_listener_1afc76e63c1e67e2710ec9759f062d53e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KerMLErrorListener::reportContextSensitivity</definition>
+        <argsstring>(antlr4::Parser *recognizer, const antlr4::dfa::DFA &amp;dfa, size_t startIndex, size_t stopIndex, size_t prediction, antlr4::atn::ATNConfigSet *configs) override</argsstring>
+        <name>reportContextSensitivity</name>
+        <qualifiedname>KerMLErrorListener::reportContextSensitivity</qualifiedname>
+        <param>
+          <type>antlr4::Parser *</type>
+          <declname>recognizer</declname>
+        </param>
+        <param>
+          <type>const antlr4::dfa::DFA &amp;</type>
+          <declname>dfa</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>startIndex</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>stopIndex</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>prediction</declname>
+        </param>
+        <param>
+          <type>antlr4::atn::ATNConfigSet *</type>
+          <declname>configs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMlErrorListener.h" line="28" column="10" bodyfile="filehandling/src/kerml/KerMlErrorListener.cpp" bodystart="28" bodyend="30"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLErrorListener</label>
+        <link refid="dc/ded/class_ker_m_l_error_listener"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::BaseErrorListener</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLErrorListener</label>
+        <link refid="dc/ded/class_ker_m_l_error_listener"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::BaseErrorListener</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMlErrorListener.h" line="15" column="1" bodyfile="filehandling/src/kerml/KerMlErrorListener.h" bodystart="15" bodyend="32"/>
+    <listofallmembers>
+      <member refid="dc/ded/class_ker_m_l_error_listener_1a92aa6bdf91fb1454c8113e436669c293" prot="public" virt="non-virtual"><scope>KerMLErrorListener</scope><name>getSyntaxErrors</name></member>
+      <member refid="dc/ded/class_ker_m_l_error_listener_1a4d34943ffea60cf0e08d4d1af8ffe9cd" prot="public" virt="non-virtual"><scope>KerMLErrorListener</scope><name>KerMLErrorListener</name></member>
+      <member refid="dc/ded/class_ker_m_l_error_listener_1a431722a9d31d0264f7bd2e002f198ec0" prot="public" virt="non-virtual"><scope>KerMLErrorListener</scope><name>reportAmbiguity</name></member>
+      <member refid="dc/ded/class_ker_m_l_error_listener_1a046cb34ca56b44c051098a8eda0f277d" prot="public" virt="non-virtual"><scope>KerMLErrorListener</scope><name>reportAttemptingFullContext</name></member>
+      <member refid="dc/ded/class_ker_m_l_error_listener_1afc76e63c1e67e2710ec9759f062d53e7" prot="public" virt="non-virtual"><scope>KerMLErrorListener</scope><name>reportContextSensitivity</name></member>
+      <member refid="dc/ded/class_ker_m_l_error_listener_1a80bba06735fdbea638539fbc7e6d3c5e" prot="public" virt="non-virtual"><scope>KerMLErrorListener</scope><name>syntaxError</name></member>
+      <member refid="dc/ded/class_ker_m_l_error_listener_1a1ff390eee113ca20e0a99780117e6a9b" prot="private" virt="non-virtual"><scope>KerMLErrorListener</scope><name>SyntaxErrors</name></member>
+      <member refid="dc/ded/class_ker_m_l_error_listener_1a52c0ef71811005b5d81d8c12577520a2" prot="public" virt="virtual"><scope>KerMLErrorListener</scope><name>~KerMLErrorListener</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

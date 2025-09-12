@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Unary_operator_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context_1ad467e73eba09dcc589a3022232400629" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Unary_operator_expressionContext::Unary_operator_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Unary_operator_expressionContext</name>
+        <qualifiedname>KerMLParser::Unary_operator_expressionContext::Unary_operator_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2681" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12918" bodyend="12920"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context_1ad52e506203b15912309b1e33ae8f607c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Unary_operator_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Unary_operator_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2682" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12931" bodyend="12933"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context_1a05dce65bda71279dd3270dec90b12d0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/d89/class_ker_m_l_parser_1_1_unary__operator_context" kindref="compound">Unary_operatorContext</ref> *</type>
+        <definition>KerMLParser::Unary_operatorContext * KerMLParser::Unary_operator_expressionContext::unary_operator</definition>
+        <argsstring>()</argsstring>
+        <name>unary_operator</name>
+        <qualifiedname>KerMLParser::Unary_operator_expressionContext::unary_operator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2683" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12922" bodyend="12924"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context_1abc1a90db689e0b37df20d0ef151aa5f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d44/class_ker_m_l_parser_1_1_owned__expressions_context" kindref="compound">Owned_expressionsContext</ref> *</type>
+        <definition>KerMLParser::Owned_expressionsContext * KerMLParser::Unary_operator_expressionContext::owned_expressions</definition>
+        <argsstring>()</argsstring>
+        <name>owned_expressions</name>
+        <qualifiedname>KerMLParser::Unary_operator_expressionContext::owned_expressions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2684" column="30" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12926" bodyend="12928"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context_1a16597146de72655c375db1ee61d5e428" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Unary_operator_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Unary_operator_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2686" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12935" bodyend="12939"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context_1afb729b242de954cca0a327f937fcbfc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Unary_operator_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Unary_operator_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2687" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="12941" bodyend="12945"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Unary_operator_expressionContext</label>
+        <link refid="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Unary_operator_expressionContext</label>
+        <link refid="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2679" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2679" bodyend="2689"/>
+    <listofallmembers>
+      <member refid="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context_1a16597146de72655c375db1ee61d5e428" prot="public" virt="virtual"><scope>KerMLParser::Unary_operator_expressionContext</scope><name>enterRule</name></member>
+      <member refid="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context_1afb729b242de954cca0a327f937fcbfc0" prot="public" virt="virtual"><scope>KerMLParser::Unary_operator_expressionContext</scope><name>exitRule</name></member>
+      <member refid="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context_1ad52e506203b15912309b1e33ae8f607c" prot="public" virt="virtual"><scope>KerMLParser::Unary_operator_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context_1abc1a90db689e0b37df20d0ef151aa5f1" prot="public" virt="non-virtual"><scope>KerMLParser::Unary_operator_expressionContext</scope><name>owned_expressions</name></member>
+      <member refid="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context_1a05dce65bda71279dd3270dec90b12d0f" prot="public" virt="non-virtual"><scope>KerMLParser::Unary_operator_expressionContext</scope><name>unary_operator</name></member>
+      <member refid="d5/df4/class_ker_m_l_parser_1_1_unary__operator__expression_context_1ad467e73eba09dcc589a3022232400629" prot="public" virt="non-virtual"><scope>KerMLParser::Unary_operator_expressionContext</scope><name>Unary_operator_expressionContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

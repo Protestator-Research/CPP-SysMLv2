@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_RECORD_H
-#define DIGITALTWIN_RECORD_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -22,7 +21,7 @@
 // Forwarding
 //---------------------------------------------------------
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     /**
      * Represents an abstract baseclass that is used for the SysMLv2 API
      * @class Record
@@ -150,5 +149,3 @@ namespace SysMLv2::Entities {
         bool IsForCreation = false;
     };
 }
-
-#endif //DIGITALTWIN_RECORD_H

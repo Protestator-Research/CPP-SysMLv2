@@ -1,0 +1,248 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2::Entities::DataVersion</compoundname>
+    <basecompoundref refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record" prot="public" virt="non-virtual">SysMLv2::Entities::Record</basecompoundref>
+    <includes refid="da/d39/_data_version_8h" local="no">DataVersion.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1aae6da03e49d15e576699f81913fb39c6" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity" kindref="compound">DataIdentity</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;DataIdentity&gt; SysMLv2::Entities::DataVersion::Identity</definition>
+        <argsstring></argsstring>
+        <name>Identity</name>
+        <qualifiedname>SysMLv2::Entities::DataVersion::Identity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataVersion.h" line="50" column="25" bodyfile="rest-api/src/entities/DataVersion.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1ae55a6888cb62fa07665ee471631dd522" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">Data</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Data&gt; SysMLv2::Entities::DataVersion::Payload</definition>
+        <argsstring></argsstring>
+        <name>Payload</name>
+        <qualifiedname>SysMLv2::Entities::DataVersion::Payload</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataVersion.h" line="52" column="25" bodyfile="rest-api/src/entities/DataVersion.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a92a94c53770efc0216c8e8e921f9ef94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::DataVersion::DataVersion</definition>
+        <argsstring>()=delete</argsstring>
+        <name>DataVersion</name>
+        <qualifiedname>SysMLv2::Entities::DataVersion::DataVersion</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataVersion.h" line="37" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1aa9b25650d2bbba0e709e2cf0f04b0306" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::DataVersion::DataVersion</definition>
+        <argsstring>(std::shared_ptr&lt; DataIdentity &gt; identity, std::shared_ptr&lt; Data &gt; payload=nullptr)</argsstring>
+        <name>DataVersion</name>
+        <qualifiedname>SysMLv2::Entities::DataVersion::DataVersion</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity" kindref="compound">DataIdentity</ref> &gt;</type>
+          <declname>identity</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">Data</ref> &gt;</type>
+          <declname>payload</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataVersion.h" line="39" column="9" bodyfile="rest-api/src/entities/DataVersion.cpp" bodystart="14" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a8db399ce80a7000e5e5e4fe74c35a56d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::DataVersion::~DataVersion</definition>
+        <argsstring>()</argsstring>
+        <name>~DataVersion</name>
+        <qualifiedname>SysMLv2::Entities::DataVersion::~DataVersion</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataVersion.h" line="40" column="17" bodyfile="rest-api/src/entities/DataVersion.cpp" bodystart="20" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1ade5b600068eda5dbe7c81a033f791615" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="de/d37/class_sys_m_lv2_1_1_entities_1_1_data_identity" kindref="compound">DataIdentity</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; DataIdentity &gt; SysMLv2::Entities::DataVersion::getIdentity</definition>
+        <argsstring>()</argsstring>
+        <name>getIdentity</name>
+        <qualifiedname>SysMLv2::Entities::DataVersion::getIdentity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataVersion.h" line="42" column="25" bodyfile="rest-api/src/entities/DataVersion.cpp" bodystart="24" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1aa82f9a5e249c3083b4bc36c79b238a98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SysMLv2::Entities::DataVersion::setPayload</definition>
+        <argsstring>(std::shared_ptr&lt; Data &gt; payload)</argsstring>
+        <name>setPayload</name>
+        <qualifiedname>SysMLv2::Entities::DataVersion::setPayload</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">Data</ref> &gt;</type>
+          <declname>payload</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataVersion.h" line="43" column="14" bodyfile="rest-api/src/entities/DataVersion.cpp" bodystart="28" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a9bfcca75b62a365e638d3b6690fc465d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">Data</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Data &gt; SysMLv2::Entities::DataVersion::getPayload</definition>
+        <argsstring>()</argsstring>
+        <name>getPayload</name>
+        <qualifiedname>SysMLv2::Entities::DataVersion::getPayload</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataVersion.h" line="44" column="25" bodyfile="rest-api/src/entities/DataVersion.cpp" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a2a815a2cfe2114e8f37eee2a11658bd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::uuids::uuid</type>
+        <definition>boost::uuids::uuid SysMLv2::Entities::DataVersion::getId</definition>
+        <argsstring>()</argsstring>
+        <name>getId</name>
+        <qualifiedname>SysMLv2::Entities::DataVersion::getId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataVersion.h" line="45" column="28" bodyfile="rest-api/src/entities/DataVersion.cpp" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1acd719b891bb323c95294d4479284d2ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string SysMLv2::Entities::DataVersion::serializeToJson</definition>
+        <argsstring>()</argsstring>
+        <name>serializeToJson</name>
+        <qualifiedname>SysMLv2::Entities::DataVersion::serializeToJson</qualifiedname>
+        <reimplements refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1a21ebb7ed491edd322301c7ba20cf66dc">serializeToJson</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows the serialization of the Object to a JSON String. <simplesect kind="return"><para>JSON String of the Object </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/DataVersion.h" line="47" column="21" bodyfile="rest-api/src/entities/DataVersion.cpp" bodystart="40" bodyend="48"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The class <ref refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version" kindref="compound">DataVersion</ref> represents a specific version of the <ref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" kindref="compound">Data</ref> in its lifecycle</para>
+<para><simplesect kind="author"><para>Moritz Herzog </para>
+</simplesect>
+<simplesect kind="version"><para>1.0 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2::Entities::DataVersion</label>
+        <link refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+      <node id="2">
+        <label>SysMLv2::Entities::Record</label>
+        <link refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2::Entities::DataVersion</label>
+        <link refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+      <node id="2">
+        <label>SysMLv2::Entities::Record</label>
+        <link refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="rest-api/src/entities/DataVersion.h" line="35" column="5" bodyfile="rest-api/src/entities/DataVersion.h" bodystart="35" bodyend="53"/>
+    <listofallmembers>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a023b2aa15c7192d9af732ee3e7e84a56" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>Alias</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a45b598f62d5fec7657728708ed8d5aa8" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>appendAlias</name></member>
+      <member refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a92a94c53770efc0216c8e8e921f9ef94" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>DataVersion</name></member>
+      <member refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1aa9b25650d2bbba0e709e2cf0f04b0306" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>DataVersion</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a6e2c0a9b166510546f567a25a64e2c80" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>Description</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a727329cbcf2499bff14edcdcb4735dfc" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>getAlias</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a28e97d4f86b1f57bd1a7f0e6e2c47e9e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>getDescription</name></member>
+      <member refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a2a815a2cfe2114e8f37eee2a11658bd8" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>getId</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1aa503f01b715d59b29654fdd4ee2ade28" prot="public" virt="non-virtual" ambiguityscope="SysMLv2::Entities::Record::"><scope>SysMLv2::Entities::DataVersion</scope><name>getId</name></member>
+      <member refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1ade5b600068eda5dbe7c81a033f791615" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>getIdentity</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1aa619b90ce3e937a75a22854f3107ebc5" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>getName</name></member>
+      <member refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a9bfcca75b62a365e638d3b6690fc465d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>getPayload</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a61bfd3751bc3c11628008337b1caf24b" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>getType</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a077d9e6a406a07331d43abcfe3fd2a20" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>Id</name></member>
+      <member refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1aae6da03e49d15e576699f81913fb39c6" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>Identity</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a06c5038dc6f912801a70e6c3fd7a52e0" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>IsForCreation</name></member>
+      <member refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1ac3f7cba2488d110b820614b9cb709808" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>JSON_INTENT</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ad1599c8728bec68fe1291f51b9d0a04b" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>Name</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a44938fd7ae4280fa0473484273b4d431" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>operator==</name></member>
+      <member refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1ae55a6888cb62fa07665ee471631dd522" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>Payload</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a3bfd067522f0ef87a1b50c6493458a9b" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>Record</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a51b38a3923a662061d8f647aa172ce4e" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>Record</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ae6e096d934f6107cd2585081bc59da10" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>Record</name></member>
+      <member refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1acd719b891bb323c95294d4479284d2ef" prot="public" virt="virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>serializeToJson</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ad826fec2e174a534cad1351750175c28" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>setDescription</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1ac7666583958bc98be3e6f2da3880454c" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>setName</name></member>
+      <member refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1aa82f9a5e249c3083b4bc36c79b238a98" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>setPayload</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1a4fbf73e50a3dffee7e40393ce1db6508" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>Type</name></member>
+      <member refid="de/d75/class_sys_m_lv2_1_1_entities_1_1_data_version_1a8db399ce80a7000e5e5e4fe74c35a56d" prot="public" virt="virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>~DataVersion</name></member>
+      <member refid="d9/dad/class_sys_m_lv2_1_1_entities_1_1_record_1abccd189ffb39f8f1728b1a646cae7a3e" prot="public" virt="virtual"><scope>SysMLv2::Entities::DataVersion</scope><name>~Record</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

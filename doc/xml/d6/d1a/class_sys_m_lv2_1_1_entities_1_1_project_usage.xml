@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2::Entities::ProjectUsage</compoundname>
+    <basecompoundref refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data" prot="public" virt="non-virtual">SysMLv2::Entities::Data</basecompoundref>
+    <includes refid="de/d91/_project_usage_8h" local="no">ProjectUsage.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1aec1e5d764f1e3fea5821abb61c7d573b" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">Commit</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Commit&gt; SysMLv2::Entities::ProjectUsage::UsedProjectCommit</definition>
+        <argsstring></argsstring>
+        <name>UsedProjectCommit</name>
+        <qualifiedname>SysMLv2::Entities::ProjectUsage::UsedProjectCommit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/ProjectUsage.h" line="59" column="25" bodyfile="rest-api/src/entities/ProjectUsage.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1a7fa4787666e84d5dbcf2e4efee83fe29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::ProjectUsage::ProjectUsage</definition>
+        <argsstring>()</argsstring>
+        <name>ProjectUsage</name>
+        <qualifiedname>SysMLv2::Entities::ProjectUsage::ProjectUsage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/ProjectUsage.h" line="36" column="9" bodyfile="rest-api/src/entities/ProjectUsage.cpp" bodystart="11" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1a404fbf174212539770b99ff0ba97fa03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::Entities::ProjectUsage::~ProjectUsage</definition>
+        <argsstring>() override</argsstring>
+        <name>~ProjectUsage</name>
+        <qualifiedname>SysMLv2::Entities::ProjectUsage::~ProjectUsage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/ProjectUsage.h" line="38" column="9" bodyfile="rest-api/src/entities/ProjectUsage.cpp" bodystart="15" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1a152230c65937a030861298433ce6f626" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">Commit</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Commit &gt; SysMLv2::Entities::ProjectUsage::getUsedProjectCommit</definition>
+        <argsstring>() const</argsstring>
+        <name>getUsedProjectCommit</name>
+        <qualifiedname>SysMLv2::Entities::ProjectUsage::getUsedProjectCommit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the commit of the given <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">Project</ref>. <simplesect kind="return"><para>the Related <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">Commit</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/ProjectUsage.h" line="44" column="25" bodyfile="rest-api/src/entities/ProjectUsage.cpp" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1ac60a8b41ca7e7f7d730f1566112b3754" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SysMLv2::Entities::ProjectUsage::setUsedProjectCommit</definition>
+        <argsstring>(std::shared_ptr&lt; Commit &gt; usedCommit)</argsstring>
+        <name>setUsedProjectCommit</name>
+        <qualifiedname>SysMLv2::Entities::ProjectUsage::setUsedProjectCommit</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">Commit</ref> &gt;</type>
+          <declname>usedCommit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows to set the used <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">Project</ref> commit. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>usedCommit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>used <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">Project</ref> commit. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/ProjectUsage.h" line="50" column="14" bodyfile="rest-api/src/entities/ProjectUsage.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1aef8cb33656314548aec516ac832df1a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">Project</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Project &gt; SysMLv2::Entities::ProjectUsage::getUsedProject</definition>
+        <argsstring>() const</argsstring>
+        <name>getUsedProject</name>
+        <qualifiedname>SysMLv2::Entities::ProjectUsage::getUsedProject</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the connected project according to the SysML v2 Standard <simplesect kind="see"><para><ref refid="da/da9/class_sys_m_lv2_1_1_entities_1_1_commit" kindref="compound">Commit</ref> </para>
+</simplesect>
+<simplesect kind="return"><para>The project from the connected commit. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/entities/ProjectUsage.h" line="57" column="25" bodyfile="rest-api/src/entities/ProjectUsage.cpp" bodystart="18" bodyend="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Defines the <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">Project</ref> Usage according to the SysML v2 Standard <simplesect kind="author"><para>Moritz Herzog </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>SysMLv2::Entities::Data</label>
+        <link refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+      <node id="1">
+        <label>SysMLv2::Entities::ProjectUsage</label>
+        <link refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>SysMLv2::Entities::Data</label>
+        <link refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>SysMLv2::Entities::IEntity</label>
+        <link refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity"/>
+      </node>
+      <node id="1">
+        <label>SysMLv2::Entities::ProjectUsage</label>
+        <link refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="rest-api/src/entities/ProjectUsage.h" line="31" column="5" bodyfile="rest-api/src/entities/ProjectUsage.h" bodystart="31" bodyend="61"/>
+    <listofallmembers>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a8764b2cee063c5961f2423bb61394398" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>Data</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1ab11291a4106304308b94f4a827e97f5d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>Data</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a3ead38504d0fac260222ef510223492f" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>Data</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a4d8b6e86e67395a6e8ca0afb22ea01eb" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>getId</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1ac0624bb99650ed554d1e78ce17d93c4d" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>getType</name></member>
+      <member refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1aef8cb33656314548aec516ac832df1a5" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>getUsedProject</name></member>
+      <member refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1a152230c65937a030861298433ce6f626" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>getUsedProjectCommit</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1abeee9acd12e31beb38e59d8d0e94bc34" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>Id</name></member>
+      <member refid="d1/d26/class_sys_m_lv2_1_1_entities_1_1_i_entity_1ac3f7cba2488d110b820614b9cb709808" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>JSON_INTENT</name></member>
+      <member refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1a7fa4787666e84d5dbcf2e4efee83fe29" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>ProjectUsage</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a01a079b57d6cadb79794f04edaadc3e4" prot="public" virt="virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>serializeToJson</name></member>
+      <member refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1ac60a8b41ca7e7f7d730f1566112b3754" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>setUsedProjectCommit</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a0e94702de18580a2d5b79ed0d59d0157" prot="protected" virt="non-virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>Type</name></member>
+      <member refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1aec1e5d764f1e3fea5821abb61c7d573b" prot="private" virt="non-virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>UsedProjectCommit</name></member>
+      <member refid="dc/d3b/class_sys_m_lv2_1_1_entities_1_1_data_1a410a285059373318b7742b9ddf47a978" prot="public" virt="virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>~Data</name></member>
+      <member refid="d6/d1a/class_sys_m_lv2_1_1_entities_1_1_project_usage_1a404fbf174212539770b99ff0ba97fa03" prot="public" virt="non-virtual"><scope>SysMLv2::Entities::ProjectUsage</scope><name>~ProjectUsage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

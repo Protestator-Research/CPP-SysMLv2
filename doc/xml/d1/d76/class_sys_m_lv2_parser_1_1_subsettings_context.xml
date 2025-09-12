@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::SubsettingsContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1add48b28308390a221f5e73cf834514be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::SubsettingsContext::SubsettingsContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>SubsettingsContext</name>
+        <qualifiedname>SysMLv2Parser::SubsettingsContext::SubsettingsContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6673" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="32927" bodyend="32929"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1ac26cf7e913a6744e9df1b85f8f81233d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::SubsettingsContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::SubsettingsContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6674" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="32952" bodyend="32954"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1abb410c38c5d50de422b6cde6d46dc23d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dd2/class_sys_m_lv2_parser_1_1_subsets_context" kindref="compound">SubsetsContext</ref> *</type>
+        <definition>SysMLv2Parser::SubsetsContext * SysMLv2Parser::SubsettingsContext::subsets</definition>
+        <argsstring>()</argsstring>
+        <name>subsets</name>
+        <qualifiedname>SysMLv2Parser::SubsettingsContext::subsets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6675" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="32931" bodyend="32933"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1ab4267ac4df9767b6411b8e51338900d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="db/da4/class_sys_m_lv2_parser_1_1_owned__subsetting_context" kindref="compound">Owned_subsettingContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Owned_subsettingContext * &gt; SysMLv2Parser::SubsettingsContext::owned_subsetting</definition>
+        <argsstring>()</argsstring>
+        <name>owned_subsetting</name>
+        <qualifiedname>SysMLv2Parser::SubsettingsContext::owned_subsetting</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6676" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="32935" bodyend="32937"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1a7801033f3c9fe82709f30cc65fdaf6f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="db/da4/class_sys_m_lv2_parser_1_1_owned__subsetting_context" kindref="compound">Owned_subsettingContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_subsettingContext * SysMLv2Parser::SubsettingsContext::owned_subsetting</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>owned_subsetting</name>
+        <qualifiedname>SysMLv2Parser::SubsettingsContext::owned_subsetting</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6677" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="32939" bodyend="32941"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1a3e69b92072fffc825179794f3845cd01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; antlr4::tree::TerminalNode * &gt;</type>
+        <definition>std::vector&lt; tree::TerminalNode * &gt; SysMLv2Parser::SubsettingsContext::SYMBOL_COMMA</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>SysMLv2Parser::SubsettingsContext::SYMBOL_COMMA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6678" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="32943" bodyend="32945"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1a054fc7ffe321359c9301eb2ad597eeb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::SubsettingsContext::SYMBOL_COMMA</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>SYMBOL_COMMA</name>
+        <qualifiedname>SysMLv2Parser::SubsettingsContext::SYMBOL_COMMA</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6679" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="32947" bodyend="32949"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1ab2c953a1f9583e5f18582eda173e2e9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::SubsettingsContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::SubsettingsContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6681" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="32956" bodyend="32960"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1a100f1b96d96a02cfa65a1b4c5ddd820e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::SubsettingsContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::SubsettingsContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6682" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="32962" bodyend="32966"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::SubsettingsContext</label>
+        <link refid="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::SubsettingsContext</label>
+        <link refid="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="6671" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="6671" bodyend="6684"/>
+    <listofallmembers>
+      <member refid="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1ab2c953a1f9583e5f18582eda173e2e9d" prot="public" virt="virtual"><scope>SysMLv2Parser::SubsettingsContext</scope><name>enterRule</name></member>
+      <member refid="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1a100f1b96d96a02cfa65a1b4c5ddd820e" prot="public" virt="virtual"><scope>SysMLv2Parser::SubsettingsContext</scope><name>exitRule</name></member>
+      <member refid="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1ac26cf7e913a6744e9df1b85f8f81233d" prot="public" virt="virtual"><scope>SysMLv2Parser::SubsettingsContext</scope><name>getRuleIndex</name></member>
+      <member refid="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1ab4267ac4df9767b6411b8e51338900d1" prot="public" virt="non-virtual"><scope>SysMLv2Parser::SubsettingsContext</scope><name>owned_subsetting</name></member>
+      <member refid="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1a7801033f3c9fe82709f30cc65fdaf6f7" prot="public" virt="non-virtual"><scope>SysMLv2Parser::SubsettingsContext</scope><name>owned_subsetting</name></member>
+      <member refid="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1abb410c38c5d50de422b6cde6d46dc23d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::SubsettingsContext</scope><name>subsets</name></member>
+      <member refid="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1add48b28308390a221f5e73cf834514be" prot="public" virt="non-virtual"><scope>SysMLv2Parser::SubsettingsContext</scope><name>SubsettingsContext</name></member>
+      <member refid="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1a3e69b92072fffc825179794f3845cd01" prot="public" virt="non-virtual"><scope>SysMLv2Parser::SubsettingsContext</scope><name>SYMBOL_COMMA</name></member>
+      <member refid="d1/d76/class_sys_m_lv2_parser_1_1_subsettings_context_1a054fc7ffe321359c9301eb2ad597eeb1" prot="public" virt="non-virtual"><scope>SysMLv2Parser::SubsettingsContext</scope><name>SYMBOL_COMMA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

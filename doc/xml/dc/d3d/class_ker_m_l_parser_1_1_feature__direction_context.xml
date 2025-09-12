@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Feature_directionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context_1ad3286d393f3fd6f9da9aff5a7225066c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Feature_directionContext::Feature_directionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Feature_directionContext</name>
+        <qualifiedname>KerMLParser::Feature_directionContext::Feature_directionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1582" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7206" bodyend="7208"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context_1a3532accee6673573908f01b48871af12" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Feature_directionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Feature_directionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1583" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7223" bodyend="7225"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context_1a58ab88aa1f9b81f7eda5f79eff2c3f66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Feature_directionContext::KEYWORD_IN</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_IN</name>
+        <qualifiedname>KerMLParser::Feature_directionContext::KEYWORD_IN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1584" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7210" bodyend="7212"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context_1a4f0134e60a9ebff522764ea77c980eda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Feature_directionContext::KEYWORD_OUT</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_OUT</name>
+        <qualifiedname>KerMLParser::Feature_directionContext::KEYWORD_OUT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1585" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7214" bodyend="7216"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context_1a00d4c997ad17764ba909055909c5490e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Feature_directionContext::KEYWORD_INOUT</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_INOUT</name>
+        <qualifiedname>KerMLParser::Feature_directionContext::KEYWORD_INOUT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1586" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7218" bodyend="7220"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context_1aa38d179be1c741ea3f535a08b4bfeac2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Feature_directionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Feature_directionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1588" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7227" bodyend="7231"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context_1a1239ac668953cae2903b00e338a07352" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Feature_directionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Feature_directionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1589" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="7233" bodyend="7237"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Feature_directionContext</label>
+        <link refid="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Feature_directionContext</label>
+        <link refid="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="1580" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="1580" bodyend="1591"/>
+    <listofallmembers>
+      <member refid="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context_1aa38d179be1c741ea3f535a08b4bfeac2" prot="public" virt="virtual"><scope>KerMLParser::Feature_directionContext</scope><name>enterRule</name></member>
+      <member refid="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context_1a1239ac668953cae2903b00e338a07352" prot="public" virt="virtual"><scope>KerMLParser::Feature_directionContext</scope><name>exitRule</name></member>
+      <member refid="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context_1ad3286d393f3fd6f9da9aff5a7225066c" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_directionContext</scope><name>Feature_directionContext</name></member>
+      <member refid="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context_1a3532accee6673573908f01b48871af12" prot="public" virt="virtual"><scope>KerMLParser::Feature_directionContext</scope><name>getRuleIndex</name></member>
+      <member refid="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context_1a58ab88aa1f9b81f7eda5f79eff2c3f66" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_directionContext</scope><name>KEYWORD_IN</name></member>
+      <member refid="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context_1a00d4c997ad17764ba909055909c5490e" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_directionContext</scope><name>KEYWORD_INOUT</name></member>
+      <member refid="dc/d3d/class_ker_m_l_parser_1_1_feature__direction_context_1a4f0134e60a9ebff522764ea77c980eda" prot="public" virt="non-virtual"><scope>KerMLParser::Feature_directionContext</scope><name>KEYWORD_OUT</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

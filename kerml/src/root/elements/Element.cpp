@@ -4,8 +4,10 @@
 
 #include "Element.h"
 #include "Relationship.h"
+#include "../namespaces/Namespace.h"
 
 #include <utility>
+#include <functional>
 #include <boost/uuid/string_generator.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include <boost/lexical_cast.hpp>
@@ -41,7 +43,9 @@ namespace KerML::Entities {
         DeclaredShortName = declaredShortName;
     }
 
-    std::string Element::declaredShortName() const {
+    std::optional<std::string> Element::declaredShortName() const {
+        if (DeclaredName.empty())
+            return {};
         return DeclaredShortName;
     }
 
@@ -49,7 +53,9 @@ namespace KerML::Entities {
         DeclaredName = declaredName;
     }
 
-    std::string Element::declaredName() const{
+    std::optional<std::string> Element::declaredName() const{
+        if (DeclaredName.empty())
+            return {};
         return DeclaredName;
     }
 
@@ -61,29 +67,34 @@ namespace KerML::Entities {
         return IsImpliedIncluded;
     }
 
-    std::string Element::escapedName() const{
+    std::optional<std::string> Element::escapedName() const{
         return std::string();
     }
 
-    std::string Element::effectiveShortName() const{
+    std::optional<std::string> Element::effectiveShortName() const{
         if(DeclaredShortName.empty())
             return ShortName;
 
         return DeclaredShortName;
     }
 
-    std::string Element::effectiveName() const{
-        if((DeclaredName.empty())&&(Name.empty()))
+    std::optional<std::string> Element::effectiveName() const{
+        if (DeclaredName.empty() && Name.empty() && QualifiedName.empty())
+            return {};
+
+    	if((DeclaredName.empty())&&(Name.empty()))
             return QualifiedName;
 
         if(DeclaredName.empty())
             return Name;
-
+        
         return DeclaredName;
     }
 
     std::shared_ptr<Namespace> Element::libraryNamespace() const{
-        return std::shared_ptr<Namespace>();
+        if (OwningRelationship != nullptr)
+            return OwningRelationship->libraryNamespace();
+        return nullptr;
     }
 
     void Element::sortAliasIds() {
@@ -163,4 +174,15 @@ namespace KerML::Entities {
         return OwnedElements;
     }
 
+    std::string Element::path()
+    {
+        if (libraryNamespace())
+            return libraryNamespace()->path() + "::" + escapedName().value();
+        else
+            return escapedName().value();
+    }
+
+    bool Element::includes(std::shared_ptr<Element>) {
+        return false;
+    }
 } // KerML::Entities

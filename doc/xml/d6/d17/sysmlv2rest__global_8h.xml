@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d6/d17/sysmlv2rest__global_8h" kind="file" language="C++">
+    <compoundname>sysmlv2rest_global.h</compoundname>
+    <includedby refid="d7/d7d/_branch_8h" local="yes">rest-api/src/entities/Branch.h</includedby>
+    <includedby refid="d3/dcd/_change_type_8h" local="yes">rest-api/src/entities/ChangeType.h</includedby>
+    <includedby refid="d0/d61/_commit_8h" local="yes">rest-api/src/entities/Commit.h</includedby>
+    <includedby refid="df/da8/_commit_reference_8h" local="yes">rest-api/src/entities/CommitReference.h</includedby>
+    <includedby refid="df/dc1/_data_8h" local="yes">rest-api/src/entities/Data.h</includedby>
+    <includedby refid="df/d4e/_data_difference_8h" local="yes">rest-api/src/entities/DataDifference.h</includedby>
+    <includedby refid="df/dc0/_data_identity_8h" local="yes">rest-api/src/entities/DataIdentity.h</includedby>
+    <includedby refid="da/d39/_data_version_8h" local="yes">rest-api/src/entities/DataVersion.h</includedby>
+    <includedby refid="d6/d35/_direction_8h" local="yes">rest-api/src/entities/Direction.h</includedby>
+    <includedby refid="dd/d61/rest-api_2src_2entities_2_element_8h" local="yes">rest-api/src/entities/Element.h</includedby>
+    <includedby refid="d4/d8a/_external_data_8h" local="yes">rest-api/src/entities/ExternalData.h</includedby>
+    <includedby refid="d8/dca/_external_relationship_8h" local="yes">rest-api/src/entities/ExternalRelationship.h</includedby>
+    <includedby refid="d9/d45/_i_entity_8h" local="yes">rest-api/src/entities/IEntity.h</includedby>
+    <includedby refid="db/d89/_identification_8h" local="yes">rest-api/src/entities/Identification.h</includedby>
+    <includedby refid="d4/dc7/_merge_result_8h" local="yes">rest-api/src/entities/MergeResult.h</includedby>
+    <includedby refid="d9/d8d/_project_8h" local="yes">rest-api/src/entities/Project.h</includedby>
+    <includedby refid="de/d91/_project_usage_8h" local="yes">rest-api/src/entities/ProjectUsage.h</includedby>
+    <includedby refid="dd/dfb/_query_8h" local="yes">rest-api/src/entities/Query.h</includedby>
+    <includedby refid="d7/dfe/_record_8h" local="yes">rest-api/src/entities/Record.h</includedby>
+    <includedby refid="d2/d48/rest-api_2src_2entities_2_relationship_8h" local="yes">rest-api/src/entities/Relationship.h</includedby>
+    <includedby refid="d2/d4a/_tag_8h" local="yes">rest-api/src/entities/Tag.h</includedby>
+    <includedby refid="da/d6c/_sys_m_lv2_deserializer_8h" local="yes">rest-api/src/serialization/SysMLv2Deserializer.h</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>rest-api/src/entities/Branch.h</label>
+        <link refid="d7/d7d/_branch_8h_source"/>
+      </node>
+      <node id="3">
+        <label>rest-api/src/entities/ChangeType.h</label>
+        <link refid="d3/dcd/_change_type_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>rest-api/src/entities/Commit.h</label>
+        <link refid="d0/d61/_commit_8h_source"/>
+      </node>
+      <node id="6">
+        <label>rest-api/src/entities/CommitReference.h</label>
+        <link refid="df/da8/_commit_reference_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>rest-api/src/entities/Data.h</label>
+        <link refid="df/dc1/_data_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>rest-api/src/entities/DataDifference.h</label>
+        <link refid="df/d4e/_data_difference_8h_source"/>
+      </node>
+      <node id="15">
+        <label>rest-api/src/entities/DataIdentity.h</label>
+        <link refid="df/dc0/_data_identity_8h_source"/>
+      </node>
+      <node id="16">
+        <label>rest-api/src/entities/DataVersion.h</label>
+        <link refid="da/d39/_data_version_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>rest-api/src/entities/Direction.h</label>
+        <link refid="d6/d35/_direction_8h_source"/>
+      </node>
+      <node id="9">
+        <label>rest-api/src/entities/Element.h</label>
+        <link refid="dd/d61/rest-api_2src_2entities_2_element_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>rest-api/src/entities/ExternalData.h</label>
+        <link refid="d4/d8a/_external_data_8h_source"/>
+      </node>
+      <node id="12">
+        <label>rest-api/src/entities/ExternalRelationship.h</label>
+        <link refid="d8/dca/_external_relationship_8h_source"/>
+      </node>
+      <node id="18">
+        <label>rest-api/src/entities/IEntity.h</label>
+        <link refid="d9/d45/_i_entity_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>rest-api/src/entities/Identification.h</label>
+        <link refid="db/d89/_identification_8h_source"/>
+      </node>
+      <node id="24">
+        <label>rest-api/src/entities/MergeResult.h</label>
+        <link refid="d4/dc7/_merge_result_8h_source"/>
+      </node>
+      <node id="21">
+        <label>rest-api/src/entities/Project.h</label>
+        <link refid="d9/d8d/_project_8h_source"/>
+      </node>
+      <node id="13">
+        <label>rest-api/src/entities/ProjectUsage.h</label>
+        <link refid="de/d91/_project_usage_8h_source"/>
+      </node>
+      <node id="22">
+        <label>rest-api/src/entities/Query.h</label>
+        <link refid="dd/dfb/_query_8h_source"/>
+      </node>
+      <node id="20">
+        <label>rest-api/src/entities/Record.h</label>
+        <link refid="d7/dfe/_record_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>rest-api/src/entities/Relationship.h</label>
+        <link refid="d2/d48/rest-api_2src_2entities_2_relationship_8h_source"/>
+      </node>
+      <node id="7">
+        <label>rest-api/src/entities/Tag.h</label>
+        <link refid="d2/d4a/_tag_8h_source"/>
+      </node>
+      <node id="23">
+        <label>rest-api/src/serialization/SysMLv2Deserializer.h</label>
+        <link refid="da/d6c/_sys_m_lv2_deserializer_8h_source"/>
+      </node>
+      <node id="1">
+        <label>rest-api/src/sysmlv2rest_global.h</label>
+        <link refid="d6/d17/sysmlv2rest__global_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>services/src/interfaces/IProjectVersioningService.h</label>
+        <link refid="df/d0e/_i_project_versioning_service_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="d6/d17/sysmlv2rest__global_8h_1a9ac58602295ef3ddabfe03a85744b478" prot="public" static="no">
+        <name>SYSMLV2REST_EXPORT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rest-api/src/sysmlv2rest_global.h" line="8" column="10" bodyfile="rest-api/src/sysmlv2rest_global.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifdef<sp/>WIN32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>sysmlv2rest_EXPORTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYSMLV2REST_EXPORT<sp/>__declspec(dllexport)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYSMLV2REST_EXPORT<sp/>__declspec(dllimport)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYSMLV2REST_EXPORT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>WIN32</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="rest-api/src/sysmlv2rest_global.h"/>
+  </compounddef>
+</doxygen>

@@ -1,15 +1,13 @@
 //
 // Created by Moritz Herzog on 11.03.25.
 //
-
-#ifndef CPP_SYSMLV2_LIB_DATADIFFERENCE_H
-#define CPP_SYSMLV2_LIB_DATADIFFERENCE_H
+#pragma once
 
 #include <memory>
 #include "DataVersion.h"
 #include "../sysmlv2rest_global.h"
 
-namespace SysMLv2 ::Entities {
+namespace SysMLv2::REST {
     class DataVersion;
 
     class SYSMLV2REST_EXPORT DataDifference {
@@ -21,10 +19,8 @@ namespace SysMLv2 ::Entities {
         std::shared_ptr<DataVersion> baseData();
         std::shared_ptr<DataVersion> comparedData();
 
-    private:
+    protected:
         std::shared_ptr<DataVersion> BaseData = nullptr;
         std::shared_ptr<DataVersion> CompareData = nullptr;
     };
 } // SysMLv2
-
-#endif //CPP_SYSMLV2_LIB_DATADIFFERENCE_H

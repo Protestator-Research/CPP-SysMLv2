@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d5/d34/_element_navigation_service_8h" kind="file" language="C++">
+    <compoundname>ElementNavigationService.h</compoundname>
+    <includes local="no">map</includes>
+    <includes refid="da/d88/_i_element_navigation_service_8h" local="yes">../interfaces/IElementNavigationService.h</includes>
+    <includes refid="d8/d0c/sysmlv2service__global_8h" local="yes">../sysmlv2service_global.h</includes>
+    <includedby refid="d1/d70/_element_navigation_service_8cpp" local="yes">services/src/implementation/ElementNavigationService.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>services/src/implementation/ElementNavigationService.h</label>
+        <link refid="d5/d34/_element_navigation_service_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>../interfaces/IElementNavigationService.h</label>
+        <link refid="da/d88/_i_element_navigation_service_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>../sysmlv2service_global.h</label>
+        <link refid="d8/d0c/sysmlv2service__global_8h_source"/>
+      </node>
+      <node id="5">
+        <label>boost/uuid/uuid.hpp</label>
+      </node>
+      <node id="2">
+        <label>map</label>
+      </node>
+      <node id="6">
+        <label>memory</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service" prot="public">SysMLv2::API::ElementNavigationService</innerclass>
+    <innernamespace refid="d7/dba/namespace_sys_m_lv2">SysMLv2</innernamespace>
+    <innernamespace refid="da/dd6/namespace_sys_m_lv2_1_1_a_p_i">SysMLv2::API</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Moritz<sp/>Herzog<sp/>on<sp/>19.03.25.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SYSMLV2_ELEMENTNAVIGATIONSERVICE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYSMLV2_ELEMENTNAVIGATIONSERVICE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../interfaces/IElementNavigationService.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../sysmlv2service_global.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="da/dd6/namespace_sys_m_lv2_1_1_a_p_i" kindref="compound">SysMLv2::API</ref><sp/>{</highlight></codeline>
+<codeline lineno="21" refid="d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">SYSMLV2SERVICE_EXPORT<sp/>ElementNavigationService<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="d4/de9/class_sys_m_lv2_1_1_a_p_i_1_1_i_element_navigation_service" kindref="compound">IElementNavigationService</ref>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ElementNavigationService();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~ElementNavigationService()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::Element&gt;&gt;<sp/><ref refid="d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1afb43b61fd6591ed0a3448d640f28e6dd" kindref="member">getElements</ref>(std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/>commit)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;SysMLv2::Entities::Element&gt;<sp/><ref refid="d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a2d96062fc0068ad1244ea66be8950571" kindref="member">getElementById</ref>(std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project,<sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/>commit,<sp/>boost::uuids::uuid<sp/>elementId)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::Relationship&gt;&gt;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a443d608b08d8d70534788255c5172352" kindref="member">getRelationshipsByRelatedElement</ref>(std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/>commit,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::uuids::uuid<sp/>elementId,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>direction)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;SysMLv2::Entities::Element&gt;&gt;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d4/da7/class_sys_m_lv2_1_1_a_p_i_1_1_element_navigation_service_1a71986b44cd5216815efbc114d37c5d18" kindref="member">getRootElements</ref>(std::shared_ptr&lt;SysMLv2::Entities::Project&gt;<sp/>project,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;SysMLv2::Entities::Commit&gt;<sp/>commit)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//SYSMLV2_ELEMENTNAVIGATIONSERVICE_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="services/src/implementation/ElementNavigationService.h"/>
+  </compounddef>
+</doxygen>

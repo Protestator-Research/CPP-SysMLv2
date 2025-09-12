@@ -1,0 +1,3667 @@
+.TH "KerMLListenerImplementation" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KerMLListenerImplementation
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <KerMlListenerImplementation\&.h>\fP
+.PP
+Inherits \fBKerMLListener\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBenterStart\fP (\fBKerMLParser::StartContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitStart\fP (\fBKerMLParser::StartContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterStartRule\fP (\fBKerMLParser::StartRuleContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitStartRule\fP (\fBKerMLParser::StartRuleContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterElements\fP (\fBKerMLParser::ElementsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitElements\fP (\fBKerMLParser::ElementsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterIdentification\fP (\fBKerMLParser::IdentificationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitIdentification\fP (\fBKerMLParser::IdentificationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterRelationship_body\fP (\fBKerMLParser::Relationship_bodyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitRelationship_body\fP (\fBKerMLParser::Relationship_bodyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterRelationship_onwed_elements\fP (\fBKerMLParser::Relationship_onwed_elementsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitRelationship_onwed_elements\fP (\fBKerMLParser::Relationship_onwed_elementsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterRelationship_owned_element\fP (\fBKerMLParser::Relationship_owned_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitRelationship_owned_element\fP (\fBKerMLParser::Relationship_owned_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_related_element\fP (\fBKerMLParser::Owned_related_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_related_element\fP (\fBKerMLParser::Owned_related_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterDependency\fP (\fBKerMLParser::DependencyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitDependency\fP (\fBKerMLParser::DependencyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterAnnotation\fP (\fBKerMLParser::AnnotationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitAnnotation\fP (\fBKerMLParser::AnnotationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_annotation\fP (\fBKerMLParser::Owned_annotationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_annotation\fP (\fBKerMLParser::Owned_annotationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterAnnotating_element\fP (\fBKerMLParser::Annotating_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitAnnotating_element\fP (\fBKerMLParser::Annotating_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterComment\fP (\fBKerMLParser::CommentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitComment\fP (\fBKerMLParser::CommentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterDocumentation\fP (\fBKerMLParser::DocumentationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitDocumentation\fP (\fBKerMLParser::DocumentationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterTextual_representation\fP (\fBKerMLParser::Textual_representationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitTextual_representation\fP (\fBKerMLParser::Textual_representationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterRoot_namespace\fP (\fBKerMLParser::Root_namespaceContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitRoot_namespace\fP (\fBKerMLParser::Root_namespaceContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNamespace\fP (\fBKerMLParser::NamespaceContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNamespace\fP (\fBKerMLParser::NamespaceContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNamespace_declaration\fP (\fBKerMLParser::Namespace_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNamespace_declaration\fP (\fBKerMLParser::Namespace_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNamespace_body\fP (\fBKerMLParser::Namespace_bodyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNamespace_body\fP (\fBKerMLParser::Namespace_bodyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNamespace_body_elements\fP (\fBKerMLParser::Namespace_body_elementsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNamespace_body_elements\fP (\fBKerMLParser::Namespace_body_elementsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNamespace_body_element\fP (\fBKerMLParser::Namespace_body_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNamespace_body_element\fP (\fBKerMLParser::Namespace_body_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMember_prefix\fP (\fBKerMLParser::Member_prefixContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMember_prefix\fP (\fBKerMLParser::Member_prefixContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterVisibility_indicator\fP (\fBKerMLParser::Visibility_indicatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitVisibility_indicator\fP (\fBKerMLParser::Visibility_indicatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNamespace_member\fP (\fBKerMLParser::Namespace_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNamespace_member\fP (\fBKerMLParser::Namespace_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNon_feature_member\fP (\fBKerMLParser::Non_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNon_feature_member\fP (\fBKerMLParser::Non_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNamespace_feature_member\fP (\fBKerMLParser::Namespace_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNamespace_feature_member\fP (\fBKerMLParser::Namespace_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterAlias_member\fP (\fBKerMLParser::Alias_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitAlias_member\fP (\fBKerMLParser::Alias_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterQualified_name\fP (\fBKerMLParser::Qualified_nameContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitQualified_name\fP (\fBKerMLParser::Qualified_nameContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNamespace_import\fP (\fBKerMLParser::Namespace_importContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNamespace_import\fP (\fBKerMLParser::Namespace_importContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterImport_declaration\fP (\fBKerMLParser::Import_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitImport_declaration\fP (\fBKerMLParser::Import_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMembership_import\fP (\fBKerMLParser::Membership_importContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMembership_import\fP (\fBKerMLParser::Membership_importContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFilter_package\fP (\fBKerMLParser::Filter_packageContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFilter_package\fP (\fBKerMLParser::Filter_packageContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFilter_package_member\fP (\fBKerMLParser::Filter_package_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFilter_package_member\fP (\fBKerMLParser::Filter_package_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterElement\fP (\fBKerMLParser::ElementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitElement\fP (\fBKerMLParser::ElementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNon_feature_element\fP (\fBKerMLParser::Non_feature_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNon_feature_element\fP (\fBKerMLParser::Non_feature_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_element\fP (\fBKerMLParser::Feature_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_element\fP (\fBKerMLParser::Feature_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterAdditional_options\fP (\fBKerMLParser::Additional_optionsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitAdditional_options\fP (\fBKerMLParser::Additional_optionsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterType\fP (\fBKerMLParser::TypeContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitType\fP (\fBKerMLParser::TypeContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterType_prefix\fP (\fBKerMLParser::Type_prefixContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitType_prefix\fP (\fBKerMLParser::Type_prefixContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterType_declaration\fP (\fBKerMLParser::Type_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitType_declaration\fP (\fBKerMLParser::Type_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSpecialization_part\fP (\fBKerMLParser::Specialization_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSpecialization_part\fP (\fBKerMLParser::Specialization_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterConjugation_part\fP (\fBKerMLParser::Conjugation_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitConjugation_part\fP (\fBKerMLParser::Conjugation_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterType_relationship_part\fP (\fBKerMLParser::Type_relationship_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitType_relationship_part\fP (\fBKerMLParser::Type_relationship_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterDisjoining_part\fP (\fBKerMLParser::Disjoining_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitDisjoining_part\fP (\fBKerMLParser::Disjoining_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterUnioning_part\fP (\fBKerMLParser::Unioning_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitUnioning_part\fP (\fBKerMLParser::Unioning_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterIntersecting_part\fP (\fBKerMLParser::Intersecting_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitIntersecting_part\fP (\fBKerMLParser::Intersecting_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterDifferencing_part\fP (\fBKerMLParser::Differencing_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitDifferencing_part\fP (\fBKerMLParser::Differencing_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterType_body\fP (\fBKerMLParser::Type_bodyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitType_body\fP (\fBKerMLParser::Type_bodyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterType_body_elements\fP (\fBKerMLParser::Type_body_elementsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitType_body_elements\fP (\fBKerMLParser::Type_body_elementsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterType_body_element\fP (\fBKerMLParser::Type_body_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitType_body_element\fP (\fBKerMLParser::Type_body_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSpecialization\fP (\fBKerMLParser::SpecializationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSpecialization\fP (\fBKerMLParser::SpecializationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_specialization\fP (\fBKerMLParser::Owned_specializationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_specialization\fP (\fBKerMLParser::Owned_specializationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSpecific_type\fP (\fBKerMLParser::Specific_typeContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSpecific_type\fP (\fBKerMLParser::Specific_typeContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterGeneral_type\fP (\fBKerMLParser::General_typeContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitGeneral_type\fP (\fBKerMLParser::General_typeContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterConjunction\fP (\fBKerMLParser::ConjunctionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitConjunction\fP (\fBKerMLParser::ConjunctionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_conjugation\fP (\fBKerMLParser::Owned_conjugationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_conjugation\fP (\fBKerMLParser::Owned_conjugationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterDisjoining\fP (\fBKerMLParser::DisjoiningContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitDisjoining\fP (\fBKerMLParser::DisjoiningContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_disjoining\fP (\fBKerMLParser::Owned_disjoiningContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_disjoining\fP (\fBKerMLParser::Owned_disjoiningContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterUnioning\fP (\fBKerMLParser::UnioningContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitUnioning\fP (\fBKerMLParser::UnioningContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterIntersecting\fP (\fBKerMLParser::IntersectingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitIntersecting\fP (\fBKerMLParser::IntersectingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterDifferencing\fP (\fBKerMLParser::DifferencingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitDifferencing\fP (\fBKerMLParser::DifferencingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_member\fP (\fBKerMLParser::Feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_member\fP (\fBKerMLParser::Feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterType_feature_member\fP (\fBKerMLParser::Type_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitType_feature_member\fP (\fBKerMLParser::Type_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_feature_member\fP (\fBKerMLParser::Owned_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_feature_member\fP (\fBKerMLParser::Owned_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterClassifier\fP (\fBKerMLParser::ClassifierContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitClassifier\fP (\fBKerMLParser::ClassifierContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterClassifier_declaration\fP (\fBKerMLParser::Classifier_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitClassifier_declaration\fP (\fBKerMLParser::Classifier_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSuperclassing_part\fP (\fBKerMLParser::Superclassing_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSuperclassing_part\fP (\fBKerMLParser::Superclassing_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSubclassification\fP (\fBKerMLParser::SubclassificationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSubclassification\fP (\fBKerMLParser::SubclassificationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_subclassification\fP (\fBKerMLParser::Owned_subclassificationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_subclassification\fP (\fBKerMLParser::Owned_subclassificationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature\fP (\fBKerMLParser::FeatureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature\fP (\fBKerMLParser::FeatureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_prefix\fP (\fBKerMLParser::Feature_prefixContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_prefix\fP (\fBKerMLParser::Feature_prefixContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_direction\fP (\fBKerMLParser::Feature_directionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_direction\fP (\fBKerMLParser::Feature_directionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_declaration\fP (\fBKerMLParser::Feature_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_declaration\fP (\fBKerMLParser::Feature_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_identification\fP (\fBKerMLParser::Feature_identificationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_identification\fP (\fBKerMLParser::Feature_identificationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_relationship_part\fP (\fBKerMLParser::Feature_relationship_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_relationship_part\fP (\fBKerMLParser::Feature_relationship_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterChaining_part\fP (\fBKerMLParser::Chaining_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitChaining_part\fP (\fBKerMLParser::Chaining_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterInverting_part\fP (\fBKerMLParser::Inverting_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitInverting_part\fP (\fBKerMLParser::Inverting_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterType_featuring_part\fP (\fBKerMLParser::Type_featuring_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitType_featuring_part\fP (\fBKerMLParser::Type_featuring_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_specialization_part\fP (\fBKerMLParser::Feature_specialization_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_specialization_part\fP (\fBKerMLParser::Feature_specialization_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMultiplicity_part\fP (\fBKerMLParser::Multiplicity_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMultiplicity_part\fP (\fBKerMLParser::Multiplicity_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_specilization\fP (\fBKerMLParser::Feature_specilizationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_specilization\fP (\fBKerMLParser::Feature_specilizationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterTypings\fP (\fBKerMLParser::TypingsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitTypings\fP (\fBKerMLParser::TypingsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterTyped_by\fP (\fBKerMLParser::Typed_byContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitTyped_by\fP (\fBKerMLParser::Typed_byContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSubsettings\fP (\fBKerMLParser::SubsettingsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSubsettings\fP (\fBKerMLParser::SubsettingsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSubsets\fP (\fBKerMLParser::SubsetsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSubsets\fP (\fBKerMLParser::SubsetsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterReferences\fP (\fBKerMLParser::ReferencesContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitReferences\fP (\fBKerMLParser::ReferencesContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterRedefinitions\fP (\fBKerMLParser::RedefinitionsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitRedefinitions\fP (\fBKerMLParser::RedefinitionsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterRedefines\fP (\fBKerMLParser::RedefinesContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitRedefines\fP (\fBKerMLParser::RedefinesContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_typing\fP (\fBKerMLParser::Feature_typingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_typing\fP (\fBKerMLParser::Feature_typingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_feature_typing\fP (\fBKerMLParser::Owned_feature_typingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_feature_typing\fP (\fBKerMLParser::Owned_feature_typingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSubsetting\fP (\fBKerMLParser::SubsettingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSubsetting\fP (\fBKerMLParser::SubsettingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_subsetting\fP (\fBKerMLParser::Owned_subsettingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_subsetting\fP (\fBKerMLParser::Owned_subsettingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_reference_subsetting\fP (\fBKerMLParser::Owned_reference_subsettingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_reference_subsetting\fP (\fBKerMLParser::Owned_reference_subsettingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterRedefinition\fP (\fBKerMLParser::RedefinitionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitRedefinition\fP (\fBKerMLParser::RedefinitionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_redefinition\fP (\fBKerMLParser::Owned_redefinitionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_redefinition\fP (\fBKerMLParser::Owned_redefinitionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_feature_chain\fP (\fBKerMLParser::Owned_feature_chainContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_feature_chain\fP (\fBKerMLParser::Owned_feature_chainContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_chain\fP (\fBKerMLParser::Feature_chainContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_chain\fP (\fBKerMLParser::Feature_chainContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_feature_chaining\fP (\fBKerMLParser::Owned_feature_chainingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_feature_chaining\fP (\fBKerMLParser::Owned_feature_chainingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_inverting\fP (\fBKerMLParser::Feature_invertingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_inverting\fP (\fBKerMLParser::Feature_invertingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_feature_inverting\fP (\fBKerMLParser::Owned_feature_invertingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_feature_inverting\fP (\fBKerMLParser::Owned_feature_invertingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterType_featuring\fP (\fBKerMLParser::Type_featuringContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitType_featuring\fP (\fBKerMLParser::Type_featuringContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_type_featuring\fP (\fBKerMLParser::Owned_type_featuringContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_type_featuring\fP (\fBKerMLParser::Owned_type_featuringContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterData_type\fP (\fBKerMLParser::Data_typeContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitData_type\fP (\fBKerMLParser::Data_typeContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterClass\fP (\fBKerMLParser::ClassContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitClass\fP (\fBKerMLParser::ClassContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterStructure\fP (\fBKerMLParser::StructureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitStructure\fP (\fBKerMLParser::StructureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterAssociation\fP (\fBKerMLParser::AssociationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitAssociation\fP (\fBKerMLParser::AssociationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterAssociation_structure\fP (\fBKerMLParser::Association_structureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitAssociation_structure\fP (\fBKerMLParser::Association_structureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterConnector\fP (\fBKerMLParser::ConnectorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitConnector\fP (\fBKerMLParser::ConnectorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterConnector_declaration\fP (\fBKerMLParser::Connector_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitConnector_declaration\fP (\fBKerMLParser::Connector_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBinary_connector_declaration\fP (\fBKerMLParser::Binary_connector_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBinary_connector_declaration\fP (\fBKerMLParser::Binary_connector_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNary_connector_declaration\fP (\fBKerMLParser::Nary_connector_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNary_connector_declaration\fP (\fBKerMLParser::Nary_connector_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterConnector_end_member\fP (\fBKerMLParser::Connector_end_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitConnector_end_member\fP (\fBKerMLParser::Connector_end_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterConnector_end\fP (\fBKerMLParser::Connector_endContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitConnector_end\fP (\fBKerMLParser::Connector_endContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBinding_connector\fP (\fBKerMLParser::Binding_connectorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBinding_connector\fP (\fBKerMLParser::Binding_connectorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBinding_connector_declaration\fP (\fBKerMLParser::Binding_connector_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBinding_connector_declaration\fP (\fBKerMLParser::Binding_connector_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSuccession\fP (\fBKerMLParser::SuccessionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSuccession\fP (\fBKerMLParser::SuccessionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSuccession_declaration\fP (\fBKerMLParser::Succession_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSuccession_declaration\fP (\fBKerMLParser::Succession_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBehavior\fP (\fBKerMLParser::BehaviorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBehavior\fP (\fBKerMLParser::BehaviorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterStep\fP (\fBKerMLParser::StepContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitStep\fP (\fBKerMLParser::StepContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFunction\fP (\fBKerMLParser::FunctionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFunction\fP (\fBKerMLParser::FunctionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFunction_body\fP (\fBKerMLParser::Function_bodyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFunction_body\fP (\fBKerMLParser::Function_bodyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFunction_body_part\fP (\fBKerMLParser::Function_body_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFunction_body_part\fP (\fBKerMLParser::Function_body_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterReturn_feature_member\fP (\fBKerMLParser::Return_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitReturn_feature_member\fP (\fBKerMLParser::Return_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterResult_expression_member\fP (\fBKerMLParser::Result_expression_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitResult_expression_member\fP (\fBKerMLParser::Result_expression_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterExpression\fP (\fBKerMLParser::ExpressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitExpression\fP (\fBKerMLParser::ExpressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterPredicate\fP (\fBKerMLParser::PredicateContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitPredicate\fP (\fBKerMLParser::PredicateContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBoolean_expression\fP (\fBKerMLParser::Boolean_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBoolean_expression\fP (\fBKerMLParser::Boolean_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterInvariant\fP (\fBKerMLParser::InvariantContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitInvariant\fP (\fBKerMLParser::InvariantContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_expression_reference_member\fP (\fBKerMLParser::Owned_expression_reference_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_expression_reference_member\fP (\fBKerMLParser::Owned_expression_reference_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_expression_reference\fP (\fBKerMLParser::Owned_expression_referenceContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_expression_reference\fP (\fBKerMLParser::Owned_expression_referenceContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_expression_member\fP (\fBKerMLParser::Owned_expression_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_expression_member\fP (\fBKerMLParser::Owned_expression_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_expressions\fP (\fBKerMLParser::Owned_expressionsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_expressions\fP (\fBKerMLParser::Owned_expressionsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_expression\fP (\fBKerMLParser::Owned_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_expression\fP (\fBKerMLParser::Owned_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterEased_owned_expression\fP (\fBKerMLParser::Eased_owned_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitEased_owned_expression\fP (\fBKerMLParser::Eased_owned_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterConditional_expression\fP (\fBKerMLParser::Conditional_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitConditional_expression\fP (\fBKerMLParser::Conditional_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterConditional_binary_operator_expression\fP (\fBKerMLParser::Conditional_binary_operator_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitConditional_binary_operator_expression\fP (\fBKerMLParser::Conditional_binary_operator_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterConditional_binary_operator\fP (\fBKerMLParser::Conditional_binary_operatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitConditional_binary_operator\fP (\fBKerMLParser::Conditional_binary_operatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBinary_operator_expression\fP (\fBKerMLParser::Binary_operator_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBinary_operator_expression\fP (\fBKerMLParser::Binary_operator_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBinary_operator\fP (\fBKerMLParser::Binary_operatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBinary_operator\fP (\fBKerMLParser::Binary_operatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterUnary_operator_expression\fP (\fBKerMLParser::Unary_operator_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitUnary_operator_expression\fP (\fBKerMLParser::Unary_operator_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterUnary_operator\fP (\fBKerMLParser::Unary_operatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitUnary_operator\fP (\fBKerMLParser::Unary_operatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterClassification_expression\fP (\fBKerMLParser::Classification_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitClassification_expression\fP (\fBKerMLParser::Classification_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterClassification\fP (\fBKerMLParser::ClassificationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitClassification\fP (\fBKerMLParser::ClassificationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterClassification_test_operator\fP (\fBKerMLParser::Classification_test_operatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitClassification_test_operator\fP (\fBKerMLParser::Classification_test_operatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterCast_operator\fP (\fBKerMLParser::Cast_operatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitCast_operator\fP (\fBKerMLParser::Cast_operatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMetaclassification_expression\fP (\fBKerMLParser::Metaclassification_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMetaclassification_expression\fP (\fBKerMLParser::Metaclassification_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterArgument_member\fP (\fBKerMLParser::Argument_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitArgument_member\fP (\fBKerMLParser::Argument_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterArgument\fP (\fBKerMLParser::ArgumentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitArgument\fP (\fBKerMLParser::ArgumentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterArgument_value\fP (\fBKerMLParser::Argument_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitArgument_value\fP (\fBKerMLParser::Argument_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterArgument_expression_member\fP (\fBKerMLParser::Argument_expression_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitArgument_expression_member\fP (\fBKerMLParser::Argument_expression_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterArgument_expression\fP (\fBKerMLParser::Argument_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitArgument_expression\fP (\fBKerMLParser::Argument_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterArgument_expression_value\fP (\fBKerMLParser::Argument_expression_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitArgument_expression_value\fP (\fBKerMLParser::Argument_expression_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMetadata_argument_member\fP (\fBKerMLParser::Metadata_argument_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMetadata_argument_member\fP (\fBKerMLParser::Metadata_argument_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMetadata_argument\fP (\fBKerMLParser::Metadata_argumentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMetadata_argument\fP (\fBKerMLParser::Metadata_argumentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMetadata_value\fP (\fBKerMLParser::Metadata_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMetadata_value\fP (\fBKerMLParser::Metadata_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMetadata_reference\fP (\fBKerMLParser::Metadata_referenceContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMetadata_reference\fP (\fBKerMLParser::Metadata_referenceContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMetadataclassification_test_operator\fP (\fBKerMLParser::Metadataclassification_test_operatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMetadataclassification_test_operator\fP (\fBKerMLParser::Metadataclassification_test_operatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMeta_cast_operator\fP (\fBKerMLParser::Meta_cast_operatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMeta_cast_operator\fP (\fBKerMLParser::Meta_cast_operatorContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterExtend_expression\fP (\fBKerMLParser::Extend_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitExtend_expression\fP (\fBKerMLParser::Extend_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterType_reference_member\fP (\fBKerMLParser::Type_reference_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitType_reference_member\fP (\fBKerMLParser::Type_reference_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterType_result_member\fP (\fBKerMLParser::Type_result_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitType_result_member\fP (\fBKerMLParser::Type_result_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterType_reference\fP (\fBKerMLParser::Type_referenceContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitType_reference\fP (\fBKerMLParser::Type_referenceContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterReference_typing\fP (\fBKerMLParser::Reference_typingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitReference_typing\fP (\fBKerMLParser::Reference_typingContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterPrimary_expressions\fP (\fBKerMLParser::Primary_expressionsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitPrimary_expressions\fP (\fBKerMLParser::Primary_expressionsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterPrimary_expression\fP (\fBKerMLParser::Primary_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitPrimary_expression\fP (\fBKerMLParser::Primary_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterPrimary_argument_value\fP (\fBKerMLParser::Primary_argument_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitPrimary_argument_value\fP (\fBKerMLParser::Primary_argument_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterPrimary_argument\fP (\fBKerMLParser::Primary_argumentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitPrimary_argument\fP (\fBKerMLParser::Primary_argumentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterPrimary_argument_member\fP (\fBKerMLParser::Primary_argument_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitPrimary_argument_member\fP (\fBKerMLParser::Primary_argument_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNon_feature_chain_primary_expression\fP (\fBKerMLParser::Non_feature_chain_primary_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNon_feature_chain_primary_expression\fP (\fBKerMLParser::Non_feature_chain_primary_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNon_feature_chain_primary_argument_value\fP (\fBKerMLParser::Non_feature_chain_primary_argument_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNon_feature_chain_primary_argument_value\fP (\fBKerMLParser::Non_feature_chain_primary_argument_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNon_feature_chain_primary_argument\fP (\fBKerMLParser::Non_feature_chain_primary_argumentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNon_feature_chain_primary_argument\fP (\fBKerMLParser::Non_feature_chain_primary_argumentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNon_feature_chain_primary_argument_member\fP (\fBKerMLParser::Non_feature_chain_primary_argument_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNon_feature_chain_primary_argument_member\fP (\fBKerMLParser::Non_feature_chain_primary_argument_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBracket_expression\fP (\fBKerMLParser::Bracket_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBracket_expression\fP (\fBKerMLParser::Bracket_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterIndex_expression\fP (\fBKerMLParser::Index_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitIndex_expression\fP (\fBKerMLParser::Index_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSequence_expression\fP (\fBKerMLParser::Sequence_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSequence_expression\fP (\fBKerMLParser::Sequence_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSequence_expression_list\fP (\fBKerMLParser::Sequence_expression_listContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSequence_expression_list\fP (\fBKerMLParser::Sequence_expression_listContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSequence_operator_expression\fP (\fBKerMLParser::Sequence_operator_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSequence_operator_expression\fP (\fBKerMLParser::Sequence_operator_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSequence_expression_list_member\fP (\fBKerMLParser::Sequence_expression_list_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSequence_expression_list_member\fP (\fBKerMLParser::Sequence_expression_list_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_chain_expression\fP (\fBKerMLParser::Feature_chain_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_chain_expression\fP (\fBKerMLParser::Feature_chain_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterCollect_expression\fP (\fBKerMLParser::Collect_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitCollect_expression\fP (\fBKerMLParser::Collect_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSelect_expression\fP (\fBKerMLParser::Select_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSelect_expression\fP (\fBKerMLParser::Select_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFunction_operation_expression\fP (\fBKerMLParser::Function_operation_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFunction_operation_expression\fP (\fBKerMLParser::Function_operation_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBody_argument_member\fP (\fBKerMLParser::Body_argument_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBody_argument_member\fP (\fBKerMLParser::Body_argument_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBody_argument\fP (\fBKerMLParser::Body_argumentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBody_argument\fP (\fBKerMLParser::Body_argumentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBody_argument_value\fP (\fBKerMLParser::Body_argument_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBody_argument_value\fP (\fBKerMLParser::Body_argument_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBody_expression_member\fP (\fBKerMLParser::Body_expression_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBody_expression_member\fP (\fBKerMLParser::Body_expression_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFunction_reference_argument_member\fP (\fBKerMLParser::Function_reference_argument_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFunction_reference_argument_member\fP (\fBKerMLParser::Function_reference_argument_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFunction_reference_argument\fP (\fBKerMLParser::Function_reference_argumentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFunction_reference_argument\fP (\fBKerMLParser::Function_reference_argumentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFunction_reference_arugment_value\fP (\fBKerMLParser::Function_reference_arugment_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFunction_reference_arugment_value\fP (\fBKerMLParser::Function_reference_arugment_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFunction_reference_expression\fP (\fBKerMLParser::Function_reference_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFunction_reference_expression\fP (\fBKerMLParser::Function_reference_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFunction_reference_member\fP (\fBKerMLParser::Function_reference_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFunction_reference_member\fP (\fBKerMLParser::Function_reference_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFunction_reference\fP (\fBKerMLParser::Function_referenceContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFunction_reference\fP (\fBKerMLParser::Function_referenceContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_chain_member\fP (\fBKerMLParser::Feature_chain_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_chain_member\fP (\fBKerMLParser::Feature_chain_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_feature_chain_member\fP (\fBKerMLParser::Owned_feature_chain_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_feature_chain_member\fP (\fBKerMLParser::Owned_feature_chain_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBase_expression\fP (\fBKerMLParser::Base_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBase_expression\fP (\fBKerMLParser::Base_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNull_expression\fP (\fBKerMLParser::Null_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNull_expression\fP (\fBKerMLParser::Null_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_reference_expression\fP (\fBKerMLParser::Feature_reference_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_reference_expression\fP (\fBKerMLParser::Feature_reference_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_reference_member\fP (\fBKerMLParser::Feature_reference_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_reference_member\fP (\fBKerMLParser::Feature_reference_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_reference\fP (\fBKerMLParser::Feature_referenceContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_reference\fP (\fBKerMLParser::Feature_referenceContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMetadata_access_expression\fP (\fBKerMLParser::Metadata_access_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMetadata_access_expression\fP (\fBKerMLParser::Metadata_access_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterInvocation_expression\fP (\fBKerMLParser::Invocation_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitInvocation_expression\fP (\fBKerMLParser::Invocation_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterInternal_invocation_expression\fP (\fBKerMLParser::Internal_invocation_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitInternal_invocation_expression\fP (\fBKerMLParser::Internal_invocation_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterArgument_list\fP (\fBKerMLParser::Argument_listContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitArgument_list\fP (\fBKerMLParser::Argument_listContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterPositional_argument_list\fP (\fBKerMLParser::Positional_argument_listContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitPositional_argument_list\fP (\fBKerMLParser::Positional_argument_listContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNamed_argument_list\fP (\fBKerMLParser::Named_argument_listContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNamed_argument_list\fP (\fBKerMLParser::Named_argument_listContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNamed_argument_member\fP (\fBKerMLParser::Named_argument_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNamed_argument_member\fP (\fBKerMLParser::Named_argument_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterNamed_argument\fP (\fBKerMLParser::Named_argumentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitNamed_argument\fP (\fBKerMLParser::Named_argumentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterParamenter_redefinition\fP (\fBKerMLParser::Paramenter_redefinitionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitParamenter_redefinition\fP (\fBKerMLParser::Paramenter_redefinitionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBody_expression\fP (\fBKerMLParser::Body_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBody_expression\fP (\fBKerMLParser::Body_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterExpression_body_member\fP (\fBKerMLParser::Expression_body_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitExpression_body_member\fP (\fBKerMLParser::Expression_body_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterExpression_body\fP (\fBKerMLParser::Expression_bodyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitExpression_body\fP (\fBKerMLParser::Expression_bodyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterLiteral_expression\fP (\fBKerMLParser::Literal_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitLiteral_expression\fP (\fBKerMLParser::Literal_expressionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterLiteral_boolean\fP (\fBKerMLParser::Literal_booleanContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitLiteral_boolean\fP (\fBKerMLParser::Literal_booleanContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterBoolean_value\fP (\fBKerMLParser::Boolean_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitBoolean_value\fP (\fBKerMLParser::Boolean_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterLiteral_string\fP (\fBKerMLParser::Literal_stringContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitLiteral_string\fP (\fBKerMLParser::Literal_stringContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterLiteral_integer\fP (\fBKerMLParser::Literal_integerContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitLiteral_integer\fP (\fBKerMLParser::Literal_integerContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterLiteral_real\fP (\fBKerMLParser::Literal_realContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitLiteral_real\fP (\fBKerMLParser::Literal_realContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterReal_value\fP (\fBKerMLParser::Real_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitReal_value\fP (\fBKerMLParser::Real_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterLiteral_infinity\fP (\fBKerMLParser::Literal_infinityContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitLiteral_infinity\fP (\fBKerMLParser::Literal_infinityContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterInteraction\fP (\fBKerMLParser::InteractionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitInteraction\fP (\fBKerMLParser::InteractionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterItem_flow\fP (\fBKerMLParser::Item_flowContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitItem_flow\fP (\fBKerMLParser::Item_flowContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterSuccession_item_flow\fP (\fBKerMLParser::Succession_item_flowContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitSuccession_item_flow\fP (\fBKerMLParser::Succession_item_flowContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterItem_flow_declaration\fP (\fBKerMLParser::Item_flow_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitItem_flow_declaration\fP (\fBKerMLParser::Item_flow_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterItem_feature_member\fP (\fBKerMLParser::Item_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitItem_feature_member\fP (\fBKerMLParser::Item_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterItem_feature\fP (\fBKerMLParser::Item_featureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitItem_feature\fP (\fBKerMLParser::Item_featureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterItem_feature_specilization_part\fP (\fBKerMLParser::Item_feature_specilization_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitItem_feature_specilization_part\fP (\fBKerMLParser::Item_feature_specilization_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterItem_flow_end_member\fP (\fBKerMLParser::Item_flow_end_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitItem_flow_end_member\fP (\fBKerMLParser::Item_flow_end_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterItem_flow_end\fP (\fBKerMLParser::Item_flow_endContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitItem_flow_end\fP (\fBKerMLParser::Item_flow_endContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterItem_flow_feature_member\fP (\fBKerMLParser::Item_flow_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitItem_flow_feature_member\fP (\fBKerMLParser::Item_flow_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterItem_flow_feature\fP (\fBKerMLParser::Item_flow_featureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitItem_flow_feature\fP (\fBKerMLParser::Item_flow_featureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterItem_flow_redefinition\fP (\fBKerMLParser::Item_flow_redefinitionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitItem_flow_redefinition\fP (\fBKerMLParser::Item_flow_redefinitionContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterValue_part\fP (\fBKerMLParser::Value_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitValue_part\fP (\fBKerMLParser::Value_partContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_value\fP (\fBKerMLParser::Feature_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_value\fP (\fBKerMLParser::Feature_valueContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterFeature_assignment\fP (\fBKerMLParser::Feature_assignmentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitFeature_assignment\fP (\fBKerMLParser::Feature_assignmentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMultiplicity\fP (\fBKerMLParser::MultiplicityContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMultiplicity\fP (\fBKerMLParser::MultiplicityContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMultiplicity_subset\fP (\fBKerMLParser::Multiplicity_subsetContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMultiplicity_subset\fP (\fBKerMLParser::Multiplicity_subsetContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMultiplicity_range\fP (\fBKerMLParser::Multiplicity_rangeContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMultiplicity_range\fP (\fBKerMLParser::Multiplicity_rangeContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_multiplicity\fP (\fBKerMLParser::Owned_multiplicityContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_multiplicity\fP (\fBKerMLParser::Owned_multiplicityContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterOwned_multiplicity_range\fP (\fBKerMLParser::Owned_multiplicity_rangeContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitOwned_multiplicity_range\fP (\fBKerMLParser::Owned_multiplicity_rangeContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMultiplicity_bounds\fP (\fBKerMLParser::Multiplicity_boundsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMultiplicity_bounds\fP (\fBKerMLParser::Multiplicity_boundsContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMultiplicity_expression_member\fP (\fBKerMLParser::Multiplicity_expression_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMultiplicity_expression_member\fP (\fBKerMLParser::Multiplicity_expression_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterInternal_multiplicity_expression_member\fP (\fBKerMLParser::Internal_multiplicity_expression_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitInternal_multiplicity_expression_member\fP (\fBKerMLParser::Internal_multiplicity_expression_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMetaclass\fP (\fBKerMLParser::MetaclassContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMetaclass\fP (\fBKerMLParser::MetaclassContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterPrefix_metadata_annotation\fP (\fBKerMLParser::Prefix_metadata_annotationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitPrefix_metadata_annotation\fP (\fBKerMLParser::Prefix_metadata_annotationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterPrefix_metadata_member\fP (\fBKerMLParser::Prefix_metadata_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitPrefix_metadata_member\fP (\fBKerMLParser::Prefix_metadata_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterPrefix_metadata_feature\fP (\fBKerMLParser::Prefix_metadata_featureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitPrefix_metadata_feature\fP (\fBKerMLParser::Prefix_metadata_featureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMetadata_feature\fP (\fBKerMLParser::Metadata_featureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMetadata_feature\fP (\fBKerMLParser::Metadata_featureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMetadata_feature_declaration\fP (\fBKerMLParser::Metadata_feature_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMetadata_feature_declaration\fP (\fBKerMLParser::Metadata_feature_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMetadata_body\fP (\fBKerMLParser::Metadata_bodyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMetadata_body\fP (\fBKerMLParser::Metadata_bodyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMetadata_body_element\fP (\fBKerMLParser::Metadata_body_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMetadata_body_element\fP (\fBKerMLParser::Metadata_body_elementContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMetadata_body_feature_member\fP (\fBKerMLParser::Metadata_body_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMetadata_body_feature_member\fP (\fBKerMLParser::Metadata_body_feature_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMetadata_body_feature\fP (\fBKerMLParser::Metadata_body_featureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMetadata_body_feature\fP (\fBKerMLParser::Metadata_body_featureContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterPackage\fP (\fBKerMLParser::PackageContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitPackage\fP (\fBKerMLParser::PackageContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterLibrary_package\fP (\fBKerMLParser::Library_packageContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitLibrary_package\fP (\fBKerMLParser::Library_packageContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterPackage_declaration\fP (\fBKerMLParser::Package_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitPackage_declaration\fP (\fBKerMLParser::Package_declarationContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterPackage_body\fP (\fBKerMLParser::Package_bodyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitPackage_body\fP (\fBKerMLParser::Package_bodyContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterElement_filter_member\fP (\fBKerMLParser::Element_filter_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitElement_filter_member\fP (\fBKerMLParser::Element_filter_memberContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBenterMeta_assignment\fP (\fBKerMLParser::Meta_assignmentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitMeta_assignment\fP (\fBKerMLParser::Meta_assignmentContext\fP *ctx) override"
+.br
+.ti -1c
+.RI "void \fBvisitTerminal\fP (antlr4::tree::TerminalNode *node) override"
+.br
+.ti -1c
+.RI "void \fBvisitErrorNode\fP (antlr4::tree::ErrorNode *node) override"
+.br
+.ti -1c
+.RI "void \fBenterEveryRule\fP (antlr4::ParserRuleContext *ctx) override"
+.br
+.ti -1c
+.RI "void \fBexitEveryRule\fP (antlr4::ParserRuleContext *ctx) override"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implementation of the \fBKerMLListener\fP interface\&.
+
+.PP
+\fBAuthor\fP
+.RS 4
+Moritz Herzog 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+09\&.05\&.25 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+Beta 3 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void KerMLListenerImplementation::enterAdditional_options (\fBKerMLParser::Additional_optionsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterAlias_member (\fBKerMLParser::Alias_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterAnnotating_element (\fBKerMLParser::Annotating_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterAnnotation (\fBKerMLParser::AnnotationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterArgument (\fBKerMLParser::ArgumentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterArgument_expression (\fBKerMLParser::Argument_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterArgument_expression_member (\fBKerMLParser::Argument_expression_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterArgument_expression_value (\fBKerMLParser::Argument_expression_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterArgument_list (\fBKerMLParser::Argument_listContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterArgument_member (\fBKerMLParser::Argument_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterArgument_value (\fBKerMLParser::Argument_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterAssociation (\fBKerMLParser::AssociationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterAssociation_structure (\fBKerMLParser::Association_structureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBase_expression (\fBKerMLParser::Base_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBehavior (\fBKerMLParser::BehaviorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBinary_connector_declaration (\fBKerMLParser::Binary_connector_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBinary_operator (\fBKerMLParser::Binary_operatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBinary_operator_expression (\fBKerMLParser::Binary_operator_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBinding_connector (\fBKerMLParser::Binding_connectorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBinding_connector_declaration (\fBKerMLParser::Binding_connector_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBody_argument (\fBKerMLParser::Body_argumentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBody_argument_member (\fBKerMLParser::Body_argument_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBody_argument_value (\fBKerMLParser::Body_argument_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBody_expression (\fBKerMLParser::Body_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBody_expression_member (\fBKerMLParser::Body_expression_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBoolean_expression (\fBKerMLParser::Boolean_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBoolean_value (\fBKerMLParser::Boolean_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterBracket_expression (\fBKerMLParser::Bracket_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterCast_operator (\fBKerMLParser::Cast_operatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterChaining_part (\fBKerMLParser::Chaining_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterClass (\fBKerMLParser::ClassContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterClassification (\fBKerMLParser::ClassificationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterClassification_expression (\fBKerMLParser::Classification_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterClassification_test_operator (\fBKerMLParser::Classification_test_operatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterClassifier (\fBKerMLParser::ClassifierContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterClassifier_declaration (\fBKerMLParser::Classifier_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterCollect_expression (\fBKerMLParser::Collect_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterComment (\fBKerMLParser::CommentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterConditional_binary_operator (\fBKerMLParser::Conditional_binary_operatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterConditional_binary_operator_expression (\fBKerMLParser::Conditional_binary_operator_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterConditional_expression (\fBKerMLParser::Conditional_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterConjugation_part (\fBKerMLParser::Conjugation_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterConjunction (\fBKerMLParser::ConjunctionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterConnector (\fBKerMLParser::ConnectorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterConnector_declaration (\fBKerMLParser::Connector_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterConnector_end (\fBKerMLParser::Connector_endContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterConnector_end_member (\fBKerMLParser::Connector_end_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterData_type (\fBKerMLParser::Data_typeContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterDependency (\fBKerMLParser::DependencyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterDifferencing (\fBKerMLParser::DifferencingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterDifferencing_part (\fBKerMLParser::Differencing_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterDisjoining (\fBKerMLParser::DisjoiningContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterDisjoining_part (\fBKerMLParser::Disjoining_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterDocumentation (\fBKerMLParser::DocumentationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterEased_owned_expression (\fBKerMLParser::Eased_owned_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterElement (\fBKerMLParser::ElementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterElement_filter_member (\fBKerMLParser::Element_filter_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterElements (\fBKerMLParser::ElementsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterExpression (\fBKerMLParser::ExpressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterExpression_body (\fBKerMLParser::Expression_bodyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterExpression_body_member (\fBKerMLParser::Expression_body_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterExtend_expression (\fBKerMLParser::Extend_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature (\fBKerMLParser::FeatureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_assignment (\fBKerMLParser::Feature_assignmentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_chain (\fBKerMLParser::Feature_chainContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_chain_expression (\fBKerMLParser::Feature_chain_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_chain_member (\fBKerMLParser::Feature_chain_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_declaration (\fBKerMLParser::Feature_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_direction (\fBKerMLParser::Feature_directionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_element (\fBKerMLParser::Feature_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_identification (\fBKerMLParser::Feature_identificationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_inverting (\fBKerMLParser::Feature_invertingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_member (\fBKerMLParser::Feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_prefix (\fBKerMLParser::Feature_prefixContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_reference (\fBKerMLParser::Feature_referenceContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_reference_expression (\fBKerMLParser::Feature_reference_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_reference_member (\fBKerMLParser::Feature_reference_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_relationship_part (\fBKerMLParser::Feature_relationship_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_specialization_part (\fBKerMLParser::Feature_specialization_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_specilization (\fBKerMLParser::Feature_specilizationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_typing (\fBKerMLParser::Feature_typingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFeature_value (\fBKerMLParser::Feature_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFilter_package (\fBKerMLParser::Filter_packageContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFilter_package_member (\fBKerMLParser::Filter_package_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFunction (\fBKerMLParser::FunctionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFunction_body (\fBKerMLParser::Function_bodyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFunction_body_part (\fBKerMLParser::Function_body_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFunction_operation_expression (\fBKerMLParser::Function_operation_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFunction_reference (\fBKerMLParser::Function_referenceContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFunction_reference_argument (\fBKerMLParser::Function_reference_argumentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFunction_reference_argument_member (\fBKerMLParser::Function_reference_argument_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFunction_reference_arugment_value (\fBKerMLParser::Function_reference_arugment_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFunction_reference_expression (\fBKerMLParser::Function_reference_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterFunction_reference_member (\fBKerMLParser::Function_reference_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterGeneral_type (\fBKerMLParser::General_typeContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterIdentification (\fBKerMLParser::IdentificationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterImport_declaration (\fBKerMLParser::Import_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterIndex_expression (\fBKerMLParser::Index_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterInteraction (\fBKerMLParser::InteractionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterInternal_invocation_expression (\fBKerMLParser::Internal_invocation_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterInternal_multiplicity_expression_member (\fBKerMLParser::Internal_multiplicity_expression_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterIntersecting (\fBKerMLParser::IntersectingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterIntersecting_part (\fBKerMLParser::Intersecting_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterInvariant (\fBKerMLParser::InvariantContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterInverting_part (\fBKerMLParser::Inverting_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterInvocation_expression (\fBKerMLParser::Invocation_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterItem_feature (\fBKerMLParser::Item_featureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterItem_feature_member (\fBKerMLParser::Item_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterItem_feature_specilization_part (\fBKerMLParser::Item_feature_specilization_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterItem_flow (\fBKerMLParser::Item_flowContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterItem_flow_declaration (\fBKerMLParser::Item_flow_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterItem_flow_end (\fBKerMLParser::Item_flow_endContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterItem_flow_end_member (\fBKerMLParser::Item_flow_end_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterItem_flow_feature (\fBKerMLParser::Item_flow_featureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterItem_flow_feature_member (\fBKerMLParser::Item_flow_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterItem_flow_redefinition (\fBKerMLParser::Item_flow_redefinitionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterLibrary_package (\fBKerMLParser::Library_packageContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterLiteral_boolean (\fBKerMLParser::Literal_booleanContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterLiteral_expression (\fBKerMLParser::Literal_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterLiteral_infinity (\fBKerMLParser::Literal_infinityContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterLiteral_integer (\fBKerMLParser::Literal_integerContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterLiteral_real (\fBKerMLParser::Literal_realContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterLiteral_string (\fBKerMLParser::Literal_stringContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMember_prefix (\fBKerMLParser::Member_prefixContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMembership_import (\fBKerMLParser::Membership_importContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMeta_assignment (\fBKerMLParser::Meta_assignmentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMeta_cast_operator (\fBKerMLParser::Meta_cast_operatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMetaclass (\fBKerMLParser::MetaclassContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMetaclassification_expression (\fBKerMLParser::Metaclassification_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMetadata_access_expression (\fBKerMLParser::Metadata_access_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMetadata_argument (\fBKerMLParser::Metadata_argumentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMetadata_argument_member (\fBKerMLParser::Metadata_argument_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMetadata_body (\fBKerMLParser::Metadata_bodyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMetadata_body_element (\fBKerMLParser::Metadata_body_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMetadata_body_feature (\fBKerMLParser::Metadata_body_featureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMetadata_body_feature_member (\fBKerMLParser::Metadata_body_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMetadata_feature (\fBKerMLParser::Metadata_featureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMetadata_feature_declaration (\fBKerMLParser::Metadata_feature_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMetadata_reference (\fBKerMLParser::Metadata_referenceContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMetadata_value (\fBKerMLParser::Metadata_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMetadataclassification_test_operator (\fBKerMLParser::Metadataclassification_test_operatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMultiplicity (\fBKerMLParser::MultiplicityContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMultiplicity_bounds (\fBKerMLParser::Multiplicity_boundsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMultiplicity_expression_member (\fBKerMLParser::Multiplicity_expression_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMultiplicity_part (\fBKerMLParser::Multiplicity_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMultiplicity_range (\fBKerMLParser::Multiplicity_rangeContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterMultiplicity_subset (\fBKerMLParser::Multiplicity_subsetContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNamed_argument (\fBKerMLParser::Named_argumentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNamed_argument_list (\fBKerMLParser::Named_argument_listContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNamed_argument_member (\fBKerMLParser::Named_argument_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNamespace (\fBKerMLParser::NamespaceContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNamespace_body (\fBKerMLParser::Namespace_bodyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNamespace_body_element (\fBKerMLParser::Namespace_body_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNamespace_body_elements (\fBKerMLParser::Namespace_body_elementsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNamespace_declaration (\fBKerMLParser::Namespace_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNamespace_feature_member (\fBKerMLParser::Namespace_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNamespace_import (\fBKerMLParser::Namespace_importContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNamespace_member (\fBKerMLParser::Namespace_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNary_connector_declaration (\fBKerMLParser::Nary_connector_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNon_feature_chain_primary_argument (\fBKerMLParser::Non_feature_chain_primary_argumentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNon_feature_chain_primary_argument_member (\fBKerMLParser::Non_feature_chain_primary_argument_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNon_feature_chain_primary_argument_value (\fBKerMLParser::Non_feature_chain_primary_argument_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNon_feature_chain_primary_expression (\fBKerMLParser::Non_feature_chain_primary_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNon_feature_element (\fBKerMLParser::Non_feature_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNon_feature_member (\fBKerMLParser::Non_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterNull_expression (\fBKerMLParser::Null_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_annotation (\fBKerMLParser::Owned_annotationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_conjugation (\fBKerMLParser::Owned_conjugationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_disjoining (\fBKerMLParser::Owned_disjoiningContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_expression (\fBKerMLParser::Owned_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_expression_member (\fBKerMLParser::Owned_expression_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_expression_reference (\fBKerMLParser::Owned_expression_referenceContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_expression_reference_member (\fBKerMLParser::Owned_expression_reference_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_expressions (\fBKerMLParser::Owned_expressionsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_feature_chain (\fBKerMLParser::Owned_feature_chainContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_feature_chain_member (\fBKerMLParser::Owned_feature_chain_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_feature_chaining (\fBKerMLParser::Owned_feature_chainingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_feature_inverting (\fBKerMLParser::Owned_feature_invertingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_feature_member (\fBKerMLParser::Owned_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_feature_typing (\fBKerMLParser::Owned_feature_typingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_multiplicity (\fBKerMLParser::Owned_multiplicityContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_multiplicity_range (\fBKerMLParser::Owned_multiplicity_rangeContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_redefinition (\fBKerMLParser::Owned_redefinitionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_reference_subsetting (\fBKerMLParser::Owned_reference_subsettingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_related_element (\fBKerMLParser::Owned_related_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_specialization (\fBKerMLParser::Owned_specializationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_subclassification (\fBKerMLParser::Owned_subclassificationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_subsetting (\fBKerMLParser::Owned_subsettingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterOwned_type_featuring (\fBKerMLParser::Owned_type_featuringContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterPackage (\fBKerMLParser::PackageContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterPackage_body (\fBKerMLParser::Package_bodyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterPackage_declaration (\fBKerMLParser::Package_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterParamenter_redefinition (\fBKerMLParser::Paramenter_redefinitionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterPositional_argument_list (\fBKerMLParser::Positional_argument_listContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterPredicate (\fBKerMLParser::PredicateContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterPrefix_metadata_annotation (\fBKerMLParser::Prefix_metadata_annotationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterPrefix_metadata_feature (\fBKerMLParser::Prefix_metadata_featureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterPrefix_metadata_member (\fBKerMLParser::Prefix_metadata_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterPrimary_argument (\fBKerMLParser::Primary_argumentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterPrimary_argument_member (\fBKerMLParser::Primary_argument_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterPrimary_argument_value (\fBKerMLParser::Primary_argument_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterPrimary_expression (\fBKerMLParser::Primary_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterPrimary_expressions (\fBKerMLParser::Primary_expressionsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterQualified_name (\fBKerMLParser::Qualified_nameContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterReal_value (\fBKerMLParser::Real_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterRedefines (\fBKerMLParser::RedefinesContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterRedefinition (\fBKerMLParser::RedefinitionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterRedefinitions (\fBKerMLParser::RedefinitionsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterReference_typing (\fBKerMLParser::Reference_typingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterReferences (\fBKerMLParser::ReferencesContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterRelationship_body (\fBKerMLParser::Relationship_bodyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterRelationship_onwed_elements (\fBKerMLParser::Relationship_onwed_elementsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterRelationship_owned_element (\fBKerMLParser::Relationship_owned_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterResult_expression_member (\fBKerMLParser::Result_expression_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterReturn_feature_member (\fBKerMLParser::Return_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterRoot_namespace (\fBKerMLParser::Root_namespaceContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSelect_expression (\fBKerMLParser::Select_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSequence_expression (\fBKerMLParser::Sequence_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSequence_expression_list (\fBKerMLParser::Sequence_expression_listContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSequence_expression_list_member (\fBKerMLParser::Sequence_expression_list_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSequence_operator_expression (\fBKerMLParser::Sequence_operator_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSpecialization (\fBKerMLParser::SpecializationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSpecialization_part (\fBKerMLParser::Specialization_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSpecific_type (\fBKerMLParser::Specific_typeContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterStart (\fBKerMLParser::StartContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterStartRule (\fBKerMLParser::StartRuleContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterStep (\fBKerMLParser::StepContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterStructure (\fBKerMLParser::StructureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSubclassification (\fBKerMLParser::SubclassificationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSubsets (\fBKerMLParser::SubsetsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSubsetting (\fBKerMLParser::SubsettingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSubsettings (\fBKerMLParser::SubsettingsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSuccession (\fBKerMLParser::SuccessionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSuccession_declaration (\fBKerMLParser::Succession_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSuccession_item_flow (\fBKerMLParser::Succession_item_flowContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterSuperclassing_part (\fBKerMLParser::Superclassing_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterTextual_representation (\fBKerMLParser::Textual_representationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterType (\fBKerMLParser::TypeContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterType_body (\fBKerMLParser::Type_bodyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterType_body_element (\fBKerMLParser::Type_body_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterType_body_elements (\fBKerMLParser::Type_body_elementsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterType_declaration (\fBKerMLParser::Type_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterType_feature_member (\fBKerMLParser::Type_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterType_featuring (\fBKerMLParser::Type_featuringContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterType_featuring_part (\fBKerMLParser::Type_featuring_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterType_prefix (\fBKerMLParser::Type_prefixContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterType_reference (\fBKerMLParser::Type_referenceContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterType_reference_member (\fBKerMLParser::Type_reference_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterType_relationship_part (\fBKerMLParser::Type_relationship_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterType_result_member (\fBKerMLParser::Type_result_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterTyped_by (\fBKerMLParser::Typed_byContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterTypings (\fBKerMLParser::TypingsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterUnary_operator (\fBKerMLParser::Unary_operatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterUnary_operator_expression (\fBKerMLParser::Unary_operator_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterUnioning (\fBKerMLParser::UnioningContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterUnioning_part (\fBKerMLParser::Unioning_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterValue_part (\fBKerMLParser::Value_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::enterVisibility_indicator (\fBKerMLParser::Visibility_indicatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitAdditional_options (\fBKerMLParser::Additional_optionsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitAlias_member (\fBKerMLParser::Alias_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitAnnotating_element (\fBKerMLParser::Annotating_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitAnnotation (\fBKerMLParser::AnnotationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitArgument (\fBKerMLParser::ArgumentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitArgument_expression (\fBKerMLParser::Argument_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitArgument_expression_member (\fBKerMLParser::Argument_expression_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitArgument_expression_value (\fBKerMLParser::Argument_expression_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitArgument_list (\fBKerMLParser::Argument_listContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitArgument_member (\fBKerMLParser::Argument_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitArgument_value (\fBKerMLParser::Argument_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitAssociation (\fBKerMLParser::AssociationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitAssociation_structure (\fBKerMLParser::Association_structureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBase_expression (\fBKerMLParser::Base_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBehavior (\fBKerMLParser::BehaviorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBinary_connector_declaration (\fBKerMLParser::Binary_connector_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBinary_operator (\fBKerMLParser::Binary_operatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBinary_operator_expression (\fBKerMLParser::Binary_operator_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBinding_connector (\fBKerMLParser::Binding_connectorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBinding_connector_declaration (\fBKerMLParser::Binding_connector_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBody_argument (\fBKerMLParser::Body_argumentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBody_argument_member (\fBKerMLParser::Body_argument_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBody_argument_value (\fBKerMLParser::Body_argument_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBody_expression (\fBKerMLParser::Body_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBody_expression_member (\fBKerMLParser::Body_expression_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBoolean_expression (\fBKerMLParser::Boolean_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBoolean_value (\fBKerMLParser::Boolean_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitBracket_expression (\fBKerMLParser::Bracket_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitCast_operator (\fBKerMLParser::Cast_operatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitChaining_part (\fBKerMLParser::Chaining_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitClass (\fBKerMLParser::ClassContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitClassification (\fBKerMLParser::ClassificationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitClassification_expression (\fBKerMLParser::Classification_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitClassification_test_operator (\fBKerMLParser::Classification_test_operatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitClassifier (\fBKerMLParser::ClassifierContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitClassifier_declaration (\fBKerMLParser::Classifier_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitCollect_expression (\fBKerMLParser::Collect_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitComment (\fBKerMLParser::CommentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitConditional_binary_operator (\fBKerMLParser::Conditional_binary_operatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitConditional_binary_operator_expression (\fBKerMLParser::Conditional_binary_operator_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitConditional_expression (\fBKerMLParser::Conditional_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitConjugation_part (\fBKerMLParser::Conjugation_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitConjunction (\fBKerMLParser::ConjunctionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitConnector (\fBKerMLParser::ConnectorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitConnector_declaration (\fBKerMLParser::Connector_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitConnector_end (\fBKerMLParser::Connector_endContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitConnector_end_member (\fBKerMLParser::Connector_end_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitData_type (\fBKerMLParser::Data_typeContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitDependency (\fBKerMLParser::DependencyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitDifferencing (\fBKerMLParser::DifferencingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitDifferencing_part (\fBKerMLParser::Differencing_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitDisjoining (\fBKerMLParser::DisjoiningContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitDisjoining_part (\fBKerMLParser::Disjoining_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitDocumentation (\fBKerMLParser::DocumentationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitEased_owned_expression (\fBKerMLParser::Eased_owned_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitElement (\fBKerMLParser::ElementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitElement_filter_member (\fBKerMLParser::Element_filter_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitElements (\fBKerMLParser::ElementsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitExpression (\fBKerMLParser::ExpressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitExpression_body (\fBKerMLParser::Expression_bodyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitExpression_body_member (\fBKerMLParser::Expression_body_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitExtend_expression (\fBKerMLParser::Extend_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature (\fBKerMLParser::FeatureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_assignment (\fBKerMLParser::Feature_assignmentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_chain (\fBKerMLParser::Feature_chainContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_chain_expression (\fBKerMLParser::Feature_chain_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_chain_member (\fBKerMLParser::Feature_chain_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_declaration (\fBKerMLParser::Feature_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_direction (\fBKerMLParser::Feature_directionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_element (\fBKerMLParser::Feature_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_identification (\fBKerMLParser::Feature_identificationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_inverting (\fBKerMLParser::Feature_invertingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_member (\fBKerMLParser::Feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_prefix (\fBKerMLParser::Feature_prefixContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_reference (\fBKerMLParser::Feature_referenceContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_reference_expression (\fBKerMLParser::Feature_reference_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_reference_member (\fBKerMLParser::Feature_reference_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_relationship_part (\fBKerMLParser::Feature_relationship_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_specialization_part (\fBKerMLParser::Feature_specialization_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_specilization (\fBKerMLParser::Feature_specilizationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_typing (\fBKerMLParser::Feature_typingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFeature_value (\fBKerMLParser::Feature_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFilter_package (\fBKerMLParser::Filter_packageContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFilter_package_member (\fBKerMLParser::Filter_package_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFunction (\fBKerMLParser::FunctionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFunction_body (\fBKerMLParser::Function_bodyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFunction_body_part (\fBKerMLParser::Function_body_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFunction_operation_expression (\fBKerMLParser::Function_operation_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFunction_reference (\fBKerMLParser::Function_referenceContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFunction_reference_argument (\fBKerMLParser::Function_reference_argumentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFunction_reference_argument_member (\fBKerMLParser::Function_reference_argument_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFunction_reference_arugment_value (\fBKerMLParser::Function_reference_arugment_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFunction_reference_expression (\fBKerMLParser::Function_reference_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitFunction_reference_member (\fBKerMLParser::Function_reference_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitGeneral_type (\fBKerMLParser::General_typeContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitIdentification (\fBKerMLParser::IdentificationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitImport_declaration (\fBKerMLParser::Import_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitIndex_expression (\fBKerMLParser::Index_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitInteraction (\fBKerMLParser::InteractionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitInternal_invocation_expression (\fBKerMLParser::Internal_invocation_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitInternal_multiplicity_expression_member (\fBKerMLParser::Internal_multiplicity_expression_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitIntersecting (\fBKerMLParser::IntersectingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitIntersecting_part (\fBKerMLParser::Intersecting_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitInvariant (\fBKerMLParser::InvariantContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitInverting_part (\fBKerMLParser::Inverting_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitInvocation_expression (\fBKerMLParser::Invocation_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitItem_feature (\fBKerMLParser::Item_featureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitItem_feature_member (\fBKerMLParser::Item_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitItem_feature_specilization_part (\fBKerMLParser::Item_feature_specilization_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitItem_flow (\fBKerMLParser::Item_flowContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitItem_flow_declaration (\fBKerMLParser::Item_flow_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitItem_flow_end (\fBKerMLParser::Item_flow_endContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitItem_flow_end_member (\fBKerMLParser::Item_flow_end_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitItem_flow_feature (\fBKerMLParser::Item_flow_featureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitItem_flow_feature_member (\fBKerMLParser::Item_flow_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitItem_flow_redefinition (\fBKerMLParser::Item_flow_redefinitionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitLibrary_package (\fBKerMLParser::Library_packageContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitLiteral_boolean (\fBKerMLParser::Literal_booleanContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitLiteral_expression (\fBKerMLParser::Literal_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitLiteral_infinity (\fBKerMLParser::Literal_infinityContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitLiteral_integer (\fBKerMLParser::Literal_integerContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitLiteral_real (\fBKerMLParser::Literal_realContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitLiteral_string (\fBKerMLParser::Literal_stringContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMember_prefix (\fBKerMLParser::Member_prefixContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMembership_import (\fBKerMLParser::Membership_importContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMeta_assignment (\fBKerMLParser::Meta_assignmentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMeta_cast_operator (\fBKerMLParser::Meta_cast_operatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMetaclass (\fBKerMLParser::MetaclassContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMetaclassification_expression (\fBKerMLParser::Metaclassification_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMetadata_access_expression (\fBKerMLParser::Metadata_access_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMetadata_argument (\fBKerMLParser::Metadata_argumentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMetadata_argument_member (\fBKerMLParser::Metadata_argument_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMetadata_body (\fBKerMLParser::Metadata_bodyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMetadata_body_element (\fBKerMLParser::Metadata_body_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMetadata_body_feature (\fBKerMLParser::Metadata_body_featureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMetadata_body_feature_member (\fBKerMLParser::Metadata_body_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMetadata_feature (\fBKerMLParser::Metadata_featureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMetadata_feature_declaration (\fBKerMLParser::Metadata_feature_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMetadata_reference (\fBKerMLParser::Metadata_referenceContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMetadata_value (\fBKerMLParser::Metadata_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMetadataclassification_test_operator (\fBKerMLParser::Metadataclassification_test_operatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMultiplicity (\fBKerMLParser::MultiplicityContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMultiplicity_bounds (\fBKerMLParser::Multiplicity_boundsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMultiplicity_expression_member (\fBKerMLParser::Multiplicity_expression_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMultiplicity_part (\fBKerMLParser::Multiplicity_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMultiplicity_range (\fBKerMLParser::Multiplicity_rangeContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitMultiplicity_subset (\fBKerMLParser::Multiplicity_subsetContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNamed_argument (\fBKerMLParser::Named_argumentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNamed_argument_list (\fBKerMLParser::Named_argument_listContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNamed_argument_member (\fBKerMLParser::Named_argument_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNamespace (\fBKerMLParser::NamespaceContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNamespace_body (\fBKerMLParser::Namespace_bodyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNamespace_body_element (\fBKerMLParser::Namespace_body_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNamespace_body_elements (\fBKerMLParser::Namespace_body_elementsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNamespace_declaration (\fBKerMLParser::Namespace_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNamespace_feature_member (\fBKerMLParser::Namespace_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNamespace_import (\fBKerMLParser::Namespace_importContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNamespace_member (\fBKerMLParser::Namespace_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNary_connector_declaration (\fBKerMLParser::Nary_connector_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNon_feature_chain_primary_argument (\fBKerMLParser::Non_feature_chain_primary_argumentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNon_feature_chain_primary_argument_member (\fBKerMLParser::Non_feature_chain_primary_argument_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNon_feature_chain_primary_argument_value (\fBKerMLParser::Non_feature_chain_primary_argument_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNon_feature_chain_primary_expression (\fBKerMLParser::Non_feature_chain_primary_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNon_feature_element (\fBKerMLParser::Non_feature_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNon_feature_member (\fBKerMLParser::Non_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitNull_expression (\fBKerMLParser::Null_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_annotation (\fBKerMLParser::Owned_annotationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_conjugation (\fBKerMLParser::Owned_conjugationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_disjoining (\fBKerMLParser::Owned_disjoiningContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_expression (\fBKerMLParser::Owned_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_expression_member (\fBKerMLParser::Owned_expression_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_expression_reference (\fBKerMLParser::Owned_expression_referenceContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_expression_reference_member (\fBKerMLParser::Owned_expression_reference_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_expressions (\fBKerMLParser::Owned_expressionsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_feature_chain (\fBKerMLParser::Owned_feature_chainContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_feature_chain_member (\fBKerMLParser::Owned_feature_chain_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_feature_chaining (\fBKerMLParser::Owned_feature_chainingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_feature_inverting (\fBKerMLParser::Owned_feature_invertingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_feature_member (\fBKerMLParser::Owned_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_feature_typing (\fBKerMLParser::Owned_feature_typingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_multiplicity (\fBKerMLParser::Owned_multiplicityContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_multiplicity_range (\fBKerMLParser::Owned_multiplicity_rangeContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_redefinition (\fBKerMLParser::Owned_redefinitionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_reference_subsetting (\fBKerMLParser::Owned_reference_subsettingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_related_element (\fBKerMLParser::Owned_related_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_specialization (\fBKerMLParser::Owned_specializationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_subclassification (\fBKerMLParser::Owned_subclassificationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_subsetting (\fBKerMLParser::Owned_subsettingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitOwned_type_featuring (\fBKerMLParser::Owned_type_featuringContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitPackage (\fBKerMLParser::PackageContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitPackage_body (\fBKerMLParser::Package_bodyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitPackage_declaration (\fBKerMLParser::Package_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitParamenter_redefinition (\fBKerMLParser::Paramenter_redefinitionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitPositional_argument_list (\fBKerMLParser::Positional_argument_listContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitPredicate (\fBKerMLParser::PredicateContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitPrefix_metadata_annotation (\fBKerMLParser::Prefix_metadata_annotationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitPrefix_metadata_feature (\fBKerMLParser::Prefix_metadata_featureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitPrefix_metadata_member (\fBKerMLParser::Prefix_metadata_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitPrimary_argument (\fBKerMLParser::Primary_argumentContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitPrimary_argument_member (\fBKerMLParser::Primary_argument_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitPrimary_argument_value (\fBKerMLParser::Primary_argument_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitPrimary_expression (\fBKerMLParser::Primary_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitPrimary_expressions (\fBKerMLParser::Primary_expressionsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitQualified_name (\fBKerMLParser::Qualified_nameContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitReal_value (\fBKerMLParser::Real_valueContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitRedefines (\fBKerMLParser::RedefinesContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitRedefinition (\fBKerMLParser::RedefinitionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitRedefinitions (\fBKerMLParser::RedefinitionsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitReference_typing (\fBKerMLParser::Reference_typingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitReferences (\fBKerMLParser::ReferencesContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitRelationship_body (\fBKerMLParser::Relationship_bodyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitRelationship_onwed_elements (\fBKerMLParser::Relationship_onwed_elementsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitRelationship_owned_element (\fBKerMLParser::Relationship_owned_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitResult_expression_member (\fBKerMLParser::Result_expression_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitReturn_feature_member (\fBKerMLParser::Return_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitRoot_namespace (\fBKerMLParser::Root_namespaceContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSelect_expression (\fBKerMLParser::Select_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSequence_expression (\fBKerMLParser::Sequence_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSequence_expression_list (\fBKerMLParser::Sequence_expression_listContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSequence_expression_list_member (\fBKerMLParser::Sequence_expression_list_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSequence_operator_expression (\fBKerMLParser::Sequence_operator_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSpecialization (\fBKerMLParser::SpecializationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSpecialization_part (\fBKerMLParser::Specialization_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSpecific_type (\fBKerMLParser::Specific_typeContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitStart (\fBKerMLParser::StartContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitStartRule (\fBKerMLParser::StartRuleContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitStep (\fBKerMLParser::StepContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitStructure (\fBKerMLParser::StructureContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSubclassification (\fBKerMLParser::SubclassificationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSubsets (\fBKerMLParser::SubsetsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSubsetting (\fBKerMLParser::SubsettingContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSubsettings (\fBKerMLParser::SubsettingsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSuccession (\fBKerMLParser::SuccessionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSuccession_declaration (\fBKerMLParser::Succession_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSuccession_item_flow (\fBKerMLParser::Succession_item_flowContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitSuperclassing_part (\fBKerMLParser::Superclassing_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitTextual_representation (\fBKerMLParser::Textual_representationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitType (\fBKerMLParser::TypeContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitType_body (\fBKerMLParser::Type_bodyContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitType_body_element (\fBKerMLParser::Type_body_elementContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitType_body_elements (\fBKerMLParser::Type_body_elementsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitType_declaration (\fBKerMLParser::Type_declarationContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitType_feature_member (\fBKerMLParser::Type_feature_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitType_featuring (\fBKerMLParser::Type_featuringContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitType_featuring_part (\fBKerMLParser::Type_featuring_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitType_prefix (\fBKerMLParser::Type_prefixContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitType_reference (\fBKerMLParser::Type_referenceContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitType_reference_member (\fBKerMLParser::Type_reference_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitType_relationship_part (\fBKerMLParser::Type_relationship_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitType_result_member (\fBKerMLParser::Type_result_memberContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitTyped_by (\fBKerMLParser::Typed_byContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitTypings (\fBKerMLParser::TypingsContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitUnary_operator (\fBKerMLParser::Unary_operatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitUnary_operator_expression (\fBKerMLParser::Unary_operator_expressionContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitUnioning (\fBKerMLParser::UnioningContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitUnioning_part (\fBKerMLParser::Unioning_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitValue_part (\fBKerMLParser::Value_partContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+.SS "void KerMLListenerImplementation::exitVisibility_indicator (\fBKerMLParser::Visibility_indicatorContext\fP * ctx)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBKerMLListener\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

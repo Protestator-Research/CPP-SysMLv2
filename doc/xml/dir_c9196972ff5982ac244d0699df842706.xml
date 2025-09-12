@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_c9196972ff5982ac244d0699df842706" kind="dir">
+    <compoundname>kerml/src/kernel/expressions</compoundname>
+    <innerfile refid="dc/dab/_collect_expression_8cpp">CollectExpression.cpp</innerfile>
+    <innerfile refid="d4/de3/_collect_expression_8h">CollectExpression.h</innerfile>
+    <innerfile refid="d8/dee/expressions_2_expression_8cpp">Expression.cpp</innerfile>
+    <innerfile refid="d2/db9/expressions_2_expression_8h">Expression.h</innerfile>
+    <innerfile refid="d5/d0f/_feature_chain_expression_8cpp">FeatureChainExpression.cpp</innerfile>
+    <innerfile refid="d0/dea/_feature_chain_expression_8h">FeatureChainExpression.h</innerfile>
+    <innerfile refid="d2/d99/_feature_reference_expression_8cpp">FeatureReferenceExpression.cpp</innerfile>
+    <innerfile refid="da/dc3/_feature_reference_expression_8h">FeatureReferenceExpression.h</innerfile>
+    <innerfile refid="d2/d51/_invocation_expression_8cpp">InvocationExpression.cpp</innerfile>
+    <innerfile refid="dc/d40/_invocation_expression_8h">InvocationExpression.h</innerfile>
+    <innerfile refid="d7/d3f/_literal_boolean_8cpp">LiteralBoolean.cpp</innerfile>
+    <innerfile refid="df/d7d/_literal_boolean_8h">LiteralBoolean.h</innerfile>
+    <innerfile refid="d5/d72/_literal_expression_8cpp">LiteralExpression.cpp</innerfile>
+    <innerfile refid="d9/dae/_literal_expression_8h">LiteralExpression.h</innerfile>
+    <innerfile refid="d0/d4a/_literal_infinity_8cpp">LiteralInfinity.cpp</innerfile>
+    <innerfile refid="d2/dcc/_literal_infinity_8h">LiteralInfinity.h</innerfile>
+    <innerfile refid="d4/d17/_literal_integer_8cpp">LiteralInteger.cpp</innerfile>
+    <innerfile refid="d3/d4b/_literal_integer_8h">LiteralInteger.h</innerfile>
+    <innerfile refid="db/d88/_literal_rational_8cpp">LiteralRational.cpp</innerfile>
+    <innerfile refid="d8/dae/_literal_rational_8h">LiteralRational.h</innerfile>
+    <innerfile refid="db/de2/_literal_string_8cpp">LiteralString.cpp</innerfile>
+    <innerfile refid="d9/d4e/_literal_string_8h">LiteralString.h</innerfile>
+    <innerfile refid="d0/dc7/_metadata_access_expression_8cpp">MetadataAccessExpression.cpp</innerfile>
+    <innerfile refid="d0/dc0/_metadata_access_expression_8h">MetadataAccessExpression.h</innerfile>
+    <innerfile refid="de/d0a/_null_expression_8cpp">NullExpression.cpp</innerfile>
+    <innerfile refid="da/d40/_null_expression_8h">NullExpression.h</innerfile>
+    <innerfile refid="d4/d41/_operator_expression_8cpp">OperatorExpression.cpp</innerfile>
+    <innerfile refid="db/d82/_operator_expression_8h">OperatorExpression.h</innerfile>
+    <innerfile refid="d8/d43/_select_expression_8cpp">SelectExpression.cpp</innerfile>
+    <innerfile refid="d4/dce/_select_expression_8h">SelectExpression.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="kerml/src/kernel/expressions/"/>
+  </compounddef>
+</doxygen>

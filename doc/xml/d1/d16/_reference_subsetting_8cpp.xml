@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/d16/_reference_subsetting_8cpp" kind="file" language="C++">
+    <compoundname>ReferenceSubsetting.cpp</compoundname>
+    <includes refid="dd/d41/_reference_subsetting_8h" local="yes">ReferenceSubsetting.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>kerml/src/core/features/ReferenceSubsetting.cpp</label>
+        <link refid="d1/d16/_reference_subsetting_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ReferenceSubsetting.h</label>
+        <link refid="dd/d41/_reference_subsetting_8h_source"/>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Moritz<sp/>Herzog<sp/>on<sp/>25.03.25.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ReferenceSubsetting.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="kerml/src/core/features/ReferenceSubsetting.cpp"/>
+  </compounddef>
+</doxygen>

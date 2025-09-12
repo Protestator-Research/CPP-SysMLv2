@@ -2,8 +2,7 @@
 // Created by Moritz Herzog on 25.03.25.
 //
 
-#ifndef SYSMLV2_CLASS_H
-#define SYSMLV2_CLASS_H
+#pragma once
 
 #include <core/classifiers/Classifier.h>
 
@@ -12,5 +11,3 @@ namespace KerML::Entities {
 
     };
 }
-
-#endif //SYSMLV2_CLASS_H

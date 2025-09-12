@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2::API::ProjectService</compoundname>
+    <basecompoundref refid="d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service" prot="public" virt="non-virtual">SysMLv2::API::IProjectService</basecompoundref>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1acaf95139ca18e666024b6342d02fba08" prot="protected" static="no" mutable="no">
+        <type>std::map&lt; boost::uuids::uuid, std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt; &gt;</type>
+        <definition>std::map&lt;boost::uuids::uuid,std::shared_ptr&lt;SysMLv2::Entities::Project&gt; &gt; SysMLv2::API::ProjectService::ProjectMap</definition>
+        <argsstring></argsstring>
+        <name>ProjectMap</name>
+        <qualifiedname>SysMLv2::API::ProjectService::ProjectMap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/implementation/ProjectService.h" line="34" column="18" bodyfile="services/src/implementation/ProjectService.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1abfa257c552b5ddf582302271dc820151" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2::API::ProjectService::ProjectService</definition>
+        <argsstring>()</argsstring>
+        <name>ProjectService</name>
+        <qualifiedname>SysMLv2::API::ProjectService::ProjectService</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/implementation/ProjectService.h" line="21" column="9" bodyfile="services/src/implementation/ProjectService.cpp" bodystart="9" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1adda8d934867fbb8019b59999fd3035d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual SysMLv2::API::ProjectService::~ProjectService</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ProjectService</name>
+        <qualifiedname>SysMLv2::API::ProjectService::~ProjectService</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/implementation/ProjectService.h" line="22" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1aad8bda32cb88a836570762d101e8cbd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; SysMLv2::Entities::Project &gt; &gt; SysMLv2::API::ProjectService::getProjects</definition>
+        <argsstring>() override</argsstring>
+        <name>getProjects</name>
+        <qualifiedname>SysMLv2::API::ProjectService::getProjects</qualifiedname>
+        <reimplements refid="d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a1eb13566a71209d65dd34e20e7624612">getProjects</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets all Projects <simplesect kind="return"><para>A vector with all projects as pointer. </para>
+</simplesect>
+<simplesect kind="see"><para>std::vector&lt;T&gt; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/implementation/ProjectService.h" line="24" column="29" bodyfile="services/src/implementation/ProjectService.cpp" bodystart="13" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1a640895860998b23f7d8d73dbf289f36d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; SysMLv2::Entities::Project &gt; SysMLv2::API::ProjectService::getProjectById</definition>
+        <argsstring>(boost::uuids::uuid projectId) override</argsstring>
+        <name>getProjectById</name>
+        <qualifiedname>SysMLv2::API::ProjectService::getProjectById</qualifiedname>
+        <reimplements refid="d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a9b2699f484a2f6f5b1b18ea51e56dece">getProjectById</reimplements>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>projectId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a project from the given UUID. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>projectId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the project id of the project to search for. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A pointer to the given project. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/implementation/ProjectService.h" line="26" column="33" bodyfile="services/src/implementation/ProjectService.cpp" bodystart="21" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1a0d8be00966cfa042df7b50854e8b990b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; SysMLv2::Entities::Project &gt; SysMLv2::API::ProjectService::createProject</definition>
+        <argsstring>(std::string projectName, std::string description=&quot;&quot;) override</argsstring>
+        <name>createProject</name>
+        <qualifiedname>SysMLv2::API::ProjectService::createProject</qualifiedname>
+        <reimplements refid="d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a95b27490b85bc900dba2342ecde40003">createProject</reimplements>
+        <param>
+          <type>std::string</type>
+          <declname>projectName</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>description</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a project with the given name and description. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>projectName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the project as std::string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the project as std::string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A Pointer to the new project. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/implementation/ProjectService.h" line="28" column="33" bodyfile="services/src/implementation/ProjectService.cpp" bodystart="29" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1a4d3459ce133de34cc171e458ffcd1890" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; SysMLv2::Entities::Project &gt; SysMLv2::API::ProjectService::updateProject</definition>
+        <argsstring>(boost::uuids::uuid projectId, std::string projectName=&quot;&quot;, std::string description=&quot;&quot;, std::shared_ptr&lt; SysMLv2::Entities::Branch &gt; branch=nullptr) override</argsstring>
+        <name>updateProject</name>
+        <qualifiedname>SysMLv2::API::ProjectService::updateProject</qualifiedname>
+        <reimplements refid="d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a4c86f79b7cfd8c6e2f52e82ca328ce86">updateProject</reimplements>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>projectId</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>projectName</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>description</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="d1/da2/class_sys_m_lv2_1_1_entities_1_1_branch" kindref="compound">SysMLv2::Entities::Branch</ref> &gt;</type>
+          <declname>branch</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Updates a project with the given branch. This can be update with the project Name, Description and default branch. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>projectId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The given project ID. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>projectName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new project name. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new project description. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>branch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the new default branch. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A Pointer to the updated project. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/implementation/ProjectService.h" line="30" column="33" bodyfile="services/src/implementation/ProjectService.cpp" bodystart="36" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1a3b90180e4866d260a91d14d02bcabe50" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="d0/d86/class_sys_m_lv2_1_1_entities_1_1_project" kindref="compound">SysMLv2::Entities::Project</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; SysMLv2::Entities::Project &gt; SysMLv2::API::ProjectService::deleteProject</definition>
+        <argsstring>(boost::uuids::uuid projectId) override</argsstring>
+        <name>deleteProject</name>
+        <qualifiedname>SysMLv2::API::ProjectService::deleteProject</qualifiedname>
+        <reimplements refid="d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service_1a59e33c42e9197d0c701e5ae14e1c3b19">deleteProject</reimplements>
+        <param>
+          <type>boost::uuids::uuid</type>
+          <declname>projectId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Deletes a project. It is to remember that elements inside of a project should also be deleted to, except they are used inside of references <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>projectId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The id of the project, that is to be deleted </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The project that is now deleted inside of the controller. You should delete the project it self. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="services/src/implementation/ProjectService.h" line="32" column="33" bodyfile="services/src/implementation/ProjectService.cpp" bodystart="50" bodyend="54"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>SysMLv2::API::IProjectService</label>
+        <link refid="d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service"/>
+      </node>
+      <node id="1">
+        <label>SysMLv2::API::ProjectService</label>
+        <link refid="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>SysMLv2::API::IProjectService</label>
+        <link refid="d6/db8/class_sys_m_lv2_1_1_a_p_i_1_1_i_project_service"/>
+      </node>
+      <node id="1">
+        <label>SysMLv2::API::ProjectService</label>
+        <link refid="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="services/src/implementation/ProjectService.h" line="19" column="5" bodyfile="services/src/implementation/ProjectService.h" bodystart="19" bodyend="35"/>
+    <listofallmembers>
+      <member refid="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1a0d8be00966cfa042df7b50854e8b990b" prot="public" virt="virtual"><scope>SysMLv2::API::ProjectService</scope><name>createProject</name></member>
+      <member refid="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1a3b90180e4866d260a91d14d02bcabe50" prot="public" virt="virtual"><scope>SysMLv2::API::ProjectService</scope><name>deleteProject</name></member>
+      <member refid="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1a640895860998b23f7d8d73dbf289f36d" prot="public" virt="virtual"><scope>SysMLv2::API::ProjectService</scope><name>getProjectById</name></member>
+      <member refid="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1aad8bda32cb88a836570762d101e8cbd9" prot="public" virt="virtual"><scope>SysMLv2::API::ProjectService</scope><name>getProjects</name></member>
+      <member refid="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1acaf95139ca18e666024b6342d02fba08" prot="protected" virt="non-virtual"><scope>SysMLv2::API::ProjectService</scope><name>ProjectMap</name></member>
+      <member refid="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1abfa257c552b5ddf582302271dc820151" prot="public" virt="non-virtual"><scope>SysMLv2::API::ProjectService</scope><name>ProjectService</name></member>
+      <member refid="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1a4d3459ce133de34cc171e458ffcd1890" prot="public" virt="virtual"><scope>SysMLv2::API::ProjectService</scope><name>updateProject</name></member>
+      <member refid="d1/df4/class_sys_m_lv2_1_1_a_p_i_1_1_project_service_1adda8d934867fbb8019b59999fd3035d3" prot="public" virt="virtual"><scope>SysMLv2::API::ProjectService</scope><name>~ProjectService</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

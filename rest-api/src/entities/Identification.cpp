@@ -16,7 +16,7 @@
 #include "JSONEntities.h"
 
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
 
     Identification::Identification(boost::uuids::uuid id) {
         Id = id;

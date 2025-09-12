@@ -18,9 +18,12 @@
 // Internal Classes
 //---------------------------------------------------------
 #include "Data.h"
+
+#include <iostream>
+
 #include "JSONEntities.h"
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     Data::Data() {
         Id = boost::uuids::random_generator()();
     }
@@ -44,6 +47,7 @@ namespace SysMLv2::Entities {
     }
 
     std::string Data::serializeToJson() {
+        std::cout<<"Data::serializeToJson"<<std::endl;
         nlohmann::json json;
         json[JSON_ID_ENTITY] = boost::lexical_cast<std::string>(Id);
         json[JSON_TYPE_ENTITY] = Type;

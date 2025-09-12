@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="df/d09/class_ker_m_l_parser_1_1_null__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Null_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/d09/class_ker_m_l_parser_1_1_null__expression_context_1a4d693dc07e3614277ed265f839d22a75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Null_expressionContext::Null_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Null_expressionContext</name>
+        <qualifiedname>KerMLParser::Null_expressionContext::Null_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3459" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16444" bodyend="16446"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d09/class_ker_m_l_parser_1_1_null__expression_context_1ad9246c9e86fe0c6886030d3012085f92" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Null_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Null_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3460" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16461" bodyend="16463"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d09/class_ker_m_l_parser_1_1_null__expression_context_1ac0409cab62fffcc1083c0d9bbad2ee6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Null_expressionContext::KEYWORD_NULL</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_NULL</name>
+        <qualifiedname>KerMLParser::Null_expressionContext::KEYWORD_NULL</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3461" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16448" bodyend="16450"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d09/class_ker_m_l_parser_1_1_null__expression_context_1a50f4e4969d95445ed6d63ba83b4eec0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Null_expressionContext::SYMBOL_ROUND_BRACKET_OPEN</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_ROUND_BRACKET_OPEN</name>
+        <qualifiedname>KerMLParser::Null_expressionContext::SYMBOL_ROUND_BRACKET_OPEN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3462" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16452" bodyend="16454"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d09/class_ker_m_l_parser_1_1_null__expression_context_1a032f55b95c8a4bd884af7d378cb51cc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Null_expressionContext::SYMBOL_ROUND_BRACKET_CLOSE</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_ROUND_BRACKET_CLOSE</name>
+        <qualifiedname>KerMLParser::Null_expressionContext::SYMBOL_ROUND_BRACKET_CLOSE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3463" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16456" bodyend="16458"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d09/class_ker_m_l_parser_1_1_null__expression_context_1ae40e94495bcc493a9a34295e0083a328" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Null_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Null_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3465" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16465" bodyend="16469"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d09/class_ker_m_l_parser_1_1_null__expression_context_1a8073f51af059625f945fd894a21e094b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Null_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Null_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3466" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16471" bodyend="16475"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Null_expressionContext</label>
+        <link refid="df/d09/class_ker_m_l_parser_1_1_null__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Null_expressionContext</label>
+        <link refid="df/d09/class_ker_m_l_parser_1_1_null__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="3457" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="3457" bodyend="3468"/>
+    <listofallmembers>
+      <member refid="df/d09/class_ker_m_l_parser_1_1_null__expression_context_1ae40e94495bcc493a9a34295e0083a328" prot="public" virt="virtual"><scope>KerMLParser::Null_expressionContext</scope><name>enterRule</name></member>
+      <member refid="df/d09/class_ker_m_l_parser_1_1_null__expression_context_1a8073f51af059625f945fd894a21e094b" prot="public" virt="virtual"><scope>KerMLParser::Null_expressionContext</scope><name>exitRule</name></member>
+      <member refid="df/d09/class_ker_m_l_parser_1_1_null__expression_context_1ad9246c9e86fe0c6886030d3012085f92" prot="public" virt="virtual"><scope>KerMLParser::Null_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="df/d09/class_ker_m_l_parser_1_1_null__expression_context_1ac0409cab62fffcc1083c0d9bbad2ee6e" prot="public" virt="non-virtual"><scope>KerMLParser::Null_expressionContext</scope><name>KEYWORD_NULL</name></member>
+      <member refid="df/d09/class_ker_m_l_parser_1_1_null__expression_context_1a4d693dc07e3614277ed265f839d22a75" prot="public" virt="non-virtual"><scope>KerMLParser::Null_expressionContext</scope><name>Null_expressionContext</name></member>
+      <member refid="df/d09/class_ker_m_l_parser_1_1_null__expression_context_1a032f55b95c8a4bd884af7d378cb51cc8" prot="public" virt="non-virtual"><scope>KerMLParser::Null_expressionContext</scope><name>SYMBOL_ROUND_BRACKET_CLOSE</name></member>
+      <member refid="df/d09/class_ker_m_l_parser_1_1_null__expression_context_1a50f4e4969d95445ed6d63ba83b4eec0b" prot="public" virt="non-virtual"><scope>KerMLParser::Null_expressionContext</scope><name>SYMBOL_ROUND_BRACKET_OPEN</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

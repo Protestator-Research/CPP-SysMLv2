@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_2e781c2d11baba4ba60a62f2448f37e6" kind="dir">
+    <compoundname>build/Debug/kerml/CMakeFiles/kerml.dir/src/root</compoundname>
+    <innerdir refid="dir_6293e30ca8ba51ca3e75c2c6ee7790b4">build/Debug/kerml/CMakeFiles/kerml.dir/src/root/annotations</innerdir>
+    <innerdir refid="dir_6cd1892b434b440e0ad663aa8c74f59c">build/Debug/kerml/CMakeFiles/kerml.dir/src/root/dependencies</innerdir>
+    <innerdir refid="dir_60eaf637dd6d17878202dc282c98965b">build/Debug/kerml/CMakeFiles/kerml.dir/src/root/elements</innerdir>
+    <innerdir refid="dir_095324ca0593e85840771aaeb8ae0a47">build/Debug/kerml/CMakeFiles/kerml.dir/src/root/namespaces</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/kerml/CMakeFiles/kerml.dir/src/root/"/>
+  </compounddef>
+</doxygen>

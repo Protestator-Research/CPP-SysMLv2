@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/d74/class_sys_m_lv2_parser_1_1_transition__succession_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Transition_successionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/d74/class_sys_m_lv2_parser_1_1_transition__succession_context_1a2cdfb83a8fbc3cabab0500b2124243c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Transition_successionContext::Transition_successionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Transition_successionContext</name>
+        <qualifiedname>SysMLv2Parser::Transition_successionContext::Transition_successionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4352" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="20491" bodyend="20493"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d74/class_sys_m_lv2_parser_1_1_transition__succession_context_1af529f9ebf48851d320e9fee310e96c8d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Transition_successionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Transition_successionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4353" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="20500" bodyend="20502"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d74/class_sys_m_lv2_parser_1_1_transition__succession_context_1a3a1ffd2c59f45392dd83eddd616146fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d08/class_sys_m_lv2_parser_1_1_connector__end__member_context" kindref="compound">Connector_end_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Connector_end_memberContext * SysMLv2Parser::Transition_successionContext::connector_end_member</definition>
+        <argsstring>()</argsstring>
+        <name>connector_end_member</name>
+        <qualifiedname>SysMLv2Parser::Transition_successionContext::connector_end_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4354" column="33" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="20495" bodyend="20497"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d74/class_sys_m_lv2_parser_1_1_transition__succession_context_1af77143ad2aa26ce6f6530fa6005607b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Transition_successionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Transition_successionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4356" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="20504" bodyend="20508"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d74/class_sys_m_lv2_parser_1_1_transition__succession_context_1a8779207581f3396aeab67f041bf35082" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Transition_successionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Transition_successionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4357" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="20510" bodyend="20514"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Transition_successionContext</label>
+        <link refid="d9/d74/class_sys_m_lv2_parser_1_1_transition__succession_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Transition_successionContext</label>
+        <link refid="d9/d74/class_sys_m_lv2_parser_1_1_transition__succession_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="4350" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="4350" bodyend="4359"/>
+    <listofallmembers>
+      <member refid="d9/d74/class_sys_m_lv2_parser_1_1_transition__succession_context_1a3a1ffd2c59f45392dd83eddd616146fa" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Transition_successionContext</scope><name>connector_end_member</name></member>
+      <member refid="d9/d74/class_sys_m_lv2_parser_1_1_transition__succession_context_1af77143ad2aa26ce6f6530fa6005607b2" prot="public" virt="virtual"><scope>SysMLv2Parser::Transition_successionContext</scope><name>enterRule</name></member>
+      <member refid="d9/d74/class_sys_m_lv2_parser_1_1_transition__succession_context_1a8779207581f3396aeab67f041bf35082" prot="public" virt="virtual"><scope>SysMLv2Parser::Transition_successionContext</scope><name>exitRule</name></member>
+      <member refid="d9/d74/class_sys_m_lv2_parser_1_1_transition__succession_context_1af529f9ebf48851d320e9fee310e96c8d" prot="public" virt="virtual"><scope>SysMLv2Parser::Transition_successionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d9/d74/class_sys_m_lv2_parser_1_1_transition__succession_context_1a2cdfb83a8fbc3cabab0500b2124243c2" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Transition_successionContext</scope><name>Transition_successionContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

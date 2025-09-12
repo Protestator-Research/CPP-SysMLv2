@@ -4,8 +4,7 @@
 //---------------------------------------------------------
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
-#ifndef DIGITALTWIN_IENTITY_H
-#define DIGITALTWIN_IENTITY_H
+#pragma once
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -19,7 +18,7 @@
 //---------------------------------------------------------
 
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
     /**
      * Defines the interface for all SysMLv2 classes.
      * @class IEntity
@@ -43,5 +42,3 @@ namespace SysMLv2::Entities {
     };
 }
 
-
-#endif //DIGITALTWIN_IENTITY_H

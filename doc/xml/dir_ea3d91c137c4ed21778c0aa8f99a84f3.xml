@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_ea3d91c137c4ed21778c0aa8f99a84f3" kind="dir">
+    <compoundname>kerml/src/kernel/associations</compoundname>
+    <innerfile refid="de/d58/_association_8cpp">Association.cpp</innerfile>
+    <innerfile refid="dc/d7c/_association_8h">Association.h</innerfile>
+    <innerfile refid="dc/d1d/_association_structure_8cpp">AssociationStructure.cpp</innerfile>
+    <innerfile refid="d7/dd5/_association_structure_8h">AssociationStructure.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="kerml/src/kernel/associations/"/>
+  </compounddef>
+</doxygen>

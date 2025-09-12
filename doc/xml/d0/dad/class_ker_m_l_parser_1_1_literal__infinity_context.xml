@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d0/dad/class_ker_m_l_parser_1_1_literal__infinity_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Literal_infinityContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d0/dad/class_ker_m_l_parser_1_1_literal__infinity_context_1a63b3553840d1f02bd6d729355ad8103f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Literal_infinityContext::Literal_infinityContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Literal_infinityContext</name>
+        <qualifiedname>KerMLParser::Literal_infinityContext::Literal_infinityContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3788" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="17984" bodyend="17986"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/dad/class_ker_m_l_parser_1_1_literal__infinity_context_1a3f2d54a69b4fe49dbf0245c865676267" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Literal_infinityContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Literal_infinityContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3789" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="17993" bodyend="17995"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/dad/class_ker_m_l_parser_1_1_literal__infinity_context_1a39a41d012a5d7e2d81c3875548ef8764" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Literal_infinityContext::SYMBOL_STAR</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_STAR</name>
+        <qualifiedname>KerMLParser::Literal_infinityContext::SYMBOL_STAR</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3790" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="17988" bodyend="17990"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/dad/class_ker_m_l_parser_1_1_literal__infinity_context_1a3c2b6c66964cf92110354cfe1f6dfacf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Literal_infinityContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Literal_infinityContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3792" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="17997" bodyend="18001"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/dad/class_ker_m_l_parser_1_1_literal__infinity_context_1a1b8e8e12043ea52adab32b8f18ec8a4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Literal_infinityContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Literal_infinityContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3793" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="18003" bodyend="18007"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Literal_infinityContext</label>
+        <link refid="d0/dad/class_ker_m_l_parser_1_1_literal__infinity_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Literal_infinityContext</label>
+        <link refid="d0/dad/class_ker_m_l_parser_1_1_literal__infinity_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="3786" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="3786" bodyend="3795"/>
+    <listofallmembers>
+      <member refid="d0/dad/class_ker_m_l_parser_1_1_literal__infinity_context_1a3c2b6c66964cf92110354cfe1f6dfacf" prot="public" virt="virtual"><scope>KerMLParser::Literal_infinityContext</scope><name>enterRule</name></member>
+      <member refid="d0/dad/class_ker_m_l_parser_1_1_literal__infinity_context_1a1b8e8e12043ea52adab32b8f18ec8a4b" prot="public" virt="virtual"><scope>KerMLParser::Literal_infinityContext</scope><name>exitRule</name></member>
+      <member refid="d0/dad/class_ker_m_l_parser_1_1_literal__infinity_context_1a3f2d54a69b4fe49dbf0245c865676267" prot="public" virt="virtual"><scope>KerMLParser::Literal_infinityContext</scope><name>getRuleIndex</name></member>
+      <member refid="d0/dad/class_ker_m_l_parser_1_1_literal__infinity_context_1a63b3553840d1f02bd6d729355ad8103f" prot="public" virt="non-virtual"><scope>KerMLParser::Literal_infinityContext</scope><name>Literal_infinityContext</name></member>
+      <member refid="d0/dad/class_ker_m_l_parser_1_1_literal__infinity_context_1a39a41d012a5d7e2d81c3875548ef8764" prot="public" virt="non-virtual"><scope>KerMLParser::Literal_infinityContext</scope><name>SYMBOL_STAR</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

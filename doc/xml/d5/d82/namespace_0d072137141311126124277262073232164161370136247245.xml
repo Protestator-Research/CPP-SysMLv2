@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d5/d82/namespace_0d072137141311126124277262073232164161370136247245" kind="namespace" language="C++">
+    <compoundname></compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="filehandling/src/kerml/KerMLLexer.cpp" line="14" column="1"/>
+  </compounddef>
+</doxygen>

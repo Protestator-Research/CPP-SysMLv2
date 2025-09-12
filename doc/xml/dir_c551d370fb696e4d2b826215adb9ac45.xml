@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_c551d370fb696e4d2b826215adb9ac45" kind="dir">
+    <compoundname>build/Debug/filehandling/CMakeFiles/sysmlv2file.dir/src/parsing</compoundname>
+    <innerdir refid="dir_eea903dec1e4b91fe3b999f8f9abb561">build/Debug/filehandling/CMakeFiles/sysmlv2file.dir/src/parsing/kerml</innerdir>
+    <innerdir refid="dir_fe74201cdf272a19b36d2b414032ee4a">build/Debug/filehandling/CMakeFiles/sysmlv2file.dir/src/parsing/kermlv2</innerdir>
+    <innerdir refid="dir_66d76463ec70f808231d4e5e161770ce">build/Debug/filehandling/CMakeFiles/sysmlv2file.dir/src/parsing/sysml2</innerdir>
+    <innerfile refid="d2/d7f/parsing_2_parser_8cpp_8o_8d">Parser.cpp.o.d</innerfile>
+    <innerfile refid="d1/dba/parsing_2_parser_error_8cpp_8o_8d">ParserError.cpp.o.d</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/filehandling/CMakeFiles/sysmlv2file.dir/src/parsing/"/>
+  </compounddef>
+</doxygen>

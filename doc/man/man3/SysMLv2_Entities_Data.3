@@ -1,0 +1,124 @@
+.TH "SysMLv2::Entities::Data" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SysMLv2::Entities::Data
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBSysMLv2::Entities::IEntity\fP\&.
+.PP
+Inherited by \fBSysMLv2::Entities::Element\fP, \fBSysMLv2::Entities::ExternalData\fP, \fBSysMLv2::Entities::ExternalRelationship\fP, and \fBSysMLv2::Entities::ProjectUsage\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBData\fP ()"
+.br
+.ti -1c
+.RI "\fBData\fP (boost::uuids::uuid id)"
+.br
+.ti -1c
+.RI "\fBData\fP (std::string jsonString)"
+.br
+.ti -1c
+.RI "virtual \fB~Data\fP ()=default"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBgetId\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBgetType\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBserializeToJson\fP () override"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBType\fP"
+.br
+.ti -1c
+.RI "boost::uuids::uuid \fBId\fP"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBSysMLv2::Entities::IEntity\fP
+.in +1c
+.ti -1c
+.RI "const int \fBJSON_INTENT\fP = 2"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SysMLv2::Entities::Data::Data ()"
+C-Tor 
+.SS "SysMLv2::Entities::Data::Data (boost::uuids::uuid id)\fR [explicit]\fP"
+C-Tor with the option to set the id\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP The given ID of the \fBData\fP element 
+.RE
+.PP
+
+.SS "SysMLv2::Entities::Data::Data (std::string jsonString)\fR [explicit]\fP"
+C-Tor allowing for the parsing of the JSON String\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIjsonString\fP The JSON string that is to be parsed\&. 
+.RE
+.PP
+
+.SS "virtual SysMLv2::Entities::Data::~Data ()\fR [virtual]\fP, \fR [default]\fP"
+D-Tor 
+.SH "Member Function Documentation"
+.PP 
+.SS "boost::uuids::uuid SysMLv2::Entities::Data::getId ()"
+Returns the Id that was given\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The Id as a UUID 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+boost::uuids::uuid 
+.RE
+.PP
+
+.SS "std::string SysMLv2::Entities::Data::getType ()"
+Returns the type of the data element\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Type as a String 
+.RE
+.PP
+
+.SS "std::string SysMLv2::Entities::Data::serializeToJson ()\fR [override]\fP, \fR [virtual]\fP"
+Allows the serialization of the Object to a JSON String\&. 
+.PP
+\fBReturns\fP
+.RS 4
+JSON String of the Object 
+.RE
+.PP
+
+.PP
+Implements \fBSysMLv2::Entities::IEntity\fP\&.
+.PP
+Reimplemented in \fBSysMLv2::Entities::Element\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string SysMLv2::Entities::Data::Type\fR [protected]\fP"
+Type of the element\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Source_succession_memberContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context_1a946809768a82bd819e7bfc51c45c9192" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Source_succession_memberContext::Source_succession_memberContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Source_succession_memberContext</name>
+        <qualifiedname>SysMLv2Parser::Source_succession_memberContext::Source_succession_memberContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2079" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="9008" bodyend="9010"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context_1acc3fc9ac0faca7a0a1eb1038fe418948" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Source_succession_memberContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Source_succession_memberContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2080" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="9021" bodyend="9023"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context_1abc99b2cc9c4367041e19539c8ee7750d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Source_succession_memberContext::KEYWORD_THEN</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_THEN</name>
+        <qualifiedname>SysMLv2Parser::Source_succession_memberContext::KEYWORD_THEN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2081" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="9012" bodyend="9014"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context_1aecab8a4862955bc81253fa28247e16d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/d93/class_sys_m_lv2_parser_1_1_souce__succession_context" kindref="compound">Souce_successionContext</ref> *</type>
+        <definition>SysMLv2Parser::Souce_successionContext * SysMLv2Parser::Source_succession_memberContext::souce_succession</definition>
+        <argsstring>()</argsstring>
+        <name>souce_succession</name>
+        <qualifiedname>SysMLv2Parser::Source_succession_memberContext::souce_succession</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2082" column="29" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="9016" bodyend="9018"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context_1a8d0812dd1fec91a2b452f48db1f6f914" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Source_succession_memberContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Source_succession_memberContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2084" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="9025" bodyend="9029"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context_1a51b02e552b31478579c3cf8e6a5bd611" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Source_succession_memberContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Source_succession_memberContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2085" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="9031" bodyend="9035"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Source_succession_memberContext</label>
+        <link refid="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Source_succession_memberContext</label>
+        <link refid="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2077" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="2077" bodyend="2087"/>
+    <listofallmembers>
+      <member refid="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context_1a8d0812dd1fec91a2b452f48db1f6f914" prot="public" virt="virtual"><scope>SysMLv2Parser::Source_succession_memberContext</scope><name>enterRule</name></member>
+      <member refid="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context_1a51b02e552b31478579c3cf8e6a5bd611" prot="public" virt="virtual"><scope>SysMLv2Parser::Source_succession_memberContext</scope><name>exitRule</name></member>
+      <member refid="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context_1acc3fc9ac0faca7a0a1eb1038fe418948" prot="public" virt="virtual"><scope>SysMLv2Parser::Source_succession_memberContext</scope><name>getRuleIndex</name></member>
+      <member refid="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context_1abc99b2cc9c4367041e19539c8ee7750d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Source_succession_memberContext</scope><name>KEYWORD_THEN</name></member>
+      <member refid="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context_1aecab8a4862955bc81253fa28247e16d2" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Source_succession_memberContext</scope><name>souce_succession</name></member>
+      <member refid="d1/d9f/class_sys_m_lv2_parser_1_1_source__succession__member_context_1a946809768a82bd819e7bfc51c45c9192" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Source_succession_memberContext</scope><name>Source_succession_memberContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

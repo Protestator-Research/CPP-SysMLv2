@@ -2,13 +2,10 @@
 // Created by Moritz Herzog on 31.03.25.
 //
 
-#ifndef SYSMLV2_STEP_H
-#define SYSMLV2_STEP_H
+#pragma once
 
 namespace KerML::Entities {
     class Step {
 
     };
 } // KerML::Entities
-
-#endif //SYSMLV2_STEP_H

@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Owned_disjoiningContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context_1a3e5ef8ee5ce35a9da9cd8d97697d5a48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Owned_disjoiningContext::Owned_disjoiningContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Owned_disjoiningContext</name>
+        <qualifiedname>KerMLParser::Owned_disjoiningContext::Owned_disjoiningContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1357" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5965" bodyend="5967"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context_1a904bdfb9b6c6931edbccc2079582ed7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Owned_disjoiningContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Owned_disjoiningContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1358" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5978" bodyend="5980"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context_1abac68f739edc81d94f298187c8844b40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>KerMLParser::Qualified_nameContext * KerMLParser::Owned_disjoiningContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>KerMLParser::Owned_disjoiningContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1359" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5969" bodyend="5971"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context_1ae3fd41cd6197fdec43561d469423e31f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d78/class_ker_m_l_parser_1_1_feature__chain_context" kindref="compound">Feature_chainContext</ref> *</type>
+        <definition>KerMLParser::Feature_chainContext * KerMLParser::Owned_disjoiningContext::feature_chain</definition>
+        <argsstring>()</argsstring>
+        <name>feature_chain</name>
+        <qualifiedname>KerMLParser::Owned_disjoiningContext::feature_chain</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1360" column="26" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5973" bodyend="5975"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context_1a9851cd8b34ac9dc7b5c4934a5c503fb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Owned_disjoiningContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Owned_disjoiningContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1362" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5982" bodyend="5986"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context_1a179458ed7635275a53d2346b42c40846" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Owned_disjoiningContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Owned_disjoiningContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="1363" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="5988" bodyend="5992"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Owned_disjoiningContext</label>
+        <link refid="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Owned_disjoiningContext</label>
+        <link refid="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="1355" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="1355" bodyend="1365"/>
+    <listofallmembers>
+      <member refid="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context_1a9851cd8b34ac9dc7b5c4934a5c503fb2" prot="public" virt="virtual"><scope>KerMLParser::Owned_disjoiningContext</scope><name>enterRule</name></member>
+      <member refid="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context_1a179458ed7635275a53d2346b42c40846" prot="public" virt="virtual"><scope>KerMLParser::Owned_disjoiningContext</scope><name>exitRule</name></member>
+      <member refid="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context_1ae3fd41cd6197fdec43561d469423e31f" prot="public" virt="non-virtual"><scope>KerMLParser::Owned_disjoiningContext</scope><name>feature_chain</name></member>
+      <member refid="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context_1a904bdfb9b6c6931edbccc2079582ed7b" prot="public" virt="virtual"><scope>KerMLParser::Owned_disjoiningContext</scope><name>getRuleIndex</name></member>
+      <member refid="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context_1a3e5ef8ee5ce35a9da9cd8d97697d5a48" prot="public" virt="non-virtual"><scope>KerMLParser::Owned_disjoiningContext</scope><name>Owned_disjoiningContext</name></member>
+      <member refid="df/d0c/class_ker_m_l_parser_1_1_owned__disjoining_context_1abac68f739edc81d94f298187c8844b40" prot="public" virt="non-virtual"><scope>KerMLParser::Owned_disjoiningContext</scope><name>qualified_name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

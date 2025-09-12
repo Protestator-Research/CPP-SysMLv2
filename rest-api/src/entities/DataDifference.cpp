@@ -5,7 +5,7 @@
 #include "DataDifference.h"
 
 namespace SysMLv2 {
-    namespace Entities {
+    namespace REST {
         DataDifference::DataDifference(std::shared_ptr<DataVersion> baseData, std::shared_ptr<DataVersion> comparedData) {
             BaseData = baseData;
             CompareData = comparedData;

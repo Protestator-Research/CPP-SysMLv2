@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="da/d9b/class_ker_m_l_parser_1_1_meta__cast__operator_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Meta_cast_operatorContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="da/d9b/class_ker_m_l_parser_1_1_meta__cast__operator_context_1ae8eb9f5ade8a9752291927a943182aef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Meta_cast_operatorContext::Meta_cast_operatorContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Meta_cast_operatorContext</name>
+        <qualifiedname>KerMLParser::Meta_cast_operatorContext::Meta_cast_operatorContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2933" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14082" bodyend="14084"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9b/class_ker_m_l_parser_1_1_meta__cast__operator_context_1afaec9203fdb101d8f12855376272707f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Meta_cast_operatorContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Meta_cast_operatorContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2934" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14087" bodyend="14089"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9b/class_ker_m_l_parser_1_1_meta__cast__operator_context_1a7371ffe5a05f5032a35afa72592b1c71" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Meta_cast_operatorContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Meta_cast_operatorContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2936" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14091" bodyend="14095"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9b/class_ker_m_l_parser_1_1_meta__cast__operator_context_1a81fe43adf53cdbc6db73a97365980468" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Meta_cast_operatorContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Meta_cast_operatorContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="2937" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="14097" bodyend="14101"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Meta_cast_operatorContext</label>
+        <link refid="da/d9b/class_ker_m_l_parser_1_1_meta__cast__operator_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Meta_cast_operatorContext</label>
+        <link refid="da/d9b/class_ker_m_l_parser_1_1_meta__cast__operator_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="2931" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="2931" bodyend="2939"/>
+    <listofallmembers>
+      <member refid="da/d9b/class_ker_m_l_parser_1_1_meta__cast__operator_context_1a7371ffe5a05f5032a35afa72592b1c71" prot="public" virt="virtual"><scope>KerMLParser::Meta_cast_operatorContext</scope><name>enterRule</name></member>
+      <member refid="da/d9b/class_ker_m_l_parser_1_1_meta__cast__operator_context_1a81fe43adf53cdbc6db73a97365980468" prot="public" virt="virtual"><scope>KerMLParser::Meta_cast_operatorContext</scope><name>exitRule</name></member>
+      <member refid="da/d9b/class_ker_m_l_parser_1_1_meta__cast__operator_context_1afaec9203fdb101d8f12855376272707f" prot="public" virt="virtual"><scope>KerMLParser::Meta_cast_operatorContext</scope><name>getRuleIndex</name></member>
+      <member refid="da/d9b/class_ker_m_l_parser_1_1_meta__cast__operator_context_1ae8eb9f5ade8a9752291927a943182aef" prot="public" virt="non-virtual"><scope>KerMLParser::Meta_cast_operatorContext</scope><name>Meta_cast_operatorContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

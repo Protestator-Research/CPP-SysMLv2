@@ -1,0 +1,257 @@
+.TH "KerML::Entities" 3 "Version 1.0 Beta 2" "SysMLv2 C++ Implementation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KerML::Entities
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAnnotatingElement\fP"
+.br
+.ti -1c
+.RI "class \fBAnnotation\fP"
+.br
+.ti -1c
+.RI "class \fBAssociation\fP"
+.br
+.ti -1c
+.RI "class \fBAssociationStructure\fP"
+.br
+.ti -1c
+.RI "class \fBBehavior\fP"
+.br
+.ti -1c
+.RI "class \fBBindingConnector\fP"
+.br
+.ti -1c
+.RI "class \fBBooleanExpression\fP"
+.br
+.ti -1c
+.RI "class \fBClass\fP"
+.br
+.ti -1c
+.RI "class \fBClassifier\fP"
+.br
+.ti -1c
+.RI "class \fBCollectExpression\fP"
+.br
+.ti -1c
+.RI "class \fBComment\fP"
+.br
+.ti -1c
+.RI "class \fBConjunction\fP"
+.br
+.ti -1c
+.RI "class \fBConnector\fP"
+.br
+.ti -1c
+.RI "class \fBDataType\fP"
+.br
+.ti -1c
+.RI "class \fBDependency\fP"
+.br
+.ti -1c
+.RI "class \fBDifferencing\fP"
+.br
+.ti -1c
+.RI "class \fBDisjoining\fP"
+.br
+.ti -1c
+.RI "class \fBDocumentation\fP"
+.br
+.ti -1c
+.RI "class \fBElement\fP"
+.br
+.RI "This part of the model allows the identification of all elements\&. This part of the model allows the identification of all elements\&. This is a core concept of the \fBKerML\fP and SysML syntax\&. Also this class is required for the REST-API and the parsing of the models\&. "
+.ti -1c
+.RI "class \fBElementFilterMembership\fP"
+.br
+.ti -1c
+.RI "class \fBEndFeatureMembership\fP"
+.br
+.ti -1c
+.RI "class \fBExpression\fP"
+.br
+.ti -1c
+.RI "class \fBFeature\fP"
+.br
+.ti -1c
+.RI "class \fBFeatureChainExpression\fP"
+.br
+.ti -1c
+.RI "class \fBFeatureChaining\fP"
+.br
+.ti -1c
+.RI "class \fBFeatureInverting\fP"
+.br
+.ti -1c
+.RI "class \fBFeatureMembership\fP"
+.br
+.ti -1c
+.RI "class \fBFeatureReferenceExpression\fP"
+.br
+.ti -1c
+.RI "class \fBFeatureTyping\fP"
+.br
+.ti -1c
+.RI "class \fBFeatureValue\fP"
+.br
+.ti -1c
+.RI "class \fBFeaturing\fP"
+.br
+.ti -1c
+.RI "class \fBFunction\fP"
+.br
+.ti -1c
+.RI "class \fBImport\fP"
+.br
+.ti -1c
+.RI "class \fBInteraction\fP"
+.br
+.ti -1c
+.RI "class \fBIntersecting\fP"
+.br
+.ti -1c
+.RI "class \fBInvariant\fP"
+.br
+.ti -1c
+.RI "class \fBInvocationExpression\fP"
+.br
+.ti -1c
+.RI "class \fBItemFeature\fP"
+.br
+.ti -1c
+.RI "class \fBItemFlow\fP"
+.br
+.ti -1c
+.RI "class \fBItemFlowEnd\fP"
+.br
+.ti -1c
+.RI "class \fBLibraryPackage\fP"
+.br
+.ti -1c
+.RI "class \fBLiteralBoolean\fP"
+.br
+.ti -1c
+.RI "class \fBLiteralExpression\fP"
+.br
+.ti -1c
+.RI "class \fBLiteralInfinity\fP"
+.br
+.ti -1c
+.RI "class \fBLiteralInteger\fP"
+.br
+.ti -1c
+.RI "class \fBLiteralRational\fP"
+.br
+.ti -1c
+.RI "class \fBLiteralString\fP"
+.br
+.ti -1c
+.RI "class \fBMembership\fP"
+.br
+.ti -1c
+.RI "class \fBMembershipImport\fP"
+.br
+.ti -1c
+.RI "class \fBMetadataAccessExpression\fP"
+.br
+.ti -1c
+.RI "class \fBMetadataFeature\fP"
+.br
+.ti -1c
+.RI "class \fBMultiplicityRange\fP"
+.br
+.ti -1c
+.RI "class \fBNamespace\fP"
+.br
+.ti -1c
+.RI "class \fBNamespaceImport\fP"
+.br
+.ti -1c
+.RI "class \fBNullExpression\fP"
+.br
+.ti -1c
+.RI "class \fBOperatorExpression\fP"
+.br
+.ti -1c
+.RI "class \fBOwningMembership\fP"
+.br
+.ti -1c
+.RI "class \fBPackage\fP"
+.br
+.ti -1c
+.RI "class \fBParameterMembership\fP"
+.br
+.ti -1c
+.RI "class \fBPredicate\fP"
+.br
+.ti -1c
+.RI "class \fBRedefinition\fP"
+.br
+.ti -1c
+.RI "class \fBReferenceSubsetting\fP"
+.br
+.ti -1c
+.RI "class \fBRelationship\fP"
+.br
+.ti -1c
+.RI "class \fBResultExpressionMembersip\fP"
+.br
+.ti -1c
+.RI "class \fBReturnParameterMembership\fP"
+.br
+.ti -1c
+.RI "class \fBSelectExpression\fP"
+.br
+.ti -1c
+.RI "class \fBSpecialization\fP"
+.br
+.ti -1c
+.RI "class \fBStep\fP"
+.br
+.ti -1c
+.RI "class \fBStructure\fP"
+.br
+.ti -1c
+.RI "class \fBSubclassification\fP"
+.br
+.ti -1c
+.RI "class \fBSubsetting\fP"
+.br
+.ti -1c
+.RI "class \fBSuccession\fP"
+.br
+.ti -1c
+.RI "class \fBSuccessionItemFlow\fP"
+.br
+.ti -1c
+.RI "class \fBTextualRepresentation\fP"
+.br
+.ti -1c
+.RI "class \fBType\fP"
+.br
+.ti -1c
+.RI "class \fBTypeFeaturing\fP"
+.br
+.ti -1c
+.RI "class \fBUnioning\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBFeatureDirectionKind\fP { \fBIN\fP, \fBIN_OUT\fP, \fBOUT\fP }"
+.br
+.ti -1c
+.RI "enum \fBVisibilityKind\fP { \fBPRIVATE\fP, \fBPROTECTED\fP, \fBPUBLIC\fP }"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SysMLv2 C++ Implementation from the source code\&.

@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/d18/class_ker_m_l_parser_1_1_identification_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::IdentificationContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/d18/class_ker_m_l_parser_1_1_identification_context_1ab85afb1e9b7ce0d9617237f147c7d09e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::IdentificationContext::IdentificationContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>IdentificationContext</name>
+        <qualifiedname>KerMLParser::IdentificationContext::IdentificationContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="476" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1188" bodyend="1190"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d18/class_ker_m_l_parser_1_1_identification_context_1a3583a6420d0332f27b29283c51c91c23" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::IdentificationContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::IdentificationContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="477" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1205" bodyend="1207"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d18/class_ker_m_l_parser_1_1_identification_context_1a992cecf956590408cd22557e4728ea24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::IdentificationContext::SYMBOL_SMALLER</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_SMALLER</name>
+        <qualifiedname>KerMLParser::IdentificationContext::SYMBOL_SMALLER</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="478" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1192" bodyend="1194"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d18/class_ker_m_l_parser_1_1_identification_context_1ae3b89f0e0536772e928cccf1f5008206" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::IdentificationContext::NAME</definition>
+        <argsstring>()</argsstring>
+        <name>NAME</name>
+        <qualifiedname>KerMLParser::IdentificationContext::NAME</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="479" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1196" bodyend="1198"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d18/class_ker_m_l_parser_1_1_identification_context_1a54174d1612e9792829d042b2f3d0b08d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::IdentificationContext::SYMBOL_GREATER</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_GREATER</name>
+        <qualifiedname>KerMLParser::IdentificationContext::SYMBOL_GREATER</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="480" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1200" bodyend="1202"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d18/class_ker_m_l_parser_1_1_identification_context_1a56923a309ddd5d8b6d6f1ed04f5a4cad" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::IdentificationContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::IdentificationContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="482" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1209" bodyend="1213"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d18/class_ker_m_l_parser_1_1_identification_context_1ae91a97453754e961624ab5d7a128e6a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::IdentificationContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::IdentificationContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="483" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="1215" bodyend="1219"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::IdentificationContext</label>
+        <link refid="d9/d18/class_ker_m_l_parser_1_1_identification_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::IdentificationContext</label>
+        <link refid="d9/d18/class_ker_m_l_parser_1_1_identification_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="474" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="474" bodyend="485"/>
+    <listofallmembers>
+      <member refid="d9/d18/class_ker_m_l_parser_1_1_identification_context_1a56923a309ddd5d8b6d6f1ed04f5a4cad" prot="public" virt="virtual"><scope>KerMLParser::IdentificationContext</scope><name>enterRule</name></member>
+      <member refid="d9/d18/class_ker_m_l_parser_1_1_identification_context_1ae91a97453754e961624ab5d7a128e6a6" prot="public" virt="virtual"><scope>KerMLParser::IdentificationContext</scope><name>exitRule</name></member>
+      <member refid="d9/d18/class_ker_m_l_parser_1_1_identification_context_1a3583a6420d0332f27b29283c51c91c23" prot="public" virt="virtual"><scope>KerMLParser::IdentificationContext</scope><name>getRuleIndex</name></member>
+      <member refid="d9/d18/class_ker_m_l_parser_1_1_identification_context_1ab85afb1e9b7ce0d9617237f147c7d09e" prot="public" virt="non-virtual"><scope>KerMLParser::IdentificationContext</scope><name>IdentificationContext</name></member>
+      <member refid="d9/d18/class_ker_m_l_parser_1_1_identification_context_1ae3b89f0e0536772e928cccf1f5008206" prot="public" virt="non-virtual"><scope>KerMLParser::IdentificationContext</scope><name>NAME</name></member>
+      <member refid="d9/d18/class_ker_m_l_parser_1_1_identification_context_1a54174d1612e9792829d042b2f3d0b08d" prot="public" virt="non-virtual"><scope>KerMLParser::IdentificationContext</scope><name>SYMBOL_GREATER</name></member>
+      <member refid="d9/d18/class_ker_m_l_parser_1_1_identification_context_1a992cecf956590408cd22557e4728ea24" prot="public" virt="non-virtual"><scope>KerMLParser::IdentificationContext</scope><name>SYMBOL_SMALLER</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -2,8 +2,7 @@
 // Created by Moritz Herzog on 25.03.25.
 //
 
-#ifndef SYSMLV2_STRUCTURE_H
-#define SYSMLV2_STRUCTURE_H
+#pragma once
 
 #include "../classes/Class.h"
 
@@ -13,5 +12,3 @@ namespace KerML::Entities {
     };
 }
 
-
-#endif //SYSMLV2_STRUCTURE_H

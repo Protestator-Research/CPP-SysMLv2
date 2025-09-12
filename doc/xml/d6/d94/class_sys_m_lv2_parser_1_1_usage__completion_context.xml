@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Usage_completionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context_1ad5844f1d3a12f6d0153d3b4e34511c57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Usage_completionContext::Usage_completionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Usage_completionContext</name>
+        <qualifiedname>SysMLv2Parser::Usage_completionContext::Usage_completionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1535" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5925" bodyend="5927"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context_1a43dc09b07483a37594c8e40e6f655a60" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Usage_completionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Usage_completionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1536" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5938" bodyend="5940"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context_1ac62de71168dd330d18e553b49f1268a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/dc9/class_sys_m_lv2_parser_1_1_usage__body_context" kindref="compound">Usage_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Usage_bodyContext * SysMLv2Parser::Usage_completionContext::usage_body</definition>
+        <argsstring>()</argsstring>
+        <name>usage_body</name>
+        <qualifiedname>SysMLv2Parser::Usage_completionContext::usage_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1537" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5929" bodyend="5931"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context_1ad7a4ae0e4603034e69b417d9b6c22df5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d74/class_sys_m_lv2_parser_1_1_value__part_context" kindref="compound">Value_partContext</ref> *</type>
+        <definition>SysMLv2Parser::Value_partContext * SysMLv2Parser::Usage_completionContext::value_part</definition>
+        <argsstring>()</argsstring>
+        <name>value_part</name>
+        <qualifiedname>SysMLv2Parser::Usage_completionContext::value_part</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1538" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5933" bodyend="5935"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context_1a3557d0f81f03c56d4dcf5e82fc4e86be" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Usage_completionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Usage_completionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1540" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5942" bodyend="5946"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context_1a84b0a15e510e9fe86dea411b2bd222dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Usage_completionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Usage_completionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1541" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5948" bodyend="5952"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Usage_completionContext</label>
+        <link refid="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Usage_completionContext</label>
+        <link refid="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1533" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="1533" bodyend="1543"/>
+    <listofallmembers>
+      <member refid="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context_1a3557d0f81f03c56d4dcf5e82fc4e86be" prot="public" virt="virtual"><scope>SysMLv2Parser::Usage_completionContext</scope><name>enterRule</name></member>
+      <member refid="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context_1a84b0a15e510e9fe86dea411b2bd222dd" prot="public" virt="virtual"><scope>SysMLv2Parser::Usage_completionContext</scope><name>exitRule</name></member>
+      <member refid="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context_1a43dc09b07483a37594c8e40e6f655a60" prot="public" virt="virtual"><scope>SysMLv2Parser::Usage_completionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context_1ac62de71168dd330d18e553b49f1268a8" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Usage_completionContext</scope><name>usage_body</name></member>
+      <member refid="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context_1ad5844f1d3a12f6d0153d3b4e34511c57" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Usage_completionContext</scope><name>Usage_completionContext</name></member>
+      <member refid="d6/d94/class_sys_m_lv2_parser_1_1_usage__completion_context_1ad7a4ae0e4603034e69b417d9b6c22df5" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Usage_completionContext</scope><name>value_part</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

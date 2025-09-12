@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Feature_directionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context_1af3095a2a2842316f53df417f2964a8e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Feature_directionContext::Feature_directionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Feature_directionContext</name>
+        <qualifiedname>SysMLv2Parser::Feature_directionContext::Feature_directionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1378" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5078" bodyend="5080"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context_1af92987adff004fe41d863fbaaf9adc5b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Feature_directionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Feature_directionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1379" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5095" bodyend="5097"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context_1a8ce497a8f4f383915db86f850fa02f77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Feature_directionContext::KEYWORD_IN</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_IN</name>
+        <qualifiedname>SysMLv2Parser::Feature_directionContext::KEYWORD_IN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1380" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5082" bodyend="5084"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context_1ad9f86f4085d01628a62c83a15a1a1102" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Feature_directionContext::KEYWORD_OUT</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_OUT</name>
+        <qualifiedname>SysMLv2Parser::Feature_directionContext::KEYWORD_OUT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1381" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5086" bodyend="5088"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context_1aed3b66631c9f8bd13a65319f8baf5b21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Feature_directionContext::KEYWORD_INOUT</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_INOUT</name>
+        <qualifiedname>SysMLv2Parser::Feature_directionContext::KEYWORD_INOUT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1382" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5090" bodyend="5092"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context_1aaf02a30812b87f0071cf71f5a6014fe2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Feature_directionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Feature_directionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1384" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5099" bodyend="5103"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context_1a06315623c95dba59250f6ff1927bad17" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Feature_directionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Feature_directionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1385" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="5105" bodyend="5109"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Feature_directionContext</label>
+        <link refid="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Feature_directionContext</label>
+        <link refid="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="1376" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="1376" bodyend="1387"/>
+    <listofallmembers>
+      <member refid="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context_1aaf02a30812b87f0071cf71f5a6014fe2" prot="public" virt="virtual"><scope>SysMLv2Parser::Feature_directionContext</scope><name>enterRule</name></member>
+      <member refid="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context_1a06315623c95dba59250f6ff1927bad17" prot="public" virt="virtual"><scope>SysMLv2Parser::Feature_directionContext</scope><name>exitRule</name></member>
+      <member refid="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context_1af3095a2a2842316f53df417f2964a8e0" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Feature_directionContext</scope><name>Feature_directionContext</name></member>
+      <member refid="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context_1af92987adff004fe41d863fbaaf9adc5b" prot="public" virt="virtual"><scope>SysMLv2Parser::Feature_directionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context_1a8ce497a8f4f383915db86f850fa02f77" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Feature_directionContext</scope><name>KEYWORD_IN</name></member>
+      <member refid="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context_1aed3b66631c9f8bd13a65319f8baf5b21" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Feature_directionContext</scope><name>KEYWORD_INOUT</name></member>
+      <member refid="d3/df5/class_sys_m_lv2_parser_1_1_feature__direction_context_1ad9f86f4085d01628a62c83a15a1a1102" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Feature_directionContext</scope><name>KEYWORD_OUT</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

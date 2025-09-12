@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context" kind="class" language="C++" prot="public">
+    <compoundname>KerMLParser::Metadata_access_expressionContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context_1a9ee923d2323902847e4c2d2634e316b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KerMLParser::Metadata_access_expressionContext::Metadata_access_expressionContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Metadata_access_expressionContext</name>
+        <qualifiedname>KerMLParser::Metadata_access_expressionContext::Metadata_access_expressionContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3513" column="5" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16683" bodyend="16685"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context_1a19fbc0e28a5a85bd55334ce3a443cf21" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t KerMLParser::Metadata_access_expressionContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>KerMLParser::Metadata_access_expressionContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3514" column="20" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16700" bodyend="16702"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context_1a7f8ad40aceb50ba080b9bc5367ca9cd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d40/class_ker_m_l_parser_1_1_qualified__name_context" kindref="compound">Qualified_nameContext</ref> *</type>
+        <definition>KerMLParser::Qualified_nameContext * KerMLParser::Metadata_access_expressionContext::qualified_name</definition>
+        <argsstring>()</argsstring>
+        <name>qualified_name</name>
+        <qualifiedname>KerMLParser::Metadata_access_expressionContext::qualified_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3515" column="27" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16687" bodyend="16689"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context_1a699e29e83b2e2268fe2a1aa649e8ed3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Metadata_access_expressionContext::SYMBOL_DOT</definition>
+        <argsstring>()</argsstring>
+        <name>SYMBOL_DOT</name>
+        <qualifiedname>KerMLParser::Metadata_access_expressionContext::SYMBOL_DOT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3516" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16691" bodyend="16693"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context_1a3d3a6e0c48ed83a6be656a44d3fdebad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * KerMLParser::Metadata_access_expressionContext::KEYWORD_METADATA</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_METADATA</name>
+        <qualifiedname>KerMLParser::Metadata_access_expressionContext::KEYWORD_METADATA</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3517" column="32" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16695" bodyend="16697"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context_1ac08eb96ba075652fae19d11a738bd5bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Metadata_access_expressionContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>KerMLParser::Metadata_access_expressionContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3519" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16704" bodyend="16708"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context_1a1e8fb0c6cee5a51067a6e58320314f07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void KerMLParser::Metadata_access_expressionContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>KerMLParser::Metadata_access_expressionContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/kerml/KerMLParser.h" line="3520" column="18" bodyfile="filehandling/src/kerml/KerMLParser.cpp" bodystart="16710" bodyend="16714"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KerMLParser::Metadata_access_expressionContext</label>
+        <link refid="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KerMLParser::Metadata_access_expressionContext</label>
+        <link refid="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/kerml/KerMLParser.h" line="3511" column="3" bodyfile="filehandling/src/kerml/KerMLParser.h" bodystart="3511" bodyend="3522"/>
+    <listofallmembers>
+      <member refid="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context_1ac08eb96ba075652fae19d11a738bd5bd" prot="public" virt="virtual"><scope>KerMLParser::Metadata_access_expressionContext</scope><name>enterRule</name></member>
+      <member refid="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context_1a1e8fb0c6cee5a51067a6e58320314f07" prot="public" virt="virtual"><scope>KerMLParser::Metadata_access_expressionContext</scope><name>exitRule</name></member>
+      <member refid="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context_1a19fbc0e28a5a85bd55334ce3a443cf21" prot="public" virt="virtual"><scope>KerMLParser::Metadata_access_expressionContext</scope><name>getRuleIndex</name></member>
+      <member refid="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context_1a3d3a6e0c48ed83a6be656a44d3fdebad" prot="public" virt="non-virtual"><scope>KerMLParser::Metadata_access_expressionContext</scope><name>KEYWORD_METADATA</name></member>
+      <member refid="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context_1a9ee923d2323902847e4c2d2634e316b6" prot="public" virt="non-virtual"><scope>KerMLParser::Metadata_access_expressionContext</scope><name>Metadata_access_expressionContext</name></member>
+      <member refid="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context_1a7f8ad40aceb50ba080b9bc5367ca9cd1" prot="public" virt="non-virtual"><scope>KerMLParser::Metadata_access_expressionContext</scope><name>qualified_name</name></member>
+      <member refid="d3/d7b/class_ker_m_l_parser_1_1_metadata__access__expression_context_1a699e29e83b2e2268fe2a1aa649e8ed3f" prot="public" virt="non-virtual"><scope>KerMLParser::Metadata_access_expressionContext</scope><name>SYMBOL_DOT</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

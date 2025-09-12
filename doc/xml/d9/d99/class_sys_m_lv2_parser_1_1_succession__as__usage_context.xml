@@ -1,0 +1,238 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Succession_as_usageContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1a0420de67e77964c9bd7d4059a5be3680" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Succession_as_usageContext::Succession_as_usageContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Succession_as_usageContext</name>
+        <qualifiedname>SysMLv2Parser::Succession_as_usageContext::Succession_as_usageContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2397" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10477" bodyend="10479"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1abcfb3666cac72746ab5afdc49f898218" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Succession_as_usageContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Succession_as_usageContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2398" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10514" bodyend="10516"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1af19f9032d1d112391ccbcb77c24b5e8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/dc9/class_sys_m_lv2_parser_1_1_usage__prefix_context" kindref="compound">Usage_prefixContext</ref> *</type>
+        <definition>SysMLv2Parser::Usage_prefixContext * SysMLv2Parser::Succession_as_usageContext::usage_prefix</definition>
+        <argsstring>()</argsstring>
+        <name>usage_prefix</name>
+        <qualifiedname>SysMLv2Parser::Succession_as_usageContext::usage_prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2399" column="25" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10481" bodyend="10483"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1ae95f2e19b938f1a2de66b8fcf3ba7753" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Succession_as_usageContext::KEYWORD_FIRST</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_FIRST</name>
+        <qualifiedname>SysMLv2Parser::Succession_as_usageContext::KEYWORD_FIRST</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2400" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10485" bodyend="10487"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1adca09c2caaedaefee7e577f747533a71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d9/d08/class_sys_m_lv2_parser_1_1_connector__end__member_context" kindref="compound">Connector_end_memberContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Connector_end_memberContext * &gt; SysMLv2Parser::Succession_as_usageContext::connector_end_member</definition>
+        <argsstring>()</argsstring>
+        <name>connector_end_member</name>
+        <qualifiedname>SysMLv2Parser::Succession_as_usageContext::connector_end_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2401" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10489" bodyend="10491"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1a4242c863944ee5a6f121b8764d43eb53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d9/d08/class_sys_m_lv2_parser_1_1_connector__end__member_context" kindref="compound">Connector_end_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Connector_end_memberContext * SysMLv2Parser::Succession_as_usageContext::connector_end_member</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>connector_end_member</name>
+        <qualifiedname>SysMLv2Parser::Succession_as_usageContext::connector_end_member</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2402" column="33" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10493" bodyend="10495"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1a92fce293ff1e087fa14098d86f088005" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Succession_as_usageContext::KEYWORD_THEN</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_THEN</name>
+        <qualifiedname>SysMLv2Parser::Succession_as_usageContext::KEYWORD_THEN</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2403" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10497" bodyend="10499"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1ae0d9e897ab49ecbf1a53b8205ed9d008" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="df/dc9/class_sys_m_lv2_parser_1_1_usage__body_context" kindref="compound">Usage_bodyContext</ref> *</type>
+        <definition>SysMLv2Parser::Usage_bodyContext * SysMLv2Parser::Succession_as_usageContext::usage_body</definition>
+        <argsstring>()</argsstring>
+        <name>usage_body</name>
+        <qualifiedname>SysMLv2Parser::Succession_as_usageContext::usage_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2404" column="23" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10501" bodyend="10503"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1ae16df47be1ad790d6ae28f30801b87d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Succession_as_usageContext::KEYWORD_SUCCSESSION</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_SUCCSESSION</name>
+        <qualifiedname>SysMLv2Parser::Succession_as_usageContext::KEYWORD_SUCCSESSION</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2405" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10505" bodyend="10507"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1a62e4b468f3c1689e6019744f966b7327" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d41/class_sys_m_lv2_parser_1_1_usage__declaration_context" kindref="compound">Usage_declarationContext</ref> *</type>
+        <definition>SysMLv2Parser::Usage_declarationContext * SysMLv2Parser::Succession_as_usageContext::usage_declaration</definition>
+        <argsstring>()</argsstring>
+        <name>usage_declaration</name>
+        <qualifiedname>SysMLv2Parser::Succession_as_usageContext::usage_declaration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2406" column="30" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10509" bodyend="10511"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1ae11cc305843843b3219f661921cc204d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Succession_as_usageContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Succession_as_usageContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2408" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10518" bodyend="10522"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1a40bd93eae10cc55b20c8e2a1fc92164d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Succession_as_usageContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Succession_as_usageContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2409" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="10524" bodyend="10528"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Succession_as_usageContext</label>
+        <link refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Succession_as_usageContext</label>
+        <link refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2395" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="2395" bodyend="2411"/>
+    <listofallmembers>
+      <member refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1adca09c2caaedaefee7e577f747533a71" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Succession_as_usageContext</scope><name>connector_end_member</name></member>
+      <member refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1a4242c863944ee5a6f121b8764d43eb53" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Succession_as_usageContext</scope><name>connector_end_member</name></member>
+      <member refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1ae11cc305843843b3219f661921cc204d" prot="public" virt="virtual"><scope>SysMLv2Parser::Succession_as_usageContext</scope><name>enterRule</name></member>
+      <member refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1a40bd93eae10cc55b20c8e2a1fc92164d" prot="public" virt="virtual"><scope>SysMLv2Parser::Succession_as_usageContext</scope><name>exitRule</name></member>
+      <member refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1abcfb3666cac72746ab5afdc49f898218" prot="public" virt="virtual"><scope>SysMLv2Parser::Succession_as_usageContext</scope><name>getRuleIndex</name></member>
+      <member refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1ae95f2e19b938f1a2de66b8fcf3ba7753" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Succession_as_usageContext</scope><name>KEYWORD_FIRST</name></member>
+      <member refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1ae16df47be1ad790d6ae28f30801b87d2" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Succession_as_usageContext</scope><name>KEYWORD_SUCCSESSION</name></member>
+      <member refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1a92fce293ff1e087fa14098d86f088005" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Succession_as_usageContext</scope><name>KEYWORD_THEN</name></member>
+      <member refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1a0420de67e77964c9bd7d4059a5be3680" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Succession_as_usageContext</scope><name>Succession_as_usageContext</name></member>
+      <member refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1ae0d9e897ab49ecbf1a53b8205ed9d008" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Succession_as_usageContext</scope><name>usage_body</name></member>
+      <member refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1a62e4b468f3c1689e6019744f966b7327" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Succession_as_usageContext</scope><name>usage_declaration</name></member>
+      <member refid="d9/d99/class_sys_m_lv2_parser_1_1_succession__as__usage_context_1af19f9032d1d112391ccbcb77c24b5e8b" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Succession_as_usageContext</scope><name>usage_prefix</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

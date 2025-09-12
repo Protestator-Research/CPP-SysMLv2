@@ -120,208 +120,211 @@ Inheritance diagram for KerMLLexer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ace4d0fc04fd1535bb67e66f44e389228" id="r_ace4d0fc04fd1535bb67e66f44e389228"><td class="memItemLeft" align="right" valign="top"><a id="ace4d0fc04fd1535bb67e66f44e389228" name="ace4d0fc04fd1535bb67e66f44e389228"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+<tr class="memitem:af54e68478fd4a33bb46e1a578a603bfd" id="r_af54e68478fd4a33bb46e1a578a603bfd"><td class="memItemLeft" align="right" valign="top"><a id="af54e68478fd4a33bb46e1a578a603bfd" name="af54e68478fd4a33bb46e1a578a603bfd"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
 &#160;&#160;<b>T__0</b> = 1
-, <b>T__1</b> = 2
-, <b>T__2</b> = 3
-, <b>T__3</b> = 4
+, <b>TYPED_BY</b> = 2
+, <b>SPECIALIZES</b> = 3
+, <b>SUBSETS</b> = 4
 , <br />
-&#160;&#160;<b>TYPED_BY</b> = 5
-, <b>SPECIALIZES</b> = 6
-, <b>SUBSETS</b> = 7
-, <b>REFERENCES</b> = 8
+&#160;&#160;<b>REFERENCES</b> = 5
+, <b>REDEFINES</b> = 6
+, <b>CONJUNGATES</b> = 7
+, <b>KEYWORD_ABOUT</b> = 8
 , <br />
-&#160;&#160;<b>REDEFINES</b> = 9
-, <b>CONJUNGATES</b> = 10
-, <b>KEYWORD_ABOUT</b> = 11
-, <b>KEYWORD_ABSTRACT</b> = 12
+&#160;&#160;<b>KEYWORD_ABSTRACT</b> = 9
+, <b>KEYWORD_ALIAS</b> = 10
+, <b>KEYWORD_ALL</b> = 11
+, <b>KEYWORD_AND</b> = 12
 , <br />
-&#160;&#160;<b>KEYWORD_ALIAS</b> = 13
-, <b>KEYWORD_ALL</b> = 14
-, <b>KEYWORD_AND</b> = 15
-, <b>KEYWORD_AS</b> = 16
+&#160;&#160;<b>KEYWORD_AS</b> = 13
+, <b>KEYWORD_ASSOC</b> = 14
+, <b>KEYWORD_BEHAVIOR</b> = 15
+, <b>KEYWORD_BINDING</b> = 16
 , <br />
-&#160;&#160;<b>KEYWORD_ASSOC</b> = 17
-, <b>KEYWORD_BEHAVIOR</b> = 18
-, <b>KEYWORD_BINDING</b> = 19
-, <b>KEYWORD_BOOL</b> = 20
+&#160;&#160;<b>KEYWORD_BOOL</b> = 17
+, <b>KEYWORD_BY</b> = 18
+, <b>KEYWORD_CHAINS</b> = 19
+, <b>KEYWORD_CLASS</b> = 20
 , <br />
-&#160;&#160;<b>KEYWORD_BY</b> = 21
-, <b>KEYWORD_CHAINS</b> = 22
-, <b>KEYWORD_CLASS</b> = 23
-, <b>KEYWORD_CLASSIFIER</b> = 24
+&#160;&#160;<b>KEYWORD_CLASSIFIER</b> = 21
+, <b>KEYWORD_COMMENT</b> = 22
+, <b>KEYWORD_COMPOSITE</b> = 23
+, <b>KEYWORD_CONJUGATE</b> = 24
 , <br />
-&#160;&#160;<b>KEYWORD_COMMENT</b> = 25
-, <b>KEYWORD_COMPOSITE</b> = 26
-, <b>KEYWORD_CONJUGATE</b> = 27
-, <b>KEYWORD_CONJUGATES</b> = 28
+&#160;&#160;<b>KEYWORD_CONJUGATES</b> = 25
+, <b>KEYWORD_CONJUGATION</b> = 26
+, <b>KEYWORD_CONNECTOR</b> = 27
+, <b>KEYWORD_DATATYPE</b> = 28
 , <br />
-&#160;&#160;<b>KEYWORD_CONJUGATION</b> = 29
-, <b>KEYWORD_CONNECTOR</b> = 30
-, <b>KEYWORD_DATATYPE</b> = 31
-, <b>KEYWORD_DEFAULT</b> = 32
+&#160;&#160;<b>KEYWORD_DEFAULT</b> = 29
+, <b>KEYWORD_DEPENDENCY</b> = 30
+, <b>KEYWORD_DERIVED</b> = 31
+, <b>KEYWORD_DIFFERENCES</b> = 32
 , <br />
-&#160;&#160;<b>KEYWORD_DEPENDENCY</b> = 33
-, <b>KEYWORD_DERIVED</b> = 34
-, <b>KEYWORD_DIFFERENCES</b> = 35
-, <b>KEYWORD_DISJOINING</b> = 36
+&#160;&#160;<b>KEYWORD_DISJOINING</b> = 33
+, <b>KEYWORD_DISJOINT</b> = 34
+, <b>KEYWORD_DOC</b> = 35
+, <b>KEYWORD_ELSE</b> = 36
 , <br />
-&#160;&#160;<b>KEYWORD_DISJOINT</b> = 37
-, <b>KEYWORD_DOC</b> = 38
-, <b>KEYWORD_ELSE</b> = 39
-, <b>KEYWORD_END</b> = 40
+&#160;&#160;<b>KEYWORD_END</b> = 37
+, <b>KEYWORD_EXPR</b> = 38
+, <b>KEYWORD_FALSE</b> = 39
+, <b>KEYWORD_FEATURE</b> = 40
 , <br />
-&#160;&#160;<b>KEYWORD_EXPR</b> = 41
-, <b>KEYWORD_FALSE</b> = 42
-, <b>KEYWORD_FEATURE</b> = 43
-, <b>KEYWORD_FEATURED</b> = 44
+&#160;&#160;<b>KEYWORD_FEATURED</b> = 41
+, <b>KEYWORD_FEATURING</b> = 42
+, <b>KEYWORD_FILTER</b> = 43
+, <b>KEYWORD_FIRST</b> = 44
 , <br />
-&#160;&#160;<b>KEYWORD_FEATURING</b> = 45
-, <b>KEYWORD_FILTER</b> = 46
-, <b>KEYWORD_FIRST</b> = 47
-, <b>KEYWORD_FLOW</b> = 48
+&#160;&#160;<b>KEYWORD_FLOW</b> = 45
+, <b>KEYWORD_FOR</b> = 46
+, <b>KEYWORD_FROM</b> = 47
+, <b>KEYWORD_FUNCTION</b> = 48
 , <br />
-&#160;&#160;<b>KEYWORD_FOR</b> = 49
-, <b>KEYWORD_FROM</b> = 50
-, <b>KEYWORD_FUNCTION</b> = 51
-, <b>KEYWORD_HASTYPE</b> = 52
+&#160;&#160;<b>KEYWORD_HASTYPE</b> = 49
+, <b>KEYWORD_IF</b> = 50
+, <b>KEYWORD_INTERSECTS</b> = 51
+, <b>KEYWORD_IMPLIES</b> = 52
 , <br />
-&#160;&#160;<b>KEYWORD_IF</b> = 53
-, <b>KEYWORD_INTERSECTS</b> = 54
-, <b>KEYWORD_IMPLIES</b> = 55
-, <b>KEYWORD_IMPORT</b> = 56
+&#160;&#160;<b>KEYWORD_IMPORT</b> = 53
+, <b>KEYWORD_IN</b> = 54
+, <b>KEYWORD_INOUT</b> = 55
+, <b>KEYWORD_INTERACTION</b> = 56
 , <br />
-&#160;&#160;<b>KEYWORD_IN</b> = 57
-, <b>KEYWORD_INOUT</b> = 58
-, <b>KEYWORD_INTERACTION</b> = 59
-, <b>KEYWORD_INV</b> = 60
+&#160;&#160;<b>KEYWORD_INV</b> = 57
+, <b>KEYWORD_INVERSE</b> = 58
+, <b>KEYWORD_INVERTING</b> = 59
+, <b>KEYWORD_ISTYPE</b> = 60
 , <br />
-&#160;&#160;<b>KEYWORD_INVERSE</b> = 61
-, <b>KEYWORD_INVERTING</b> = 62
-, <b>KEYWORD_ISTYPE</b> = 63
-, <b>KEYWORD_LANGUAGE</b> = 64
+&#160;&#160;<b>KEYWORD_LANGUAGE</b> = 61
+, <b>KEYWORD_MEMBER</b> = 62
+, <b>KEYWORD_METACLASS</b> = 63
+, <b>KEYWORD_METADATA</b> = 64
 , <br />
-&#160;&#160;<b>KEYWORD_MEMBER</b> = 65
-, <b>KEYWORD_METACLASS</b> = 66
-, <b>KEYWORD_METADATA</b> = 67
-, <b>KEYWORD_MULTIPLICITY</b> = 68
+&#160;&#160;<b>KEYWORD_MULTIPLICITY</b> = 65
+, <b>KEYWORD_NAMESPACE</b> = 66
+, <b>KEYWORD_NONUNIQUE</b> = 67
+, <b>KEYWORD_NOT</b> = 68
 , <br />
-&#160;&#160;<b>KEYWORD_NAMESPACE</b> = 69
-, <b>KEYWORD_NONUNIQUE</b> = 70
-, <b>KEYWORD_NOT</b> = 71
-, <b>KEYWORD_NULL</b> = 72
+&#160;&#160;<b>KEYWORD_NULL</b> = 69
+, <b>KEYWORD_OF</b> = 70
+, <b>KEYWORD_OR</b> = 71
+, <b>KEYWORD_ORDERED</b> = 72
 , <br />
-&#160;&#160;<b>KEYWORD_OF</b> = 73
-, <b>KEYWORD_OR</b> = 74
-, <b>KEYWORD_ORDERED</b> = 75
-, <b>KEYWORD_OUT</b> = 76
+&#160;&#160;<b>KEYWORD_OUT</b> = 73
+, <b>KEYWORD_PACKAGE</b> = 74
+, <b>KEYWORD_PORTION</b> = 75
+, <b>KEYWORD_PREDICATE</b> = 76
 , <br />
-&#160;&#160;<b>KEYWORD_PACKAGE</b> = 77
-, <b>KEYWORD_PORTION</b> = 78
-, <b>KEYWORD_PREDICATE</b> = 79
-, <b>KEYWORD_PRIVATE</b> = 80
+&#160;&#160;<b>KEYWORD_PRIVATE</b> = 77
+, <b>KEYWORD_PROTECTED</b> = 78
+, <b>KEYWORD_PUBLIC</b> = 79
+, <b>KEYWORD_READONLY</b> = 80
 , <br />
-&#160;&#160;<b>KEYWORD_PROTECTED</b> = 81
-, <b>KEYWORD_PUBLIC</b> = 82
-, <b>KEYWORD_READONLY</b> = 83
-, <b>KEYWORD_REDEFINES</b> = 84
+&#160;&#160;<b>KEYWORD_REDEFINES</b> = 81
+, <b>KEYWORD_REDEFINITION</b> = 82
+, <b>KEYWORD_REFERENCES</b> = 83
+, <b>KEYWORD_REP</b> = 84
 , <br />
-&#160;&#160;<b>KEYWORD_REDEFINITION</b> = 85
-, <b>KEYWORD_REFERENCES</b> = 86
-, <b>KEYWORD_REP</b> = 87
-, <b>KEYWORD_RETURN</b> = 88
+&#160;&#160;<b>KEYWORD_RETURN</b> = 85
+, <b>KEYWORD_SPECILIZATION</b> = 86
+, <b>KEYWORD_SPECIALIZES</b> = 87
+, <b>KEYWORD_STEP</b> = 88
 , <br />
-&#160;&#160;<b>KEYWORD_SPECILIZATION</b> = 89
-, <b>KEYWORD_SPECIALIZES</b> = 90
-, <b>KEYWORD_STEP</b> = 91
-, <b>KEYWORD_STRUCT</b> = 92
+&#160;&#160;<b>KEYWORD_STRUCT</b> = 89
+, <b>KEYWORD_SUBCLASSIFIER</b> = 90
+, <b>KEYWORD_SUBSET</b> = 91
+, <b>KEYWORD_SUBSETS</b> = 92
 , <br />
-&#160;&#160;<b>KEYWORD_SUBCLASSIFIER</b> = 93
-, <b>KEYWORD_SUBSET</b> = 94
-, <b>KEYWORD_SUBSETS</b> = 95
-, <b>KEYWORD_SUBTYPE</b> = 96
+&#160;&#160;<b>KEYWORD_SUBTYPE</b> = 93
+, <b>KEYWORD_SUCCSESSION</b> = 94
+, <b>KEYWORD_THEN</b> = 95
+, <b>KEYWORD_TO</b> = 96
 , <br />
-&#160;&#160;<b>KEYWORD_SUCCSESSION</b> = 97
-, <b>KEYWORD_THEN</b> = 98
-, <b>KEYWORD_TO</b> = 99
-, <b>KEYWORD_TRUE</b> = 100
+&#160;&#160;<b>KEYWORD_TRUE</b> = 97
+, <b>KEYWORD_TYPE</b> = 98
+, <b>KEYWORD_TYPED</b> = 99
+, <b>KEYWORD_TYPING</b> = 100
 , <br />
-&#160;&#160;<b>KEYWORD_TYPE</b> = 101
-, <b>KEYWORD_TYPED</b> = 102
-, <b>KEYWORD_TYPING</b> = 103
-, <b>KEYWORD_UNIONS</b> = 104
+&#160;&#160;<b>KEYWORD_UNIONS</b> = 101
+, <b>KEYWORD_XOR</b> = 102
+, <b>KEYWORD_VAR</b> = 103
+, <b>KEYWORD_LOCALE</b> = 104
 , <br />
-&#160;&#160;<b>KEYWORD_XOR</b> = 105
-, <b>SINGLE_LINE_NOTE</b> = 106
-, <b>MULTI_LINE_NOTE</b> = 107
-, <b>REGULAR_COMMENT</b> = 108
+&#160;&#160;<b>KEYWORD_STANDARD</b> = 105
+, <b>KEYWORD_LIBRARY</b> = 106
+, <b>KEYWORD_CONSTANT</b> = 107
+, <b>SINGLE_LINE_NOTE</b> = 108
 , <br />
-&#160;&#160;<b>SYMBOL_COMMENT_BLOCK_START</b> = 109
-, <b>SYMBOL_NOTE_BLOCK_START</b> = 110
-, <b>SYMBOL_COMMENT_BLOCK_END</b> = 111
-, <b>SYMBOL_STATEMENT_DELIMITER</b> = 112
+&#160;&#160;<b>MULTI_LINE_NOTE</b> = 109
+, <b>REGULAR_COMMENT</b> = 110
+, <b>SYMBOL_COMMENT_BLOCK_START</b> = 111
+, <b>SYMBOL_NOTE_BLOCK_START</b> = 112
 , <br />
-&#160;&#160;<b>SYMBOL_STAR</b> = 113
-, <b>SYMBOL_NAMESPACE_SUBSET</b> = 114
-, <b>SYMBOL_TYPED_BY</b> = 115
-, <b>SYMBOL_SPECIALIZES</b> = 116
+&#160;&#160;<b>SYMBOL_COMMENT_BLOCK_END</b> = 113
+, <b>SYMBOL_STATEMENT_DELIMITER</b> = 114
+, <b>SYMBOL_STAR</b> = 115
+, <b>SYMBOL_NAMESPACE_SUBSET</b> = 116
 , <br />
-&#160;&#160;<b>SYMBOL_REFERENCES</b> = 117
-, <b>SYMBOL_REDEFINES</b> = 118
-, <b>SYMBOL_CONJUNGATES</b> = 119
-, <b>SYMBOL_ROUND_BRACKET_OPEN</b> = 120
+&#160;&#160;<b>SYMBOL_TYPED_BY</b> = 117
+, <b>SYMBOL_SPECIALIZES</b> = 118
+, <b>SYMBOL_REFERENCES</b> = 119
+, <b>SYMBOL_REDEFINES</b> = 120
 , <br />
-&#160;&#160;<b>SYMBOL_ROUND_BRACKET_CLOSE</b> = 121
-, <b>SYMBOL_CURLY_BRACKET_OPEN</b> = 122
-, <b>SYMBOL_CURLY_BRACKET_CLOSE</b> = 123
-, <b>SYMBOL_SQUARE_BRACKET_OPEN</b> = 124
+&#160;&#160;<b>SYMBOL_CONJUNGATES</b> = 121
+, <b>SYMBOL_ROUND_BRACKET_OPEN</b> = 122
+, <b>SYMBOL_ROUND_BRACKET_CLOSE</b> = 123
+, <b>SYMBOL_CURLY_BRACKET_OPEN</b> = 124
 , <br />
-&#160;&#160;<b>SYMBOL_SQUARE_BRACKET_CLOSE</b> = 125
-, <b>SYMBOL_COMMA</b> = 126
-, <b>SYMBOL_AT</b> = 127
-, <b>SYMBOL_HASHTAG</b> = 128
+&#160;&#160;<b>SYMBOL_CURLY_BRACKET_CLOSE</b> = 125
+, <b>SYMBOL_SQUARE_BRACKET_OPEN</b> = 126
+, <b>SYMBOL_SQUARE_BRACKET_CLOSE</b> = 127
+, <b>SYMBOL_COMMA</b> = 128
 , <br />
-&#160;&#160;<b>SYMBOL_MOD</b> = 129
-, <b>SYMBOL_AND</b> = 130
-, <b>SYMBOL_UPPER</b> = 131
-, <b>SYMBOL_VERTICAL_LINE</b> = 132
+&#160;&#160;<b>SYMBOL_AT</b> = 129
+, <b>SYMBOL_HASHTAG</b> = 130
+, <b>SYMBOL_MOD</b> = 131
+, <b>SYMBOL_AND</b> = 132
 , <br />
-&#160;&#160;<b>SYMBOL_DOUBLE_STAR</b> = 133
-, <b>SYMBOL_PLUS</b> = 134
-, <b>SYMBOL_MINUS</b> = 135
-, <b>SYMBOL_SLASH</b> = 136
+&#160;&#160;<b>SYMBOL_UPPER</b> = 133
+, <b>SYMBOL_VERTICAL_LINE</b> = 134
+, <b>SYMBOL_DOUBLE_STAR</b> = 135
+, <b>SYMBOL_PLUS</b> = 136
 , <br />
-&#160;&#160;<b>SYMBOL_ARROOW</b> = 137
-, <b>SYMBOL_DOT</b> = 138
-, <b>SYMBOL_DDOT</b> = 139
-, <b>SYMBOL_SMALLER</b> = 140
+&#160;&#160;<b>SYMBOL_MINUS</b> = 137
+, <b>SYMBOL_SLASH</b> = 138
+, <b>SYMBOL_ARROOW</b> = 139
+, <b>SYMBOL_DOT</b> = 140
 , <br />
-&#160;&#160;<b>SYMBOL_SMALLER_EQUAL</b> = 141
-, <b>SYMBOL_ASSIGN</b> = 142
-, <b>SYMBOL_DEF_ASSIGN</b> = 143
-, <b>SYMBOL_EQUALS</b> = 144
+&#160;&#160;<b>SYMBOL_DDOT</b> = 141
+, <b>SYMBOL_SMALLER</b> = 142
+, <b>SYMBOL_SMALLER_EQUAL</b> = 143
+, <b>SYMBOL_ASSIGN</b> = 144
 , <br />
-&#160;&#160;<b>SYMBOL_IFF_EQUALS</b> = 145
-, <b>SYMBOL_NOT_EQUALS</b> = 146
-, <b>SYMBOL_IFF_NOT_EQUALS</b> = 147
-, <b>SYMBOL_GREATER</b> = 148
+&#160;&#160;<b>SYMBOL_DEF_ASSIGN</b> = 145
+, <b>SYMBOL_EQUALS</b> = 146
+, <b>SYMBOL_IFF_EQUALS</b> = 147
+, <b>SYMBOL_NOT_EQUALS</b> = 148
 , <br />
-&#160;&#160;<b>SYMBOL_GREATER_EQUALS</b> = 149
-, <b>SYMBOL_QUESTION</b> = 150
-, <b>SYMBOL_DQUESTION</b> = 151
-, <b>SYMBOL_DOT_QUESTION</b> = 152
+&#160;&#160;<b>SYMBOL_IFF_NOT_EQUALS</b> = 149
+, <b>SYMBOL_GREATER</b> = 150
+, <b>SYMBOL_GREATER_EQUALS</b> = 151
+, <b>SYMBOL_QUESTION</b> = 152
 , <br />
-&#160;&#160;<b>NAME</b> = 153
-, <b>BASIC_NAME</b> = 154
-, <b>UNRESTRICTED_NAME</b> = 155
-, <b>DECIMAL_VALUE</b> = 156
+&#160;&#160;<b>SYMBOL_DQUESTION</b> = 153
+, <b>SYMBOL_DOT_QUESTION</b> = 154
+, <b>NAME</b> = 155
+, <b>BASIC_NAME</b> = 156
 , <br />
-&#160;&#160;<b>EXPONENTIAL_VALUE</b> = 157
-, <b>STRING_VALUE</b> = 158
-, <b>WS</b> = 159
+&#160;&#160;<b>UNRESTRICTED_NAME</b> = 157
+, <b>DECIMAL_VALUE</b> = 158
+, <b>EXPONENTIAL_VALUE</b> = 159
+, <b>STRING_VALUE</b> = 160
+, <br />
+&#160;&#160;<b>WS</b> = 161
 <br />
  }</td></tr>
-<tr class="separator:ace4d0fc04fd1535bb67e66f44e389228"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:af54e68478fd4a33bb46e1a578a603bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -357,8 +360,8 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b>
 <tr class="separator:a418518bcddd0cf77085f2e59969d599a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>filehandling/src/parsing/kerml/<a class="el" href="../../df/d29/_ker_m_l_lexer_8h_source.html">KerMLLexer.h</a></li>
-<li>filehandling/src/parsing/kerml/<b>KerMLLexer.cpp</b></li>
+<li>filehandling/src/kerml/<a class="el" href="../../df/d29/_ker_m_l_lexer_8h_source.html">KerMLLexer.h</a></li>
+<li>filehandling/src/kerml/<b>KerMLLexer.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

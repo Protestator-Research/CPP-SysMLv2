@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Binary_interface_partContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context_1a16a5f1e2598b984abd98f989500ac35d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Binary_interface_partContext::Binary_interface_partContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Binary_interface_partContext</name>
+        <qualifiedname>SysMLv2Parser::Binary_interface_partContext::Binary_interface_partContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2590" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11508" bodyend="11510"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context_1a8cfa439b2201b7d9ad2f6fba4c04d027" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Binary_interface_partContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Binary_interface_partContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2591" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11525" bodyend="11527"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context_1a94561427b4aa4539d9de90e69cb97b9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="d6/deb/class_sys_m_lv2_parser_1_1_interface__end__member_context" kindref="compound">Interface_end_memberContext</ref> * &gt;</type>
+        <definition>std::vector&lt; SysMLv2Parser::Interface_end_memberContext * &gt; SysMLv2Parser::Binary_interface_partContext::interface_end_member</definition>
+        <argsstring>()</argsstring>
+        <name>interface_end_member</name>
+        <qualifiedname>SysMLv2Parser::Binary_interface_partContext::interface_end_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2592" column="17" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11512" bodyend="11514"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context_1afcddb9c874c3f862f0eebea1429808e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/deb/class_sys_m_lv2_parser_1_1_interface__end__member_context" kindref="compound">Interface_end_memberContext</ref> *</type>
+        <definition>SysMLv2Parser::Interface_end_memberContext * SysMLv2Parser::Binary_interface_partContext::interface_end_member</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>interface_end_member</name>
+        <qualifiedname>SysMLv2Parser::Binary_interface_partContext::interface_end_member</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2593" column="33" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11516" bodyend="11518"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context_1aeb38be24a79aef1850a90bddb2523b98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>antlr4::tree::TerminalNode *</type>
+        <definition>tree::TerminalNode * SysMLv2Parser::Binary_interface_partContext::KEYWORD_TO</definition>
+        <argsstring>()</argsstring>
+        <name>KEYWORD_TO</name>
+        <qualifiedname>SysMLv2Parser::Binary_interface_partContext::KEYWORD_TO</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2594" column="32" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11520" bodyend="11522"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context_1ae56491be34e83fb467c8476ae8f4b77c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Binary_interface_partContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Binary_interface_partContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2596" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11529" bodyend="11533"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context_1aa7ec0494fcc1716274f77e77a2ff2071" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Binary_interface_partContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Binary_interface_partContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2597" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="11535" bodyend="11539"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Binary_interface_partContext</label>
+        <link refid="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Binary_interface_partContext</label>
+        <link refid="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2588" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="2588" bodyend="2599"/>
+    <listofallmembers>
+      <member refid="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context_1a16a5f1e2598b984abd98f989500ac35d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Binary_interface_partContext</scope><name>Binary_interface_partContext</name></member>
+      <member refid="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context_1ae56491be34e83fb467c8476ae8f4b77c" prot="public" virt="virtual"><scope>SysMLv2Parser::Binary_interface_partContext</scope><name>enterRule</name></member>
+      <member refid="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context_1aa7ec0494fcc1716274f77e77a2ff2071" prot="public" virt="virtual"><scope>SysMLv2Parser::Binary_interface_partContext</scope><name>exitRule</name></member>
+      <member refid="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context_1a8cfa439b2201b7d9ad2f6fba4c04d027" prot="public" virt="virtual"><scope>SysMLv2Parser::Binary_interface_partContext</scope><name>getRuleIndex</name></member>
+      <member refid="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context_1a94561427b4aa4539d9de90e69cb97b9d" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Binary_interface_partContext</scope><name>interface_end_member</name></member>
+      <member refid="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context_1afcddb9c874c3f862f0eebea1429808e4" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Binary_interface_partContext</scope><name>interface_end_member</name></member>
+      <member refid="d2/d07/class_sys_m_lv2_parser_1_1_binary__interface__part_context_1aeb38be24a79aef1850a90bddb2523b98" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Binary_interface_partContext</scope><name>KEYWORD_TO</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -2,8 +2,7 @@
 // Created by Moritz Herzog on 31.03.25.
 //
 
-#ifndef SYSMLV2_BINDINGCONNECTOR_H
-#define SYSMLV2_BINDINGCONNECTOR_H
+#pragma once
 
 namespace KerML::Entities {
     class BindingConnector {
@@ -11,5 +10,3 @@ namespace KerML::Entities {
     };
 }
 
-
-#endif //SYSMLV2_BINDINGCONNECTOR_H

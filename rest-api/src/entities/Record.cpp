@@ -19,7 +19,7 @@
 #include "Record.h"
 
 
-namespace SysMLv2::Entities {
+namespace SysMLv2::REST {
 
     Record::Record(boost::uuids::uuid id, std::string name, std::string description) {
         Id=id;
@@ -49,6 +49,8 @@ namespace SysMLv2::Entities {
         }
         catch (...) {
             Name = jsonString;
+            Id = boost::uuids::random_generator()();
+            
         }
 
     }

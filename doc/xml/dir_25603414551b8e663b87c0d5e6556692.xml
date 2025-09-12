@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_25603414551b8e663b87c0d5e6556692" kind="dir">
+    <compoundname>build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel</compoundname>
+    <innerdir refid="dir_92201901009079de2ece50ba37e9a22b">build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/associations</innerdir>
+    <innerdir refid="dir_c5d3430813a9c2bfd2bb7e80448324ec">build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/behaviors</innerdir>
+    <innerdir refid="dir_4d7b445297225d765678e8edc9ab7d90">build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/classes</innerdir>
+    <innerdir refid="dir_766ea4f83fe7cbd01aafed60d2a867f6">build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/connectors</innerdir>
+    <innerdir refid="dir_263e06629b087c125bb67f096a791457">build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/datatypes</innerdir>
+    <innerdir refid="dir_b7ca91eee3adebe9a53c974f05115995">build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/expressions</innerdir>
+    <innerdir refid="dir_f0c9b0ef771682e9f986ccf001483700">build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/featurevalues</innerdir>
+    <innerdir refid="dir_b823c1efdd753c035800bc5a22c17d72">build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/functions</innerdir>
+    <innerdir refid="dir_55c04bfff89d6c3364055889c3f8e3e0">build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/interactions</innerdir>
+    <innerdir refid="dir_ce5308c19e028fdae2428ed38377f451">build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/metadata</innerdir>
+    <innerdir refid="dir_8285171f4a8973d8c5d1b9e1f43eec12">build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/multiplicities</innerdir>
+    <innerdir refid="dir_56f8e4de31bc9461cd1b54c09b81ea81">build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/packages</innerdir>
+    <innerdir refid="dir_57f75e085f6e4ded596494801bad962a">build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/structures</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="build/Debug/kerml/CMakeFiles/kerml.dir/src/kernel/"/>
+  </compounddef>
+</doxygen>

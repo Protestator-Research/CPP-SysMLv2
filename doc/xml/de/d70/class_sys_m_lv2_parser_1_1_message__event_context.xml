@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="de/d70/class_sys_m_lv2_parser_1_1_message__event_context" kind="class" language="C++" prot="public">
+    <compoundname>SysMLv2Parser::Message_eventContext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">antlr4::ParserRuleContext</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d70/class_sys_m_lv2_parser_1_1_message__event_context_1a763c635c36bb918c288e4e279206c466" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SysMLv2Parser::Message_eventContext::Message_eventContext</definition>
+        <argsstring>(antlr4::ParserRuleContext *parent, size_t invokingState)</argsstring>
+        <name>Message_eventContext</name>
+        <qualifiedname>SysMLv2Parser::Message_eventContext::Message_eventContext</qualifiedname>
+        <param>
+          <type>antlr4::ParserRuleContext *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>invokingState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2766" column="5" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="12374" bodyend="12376"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d70/class_sys_m_lv2_parser_1_1_message__event_context_1aba196a3a0d7053b44095b69d3b93365b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t SysMLv2Parser::Message_eventContext::getRuleIndex</definition>
+        <argsstring>() const override</argsstring>
+        <name>getRuleIndex</name>
+        <qualifiedname>SysMLv2Parser::Message_eventContext::getRuleIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2767" column="20" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="12383" bodyend="12385"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d70/class_sys_m_lv2_parser_1_1_message__event_context_1a4b2b78a8373a22e289cd56890b2d62f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dd/d89/class_sys_m_lv2_parser_1_1_owned__reference__subsetting_context" kindref="compound">Owned_reference_subsettingContext</ref> *</type>
+        <definition>SysMLv2Parser::Owned_reference_subsettingContext * SysMLv2Parser::Message_eventContext::owned_reference_subsetting</definition>
+        <argsstring>()</argsstring>
+        <name>owned_reference_subsetting</name>
+        <qualifiedname>SysMLv2Parser::Message_eventContext::owned_reference_subsetting</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2768" column="39" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="12378" bodyend="12380"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d70/class_sys_m_lv2_parser_1_1_message__event_context_1a182e2025cd89603bcad4587617af4d0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Message_eventContext::enterRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>enterRule</name>
+        <qualifiedname>SysMLv2Parser::Message_eventContext::enterRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2770" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="12387" bodyend="12391"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d70/class_sys_m_lv2_parser_1_1_message__event_context_1a87eb8f468f3b7e938cdea4db12c8a9ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SysMLv2Parser::Message_eventContext::exitRule</definition>
+        <argsstring>(antlr4::tree::ParseTreeListener *listener) override</argsstring>
+        <name>exitRule</name>
+        <qualifiedname>SysMLv2Parser::Message_eventContext::exitRule</qualifiedname>
+        <param>
+          <type>antlr4::tree::ParseTreeListener *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2771" column="18" bodyfile="filehandling/src/sysml2/SysMLv2Parser.cpp" bodystart="12393" bodyend="12397"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>SysMLv2Parser::Message_eventContext</label>
+        <link refid="de/d70/class_sys_m_lv2_parser_1_1_message__event_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>SysMLv2Parser::Message_eventContext</label>
+        <link refid="de/d70/class_sys_m_lv2_parser_1_1_message__event_context"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>antlr4::ParserRuleContext</label>
+      </node>
+    </collaborationgraph>
+    <location file="filehandling/src/sysml2/SysMLv2Parser.h" line="2764" column="3" bodyfile="filehandling/src/sysml2/SysMLv2Parser.h" bodystart="2764" bodyend="2773"/>
+    <listofallmembers>
+      <member refid="de/d70/class_sys_m_lv2_parser_1_1_message__event_context_1a182e2025cd89603bcad4587617af4d0f" prot="public" virt="virtual"><scope>SysMLv2Parser::Message_eventContext</scope><name>enterRule</name></member>
+      <member refid="de/d70/class_sys_m_lv2_parser_1_1_message__event_context_1a87eb8f468f3b7e938cdea4db12c8a9ba" prot="public" virt="virtual"><scope>SysMLv2Parser::Message_eventContext</scope><name>exitRule</name></member>
+      <member refid="de/d70/class_sys_m_lv2_parser_1_1_message__event_context_1aba196a3a0d7053b44095b69d3b93365b" prot="public" virt="virtual"><scope>SysMLv2Parser::Message_eventContext</scope><name>getRuleIndex</name></member>
+      <member refid="de/d70/class_sys_m_lv2_parser_1_1_message__event_context_1a763c635c36bb918c288e4e279206c466" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Message_eventContext</scope><name>Message_eventContext</name></member>
+      <member refid="de/d70/class_sys_m_lv2_parser_1_1_message__event_context_1a4b2b78a8373a22e289cd56890b2d62f8" prot="public" virt="non-virtual"><scope>SysMLv2Parser::Message_eventContext</scope><name>owned_reference_subsetting</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
