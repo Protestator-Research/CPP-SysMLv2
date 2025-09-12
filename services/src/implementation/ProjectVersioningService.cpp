@@ -18,7 +18,7 @@ namespace SysMLv2::API {
         return ProjectIdCommitMap[project->getId()];
     }
 
-    std::shared_ptr<SysMLv2::REST::Commit> ProjectVersioningService::getHeadCommit(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Branch> branch) {
+    std::shared_ptr<SysMLv2::REST::Commit> ProjectVersioningService::getHeadCommit(std::shared_ptr<SysMLv2::REST::Project>, std::shared_ptr<SysMLv2::REST::Branch> branch) {
         return branch->getHead();
     }
 
@@ -72,7 +72,7 @@ namespace SysMLv2::API {
         return commit;
     }
 
-    std::vector<std::shared_ptr<SysMLv2::REST::DataVersion>> ProjectVersioningService::getCommitChange(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, std::vector<SysMLv2::REST::ChangeType> changeType) {
+    std::vector<std::shared_ptr<SysMLv2::REST::DataVersion>> ProjectVersioningService::getCommitChange(std::shared_ptr<SysMLv2::REST::Project>, std::shared_ptr<SysMLv2::REST::Commit> commit, std::vector<SysMLv2::REST::ChangeType> changeType) {
         std::vector<std::shared_ptr<SysMLv2::REST::DataVersion>> returnValue;
 
         uint8_t filter = 0x00;
@@ -82,13 +82,18 @@ namespace SysMLv2::API {
 
         for (const auto& dataVersion : commit->getDataVersion())
         {
-            if ((REST::ChangeType::CREATED & filter)&&(dataVersion->getPayload()->getId()==boost::uuids::nil_uuid()))
+            if ((REST::ChangeType::CREATED & filter)&&((dataVersion->getId()==boost::uuids::nil_uuid())&&(dataVersion->getPayload()!=nullptr)))
+                returnValue.push_back(dataVersion);
+            if ((REST::ChangeType::UPDATED & filter)&&((dataVersion->getId()!=boost::uuids::nil_uuid())&&(dataVersion->getPayload()!=nullptr)))
+                returnValue.push_back(dataVersion);
+            if ((REST::ChangeType::DELETED & filter)&&((dataVersion->getId()!=boost::uuids::nil_uuid())&&(dataVersion->getPayload()==nullptr)))
+                returnValue.push_back(dataVersion);
         }
 
         return returnValue;
     }
 
-    std::shared_ptr<SysMLv2::REST::DataVersion> ProjectVersioningService::getCommitChangeById(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, boost::uuids::uuid &changeId) {
+    std::shared_ptr<SysMLv2::REST::DataVersion> ProjectVersioningService::getCommitChangeById(std::shared_ptr<SysMLv2::REST::Project>, std::shared_ptr<SysMLv2::REST::Commit> commit, boost::uuids::uuid &changeId) {
         for (const auto& change : commit->getDataVersion())
         {
             if (change->getId() == changeId)
@@ -118,7 +123,7 @@ namespace SysMLv2::API {
     std::shared_ptr<SysMLv2::REST::Project> ProjectVersioningService::setDefaultBranch(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid &branchId) {
         const auto branchesList = ProjectIdBranchMap.at(project->getId());
 
-        for (const auto branch : branchesList)
+        for (const auto& branch : branchesList)
         {
             if (branch->getId()==branchId)
             {
@@ -145,6 +150,7 @@ namespace SysMLv2::API {
                 branch = branchesList[i];
         }
         ProjectIdBranchMap.at(project->getId()).erase(std::remove(ProjectIdBranchMap.at(project->getId()).begin(), ProjectIdBranchMap.at(project->getId()).end(), branch));
+        return branch;
     }
 
     std::vector<std::shared_ptr<SysMLv2::REST::Tag>> ProjectVersioningService::getTags(std::shared_ptr<SysMLv2::REST::Project> project) {
@@ -161,7 +167,7 @@ namespace SysMLv2::API {
         return nullptr;
     }
 
-    std::shared_ptr<SysMLv2::REST::Commit> ProjectVersioningService::getTaggedCommit(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Tag> tag) {
+    std::shared_ptr<SysMLv2::REST::Commit> ProjectVersioningService::getTaggedCommit(std::shared_ptr<SysMLv2::REST::Project>, std::shared_ptr<SysMLv2::REST::Tag> tag) {
         return tag->referencedCommit();
     }
 
@@ -176,7 +182,7 @@ namespace SysMLv2::API {
         return nullptr;
     }
 
-    std::vector<std::shared_ptr<SysMLv2::REST::DataDifference>> ProjectVersioningService::diffCommits(std::shared_ptr<SysMLv2::REST::Commit> baseCommit, std::shared_ptr<SysMLv2::REST::Commit> compareCommit, std::vector<SysMLv2::REST::ChangeType> changeType) {
+    std::vector<std::shared_ptr<SysMLv2::REST::DataDifference>> ProjectVersioningService::diffCommits(std::shared_ptr<SysMLv2::REST::Commit> , std::shared_ptr<SysMLv2::REST::Commit> , std::vector<SysMLv2::REST::ChangeType> ) {
         return std::vector<std::shared_ptr<SysMLv2::REST::DataDifference>>();
     }
 }
