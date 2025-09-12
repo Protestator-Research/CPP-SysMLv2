@@ -6,7 +6,7 @@
 #include "kerml/KerMlErrorListener.h"
 #include "kerml/KerMLLexer.h"
 #include "kerml/KerMLParser.h"
-#include "kerML/KerMlListenerImplementation.h"
+#include "kerml/KerMlListenerImplementation.h"
 
 #include <antlr4-common.h>
 #include <boost/uuid/uuid_generators.hpp>
