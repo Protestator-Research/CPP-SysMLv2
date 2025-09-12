@@ -15,8 +15,8 @@
 namespace SysMLv2::Files {
     std::pair<std::vector<std::shared_ptr<KerML::Entities::Element>>, std::vector<std::shared_ptr<ParserError>>> Parser::parseKerML(std::string text) {
         antlr4::ANTLRInputStream input(text);
-        KerMLErrorListener *listener = new KerMLErrorListener();
-        KerMLListenerImplementation* listenerImplementation = new KerMLListenerImplementation();
+        auto *listener = new KerMLErrorListener();
+        auto* listenerImplementation = new KerMLListenerImplementation();
         KerMLLexer lexer(&input);
         lexer.addErrorListener(listener);
         antlr4::CommonTokenStream tokens(&lexer);
@@ -33,6 +33,11 @@ namespace SysMLv2::Files {
         for(const auto& error:syntaxErrors) {
             errorVector.push_back(std::make_shared<ParserError>(boost::uuids::random_generator()(),"",ErrorType::ERROR, error->message()));
         }
+
+        // Cleanup; So no memory leaks happend.
+        delete listenerImplementation;
+        delete listener;
+
         return std::make_pair(elements, errorVector);
     }
 
