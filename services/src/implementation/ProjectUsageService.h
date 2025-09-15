@@ -22,7 +22,7 @@ namespace SysMLv2::API {
         std::shared_ptr<SysMLv2::REST::Commit> createProjectUsage(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Branch> branch, std::shared_ptr<SysMLv2::REST::ProjectUsage> projectUsage) override;
 
     protected:
-        std::map<boost::uuids::uuid, SysMLv2::REST::ProjectUsage> ProjectIdProjectUsageMap;
+        std::map<boost::uuids::uuid, std::vector<std::shared_ptr<SysMLv2::REST::ProjectUsage>>> ProjectIdProjectUsageMap;
     };
 }
 
