@@ -5,7 +5,7 @@
 #ifndef DIGITALTWIN_STATUSCODE_H
 #define DIGITALTWIN_STATUSCODE_H
 
-#include "../sysmlv2service_global.h"
+#include <sysmlv2/service/sysmlv2service_global.h>
 
 namespace SysMLv2::API {
     enum SYSMLV2SERVICE_EXPORT INTERNAL_STATUS_CODE {

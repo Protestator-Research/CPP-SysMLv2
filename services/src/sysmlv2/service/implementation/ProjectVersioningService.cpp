@@ -2,7 +2,7 @@
 // Created by Moritz Herzog on 09.04.25.
 //
 
-#include "ProjectVersioningService.h"
+#include "sysmlv2/service/implementation/ProjectVersioningService.h"
 
 #include <boost/uuid/nil_generator.hpp>
 

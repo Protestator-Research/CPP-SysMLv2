@@ -5,7 +5,7 @@
 #ifndef DIGITALTWIN_HTTPRETURNCODES_H
 #define DIGITALTWIN_HTTPRETURNCODES_H
 
-#include "../sysmlv2service_global.h"
+#include <sysmlv2/service/sysmlv2service_global.h>
 
 namespace SysMLv2::API::STANDARDS::HTTP {
     /**

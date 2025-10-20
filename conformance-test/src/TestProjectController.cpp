@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <implementation/ProjectService.h>
+#include <../../services/include/sysmlv2/service/implementation/ProjectService.h>
 #include <entities/Project.h>
 #include <entities/Branch.h>
 

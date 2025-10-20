@@ -5,7 +5,7 @@
 #ifndef SYSML_PROJECTUSAGESERVICE_H
 #define SYSML_PROJECTUSAGESERVICE_H
 
-#include "../interfaces/IProjectUsageService.h"
+#include <sysmlv2/service/interfaces/IProjectUsageService.h>
 #include <boost/uuid/uuid.hpp>
 #include <map>
 

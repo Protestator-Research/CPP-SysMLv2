@@ -6,7 +6,7 @@
 
 #include <stdexcept>
 
-#include "../sysmlv2service_global.h"
+#include <sysmlv2/service/sysmlv2service_global.h>
 
 namespace SysMLv2::API::EXCEPTIONS {
     class SYSMLV2SERVICE_EXPORT NotEnoughMemoryError : public std::runtime_error {

@@ -15,8 +15,8 @@
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
-#include "StatusCode.h"
-#include "../sysmlv2service_global.h"
+#include <sysmlv2/service/online/StatusCode.h>
+#include <sysmlv2/service/sysmlv2service_global.h>
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------

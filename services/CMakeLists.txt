@@ -3,43 +3,43 @@ cmake_minimum_required(VERSION 3.15)
 project(sysmlv2service CXX C)
 
 set(GLOBAL_HEADER
-        src/sysmlv2service_global.h)
+        include/sysmlv2/service/sysmlv2service_global.h)
 
 set(INTERFACE_HEADER
-        src/interfaces/IProjectUsageService.h
-        src/interfaces/IElementNavigationService.h
-        src/interfaces/IExternalReleationshipService.h
-        src/interfaces/IProjectService.h
-        src/interfaces/IProjectVersioningService.h
-        src/interfaces/IQueryService.h)
+        include/sysmlv2/service/interfaces/IProjectUsageService.h
+        include/sysmlv2/service/interfaces/IElementNavigationService.h
+        include/sysmlv2/service/interfaces/IExternalReleationshipService.h
+        include/sysmlv2/service/interfaces/IProjectService.h
+        include/sysmlv2/service/interfaces/IProjectVersioningService.h
+        include/sysmlv2/service/interfaces/IQueryService.h)
 
 set(API_HEADER
-        src/implementation/ElementNavigationService.h
-        src/implementation/ProjectService.h
-        src/implementation/ProjectUsageService.h
-        src/implementation/ProjectVersioningService.h)
+        include/sysmlv2/service/implementation/ElementNavigationService.h
+        include/sysmlv2/service/implementation/ProjectService.h
+        include/sysmlv2/service/implementation/ProjectUsageService.h
+        include/sysmlv2/service/implementation/ProjectVersioningService.h)
 
 set(ONLINE_HEADER
-        src/online/ConnectionError.h
-        src/online/HttpException.h
-        src/online/NotEnoughMemoryError.h
-        src/online/HttpReturnCodes.h
-        src/online/StatusCode.h
-        src/online/SysMLAPIImplementation.h)
+        include/sysmlv2/service/online/ConnectionError.h
+        include/sysmlv2/service/online/HttpException.h
+        include/sysmlv2/service/online/NotEnoughMemoryError.h
+        include/sysmlv2/service/online/HttpReturnCodes.h
+        include/sysmlv2/service/online/StatusCode.h
+        include/sysmlv2/service/online/SysMLAPIImplementation.h)
 
 add_library(sysmlv2service
         ${GLOBAL_HEADER}
         ${API_HEADER}
         ${INTERFACE_HEADER}
         ${ONLINE_HEADER}
-        src/implementation/ElementNavigationService.cpp
-        src/implementation/ProjectService.cpp
-        src/implementation/ProjectUsageService.cpp
-        src/implementation/ProjectVersioningService.cpp
-        src/online/ConnectionError.cpp
-        src/online/HttpException.cpp
-        src/online/NotEnoughMemoryError.cpp
-        src/online/SysMLAPIImplementation.cpp)
+        src/sysmlv2/service/implementation/ElementNavigationService.cpp
+        src/sysmlv2/service/implementation/ProjectService.cpp
+        src/sysmlv2/service/implementation/ProjectUsageService.cpp
+        src/sysmlv2/service/implementation/ProjectVersioningService.cpp
+        src/sysmlv2/service/online/ConnectionError.cpp
+        src/sysmlv2/service/online/HttpException.cpp
+        src/sysmlv2/service/online/NotEnoughMemoryError.cpp
+        src/sysmlv2/service/online/SysMLAPIImplementation.cpp)
 
 target_link_libraries(sysmlv2service
         boost::boost
@@ -48,6 +48,7 @@ target_link_libraries(sysmlv2service
         sysmlv2rest)
 
 target_include_directories(sysmlv2service PUBLIC
+        ./include
         ../rest-api/src
         ../interfaces/src)
 

@@ -9,7 +9,7 @@
 #include <boost/uuid/uuid.hpp>
 #include <string>
 #include <memory>
-#include "../sysmlv2service_global.h"
+#include <sysmlv2/service/sysmlv2service_global.h>
 
 namespace SysMLv2::REST {
     class Query;

@@ -2,7 +2,7 @@
 // Created by Moritz Herzog on 05.01.24.
 //
 
-#include "NotEnoughMemoryError.h"
+#include "sysmlv2/service/online/NotEnoughMemoryError.h"
 
 namespace SysMLv2::API::EXCEPTIONS {
 

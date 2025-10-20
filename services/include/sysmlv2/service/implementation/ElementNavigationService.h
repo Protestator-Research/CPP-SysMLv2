@@ -5,9 +5,8 @@
 #pragma once
 
 #include <map>
-
-#include "../interfaces/IElementNavigationService.h"
-#include "../sysmlv2service_global.h"
+#include <sysmlv2/service/interfaces/IElementNavigationService.h>
+#include <sysmlv2/service/sysmlv2service_global.h>
 
 namespace SysMLv2::API {
     /**

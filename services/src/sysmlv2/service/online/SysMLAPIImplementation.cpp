@@ -19,11 +19,11 @@
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
-#include "SysMLAPIImplementation.h"
-#include "NotEnoughMemoryError.h"
-#include "ConnectionError.h"
-#include "HttpReturnCodes.h"
-#include "HttpException.h"
+#include <sysmlv2/service/online/SysMLAPIImplementation.h>
+#include <sysmlv2/service/online/NotEnoughMemoryError.h>
+#include <sysmlv2/service/online/ConnectionError.h>
+#include <sysmlv2/service/online/HttpReturnCodes.h>
+#include <sysmlv2/service/online/HttpException.h>
 #include "serialization/SysMLv2Deserializer.h"
 #include "entities/Project.h"
 #include "entities/Commit.h"
@@ -262,7 +262,7 @@ namespace SysMLv2::API {
 
     std::string
     SysMLAPIImplementation::loginToBackendVersion3(const std::string &username, const std::string &passwod) {
-        std::string barrierString;
+        std::string barrierString = "";
 
         CURLcode ServerResult;
         nlohmann::json jsonData;
@@ -427,7 +427,6 @@ namespace SysMLv2::API {
         auto serverConnection = setUpServerConnection("users/login", "", jsonData.dump().c_str());
 
         ServerResult = curl_easy_perform(serverConnection);
-        std::cout<<"Server Result: "<<ServerResult<<std::endl;
         if (ServerResult == CURLE_OK) {
             auto splittedAnswer = splittString(Data, ' ');
             barrierString = splittedAnswer[2];

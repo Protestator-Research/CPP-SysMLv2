@@ -4,8 +4,8 @@
 
 #pragma once
 
-#include "../interfaces/IProjectService.h"
-#include "../sysmlv2service_global.h"
+#include <sysmlv2/service/interfaces/IProjectService.h>
+#include <sysmlv2/service/sysmlv2service_global.h>
 #include <vector>
 #include <map>
 #include <memory>

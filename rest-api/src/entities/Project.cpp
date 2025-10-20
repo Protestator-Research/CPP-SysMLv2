@@ -50,7 +50,6 @@ namespace SysMLv2::REST {
     }
 
     Project::Project(std::string JsonString) : Record(JsonString) {
-        std::cout<<"Project Constructor: "<< JsonString<<std::endl;
         try {
             nlohmann::json parsedJson = nlohmann::json::parse(JsonString);
 

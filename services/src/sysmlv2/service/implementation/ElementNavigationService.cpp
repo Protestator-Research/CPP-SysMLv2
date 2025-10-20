@@ -2,7 +2,7 @@
 // Created by Moritz Herzog on 19.03.25.
 //
 
-#include "ElementNavigationService.h"
+#include "sysmlv2/service/implementation/ElementNavigationService.h"
 
 #include <entities/Element.h>
 #include <entities/Project.h>
