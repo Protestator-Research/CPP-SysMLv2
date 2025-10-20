@@ -2,14 +2,14 @@
 // Created by Moritz Herzog on 09.04.25.
 //
 
-#include "sysmlv2/service/implementation/ProjectUsageService.h"
+#include <sysmlv2/service/implementation/ProjectUsageService.h>
 
-#include "entities/Branch.h"
-#include "entities/Project.h"
-#include "entities/Commit.h"
-#include "entities/DataIdentity.h"
-#include "entities/DataVersion.h"
-#include "entities/ProjectUsage.h"
+#include <sysmlv2/rest/entities/Branch.h>
+#include <sysmlv2/rest/entities/Project.h>
+#include <sysmlv2/rest/entities/Commit.h>
+#include <sysmlv2/rest/entities/DataIdentity.h>
+#include <sysmlv2/rest/entities/DataVersion.h>
+#include <sysmlv2/rest/entities/ProjectUsage.h>
 
 #include <boost/uuid/random_generator.hpp>
 

@@ -6,12 +6,12 @@
 
 #include <boost/uuid/nil_generator.hpp>
 
-#include "entities/Project.h"
-#include "entities/Branch.h"
-#include "entities/Commit.h"
-#include "entities/Data.h"
-#include "entities/DataVersion.h"
-#include "entities/Tag.h"
+#include <sysmlv2/rest/entities/Project.h>
+#include <sysmlv2/rest/entities/Branch.h>
+#include <sysmlv2/rest/entities/Commit.h>
+#include <sysmlv2/rest/entities/Data.h>
+#include <sysmlv2/rest/entities/DataVersion.h>
+#include <sysmlv2/rest/entities/Tag.h>
 
 namespace SysMLv2::API {
     std::vector<std::shared_ptr<SysMLv2::REST::Commit>> ProjectVersioningService::getCommits(std::shared_ptr<SysMLv2::REST::Project> project) {

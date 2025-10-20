@@ -6,7 +6,7 @@
 #define SYSML_PROJECTVERSIONINGSERVICE_H
 
 #include <sysmlv2/service/interfaces/IProjectVersioningService.h>
-#include "entities/ChangeType.h"
+#include <sysmlv2/rest/entities/ChangeType.h>
 #include <map>
 #include <boost/uuid/uuid.hpp>
 

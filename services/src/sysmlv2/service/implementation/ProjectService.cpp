@@ -2,8 +2,8 @@
 // Created by Moritz Herzog on 09.04.25.
 //
 
-#include "sysmlv2/service/implementation/ProjectService.h"
-#include <entities/Project.h>
+#include <sysmlv2/service/implementation/ProjectService.h>
+#include <sysmlv2/rest/entities/Project.h>
 
 namespace SysMLv2::API {
     ProjectService::ProjectService() {

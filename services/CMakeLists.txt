@@ -49,8 +49,7 @@ target_link_libraries(sysmlv2service
 
 target_include_directories(sysmlv2service PUBLIC
         ./include
-        ../rest-api/src
-        ../interfaces/src)
+        ../rest-api/include)
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2service ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})

@@ -15,7 +15,7 @@
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
-#include <entities/ChangeType.h>
+#include <sysmlv2/rest/entities/ChangeType.h>
 #include <sysmlv2/service/sysmlv2service_global.h>
 //---------------------------------------------------------
 // Forwarding

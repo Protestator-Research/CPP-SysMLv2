@@ -7,57 +7,57 @@ find_package(Boost REQUIRED)
 find_package(date REQUIRED)
 
 set(GLOBAL_HEADER
-        src/sysmlv2rest_global.h
+        include/sysmlv2/rest/sysmlv2rest_global.h
 )
 
 set(ENTITIES_HEADER
-        src/entities/DataIdentity.h
-        src/entities/Record.h
-        src/entities/Project.h
-        src/entities/JSONEntities.h
-        src/entities/Commit.h
-        src/entities/CommitReference.h
-        src/entities/DataVersion.h
-        src/entities/Query.h
-        src/entities/Tag.h
-        src/entities/Branch.h
-        src/entities/Data.h
-        src/entities/ProjectUsage.h
-        src/entities/Element.h
-        src/entities/Relationship.h
-        src/entities/ExternalData.h
-        src/entities/ExternalRelationship.h
-        src/entities/Identification.h
-        src/entities/Direction.h
-        src/entities/ChangeType.h
-        src/entities/MergeResult.h
-        src/entities/DataDifference.h
-        src/entities/IEntity.h)
+        include/sysmlv2/rest/entities/DataIdentity.h
+        include/sysmlv2/rest/entities/Record.h
+        include/sysmlv2/rest/entities/Project.h
+        include/sysmlv2/rest/entities/JSONEntities.h
+        include/sysmlv2/rest/entities/Commit.h
+        include/sysmlv2/rest/entities/CommitReference.h
+        include/sysmlv2/rest/entities/DataVersion.h
+        include/sysmlv2/rest/entities/Query.h
+        include/sysmlv2/rest/entities/Tag.h
+        include/sysmlv2/rest/entities/Branch.h
+        include/sysmlv2/rest/entities/Data.h
+        include/sysmlv2/rest/entities/ProjectUsage.h
+        include/sysmlv2/rest/entities/Element.h
+        include/sysmlv2/rest/entities/Relationship.h
+        include/sysmlv2/rest/entities/ExternalData.h
+        include/sysmlv2/rest/entities/ExternalRelationship.h
+        include/sysmlv2/rest/entities/Identification.h
+        include/sysmlv2/rest/entities/Direction.h
+        include/sysmlv2/rest/entities/ChangeType.h
+        include/sysmlv2/rest/entities/MergeResult.h
+        include/sysmlv2/rest/entities/DataDifference.h
+        include/sysmlv2/rest/entities/IEntity.h)
 
 set(SERIALIZATION_HEADER
-        src/serialization/SysMLv2Deserializer.h)
+        include/sysmlv2/rest/serialization/SysMLv2Deserializer.h)
 
 
 add_library(sysmlv2rest
-        src/entities/DataIdentity.cpp
-        src/entities/Record.cpp
-        src/entities/Project.cpp
-        src/entities/Commit.cpp
-        src/entities/CommitReference.cpp
-        src/entities/DataVersion.cpp
-        src/entities/Query.cpp
-        src/entities/Tag.cpp
-        src/entities/Branch.cpp
-        src/entities/Data.cpp
-        src/entities/ProjectUsage.cpp
-        src/entities/Element.cpp
-        src/entities/Relationship.cpp
-        src/entities/ExternalData.cpp
-        src/entities/ExternalRelationship.cpp
-        src/entities/Identification.cpp
-        src/serialization/SysMLv2Deserializer.cpp
-        src/entities/MergeResult.cpp
-        src/entities/DataDifference.cpp
+        src/sysmlv2/rest/entities/DataIdentity.cpp
+        src/sysmlv2/rest/entities/Record.cpp
+        src/sysmlv2/rest/entities/Project.cpp
+        src/sysmlv2/rest/entities/Commit.cpp
+        src/sysmlv2/rest/entities/CommitReference.cpp
+        src/sysmlv2/rest/entities/DataVersion.cpp
+        src/sysmlv2/rest/entities/Query.cpp
+        src/sysmlv2/rest/entities/Tag.cpp
+        src/sysmlv2/rest/entities/Branch.cpp
+        src/sysmlv2/rest/entities/Data.cpp
+        src/sysmlv2/rest/entities/ProjectUsage.cpp
+        src/sysmlv2/rest/entities/Element.cpp
+        src/sysmlv2/rest/entities/Relationship.cpp
+        src/sysmlv2/rest/entities/ExternalData.cpp
+        src/sysmlv2/rest/entities/ExternalRelationship.cpp
+        src/sysmlv2/rest/entities/Identification.cpp
+        src/sysmlv2/rest/serialization/SysMLv2Deserializer.cpp
+        src/sysmlv2/rest/entities/MergeResult.cpp
+        src/sysmlv2/rest/entities/DataDifference.cpp
         ${ENTITIES_HEADER}
         ${SERIALIZATION_HEADER}
         ${GLOBAL_HEADER})
@@ -75,6 +75,9 @@ install(TARGETS sysmlv2rest RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${ENTITIES_HEADER} DESTINATION include/sysmlv2/rest/entities)
 install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2/rest)
 install(FILES ${SERIALIZATION_HEADER} DESTINATION include/sysmlv2/rest/serialization)
+
+target_include_directories(sysmlv2rest PRIVATE
+        ./include/)
 
 if(MSVC)
     target_compile_options(sysmlv2rest PRIVATE /W4 /WX- /bigobj)

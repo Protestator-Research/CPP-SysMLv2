@@ -2,12 +2,12 @@
 // Created by Moritz Herzog on 19.03.25.
 //
 
-#include "sysmlv2/service/implementation/ElementNavigationService.h"
+#include <sysmlv2/service/implementation/ElementNavigationService.h>
 
-#include <entities/Element.h>
-#include <entities/Project.h>
-#include <entities/Commit.h>
-#include <entities/DataVersion.h>
+#include <sysmlv2/rest/entities/Element.h>
+#include <sysmlv2/rest/entities/Project.h>
+#include <sysmlv2/rest/entities/Commit.h>
+#include <sysmlv2/rest/entities/DataVersion.h>
 #include <memory>
 
 namespace SysMLv2::API {

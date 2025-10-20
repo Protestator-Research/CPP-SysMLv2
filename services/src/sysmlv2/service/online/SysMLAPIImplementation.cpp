@@ -24,9 +24,9 @@
 #include <sysmlv2/service/online/ConnectionError.h>
 #include <sysmlv2/service/online/HttpReturnCodes.h>
 #include <sysmlv2/service/online/HttpException.h>
-#include "serialization/SysMLv2Deserializer.h"
-#include "entities/Project.h"
-#include "entities/Commit.h"
+#include <sysmlv2/rest/serialization/SysMLv2Deserializer.h>
+#include <sysmlv2/rest/entities/Project.h>
+#include <sysmlv2/rest/entities/Commit.h>
 
 
 namespace SysMLv2::API {
