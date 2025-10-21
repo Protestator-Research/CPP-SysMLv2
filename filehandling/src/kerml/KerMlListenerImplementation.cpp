@@ -3,10 +3,10 @@
 //
 
 #include "KerMlListenerImplementation.h"
-#include <root/elements/Element.h>
-#include <root/annotations/Comment.h>
-#include <root/annotations/Documentation.h>
-#include <root/namespaces/Namespace.h>
+#include <../../../kerml/include/kerml/root/elements/Element.h>
+#include <../../../kerml/include/kerml/root/Comment.h>
+#include <../../../kerml/include/kerml/root/Documentation.h>
+#include <../../../kerml/include/kerml/root/namespaces/Namespace.h>
 #include <root/namespaces/NamespaceImport.h>
 #include <string>
 
