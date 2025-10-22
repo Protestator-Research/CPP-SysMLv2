@@ -3,7 +3,7 @@
 //
 #pragma once
 
-#include "../../root/namespaces/OwningMembership.h"
+#include <kerml/root/namespaces/OwningMembership.h>
 
 namespace KerML::Entities {
     class Feature;

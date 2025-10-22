@@ -2,9 +2,9 @@
 // Created by Moritz Herzog on 25.03.25.
 //
 
-#include "../../../include/kerml/core/features/Subsetting.h"
+#include <kerml/core/features/Subsetting.h>
 
-#include "../../../include/kerml/core/features/Feature.h"
+#include <kerml/core/features/Feature.h>
 #include <exception>
 
 namespace KerML::Entities

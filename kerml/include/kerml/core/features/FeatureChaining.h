@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <../../root/elements/Relationship.h>
+#include <kerml/root/elements/Relationship.h>
 
 namespace KerML::Entities {
     class Feature;

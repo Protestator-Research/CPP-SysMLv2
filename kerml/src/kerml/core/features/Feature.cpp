@@ -2,17 +2,18 @@
 // Created by Moritz Herzog on 25.03.25.
 //
 
-#include "../../../include/kerml/core/features/Feature.h"
+#include <kerml/core/features/Feature.h>
 #include <vector>
 #include <unordered_set>
 #include <stack>
 
-#include "../../../include/kerml/core/features/Redefinition.h"
-#include "ReferenceSubsetting.h"
-#include "../../../include/kerml/core/features/CrossSubsetting.h"
-#include "../../../include/kerml/core/features/Subsetting.h"
-#include "../../../include/kerml/root/namespaces/Membership.h"
-#include "../../../include/kerml/root/namespaces/VisibilityKind.h"
+#include <kerml/core/features/Redefinition.h>
+#include <kerml/core/features/ReferenceSubsetting.h>
+#include <kerml/core/features/CrossSubsetting.h>
+#include <kerml/core/features/Subsetting.h>
+#include <kerml/root/namespaces/Membership.h>
+#include <kerml/root/namespaces/VisibilityKind.h>
+#include <kerml/core/types/Type.h>
 
 namespace KerML::Entities
 {

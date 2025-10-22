@@ -2,7 +2,7 @@
 // Created by Moritz Herzog on 25.03.25.
 //
 
-#include "../../../include/kerml/core/features/ReferenceSubsetting.h"
+#include <kerml/core/features/ReferenceSubsetting.h>
 
 namespace KerML::Entities
 {

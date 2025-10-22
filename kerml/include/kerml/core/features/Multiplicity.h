@@ -5,7 +5,7 @@
 #pragma once
 
 
-#include <../../../include/kerml/core/features/Feature.h>
+#include <kerml/core/features/Feature.h>
 
 namespace KerML::Entities {
     class Multiplicity : public Feature {

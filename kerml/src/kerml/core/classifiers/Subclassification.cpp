@@ -12,8 +12,8 @@
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
-#include "../../../include/kerml/core/classifiers/Subclassification.h"
-#include "../../../include/kerml/core/classifiers/Classifier.h"
+#include <kerml/core/classifiers/Subclassification.h>
+#include <kerml/core/classifiers/Classifier.h>
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------

@@ -6,7 +6,7 @@
 
 #include <optional>
 
-#include <../types/Type.h>
+#include <kerml/core/types/Type.h>
 
 #include "FeatureDirectionKind.h"
 

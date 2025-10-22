@@ -1,4 +1,4 @@
-﻿#include "../../../include/kerml/core/features/CrossSubsetting.h"
+﻿#include <kerml/core/features/CrossSubsetting.h>
 
 #include <stdexcept>
 

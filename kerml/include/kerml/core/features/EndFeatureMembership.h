@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "FeatureMembership.h"
+#include <kerml/core/features/FeatureMembership.h>
 
 namespace KerML::Entities {
     class EndFeatureMembership : public FeatureMembership {

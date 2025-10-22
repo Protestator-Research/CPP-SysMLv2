@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <../types/Specialization.h>
+#include <kerml/core/types/Specialization.h>
 
 namespace KerML::Entities {
     class Feature;

@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <Subsetting.h>
+#include <kerml/core/features/Subsetting.h>
 
 namespace KerML::Entities {
 	class Feature;

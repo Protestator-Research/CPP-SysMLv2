@@ -3,7 +3,7 @@
 //
 
 #include <stdexcept>
-#include "../../../include/kerml/core/features/FeatureInverting.h"
+#include <kerml/core/features/FeatureInverting.h>
 
 namespace KerML::Entities {
 

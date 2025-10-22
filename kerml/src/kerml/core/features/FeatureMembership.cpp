@@ -4,10 +4,10 @@
 
 #include <memory>
 
-#include "../../../include/kerml/core/features/FeatureMembership.h"
+#include <kerml/core/features/FeatureMembership.h>
 
-#include "../../../include/kerml/core/types/Type.h"
-#include "../../../include/kerml/core/features/Feature.h"
+#include <kerml/core/types/Type.h>
+#include <kerml/core/features/Feature.h>
 
 namespace KerML::Entities {
     FeatureMembership::FeatureMembership(std::shared_ptr<Feature> ownedMemberFeature,

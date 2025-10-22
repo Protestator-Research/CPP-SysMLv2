@@ -2,7 +2,9 @@
 // Created by Moritz Herzog on 25.03.25.
 //
 
-#include "../../../include/kerml/core/features/FeatureChaining.h"
+#include <kerml/core/features/FeatureChaining.h>
+
+#include <kerml/core/features/Feature.h>
 
 namespace KerML::Entities {
 
