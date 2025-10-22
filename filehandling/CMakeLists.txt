@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(sysmlv2file CXX C)
+project(sysmlv2parser CXX C)
 
 find_package(nlohmann_json REQUIRED)
 find_package(Boost REQUIRED)
@@ -9,64 +9,65 @@ find_package(antlr4-runtime REQUIRED)
 
 
 set(GLOBAL_HEADER
-        src/sysmlv2file_global.h
-        src/ParserError.h
-        src/Parser.h)
+        include/sysmlv2/sysmlv2file_global.h
+        include/sysmlv2/ParserError.h
+        include/sysmlv2/Parser.h)
 
 set(KERML_PARSER_HEADER
-        src/kerml/KerMLBaseListener.h
-        src/kerml/KerMLLexer.h
-        src/kerml/KerMLListener.h
-        src/kerml/KerMLParser.h
-        src/kerml/KerMlError.h
-        src/kerml/KerMlErrorListener.h
-        src/kerml/KerMlListenerImplementation.h)
+        include/kerml/parser/KerMLBaseListener.h
+        include/kerml/parser/KerMLLexer.h
+        include/kerml/parser/KerMLListener.h
+        include/kerml/parser/KerMLParser.h
+        include/kerml/parser/KerMlError.h
+        include/kerml/parser/KerMlErrorListener.h
+        include/kerml/parser/KerMlListenerImplementation.h)
 
 set(SYSML_PARSER_HEADER
-        src/sysml2/SysMLv2BaseListener.h
-        src/sysml2/SysMLv2Lexer.h
-        src/sysml2/SysMLv2Listener.h
-        src/sysml2/SysMLv2Parser.h)
+        include/sysmlv2/parser/SysMLv2BaseListener.h
+        include/sysmlv2/parser/SysMLv2Lexer.h
+        include/sysmlv2/parser/SysMLv2Listener.h
+        include/sysmlv2/parser/SysMLv2Parser.h)
 
-add_library(sysmlv2file
+add_library(sysmlv2parser
         ${KERML_PARSER_HEADER}
         ${SYSML_PARSER_HEADER}
         ${GLOBAL_HEADER}
-        src/kerml/KerMLBaseListener.cpp
-        src/kerml/KerMLLexer.cpp
-        src/kerml/KerMLListener.cpp
-        src/kerml/KerMLParser.cpp
-        src/sysml2/SysMLv2BaseListener.cpp
-        src/sysml2/SysMLv2Lexer.cpp
-        src/sysml2/SysMLv2Listener.cpp
-        src/sysml2/SysMLv2Parser.cpp
-        src/kerml/KerMlErrorListener.cpp
-        src/kerml/KerMlError.cpp
-        src/Parser.cpp
-        src/ParserError.cpp
-        src/kerml/KerMlListenerImplementation.cpp)
+        src/kerml/parser/KerMLBaseListener.cpp
+        src/kerml/parser/KerMLLexer.cpp
+        src/kerml/parser/KerMLListener.cpp
+        src/kerml/parser/KerMLParser.cpp
+        src/sysml2/parser/SysMLv2BaseListener.cpp
+        src/sysml2/parser/SysMLv2Lexer.cpp
+        src/sysml2/parser/SysMLv2Listener.cpp
+        src/sysml2/parser/SysMLv2Parser.cpp
+        src/kerml/parser/KerMlErrorListener.cpp
+        src/kerml/parser/KerMlError.cpp
+        src/sysml2/Parser.cpp
+        src/sysml2/ParserError.cpp
+        src/kerml/parser/KerMlListenerImplementation.cpp)
 
-target_link_libraries(sysmlv2file
+target_link_libraries(sysmlv2parser
         boost::boost
         nlohmann_json::nlohmann_json
         date::date
         antlr4_shared
         kerml)
 
-target_include_directories(sysmlv2file PUBLIC
-        ../kerml/src)
+target_include_directories(sysmlv2parser PUBLIC
+        ../kerml/include
+        include)
 
 include(GNUInstallDirs)
-install(TARGETS sysmlv2file ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
-install(TARGETS sysmlv2file RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES ${KERML_PARSER_HEADER} DESTINATION include/sysmlv2/file/kerml)
-install(FILES ${SYSML_PARSER_HEADER} DESTINATION include/sysmlv2/file/sysmlv2)
-install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2/file)
+install(TARGETS sysmlv2parser ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(TARGETS sysmlv2parser RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(FILES ${KERML_PARSER_HEADER} DESTINATION include/kerml/parser)
+install(FILES ${SYSML_PARSER_HEADER} DESTINATION include/sysmlv2/parser)
+install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2)
 
 if(MSVC)
-    target_compile_options(sysmlv2file PRIVATE /W4 /WX- /bigobj)
+    target_compile_options(sysmlv2parser PRIVATE /W4 /WX- /bigobj)
 else ()
-    target_compile_options(sysmlv2file PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(sysmlv2parser PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
 file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)

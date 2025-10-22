@@ -2,9 +2,9 @@
 // Generated from SysMLv2.g4 by ANTLR 4.13.2
 
 
-#include "SysMLv2Listener.h"
+#include <sysmlv2/parser/SysMLv2Listener.h>
 
-#include "SysMLv2Parser.h"
+#include <sysmlv2/parser/SysMLv2Parser.h>
 
 
 using namespace antlrcpp;

@@ -4,9 +4,9 @@
 #pragma once
 
 
-#include "antlr4-runtime.h"
+#include <antlr4-runtime.h>
 
-#include <../../../kerml/include/kerml/root/namespaces/VisibilityKind.h>
+#include <kerml/root/namespaces/VisibilityKind.h>
 
 
 class  KerMLParser : public antlr4::Parser {

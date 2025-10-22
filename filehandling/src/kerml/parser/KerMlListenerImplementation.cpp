@@ -2,12 +2,12 @@
 // Created by Moritz Herzog on 09.05.25.
 //
 
-#include "KerMlListenerImplementation.h"
-#include <../../../kerml/include/kerml/root/elements/Element.h>
-#include <../../../kerml/include/kerml/root/Comment.h>
-#include <../../../kerml/include/kerml/root/Documentation.h>
-#include <../../../kerml/include/kerml/root/namespaces/Namespace.h>
-#include <root/namespaces/NamespaceImport.h>
+#include <kerml/parser/KerMlListenerImplementation.h>
+#include <kerml/root/elements/Element.h>
+#include <kerml/root/annotations/Comment.h>
+#include <kerml/root/annotations/Documentation.h>
+#include <kerml/root/namespaces/Namespace.h>
+#include <kerml/root/namespaces/NamespaceImport.h>
 #include <string>
 
 KerMLListenerImplementation::KerMLListenerImplementation() {

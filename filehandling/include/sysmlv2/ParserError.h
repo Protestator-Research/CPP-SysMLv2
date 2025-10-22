@@ -5,7 +5,7 @@
 
 #include <string>
 #include <boost/uuid/uuid.hpp>
-#include "sysmlv2file_global.h"
+#include <sysmlv2/sysmlv2file_global.h>
 
 namespace SysMLv2::Files {
     enum SYSMLV2FILE_EXPORT ErrorType {

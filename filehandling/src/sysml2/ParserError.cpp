@@ -2,7 +2,7 @@
 // Created by Moritz Herzog on 30.04.25.
 //
 
-#include "ParserError.h"
+#include <sysmlv2/ParserError.h>
 
 namespace SysMLv2::Files {
     ParserError::ParserError(boost::uuids::uuid elementId, std::string projectName, ErrorType type, std::string description) {

@@ -4,12 +4,12 @@
 
 #include <gtest/gtest.h>
 #include <antlr4-runtime.h>
-#include <kerml/KerMLParser.h>
-#include <kerml/KerMLLexer.h>
-#include <kerml/KerMLListener.h>
-#include <kerml/KerMlErrorListener.h>
-#include <Parser.h>
-#include "kerml/KerMlListenerImplementation.h"
+#include <kerml/parser/KerMLParser.h>
+#include <kerml/parser/KerMLLexer.h>
+#include <kerml/parser/KerMLListener.h>
+#include <kerml/parser/KerMlErrorListener.h>
+#include <sysmlv2/Parser.h>
+#include <kerml/parser/KerMlListenerImplementation.h>
 
 TEST(TestKerMLParser, TestAddressBookModel) {
     std::string valueToParse = "private import ScalarValues::*;\n"

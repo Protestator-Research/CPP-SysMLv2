@@ -2,7 +2,7 @@
 // Generated from SysMLv2.g4 by ANTLR 4.13.2
 
 
-#include "SysMLv2Lexer.h"
+#include <sysmlv2/parser/SysMLv2Lexer.h>
 
 
 using namespace antlr4;

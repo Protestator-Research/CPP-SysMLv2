@@ -2,7 +2,7 @@
 // Created by Moritz Herzog on 08.04.25.
 //
 
-#include "KerMlErrorListener.h"
+#include <kerml/parser/KerMlErrorListener.h>
 
 KerMLErrorListener::KerMLErrorListener() {
 

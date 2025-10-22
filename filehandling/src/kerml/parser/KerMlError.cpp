@@ -2,7 +2,7 @@
 // Created by Moritz Herzog on 08.04.25.
 //
 
-#include "KerMlError.h"
+#include <kerml/parser/KerMlError.h>
 //namespace KerML::Parser {
     KerMLError::KerMLError(KerMLErrorType errorType, int line, int postionInLine, std::string message) {
         Line = line;

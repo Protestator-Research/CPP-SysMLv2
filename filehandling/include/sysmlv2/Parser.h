@@ -8,7 +8,7 @@
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
-#include "ParserError.h"
+#include <sysmlv2/ParserError.h>
 #include <vector>
 #include <memory>
 #include <utility>

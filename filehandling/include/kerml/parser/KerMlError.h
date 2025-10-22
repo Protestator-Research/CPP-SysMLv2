@@ -5,7 +5,7 @@
 #pragma once
 
 #include <string>
-#include "../sysmlv2file_global.h"
+#include <sysmlv2/sysmlv2file_global.h>
 
 //namespace KerML::Parser {
     enum KerMLErrorType {

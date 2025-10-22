@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include <../../services/include/sysmlv2/service/implementation/ProjectService.h>
-#include <entities/Project.h>
-#include <entities/Branch.h>
+#include <sysmlv2/service/implementation/ProjectService.h>
+#include <sysmlv2/rest/entities/Project.h>
+#include <sysmlv2/rest/entities/Branch.h>
 
 void createTestInstance(SysMLv2::API::ProjectService* projectService) {
     projectService->createProject("Test Project 1", "Description of the Test Project 1");

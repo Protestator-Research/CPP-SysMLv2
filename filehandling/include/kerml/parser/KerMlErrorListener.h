@@ -9,8 +9,8 @@
 #include <vector>
 #include <memory>
 
-#include "KerMlError.h"
-#include "../sysmlv2file_global.h"
+#include <kerml/parser/KerMlError.h>
+#include <sysmlv2/sysmlv2file_global.h>
 
 class SYSMLV2FILE_EXPORT KerMLErrorListener : public antlr4::BaseErrorListener {
 public:
