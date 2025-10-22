@@ -1,0 +1,14 @@
+//
+// Created by Moritz Herzog on 25.03.25.
+//
+
+#pragma once
+
+#include <kerml/root/elements/Relationship.h>
+
+namespace KerML::Entities {
+    class Featuring : public Relationship{
+
+    };
+}
+

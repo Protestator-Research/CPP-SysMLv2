@@ -3,7 +3,11 @@ cmake_minimum_required(VERSION 3.15)
 project(conformance-test CXX C)
 
 
-find_package(GTest)
+find_package(GTest REQUIRED)
+find_package(nlohmann_json REQUIRED)
+find_package(Boost REQUIRED)
+find_package(date REQUIRED)
+find_package(antlr4-runtime REQUIRED)
 
 add_executable(conformance-test
         src/TestKerMLParser.cpp
@@ -14,14 +18,16 @@ target_link_libraries(conformance-test
         nlohmann_json::nlohmann_json
         date::date
         gtest::gtest
-        sysmlv2file
+        antlr4_shared
+        sysmlv2parser
         sysmlv2service
         sysmlv2rest)
 
 target_include_directories(conformance-test PRIVATE
-        ../filehandling/src
-        ../services/src
-        ../rest-api/src)
+        ../filehandling/include
+        ../services/include
+        ../kerml/include
+        ../rest-api/include)
 
 file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)
 foreach(_source IN ITEMS ${_source_list})
