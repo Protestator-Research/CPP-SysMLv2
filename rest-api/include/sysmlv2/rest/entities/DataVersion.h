@@ -9,6 +9,7 @@
 // External Classes
 //---------------------------------------------------------
 #include <boost/uuid/uuid.hpp>
+#include <boost/uuid/random_generator.hpp>
 #include <memory>
 //---------------------------------------------------------
 // Internal Classes
@@ -35,10 +36,9 @@ namespace SysMLv2::REST {
     public:
         DataVersion() = delete;
 
-        DataVersion(std::shared_ptr<DataIdentity> identity, std::shared_ptr<Data> payload = nullptr);
+        DataVersion(boost::uuids::uuid id = boost::uuids::random_generator()(), std::shared_ptr<Data> payload = nullptr);
         virtual ~DataVersion();
 
-        std::shared_ptr<DataIdentity> getIdentity();
         void setPayload(std::shared_ptr<Data> payload);
         std::shared_ptr<Data> getPayload();
         boost::uuids::uuid getId();
