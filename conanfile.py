@@ -15,7 +15,7 @@ class CPPSysMLRecipe(ConanFile):
     license = "<Put the package license here>"
     author = "Moritz Herzog"
     url = "https://github.com/Protestator-Research/CPP-SysMLv2"
-    description = ("This library defines a SysMLv2 C++ Library allowing the usage of this for other projects.")
+    description = "This library defines a SysMLv2 C++ Library allowing the usage of this for other projects."
     topics = ("SysMLv2", "modeling", "library")
 
     # Binary configuration
@@ -90,7 +90,7 @@ class CPPSysMLRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = ["sysmlv2service", "sysmlv2rest", "kerml", "sysmlv2file"]
+        self.cpp_info.libs = ["sysmlv2service", "sysmlv2rest", "kerml", "sysmlv2parser"]
         self.cpp_info.builddirs.append(os.path.join("lib", "cmake", "sysmlv2"))
 
     
