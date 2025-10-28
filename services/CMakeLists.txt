@@ -47,9 +47,6 @@ target_link_libraries(sysmlv2service
         date::date
         sysmlv2rest)
 
-target_include_directories(sysmlv2service PUBLIC
-        ./include
-        ../rest-api/include)
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2service ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
@@ -61,8 +58,15 @@ install(FILES ${ONLINE_HEADER} DESTINATION include/sysmlv2/service/online)
 
 if(MSVC)
     target_compile_options(sysmlv2service PRIVATE /W4 /WX- /bigobj)
+    target_link_directories(sysmlv2service PUBLIC ${CMAKE_BINARY_DIR}/out)
+    target_include_directories(sysmlv2service PUBLIC
+        ./include
+        ../rest-api/include)
 else ()
     target_compile_options(sysmlv2service PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_include_directories(sysmlv2service PRIVATE
+        ./include
+        ../rest-api/include)
 endif()
 
 file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)

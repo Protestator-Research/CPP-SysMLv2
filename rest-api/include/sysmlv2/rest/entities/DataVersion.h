@@ -34,8 +34,6 @@ namespace SysMLv2::REST {
      */
     class SYSMLV2REST_EXPORT DataVersion : public Record {
     public:
-        DataVersion() = delete;
-
         DataVersion(boost::uuids::uuid id = boost::uuids::random_generator()(), std::shared_ptr<Data> payload = nullptr);
         virtual ~DataVersion();
 

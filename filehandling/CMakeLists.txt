@@ -53,10 +53,6 @@ target_link_libraries(sysmlv2parser
         antlr4_shared
         kerml)
 
-target_include_directories(sysmlv2parser PUBLIC
-        ../kerml/include
-        include)
-
 include(GNUInstallDirs)
 install(TARGETS sysmlv2parser ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS sysmlv2parser RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
@@ -66,8 +62,15 @@ install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2)
 
 if(MSVC)
     target_compile_options(sysmlv2parser PRIVATE /W4 /WX- /bigobj)
+    target_link_directories(sysmlv2parser PUBLIC ${CMAKE_BINARY_DIR}/out)
+    target_include_directories(sysmlv2parser PUBLIC
+        ../kerml/include
+        include)
 else ()
     target_compile_options(sysmlv2parser PRIVATE -Wall -Wextra -Wpedantic)
+    target_include_directories(sysmlv2parser PRIVATE
+        ../kerml/include
+        include)
 endif()
 
 file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)

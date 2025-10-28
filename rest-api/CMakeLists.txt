@@ -67,8 +67,6 @@ target_link_libraries(sysmlv2rest
         nlohmann_json::nlohmann_json
         date::date)
 
-target_include_directories(sysmlv2rest PUBLIC ../interfaces/src)
-
 include(GNUInstallDirs)
 install(TARGETS sysmlv2rest ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS sysmlv2rest RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
@@ -76,13 +74,17 @@ install(FILES ${ENTITIES_HEADER} DESTINATION include/sysmlv2/rest/entities)
 install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2/rest)
 install(FILES ${SERIALIZATION_HEADER} DESTINATION include/sysmlv2/rest/serialization)
 
-target_include_directories(sysmlv2rest PRIVATE
-        ./include/)
+
 
 if(MSVC)
     target_compile_options(sysmlv2rest PRIVATE /W4 /WX- /bigobj)
+    target_link_directories(sysmlv2rest PUBLIC ${CMAKE_BINARY_DIR}/out)
+    target_include_directories(sysmlv2rest PUBLIC
+        ./include/)
 else ()
     target_compile_options(sysmlv2rest PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_include_directories(sysmlv2rest PRIVATE
+        ./include/)
 endif()
 
 file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)
