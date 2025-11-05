@@ -51,18 +51,18 @@ namespace SysMLv2::API {
     std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> SysMLAPIImplementation::getAllProjects(std::string barrierString) {
         std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> returnValue;
         CURLcode ServerResult;
-        std::cout << "getAllProjects: "<<ServerAddress<<"projects"<<std::endl;
+        //std::cout << "getAllProjects: "<<ServerAddress<<"projects"<<std::endl;
         auto serverConnection = setUpServerConnection("projects", barrierString.c_str(), "");
-        std::cout<<"setUpServerConnection"<<std::endl;
+        //std::cout<<"setUpServerConnection"<<std::endl;
         ServerResult = curl_easy_perform(serverConnection);
-        std::cout<<"curl_easy_perform: " << ServerResult<<std::endl;
+        //std::cout<<"curl_easy_perform: " << ServerResult<<std::endl;
         if (ServerResult == CURLE_OK) {
             long httpResult;
             curl_easy_getinfo(serverConnection, CURLINFO_RESPONSE_CODE, &httpResult);
-            std::cout<<"curl_easy_getinfo: " << httpResult<<std::endl;
+            //std::cout<<"curl_easy_getinfo: " << httpResult<<std::endl;
 
             if(tryToResolveHTTPError(httpResult, serverConnection)==INTERNAL_STATUS_CODE::SUCCESS){
-                std::cout<<"getAllProjects: "<<Data<<std::endl;
+                //std::cout<<"getAllProjects: "<<Data<<std::endl;
                 returnValue = SysMLv2::SysMLv2Deserializer::deserializeJsonArray(Data);
             }
 
@@ -243,9 +243,12 @@ namespace SysMLv2::API {
 
         auto serverConnection = setUpServerConnection(urlAppendix.c_str(), "", "");
         ServerResult = curl_easy_perform(serverConnection);
+        std::cout << "Server Result at get Version:" << ServerResult <<std::endl;
         if(ServerResult == CURLE_OK) {
             long httpResult;
             curl_easy_getinfo(serverConnection, CURLINFO_RESPONSE_CODE, &httpResult);
+
+            std::cout << "data at get Version:" << Data << std::endl;
 
             if(httpResult==STANDARDS::HTTP::HTTP_OK)
                 returnValue = Data;
@@ -273,7 +276,9 @@ namespace SysMLv2::API {
         auto serverConnection = setUpServerConnection("login", "", jsonData.dump().c_str());
 
         ServerResult = curl_easy_perform(serverConnection);
+        std::cout << "Server Result: " << ServerResult << std::endl;
         if (ServerResult == CURLE_OK) {
+            std::cout << "Server result at Login" << Data << std::endl;
             nlohmann::json resultJson = nlohmann::json::parse(Data);
             barrierString = resultJson["barrierString"];
         } else {
