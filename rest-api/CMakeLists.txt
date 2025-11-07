@@ -17,6 +17,7 @@ set(ENTITIES_HEADER
         include/sysmlv2/rest/entities/JSONEntities.h
         include/sysmlv2/rest/entities/Commit.h
         include/sysmlv2/rest/entities/CommitReference.h
+        include/sysmlv2/rest/entities/CommitRequest.h
         include/sysmlv2/rest/entities/DataVersion.h
         include/sysmlv2/rest/entities/Query.h
         include/sysmlv2/rest/entities/Tag.h
@@ -43,6 +44,7 @@ add_library(sysmlv2rest
         src/sysmlv2/rest/entities/Record.cpp
         src/sysmlv2/rest/entities/Project.cpp
         src/sysmlv2/rest/entities/Commit.cpp
+        src/sysmlv2/rest/entities/CommitRequest.cpp
         src/sysmlv2/rest/entities/CommitReference.cpp
         src/sysmlv2/rest/entities/DataVersion.cpp
         src/sysmlv2/rest/entities/Query.cpp
