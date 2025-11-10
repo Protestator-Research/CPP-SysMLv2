@@ -35,6 +35,7 @@ namespace SysMLv2::REST {
     class SYSMLV2REST_EXPORT DataVersion : public Record {
     public:
         DataVersion(boost::uuids::uuid id = boost::uuids::random_generator()(), std::shared_ptr<Data> payload = nullptr);
+        DataVersion(std::string jsonValue);
         virtual ~DataVersion();
 
         void setPayload(std::shared_ptr<Data> payload);

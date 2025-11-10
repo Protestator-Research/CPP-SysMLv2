@@ -36,7 +36,8 @@ set(ENTITIES_HEADER
         include/sysmlv2/rest/entities/IEntity.h)
 
 set(SERIALIZATION_HEADER
-        include/sysmlv2/rest/serialization/SysMLv2Deserializer.h)
+        include/sysmlv2/rest/serialization/SysMLv2Deserializer.h
+        include/sysmlv2/rest/serialization/Utilities.hpp)
 
 
 add_library(sysmlv2rest

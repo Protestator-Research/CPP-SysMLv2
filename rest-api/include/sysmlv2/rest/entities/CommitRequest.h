@@ -52,18 +52,49 @@ namespace SysMLv2::REST {
      */
     class SYSMLV2REST_EXPORT CommitRequest : public IEntity {
     public:
-        CommitRequest() = delete;
-        CommitRequest(std::string jsonStringOrName);
-        CommitRequest(std::string description, std::vector<std::shared_ptr<DataVersion>> changeRequested);
+	    /**
+	     * @brief Constructor Deleted.
+	     */
+	    CommitRequest() = delete;
+	    /**
+	     * @brief Constructor that is used to parse the given JSON string.
+	     * This constructor allows to set the Description, but can also be used to set the JSON string to be parsed.
+	     * @param jsonStringOrDescription Can be the JSON string or the description of the CommitRequest.
+	     */
+	    CommitRequest(const std::string& jsonStringOrDescription);
+	    /**
+	     * @brief Constructor for the initialization of the commit.
+	     * This constructor allows to set the description and the requested change.
+	     * @param description The given string that is used to describe the changes of the given commit.
+	     * @param changeRequested The given requested change, that can be implemented in the project.
+	     */
+	    CommitRequest(const std::string& description, const std::vector<std::shared_ptr<DataVersion>>& changeRequested);
+	    /**
+	     * @brief DTor
+	     * DTor
+	     */
 	    ~CommitRequest() = default;
 
     	std::string serializeToJson() override;
 
-        std::vector<std::shared_ptr<DataVersion>> changeRequested();
+	    /**
+	     * @brief Gives access to the requested change.
+	     * @return A vector of DataVersions
+	     * @see SysMLv2::REST::DataVersion
+	     */
+	    std::vector<std::shared_ptr<DataVersion>> changeRequested();
 
-        std::string description();
+	    /**
+	     * @brief Gives access to the description of the Commit.
+	     * @return String of the description.
+	     */
+	    std::string description();
+
+    protected:
+        void deserializeAndPopulate(const std::string& jsonValue) override;
 
     private:
+        const std::string Type;
         std::string Description;
         std::vector<std::shared_ptr<DataVersion>> ChangeRequested;
     };

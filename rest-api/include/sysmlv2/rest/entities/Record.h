@@ -120,9 +120,9 @@ namespace SysMLv2::REST {
 
         std::string serializeToJson() override;
 
+protected:
+        void deserializeAndPopulate(const std::string& jsonString) override;
 
-
-    protected:
         /**
          * Type of the generated class. This also enables the parsing of the element.
          */

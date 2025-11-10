@@ -53,6 +53,10 @@ namespace SysMLv2::REST {
     const std::string JSON_CHANGE_ENTITY = "change";
     const std::string JSON_TIMESTAMP_ENTITY = "timestamp";
 
+    // Used for CommitRefence
+    const std::string JSON_CREATED_ENTITY = "created";
+    const std::string JSON_DELETED_ENTITY = "deleted";
+
     // Used for the element implementation of the Agila Backend
     const std::string JSON_SHORT_NAME_ENTITY = "shortName";
     const std::string JSON_DECLARED_NAME_ENTITY = "declaredName";
@@ -85,7 +89,6 @@ namespace SysMLv2::REST {
     const std::string BRANCH_TYPE="branch";
     const std::string TAG_TYPE = "tag";
     const std::string QUERY_TYPE = "query";
-
     const std::string COMMIT_TYPE = "commit";
     const std::string FEATURE_TYPE = "feature";
     const std::string FEATURE_TYPE_TYPE = "featuretyping";

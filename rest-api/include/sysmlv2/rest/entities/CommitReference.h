@@ -96,6 +96,8 @@ namespace SysMLv2::REST {
          */
         void setReferencedCommit(std::shared_ptr<Commit> referencedCommit);
     protected:
+        void deserializeAndPopulate(const std::string& jsonString) override;
+
         std::chrono::system_clock::time_point Created;
         std::chrono::system_clock::time_point Deleted;
         std::shared_ptr<Commit> ReferencedCommit;

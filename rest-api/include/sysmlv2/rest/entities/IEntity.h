@@ -35,6 +35,13 @@ namespace SysMLv2::REST {
         virtual std::string serializeToJson() = 0;
     protected:
         /**
+         * Deserializes an element and populates the given Instance.
+         * Only called from the Constructor.
+         * @param jsonString Should be the json string that is requried by the software to build the object. 
+         */
+        virtual void deserializeAndPopulate(const std::string& jsonString) = 0;
+
+        /**
          * Describes the intent of nlohmanns json library.
          * @see nlohmann::json::dump
          */

@@ -31,21 +31,7 @@ namespace SysMLv2::REST {
 
     Record::Record(std::string jsonString) {
         try {
-            nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
-
-            Id = boost::uuids::string_generator()(parsedJson[JSON_ID_ENTITY].get<std::string>());
-
-            if (parsedJson.contains(JSON_TYPE_ENTITY))
-                Type = parsedJson[JSON_TYPE_ENTITY];
-
-            if (parsedJson.contains(JSON_NAME_ENTITY))
-                Name = parsedJson[JSON_NAME_ENTITY];
-
-            if (parsedJson.contains(JSON_ALIAS_ENTITY))
-                Alias = parsedJson[JSON_ALIAS_ENTITY];
-
-            if (parsedJson.contains(JSON_DESCRIPTION_ENTITY))
-                Description = parsedJson[JSON_DESCRIPTION_ENTITY];
+            Record::deserializeAndPopulate(jsonString);
         }
         catch (...) {
             Name = jsonString;
@@ -108,6 +94,25 @@ namespace SysMLv2::REST {
             jsonGeneration[JSON_DESCRIPTION_ENTITY] = Description;
 
         return jsonGeneration.dump(JSON_INTENT);
+    }
+
+    void Record::deserializeAndPopulate(const std::string& jsonString)
+    {
+        nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
+
+        Id = boost::uuids::string_generator()(parsedJson[JSON_ID_ENTITY].get<std::string>());
+
+        if (parsedJson.contains(JSON_TYPE_ENTITY))
+            Type = parsedJson[JSON_TYPE_ENTITY];
+
+        if (parsedJson.contains(JSON_NAME_ENTITY))
+            Name = parsedJson[JSON_NAME_ENTITY];
+
+        if (parsedJson.contains(JSON_ALIAS_ENTITY))
+            Alias = parsedJson[JSON_ALIAS_ENTITY];
+
+        if (parsedJson.contains(JSON_DESCRIPTION_ENTITY))
+            Description = parsedJson[JSON_DESCRIPTION_ENTITY];
     }
 
     std::string Record::getType() const {

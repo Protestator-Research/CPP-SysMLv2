@@ -31,15 +31,15 @@
 
 
 namespace SysMLv2::REST{
-    Commit::Commit(boost::uuids::uuid id, std::string name, std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits) : Record(id,name,description){
+    Commit::Commit(boost::uuids::uuid id, std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits) : Record(id,name,description){
         Type = "Commit";
         PreviusCommits = previusCommits;
         OwningProject = owningProject;
         Created = std::chrono::system_clock::now();
     }
 
-    Commit::Commit(std::string name, std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits) :
-            Record(boost::uuids::random_generator()(), name, description){
+    Commit::Commit(std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits) :
+            Record(boost::uuids::random_generator()(), std::string(), description) {
         Type = "Commit";
     	OwningProject = owningProject;
         PreviusCommits = previusCommits;
@@ -48,6 +48,7 @@ namespace SysMLv2::REST{
 
     Commit::Commit(std::string jsonString) : Record(jsonString) {
         Type = "Commit";
+        Commit::deserializeAndPopulate(jsonString);
     }
 
     void Commit::setChange(std::vector<std::shared_ptr<DataVersion>> change)
@@ -73,14 +74,10 @@ namespace SysMLv2::REST{
 
     std::string Commit::serializeToJson() {
         nlohmann::json json = nlohmann::json::parse(Record::serializeToJson());
-        std::cout << "Record already done." << std::endl;
-        json.erase(JSON_ID_ENTITY);
-        std::cout << "ID Erased" << std::endl;
+
         std::string jsonElements = "[\r\n";
         for (size_t i = 0; i < Change.size(); i++) {
-            std::cout << "Adding JSON ELEMENT "<< i << std::endl;
             jsonElements += Change[i]->serializeToJson();
-            std::cout << "\r" << jsonElements << std::endl;
 
             if (i != (Change.size()-1))
                 jsonElements += ",\r\n";
@@ -88,14 +85,16 @@ namespace SysMLv2::REST{
         jsonElements += "]\r\n";
 
         json[JSON_CHANGE_ENTITY] = nlohmann::json::parse(jsonElements);
-        std::cout << "JSON elements added" << std::endl;
-        std::string jsonString = json.dump(JSON_INTENT);
-        std::cout << "Json String created." << std::endl;
-        return jsonString;
+        return json.dump(JSON_INTENT);;
     }
 
     std::chrono::system_clock::time_point Commit::getCreated() const {
         return Created;
+    }
+
+    void Commit::deserializeAndPopulate(std::string jsonString)
+    {
+	   
     }
 }
 
