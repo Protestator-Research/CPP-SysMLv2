@@ -65,7 +65,10 @@ namespace SysMLv2::REST {
         std::string getType();
 
         std::string serializeToJson() override;
-    protected:
+
+protected:
+        void deserializeAndPopulate(const std::string& jsonString) override;
+
         /**
          * Type of the element.
          */

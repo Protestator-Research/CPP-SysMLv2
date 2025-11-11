@@ -116,6 +116,8 @@ namespace SysMLv2::REST {
          */
         [[nodiscard]] std::shared_ptr<Project> getOwningProject() const;
 
+        void setOwningProject(std::shared_ptr<Project> owningProject);
+
         std::string serializeToJson() override;
 
         [[nodiscard]] std::chrono::system_clock::time_point getCreated() const;

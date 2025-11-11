@@ -23,7 +23,9 @@ namespace SysMLv2::REST {
     }
 
     std::string Branch::serializeToJson() {
-        return CommitReference::serializeToJson();
+        nlohmann::json json = nlohmann::json::parse(CommitReference::serializeToJson());
+        json[JSON_HEAD_ID] = Head->serializeIdentification();
+        return json.dump(JSON_INTENT);
     }
 
     std::shared_ptr<Commit> Branch::getHead()

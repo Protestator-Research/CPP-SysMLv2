@@ -82,7 +82,11 @@ namespace SysMLv2::REST {
 
         bool operator==(DataIdentity const &other);
 
-    protected:
+protected:
+        void deserializeAndPopulate(const std::string& jsonString) override;
+
         std::vector<std::shared_ptr<DataVersion>> Version;
+        std::chrono::system_clock::time_point Deleted;
+        std::chrono::system_clock::time_point Created;
     };
 }

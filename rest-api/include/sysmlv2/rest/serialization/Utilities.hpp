@@ -20,6 +20,20 @@ namespace SysMLv2::REST {
 			return stream.str();
 		}
 
+		static  std::chrono::time_point<std::chrono::system_clock> fromIso8601(std::string value)
+		{
+			std::istringstream in{ value };
+			std::chrono::sys_time<std::chrono::milliseconds> tp;
+			in >> std::chrono::parse("%FT%TZ", tp);
+			if (in.fail())
+			{
+				in.clear();
+				in.exceptions(std::ios::failbit);
+				in.str(value);
+				in >> std::chrono::parse("%FT%T%Ez", tp);
+			}
+			return tp;
+		}
 	private:
 	};
 }

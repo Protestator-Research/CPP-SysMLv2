@@ -33,9 +33,7 @@ namespace SysMLv2::REST {
     }
 
     Data::Data(std::string jsonString) {
-        nlohmann::json json = nlohmann::json::parse(jsonString);
-        Id = boost::uuids::string_generator()(json[JSON_ID_ENTITY].get<std::string>());
-        Type = json[JSON_TYPE_ENTITY].get<std::string>();
+        Data::deserializeAndPopulate(jsonString);
     }
 
     boost::uuids::uuid Data::getId() {
@@ -54,4 +52,10 @@ namespace SysMLv2::REST {
         return json.dump(JSON_INTENT);
     }
 
+    void Data::deserializeAndPopulate(const std::string& jsonString)
+    {
+        nlohmann::json json = nlohmann::json::parse(jsonString);
+        Id = boost::uuids::string_generator()(json[JSON_ID_ENTITY].get<std::string>());
+        Type = json[JSON_TYPE_ENTITY].get<std::string>();
+    }
 }

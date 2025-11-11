@@ -96,6 +96,13 @@ namespace SysMLv2::REST {
         return jsonGeneration.dump(JSON_INTENT);
     }
 
+    std::string Record::serializeIdentification()
+    {
+        nlohmann::json jsonGeneration;
+        jsonGeneration[JSON_ID_ENTITY] = boost::uuids::to_string(Id);
+        return jsonGeneration.dump(JSON_INTENT);
+    }
+
     void Record::deserializeAndPopulate(const std::string& jsonString)
     {
         nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
