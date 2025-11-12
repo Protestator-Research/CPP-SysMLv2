@@ -22,7 +22,6 @@ set(ENTITIES_HEADER
         include/sysmlv2/rest/entities/Query.h
         include/sysmlv2/rest/entities/Tag.h
         include/sysmlv2/rest/entities/Branch.h
-        include/sysmlv2/rest/entities/Data.h
         include/sysmlv2/rest/entities/ProjectUsage.h
         include/sysmlv2/rest/entities/Element.h
         include/sysmlv2/rest/entities/Relationship.h
@@ -32,8 +31,7 @@ set(ENTITIES_HEADER
         include/sysmlv2/rest/entities/Direction.h
         include/sysmlv2/rest/entities/ChangeType.h
         include/sysmlv2/rest/entities/MergeResult.h
-        include/sysmlv2/rest/entities/DataDifference.h
-        include/sysmlv2/rest/entities/IEntity.h)
+        include/sysmlv2/rest/entities/DataDifference.h)
 
 set(SERIALIZATION_HEADER
         include/sysmlv2/rest/serialization/SysMLv2Deserializer.h
@@ -51,7 +49,6 @@ add_library(sysmlv2rest
         src/sysmlv2/rest/entities/Query.cpp
         src/sysmlv2/rest/entities/Tag.cpp
         src/sysmlv2/rest/entities/Branch.cpp
-        src/sysmlv2/rest/entities/Data.cpp
         src/sysmlv2/rest/entities/ProjectUsage.cpp
         src/sysmlv2/rest/entities/Element.cpp
         src/sysmlv2/rest/entities/Relationship.cpp

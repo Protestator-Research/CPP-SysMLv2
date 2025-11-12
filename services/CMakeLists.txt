@@ -5,14 +5,6 @@ project(sysmlv2service CXX C)
 set(GLOBAL_HEADER
         include/sysmlv2/service/sysmlv2service_global.h)
 
-set(INTERFACE_HEADER
-        include/sysmlv2/service/interfaces/IProjectUsageService.h
-        include/sysmlv2/service/interfaces/IElementNavigationService.h
-        include/sysmlv2/service/interfaces/IExternalReleationshipService.h
-        include/sysmlv2/service/interfaces/IProjectService.h
-        include/sysmlv2/service/interfaces/IProjectVersioningService.h
-        include/sysmlv2/service/interfaces/IQueryService.h)
-
 set(API_HEADER
         include/sysmlv2/service/implementation/ElementNavigationService.h
         include/sysmlv2/service/implementation/ProjectService.h
@@ -53,7 +45,6 @@ install(TARGETS sysmlv2service ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS sysmlv2service RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2/service)
 install(FILES ${API_HEADER} DESTINATION include/sysmlv2/service/implementation)
-install(FILES ${INTERFACE_HEADER} DESTINATION include/sysmlv2/service/interfaces)
 install(FILES ${ONLINE_HEADER} DESTINATION include/sysmlv2/service/online)
 
 if(MSVC)

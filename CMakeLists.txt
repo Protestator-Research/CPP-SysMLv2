@@ -20,6 +20,7 @@ option(BUILD_WITH_PARSING "Builds with the SysMLv2 parsing API" ON)
 enable_testing()
 
 
+add_subdirectory(sysmlinterfaces)
 
 if (BUILD_WITH_REST)
     add_subdirectory(rest-api)

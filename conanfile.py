@@ -30,7 +30,7 @@ class CPPSysMLRecipe(ConanFile):
         self.requires("boost/[>=1.86.0 <2]")
         self.requires("nlohmann_json/[>=3.11.3 <3.13]")
         self.requires("date/3.0.4")
-        self.requires("libcurl/[>=8.4.0 <9]")
+        self.requires("libcurl/[>=8.4.0 <8.15.0]")
         if(self.options.with_parsing):
             self.requires("antlr4-cppruntime/4.13.2")
 
