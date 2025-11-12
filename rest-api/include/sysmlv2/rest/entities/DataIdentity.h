@@ -60,7 +60,7 @@ namespace SysMLv2::REST {
         /**
          * Destructor
          */
-        virtual ~DataIdentity();
+        ~DataIdentity() override = default;
 
         std::vector<std::shared_ptr<DataVersion>> getDataVersions() const;
         void setDataVersions(std::vector<std::shared_ptr<DataVersion>> versions);

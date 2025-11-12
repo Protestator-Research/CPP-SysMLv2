@@ -34,10 +34,6 @@ namespace SysMLv2::REST {
         DataIdentity::deserializeAndPopulate(jsonStringOrName);
     }
 
-    DataIdentity::~DataIdentity() {
-
-    }
-
     std::vector<std::shared_ptr<DataVersion>> DataIdentity::getDataVersions() const {
         return Version;
     }
@@ -90,7 +86,17 @@ namespace SysMLv2::REST {
 
     void DataIdentity::deserializeAndPopulate(const std::string& jsonString)
     {
-	    
+        nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
+
+    	Deleted = Utilities::fromIso8601(parsedJson[JSON_DELETED_ENTITY]);
+        Created = Utilities::fromIso8601(parsedJson[JSON_CREATED_ENTITY]);
+
+        std::vector<nlohmann::json> arrayValues = parsedJson[JSON_DATA_VER_ENTITIY].get<std::vector<nlohmann::json>>();
+        for (const auto value : arrayValues)
+        {
+            auto versionToBeAdded = std::make_shared<DataVersion>(value.dump());
+            Version.push_back(versionToBeAdded);
+        }
     }
 
 }

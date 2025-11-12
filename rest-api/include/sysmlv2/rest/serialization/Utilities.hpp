@@ -1,6 +1,7 @@
 #pragma once
 
 #include <chrono>
+#include <time.h>
 #include <string>
 #include <sysmlv2/rest/sysmlv2rest_global.h>
 
@@ -12,7 +13,11 @@ namespace SysMLv2::REST {
 			time_t epochSeconds = std::chrono::system_clock::to_time_t(t);
 			std::stringstream stream;
 			struct tm buf;
+#ifdef WIN32
 			gmtime_s(&buf, &epochSeconds);
+#else
+			gmtime_r(&epochSeconds, &buf);
+#endif
 			stream << std::put_time(&buf, "%FT%T");
 			auto truncated = std::chrono::system_clock::from_time_t(epochSeconds);
 			auto USDelta = std::chrono::duration_cast<std::chrono::microseconds>(t - truncated).count();

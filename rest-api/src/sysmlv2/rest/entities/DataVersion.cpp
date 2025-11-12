@@ -19,6 +19,11 @@ namespace SysMLv2::REST {
         Payload = payload;
     }
 
+    DataVersion::DataVersion(std::string jsonValue) : Record(jsonValue)
+    {
+        DataVersion::deserializeAndPopulate(jsonValue);
+    }
+
     DataVersion::~DataVersion() {
 
     }
@@ -37,10 +42,17 @@ namespace SysMLv2::REST {
     std::string DataVersion::serializeToJson()
     {
         nlohmann::json json = nlohmann::json::parse(Record::serializeToJson());
-        std::cout << "Identity" << std::endl;
+
         json[JSON_IDENTITY_ENTITY] = nlohmann::json::parse(Identity->serializeToJson());
         json[JSON_PAYLOAD_ENTITY] = nlohmann::json::parse(Payload->serializeToJson());
 
 	    return json.dump(JSON_INTENT);
+    }
+
+    void DataVersion::deserializeAndPopulate(const std::string& jsonString)
+    {
+        nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
+        Identity = std::make_shared<DataIdentity>(parsedJson[JSON_IDENTITY_ENTITY].dump());
+        Payload = std::make_shared<Data>();
     }
 }

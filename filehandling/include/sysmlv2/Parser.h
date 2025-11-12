@@ -43,6 +43,11 @@ namespace SysMLv2::Files {
 		 */
 		static std::pair<std::vector<std::shared_ptr<KerML::Entities::Element>>,std::vector<std::shared_ptr<ParserError>>> parseKerML(std::string text);
 
+		/**
+		 * 
+		 * @param text 
+		 * @return 
+		 */
 		static std::pair<std::vector<std::shared_ptr<KerML::Entities::Element>>,std::vector<std::shared_ptr<ParserError>>> parseSysMLv2(std::string text);
     };
 }

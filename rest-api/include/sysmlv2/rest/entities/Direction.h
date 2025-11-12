@@ -7,8 +7,8 @@
 
 namespace SysMLv2::REST {
     enum SYSMLV2REST_EXPORT Direction {
-        in,
-        out,
-        both
+        IN,
+        OUT,
+        BOTH
     };
 }

@@ -42,9 +42,11 @@ namespace SysMLv2::REST {
         std::shared_ptr<Data> getPayload();
         boost::uuids::uuid getId();
 
-        std::string serializeToJson();
+        std::string serializeToJson() override;
 
-    protected:
+protected:
+        void deserializeAndPopulate(const std::string& jsonString) override;
+
         std::shared_ptr<DataIdentity> Identity;
 
         std::shared_ptr<Data> Payload;

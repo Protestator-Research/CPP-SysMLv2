@@ -23,11 +23,7 @@ namespace SysMLv2::REST {
     }
 
     Identification::Identification(std::string JSONstring) {
-        nlohmann::json json = nlohmann::json::parse(JSONstring);
-        if(!json[JSON_ID_ENTITY].is_null())
-            Id = boost::uuids::string_generator()(json[JSON_ID_ENTITY].get<std::string>());
-        else
-            Id = boost::uuids::random_generator()();
+        Identification::deserializeAndPopulate(JSONstring);
     }
 
     std::string Identification::serializeToJson() {
@@ -43,6 +39,14 @@ namespace SysMLv2::REST {
     Identification& Identification::operator=(const Identification &other) {
         Id = other.Id;
         return *this;
+    }
+
+    void Identification::deserializeAndPopulate(const std::string &jsonString) {
+        nlohmann::json json = nlohmann::json::parse(jsonString);
+        if(!json[JSON_ID_ENTITY].is_null())
+            Id = boost::uuids::string_generator()(json[JSON_ID_ENTITY].get<std::string>());
+        else
+            Id = boost::uuids::random_generator()();
     }
 }
 
