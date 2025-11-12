@@ -14,7 +14,7 @@
 // Internal Classes
 //---------------------------------------------------------
 #include <sysmlv2/rest/entities/IEntity.h>
-#include <sysmlv2/rest/sysmlv2rest_global.h>
+#include <sysmlv2/interfaces/sysmlv2interfaces_global.h>
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -27,7 +27,7 @@ namespace SysMLv2::REST {
      * @author Moritz Herzog
      * @version 1.0
      */
-    class SYSMLV2REST_EXPORT Data  : public IEntity {
+    class SYSMLV2INTERFACE_EXPORT Data  : public IEntity {
     public:
         /**
          * C-Tor

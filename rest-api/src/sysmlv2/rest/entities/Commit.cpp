@@ -33,7 +33,7 @@
 
 
 namespace SysMLv2::REST{
-    Commit::Commit(boost::uuids::uuid id, std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits) : Record(id,name,description){
+    Commit::Commit(boost::uuids::uuid id, std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits) : Record(id,"",description){
         Type = "Commit";
         PreviusCommits = previusCommits;
         OwningProject = owningProject;
@@ -120,7 +120,7 @@ namespace SysMLv2::REST{
         Description = parsedElement[JSON_DESCRIPTION_ENTITY];
 
     	std::vector<nlohmann::json> arrayValues = parsedElement[JSON_CHANGE_ENTITY].get<std::vector<nlohmann::json>>();
-        for (const auto value : arrayValues)
+        for (const auto& value : arrayValues)
         {
             auto changeToBeAdded = std::make_shared<DataVersion>(value.dump());
             Change.push_back(changeToBeAdded);
@@ -130,7 +130,7 @@ namespace SysMLv2::REST{
         OwningProject = std::make_shared<Project>(parsedElement[JSON_OWNING_PROJECT]);
 
         std::vector<nlohmann::json> arrayValuesPrevCommits = parsedElement[JSON_PREV_COMMITS].get<std::vector<nlohmann::json>>();
-        for (const auto value : arrayValuesPrevCommits)
+        for (const auto& value : arrayValuesPrevCommits)
         {
             auto changeToBeAdded = std::make_shared<Commit>(value.dump());
             PreviusCommits.push_back(changeToBeAdded);

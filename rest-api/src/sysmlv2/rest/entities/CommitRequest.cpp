@@ -59,7 +59,7 @@ namespace SysMLv2::REST
 		nlohmann::json parsedElement = nlohmann::json::parse(jsonValue);
 		Description = parsedElement[JSON_DESCRIPTION_ENTITY];
 		std::vector<nlohmann::json> arrayValues = parsedElement[JSON_CHANGE_ENTITY].get<std::vector<nlohmann::json>>();
-		for (const auto value : arrayValues)
+		for (const auto& value : arrayValues)
 		{
 			auto changeToBeAdded = std::make_shared<DataVersion>(value.dump());
 			ChangeRequested.push_back(changeToBeAdded);

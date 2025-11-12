@@ -21,7 +21,6 @@
 
 #include <iostream>
 
-#include <sysmlv2/rest/entities/JSONEntities.h>
 
 namespace SysMLv2::REST {
     Data::Data() {
@@ -47,15 +46,15 @@ namespace SysMLv2::REST {
     std::string Data::serializeToJson() {
         std::cout<<"Data::serializeToJson"<<std::endl;
         nlohmann::json json;
-        json[JSON_ID_ENTITY] = boost::lexical_cast<std::string>(Id);
-        json[JSON_TYPE_ENTITY] = Type;
+        json["@id"] = boost::lexical_cast<std::string>(Id);
+        json["@type"] = Type;
         return json.dump(JSON_INTENT);
     }
 
     void Data::deserializeAndPopulate(const std::string& jsonString)
     {
         nlohmann::json json = nlohmann::json::parse(jsonString);
-        Id = boost::uuids::string_generator()(json[JSON_ID_ENTITY].get<std::string>());
-        Type = json[JSON_TYPE_ENTITY].get<std::string>();
+        Id = boost::uuids::string_generator()(json["@id"].get<std::string>());
+        Type = json["@type"].get<std::string>();
     }
 }

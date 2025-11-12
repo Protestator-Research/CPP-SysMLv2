@@ -37,7 +37,8 @@ target_link_libraries(sysmlv2service
         boost::boost
         nlohmann_json::nlohmann_json
         date::date
-        sysmlv2rest)
+        sysmlv2rest
+        sysmlv2interfaces)
 
 
 include(GNUInstallDirs)
@@ -52,12 +53,14 @@ if(MSVC)
     target_link_directories(sysmlv2service PUBLIC ${CMAKE_BINARY_DIR}/out)
     target_include_directories(sysmlv2service PUBLIC
         ./include
-        ../rest-api/include)
+        ../rest-api/include
+        ../sysmlinterfaces/include)
 else ()
     target_compile_options(sysmlv2service PRIVATE -Wall -Wextra -Wpedantic -Werror)
     target_include_directories(sysmlv2service PRIVATE
         ./include
-        ../rest-api/include)
+        ../rest-api/include
+        ../sysmlinterfaces/include)
 endif()
 
 file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)

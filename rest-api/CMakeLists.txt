@@ -65,7 +65,8 @@ add_library(sysmlv2rest
 target_link_libraries(sysmlv2rest
         boost::boost
         nlohmann_json::nlohmann_json
-        date::date)
+        date::date
+        sysmlv2interfaces)
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2rest ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
@@ -80,11 +81,13 @@ if(MSVC)
     target_compile_options(sysmlv2rest PRIVATE /W4 /WX- /bigobj)
     target_link_directories(sysmlv2rest PUBLIC ${CMAKE_BINARY_DIR}/out)
     target_include_directories(sysmlv2rest PUBLIC
-        ./include/)
+        ./include/
+        ../sysmlinterfaces/include)
 else ()
     target_compile_options(sysmlv2rest PRIVATE -Wall -Wextra -Wpedantic -Werror)
     target_include_directories(sysmlv2rest PRIVATE
-        ./include/)
+        ./include/
+        ../sysmlinterfaces/include)
 endif()
 
 file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)

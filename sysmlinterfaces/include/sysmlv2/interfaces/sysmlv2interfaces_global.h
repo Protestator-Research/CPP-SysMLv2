@@ -1,8 +1,9 @@
-//
-// Created by herzog on 11/12/25.
-//
-
-#ifndef CPP_SYSMLV2_SYSMLV2INTERFACES_GLOBAL_H
-#define CPP_SYSMLV2_SYSMLV2INTERFACES_GLOBAL_H
-
-#endif //CPP_SYSMLV2_SYSMLV2INTERFACES_GLOBAL_H
+#ifdef WIN32
+#ifdef sysmlv2interfaces_EXPORTS
+#define SYSMLV2INTERFACE_EXPORT __declspec(dllexport)
+#else
+#define SYSMLV2INTERFACE_EXPORT __declspec(dllimport)
+#endif
+#else
+#define SYSMLV2INTERFACE_EXPORT
+#endif // WIN32

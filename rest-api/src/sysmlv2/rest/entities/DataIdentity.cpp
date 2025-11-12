@@ -92,7 +92,7 @@ namespace SysMLv2::REST {
         Created = Utilities::fromIso8601(parsedJson[JSON_CREATED_ENTITY]);
 
         std::vector<nlohmann::json> arrayValues = parsedJson[JSON_DATA_VER_ENTITIY].get<std::vector<nlohmann::json>>();
-        for (const auto value : arrayValues)
+        for (const auto& value : arrayValues)
         {
             auto versionToBeAdded = std::make_shared<DataVersion>(value.dump());
             Version.push_back(versionToBeAdded);
