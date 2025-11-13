@@ -29,7 +29,7 @@ namespace SysMLv2::REST {
 namespace SysMLv2::REST {
     /**
      * The class Data Identity is a subclass of Record that represents a unique, version-independent representation of
-     * Data through its lifecycle.A Data Identity is associated with 1 or more Data Version records that represent
+     * Data through its lifecycle. A Data Identity is associated with 1 or more Data Version records that represent
      * different versions of the same Data.
      * @class DataIdentity
      * @author Moritz Herzog

@@ -61,6 +61,11 @@ namespace SysMLv2::REST {
     // Used for DataIdentity
     const std::string JSON_DATA_VER_ENTITIY = "dataVersions";
 
+    // Used for Queries
+    const std::string JSON_SELECT_ENTITY = "select";
+    const std::string JSON_SCOPE_ENTITY = "scope";
+    const std::string JSON_ORDER_ENTITY = "order";
+
     // Used for the element implementation of the Agila Backend
     const std::string JSON_SHORT_NAME_ENTITY = "shortName";
     const std::string JSON_DECLARED_NAME_ENTITY = "declaredName";

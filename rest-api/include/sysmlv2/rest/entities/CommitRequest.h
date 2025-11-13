@@ -45,7 +45,8 @@ namespace SysMLv2::REST
 namespace SysMLv2::REST {
 
     /**
-     * 
+     * This CommitRequest is required by the SysML v2 Standard. But not documented; thus this can diverge per implementation,
+     * meaning that the parsing needs to correct for erros.
      * @class CommitRequest
      * @author Moritz Herzog
      * @version 1.0

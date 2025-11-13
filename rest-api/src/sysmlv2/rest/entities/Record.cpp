@@ -36,9 +36,7 @@ namespace SysMLv2::REST {
         catch (...) {
             Name = jsonString;
             Id = boost::uuids::random_generator()();
-            
         }
-
     }
 
     bool Record::operator==(const Record &other) const {
