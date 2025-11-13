@@ -66,6 +66,10 @@ namespace SysMLv2::REST {
     const std::string JSON_SCOPE_ENTITY = "scope";
     const std::string JSON_ORDER_ENTITY = "order";
 
+    //Used for Data
+    const std::string JSON_SPECIFICATION_ENTITY = "specification";
+    const std::string JSON_LANGUAGE_ENTITY = "language";
+
     // Used for the element implementation of the Agila Backend
     const std::string JSON_SHORT_NAME_ENTITY = "shortName";
     const std::string JSON_DECLARED_NAME_ENTITY = "declaredName";
@@ -79,7 +83,7 @@ namespace SysMLv2::REST {
     const std::string JSON_VALUE_STRING_ENTITY = "valueStr";
     const std::string JSON_IMPORTED_MEMBER_NAME_ENTITY = "importedMemberName";
     const std::string JSON_IMPORTED_NAMESPACE_ENTITY = "importedNamespace";
-    const std::string JSON_LANGUAGE_ENTITY = "language";
+
     const std::string JSON_BODY_ENTITY = "body";
     const std::string JSON_SOURCE_ENTITY = "source";
     const std::string JSON_TARGET_ENTITY = "target";
