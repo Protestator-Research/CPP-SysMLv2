@@ -28,9 +28,9 @@ namespace SysMLv2::API {
             }
         }
 
-        ProjectIdProjectUsageMap.at(project->getId()).erase(std::remove(ProjectIdProjectUsageMap.at(project->getId()).begin(), ProjectIdProjectUsageMap.at(project->getId()).end(), requested_usage));
+        ProjectIdProjectUsageMap.at(project->getId()).erase(std::remove(ProjectIdProjectUsageMap.at(project->getId()).begin(), ProjectIdProjectUsageMap.at(project->getId()).end(), requested_usage), ProjectIdProjectUsageMap.at(project->getId()).end());
 
-        auto returnValue = std::make_shared<REST::Commit>("Removing ProjectUsage for " + project->getName(),"Removing ProjectUsage for " + project->getName(),project);
+        auto returnValue = std::make_shared<REST::Commit>("Removing ProjectUsage for " + project->getName(), project);
         auto change = std::make_shared<REST::DataVersion>(projectUsageId, nullptr);
         returnValue->addChange(change);
         return returnValue;
@@ -38,7 +38,7 @@ namespace SysMLv2::API {
 
     std::shared_ptr<SysMLv2::REST::Commit> ProjectUsageService::createProjectUsage(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Branch>, std::shared_ptr<SysMLv2::REST::ProjectUsage> projectUsage) {
         ProjectIdProjectUsageMap.at(project->getId()).push_back(projectUsage);
-        auto returnValue = std::make_shared<REST::Commit>("Adding Project Usage for " + project->getName(),"Adding Project Usage for " + project->getName(),project);
+        auto returnValue = std::make_shared<REST::Commit>("Adding Project Usage for " + project->getName(),project);
         auto change = std::make_shared<REST::DataVersion>(boost::uuids::random_generator()(), projectUsage);
         returnValue->addChange(change);
         return returnValue;

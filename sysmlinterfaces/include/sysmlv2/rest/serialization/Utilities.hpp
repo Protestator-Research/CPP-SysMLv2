@@ -27,7 +27,7 @@ namespace SysMLv2::REST {
 
 		static  std::chrono::time_point<std::chrono::system_clock> fromIso8601(std::string value)
 		{
-#if defined(WIN32) && (_MSC_VER > 1931) || defined(__GNUC__) && (__GNUC__ > 13) || !defined(__APPLE__)
+#if defined(WIN32) && (_MSC_VER > 1931) || defined(__GNUC__) && (__GNUC___ > 13) || !defined(__APPLE__)
 			std::istringstream in{ value };
 			std::chrono::sys_time<std::chrono::milliseconds> tp;
 			in >> std::chrono::parse("%FT%TZ", tp);
