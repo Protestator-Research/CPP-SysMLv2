@@ -29,7 +29,7 @@
 #include <sysmlv2/rest/entities/DataVersion.h>
 #include <sysmlv2/rest/entities/JSONEntities.h>
 
-#include "sysmlv2/rest/serialization/Utilities.hpp"
+#include <sysmlv2/rest/serialization/Utilities.hpp>
 
 
 namespace SysMLv2::REST{

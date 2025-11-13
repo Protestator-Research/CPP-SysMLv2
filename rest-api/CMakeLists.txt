@@ -34,8 +34,7 @@ set(ENTITIES_HEADER
         include/sysmlv2/rest/entities/DataDifference.h)
 
 set(SERIALIZATION_HEADER
-        include/sysmlv2/rest/serialization/SysMLv2Deserializer.h
-        include/sysmlv2/rest/serialization/Utilities.hpp)
+        include/sysmlv2/rest/serialization/SysMLv2Deserializer.h)
 
 
 add_library(sysmlv2rest

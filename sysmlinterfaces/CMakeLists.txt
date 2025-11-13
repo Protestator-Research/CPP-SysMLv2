@@ -17,10 +17,14 @@ set(REST_HEADER
         include/sysmlv2/rest/entities/IEntity.h
         include/sysmlv2/rest/entities/Data.h)
 
+set(SERIALIZATION_HEADER
+        include/sysmlv2/rest/serialization/Utilities.hpp)
+
 add_library(sysmlv2interfaces
         ${GLOBAL_HEADER}
         ${INTERFACE_HEADER}
         ${REST_HEADER}
+        ${SERIALIZATION_HEADER}
         src/sysmlv2/rest/entities/Data.cpp)
 
 target_link_libraries(sysmlv2interfaces
@@ -37,6 +41,7 @@ install(TARGETS sysmlv2interfaces RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2/interfaces)
 install(FILES ${INTERFACE_HEADER} DESTINATION include/sysmlv2/service/interfaces)
 install(FILES ${REST_HEADER} DESTINATION include/sysmlv2/rest/entities)
+install(FILES ${SERIALIZATION_HEADER} DESTINATION include/sysmlv2/rest/serialization)
 
 if(MSVC)
     target_compile_options(sysmlv2interfaces PRIVATE /W4 /WX- /bigobj)
