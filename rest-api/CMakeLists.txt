@@ -28,7 +28,8 @@ set(ENTITIES_HEADER
         include/sysmlv2/rest/entities/Direction.h
         include/sysmlv2/rest/entities/ChangeType.h
         include/sysmlv2/rest/entities/MergeResult.h
-        include/sysmlv2/rest/entities/DataDifference.h)
+        include/sysmlv2/rest/entities/DataDifference.h
+        include/sysmlv2/rest/entities/ProjectRequest.h)
 
 set(SERIALIZATION_HEADER
         include/sysmlv2/rest/serialization/SysMLv2Deserializer.h)
@@ -52,6 +53,7 @@ add_library(sysmlv2rest
         src/sysmlv2/rest/serialization/SysMLv2Deserializer.cpp
         src/sysmlv2/rest/entities/MergeResult.cpp
         src/sysmlv2/rest/entities/DataDifference.cpp
+        src/sysmlv2/rest/entities/ProjectRequest.cpp
         ${ENTITIES_HEADER}
         ${SERIALIZATION_HEADER}
         ${GLOBAL_HEADER})

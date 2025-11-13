@@ -83,7 +83,7 @@ namespace SysMLv2::REST {
         {
             jsonDocument[JSON_NAME_ENTITY] = Name;
             jsonDocument[JSON_DESCRIPTION_ENTITY] = Description;
-            jsonDocument["defaultBranchName"] = DefaultBranch->getName();
+            jsonDocument[JSON_DEFAULT_BRANCH_ENTITY] = DefaultBranch->getName();
         }else
         {
             return Record::serializeToJson();

@@ -27,6 +27,7 @@ namespace SysMLv2::REST {
      */
     class SYSMLV2INTERFACE_EXPORT IEntity {
     public:
+        virtual ~IEntity() = default;
 
         /**
          * Allows the serialization of the Object to a JSON String.

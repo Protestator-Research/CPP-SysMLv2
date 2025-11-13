@@ -14,6 +14,7 @@ namespace SysMLv2::REST {
     class DataIdentity;
 
     class SYSMLV2REST_EXPORT MergeResult {
+        //TODO To be Implemented
     public:
         MergeResult(std::shared_ptr<Commit> mergeCommit = nullptr, std::vector<std::shared_ptr<DataIdentity>> conflict = std::vector<std::shared_ptr<DataIdentity>>());
 
