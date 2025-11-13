@@ -33,7 +33,7 @@ namespace SysMLv2::API {
     }
 
     std::shared_ptr<SysMLv2::REST::Commit> ProjectVersioningService::createCommit(std::shared_ptr<SysMLv2::REST::DataVersion> change, std::shared_ptr<SysMLv2::REST::Branch> branch, std::vector<std::shared_ptr<SysMLv2::REST::Commit>> previousCommits, std::shared_ptr<SysMLv2::REST::Project> project) {
-        const auto commit = std::make_shared<SysMLv2::REST::Commit>("", "", project, previousCommits);
+        const auto commit = std::make_shared<SysMLv2::REST::Commit>("", project, previousCommits);
         commit->addChange(change);
 
         ProjectIdCommitMap[project->getId()].push_back(commit);
@@ -43,7 +43,7 @@ namespace SysMLv2::API {
     }
 
     std::shared_ptr<SysMLv2::REST::Commit> ProjectVersioningService::createCommit(std::shared_ptr<SysMLv2::REST::DataVersion> change, std::shared_ptr<SysMLv2::REST::Branch> branch, std::shared_ptr<SysMLv2::REST::Project> project) {
-        const auto commit = std::make_shared<SysMLv2::REST::Commit>("", "", project);
+        const auto commit = std::make_shared<SysMLv2::REST::Commit>( "", project);
         commit->addChange(change);
 
         ProjectIdCommitMap[project->getId()].push_back(commit);
@@ -53,7 +53,7 @@ namespace SysMLv2::API {
     }
 
     std::shared_ptr<SysMLv2::REST::Commit> ProjectVersioningService::createCommit(std::shared_ptr<SysMLv2::REST::DataVersion> change, std::vector<std::shared_ptr<SysMLv2::REST::Commit>> previousCommits, std::shared_ptr<SysMLv2::REST::Project> project) {
-        const auto commit = std::make_shared<SysMLv2::REST::Commit>("", "", project, previousCommits);
+        const auto commit = std::make_shared<SysMLv2::REST::Commit>("", project, previousCommits);
         commit->addChange(change);
 
         ProjectIdCommitMap[project->getId()].push_back(commit);
@@ -63,7 +63,7 @@ namespace SysMLv2::API {
     }
 
     std::shared_ptr<SysMLv2::REST::Commit> ProjectVersioningService::createCommit(std::shared_ptr<SysMLv2::REST::DataVersion> change, std::shared_ptr<SysMLv2::REST::Project> project) {
-        const auto commit = std::make_shared<SysMLv2::REST::Commit>("", "", project);
+        const auto commit = std::make_shared<SysMLv2::REST::Commit>( "", project);
         commit->addChange(change);
 
         ProjectIdCommitMap[project->getId()].push_back(commit);
@@ -149,7 +149,7 @@ namespace SysMLv2::API {
             if (branchesList[i]->getId() == branchId)
                 branch = branchesList[i];
         }
-        ProjectIdBranchMap.at(project->getId()).erase(std::remove(ProjectIdBranchMap.at(project->getId()).begin(), ProjectIdBranchMap.at(project->getId()).end(), branch));
+        ProjectIdBranchMap.at(project->getId()).erase(std::remove(ProjectIdBranchMap.at(project->getId()).begin(), ProjectIdBranchMap.at(project->getId()).end(), branch), ProjectIdBranchMap.at(project->getId()).end());
         return branch;
     }
 

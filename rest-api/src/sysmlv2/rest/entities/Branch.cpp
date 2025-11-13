@@ -11,12 +11,7 @@
 namespace SysMLv2::REST {
     Branch::Branch(std::string jsonStringOrName) : CommitReference(jsonStringOrName) {
         try {
-            nlohmann::json parsedJson = nlohmann::json::parse(jsonStringOrName);
-
-            const auto commit = parsedJson[JSON_HEAD_ID];
-            if(!commit.empty())
-                Head = std::make_shared<Commit>(commit.dump());
-
+            Branch::deserializeAndPopulate(jsonStringOrName);
         }
         catch (...) {
             Name = jsonStringOrName;
@@ -28,7 +23,9 @@ namespace SysMLv2::REST {
     }
 
     std::string Branch::serializeToJson() {
-        return CommitReference::serializeToJson();
+        nlohmann::json json = nlohmann::json::parse(CommitReference::serializeToJson());
+        json[JSON_HEAD_ID] = Head->serializeIdentification();
+        return json.dump(JSON_INTENT);
     }
 
     std::shared_ptr<Commit> Branch::getHead()
@@ -38,5 +35,14 @@ namespace SysMLv2::REST {
 
     void Branch::setHead(std::shared_ptr<Commit> head) {
         Head = head;
+    }
+
+    void Branch::deserializeAndPopulate(const std::string& jsonString)
+    {
+        nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
+
+        const auto commit = parsedJson[JSON_HEAD_ID];
+        if (!commit.empty())
+            Head = std::make_shared<Commit>(commit.dump());
     }
 }

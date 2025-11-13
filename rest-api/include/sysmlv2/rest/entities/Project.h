@@ -93,6 +93,6 @@ namespace SysMLv2::REST {
         std::shared_ptr<Branch> DefaultBranch;
         std::vector<std::shared_ptr<Tag>> Tags;
         std::vector<std::shared_ptr<ProjectUsage>> ProjectUsages;
-        std::vector<std::shared_ptr<Query>> Querries;
+        std::vector<std::shared_ptr<Query>> Queries;
     };
 }

@@ -16,7 +16,7 @@
 // Internal Classes
 //---------------------------------------------------------
 #include <sysmlv2/rest/entities/ChangeType.h>
-#include <sysmlv2/service/sysmlv2service_global.h>
+#include <sysmlv2/interfaces/sysmlv2interfaces_global.h>
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -46,7 +46,7 @@ namespace SysMLv2::API {
      * @see SysMLv2::Entities::Data
      * @see SysMLv2::Entities::DataDifference
      */
-    class SYSMLV2SERVICE_EXPORT IProjectVersioningService{
+    class SYSMLV2INTERFACE_EXPORT IProjectVersioningService{
     public:
 	    virtual ~IProjectVersioningService() = default;
 	    /**

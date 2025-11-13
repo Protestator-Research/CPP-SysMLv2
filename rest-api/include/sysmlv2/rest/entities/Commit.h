@@ -51,7 +51,7 @@ namespace SysMLv2::REST {
      * @author Moritz Herzog
      * @version 1.0
      */
-    class SYSMLV2REST_EXPORT Commit : public Record {
+    class SYSMLV2REST_EXPORT Commit final : public Record {
     public:
         /**
          * Generalized Constructor is deleted, according to the SysMLv2 standard.
@@ -61,21 +61,19 @@ namespace SysMLv2::REST {
         /**
          *
          * @param id
-         * @param name
          * @param description
          * @param owningProject
          * @param previusCommits
          */
-        Commit(boost::uuids::uuid id, std::string name, std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits = std::vector<std::shared_ptr<Commit>>());
+        Commit(boost::uuids::uuid id, std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits = std::vector<std::shared_ptr<Commit>>());
 
         /**
          *
-         * @param name
          * @param description
          * @param owningProject
          * @param previusCommits
          */
-        Commit(std::string name, std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits = std::vector<std::shared_ptr<Commit>>());
+        Commit(std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits = std::vector<std::shared_ptr<Commit>>());
 
         /**
          * Constructor for Parsing an Commit from the REST API, according to the SysMLv2 Standard.
@@ -118,11 +116,15 @@ namespace SysMLv2::REST {
          */
         [[nodiscard]] std::shared_ptr<Project> getOwningProject() const;
 
+        void setOwningProject(std::shared_ptr<Project> owningProject);
+
         std::string serializeToJson() override;
 
         [[nodiscard]] std::chrono::system_clock::time_point getCreated() const;
 
-    protected:
+protected:
+        void deserializeAndPopulate(const std::string& jsonString) override;
+
         /**
          *
          */

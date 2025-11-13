@@ -28,8 +28,12 @@
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
+#include <nlohmann/json.hpp>
 #include <sysmlv2/rest/entities/CommitReference.h>
 #include <sysmlv2/rest/entities/Commit.h>
+#include <sysmlv2/rest/entities/JSONEntities.h>
+
+#include <sysmlv2/rest/serialization/Utilities.hpp>
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -38,8 +42,13 @@
 namespace SysMLv2::REST {
     CommitReference::CommitReference(std::string jsonStringOrName) : Record(jsonStringOrName)
     {
-        Created = std::chrono::system_clock::now();
-        Deleted = std::chrono::time_point<std::chrono::system_clock>::min();
+        try {
+            CommitReference::deserializeAndPopulate(jsonStringOrName);
+        }catch (...)
+        {
+            Created = std::chrono::system_clock::now();
+            Deleted = std::chrono::time_point<std::chrono::system_clock>::min();
+        }
     }
 
     bool CommitReference::operator==(CommitReference &other) {
@@ -53,7 +62,14 @@ namespace SysMLv2::REST {
     }
 
     std::string CommitReference::serializeToJson() {
-        return Record::serializeToJson();
+        nlohmann::json generatingJson = nlohmann::json::parse(Record::serializeToJson());
+
+        generatingJson[JSON_CREATED_ENTITY] = Utilities::toIso8601(Created);
+        generatingJson[JSON_DELETED_ENTITY] = Utilities::toIso8601(Deleted);
+
+        generatingJson[JSON_REFERENCE_COMMIT] = ReferencedCommit->serializeIdentification();
+
+        return generatingJson.dump(JSON_INTENT);
     }
 
     void CommitReference::setDeleted(std::chrono::system_clock::time_point deleted) {
@@ -72,6 +88,16 @@ namespace SysMLv2::REST {
     void CommitReference::setReferencedCommit(std::shared_ptr<Commit> referencedCommit)
     {
         ReferencedCommit = referencedCommit;
+    }
+
+    void CommitReference::deserializeAndPopulate(const std::string& jsonString)
+    {
+        nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
+
+        Created = Utilities::fromIso8601(parsedJson[JSON_CREATED_ENTITY]);
+        Deleted = Utilities::fromIso8601(parsedJson[JSON_DELETED_ENTITY]);
+
+        ReferencedCommit = std::make_shared<Commit>(parsedJson[JSON_REFERENCE_COMMIT]);
     }
 
     std::chrono::system_clock::time_point CommitReference::created() {

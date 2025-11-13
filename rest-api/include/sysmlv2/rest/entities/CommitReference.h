@@ -41,8 +41,8 @@ namespace SysMLv2::REST{
 
 namespace SysMLv2::REST {
     /**
-     * Represents an abstract baseclass that is used for the SysMLv2 API
-     * @class Record
+     * Represents an abstract baseclass that is used for the SysMLv2 API.
+     * @class CommitReference
      * @author Moritz Herzog
      * @version 1.0
      */
@@ -56,9 +56,9 @@ namespace SysMLv2::REST {
         explicit CommitReference(std::string jsonStringOrName);
 
         /**
-         *
-         * @param other
-         * @return
+         * Operator that allows to compare two CommitReferences with each other.
+         * @param other Second CommitReference
+         * @return True if the two CommitReferences are identical.
          */
         bool operator==(CommitReference& other);
 
@@ -96,6 +96,8 @@ namespace SysMLv2::REST {
          */
         void setReferencedCommit(std::shared_ptr<Commit> referencedCommit);
     protected:
+        void deserializeAndPopulate(const std::string& jsonString) override;
+
         std::chrono::system_clock::time_point Created;
         std::chrono::system_clock::time_point Deleted;
         std::shared_ptr<Commit> ReferencedCommit;

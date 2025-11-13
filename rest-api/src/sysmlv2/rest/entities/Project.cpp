@@ -45,7 +45,7 @@ namespace SysMLv2::REST {
 
         ProjectUsages = other.ProjectUsages;
 
-        Querries = other.Querries;
+        Queries = other.Queries;
         m_DataVersion = other.m_DataVersion;
     }
 
@@ -70,7 +70,7 @@ namespace SysMLv2::REST {
         Branches.clear();
         Tags.clear();
         ProjectUsages.clear();
-        Querries.clear();
+        Queries.clear();
     }
 
     std::shared_ptr<Branch> Project::getDefaultBranch() {

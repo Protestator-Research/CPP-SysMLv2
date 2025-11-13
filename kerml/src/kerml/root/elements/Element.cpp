@@ -97,6 +97,10 @@ namespace KerML::Entities {
         return nullptr;
     }
 
+    void Element::deserializeAndPopulate(const std::string &jsonString) {
+        Data::deserializeAndPopulate(jsonString);
+    }
+
     void Element::sortAliasIds() {
 
     }
@@ -184,5 +188,9 @@ namespace KerML::Entities {
 
     bool Element::includes(std::shared_ptr<Element>) {
         return false;
+    }
+
+    std::string Element::serializeToJson() {
+        return Data::serializeToJson();
     }
 } // KerML::Entities

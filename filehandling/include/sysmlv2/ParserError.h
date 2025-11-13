@@ -16,7 +16,7 @@ namespace SysMLv2::Files {
     class SYSMLV2FILE_EXPORT ParserError {
     public:
         ParserError(boost::uuids::uuid elementId, std::string projectName, ErrorType type, std::string description);
-        ~ParserError() = default;
+        virtual ~ParserError() = default;
 
         boost::uuids::uuid getElementID();
         std::string getProjectName();

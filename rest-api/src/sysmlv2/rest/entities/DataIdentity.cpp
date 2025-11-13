@@ -20,6 +20,9 @@
 #include <sysmlv2/rest/entities/Project.h>
 #include <sysmlv2/rest/entities/JSONEntities.h>
 
+#include <sysmlv2/rest/serialization/Utilities.hpp>
+
+
 namespace SysMLv2::REST {
 
     DataIdentity::DataIdentity(boost::uuids::uuid id) :
@@ -29,26 +32,38 @@ namespace SysMLv2::REST {
 
     DataIdentity::DataIdentity(std::string jsonStringOrName) : Record(jsonStringOrName) {
         Record::Type = "DataIdentity";
-    }
-
-    DataIdentity::~DataIdentity() {
-
+        DataIdentity::deserializeAndPopulate(jsonStringOrName);
     }
 
     std::vector<std::shared_ptr<DataVersion>> DataIdentity::getDataVersions() const {
-        return std::vector<std::shared_ptr<DataVersion>>();
+        return Version;
     }
 
     std::chrono::system_clock::time_point DataIdentity::createdAt() {
-        return std::chrono::system_clock::time_point();
+        return Created;
     }
 
     std::chrono::system_clock::time_point DataIdentity::deletedAt() {
-        return std::chrono::system_clock::time_point();
+        return Deleted;
     }
 
     std::string DataIdentity::serializeToJson() {
-        return Record::serializeToJson();
+        nlohmann::json json = nlohmann::json::parse(Record::serializeToJson());
+
+        std::string jsonElements = "[\r\n";
+        for (size_t i = 0; i < Version.size(); i++) {
+            jsonElements += Version[i]->serializeToJson();
+
+            if (i != (Version.size() - 1))
+                jsonElements += ",\r\n";
+        }
+        jsonElements += "]\r\n";
+
+        json[JSON_DATA_VER_ENTITIY] = nlohmann::json::parse(jsonElements);
+    	json[JSON_CREATED_ENTITY] = Utilities::toIso8601(Created);
+        json[JSON_DELETED_ENTITY] = Utilities::toIso8601(Deleted);
+
+        return json.dump(JSON_INTENT);
     }
 
     bool DataIdentity::operator==(const DataIdentity &other) {
@@ -68,4 +83,21 @@ namespace SysMLv2::REST {
     void DataIdentity::setDataVersions(std::vector<std::shared_ptr<DataVersion>> versions) {
         Version=versions;
     }
+
+
+    void DataIdentity::deserializeAndPopulate(const std::string& jsonString)
+    {
+        nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
+
+    	Deleted = Utilities::fromIso8601(parsedJson[JSON_DELETED_ENTITY]);
+        Created = Utilities::fromIso8601(parsedJson[JSON_CREATED_ENTITY]);
+
+        std::vector<nlohmann::json> arrayValues = parsedJson[JSON_DATA_VER_ENTITIY].get<std::vector<nlohmann::json>>();
+        for (const auto& value : arrayValues)
+        {
+            auto versionToBeAdded = std::make_shared<DataVersion>(value.dump());
+            Version.push_back(versionToBeAdded);
+        }
+    }
+
 }

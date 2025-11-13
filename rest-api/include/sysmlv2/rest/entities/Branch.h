@@ -52,7 +52,10 @@ namespace SysMLv2::REST {
         std::shared_ptr<Commit> getHead();
 
         void setHead(std::shared_ptr<Commit> head);
-    protected:
+
+protected:
+        void deserializeAndPopulate(const std::string& jsonString) override;
+
         std::shared_ptr<Commit> Head;
     };
 }

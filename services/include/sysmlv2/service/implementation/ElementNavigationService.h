@@ -18,19 +18,19 @@ namespace SysMLv2::API {
      */
     class SYSMLV2SERVICE_EXPORT ElementNavigationService : public IElementNavigationService{
     public:
-        ElementNavigationService();
+        ElementNavigationService() = default;
         virtual ~ElementNavigationService() = default;
 
-        std::vector<std::shared_ptr<SysMLv2::REST::Element>> getElements(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit) override;
+        std::vector<std::shared_ptr<KerML::Entities::Element>> getElements(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit) override;
 
-        std::shared_ptr<SysMLv2::REST::Element> getElementById(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, boost::uuids::uuid elementId) override;
+        std::shared_ptr<KerML::Entities::Element> getElementById(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, boost::uuids::uuid elementId) override;
 
-        std::vector<std::shared_ptr<SysMLv2::REST::Relationship>>
+        std::vector<std::shared_ptr<KerML::Entities::Relationship>>
         getRelationshipsByRelatedElement(std::shared_ptr<SysMLv2::REST::Project> project,
                                          std::shared_ptr<SysMLv2::REST::Commit> commit,
                                          boost::uuids::uuid elementId, int direction) override;
 
-        std::vector<std::shared_ptr<SysMLv2::REST::Element>>
+        std::vector<std::shared_ptr<KerML::Entities::Element>>
         getRootElements(std::shared_ptr<SysMLv2::REST::Project> project,
                         std::shared_ptr<SysMLv2::REST::Commit> commit) override;
 

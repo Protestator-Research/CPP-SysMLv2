@@ -29,7 +29,7 @@ namespace SysMLv2::REST {
 namespace SysMLv2::REST {
     /**
      * The class Data Identity is a subclass of Record that represents a unique, version-independent representation of
-     * Data through its lifecycle.A Data Identity is associated with 1 or more Data Version records that represent
+     * Data through its lifecycle. A Data Identity is associated with 1 or more Data Version records that represent
      * different versions of the same Data.
      * @class DataIdentity
      * @author Moritz Herzog
@@ -60,7 +60,7 @@ namespace SysMLv2::REST {
         /**
          * Destructor
          */
-        virtual ~DataIdentity();
+        ~DataIdentity() override = default;
 
         std::vector<std::shared_ptr<DataVersion>> getDataVersions() const;
         void setDataVersions(std::vector<std::shared_ptr<DataVersion>> versions);
@@ -82,7 +82,11 @@ namespace SysMLv2::REST {
 
         bool operator==(DataIdentity const &other);
 
-    protected:
+protected:
+        void deserializeAndPopulate(const std::string& jsonString) override;
+
         std::vector<std::shared_ptr<DataVersion>> Version;
+        std::chrono::system_clock::time_point Deleted;
+        std::chrono::system_clock::time_point Created;
     };
 }

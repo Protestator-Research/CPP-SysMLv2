@@ -70,6 +70,8 @@ namespace SysMLv2::REST {
         Identification& operator=(const Identification& other);
 
     protected:
+        void deserializeAndPopulate(const std::string &jsonString) override;
+
         boost::uuids::uuid Id = boost::uuids::random_generator()();
     };
 }

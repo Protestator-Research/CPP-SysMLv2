@@ -236,7 +236,8 @@ add_library(kerml
 target_link_libraries(kerml PRIVATE
         boost::boost
         nlohmann_json::nlohmann_json
-        date::date)
+        date::date
+        sysmlv2interfaces)
 
 
 include(GNUInstallDirs)
@@ -264,12 +265,18 @@ install(FILES ${KERNEL_PACKAGE_HEADER} DESTINATION include/kerml/kernel/packages
 install(FILES ${KERNEL_BEHAVIORS_HEADER} DESTINATION include/kerml/kernel/behaviors)
 install(FILES ${GLOBAL_HEADER} DESTINATION include/kerml)
 
-target_include_directories(kerml PRIVATE ./include)
 
 if(MSVC)
     target_compile_options(kerml PRIVATE /W4 /WX- /bigobj)
+    target_link_directories(kerml PUBLIC ${CMAKE_BINARY_DIR}/out)
+    target_include_directories(kerml PUBLIC
+            ./include
+            ../sysmlinterfaces/include)
 else ()
     target_compile_options(kerml PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_include_directories(kerml PUBLIC
+            ./include
+            ../sysmlinterfaces/include)
 endif()
 
 file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)

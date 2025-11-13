@@ -11,7 +11,7 @@
         ErrorMessage = message;
     }
 
-    std::string KerMLError::message() {
+std::string KerMLError::message() {
         return ErrorMessage;
     }
 

@@ -14,20 +14,19 @@
 #include <nlohmann/json.hpp>
 
 namespace SysMLv2::REST {
-    DataVersion::DataVersion(std::shared_ptr<DataIdentity> identity, std::shared_ptr<Data> payload) : Record(boost::uuids::random_generator()()) {
+    DataVersion::DataVersion(boost::uuids::uuid id, std::shared_ptr<Data> payload) : Record(id) {
         Type = "DataVersion";
-        Identity = identity;
         Payload = payload;
+    }
+
+    DataVersion::DataVersion(std::string jsonValue) : Record(jsonValue)
+    {
+        DataVersion::deserializeAndPopulate(jsonValue);
     }
 
     DataVersion::~DataVersion() {
 
     }
-
-    std::shared_ptr<DataIdentity> DataVersion::getIdentity() {
-        return Identity;
-    }
-
     void DataVersion::setPayload(std::shared_ptr<Data> payload) {
         Payload = payload;
     }
@@ -43,10 +42,17 @@ namespace SysMLv2::REST {
     std::string DataVersion::serializeToJson()
     {
         nlohmann::json json = nlohmann::json::parse(Record::serializeToJson());
-        std::cout << "Identity" << std::endl;
+
         json[JSON_IDENTITY_ENTITY] = nlohmann::json::parse(Identity->serializeToJson());
         json[JSON_PAYLOAD_ENTITY] = nlohmann::json::parse(Payload->serializeToJson());
 
 	    return json.dump(JSON_INTENT);
+    }
+
+    void DataVersion::deserializeAndPopulate(const std::string& jsonString)
+    {
+        nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
+        Identity = std::make_shared<DataIdentity>(parsedJson[JSON_IDENTITY_ENTITY].dump());
+        Payload = std::make_shared<Data>();
     }
 }

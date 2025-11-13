@@ -26,6 +26,7 @@ namespace SysMLv2::REST {
     const std::string JSON_NAME_ENTITY = "name";
     const std::string JSON_ALIAS_ENTITY = "alias";
     const std::string JSON_DESCRIPTION_ENTITY = "description";
+    const std::string JSON_OWNING_PROJECT = "owningProject";
 
     // Used for Project
     const std::string JSON_DEFAULT_BRANCH_ENTITY = "defaultBranch";
@@ -42,7 +43,6 @@ namespace SysMLv2::REST {
 
     // Used for Branches
     const std::string JSON_HEAD_ID = "head";
-    const std::string JSON_OWNING_PROJECT = "owningProject";
     const std::string JSON_REFERENCE_COMMIT = "referencedCommit";
 
     // Used for Data Identity
@@ -52,6 +52,19 @@ namespace SysMLv2::REST {
     // Used for Commit
     const std::string JSON_CHANGE_ENTITY = "change";
     const std::string JSON_TIMESTAMP_ENTITY = "timestamp";
+    const std::string JSON_PREV_COMMITS = "previousCommit";
+
+    // Used for CommitRefence
+    const std::string JSON_CREATED_ENTITY = "created";
+    const std::string JSON_DELETED_ENTITY = "deleted";
+
+    // Used for DataIdentity
+    const std::string JSON_DATA_VER_ENTITIY = "dataVersions";
+
+    // Used for Queries
+    const std::string JSON_SELECT_ENTITY = "select";
+    const std::string JSON_SCOPE_ENTITY = "scope";
+    const std::string JSON_ORDER_ENTITY = "order";
 
     // Used for the element implementation of the Agila Backend
     const std::string JSON_SHORT_NAME_ENTITY = "shortName";
@@ -85,7 +98,6 @@ namespace SysMLv2::REST {
     const std::string BRANCH_TYPE="branch";
     const std::string TAG_TYPE = "tag";
     const std::string QUERY_TYPE = "query";
-
     const std::string COMMIT_TYPE = "commit";
     const std::string FEATURE_TYPE = "feature";
     const std::string FEATURE_TYPE_TYPE = "featuretyping";

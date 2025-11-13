@@ -16,7 +16,7 @@
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
-#include <sysmlv2/service/sysmlv2service_global.h>
+#include <sysmlv2/interfaces/sysmlv2interfaces_global.h>
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -35,7 +35,7 @@ namespace SysMLv2::API {
      * @see SysMLv2::Entities::Branch
      * @see boost::uuids::uuid
      */
-    class SYSMLV2SERVICE_EXPORT IProjectService {
+    class SYSMLV2INTERFACE_EXPORT IProjectService {
     public:
         virtual ~IProjectService() = default;
 

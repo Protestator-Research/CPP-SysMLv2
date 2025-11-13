@@ -9,6 +9,7 @@
 // External Classes
 //---------------------------------------------------------
 #include <boost/uuid/uuid.hpp>
+#include <boost/uuid/random_generator.hpp>
 #include <memory>
 //---------------------------------------------------------
 // Internal Classes
@@ -33,19 +34,19 @@ namespace SysMLv2::REST {
      */
     class SYSMLV2REST_EXPORT DataVersion : public Record {
     public:
-        DataVersion() = delete;
-
-        DataVersion(std::shared_ptr<DataIdentity> identity, std::shared_ptr<Data> payload = nullptr);
+        DataVersion(boost::uuids::uuid id = boost::uuids::random_generator()(), std::shared_ptr<Data> payload = nullptr);
+        DataVersion(std::string jsonValue);
         virtual ~DataVersion();
 
-        std::shared_ptr<DataIdentity> getIdentity();
         void setPayload(std::shared_ptr<Data> payload);
         std::shared_ptr<Data> getPayload();
         boost::uuids::uuid getId();
 
-        std::string serializeToJson();
+        std::string serializeToJson() override;
 
-    protected:
+protected:
+        void deserializeAndPopulate(const std::string& jsonString) override;
+
         std::shared_ptr<DataIdentity> Identity;
 
         std::shared_ptr<Data> Payload;

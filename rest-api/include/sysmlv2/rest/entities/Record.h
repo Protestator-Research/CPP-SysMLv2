@@ -120,9 +120,17 @@ namespace SysMLv2::REST {
 
         std::string serializeToJson() override;
 
+        /**
+		 * Serializes element only as Identification, which can be used to open the real object. The Identification
+		 * contains the UUID of the given Element.
+		 * @return Json string with only the id tag.
+		 */
+        std::string serializeIdentification();
+protected:
 
 
-    protected:
+        void deserializeAndPopulate(const std::string& jsonString) override;
+
         /**
          * Type of the generated class. This also enables the parsing of the element.
          */
