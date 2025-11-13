@@ -38,6 +38,7 @@ target_link_libraries(sysmlv2service
         nlohmann_json::nlohmann_json
         date::date
         sysmlv2rest
+        kerml
         sysmlv2interfaces)
 
 
@@ -54,13 +55,15 @@ if(MSVC)
     target_include_directories(sysmlv2service PUBLIC
         ./include
         ../rest-api/include
-        ../sysmlinterfaces/include)
+        ../sysmlinterfaces/include
+        ../kerml/include)
 else ()
     target_compile_options(sysmlv2service PRIVATE -Wall -Wextra -Wpedantic -Werror)
     target_include_directories(sysmlv2service PRIVATE
         ./include
         ../rest-api/include
-        ../sysmlinterfaces/include)
+        ../sysmlinterfaces/include
+        ../kerml/include)
 endif()
 
 file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)

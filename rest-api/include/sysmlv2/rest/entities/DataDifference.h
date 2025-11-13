@@ -11,7 +11,7 @@
 namespace SysMLv2::REST {
     class DataVersion;
 
-    class SYSMLV2REST_EXPORT DataDifference : public Query {
+    class SYSMLV2REST_EXPORT DataDifference /*: public Query*/ {
     public:
         explicit DataDifference(std::shared_ptr<DataVersion> baseData = nullptr, std::shared_ptr<DataVersion> comparedData = nullptr);
 

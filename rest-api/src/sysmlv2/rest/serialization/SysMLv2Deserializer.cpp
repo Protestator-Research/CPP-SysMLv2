@@ -9,7 +9,6 @@
 #include <sysmlv2/rest/entities/Branch.h>
 #include <sysmlv2/rest/entities/Tag.h>
 #include <sysmlv2/rest/entities/Query.h>
-#include <sysmlv2/rest/entities/Element.h>
 #include <sysmlv2/rest/entities/Commit.h>
 #include <nlohmann/json.hpp>
 #include <vector>
@@ -45,8 +44,9 @@ namespace SysMLv2 {
         if(type==REST::COMMIT_TYPE)
             return std::make_shared<REST::Commit>(inputValue);
 
-        if(checkIfIsElementType(type))
-            return std::make_shared<REST::Element>(inputValue);
+        //TODO Implement with KerML Element
+        //if(checkIfIsElementType(type))
+        //    return std::make_shared<REST::Element>(inputValue);
 
         return nullptr;
     }

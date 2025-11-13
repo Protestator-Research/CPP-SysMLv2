@@ -8,6 +8,7 @@
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
+#include <sysmlv2/rest/entities/JSONEntities.h>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/uuid/uuid_serialize.hpp>

@@ -6,7 +6,7 @@
 #include <sysmlv2/rest/entities/Query.h>
 #include <nlohmann/json.hpp>
 
-#include "sysmlv2/rest/entities/JSONEntities.h"
+#include <sysmlv2/rest/entities/JSONEntities.h>
 
 namespace SysMLv2::REST {
     Query::Query(std::string name, std::vector<std::string> select, std::vector<std::shared_ptr<Data>> scope,
@@ -37,6 +37,11 @@ namespace SysMLv2::REST {
     }
 
     void Query::deserializeAndPopulate(const std::string &jsonString) {
+        nlohmann::json json = nlohmann::json::parse(jsonString);
+        Select = json[JSON_SELECT_ENTITY];
 
+
+
+        Order = json[JSON_ORDER_ENTITY];
     }
 }

@@ -14,7 +14,6 @@ set(ENTITIES_HEADER
         include/sysmlv2/rest/entities/DataIdentity.h
         include/sysmlv2/rest/entities/Record.h
         include/sysmlv2/rest/entities/Project.h
-        include/sysmlv2/rest/entities/JSONEntities.h
         include/sysmlv2/rest/entities/Commit.h
         include/sysmlv2/rest/entities/CommitReference.h
         include/sysmlv2/rest/entities/CommitRequest.h
@@ -23,8 +22,6 @@ set(ENTITIES_HEADER
         include/sysmlv2/rest/entities/Tag.h
         include/sysmlv2/rest/entities/Branch.h
         include/sysmlv2/rest/entities/ProjectUsage.h
-        include/sysmlv2/rest/entities/Element.h
-        include/sysmlv2/rest/entities/Relationship.h
         include/sysmlv2/rest/entities/ExternalData.h
         include/sysmlv2/rest/entities/ExternalRelationship.h
         include/sysmlv2/rest/entities/Identification.h
@@ -49,8 +46,6 @@ add_library(sysmlv2rest
         src/sysmlv2/rest/entities/Tag.cpp
         src/sysmlv2/rest/entities/Branch.cpp
         src/sysmlv2/rest/entities/ProjectUsage.cpp
-        src/sysmlv2/rest/entities/Element.cpp
-        src/sysmlv2/rest/entities/Relationship.cpp
         src/sysmlv2/rest/entities/ExternalData.cpp
         src/sysmlv2/rest/entities/ExternalRelationship.cpp
         src/sysmlv2/rest/entities/Identification.cpp
@@ -65,7 +60,8 @@ target_link_libraries(sysmlv2rest
         boost::boost
         nlohmann_json::nlohmann_json
         date::date
-        sysmlv2interfaces)
+        sysmlv2interfaces
+        kerml)
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2rest ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
@@ -81,12 +77,14 @@ if(MSVC)
     target_link_directories(sysmlv2rest PUBLIC ${CMAKE_BINARY_DIR}/out)
     target_include_directories(sysmlv2rest PUBLIC
         ./include/
-        ../sysmlinterfaces/include)
+        ../sysmlinterfaces/include
+        ../kerml/include)
 else ()
     target_compile_options(sysmlv2rest PRIVATE -Wall -Wextra -Wpedantic -Werror)
     target_include_directories(sysmlv2rest PRIVATE
         ./include/
-        ../sysmlinterfaces/include)
+        ../sysmlinterfaces/include
+        ../kerml/include)
 endif()
 
 file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)

@@ -38,6 +38,9 @@
 namespace SysMLv2::REST{
     class Commit;
     class Project;
+}
+
+namespace KerML::Entities {
     class Element;
     class Relationship;
 }
@@ -61,7 +64,7 @@ namespace SysMLv2::API {
          * @param commit The given commit inside of the project.
          * @return All the given that are available as a vector.
          */
-        virtual std::vector<std::shared_ptr<SysMLv2::REST::Element>> getElements(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit) = 0;
+        virtual std::vector<std::shared_ptr<KerML::Entities::Element>> getElements(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit) = 0;
 
         /**
          * Gets an element with the project and commit it belongs to and its specific id.
@@ -70,7 +73,7 @@ namespace SysMLv2::API {
          * @param elementId The id of the specific element.
          * @return The element that is located. Can be null if no element is found.
          */
-        virtual std::shared_ptr<SysMLv2::REST::Element> getElementById(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, boost::uuids::uuid elementId) = 0;
+        virtual std::shared_ptr<KerML::Entities::Element> getElementById(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, boost::uuids::uuid elementId) = 0;
 
         /**
          * Gets the relationships that are incoming, outgoing, or both relative to the related element.
@@ -80,7 +83,7 @@ namespace SysMLv2::API {
          * @param direction The direction of the relationship. Defined with the enum and can ether be in, out, or both.
          * @return A vector of the relationships that are found.
          */
-        virtual std::vector<std::shared_ptr<SysMLv2::REST::Relationship>> getRelationshipsByRelatedElement(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, boost::uuids::uuid elementId, int direction) = 0;
+        virtual std::vector<std::shared_ptr<KerML::Entities::Relationship>> getRelationshipsByRelatedElement(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, boost::uuids::uuid elementId, int direction) = 0;
 
         /**
          * Gets all root elements in the given project at the given commit.
@@ -88,7 +91,7 @@ namespace SysMLv2::API {
          * @param commit The commit where the root elements are located.
          * @return A vector of all root elements available in the project and commit.
          */
-        virtual std::vector<std::shared_ptr<SysMLv2::REST::Element>> getRootElements(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit) = 0;
+        virtual std::vector<std::shared_ptr<KerML::Entities::Element>> getRootElements(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit) = 0;
     };
 }
 

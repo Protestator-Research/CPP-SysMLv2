@@ -15,7 +15,8 @@ set(INTERFACE_HEADER
 
 set(REST_HEADER
         include/sysmlv2/rest/entities/IEntity.h
-        include/sysmlv2/rest/entities/Data.h)
+        include/sysmlv2/rest/entities/Data.h
+        include/sysmlv2/rest/entities/JSONEntities.h)
 
 set(SERIALIZATION_HEADER
         include/sysmlv2/rest/serialization/Utilities.hpp)

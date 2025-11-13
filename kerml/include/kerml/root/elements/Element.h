@@ -13,6 +13,7 @@
 #include <boost/uuid/random_generator.hpp>
 #include <vector>
 #include <optional>
+#include <sysmlv2/rest/entities/Data.h>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
@@ -38,7 +39,7 @@ namespace KerML::Entities {
      * This part of the model allows the identification of all elements. This is a core concept of the KerML and SysML syntax.
      * Also this class is required for the REST-API and the parsing of the models.
      */
-    class KERML_EXPORT Element {
+    class KERML_EXPORT Element : public SysMLv2::REST::Data{
     public:
         /**
          * Constructor of the Element. This constructor does allow for an empty elementID.
@@ -249,10 +250,16 @@ namespace KerML::Entities {
          * @return 
          */
         virtual bool includes(std::shared_ptr<Element> element);
+
+        std::string serializeToJson() override;
     protected:
+        /**
+         *
+         * @return
+         */
         std::vector<std::shared_ptr<Relationship>> ownedRelationships();
 
-
+        void deserializeAndPopulate(const std::string &jsonString) override;
 
 
     private:
@@ -336,6 +343,7 @@ namespace KerML::Entities {
          */
         void sortOwnedElements();
 
+    private:
         /**
          * 
          */

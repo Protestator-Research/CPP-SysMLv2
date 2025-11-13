@@ -72,8 +72,8 @@ protected:
         /**
          * Type of the element.
          */
-        std::string Type;
-        boost::uuids::uuid Id;
+        std::string _dType;
+        boost::uuids::uuid _dId;
     private:
         
     };
