@@ -31,7 +31,7 @@ namespace SysMLv2::REST {
     // Used for Project
     const std::string JSON_DEFAULT_BRANCH_ENTITY = "defaultBranch";
     const std::string JSON_CREATION_ENTITY = "created";
-    const std::string JSON_BRANCHES_LIST = "branches_list";
+    const std::string JSON_BRANCHES_LIST = "branchesList";
     const std::string JSON_COMMIT_LIST = "commits";
     const std::string JSON_HEAD_ID_LIST = "heads";
 
