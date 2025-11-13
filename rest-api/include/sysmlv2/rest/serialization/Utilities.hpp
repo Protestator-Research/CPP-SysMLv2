@@ -38,9 +38,13 @@ namespace SysMLv2::REST {
 				in.str(value);
 				in >> std::chrono::parse("%FT%T%Ez", tp);
 			}
-			return tp;
 #else
+			std::tm tm = {};
+			std::stringstream ss(value);
+			ss >> std::get_time(&tm, "%b %d %Y %H:%M:%S");
+			auto tp = std::chrono::system_clock::from_time_t(std::mktime(&tm));
 #endif
+			return tp;
 		}
 	private:
 	};
