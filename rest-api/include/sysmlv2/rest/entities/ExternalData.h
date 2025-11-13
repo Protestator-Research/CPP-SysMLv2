@@ -19,7 +19,7 @@
 //---------------------------------------------------------
 
 namespace SysMLv2::REST {
-    class SYSMLV2REST_EXPORT ExternalData : public Data{
+    class SYSMLV2REST_EXPORT ExternalData : public Data {
 
     };
 } // SysMLv2
