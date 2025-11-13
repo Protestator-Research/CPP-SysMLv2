@@ -27,6 +27,7 @@ namespace SysMLv2::REST {
 
 		static  std::chrono::time_point<std::chrono::system_clock> fromIso8601(std::string value)
 		{
+#ifdef std::chrono::parse
 			std::istringstream in{ value };
 			std::chrono::sys_time<std::chrono::milliseconds> tp;
 			in >> std::chrono::parse("%FT%TZ", tp);
@@ -38,6 +39,8 @@ namespace SysMLv2::REST {
 				in >> std::chrono::parse("%FT%T%Ez", tp);
 			}
 			return tp;
+#else
+#endif
 		}
 	private:
 	};
