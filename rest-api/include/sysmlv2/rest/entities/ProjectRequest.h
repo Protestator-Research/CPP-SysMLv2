@@ -9,14 +9,20 @@
 
 
 namespace SysMLv2::REST {
+    /**
+     * ProjectRequest is not part of the SysML v2 Standard, but it helps with working on the REST requests.
+     * @class ProjectRequest
+     * @
+     */
     class ProjectRequest : public IEntity {
     public:
         ProjectRequest() = delete;
-        ProjectRequest(std::string name, std::string description, std::string defaultBranch = "main");
+        ProjectRequest(const std::string& name,const std::string& description, const std::string& defaultBranch = "main");
+        explicit ProjectRequest(const std::string& jsonString);
 
-        std::string name() const;
-        std::string description() const;
-        std::string defaultBranch() const;
+        [[nodiscard]] std::string name() const;
+        [[nodiscard]] std::string description() const;
+        [[nodiscard]] std::string defaultBranch() const;
 
         std::string serializeToJson() override;
 

@@ -70,6 +70,7 @@ namespace SysMLv2::REST {
     const std::string JSON_SPECIFICATION_ENTITY = "specification";
     const std::string JSON_LANGUAGE_ENTITY = "language";
     const std::string JSON_RESOURCE_IDENTIFIER_ENTITY = "resourceIdentifier";
+    const std::string JSON_USED_COMMIT_ENTITY = "usedCommit";
 
     // Used for the element implementation of the Agila Backend
     const std::string JSON_SHORT_NAME_ENTITY = "shortName";
