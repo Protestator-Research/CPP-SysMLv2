@@ -58,7 +58,7 @@ namespace KerML::Entities {
         /**
          * Destructor. An implementation is not required, since shared pointers are used.
          */
-        virtual ~Element() = default;
+        ~Element() override = default;
 
         /**
          * Gives access to the ElementId as a string.

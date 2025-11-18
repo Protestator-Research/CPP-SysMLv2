@@ -71,8 +71,6 @@ namespace SysMLv2::REST {
     const std::string JSON_LANGUAGE_ENTITY = "language";
     const std::string JSON_RESOURCE_IDENTIFIER_ENTITY = "resourceIdentifier";
     const std::string JSON_USED_COMMIT_ENTITY = "usedCommit";
-
-    // Used for the element implementation of the Agila Backend
     const std::string JSON_SHORT_NAME_ENTITY = "shortName";
     const std::string JSON_DECLARED_NAME_ENTITY = "declaredName";
     const std::string JSON_DECLARED_SHORT_NAME_ENTITY = "declaredShortName";
@@ -82,10 +80,8 @@ namespace SysMLv2::REST {
     const std::string JSON_OWNING_NAMESPACE_ENTITY = "owningNamespace";
     const std::string JSON_OWNING_RELATIONSHIP_ENTITY = "owningRelationship";
     const std::string JSON_DIRECTION_ENTITY = "direction";
-    const std::string JSON_VALUE_STRING_ENTITY = "valueStr";
     const std::string JSON_IMPORTED_MEMBER_NAME_ENTITY = "importedMemberName";
     const std::string JSON_IMPORTED_NAMESPACE_ENTITY = "importedNamespace";
-
     const std::string JSON_BODY_ENTITY = "body";
     const std::string JSON_SOURCE_ENTITY = "source";
     const std::string JSON_TARGET_ENTITY = "target";
@@ -97,6 +93,9 @@ namespace SysMLv2::REST {
     const std::string JSON_TEXTUAL_REPRESENTATION_ENTITY = "textualRepresentation";
     const std::string JSON_ALIAS_ID_ENTITY = "aliasIds";
     const std::string JSON_ELEMENT_ID_ENTITY = "elementId";
+    const std::string JSON_OWNED_RELATIONSHIPS_ENTITY = "ownedRelationships";
+    const std::string JSON_QUALIFIED_NAME_ENTITY = "qualifiedName";
+    const std::string JSON_OWNED_ANNOTATION_ENTITY = "ownedAnnotation";
 
     //Type Strings
     const std::string PROJECT_TYPE="project";

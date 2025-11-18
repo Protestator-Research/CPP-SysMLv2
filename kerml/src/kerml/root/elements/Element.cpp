@@ -5,18 +5,26 @@
 #include <kerml/root/elements/Element.h>
 #include <kerml/root/elements/Relationship.h>
 #include <kerml/root/namespaces/Namespace.h>
+#include <kerml/root/annotations/Documentation.h>
+#include <sysmlv2/rest/entities/JSONEntities.h>
 
 #include <utility>
 #include <functional>
 #include <boost/uuid/string_generator.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include <boost/lexical_cast.hpp>
+#include <nlohmann/json.hpp>
+
+#include "kerml/root/annotations/Annotation.h"
+#include "kerml/root/annotations/TextualRepresentation.h"
 
 
 namespace KerML::Entities {
     Element::Element(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
+        Data(elementID),
         ElementId(elementID)
     {
+        _dType = "Element";
         Owner = std::move(owner);
         IsLibraryElement = false;
     }
@@ -106,7 +114,9 @@ namespace KerML::Entities {
     }
 
     Element::Element(std::string elementID, std::shared_ptr<Element> owner) :
-        ElementId(boost::uuids::string_generator()(elementID)){
+        Data(boost::uuids::string_generator()(elementID)),
+        ElementId(boost::uuids::string_generator()(elementID)) {
+        _dType = "Element";
         Owner = owner;
     }
 
@@ -191,6 +201,69 @@ namespace KerML::Entities {
     }
 
     std::string Element::serializeToJson() {
-        return Data::serializeToJson();
+        nlohmann::json json = nlohmann::json::parse(Data::serializeToJson());
+
+        json[SysMLv2::REST::JSON_ELEMENT_ID_ENTITY] = ElementId;
+        json[SysMLv2::REST::JSON_ALIAS_ID_ENTITY] = AliasIds;
+
+        json[SysMLv2::REST::JSON_NAME_ENTITY] = Name;
+        json[SysMLv2::REST::JSON_DECLARED_NAME_ENTITY] = DeclaredName;
+        json[SysMLv2::REST::JSON_DECLARED_SHORT_NAME_ENTITY] = DeclaredShortName;
+
+        std::string ownedRelationshipsString = "[\r\n";
+        for (size_t i = 0; i < OwnedRelationships.size(); i++) {
+            ownedRelationshipsString += OwnedRelationships[i]->serializeAsIdentity();
+            if (i != (OwnedRelationships.size()-1))
+                ownedRelationshipsString += ",\r\n";
+        }
+        ownedRelationshipsString += "]\r\n";
+        json[SysMLv2::REST::JSON_OWNED_RELATIONSHIPS_ENTITY] = nlohmann::json::parse(ownedRelationshipsString);
+
+        json[SysMLv2::REST::JSON_IS_IMPLIED_INCLUDED_ENTITY] = IsImpliedIncluded;
+        json[SysMLv2::REST::JSON_OWNER_ENTITY] = Owner->serializeAsIdentity();
+
+        std::string ownedElementsString = "[\r\n";
+        for (size_t i = 0; i < OwnedElements.size(); i++) {
+            ownedElementsString += OwnedElements[i]->serializeAsIdentity();
+            if (i != (OwnedElements.size()-1))
+                ownedElementsString += ",\r\n";
+        }
+        ownedElementsString += "]\r\n";
+        json[SysMLv2::REST::JSON_OWNED_ELEMENTS_ENTITY] = nlohmann::json::parse(ownedElementsString);
+
+        json[SysMLv2::REST::JSON_SHORT_NAME_ENTITY] = ShortName;
+        json[SysMLv2::REST::JSON_QUALIFIED_NAME_ENTITY] = QualifiedName;
+        json[SysMLv2::REST::JSON_IS_LIBRARY_ELEMENT_ENTITY] = IsLibraryElement;
+
+        std::string docuementationsString = "[\r\n";
+        for (size_t i = 0; i < Documentations.size(); i++) {
+            docuementationsString += Documentations[i]->serializeAsIdentity();
+            if (i != (Documentations.size()-1))
+                docuementationsString += ",\r\n";
+        }
+        docuementationsString += "]\r\n";
+        json[SysMLv2::REST::JSON_DOCUMENTATION_ENTITY] = nlohmann::json::parse(docuementationsString);
+
+        std::string ownedAnnotationsString = "[\r\n";
+        for (size_t i = 0; i < OwnedAnnotations.size(); i++) {
+            ownedAnnotationsString += OwnedAnnotations[i]->serializeAsIdentity();
+            if (i != (OwnedAnnotations.size()-1))
+                ownedAnnotationsString += ",\r\n";
+        }
+        ownedAnnotationsString += "]\r\n";
+        json[SysMLv2::REST::JSON_OWNED_ANNOTATION_ENTITY] = nlohmann::json::parse(ownedAnnotationsString);
+
+        std::string textualRepresentationString = "[\r\n";
+        for (size_t i = 0; i < TextualRepresentations.size(); i++) {
+            textualRepresentationString += TextualRepresentations[i]->serializeAsIdentity();
+            if (i != (TextualRepresentations.size()-1))
+                textualRepresentationString += ",\r\n";
+        }
+        textualRepresentationString += "]\r\n";
+        json[SysMLv2::REST::JSON_TEXTUAL_REPRESENTATION_ENTITY] = nlohmann::json::parse(textualRepresentationString);
+
+        json[SysMLv2::REST::JSON_OWNING_RELATIONSHIP_ENTITY] = nlohmann::json::parse(OwningRelationship->serializeAsIdentity());
+
+        return json.dump(JSON_INTENT);
     }
 } // KerML::Entities

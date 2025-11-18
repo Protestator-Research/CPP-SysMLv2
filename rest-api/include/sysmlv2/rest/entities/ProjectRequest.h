@@ -30,6 +30,7 @@ namespace SysMLv2::REST {
         void deserializeAndPopulate(const std::string &jsonString) override;
 
     private:
+        std::string _dType;
         std::string Name;
         std::string Description;
         std::string DefaultBranchName;
