@@ -29,7 +29,10 @@ set(ENTITIES_HEADER
         include/sysmlv2/rest/entities/ChangeType.h
         include/sysmlv2/rest/entities/MergeResult.h
         include/sysmlv2/rest/entities/DataDifference.h
-        include/sysmlv2/rest/entities/ProjectRequest.h)
+        include/sysmlv2/rest/entities/ProjectRequest.h
+        src/sysmlv2/rest/entities/BranchRequest.cpp
+        include/sysmlv2/rest/entities/BranchRequest.h
+)
 
 set(SERIALIZATION_HEADER
         include/sysmlv2/rest/serialization/SysMLv2Deserializer.h)

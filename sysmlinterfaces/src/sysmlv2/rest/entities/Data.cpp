@@ -44,10 +44,15 @@ namespace SysMLv2::REST {
     }
 
     std::string Data::serializeToJson() {
-        std::cout<<"Data::serializeToJson"<<std::endl;
         nlohmann::json json;
         json[JSON_ID_ENTITY] = boost::lexical_cast<std::string>(_dId);
         json[JSON_TYPE_ENTITY] = _dType;
+        return json.dump(JSON_INTENT);
+    }
+
+    std::string Data::serializeAsIdentity() {
+        nlohmann::json json;
+        json[JSON_ID_ENTITY] = boost::lexical_cast<std::string>(_dId);
         return json.dump(JSON_INTENT);
     }
 

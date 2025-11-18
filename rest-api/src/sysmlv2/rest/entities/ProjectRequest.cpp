@@ -11,6 +11,7 @@ namespace SysMLv2::REST {
         Name = name;
         Description = description;
         DefaultBranchName = defaultBranch;
+        _dType = "Project";
     }
 
     ProjectRequest::ProjectRequest(const std::string &jsonString) {

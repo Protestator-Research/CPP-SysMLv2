@@ -66,6 +66,7 @@ namespace SysMLv2::REST {
 
         std::string serializeToJson() override;
 
+        std::string serializeAsIdentity();
 protected:
         void deserializeAndPopulate(const std::string& jsonString) override;
 
