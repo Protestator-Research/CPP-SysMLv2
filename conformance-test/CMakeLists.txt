@@ -13,15 +13,27 @@ add_executable(conformance-test
         src/TestKerMLParser.cpp
         src/TestProjectController.cpp)
 
-target_link_libraries(conformance-test
-        boost::boost
-        nlohmann_json::nlohmann_json
-        date::date
-        gtest::gtest
-        antlr4_shared
-        sysmlv2parser
-        sysmlv2service
-        sysmlv2rest)
+if(EXISTS antlr4_shared)
+    target_link_libraries(conformance-test
+            boost::boost
+            nlohmann_json::nlohmann_json
+            date::date
+            gtest::gtest
+            antlr4_shared
+            sysmlv2parser
+            sysmlv2service
+            sysmlv2rest)
+else ()
+    target_link_libraries(conformance-test
+            boost::boost
+            nlohmann_json::nlohmann_json
+            date::date
+            gtest::gtest
+            antlr4_static
+            sysmlv2parser
+            sysmlv2service
+            sysmlv2rest)
+endif ()
 
 target_include_directories(conformance-test PRIVATE
         ../filehandling/include

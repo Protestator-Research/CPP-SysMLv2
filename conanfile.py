@@ -21,14 +21,14 @@ class CPPSysMLRecipe(ConanFile):
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False], "with_rest": [True, False], "with_services":[True, False], "with_parsing":[True,False]}
-    default_options = {"shared": True, "fPIC": False, "with_rest": True, "with_services": True, "with_parsing": True}
+    default_options = {"shared": False, "fPIC": False, "with_rest": True, "with_services": True, "with_parsing": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = "CMakeLists.txt", "interfaces/*", "conformance-test/*", "filehandling/*", "kerml/*", "rest-api/*", "services/*", "sysmlinterfaces/*"
 
     def requirements(self):
         self.requires("boost/[>=1.86.0 <2]")
-        self.requires("nlohmann_json/[>=3.11.3 <3.13]")
+        self.requires("nlohmann_json/[>=3.11.3 <44]")
         self.requires("date/3.0.4")
         self.requires("libcurl/[>=8.4.0 <9]")
         if(self.options.with_parsing):
@@ -77,8 +77,8 @@ class CPPSysMLRecipe(ConanFile):
         cmake.build()
 
     def build_requirements(self):
-        self.tool_requires("cmake/3.30.0")
-        self.test_requires("gtest/1.14.0")
+        self.tool_requires("cmake/[>=3.30.0 <5]")
+        self.test_requires("gtest/[>=1.14.0 <2]")
 
     def test(self):
         cmake = CMake(self)
