@@ -43,9 +43,11 @@ namespace SysMLv2::REST {
         std::cout<<"Branch Deserialization: " << jsonString<<std::endl;
         nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
 
-        const auto commit = parsedJson[JSON_HEAD_ID];
-        if (!commit.empty())
-            Head = std::make_shared<Commit>(commit.dump());
+        if (parsedJson.contains(JSON_HEAD_ID)) {
+            const auto commit = parsedJson[JSON_HEAD_ID];
+            if (!commit.empty())
+                Head = std::make_shared<Commit>(commit.dump());
+        }
 
     }
 }

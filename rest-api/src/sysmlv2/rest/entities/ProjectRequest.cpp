@@ -33,6 +33,7 @@ namespace SysMLv2::REST {
     std::string ProjectRequest::serializeToJson() {
         nlohmann::json json;
         json[JSON_NAME_ENTITY] = Name;
+        json[JSON_TYPE_ENTITY] = _dType;
         json[JSON_DESCRIPTION_ENTITY] = Description;
         json[JSON_DEFAULT_BRANCH_ENTITY] = DefaultBranchName;
         return json.dump(JSON_INTENT);

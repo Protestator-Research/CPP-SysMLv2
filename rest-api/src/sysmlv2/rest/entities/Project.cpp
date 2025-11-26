@@ -32,6 +32,7 @@
 
 namespace SysMLv2::REST {
     Project::Project(Project &other) : Record(other) {
+        Type = other.Type;
         Created = other.Created;
 
         Commits = other.Commits;
@@ -49,7 +50,7 @@ namespace SysMLv2::REST {
         m_DataVersion = other.m_DataVersion;
     }
 
-    Project::Project(std::string JsonString) : Record(JsonString) {
+    Project::Project(const std::string& JsonString) : Record(JsonString) {
         try {
             nlohmann::json parsedJson = nlohmann::json::parse(JsonString);
 
@@ -58,7 +59,7 @@ namespace SysMLv2::REST {
                 DefaultBranch = std::make_shared<Branch>(branch.dump());
 
         }
-        catch (...) {
+        catch (std::exception&) {
             Name = JsonString;
             Type = "Project";
         }
@@ -78,23 +79,17 @@ namespace SysMLv2::REST {
     }
 
     std::string Project::serializeToJson() {
-        nlohmann::json jsonDocument;
-        if (IsForCreation)
-        {
-            jsonDocument[JSON_NAME_ENTITY] = Name;
-            jsonDocument[JSON_DESCRIPTION_ENTITY] = Description;
-            jsonDocument[JSON_DEFAULT_BRANCH_ENTITY] = DefaultBranch->getName();
-        }else
-        {
-            return Record::serializeToJson();
-        }
-        return jsonDocument.dump(JSON_INTENT);
+        nlohmann::json json = nlohmann::json::parse(Record::serializeToJson());
+
+        json[JSON_DEFAULT_BRANCH_ENTITY] = nlohmann::json::parse(DefaultBranch->serializeIdentification());
+
+        return json.dump(JSON_INTENT);
     }
 
     Project::Project(std::string projectName, std::string projectDescription, std::string branchName) : Record(projectName){
+        Type = "Project";
         Description = projectDescription;
         DefaultBranch = std::make_shared<Branch>(branchName);
-        IsForCreation = true;
         Record::Id = boost::uuids::random_generator()();
     }
 

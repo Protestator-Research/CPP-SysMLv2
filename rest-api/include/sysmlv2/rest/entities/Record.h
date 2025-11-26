@@ -49,7 +49,7 @@ namespace SysMLv2::REST {
          * Converts a JSON String into a valid Record
          * @param jsonString The JSON String that is converted to a Record or a valid name of the Record.
          */
-        explicit Record(std::string jsonStringOrName);
+        explicit Record(const std::string& jsonStringOrName);
 
         /**
          * Destructor

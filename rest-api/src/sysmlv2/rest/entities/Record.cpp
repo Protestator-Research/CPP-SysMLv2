@@ -29,11 +29,11 @@ namespace SysMLv2::REST {
         Description = description;
     }
 
-    Record::Record(std::string jsonString) {
+    Record::Record(const std::string& jsonString) {
         try {
             Record::deserializeAndPopulate(jsonString);
         }
-        catch (...) {
+        catch (std::exception&) {
             Name = jsonString;
             Id = boost::uuids::random_generator()();
         }
