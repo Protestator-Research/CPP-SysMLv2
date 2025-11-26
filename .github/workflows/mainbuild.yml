@@ -31,3 +31,4 @@ jobs:
         ls -al
         cd build
         conan create .. --version=1.0-beta-4-main
+        conan upload "sysmllib/*" -c
