@@ -59,8 +59,7 @@ namespace SysMLv2::REST {
                 DefaultBranch = std::make_shared<Branch>(branch.dump());
 
         }
-        catch (std::exception ex) {
-            std::cout << ex.what() << std::endl;
+        catch (std::exception&) {
             Name = JsonString;
             Type = "Project";
         }

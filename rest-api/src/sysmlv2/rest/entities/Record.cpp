@@ -33,8 +33,7 @@ namespace SysMLv2::REST {
         try {
             Record::deserializeAndPopulate(jsonString);
         }
-        catch (std::exception &e) {
-            std::cout << e.what() << std::endl;
+        catch (std::exception&) {
             Name = jsonString;
             Id = boost::uuids::random_generator()();
         }

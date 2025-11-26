@@ -14,7 +14,6 @@
 TEST(TestRESTAPI, SerializeProject) {
     const auto project = std::make_shared<SysMLv2::REST::Project>("TestProject","Test Project for Conformance Test", "main");
     std::string projectSerialized = project->serializeToJson();
-    std::cout << projectSerialized << std::endl;
     try {
         nlohmann::json json = nlohmann::json::parse(projectSerialized);
         std::string projectId = json[SysMLv2::REST::JSON_ID_ENTITY].get<std::string>();
