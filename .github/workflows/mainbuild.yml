@@ -32,4 +32,4 @@ jobs:
         cd build
         conan create .. --version=1.0-beta-4-main
         conan create .. --version=1.0-beta-4-main -s build_type=Debug
-        conan upload "sysmllib/*" -c
+        conan upload "sysmllib/*" -c -r protestator-conan
