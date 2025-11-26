@@ -10,6 +10,7 @@
 
 namespace SysMLv2::REST {
     Branch::Branch(std::string jsonStringOrName) : CommitReference(jsonStringOrName) {
+        std::cout<<jsonStringOrName<<std::endl;
         try {
             Branch::deserializeAndPopulate(jsonStringOrName);
         }
@@ -39,6 +40,7 @@ namespace SysMLv2::REST {
 
     void Branch::deserializeAndPopulate(const std::string& jsonString)
     {
+        std::cout<<"Branch Deserialization: " << jsonString<<std::endl;
         nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
 
         if (parsedJson.contains(JSON_HEAD_ID)) {
