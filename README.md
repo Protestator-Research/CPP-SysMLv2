@@ -6,7 +6,7 @@ This library gives an implementation of the SysML v2 standard and KerML standard
 [toc]
 
 ## Build Status
-The System and Tests: [![C/C++ CI](https://github.com/Protestator-Research/CPP-SysMLv2/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/Protestator-Research/CPP-SysMLv2/actions/workflows/c-cpp.yml)
+The System and Tests: [![C/C++ CI](https://github.com/Protestator-Research/CPP-SysMLv2/actions/workflows/mainbuild.yml/badge.svg)](https://github.com/Protestator-Research/CPP-SysMLv2/actions/workflows/mainbuild.yml)
 
 ## Licensing 
 
