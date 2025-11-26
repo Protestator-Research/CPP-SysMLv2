@@ -11,7 +11,9 @@ find_package(antlr4-runtime REQUIRED)
 
 add_executable(conformance-test
         src/TestKerMLParser.cpp
-        src/TestProjectController.cpp)
+        src/TestProjectController.cpp
+        src/TestRestAPI.cpp
+)
 
 if(EXISTS antlr4_shared)
     target_link_libraries(conformance-test
