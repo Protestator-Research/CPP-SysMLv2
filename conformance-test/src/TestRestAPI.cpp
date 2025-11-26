@@ -11,7 +11,7 @@
 #include <nlohmann/json.hpp>
 
 
-TEST(TestRESTAPI, TestProject) {
+TEST(TestRESTAPI, SerializeProject) {
     const auto project = std::make_shared<SysMLv2::REST::Project>("TestProject","Test Project for Conformance Test", "main");
     std::string projectSerialized = project->serializeToJson();
     std::cout << projectSerialized << std::endl;
@@ -24,7 +24,18 @@ TEST(TestRESTAPI, TestProject) {
         ASSERT_EQ(json[SysMLv2::REST::JSON_NAME_ENTITY].get<std::string>(), project->getName());
         const auto branch = json[SysMLv2::REST::JSON_DEFAULT_BRANCH_ENTITY];
         ASSERT_EQ(!branch.empty(), true);
+    }catch (...) {
+        ASSERT_FALSE(true);
+    }
+}
 
+TEST(TestRESTAPI, DeserializeProject) {
+    const std::string projectString = "{\"@id\": \"6e701bf8-7793-49de-9b0e-2f43376edabf\",\"@type\": \"Project\",\"defaultBranch\": {\"@id\": \"7eea9bd1-1082-4521-8bb2-d94202c8dd63\"},\"description\": \"Test Project for Conformance Test\",\"name\": \"Hello SysML v2\"}";
+    try {
+        const auto project = std::make_shared<SysMLv2::REST::Project>(projectString);
+        ASSERT_EQ(project->getId(), boost::uuids::string_generator()("6e701bf8-7793-49de-9b0e-2f43376edabf"));
+        ASSERT_EQ(project->getName(), "Hello SysML v2");
+        ASSERT_EQ(project->getDescription(), "Test Project for Conformance Test");
     }catch (...) {
         ASSERT_FALSE(true);
     }

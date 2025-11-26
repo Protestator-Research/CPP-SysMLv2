@@ -40,7 +40,7 @@
 
 
 namespace SysMLv2::REST {
-    CommitReference::CommitReference(std::string jsonStringOrName) : Record(jsonStringOrName)
+    CommitReference::CommitReference(const std::string& jsonStringOrName) : Record(jsonStringOrName)
     {
         try {
             CommitReference::deserializeAndPopulate(jsonStringOrName);
@@ -94,10 +94,13 @@ namespace SysMLv2::REST {
     {
         nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
 
-        Created = Utilities::fromIso8601(parsedJson[JSON_CREATED_ENTITY]);
-        Deleted = Utilities::fromIso8601(parsedJson[JSON_DELETED_ENTITY]);
+        if (parsedJson.contains(JSON_CREATED_ENTITY))
+            Created = Utilities::fromIso8601(parsedJson[JSON_CREATED_ENTITY]);
+        if (parsedJson.contains(JSON_DELETED_ENTITY))
+            Deleted = Utilities::fromIso8601(parsedJson[JSON_DELETED_ENTITY]);
 
-        ReferencedCommit = std::make_shared<Commit>(parsedJson[JSON_REFERENCE_COMMIT]);
+        if (parsedJson.contains(JSON_REFERENCE_COMMIT))
+            ReferencedCommit = std::make_shared<Commit>(parsedJson[JSON_REFERENCE_COMMIT]);
     }
 
     std::chrono::system_clock::time_point CommitReference::created() {

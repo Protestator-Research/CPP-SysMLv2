@@ -57,7 +57,7 @@ namespace SysMLv2::REST {
          * Generates a Project object from a JSON string. This will be used for the JSON interface of the Parser.
          * @param JsonString
          */
-        explicit Project(std::string JsonString);
+        explicit Project(const std::string& JsonString);
 
         /**
          * Creates a project from the given elements.

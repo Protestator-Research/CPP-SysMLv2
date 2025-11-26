@@ -53,7 +53,7 @@ namespace SysMLv2::REST {
          * Constructor
          * @param jsonStringOrName
          */
-        explicit CommitReference(std::string jsonStringOrName);
+        explicit CommitReference(const std::string& jsonStringOrName);
 
         /**
          * Operator that allows to compare two CommitReferences with each other.

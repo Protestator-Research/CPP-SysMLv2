@@ -50,7 +50,7 @@ namespace SysMLv2::REST {
         m_DataVersion = other.m_DataVersion;
     }
 
-    Project::Project(std::string JsonString) : Record(JsonString) {
+    Project::Project(const std::string& JsonString) : Record(JsonString) {
         try {
             nlohmann::json parsedJson = nlohmann::json::parse(JsonString);
 
@@ -59,7 +59,8 @@ namespace SysMLv2::REST {
                 DefaultBranch = std::make_shared<Branch>(branch.dump());
 
         }
-        catch (...) {
+        catch (std::exception ex) {
+            std::cout << ex.what() << std::endl;
             Name = JsonString;
             Type = "Project";
         }
@@ -79,7 +80,11 @@ namespace SysMLv2::REST {
     }
 
     std::string Project::serializeToJson() {
-        return Record::serializeToJson();
+        nlohmann::json json = nlohmann::json::parse(Record::serializeToJson());
+
+        json[JSON_DEFAULT_BRANCH_ENTITY] = nlohmann::json::parse(DefaultBranch->serializeIdentification());
+
+        return json.dump(JSON_INTENT);
     }
 
     Project::Project(std::string projectName, std::string projectDescription, std::string branchName) : Record(projectName){
