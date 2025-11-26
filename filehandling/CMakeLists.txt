@@ -46,12 +46,22 @@ add_library(sysmlv2parser
         src/sysml2/ParserError.cpp
         src/kerml/parser/KerMlListenerImplementation.cpp)
 
-target_link_libraries(sysmlv2parser
-        boost::boost
-        nlohmann_json::nlohmann_json
-        date::date
-        antlr4_shared
-        kerml)
+if(EXISTS antlr4_shared)
+    target_link_libraries(sysmlv2parser
+            boost::boost
+            nlohmann_json::nlohmann_json
+            date::date
+            antlr4_shared
+            kerml)
+else ()
+    target_link_libraries(sysmlv2parser
+            boost::boost
+            nlohmann_json::nlohmann_json
+            date::date
+            antlr4_static
+            kerml)
+endif ()
+
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2parser ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
