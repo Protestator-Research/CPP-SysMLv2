@@ -77,8 +77,8 @@ class CPPSysMLRecipe(ConanFile):
         cmake.build()
 
     def build_requirements(self):
-        self.tool_requires("cmake/3.30.0")
-        self.test_requires("gtest/1.14.0")
+        self.tool_requires("cmake/[>=3.30.0 <5]")
+        self.test_requires("gtest/[>=1.14.0 <2]")
 
     def test(self):
         cmake = CMake(self)
