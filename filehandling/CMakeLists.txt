@@ -46,7 +46,7 @@ add_library(sysmlv2parser
         src/sysml2/ParserError.cpp
         src/kerml/parser/KerMlListenerImplementation.cpp)
 
-if(EXISTS antlr4_shared)
+if((EXISTS antlr4_shared)OR(MSVC))
     target_link_libraries(sysmlv2parser
             boost::boost
             nlohmann_json::nlohmann_json

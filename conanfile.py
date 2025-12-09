@@ -21,7 +21,7 @@ class CPPSysMLRecipe(ConanFile):
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False], "with_rest": [True, False], "with_services":[True, False], "with_parsing":[True,False]}
-    default_options = {"shared": False, "fPIC": False, "with_rest": True, "with_services": True, "with_parsing": True}
+    default_options = {"fPIC": False, "with_rest": True, "with_services": True, "with_parsing": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = "CMakeLists.txt", "interfaces/*", "conformance-test/*", "filehandling/*", "kerml/*", "rest-api/*", "services/*", "sysmlinterfaces/*"
@@ -37,6 +37,7 @@ class CPPSysMLRecipe(ConanFile):
     def config_options(self):
         if self.settings.os == "Windows":
             del self.options.fPIC
+            self.options.shared=True
 
     def configure(self):
         if self.options.shared:

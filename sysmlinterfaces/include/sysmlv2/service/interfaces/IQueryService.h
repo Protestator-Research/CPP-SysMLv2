@@ -26,7 +26,7 @@ namespace SysMLv2::API {
     class SYSMLV2INTERFACE_EXPORT IQueryService {
     public:
         /**
-         *
+         * 
          * @param project
          * @return
          */
