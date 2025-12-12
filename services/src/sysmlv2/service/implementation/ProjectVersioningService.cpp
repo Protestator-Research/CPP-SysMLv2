@@ -72,7 +72,7 @@ namespace SysMLv2::API {
         return commit;
     }
 
-    std::vector<std::shared_ptr<SysMLv2::REST::DataVersion>> ProjectVersioningService::getCommitChange(std::shared_ptr<SysMLv2::REST::Project>, std::shared_ptr<SysMLv2::REST::Commit> commit, std::vector<SysMLv2::REST::ChangeType> changeType) {
+    std::vector<std::shared_ptr<SysMLv2::REST::DataVersion>> ProjectVersioningService::getCommitChange(std::shared_ptr<SysMLv2::REST::Project>, std::shared_ptr<SysMLv2::REST::Commit> commit, std::vector<int> changeType) {
         std::vector<std::shared_ptr<SysMLv2::REST::DataVersion>> returnValue;
 
         uint8_t filter = 0x00;
@@ -182,7 +182,7 @@ namespace SysMLv2::API {
         return nullptr;
     }
 
-    std::vector<std::shared_ptr<SysMLv2::REST::DataDifference>> ProjectVersioningService::diffCommits(std::shared_ptr<SysMLv2::REST::Commit> , std::shared_ptr<SysMLv2::REST::Commit> , std::vector<SysMLv2::REST::ChangeType> ) {
+    std::vector<std::shared_ptr<SysMLv2::REST::DataDifference>> ProjectVersioningService::diffCommits(std::shared_ptr<SysMLv2::REST::Commit> , std::shared_ptr<SysMLv2::REST::Commit> , std::vector<int> ) {
         return std::vector<std::shared_ptr<SysMLv2::REST::DataDifference>>();
     }
 }

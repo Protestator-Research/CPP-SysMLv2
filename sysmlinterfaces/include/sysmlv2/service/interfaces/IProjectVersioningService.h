@@ -15,7 +15,6 @@
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
-#include <sysmlv2/rest/entities/ChangeType.h>
 #include <sysmlv2/interfaces/sysmlv2interfaces_global.h>
 //---------------------------------------------------------
 // Forwarding
@@ -114,7 +113,7 @@ namespace SysMLv2::API {
          * @param commit
          * @return
          */
-        virtual std::vector<std::shared_ptr<SysMLv2::REST::DataVersion>> getCommitChange(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, std::vector<SysMLv2::REST::ChangeType> ) = 0 ;
+        virtual std::vector<std::shared_ptr<SysMLv2::REST::DataVersion>> getCommitChange(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, std::vector<int> ) = 0 ;
 
         /**
          *
@@ -221,7 +220,7 @@ namespace SysMLv2::API {
          * @param changeType
          * @return
          */
-        virtual std::vector<std::shared_ptr<SysMLv2::REST::DataDifference>> diffCommits(std::shared_ptr<SysMLv2::REST::Commit> baseCommit, std::shared_ptr<SysMLv2::REST::Commit> compareCommit, std::vector<SysMLv2::REST::ChangeType> changeType) = 0;
+        virtual std::vector<std::shared_ptr<SysMLv2::REST::DataDifference>> diffCommits(std::shared_ptr<SysMLv2::REST::Commit> baseCommit, std::shared_ptr<SysMLv2::REST::Commit> compareCommit, std::vector<int> changeType) = 0;
     };
 }
 #endif //CPP_SYSMLV2_LIB_IPROJECTVERSIONINGSERVICE_H

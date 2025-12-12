@@ -1,0 +1,10 @@
+#include <sysmlv2/rest/entities/Data.h>
+#include <sysmlv2/rest/entities/IEntity.h>
+#include <sysmlv2/rest/entities/JSONEntities.h>
+#include <sysmlv2/rest/serialization/Utilities.h>
+#include <sysmlv2/service/interfaces/IElementNavigationService.h>
+#include <sysmlv2/service/interfaces/IExternalReleationshipService.h>
+#include <sysmlv2/service/interfaces/IProjectService.h>
+#include <sysmlv2/service/interfaces/IProjectUsageService.h>
+#include <sysmlv2/service/interfaces/IProjectVersioningService.h>
+#include <sysmlv2/service/interfaces/IQueryService.h>

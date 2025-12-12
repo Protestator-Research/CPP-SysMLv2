@@ -30,7 +30,7 @@ namespace SysMLv2::API {
 
         std::shared_ptr<SysMLv2::REST::Commit> createCommit(std::shared_ptr<SysMLv2::REST::DataVersion> change, std::shared_ptr<SysMLv2::REST::Project> project) override;
 
-        std::vector<std::shared_ptr<SysMLv2::REST::DataVersion>> getCommitChange(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, std::vector<SysMLv2::REST::ChangeType>) override;
+        std::vector<std::shared_ptr<SysMLv2::REST::DataVersion>> getCommitChange(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, std::vector<int>) override;
 
         std::shared_ptr<SysMLv2::REST::DataVersion> getCommitChangeById(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, boost::uuids::uuid &changeId) override;
 
@@ -56,7 +56,7 @@ namespace SysMLv2::API {
 
         std::shared_ptr<SysMLv2::REST::MergeResult> mergeIntoBranch(std::shared_ptr<SysMLv2::REST::Branch> baseBranch, std::vector<std::shared_ptr<SysMLv2::REST::Commit>> commitsToMerge, std::shared_ptr<SysMLv2::REST::Data> resolution, std::string &description) override;
 
-        std::vector<std::shared_ptr<SysMLv2::REST::DataDifference>> diffCommits(std::shared_ptr<SysMLv2::REST::Commit> baseCommit, std::shared_ptr<SysMLv2::REST::Commit> compareCommit, std::vector<SysMLv2::REST::ChangeType> changeType) override;
+        std::vector<std::shared_ptr<SysMLv2::REST::DataDifference>> diffCommits(std::shared_ptr<SysMLv2::REST::Commit> baseCommit, std::shared_ptr<SysMLv2::REST::Commit> compareCommit, std::vector<int> changeType) override;
 
     protected:
         std::map<boost::uuids::uuid, std::vector<std::shared_ptr<SysMLv2::REST::Commit>>> ProjectIdCommitMap;

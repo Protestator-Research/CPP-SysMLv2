@@ -33,7 +33,7 @@
 #include <sysmlv2/rest/entities/Commit.h>
 #include <sysmlv2/rest/entities/JSONEntities.h>
 
-#include <sysmlv2/rest/serialization/Utilities.hpp>
+#include <sysmlv2/rest/serialization/Utilities.h>
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------

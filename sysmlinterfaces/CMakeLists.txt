@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(sysmlv2interfaces CXX)
+project(sysmlv2interfaces CXX C)
+
+find_package(Boost REQUIRED)
+find_package(date REQUIRED)
+find_package(nlohmann_json REQUIRED)
 
 set(GLOBAL_HEADER
         include/sysmlv2/interfaces/sysmlv2interfaces_global.h)
@@ -19,14 +23,17 @@ set(REST_HEADER
         include/sysmlv2/rest/entities/JSONEntities.h)
 
 set(SERIALIZATION_HEADER
-        include/sysmlv2/rest/serialization/Utilities.hpp)
+        include/sysmlv2/rest/serialization/Utilities.hpp
+        include/sysmlv2/rest/serialization/Utilities.h)
 
 add_library(sysmlv2interfaces
         ${GLOBAL_HEADER}
         ${INTERFACE_HEADER}
         ${REST_HEADER}
         ${SERIALIZATION_HEADER}
-        src/sysmlv2/rest/entities/Data.cpp)
+        src/sysmlv2/rest/entities/Data.cpp
+        src/sysmlv2/rest/serialization/Utilities.cpp
+        src/sysmlv2/WindowsCorrection.cpp)
 
 target_link_libraries(sysmlv2interfaces
         boost::boost
@@ -46,6 +53,7 @@ install(FILES ${SERIALIZATION_HEADER} DESTINATION include/sysmlv2/rest/serializa
 
 if(MSVC)
     target_compile_options(sysmlv2interfaces PRIVATE /W4 /WX- /bigobj)
+    target_link_directories(sysmlv2interfaces PUBLIC ${CMAKE_BINARY_DIR}/out)
 else ()
     target_compile_options(sysmlv2interfaces PRIVATE -Wall -Wextra -Wpedantic -Werror)
 endif()

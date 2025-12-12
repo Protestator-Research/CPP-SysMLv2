@@ -57,6 +57,7 @@ add_library(sysmlv2rest
         src/sysmlv2/rest/entities/MergeResult.cpp
         src/sysmlv2/rest/entities/DataDifference.cpp
         src/sysmlv2/rest/entities/ProjectRequest.cpp
+        src/sysmlv2/rest/WindowsFix.cpp
         ${ENTITIES_HEADER}
         ${SERIALIZATION_HEADER}
         ${GLOBAL_HEADER})
