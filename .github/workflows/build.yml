@@ -29,11 +29,11 @@ jobs:
       run: |
         ls -al
         cd build
-        conan build .. --version=wip
+        conan build .. --version=wip -o shared=False
     - name: test
       run: |
         cd build
-        conan test .. sysmlv2/wip
+        conan test .. sysmlv2/wip -o shared=False
     #- name: test
     #- name: Doxygen
       # You may pin to the exact commit or the version.
