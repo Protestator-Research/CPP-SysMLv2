@@ -4,8 +4,10 @@
 
 #ifndef PROJECTREQUEST_H
 #define PROJECTREQUEST_H
+
 #include <string>
 #include <sysmlv2/rest/entities/IEntity.h>
+#include <sysmlv2/rest/sysmlv2rest_global.h>
 
 
 namespace SysMLv2::REST {
@@ -14,7 +16,7 @@ namespace SysMLv2::REST {
      * @class ProjectRequest
      * @
      */
-    class ProjectRequest : public IEntity {
+    class SYSMLV2REST_EXPORT ProjectRequest : public IEntity {
     public:
         ProjectRequest() = delete;
         ProjectRequest(const std::string& name,const std::string& description, const std::string& defaultBranch = "main");

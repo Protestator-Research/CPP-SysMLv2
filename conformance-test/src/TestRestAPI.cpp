@@ -10,7 +10,7 @@
 #include <boost/uuid/string_generator.hpp>
 #include <nlohmann/json.hpp>
 
-#include "sysmlv2/rest/entities/ProjectRequest.h"
+#include <sysmlv2/rest/entities/ProjectRequest.h>
 
 
 TEST(TestRESTfulAPI, SerializeProject) {
