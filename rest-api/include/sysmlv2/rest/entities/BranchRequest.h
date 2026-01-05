@@ -3,13 +3,13 @@
 //
 #pragma once
 #include <sysmlv2/rest/entities/IEntity.h>
-
+#include <sysmlv2/rest/sysmlv2rest_global.h>
 
 namespace SysMLv2::REST {
     class Project;
     class Commit;
 
-    class BranchRequest : public IEntity {
+    class SYSMLV2REST_EXPORT BranchRequest : public IEntity {
     public:
         BranchRequest(std::string name, std::shared_ptr<Project> project, std::shared_ptr<Commit> commit);
         BranchRequest(std::string jsonString);

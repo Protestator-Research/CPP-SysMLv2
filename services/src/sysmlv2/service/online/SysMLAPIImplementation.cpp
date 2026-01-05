@@ -93,9 +93,11 @@ namespace SysMLv2::API {
 
         const char* serverAddress = ServerAddress.c_str();
         char* completeServerAddress = new char[std::strlen(serverAddress)+std::strlen(urlAppendix)+1];
-        std::cout<<"Server Address: "<<completeServerAddress<<std::endl;
+        
         std::strcpy(completeServerAddress,serverAddress);
         std::strcat(completeServerAddress,urlAppendix);
+
+        std::cout << "Server Address: " << completeServerAddress << std::endl;
 
         if(std::strcmp(barrierString, "")!=0)
             HeaderList = curl_slist_append(HeaderList, authorizationHeader);
@@ -265,6 +267,7 @@ namespace SysMLv2::API {
 
     std::string
     SysMLAPIImplementation::loginToBackendVersion3(const std::string &username, const std::string &passwod) {
+        std::cout << "Login Version 3" << std::endl;
         std::string barrierString = "";
 
         CURLcode ServerResult;
@@ -421,6 +424,7 @@ namespace SysMLv2::API {
 
     std::string
     SysMLAPIImplementation::loginToBackendVersion2(const std::string &username, const std::string &password) {
+        std::cout << "Version 2 Login" <<std::endl;
         std::string barrierString;
 
         CURLcode ServerResult;
