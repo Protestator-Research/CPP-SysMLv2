@@ -61,8 +61,8 @@ namespace SysMLv2::REST {
         }
         catch (std::exception&) {
             Name = JsonString;
-            Type = "Project";
         }
+        Type = "Project";
     }
 
     Project::~Project() {
