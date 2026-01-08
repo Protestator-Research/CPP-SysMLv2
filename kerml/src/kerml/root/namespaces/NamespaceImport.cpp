@@ -9,11 +9,13 @@ namespace KerML::Entities {
     NamespaceImport::NamespaceImport(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
     Import(elementID, owner) {
         ImportedNamespace = nullptr;
+        _dType = "NamespaceImport";
     }
 
     NamespaceImport::NamespaceImport(std::string elementID, std::shared_ptr<Element> owner) :
     Import(elementID, owner) {
         ImportedNamespace = nullptr;
+        _dType = "NamespaceImport";
     }
 
     std::vector<std::shared_ptr<Membership>> NamespaceImport::importedMemberships(std::vector<std::shared_ptr<Namespace>> excluded) {

@@ -8,11 +8,13 @@ namespace KerML::Entities {
     TextualRepresentation::TextualRepresentation() {
         Language = "";
         Body = "";
+        _dType = "TextualRepresentation";
     }
 
     TextualRepresentation::TextualRepresentation(std::string language, std::string body) {
         Language = language;
         Body = body;
+        _dType = "TextualRepresentation";
     }
 
     std::string TextualRepresentation::language() {
@@ -24,7 +26,7 @@ namespace KerML::Entities {
     }
 
     void TextualRepresentation::setBody(std::string body) {
-        body = Body;
+        Body = body;
     }
 
     std::string TextualRepresentation::body() {

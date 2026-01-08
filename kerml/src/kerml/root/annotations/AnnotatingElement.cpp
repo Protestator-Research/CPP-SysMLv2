@@ -8,6 +8,7 @@ namespace KerML::Entities {
 
     AnnotatingElement::AnnotatingElement() : Element(){
         OwningAnnotatingRelationship = nullptr;
+        _dType = "AnnotatingElement";
     }
 
     std::vector<std::shared_ptr<Element>> AnnotatingElement::annotatedElements() {

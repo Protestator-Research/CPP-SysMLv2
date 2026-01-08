@@ -12,6 +12,7 @@ namespace KerML {
             Visibility = VisibilityKind::PRIVATE;
             IsImportAll = false;
             IsRecursive = false;
+            _dType = "Import";
         }
 
         Import::Import(std::string elementID, std::shared_ptr<Element> owner) : Relationship(elementID, owner) {
@@ -19,6 +20,7 @@ namespace KerML {
             Visibility = VisibilityKind::PRIVATE;
             IsImportAll = false;
             IsRecursive = false;
+            _dType = "Import";
         }
 
         Import::Import(VisibilityKind visibility, bool isRecursive, bool isImportAll,
@@ -28,6 +30,7 @@ namespace KerML {
             IsImportAll = isImportAll;
             IsRecursive = isRecursive;
             ImportOwningNamespace = std::move(importOwningNamespace);
+            _dType = "Import";
         }
 
         void Import::setVisibility(VisibilityKind visibility) {

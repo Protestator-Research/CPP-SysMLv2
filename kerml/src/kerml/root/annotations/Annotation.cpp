@@ -8,12 +8,12 @@ namespace KerML::Entities {
 
     Annotation::Annotation(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
     Relationship(elementID, owner) {
-
+        _dType = "Annotation";
     }
 
     Annotation::Annotation(std::string elementID, std::shared_ptr<Element> owner) :
     Relationship(elementID, owner) {
-
+        _dType = "Annotation";
     }
 
     std::shared_ptr<Element> Annotation::owningAnnotatedElement() const {

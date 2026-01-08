@@ -7,6 +7,7 @@
 namespace KerML::Entities {
 	MembershipImport::MembershipImport()
 	{
+		_dType = "MembershipImport";
 	}
 
 	std::vector<std::shared_ptr<Membership>> MembershipImport::importedMemberships(

@@ -27,11 +27,13 @@ namespace KerML {
         Dependency::Dependency(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
         Relationship(elementID, owner) {
             initialize();
+            _dType = "Dependency";
         }
 
         Dependency::Dependency(std::string elementID, std::shared_ptr<Element> owner) :
         Relationship(elementID, owner) {
             initialize();
+            _dType = "Dependency";
         }
 
         void Dependency::initialize() {

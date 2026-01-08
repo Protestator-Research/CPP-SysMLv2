@@ -9,11 +9,11 @@
 
 namespace KerML::Entities {
     Relationship::Relationship(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) : Element(elementID, owner) {
-
+        _dType = "Relationship";
     }
 
     Relationship::Relationship(std::string elementID, std::shared_ptr<Element> owner) : Element(elementID, owner) {
-
+        _dType = "Relationship";
     }
 
     void Relationship::setIsImplied(bool isImplied) {

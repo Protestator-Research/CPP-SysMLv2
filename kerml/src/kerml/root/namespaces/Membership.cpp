@@ -9,6 +9,7 @@
 namespace KerML::Entities {
     Membership::Membership() {
         Visibility = PUBLIC;
+        _dType = "Membership";
     }
 
     VisibilityKind Membership::visibility() {

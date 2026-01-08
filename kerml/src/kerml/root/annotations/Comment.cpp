@@ -7,7 +7,7 @@
 namespace KerML::Entities {
 
     Comment::Comment() {
-
+        _dType = "Comment";
     }
 
     Comment::Comment(std::string locale, std::string body) {

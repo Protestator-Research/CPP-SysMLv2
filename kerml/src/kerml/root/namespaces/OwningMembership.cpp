@@ -23,6 +23,7 @@ namespace KerML::Entities
 {
 	OwningMembership::OwningMembership()
 	{
+		_dType = "OwningMembership";
 	}
 
 	std::string OwningMembership::path()

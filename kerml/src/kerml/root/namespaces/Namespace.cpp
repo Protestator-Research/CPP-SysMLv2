@@ -12,17 +12,20 @@ namespace KerML::Entities {
 
     Namespace::Namespace(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) : Element(elementID, owner) {
         IsImported = false;
+        _dType = "Namespace";
     }
 
     Namespace::Namespace(std::string namespaceName, bool isImported, boost::uuids::uuid elementID,
                          std::shared_ptr<Element> owner) : Element(elementID, owner) {
         setDeclaredName(namespaceName);
         IsImported = isImported;
+        _dType = "Namespace";
     }
 
     Namespace::Namespace(std::string namespaceName, boost::uuids::uuid elementID, std::shared_ptr<Element> owner) : Element(elementID, owner) {
         setDeclaredName(namespaceName);
         IsImported = false;
+        _dType = "Namespace";
     }
 
     bool Namespace::isImported() {
