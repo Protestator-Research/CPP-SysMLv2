@@ -15,7 +15,7 @@ add_executable(conformance-test
         src/TestRestAPI.cpp
 )
 
-#if((EXISTS antlr4_shared) OR (MSVC))
+if((EXISTS antlr4_shared) OR (MSVC))
     target_link_libraries(conformance-test
             boost::boost
             nlohmann_json::nlohmann_json
@@ -27,19 +27,19 @@ add_executable(conformance-test
             sysmlv2service
             sysmlv2rest
             kerml)
-#else ()
-#    target_link_libraries(conformance-test
-#            boost::boost
-#            nlohmann_json::nlohmann_json
-#            date::date
-#            gtest::gtest
-#            antlr4_static
-#            sysmlv2interfaces
-#            sysmlv2parser
-#            sysmlv2service
-#            sysmlv2rest
-#            kerml)
-#endif ()
+else ()
+    target_link_libraries(conformance-test
+            boost::boost
+            nlohmann_json::nlohmann_json
+            date::date
+            gtest::gtest
+            antlr4_static
+            sysmlv2interfaces
+            sysmlv2parser
+            sysmlv2service
+            sysmlv2rest
+            kerml)
+endif ()
 
 target_include_directories(conformance-test PRIVATE
         ../filehandling/include
