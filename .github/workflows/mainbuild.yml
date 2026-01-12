@@ -25,7 +25,7 @@ jobs:
     - name: prepare dependencies
       run: |
        mkdir build && cd build
-       conan install ..
+       conan install .. --build missing
     - name: build sysmlv2lib
       run: |
         ls -al
