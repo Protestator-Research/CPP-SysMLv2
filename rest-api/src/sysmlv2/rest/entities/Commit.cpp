@@ -97,16 +97,16 @@ namespace SysMLv2::REST{
 
         json[JSON_OWNING_PROJECT] = nlohmann::json::parse(OwningProject->serializeIdentification());
 
-        std::string jsonElementsPrefCommits = "[\r\n";
+        std::string jsonElementsPrevCommits = "[\r\n";
         for (size_t i = 0; i < PreviusCommits.size(); i++) {
-            jsonElementsPrefCommits += PreviusCommits[i]->serializeIdentification();
+            jsonElementsPrevCommits += PreviusCommits[i]->serializeIdentification();
 
-            if (i != (Change.size() - 1))
-                jsonElementsPrefCommits += ",\r\n";
+            if (i != (PreviusCommits.size() - 1))
+                jsonElementsPrevCommits += ",\r\n";
         }
-        jsonElementsPrefCommits += "]\r\n";
+        jsonElementsPrevCommits += "]\r\n";
 
-        json[JSON_PREV_COMMITS] = jsonElementsPrefCommits;
+        json[JSON_PREV_COMMITS] = jsonElementsPrevCommits;
 
         return json.dump(JSON_INTENT);
     }
