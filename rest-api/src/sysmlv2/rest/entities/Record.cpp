@@ -104,7 +104,7 @@ namespace SysMLv2::REST {
     void Record::deserializeAndPopulate(const std::string& jsonString)
     {
         nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
-
+        std::cout << "Record::deserializeAndPopulate" << std::endl;
         Id = boost::uuids::string_generator()(parsedJson[JSON_ID_ENTITY].get<std::string>());
 
         if (parsedJson.contains(JSON_TYPE_ENTITY))
@@ -118,6 +118,8 @@ namespace SysMLv2::REST {
 
         if (parsedJson.contains(JSON_DESCRIPTION_ENTITY))
             Description = parsedJson[JSON_DESCRIPTION_ENTITY];
+
+        std::cout << "Record::deserializeAndPopulate finished" << std::endl;
     }
 
     std::string Record::getType() const {

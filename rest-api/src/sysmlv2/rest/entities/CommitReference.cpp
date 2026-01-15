@@ -24,7 +24,7 @@
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
-
+#include <iostream>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
@@ -42,6 +42,7 @@
 namespace SysMLv2::REST {
     CommitReference::CommitReference(const std::string& jsonStringOrName) : Record(jsonStringOrName)
     {
+        Type = "CommitReference";
         try {
             CommitReference::deserializeAndPopulate(jsonStringOrName);
         }catch (...)
@@ -92,6 +93,7 @@ namespace SysMLv2::REST {
 
     void CommitReference::deserializeAndPopulate(const std::string& jsonString)
     {
+        std::cout << "CommitReference::deserializeAndPopulate" << std::endl;
         nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
 
         if (parsedJson.contains(JSON_CREATED_ENTITY))
@@ -101,6 +103,8 @@ namespace SysMLv2::REST {
 
         if (parsedJson.contains(JSON_REFERENCE_COMMIT))
             ReferencedCommit = std::make_shared<Commit>(parsedJson[JSON_REFERENCE_COMMIT]);
+
+        std::cout << "CommitReference::deserializeAndPopulate finished" << std::endl;
     }
 
     std::chrono::system_clock::time_point CommitReference::created() {

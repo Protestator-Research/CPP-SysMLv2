@@ -220,7 +220,7 @@ namespace KerML::Entities {
         json[SysMLv2::REST::JSON_OWNED_RELATIONSHIPS_ENTITY] = nlohmann::json::parse(ownedRelationshipsString);
 
         json[SysMLv2::REST::JSON_IS_IMPLIED_INCLUDED_ENTITY] = IsImpliedIncluded;
-        json[SysMLv2::REST::JSON_OWNER_ENTITY] = Owner->serializeAsIdentity();
+        json[SysMLv2::REST::JSON_OWNER_ENTITY] = Owner? nlohmann::json::parse(Owner->serializeAsIdentity()):"";
 
         std::string ownedElementsString = "[\r\n";
         for (size_t i = 0; i < OwnedElements.size(); i++) {
@@ -262,7 +262,7 @@ namespace KerML::Entities {
         textualRepresentationString += "]\r\n";
         json[SysMLv2::REST::JSON_TEXTUAL_REPRESENTATION_ENTITY] = nlohmann::json::parse(textualRepresentationString);
 
-        json[SysMLv2::REST::JSON_OWNING_RELATIONSHIP_ENTITY] = nlohmann::json::parse(OwningRelationship->serializeAsIdentity());
+        json[SysMLv2::REST::JSON_OWNING_RELATIONSHIP_ENTITY] = OwningRelationship?nlohmann::json::parse(OwningRelationship->serializeAsIdentity()):"";
 
         return json.dump(JSON_INTENT);
     }

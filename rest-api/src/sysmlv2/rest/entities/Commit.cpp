@@ -106,7 +106,7 @@ namespace SysMLv2::REST{
         }
         jsonElementsPrevCommits += "]\r\n";
 
-        json[JSON_PREV_COMMITS] = jsonElementsPrevCommits;
+        json[JSON_PREV_COMMITS] = nlohmann::json::parse(jsonElementsPrevCommits);
 
         return json.dump(JSON_INTENT);
     }
@@ -117,25 +117,36 @@ namespace SysMLv2::REST{
 
     void Commit::deserializeAndPopulate(const std::string& jsonString)
     {
+        std::cout << "Commit::deserializeAndPopulate" << std::endl;
         nlohmann::json parsedElement = nlohmann::json::parse(jsonString);
-        Description = parsedElement[JSON_DESCRIPTION_ENTITY];
 
-    	std::vector<nlohmann::json> arrayValues = parsedElement[JSON_CHANGE_ENTITY].get<std::vector<nlohmann::json>>();
-        for (const auto& value : arrayValues)
-        {
-            auto changeToBeAdded = std::make_shared<DataVersion>(value.dump());
-            Change.push_back(changeToBeAdded);
+        if (parsedElement.contains(JSON_DESCRIPTION_ENTITY))
+			Description = parsedElement[JSON_DESCRIPTION_ENTITY];
+
+        if (parsedElement.contains(JSON_CHANGE_ENTITY)) {
+            std::vector<nlohmann::json> arrayValues = parsedElement[JSON_CHANGE_ENTITY].get<std::vector<nlohmann::json>>();
+            for (const auto& value : arrayValues)
+            {
+                auto changeToBeAdded = std::make_shared<DataVersion>(value.dump());
+                Change.push_back(changeToBeAdded);
+            }
         }
 
-    	Created = Utilities::fromIso8601(parsedElement[JSON_TIMESTAMP_ENTITY]);
-        OwningProject = std::make_shared<Project>(parsedElement[JSON_OWNING_PROJECT]);
+        if (parsedElement.contains(JSON_DESCRIPTION_ENTITY))
+    		Created = Utilities::fromIso8601(parsedElement[JSON_TIMESTAMP_ENTITY]);
 
-        std::vector<nlohmann::json> arrayValuesPrevCommits = parsedElement[JSON_PREV_COMMITS].get<std::vector<nlohmann::json>>();
-        for (const auto& value : arrayValuesPrevCommits)
-        {
-            auto changeToBeAdded = std::make_shared<Commit>(value.dump());
-            PreviusCommits.push_back(changeToBeAdded);
+        if (parsedElement.contains(JSON_OWNING_PROJECT))
+			OwningProject = std::make_shared<Project>(parsedElement[JSON_OWNING_PROJECT].dump());
+
+        if (parsedElement.contains(JSON_PREV_COMMITS)) {
+            std::vector<nlohmann::json> arrayValuesPrevCommits = parsedElement[JSON_PREV_COMMITS].get<std::vector<nlohmann::json>>();
+            for (const auto& value : arrayValuesPrevCommits)
+            {
+                auto changeToBeAdded = std::make_shared<Commit>(value.dump());
+                PreviusCommits.push_back(changeToBeAdded);
+            }
         }
+        std::cout << "Commit::deserializeAndPopulate finished" << std::endl;
     }
 }
 

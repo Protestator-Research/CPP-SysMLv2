@@ -47,7 +47,7 @@ namespace SysMLv2::REST {
 protected:
         void deserializeAndPopulate(const std::string& jsonString) override;
 
-        std::shared_ptr<DataIdentity> Identity;
+        //std::shared_ptr<DataIdentity> Identity;
 
         std::shared_ptr<Data> Payload;
     };

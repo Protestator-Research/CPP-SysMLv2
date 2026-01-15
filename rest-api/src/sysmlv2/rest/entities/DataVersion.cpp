@@ -14,7 +14,7 @@
 #include <nlohmann/json.hpp>
 
 namespace SysMLv2::REST {
-    DataVersion::DataVersion(boost::uuids::uuid id, std::shared_ptr<Data> payload) : Record(id) {
+    DataVersion::DataVersion(boost::uuids::uuid id, std::shared_ptr<Data> payload) : Record(payload->getId()) {
         Type = "DataVersion";
         Payload = payload;
     }
@@ -43,7 +43,6 @@ namespace SysMLv2::REST {
     {
         nlohmann::json json = nlohmann::json::parse(Record::serializeToJson());
 
-        json[JSON_IDENTITY_ENTITY] = nlohmann::json::parse(Identity->serializeToJson());
         json[JSON_PAYLOAD_ENTITY] = nlohmann::json::parse(Payload->serializeToJson());
 
 	    return json.dump(JSON_INTENT);
@@ -52,7 +51,6 @@ namespace SysMLv2::REST {
     void DataVersion::deserializeAndPopulate(const std::string& jsonString)
     {
         nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
-        Identity = std::make_shared<DataIdentity>(parsedJson[JSON_IDENTITY_ENTITY].dump());
-        Payload = std::make_shared<Data>();
+        Payload = std::make_shared<Data>(parsedJson[JSON_PAYLOAD_ENTITY].dump());
     }
 }
