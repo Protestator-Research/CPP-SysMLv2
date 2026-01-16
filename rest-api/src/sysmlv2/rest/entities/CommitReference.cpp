@@ -95,12 +95,17 @@ namespace SysMLv2::REST {
     {
         std::cout << "CommitReference::deserializeAndPopulate" << std::endl;
         nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
-
+        std::cout << "CommitReference::deserializeAndPopulate - Parsing Dates" << std::endl;
         if (parsedJson.contains(JSON_CREATED_ENTITY))
             Created = Utilities::fromIso8601(parsedJson[JSON_CREATED_ENTITY]);
-        if (parsedJson.contains(JSON_DELETED_ENTITY))
-            Deleted = Utilities::fromIso8601(parsedJson[JSON_DELETED_ENTITY]);
-
+        try {
+            if (parsedJson.contains(JSON_DELETED_ENTITY))
+                Deleted = Utilities::fromIso8601(parsedJson[JSON_DELETED_ENTITY]);
+        }catch (std::exception& ex)
+        {
+            std::cerr << "CommitReference::Deleted caused Error:" << std::endl << ex.what() << std::endl;
+        }
+        std::cout << "CommitReference::deserializeAndPopulate - Parsing Reference Commit" << std::endl;
         if (parsedJson.contains(JSON_REFERENCE_COMMIT))
             ReferencedCommit = std::make_shared<Commit>(parsedJson[JSON_REFERENCE_COMMIT]);
 
