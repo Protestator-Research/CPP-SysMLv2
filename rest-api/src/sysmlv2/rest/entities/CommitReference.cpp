@@ -93,9 +93,7 @@ namespace SysMLv2::REST {
 
     void CommitReference::deserializeAndPopulate(const std::string& jsonString)
     {
-        std::cout << "CommitReference::deserializeAndPopulate" << std::endl;
         nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
-        std::cout << "CommitReference::deserializeAndPopulate - Parsing Dates" << std::endl;
         if (parsedJson.contains(JSON_CREATED_ENTITY))
             Created = Utilities::fromIso8601(parsedJson[JSON_CREATED_ENTITY]);
         try {
@@ -105,11 +103,9 @@ namespace SysMLv2::REST {
         {
             std::cerr << "CommitReference::Deleted caused Error:" << std::endl << ex.what() << std::endl;
         }
-        std::cout << "CommitReference::deserializeAndPopulate - Parsing Reference Commit" << std::endl;
         if (parsedJson.contains(JSON_REFERENCE_COMMIT))
             ReferencedCommit = std::make_shared<Commit>(parsedJson[JSON_REFERENCE_COMMIT]);
 
-        std::cout << "CommitReference::deserializeAndPopulate finished" << std::endl;
     }
 
     std::chrono::system_clock::time_point CommitReference::created() {
