@@ -110,6 +110,7 @@ namespace SysMLv2::API {
         curl_easy_setopt(serverConnection, CURLOPT_HEADERFUNCTION, WriteBufferCallback);
         curl_easy_setopt(serverConnection, CURLOPT_HEADERDATA, &ReturnedHeaderData);
         curl_easy_setopt(serverConnection, CURLOPT_HTTPHEADER, HeaderList);
+        curl_easy_setopt(serverConnection, CURLOPT_SSL_OPTIONS, (long)CURLSSLOPT_NATIVE_CA);
 
         if(std::strcmp(postPayload, "")!=0) {
             char* payload = new char[std::strlen(postPayload)+1];
