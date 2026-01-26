@@ -1,5 +1,5 @@
 #include <sysmlv2/rest/serialization/Utilities.h>
-
+#include <iomanip>
 std::string SysMLv2::REST::Utilities::toIso8601(std::chrono::time_point<std::chrono::system_clock> t)
 {
 	time_t epochSeconds = std::chrono::system_clock::to_time_t(t);
