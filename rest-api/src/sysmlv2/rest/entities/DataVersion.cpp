@@ -14,7 +14,7 @@
 #include <nlohmann/json.hpp>
 
 namespace SysMLv2::REST {
-    DataVersion::DataVersion(boost::uuids::uuid id, std::shared_ptr<Data> payload) : Record(payload->getId()) {
+    DataVersion::DataVersion(boost::uuids::uuid, std::shared_ptr<Data> payload) : Record(payload->getId()) {
         Type = "DataVersion";
         Payload = payload;
     }
