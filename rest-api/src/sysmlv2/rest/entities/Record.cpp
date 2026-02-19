@@ -105,7 +105,9 @@ namespace SysMLv2::REST {
     {
         nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
         std::cout << "Record::deserializeAndPopulate" << std::endl;
+        std::cout << "Loading Id " << parsedJson[JSON_ID_ENTITY].get<std::string>() << std::endl;
         Id = boost::uuids::string_generator()(parsedJson[JSON_ID_ENTITY].get<std::string>());
+        std::cout << "Stored Id " << Id << std::endl;
 
         if (parsedJson.contains(JSON_TYPE_ENTITY))
             Type = parsedJson[JSON_TYPE_ENTITY];
