@@ -18,6 +18,9 @@
 #include <algorithm>
 #include <string>
 
+#include "kerml/root/annotations/TextualRepresentation.h"
+#include "kerml/root/elements/Element.h"
+
 namespace SysMLv2 {
     std::shared_ptr<SysMLv2::REST::IEntity> SysMLv2Deserializer::deserializeJsonString(std::string inputValue) {
 
@@ -44,9 +47,11 @@ namespace SysMLv2 {
         if(type==REST::COMMIT_TYPE)
             return std::make_shared<REST::Commit>(inputValue);
 
-        //TODO Implement with KerML Element
-        //if(checkIfIsElementType(type))
-        //    return std::make_shared<REST::Element>(inputValue);
+        if (type==REST::ELEMENT_TYPE)
+            return std::make_shared<KerML::Entities::Element>(inputValue);
+
+        if (type==REST::TEXTUAL_REPRESENTATION_TYPE)
+            return std::make_shared<KerML::Entities::TextualRepresentation>(inputValue);
 
         return nullptr;
     }

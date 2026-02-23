@@ -9,6 +9,7 @@
 #include <sysmlv2/rest/entities/DataIdentity.h>
 #include <sysmlv2/rest/entities/JSONEntities.h>
 #include <sysmlv2/rest/entities/Data.h>
+#include <sysmlv2/rest/serialization/SysMLv2Deserializer.h>
 
 #include <boost/uuid/random_generator.hpp>
 #include <nlohmann/json.hpp>
@@ -51,6 +52,6 @@ namespace SysMLv2::REST {
     void DataVersion::deserializeAndPopulate(const std::string& jsonString)
     {
         nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
-        Payload = std::make_shared<Data>(parsedJson[JSON_PAYLOAD_ENTITY].dump());
+        Payload = std::dynamic_pointer_cast<SysMLv2::REST::Data>(SysMLv2::SysMLv2Deserializer::deserializeJsonString(parsedJson[JSON_PAYLOAD_ENTITY].dump()));
     }
 }
