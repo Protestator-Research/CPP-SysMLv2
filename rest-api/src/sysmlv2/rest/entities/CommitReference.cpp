@@ -63,12 +63,17 @@ namespace SysMLv2::REST {
     }
 
     std::string CommitReference::serializeToJson() {
+        // std::cout<<"CommitReference::serializeToJson"<<std::endl;
         nlohmann::json generatingJson = nlohmann::json::parse(Record::serializeToJson());
-
+        // std::cout<<"CommitReference::serializeToJson Record Finished"<<std::endl;
         generatingJson[JSON_CREATED_ENTITY] = Utilities::toIso8601(Created);
+        // std::cout<<"CommitReference::serializeToJson Creation Date"<<std::endl;
         generatingJson[JSON_DELETED_ENTITY] = Utilities::toIso8601(Deleted);
+        // std::cout<<"CommitReference::serializeToJson Deletion Date"<<std::endl;
 
-        generatingJson[JSON_REFERENCE_COMMIT] = ReferencedCommit->serializeIdentification();
+        generatingJson[JSON_REFERENCE_COMMIT] = nlohmann::json::parse(ReferencedCommit->serializeIdentification());
+
+        // std::cout<<"CommitReference::serializeToJson finished"<<std::endl;
 
         return generatingJson.dump(JSON_INTENT);
     }
@@ -104,7 +109,7 @@ namespace SysMLv2::REST {
             std::cerr << "CommitReference::Deleted caused Error:" << std::endl << ex.what() << std::endl;
         }
         if (parsedJson.contains(JSON_REFERENCE_COMMIT))
-            ReferencedCommit = std::make_shared<Commit>(parsedJson[JSON_REFERENCE_COMMIT]);
+            ReferencedCommit = std::make_shared<Commit>(parsedJson[JSON_REFERENCE_COMMIT].dump());
 
     }
 

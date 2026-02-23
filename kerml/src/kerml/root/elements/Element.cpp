@@ -203,7 +203,7 @@ namespace KerML::Entities {
     std::string Element::serializeToJson() {
         nlohmann::json json = nlohmann::json::parse(Data::serializeToJson());
 
-        json[SysMLv2::REST::JSON_ELEMENT_ID_ENTITY] = ElementId;
+        json[SysMLv2::REST::JSON_ELEMENT_ID_ENTITY] = boost::uuids::to_string(ElementId);
         json[SysMLv2::REST::JSON_ALIAS_ID_ENTITY] = AliasIds;
 
         json[SysMLv2::REST::JSON_NAME_ENTITY] = Name;
