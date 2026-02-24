@@ -19,7 +19,7 @@
 //---------------------------------------------------------
 
 namespace SysMLv2::REST {
-
+    class Project;
     /**
      * Represents an abstract baseclass that is used for the SysMLv2 API
      * @class Record
@@ -35,5 +35,16 @@ namespace SysMLv2::REST {
          */
         Tag(std::string jsonStringOrName);
 
+        Tag(std::string name, std::shared_ptr<Project> owningProject, std::shared_ptr<Commit> referencedCommit);
+
+        [[nodiscard]] std::shared_ptr<Project> owningProject() const;
+        void setOwningProject(std::shared_ptr<Project> owningProject);
+
+        std::string serializeToJson() override;
+    protected:
+        void deserializeAndPopulate(const std::string &jsonString) override;
+
+    private:
+        std::shared_ptr<Project> OwningProject;
     };
 }

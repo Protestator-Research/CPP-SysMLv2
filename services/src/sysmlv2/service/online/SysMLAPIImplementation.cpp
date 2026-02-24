@@ -27,6 +27,8 @@
 #include <sysmlv2/rest/serialization/SysMLv2Deserializer.h>
 #include <sysmlv2/rest/entities/Project.h>
 #include <sysmlv2/rest/entities/Commit.h>
+#include <sysmlv2/rest/entities/CommitRequest.h>
+#include <sysmlv2/rest/entities/ProjectRequest.h>
 
 
 namespace SysMLv2::API {
@@ -325,7 +327,7 @@ namespace SysMLv2::API {
     }
 
     std::shared_ptr<SysMLv2::REST::IEntity>
-    SysMLAPIImplementation::postProject(std::shared_ptr<SysMLv2::REST::Project> project, std::string barrierString) {
+    SysMLAPIImplementation::postProject(std::shared_ptr<SysMLv2::REST::ProjectRequest> project, std::string barrierString) {
         std::shared_ptr<SysMLv2::REST::IEntity> returnValue = nullptr;
         CURLcode ServerResult;
 
@@ -356,7 +358,7 @@ namespace SysMLv2::API {
     }
 
     std::shared_ptr<SysMLv2::REST::IEntity> SysMLAPIImplementation::postCommit(std::string projectId,
-	    std::shared_ptr<SysMLv2::REST::Commit> commit, std::string barrierString)
+	    std::shared_ptr<SysMLv2::REST::CommitRequest> commit, std::string barrierString)
     {
         std::shared_ptr<SysMLv2::REST::IEntity> returnValue = nullptr;
         CURLcode ServerResult;
@@ -425,7 +427,6 @@ namespace SysMLv2::API {
 
     std::string
     SysMLAPIImplementation::loginToBackendVersion2(const std::string &username, const std::string &password) {
-        std::cout << "Version 2 Login" <<std::endl;
         std::string barrierString;
 
         CURLcode ServerResult;
