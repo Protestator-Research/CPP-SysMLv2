@@ -128,6 +128,8 @@ namespace SysMLv2::API {
          * @return The given Returnvalue.
          */
         std::string postCustomRequest(std::string const& endpoint, std::string const& payload, std::string const& barrierString);
+
+        std::string getCustomRequest(std::string const& endpoint, std::string const& barrierString);
     protected:
         /**
          * Sets up the server connection and creates the necessary CURL calls.

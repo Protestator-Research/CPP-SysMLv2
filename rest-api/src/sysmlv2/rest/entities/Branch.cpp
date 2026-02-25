@@ -40,6 +40,7 @@ namespace SysMLv2::REST {
 
     void Branch::setHead(std::shared_ptr<Commit> head) {
         Head = head;
+        ReferencedCommit = head;
     }
 
     void Branch::deserializeAndPopulate(const std::string& jsonString)

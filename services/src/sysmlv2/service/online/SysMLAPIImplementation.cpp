@@ -472,6 +472,26 @@ namespace SysMLv2::API {
         return Data;
     }
 
+    std::string SysMLAPIImplementation::getCustomRequest(std::string const &endpoint, std::string const &barrierString) {
+        CURLcode ServerResult;
+        auto serverConnection = setUpServerConnection(endpoint.c_str(), barrierString.c_str(),"");
+
+        ServerResult = curl_easy_perform(serverConnection);
+
+        if (ServerResult == CURLE_OK) {
+            long httpResult;
+            curl_easy_getinfo(serverConnection, CURLINFO_RESPONSE_CODE, &httpResult);
+        }
+        else {
+            throw SysMLv2::API::EXCEPTIONS::ConnectionError(
+                    static_cast<SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
+        }
+        curl_slist_free_all(HeaderList);
+        curl_easy_cleanup(serverConnection);
+
+        return Data;
+    }
+
     std::vector<std::string> SysMLAPIImplementation::splittString(std::string value, char delimiter) {
         std::vector<std::string> returnValue;
         std::istringstream stream(value);
