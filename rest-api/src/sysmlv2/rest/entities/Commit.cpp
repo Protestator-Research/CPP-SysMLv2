@@ -117,7 +117,7 @@ namespace SysMLv2::REST{
 
     void Commit::deserializeAndPopulate(const std::string& jsonString)
     {
-        std::cout << "Commit::deserializeAndPopulate" << std::endl;
+        //std::cout << "Commit::deserializeAndPopulate" << std::endl;
         nlohmann::json parsedElement = nlohmann::json::parse(jsonString);
 
         if (parsedElement.contains(JSON_DESCRIPTION_ENTITY))
@@ -146,7 +146,7 @@ namespace SysMLv2::REST{
                 PreviusCommits.push_back(changeToBeAdded);
             }
         }
-        std::cout << "Commit::deserializeAndPopulate finished" << std::endl;
+        //std::cout << "Commit::deserializeAndPopulate finished" << std::endl;
     }
 }
 

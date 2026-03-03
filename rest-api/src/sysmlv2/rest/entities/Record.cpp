@@ -33,7 +33,8 @@ namespace SysMLv2::REST {
         try {
             Record::deserializeAndPopulate(jsonString);
         }
-        catch (std::exception&) {
+        catch (std::exception& ex) {
+            std::cerr << ex.what() << std::endl;
             Name = jsonString;
             Id = boost::uuids::random_generator()();
         }
@@ -104,8 +105,10 @@ namespace SysMLv2::REST {
     void Record::deserializeAndPopulate(const std::string& jsonString)
     {
         nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
-        std::cout << "Record::deserializeAndPopulate" << std::endl;
+        // std::cout << "Record::deserializeAndPopulate" << std::endl;
+        // std::cout << "Loading Id " << parsedJson[JSON_ID_ENTITY].get<std::string>() << std::endl;
         Id = boost::uuids::string_generator()(parsedJson[JSON_ID_ENTITY].get<std::string>());
+        // std::cout << "Stored Id " << Id << std::endl;
 
         if (parsedJson.contains(JSON_TYPE_ENTITY))
             Type = parsedJson[JSON_TYPE_ENTITY];
@@ -119,7 +122,7 @@ namespace SysMLv2::REST {
         if (parsedJson.contains(JSON_DESCRIPTION_ENTITY))
             Description = parsedJson[JSON_DESCRIPTION_ENTITY];
 
-        std::cout << "Record::deserializeAndPopulate finished" << std::endl;
+        // std::cout << "Record::deserializeAndPopulate finished" << std::endl;
     }
 
     std::string Record::getType() const {

@@ -17,6 +17,8 @@
 //---------------------------------------------------------
 #include <sysmlv2/service/online/StatusCode.h>
 #include <sysmlv2/service/sysmlv2service_global.h>
+
+
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -24,6 +26,8 @@ namespace SysMLv2::REST {
     class IEntity;
     class Project;
     class Commit;
+    class ProjectRequest;
+    class CommitRequest;
 }
 
 namespace SysMLv2::API {
@@ -65,7 +69,7 @@ namespace SysMLv2::API {
          * @param barrierString 
          * @return 
          */
-        std::shared_ptr<SysMLv2::REST::IEntity> postProject(std::shared_ptr<SysMLv2::REST::Project> project, std::string barrierString);
+        std::shared_ptr<SysMLv2::REST::IEntity> postProject(std::shared_ptr<SysMLv2::REST::ProjectRequest> project, std::string barrierString);
 
         /**
          * Posts a commit to the Backend to add changes to a project or a branch.
@@ -74,7 +78,7 @@ namespace SysMLv2::API {
          * @param barrierString 
          * @return 
          */
-        std::shared_ptr<SysMLv2::REST::IEntity> postCommit(std::string projectId, std::shared_ptr<SysMLv2::REST::Commit> commit, std::string barrierString);
+        std::shared_ptr<SysMLv2::REST::IEntity> postCommit(std::string projectId, std::shared_ptr<SysMLv2::REST::CommitRequest> commit, std::string barrierString);
 
         /**
          *
@@ -124,6 +128,8 @@ namespace SysMLv2::API {
          * @return The given Returnvalue.
          */
         std::string postCustomRequest(std::string const& endpoint, std::string const& payload, std::string const& barrierString);
+
+        std::string getCustomRequest(std::string const& endpoint, std::string const& barrierString);
     protected:
         /**
          * Sets up the server connection and creates the necessary CURL calls.

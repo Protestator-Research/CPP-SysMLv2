@@ -27,6 +27,8 @@
 #include <sysmlv2/rest/serialization/SysMLv2Deserializer.h>
 #include <sysmlv2/rest/entities/Project.h>
 #include <sysmlv2/rest/entities/Commit.h>
+#include <sysmlv2/rest/entities/CommitRequest.h>
+#include <sysmlv2/rest/entities/ProjectRequest.h>
 
 
 namespace SysMLv2::API {
@@ -110,6 +112,7 @@ namespace SysMLv2::API {
         curl_easy_setopt(serverConnection, CURLOPT_HEADERFUNCTION, WriteBufferCallback);
         curl_easy_setopt(serverConnection, CURLOPT_HEADERDATA, &ReturnedHeaderData);
         curl_easy_setopt(serverConnection, CURLOPT_HTTPHEADER, HeaderList);
+        curl_easy_setopt(serverConnection, CURLOPT_SSL_OPTIONS, (long)CURLSSLOPT_NATIVE_CA);
 
         if(std::strcmp(postPayload, "")!=0) {
             char* payload = new char[std::strlen(postPayload)+1];
@@ -324,7 +327,7 @@ namespace SysMLv2::API {
     }
 
     std::shared_ptr<SysMLv2::REST::IEntity>
-    SysMLAPIImplementation::postProject(std::shared_ptr<SysMLv2::REST::Project> project, std::string barrierString) {
+    SysMLAPIImplementation::postProject(std::shared_ptr<SysMLv2::REST::ProjectRequest> project, std::string barrierString) {
         std::shared_ptr<SysMLv2::REST::IEntity> returnValue = nullptr;
         CURLcode ServerResult;
 
@@ -355,7 +358,7 @@ namespace SysMLv2::API {
     }
 
     std::shared_ptr<SysMLv2::REST::IEntity> SysMLAPIImplementation::postCommit(std::string projectId,
-	    std::shared_ptr<SysMLv2::REST::Commit> commit, std::string barrierString)
+	    std::shared_ptr<SysMLv2::REST::CommitRequest> commit, std::string barrierString)
     {
         std::shared_ptr<SysMLv2::REST::IEntity> returnValue = nullptr;
         CURLcode ServerResult;
@@ -424,7 +427,6 @@ namespace SysMLv2::API {
 
     std::string
     SysMLAPIImplementation::loginToBackendVersion2(const std::string &username, const std::string &password) {
-        std::cout << "Version 2 Login" <<std::endl;
         std::string barrierString;
 
         CURLcode ServerResult;
@@ -453,6 +455,26 @@ namespace SysMLv2::API {
         CURLcode ServerResult;
 
         auto serverConnection = setUpServerConnection(endpoint.c_str(), barrierString.c_str(), payload.c_str());
+
+        ServerResult = curl_easy_perform(serverConnection);
+
+        if (ServerResult == CURLE_OK) {
+            long httpResult;
+            curl_easy_getinfo(serverConnection, CURLINFO_RESPONSE_CODE, &httpResult);
+        }
+        else {
+            throw SysMLv2::API::EXCEPTIONS::ConnectionError(
+                    static_cast<SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));
+        }
+        curl_slist_free_all(HeaderList);
+        curl_easy_cleanup(serverConnection);
+
+        return Data;
+    }
+
+    std::string SysMLAPIImplementation::getCustomRequest(std::string const &endpoint, std::string const &barrierString) {
+        CURLcode ServerResult;
+        auto serverConnection = setUpServerConnection(endpoint.c_str(), barrierString.c_str(),"");
 
         ServerResult = curl_easy_perform(serverConnection);
 

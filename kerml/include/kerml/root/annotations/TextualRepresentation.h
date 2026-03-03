@@ -27,6 +27,7 @@ namespace KerML::Entities {
     public:
         TextualRepresentation();
         TextualRepresentation(std::string  language, std::string body);
+        TextualRepresentation(std::string jsonString);
 
         ~TextualRepresentation() override = default;
 
@@ -35,6 +36,12 @@ namespace KerML::Entities {
 
         std::string body();
         void setBody(std::string body);
+
+        std::string serializeToJson() override;
+
+    protected:
+        void deserializeAndPopulate(const std::string &jsonString) override;
+
     private:
         std::string Language;
         std::string Body;

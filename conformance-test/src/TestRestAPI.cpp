@@ -34,7 +34,7 @@ TEST(TestRESTfulAPI, DeserializeProject) {
     ASSERT_EQ(project->getId(), boost::uuids::string_generator()("6e701bf8-7793-49de-9b0e-2f43376edabf"));
     ASSERT_EQ(project->getName(), "Hello SysML v2");
     ASSERT_EQ(project->getDescription(), "Test Project for Conformance Test");
-
+    ASSERT_EQ(project->getDefaultBranch()->getId(), boost::uuids::string_generator()("7eea9bd1-1082-4521-8bb2-d94202c8dd63"));
 }
 
 TEST(TestRESTfulAPI, SerializeProjectRequest) {
