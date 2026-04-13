@@ -38,13 +38,13 @@ Please install the dependencies required for the build:
 
 #### Dependencies
 
-| Dependency        | Version    |
-| ----------------- | ---------- |
-| antlr4-cppruntime | 4.13.1     |
-| boost             | Min 1.83.0 |
-| nlohmann_json     | Min 3.11.2 |
-| date              | 3.0.1      |
-| gtest             | 1.14.0     |
+| Dependency        | Minimum Version |
+| ----------------- |-----------------|
+| antlr4-cppruntime | 4.13.1          |
+| boost             | Min 1.83.0      |
+| nlohmann_json     | Min 3.11.2      |
+| date              | 3.0.1           |
+| gtest             | 1.14.0          |
 
 We are working on an option to only use a part of the dependencies. This will be depended on the modules that are used.
 
