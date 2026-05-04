@@ -38,7 +38,7 @@ namespace KerML::Entities {
         sortAliasIds();
     }
 
-    void Element::appendAliasId(std::string& aliasId) {
+    void Element::appendAliasId(const std::string& aliasId) {
         AliasIds.push_back(aliasId);
         sortAliasIds();
     }
@@ -47,7 +47,7 @@ namespace KerML::Entities {
         return AliasIds;
     }
 
-    void Element::setDeclaredShortName(std::string& declaredShortName) {
+    void Element::setDeclaredShortName(const std::string& declaredShortName) {
         DeclaredShortName = declaredShortName;
     }
 
@@ -57,7 +57,7 @@ namespace KerML::Entities {
         return DeclaredShortName;
     }
 
-    void Element::setDeclaredName(std::string& declaredName) {
+    void Element::setDeclaredName(const std::string& declaredName) {
         DeclaredName = declaredName;
     }
 

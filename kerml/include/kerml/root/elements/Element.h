@@ -82,7 +82,7 @@ namespace KerML::Entities {
          * Add another alternative Identifier.
          * @param aliasId the given alternative Identifier.
          */
-        void appendAliasId(std::string& aliasId);
+        void appendAliasId(const std::string& aliasId);
 
         /**
          * Gives access to the alternative Identifiers for one specific element.
@@ -95,7 +95,7 @@ namespace KerML::Entities {
          * specific identifier.
          * @param declaredShortName The wanted declared short name.
          */
-        void setDeclaredShortName(std::string& declaredShortName);
+        void setDeclaredShortName(const std::string& declaredShortName);
 
         /**
          * Returns the declared short name. This is a modeller-specific primary name. It has the responsibility of beeing
@@ -108,7 +108,7 @@ namespace KerML::Entities {
          * Sets the declared name of the Element.
          * @param declaredName declared name of the Element.
          */
-        void setDeclaredName(std::string& declaredName);
+        void setDeclaredName(const std::string& declaredName);
 
         /**
          * Gives access to the declared name.

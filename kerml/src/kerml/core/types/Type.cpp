@@ -45,7 +45,7 @@ namespace KerML::Entities {
 		return std::vector<std::shared_ptr<Membership>>();
 	}
 
-	std::vector<std::shared_ptr<Feature>> Type::allRedefinedFeaturesOf(std::shared_ptr<Membership> ) {
+	std::vector<std::shared_ptr<Feature>> Type::allRedefinedFeaturesOf(std::shared_ptr<Membership> membership) {
 		return std::vector<std::shared_ptr<Feature>>();
 	}
 
