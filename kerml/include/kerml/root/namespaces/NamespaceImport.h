@@ -29,7 +29,7 @@ namespace KerML::Entities {
     /**
      * @class NamespaceImport
      * @author Moritz Herzog
-     * @version 1.0 Beta 3
+     * @version 1.0 Beta 4
      * 
      */
     class KERML_EXPORT NamespaceImport : public Import {
@@ -42,10 +42,9 @@ namespace KerML::Entities {
 
         std::shared_ptr<Namespace> importedNamespace();
         void setImportedNamespace(std::shared_ptr<Namespace> importedNamespace);
-
+        
         std::vector<std::shared_ptr<Membership>> importedMemberships(std::vector<std::shared_ptr<Namespace>> excluded) override;
     private:
-
         std::shared_ptr<Namespace> ImportedNamespace;
     };
 }

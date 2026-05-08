@@ -28,7 +28,7 @@ namespace KerML::Entities {
     /**
      * @class Namespace
      * @author Moritz Herzog
-     * @version 1.0 Beta 3
+     * @version 1.0 Beta 4
      * Defines the Namespace Class accoding to the KerML Abstract Syntax.
      */
     class KERML_EXPORT Namespace : public Element {
@@ -49,11 +49,11 @@ namespace KerML::Entities {
         explicit Namespace(std::string namespaceName, boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
 
         /**
-         *
-         * @param namespaceName
-         * @param isImported
-         * @param elementID
-         * @param owner
+         * Specialized Constructor, for creating Namespace for parser. This allowes to directly initializes Namespace with name, importation boolean and everything else that is needed.
+         * @param namespaceName The name of the namespace. It saves the namespace name inside of the QualifiedName.
+         * @param isImported Inidication if Namespace is imported, so the elements are loaded from the correct file.
+         * @param elementID The Element ID of this Element. If no Id is provided, the ID id is generated.
+         * @param owner The owning Element if this specific namespace. If no Element is provided, this is set tu null.
          */
         explicit Namespace(std::string namespaceName, bool isImported, boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
 
@@ -66,7 +66,12 @@ namespace KerML::Entities {
         bool isImported();
 
         /**
-         *
+         * This is required by the Parser, set the IsImported property.
+         */
+        void setIsImported(bool isImported);
+
+        /**
+         * 
          * @param element
          * @return
          */

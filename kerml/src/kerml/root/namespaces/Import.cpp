@@ -61,7 +61,7 @@ namespace KerML {
             return ImportOwningNamespace;
         }
 
-        void Import::setImportOwningNamespace(std::shared_ptr<Namespace> importOwningNamespace) {
+        void Import::setImportOwningNamespace(const std::shared_ptr<Namespace>& importOwningNamespace) {
             ImportOwningNamespace = importOwningNamespace;
         }
     } // Entities

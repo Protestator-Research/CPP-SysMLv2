@@ -53,8 +53,7 @@ namespace KerML::Entities {
 	     */
 	    ~Classifier() override = default;
 
-    protected:
-	    /**
+        /**
 	     * Sets the OwnedSubclassification variable. Be carefull, this might delete all already present OwnedSubclassifications.
 	     * @param ownedSubclassification The owned Subclassifications.
 	     */

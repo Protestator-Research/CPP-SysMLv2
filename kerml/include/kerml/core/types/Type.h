@@ -86,7 +86,6 @@ namespace KerML::Entities {
         bool isSufficient();
         void setIsSufficient(bool isSufficient);
 
-    protected:
         void setIsConjugated(bool isConjugated);
         bool isConjugated();
 

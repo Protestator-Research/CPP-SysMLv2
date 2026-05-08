@@ -11,6 +11,11 @@
 #include <kerml/root/annotations/TextualRepresentation.h>
 #include <string>
 
+#include "kerml/core/classifiers/Classifier.h"
+#include "kerml/core/features/FeatureTyping.h"
+#include "kerml/core/types/Specialization.h"
+#include "kerml/core/types/Type.h"
+
 KerMLListenerImplementation::KerMLListenerImplementation() { }
 
 KerMLListenerImplementation::~KerMLListenerImplementation() { }
@@ -172,9 +177,10 @@ void KerMLListenerImplementation::enterNamespace(KerMLParser::NamespaceContext *
 
 void KerMLListenerImplementation::exitNamespace(KerMLParser::NamespaceContext *ctx) {
     const auto namespaceElement = std::dynamic_pointer_cast<KerML::Entities::Namespace>(ParentStack.top());
+    if(!namespaceElement)
     ParentStack.pop();
 
-    if(namespaceElement != nullptr) {
+    if(namespaceElement) {
         if(ctx->prefix_metadata_member().size() > 0) {
                 // TODO Needs implemntation
                 // namespaceElement->setOwnedMember()
@@ -205,7 +211,14 @@ void KerMLListenerImplementation::enterMember_prefix(KerMLParser::Member_prefixC
 void KerMLListenerImplementation::exitMember_prefix(KerMLParser::Member_prefixContext *) { }
 
 void KerMLListenerImplementation::enterVisibility_indicator(KerMLParser::Visibility_indicatorContext *) { }
-void KerMLListenerImplementation::exitVisibility_indicator(KerMLParser::Visibility_indicatorContext *) { }
+void KerMLListenerImplementation::exitVisibility_indicator(KerMLParser::Visibility_indicatorContext * ctx) {
+    const auto import = std::dynamic_pointer_cast<KerML::Entities::Import>(ParentStack.top());
+    if(!import) {
+        std::cout<<"Wrong Parent Stack"<<std::endl;
+        return;
+    }
+    import->setVisibility(ctx->getVisibilityKind());
+}
 
 void KerMLListenerImplementation::enterNamespace_member(KerMLParser::Namespace_memberContext *) { }
 
@@ -223,7 +236,7 @@ void KerMLListenerImplementation::enterAlias_member(KerMLParser::Alias_memberCon
 
 void KerMLListenerImplementation::exitAlias_member(KerMLParser::Alias_memberContext* ctx) {
     const auto element = findElementWithName(ctx->qualified_name()->getText());
-    // if(ctx->member_prefix()->visibility_indicator())
+
     if ((ctx->SYMBOL_GREATER() != nullptr) && (ctx->SYMBOL_GREATER() != nullptr))
     {
         element->appendAliasId(ctx->NAME().front()->getText());
@@ -242,14 +255,18 @@ void KerMLListenerImplementation::enterQualified_name(KerMLParser::Qualified_nam
 
 void KerMLListenerImplementation::exitQualified_name(KerMLParser::Qualified_nameContext *) { }
 
-void KerMLListenerImplementation::enterNamespace_import(KerMLParser::Namespace_importContext *) { }
+void KerMLListenerImplementation::enterNamespace_import(KerMLParser::Namespace_importContext *) {
+    const auto namespaceImport = std::make_shared<KerML::Entities::NamespaceImport>();
+    ParentStack.emplace(namespaceImport);
+}
 
 void KerMLListenerImplementation::exitNamespace_import(KerMLParser::Namespace_importContext *ctx) {
-
-    KerML::Entities::VisibilityKind visibilityKind = KerML::Entities::VisibilityKind::PRIVATE;
-    if(ctx->visibility_indicator() != nullptr) {
-        visibilityKind = ctx->visibility_indicator()->getVisibilityKind();
+    const auto namespaceImport = std::dynamic_pointer_cast<KerML::Entities::NamespaceImport>(ParentStack.top());
+    if(!namespaceImport) {
+        std::cout<<"Wrong Parent Stack"<<std::endl;
+        return;
     }
+    ParentStack.pop();
     bool isAll = ctx->KEYWORD_ALL() != nullptr;
 
     if(ctx->KEYWORD_ALL())
@@ -262,10 +279,12 @@ void KerMLListenerImplementation::exitNamespace_import(KerMLParser::Namespace_im
     if(ctx->relationship_body()->SYMBOL_STATEMENT_DELIMITER()== nullptr){
         std::cout<<"\t NammespaceNotClosed"<<std::endl;
     }
+    const auto namespace_elem = std::make_shared<KerML::Entities::Namespace>(ctx->import_declaration()->getText(), true);
+    namespaceImport->setIsRecursive(isRecursive);
+    namespaceImport->setIsImportAll(isAll);
+    namespaceImport->setImportOwningNamespace(std::dynamic_pointer_cast<KerML::Entities::Namespace>(ParentStack.top()));
+    namespaceImport->setImportedNamespace(namespace_elem);
 
-
-    auto importedNamespace = std::make_shared<KerML::Entities::Namespace>(ctx->import_declaration()->getText(),true);
-    auto namespaceImport = std::make_shared<KerML::Entities::NamespaceImport>(visibilityKind, isRecursive, isAll, std::dynamic_pointer_cast<KerML::Entities::Namespace>(ParentStack.top()), importedNamespace);
     Elements.push_back(namespaceImport);
     ParentStack.top()->appendOwnedElement(namespaceImport);
 }
@@ -310,43 +329,89 @@ void KerMLListenerImplementation::enterAdditional_options(KerMLParser::Additiona
 
 void KerMLListenerImplementation::exitAdditional_options(KerMLParser::Additional_optionsContext *) { }
 
-void KerMLListenerImplementation::enterType(KerMLParser::TypeContext *ctx) {
-
+void KerMLListenerImplementation::enterType(KerMLParser::TypeContext *) {
+    const auto type = std::make_shared<KerML::Entities::Type>();
+    ParentStack.emplace(type);
 }
 
 void KerMLListenerImplementation::exitType(KerMLParser::TypeContext *ctx) {
+    const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top());
+    if(!type)
+    {
+        std::cout << "Error wrong type in Parentstack" << std::endl;
+        return;
+    }
+    
+    type->setAbstract(ctx->type_prefix()->KEYWORD_ABSTRACT()!=nullptr);
 
+	ParentStack.pop();
+    type->setOwner(ParentStack.top());
+    ParentStack.top()->appendOwnedElement(type);
+    Elements.push_back(type);
 }
 
-void KerMLListenerImplementation::enterType_prefix(KerMLParser::Type_prefixContext *ctx) {
+void KerMLListenerImplementation::enterType_prefix(KerMLParser::Type_prefixContext *) { }
 
-}
+void KerMLListenerImplementation::exitType_prefix(KerMLParser::Type_prefixContext *) { }
 
-void KerMLListenerImplementation::exitType_prefix(KerMLParser::Type_prefixContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::enterType_declaration(KerMLParser::Type_declarationContext *ctx) {
-
-}
+void KerMLListenerImplementation::enterType_declaration(KerMLParser::Type_declarationContext *) { }
 
 void KerMLListenerImplementation::exitType_declaration(KerMLParser::Type_declarationContext *ctx) {
+    const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top());
+    if (!type)
+    {
+        std::cout << "Error wrong type in Parentstack" << std::endl;
+        return;
+    }
+    
+    type->setDeclaredName(ctx->identification()->getText());
+    if (ctx->KEYWORD_ALL() != nullptr)
+    {
 
+    }
+
+    if (ctx->multiplicity_bounds() != nullptr)
+    {
+
+    }
 }
 
-void KerMLListenerImplementation::enterSpecialization_part(KerMLParser::Specialization_partContext *ctx) {
-
+void KerMLListenerImplementation::enterSpecialization_part(KerMLParser::Specialization_partContext *) {
 }
 
 void KerMLListenerImplementation::exitSpecialization_part(KerMLParser::Specialization_partContext *ctx) {
-
+    const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top());
+    if (!type)
+    {
+        std::cout << "Error wrong type in Parentstack" << std::endl;
+        return;
+    }
+    
+    for (int i = 0; i < ctx->owned_specialization().size(); i++)
+    {
+        const auto generalType = findElementWithName(ctx->owned_specialization()[i]->general_type()->getText());
+        const auto specialization = std::make_shared<KerML::Entities::Specialization>(std::dynamic_pointer_cast<KerML::Entities::Type>(generalType), type);
+    	type->appendOwnedSpecialization(specialization);
+    }
 }
 
-void KerMLListenerImplementation::enterConjugation_part(KerMLParser::Conjugation_partContext *ctx) {
+void KerMLListenerImplementation::enterConjugation_part(KerMLParser::Conjugation_partContext *) {
 
 }
 
 void KerMLListenerImplementation::exitConjugation_part(KerMLParser::Conjugation_partContext *ctx) {
+    const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top());
+    if (!type)
+    {
+        std::cout << "Error wrong type in Parentstack" << std::endl;
+        return;
+    }
+    
+    if (ctx->owned_conjugation()->qualified_name()!=nullptr)
+    {
+        type->setIsConjugated(true);
+	    //TODO needs fixing
+    }
 
 }
 
@@ -390,61 +455,43 @@ void KerMLListenerImplementation::exitDifferencing_part(KerMLParser::Differencin
 
 }
 
-void KerMLListenerImplementation::enterType_body(KerMLParser::Type_bodyContext *ctx) {
+void KerMLListenerImplementation::enterType_body(KerMLParser::Type_bodyContext *) { }
 
-}
+void KerMLListenerImplementation::exitType_body(KerMLParser::Type_bodyContext *) { }
 
-void KerMLListenerImplementation::exitType_body(KerMLParser::Type_bodyContext *ctx) {
+void KerMLListenerImplementation::enterType_body_elements(KerMLParser::Type_body_elementsContext *) { }
 
-}
+void KerMLListenerImplementation::exitType_body_elements(KerMLParser::Type_body_elementsContext *) { }
 
-void KerMLListenerImplementation::enterType_body_elements(KerMLParser::Type_body_elementsContext *ctx) {
+void KerMLListenerImplementation::enterType_body_element(KerMLParser::Type_body_elementContext *) { }
 
-}
+void KerMLListenerImplementation::exitType_body_element(KerMLParser::Type_body_elementContext *) { }
 
-void KerMLListenerImplementation::exitType_body_elements(KerMLParser::Type_body_elementsContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::enterType_body_element(KerMLParser::Type_body_elementContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::exitType_body_element(KerMLParser::Type_body_elementContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::enterSpecialization(KerMLParser::SpecializationContext *ctx) {
-
-}
+void KerMLListenerImplementation::enterSpecialization(KerMLParser::SpecializationContext *) { }
 
 void KerMLListenerImplementation::exitSpecialization(KerMLParser::SpecializationContext *ctx) {
+    const auto generalType = std::dynamic_pointer_cast<KerML::Entities::Type>(findElementWithName(ctx->general_type()->getText()));
+    const auto specializedType = std::dynamic_pointer_cast<KerML::Entities::Type>(findElementWithName(ctx->specific_type()->getText()));
+    const auto specialization = std::make_shared<KerML::Entities::Specialization>(generalType, specializedType);
 
+	if (ctx->KEYWORD_SPECILIZATION() != nullptr)
+        specialization->setDeclaredName(ctx->identification()->getText());
+
+    ParentStack.top()->appendOwnedElement(specialization);
+    Elements.push_back(specialization);
 }
 
-void KerMLListenerImplementation::enterOwned_specialization(KerMLParser::Owned_specializationContext *ctx) {
+void KerMLListenerImplementation::enterOwned_specialization(KerMLParser::Owned_specializationContext *) { }
 
-}
+void KerMLListenerImplementation::exitOwned_specialization(KerMLParser::Owned_specializationContext *) { }
 
-void KerMLListenerImplementation::exitOwned_specialization(KerMLParser::Owned_specializationContext *ctx) {
+void KerMLListenerImplementation::enterSpecific_type(KerMLParser::Specific_typeContext *) { }
 
-}
+void KerMLListenerImplementation::exitSpecific_type(KerMLParser::Specific_typeContext *) { }
 
-void KerMLListenerImplementation::enterSpecific_type(KerMLParser::Specific_typeContext *ctx) {
+void KerMLListenerImplementation::enterGeneral_type(KerMLParser::General_typeContext *) { }
 
-}
-
-void KerMLListenerImplementation::exitSpecific_type(KerMLParser::Specific_typeContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::enterGeneral_type(KerMLParser::General_typeContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::exitGeneral_type(KerMLParser::General_typeContext *ctx) {
-
-}
+void KerMLListenerImplementation::exitGeneral_type(KerMLParser::General_typeContext *) { }
 
 void KerMLListenerImplementation::enterConjunction(KerMLParser::ConjunctionContext *ctx) {
 
@@ -526,36 +573,68 @@ void KerMLListenerImplementation::exitOwned_feature_member(KerMLParser::Owned_fe
 
 }
 
-void KerMLListenerImplementation::enterClassifier(KerMLParser::ClassifierContext *ctx) {
-
+void KerMLListenerImplementation::enterClassifier(KerMLParser::ClassifierContext *) {
+    const auto classifier = std::make_shared<KerML::Entities::Classifier>();
+    ParentStack.emplace(classifier);
 }
 
 void KerMLListenerImplementation::exitClassifier(KerMLParser::ClassifierContext *ctx) {
+    const auto classifier = std::dynamic_pointer_cast<KerML::Entities::Classifier>(ParentStack.top());
+    if (!classifier)
+    {
+        std::cout << "Wrong Type on parent stack!" << std::endl;
+        return;
+    }
+    ParentStack.pop();
+    
+    classifier->setAbstract(ctx->type_prefix()->KEYWORD_ABSTRACT()!=nullptr);
 
+    Elements.push_back(classifier);
+    ParentStack.top()->appendOwnedElement(classifier);
 }
 
-void KerMLListenerImplementation::enterClassifier_declaration(KerMLParser::Classifier_declarationContext *ctx) {
-
-}
+void KerMLListenerImplementation::enterClassifier_declaration(KerMLParser::Classifier_declarationContext *) { }
 
 void KerMLListenerImplementation::exitClassifier_declaration(KerMLParser::Classifier_declarationContext *ctx) {
+    const auto classifier = std::dynamic_pointer_cast<KerML::Entities::Classifier>(ParentStack.top());
+    if(!classifier) {
+        std::cout<< "Wrong Type on parent stack!" << std::endl;
+        return;
+    }
+    //TODO Keyword All
+    classifier->setDeclaredName(ctx->identification()->NAME()->getText());
+    if(ctx->multiplicity_bounds()!=nullptr) {
+        //TODO Multiplicity Implementation
+        classifier->setMultiplicity(std::make_shared<KerML::Entities::Multiplicity>());
+    }
+    //TODO Superclassig Part & Conjunction
 
 }
 
-void KerMLListenerImplementation::enterSuperclassing_part(KerMLParser::Superclassing_partContext *ctx) {
-
+void KerMLListenerImplementation::enterSuperclassing_part(KerMLParser::Superclassing_partContext *) {
+    
 }
 
 void KerMLListenerImplementation::exitSuperclassing_part(KerMLParser::Superclassing_partContext *ctx) {
-
+    const auto classifier = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top());
+    if(!classifier) {
+        std::cout<< "Wrong Type on parent stack!" << std::endl;
+        return;
+    }
+    
+    for(const auto& elem : ctx->owned_subclassification()) {
+        const auto generalType = std::dynamic_pointer_cast<KerML::Entities::Type>(findElementWithName(elem->getText()));
+        const auto specialization = std::make_shared<KerML::Entities::Specialization>(generalType,classifier);
+        classifier->appendOwnedSpecialization(specialization);
+    }
 }
 
-void KerMLListenerImplementation::enterSubclassification(KerMLParser::SubclassificationContext *ctx) {
+void KerMLListenerImplementation::enterSubclassification(KerMLParser::SubclassificationContext *) {
 
 }
 
 void KerMLListenerImplementation::exitSubclassification(KerMLParser::SubclassificationContext *ctx) {
-
+    
 }
 
 void KerMLListenerImplementation::enterOwned_subclassification(KerMLParser::Owned_subclassificationContext *ctx) {
