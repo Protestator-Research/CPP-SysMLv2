@@ -131,7 +131,7 @@ namespace KerML::Entities {
          * @param direction Defines how the values of the feature are defines.
          * @see KerML::Entities::FeatureDirectionKind.
          */
-        void setDirection(std::optional<FeatureDirectionKind> direction);
+        void setDirection(FeatureDirectionKind direction);
         /**
          * Gives access to the value of the Direction. The direction indicates how the values of this feature are defined.
          * @return Defines how the values of the feature are defines.

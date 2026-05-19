@@ -9,12 +9,15 @@
 #include <kerml/root/namespaces/Namespace.h>
 #include <kerml/root/namespaces/NamespaceImport.h>
 #include <kerml/root/annotations/TextualRepresentation.h>
+#include <kerml/core/classifiers/Classifier.h>
+#include <kerml/core/features/FeatureTyping.h>
+#include <kerml/core/types/Specialization.h>
+#include <kerml/core/types/Type.h>
+#include <kerml/core/features/Feature.h>
+#include <kerml/core/features/Multiplicity.h>
+
 #include <string>
 
-#include "kerml/core/classifiers/Classifier.h"
-#include "kerml/core/features/FeatureTyping.h"
-#include "kerml/core/types/Specialization.h"
-#include "kerml/core/types/Type.h"
 
 KerMLListenerImplementation::KerMLListenerImplementation() { }
 
@@ -634,39 +637,70 @@ void KerMLListenerImplementation::enterSubclassification(KerMLParser::Subclassif
 }
 
 void KerMLListenerImplementation::exitSubclassification(KerMLParser::SubclassificationContext *ctx) {
+    // const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top());
+    // if(!type) {
+    //     std::cout<< "Wrong Type on parent stack!" << std::endl;
+    //     return;
+    // }
+
+    // if(ctx->KEYWORD_SPECILIZATION()!=nullptr) {
+    //     const auto specialisation_type = std::dynamic_pointer_cast<KerML::Entities::Type>(findElementWithName(ctx->identification()->getText()));
+    //     const auto specialization = std::make_shared<KerML::Entities::Specialization>(type, specialisation_type);
+    //     specialisation_type->appendOwnedSpecialization(specialization);
+    // }
+
+
     
 }
 
-void KerMLListenerImplementation::enterOwned_subclassification(KerMLParser::Owned_subclassificationContext *ctx) {
+void KerMLListenerImplementation::enterOwned_subclassification(KerMLParser::Owned_subclassificationContext *) { }
 
-}
-
-void KerMLListenerImplementation::exitOwned_subclassification(KerMLParser::Owned_subclassificationContext *ctx) {
-
-}
+void KerMLListenerImplementation::exitOwned_subclassification(KerMLParser::Owned_subclassificationContext *) { }
 
 void KerMLListenerImplementation::enterFeature(KerMLParser::FeatureContext *ctx) {
-
+    const auto feature = std::make_shared<KerML::Entities::Feature>();
+    ParentStack.emplace(feature);
 }
 
 void KerMLListenerImplementation::exitFeature(KerMLParser::FeatureContext *ctx) {
-
+    const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+    if(!feature) {
+        std::cout<<"Wrong Type on the parent stack."<<std::endl;
+        return;
+    }
+    ParentStack.pop();
 }
 
-void KerMLListenerImplementation::enterFeature_prefix(KerMLParser::Feature_prefixContext *ctx) {
-
-}
+void KerMLListenerImplementation::enterFeature_prefix(KerMLParser::Feature_prefixContext *) { }
 
 void KerMLListenerImplementation::exitFeature_prefix(KerMLParser::Feature_prefixContext *ctx) {
-
+    const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+    if(!feature) {
+        std::cout<<"Wrong Type on the parent stack."<<std::endl;
+        return;
+    }
+    feature->setAbstract(ctx->KEYWORD_ABSTRACT()!=nullptr);
+    feature->setIsVariable(ctx->KEYWORD_VAR()!=nullptr);
+    feature->setIsComposite(ctx->KEYWORD_COMPOSITE()!=nullptr);
+    feature->setIsPortion(ctx->KEYWORD_PORTION()!=nullptr);
+    feature->setIsEnd(ctx->KEYWORD_END()!=nullptr);
+    feature->setIsDerived(ctx->KEYWORD_DERIVED()!=nullptr);
 }
 
-void KerMLListenerImplementation::enterFeature_direction(KerMLParser::Feature_directionContext *ctx) {
-
-}
+void KerMLListenerImplementation::enterFeature_direction(KerMLParser::Feature_directionContext *) { }
 
 void KerMLListenerImplementation::exitFeature_direction(KerMLParser::Feature_directionContext *ctx) {
-
+    const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+    if(!feature) {
+        std::cout<<"Wrong Type on the parent stack."<<std::endl;
+        return;
+    }
+    if (ctx->KEYWORD_IN()!=nullptr)
+        feature->setDirection(KerML::Entities::FeatureDirectionKind::IN);
+    if (ctx->KEYWORD_OUT()!=nullptr)
+        feature->setDirection(KerML::Entities::FeatureDirectionKind::OUT);
+    if (ctx->KEYWORD_INOUT()!=nullptr)
+        feature->setDirection(KerML::Entities::FeatureDirectionKind::IN_OUT);
 }
 
 void KerMLListenerImplementation::enterFeature_declaration(KerMLParser::Feature_declarationContext *ctx) {

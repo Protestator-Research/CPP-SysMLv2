@@ -110,7 +110,7 @@ namespace KerML::Entities
 		return IsConstant;
 	}
 
-	void Feature::setDirection(std::optional<FeatureDirectionKind> direction)
+	void Feature::setDirection(FeatureDirectionKind direction)
 	{
 		Direction = direction;
 	}
