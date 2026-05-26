@@ -370,7 +370,6 @@ void KerMLListenerImplementation::exitType_declaration(KerMLParser::Type_declara
     type->setDeclaredName(ctx->identification()->getText());
     if (ctx->KEYWORD_ALL() != nullptr)
     {
-
     }
 
     if (ctx->multiplicity_bounds() != nullptr)
@@ -703,37 +702,38 @@ void KerMLListenerImplementation::exitFeature_direction(KerMLParser::Feature_dir
         feature->setDirection(KerML::Entities::FeatureDirectionKind::IN_OUT);
 }
 
-void KerMLListenerImplementation::enterFeature_declaration(KerMLParser::Feature_declarationContext *ctx) {
-
-}
+void KerMLListenerImplementation::enterFeature_declaration(KerMLParser::Feature_declarationContext *) { }
 
 void KerMLListenerImplementation::exitFeature_declaration(KerMLParser::Feature_declarationContext *ctx) {
-
+    const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+    if (!feature) {
+        std::cout<<"Wrong Type on the parent stack."<<std::endl;
+        return;
+    }
+    feature->setIsUnique(ctx->KEYWORD_ALL()!=nullptr);
 }
 
-void KerMLListenerImplementation::enterFeature_identification(KerMLParser::Feature_identificationContext *ctx) {
-
-}
+void KerMLListenerImplementation::enterFeature_identification(KerMLParser::Feature_identificationContext *) { }
 
 void KerMLListenerImplementation::exitFeature_identification(KerMLParser::Feature_identificationContext *ctx) {
+    const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+    if (!feature) {
+        std::cout<<"Wrong Type on the parent stack."<<std::endl;
+        return;
+    }
+    if ((ctx->SYMBOL_SMALLER()!=nullptr)&&(ctx->SYMBOL_GREATER()!=nullptr))
+        feature->setDeclaredShortName(ctx->NAME().front()->toString());
 
+    feature->setDeclaredName(ctx->NAME().back()->toString());
 }
 
-void KerMLListenerImplementation::enterFeature_relationship_part(KerMLParser::Feature_relationship_partContext *ctx) {
+void KerMLListenerImplementation::enterFeature_relationship_part(KerMLParser::Feature_relationship_partContext *) { }
 
-}
+void KerMLListenerImplementation::exitFeature_relationship_part(KerMLParser::Feature_relationship_partContext *) { }
 
-void KerMLListenerImplementation::exitFeature_relationship_part(KerMLParser::Feature_relationship_partContext *ctx) {
+void KerMLListenerImplementation::enterChaining_part(KerMLParser::Chaining_partContext *) { }
 
-}
-
-void KerMLListenerImplementation::enterChaining_part(KerMLParser::Chaining_partContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::exitChaining_part(KerMLParser::Chaining_partContext *ctx) {
-
-}
+void KerMLListenerImplementation::exitChaining_part(KerMLParser::Chaining_partContext *) { }
 
 void KerMLListenerImplementation::enterInverting_part(KerMLParser::Inverting_partContext *ctx) {
 
@@ -889,7 +889,7 @@ void KerMLListenerImplementation::exitOwned_redefinition(KerMLParser::Owned_rede
 
 }
 
-void KerMLListenerImplementation::enterOwned_feature_chain(KerMLParser::Owned_feature_chainContext *ctx) {
+void KerMLListenerImplementation::enterOwned_feature_chain(KerMLParser::Owned_feature_chainContext *) {
 
 }
 
@@ -897,16 +897,21 @@ void KerMLListenerImplementation::exitOwned_feature_chain(KerMLParser::Owned_fea
 
 }
 
-void KerMLListenerImplementation::enterFeature_chain(KerMLParser::Feature_chainContext *ctx) {
+void KerMLListenerImplementation::enterFeature_chain(KerMLParser::Feature_chainContext *) {
 
 }
 
-void KerMLListenerImplementation::exitFeature_chain(KerMLParser::Feature_chainContext *ctx) {
+void KerMLListenerImplementation::exitFeature_chain(KerMLParser::Feature_chainContext *) {
 
 }
 
 void KerMLListenerImplementation::enterOwned_feature_chaining(KerMLParser::Owned_feature_chainingContext *ctx) {
-
+    const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+    if (!feature) {
+        std::cout << "Wrong Type in parent stack." << std::endl;
+        return;
+    }
+    feature->appendChainingFeature(std::dynamic_pointer_cast<KerML::Entities::Feature>(findElementWithName(ctx->qualified_name()->getText())));
 }
 
 void KerMLListenerImplementation::exitOwned_feature_chaining(KerMLParser::Owned_feature_chainingContext *ctx) {
