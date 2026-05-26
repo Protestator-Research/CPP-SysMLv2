@@ -13,6 +13,7 @@
 // Internal Classes
 //---------------------------------------------------------
 #include <kerml/root/elements/Relationship.h>
+#include <kerml/kerml_global.h>
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -28,7 +29,7 @@ namespace KerML::Entities {
      * @version 1.0 Beta 4
      * 
      */
-    class Specialization  : public Relationship {
+    class KERML_EXPORT Specialization  : public Relationship {
     public:
 	    /**
 	     * Constructor is deleted, because the standard does not allow for empty.

@@ -5,7 +5,7 @@
 
 #include <kerml/root/namespaces/Namespace.h>
 #include <kerml/core/features/FeatureDirectionKind.h>
-
+#include <kerml/kerml_global.h>
 
 namespace KerML::Entities {
     class Membership;
@@ -27,7 +27,7 @@ namespace KerML::Entities {
      * @version 1.0 Beta 3
      * @brief Represents the Type Class according to the SysMLv2 Standard.
      */
-    class Type : public Namespace{
+    class KERML_EXPORT Type : public Namespace{
     public:
 	    /**
 	     * 

@@ -181,7 +181,7 @@ namespace KerML::Entities
 
 	std::optional<std::string> Feature::effectiveName() const
 	{
-		return Type::effectiveName();
+		return Element::effectiveName();
 	}
 
 	std::optional<std::shared_ptr<Feature>> Feature::namingFeature() const

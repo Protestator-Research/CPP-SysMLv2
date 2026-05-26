@@ -13,6 +13,7 @@
 // Internal Classes
 //---------------------------------------------------------
 #include <kerml/core/types/Type.h>
+#include <kerml/kerml_global.h>
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -29,7 +30,7 @@ namespace KerML::Entities {
      * @brief Representation of the Abstract Syntax of one Classifier.
      * @see Type
      */
-    class Classifier : public Type
+    class KERML_EXPORT Classifier : public Type
 	{
     public:
 	    /**
