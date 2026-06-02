@@ -11,12 +11,15 @@
 #include <kerml/root/annotations/TextualRepresentation.h>
 #include <kerml/core/classifiers/Classifier.h>
 #include <kerml/core/features/FeatureTyping.h>
+#include <kerml/core/features/FeatureInverting.h>
 #include <kerml/core/types/Specialization.h>
 #include <kerml/core/types/Type.h>
 #include <kerml/core/features/Feature.h>
 #include <kerml/core/features/Multiplicity.h>
 
 #include <string>
+
+#include "kerml/core/features/TypeFeaturing.h"
 
 
 KerMLListenerImplementation::KerMLListenerImplementation() { }
@@ -371,11 +374,6 @@ void KerMLListenerImplementation::exitType_declaration(KerMLParser::Type_declara
     if (ctx->KEYWORD_ALL() != nullptr)
     {
     }
-
-    if (ctx->multiplicity_bounds() != nullptr)
-    {
-
-    }
 }
 
 void KerMLListenerImplementation::enterSpecialization_part(KerMLParser::Specialization_partContext *) {
@@ -605,12 +603,7 @@ void KerMLListenerImplementation::exitClassifier_declaration(KerMLParser::Classi
     }
     //TODO Keyword All
     classifier->setDeclaredName(ctx->identification()->NAME()->getText());
-    if(ctx->multiplicity_bounds()!=nullptr) {
-        //TODO Multiplicity Implementation
-        classifier->setMultiplicity(std::make_shared<KerML::Entities::Multiplicity>());
-    }
     //TODO Superclassig Part & Conjunction
-
 }
 
 void KerMLListenerImplementation::enterSuperclassing_part(KerMLParser::Superclassing_partContext *) {
@@ -632,7 +625,7 @@ void KerMLListenerImplementation::exitSuperclassing_part(KerMLParser::Superclass
 }
 
 void KerMLListenerImplementation::enterSubclassification(KerMLParser::SubclassificationContext *) {
-
+    
 }
 
 void KerMLListenerImplementation::exitSubclassification(KerMLParser::SubclassificationContext *ctx) {
@@ -735,29 +728,19 @@ void KerMLListenerImplementation::enterChaining_part(KerMLParser::Chaining_partC
 
 void KerMLListenerImplementation::exitChaining_part(KerMLParser::Chaining_partContext *) { }
 
-void KerMLListenerImplementation::enterInverting_part(KerMLParser::Inverting_partContext *ctx) {
+void KerMLListenerImplementation::enterInverting_part(KerMLParser::Inverting_partContext *) { }
+
+void KerMLListenerImplementation::exitInverting_part(KerMLParser::Inverting_partContext *) { }
+
+void KerMLListenerImplementation::enterType_featuring_part(KerMLParser::Type_featuring_partContext *) { }
+
+void KerMLListenerImplementation::exitType_featuring_part(KerMLParser::Type_featuring_partContext *) { }
+
+void KerMLListenerImplementation::enterFeature_specialization_part(KerMLParser::Feature_specialization_partContext *ctx) {
 
 }
 
-void KerMLListenerImplementation::exitInverting_part(KerMLParser::Inverting_partContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::enterType_featuring_part(KerMLParser::Type_featuring_partContext *ctx) {
-
-}
-
-void KerMLListenerImplementation::exitType_featuring_part(KerMLParser::Type_featuring_partContext *ctx) {
-
-}
-
-void
-KerMLListenerImplementation::enterFeature_specialization_part(KerMLParser::Feature_specialization_partContext *ctx) {
-
-}
-
-void
-KerMLListenerImplementation::exitFeature_specialization_part(KerMLParser::Feature_specialization_partContext *ctx) {
+void KerMLListenerImplementation::exitFeature_specialization_part(KerMLParser::Feature_specialization_partContext *ctx) {
 
 }
 
@@ -926,12 +909,22 @@ void KerMLListenerImplementation::exitFeature_inverting(KerMLParser::Feature_inv
 
 }
 
-void KerMLListenerImplementation::enterOwned_feature_inverting(KerMLParser::Owned_feature_invertingContext *ctx) {
+void KerMLListenerImplementation::enterOwned_feature_inverting(KerMLParser::Owned_feature_invertingContext *) {
 
 }
 
 void KerMLListenerImplementation::exitOwned_feature_inverting(KerMLParser::Owned_feature_invertingContext *ctx) {
+    const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+    if (!feature) {
+        std::cout << "Wrong Type in parent stack." << std::endl;
+        return;
+    }
 
+    const auto invertedFeature = findElementWithName(ctx->qualified_name()->getText());
+    const auto featureInverting = std::make_shared<KerML::Entities::FeatureInverting>(std::dynamic_pointer_cast<KerML::Entities::Feature>(invertedFeature),feature);
+    feature->appendOwnedElement(featureInverting);
+    feature->appendOwnedFeatureInverting(featureInverting);
+    Elements.push_back(featureInverting);
 }
 
 void KerMLListenerImplementation::enterType_featuring(KerMLParser::Type_featuringContext *ctx) {
@@ -942,12 +935,21 @@ void KerMLListenerImplementation::exitType_featuring(KerMLParser::Type_featuring
 
 }
 
-void KerMLListenerImplementation::enterOwned_type_featuring(KerMLParser::Owned_type_featuringContext *ctx) {
-
-}
+void KerMLListenerImplementation::enterOwned_type_featuring(KerMLParser::Owned_type_featuringContext *) { }
 
 void KerMLListenerImplementation::exitOwned_type_featuring(KerMLParser::Owned_type_featuringContext *ctx) {
+    const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+    if (!feature)
+    {
+        std::cout << "Wrong Type in parent stack." << std::endl;
+        return;
+    }
 
+    const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(findElementWithName(ctx->qualified_name()->getText()));
+
+    const auto featureTyping = std::make_shared<KerML::Entities::TypeFeaturing>(type, feature);
+    feature->appendOwnedTypeFeaturing(featureTyping);
+    Elements.push_back(featureTyping);
 }
 
 void KerMLListenerImplementation::enterData_type(KerMLParser::Data_typeContext *ctx) {
@@ -2090,12 +2092,34 @@ void KerMLListenerImplementation::exitOwned_multiplicity_range(KerMLParser::Owne
 
 }
 
-void KerMLListenerImplementation::enterMultiplicity_bounds(KerMLParser::Multiplicity_boundsContext *ctx) {
-
-}
+void KerMLListenerImplementation::enterMultiplicity_bounds(KerMLParser::Multiplicity_boundsContext*) { }
 
 void KerMLListenerImplementation::exitMultiplicity_bounds(KerMLParser::Multiplicity_boundsContext *ctx) {
-
+    const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top());
+    if (!type)
+    {
+        std::cout << "Wrong Type on Parentstack" << std::endl;
+        return;
+    }
+    std::shared_ptr<KerML::Entities::Multiplicity> multiplicity;
+    if (ctx->multiplicity_expression_member().size()>1)
+    {
+        unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
+        if (ctx->multiplicity_expression_member().back()->getText()=="*")
+        {
+            multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, true);
+        }else
+        {
+            unsigned maximum = std::stoul(ctx->multiplicity_expression_member().back()->getText());
+            multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, maximum);
+        }
+        
+    } else
+    {
+        unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
+        multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum);
+    }
+    type->setMultiplicity(multiplicity);
 }
 
 void KerMLListenerImplementation::enterMultiplicity_expression_member(

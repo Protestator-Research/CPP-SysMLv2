@@ -34,7 +34,7 @@ namespace KerML::Entities {
 	{
     public:
 	    /**
-	     * Constructor, with default values to be initialied
+	     * Constructor, with default values to be initialized
 	     * @param elementID The Id of the specific element. This is initialized by a random UUID.
 	     * @param owner The owner of the element, given as a shared pointer. By default initialized by a nullptr.
 	     * @see boost::uuids::random_generator
