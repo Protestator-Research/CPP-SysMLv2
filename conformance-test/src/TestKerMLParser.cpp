@@ -11,7 +11,7 @@
 #include <sysmlv2/Parser.h>
 #include <kerml/parser/KerMlListenerImplementation.h>
 
- TEST(TestKerMLParser, TestAddressBookModel) {
+TEST(TestKerMLParser, TestAddressBookModel) {
      std::string valueToParse = "private import ScalarValues::*;\n"
                                 "package AddressBookModel {\n"
                                 "\t\n"
@@ -30,9 +30,9 @@
      const auto returnValue = SysMLv2::Files::Parser::parseKerML(valueToParse);
      EXPECT_EQ(returnValue.second.size(), 0);
 
- }
+}
 
- TEST(TestKerMLParser, ConformanceTestA2Atoms) {
+TEST(TestKerMLParser, ConformanceTestA2Atoms) {
      std::string valueToParse = "package Atoms {\n"
                                 "\tdoc\n"
                                 "\t/* This package defines a keyword (atom) for classifiers with\n"

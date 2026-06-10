@@ -4,7 +4,7 @@
 
 #pragma once
 
-
+#include <sysmlv2/sysmlv2file_global.h>
 #include <kerml/parser/KerMLListener.h>
 #include <memory>
 #include <stack>
@@ -20,7 +20,7 @@ namespace KerML::Entities {
  * @date 09.05.25
  * @version Beta 3
  */
-class KerMLListenerImplementation : public KerMLListener{
+class SYSMLV2FILE_EXPORT KerMLListenerImplementation : public KerMLListener{
 public:
     KerMLListenerImplementation();
     ~KerMLListenerImplementation();

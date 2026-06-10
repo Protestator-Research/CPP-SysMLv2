@@ -7,9 +7,9 @@
 #include <antlr4-runtime.h>
 
 #include <kerml/root/namespaces/VisibilityKind.h>
+#include <sysmlv2/sysmlv2file_global.h>
 
-
-class  KerMLParser : public antlr4::Parser {
+class SYSMLV2FILE_EXPORT KerMLParser : public antlr4::Parser {
 public:
   enum {
     T__0 = 1, TYPED_BY = 2, SPECIALIZES = 3, SUBSETS = 4, REFERENCES = 5, 

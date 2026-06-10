@@ -13,6 +13,7 @@ add_executable(conformance-test
         src/TestKerMLParser.cpp
         src/TestProjectController.cpp
         src/TestRestAPI.cpp
+        src/TestResourcePackages.cpp
 )
 
 #if((EXISTS antlr4_shared) OR (MSVC))

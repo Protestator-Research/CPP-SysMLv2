@@ -16,10 +16,11 @@
 #include <kerml/core/types/Type.h>
 #include <kerml/core/features/Feature.h>
 #include <kerml/core/features/Multiplicity.h>
+#include <kerml/core/features/TypeFeaturing.h>
+#include <kerml/kernel/classes/Class.h>
 
 #include <string>
 
-#include "kerml/core/features/TypeFeaturing.h"
 
 
 KerMLListenerImplementation::KerMLListenerImplementation() { }
@@ -29,18 +30,13 @@ KerMLListenerImplementation::~KerMLListenerImplementation() { }
 void KerMLListenerImplementation::enterComment(KerMLParser::CommentContext *) { }
 
 void KerMLListenerImplementation::exitComment(KerMLParser::CommentContext *context) {
-
-    //std::cout<<"Parsing Comment with:"<<std::endl;
-
     std::string identification="";
     if(context->identification() != nullptr) {
-        //std::cout << "\t Identification: " << context->identification()->getText() << std::endl;
         identification =  context->identification()->getText();
     }
 
     std::vector<std::shared_ptr<KerML::Entities::Element>> annotatedElements;
     if(context->KEYWORD_ABOUT() != nullptr) {
-        //std::cout << "About: " << std::endl;
         for(auto& about : context->annotation()) {
             std::cout << "\t" << about->getText() << std::endl;
             const auto& annotatedElement = findElementWithName(about->getText());
@@ -51,11 +47,9 @@ void KerMLListenerImplementation::exitComment(KerMLParser::CommentContext *conte
     }
     std::string locale = "";
     if(context->KEYWORD_LOCALE() != nullptr) {
-        //std::cout << "Locale: " << context->STRING_VALUE()->getText() << std::endl;
         locale = context->STRING_VALUE()->getText();
     }
 
-    //std::cout <<"Body: "<< context->REGULAR_COMMENT()->getText() << std::endl;
     std::string body = context->REGULAR_COMMENT()->getText();
 
     const auto& comment = std::make_shared<KerML::Entities::Comment>(locale, body);
@@ -129,22 +123,17 @@ void KerMLListenerImplementation::exitAnnotating_element(KerMLParser::Annotating
 void KerMLListenerImplementation::enterDocumentation(KerMLParser::DocumentationContext *) { }
 
 void KerMLListenerImplementation::exitDocumentation(KerMLParser::DocumentationContext *context) {
-    //std::cout<<"documentation: "<<std::endl;
 
     std::string identification = "";
     if(context->identification()!=nullptr) {
-        //std::cout << "\tidentification: " << context->identification()->getText() << std::endl;
         identification = context->identification()->getText();
     }
 
     std::string locale = "";
     if(context->KEYWORD_LOCALE()!=nullptr) {
-        //std::cout<<"\tlocale: "<<context->STRING_VALUE()->getText()<<std::endl;
         locale = context->STRING_VALUE()->getText();
     }
 
-
-    //std::cout<<"\t body: "<<context->REGULAR_COMMENT()->getText()<<std::endl;
     std::string body = context->REGULAR_COMMENT()->getText();
 
     auto documentation = std::make_shared<KerML::Entities::Documentation>(ParentStack.top(), locale, body);
@@ -188,7 +177,7 @@ void KerMLListenerImplementation::exitNamespace(KerMLParser::NamespaceContext *c
 
     if(namespaceElement) {
         if(ctx->prefix_metadata_member().size() > 0) {
-                // TODO Needs implemntation
+                // TODO Needs implementation
                 // namespaceElement->setOwnedMember()
         }
         std::string name = ctx->namespace_declaration()->identification()->getText();
@@ -582,8 +571,7 @@ void KerMLListenerImplementation::exitClassifier(KerMLParser::ClassifierContext 
     const auto classifier = std::dynamic_pointer_cast<KerML::Entities::Classifier>(ParentStack.top());
     if (!classifier)
     {
-        std::cout << "Wrong Type on parent stack!" << std::endl;
-        return;
+        throw std::runtime_error("Wrong type on stack!");
     }
     ParentStack.pop();
     
@@ -598,8 +586,7 @@ void KerMLListenerImplementation::enterClassifier_declaration(KerMLParser::Class
 void KerMLListenerImplementation::exitClassifier_declaration(KerMLParser::Classifier_declarationContext *ctx) {
     const auto classifier = std::dynamic_pointer_cast<KerML::Entities::Classifier>(ParentStack.top());
     if(!classifier) {
-        std::cout<< "Wrong Type on parent stack!" << std::endl;
-        return;
+        throw std::runtime_error("Wrong type on stack!");
     }
     //TODO Keyword All
     classifier->setDeclaredName(ctx->identification()->NAME()->getText());
@@ -613,8 +600,7 @@ void KerMLListenerImplementation::enterSuperclassing_part(KerMLParser::Superclas
 void KerMLListenerImplementation::exitSuperclassing_part(KerMLParser::Superclassing_partContext *ctx) {
     const auto classifier = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top());
     if(!classifier) {
-        std::cout<< "Wrong Type on parent stack!" << std::endl;
-        return;
+        throw std::runtime_error("Wrong type on stack!");
     }
     
     for(const auto& elem : ctx->owned_subclassification()) {
@@ -714,6 +700,7 @@ void KerMLListenerImplementation::exitFeature_identification(KerMLParser::Featur
         std::cout<<"Wrong Type on the parent stack."<<std::endl;
         return;
     }
+
     if ((ctx->SYMBOL_SMALLER()!=nullptr)&&(ctx->SYMBOL_GREATER()!=nullptr))
         feature->setDeclaredShortName(ctx->NAME().front()->toString());
 
@@ -816,12 +803,20 @@ void KerMLListenerImplementation::exitRedefines(KerMLParser::RedefinesContext *c
 
 }
 
-void KerMLListenerImplementation::enterFeature_typing(KerMLParser::Feature_typingContext *ctx) {
-
+void KerMLListenerImplementation::enterFeature_typing(KerMLParser::Feature_typingContext *) {
+    const auto feature_typing = std::make_shared<KerML::Entities::FeatureTyping>();
+    ParentStack.emplace(feature_typing);
 }
 
 void KerMLListenerImplementation::exitFeature_typing(KerMLParser::Feature_typingContext *ctx) {
+    const auto feature_typing = std::dynamic_pointer_cast<KerML::Entities::FeatureTyping>(ParentStack.top());
 
+	if (!feature_typing)
+        throw std::runtime_error("Wrong type on parent stack");
+
+    feature_typing->setDeclaredName(ctx->qualified_name()->getText());
+    const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(findElementWithName(ctx->general_type()->qualified_name()->getText()));
+    feature_typing->setType(type);
 }
 
 void KerMLListenerImplementation::enterOwned_feature_typing(KerMLParser::Owned_feature_typingContext *ctx) {
@@ -960,12 +955,21 @@ void KerMLListenerImplementation::exitData_type(KerMLParser::Data_typeContext *c
 
 }
 
-void KerMLListenerImplementation::enterClass(KerMLParser::ClassContext *ctx) {
-
+void KerMLListenerImplementation::enterClass(KerMLParser::ClassContext *) {
+    const auto _class = std::make_shared<KerML::Entities::Class>();
+    ParentStack.emplace(_class);
 }
 
 void KerMLListenerImplementation::exitClass(KerMLParser::ClassContext *ctx) {
+    const auto _class = std::dynamic_pointer_cast<KerML::Entities::Class>(ParentStack.top());
+    if (!_class)
+    {
+        throw std::runtime_error("Wrong type on stack!");
+    }
+    ParentStack.pop();
 
+    Elements.push_back(_class);
+    ParentStack.top()->appendOwnedElement(_class);
 }
 
 void KerMLListenerImplementation::enterStructure(KerMLParser::StructureContext *ctx) {

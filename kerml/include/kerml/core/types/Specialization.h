@@ -32,9 +32,9 @@ namespace KerML::Entities {
     class KERML_EXPORT Specialization  : public Relationship {
     public:
 	    /**
-	     * Constructor is deleted, because the standard does not allow for empty.
+	     * Constructor
 	     */
-	    Specialization() = delete;
+	    Specialization() = default;
 	    /**
 	     * Constructor for the specialization class. Since the standard does not allow for empty general and specific type.
 	     * @param general The type that is specialized by the specific type.

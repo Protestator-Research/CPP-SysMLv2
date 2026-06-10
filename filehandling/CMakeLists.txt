@@ -52,7 +52,8 @@ add_library(sysmlv2parser
             nlohmann_json::nlohmann_json
             date::date
             antlr4_shared
-            kerml)
+            kerml
+            sysmlv2resources)
 #else ()
 #    target_link_libraries(sysmlv2parser
 #            boost::boost

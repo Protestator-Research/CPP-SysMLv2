@@ -6,12 +6,12 @@
 
 #include <antlr4-runtime.h>
 #include <kerml/parser/KerMLParser.h>
-
+#include <sysmlv2/sysmlv2file_global.h>
 
 /**
  * This interface defines an abstract listener for a parse tree produced by KerMLParser.
  */
-class  KerMLListener : public antlr4::tree::ParseTreeListener {
+class SYSMLV2FILE_EXPORT KerMLListener : public antlr4::tree::ParseTreeListener {
 public:
 
   virtual void enterStart(KerMLParser::StartContext *ctx) = 0;
