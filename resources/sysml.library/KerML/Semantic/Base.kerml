@@ -5,22 +5,6 @@ standard library package Base {
 	 * of all elements in the language.
 	 */
 	 		
-	abstract classifier Anything {
-		doc
-		/*
-	     * Anything is the top level generalized type in the language. 
-	     */
-		
-		feature self: Anything[1] subsets things chains things.that {
-			doc
-			/*
-			 * The source of a SelfLink of this thing to itself. self is thus a feature that
-			 * relates everything to itself. It is also the value of the nested "that" feature
-			 * of all other things featured by this thing.
-			 */
-		}
-	}
-	
 	abstract datatype DataValue specializes Anything {
 		doc
 		/*
@@ -90,6 +74,22 @@ standard library package Base {
 		 * zeroToMany is a multiplicity range allowing any cardinality of zero or more
 		 * (that is, no restriction).
 		 */
+	}
+
+	abstract classifier Anything {
+		doc
+		/*
+	     * Anything is the top level generalized type in the language. 
+	     */
+		
+		feature self: Anything[1] subsets things chains things.that {
+			doc
+			/*
+			 * The source of a SelfLink of this thing to itself. self is thus a feature that
+			 * relates everything to itself. It is also the value of the nested "that" feature
+			 * of all other things featured by this thing.
+			 */
+		}
 	}
 	
 }

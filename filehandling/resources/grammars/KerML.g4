@@ -12,7 +12,7 @@ startRule: start;
 
 elements: element*;
 
-identification: ('<' NAME '>')? | (NAME)?;
+identification: '<' NAME '>' | NAME;
 relationship_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN relationship_onwed_elements SYMBOL_CURLY_BRACKET_CLOSE);
 relationship_onwed_elements: relationship_owned_element*;
 relationship_owned_element: owned_related_element | owned_annotation;
@@ -138,7 +138,8 @@ chaining_part: KEYWORD_CHAINS (owned_feature_chaining | feature_chain);
 inverting_part: KEYWORD_INVERSE KEYWORD_OF owned_feature_inverting;
 type_featuring_part: KEYWORD_FEATURED KEYWORD_BY owned_type_featuring (SYMBOL_COMMA owned_type_featuring)*;
 feature_specialization_part: feature_specilization+ multiplicity_part? feature_specilization* | multiplicity_part feature_specilization+;
-multiplicity_part: multiplicity_bounds ((KEYWORD_ORDERED KEYWORD_NONUNIQUE?)?|(KEYWORD_NONUNIQUE? KEYWORD_ORDERED)?);
+multiplicity_part: multiplicity_bounds MULTIPLICITY_PART_ELEMENTS*;
+MULTIPLICITY_PART_ELEMENTS: KEYWORD_ORDERED | KEYWORD_NONUNIQUE;
 feature_specilization: typings | subsettings | references | redefinitions;
 typings: typed_by (SYMBOL_COMMA owned_feature_typing)*;
 typed_by: TYPED_BY owned_feature_typing;
@@ -369,7 +370,7 @@ metadata_body_feature: KEYWORD_FEATURE? (SYMBOL_REDEFINES | KEYWORD_REDEFINES)? 
 
 package:(prefix_metadata_member)* package_declaration package_body;
 library_package: (KEYWORD_STANDARD)? KEYWORD_LIBRARY (prefix_metadata_member)* package_declaration package_body;
-package_declaration: KEYWORD_PACKAGE identification;
+package_declaration: KEYWORD_PACKAGE identification?;
 package_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN (namespace_body_element | element_filter_member | element)+ SYMBOL_CURLY_BRACKET_CLOSE);
 element_filter_member: member_prefix KEYWORD_FILTER owned_expression ';';
 

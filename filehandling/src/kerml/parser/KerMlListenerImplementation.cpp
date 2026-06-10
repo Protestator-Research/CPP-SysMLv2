@@ -17,6 +17,7 @@
 #include <kerml/core/features/Feature.h>
 #include <kerml/core/features/Multiplicity.h>
 #include <kerml/core/features/TypeFeaturing.h>
+#include <kerml/root/namespaces/VisibilityKind.h>
 #include <kerml/kernel/classes/Class.h>
 
 #include <string>
@@ -212,7 +213,15 @@ void KerMLListenerImplementation::exitVisibility_indicator(KerMLParser::Visibili
         std::cout<<"Wrong Parent Stack"<<std::endl;
         return;
     }
-    import->setVisibility(ctx->getVisibilityKind());
+
+    if (ctx->KEYWORD_PRIVATE()!=nullptr)
+        import->setVisibility(KerML::Entities::PRIVATE);
+
+	if (ctx->KEYWORD_PROTECTED()!=nullptr)
+        import->setVisibility(KerML::Entities::PROTECTED);
+
+    if (ctx->KEYWORD_PUBLIC()!=nullptr)
+        import->setVisibility(KerML::Entities::PUBLIC);
 }
 
 void KerMLListenerImplementation::enterNamespace_member(KerMLParser::Namespace_memberContext *) { }
@@ -883,17 +892,16 @@ void KerMLListenerImplementation::exitFeature_chain(KerMLParser::Feature_chainCo
 
 }
 
-void KerMLListenerImplementation::enterOwned_feature_chaining(KerMLParser::Owned_feature_chainingContext *ctx) {
+void KerMLListenerImplementation::enterOwned_feature_chaining(KerMLParser::Owned_feature_chainingContext *) { }
+
+void KerMLListenerImplementation::exitOwned_feature_chaining(KerMLParser::Owned_feature_chainingContext *ctx) {
     const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
     if (!feature) {
         std::cout << "Wrong Type in parent stack." << std::endl;
         return;
     }
-    feature->appendChainingFeature(std::dynamic_pointer_cast<KerML::Entities::Feature>(findElementWithName(ctx->qualified_name()->getText())));
-}
-
-void KerMLListenerImplementation::exitOwned_feature_chaining(KerMLParser::Owned_feature_chainingContext *ctx) {
-
+    const auto name = ctx->qualified_name()->getText();
+    feature->appendChainingFeature(std::dynamic_pointer_cast<KerML::Entities::Feature>(findElementWithName(name)));
 }
 
 void KerMLListenerImplementation::enterFeature_inverting(KerMLParser::Feature_invertingContext *ctx) {
