@@ -53,18 +53,13 @@ namespace SysMLv2::API {
     std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> SysMLAPIImplementation::getAllProjects(std::string barrierString) {
         std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> returnValue;
         CURLcode ServerResult;
-        //std::cout << "getAllProjects: "<<ServerAddress<<"projects"<<std::endl;
         auto serverConnection = setUpServerConnection("projects", barrierString.c_str(), "");
-        //std::cout<<"setUpServerConnection"<<std::endl;
         ServerResult = curl_easy_perform(serverConnection);
-        //std::cout<<"curl_easy_perform: " << ServerResult<<std::endl;
         if (ServerResult == CURLE_OK) {
             long httpResult;
             curl_easy_getinfo(serverConnection, CURLINFO_RESPONSE_CODE, &httpResult);
-            //std::cout<<"curl_easy_getinfo: " << httpResult<<std::endl;
 
             if(tryToResolveHTTPError(httpResult, serverConnection)==INTERNAL_STATUS_CODE::SUCCESS){
-                //std::cout<<"getAllProjects: "<<Data<<std::endl;
                 returnValue = SysMLv2::SysMLv2Deserializer::deserializeJsonArray(Data);
             }
 
@@ -286,7 +281,7 @@ namespace SysMLv2::API {
         if (ServerResult == CURLE_OK) {
             std::cout << "Server result at Login" << Data << std::endl;
             nlohmann::json resultJson = nlohmann::json::parse(Data);
-            barrierString = resultJson["barrierString"];
+            barrierString = resultJson["bearer"];
         } else {
             throw SysMLv2::API::EXCEPTIONS::ConnectionError(
                     static_cast<SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE>(ServerResult));

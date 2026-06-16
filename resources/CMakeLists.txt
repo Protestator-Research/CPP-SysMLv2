@@ -49,3 +49,7 @@ cmrc_add_resource_library(sysmlv2resources
     sysml.library/KerML/Function/TrigFunctions.kerml
     sysml.library/KerML/Function/VectorFunctions.kerml
 )
+
+include(GNUInstallDirs)
+install(TARGETS sysmlv2resources ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(TARGETS sysmlv2resources RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})

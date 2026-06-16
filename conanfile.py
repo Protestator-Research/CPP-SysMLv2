@@ -24,7 +24,7 @@ class CPPSysMLRecipe(ConanFile):
     default_options = {"shared": True, "fPIC": False, "with_rest": True, "with_services": True, "with_parsing": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
-    exports_sources = "CMakeLists.txt", "interfaces/*", "conformance-test/*", "filehandling/*", "kerml/*", "rest-api/*", "services/*", "sysmlinterfaces/*"
+    exports_sources = "CMakeLists.txt", "interfaces/*", "conformance-test/*", "filehandling/*", "kerml/*", "rest-api/*", "services/*", "sysmlinterfaces/*", "resources/*"
 
     def requirements(self):
         self.requires("boost/[>=1.86.0 <2]")
@@ -91,7 +91,7 @@ class CPPSysMLRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = ["sysmlv2interfaces", "sysmlv2service", "sysmlv2rest", "kerml", "sysmlv2parser"]
+        self.cpp_info.libs = ["sysmlv2interfaces", "sysmlv2service", "sysmlv2rest", "kerml", "sysmlv2parser", "sysmlv2resources"]
         self.cpp_info.builddirs.append(os.path.join("lib", "cmake", "sysmlv2"))
 
     
