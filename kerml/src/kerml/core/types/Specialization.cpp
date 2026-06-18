@@ -23,6 +23,8 @@ namespace KerML::Entities
 {
 	Specialization::Specialization(std::shared_ptr<Type> general, std::shared_ptr<Type> specific)
 	{
+		_dType = "Specialization";
+
 		if (general == nullptr)
 			throw std::runtime_error("General type is not allowed to be null");
 		General = general;

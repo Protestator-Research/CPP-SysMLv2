@@ -9,6 +9,8 @@ namespace KerML::Entities
 {
 	Intersecting::Intersecting(std::shared_ptr<Type> typeIntersecting, std::shared_ptr<Type> intersectingType)
 	{
+		_dType = "Intersecting";
+
 		if (typeIntersecting == nullptr)
 			throw std::runtime_error("Type intersecting is according to the standard not allowed to be null.");
 

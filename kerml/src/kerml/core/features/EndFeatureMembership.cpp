@@ -10,7 +10,7 @@ namespace  KerML::Entities {
                                                std::shared_ptr<Type> owningType,
                                                std::vector<std::shared_ptr<Type>> type)
             : FeatureMembership(ownedMemberFeature, owningType, type) {
-
+        _dType = "EndFeatureMembership";
     }
 
     bool EndFeatureMembership::isEnd() {

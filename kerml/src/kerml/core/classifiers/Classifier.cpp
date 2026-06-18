@@ -20,11 +20,15 @@
 namespace KerML::Entities {
 	Classifier::Classifier(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
 		Type(elementID, owner)
-	{ 	}
+	{
+		_dType = "Classifier";
+	}
 
 	Classifier::Classifier(std::string namespaceName, boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
 	Type(namespaceName,elementID,owner)
-	{	}
+	{
+		_dType = "Classifier";
+	}
 
 	void Classifier::setOwnedSubsclassification(std::vector<std::shared_ptr<Subclassification>> ownedSubclassification)
 	{

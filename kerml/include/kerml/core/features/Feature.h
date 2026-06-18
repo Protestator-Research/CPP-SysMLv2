@@ -7,6 +7,7 @@
 #include <optional>
 
 #include <kerml/core/types/Type.h>
+#include <kerml/kerml_global.h>
 
 #include "FeatureDirectionKind.h"
 
@@ -27,7 +28,7 @@ namespace KerML::Entities {
 	 * @author Moritz Herzog <herzogm@rptu.de>
 	 * @brief Describes the Feature class according to the Standard.
 	 */
-	class Feature : public Type, public std::enable_shared_from_this<Feature> {
+	class KERML_EXPORT Feature : public Type, public std::enable_shared_from_this<Feature> {
     public:
 		/**
 		 * Constuctor
@@ -131,7 +132,7 @@ namespace KerML::Entities {
          * @param direction Defines how the values of the feature are defines.
          * @see KerML::Entities::FeatureDirectionKind.
          */
-        void setDirection(std::optional<FeatureDirectionKind> direction);
+        void setDirection(FeatureDirectionKind direction);
         /**
          * Gives access to the value of the Direction. The direction indicates how the values of this feature are defined.
          * @return Defines how the values of the feature are defines.
@@ -175,7 +176,6 @@ namespace KerML::Entities {
         bool canAccess(std::shared_ptr<Feature> feature);
         bool isFeaturingType(std::shared_ptr<Type> type);
 
-    protected:
         void setFeaturingType(std::vector<std::shared_ptr<Type>> featuringType);
         std::vector<std::shared_ptr<Type>> featuringType() const;
         void appendFeaturingType(std::vector<std::shared_ptr<Type>> featuringType);

@@ -9,12 +9,12 @@
 namespace KerML::Entities {
 	Type::Type(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
 		Namespace(elementID, owner) {
-
+		_dType = "Type";
 	}
 
 	Type::Type(std::string namespaceName, boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
 		Namespace(namespaceName, elementID, owner) {
-
+		_dType = "Type";
 	}
 
 	std::vector<std::shared_ptr<Membership>>
@@ -45,7 +45,7 @@ namespace KerML::Entities {
 		return std::vector<std::shared_ptr<Membership>>();
 	}
 
-	std::vector<std::shared_ptr<Feature>> Type::allRedefinedFeaturesOf(std::shared_ptr<Membership> ) {
+	std::vector<std::shared_ptr<Feature>> Type::allRedefinedFeaturesOf(std::shared_ptr<Membership>) {
 		return std::vector<std::shared_ptr<Feature>>();
 	}
 

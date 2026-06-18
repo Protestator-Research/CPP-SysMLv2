@@ -5,6 +5,7 @@
 #pragma once
 
 #include <kerml/root/elements/Relationship.h>
+#include <kerml/kerml_global.h>
 
 namespace KerML::Entities {
     class Feature;
@@ -18,7 +19,7 @@ namespace KerML::Entities {
      * @brief Representation of the FeatureInverting of the KerML standard.
      *
      */
-    class FeatureInverting : public Relationship{
+    class KERML_EXPORT FeatureInverting : public Relationship{
     public:
         /**
          *

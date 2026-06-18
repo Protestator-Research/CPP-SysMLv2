@@ -1,63 +1,63 @@
 
-// Generated from KerML.g4 by ANTLR 4.13.2
+// Generated from ./KerML.g4 by ANTLR 4.13.2
 
 #pragma once
 
 
-#include <antlr4-runtime.h>
+#include "antlr4-runtime.h"
 
-#include <kerml/root/namespaces/VisibilityKind.h>
+
 
 
 class  KerMLParser : public antlr4::Parser {
 public:
   enum {
-    T__0 = 1, TYPED_BY = 2, SPECIALIZES = 3, SUBSETS = 4, REFERENCES = 5, 
-    REDEFINES = 6, CONJUNGATES = 7, KEYWORD_ABOUT = 8, KEYWORD_ABSTRACT = 9, 
-    KEYWORD_ALIAS = 10, KEYWORD_ALL = 11, KEYWORD_AND = 12, KEYWORD_AS = 13, 
-    KEYWORD_ASSOC = 14, KEYWORD_BEHAVIOR = 15, KEYWORD_BINDING = 16, KEYWORD_BOOL = 17, 
-    KEYWORD_BY = 18, KEYWORD_CHAINS = 19, KEYWORD_CLASS = 20, KEYWORD_CLASSIFIER = 21, 
-    KEYWORD_COMMENT = 22, KEYWORD_COMPOSITE = 23, KEYWORD_CONJUGATE = 24, 
-    KEYWORD_CONJUGATES = 25, KEYWORD_CONJUGATION = 26, KEYWORD_CONNECTOR = 27, 
-    KEYWORD_DATATYPE = 28, KEYWORD_DEFAULT = 29, KEYWORD_DEPENDENCY = 30, 
-    KEYWORD_DERIVED = 31, KEYWORD_DIFFERENCES = 32, KEYWORD_DISJOINING = 33, 
-    KEYWORD_DISJOINT = 34, KEYWORD_DOC = 35, KEYWORD_ELSE = 36, KEYWORD_END = 37, 
-    KEYWORD_EXPR = 38, KEYWORD_FALSE = 39, KEYWORD_FEATURE = 40, KEYWORD_FEATURED = 41, 
-    KEYWORD_FEATURING = 42, KEYWORD_FILTER = 43, KEYWORD_FIRST = 44, KEYWORD_FLOW = 45, 
-    KEYWORD_FOR = 46, KEYWORD_FROM = 47, KEYWORD_FUNCTION = 48, KEYWORD_HASTYPE = 49, 
-    KEYWORD_IF = 50, KEYWORD_INTERSECTS = 51, KEYWORD_IMPLIES = 52, KEYWORD_IMPORT = 53, 
-    KEYWORD_IN = 54, KEYWORD_INOUT = 55, KEYWORD_INTERACTION = 56, KEYWORD_INV = 57, 
-    KEYWORD_INVERSE = 58, KEYWORD_INVERTING = 59, KEYWORD_ISTYPE = 60, KEYWORD_LANGUAGE = 61, 
-    KEYWORD_MEMBER = 62, KEYWORD_METACLASS = 63, KEYWORD_METADATA = 64, 
-    KEYWORD_MULTIPLICITY = 65, KEYWORD_NAMESPACE = 66, KEYWORD_NONUNIQUE = 67, 
-    KEYWORD_NOT = 68, KEYWORD_NULL = 69, KEYWORD_OF = 70, KEYWORD_OR = 71, 
-    KEYWORD_ORDERED = 72, KEYWORD_OUT = 73, KEYWORD_PACKAGE = 74, KEYWORD_PORTION = 75, 
-    KEYWORD_PREDICATE = 76, KEYWORD_PRIVATE = 77, KEYWORD_PROTECTED = 78, 
-    KEYWORD_PUBLIC = 79, KEYWORD_READONLY = 80, KEYWORD_REDEFINES = 81, 
-    KEYWORD_REDEFINITION = 82, KEYWORD_REFERENCES = 83, KEYWORD_REP = 84, 
-    KEYWORD_RETURN = 85, KEYWORD_SPECILIZATION = 86, KEYWORD_SPECIALIZES = 87, 
-    KEYWORD_STEP = 88, KEYWORD_STRUCT = 89, KEYWORD_SUBCLASSIFIER = 90, 
-    KEYWORD_SUBSET = 91, KEYWORD_SUBSETS = 92, KEYWORD_SUBTYPE = 93, KEYWORD_SUCCSESSION = 94, 
-    KEYWORD_THEN = 95, KEYWORD_TO = 96, KEYWORD_TRUE = 97, KEYWORD_TYPE = 98, 
-    KEYWORD_TYPED = 99, KEYWORD_TYPING = 100, KEYWORD_UNIONS = 101, KEYWORD_XOR = 102, 
-    KEYWORD_VAR = 103, KEYWORD_LOCALE = 104, KEYWORD_STANDARD = 105, KEYWORD_LIBRARY = 106, 
-    KEYWORD_CONSTANT = 107, SINGLE_LINE_NOTE = 108, MULTI_LINE_NOTE = 109, 
-    REGULAR_COMMENT = 110, SYMBOL_COMMENT_BLOCK_START = 111, SYMBOL_NOTE_BLOCK_START = 112, 
-    SYMBOL_COMMENT_BLOCK_END = 113, SYMBOL_STATEMENT_DELIMITER = 114, SYMBOL_STAR = 115, 
-    SYMBOL_NAMESPACE_SUBSET = 116, SYMBOL_TYPED_BY = 117, SYMBOL_SPECIALIZES = 118, 
-    SYMBOL_REFERENCES = 119, SYMBOL_REDEFINES = 120, SYMBOL_CONJUNGATES = 121, 
-    SYMBOL_ROUND_BRACKET_OPEN = 122, SYMBOL_ROUND_BRACKET_CLOSE = 123, SYMBOL_CURLY_BRACKET_OPEN = 124, 
-    SYMBOL_CURLY_BRACKET_CLOSE = 125, SYMBOL_SQUARE_BRACKET_OPEN = 126, 
-    SYMBOL_SQUARE_BRACKET_CLOSE = 127, SYMBOL_COMMA = 128, SYMBOL_AT = 129, 
-    SYMBOL_HASHTAG = 130, SYMBOL_MOD = 131, SYMBOL_AND = 132, SYMBOL_UPPER = 133, 
-    SYMBOL_VERTICAL_LINE = 134, SYMBOL_DOUBLE_STAR = 135, SYMBOL_PLUS = 136, 
-    SYMBOL_MINUS = 137, SYMBOL_SLASH = 138, SYMBOL_ARROOW = 139, SYMBOL_DOT = 140, 
-    SYMBOL_DDOT = 141, SYMBOL_SMALLER = 142, SYMBOL_SMALLER_EQUAL = 143, 
-    SYMBOL_ASSIGN = 144, SYMBOL_DEF_ASSIGN = 145, SYMBOL_EQUALS = 146, SYMBOL_IFF_EQUALS = 147, 
-    SYMBOL_NOT_EQUALS = 148, SYMBOL_IFF_NOT_EQUALS = 149, SYMBOL_GREATER = 150, 
-    SYMBOL_GREATER_EQUALS = 151, SYMBOL_QUESTION = 152, SYMBOL_DQUESTION = 153, 
-    SYMBOL_DOT_QUESTION = 154, NAME = 155, BASIC_NAME = 156, UNRESTRICTED_NAME = 157, 
-    DECIMAL_VALUE = 158, EXPONENTIAL_VALUE = 159, STRING_VALUE = 160, WS = 161
+    T__0 = 1, MULTIPLICITY_PART_ELEMENTS = 2, TYPED_BY = 3, SPECIALIZES = 4, 
+    SUBSETS = 5, REFERENCES = 6, REDEFINES = 7, CONJUNGATES = 8, KEYWORD_ABOUT = 9, 
+    KEYWORD_ABSTRACT = 10, KEYWORD_ALIAS = 11, KEYWORD_ALL = 12, KEYWORD_AND = 13, 
+    KEYWORD_AS = 14, KEYWORD_ASSOC = 15, KEYWORD_BEHAVIOR = 16, KEYWORD_BINDING = 17, 
+    KEYWORD_BOOL = 18, KEYWORD_BY = 19, KEYWORD_CHAINS = 20, KEYWORD_CLASS = 21, 
+    KEYWORD_CLASSIFIER = 22, KEYWORD_COMMENT = 23, KEYWORD_COMPOSITE = 24, 
+    KEYWORD_CONJUGATE = 25, KEYWORD_CONJUGATES = 26, KEYWORD_CONJUGATION = 27, 
+    KEYWORD_CONNECTOR = 28, KEYWORD_DATATYPE = 29, KEYWORD_DEFAULT = 30, 
+    KEYWORD_DEPENDENCY = 31, KEYWORD_DERIVED = 32, KEYWORD_DIFFERENCES = 33, 
+    KEYWORD_DISJOINING = 34, KEYWORD_DISJOINT = 35, KEYWORD_DOC = 36, KEYWORD_ELSE = 37, 
+    KEYWORD_END = 38, KEYWORD_EXPR = 39, KEYWORD_FALSE = 40, KEYWORD_FEATURE = 41, 
+    KEYWORD_FEATURED = 42, KEYWORD_FEATURING = 43, KEYWORD_FILTER = 44, 
+    KEYWORD_FIRST = 45, KEYWORD_FLOW = 46, KEYWORD_FOR = 47, KEYWORD_FROM = 48, 
+    KEYWORD_FUNCTION = 49, KEYWORD_HASTYPE = 50, KEYWORD_IF = 51, KEYWORD_INTERSECTS = 52, 
+    KEYWORD_IMPLIES = 53, KEYWORD_IMPORT = 54, KEYWORD_IN = 55, KEYWORD_INOUT = 56, 
+    KEYWORD_INTERACTION = 57, KEYWORD_INV = 58, KEYWORD_INVERSE = 59, KEYWORD_INVERTING = 60, 
+    KEYWORD_ISTYPE = 61, KEYWORD_LANGUAGE = 62, KEYWORD_MEMBER = 63, KEYWORD_METACLASS = 64, 
+    KEYWORD_METADATA = 65, KEYWORD_MULTIPLICITY = 66, KEYWORD_NAMESPACE = 67, 
+    KEYWORD_NONUNIQUE = 68, KEYWORD_NOT = 69, KEYWORD_NULL = 70, KEYWORD_OF = 71, 
+    KEYWORD_OR = 72, KEYWORD_ORDERED = 73, KEYWORD_OUT = 74, KEYWORD_PACKAGE = 75, 
+    KEYWORD_PORTION = 76, KEYWORD_PREDICATE = 77, KEYWORD_PRIVATE = 78, 
+    KEYWORD_PROTECTED = 79, KEYWORD_PUBLIC = 80, KEYWORD_READONLY = 81, 
+    KEYWORD_REDEFINES = 82, KEYWORD_REDEFINITION = 83, KEYWORD_REFERENCES = 84, 
+    KEYWORD_REP = 85, KEYWORD_RETURN = 86, KEYWORD_SPECILIZATION = 87, KEYWORD_SPECIALIZES = 88, 
+    KEYWORD_STEP = 89, KEYWORD_STRUCT = 90, KEYWORD_SUBCLASSIFIER = 91, 
+    KEYWORD_SUBSET = 92, KEYWORD_SUBSETS = 93, KEYWORD_SUBTYPE = 94, KEYWORD_SUCCSESSION = 95, 
+    KEYWORD_THEN = 96, KEYWORD_TO = 97, KEYWORD_TRUE = 98, KEYWORD_TYPE = 99, 
+    KEYWORD_TYPED = 100, KEYWORD_TYPING = 101, KEYWORD_UNIONS = 102, KEYWORD_XOR = 103, 
+    KEYWORD_VAR = 104, KEYWORD_LOCALE = 105, KEYWORD_STANDARD = 106, KEYWORD_LIBRARY = 107, 
+    KEYWORD_CONSTANT = 108, SINGLE_LINE_NOTE = 109, MULTI_LINE_NOTE = 110, 
+    REGULAR_COMMENT = 111, SYMBOL_COMMENT_BLOCK_START = 112, SYMBOL_NOTE_BLOCK_START = 113, 
+    SYMBOL_COMMENT_BLOCK_END = 114, SYMBOL_STATEMENT_DELIMITER = 115, SYMBOL_STAR = 116, 
+    SYMBOL_NAMESPACE_SUBSET = 117, SYMBOL_TYPED_BY = 118, SYMBOL_SPECIALIZES = 119, 
+    SYMBOL_REFERENCES = 120, SYMBOL_REDEFINES = 121, SYMBOL_CONJUNGATES = 122, 
+    SYMBOL_ROUND_BRACKET_OPEN = 123, SYMBOL_ROUND_BRACKET_CLOSE = 124, SYMBOL_CURLY_BRACKET_OPEN = 125, 
+    SYMBOL_CURLY_BRACKET_CLOSE = 126, SYMBOL_SQUARE_BRACKET_OPEN = 127, 
+    SYMBOL_SQUARE_BRACKET_CLOSE = 128, SYMBOL_COMMA = 129, SYMBOL_AT = 130, 
+    SYMBOL_HASHTAG = 131, SYMBOL_MOD = 132, SYMBOL_AND = 133, SYMBOL_UPPER = 134, 
+    SYMBOL_VERTICAL_LINE = 135, SYMBOL_DOUBLE_STAR = 136, SYMBOL_PLUS = 137, 
+    SYMBOL_MINUS = 138, SYMBOL_SLASH = 139, SYMBOL_ARROOW = 140, SYMBOL_DOT = 141, 
+    SYMBOL_DDOT = 142, SYMBOL_SMALLER = 143, SYMBOL_SMALLER_EQUAL = 144, 
+    SYMBOL_ASSIGN = 145, SYMBOL_DEF_ASSIGN = 146, SYMBOL_EQUALS = 147, SYMBOL_IFF_EQUALS = 148, 
+    SYMBOL_NOT_EQUALS = 149, SYMBOL_IFF_NOT_EQUALS = 150, SYMBOL_GREATER = 151, 
+    SYMBOL_GREATER_EQUALS = 152, SYMBOL_QUESTION = 153, SYMBOL_DQUESTION = 154, 
+    SYMBOL_DOT_QUESTION = 155, NAME = 156, BASIC_NAME = 157, UNRESTRICTED_NAME = 158, 
+    DECIMAL_VALUE = 159, EXPONENTIAL_VALUE = 160, STRING_VALUE = 161, WS = 162
   };
 
   enum {
@@ -775,18 +775,7 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    KerML::Entities::VisibilityKind getVisibilityKind() {
-      if(KEYWORD_PRIVATE() != nullptr)
-        return KerML::Entities::VisibilityKind::PRIVATE;
-      if(KEYWORD_PROTECTED() != nullptr)
-        return KerML::Entities::VisibilityKind::PROTECTED;
-      if(KEYWORD_PUBLIC() != nullptr)
-        return KerML::Entities::PUBLIC;
-
-      return KerML::Entities::VisibilityKind::PRIVATE;
-    }
-
+   
   };
 
   Visibility_indicatorContext* visibility_indicator();
@@ -809,7 +798,6 @@ public:
   public:
     Non_feature_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Member_prefixContext *member_prefix();
     Non_feature_elementContext *non_feature_element();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -892,7 +880,7 @@ public:
     Import_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Membership_importContext *membership_import();
-    Namespace_importContext *namespace_import();
+    Filter_packageContext *filter_package();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -921,7 +909,7 @@ public:
   public:
     Filter_packageContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Import_declarationContext *import_declaration();
+    Membership_importContext *membership_import();
     Filter_package_memberContext *filter_package_member();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1722,8 +1710,8 @@ public:
     Multiplicity_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Multiplicity_boundsContext *multiplicity_bounds();
-    antlr4::tree::TerminalNode *KEYWORD_ORDERED();
-    antlr4::tree::TerminalNode *KEYWORD_NONUNIQUE();
+    std::vector<antlr4::tree::TerminalNode *> MULTIPLICITY_PART_ELEMENTS();
+    antlr4::tree::TerminalNode* MULTIPLICITY_PART_ELEMENTS(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1858,14 +1846,13 @@ public:
   public:
     Feature_typingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *KEYWORD_TYPING();
     Qualified_nameContext *qualified_name();
     antlr4::tree::TerminalNode *TYPED_BY();
     General_typeContext *general_type();
     Relationship_bodyContext *relationship_body();
     antlr4::tree::TerminalNode *KEYWORD_SPECILIZATION();
     IdentificationContext *identification();
-    antlr4::tree::TerminalNode *KEYWORD_TYPING();
-    Multiplicity_partContext *multiplicity_part();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

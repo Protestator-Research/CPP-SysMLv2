@@ -79,9 +79,9 @@ namespace KerML::Entities {
 
         virtual std::vector<std::shared_ptr<Membership>> importedMemberships(std::vector<std::shared_ptr<Namespace>> excluded) = 0;
 
-    protected:
+    
         std::shared_ptr<Namespace> importOwningNamespace() const;
-        void setImportOwningNamespace(std::shared_ptr<Namespace> importOwningNamespace);
+        void setImportOwningNamespace(const std::shared_ptr<Namespace>& importOwningNamespace);
 
     private:
         VisibilityKind Visibility;

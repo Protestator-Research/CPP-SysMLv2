@@ -4,7 +4,7 @@
 
 #pragma once
 
-
+#include <sysmlv2/sysmlv2file_global.h>
 #include <kerml/parser/KerMLListener.h>
 #include <memory>
 #include <stack>
@@ -20,7 +20,7 @@ namespace KerML::Entities {
  * @date 09.05.25
  * @version Beta 3
  */
-class KerMLListenerImplementation : public KerMLListener{
+class SYSMLV2FILE_EXPORT KerMLListenerImplementation : public KerMLListener{
 public:
     KerMLListenerImplementation();
     ~KerMLListenerImplementation();
@@ -1081,6 +1081,7 @@ public:
 
 private:
     std::shared_ptr<KerML::Entities::Element> findElementWithName(std::string identification);
+    void populateWithBaseDatatypes();
     std::vector<std::shared_ptr<KerML::Entities::Element>> Elements;
     std::stack<std::shared_ptr<KerML::Entities::Element>> ParentStack;
 };

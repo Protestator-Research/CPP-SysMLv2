@@ -32,6 +32,10 @@ namespace KerML::Entities {
         return IsImported;
     }
 
+    void Namespace::setIsImported(bool isImported) {
+        IsImported = isImported;
+    }
+
     std::vector<std::string> Namespace::namesOf(std::shared_ptr<Element> element) {
         std::vector<std::string> returnValue;
 

@@ -12,7 +12,7 @@ startRule: start;
 
 elements: element*;
 
-identification: ('<' NAME '>')? | (NAME)?;
+identification: '<' NAME '>' | NAME;
 relationship_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN relationship_onwed_elements SYMBOL_CURLY_BRACKET_CLOSE);
 relationship_onwed_elements: relationship_owned_element*;
 relationship_owned_element: owned_related_element | owned_annotation;
@@ -35,7 +35,7 @@ namespace_body_element: namespace_member | alias_member | namespace_import;
 member_prefix: (visibility_indicator)?;
 visibility_indicator: KEYWORD_PUBLIC | KEYWORD_PRIVATE | KEYWORD_PROTECTED;
 namespace_member: non_feature_member | namespace_feature_member;
-non_feature_member: member_prefix non_feature_element;
+non_feature_member: non_feature_element;
 namespace_feature_member: member_prefix feature_element;
 alias_member: member_prefix KEYWORD_ALIAS (SYMBOL_SMALLER NAME SYMBOL_GREATER)? (NAME)? KEYWORD_FOR qualified_name relationship_body;
 qualified_name: NAME  (SYMBOL_NAMESPACE_SUBSET NAME)*;
@@ -138,7 +138,8 @@ chaining_part: KEYWORD_CHAINS (owned_feature_chaining | feature_chain);
 inverting_part: KEYWORD_INVERSE KEYWORD_OF owned_feature_inverting;
 type_featuring_part: KEYWORD_FEATURED KEYWORD_BY owned_type_featuring (SYMBOL_COMMA owned_type_featuring)*;
 feature_specialization_part: feature_specilization+ multiplicity_part? feature_specilization* | multiplicity_part feature_specilization+;
-multiplicity_part: multiplicity_bounds ((KEYWORD_ORDERED KEYWORD_NONUNIQUE?)?|(KEYWORD_NONUNIQUE? KEYWORD_ORDERED)?);
+multiplicity_part: multiplicity_bounds MULTIPLICITY_PART_ELEMENTS*;
+MULTIPLICITY_PART_ELEMENTS: KEYWORD_ORDERED | KEYWORD_NONUNIQUE;
 feature_specilization: typings | subsettings | references | redefinitions;
 typings: typed_by (SYMBOL_COMMA owned_feature_typing)*;
 typed_by: TYPED_BY owned_feature_typing;
@@ -148,7 +149,7 @@ references: REFERENCES owned_reference_subsetting;
 redefinitions: redefines (SYMBOL_COMMA owned_redefinition)?;
 redefines: feature_direction? REDEFINES owned_redefinition;
 
-feature_typing: (KEYWORD_SPECILIZATION identification)? KEYWORD_TYPING? qualified_name TYPED_BY general_type multiplicity_part? relationship_body;
+feature_typing: (KEYWORD_SPECILIZATION identification)? KEYWORD_TYPING qualified_name TYPED_BY general_type relationship_body;
 owned_feature_typing: general_type;
 
 subsetting: (KEYWORD_SPECILIZATION identification)? KEYWORD_SUBSET? specific_type SUBSETS general_type multiplicity_part? relationship_body;
@@ -369,7 +370,7 @@ metadata_body_feature: KEYWORD_FEATURE? (SYMBOL_REDEFINES | KEYWORD_REDEFINES)? 
 
 package:(prefix_metadata_member)* package_declaration package_body;
 library_package: (KEYWORD_STANDARD)? KEYWORD_LIBRARY (prefix_metadata_member)* package_declaration package_body;
-package_declaration: KEYWORD_PACKAGE identification;
+package_declaration: KEYWORD_PACKAGE identification?;
 package_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN (namespace_body_element | element_filter_member | element)+ SYMBOL_CURLY_BRACKET_CLOSE);
 element_filter_member: member_prefix KEYWORD_FILTER owned_expression ';';
 

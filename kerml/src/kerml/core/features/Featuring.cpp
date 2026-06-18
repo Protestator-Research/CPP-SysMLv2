@@ -3,3 +3,9 @@
 //
 
 #include <kerml/core/features/Featuring.h>
+
+namespace KerML::Entities {
+	Featuring::Featuring() {
+		_dType = "Featuring";
+	}
+}

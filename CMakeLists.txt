@@ -32,8 +32,10 @@ if (BUILD_WITH_SERVICES)
 endif ()
 
 if (BUILD_WITH_PARSING)
+    add_subdirectory(resources)
     add_subdirectory(filehandling)
 endif ()
+
 
 add_subdirectory(kerml)
 add_subdirectory(sysml)

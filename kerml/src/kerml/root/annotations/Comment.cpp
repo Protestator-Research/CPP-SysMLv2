@@ -13,6 +13,7 @@ namespace KerML::Entities {
     Comment::Comment(std::string locale, std::string body) {
         Locale = locale;
         Body = body;
+        _dType = "Comment";
     }
 
     std::string Comment::locale() {

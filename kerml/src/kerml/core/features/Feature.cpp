@@ -28,7 +28,9 @@ namespace KerML::Entities
 	IsVariable(false),
 	IsConstant(false),
 	Direction( {} )
-	{	}
+	{
+		_dType = "Feature";
+	}
 
 	void Feature::setIsUnique(bool isUnique)
 	{
@@ -110,7 +112,7 @@ namespace KerML::Entities
 		return IsConstant;
 	}
 
-	void Feature::setDirection(std::optional<FeatureDirectionKind> direction)
+	void Feature::setDirection(FeatureDirectionKind direction)
 	{
 		Direction = direction;
 	}
@@ -181,7 +183,7 @@ namespace KerML::Entities
 
 	std::optional<std::string> Feature::effectiveName() const
 	{
-		return Type::effectiveName();
+		return Element::effectiveName();
 	}
 
 	std::optional<std::shared_ptr<Feature>> Feature::namingFeature() const

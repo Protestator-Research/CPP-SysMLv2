@@ -10,6 +10,8 @@ namespace KerML::Entities {
 	Disjoining::Disjoining(std::shared_ptr<Type> typeDisjoined, std::shared_ptr<Type> disjoiningType) :
 	Relationship()
 	{
+		_dType = "Disjoining";
+
 		if (typeDisjoined == nullptr)
 			throw std::runtime_error("Empty TypeDisjoined is not allowed");
 		TypeDisjoined = typeDisjoined;

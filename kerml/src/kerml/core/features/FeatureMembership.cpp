@@ -13,6 +13,8 @@ namespace KerML::Entities {
     FeatureMembership::FeatureMembership(std::shared_ptr<Feature> ownedMemberFeature,
                                          std::shared_ptr<Type> owningType,
                                          std::vector<std::shared_ptr<Type>> type) {
+        _dType = "FeatureMembership";
+
         OwnedMemberFeature = ownedMemberFeature;
         OwningType = owningType;
         _Type = type;

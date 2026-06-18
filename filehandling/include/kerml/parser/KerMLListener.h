@@ -1,11 +1,11 @@
 
-// Generated from KerML.g4 by ANTLR 4.13.2
+// Generated from ./KerML.g4 by ANTLR 4.13.2
 
 #pragma once
 
 
-#include <antlr4-runtime.h>
-#include <kerml/parser/KerMLParser.h>
+#include "antlr4-runtime.h"
+#include "KerMLParser.h"
 
 
 /**

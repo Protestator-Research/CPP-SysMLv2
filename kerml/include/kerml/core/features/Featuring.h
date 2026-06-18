@@ -8,6 +8,8 @@
 
 namespace KerML::Entities {
     class Featuring : public Relationship{
+    public:
+        Featuring();
 
     };
 }
