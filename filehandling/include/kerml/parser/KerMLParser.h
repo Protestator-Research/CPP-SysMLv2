@@ -1,15 +1,15 @@
 
-// Generated from KerML.g4 by ANTLR 4.13.2
+// Generated from ./KerML.g4 by ANTLR 4.13.2
 
 #pragma once
 
 
 #include "antlr4-runtime.h"
 
-#include <sysmlv2/sysmlv2file_global.h>
 
 
-class SYSMLV2FILE_EXPORT KerMLParser : public antlr4::Parser {
+
+class  KerMLParser : public antlr4::Parser {
 public:
   enum {
     T__0 = 1, MULTIPLICITY_PART_ELEMENTS = 2, TYPED_BY = 3, SPECIALIZES = 4, 
@@ -798,7 +798,6 @@ public:
   public:
     Non_feature_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Member_prefixContext *member_prefix();
     Non_feature_elementContext *non_feature_element();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1847,14 +1846,13 @@ public:
   public:
     Feature_typingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *KEYWORD_TYPING();
     Qualified_nameContext *qualified_name();
     antlr4::tree::TerminalNode *TYPED_BY();
     General_typeContext *general_type();
     Relationship_bodyContext *relationship_body();
     antlr4::tree::TerminalNode *KEYWORD_SPECILIZATION();
     IdentificationContext *identification();
-    antlr4::tree::TerminalNode *KEYWORD_TYPING();
-    Multiplicity_partContext *multiplicity_part();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

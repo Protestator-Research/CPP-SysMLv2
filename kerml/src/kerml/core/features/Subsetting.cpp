@@ -12,6 +12,8 @@ namespace KerML::Entities
 	Subsetting::Subsetting(std::shared_ptr<Feature> subsettedFeature, std::shared_ptr<Feature> subsettingFeature) :
 	Specialization(subsettedFeature, subsettingFeature)
 	{
+		_dType = "Subsetting";
+
 		if (subsettedFeature == nullptr)
 			throw std::invalid_argument("The subsetted feature is not allowed to be null. This is defined by the standard.");
 		SubsettedFeature = subsettedFeature;

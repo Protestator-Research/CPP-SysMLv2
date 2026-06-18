@@ -1081,6 +1081,7 @@ public:
 
 private:
     std::shared_ptr<KerML::Entities::Element> findElementWithName(std::string identification);
+    void populateWithBaseDatatypes();
     std::vector<std::shared_ptr<KerML::Entities::Element>> Elements;
     std::stack<std::shared_ptr<KerML::Entities::Element>> ParentStack;
 };

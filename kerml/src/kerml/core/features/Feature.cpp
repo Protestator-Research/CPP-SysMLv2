@@ -28,7 +28,9 @@ namespace KerML::Entities
 	IsVariable(false),
 	IsConstant(false),
 	Direction( {} )
-	{	}
+	{
+		_dType = "Feature";
+	}
 
 	void Feature::setIsUnique(bool isUnique)
 	{

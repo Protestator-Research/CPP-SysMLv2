@@ -11,6 +11,8 @@ namespace KerML::Entities {
     FeatureChaining::FeatureChaining(std::shared_ptr<Feature> chainingFeature, std::shared_ptr<Feature> featureChained,
                                      boost::uuids::uuid elementID, std::shared_ptr<Element> owner)
                                      : Relationship(elementID,owner){
+        _dType = "FeatureChaining";
+
         ChainingFeature = chainingFeature;
         FeatureChained = featureChained;
     }

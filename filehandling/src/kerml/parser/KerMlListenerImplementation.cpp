@@ -73,6 +73,7 @@ void KerMLListenerImplementation::enterStart(KerMLParser::StartContext *)
     const auto& rootNamespace = std::make_shared<KerML::Entities::Namespace>("Root Namespace");
     ParentStack.push(rootNamespace);
     Elements.push_back(rootNamespace);
+    populateWithBaseDatatypes();
 }
 
 void KerMLListenerImplementation::exitStart(KerMLParser::StartContext *) { }
@@ -210,6 +211,7 @@ void KerMLListenerImplementation::enterVisibility_indicator(KerMLParser::Visibil
 void KerMLListenerImplementation::exitVisibility_indicator(KerMLParser::Visibility_indicatorContext * ctx) {
     const auto import = std::dynamic_pointer_cast<KerML::Entities::Import>(ParentStack.top());
     if(!import) {
+        std::cout << "Type on Parent Stack: " << ParentStack.top()->getType() << std::endl;
         std::cout<<"Wrong Parent Stack"<<std::endl;
         return;
     }
@@ -267,6 +269,7 @@ void KerMLListenerImplementation::enterNamespace_import(KerMLParser::Namespace_i
 void KerMLListenerImplementation::exitNamespace_import(KerMLParser::Namespace_importContext *ctx) {
     const auto namespaceImport = std::dynamic_pointer_cast<KerML::Entities::NamespaceImport>(ParentStack.top());
     if(!namespaceImport) {
+        std::cout << "Type on Parent Stack: " << ParentStack.top()->getType() << std::endl;
         std::cout<<"Wrong Parent Stack"<<std::endl;
         return;
     }
@@ -608,6 +611,7 @@ void KerMLListenerImplementation::enterSuperclassing_part(KerMLParser::Superclas
 
 void KerMLListenerImplementation::exitSuperclassing_part(KerMLParser::Superclassing_partContext *ctx) {
     const auto classifier = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top());
+    std::cout << "Type on Stack " << ParentStack.top()->getType() << std::endl;
     if(!classifier) {
         throw std::runtime_error("Wrong type on stack!");
     }
@@ -819,9 +823,9 @@ void KerMLListenerImplementation::enterFeature_typing(KerMLParser::Feature_typin
 
 void KerMLListenerImplementation::exitFeature_typing(KerMLParser::Feature_typingContext *ctx) {
     const auto feature_typing = std::dynamic_pointer_cast<KerML::Entities::FeatureTyping>(ParentStack.top());
-
 	if (!feature_typing)
         throw std::runtime_error("Wrong type on parent stack");
+    ParentStack.pop();
 
     feature_typing->setDeclaredName(ctx->qualified_name()->getText());
     const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(findElementWithName(ctx->general_type()->qualified_name()->getText()));
@@ -972,6 +976,7 @@ void KerMLListenerImplementation::exitClass(KerMLParser::ClassContext *ctx) {
     const auto _class = std::dynamic_pointer_cast<KerML::Entities::Class>(ParentStack.top());
     if (!_class)
     {
+        std::cout << "Type of Element on Stack:" << ParentStack.top()->getType() << std::endl;
         throw std::runtime_error("Wrong type on stack!");
     }
     ParentStack.pop();
@@ -2110,6 +2115,7 @@ void KerMLListenerImplementation::exitMultiplicity_bounds(KerMLParser::Multiplic
     const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top());
     if (!type)
     {
+        std::cout << "Type on Stack: " << ParentStack.top()->getType() << std::endl;
         std::cout << "Wrong Type on Parentstack" << std::endl;
         return;
     }
@@ -2128,8 +2134,13 @@ void KerMLListenerImplementation::exitMultiplicity_bounds(KerMLParser::Multiplic
         
     } else
     {
-        unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
-        multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum);
+        if (ctx->multiplicity_expression_member().front()->getText() == "*") {
+            multiplicity = std::make_shared<KerML::Entities::Multiplicity>(0,true);
+        }
+        else {
+            unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
+            multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum);
+        }
     }
     type->setMultiplicity(multiplicity);
 }
@@ -2313,4 +2324,12 @@ std::shared_ptr<KerML::Entities::Element> KerMLListenerImplementation::findEleme
     }
     std::cout << "Element with name " << identification << " not found" << std::endl;
     return nullptr;
+}
+
+void KerMLListenerImplementation::populateWithBaseDatatypes()
+{
+    const auto string = std::make_shared<KerML::Entities::Type>();
+    string->setDeclaredName("String");
+    Elements.push_back(string);
+    ParentStack.top()->appendOwnedElement(string);
 }

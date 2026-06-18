@@ -10,6 +10,8 @@ namespace KerML::Entities {
     FeatureInverting::FeatureInverting(std::shared_ptr<Feature> featureInverted, std::shared_ptr<Feature> invertingFeature, boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
             Relationship(elementID, owner)
     {
+        _dType = "FeatureInverting";
+
         if(featureInverted == nullptr)
             throw std::invalid_argument("Feature inverted is not allowed to be null, according to the standard.");
         FeatureInverted = featureInverted;

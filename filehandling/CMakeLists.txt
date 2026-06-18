@@ -53,7 +53,8 @@ add_library(sysmlv2parser
             date::date
             antlr4_shared
             kerml
-            sysmlv2resources)
+            sysmlv2resources
+            sysmlv2interfaces)
 #else ()
 #    target_link_libraries(sysmlv2parser
 #            boost::boost

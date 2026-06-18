@@ -35,7 +35,7 @@ namespace_body_element: namespace_member | alias_member | namespace_import;
 member_prefix: (visibility_indicator)?;
 visibility_indicator: KEYWORD_PUBLIC | KEYWORD_PRIVATE | KEYWORD_PROTECTED;
 namespace_member: non_feature_member | namespace_feature_member;
-non_feature_member: member_prefix non_feature_element;
+non_feature_member: non_feature_element;
 namespace_feature_member: member_prefix feature_element;
 alias_member: member_prefix KEYWORD_ALIAS (SYMBOL_SMALLER NAME SYMBOL_GREATER)? (NAME)? KEYWORD_FOR qualified_name relationship_body;
 qualified_name: NAME  (SYMBOL_NAMESPACE_SUBSET NAME)*;
@@ -149,7 +149,7 @@ references: REFERENCES owned_reference_subsetting;
 redefinitions: redefines (SYMBOL_COMMA owned_redefinition)?;
 redefines: feature_direction? REDEFINES owned_redefinition;
 
-feature_typing: (KEYWORD_SPECILIZATION identification)? KEYWORD_TYPING? qualified_name TYPED_BY general_type multiplicity_part? relationship_body;
+feature_typing: (KEYWORD_SPECILIZATION identification)? KEYWORD_TYPING qualified_name TYPED_BY general_type relationship_body;
 owned_feature_typing: general_type;
 
 subsetting: (KEYWORD_SPECILIZATION identification)? KEYWORD_SUBSET? specific_type SUBSETS general_type multiplicity_part? relationship_body;

@@ -10,6 +10,7 @@ namespace KerML::Entities
 		std::shared_ptr<Feature> referencingFeature) :
 	Subsetting(referencedFeature,referencingFeature)
 	{
+		_dType = "ReferenceSubsetting";
 		if (referencedFeature == nullptr)
 			throw std::invalid_argument("Referenced Feature is not allowed to be null. This is declared in the standard");
 		ReferencedFeature = referencedFeature;

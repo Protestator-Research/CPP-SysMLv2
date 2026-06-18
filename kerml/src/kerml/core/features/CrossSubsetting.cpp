@@ -6,6 +6,8 @@
 namespace KerML::Entities {
     CrossSubsetting::CrossSubsetting(std::shared_ptr<Feature> crossedFeature, std::shared_ptr<Feature> crossingFeature)
     : Subsetting(crossedFeature, crossingFeature) {
+        _dType = "CrossSubsetting";
+
         if(crossedFeature == nullptr)
             throw std::invalid_argument("Crossed feature is not allowed to be null");
         CrossedFeature = crossedFeature;

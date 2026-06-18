@@ -9,6 +9,7 @@ namespace KerML::Entities
 	Redefinition::Redefinition(std::shared_ptr<Feature> redefinedFeature, std::shared_ptr<Feature> redefiningFeature) :
 	Subsetting(redefinedFeature,redefiningFeature)
 	{
+		_dType = "Redefinition";
 		if (redefinedFeature == nullptr)
 			throw std::invalid_argument("The redefined Feature is not allowed to be null. This is accroding to the Standard");
 		RedefinedFeature = redefinedFeature;

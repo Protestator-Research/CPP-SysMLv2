@@ -1,12 +1,11 @@
 
-// Generated from KerML.g4 by ANTLR 4.13.2
+// Generated from ./KerML.g4 by ANTLR 4.13.2
 
 #pragma once
 
 
 #include "antlr4-runtime.h"
-#include <kerml/parser/KerMLListener.h>
-#include <sysmlv2/sysmlv2file_global.h>
+#include "KerMLListener.h"
 
 
 /**
@@ -14,7 +13,7 @@
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-class SYSMLV2FILE_EXPORT KerMLBaseListener : public KerMLListener {
+class  KerMLBaseListener : public KerMLListener {
 public:
 
   virtual void enterStart(KerMLParser::StartContext * /*ctx*/) override { }

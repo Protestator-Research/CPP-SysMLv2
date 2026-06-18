@@ -7,12 +7,14 @@
 namespace KerML::Entities {
 	Multiplicity::Multiplicity(unsigned minimum)
 	{
+		_dType = "Multiplicity";
 		MinimumNumber = minimum;
 		MaximumNumber = MinimumNumber;
 	}
 
 	Multiplicity::Multiplicity(unsigned minimum, unsigned maximum)
 	{
+		_dType = "Multiplicity";
 		MinimumNumber = minimum;
 		MaximumNumber = maximum;
 	}

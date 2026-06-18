@@ -24,6 +24,8 @@ namespace KerML::Entities
 	Subclassification::Subclassification(std::shared_ptr<Classifier> superclassifier, std::shared_ptr<Classifier> subclassifier)
 		: Specialization(superclassifier,subclassifier)
 	{
+		_dType = "Subclassification";
+
 		if (superclassifier == nullptr)
 			throw std::invalid_argument("Superclassifier is not allowed to be null.");
 		Superclassifier = superclassifier;

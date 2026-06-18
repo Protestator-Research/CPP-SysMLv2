@@ -9,6 +9,8 @@ namespace KerML::Entities
 {
 	Differencing::Differencing(std::shared_ptr<Type> typeDifferenced, std::shared_ptr<Type> differencingType)
 	{
+		_dType = "Differencing";
+
 		if (typeDifferenced == nullptr)
 			std::runtime_error("Type Differenced is not allowed to be null");
 

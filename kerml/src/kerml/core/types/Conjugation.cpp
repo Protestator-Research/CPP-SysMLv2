@@ -9,6 +9,8 @@ namespace KerML::Entities
 {
 	Conjungation::Conjungation(std::shared_ptr<Type> originalType, std::shared_ptr<Type> conjugatedType)
 	{
+		_dType = "Conjungation";
+
 		if (originalType == nullptr)
 			throw std::runtime_error("Original Type is not allowed to be a nullptr");
 

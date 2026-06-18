@@ -9,6 +9,8 @@ namespace KerML::Entities
 {
 	Unioning::Unioning(std::shared_ptr<Type> typeUnioned, std::shared_ptr<Type> unioningType)
 	{
+		_dType = "Unioning";
+
 		if (typeUnioned == nullptr)
 			throw std::runtime_error("Type unioned is not allowed to be null");
 		TypeUnionioned = typeUnioned;

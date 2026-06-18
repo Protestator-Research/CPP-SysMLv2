@@ -11,6 +11,7 @@ namespace KerML::Entities {
 		const std::shared_ptr<Feature>& featureOfType, const std::shared_ptr<Feature>& owningFeatureOfType) :
 	Relationship(boost::uuids::random_generator()(), owningFeatureOfType)
 	{
+		_dType = "TypeFeaturing";
 		OwningFeatureOfType = owningFeatureOfType;
 		FeatureOfType = featureOfType;
 		TypeFeaturingOfType = typeFeaturingOfType;
