@@ -1,13 +1,14 @@
-name: Building Command
-
+name: Build For Tag
 
 on:
   push:
+    tags:
+      - '*'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
+    env: # Or as an environment variable
       ARTIFACTORY_URL: ${{ secrets.ARTIFACTORY_URL }}
       ARTIFACTORY_TOKEN: ${{ secrets.ARTIFACTORY_TOKEN }}
       ARTIFACTORY_USER: ${{secrets.ARTIFACTORY_USERNAME}}
@@ -29,9 +30,6 @@ jobs:
       run: |
         ls -al
         cd build
-        conan build .. --version=wip
-    # - name: test
-    #   run: |
-    #     cd build
-    #     conan test .. sysmlv2/wip
-          
+        conan create .. --version=$GITHUB_REF_NAME --build missing
+        conan create .. --version=$GITHUB_REF_NAME -s build_type=Debug --build missing
+        conan upload "sysmllib/*" -c -r protestator-conan

@@ -30,6 +30,6 @@ jobs:
       run: |
         ls -al
         cd build
-        conan create .. --version=1.0-beta-4-main
-        conan create .. --version=1.0-beta-4-main -s build_type=Debug --build missing
-        conan upload "sysmllib/*" -c -r protestator-conan
+        conan create .. --version=1.0-main --build missing
+        conan create .. --version=1.0-main -s build_type=Debug --build missing
+        conan upload "*" -c -r protestator-conan
