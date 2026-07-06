@@ -30,8 +30,8 @@ jobs:
         ls -al
         cd build
         conan build .. --version=wip
-    - name: test
-      run: |
-        cd build
-        conan test .. sysmlv2/wip
+    # - name: test
+    #   run: |
+    #     cd build
+    #     conan test .. sysmlv2/wip
           

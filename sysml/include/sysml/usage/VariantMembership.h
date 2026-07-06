@@ -2,13 +2,12 @@
 // Created by Moritz Herzog on 17.03.26.
 //
 
-#ifndef SYSML_VARIANTMEMBERSHIP_H
-#define SYSML_VARIANTMEMBERSHIP_H
+#pragma once
 
+#include <sysml/sysml_global.h>
 
 namespace SysMLv2::Entities {
-    class VariantMembership {
+    class SYSML_EXPORT VariantMembership {
 
     };
 }// SysMLv2::Entities
-#endif //SYSML_VARIANTMEMBERSHIP_H

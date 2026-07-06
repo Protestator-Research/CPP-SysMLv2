@@ -2,13 +2,12 @@
 // Created by Moritz Herzog on 17.03.26.
 //
 
-#ifndef SYSML_REFERENCEUSAGE_H
-#define SYSML_REFERENCEUSAGE_H
+#pragma once
+
+#include <sysml/sysml_global.h>
 
 namespace SysMLv2::Entities {
-    class ReferenceUsage {
+    class SYSML_EXPORT ReferenceUsage {
 
     };
 } // SysMLv2::Entities
-
-#endif //SYSML_REFERENCEUSAGE_H

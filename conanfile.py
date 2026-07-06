@@ -12,7 +12,7 @@ class CPPSysMLRecipe(ConanFile):
     package_type = "library"
 
     # Optional metadata
-    license = "<Put the package license here>"
+    license = "GPL v3"
     author = "Moritz Herzog"
     url = "https://github.com/Protestator-Research/CPP-SysMLv2"
     description = "This library defines a SysMLv2 C++ Library allowing the usage of this for other projects."
@@ -31,8 +31,7 @@ class CPPSysMLRecipe(ConanFile):
         self.requires("nlohmann_json/[>=3.11.3 <44]")
         self.requires("date/3.0.4")
         self.requires("libcurl/[>=8.4.0 <9]")
-        if(self.options.with_parsing):
-            self.requires("antlr4-cppruntime/4.13.2")
+        self.requires("antlr4-cppruntime/4.13.2")
 
     def config_options(self):
         if self.settings.os == "Windows":
@@ -47,16 +46,14 @@ class CPPSysMLRecipe(ConanFile):
             self.options["date/*"].shared = True
             self.options["gtest/*"].shared = True
             self.options["libcurl/*"].shared = True
-            if(self.options.with_parsing):
-                self.options["antlr4-cppruntime/*"].shared = True
+            self.options["antlr4-cppruntime/*"].shared = True
         else:
             self.options["boost/*"].shared = False
             self.options["nlohmann_json/*"].shared = False
             self.options["date/*"].shared = False
             self.options["gtest/*"].shared = False
             self.options["libcurl/*"].shared = False
-            if(self.options.with_parsing):
-                self.options["antlr4-cppruntime/*"].shared = False
+            self.options["antlr4-cppruntime/*"].shared = False
 
     def layout(self):
         cmake_layout(self)
