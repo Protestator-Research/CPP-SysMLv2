@@ -1,9 +1,9 @@
-name: Main Branch Artifactory Upload
-
+name: Build For Tag
 
 on:
   push:
-    branches: [ "main" ]
+    tags:
+      - '*'
 
 jobs:
   build:
@@ -30,6 +30,6 @@ jobs:
       run: |
         ls -al
         cd build
-        conan create .. --version=1.0-main --build missing
-        conan create .. --version=1.0-main -s build_type=Debug --build missing
-        conan upload "*" -c -r protestator-conan
+        conan create .. --version=$GITHUB_REF_NAME --build missing
+        conan create .. --version=$GITHUB_REF_NAME -s build_type=Debug --build missing
+        conan upload "sysmllib/*" -c -r protestator-conan

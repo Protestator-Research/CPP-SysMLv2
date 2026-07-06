@@ -8,7 +8,6 @@ from sys import platform
 
 class CPPSysMLRecipe(ConanFile):
     name = "sysmllib"
-    #version = ""
     package_type = "library"
 
     # Optional metadata
