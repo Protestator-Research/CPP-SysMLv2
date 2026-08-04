@@ -322,11 +322,17 @@ namespace SysMLv2::API {
     }
 
     std::shared_ptr<SysMLv2::REST::IEntity>
-    SysMLAPIImplementation::postProject(std::shared_ptr<SysMLv2::REST::ProjectRequest> project, std::string barrierString) {
+    SysMLAPIImplementation::postProject(std::shared_ptr<SysMLv2::REST::ProjectRequest> project, std::string barrierString,std::string owner, std::string owningGroup) {
         std::shared_ptr<SysMLv2::REST::IEntity> returnValue = nullptr;
         CURLcode ServerResult;
 
         std::string urlAppendix = "projects";
+
+        if (!owner.empty())
+            urlAppendix += "?owner=" + owner;
+
+        if (!owningGroup.empty())
+            urlAppendix += "?owningGroup=" + owningGroup;
 
         auto serverConnection = setUpServerConnection(urlAppendix.c_str(), barrierString.c_str(), project->serializeToJson().c_str());
 

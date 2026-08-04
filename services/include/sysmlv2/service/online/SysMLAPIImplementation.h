@@ -64,12 +64,15 @@ namespace SysMLv2::API {
         std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> getAllProjects(std::string barrierString);
 
         /**
-         *
-         * @param project 
-         * @param barrierString 
-         * @return 
+         * Uploads a project to the Backend.
+         * @param project The new Project you want to upload.
+         * @param barrierString The string required for authentication.
+         * @param owner The optional username string for authentication of future project calls.
+         * @param owningGroup The optional string of the group for authentication of future project calls.
+         * @return The new Project as the class IEntity
+         * @see SysMLv2::Rest::IEntity
          */
-        std::shared_ptr<SysMLv2::REST::IEntity> postProject(std::shared_ptr<SysMLv2::REST::ProjectRequest> project, std::string barrierString);
+        std::shared_ptr<SysMLv2::REST::IEntity> postProject(std::shared_ptr<SysMLv2::REST::ProjectRequest> project, std::string barrierString, std::string owner = "", std::string owningGroup = "");
 
         /**
          * Posts a commit to the Backend to add changes to a project or a branch.
