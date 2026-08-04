@@ -11,21 +11,29 @@ set(USAGE_HEADER
         include/sysml/usage/ReferenceUsage.h
         include/sysml/usage/VariantMembership.h)
 
-set(ATTRIBUTIONS_HEADER
+set(ATTRIBUTE_HEADER
         include/sysml/attibutes/AttributeDefinition.h
         include/sysml/attibutes/AttributeUsage.h)
+
+set(ENUMERATIONS_HEADER
+        include/sysml/enumerations/EnumerationDefinition.h
+        include/sysml/enumerations/EnumerationUsage.h)
 
 add_library(sysml
         ${GLOBAL_HEADER}
         ${USAGE_HEADER}
-        ${ATTRIBUTIONS_HEADER}
+        ${ATTRIBUTE_HEADER}
+        ${ENUMERATIONS_HEADER}
         src/sysml/usage/Definition.cpp
         src/sysml/usage/Usage.cpp
         src/sysml/usage/ReferenceUsage.cpp
         src/sysml/usage/VariantMembership.cpp
         src/sysml/attributes/AttributeDefinition.cpp
         src/sysml/attributes/AttributeUsage.cpp
-        )
+        src/sysml/enumerations/EnumerationDefinition.cpp
+        src/sysml/enumerations/EnumerationUsage.cpp
+
+)
 
 target_link_libraries(sysml PRIVATE
         boost::boost
@@ -39,7 +47,8 @@ include(GNUInstallDirs)
 install(TARGETS sysml ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS sysml RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${USAGE_ELEMENTS_HEADER} DESTINATION include/sysml/usage)
-install(FILES ${ATTRIBUTIONS_HEADER} DESTINATION include/sysml/attributes)
+install(FILES ${ATTRIBUTE_HEADER} DESTINATION include/sysml/attributes)
+install(FILES ${ENUMERATIONS_HEADER} DESTINATION include/sysml/enumerations)
 
 
 if(MSVC)
