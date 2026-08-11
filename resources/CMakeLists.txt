@@ -48,6 +48,71 @@ cmrc_add_resource_library(sysmlv2resources
     sysml.library/KerML/Function/StringFunctions.kerml
     sysml.library/KerML/Function/TrigFunctions.kerml
     sysml.library/KerML/Function/VectorFunctions.kerml
+
+        sysml.library/DomainLibraries/Analysis/AnalysisTooling.sysml
+        sysml.library/DomainLibraries/Analysis/SampledFunctions.sysml
+        sysml.library/DomainLibraries/Analysis/StateSpaceRepresentation.sysml
+        sysml.library/DomainLibraries/Analysis/TradeStudies.sysml
+
+        sysml.library/DomainLibraries/CauseAndEffect/CausationConnections.sysml
+        sysml.library/DomainLibraries/CauseAndEffect/CauseAndEffect.sysml
+
+        sysml.library/DomainLibraries/Geometry/ShapeItems.sysml
+        sysml.library/DomainLibraries/Geometry/SpatialItems.sysml
+
+        sysml.library/DomainLibraries/Metadata/ImageMetadata.sysml
+        sysml.library/DomainLibraries/Metadata/ModelingMetadata.sysml
+        sysml.library/DomainLibraries/Metadata/ParametersOfInterestMetadata.sysml
+        sysml.library/DomainLibraries/Metadata/RiskMetadata.sysml
+
+        sysml.library/DomainLibraries/QuantitiesAndUnits/ISQ.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/ISQAcoustics.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/ISQAtomicNuclear.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/ISQBase.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/ISQCharacteristicNumbers.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/ISQChemistryMolecular.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/ISQCondensedMatter.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/ISQElectromagnetism.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/ISQInformation.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/ISQLight.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/ISQMechanics.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/ISQSpaceTime.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/ISQThermodynamics.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/MeasurementRefCalculations.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/MeasurementReferences.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/QuantityCalculations.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/Quantities.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/SI.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/SIPrefixes.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/TensorCalculations.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/Time.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/USCustomaryUnits.sysml
+        sysml.library/DomainLibraries/QuantitiesAndUnits/VectorCalculations.sysml
+
+        sysml.library/DomainLibraries/RequirementDerivation/DerivationConnections.sysml
+        sysml.library/DomainLibraries/RequirementDerivation/RequirementDerivation.sysml
+
+        sysml.library/SystemsLibrary/Actions.sysml
+        sysml.library/SystemsLibrary/Allocations.sysml
+        sysml.library/SystemsLibrary/AnalysisCases.sysml
+        sysml.library/SystemsLibrary/Attributes.sysml
+        sysml.library/SystemsLibrary/Calculations.sysml
+        sysml.library/SystemsLibrary/Cases.sysml
+        sysml.library/SystemsLibrary/Connections.sysml
+        sysml.library/SystemsLibrary/Constraints.sysml
+        sysml.library/SystemsLibrary/Flows.sysml
+        sysml.library/SystemsLibrary/Interfaces.sysml
+        sysml.library/SystemsLibrary/Items.sysml
+        sysml.library/SystemsLibrary/Metadata.sysml
+        sysml.library/SystemsLibrary/Parts.sysml
+        sysml.library/SystemsLibrary/Ports.sysml
+        sysml.library/SystemsLibrary/Requirements.sysml
+        sysml.library/SystemsLibrary/StandardViewDefinitions.sysml
+        sysml.library/SystemsLibrary/States.sysml
+        sysml.library/SystemsLibrary/SysML.sysml
+        sysml.library/SystemsLibrary/UseCases.sysml
+        sysml.library/SystemsLibrary/VerificationCases.sysml
+        sysml.library/SystemsLibrary/Views.sysml
 )
 
 include(GNUInstallDirs)
