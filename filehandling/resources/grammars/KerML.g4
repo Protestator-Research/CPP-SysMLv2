@@ -12,7 +12,7 @@ startRule: start;
 
 elements: element*;
 
-identification: '<' NAME '>' | NAME;
+identification: SYMBOL_SMALLER NAME SYMBOL_GREATER | NAME;
 relationship_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN relationship_onwed_elements SYMBOL_CURLY_BRACKET_CLOSE);
 relationship_onwed_elements: relationship_owned_element*;
 relationship_owned_element: owned_related_element | owned_annotation;
@@ -360,7 +360,7 @@ prefix_metadata_member: SYMBOL_HASHTAG prefix_metadata_feature;
 prefix_metadata_feature: owned_feature_typing;
 metadata_feature: (prefix_metadata_member)* (SYMBOL_AT | KEYWORD_METADATA) metadata_feature_declaration (KEYWORD_ABOUT annotation (SYMBOL_COMMA annotation));
 metadata_feature_declaration: (identification (SYMBOL_TYPED_BY | KEYWORD_TYPED KEYWORD_BY))? owned_feature_typing;
-metadata_body: ';' | (SYMBOL_CURLY_BRACKET_OPEN (metadata_body_element)* SYMBOL_CURLY_BRACKET_CLOSE);
+metadata_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN (metadata_body_element)* SYMBOL_CURLY_BRACKET_CLOSE);
 metadata_body_element: non_feature_member |
                        metadata_body_feature_member |
                        alias_member |
