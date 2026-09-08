@@ -4,8 +4,8 @@
 #pragma once
 
 
-#include "antlr4-runtime.h"
-#include "SysMLv2Listener.h"
+#include <antlr4-runtime.h>
+#include <sysmlv2/parser/SysMLv2Listener.h>
 
 
 /**

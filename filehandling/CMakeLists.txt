@@ -14,6 +14,7 @@ set(GLOBAL_HEADER
         include/sysmlv2/Parser.h)
 
 set(KERML_PARSER_HEADER
+        include/kerml/ErrorTypes.h
         include/kerml/parser/KerMLBaseListener.h
         include/kerml/parser/KerMLLexer.h
         include/kerml/parser/KerMLListener.h

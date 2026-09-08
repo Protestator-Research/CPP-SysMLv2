@@ -4,8 +4,8 @@
 #pragma once
 
 
-#include "antlr4-runtime.h"
-#include "KerMLParser.h"
+#include <antlr4-runtime.h>
+#include <kerml/parser/KerMLParser.h>
 
 
 /**

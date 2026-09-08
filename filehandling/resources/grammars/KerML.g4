@@ -12,7 +12,7 @@ startRule: start;
 
 elements: element*;
 
-identification: SYMBOL_SMALLER NAME SYMBOL_GREATER | NAME;
+identification: (SYMBOL_SMALLER NAME SYMBOL_GREATER)? NAME;
 relationship_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN relationship_onwed_elements SYMBOL_CURLY_BRACKET_CLOSE);
 relationship_onwed_elements: relationship_owned_element*;
 relationship_owned_element: owned_related_element | owned_annotation;
@@ -212,7 +212,7 @@ owned_expression_reference_member: owned_expression_reference;
 owned_expression_reference: owned_expression_member;
 owned_expression_member: owned_expressions;
 owned_expressions: owned_expression+;
-owned_expression: conditional_expression |
+owned_expression: base_expression | conditional_expression |
                   conditional_binary_operator_expression |
                   binary_operator_expression |
                   unary_operator_expression |
@@ -235,7 +235,7 @@ cast_operator: KEYWORD_AS;
 metaclassification_expression: metadata_argument_member (metadataclassification_test_operator type_reference_member) | (meta_cast_operator type_result_member);
 argument_member: argument;
 argument: argument_value;
-argument_value: eased_owned_expression;
+argument_value: eased_owned_expression | STRING_VALUE;
 argument_expression_member: argument_expression;
 argument_expression: argument_expression_value;
 argument_expression_value: owned_expression_reference;
@@ -289,11 +289,11 @@ function_reference:  reference_typing;
 feature_chain_member: feature_reference_member | owned_feature_chain_member;
 owned_feature_chain_member: feature_chain;
 
-base_expression: null_expression |
+base_expression: invocation_expression |
+                 null_expression |
                  literal_expression |
                  feature_reference_expression |
                  metadata_access_expression |
-                 invocation_expression |
                  body_expression;
 null_expression: KEYWORD_NULL | SYMBOL_ROUND_BRACKET_OPEN SYMBOL_ROUND_BRACKET_CLOSE;
 feature_reference_expression: feature_reference_member;
@@ -302,12 +302,12 @@ feature_reference: qualified_name;
 
 metadata_access_expression: qualified_name SYMBOL_DOT KEYWORD_METADATA;
 invocation_expression: internal_invocation_expression;
-internal_invocation_expression: (owned_feature_typing | named_argument_list) argument_list;
-argument_list: SYMBOL_ROUND_BRACKET_OPEN (owned_expressions positional_argument_list | named_argument_list)? SYMBOL_ROUND_BRACKET_CLOSE;
-positional_argument_list: argument_member (SYMBOL_COMMA owned_expressions)*;
+internal_invocation_expression: owned_feature_typing  argument_list; //named_argument_list
+argument_list: SYMBOL_ROUND_BRACKET_OPEN (named_argument_list |  positional_argument_list)? SYMBOL_ROUND_BRACKET_CLOSE;
+positional_argument_list: owned_expression (SYMBOL_COMMA owned_expression)*;
 named_argument_list: named_argument_member (SYMBOL_COMMA named_argument_member)*;
 named_argument_member: named_argument;
-named_argument: paramenter_redefinition SYMBOL_EQUALS owned_expressions;
+named_argument: paramenter_redefinition (SYMBOL_EQUALS owned_expressions);
 paramenter_redefinition: qualified_name;
 body_expression: expression_body_member;
 expression_body_member: expression_body;
