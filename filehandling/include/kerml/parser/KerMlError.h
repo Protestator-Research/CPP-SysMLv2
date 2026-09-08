@@ -6,21 +6,14 @@
 
 #include <string>
 #include <sysmlv2/sysmlv2file_global.h>
+#include <kerml/ErrorTypes.h>
 
 //namespace KerML::Parser {
-    enum KerMLErrorType {
-        SYNTAX_ERROR,
-        AMBIGUITY_ERROR,
-        CONTEXT_SENSITIVITY_ERROR,
-        ATTEMPTING_FULL_CONTEXT_ERROR
-    };
-
-
     class SYSMLV2FILE_EXPORT KerMLError {
     public:
         KerMLError() = delete;
 
-        KerMLError(KerMLErrorType errorType, int line, int postionInLine, std::string message);
+        KerMLError(KerML::Parser::ErrorTypes errorType, int line, int postionInLine, std::string message);
 
         virtual ~KerMLError() = default;
 
@@ -30,10 +23,10 @@
 
         int positionInLine();
 
-        KerMLErrorType errorType();
+        KerML::Parser::ErrorTypes errorType();
 
     private:
-        KerMLErrorType ErrorType;
+        KerML::Parser::ErrorTypes ErrorType;
         std::string ErrorMessage;
         int Line;
         int PositionInLine;

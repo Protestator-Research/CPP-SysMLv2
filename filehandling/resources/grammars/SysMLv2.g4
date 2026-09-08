@@ -4,7 +4,7 @@ import KerML;
 
 start: start_element* EOF;
 
-start_element: element | definition_element | usage_element;
+start_element: element | usage_element | definition_element;
 
 startRule: start;
 
@@ -29,7 +29,7 @@ package_body_element: package_member |
                       alias_member |
                       namespace_import;
 
-package_member: definition_element | usage_element;
+package_member: usage_element | definition_element ;
 alias_member: member_prefix KEYWORD_ALIAS ('<'NAME'>')? NAME? KEYWORD_FOR qualified_name relationship_body;
 
 definition_element: package |
@@ -217,7 +217,8 @@ connecotr_end: owned_cross_multiplicity_member? (declared_name = NAME REFERENCES
 owned_cross_multiplicity_member: owned_cross_multiplicity;
 owned_cross_multiplicity: owned_multiplicity;
 
-binding_connector_as_usage: usage_prefix (KEYWORD_BINDING usage_declaration)? KEYWORD_BIND connector_end_member SYMBOL_ASSIGN connector_end_member usage_body;
+binding_connector_as_usage: usage_prefix (KEYWORD_BINDING usage_declaration)? KEYWORD_BIND connector_end_member ;
+binding_end_usage_member: SYMBOL_ASSIGN connector_end_member usage_body;
 succession_as_usage: usage_prefix (KEYWORD_SUCCSESSION usage_declaration)? KEYWORD_FIRST connector_end_member KEYWORD_THEN connector_end_member usage_body;
 
 interface_definition: occurrence_definition_prefix KEYWORD_INTERFACE KEYWORD_DEF definition_declaration interface_body;
@@ -356,9 +357,9 @@ state_body_item: non_behavior_body_item |
                  entry_action_member entry_transition_member* |
                  do_action_member |
                  exit_action_member;
-entry_action_member: member_prefix kind = KEYWORD_ENTRY state_action_usage;
-do_action_member: member_prefix kind = KEYWORD_DO state_action_usage;
-exit_action_member: member_prefix kind = KEYWORD_EXIT state_action_usage;
+entry_action_member: member_prefix {kind = KEYWORD_ENTRY} state_action_usage;
+do_action_member: member_prefix {kind = KEYWORD_DO} state_action_usage;
+exit_action_member: member_prefix {kind = KEYWORD_EXIT} state_action_usage;
 entry_transition_member: member_prefix (guarded_target_succession | KEYWORD_THEN target_succession) SYMBOL_STATEMENT_DELIMITER;
 state_action_usage: empty_action_usage SYMBOL_STATEMENT_DELIMITER |
                     state_perform_action_uage |
@@ -491,14 +492,14 @@ prefix_metadata_annotation: SYMBOL_HASHTAG prefix_metadata_usage annotating_elem
 prefix_metadata_member: SYMBOL_HASHTAG prefix_metadata_usage;
 prefix_metadata_usage: owned_feature_typing;
 metadata_usage: usage_extention_keyword* (SYMBOL_AT | KEYWORD_METADATA) metadata_usage_declaration (KEYWORD_ABOUT annotation (SYMBOL_COMMA annotation)*)? metadata_body;
-metadata_usage_declaration: (identification (SYMBOL_TYPED_BY | KEYWORD_TYPED KEYWORD_BY))? owned_feature_typing;
+metadata_usage_declaration: (identification defined_by)? owned_feature_typing;
 metadata_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN (definition_member | metadata_body_usage_member | alias_member | namespace_import) SYMBOL_CURLY_BRACKET_CLOSE;
 metadata_body_usage_member: metadata_body_usage;
 metadata_body_usage: KEYWORD_REF? REDEFINES? owned_redefinition feature_specialization_part? value_part? metadata_body;
 extended_definition: basic_definition_prefix? definition_extension_keyword+ KEYWORD_DEF definition;
 extended_usage: unextended_usage_prefix usage_extention_keyword+ usage;
 
-DEFINED_BY: SYMBOL_TYPED_BY | KEYWORD_DEFINED KEYWORD_BY;
+defined_by: SYMBOL_TYPED_BY | KEYWORD_DEFINED KEYWORD_BY;
 CROSSES: SYMBOL_CROSSES | KEYWORD_CROSSES;
 
 //Keywords

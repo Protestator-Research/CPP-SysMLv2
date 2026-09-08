@@ -3,6 +3,7 @@
 //
 
 #include <kerml/parser/KerMlErrorListener.h>
+#include <kerml/ErrorTypes.h>
 
 KerMLErrorListener::KerMLErrorListener() {
 
@@ -10,7 +11,7 @@ KerMLErrorListener::KerMLErrorListener() {
 
 void KerMLErrorListener::syntaxError(antlr4::Recognizer *, antlr4::Token *, size_t line,
                                      size_t charPositionInLine, const std::string &msg, std::exception_ptr ) {
-    SyntaxErrors.push_back(std::make_shared<KerMLError>(SYNTAX_ERROR,line,charPositionInLine,msg));
+    SyntaxErrors.push_back(std::make_shared<KerMLError>(KerML::Parser::SYNTAX_ERROR,line,charPositionInLine,msg));
 }
 
 void KerMLErrorListener::reportAttemptingFullContext(antlr4::Parser *, const antlr4::dfa::DFA &,

@@ -26,7 +26,9 @@ set(SYSML_PARSER_HEADER
         include/sysmlv2/parser/SysMLv2BaseListener.h
         include/sysmlv2/parser/SysMLv2Lexer.h
         include/sysmlv2/parser/SysMLv2Listener.h
-        include/sysmlv2/parser/SysMLv2Parser.h)
+        include/sysmlv2/parser/SysMLv2Parser.h
+        include/sysmlv2/parser/SysMLv2Error.h
+        include/sysmlv2/parser/SysMLv2ErrorListener.h)
 
 add_library(sysmlv2parser
         ${KERML_PARSER_HEADER}
@@ -36,14 +38,16 @@ add_library(sysmlv2parser
         src/kerml/parser/KerMLLexer.cpp
         src/kerml/parser/KerMLListener.cpp
         src/kerml/parser/KerMLParser.cpp
-        src/sysml2/parser/SysMLv2BaseListener.cpp
-        src/sysml2/parser/SysMLv2Lexer.cpp
-        src/sysml2/parser/SysMLv2Listener.cpp
-        src/sysml2/parser/SysMLv2Parser.cpp
+        src/sysmlv2/parser/SysMLv2BaseListener.cpp
+        src/sysmlv2/parser/SysMLv2Lexer.cpp
+        src/sysmlv2/parser/SysMLv2Listener.cpp
+        src/sysmlv2/parser/SysMLv2Parser.cpp
         src/kerml/parser/KerMlErrorListener.cpp
         src/kerml/parser/KerMlError.cpp
-        src/sysml2/Parser.cpp
-        src/sysml2/ParserError.cpp
+        src/sysmlv2/parser/SysMLv2ErrorListener.cpp
+        src/sysmlv2/parser/SysMLv2Error.cpp
+        src/sysmlv2/Parser.cpp
+        src/sysmlv2/ParserError.cpp
         src/kerml/parser/KerMlListenerImplementation.cpp)
 
 #if((EXISTS antlr4_shared) OR (MSVC))

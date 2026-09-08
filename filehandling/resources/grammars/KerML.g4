@@ -342,7 +342,7 @@ item_flow_feature: item_flow_redefinition;
 item_flow_redefinition: qualified_name;
 
 value_part: feature_value;
-feature_value:(SYMBOL_EQUALS | SYMBOL_DEF_ASSIGN | KEYWORD_DEFAULT (SYMBOL_EQUALS | SYMBOL_DEF_ASSIGN)?) owned_expression;
+feature_value:(SYMBOL_ASSIGN | SYMBOL_DEF_ASSIGN | KEYWORD_DEFAULT (SYMBOL_ASSIGN | SYMBOL_DEF_ASSIGN)?) owned_expression;
 feature_assignment: SYMBOL_ASSIGN owned_expression;
 
 multiplicity: multiplicity_subset | multiplicity_range;
@@ -545,4 +545,4 @@ DECIMAL_VALUE: [0-9]+ ;
 EXPONENTIAL_VALUE: DECIMAL_VALUE ('e' | 'E') ('+'|'-') DECIMAL_VALUE;
 STRING_VALUE: '"' .*? '"';
 
-WS: [ \t\r\n]+ -> skip ;
+WS: [ \t\r\n]+ -> channel(HIDDEN) ;

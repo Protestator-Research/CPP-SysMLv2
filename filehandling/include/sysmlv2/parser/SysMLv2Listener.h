@@ -1,11 +1,11 @@
 
-// Generated from SysMLv2.g4 by ANTLR 4.13.2
+// Generated from ./SysMLv2.g4 by ANTLR 4.13.2
 
 #pragma once
 
 
-#include <antlr4-runtime.h>
-#include <sysmlv2/parser/SysMLv2Parser.h>
+#include "antlr4-runtime.h"
+#include "SysMLv2Parser.h"
 
 
 /**
@@ -307,6 +307,9 @@ public:
 
   virtual void enterBinding_connector_as_usage(SysMLv2Parser::Binding_connector_as_usageContext *ctx) = 0;
   virtual void exitBinding_connector_as_usage(SysMLv2Parser::Binding_connector_as_usageContext *ctx) = 0;
+
+  virtual void enterBinding_end_usage_member(SysMLv2Parser::Binding_end_usage_memberContext *ctx) = 0;
+  virtual void exitBinding_end_usage_member(SysMLv2Parser::Binding_end_usage_memberContext *ctx) = 0;
 
   virtual void enterSuccession_as_usage(SysMLv2Parser::Succession_as_usageContext *ctx) = 0;
   virtual void exitSuccession_as_usage(SysMLv2Parser::Succession_as_usageContext *ctx) = 0;
@@ -907,6 +910,9 @@ public:
 
   virtual void enterExtended_usage(SysMLv2Parser::Extended_usageContext *ctx) = 0;
   virtual void exitExtended_usage(SysMLv2Parser::Extended_usageContext *ctx) = 0;
+
+  virtual void enterDefined_by(SysMLv2Parser::Defined_byContext *ctx) = 0;
+  virtual void exitDefined_by(SysMLv2Parser::Defined_byContext *ctx) = 0;
 
   virtual void enterElements(SysMLv2Parser::ElementsContext *ctx) = 0;
   virtual void exitElements(SysMLv2Parser::ElementsContext *ctx) = 0;

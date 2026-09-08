@@ -1,4 +1,4 @@
-//
+ //
 // Created by Moritz Herzog on 30.04.25.
 //
 //---------------------------------------------------------
@@ -44,7 +44,7 @@ namespace SysMLv2::Files {
 		static std::pair<std::vector<std::shared_ptr<KerML::Entities::Element>>,std::vector<std::shared_ptr<ParserError>>> parseKerML(std::string text);
 
 		/**
-		 * 
+		 * Parses the SysML text given by the user.
 		 * @param text 
 		 * @return 
 		 */
