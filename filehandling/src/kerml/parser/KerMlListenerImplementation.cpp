@@ -601,7 +601,8 @@ void KerMLListenerImplementation::exitClassifier_declaration(KerMLParser::Classi
         throw std::runtime_error("Wrong type on stack!");
     }
     //TODO Keyword All
-    classifier->setDeclaredName(ctx->identification()->NAME()->getText());
+    //TODO Needs fixing
+    //classifier->setDeclaredName(ctx->identification()->NAME()->getText());
     //TODO Superclassig Part & Conjunction
 }
 

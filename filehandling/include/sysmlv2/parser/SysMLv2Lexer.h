@@ -4,12 +4,12 @@
 #pragma once
 
 
-#include "antlr4-runtime.h"
+#include <antlr4-runtime.h>
+#include <sysmlv2/sysmlv2file_global.h>
 
 
 
-
-class  SysMLv2Lexer : public antlr4::Lexer {
+class SYSMLV2FILE_EXPORT SysMLv2Lexer : public antlr4::Lexer {
 public:
   enum {
     T__0 = 1, CROSSES = 2, KEYWORD_ACCEPT = 3, KEYWORD_ACTION = 4, KEYWORD_ACTOR = 5, 

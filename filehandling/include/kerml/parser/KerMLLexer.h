@@ -4,12 +4,12 @@
 #pragma once
 
 
-#include "antlr4-runtime.h"
+#include <antlr4-runtime.h>
+#include <sysmlv2/sysmlv2file_global.h>
 
 
 
-
-class  KerMLLexer : public antlr4::Lexer {
+class SYSMLV2FILE_EXPORT KerMLLexer : public antlr4::Lexer {
 public:
   enum {
     T__0 = 1, MULTIPLICITY_PART_ELEMENTS = 2, TYPED_BY = 3, SPECIALIZES = 4, 
