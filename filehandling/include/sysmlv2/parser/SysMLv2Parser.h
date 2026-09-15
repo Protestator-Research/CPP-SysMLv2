@@ -5,11 +5,11 @@
 
 
 #include <antlr4-runtime.h>
+#include <sysmlv2/sysmlv2file_global.h>
 
 
 
-
-class  SysMLv2Parser : public antlr4::Parser {
+class SYSMLV2FILE_EXPORT SysMLv2Parser : public antlr4::Parser {
 public:
   enum {
     T__0 = 1, CROSSES = 2, KEYWORD_ACCEPT = 3, KEYWORD_ACTION = 4, KEYWORD_ACTOR = 5, 
