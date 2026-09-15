@@ -4,4 +4,3 @@
 
 #include <kerml/parser/KerMLListener.h>
 
-

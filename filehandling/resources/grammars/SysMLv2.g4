@@ -62,9 +62,10 @@ definition_element: package |
                     viewpoint_definition |
                     rendering_definition |
                     metadata_definition |
-                    extended_definition;
+                    extended_definition |
+                    non_feature_element;
 
-usage_element: non_occurrence_usage_element | occurrence_usage_element;
+usage_element: non_occurrence_usage_element | occurrence_usage_element | feature_element;
 
 basic_definition_prefix: KEYWORD_ABSTRACT | KEYWORD_VARIATION;
 definition_extension_keyword: prefix_metadata_member;
