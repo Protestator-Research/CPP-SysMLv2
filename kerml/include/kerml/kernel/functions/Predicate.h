@@ -1,11 +1,11 @@
-//
-// Created by Moritz Herzog on 31.03.25.
-//
-
 #pragma once
 
-namespace KerML::Entities {
-    class Predicate {
+#include <kerml/kerml_global.h>
+#include <kerml/kernel/functions/Function.h>
 
+namespace KerML::Entities {
+    class KERML_EXPORT Predicate : public virtual Function {
+    public:
+        virtual ~Predicate() = default;
     };
-} // KerML::Entities
+}

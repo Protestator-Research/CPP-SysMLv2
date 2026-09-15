@@ -8,7 +8,7 @@
 namespace KerML::Entities {
 
     FeatureInverting::FeatureInverting(std::shared_ptr<Feature> featureInverted, std::shared_ptr<Feature> invertingFeature, boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
-            Relationship(elementID, owner)
+            Element(elementID, owner), Relationship(elementID, owner)
     {
         _dType = "FeatureInverting";
 

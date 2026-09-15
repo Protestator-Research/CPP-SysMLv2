@@ -7,9 +7,9 @@
 
 namespace KerML::Entities
 {
-	Conjungation::Conjungation(std::shared_ptr<Type> originalType, std::shared_ptr<Type> conjugatedType)
+	Conjugation::Conjugation(std::shared_ptr<Type> originalType, std::shared_ptr<Type> conjugatedType)
 	{
-		_dType = "Conjungation";
+		_dType = "Conjugation";
 
 		if (originalType == nullptr)
 			throw std::runtime_error("Original Type is not allowed to be a nullptr");
@@ -21,12 +21,12 @@ namespace KerML::Entities
 		ConjugatedType = conjugatedType;
 	}
 
-	std::shared_ptr<Type> Conjungation::originalType()
+	std::shared_ptr<Type> Conjugation::originalType()
 	{
 		return OriginalType;
 	}
 
-	void Conjungation::setOrginalType(std::shared_ptr<Type> originalType)
+	void Conjugation::setOrginalType(std::shared_ptr<Type> originalType)
 	{
 		if (originalType == nullptr)
 			throw std::runtime_error("Original Type is not allowed to be a nullptr");
@@ -34,24 +34,24 @@ namespace KerML::Entities
 		OriginalType = originalType;
 	}
 
-	std::shared_ptr<Type> Conjungation::conjungatedType()
+	std::shared_ptr<Type> Conjugation::conjungatedType()
 	{
 		return ConjugatedType;
 	}
 
-	void Conjungation::setConjungatedType(std::shared_ptr<Type> conjungatedType)
+	void Conjugation::setConjungatedType(std::shared_ptr<Type> conjungatedType)
 	{
 		if (conjungatedType == nullptr)
 			throw std::runtime_error("Conjungated Type is not allowed to be a nullptr");
 		ConjugatedType = conjungatedType;
 	}
 
-	std::shared_ptr<Type> Conjungation::owningType()
+	std::shared_ptr<Type> Conjugation::owningType()
 	{
 		return OwningType;
 	}
 
-	void Conjungation::setOwningType(std::shared_ptr<Type> owningType)
+	void Conjugation::setOwningType(std::shared_ptr<Type> owningType)
 	{
 		OwningType = owningType;
 	}

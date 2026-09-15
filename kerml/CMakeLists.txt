@@ -241,6 +241,8 @@ target_link_libraries(kerml PRIVATE
 
 
 include(GNUInstallDirs)
+# Include new KerML support types and compatibility forwarding headers.
+install(DIRECTORY include/kerml DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 install(TARGETS kerml ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS kerml RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${ROOT_ELEMENTS_HEADER} DESTINATION include/kerml/root/elements)

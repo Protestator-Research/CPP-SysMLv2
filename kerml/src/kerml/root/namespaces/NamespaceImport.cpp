@@ -7,13 +7,13 @@
 
 namespace KerML::Entities {
     NamespaceImport::NamespaceImport(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
-    Import(elementID, owner) {
+    Element(elementID, owner), Import(elementID, owner) {
         ImportedNamespace = nullptr;
         _dType = "NamespaceImport";
     }
 
     NamespaceImport::NamespaceImport(std::string elementID, std::shared_ptr<Element> owner) :
-    Import(elementID, owner) {
+    Element(elementID, owner), Import(elementID, owner) {
         ImportedNamespace = nullptr;
         _dType = "NamespaceImport";
     }
@@ -27,7 +27,7 @@ namespace KerML::Entities {
     }
 
     NamespaceImport::NamespaceImport(VisibilityKind visibility, bool isRecursive, bool isImportAll, std::shared_ptr<Namespace> importOwningNamespace, std::shared_ptr<Namespace> importedNamespace, boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
-     Import(visibility, isRecursive, isImportAll, importOwningNamespace, elementID, owner) {
+     Element(elementID, owner), Import(visibility, isRecursive, isImportAll, importOwningNamespace, elementID, owner) {
         ImportedNamespace = importedNamespace;
     }
 

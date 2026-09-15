@@ -19,13 +19,13 @@
 
 namespace KerML::Entities {
 	Classifier::Classifier(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
-		Type(elementID, owner)
+		Element(elementID, owner), Type(elementID, owner)
 	{
 		_dType = "Classifier";
 	}
 
 	Classifier::Classifier(std::string namespaceName, boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
-	Type(namespaceName,elementID,owner)
+	Element(elementID, owner), Type(namespaceName,elementID,owner)
 	{
 		_dType = "Classifier";
 	}

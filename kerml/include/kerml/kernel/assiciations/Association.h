@@ -1,14 +1,12 @@
-//
-// Created by Moritz Herzog on 25.03.25.
-//
-
 #pragma once
 
+#include <kerml/kerml_global.h>
 #include <kerml/core/classifiers/Classifier.h>
 #include <kerml/root/elements/Relationship.h>
 
 namespace KerML::Entities {
-    class Association : public Classifier, Relationship{
-
+    class KERML_EXPORT Association : public virtual Classifier, public virtual Relationship {
+    public:
+        virtual ~Association() = default;
     };
 }

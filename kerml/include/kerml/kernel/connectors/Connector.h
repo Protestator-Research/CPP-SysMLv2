@@ -1,14 +1,12 @@
-//
-// Created by Moritz Herzog on 31.03.25.
-//
+#pragma once
 
-#ifndef CPP_SYSMLV2_CONNECTOR_H
-#define CPP_SYSMLV2_CONNECTOR_H
+#include <kerml/kerml_global.h>
+#include <kerml/core/features/Feature.h>
+#include <kerml/root/elements/Relationship.h>
 
 namespace KerML::Entities {
-    class Connector {
-
+    class KERML_EXPORT Connector : public virtual Feature, public virtual Relationship {
+    public:
+        virtual ~Connector() = default;
     };
-} // KerML::Entities
-
-#endif //CPP_SYSMLV2_CONNECTOR_H
+}

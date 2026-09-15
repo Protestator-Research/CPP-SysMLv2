@@ -29,7 +29,7 @@ namespace KerML::Entities {
      * @version Version 1.0 Beta 3
      * @brief Represents an element that allows for anntoations.
      */
-    class KERML_EXPORT AnnotatingElement : public Element{
+    class KERML_EXPORT AnnotatingElement : public virtual Element{
     public:
         /**
          * @brief Constructor

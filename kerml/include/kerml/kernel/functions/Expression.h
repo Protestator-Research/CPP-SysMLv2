@@ -1,11 +1,11 @@
-//
-// Created by Moritz Herzog on 31.03.25.
-//
-
 #pragma once
 
-namespace KerML::Entities {
-    class Expression {
+#include <kerml/kerml_global.h>
+#include <kerml/kernel/behaviors/Step.h>
 
+namespace KerML::Entities {
+    class KERML_EXPORT Expression : public virtual Step {
+    public:
+        virtual ~Expression() = default;
     };
-} // KerML::Entities
+}

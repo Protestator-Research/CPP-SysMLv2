@@ -21,7 +21,7 @@
 namespace KerML::Entities {
     class Membership;
 
-    class KERML_EXPORT MembershipImport : public Import {
+    class KERML_EXPORT MembershipImport : public virtual Import {
     public:
         MembershipImport();
         ~MembershipImport() override = default;

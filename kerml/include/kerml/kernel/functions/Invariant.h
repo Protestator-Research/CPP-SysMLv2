@@ -1,11 +1,11 @@
-//
-// Created by Moritz Herzog on 31.03.25.
-//
-
 #pragma once
 
-namespace KerML::Entities {
-    class Invariant {
+#include <kerml/kerml_global.h>
+#include <kerml/kernel/functions/BooleanExpression.h>
 
+namespace KerML::Entities {
+    class KERML_EXPORT Invariant : public virtual BooleanExpression {
+    public:
+        virtual ~Invariant() = default;
     };
-} // KerML::Entities
+}

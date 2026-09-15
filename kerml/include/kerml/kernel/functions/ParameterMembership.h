@@ -1,11 +1,11 @@
-//
-// Created by Moritz Herzog on 31.03.25.
-//
-
 #pragma once
 
-namespace KerML::Entities {
-    class ParameterMembership {
+#include <kerml/kerml_global.h>
+#include <kerml/core/features/FeatureMembership.h>
 
+namespace KerML::Entities {
+    class KERML_EXPORT ParameterMembership : public virtual FeatureMembership {
+    public:
+        virtual ~ParameterMembership() = default;
     };
-} // KerML::Entities
+}

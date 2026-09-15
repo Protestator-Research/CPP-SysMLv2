@@ -1,11 +1,12 @@
-//
-// Created by Moritz Herzog on 31.03.25.
-//
-
 #pragma once
 
-namespace KerML::Entities {
-    class MetadataFeature {
+#include <kerml/kerml_global.h>
+#include <kerml/root/annotations/AnnotatingElement.h>
+#include <kerml/core/features/Feature.h>
 
+namespace KerML::Entities {
+    class KERML_EXPORT MetadataFeature : public virtual AnnotatingElement, public virtual Feature {
+    public:
+        virtual ~MetadataFeature() = default;
     };
-} // KerML::Entities
+}
