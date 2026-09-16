@@ -218,7 +218,7 @@ connecotr_end: owned_cross_multiplicity_member? (declared_name = NAME REFERENCES
 owned_cross_multiplicity_member: owned_cross_multiplicity;
 owned_cross_multiplicity: owned_multiplicity;
 
-binding_connector_as_usage: usage_prefix (KEYWORD_BINDING usage_declaration)? KEYWORD_BIND connector_end_member ;
+binding_connector_as_usage: usage_prefix (KEYWORD_BINDING usage_declaration)? KEYWORD_BIND connector_end_member binding_end_usage_member;
 binding_end_usage_member: SYMBOL_ASSIGN connector_end_member usage_body;
 succession_as_usage: usage_prefix (KEYWORD_SUCCSESSION usage_declaration)? KEYWORD_FIRST connector_end_member KEYWORD_THEN connector_end_member usage_body;
 
