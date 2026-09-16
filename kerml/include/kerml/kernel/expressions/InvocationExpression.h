@@ -1,11 +1,11 @@
-//
-// Created by Moritz Herzog on 31.03.25.
-//
-
 #pragma once
 
-namespace KerML::Entities {
-    class InvocationExpression {
+#include <kerml/kerml_global.h>
+#include <kerml/kernel/expressions/InstantiationExpression.h>
 
+namespace KerML::Entities {
+    class KERML_EXPORT InvocationExpression : public virtual InstantiationExpression {
+    public:
+        virtual ~InvocationExpression() = default;
     };
 }

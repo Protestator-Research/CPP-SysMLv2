@@ -7,7 +7,7 @@
 
 namespace KerML {
     namespace Entities {
-        Import::Import(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) : Relationship(elementID, owner) {
+        Import::Import(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) : Element(elementID, owner), Relationship(elementID, owner) {
             ImportOwningNamespace = nullptr;
             Visibility = VisibilityKind::PRIVATE;
             IsImportAll = false;
@@ -15,7 +15,7 @@ namespace KerML {
             _dType = "Import";
         }
 
-        Import::Import(std::string elementID, std::shared_ptr<Element> owner) : Relationship(elementID, owner) {
+        Import::Import(std::string elementID, std::shared_ptr<Element> owner) : Element(elementID, owner), Relationship(elementID, owner) {
             ImportOwningNamespace = nullptr;
             Visibility = VisibilityKind::PRIVATE;
             IsImportAll = false;
@@ -25,7 +25,7 @@ namespace KerML {
 
         Import::Import(VisibilityKind visibility, bool isRecursive, bool isImportAll,
                        std::shared_ptr<Namespace> importOwningNamespace, boost::uuids::uuid elementID,
-                       std::shared_ptr<Element> owner) : Relationship(elementID,owner){
+                       std::shared_ptr<Element> owner) : Element(elementID, owner), Relationship(elementID,owner){
             Visibility = visibility;
             IsImportAll = isImportAll;
             IsRecursive = isRecursive;

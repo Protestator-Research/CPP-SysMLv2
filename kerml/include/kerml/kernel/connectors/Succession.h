@@ -1,11 +1,11 @@
-//
-// Created by Moritz Herzog on 31.03.25.
-//
-
 #pragma once
 
-namespace KerML::Entities {
-    class Succession {
+#include <kerml/kerml_global.h>
+#include <kerml/kernel/connectors/Connector.h>
 
+namespace KerML::Entities {
+    class KERML_EXPORT Succession : public virtual Connector {
+    public:
+        virtual ~Succession() = default;
     };
 }

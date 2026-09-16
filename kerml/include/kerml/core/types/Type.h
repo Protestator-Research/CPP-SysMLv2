@@ -191,9 +191,9 @@ namespace KerML::Entities {
         void appendUnioningType(std::vector<std::shared_ptr<Type>> unioningType);
 
     private:
-        bool IsAbstract;
-        bool IsSufficient;
-        bool IsConjugated;
+        bool IsAbstract = false;
+        bool IsSufficient = false;
+        bool IsConjugated = false;
 
         std::vector<std::shared_ptr<Type>> DifferencingType;
         std::vector<std::shared_ptr<Feature>> DirectedFeature;

@@ -1,80 +1,33 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(sysml CXX C)
-
-set(GLOBAL_HEADER
-        include/sysml/sysml_global.h)
-
-set(USAGE_HEADER
-        include/sysml/usage/Definition.h
-        include/sysml/usage/Usage.h
-        include/sysml/usage/ReferenceUsage.h
-        include/sysml/usage/VariantMembership.h)
-
-set(ATTRIBUTE_HEADER
-        include/sysml/attibutes/AttributeDefinition.h
-        include/sysml/attibutes/AttributeUsage.h)
-
-set(ENUMERATIONS_HEADER
-        include/sysml/enumerations/EnumerationDefinition.h
-        include/sysml/enumerations/EnumerationUsage.h)
-
-add_library(sysml
-        ${GLOBAL_HEADER}
-        ${USAGE_HEADER}
-        ${ATTRIBUTE_HEADER}
-        ${ENUMERATIONS_HEADER}
-        src/sysml/usage/Definition.cpp
-        src/sysml/usage/Usage.cpp
-        src/sysml/usage/ReferenceUsage.cpp
-        src/sysml/usage/VariantMembership.cpp
-        src/sysml/attributes/AttributeDefinition.cpp
-        src/sysml/attributes/AttributeUsage.cpp
-        src/sysml/enumerations/EnumerationDefinition.cpp
-        src/sysml/enumerations/EnumerationUsage.cpp
-
-)
-
-target_link_libraries(sysml PRIVATE
-        boost::boost
-        nlohmann_json::nlohmann_json
-        date::date
-        sysmlv2interfaces
-        kerml)
-
-
-include(GNUInstallDirs)
-install(TARGETS sysml ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
-install(TARGETS sysml RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES ${USAGE_ELEMENTS_HEADER} DESTINATION include/sysml/usage)
-install(FILES ${ATTRIBUTE_HEADER} DESTINATION include/sysml/attributes)
-install(FILES ${ENUMERATIONS_HEADER} DESTINATION include/sysml/enumerations)
-
-
+include(${CMAKE_CURRENT_SOURCE_DIR}/SysMLSources.cmake)
+add_library(sysml ${SYSML_SOURCES})
+target_compile_features(sysml PUBLIC cxx_std_20)
+target_link_libraries(sysml PUBLIC kerml sysmlv2interfaces
+        boost::boost nlohmann_json::nlohmann_json date::date)
+target_include_directories(sysml PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>)
 if(MSVC)
     target_compile_options(sysml PRIVATE /W4 /WX- /bigobj)
-    target_link_directories(sysml PUBLIC ${CMAKE_BINARY_DIR}/out)
-    target_include_directories(sysml PUBLIC
-            ./include
-            ../sysmlinterfaces/include
-            ../kerml/include)
-else ()
+else()
     target_compile_options(sysml PRIVATE -Wall -Wextra -Wpedantic -Werror)
-    target_include_directories(sysml PUBLIC
-            ./include
-            ../sysmlinterfaces/include
-            ../kerml/include)
 endif()
 
-file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)
-foreach(_source IN ITEMS ${_source_list})
-    get_filename_component(_source_path "${_source}" PATH)
-    string(REPLACE "${CMAKE_SOURCE_DIR}" "" _group_path "${_source_path}")
-    string(REPLACE "/" "\\" _group_path "${_group_path}")
-    source_group("${_group_path}" FILES "${_source}")
-endforeach()
+include(GNUInstallDirs)
+install(TARGETS sysml
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(DIRECTORY include/sysml DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-#if(RUN_TESTS)
-#    enable_testing()
-#    add_subdirectory(tests)
-#endif()
+if(BUILD_TESTING)
+    add_executable(sysml-representation-test tests/Representation.cpp tests/Inventory.cpp)
+    target_link_libraries(sysml-representation-test PRIVATE sysml)
+    add_test(NAME sysml-representation COMMAND sysml-representation-test)
+    find_package(Python3 COMPONENTS Interpreter QUIET)
+    if(Python3_Interpreter_FOUND)
+        add_test(NAME sysml-generated-files
+                COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/generate_abstract_syntax.py --check)
+    endif()
+endif()

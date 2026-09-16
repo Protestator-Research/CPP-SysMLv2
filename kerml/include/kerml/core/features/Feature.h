@@ -28,7 +28,7 @@ namespace KerML::Entities {
 	 * @author Moritz Herzog <herzogm@rptu.de>
 	 * @brief Describes the Feature class according to the Standard.
 	 */
-	class KERML_EXPORT Feature : public Type, public std::enable_shared_from_this<Feature> {
+	class KERML_EXPORT Feature : public virtual Type, public std::enable_shared_from_this<Feature> {
     public:
 		/**
 		 * Constuctor
@@ -245,7 +245,7 @@ namespace KerML::Entities {
         bool IsPortion;
         bool IsVariable;
         bool IsConstant;
-        bool IsCartesianProduct;
+        bool IsCartesianProduct = false;
 
         std::optional<FeatureDirectionKind> Direction;
 

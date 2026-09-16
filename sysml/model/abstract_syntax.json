@@ -1,0 +1,3487 @@
+{
+  "source": "https://www.omg.org/spec/SysML/20250201/SysML.xmi",
+  "sha256": "caa65d54f56798bf7582d173f7567e1eea37a49c45984f8bd7df145011cf8c6f",
+  "types": [
+    {
+      "name": "FlowDefinition",
+      "id": "Systems-Flows-FlowDefinition",
+      "package": "flows",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ActionDefinition",
+        "Kernel-Interactions-Interaction"
+      ],
+      "properties": [
+        {
+          "name": "flowEnd",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "FlowUsage",
+      "id": "Systems-Flows-FlowUsage",
+      "package": "flows",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Connections-ConnectorAsUsage",
+        "Kernel-Interactions-Flow",
+        "Systems-Actions-ActionUsage"
+      ],
+      "properties": [
+        {
+          "name": "flowDefinition",
+          "type": "Kernel-Interactions-Interaction",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "SuccessionFlowUsage",
+      "id": "Systems-Flows-SuccessionFlowUsage",
+      "package": "flows",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Kernel-Interactions-SuccessionFlow",
+        "Systems-Flows-FlowUsage"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "EnumerationDefinition",
+      "id": "Systems-Enumerations-EnumerationDefinition",
+      "package": "enumerations",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Attributes-AttributeDefinition"
+      ],
+      "properties": [
+        {
+          "name": "enumeratedValue",
+          "type": "Systems-Enumerations-EnumerationUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isVariation",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "true"
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "EnumerationUsage",
+      "id": "Systems-Enumerations-EnumerationUsage",
+      "package": "enumerations",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Attributes-AttributeUsage"
+      ],
+      "properties": [
+        {
+          "name": "enumerationDefinition",
+          "type": "Systems-Enumerations-EnumerationDefinition",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "RequirementUsage",
+      "id": "Systems-Requirements-RequirementUsage",
+      "package": "requirements",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Constraints-ConstraintUsage"
+      ],
+      "properties": [
+        {
+          "name": "requirementDefinition",
+          "type": "Systems-Requirements-RequirementDefinition",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "reqId",
+          "type": "String",
+          "lower": 0,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "text",
+          "type": "String",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "requiredConstraint",
+          "type": "Systems-Constraints-ConstraintUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "assumedConstraint",
+          "type": "Systems-Constraints-ConstraintUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "subjectParameter",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "framedConcern",
+          "type": "Systems-Requirements-ConcernUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "actorParameter",
+          "type": "Systems-Parts-PartUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "stakeholderParameter",
+          "type": "Systems-Parts-PartUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ConcernUsage",
+      "id": "Systems-Requirements-ConcernUsage",
+      "package": "requirements",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Requirements-RequirementUsage"
+      ],
+      "properties": [
+        {
+          "name": "concernDefinition",
+          "type": "Systems-Requirements-ConcernDefinition",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "FramedConcernMembership",
+      "id": "Systems-Requirements-FramedConcernMembership",
+      "package": "requirements",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Requirements-RequirementConstraintMembership"
+      ],
+      "properties": [
+        {
+          "name": "kind",
+          "type": "Systems-Requirements-RequirementConstraintKind",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "requirement"
+        },
+        {
+          "name": "ownedConcern",
+          "type": "Systems-Requirements-ConcernUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "referencedConcern",
+          "type": "Systems-Requirements-ConcernUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ActorMembership",
+      "id": "Systems-Requirements-ActorMembership",
+      "package": "requirements",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Kernel-Behaviors-ParameterMembership"
+      ],
+      "properties": [
+        {
+          "name": "ownedActorParameter",
+          "type": "Systems-Parts-PartUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "StakeholderMembership",
+      "id": "Systems-Requirements-StakeholderMembership",
+      "package": "requirements",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Kernel-Behaviors-ParameterMembership"
+      ],
+      "properties": [
+        {
+          "name": "ownedStakeholderParameter",
+          "type": "Systems-Parts-PartUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "SubjectMembership",
+      "id": "Systems-Requirements-SubjectMembership",
+      "package": "requirements",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Kernel-Behaviors-ParameterMembership"
+      ],
+      "properties": [
+        {
+          "name": "ownedSubjectParameter",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ConcernDefinition",
+      "id": "Systems-Requirements-ConcernDefinition",
+      "package": "requirements",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Requirements-RequirementDefinition"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "RequirementDefinition",
+      "id": "Systems-Requirements-RequirementDefinition",
+      "package": "requirements",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Constraints-ConstraintDefinition"
+      ],
+      "properties": [
+        {
+          "name": "reqId",
+          "type": "String",
+          "lower": 0,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "text",
+          "type": "String",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "subjectParameter",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "actorParameter",
+          "type": "Systems-Parts-PartUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "stakeholderParameter",
+          "type": "Systems-Parts-PartUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "assumedConstraint",
+          "type": "Systems-Constraints-ConstraintUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "requiredConstraint",
+          "type": "Systems-Constraints-ConstraintUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "framedConcern",
+          "type": "Systems-Requirements-ConcernUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "RequirementConstraintMembership",
+      "id": "Systems-Requirements-RequirementConstraintMembership",
+      "package": "requirements",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Core-Types-FeatureMembership"
+      ],
+      "properties": [
+        {
+          "name": "kind",
+          "type": "Systems-Requirements-RequirementConstraintKind",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedConstraint",
+          "type": "Systems-Constraints-ConstraintUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "referencedConstraint",
+          "type": "Systems-Constraints-ConstraintUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "RequirementConstraintKind",
+      "id": "Systems-Requirements-RequirementConstraintKind",
+      "package": "requirements",
+      "abstract": false,
+      "kind": "Enumeration",
+      "bases": [],
+      "properties": [],
+      "literals": [
+        "assumption",
+        "requirement"
+      ]
+    },
+    {
+      "name": "SatisfyRequirementUsage",
+      "id": "Systems-Requirements-SatisfyRequirementUsage",
+      "package": "requirements",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Requirements-RequirementUsage",
+        "Systems-Constraints-AssertConstraintUsage"
+      ],
+      "properties": [
+        {
+          "name": "satisfiedRequirement",
+          "type": "Systems-Requirements-RequirementUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "satisfyingFeature",
+          "type": "Core-Features-Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "CalculationDefinition",
+      "id": "Systems-Calculations-CalculationDefinition",
+      "package": "calculations",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ActionDefinition",
+        "Kernel-Functions-Function"
+      ],
+      "properties": [
+        {
+          "name": "calculation",
+          "type": "Systems-Calculations-CalculationUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "CalculationUsage",
+      "id": "Systems-Calculations-CalculationUsage",
+      "package": "calculations",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Kernel-Functions-Expression",
+        "Systems-Actions-ActionUsage"
+      ],
+      "properties": [
+        {
+          "name": "calculationDefinition",
+          "type": "Kernel-Functions-Function",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "MetadataDefinition",
+      "id": "Systems-Metadata-MetadataDefinition",
+      "package": "metadata",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Items-ItemDefinition",
+        "Kernel-Metadata-Metaclass"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "MetadataUsage",
+      "id": "Systems-Metadata-MetadataUsage",
+      "package": "metadata",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Kernel-Metadata-MetadataFeature",
+        "Systems-Items-ItemUsage"
+      ],
+      "properties": [
+        {
+          "name": "metadataDefinition",
+          "type": "Kernel-Metadata-Metaclass",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "AssertConstraintUsage",
+      "id": "Systems-Constraints-AssertConstraintUsage",
+      "package": "constraints",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Kernel-Functions-Invariant",
+        "Systems-Constraints-ConstraintUsage"
+      ],
+      "properties": [
+        {
+          "name": "assertedConstraint",
+          "type": "Systems-Constraints-ConstraintUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ConstraintDefinition",
+      "id": "Systems-Constraints-ConstraintDefinition",
+      "package": "constraints",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Occurrences-OccurrenceDefinition",
+        "Kernel-Functions-Predicate"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "ConstraintUsage",
+      "id": "Systems-Constraints-ConstraintUsage",
+      "package": "constraints",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Occurrences-OccurrenceUsage",
+        "Kernel-Functions-BooleanExpression"
+      ],
+      "properties": [
+        {
+          "name": "constraintDefinition",
+          "type": "Kernel-Functions-Predicate",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "CaseUsage",
+      "id": "Systems-Cases-CaseUsage",
+      "package": "cases",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Calculations-CalculationUsage"
+      ],
+      "properties": [
+        {
+          "name": "objectiveRequirement",
+          "type": "Systems-Requirements-RequirementUsage",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "caseDefinition",
+          "type": "Systems-Cases-CaseDefinition",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "subjectParameter",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "actorParameter",
+          "type": "Systems-Parts-PartUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "CaseDefinition",
+      "id": "Systems-Cases-CaseDefinition",
+      "package": "cases",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Calculations-CalculationDefinition"
+      ],
+      "properties": [
+        {
+          "name": "objectiveRequirement",
+          "type": "Systems-Requirements-RequirementUsage",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "subjectParameter",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "actorParameter",
+          "type": "Systems-Parts-PartUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ObjectiveMembership",
+      "id": "Systems-Cases-ObjectiveMembership",
+      "package": "cases",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Core-Types-FeatureMembership"
+      ],
+      "properties": [
+        {
+          "name": "ownedObjectiveRequirement",
+          "type": "Systems-Requirements-RequirementUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "TransitionFeatureMembership",
+      "id": "Systems-States-TransitionFeatureMembership",
+      "package": "states",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Core-Types-FeatureMembership"
+      ],
+      "properties": [
+        {
+          "name": "kind",
+          "type": "Systems-States-TransitionFeatureKind",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "transitionFeature",
+          "type": "Kernel-Behaviors-Step",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "StateSubactionKind",
+      "id": "Systems-States-StateSubactionKind",
+      "package": "states",
+      "abstract": false,
+      "kind": "Enumeration",
+      "bases": [],
+      "properties": [],
+      "literals": [
+        "entry",
+        "do",
+        "exit"
+      ]
+    },
+    {
+      "name": "ExhibitStateUsage",
+      "id": "Systems-States-ExhibitStateUsage",
+      "package": "states",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-PerformActionUsage",
+        "Systems-States-StateUsage"
+      ],
+      "properties": [
+        {
+          "name": "exhibitedState",
+          "type": "Systems-States-StateUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "StateSubactionMembership",
+      "id": "Systems-States-StateSubactionMembership",
+      "package": "states",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Core-Types-FeatureMembership"
+      ],
+      "properties": [
+        {
+          "name": "kind",
+          "type": "Systems-States-StateSubactionKind",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "action",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "StateUsage",
+      "id": "Systems-States-StateUsage",
+      "package": "states",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ActionUsage"
+      ],
+      "properties": [
+        {
+          "name": "stateDefinition",
+          "type": "Kernel-Behaviors-Behavior",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "entryAction",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "doAction",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "exitAction",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isParallel",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "StateDefinition",
+      "id": "Systems-States-StateDefinition",
+      "package": "states",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ActionDefinition"
+      ],
+      "properties": [
+        {
+          "name": "state",
+          "type": "Systems-States-StateUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "entryAction",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "doAction",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "exitAction",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isParallel",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "TransitionFeatureKind",
+      "id": "Systems-States-TransitionFeatureKind",
+      "package": "states",
+      "abstract": false,
+      "kind": "Enumeration",
+      "bases": [],
+      "properties": [],
+      "literals": [
+        "trigger",
+        "guard",
+        "effect"
+      ]
+    },
+    {
+      "name": "TransitionUsage",
+      "id": "Systems-States-TransitionUsage",
+      "package": "states",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ActionUsage"
+      ],
+      "properties": [
+        {
+          "name": "source",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "target",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "triggerAction",
+          "type": "Systems-Actions-AcceptActionUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "guardExpression",
+          "type": "Kernel-Functions-Expression",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "effectAction",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "succession",
+          "type": "Kernel-Connectors-Succession",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "UseCaseUsage",
+      "id": "Systems-UseCases-UseCaseUsage",
+      "package": "usecases",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Cases-CaseUsage"
+      ],
+      "properties": [
+        {
+          "name": "useCaseDefinition",
+          "type": "Systems-UseCases-UseCaseDefinition",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "includedUseCase",
+          "type": "Systems-UseCases-UseCaseUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "IncludeUseCaseUsage",
+      "id": "Systems-UseCases-IncludeUseCaseUsage",
+      "package": "usecases",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-UseCases-UseCaseUsage",
+        "Systems-Actions-PerformActionUsage"
+      ],
+      "properties": [
+        {
+          "name": "useCaseIncluded",
+          "type": "Systems-UseCases-UseCaseUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "UseCaseDefinition",
+      "id": "Systems-UseCases-UseCaseDefinition",
+      "package": "usecases",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Cases-CaseDefinition"
+      ],
+      "properties": [
+        {
+          "name": "includedUseCase",
+          "type": "Systems-UseCases-UseCaseUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "PerformActionUsage",
+      "id": "Systems-Actions-PerformActionUsage",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Occurrences-EventOccurrenceUsage",
+        "Systems-Actions-ActionUsage"
+      ],
+      "properties": [
+        {
+          "name": "performedAction",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ActionDefinition",
+      "id": "Systems-Actions-ActionDefinition",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Occurrences-OccurrenceDefinition",
+        "Kernel-Behaviors-Behavior"
+      ],
+      "properties": [
+        {
+          "name": "action",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ActionUsage",
+      "id": "Systems-Actions-ActionUsage",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Kernel-Behaviors-Step",
+        "Systems-Occurrences-OccurrenceUsage"
+      ],
+      "properties": [
+        {
+          "name": "actionDefinition",
+          "type": "Kernel-Behaviors-Behavior",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "AssignmentActionUsage",
+      "id": "Systems-Actions-AssignmentActionUsage",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ActionUsage"
+      ],
+      "properties": [
+        {
+          "name": "targetArgument",
+          "type": "Kernel-Functions-Expression",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "valueExpression",
+          "type": "Kernel-Functions-Expression",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "referent",
+          "type": "Core-Features-Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ForLoopActionUsage",
+      "id": "Systems-Actions-ForLoopActionUsage",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-LoopActionUsage"
+      ],
+      "properties": [
+        {
+          "name": "seqArgument",
+          "type": "Kernel-Functions-Expression",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "loopVariable",
+          "type": "Systems-DefinitionAndUsage-ReferenceUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "TriggerInvocationExpression",
+      "id": "Systems-Actions-TriggerInvocationExpression",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Kernel-Expressions-InvocationExpression"
+      ],
+      "properties": [
+        {
+          "name": "kind",
+          "type": "Systems-Actions-TriggerKind",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "LoopActionUsage",
+      "id": "Systems-Actions-LoopActionUsage",
+      "package": "actions",
+      "abstract": true,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ActionUsage"
+      ],
+      "properties": [
+        {
+          "name": "bodyAction",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "DecisionNode",
+      "id": "Systems-Actions-DecisionNode",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ControlNode"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "ForkNode",
+      "id": "Systems-Actions-ForkNode",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ControlNode"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "JoinNode",
+      "id": "Systems-Actions-JoinNode",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ControlNode"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "ControlNode",
+      "id": "Systems-Actions-ControlNode",
+      "package": "actions",
+      "abstract": true,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ActionUsage"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "MergeNode",
+      "id": "Systems-Actions-MergeNode",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ControlNode"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "TerminateActionUsage",
+      "id": "Systems-Actions-TerminateActionUsage",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ActionUsage"
+      ],
+      "properties": [
+        {
+          "name": "terminatedOccurrenceArgument",
+          "type": "Kernel-Functions-Expression",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "AcceptActionUsage",
+      "id": "Systems-Actions-AcceptActionUsage",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ActionUsage"
+      ],
+      "properties": [
+        {
+          "name": "receiverArgument",
+          "type": "Kernel-Functions-Expression",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "payloadParameter",
+          "type": "Systems-DefinitionAndUsage-ReferenceUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "payloadArgument",
+          "type": "Kernel-Functions-Expression",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "WhileLoopActionUsage",
+      "id": "Systems-Actions-WhileLoopActionUsage",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-LoopActionUsage"
+      ],
+      "properties": [
+        {
+          "name": "whileArgument",
+          "type": "Kernel-Functions-Expression",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "untilArgument",
+          "type": "Kernel-Functions-Expression",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "SendActionUsage",
+      "id": "Systems-Actions-SendActionUsage",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ActionUsage"
+      ],
+      "properties": [
+        {
+          "name": "receiverArgument",
+          "type": "Kernel-Functions-Expression",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "payloadArgument",
+          "type": "Kernel-Functions-Expression",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "senderArgument",
+          "type": "Kernel-Functions-Expression",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "IfActionUsage",
+      "id": "Systems-Actions-IfActionUsage",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Actions-ActionUsage"
+      ],
+      "properties": [
+        {
+          "name": "elseAction",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "thenAction",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ifArgument",
+          "type": "Kernel-Functions-Expression",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "TriggerKind",
+      "id": "Systems-Actions-TriggerKind",
+      "package": "actions",
+      "abstract": false,
+      "kind": "Enumeration",
+      "bases": [],
+      "properties": [],
+      "literals": [
+        "when",
+        "at",
+        "after"
+      ]
+    },
+    {
+      "name": "ItemUsage",
+      "id": "Systems-Items-ItemUsage",
+      "package": "items",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Occurrences-OccurrenceUsage"
+      ],
+      "properties": [
+        {
+          "name": "itemDefinition",
+          "type": "Kernel-Structures-Structure",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ItemDefinition",
+      "id": "Systems-Items-ItemDefinition",
+      "package": "items",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Kernel-Structures-Structure",
+        "Systems-Occurrences-OccurrenceDefinition"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "EventOccurrenceUsage",
+      "id": "Systems-Occurrences-EventOccurrenceUsage",
+      "package": "occurrences",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Occurrences-OccurrenceUsage"
+      ],
+      "properties": [
+        {
+          "name": "eventOccurrence",
+          "type": "Systems-Occurrences-OccurrenceUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isReference",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "true"
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "PortionKind",
+      "id": "Systems-Occurrences-PortionKind",
+      "package": "occurrences",
+      "abstract": false,
+      "kind": "Enumeration",
+      "bases": [],
+      "properties": [],
+      "literals": [
+        "timeslice",
+        "snapshot"
+      ]
+    },
+    {
+      "name": "OccurrenceUsage",
+      "id": "Systems-Occurrences-OccurrenceUsage",
+      "package": "occurrences",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-DefinitionAndUsage-Usage"
+      ],
+      "properties": [
+        {
+          "name": "occurrenceDefinition",
+          "type": "Kernel-Classes-Class",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "individualDefinition",
+          "type": "Systems-Occurrences-OccurrenceDefinition",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isIndividual",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        },
+        {
+          "name": "portionKind",
+          "type": "Systems-Occurrences-PortionKind",
+          "lower": 0,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "OccurrenceDefinition",
+      "id": "Systems-Occurrences-OccurrenceDefinition",
+      "package": "occurrences",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-DefinitionAndUsage-Definition",
+        "Kernel-Classes-Class"
+      ],
+      "properties": [
+        {
+          "name": "isIndividual",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "Usage",
+      "id": "Systems-DefinitionAndUsage-Usage",
+      "package": "usage",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Core-Features-Feature"
+      ],
+      "properties": [
+        {
+          "name": "mayTimeVary",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isReference",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "variant",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "variantMembership",
+          "type": "Systems-DefinitionAndUsage-VariantMembership",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningDefinition",
+          "type": "Systems-DefinitionAndUsage-Definition",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningUsage",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "definition",
+          "type": "Core-Classifiers-Classifier",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "usage",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "directedUsage",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedUsage",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedReference",
+          "type": "Systems-DefinitionAndUsage-ReferenceUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedAttribute",
+          "type": "Systems-Attributes-AttributeUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedEnumeration",
+          "type": "Systems-Enumerations-EnumerationUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedOccurrence",
+          "type": "Systems-Occurrences-OccurrenceUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedItem",
+          "type": "Systems-Items-ItemUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedPart",
+          "type": "Systems-Parts-PartUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedPort",
+          "type": "Systems-Ports-PortUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedConnection",
+          "type": "Systems-Connections-ConnectorAsUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedFlow",
+          "type": "Systems-Flows-FlowUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedInterface",
+          "type": "Systems-Interfaces-InterfaceUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedAllocation",
+          "type": "Systems-Allocations-AllocationUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedAction",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedState",
+          "type": "Systems-States-StateUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedTransition",
+          "type": "Systems-States-TransitionUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedCalculation",
+          "type": "Systems-Calculations-CalculationUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedConstraint",
+          "type": "Systems-Constraints-ConstraintUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedRequirement",
+          "type": "Systems-Requirements-RequirementUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedConcern",
+          "type": "Systems-Requirements-ConcernUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedCase",
+          "type": "Systems-Cases-CaseUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedAnalysisCase",
+          "type": "Systems-AnalysisCases-AnalysisCaseUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedVerificationCase",
+          "type": "Systems-VerificationCases-VerificationCaseUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedUseCase",
+          "type": "Systems-UseCases-UseCaseUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedView",
+          "type": "Systems-Views-ViewUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedViewpoint",
+          "type": "Systems-Views-ViewpointUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedRendering",
+          "type": "Systems-Views-RenderingUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "nestedMetadata",
+          "type": "Systems-Metadata-MetadataUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isVariation",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ReferenceUsage",
+      "id": "Systems-DefinitionAndUsage-ReferenceUsage",
+      "package": "usage",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-DefinitionAndUsage-Usage"
+      ],
+      "properties": [
+        {
+          "name": "isReference",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "true"
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "VariantMembership",
+      "id": "Systems-DefinitionAndUsage-VariantMembership",
+      "package": "usage",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Root-Namespaces-OwningMembership"
+      ],
+      "properties": [
+        {
+          "name": "ownedVariantUsage",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "Definition",
+      "id": "Systems-DefinitionAndUsage-Definition",
+      "package": "usage",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Core-Classifiers-Classifier"
+      ],
+      "properties": [
+        {
+          "name": "isVariation",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "variant",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "variantMembership",
+          "type": "Systems-DefinitionAndUsage-VariantMembership",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "usage",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "directedUsage",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedUsage",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedReference",
+          "type": "Systems-DefinitionAndUsage-ReferenceUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedAttribute",
+          "type": "Systems-Attributes-AttributeUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedEnumeration",
+          "type": "Systems-Enumerations-EnumerationUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedOccurrence",
+          "type": "Systems-Occurrences-OccurrenceUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedItem",
+          "type": "Systems-Items-ItemUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedPart",
+          "type": "Systems-Parts-PartUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedPort",
+          "type": "Systems-Ports-PortUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedConnection",
+          "type": "Systems-Connections-ConnectorAsUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedFlow",
+          "type": "Systems-Flows-FlowUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedInterface",
+          "type": "Systems-Interfaces-InterfaceUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedAllocation",
+          "type": "Systems-Allocations-AllocationUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedAction",
+          "type": "Systems-Actions-ActionUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedState",
+          "type": "Systems-States-StateUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedTransition",
+          "type": "Systems-States-TransitionUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedCalculation",
+          "type": "Systems-Calculations-CalculationUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedConstraint",
+          "type": "Systems-Constraints-ConstraintUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedRequirement",
+          "type": "Systems-Requirements-RequirementUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedConcern",
+          "type": "Systems-Requirements-ConcernUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedCase",
+          "type": "Systems-Cases-CaseUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedAnalysisCase",
+          "type": "Systems-AnalysisCases-AnalysisCaseUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedVerificationCase",
+          "type": "Systems-VerificationCases-VerificationCaseUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedUseCase",
+          "type": "Systems-UseCases-UseCaseUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedView",
+          "type": "Systems-Views-ViewUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedViewpoint",
+          "type": "Systems-Views-ViewpointUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedRendering",
+          "type": "Systems-Views-RenderingUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedMetadata",
+          "type": "Systems-Metadata-MetadataUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "AttributeDefinition",
+      "id": "Systems-Attributes-AttributeDefinition",
+      "package": "attributes",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Kernel-DataTypes-DataType",
+        "Systems-DefinitionAndUsage-Definition"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "AttributeUsage",
+      "id": "Systems-Attributes-AttributeUsage",
+      "package": "attributes",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-DefinitionAndUsage-Usage"
+      ],
+      "properties": [
+        {
+          "name": "attributeDefinition",
+          "type": "Kernel-DataTypes-DataType",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isReference",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "true"
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "PartDefinition",
+      "id": "Systems-Parts-PartDefinition",
+      "package": "parts",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Items-ItemDefinition"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "PartUsage",
+      "id": "Systems-Parts-PartUsage",
+      "package": "parts",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Items-ItemUsage"
+      ],
+      "properties": [
+        {
+          "name": "partDefinition",
+          "type": "Systems-Parts-PartDefinition",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "AnalysisCaseUsage",
+      "id": "Systems-AnalysisCases-AnalysisCaseUsage",
+      "package": "analysiscases",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Cases-CaseUsage"
+      ],
+      "properties": [
+        {
+          "name": "analysisCaseDefinition",
+          "type": "Systems-AnalysisCases-AnalysisCaseDefinition",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "resultExpression",
+          "type": "Kernel-Functions-Expression",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "AnalysisCaseDefinition",
+      "id": "Systems-AnalysisCases-AnalysisCaseDefinition",
+      "package": "analysiscases",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Cases-CaseDefinition"
+      ],
+      "properties": [
+        {
+          "name": "resultExpression",
+          "type": "Kernel-Functions-Expression",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "PortConjugation",
+      "id": "Systems-Ports-PortConjugation",
+      "package": "ports",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Core-Types-Conjugation"
+      ],
+      "properties": [
+        {
+          "name": "originalPortDefinition",
+          "type": "Systems-Ports-PortDefinition",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "conjugatedPortDefinition",
+          "type": "Systems-Ports-ConjugatedPortDefinition",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ConjugatedPortDefinition",
+      "id": "Systems-Ports-ConjugatedPortDefinition",
+      "package": "ports",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Ports-PortDefinition"
+      ],
+      "properties": [
+        {
+          "name": "originalPortDefinition",
+          "type": "Systems-Ports-PortDefinition",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedPortConjugator",
+          "type": "Systems-Ports-PortConjugation",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "PortDefinition",
+      "id": "Systems-Ports-PortDefinition",
+      "package": "ports",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Kernel-Structures-Structure",
+        "Systems-Occurrences-OccurrenceDefinition"
+      ],
+      "properties": [
+        {
+          "name": "conjugatedPortDefinition",
+          "type": "Systems-Ports-ConjugatedPortDefinition",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ConjugatedPortTyping",
+      "id": "Systems-Ports-ConjugatedPortTyping",
+      "package": "ports",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Core-Features-FeatureTyping"
+      ],
+      "properties": [
+        {
+          "name": "portDefinition",
+          "type": "Systems-Ports-PortDefinition",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "conjugatedPortDefinition",
+          "type": "Systems-Ports-ConjugatedPortDefinition",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "PortUsage",
+      "id": "Systems-Ports-PortUsage",
+      "package": "ports",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Occurrences-OccurrenceUsage"
+      ],
+      "properties": [
+        {
+          "name": "portDefinition",
+          "type": "Systems-Ports-PortDefinition",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ViewUsage",
+      "id": "Systems-Views-ViewUsage",
+      "package": "views",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Parts-PartUsage"
+      ],
+      "properties": [
+        {
+          "name": "viewDefinition",
+          "type": "Systems-Views-ViewDefinition",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "satisfiedViewpoint",
+          "type": "Systems-Views-ViewpointUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "exposedElement",
+          "type": "Root-Elements-Element",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "viewRendering",
+          "type": "Systems-Views-RenderingUsage",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "viewCondition",
+          "type": "Kernel-Functions-Expression",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "Expose",
+      "id": "Systems-Views-Expose",
+      "package": "views",
+      "abstract": true,
+      "kind": "Class",
+      "bases": [
+        "Root-Namespaces-Import"
+      ],
+      "properties": [
+        {
+          "name": "visibility",
+          "type": "Root-Namespaces-VisibilityKind",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "protected"
+        },
+        {
+          "name": "isImportAll",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "true"
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ViewDefinition",
+      "id": "Systems-Views-ViewDefinition",
+      "package": "views",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Parts-PartDefinition"
+      ],
+      "properties": [
+        {
+          "name": "view",
+          "type": "Systems-Views-ViewUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "satisfiedViewpoint",
+          "type": "Systems-Views-ViewpointUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "viewRendering",
+          "type": "Systems-Views-RenderingUsage",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "viewCondition",
+          "type": "Kernel-Functions-Expression",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "RenderingUsage",
+      "id": "Systems-Views-RenderingUsage",
+      "package": "views",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Parts-PartUsage"
+      ],
+      "properties": [
+        {
+          "name": "renderingDefinition",
+          "type": "Systems-Views-RenderingDefinition",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ViewpointDefinition",
+      "id": "Systems-Views-ViewpointDefinition",
+      "package": "views",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Requirements-RequirementDefinition"
+      ],
+      "properties": [
+        {
+          "name": "viewpointStakeholder",
+          "type": "Systems-Parts-PartUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "RenderingDefinition",
+      "id": "Systems-Views-RenderingDefinition",
+      "package": "views",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Parts-PartDefinition"
+      ],
+      "properties": [
+        {
+          "name": "rendering",
+          "type": "Systems-Views-RenderingUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "MembershipExpose",
+      "id": "Systems-Views-MembershipExpose",
+      "package": "views",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Root-Namespaces-MembershipImport",
+        "Systems-Views-Expose"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "NamespaceExpose",
+      "id": "Systems-Views-NamespaceExpose",
+      "package": "views",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Views-Expose",
+        "Root-Namespaces-NamespaceImport"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "ViewRenderingMembership",
+      "id": "Systems-Views-ViewRenderingMembership",
+      "package": "views",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Core-Types-FeatureMembership"
+      ],
+      "properties": [
+        {
+          "name": "ownedRendering",
+          "type": "Systems-Views-RenderingUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "referencedRendering",
+          "type": "Systems-Views-RenderingUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ViewpointUsage",
+      "id": "Systems-Views-ViewpointUsage",
+      "package": "views",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Requirements-RequirementUsage"
+      ],
+      "properties": [
+        {
+          "name": "viewpointDefinition",
+          "type": "Systems-Views-ViewpointDefinition",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "viewpointStakeholder",
+          "type": "Systems-Parts-PartUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "ConnectorAsUsage",
+      "id": "Systems-Connections-ConnectorAsUsage",
+      "package": "connections",
+      "abstract": true,
+      "kind": "Class",
+      "bases": [
+        "Systems-DefinitionAndUsage-Usage",
+        "Kernel-Connectors-Connector"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "ConnectionUsage",
+      "id": "Systems-Connections-ConnectionUsage",
+      "package": "connections",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Parts-PartUsage",
+        "Systems-Connections-ConnectorAsUsage"
+      ],
+      "properties": [
+        {
+          "name": "connectionDefinition",
+          "type": "Kernel-Associations-AssociationStructure",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "SuccessionAsUsage",
+      "id": "Systems-Connections-SuccessionAsUsage",
+      "package": "connections",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Connections-ConnectorAsUsage",
+        "Kernel-Connectors-Succession"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "ConnectionDefinition",
+      "id": "Systems-Connections-ConnectionDefinition",
+      "package": "connections",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Kernel-Associations-AssociationStructure",
+        "Systems-Parts-PartDefinition"
+      ],
+      "properties": [
+        {
+          "name": "connectionEnd",
+          "type": "Systems-DefinitionAndUsage-Usage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isSufficient",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "true"
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "BindingConnectorAsUsage",
+      "id": "Systems-Connections-BindingConnectorAsUsage",
+      "package": "connections",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Kernel-Connectors-BindingConnector",
+        "Systems-Connections-ConnectorAsUsage"
+      ],
+      "properties": [],
+      "literals": []
+    },
+    {
+      "name": "InterfaceUsage",
+      "id": "Systems-Interfaces-InterfaceUsage",
+      "package": "interfaces",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Connections-ConnectionUsage"
+      ],
+      "properties": [
+        {
+          "name": "interfaceDefinition",
+          "type": "Systems-Interfaces-InterfaceDefinition",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "InterfaceDefinition",
+      "id": "Systems-Interfaces-InterfaceDefinition",
+      "package": "interfaces",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Connections-ConnectionDefinition"
+      ],
+      "properties": [
+        {
+          "name": "interfaceEnd",
+          "type": "Systems-Ports-PortUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "AllocationDefinition",
+      "id": "Systems-Allocations-AllocationDefinition",
+      "package": "allocations",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Connections-ConnectionDefinition"
+      ],
+      "properties": [
+        {
+          "name": "allocation",
+          "type": "Systems-Allocations-AllocationUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "AllocationUsage",
+      "id": "Systems-Allocations-AllocationUsage",
+      "package": "allocations",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Connections-ConnectionUsage"
+      ],
+      "properties": [
+        {
+          "name": "allocationDefinition",
+          "type": "Systems-Allocations-AllocationDefinition",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "RequirementVerificationMembership",
+      "id": "Systems-VerificationCases-RequirementVerificationMembership",
+      "package": "verificationcases",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Requirements-RequirementConstraintMembership"
+      ],
+      "properties": [
+        {
+          "name": "ownedRequirement",
+          "type": "Systems-Requirements-RequirementUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "kind",
+          "type": "Systems-Requirements-RequirementConstraintKind",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "requirement"
+        },
+        {
+          "name": "verifiedRequirement",
+          "type": "Systems-Requirements-RequirementUsage",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "VerificationCaseDefinition",
+      "id": "Systems-VerificationCases-VerificationCaseDefinition",
+      "package": "verificationcases",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Cases-CaseDefinition"
+      ],
+      "properties": [
+        {
+          "name": "verifiedRequirement",
+          "type": "Systems-Requirements-RequirementUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    },
+    {
+      "name": "VerificationCaseUsage",
+      "id": "Systems-VerificationCases-VerificationCaseUsage",
+      "package": "verificationcases",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Systems-Cases-CaseUsage"
+      ],
+      "properties": [
+        {
+          "name": "verificationCaseDefinition",
+          "type": "Systems-VerificationCases-VerificationCaseDefinition",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "verifiedRequirement",
+          "type": "Systems-Requirements-RequirementUsage",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": []
+    }
+  ]
+}

@@ -17,9 +17,12 @@ namespace KerML::Entities {
      * @author Moritz Herzog <herzogm@rptu.de>
      * @brief Representation of the Feature Membership according to the SysML Standard.
      */
-    class FeatureMembership : public OwningMembership {
+    class KERML_EXPORT FeatureMembership : public OwningMembership {
     public:
-        FeatureMembership() = delete;
+    protected:
+        // Derived metamodel elements may be populated in two phases.
+        FeatureMembership() = default;
+    public:
         FeatureMembership(std::shared_ptr<Feature> ownedMemberFeature, std::shared_ptr<Type> owningType,  std::vector<std::shared_ptr<Type>> type);
         ~FeatureMembership() override = default;
 
