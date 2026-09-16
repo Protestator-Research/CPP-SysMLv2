@@ -30,7 +30,7 @@ namespace KerML::Entities {
      * @brief Representation of the Abstract Syntax of one Classifier.
      * @see Type
      */
-    class KERML_EXPORT Classifier : public Type
+    class KERML_EXPORT Classifier : public virtual Type
 	{
     public:
 	    /**

@@ -8,12 +8,12 @@
 
 namespace KerML::Entities {
 	Type::Type(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
-		Namespace(elementID, owner) {
+		Element(elementID, owner), Namespace(elementID, owner) {
 		_dType = "Type";
 	}
 
 	Type::Type(std::string namespaceName, boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
-		Namespace(namespaceName, elementID, owner) {
+		Element(elementID, owner), Namespace(namespaceName, elementID, owner) {
 		_dType = "Type";
 	}
 

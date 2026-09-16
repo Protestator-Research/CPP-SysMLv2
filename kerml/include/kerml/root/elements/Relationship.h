@@ -29,7 +29,7 @@ namespace KerML::Entities {
      * @version 1.0 Beta 2
      * A Relationship is an Element that relates two elements to each other.
      */
-    class KERML_EXPORT Relationship : public Element {
+    class KERML_EXPORT Relationship : public virtual Element {
     public:
         /**
          * Constructor of the Relationship. This constructor does allow for an empty elementID.

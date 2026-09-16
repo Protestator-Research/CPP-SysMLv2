@@ -1,11 +1,12 @@
-//
-// Created by Moritz Herzog on 31.03.25.
-//
-
 #pragma once
 
-namespace KerML::Entities {
-    class Interaction {
+#include <kerml/kerml_global.h>
+#include <kerml/kernel/assiciations/Association.h>
+#include <kerml/kernel/behaviors/Behavior.h>
 
+namespace KerML::Entities {
+    class KERML_EXPORT Interaction : public virtual Association, public virtual Behavior {
+    public:
+        virtual ~Interaction() = default;
     };
-} // KerML::Entities
+}

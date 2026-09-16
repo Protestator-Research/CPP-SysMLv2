@@ -1,11 +1,11 @@
-//
-// Created by Moritz Herzog on 31.03.25.
-//
-
 #pragma once
 
-namespace KerML::Entities {
-    class Behavior {
+#include <kerml/kerml_global.h>
+#include <kerml/kernel/classes/Class.h>
 
+namespace KerML::Entities {
+    class KERML_EXPORT Behavior : public virtual Class {
+    public:
+        virtual ~Behavior() = default;
     };
 }

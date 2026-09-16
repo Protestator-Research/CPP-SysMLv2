@@ -1,11 +1,11 @@
-//
-// Created by Moritz Herzog on 31.03.25.
-//
-
 #pragma once
 
-namespace KerML::Entities {
-    class Step {
+#include <kerml/kerml_global.h>
+#include <kerml/core/features/Feature.h>
 
+namespace KerML::Entities {
+    class KERML_EXPORT Step : public virtual Feature {
+    public:
+        virtual ~Step() = default;
     };
-} // KerML::Entities
+}

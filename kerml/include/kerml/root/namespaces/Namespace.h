@@ -31,7 +31,7 @@ namespace KerML::Entities {
      * @version 1.0 Beta 4
      * Defines the Namespace Class accoding to the KerML Abstract Syntax.
      */
-    class KERML_EXPORT Namespace : public Element {
+    class KERML_EXPORT Namespace : public virtual Element {
     public:
         /**
          * Constructor of the Element. This constructor does allow for an empty elementID.

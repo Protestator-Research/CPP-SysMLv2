@@ -1,12 +1,11 @@
-//
-// Created by Moritz Herzog on 31.03.25.
-//
-
 #pragma once
 
-namespace KerML::Entities {
-    class BindingConnector {
+#include <kerml/kerml_global.h>
+#include <kerml/kernel/connectors/Connector.h>
 
+namespace KerML::Entities {
+    class KERML_EXPORT BindingConnector : public virtual Connector {
+    public:
+        virtual ~BindingConnector() = default;
     };
 }
-

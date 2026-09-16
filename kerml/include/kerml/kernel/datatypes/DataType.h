@@ -1,14 +1,11 @@
-//
-// Created by Moritz Herzog on 25.03.25.
-//
-
 #pragma once
 
+#include <kerml/kerml_global.h>
 #include <kerml/core/classifiers/Classifier.h>
 
 namespace KerML::Entities {
-    class DataType : public Classifier {
-
+    class KERML_EXPORT DataType : public virtual Classifier {
+    public:
+        virtual ~DataType() = default;
     };
 }
-

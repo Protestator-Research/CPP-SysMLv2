@@ -1,13 +1,3 @@
-//
-// Created by Moritz Herzog on 17.03.26.
-//
-
 #pragma once
-
-#include <sysml/sysml_global.h>
-
-namespace SysMLv2::Entities {
-    class SYSML_EXPORT AttributeUsage {
-
-    };
-} // SysMLv2::Entities
+// Compatibility with the original misspelled include directory.
+#include <sysml/attributes/AttributeUsage.h>

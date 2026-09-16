@@ -18,7 +18,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/out)
 option(BUILD_WITH_REST "Builds with the SysMLv2 REST API" ON)
 option(BUILD_WITH_SERVICES "Builds with the SysMLv2 services API" ON)
 option(BUILD_WITH_PARSING "Builds with the SysMLv2 parsing API" ON)
-enable_testing()
+include(CTest)
 
 
 add_subdirectory(sysmlinterfaces)
@@ -39,6 +39,8 @@ endif ()
 
 add_subdirectory(kerml)
 add_subdirectory(sysml)
-add_subdirectory(conformance-test)
+if(BUILD_TESTING AND BUILD_WITH_PARSING AND BUILD_WITH_SERVICES AND BUILD_WITH_REST)
+    add_subdirectory(conformance-test)
+endif()
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

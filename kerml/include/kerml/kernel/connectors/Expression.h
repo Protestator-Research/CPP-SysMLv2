@@ -1,11 +1,2 @@
-//
-// Created by Moritz Herzog on 31.03.25.
-//
-
 #pragma once
-
-namespace KerML::Entities {
-    class Expression {
-
-    };
-} // KerML::Entities
+#include <kerml/kernel/functions/Expression.h>

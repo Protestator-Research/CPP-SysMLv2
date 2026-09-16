@@ -11,24 +11,27 @@ namespace KerML::Entities {
     class Type;
 
     /**
-     * @class Conjungation
+     * @class Conjugation
      * @brief Defines the conjungation relationship.
      * @version 1.0 Beta 4
      * @author Moritz Herzog <herzogm@rptu.de>
      */
-    class Conjungation : public Relationship{
+    class KERML_EXPORT Conjugation : public Relationship{
     public:
 	    /**
-	     * Default Constructor is deleted, because this would allow for a configuration, that is not allowed by the standard.
+	     * Protected construction supports derived representations before their references are populated.
 	     */
-	    Conjungation() = delete;
+	    protected:
+        // Allow derived representations to be populated before validation.
+        Conjugation() = default;
+    public:
 	    /**
-	     * Constructor for the Conjungation. This is required considering the Standard
+	     * Constructor for the Conjugation. This is required considering the Standard
 	     * @param originalType The provided Type, that was original
 	     * @param conjugatedType The conjugated type, that is resulting
 	     */
-	    Conjungation(std::shared_ptr<Type> originalType, std::shared_ptr<Type> conjugatedType);
-        ~Conjungation() override = default;
+	    Conjugation(std::shared_ptr<Type> originalType, std::shared_ptr<Type> conjugatedType);
+        ~Conjugation() override = default;
 
         std::shared_ptr<Type> originalType();
         void setOrginalType(std::shared_ptr<Type> originalType);
@@ -48,3 +51,6 @@ namespace KerML::Entities {
 
     };
 }
+
+
+namespace KerML::Entities { using Conjungation = Conjugation; }
