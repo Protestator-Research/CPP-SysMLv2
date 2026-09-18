@@ -11,7 +11,7 @@ namespace KerML::Entities {
 }
 
 namespace KerML::Entities {
-    class FeatureChaining : public Relationship {
+    class KERML_EXPORT FeatureChaining : public Relationship {
     public:
         FeatureChaining() = delete;
         FeatureChaining(std::shared_ptr<Feature> chainingFeature, std::shared_ptr<Feature> featureChained, boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
@@ -20,7 +20,7 @@ namespace KerML::Entities {
         void setChainingFeature(std::shared_ptr<Feature> chainingFeature);
         [[nodiscard]] std::shared_ptr<Feature> chainingFeature() const;
 
-    protected:
+    public:
         void setFeatureChained(std::shared_ptr<Feature> featureChained);
         std::shared_ptr<Feature> featureChained() const;
 

@@ -15,25 +15,25 @@ namespace KerML::Entities {
                                          std::vector<std::shared_ptr<Type>> type) {
         _dType = "FeatureMembership";
 
-        OwnedMemberFeature = ownedMemberFeature;
-        OwningType = owningType;
+        setOwnedMemberElement(ownedMemberFeature);
+        setMembershipOwningNamespace(owningType);
         _Type = type;
     }
 
     void FeatureMembership::setOwnedMemberFeature(std::shared_ptr<Feature> ownedMemberFeature) {
-        OwnedMemberFeature = ownedMemberFeature;
+        setOwnedMemberElement(ownedMemberFeature);
     }
 
     std::shared_ptr<Feature> FeatureMembership::ownedMemberFeature() const {
-        return OwnedMemberFeature;
+        return std::dynamic_pointer_cast<Feature>(ownedMemberElement());
     }
 
     void FeatureMembership::setOwningType(std::shared_ptr<Type> owningType) {
-        OwningType = owningType;
+        setMembershipOwningNamespace(owningType);
     }
 
     std::shared_ptr<Type> FeatureMembership::owningType() const {
-        return OwningType;
+        return std::dynamic_pointer_cast<Type>(membershipOwningNamespace());
     }
 
     void FeatureMembership::setType(std::vector<std::shared_ptr<Type>> type) {

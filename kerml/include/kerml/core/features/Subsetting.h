@@ -15,7 +15,7 @@ namespace KerML::Entities {
      * @author Moritz Herzog <herzogm@rptu.de>
      * @brief
      */
-    class Subsetting : public Specialization{
+    class KERML_EXPORT Subsetting : public Specialization{
     public:
         Subsetting(std::shared_ptr<Feature> subsettedFeature, std::shared_ptr<Feature> subsettingFeature);
         Subsetting() = delete;
@@ -28,7 +28,7 @@ namespace KerML::Entities {
         void setSubsettingFeature(std::shared_ptr<Feature> subsettingFeature);
 
 
-    protected:
+    public:
         std::shared_ptr<Feature> owningFeature() const;
         void setOwningFeature(std::shared_ptr<Feature> owningFeature);
 

@@ -16,7 +16,7 @@ namespace KerML::Entities {
      * @brief 
      * @author Moritz Herzog <herzogm@rptu.de>
      */
-    class Disjoining  : public Relationship{
+    class KERML_EXPORT Disjoining : public Relationship{
     public:
 	    Disjoining() = delete;
 	    /**
@@ -34,7 +34,7 @@ namespace KerML::Entities {
         std::shared_ptr<Type> disjoiningType();
         void setDisjoiningType(std::shared_ptr<Type> disjoiningType);
 
-    protected:
+    public:
         std::shared_ptr<Type> owningType();
         void setOwningType(std::shared_ptr<Type> owningType);
 

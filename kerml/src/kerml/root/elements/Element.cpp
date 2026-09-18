@@ -52,7 +52,7 @@ namespace KerML::Entities {
     }
 
     std::optional<std::string> Element::declaredShortName() const {
-        if (DeclaredName.empty())
+        if (DeclaredShortName.empty())
             return {};
         return DeclaredShortName;
     }
@@ -81,7 +81,7 @@ namespace KerML::Entities {
 
     std::optional<std::string> Element::effectiveShortName() const{
         if(DeclaredShortName.empty())
-            return ShortName;
+            return ShortName.empty() ? std::optional<std::string>{} : ShortName;
 
         return DeclaredShortName;
     }
@@ -146,19 +146,11 @@ namespace KerML::Entities {
     }
 
     void Element::sortOwnedRelationships() {
-        std::function<bool(std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs)>  comparisonFunction=
-                [](std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs){
-                    return  (*lhs) < (*rhs);
-                };
-        std::sort(OwnedRelationships.begin(), OwnedRelationships.end(), comparisonFunction);
+        // Ordered metamodel collections preserve insertion order.
     }
 
     void Element::sortOwnedElements() {
-        std::function<bool(std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs)>  comparisonFunction=
-                [](std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs){
-            return  (*lhs) < (*rhs);
-        };
-        std::sort(OwnedElements.begin(), OwnedElements.end(), comparisonFunction);
+        // Ordered metamodel collections preserve insertion order.
     }
 
     std::shared_ptr<Element> Element::owner() const {
@@ -267,3 +259,7 @@ namespace KerML::Entities {
         return json.dump(JSON_INTENT);
     }
 } // KerML::Entities
+
+namespace KerML::Entities {
+std::vector<std::shared_ptr<Relationship>> Element::ownedRelationships() { return OwnedRelationships; }
+}

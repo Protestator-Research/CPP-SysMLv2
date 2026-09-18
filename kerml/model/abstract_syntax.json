@@ -1,0 +1,3294 @@
+{
+  "source": "https://www.omg.org/spec/KerML/20250201/KerML.xmi",
+  "sha256": "45b18775afe2b2fcdc70e24f37c6d2f344defcc3f38a02075a193354e2d7b466",
+  "types": [
+    {
+      "name": "Behavior",
+      "id": "Kernel-Behaviors-Behavior",
+      "package": "kernel/behaviors",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Class"
+      ],
+      "properties": [
+        {
+          "name": "step",
+          "type": "Step",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "parameter",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/behaviors/Behavior.h"
+    },
+    {
+      "name": "ParameterMembership",
+      "id": "Kernel-Behaviors-ParameterMembership",
+      "package": "kernel/behaviors",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "FeatureMembership"
+      ],
+      "properties": [
+        {
+          "name": "ownedMemberParameter",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/functions/ParameterMembership.h"
+    },
+    {
+      "name": "Step",
+      "id": "Kernel-Behaviors-Step",
+      "package": "kernel/behaviors",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Feature"
+      ],
+      "properties": [
+        {
+          "name": "behavior",
+          "type": "Behavior",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "parameter",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/behaviors/Step.h"
+    },
+    {
+      "name": "FeatureChainExpression",
+      "id": "Kernel-Expressions-FeatureChainExpression",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "OperatorExpression"
+      ],
+      "properties": [
+        {
+          "name": "operator",
+          "type": "String",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "."
+        },
+        {
+          "name": "targetFeature",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/expressions/FeatureChainExpression.h"
+    },
+    {
+      "name": "LiteralString",
+      "id": "Kernel-Expressions-LiteralString",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "LiteralExpression"
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "type": "String",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/expressions/LiteralString.h"
+    },
+    {
+      "name": "LiteralInteger",
+      "id": "Kernel-Expressions-LiteralInteger",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "LiteralExpression"
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "type": "Integer",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/expressions/LiteralInteger.h"
+    },
+    {
+      "name": "InstantiationExpression",
+      "id": "Kernel-Expressions-InstantiationExpression",
+      "package": "kernel/expressions",
+      "abstract": true,
+      "kind": "Class",
+      "bases": [
+        "Expression"
+      ],
+      "properties": [
+        {
+          "name": "argument",
+          "type": "Expression",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "instantiatedType",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/expressions/InstantiationExpression.h"
+    },
+    {
+      "name": "MetadataAccessExpression",
+      "id": "Kernel-Expressions-MetadataAccessExpression",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Expression"
+      ],
+      "properties": [
+        {
+          "name": "referencedElement",
+          "type": "Element",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/expressions/MetadataAccessExpression.h"
+    },
+    {
+      "name": "InvocationExpression",
+      "id": "Kernel-Expressions-InvocationExpression",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "InstantiationExpression"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/expressions/InvocationExpression.h"
+    },
+    {
+      "name": "LiteralExpression",
+      "id": "Kernel-Expressions-LiteralExpression",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Expression"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/expressions/LiteralExpression.h"
+    },
+    {
+      "name": "OperatorExpression",
+      "id": "Kernel-Expressions-OperatorExpression",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "InvocationExpression"
+      ],
+      "properties": [
+        {
+          "name": "operator",
+          "type": "String",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/expressions/OperatorExpression.h"
+    },
+    {
+      "name": "ConstructorExpression",
+      "id": "Kernel-Expressions-ConstructorExpression",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "InstantiationExpression"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/expressions/ConstructorExpression.h"
+    },
+    {
+      "name": "LiteralRational",
+      "id": "Kernel-Expressions-LiteralRational",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "LiteralExpression"
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "type": "Real",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/expressions/LiteralRational.h"
+    },
+    {
+      "name": "LiteralBoolean",
+      "id": "Kernel-Expressions-LiteralBoolean",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "LiteralExpression"
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/expressions/LiteralBoolean.h"
+    },
+    {
+      "name": "LiteralInfinity",
+      "id": "Kernel-Expressions-LiteralInfinity",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "LiteralExpression"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/expressions/LiteralInfinity.h"
+    },
+    {
+      "name": "NullExpression",
+      "id": "Kernel-Expressions-NullExpression",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Expression"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/expressions/NullExpression.h"
+    },
+    {
+      "name": "SelectExpression",
+      "id": "Kernel-Expressions-SelectExpression",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "OperatorExpression"
+      ],
+      "properties": [
+        {
+          "name": "operator",
+          "type": "String",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "select"
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/expressions/SelectExpression.h"
+    },
+    {
+      "name": "FeatureReferenceExpression",
+      "id": "Kernel-Expressions-FeatureReferenceExpression",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Expression"
+      ],
+      "properties": [
+        {
+          "name": "referent",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/expressions/FeatureReferenceExpression.h"
+    },
+    {
+      "name": "CollectExpression",
+      "id": "Kernel-Expressions-CollectExpression",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "OperatorExpression"
+      ],
+      "properties": [
+        {
+          "name": "operator",
+          "type": "String",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "collect"
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/expressions/CollectExpression.h"
+    },
+    {
+      "name": "IndexExpression",
+      "id": "Kernel-Expressions-IndexExpression",
+      "package": "kernel/expressions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "OperatorExpression"
+      ],
+      "properties": [
+        {
+          "name": "operator",
+          "type": "String",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "#"
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/expressions/IndexExpression.h"
+    },
+    {
+      "name": "ReturnParameterMembership",
+      "id": "Kernel-Functions-ReturnParameterMembership",
+      "package": "kernel/functions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "ParameterMembership"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/functions/ReturnParameterMembership.h"
+    },
+    {
+      "name": "Predicate",
+      "id": "Kernel-Functions-Predicate",
+      "package": "kernel/functions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Function"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/functions/Predicate.h"
+    },
+    {
+      "name": "Expression",
+      "id": "Kernel-Functions-Expression",
+      "package": "kernel/functions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Step"
+      ],
+      "properties": [
+        {
+          "name": "function",
+          "type": "Function",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "result",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isModelLevelEvaluable",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/functions/Expression.h"
+    },
+    {
+      "name": "ResultExpressionMembership",
+      "id": "Kernel-Functions-ResultExpressionMembership",
+      "package": "kernel/functions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "FeatureMembership"
+      ],
+      "properties": [
+        {
+          "name": "ownedResultExpression",
+          "type": "Expression",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/functions/ResultExpressionMembership.h"
+    },
+    {
+      "name": "BooleanExpression",
+      "id": "Kernel-Functions-BooleanExpression",
+      "package": "kernel/functions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Expression"
+      ],
+      "properties": [
+        {
+          "name": "predicate",
+          "type": "Predicate",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/functions/BooleanExpression.h"
+    },
+    {
+      "name": "Invariant",
+      "id": "Kernel-Functions-Invariant",
+      "package": "kernel/functions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "BooleanExpression"
+      ],
+      "properties": [
+        {
+          "name": "isNegated",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/functions/Invariant.h"
+    },
+    {
+      "name": "Function",
+      "id": "Kernel-Functions-Function",
+      "package": "kernel/functions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Behavior"
+      ],
+      "properties": [
+        {
+          "name": "expression",
+          "type": "Expression",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "result",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isModelLevelEvaluable",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/functions/Function.h"
+    },
+    {
+      "name": "Flow",
+      "id": "Kernel-Interactions-Flow",
+      "package": "kernel/interactions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Connector",
+        "Step"
+      ],
+      "properties": [
+        {
+          "name": "payloadType",
+          "type": "Classifier",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": false,
+          "composite": false
+        },
+        {
+          "name": "targetInputFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": true,
+          "unique": false,
+          "composite": false
+        },
+        {
+          "name": "sourceOutputFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": true,
+          "unique": false,
+          "composite": false
+        },
+        {
+          "name": "flowEnd",
+          "type": "FlowEnd",
+          "lower": 0,
+          "upper": 2,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "payloadFeature",
+          "type": "PayloadFeature",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "interaction",
+          "type": "Interaction",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/interactions/Flow.h"
+    },
+    {
+      "name": "SuccessionFlow",
+      "id": "Kernel-Interactions-SuccessionFlow",
+      "package": "kernel/interactions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Succession",
+        "Flow"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/interactions/SuccessionFlow.h"
+    },
+    {
+      "name": "PayloadFeature",
+      "id": "Kernel-Interactions-PayloadFeature",
+      "package": "kernel/interactions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Feature"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/interactions/PayloadFeature.h"
+    },
+    {
+      "name": "FlowEnd",
+      "id": "Kernel-Interactions-FlowEnd",
+      "package": "kernel/interactions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Feature"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/interactions/FlowEnd.h"
+    },
+    {
+      "name": "Interaction",
+      "id": "Kernel-Interactions-Interaction",
+      "package": "kernel/interactions",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Association",
+        "Behavior"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/interactions/Interaction.h"
+    },
+    {
+      "name": "FeatureValue",
+      "id": "Kernel-FeatureValues-FeatureValue",
+      "package": "kernel/featurevalues",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "OwningMembership"
+      ],
+      "properties": [
+        {
+          "name": "featureWithValue",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "value",
+          "type": "Expression",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isInitial",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        },
+        {
+          "name": "isDefault",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/featurevalues/FeatureValue.h"
+    },
+    {
+      "name": "ElementFilterMembership",
+      "id": "Kernel-Packages-ElementFilterMembership",
+      "package": "kernel/packages",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "OwningMembership"
+      ],
+      "properties": [
+        {
+          "name": "condition",
+          "type": "Expression",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/packages/ElementFilterMembership.h"
+    },
+    {
+      "name": "LibraryPackage",
+      "id": "Kernel-Packages-LibraryPackage",
+      "package": "kernel/packages",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Package"
+      ],
+      "properties": [
+        {
+          "name": "isStandard",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/packages/LibraryPackage.h"
+    },
+    {
+      "name": "Package",
+      "id": "Kernel-Packages-Package",
+      "package": "kernel/packages",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Namespace"
+      ],
+      "properties": [
+        {
+          "name": "filterCondition",
+          "type": "Expression",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/packages/Package.h"
+    },
+    {
+      "name": "MultiplicityRange",
+      "id": "Kernel-Multiplicities-MultiplicityRange",
+      "package": "kernel/multiplicities",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Multiplicity"
+      ],
+      "properties": [
+        {
+          "name": "lowerBound",
+          "type": "Expression",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "upperBound",
+          "type": "Expression",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "bound",
+          "type": "Expression",
+          "lower": 1,
+          "upper": 2,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/multiplicities/MultiplicityRange.h"
+    },
+    {
+      "name": "Succession",
+      "id": "Kernel-Connectors-Succession",
+      "package": "kernel/connectors",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Connector"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/connectors/Succession.h"
+    },
+    {
+      "name": "Connector",
+      "id": "Kernel-Connectors-Connector",
+      "package": "kernel/connectors",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Feature",
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "relatedFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": false,
+          "composite": false
+        },
+        {
+          "name": "association",
+          "type": "Association",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "connectorEnd",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "sourceFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "targetFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "defaultFeaturingType",
+          "type": "Type",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/connectors/Connector.h"
+    },
+    {
+      "name": "BindingConnector",
+      "id": "Kernel-Connectors-BindingConnector",
+      "package": "kernel/connectors",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Connector"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/connectors/BindingConnector.h"
+    },
+    {
+      "name": "Class",
+      "id": "Kernel-Classes-Class",
+      "package": "kernel/classes",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Classifier"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/classes/Class.h"
+    },
+    {
+      "name": "Metaclass",
+      "id": "Kernel-Metadata-Metaclass",
+      "package": "kernel/metadata",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Structure"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/metadata/Metaclass.h"
+    },
+    {
+      "name": "MetadataFeature",
+      "id": "Kernel-Metadata-MetadataFeature",
+      "package": "kernel/metadata",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "AnnotatingElement",
+        "Feature"
+      ],
+      "properties": [
+        {
+          "name": "metaclass",
+          "type": "Metaclass",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/metadata/MetadataFeature.h"
+    },
+    {
+      "name": "Structure",
+      "id": "Kernel-Structures-Structure",
+      "package": "kernel/structures",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Class"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/structures/Structure.h"
+    },
+    {
+      "name": "Association",
+      "id": "Kernel-Associations-Association",
+      "package": "kernel/associations",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Classifier",
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "relatedType",
+          "type": "Type",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": false,
+          "composite": false
+        },
+        {
+          "name": "sourceType",
+          "type": "Type",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "targetType",
+          "type": "Type",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "associationEnd",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/kernel/assiciations/Association.h"
+    },
+    {
+      "name": "AssociationStructure",
+      "id": "Kernel-Associations-AssociationStructure",
+      "package": "kernel/associations",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Structure",
+        "Association"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/assiciations/AssociationStructure.h"
+    },
+    {
+      "name": "DataType",
+      "id": "Kernel-DataTypes-DataType",
+      "package": "kernel/datatypes",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Classifier"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/kernel/datatypes/DataType.h"
+    },
+    {
+      "name": "Disjoining",
+      "id": "Core-Types-Disjoining",
+      "package": "core/types",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "typeDisjoined",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "disjoiningType",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningType",
+          "type": "Type",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/types/Disjoining.h"
+    },
+    {
+      "name": "Type",
+      "id": "Core-Types-Type",
+      "package": "core/types",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Namespace"
+      ],
+      "properties": [
+        {
+          "name": "ownedSpecialization",
+          "type": "Specialization",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedFeatureMembership",
+          "type": "FeatureMembership",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "feature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "input",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "output",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isAbstract",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        },
+        {
+          "name": "inheritedMembership",
+          "type": "Membership",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "endFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedEndFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isSufficient",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        },
+        {
+          "name": "ownedConjugator",
+          "type": "Conjugation",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isConjugated",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "inheritedFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "multiplicity",
+          "type": "Multiplicity",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "unioningType",
+          "type": "Type",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedIntersecting",
+          "type": "Intersecting",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "intersectingType",
+          "type": "Type",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedUnioning",
+          "type": "Unioning",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedDisjoining",
+          "type": "Disjoining",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "featureMembership",
+          "type": "FeatureMembership",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "differencingType",
+          "type": "Type",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedDifferencing",
+          "type": "Differencing",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "directedFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/types/Type.h"
+    },
+    {
+      "name": "Multiplicity",
+      "id": "Core-Types-Multiplicity",
+      "package": "core/types",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Feature"
+      ],
+      "properties": [],
+      "literals": [],
+      "header": "kerml/core/features/Multiplicity.h"
+    },
+    {
+      "name": "Differencing",
+      "id": "Core-Types-Differencing",
+      "package": "core/types",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "typeDifferenced",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "differencingType",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/types/Differencing.h"
+    },
+    {
+      "name": "Intersecting",
+      "id": "Core-Types-Intersecting",
+      "package": "core/types",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "typeIntersected",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "intersectingType",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/types/Intersecting.h"
+    },
+    {
+      "name": "Unioning",
+      "id": "Core-Types-Unioning",
+      "package": "core/types",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "typeUnioned",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "unioningType",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/types/Unioning.h"
+    },
+    {
+      "name": "FeatureDirectionKind",
+      "id": "Core-Types-FeatureDirectionKind",
+      "package": "core/types",
+      "abstract": false,
+      "kind": "Enumeration",
+      "bases": [],
+      "properties": [],
+      "literals": [
+        "in",
+        "inout",
+        "out"
+      ],
+      "header": "kerml/core/features/FeatureDirectionKind.h"
+    },
+    {
+      "name": "FeatureMembership",
+      "id": "Core-Types-FeatureMembership",
+      "package": "core/types",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "OwningMembership"
+      ],
+      "properties": [
+        {
+          "name": "owningType",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedMemberFeature",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/features/FeatureMembership.h"
+    },
+    {
+      "name": "Conjugation",
+      "id": "Core-Types-Conjugation",
+      "package": "core/types",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "originalType",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "conjugatedType",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningType",
+          "type": "Type",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/types/Conjugation.h"
+    },
+    {
+      "name": "Specialization",
+      "id": "Core-Types-Specialization",
+      "package": "core/types",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "owningType",
+          "type": "Type",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "general",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "specific",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/types/Specialization.h"
+    },
+    {
+      "name": "Subclassification",
+      "id": "Core-Classifiers-Subclassification",
+      "package": "core/classifiers",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Specialization"
+      ],
+      "properties": [
+        {
+          "name": "superclassifier",
+          "type": "Classifier",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "subclassifier",
+          "type": "Classifier",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningClassifier",
+          "type": "Classifier",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/classifiers/Subclassification.h"
+    },
+    {
+      "name": "Classifier",
+      "id": "Core-Classifiers-Classifier",
+      "package": "core/classifiers",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Type"
+      ],
+      "properties": [
+        {
+          "name": "ownedSubclassification",
+          "type": "Subclassification",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/classifiers/Classifier.h"
+    },
+    {
+      "name": "FeatureInverting",
+      "id": "Core-Features-FeatureInverting",
+      "package": "core/features",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "featureInverted",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "invertingFeature",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/features/FeatureInverting.h"
+    },
+    {
+      "name": "FeatureChaining",
+      "id": "Core-Features-FeatureChaining",
+      "package": "core/features",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "chainingFeature",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "featureChained",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/features/FeatureChaining.h"
+    },
+    {
+      "name": "Redefinition",
+      "id": "Core-Features-Redefinition",
+      "package": "core/features",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Subsetting"
+      ],
+      "properties": [
+        {
+          "name": "redefiningFeature",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "redefinedFeature",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/features/Redefinition.h"
+    },
+    {
+      "name": "ReferenceSubsetting",
+      "id": "Core-Features-ReferenceSubsetting",
+      "package": "core/features",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Subsetting"
+      ],
+      "properties": [
+        {
+          "name": "referencedFeature",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "referencingFeature",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/features/ReferenceSubsetting.h"
+    },
+    {
+      "name": "Feature",
+      "id": "Core-Features-Feature",
+      "package": "core/features",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Type"
+      ],
+      "properties": [
+        {
+          "name": "owningType",
+          "type": "Type",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isUnique",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "true"
+        },
+        {
+          "name": "isOrdered",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        },
+        {
+          "name": "type",
+          "type": "Type",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedRedefinition",
+          "type": "Redefinition",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedSubsetting",
+          "type": "Subsetting",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningFeatureMembership",
+          "type": "FeatureMembership",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isComposite",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        },
+        {
+          "name": "isEnd",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        },
+        {
+          "name": "endOwningType",
+          "type": "Type",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedTyping",
+          "type": "FeatureTyping",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "featuringType",
+          "type": "Type",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedTypeFeaturing",
+          "type": "TypeFeaturing",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isDerived",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        },
+        {
+          "name": "chainingFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": false,
+          "composite": false
+        },
+        {
+          "name": "ownedFeatureInverting",
+          "type": "FeatureInverting",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedFeatureChaining",
+          "type": "FeatureChaining",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isPortion",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        },
+        {
+          "name": "isVariable",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        },
+        {
+          "name": "isConstant",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        },
+        {
+          "name": "ownedReferenceSubsetting",
+          "type": "ReferenceSubsetting",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "featureTarget",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "crossFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "direction",
+          "type": "FeatureDirectionKind",
+          "lower": 0,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedCrossSubsetting",
+          "type": "CrossSubsetting",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/features/Feature.h"
+    },
+    {
+      "name": "TypeFeaturing",
+      "id": "Core-Features-TypeFeaturing",
+      "package": "core/features",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "featureOfType",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "featuringType",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningFeatureOfType",
+          "type": "Feature",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/features/TypeFeaturing.h"
+    },
+    {
+      "name": "Subsetting",
+      "id": "Core-Features-Subsetting",
+      "package": "core/features",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Specialization"
+      ],
+      "properties": [
+        {
+          "name": "subsettedFeature",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "subsettingFeature",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/features/Subsetting.h"
+    },
+    {
+      "name": "FeatureTyping",
+      "id": "Core-Features-FeatureTyping",
+      "package": "core/features",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Specialization"
+      ],
+      "properties": [
+        {
+          "name": "typedFeature",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "type",
+          "type": "Type",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningFeature",
+          "type": "Feature",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/features/FeatureTyping.h"
+    },
+    {
+      "name": "EndFeatureMembership",
+      "id": "Core-Features-EndFeatureMembership",
+      "package": "core/features",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "FeatureMembership"
+      ],
+      "properties": [
+        {
+          "name": "ownedMemberFeature",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/features/EndFeatureMembership.h"
+    },
+    {
+      "name": "CrossSubsetting",
+      "id": "Core-Features-CrossSubsetting",
+      "package": "core/features",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Subsetting"
+      ],
+      "properties": [
+        {
+          "name": "crossedFeature",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "crossingFeature",
+          "type": "Feature",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/core/features/CrossSubsetting.h"
+    },
+    {
+      "name": "Dependency",
+      "id": "Root-Dependencies-Dependency",
+      "package": "root/dependencies",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "client",
+          "type": "Element",
+          "lower": 1,
+          "upper": -1,
+          "derived": false,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "supplier",
+          "type": "Element",
+          "lower": 1,
+          "upper": -1,
+          "derived": false,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/root/dependencies/Dependency.h"
+    },
+    {
+      "name": "TextualRepresentation",
+      "id": "Root-Annotations-TextualRepresentation",
+      "package": "root/annotations",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "AnnotatingElement"
+      ],
+      "properties": [
+        {
+          "name": "language",
+          "type": "String",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "representedElement",
+          "type": "Element",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "body",
+          "type": "String",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/root/annotations/TextualRepresentation.h"
+    },
+    {
+      "name": "Documentation",
+      "id": "Root-Annotations-Documentation",
+      "package": "root/annotations",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Comment"
+      ],
+      "properties": [
+        {
+          "name": "documentedElement",
+          "type": "Element",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/root/annotations/Documentation.h"
+    },
+    {
+      "name": "Comment",
+      "id": "Root-Annotations-Comment",
+      "package": "root/annotations",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "AnnotatingElement"
+      ],
+      "properties": [
+        {
+          "name": "locale",
+          "type": "String",
+          "lower": 0,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "body",
+          "type": "String",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/root/annotations/Comment.h"
+    },
+    {
+      "name": "Annotation",
+      "id": "Root-Annotations-Annotation",
+      "package": "root/annotations",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "annotatingElement",
+          "type": "AnnotatingElement",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "annotatedElement",
+          "type": "Element",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningAnnotatedElement",
+          "type": "Element",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningAnnotatingElement",
+          "type": "AnnotatingElement",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedAnnotatingElement",
+          "type": "AnnotatingElement",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/root/annotations/Annotation.h"
+    },
+    {
+      "name": "AnnotatingElement",
+      "id": "Root-Annotations-AnnotatingElement",
+      "package": "root/annotations",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Element"
+      ],
+      "properties": [
+        {
+          "name": "annotatedElement",
+          "type": "Element",
+          "lower": 1,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedAnnotatingRelationship",
+          "type": "Annotation",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningAnnotatingRelationship",
+          "type": "Annotation",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "annotation",
+          "type": "Annotation",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/root/annotations/AnnotatingElement.h"
+    },
+    {
+      "name": "NamespaceImport",
+      "id": "Root-Namespaces-NamespaceImport",
+      "package": "root/namespaces",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Import"
+      ],
+      "properties": [
+        {
+          "name": "importedNamespace",
+          "type": "Namespace",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/root/namespaces/NamespaceImport.h"
+    },
+    {
+      "name": "MembershipImport",
+      "id": "Root-Namespaces-MembershipImport",
+      "package": "root/namespaces",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Import"
+      ],
+      "properties": [
+        {
+          "name": "importedMembership",
+          "type": "Membership",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/root/namespaces/MembershipImport.h"
+    },
+    {
+      "name": "OwningMembership",
+      "id": "Root-Namespaces-OwningMembership",
+      "package": "root/namespaces",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Membership"
+      ],
+      "properties": [
+        {
+          "name": "ownedMemberElement",
+          "type": "Element",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedMemberElementId",
+          "type": "String",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedMemberShortName",
+          "type": "String",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedMemberName",
+          "type": "String",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/root/namespaces/OwningMembership.h"
+    },
+    {
+      "name": "Import",
+      "id": "Root-Namespaces-Import",
+      "package": "root/namespaces",
+      "abstract": true,
+      "kind": "Class",
+      "bases": [
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "importOwningNamespace",
+          "type": "Namespace",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "visibility",
+          "type": "VisibilityKind",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "private"
+        },
+        {
+          "name": "isRecursive",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        },
+        {
+          "name": "isImportAll",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        },
+        {
+          "name": "importedElement",
+          "type": "Element",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/root/namespaces/Import.h"
+    },
+    {
+      "name": "Namespace",
+      "id": "Root-Namespaces-Namespace",
+      "package": "root/namespaces",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Element"
+      ],
+      "properties": [
+        {
+          "name": "membership",
+          "type": "Membership",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedImport",
+          "type": "Import",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "member",
+          "type": "Element",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedMember",
+          "type": "Element",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedMembership",
+          "type": "Membership",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "importedMembership",
+          "type": "Membership",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/root/namespaces/Namespace.h"
+    },
+    {
+      "name": "Membership",
+      "id": "Root-Namespaces-Membership",
+      "package": "root/namespaces",
+      "abstract": false,
+      "kind": "Class",
+      "bases": [
+        "Relationship"
+      ],
+      "properties": [
+        {
+          "name": "memberElementId",
+          "type": "String",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "membershipOwningNamespace",
+          "type": "Namespace",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "memberShortName",
+          "type": "String",
+          "lower": 0,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "memberElement",
+          "type": "Element",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "memberName",
+          "type": "String",
+          "lower": 0,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "visibility",
+          "type": "VisibilityKind",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "public"
+        }
+      ],
+      "literals": [],
+      "header": "kerml/root/namespaces/Membership.h"
+    },
+    {
+      "name": "VisibilityKind",
+      "id": "Root-Namespaces-VisibilityKind",
+      "package": "root/namespaces",
+      "abstract": false,
+      "kind": "Enumeration",
+      "bases": [],
+      "properties": [],
+      "literals": [
+        "private",
+        "protected",
+        "public"
+      ],
+      "header": "kerml/root/namespaces/VisibilityKind.h"
+    },
+    {
+      "name": "Relationship",
+      "id": "Root-Elements-Relationship",
+      "package": "root/elements",
+      "abstract": true,
+      "kind": "Class",
+      "bases": [
+        "Element"
+      ],
+      "properties": [
+        {
+          "name": "relatedElement",
+          "type": "Element",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": false,
+          "composite": false
+        },
+        {
+          "name": "target",
+          "type": "Element",
+          "lower": 0,
+          "upper": -1,
+          "derived": false,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "source",
+          "type": "Element",
+          "lower": 0,
+          "upper": -1,
+          "derived": false,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningRelatedElement",
+          "type": "Element",
+          "lower": 0,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedRelatedElement",
+          "type": "Element",
+          "lower": 0,
+          "upper": -1,
+          "derived": false,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isImplied",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        }
+      ],
+      "literals": [],
+      "header": "kerml/root/elements/Relationship.h"
+    },
+    {
+      "name": "Element",
+      "id": "Root-Elements-Element",
+      "package": "root/elements",
+      "abstract": true,
+      "kind": "Class",
+      "bases": [],
+      "properties": [
+        {
+          "name": "owningMembership",
+          "type": "OwningMembership",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningRelationship",
+          "type": "Relationship",
+          "lower": 0,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owningNamespace",
+          "type": "Namespace",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "elementId",
+          "type": "String",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedRelationship",
+          "type": "Relationship",
+          "lower": 0,
+          "upper": -1,
+          "derived": false,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "owner",
+          "type": "Element",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedElement",
+          "type": "Element",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "documentation",
+          "type": "Documentation",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "ownedAnnotation",
+          "type": "Annotation",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "textualRepresentation",
+          "type": "TextualRepresentation",
+          "lower": 0,
+          "upper": -1,
+          "derived": true,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "aliasIds",
+          "type": "String",
+          "lower": 0,
+          "upper": -1,
+          "derived": false,
+          "ordered": true,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "declaredShortName",
+          "type": "String",
+          "lower": 0,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "declaredName",
+          "type": "String",
+          "lower": 0,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "shortName",
+          "type": "String",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "qualifiedName",
+          "type": "String",
+          "lower": 0,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        },
+        {
+          "name": "isImpliedIncluded",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": false,
+          "ordered": false,
+          "unique": true,
+          "composite": false,
+          "default": "false"
+        },
+        {
+          "name": "isLibraryElement",
+          "type": "Boolean",
+          "lower": 1,
+          "upper": 1,
+          "derived": true,
+          "ordered": false,
+          "unique": true,
+          "composite": false
+        }
+      ],
+      "literals": [],
+      "header": "kerml/root/elements/Element.h"
+    }
+  ]
+}

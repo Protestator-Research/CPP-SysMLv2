@@ -13,7 +13,7 @@ namespace KerML::Entities {
      * @class Differencing
      * @version 1.0 Beta 4
      */
-    class Differencing : public Relationship{
+    class KERML_EXPORT Differencing : public Relationship{
     public:
         Differencing() = delete;
         Differencing(std::shared_ptr<Type> typeDifferenced, std::shared_ptr<Type> differencingType);
@@ -22,7 +22,7 @@ namespace KerML::Entities {
         std::shared_ptr<Type> differencingType();
         void setDifferencingType(std::shared_ptr<Type> differencingType);
 
-    protected:
+    public:
         std::shared_ptr<Type> typeDifferenced();
         void setTypeDifferenced(std::shared_ptr<Type> typeDifferenced);
 

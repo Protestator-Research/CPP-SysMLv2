@@ -5,6 +5,7 @@
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
 #pragma once
+#include <kerml/model/Forward.h>
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -151,7 +152,7 @@ namespace KerML::Entities {
          */
         std::string unqualifiedName(std::string qualifiedName);
 
-    protected:
+    public:
         /**
          *
          * @return
@@ -310,5 +311,8 @@ namespace KerML::Entities {
         std::vector<std::shared_ptr<Membership>> OwnedMembership;
 
 
+    public:
+        std::vector<std::shared_ptr<Membership>> membership() const;
+        std::vector<std::shared_ptr<Membership>> importedMembership() const;
     };
 } // KerML::Entities

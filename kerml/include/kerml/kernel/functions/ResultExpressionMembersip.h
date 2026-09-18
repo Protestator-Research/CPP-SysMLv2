@@ -4,8 +4,9 @@
 
 #pragma once
 
-namespace KerML::Entities {
-    class ResultExpressionMembersip {
+#include <kerml/kernel/functions/ResultExpressionMembership.h>
 
-    };
+namespace KerML::Entities {
+    // Compatibility with the original misspelled public type name.
+    using ResultExpressionMembersip = ResultExpressionMembership;
 }

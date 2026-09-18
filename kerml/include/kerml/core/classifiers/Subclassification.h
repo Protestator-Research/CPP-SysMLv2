@@ -28,7 +28,7 @@ namespace KerML::Entities {
      * @author Moritz Herzog
      * @brief Representation of the Abstract Syntax of the Subclassification.
 	 */
-	class Subclassification : public Specialization
+	class KERML_EXPORT Subclassification : public Specialization
 	{
 	public:
 		/**
@@ -64,7 +64,7 @@ namespace KerML::Entities {
 		 */
 		void setSubclassifier(std::shared_ptr<Classifier> subclassifier);
 
-	protected:
+	public:
 		/**
 		 * 
 		 * @return 
