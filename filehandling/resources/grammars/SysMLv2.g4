@@ -1,4 +1,14 @@
+/**
+ * Implementation of the KerML Beta 2 Standard for ANTLR 4 Parsing.
+ * @author Moritz Herzog
+ * The internal assignments of the values is not done in the ANTLR4 grammar. This needs to be done later on in the code.
+ **/
+
 grammar SysMLv2;
+
+@header {
+    #include <sysmlv2/sysmlv2file_global.h>
+}
 
 import KerML;
 
@@ -138,7 +148,7 @@ behavior_usage_element: action_usage |
                         perform_action_usage |
                         exhibit_state_usage |
                         include_use_case_usage |
-                        assert_constraint_usage |
+                        assert_constriant_usage |
                         satisfy_requirement_usage;
 variant_usage_element: variant_reference |
                        reference_usage |
@@ -260,7 +270,7 @@ flow_declaration: usage_declaration value_part? (KEYWORD_OF flow_payload_feature
 flow_payload_feature_member: flow_payload_feature;
 flow_payload_feature: payload_feature;
 payload_feature: identification payload_feature_specialization_part value_part | owned_feature_typing | owned_multiplicity owned_feature_typing;
-payload_feature_specialization_part: feature_specilization+ multiplicity_part? feature_specilization* | multiplicity_part feature_specilization+;
+payload_feature_specialization_part: feature_specialization+ multiplicity_part? feature_specialization* | multiplicity_part feature_specialization+;
 flow_end_member: flow_end;
 flow_end: flow_end_subsetting? flow_feature_member;
 flow_end_subsetting: qualified_name | feature_chain_prefix;

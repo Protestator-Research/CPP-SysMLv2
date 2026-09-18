@@ -6,6 +6,10 @@
 
 grammar KerML;
 
+@header {
+    #include <sysmlv2/sysmlv2file_global.h>
+}
+
 start: elements EOF;
 
 startRule: start;

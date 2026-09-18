@@ -1,14 +1,20 @@
 
+    #include <sysmlv2/sysmlv2file_global.h>
+
+
+    #include <sysmlv2/sysmlv2file_global.h>
+
+
 // Generated from ./SysMLv2.g4 by ANTLR 4.13.2
 
 #pragma once
 
 
-#include <antlr4-runtime.h>
-#include <sysmlv2/parser/SysMLv2Parser.h>
-#include <sysmlv2/sysmlv2file_global.h>
+#include "antlr4-runtime.h"
+#include "../../../resources/grammars/SysMLv2Parser.h"
 
-/**
+
+    /**
  * This interface defines an abstract listener for a parse tree produced by SysMLv2Parser.
  */
 class SYSMLV2FILE_EXPORT SysMLv2Listener : public antlr4::tree::ParseTreeListener {
@@ -248,8 +254,8 @@ public:
   virtual void enterSource_succession_member(SysMLv2Parser::Source_succession_memberContext *ctx) = 0;
   virtual void exitSource_succession_member(SysMLv2Parser::Source_succession_memberContext *ctx) = 0;
 
-  virtual void enterSouce_succession(SysMLv2Parser::Souce_successionContext *ctx) = 0;
-  virtual void exitSouce_succession(SysMLv2Parser::Souce_successionContext *ctx) = 0;
+  virtual void enterSource_succession(SysMLv2Parser::Source_successionContext *ctx) = 0;
+  virtual void exitSource_succession(SysMLv2Parser::Source_successionContext *ctx) = 0;
 
   virtual void enterSource_end_member(SysMLv2Parser::Source_end_memberContext *ctx) = 0;
   virtual void exitSource_end_member(SysMLv2Parser::Source_end_memberContext *ctx) = 0;
@@ -920,8 +926,8 @@ public:
   virtual void enterIdentification(SysMLv2Parser::IdentificationContext *ctx) = 0;
   virtual void exitIdentification(SysMLv2Parser::IdentificationContext *ctx) = 0;
 
-  virtual void enterRelationship_onwed_elements(SysMLv2Parser::Relationship_onwed_elementsContext *ctx) = 0;
-  virtual void exitRelationship_onwed_elements(SysMLv2Parser::Relationship_onwed_elementsContext *ctx) = 0;
+  virtual void enterRelationship_owned_elements(SysMLv2Parser::Relationship_owned_elementsContext *ctx) = 0;
+  virtual void exitRelationship_owned_elements(SysMLv2Parser::Relationship_owned_elementsContext *ctx) = 0;
 
   virtual void enterRelationship_owned_element(SysMLv2Parser::Relationship_owned_elementContext *ctx) = 0;
   virtual void exitRelationship_owned_element(SysMLv2Parser::Relationship_owned_elementContext *ctx) = 0;
@@ -1112,8 +1118,8 @@ public:
   virtual void enterFeature_specialization_part(SysMLv2Parser::Feature_specialization_partContext *ctx) = 0;
   virtual void exitFeature_specialization_part(SysMLv2Parser::Feature_specialization_partContext *ctx) = 0;
 
-  virtual void enterFeature_specilization(SysMLv2Parser::Feature_specilizationContext *ctx) = 0;
-  virtual void exitFeature_specilization(SysMLv2Parser::Feature_specilizationContext *ctx) = 0;
+  virtual void enterFeature_specialization(SysMLv2Parser::Feature_specializationContext *ctx) = 0;
+  virtual void exitFeature_specialization(SysMLv2Parser::Feature_specializationContext *ctx) = 0;
 
   virtual void enterTypings(SysMLv2Parser::TypingsContext *ctx) = 0;
   virtual void exitTypings(SysMLv2Parser::TypingsContext *ctx) = 0;
@@ -1481,8 +1487,8 @@ public:
   virtual void enterNamed_argument(SysMLv2Parser::Named_argumentContext *ctx) = 0;
   virtual void exitNamed_argument(SysMLv2Parser::Named_argumentContext *ctx) = 0;
 
-  virtual void enterParamenter_redefinition(SysMLv2Parser::Paramenter_redefinitionContext *ctx) = 0;
-  virtual void exitParamenter_redefinition(SysMLv2Parser::Paramenter_redefinitionContext *ctx) = 0;
+  virtual void enterParameter_redefinition(SysMLv2Parser::Parameter_redefinitionContext *ctx) = 0;
+  virtual void exitParameter_redefinition(SysMLv2Parser::Parameter_redefinitionContext *ctx) = 0;
 
   virtual void enterBody_expression(SysMLv2Parser::Body_expressionContext *ctx) = 0;
   virtual void exitBody_expression(SysMLv2Parser::Body_expressionContext *ctx) = 0;
@@ -1535,8 +1541,8 @@ public:
   virtual void enterItem_feature(SysMLv2Parser::Item_featureContext *ctx) = 0;
   virtual void exitItem_feature(SysMLv2Parser::Item_featureContext *ctx) = 0;
 
-  virtual void enterItem_feature_specilization_part(SysMLv2Parser::Item_feature_specilization_partContext *ctx) = 0;
-  virtual void exitItem_feature_specilization_part(SysMLv2Parser::Item_feature_specilization_partContext *ctx) = 0;
+  virtual void enterItem_feature_specialization_part(SysMLv2Parser::Item_feature_specialization_partContext *ctx) = 0;
+  virtual void exitItem_feature_specialization_part(SysMLv2Parser::Item_feature_specialization_partContext *ctx) = 0;
 
   virtual void enterItem_flow_end_member(SysMLv2Parser::Item_flow_end_memberContext *ctx) = 0;
   virtual void exitItem_flow_end_member(SysMLv2Parser::Item_flow_end_memberContext *ctx) = 0;

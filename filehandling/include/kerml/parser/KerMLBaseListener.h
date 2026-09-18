@@ -1,14 +1,17 @@
 
+    #include <sysmlv2/sysmlv2file_global.h>
+
+
 // Generated from ./KerML.g4 by ANTLR 4.13.2
 
 #pragma once
 
 
-#include <antlr4-runtime.h>
-#include <kerml/parser/KerMLListener.h>
-#include <sysmlv2/sysmlv2file_global.h>
+#include "antlr4-runtime.h"
+#include "../../../resources/grammars/KerMLListener.h"
 
-/**
+
+    /**
  * This class provides an empty implementation of KerMLListener,
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
@@ -31,8 +34,8 @@ public:
   virtual void enterRelationship_body(KerMLParser::Relationship_bodyContext * /*ctx*/) override { }
   virtual void exitRelationship_body(KerMLParser::Relationship_bodyContext * /*ctx*/) override { }
 
-  virtual void enterRelationship_onwed_elements(KerMLParser::Relationship_onwed_elementsContext * /*ctx*/) override { }
-  virtual void exitRelationship_onwed_elements(KerMLParser::Relationship_onwed_elementsContext * /*ctx*/) override { }
+  virtual void enterRelationship_owned_elements(KerMLParser::Relationship_owned_elementsContext * /*ctx*/) override { }
+  virtual void exitRelationship_owned_elements(KerMLParser::Relationship_owned_elementsContext * /*ctx*/) override { }
 
   virtual void enterRelationship_owned_element(KerMLParser::Relationship_owned_elementContext * /*ctx*/) override { }
   virtual void exitRelationship_owned_element(KerMLParser::Relationship_owned_elementContext * /*ctx*/) override { }
@@ -256,8 +259,8 @@ public:
   virtual void enterMultiplicity_part(KerMLParser::Multiplicity_partContext * /*ctx*/) override { }
   virtual void exitMultiplicity_part(KerMLParser::Multiplicity_partContext * /*ctx*/) override { }
 
-  virtual void enterFeature_specilization(KerMLParser::Feature_specilizationContext * /*ctx*/) override { }
-  virtual void exitFeature_specilization(KerMLParser::Feature_specilizationContext * /*ctx*/) override { }
+  virtual void enterFeature_specialization(KerMLParser::Feature_specializationContext * /*ctx*/) override { }
+  virtual void exitFeature_specialization(KerMLParser::Feature_specializationContext * /*ctx*/) override { }
 
   virtual void enterTypings(KerMLParser::TypingsContext * /*ctx*/) override { }
   virtual void exitTypings(KerMLParser::TypingsContext * /*ctx*/) override { }
@@ -637,8 +640,8 @@ public:
   virtual void enterNamed_argument(KerMLParser::Named_argumentContext * /*ctx*/) override { }
   virtual void exitNamed_argument(KerMLParser::Named_argumentContext * /*ctx*/) override { }
 
-  virtual void enterParamenter_redefinition(KerMLParser::Paramenter_redefinitionContext * /*ctx*/) override { }
-  virtual void exitParamenter_redefinition(KerMLParser::Paramenter_redefinitionContext * /*ctx*/) override { }
+  virtual void enterParameter_redefinition(KerMLParser::Parameter_redefinitionContext * /*ctx*/) override { }
+  virtual void exitParameter_redefinition(KerMLParser::Parameter_redefinitionContext * /*ctx*/) override { }
 
   virtual void enterBody_expression(KerMLParser::Body_expressionContext * /*ctx*/) override { }
   virtual void exitBody_expression(KerMLParser::Body_expressionContext * /*ctx*/) override { }
@@ -691,8 +694,8 @@ public:
   virtual void enterItem_feature(KerMLParser::Item_featureContext * /*ctx*/) override { }
   virtual void exitItem_feature(KerMLParser::Item_featureContext * /*ctx*/) override { }
 
-  virtual void enterItem_feature_specilization_part(KerMLParser::Item_feature_specilization_partContext * /*ctx*/) override { }
-  virtual void exitItem_feature_specilization_part(KerMLParser::Item_feature_specilization_partContext * /*ctx*/) override { }
+  virtual void enterItem_feature_specialization_part(KerMLParser::Item_feature_specialization_partContext * /*ctx*/) override { }
+  virtual void exitItem_feature_specialization_part(KerMLParser::Item_feature_specialization_partContext * /*ctx*/) override { }
 
   virtual void enterItem_flow_end_member(KerMLParser::Item_flow_end_memberContext * /*ctx*/) override { }
   virtual void exitItem_flow_end_member(KerMLParser::Item_flow_end_memberContext * /*ctx*/) override { }
