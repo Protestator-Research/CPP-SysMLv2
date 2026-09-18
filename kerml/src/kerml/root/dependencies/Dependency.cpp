@@ -9,18 +9,18 @@ namespace KerML {
 
 
         void Dependency::setClient(std::shared_ptr<Element> client) {
-            Client = client;
+            Client = client ? std::vector<std::shared_ptr<Element>>{client} : std::vector<std::shared_ptr<Element>>{};
         }
 
-        std::shared_ptr<Element> Dependency::client() const {
+        std::vector<std::shared_ptr<Element>> Dependency::client() const {
             return Client;
         }
 
         void Dependency::setSupplier(std::shared_ptr<Element> supplier) {
-            Supplier = supplier;
+            Supplier = supplier ? std::vector<std::shared_ptr<Element>>{supplier} : std::vector<std::shared_ptr<Element>>{};
         }
 
-        std::shared_ptr<Element> Dependency::supplier() const {
+        std::vector<std::shared_ptr<Element>> Dependency::supplier() const {
             return Supplier;
         }
 
@@ -37,9 +37,13 @@ namespace KerML {
         }
 
         void Dependency::initialize() {
-            Client = nullptr;
-            Supplier = nullptr;
+            Client.clear();
+            Supplier.clear();
         }
 
     } // Entities
 } // KerML
+namespace KerML::Entities {
+void Dependency::setClient(std::vector<std::shared_ptr<Element>> clients) { Client = std::move(clients); }
+void Dependency::setSupplier(std::vector<std::shared_ptr<Element>> suppliers) { Supplier = std::move(suppliers); }
+}

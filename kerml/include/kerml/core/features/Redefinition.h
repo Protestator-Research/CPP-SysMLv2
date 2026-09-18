@@ -13,7 +13,7 @@ namespace KerML::Entities {
 	 * @version 1.0 Beta 4
 	 * 
 	 */
-	class Redefinition : public Subsetting{
+	class KERML_EXPORT Redefinition : public Subsetting{
     public:
         Redefinition() = delete;
 		Redefinition(std::shared_ptr<Feature> redefinedFeature, std::shared_ptr<Feature> redefiningFeature);

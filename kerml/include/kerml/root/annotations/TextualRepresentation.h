@@ -5,6 +5,7 @@
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
 #pragma once
+#include <kerml/model/Forward.h>
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -45,5 +46,8 @@ namespace KerML::Entities {
     private:
         std::string Language;
         std::string Body;
+    public:
+        std::shared_ptr<Element> representedElement() const;
+        void setRepresentedElement(std::shared_ptr<Element> value);
     };
 } // KerML::Entities

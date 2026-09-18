@@ -88,6 +88,8 @@ set(KERNEL_FUNCTIONS_HEADER
         include/kerml/kernel/functions/ParameterMembership.h
         include/kerml/kernel/functions/ReturnParameterMembership.h
         include/kerml/kernel/functions/ResultExpressionMembersip.h)
+list(APPEND KERNEL_FUNCTIONS_HEADER
+        include/kerml/kernel/functions/ResultExpressionMembership.h)
 
 set(KERNEL_METADATA_HEADER
         include/kerml/kernel/metadata/MetadataFeature.h)
@@ -108,13 +110,20 @@ set(KERNEL_EXPRESSIONS_HEADER
         include/kerml/kernel/expressions/MetadataAccessExpression.h
         include/kerml/kernel/expressions/OperatorExpression.h
         include/kerml/kernel/expressions/LiteralInteger.h)
+list(APPEND KERNEL_EXPRESSIONS_HEADER
+        include/kerml/kernel/expressions/ConstructorExpression.h
+        include/kerml/kernel/expressions/IndexExpression.h)
 
 set(KERNEL_INTERACTIONS_HEADER
+        include/kerml/kernel/interactions/Flow.h
         include/kerml/kernel/interactions/Interaction.h
         include/kerml/kernel/interactions/ItemFeature.h
         include/kerml/kernel/interactions/ItemFlowEnd.h
         include/kerml/kernel/interactions/ItemFlow.h
         include/kerml/kernel/interactions/SuccessionItemFlow.h)
+list(APPEND KERNEL_INTERACTIONS_HEADER
+        include/kerml/kernel/interactions/FlowEnd.h
+        include/kerml/kernel/interactions/PayloadFeature.h)
 
 set(KERNEL_MULTIPLICITIES_HEADER
         include/kerml/kernel/multiplicities/MultiplicityRange.h)
@@ -233,6 +242,17 @@ add_library(kerml
         src/kerml/kernel/behaviors/Step.cpp
         src/kerml/kernel/behaviors/Behavior.cpp)
 
+target_sources(kerml PRIVATE
+        src/kerml/kernel/interactions/Flow.cpp
+        src/kerml/kernel/expressions/ConstructorExpression.cpp
+        src/kerml/kernel/expressions/IndexExpression.cpp
+        src/kerml/kernel/interactions/FlowEnd.cpp
+        src/kerml/kernel/interactions/PayloadFeature.cpp
+        src/kerml/kernel/functions/ResultExpressionMembership.cpp)
+
+include(KernelSources.cmake)
+target_sources(kerml PRIVATE src/kerml/model/RootProperties.cpp src/kerml/model/Representation.cpp)
+
 target_link_libraries(kerml PRIVATE
         boost::boost
         nlohmann_json::nlohmann_json
@@ -289,7 +309,7 @@ foreach(_source IN ITEMS ${_source_list})
     source_group("${_group_path}" FILES "${_source}")
 endforeach()
 
-if(RUN_TESTS)
+if(BUILD_TESTING OR RUN_TESTS)
     enable_testing()
     add_subdirectory(tests)
 endif()

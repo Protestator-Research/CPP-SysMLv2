@@ -14,7 +14,7 @@ namespace KerML::Entities {
 	 * @version 1.0 Beta 4
 	 * 
 	 */
-	class ReferenceSubsetting : public Subsetting {
+	class KERML_EXPORT ReferenceSubsetting : public Subsetting {
 	public:
 		ReferenceSubsetting() = delete;
 		ReferenceSubsetting(std::shared_ptr<Feature> referencedFeature, std::shared_ptr<Feature> referencingFeature);
@@ -23,7 +23,7 @@ namespace KerML::Entities {
 		std::shared_ptr<Feature> referencedFeature() const;
 		void setReferencedFeature(std::shared_ptr<Feature> referencedFeature);
 
-	protected:
+	public:
 		std::shared_ptr<Feature> referencingFeature() const;
 		void setReferencingFeature(std::shared_ptr<Feature> referencingFeautre);
 

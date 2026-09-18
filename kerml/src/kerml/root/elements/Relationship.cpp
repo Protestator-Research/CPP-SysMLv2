@@ -43,9 +43,6 @@ namespace KerML::Entities {
     }
 
     void Relationship::setOwningRelatedElement(std::shared_ptr<Element> owningRelatedElement) {
-        if (std::find(OwnedRelatedElements.begin(), OwnedRelatedElements.end(), owningRelatedElement)==OwnedRelatedElements.end())
-            throw std::runtime_error("Owning related element has to be inside of the owned related elements.");
-
         OwningRelatedElement = owningRelatedElement;
     }
 
@@ -54,39 +51,23 @@ namespace KerML::Entities {
     }
 
     void Relationship::sortOwnedRelatedElements() {
-        std::function<bool(std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs)>  comparisonFunction=
-                [](std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs){
-                    return  (*lhs) < (*rhs);
-                };
-        std::sort(OwnedRelatedElements.begin(), OwnedRelatedElements.end(), comparisonFunction);
+        // Preserve the order supplied by the model.
     }
 
     void Relationship::sortRelatedElements() {
-        std::function<bool(std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs)>  comparisonFunction=
-                [](std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs){
-                    return  (*lhs) < (*rhs);
-                };
-        std::sort(RelatedElements.begin(), RelatedElements.end(), comparisonFunction);
+        // Preserve the order supplied by the model.
     }
 
     void Relationship::sortSourceElements() {
-        std::function<bool(std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs)>  comparisonFunction=
-                [](std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs){
-                    return  (*lhs) < (*rhs);
-                };
-        std::sort(Source.begin(), Source.end(), comparisonFunction);
+        // Preserve the order supplied by the model.
     }
 
     void Relationship::sortTargetElements() {
-        std::function<bool(std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs)>  comparisonFunction=
-                [](std::shared_ptr<Element> lhs, std::shared_ptr<Element> rhs){
-                    return  (*lhs) < (*rhs);
-                };
-        std::sort(Target.begin(), Target.end(), comparisonFunction);
+        // Preserve the order supplied by the model.
     }
 
     void Relationship::setRelatedElements(std::vector<std::shared_ptr<Element>> relatedElements) {
-        RelatedElements.insert( RelatedElements.end(), relatedElements.begin(), relatedElements.end() );
+        RelatedElements = std::move(relatedElements);
         sortRelatedElements();
     }
 

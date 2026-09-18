@@ -5,6 +5,7 @@
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
 #pragma once
+#include <kerml/model/Forward.h>
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -99,7 +100,7 @@ namespace KerML::Entities {
         [[nodiscard]] std::shared_ptr<Element> owningRelatedElement() const;
 
 
-    protected:
+    public:
         /**
          * Allows to set the related Elements in bulk.
          * @param relatedElements The given list of related Elements.
@@ -130,5 +131,11 @@ namespace KerML::Entities {
         std::vector<std::shared_ptr<Element>> RelatedElements;
         std::vector<std::shared_ptr<Element>> Source;
         std::vector<std::shared_ptr<Element>> Target;
+    public:
+        std::vector<std::shared_ptr<Element>> source() const;
+        void setSource(std::vector<std::shared_ptr<Element>> value);
+        std::vector<std::shared_ptr<Element>> target() const;
+        void setTarget(std::vector<std::shared_ptr<Element>> value);
+        std::vector<std::shared_ptr<Element>> relatedElement() const;
     };
 } // KerML::Entities

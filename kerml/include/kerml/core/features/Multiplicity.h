@@ -18,7 +18,7 @@ namespace KerML::Entities {
 	 */
 	class KERML_EXPORT Multiplicity : public Feature {
     public:
-		Multiplicity() = delete;
+		Multiplicity() : Multiplicity(0u, true) {}
 		Multiplicity(unsigned minimum);
 		Multiplicity(unsigned minimum, unsigned maximum);
 		Multiplicity(unsigned minimum, bool unlimited);

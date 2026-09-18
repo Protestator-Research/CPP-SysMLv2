@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include <kerml/model/Forward.h>
 
 #include <kerml/core/types/Specialization.h>
 #include <kerml/kerml_global.h>
@@ -26,5 +27,8 @@ namespace KerML::Entities {
     private:
         std::shared_ptr<KerML::Entities::Feature> TypedFeature;
         std::shared_ptr<KerML::Entities::Type> Type;
+    public:
+        std::shared_ptr<Feature> owningFeature() const;
+        void setOwningFeature(std::shared_ptr<Feature> value);
     };
 }

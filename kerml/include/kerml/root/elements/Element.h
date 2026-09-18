@@ -5,6 +5,7 @@
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
 #pragma once
+#include <kerml/model/Forward.h>
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -348,6 +349,27 @@ namespace KerML::Entities {
          * 
          */
         std::shared_ptr<Relationship> OwningRelationship;
+    public:
+        std::vector<std::shared_ptr<Relationship>> ownedRelationship() const;
+        void setOwnedRelationship(std::vector<std::shared_ptr<Relationship>> value);
+        std::vector<std::shared_ptr<Element>> ownedElement() const;
+        void setOwnedElement(std::vector<std::shared_ptr<Element>> value);
+        std::vector<std::shared_ptr<Documentation>> documentation() const;
+        void setDocumentation(std::vector<std::shared_ptr<Documentation>> value);
+        std::vector<std::shared_ptr<Annotation>> ownedAnnotation() const;
+        void setOwnedAnnotation(std::vector<std::shared_ptr<Annotation>> value);
+        std::vector<std::shared_ptr<TextualRepresentation>> textualRepresentation() const;
+        void setTextualRepresentation(std::vector<std::shared_ptr<TextualRepresentation>> value);
+        std::shared_ptr<Relationship> owningRelationship() const;
+        void setOwningRelationship(std::shared_ptr<Relationship> value);
+        std::shared_ptr<OwningMembership> owningMembership() const;
+        std::shared_ptr<Namespace> owningNamespace() const;
+        std::optional<std::string> shortName() const;
+        std::optional<std::string> name() const;
+        std::optional<std::string> qualifiedName() const;
+        void setQualifiedName(std::optional<std::string> value);
+        bool isLibraryElement() const;
+        void setIsLibraryElement(bool value);
     };
 
 } // KerML::Entities

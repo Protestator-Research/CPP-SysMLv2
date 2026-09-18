@@ -14,7 +14,7 @@ namespace KerML::Entities {
      * @version 1.0 Beta 4
      * 
      */
-    class Unioning  : public Relationship {
+    class KERML_EXPORT Unioning : public Relationship {
     public:
         Unioning() = delete;
 
