@@ -47,16 +47,18 @@ namespace KerML::Entities{
         virtual ~Dependency() = default;
 
         void setClient(std::shared_ptr<Element> client);
-        std::shared_ptr<Element> client() const;
+        std::vector<std::shared_ptr<Element>> client() const;
+        void setClient(std::vector<std::shared_ptr<Element>> clients);
 
         void setSupplier(std::shared_ptr<Element> supplier);
-        std::shared_ptr<Element> supplier() const;
+        std::vector<std::shared_ptr<Element>> supplier() const;
+        void setSupplier(std::vector<std::shared_ptr<Element>> suppliers);
 
 
     private:
         void initialize();
 
-        std::shared_ptr<Element> Client;
-        std::shared_ptr<Element> Supplier;
+        std::vector<std::shared_ptr<Element>> Client;
+        std::vector<std::shared_ptr<Element>> Supplier;
     };
 } // KerML::Entities

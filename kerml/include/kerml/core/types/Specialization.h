@@ -5,6 +5,7 @@
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
 #pragma once
+#include <kerml/model/Forward.h>
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -71,5 +72,8 @@ namespace KerML::Entities {
     private:
         std::shared_ptr<Type> General;
         std::shared_ptr<Type> Specific;
+    public:
+        std::shared_ptr<Type> owningType() const;
+        void setOwningType(std::shared_ptr<Type> value);
     };
 }

@@ -5,6 +5,7 @@
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
 #pragma once
+#include <kerml/model/Forward.h>
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -121,5 +122,9 @@ namespace KerML::Entities {
          * @brief 
          */
         std::shared_ptr<Annotation> OwningAnnotatingRelationship;
+    public:
+        std::vector<std::shared_ptr<Element>> annotatedElement() const;
+        std::vector<std::shared_ptr<Annotation>> annotation() const;
+        std::vector<std::shared_ptr<Annotation>> ownedAnnotatingRelationship() const;
     };
 }

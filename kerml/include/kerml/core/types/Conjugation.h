@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include <kerml/model/Forward.h>
 
 
 #include <kerml/root/elements/Relationship.h>
@@ -21,7 +22,7 @@ namespace KerML::Entities {
 	    /**
 	     * Protected construction supports derived representations before their references are populated.
 	     */
-	    protected:
+	    public:
         // Allow derived representations to be populated before validation.
         Conjugation() = default;
     public:
@@ -39,7 +40,7 @@ namespace KerML::Entities {
         std::shared_ptr<Type> conjungatedType();
         void setConjungatedType(std::shared_ptr<Type> conjungatedType);
 
-    protected:
+    public:
         std::shared_ptr<Type> owningType();
         void setOwningType(std::shared_ptr<Type> owningType);
 
@@ -49,6 +50,8 @@ namespace KerML::Entities {
 
         std::shared_ptr<Type> OwningType;
 
+    public:
+        std::shared_ptr<Type> conjugatedType() const;
     };
 }
 

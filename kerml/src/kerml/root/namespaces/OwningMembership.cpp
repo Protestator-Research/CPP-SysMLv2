@@ -34,12 +34,14 @@ namespace KerML::Entities
 
 	std::string OwningMembership::ownedMemberElementId()
 	{
-		return boost::lexical_cast<std::string>(OwnedMemberElementId);
+		auto element = ownedMemberElement();
+        return element ? element->elementId() : boost::lexical_cast<std::string>(OwnedMemberElementId);
 	}
 
 	boost::uuids::uuid OwningMembership::ownedMemberElementIdAsUuid()
 	{
-		return OwnedMemberElementId;
+		auto element = ownedMemberElement();
+        return element ? element->elementIdAsUUID() : OwnedMemberElementId;
 	}
 
 	void OwningMembership::setOwnedMemberElementId(std::string ownedMemeberElementId)
@@ -54,7 +56,8 @@ namespace KerML::Entities
 
 	std::string OwningMembership::ownedMemberShortName()
 	{
-		return OwnedMemberShortName;
+		auto element = ownedMemberElement();
+        return element ? element->declaredShortName().value_or("") : OwnedMemberShortName;
 	}
 
 	void OwningMembership::setOwnedMemberShortName(std::string ownedMemberShortName)
@@ -64,7 +67,8 @@ namespace KerML::Entities
 
 	std::string OwningMembership::ownedMemberName()
 	{
-		return OwnedMemberName;
+		auto element = ownedMemberElement();
+        return element ? element->declaredName().value_or("") : OwnedMemberName;
 	}
 
 	void OwningMembership::setOwnedMemberName(std::string ownedMemberName)

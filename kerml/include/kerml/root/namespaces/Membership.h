@@ -5,6 +5,7 @@
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
 #pragma once
+#include <kerml/model/Forward.h>
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -53,5 +54,11 @@ namespace KerML::Entities {
 
         std::string MemberShortName;
         std::string MemberName;
+    public:
+        std::shared_ptr<Element> memberElement() const;
+        void setMemberElement(std::shared_ptr<Element> value);
+        std::shared_ptr<Namespace> membershipOwningNamespace() const;
+        void setMembershipOwningNamespace(std::shared_ptr<Namespace> value);
+        std::string memberElementId() const;
     };
 } // KerML::Entities

@@ -5,6 +5,7 @@
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
 #pragma once
+#include <kerml/model/Forward.h>
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -88,5 +89,7 @@ namespace KerML::Entities {
         bool IsRecursive;
         bool IsImportAll;
         std::shared_ptr<Namespace> ImportOwningNamespace;
+    public:
+        std::shared_ptr<Element> importedElement() const;
     };
 } // KerML::Entities

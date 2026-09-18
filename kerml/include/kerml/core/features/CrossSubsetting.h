@@ -29,7 +29,7 @@ namespace KerML::Entities {
 	 * @author Moritz Herzog
 	 * @brief Representation of the CrossSubsetting
 	 */
-	class CrossSubsetting : public Subsetting
+	class KERML_EXPORT CrossSubsetting : public Subsetting
 	{
 	public:
 		/**
@@ -55,7 +55,7 @@ namespace KerML::Entities {
 		 */
 		std::shared_ptr<Feature> crossedFeature();
 
-	protected:
+	public:
         /**
          *
          * @param crossingFeautre
@@ -66,6 +66,7 @@ namespace KerML::Entities {
 		 * @return
 		 */
         std::shared_ptr<Feature> crossingFeatures();
+        std::shared_ptr<Feature> crossingFeature() { return crossingFeatures(); }
 
 	private:
 		std::shared_ptr<Feature> CrossedFeature;

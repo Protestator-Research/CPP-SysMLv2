@@ -8,6 +8,7 @@
 #include <stack>
 
 #include <kerml/core/features/Redefinition.h>
+#include <kerml/core/features/FeatureTyping.h>
 #include <kerml/core/features/ReferenceSubsetting.h>
 #include <kerml/core/features/CrossSubsetting.h>
 #include <kerml/core/features/Subsetting.h>
@@ -196,22 +197,11 @@ namespace KerML::Entities
 
 	std::vector<std::shared_ptr<Type>> Feature::supertypes(bool excludeImplied)
 	{
-        if(featureTarget()==shared_from_this())
-            return supertypes(excludeImplied);
-
-        std::vector<std::shared_ptr<Type>> returnValue;
-
-        for(const auto& element : Type::supertypes(excludeImplied)){
-            try {
-                const auto value = std::dynamic_pointer_cast<Feature>(element);
-                if(value)
-                    returnValue.push_back(value);
-            }catch (...){
-
-            }
-        }
-		return returnValue;
-	}
+        auto result = Type::supertypes(excludeImplied);
+        for (const auto& typing : OwnedTyping) if (typing && typing->type()) result.push_back(typing->type());
+        for (const auto& subsetting : OwnedSubsetting) if (subsetting && subsetting->subsettedFeature()) result.push_back(subsetting->subsettedFeature());
+        return result;
+    }
 
 	bool Feature::redefines(std::shared_ptr<Feature> redefinedFeature)
 	{
@@ -463,26 +453,16 @@ namespace KerML::Entities
 
 	std::optional<std::shared_ptr<Feature>> Feature::crossFeature() const
 	{
-		if (OwnedCrossSubsetting == nullptr)
-			return {};
-
-		const int CrossFeatureIndexInChainingFeature = 1;
-
-		//TODO Too sketchy for me, this needs fixing. Implementation according to the Standard. This might cause many issues. 
-		return OwnedCrossSubsetting->crossedFeature()->ChainingFeature.at(CrossFeatureIndexInChainingFeature);
-	}
+        if (CrossFeatureSnapshot) return CrossFeatureSnapshot;
+        if (!OwnedCrossSubsetting || !OwnedCrossSubsetting->crossedFeature()) return {};
+        auto chain = OwnedCrossSubsetting->crossedFeature()->chainingFeature();
+        return chain.size() > 1 ? std::optional<std::shared_ptr<Feature>>{chain[1]} : std::nullopt;
+    }
 
 	void Feature::setCrossFeature(std::optional<std::shared_ptr<Feature>> crossFeature)
 	{
-		//TODO Too sketchy for me, this needs fixing. Implementation according to the Standard. This might cause many issues. 
-		if (crossFeature.has_value())
-			return;
-
-        const int CrossFeatureIndexInChainingFeature = 1;
-
-		if (OwnedCrossSubsetting)
-            OwnedCrossSubsetting->crossedFeature()->ChainingFeature[CrossFeatureIndexInChainingFeature] = crossFeature.value();
-	}
+        CrossFeatureSnapshot = crossFeature.value_or(nullptr);
+    }
 
 	std::optional<std::shared_ptr<Type>> Feature::endOwningType() const
 	{
@@ -494,16 +474,15 @@ namespace KerML::Entities
 
 	void Feature::setEndOwningType(std::optional<std::shared_ptr<Type>> endOwningType)
 	{
-        if(endOwningType.has_value())
-            EndOwningType = *endOwningType;
-	}
+        EndOwningType = endOwningType.value_or(nullptr);
+    }
 
 	std::shared_ptr<Feature> Feature::featureTarget()
 	{
 		if (ChainingFeature.size() > 0)
 			return ChainingFeature.back();
 
-		return shared_from_this();
+		return weak_from_this().lock();
 	}
 
 	std::optional<std::shared_ptr<CrossSubsetting>> Feature::ownedCrossSubsetting() const
@@ -516,9 +495,8 @@ namespace KerML::Entities
 
 	void Feature::setOwnedCrossSubsetting(std::optional<std::shared_ptr<CrossSubsetting>> ownedCrossSubsetting)
 	{
-        if(ownedCrossSubsetting.has_value())
-            OwnedCrossSubsetting = *ownedCrossSubsetting;
-	}
+        OwnedCrossSubsetting = ownedCrossSubsetting.value_or(nullptr);
+    }
 
 	void Feature::setOwnedFeatureChaining(std::vector<std::shared_ptr<FeatureChaining>> ownedFeatureChaining)
 	{
@@ -583,9 +561,8 @@ namespace KerML::Entities
 	void Feature::setOwnedReferenceSubsetting(
 		std::optional<std::shared_ptr<Entities::ReferenceSubsetting>> referenceSubsetting)
 	{
-		if (referenceSubsetting.has_value() && (referenceSubsetting != nullptr))
-			OwnedReferenceSubsetting = referenceSubsetting.value();
-	}
+        OwnedReferenceSubsetting = referenceSubsetting.value_or(nullptr);
+    }
 
 	std::optional<std::shared_ptr<ReferenceSubsetting>> Feature::ownedReferenceSubsetting() const
 	{
@@ -637,9 +614,8 @@ namespace KerML::Entities
 
 	void Feature::setOwningFeatureMembership(std::optional<std::shared_ptr<FeatureMembership>> owningMembership)
 	{
-        if(owningMembership.has_value())
-            OwningFeatureMembership = *owningMembership;
-	}
+        OwningFeatureMembership = owningMembership.value_or(nullptr);
+    }
 
 	std::optional<std::shared_ptr<FeatureMembership>> Feature::owningFeatureMembership() const
 	{
@@ -651,9 +627,8 @@ namespace KerML::Entities
 
 	void Feature::setOwningType(std::optional<std::shared_ptr<Type>> owningType)
 	{
-        if(owningType.has_value())
-            OwningType = *owningType;
-	}
+        OwningType = owningType.value_or(nullptr);
+    }
 
 	std::optional<std::shared_ptr<Type>> Feature::owningType() const
 	{

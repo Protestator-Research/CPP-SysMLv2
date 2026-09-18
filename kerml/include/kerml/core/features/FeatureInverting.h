@@ -34,7 +34,7 @@ namespace KerML::Entities {
         void setInvertingFeature(std::shared_ptr<Feature> invertingFeature);
         [[nodiscard]] std::shared_ptr<Feature> invertingFeature() const;
 
-    protected:
+    public:
         void setOwningFeature(std::shared_ptr<Feature> owningFeature);
         [[nodiscard]] std::shared_ptr<Feature> owningFeature() const;
     private:

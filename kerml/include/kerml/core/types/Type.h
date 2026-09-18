@@ -2,6 +2,7 @@
 // Created by Moritz Herzog on 25.03.25.
 //
 #pragma once
+#include <kerml/model/Forward.h>
 
 #include <kerml/root/namespaces/Namespace.h>
 #include <kerml/core/features/FeatureDirectionKind.h>
@@ -216,5 +217,10 @@ namespace KerML::Entities {
         std::vector<std::shared_ptr<Specialization>> OwnedSpecialization;
         std::vector<std::shared_ptr<Unioning>> OwnedUnioning;
         std::vector<std::shared_ptr<Type>> UnioningType;
+    public:
+        std::vector<std::shared_ptr<Feature>> feature() const;
+        std::vector<std::shared_ptr<FeatureMembership>> featureMembership() const;
+        std::vector<std::shared_ptr<Membership>> inheritedMembership() const;
+        std::optional<std::shared_ptr<Conjugation>> ownedConjugator() const;
     };
 } // KerML::Entities

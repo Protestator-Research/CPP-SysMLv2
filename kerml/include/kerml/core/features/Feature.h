@@ -260,6 +260,7 @@ namespace KerML::Entities {
         std::shared_ptr<Type> EndOwningType;
 
         std::shared_ptr<CrossSubsetting> OwnedCrossSubsetting;
+        std::shared_ptr<Feature> CrossFeatureSnapshot;
         std::vector<std::shared_ptr<FeatureChaining>> OwnedFeatureChaining;
         std::vector<std::shared_ptr<FeatureInverting>> OwnedFeatureInverting;
         std::vector<std::shared_ptr<Redefinition>> OwnedRedefinition;

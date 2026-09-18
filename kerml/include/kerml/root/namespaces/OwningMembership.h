@@ -5,6 +5,7 @@
 // Constants, Definitions, Pragmas
 //---------------------------------------------------------
 #pragma once
+#include <kerml/model/Forward.h>
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
@@ -28,7 +29,7 @@ namespace KerML::Entities{
         std::string path() override;
 
 
-    protected:
+    public:
         std::string ownedMemberElementId();
         boost::uuids::uuid ownedMemberElementIdAsUuid();
         void setOwnedMemberElementId(std::string ownedMemeberElementId);
@@ -41,9 +42,12 @@ namespace KerML::Entities{
         void setOwnedMemberName(std::string ownedMemberName);
 
     private:
-        boost::uuids::uuid OwnedMemberElementId;
+        boost::uuids::uuid OwnedMemberElementId{};
 
         std::string OwnedMemberShortName;
         std::string OwnedMemberName;
+    public:
+        std::shared_ptr<Element> ownedMemberElement() const;
+        void setOwnedMemberElement(std::shared_ptr<Element> value);
     };
 }

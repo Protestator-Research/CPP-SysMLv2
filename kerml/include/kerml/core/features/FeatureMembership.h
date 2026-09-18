@@ -19,7 +19,7 @@ namespace KerML::Entities {
      */
     class KERML_EXPORT FeatureMembership : public OwningMembership {
     public:
-    protected:
+    public:
         // Derived metamodel elements may be populated in two phases.
         FeatureMembership() = default;
     public:
@@ -27,7 +27,7 @@ namespace KerML::Entities {
         ~FeatureMembership() override = default;
 
 
-    protected:
+    public:
         void setOwnedMemberFeature(std::shared_ptr<Feature> ownedMemberFeature);
         [[nodiscard]] std::shared_ptr<Feature> ownedMemberFeature() const;
 

@@ -28,7 +28,7 @@ namespace KerML::Entities {
         void setFeatureOfType(const std::shared_ptr<Feature>& featureOfType);
         std::shared_ptr<Feature> featureOfType() const;
 
-    protected:
+    public:
         void setOwningFeatureOfType(const std::shared_ptr<Feature>& owningFeatureOfType);
         std::shared_ptr<Feature> owningFeatureOfType();
 
