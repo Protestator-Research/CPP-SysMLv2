@@ -8,10 +8,9 @@
 // Generated from ./SysMLv2.g4 by ANTLR 4.13.2
 
 
-#include "SysMLv2Listener.h"
-#include "../../../resources/grammars/SysMLv2Visitor.h"
-
-#include "../../../resources/grammars/SysMLv2Parser.h"
+#include <sysmlv2/parser/SysMLv2Listener.h>
+#include <sysmlv2/parser/SysMLv2Visitor.h>
+#include <sysmlv2/parser/SysMLv2Parser.h>
 
 
     using namespace antlrcpp;
@@ -19957,7 +19956,7 @@ SysMLv2Parser::Entry_action_memberContext* SysMLv2Parser::entry_action_member() 
     enterOuterAlt(_localctx, 1);
     setState(2369);
     member_prefix();
-    kind = KEYWORD_ENTRY
+    // kind = KEYWORD_ENTRY
     setState(2371);
     state_action_usage();
    
@@ -20025,7 +20024,7 @@ SysMLv2Parser::Do_action_memberContext* SysMLv2Parser::do_action_member() {
     enterOuterAlt(_localctx, 1);
     setState(2373);
     member_prefix();
-    kind = KEYWORD_DO
+    // kind = KEYWORD_DO
     setState(2375);
     state_action_usage();
    
@@ -20093,7 +20092,7 @@ SysMLv2Parser::Exit_action_memberContext* SysMLv2Parser::exit_action_member() {
     enterOuterAlt(_localctx, 1);
     setState(2377);
     member_prefix();
-    kind = KEYWORD_EXIT
+    // kind = KEYWORD_EXIT
     setState(2379);
     state_action_usage();
    
@@ -21488,7 +21487,7 @@ SysMLv2Parser::Trigger_action_memberContext* SysMLv2Parser::trigger_action_membe
     enterOuterAlt(_localctx, 1);
     setState(2499);
     match(SysMLv2Parser::KEYWORD_ACCEPT);
-    kind=KEYWORD_TRIGGER
+    // kind=KEYWORD_TRIGGER
     setState(2501);
     trigger_action();
    
@@ -21617,7 +21616,7 @@ SysMLv2Parser::Guard_expression_memberContext* SysMLv2Parser::guard_expression_m
     enterOuterAlt(_localctx, 1);
     setState(2505);
     match(SysMLv2Parser::KEYWORD_IF);
-    kind=KEYWORD_GUARD
+    // kind=KEYWORD_GUARD
     setState(2507);
     owned_expression();
    
@@ -21685,7 +21684,7 @@ SysMLv2Parser::Effect_behavior_memberContext* SysMLv2Parser::effect_behavior_mem
     enterOuterAlt(_localctx, 1);
     setState(2509);
     match(SysMLv2Parser::KEYWORD_DO);
-    kind=KEYWORD_TRIGGER
+    // kind=KEYWORD_TRIGGER
     setState(2511);
     effect_behavior_usage();
    
@@ -23949,7 +23948,7 @@ SysMLv2Parser::Requriement_kindContext* SysMLv2Parser::requriement_kind() {
         enterOuterAlt(_localctx, 1);
         setState(2686);
         match(SysMLv2Parser::KEYWORD_ASSUME);
-        kind = 'assumption'
+        // kind = 'assumption'
         break;
       }
 
@@ -23957,7 +23956,7 @@ SysMLv2Parser::Requriement_kindContext* SysMLv2Parser::requriement_kind() {
         enterOuterAlt(_localctx, 2);
         setState(2688);
         match(SysMLv2Parser::KEYWORD_REQUIRE);
-        kind = 'requirement'
+        // kind = 'requirement'
         break;
       }
 
@@ -26258,7 +26257,7 @@ SysMLv2Parser::Requirement_verification_memberContext* SysMLv2Parser::requiremen
     member_prefix();
     setState(2880);
     match(SysMLv2Parser::KEYWORD_VERIFY);
-    kind = 'requirement'
+    // kind = 'requirement'
     setState(2882);
     requirement_verification_usage();
    

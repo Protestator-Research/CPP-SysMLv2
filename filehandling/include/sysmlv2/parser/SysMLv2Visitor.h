@@ -11,7 +11,7 @@
 
 
 #include "antlr4-runtime.h"
-#include "../../../src/sysmlv2/parser/SysMLv2Parser.h"
+#include <sysmlv2/parser/SysMLv2Parser.h>
 
 
 

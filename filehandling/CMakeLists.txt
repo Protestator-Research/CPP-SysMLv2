@@ -84,7 +84,7 @@ if(MSVC)
         ../kerml/include
         include)
 else ()
-    target_compile_options(sysmlv2parser PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(sysmlv2parser PRIVATE -Wall -Wextra -Wpedantic -Werror)
     target_include_directories(sysmlv2parser PRIVATE
         ../kerml/include
         include)

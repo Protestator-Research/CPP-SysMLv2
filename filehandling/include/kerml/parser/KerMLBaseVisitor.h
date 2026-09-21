@@ -8,7 +8,7 @@
 
 
 #include "antlr4-runtime.h"
-#include "../../../resources/grammars/KerMLVisitor.h"
+#include <kerml/parser/KerMLVisitor.h>
 
 
     /**

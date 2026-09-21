@@ -35,8 +35,9 @@ namespace SysMLv2::Files {
         parser.start();
 
         std::vector<std::shared_ptr<KerML::Entities::Element>> elements = listenerImplementation->getElements();
-        auto syntaxErrors  = errorlistener->getSyntaxErrors();
-        std::vector<std::shared_ptr<ParserError>> errorVector = std::vector<std::shared_ptr<SysMLv2::Files::ParserError>>(syntaxErrors.size());
+        auto syntaxErrors = errorlistener->getSyntaxErrors();
+        std::vector<std::shared_ptr<ParserError>> errorVector;
+        errorVector.reserve(syntaxErrors.size());
         for(const auto& error:syntaxErrors) {
             errorVector.push_back(std::make_shared<ParserError>(boost::uuids::random_generator()(),"",ErrorType::ERROR, error->message()));
         }

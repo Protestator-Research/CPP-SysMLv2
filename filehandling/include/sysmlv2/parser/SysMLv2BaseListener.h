@@ -11,7 +11,7 @@
 
 
 #include "antlr4-runtime.h"
-#include "../../../resources/grammars/SysMLv2Listener.h"
+#include <sysmlv2/parser/SysMLv2Listener.h>
 
 
     /**

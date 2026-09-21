@@ -5,10 +5,9 @@
 // Generated from ./KerML.g4 by ANTLR 4.13.2
 
 
-#include "KerMLListener.h"
-#include "../../../resources/grammars/KerMLVisitor.h"
-
-#include "../../../resources/grammars/KerMLParser.h"
+#include <kerml/parser/KerMLListener.h>
+#include <kerml/parser/KerMLVisitor.h>
+#include <kerml/parser/KerMLParser.h>
 
 
     using namespace antlrcpp;
