@@ -616,36 +616,36 @@ DEFINE_USAGE_METHODS(Flow_usage, SysMLv2::Entities::FlowUsage)
 DEFINE_USAGE_METHODS(Succession_flow_usage, SysMLv2::Entities::SuccessionFlowUsage)
 DEFINE_USAGE_METHODS(Message, SysMLv2::Entities::FlowUsage)
 
-void SysMLv2ListenerImplementation::enterIndividual_usage(SysMLv2Parser::Individual_usageContext* ctx) {
+void SysMLv2ListenerImplementation::enterIndividual_usage(SysMLv2Parser::Individual_usageContext* ) {
     auto u = std::make_shared<SysMLv2::Entities::OccurrenceUsage>();
     u->setIsIndividual(true);
     ParentStack.push(u);
 }
-void SysMLv2ListenerImplementation::exitIndividual_usage(SysMLv2Parser::Individual_usageContext* ctx) {
+void SysMLv2ListenerImplementation::exitIndividual_usage(SysMLv2Parser::Individual_usageContext* ) {
     handleUsageExit<SysMLv2::Entities::OccurrenceUsage>(ParentStack, Elements);
 }
 
-void SysMLv2ListenerImplementation::enterPortion_usage(SysMLv2Parser::Portion_usageContext* ctx) {
+void SysMLv2ListenerImplementation::enterPortion_usage(SysMLv2Parser::Portion_usageContext* ) {
     auto u = std::make_shared<SysMLv2::Entities::OccurrenceUsage>();
     ParentStack.push(u);
 }
-void SysMLv2ListenerImplementation::exitPortion_usage(SysMLv2Parser::Portion_usageContext* ctx) {
+void SysMLv2ListenerImplementation::exitPortion_usage(SysMLv2Parser::Portion_usageContext* ) {
     handleUsageExit<SysMLv2::Entities::OccurrenceUsage>(ParentStack, Elements);
 }
 
-void SysMLv2ListenerImplementation::enterEvent_occurrence_usage(SysMLv2Parser::Event_occurrence_usageContext* ctx) {
+void SysMLv2ListenerImplementation::enterEvent_occurrence_usage(SysMLv2Parser::Event_occurrence_usageContext* ) {
     auto u = std::make_shared<SysMLv2::Entities::EventOccurrenceUsage>();
     ParentStack.push(u);
 }
-void SysMLv2ListenerImplementation::exitEvent_occurrence_usage(SysMLv2Parser::Event_occurrence_usageContext* ctx) {
+void SysMLv2ListenerImplementation::exitEvent_occurrence_usage(SysMLv2Parser::Event_occurrence_usageContext* ) {
     handleUsageExit<SysMLv2::Entities::EventOccurrenceUsage>(ParentStack, Elements);
 }
 
-void SysMLv2ListenerImplementation::enterConnection_usage(SysMLv2Parser::Connection_usageContext* ctx) {
+void SysMLv2ListenerImplementation::enterConnection_usage(SysMLv2Parser::Connection_usageContext* ) {
     auto conn = std::make_shared<SysMLv2::Entities::ConnectionUsage>();
     ParentStack.push(conn);
 }
-void SysMLv2ListenerImplementation::exitConnection_usage(SysMLv2Parser::Connection_usageContext* ctx) {
+void SysMLv2ListenerImplementation::exitConnection_usage(SysMLv2Parser::Connection_usageContext* ) {
     handleUsageExit<SysMLv2::Entities::ConnectionUsage>(ParentStack, Elements);
 }
 
@@ -683,19 +683,19 @@ void SysMLv2ListenerImplementation::exitConnecotr_end(SysMLv2Parser::Connecotr_e
 void SysMLv2ListenerImplementation::enterPerform_action_usage_declaration(SysMLv2Parser::Perform_action_usage_declarationContext*) {}
 void SysMLv2ListenerImplementation::exitPerform_action_usage_declaration(SysMLv2Parser::Perform_action_usage_declarationContext*) {}
 
-void SysMLv2ListenerImplementation::enterBinding_connector_as_usage(SysMLv2Parser::Binding_connector_as_usageContext* ctx) {
+void SysMLv2ListenerImplementation::enterBinding_connector_as_usage(SysMLv2Parser::Binding_connector_as_usageContext* ) {
     auto bc = std::make_shared<SysMLv2::Entities::BindingConnectorAsUsage>();
     ParentStack.push(bc);
 }
-void SysMLv2ListenerImplementation::exitBinding_connector_as_usage(SysMLv2Parser::Binding_connector_as_usageContext* ctx) {
+void SysMLv2ListenerImplementation::exitBinding_connector_as_usage(SysMLv2Parser::Binding_connector_as_usageContext* ) {
     handleUsageExit<SysMLv2::Entities::BindingConnectorAsUsage>(ParentStack, Elements);
 }
 
-void SysMLv2ListenerImplementation::enterSuccession_as_usage(SysMLv2Parser::Succession_as_usageContext* ctx) {
+void SysMLv2ListenerImplementation::enterSuccession_as_usage(SysMLv2Parser::Succession_as_usageContext* ) {
     auto sc = std::make_shared<SysMLv2::Entities::SuccessionAsUsage>();
     ParentStack.push(sc);
 }
-void SysMLv2ListenerImplementation::exitSuccession_as_usage(SysMLv2Parser::Succession_as_usageContext* ctx) {
+void SysMLv2ListenerImplementation::exitSuccession_as_usage(SysMLv2Parser::Succession_as_usageContext* ) {
     handleUsageExit<SysMLv2::Entities::SuccessionAsUsage>(ParentStack, Elements);
 }
 
