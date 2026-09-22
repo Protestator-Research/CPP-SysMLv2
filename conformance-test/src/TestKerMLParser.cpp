@@ -15,6 +15,166 @@
 #include <kerml/core/features/Feature.h>
 #include <kerml/KerML.h>
 
+namespace {
+template<class T>
+std::vector<std::shared_ptr<T>> listenerElements(const std::vector<std::shared_ptr<KerML::Entities::Element>>& elements) {
+    std::vector<std::shared_ptr<T>> result;
+    for (const auto& element : elements) {
+        if (auto typed = std::dynamic_pointer_cast<T>(element)) result.push_back(typed);
+    }
+    return result;
+}
+}
+
+TEST(TestKerMLListener, StandaloneRelationshipsAndBodies) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "class C; feature a : C; feature b : C; "
+        "specialization <s> restriction subset a subsets b { doc /* subset */ } "
+        "inverting inversion inverse a of b; featuring placement of a by C;");
+    ASSERT_TRUE(errors.empty());
+    const auto subsets = listenerElements<Subsetting>(elements);
+    ASSERT_EQ(subsets.size(), 1u);
+    EXPECT_EQ(subsets[0]->declaredName().value_or(""), "restriction");
+    EXPECT_EQ(subsets[0]->declaredShortName().value_or(""), "s");
+    EXPECT_EQ(subsets[0]->subsettingFeature()->declaredName().value_or(""), "a");
+    EXPECT_EQ(subsets[0]->subsettedFeature()->declaredName().value_or(""), "b");
+    EXPECT_EQ(listenerElements<Documentation>(subsets[0]->ownedElements()).size(), 1u);
+    const auto inversions = listenerElements<FeatureInverting>(elements);
+    ASSERT_EQ(inversions.size(), 1u);
+    EXPECT_EQ(inversions[0]->invertingFeature(), subsets[0]->subsettingFeature());
+    EXPECT_EQ(inversions[0]->featureInverted(), subsets[0]->subsettedFeature());
+    const auto featuring = listenerElements<TypeFeaturing>(elements);
+    ASSERT_EQ(featuring.size(), 1u);
+    EXPECT_EQ(featuring[0]->featureOfType(), subsets[0]->subsettingFeature());
+    EXPECT_EQ(featuring[0]->featuringType()->declaredName().value_or(""), "C");
+}
+
+TEST(TestKerMLListener, ConditionalValueKeepsOrderedArguments) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "feature choice = if true ? 10 else 20;");
+    ASSERT_TRUE(errors.empty());
+    const auto values = listenerElements<FeatureValue>(elements);
+    ASSERT_EQ(values.size(), 1u);
+    const auto expression = std::dynamic_pointer_cast<OperatorExpression>(values[0]->value());
+    ASSERT_NE(expression, nullptr);
+    EXPECT_EQ(expression->operatorName(), "if");
+    ASSERT_EQ(expression->argument().size(), 3u);
+    EXPECT_NE(std::dynamic_pointer_cast<LiteralBoolean>(expression->argument()[0]), nullptr);
+    auto thenValue = std::dynamic_pointer_cast<LiteralInteger>(expression->argument()[1]);
+    auto elseValue = std::dynamic_pointer_cast<LiteralInteger>(expression->argument()[2]);
+    ASSERT_NE(thenValue, nullptr);
+    ASSERT_NE(elseValue, nullptr);
+    EXPECT_EQ(thenValue->value(), 10);
+    EXPECT_EQ(elseValue->value(), 20);
+}
+
+TEST(TestKerMLListener, MultiplicityOptionsAndSubset) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "feature items : Integer[0..*] ordered nonunique; multiplicity count subsets items;");
+    ASSERT_TRUE(errors.empty());
+    std::shared_ptr<Feature> items;
+    for (const auto& element : elements) {
+        if (element->declaredName() == "items") items = std::dynamic_pointer_cast<Feature>(element);
+    }
+    ASSERT_NE(items, nullptr);
+    EXPECT_TRUE(items->isOrdered());
+    EXPECT_FALSE(items->isUnique());
+    std::shared_ptr<Multiplicity> count;
+    for (const auto& element : listenerElements<Multiplicity>(elements)) {
+        if (element->declaredName() == "count") count = element;
+    }
+    ASSERT_NE(count, nullptr);
+    ASSERT_EQ(count->ownedSubsetting().size(), 1u);
+    EXPECT_EQ(count->ownedSubsetting()[0]->subsettedFeature(), items);
+}
+
+TEST(TestKerMLListener, FilterRetainsConditionAndVisibility) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "package P { private filter true; }");
+    ASSERT_TRUE(errors.empty());
+    const auto filters = listenerElements<ElementFilterMembership>(elements);
+    ASSERT_EQ(filters.size(), 1u);
+    EXPECT_EQ(filters[0]->visibility(), PRIVATE);
+    EXPECT_NE(std::dynamic_pointer_cast<LiteralBoolean>(filters[0]->condition()), nullptr);
+    ASSERT_NE(filters[0]->membershipOwningNamespace(), nullptr);
+    EXPECT_EQ(filters[0]->membershipOwningNamespace()->declaredName().value_or(""), "P");
+}
+
+TEST(TestKerMLListener, NamespaceMembershipKeepsVisibilityAndTarget) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "namespace N { private feature value : Integer; }");
+    ASSERT_TRUE(errors.empty());
+    const auto memberships = listenerElements<OwningMembership>(elements);
+    ASSERT_EQ(memberships.size(), 1u);
+    EXPECT_EQ(memberships[0]->visibility(), PRIVATE);
+    ASSERT_NE(memberships[0]->memberElement(), nullptr);
+    EXPECT_EQ(memberships[0]->memberElement()->declaredName().value_or(""), "value");
+    ASSERT_NE(memberships[0]->membershipOwningNamespace(), nullptr);
+    EXPECT_EQ(memberships[0]->membershipOwningNamespace()->declaredName().value_or(""), "N");
+}
+
+TEST(TestKerMLListener, NamedInvocationArgumentRetainsParameterAndValue) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "function calculate; feature result = calculate(input == 42);");
+    ASSERT_TRUE(errors.empty());
+    const auto invocations = listenerElements<InvocationExpression>(elements);
+    ASSERT_EQ(invocations.size(), 1u);
+    ASSERT_EQ(invocations[0]->argument().size(), 1u);
+    const auto argument = invocations[0]->argument()[0];
+    ASSERT_EQ(argument->ownedRedefinition().size(), 1u);
+    EXPECT_EQ(argument->ownedRedefinition()[0]->redefinedFeature()->declaredName().value_or(""), "input");
+    const auto literals = listenerElements<LiteralInteger>(argument->ownedElements());
+    ASSERT_EQ(literals.size(), 1u);
+    EXPECT_EQ(literals[0]->value(), 42);
+}
+
+TEST(TestKerMLListener, FeatureChainPreservesOrderAndRelationships) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "feature a; feature b; feature path chains a.b;");
+    ASSERT_TRUE(errors.empty());
+    std::shared_ptr<Feature> path;
+    for (const auto& element : elements) {
+        if (element->declaredName() == "path") path = std::dynamic_pointer_cast<Feature>(element);
+    }
+    ASSERT_NE(path, nullptr);
+    ASSERT_EQ(path->chainingFeature().size(), 2u);
+    EXPECT_EQ(path->chainingFeature()[0]->declaredName().value_or(""), "a");
+    EXPECT_EQ(path->chainingFeature()[1]->declaredName().value_or(""), "b");
+    ASSERT_EQ(path->ownedFeatureChaining().size(), 2u);
+    EXPECT_EQ(path->ownedFeatureChaining()[0]->featureChained(), path);
+}
+
+TEST(TestKerMLListener, ClassificationAndMetadataAssignmentsProduceValues) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "class C; feature source : C; feature check = source istype C; "
+        "metaclass M { baseType = C meta KerML::Classifier; }");
+    ASSERT_TRUE(errors.empty());
+    const auto operators = listenerElements<OperatorExpression>(elements);
+    ASSERT_EQ(operators.size(), 1u);
+    EXPECT_EQ(operators[0]->operatorName(), "istype");
+    ASSERT_EQ(operators[0]->argument().size(), 2u);
+    EXPECT_NE(std::dynamic_pointer_cast<FeatureReferenceExpression>(operators[0]->argument()[0]), nullptr);
+    const auto typeReference = std::dynamic_pointer_cast<InstantiationExpression>(operators[0]->argument()[1]);
+    ASSERT_NE(typeReference, nullptr);
+    ASSERT_NE(typeReference->instantiatedType(), nullptr);
+    EXPECT_EQ(typeReference->instantiatedType()->declaredName().value_or(""), "C");
+    const auto metadata = listenerElements<MetadataAccessExpression>(elements);
+    ASSERT_EQ(metadata.size(), 1u);
+    ASSERT_NE(metadata[0]->referencedElement(), nullptr);
+    EXPECT_EQ(metadata[0]->referencedElement()->declaredName().value_or(""), "C");
+    const auto values = listenerElements<FeatureValue>(elements);
+    ASSERT_EQ(values.size(), 2u);
+    EXPECT_EQ(values[1]->value(), metadata[0]);
+}
+
 TEST(TestKerMLParser, TestAddressBookModel) {
      std::string valueToParse = "private import ScalarValues::*;\n"
                                 "package AddressBookModel {\n"

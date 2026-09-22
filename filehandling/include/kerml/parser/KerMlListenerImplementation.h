@@ -14,6 +14,7 @@ namespace KerML::Entities {
     class Type;
     class Classifier;
     class Feature;
+    class Expression;
 }
 
 /**
@@ -1083,6 +1084,9 @@ public:
     std::vector<std::shared_ptr<KerML::Entities::Element>> getElements();
 
 private:
+    void attachExpression(const std::shared_ptr<KerML::Entities::Expression>& expression);
+    void finishOperatorExpression(const std::string& operatorName);
+    void finishMembership(KerMLParser::Member_prefixContext *prefix);
     void applyIdentification(KerMLParser::IdentificationContext *idCtx, const std::shared_ptr<KerML::Entities::Element>& elem);
     std::shared_ptr<KerML::Entities::Element> findElementWithName(std::string identification);
     std::shared_ptr<KerML::Entities::Type> findOrCreateType(const std::string& name);
