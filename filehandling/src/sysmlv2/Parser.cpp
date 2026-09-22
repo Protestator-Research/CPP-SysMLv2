@@ -11,7 +11,7 @@
 
 #include <sysmlv2/parser/SysMLv2ErrorListener.h>
 #include <sysmlv2/parser/SysMLv2Error.h>
-#include <sysmlv2/parser/SysMLv2BaseListener.h>
+#include <sysmlv2/parser/SysMLv2ListenerImplementation.h>
 #include <sysmlv2/parser/SysMLv2Lexer.h>
 #include <sysmlv2/parser/SysMLv2Parser.h>
 
@@ -51,33 +51,25 @@ namespace SysMLv2::Files {
 
     std::pair<std::vector<std::shared_ptr<KerML::Entities::Element>>, std::vector<std::shared_ptr<ParserError>>> Parser
     ::parseSysMLv2(std::string text) {
-        std::cout << "Starting Parsing of SysMLv2 Model" << std::endl;
         antlr4::ANTLRInputStream input(text);
-        auto errorlistener = new SysMLErrorListenener();
-        auto listenerImplementation = new SysMLv2BaseListener();
+        SysMLErrorListenener errorlistener;
+        SysMLv2ListenerImplementation listenerImplementation;
         SysMLv2Lexer lexer(&input);
-        lexer.addErrorListener(errorlistener);
+        lexer.addErrorListener(&errorlistener);
         antlr4::CommonTokenStream tokens(&lexer);
         SysMLv2Parser parser(&tokens);
-        parser.addErrorListener(errorlistener);
-        parser.addParseListener(listenerImplementation);
-        std::cout << "Finished Preparing Parsing" << std::endl;
+        parser.addErrorListener(&errorlistener);
+        parser.addParseListener(&listenerImplementation);
         // start parsing at file level
         parser.start();
 
-        std::vector<std::shared_ptr<KerML::Entities::Element>> elements = { };
-    	//listenerImplementation->getElements();
-        auto syntaxErrors = errorlistener->getSyntaxErrors();
-        std::vector<std::shared_ptr<ParserError>> errorVector = std::vector<std::shared_ptr<SysMLv2::Files::ParserError>>(syntaxErrors.size());
+        auto elements = listenerImplementation.getElements();
+        auto syntaxErrors = errorlistener.getSyntaxErrors();
+        std::vector<std::shared_ptr<ParserError>> errorVector;
+        errorVector.reserve(syntaxErrors.size());
         for (const auto& error : syntaxErrors) {
             errorVector.push_back(std::make_shared<ParserError>(boost::uuids::random_generator()(), "", ErrorType::ERROR, error->message()));
         }
-
-        // Cleanup; So no memory leaks happend.
-        delete listenerImplementation;
-        delete errorlistener;
-
-        std::cout << "Ending Parsing of SysMLv2 Model" << std::endl;
 
         return std::make_pair(elements, errorVector);
     }

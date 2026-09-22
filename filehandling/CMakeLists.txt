@@ -24,6 +24,7 @@ set(KERML_PARSER_HEADER
         include/kerml/parser/KerMlListenerImplementation.h)
 
 set(SYSML_PARSER_HEADER
+        include/sysmlv2/parser/SysMLv2ListenerImplementation.h
         include/sysmlv2/parser/SysMLv2BaseListener.h
         include/sysmlv2/parser/SysMLv2Lexer.h
         include/sysmlv2/parser/SysMLv2Listener.h
@@ -40,6 +41,7 @@ add_library(sysmlv2parser
         src/kerml/parser/KerMLListener.cpp
         src/kerml/parser/KerMLParser.cpp
         src/sysmlv2/parser/SysMLv2BaseListener.cpp
+        src/sysmlv2/parser/SysMLv2ListenerImplementation.cpp
         src/sysmlv2/parser/SysMLv2Lexer.cpp
         src/sysmlv2/parser/SysMLv2Listener.cpp
         src/sysmlv2/parser/SysMLv2Parser.cpp
@@ -58,6 +60,7 @@ add_library(sysmlv2parser
             date::date
             antlr4_shared
             kerml
+            sysml
             sysmlv2resources
             sysmlv2interfaces)
 #else ()

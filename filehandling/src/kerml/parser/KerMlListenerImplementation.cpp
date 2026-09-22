@@ -8,6 +8,10 @@
 #include <iostream>
 #include <algorithm>
 
+// Empty callbacks below are intentional for syntax wrappers and tokens whose
+// semantics are handled by their enclosing or child rule. Do not create a
+// second model element in those callbacks.
+
 
 
 KerMLListenerImplementation::KerMLListenerImplementation() { }
@@ -135,7 +139,13 @@ void KerMLListenerImplementation::exitDependency(KerMLParser::DependencyContext 
 
 void KerMLListenerImplementation::enterAnnotation(KerMLParser::AnnotationContext *) { }
 
-void KerMLListenerImplementation::exitAnnotation(KerMLParser::AnnotationContext *) { }
+void KerMLListenerImplementation::exitAnnotation(KerMLParser::AnnotationContext *ctx) {
+    if (!ctx || ParentStack.empty()) return;
+    // Comments resolve their annotations in exitComment; metadata is on the stack.
+    if (auto metadata = std::dynamic_pointer_cast<KerML::Entities::MetadataFeature>(ParentStack.top())) {
+        if (auto target = findElementWithName(ctx->getText())) metadata->appendAnnotatedElement(target);
+    }
+}
 
 void KerMLListenerImplementation::enterOwned_annotation(KerMLParser::Owned_annotationContext*) { }
 
@@ -247,13 +257,21 @@ void KerMLListenerImplementation::enterNamespace_member(KerMLParser::Namespace_m
 
 void KerMLListenerImplementation::exitNamespace_member(KerMLParser::Namespace_memberContext *) { }
 
-void KerMLListenerImplementation::enterNon_feature_member(KerMLParser::Non_feature_memberContext *) { }
+void KerMLListenerImplementation::enterNon_feature_member(KerMLParser::Non_feature_memberContext *) {
+    ParentStack.push(std::make_shared<KerML::Entities::OwningMembership>());
+}
 
-void KerMLListenerImplementation::exitNon_feature_member(KerMLParser::Non_feature_memberContext *) { }
+void KerMLListenerImplementation::exitNon_feature_member(KerMLParser::Non_feature_memberContext *) {
+    finishMembership(nullptr);
+}
 
-void KerMLListenerImplementation::enterNamespace_feature_member(KerMLParser::Namespace_feature_memberContext *) { }
+void KerMLListenerImplementation::enterNamespace_feature_member(KerMLParser::Namespace_feature_memberContext *) {
+    ParentStack.push(std::make_shared<KerML::Entities::OwningMembership>());
+}
 
-void KerMLListenerImplementation::exitNamespace_feature_member(KerMLParser::Namespace_feature_memberContext *) { }
+void KerMLListenerImplementation::exitNamespace_feature_member(KerMLParser::Namespace_feature_memberContext *ctx) {
+    finishMembership(ctx ? ctx->member_prefix() : nullptr);
+}
 
 void KerMLListenerImplementation::enterAlias_member(KerMLParser::Alias_memberContext *) { }
 
@@ -432,22 +450,21 @@ void KerMLListenerImplementation::exitType(KerMLParser::TypeContext *ctx) {
 
 void KerMLListenerImplementation::enterType_prefix(KerMLParser::Type_prefixContext *) { }
 
-void KerMLListenerImplementation::exitType_prefix(KerMLParser::Type_prefixContext *) { }
+void KerMLListenerImplementation::exitType_prefix(KerMLParser::Type_prefixContext *ctx) {
+    if (!ctx || ParentStack.empty()) return;
+    if (auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top())) {
+        type->setAbstract(ctx->KEYWORD_ABSTRACT() != nullptr);
+    }
+}
 
 void KerMLListenerImplementation::enterType_declaration(KerMLParser::Type_declarationContext *) { }
 
 void KerMLListenerImplementation::exitType_declaration(KerMLParser::Type_declarationContext *ctx) {
+    if (!ctx || ParentStack.empty()) return;
     const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top());
-    if (!type)
-    {
-        std::cout << "Error wrong type in Parentstack" << std::endl;
-        return;
-    }
-    
-    type->setDeclaredName(ctx->identification()->getText());
-    if (ctx->KEYWORD_ALL() != nullptr)
-    {
-    }
+    if (!type) return;
+    applyIdentification(ctx->identification(), type);
+    type->setIsSufficient(ctx->KEYWORD_ALL() != nullptr);
 }
 
 void KerMLListenerImplementation::enterSpecialization_part(KerMLParser::Specialization_partContext *) {
@@ -699,19 +716,19 @@ void KerMLListenerImplementation::exitFeature_member(KerMLParser::Feature_member
 }
 
 void KerMLListenerImplementation::enterType_feature_member(KerMLParser::Type_feature_memberContext *) {
-
+    ParentStack.push(std::make_shared<KerML::Entities::OwningMembership>());
 }
 
-void KerMLListenerImplementation::exitType_feature_member(KerMLParser::Type_feature_memberContext *) {
-
+void KerMLListenerImplementation::exitType_feature_member(KerMLParser::Type_feature_memberContext *ctx) {
+    finishMembership(ctx ? ctx->member_prefix() : nullptr);
 }
 
 void KerMLListenerImplementation::enterOwned_feature_member(KerMLParser::Owned_feature_memberContext *) {
-
+    ParentStack.push(std::make_shared<KerML::Entities::OwningMembership>());
 }
 
-void KerMLListenerImplementation::exitOwned_feature_member(KerMLParser::Owned_feature_memberContext *) {
-
+void KerMLListenerImplementation::exitOwned_feature_member(KerMLParser::Owned_feature_memberContext *ctx) {
+    finishMembership(ctx ? ctx->member_prefix() : nullptr);
 }
 
 void KerMLListenerImplementation::enterClassifier(KerMLParser::ClassifierContext *) {
@@ -948,8 +965,14 @@ void KerMLListenerImplementation::enterMultiplicity_part(KerMLParser::Multiplici
 
 }
 
-void KerMLListenerImplementation::exitMultiplicity_part(KerMLParser::Multiplicity_partContext *) {
-
+void KerMLListenerImplementation::exitMultiplicity_part(KerMLParser::Multiplicity_partContext *ctx) {
+    if (!ctx || ParentStack.empty()) return;
+    const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+    if (!feature) return;
+    for (auto option : ctx->MULTIPLICITY_PART_ELEMENTS()) {
+        if (option->getText() == "ordered") feature->setIsOrdered(true);
+        if (option->getText() == "nonunique") feature->setIsUnique(false);
+    }
 }
 
 void KerMLListenerImplementation::enterFeature_specialization(KerMLParser::Feature_specializationContext *) {
@@ -1056,9 +1079,30 @@ void KerMLListenerImplementation::exitOwned_feature_typing(KerMLParser::Owned_fe
     Elements.push_back(featureTyping);
 }
 
-void KerMLListenerImplementation::enterSubsetting(KerMLParser::SubsettingContext *) { }
+void KerMLListenerImplementation::enterSubsetting(KerMLParser::SubsettingContext *) {
+    ParentStack.push(std::make_shared<KerML::Entities::Subsetting>(
+        std::make_shared<KerML::Entities::Feature>(), std::make_shared<KerML::Entities::Feature>()));
+}
 
-void KerMLListenerImplementation::exitSubsetting(KerMLParser::SubsettingContext *) { }
+void KerMLListenerImplementation::exitSubsetting(KerMLParser::SubsettingContext *ctx) {
+    if (ParentStack.empty()) return;
+    const auto relationship = std::dynamic_pointer_cast<KerML::Entities::Subsetting>(ParentStack.top());
+    if (!relationship) return;
+    ParentStack.pop();
+    if (!ctx || !ctx->specific_type() || !ctx->general_type()) return;
+    const auto specific = findOrCreateFeature(ctx->specific_type()->getText());
+    const auto general = findOrCreateFeature(ctx->general_type()->getText());
+    relationship->setSubsettedFeature(general);
+    relationship->setSubsettingFeature(specific);
+    relationship->setGeneral(general);
+    relationship->setSpecific(specific);
+    applyIdentification(ctx->identification(), relationship);
+    if (!ParentStack.empty()) {
+        relationship->setOwner(ParentStack.top());
+        ParentStack.top()->appendOwnedElement(relationship);
+    }
+    Elements.push_back(relationship);
+}
 
 void KerMLListenerImplementation::enterOwned_subsetting(KerMLParser::Owned_subsettingContext *) { }
 
@@ -1145,35 +1189,65 @@ void KerMLListenerImplementation::exitOwned_feature_chain(KerMLParser::Owned_fea
 
 }
 
-void KerMLListenerImplementation::enterFeature_chain(KerMLParser::Feature_chainContext *) {
-
+void KerMLListenerImplementation::enterFeature_chain(KerMLParser::Feature_chainContext *ctx) {
+    // A chain used as a reference has its own Feature; a chains clause populates
+    // the feature being declared directly.
+    if (ctx && dynamic_cast<KerMLParser::Chaining_partContext*>(ctx->parent)) return;
+    ParentStack.push(std::make_shared<KerML::Entities::Feature>());
 }
 
-void KerMLListenerImplementation::exitFeature_chain(KerMLParser::Feature_chainContext *) {
-
+void KerMLListenerImplementation::exitFeature_chain(KerMLParser::Feature_chainContext *ctx) {
+    if (!ctx || dynamic_cast<KerMLParser::Chaining_partContext*>(ctx->parent) || ParentStack.empty()) return;
+    const auto chain = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+    if (!chain) return;
+    chain->setDeclaredName(ctx->getText());
+    ParentStack.pop();
+    Elements.push_back(chain);
+    if (!ParentStack.empty()) {
+        chain->setOwner(ParentStack.top());
+        ParentStack.top()->appendOwnedElement(chain);
+    }
 }
 
 void KerMLListenerImplementation::enterOwned_feature_chaining(KerMLParser::Owned_feature_chainingContext *) { }
 
 void KerMLListenerImplementation::exitOwned_feature_chaining(KerMLParser::Owned_feature_chainingContext *ctx) {
-    if (ParentStack.empty()) return;
+    if (!ctx || !ctx->qualified_name() || ParentStack.empty()) return;
     const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
-    if (!feature) {
-        std::cout << "Wrong Type in parent stack." << std::endl;
-        return;
-    }
-    if (ctx && ctx->qualified_name()) {
-        const auto name = ctx->qualified_name()->getText();
-        feature->appendChainingFeature(std::dynamic_pointer_cast<KerML::Entities::Feature>(findElementWithName(name)));
-    }
+    if (!feature) return;
+    const auto chaining = findOrCreateFeature(ctx->qualified_name()->getText());
+    const auto relationship = std::make_shared<KerML::Entities::FeatureChaining>(chaining, feature);
+    feature->appendChainingFeature(chaining);
+    feature->appendOwnedFeatureChaining(relationship);
+    feature->appendOwnedElement(relationship);
+    Elements.push_back(relationship);
 }
 
 void KerMLListenerImplementation::enterFeature_inverting(KerMLParser::Feature_invertingContext *) {
-
+    ParentStack.push(std::make_shared<KerML::Entities::FeatureInverting>(
+        std::make_shared<KerML::Entities::Feature>(), std::make_shared<KerML::Entities::Feature>()));
 }
 
-void KerMLListenerImplementation::exitFeature_inverting(KerMLParser::Feature_invertingContext *) {
-
+void KerMLListenerImplementation::exitFeature_inverting(KerMLParser::Feature_invertingContext *ctx) {
+    if (ParentStack.empty()) return;
+    const auto relationship = std::dynamic_pointer_cast<KerML::Entities::FeatureInverting>(ParentStack.top());
+    if (!relationship) return;
+    ParentStack.pop();
+    if (!ctx) return;
+    std::vector<std::string> names;
+    for (auto child : ctx->children) {
+        if (dynamic_cast<KerMLParser::Qualified_nameContext*>(child) ||
+            dynamic_cast<KerMLParser::Owned_feature_chainContext*>(child)) names.push_back(child->getText());
+    }
+    if (names.size() != 2) return;
+    relationship->setInvertingFeature(findOrCreateFeature(names[0]));
+    relationship->setFeatureInverted(findOrCreateFeature(names[1]));
+    applyIdentification(ctx->identification(), relationship);
+    if (!ParentStack.empty()) {
+        relationship->setOwner(ParentStack.top());
+        ParentStack.top()->appendOwnedElement(relationship);
+    }
+    Elements.push_back(relationship);
 }
 
 void KerMLListenerImplementation::enterOwned_feature_inverting(KerMLParser::Owned_feature_invertingContext *) {
@@ -1198,11 +1272,28 @@ void KerMLListenerImplementation::exitOwned_feature_inverting(KerMLParser::Owned
 }
 
 void KerMLListenerImplementation::enterType_featuring(KerMLParser::Type_featuringContext *) {
-
+    ParentStack.push(std::make_shared<KerML::Entities::TypeFeaturing>(
+        std::make_shared<KerML::Entities::Feature>(), std::make_shared<KerML::Entities::Feature>()));
 }
 
-void KerMLListenerImplementation::exitType_featuring(KerMLParser::Type_featuringContext *) {
-
+void KerMLListenerImplementation::exitType_featuring(KerMLParser::Type_featuringContext *ctx) {
+    if (ParentStack.empty()) return;
+    const auto relationship = std::dynamic_pointer_cast<KerML::Entities::TypeFeaturing>(ParentStack.top());
+    if (!relationship) return;
+    ParentStack.pop();
+    if (!ctx || ctx->qualified_name().size() != 2) return;
+    const auto feature = findOrCreateFeature(ctx->qualified_name(0)->getText());
+    const auto type = findOrCreateType(ctx->qualified_name(1)->getText());
+    relationship->setFeatureOfType(feature);
+    relationship->setFeaturingType(type);
+    feature->appendTypeFeaturing(relationship);
+    feature->appendFeaturingType(type);
+    applyIdentification(ctx->identification(), relationship);
+    if (!ParentStack.empty()) {
+        relationship->setOwner(ParentStack.top());
+        ParentStack.top()->appendOwnedElement(relationship);
+    }
+    Elements.push_back(relationship);
 }
 
 void KerMLListenerImplementation::enterOwned_type_featuring(KerMLParser::Owned_type_featuringContext *) { }
@@ -1358,9 +1449,11 @@ KerMLListenerImplementation::enterBinary_connector_declaration(KerMLParser::Bina
 
 }
 
-void
-KerMLListenerImplementation::exitBinary_connector_declaration(KerMLParser::Binary_connector_declarationContext *) {
-
+void KerMLListenerImplementation::exitBinary_connector_declaration(KerMLParser::Binary_connector_declarationContext *ctx) {
+    if (!ctx || ParentStack.empty()) return;
+    if (auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top())) {
+        if (ctx->KEYWORD_ALL()) type->setIsSufficient(true);
+    }
 }
 
 void KerMLListenerImplementation::enterNary_connector_declaration(KerMLParser::Nary_connector_declarationContext *) {
@@ -1464,8 +1557,11 @@ void KerMLListenerImplementation::enterSuccession_declaration(KerMLParser::Succe
 
 }
 
-void KerMLListenerImplementation::exitSuccession_declaration(KerMLParser::Succession_declarationContext *) {
-
+void KerMLListenerImplementation::exitSuccession_declaration(KerMLParser::Succession_declarationContext *ctx) {
+    if (!ctx || ParentStack.empty()) return;
+    if (auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top())) {
+        if (ctx->KEYWORD_ALL()) type->setIsSufficient(true);
+    }
 }
 
 void KerMLListenerImplementation::enterBehavior(KerMLParser::BehaviorContext *) {
@@ -1750,21 +1846,19 @@ void KerMLListenerImplementation::exitEased_owned_expression(KerMLParser::Eased_
 }
 
 void KerMLListenerImplementation::enterConditional_expression(KerMLParser::Conditional_expressionContext *) {
-
+    ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 }
 
 void KerMLListenerImplementation::exitConditional_expression(KerMLParser::Conditional_expressionContext *) {
-
+    finishOperatorExpression("if");
 }
 
-void KerMLListenerImplementation::enterConditional_binary_operator_expression(
-        KerMLParser::Conditional_binary_operator_expressionContext *) {
-
+void KerMLListenerImplementation::enterConditional_binary_operator_expression(KerMLParser::Conditional_binary_operator_expressionContext *) {
+    ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 }
 
-void KerMLListenerImplementation::exitConditional_binary_operator_expression(
-        KerMLParser::Conditional_binary_operator_expressionContext *) {
-
+void KerMLListenerImplementation::exitConditional_binary_operator_expression(KerMLParser::Conditional_binary_operator_expressionContext *ctx) {
+    finishOperatorExpression(ctx && ctx->conditional_binary_operator() ? ctx->conditional_binary_operator()->getText() : "");
 }
 
 void
@@ -1791,13 +1885,7 @@ void KerMLListenerImplementation::exitBinary_operator_expression(KerMLParser::Bi
     if (ctx && ctx->binary_operator()) {
         opExpr->setOperatorName(ctx->binary_operator()->getText());
     }
-    Elements.push_back(opExpr);
-    if (!ParentStack.empty()) {
-        ParentStack.top()->appendOwnedElement(opExpr);
-        if (auto parentInst = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top())) {
-            parentInst->appendArgument(opExpr);
-        }
-    }
+    attachExpression(opExpr);
 }
 
 void KerMLListenerImplementation::enterBinary_operator(KerMLParser::Binary_operatorContext *) {
@@ -1822,13 +1910,7 @@ void KerMLListenerImplementation::exitUnary_operator_expression(KerMLParser::Una
     if (ctx && ctx->unary_operator()) {
         opExpr->setOperatorName(ctx->unary_operator()->getText());
     }
-    Elements.push_back(opExpr);
-    if (!ParentStack.empty()) {
-        ParentStack.top()->appendOwnedElement(opExpr);
-        if (auto parentInst = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top())) {
-            parentInst->appendArgument(opExpr);
-        }
-    }
+    attachExpression(opExpr);
 }
 
 void KerMLListenerImplementation::enterUnary_operator(KerMLParser::Unary_operatorContext *) {
@@ -1840,19 +1922,19 @@ void KerMLListenerImplementation::exitUnary_operator(KerMLParser::Unary_operator
 }
 
 void KerMLListenerImplementation::enterClassification_expression(KerMLParser::Classification_expressionContext *) {
-
+    ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 }
 
-void KerMLListenerImplementation::exitClassification_expression(KerMLParser::Classification_expressionContext *) {
-
+void KerMLListenerImplementation::exitClassification_expression(KerMLParser::Classification_expressionContext *ctx) {
+    finishOperatorExpression(ctx && ctx->classification_test_operator() ? ctx->classification_test_operator()->getText() : "as");
 }
 
 void KerMLListenerImplementation::enterClassification(KerMLParser::ClassificationContext *) {
-
+    ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 }
 
-void KerMLListenerImplementation::exitClassification(KerMLParser::ClassificationContext *) {
-
+void KerMLListenerImplementation::exitClassification(KerMLParser::ClassificationContext *ctx) {
+    finishOperatorExpression(ctx && ctx->classification_test_operator() ? ctx->classification_test_operator()->getText() : "as");
 }
 
 void
@@ -1873,14 +1955,12 @@ void KerMLListenerImplementation::exitCast_operator(KerMLParser::Cast_operatorCo
 
 }
 
-void KerMLListenerImplementation::enterMetaclassification_expression(
-        KerMLParser::Metaclassification_expressionContext *) {
-
+void KerMLListenerImplementation::enterMetaclassification_expression(KerMLParser::Metaclassification_expressionContext *) {
+    ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 }
 
-void
-KerMLListenerImplementation::exitMetaclassification_expression(KerMLParser::Metaclassification_expressionContext *) {
-
+void KerMLListenerImplementation::exitMetaclassification_expression(KerMLParser::Metaclassification_expressionContext *ctx) {
+    finishOperatorExpression(ctx && ctx->metadataclassification_test_operator() ? ctx->metadataclassification_test_operator()->getText() : "meta");
 }
 
 void KerMLListenerImplementation::enterArgument_member(KerMLParser::Argument_memberContext *) {
@@ -1903,8 +1983,12 @@ void KerMLListenerImplementation::enterArgument_value(KerMLParser::Argument_valu
 
 }
 
-void KerMLListenerImplementation::exitArgument_value(KerMLParser::Argument_valueContext *) {
-
+void KerMLListenerImplementation::exitArgument_value(KerMLParser::Argument_valueContext *ctx) {
+    if (!ctx || !ctx->STRING_VALUE()) return;
+    auto literal = std::make_shared<KerML::Entities::LiteralString>();
+    const auto text = ctx->STRING_VALUE()->getText();
+    literal->setValue(text.substr(1, text.size() - 2));
+    attachExpression(literal);
 }
 
 void KerMLListenerImplementation::enterArgument_expression_member(KerMLParser::Argument_expression_memberContext *) {
@@ -1959,8 +2043,11 @@ void KerMLListenerImplementation::enterMetadata_reference(KerMLParser::Metadata_
 
 }
 
-void KerMLListenerImplementation::exitMetadata_reference(KerMLParser::Metadata_referenceContext *) {
-
+void KerMLListenerImplementation::exitMetadata_reference(KerMLParser::Metadata_referenceContext *ctx) {
+    if (!ctx || !ctx->qualified_name()) return;
+    auto expression = std::make_shared<KerML::Entities::MetadataAccessExpression>();
+    expression->setReferencedElement(findElementWithName(ctx->qualified_name()->getText()));
+    attachExpression(expression);
 }
 
 void KerMLListenerImplementation::enterMetadataclassification_test_operator(
@@ -1982,11 +2069,11 @@ void KerMLListenerImplementation::exitMeta_cast_operator(KerMLParser::Meta_cast_
 }
 
 void KerMLListenerImplementation::enterExtend_expression(KerMLParser::Extend_expressionContext *) {
-
+    ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 }
 
 void KerMLListenerImplementation::exitExtend_expression(KerMLParser::Extend_expressionContext *) {
-
+    finishOperatorExpression("all");
 }
 
 void KerMLListenerImplementation::enterType_reference_member(KerMLParser::Type_reference_memberContext *) {
@@ -2009,8 +2096,11 @@ void KerMLListenerImplementation::enterType_reference(KerMLParser::Type_referenc
 
 }
 
-void KerMLListenerImplementation::exitType_reference(KerMLParser::Type_referenceContext *) {
-
+void KerMLListenerImplementation::exitType_reference(KerMLParser::Type_referenceContext *ctx) {
+    if (!ctx || !ctx->reference_typing()) return;
+    auto expression = std::make_shared<KerML::Entities::InstantiationExpression>();
+    expression->setInstantiatedType(findOrCreateType(ctx->reference_typing()->getText()));
+    attachExpression(expression);
 }
 
 void KerMLListenerImplementation::enterReference_typing(KerMLParser::Reference_typingContext *) {
@@ -2121,13 +2211,7 @@ void KerMLListenerImplementation::exitIndex_expression(KerMLParser::Index_expres
     ParentStack.pop();
 
     expr->setOperatorName("#");
-    Elements.push_back(expr);
-    if (!ParentStack.empty()) {
-        ParentStack.top()->appendOwnedElement(expr);
-        if (auto parentInst = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top())) {
-            parentInst->appendArgument(expr);
-        }
-    }
+    attachExpression(expr);
 }
 
 void KerMLListenerImplementation::enterSequence_expression(KerMLParser::Sequence_expressionContext *) {
@@ -2146,14 +2230,12 @@ void KerMLListenerImplementation::exitSequence_expression_list(KerMLParser::Sequ
 
 }
 
-void
-KerMLListenerImplementation::enterSequence_operator_expression(KerMLParser::Sequence_operator_expressionContext *) {
-
+void KerMLListenerImplementation::enterSequence_operator_expression(KerMLParser::Sequence_operator_expressionContext *) {
+    ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 }
 
-void
-KerMLListenerImplementation::exitSequence_operator_expression(KerMLParser::Sequence_operator_expressionContext *) {
-
+void KerMLListenerImplementation::exitSequence_operator_expression(KerMLParser::Sequence_operator_expressionContext *) {
+    finishOperatorExpression(",");
 }
 
 void KerMLListenerImplementation::enterSequence_expression_list_member(
@@ -2183,13 +2265,7 @@ void KerMLListenerImplementation::exitFeature_chain_expression(KerMLParser::Feat
         auto feat = findOrCreateFeature(name);
         expr->setTargetFeature(feat);
     }
-    Elements.push_back(expr);
-    if (!ParentStack.empty()) {
-        ParentStack.top()->appendOwnedElement(expr);
-        if (auto parentInst = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top())) {
-            parentInst->appendArgument(expr);
-        }
-    }
+    attachExpression(expr);
 }
 
 void KerMLListenerImplementation::enterCollect_expression(KerMLParser::Collect_expressionContext *) {
@@ -2204,13 +2280,7 @@ void KerMLListenerImplementation::exitCollect_expression(KerMLParser::Collect_ex
     ParentStack.pop();
 
     expr->setOperatorName(".");
-    Elements.push_back(expr);
-    if (!ParentStack.empty()) {
-        ParentStack.top()->appendOwnedElement(expr);
-        if (auto parentInst = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top())) {
-            parentInst->appendArgument(expr);
-        }
-    }
+    attachExpression(expr);
 }
 
 void KerMLListenerImplementation::enterSelect_expression(KerMLParser::Select_expressionContext *) {
@@ -2225,13 +2295,7 @@ void KerMLListenerImplementation::exitSelect_expression(KerMLParser::Select_expr
     ParentStack.pop();
 
     expr->setOperatorName(".?");
-    Elements.push_back(expr);
-    if (!ParentStack.empty()) {
-        ParentStack.top()->appendOwnedElement(expr);
-        if (auto parentInst = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top())) {
-            parentInst->appendArgument(expr);
-        }
-    }
+    attachExpression(expr);
 }
 
 void KerMLListenerImplementation::enterFunction_operation_expression(
@@ -2311,9 +2375,11 @@ void KerMLListenerImplementation::enterFunction_reference_expression(
 
 }
 
-void
-KerMLListenerImplementation::exitFunction_reference_expression(KerMLParser::Function_reference_expressionContext *) {
-
+void KerMLListenerImplementation::exitFunction_reference_expression(KerMLParser::Function_reference_expressionContext *ctx) {
+    if (!ctx || !ctx->reference_typing()) return;
+    auto expression = std::make_shared<KerML::Entities::InstantiationExpression>();
+    expression->setInstantiatedType(findOrCreateType(ctx->reference_typing()->getText()));
+    attachExpression(expression);
 }
 
 void KerMLListenerImplementation::enterFunction_reference_member(KerMLParser::Function_reference_memberContext *) {
@@ -2328,8 +2394,11 @@ void KerMLListenerImplementation::enterFunction_reference(KerMLParser::Function_
 
 }
 
-void KerMLListenerImplementation::exitFunction_reference(KerMLParser::Function_referenceContext *) {
-
+void KerMLListenerImplementation::exitFunction_reference(KerMLParser::Function_referenceContext *ctx) {
+    if (!ctx || !ctx->reference_typing()) return;
+    auto expression = std::make_shared<KerML::Entities::InstantiationExpression>();
+    expression->setInstantiatedType(findOrCreateType(ctx->reference_typing()->getText()));
+    attachExpression(expression);
 }
 
 void KerMLListenerImplementation::enterFeature_chain_member(KerMLParser::Feature_chain_memberContext *) {
@@ -2367,10 +2436,7 @@ void KerMLListenerImplementation::exitNull_expression(KerMLParser::Null_expressi
     if (!expr) return;
     ParentStack.pop();
 
-    Elements.push_back(expr);
-    if (!ParentStack.empty()) {
-        ParentStack.top()->appendOwnedElement(expr);
-    }
+    attachExpression(expr);
 }
 
 void
@@ -2391,13 +2457,7 @@ KerMLListenerImplementation::exitFeature_reference_expression(KerMLParser::Featu
         auto feat = findOrCreateFeature(refName);
         expr->setReferent(feat);
     }
-    Elements.push_back(expr);
-    if (!ParentStack.empty()) {
-        ParentStack.top()->appendOwnedElement(expr);
-        if (auto parentInst = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top())) {
-            parentInst->appendArgument(expr);
-        }
-    }
+    attachExpression(expr);
 }
 
 void KerMLListenerImplementation::enterFeature_reference_member(KerMLParser::Feature_reference_memberContext *) { }
@@ -2424,13 +2484,7 @@ void KerMLListenerImplementation::exitMetadata_access_expression(KerMLParser::Me
         auto elem = findElementWithName(refName);
         expr->setReferencedElement(elem);
     }
-    Elements.push_back(expr);
-    if (!ParentStack.empty()) {
-        ParentStack.top()->appendOwnedElement(expr);
-        if (auto parentInst = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top())) {
-            parentInst->appendArgument(expr);
-        }
-    }
+    attachExpression(expr);
 }
 
 void KerMLListenerImplementation::enterInvocation_expression(KerMLParser::Invocation_expressionContext *) {
@@ -2444,13 +2498,7 @@ void KerMLListenerImplementation::exitInvocation_expression(KerMLParser::Invocat
     if (!expr) return;
     ParentStack.pop();
 
-    Elements.push_back(expr);
-    if (!ParentStack.empty()) {
-        ParentStack.top()->appendOwnedElement(expr);
-        if (auto parentInst = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top())) {
-            parentInst->appendArgument(expr);
-        }
-    }
+    attachExpression(expr);
 }
 
 void KerMLListenerImplementation::enterInternal_invocation_expression(
@@ -2496,27 +2544,43 @@ void KerMLListenerImplementation::exitNamed_argument_member(KerMLParser::Named_a
 }
 
 void KerMLListenerImplementation::enterNamed_argument(KerMLParser::Named_argumentContext *) {
-
+    ParentStack.push(std::make_shared<KerML::Entities::Expression>());
 }
 
 void KerMLListenerImplementation::exitNamed_argument(KerMLParser::Named_argumentContext *) {
-
+    if (ParentStack.empty()) return;
+    const auto argument = std::dynamic_pointer_cast<KerML::Entities::Expression>(ParentStack.top());
+    if (!argument) return;
+    ParentStack.pop();
+    attachExpression(argument);
 }
 
 void KerMLListenerImplementation::enterParameter_redefinition(KerMLParser::Parameter_redefinitionContext *) {
 
 }
 
-void KerMLListenerImplementation::exitParameter_redefinition(KerMLParser::Parameter_redefinitionContext *) {
-
+void KerMLListenerImplementation::exitParameter_redefinition(KerMLParser::Parameter_redefinitionContext *ctx) {
+    if (!ctx || !ctx->qualified_name() || ParentStack.empty()) return;
+    const auto argument = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+    if (!argument) return;
+    const auto parameter = findOrCreateFeature(ctx->qualified_name()->getText());
+    argument->setDeclaredName(ctx->qualified_name()->getText());
+    const auto redefinition = std::make_shared<KerML::Entities::Redefinition>(parameter, argument);
+    argument->appendOwnedRedefinition(redefinition);
+    argument->appendOwnedElement(redefinition);
+    Elements.push_back(redefinition);
 }
 
 void KerMLListenerImplementation::enterBody_expression(KerMLParser::Body_expressionContext *) {
-
+    ParentStack.push(std::make_shared<KerML::Entities::Expression>());
 }
 
 void KerMLListenerImplementation::exitBody_expression(KerMLParser::Body_expressionContext *) {
-
+    if (ParentStack.empty()) return;
+    const auto expression = std::dynamic_pointer_cast<KerML::Entities::Expression>(ParentStack.top());
+    if (!expression) return;
+    ParentStack.pop();
+    attachExpression(expression);
 }
 
 void KerMLListenerImplementation::enterExpression_body_member(KerMLParser::Expression_body_memberContext *) {
@@ -2579,13 +2643,7 @@ void KerMLListenerImplementation::exitLiteral_expression(KerMLParser::Literal_ex
     }
 
     if (literal) {
-        Elements.push_back(literal);
-        if (!ParentStack.empty()) {
-            ParentStack.top()->appendOwnedElement(literal);
-            if (auto fv = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(ParentStack.top())) {
-                fv->setValue(literal);
-            }
-        }
+        attachExpression(literal);
     }
 }
 
@@ -2715,8 +2773,11 @@ void KerMLListenerImplementation::enterItem_flow_declaration(KerMLParser::Item_f
 
 }
 
-void KerMLListenerImplementation::exitItem_flow_declaration(KerMLParser::Item_flow_declarationContext *) {
-
+void KerMLListenerImplementation::exitItem_flow_declaration(KerMLParser::Item_flow_declarationContext *ctx) {
+    if (!ctx || ParentStack.empty()) return;
+    if (auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top())) {
+        if (ctx->KEYWORD_ALL()) type->setIsSufficient(true);
+    }
 }
 
 void KerMLListenerImplementation::enterItem_feature_member(KerMLParser::Item_feature_memberContext *) {
@@ -2812,8 +2873,15 @@ void KerMLListenerImplementation::enterItem_flow_redefinition(KerMLParser::Item_
 
 }
 
-void KerMLListenerImplementation::exitItem_flow_redefinition(KerMLParser::Item_flow_redefinitionContext *) {
-
+void KerMLListenerImplementation::exitItem_flow_redefinition(KerMLParser::Item_flow_redefinitionContext *ctx) {
+    if (!ctx || !ctx->qualified_name() || ParentStack.empty()) return;
+    const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+    if (!feature) return;
+    const auto redefined = findOrCreateFeature(ctx->qualified_name()->getText());
+    const auto relationship = std::make_shared<KerML::Entities::Redefinition>(redefined, feature);
+    feature->appendOwnedRedefinition(relationship);
+    feature->appendOwnedElement(relationship);
+    Elements.push_back(relationship);
 }
 
 void KerMLListenerImplementation::enterValue_part(KerMLParser::Value_partContext *) {
@@ -2876,11 +2944,20 @@ void KerMLListenerImplementation::exitMultiplicity(KerMLParser::MultiplicityCont
 }
 
 void KerMLListenerImplementation::enterMultiplicity_subset(KerMLParser::Multiplicity_subsetContext *) {
-
+    ParentStack.push(std::make_shared<KerML::Entities::Multiplicity>(1));
 }
 
-void KerMLListenerImplementation::exitMultiplicity_subset(KerMLParser::Multiplicity_subsetContext *) {
-
+void KerMLListenerImplementation::exitMultiplicity_subset(KerMLParser::Multiplicity_subsetContext *ctx) {
+    if (ParentStack.empty()) return;
+    const auto multiplicity = std::dynamic_pointer_cast<KerML::Entities::Multiplicity>(ParentStack.top());
+    if (!multiplicity) return;
+    if (ctx) applyIdentification(ctx->identification(), multiplicity);
+    ParentStack.pop();
+    Elements.push_back(multiplicity);
+    if (!ParentStack.empty()) {
+        multiplicity->setOwner(ParentStack.top());
+        ParentStack.top()->appendOwnedElement(multiplicity);
+    }
 }
 
 void KerMLListenerImplementation::enterMultiplicity_range(KerMLParser::Multiplicity_rangeContext *) {
@@ -3104,11 +3181,22 @@ KerMLListenerImplementation::exitMetadata_body_feature_member(KerMLParser::Metad
 }
 
 void KerMLListenerImplementation::enterMetadata_body_feature(KerMLParser::Metadata_body_featureContext *) {
-
+    ParentStack.push(std::make_shared<KerML::Entities::Feature>());
 }
 
 void KerMLListenerImplementation::exitMetadata_body_feature(KerMLParser::Metadata_body_featureContext *) {
-
+    if (ParentStack.empty()) return;
+    const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+    if (!feature) return;
+    ParentStack.pop();
+    Elements.push_back(feature);
+    if (!ParentStack.empty()) {
+        feature->setOwner(ParentStack.top());
+        ParentStack.top()->appendOwnedElement(feature);
+        if (auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top())) {
+            type->appendOwnedFeature(feature);
+        }
+    }
 }
 
 void KerMLListenerImplementation::enterPackage(KerMLParser::PackageContext *) {
@@ -3169,19 +3257,59 @@ void KerMLListenerImplementation::exitPackage_body(KerMLParser::Package_bodyCont
 }
 
 void KerMLListenerImplementation::enterElement_filter_member(KerMLParser::Element_filter_memberContext *) {
-
+    ParentStack.push(std::make_shared<KerML::Entities::ElementFilterMembership>());
 }
 
-void KerMLListenerImplementation::exitElement_filter_member(KerMLParser::Element_filter_memberContext *) {
-
+void KerMLListenerImplementation::exitElement_filter_member(KerMLParser::Element_filter_memberContext *ctx) {
+    if (ParentStack.empty()) return;
+    const auto filter = std::dynamic_pointer_cast<KerML::Entities::ElementFilterMembership>(ParentStack.top());
+    if (!filter) return;
+    ParentStack.pop();
+    for (const auto& child : filter->ownedElements()) {
+        if (auto condition = std::dynamic_pointer_cast<KerML::Entities::Expression>(child)) {
+            filter->setCondition(condition);
+            break;
+        }
+    }
+    if (ctx && ctx->member_prefix() && ctx->member_prefix()->visibility_indicator()) {
+        const auto visibility = ctx->member_prefix()->visibility_indicator();
+        filter->setVisibility(visibility->KEYWORD_PRIVATE() ? KerML::Entities::PRIVATE :
+                              visibility->KEYWORD_PROTECTED() ? KerML::Entities::PROTECTED : KerML::Entities::PUBLIC);
+    }
+    if (!ParentStack.empty()) {
+        filter->setOwner(ParentStack.top());
+        ParentStack.top()->appendOwnedElement(filter);
+        if (auto ns = std::dynamic_pointer_cast<KerML::Entities::Namespace>(ParentStack.top())) {
+            filter->setMembershipOwningNamespace(ns);
+            ns->appendOwnedMembership(filter);
+        }
+    }
+    Elements.push_back(filter);
 }
 
 void KerMLListenerImplementation::enterMeta_assignment(KerMLParser::Meta_assignmentContext *) {
 
 }
 
-void KerMLListenerImplementation::exitMeta_assignment(KerMLParser::Meta_assignmentContext *) {
-
+void KerMLListenerImplementation::exitMeta_assignment(KerMLParser::Meta_assignmentContext *ctx) {
+    if (!ctx || !ctx->identification() || ctx->qualified_name().size() != 2 || ParentStack.empty()) return;
+    const auto feature = findOrCreateFeature(ctx->qualified_name(0)->getText());
+    const auto value = std::make_shared<KerML::Entities::FeatureValue>();
+    value->setFeatureWithValue(feature);
+    const auto expression = std::make_shared<KerML::Entities::MetadataAccessExpression>();
+    const auto names = ctx->identification()->NAME();
+    if (!names.empty()) expression->setReferencedElement(findElementWithName(names.back()->getText()));
+    const auto type = findOrCreateType(ctx->qualified_name(1)->getText());
+    const auto typing = std::make_shared<KerML::Entities::FeatureTyping>(type, expression);
+    expression->appendOwnedTyping(typing);
+    expression->appendType(type);
+    expression->appendOwnedElement(typing);
+    value->setValue(expression);
+    value->appendOwnedElement(expression);
+    feature->appendOwnedElement(value);
+    Elements.push_back(typing);
+    Elements.push_back(expression);
+    Elements.push_back(value);
 }
 
 void KerMLListenerImplementation::visitTerminal(antlr4::tree::TerminalNode *) {
@@ -3294,4 +3422,73 @@ void KerMLListenerImplementation::populateWithBaseDatatypes()
             }
         }
     }
+}
+
+
+void KerMLListenerImplementation::attachExpression(const std::shared_ptr<KerML::Entities::Expression>& expression) {
+    if (!expression) return;
+    Elements.push_back(expression);
+    if (ParentStack.empty()) return;
+    expression->setOwner(ParentStack.top());
+    ParentStack.top()->appendOwnedElement(expression);
+    if (auto invocation = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top())) {
+        invocation->appendArgument(expression);
+    }
+    if (auto value = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(ParentStack.top())) {
+        value->setValue(expression);
+    }
+}
+
+void KerMLListenerImplementation::finishOperatorExpression(const std::string& operatorName) {
+    if (ParentStack.empty()) return;
+    const auto expression = std::dynamic_pointer_cast<KerML::Entities::OperatorExpression>(ParentStack.top());
+    if (!expression) return;
+    ParentStack.pop();
+    expression->setOperatorName(operatorName);
+    attachExpression(expression);
+}
+
+
+void KerMLListenerImplementation::finishMembership(KerMLParser::Member_prefixContext *prefix) {
+    if (ParentStack.empty()) return;
+    auto membership = std::dynamic_pointer_cast<KerML::Entities::OwningMembership>(ParentStack.top());
+    if (!membership) return;
+    ParentStack.pop();
+    const auto children = membership->ownedElements();
+    if (children.empty() || ParentStack.empty()) return;
+    const auto ns = std::dynamic_pointer_cast<KerML::Entities::Namespace>(ParentStack.top());
+    if (!ns) return;
+    const auto member = children.back();
+    const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(member);
+    const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ns);
+    if (feature && type) {
+        const auto featureMembership = std::make_shared<KerML::Entities::FeatureMembership>(
+            feature, type, feature->type());
+        membership = featureMembership;
+        type->appendOwnedFeatureMembership(featureMembership);
+        type->appendFeatureMemberships(featureMembership);
+        type->appendOwnedFeature(feature);
+        feature->setOwningFeatureMembership(featureMembership);
+        feature->setOwningType(type);
+    }
+    membership->setOwnedMemberElement(member);
+    membership->setMemberElement(member);
+    if (member->declaredName()) membership->setMemberName(*member->declaredName());
+    if (member->declaredShortName()) membership->setMemberShortName(*member->declaredShortName());
+    membership->setMembershipOwningNamespace(ns);
+    membership->setOwner(ns);
+    membership->setVisibility(KerML::Entities::PUBLIC);
+    if (prefix && prefix->visibility_indicator()) {
+        auto visibility = prefix->visibility_indicator();
+        membership->setVisibility(visibility->KEYWORD_PRIVATE() ? KerML::Entities::PRIVATE :
+                                  visibility->KEYWORD_PROTECTED() ? KerML::Entities::PROTECTED : KerML::Entities::PUBLIC);
+    }
+    member->setOwner(ns);
+    ns->appendOwnedMembership(membership);
+    ns->appendMembership(membership);
+    ns->appendOwnedMember(member);
+    ns->appendMember(member);
+    ns->appendOwnedElement(member);
+    ns->appendOwnedElement(membership);
+    Elements.push_back(membership);
 }
