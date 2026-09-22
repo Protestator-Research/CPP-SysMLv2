@@ -1,4 +1,14 @@
+/**
+ * Implementation of the KerML Beta 2 Standard for ANTLR 4 Parsing.
+ * @author Moritz Herzog
+ * The internal assignments of the values is not done in the ANTLR4 grammar. This needs to be done later on in the code.
+ **/
+
 grammar SysMLv2;
+
+@header {
+    #include <sysmlv2/sysmlv2file_global.h>
+}
 
 import KerML;
 
@@ -51,9 +61,6 @@ definition_element: package |
                     state_definition |
                     constraint_definition |
                     requirement_definition |
-                    calculation_definition |
-                    state_definition |
-                    requirement_definition |
                     concern_definition |
                     case_definition |
                     analysis_case_definition |
@@ -102,7 +109,7 @@ usage_body: definition_body;
 
 default_reference_usage: ref_prefix usage;
 reference_usage: (end_usage_prefix | ref_prefix) KEYWORD_REF usage;
-variant_reference: owned_reference_subsetting feature_specilization* usage_body;
+variant_reference: owned_reference_subsetting feature_specialization* usage_body;
 
 non_occurrence_usage_element: default_reference_usage |
                               reference_usage |
@@ -182,19 +189,19 @@ enumeration_usage_member: member_prefix enumerated_value;
 enumerated_value: KEYWORD_ENUM? usage;
 enumeration_usage: usage_prefix KEYWORD_ENUM usage;
 
-occurrence_definition_prefix: basic_definition_prefix? KEYWORD_INDIVIDIAL? definition_extension_keyword*;
+occurrence_definition_prefix: basic_definition_prefix? KEYWORD_INDIVIDUAL? definition_extension_keyword*;
 occurrence_definition: occurrence_definition_prefix KEYWORD_OCCURRENCE KEYWORD_DEF definition;
-individual_definition: basic_definition_prefix? KEYWORD_INDIVIDIAL KEYWORD_DEF definition;
+individual_definition: basic_definition_prefix? KEYWORD_INDIVIDUAL KEYWORD_DEF definition;
 
-occurrence_usage_prefix: basic_usage_prefix KEYWORD_INDIVIDIAL? portion_kind? usage_extention_keyword*;
+occurrence_usage_prefix: basic_usage_prefix KEYWORD_INDIVIDUAL? portion_kind? usage_extention_keyword*;
 occurrence_usage: occurrence_usage_prefix KEYWORD_OCCURRENCE usage;
-individual_usage: basic_usage_prefix KEYWORD_INDIVIDIAL portion_kind? usage_extention_keyword* usage;
-portion_usage: basic_usage_prefix KEYWORD_INDIVIDIAL? portion_kind usage_extention_keyword* usage;
+individual_usage: basic_usage_prefix KEYWORD_INDIVIDUAL portion_kind? usage_extention_keyword* usage;
+portion_usage: basic_usage_prefix KEYWORD_INDIVIDUAL? portion_kind usage_extention_keyword* usage;
 portion_kind: KEYWORD_SNAPSHOT | KEYWORD_TIMESLICE;
 event_occurrence_usage: occurrence_usage_prefix KEYWORD_EVENT ((owned_reference_subsetting feature_specialization_part?)|(KEYWORD_OCCURRENCE usage_declaration)) usage_completion;
 
-source_succession_member: KEYWORD_THEN souce_succession;
-souce_succession: source_end_member;
+source_succession_member: KEYWORD_THEN source_succession;
+source_succession: source_end_member;
 source_end_member: source_end;
 source_end: owned_multiplicity?;
 
@@ -218,7 +225,7 @@ connecotr_end: owned_cross_multiplicity_member? (declared_name = NAME REFERENCES
 owned_cross_multiplicity_member: owned_cross_multiplicity;
 owned_cross_multiplicity: owned_multiplicity;
 
-binding_connector_as_usage: usage_prefix (KEYWORD_BINDING usage_declaration)? KEYWORD_BIND connector_end_member ;
+binding_connector_as_usage: usage_prefix (KEYWORD_BINDING usage_declaration)? KEYWORD_BIND connector_end_member binding_end_usage_member;
 binding_end_usage_member: SYMBOL_ASSIGN connector_end_member usage_body;
 succession_as_usage: usage_prefix (KEYWORD_SUCCSESSION usage_declaration)? KEYWORD_FIRST connector_end_member KEYWORD_THEN connector_end_member usage_body;
 
@@ -263,7 +270,7 @@ flow_declaration: usage_declaration value_part? (KEYWORD_OF flow_payload_feature
 flow_payload_feature_member: flow_payload_feature;
 flow_payload_feature: payload_feature;
 payload_feature: identification payload_feature_specialization_part value_part | owned_feature_typing | owned_multiplicity owned_feature_typing;
-payload_feature_specialization_part: feature_specilization+ multiplicity_part? feature_specilization* | multiplicity_part feature_specilization+;
+payload_feature_specialization_part: feature_specialization+ multiplicity_part? feature_specialization* | multiplicity_part feature_specialization+;
 flow_end_member: flow_end;
 flow_end: flow_end_subsetting? flow_feature_member;
 flow_end_subsetting: qualified_name | feature_chain_prefix;
@@ -458,14 +465,14 @@ verification_case_definition: occurrence_definition_prefix KEYWORD_VERIFICATION 
 verification_case_usage: occurrence_usage_prefix KEYWORD_VERIFICATION constraint_usage_declaration case_body;
 
 requirement_verification_member: member_prefix KEYWORD_VERIFY {kind = 'requirement'} requirement_verification_usage;
-requirement_verification_usage: owned_reference_subsetting feature_specilization* requirement_body | (usage_extention_keyword* KEYWORD_REQUIREMENT | usage_extention_keyword+) constraint_usage_declaration requirement_body;
+requirement_verification_usage: owned_reference_subsetting feature_specialization* requirement_body | (usage_extention_keyword* KEYWORD_REQUIREMENT | usage_extention_keyword+) constraint_usage_declaration requirement_body;
 
 use_case_definition: occurrence_definition_prefix KEYWORD_USE KEYWORD_CASE KEYWORD_DEF definition_declaration case_body;
 use_case_usage: occurrence_usage_prefix KEYWORD_USE KEYWORD_CASE constraint_usage_declaration case_body;
 include_use_case_usage: occurrence_usage_prefix KEYWORD_INCLUDE (owned_reference_subsetting feature_specialization_part? | KEYWORD_USE KEYWORD_CASE usage_declaration ) value_part? case_body;
 
 view_definition: occurrence_definition_prefix KEYWORD_VIEW KEYWORD_DEF definition_declaration view_definition_body;
-view_definition_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN view_definition_body_item* SYMBOL_CURLY_BRACKET_OPEN;
+view_definition_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN view_definition_body_item* SYMBOL_CURLY_BRACKET_CLOSE;
 view_definition_body_item: definition_body_item |
                            element_filter_member |
                            view_rendering_member;
@@ -541,7 +548,7 @@ KEYWORD_FORK: 'fork';
 KEYWORD_FRAME: 'frame';
 KEYWORD_GUARD: 'guard';
 KEYWORD_INCLUDE: 'include';
-KEYWORD_INDIVIDIAL: 'individual';
+KEYWORD_INDIVIDUAL: 'individual';
 KEYWORD_INTERFACE:'interface';
 KEYWORD_ITEM: 'item';
 KEYWORD_JOIN: 'join';
@@ -569,7 +576,7 @@ KEYWORD_STATE: 'state';
 KEYWORD_SUBJECT: 'subject';
 KEYWORD_TERMINATE: 'terminate';
 KEYWORD_TIMESLICE: 'timeslice';
-KEYWORD_TRANSISTION: 'transition';
+KEYWORD_TRANSITION: 'transition';
 KEYWORD_TRIGGER: 'trigger';
 KEYWORD_UNTIL: 'until';
 KEYWORD_USE: 'use';

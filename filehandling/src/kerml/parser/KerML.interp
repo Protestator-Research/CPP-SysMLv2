@@ -75,7 +75,7 @@ null
 'ordered'
 'out'
 'package'
-'potion'
+'portion'
 'predicate'
 'private'
 'protected'
@@ -172,7 +172,7 @@ SPECIALIZES
 SUBSETS
 REFERENCES
 REDEFINES
-CONJUNGATES
+CONJUGATES
 KEYWORD_ABOUT
 KEYWORD_ABSTRACT
 KEYWORD_ALIAS
@@ -251,7 +251,7 @@ KEYWORD_REDEFINITION
 KEYWORD_REFERENCES
 KEYWORD_REP
 KEYWORD_RETURN
-KEYWORD_SPECILIZATION
+KEYWORD_SPECIALIZATION
 KEYWORD_SPECIALIZES
 KEYWORD_STEP
 KEYWORD_STRUCT
@@ -259,7 +259,7 @@ KEYWORD_SUBCLASSIFIER
 KEYWORD_SUBSET
 KEYWORD_SUBSETS
 KEYWORD_SUBTYPE
-KEYWORD_SUCCSESSION
+KEYWORD_SUCCESSION
 KEYWORD_THEN
 KEYWORD_TO
 KEYWORD_TRUE
@@ -286,7 +286,7 @@ SYMBOL_TYPED_BY
 SYMBOL_SPECIALIZES
 SYMBOL_REFERENCES
 SYMBOL_REDEFINES
-SYMBOL_CONJUNGATES
+SYMBOL_CONJUGATES
 SYMBOL_ROUND_BRACKET_OPEN
 SYMBOL_ROUND_BRACKET_CLOSE
 SYMBOL_CURLY_BRACKET_OPEN
@@ -304,7 +304,7 @@ SYMBOL_DOUBLE_STAR
 SYMBOL_PLUS
 SYMBOL_MINUS
 SYMBOL_SLASH
-SYMBOL_ARROOW
+SYMBOL_ARROW
 SYMBOL_DOT
 SYMBOL_DDOT
 SYMBOL_SMALLER
@@ -334,7 +334,7 @@ startRule
 elements
 identification
 relationship_body
-relationship_onwed_elements
+relationship_owned_elements
 relationship_owned_element
 owned_related_element
 dependency
@@ -409,7 +409,7 @@ inverting_part
 type_featuring_part
 feature_specialization_part
 multiplicity_part
-feature_specilization
+feature_specialization
 typings
 typed_by
 subsettings
@@ -536,7 +536,7 @@ positional_argument_list
 named_argument_list
 named_argument_member
 named_argument
-paramenter_redefinition
+parameter_redefinition
 body_expression
 expression_body_member
 expression_body
@@ -554,7 +554,7 @@ succession_item_flow
 item_flow_declaration
 item_feature_member
 item_feature
-item_feature_specilization_part
+item_feature_specialization_part
 item_flow_end_member
 item_flow_end
 item_flow_feature_member

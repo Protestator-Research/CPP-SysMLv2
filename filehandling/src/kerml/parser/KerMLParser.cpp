@@ -1,13 +1,16 @@
 
+    #include <sysmlv2/sysmlv2file_global.h>
+
+
 // Generated from ./KerML.g4 by ANTLR 4.13.2
 
 
 #include <kerml/parser/KerMLListener.h>
-
+#include <kerml/parser/KerMLVisitor.h>
 #include <kerml/parser/KerMLParser.h>
 
 
-using namespace antlrcpp;
+    using namespace antlrcpp;
 
 using namespace antlr4;
 
@@ -53,7 +56,7 @@ void kermlParserInitialize() {
   auto staticData = std::make_unique<KerMLParserStaticData>(
     std::vector<std::string>{
       "start", "startRule", "elements", "identification", "relationship_body", 
-      "relationship_onwed_elements", "relationship_owned_element", "owned_related_element", 
+      "relationship_owned_elements", "relationship_owned_element", "owned_related_element", 
       "dependency", "annotation", "owned_annotation", "annotating_element", 
       "comment", "documentation", "textual_representation", "root_namespace", 
       "namespace", "namespace_declaration", "namespace_body", "namespace_body_elements", 
@@ -72,7 +75,7 @@ void kermlParserInitialize() {
       "subclassification", "owned_subclassification", "feature", "feature_prefix", 
       "feature_direction", "feature_declaration", "feature_identification", 
       "feature_relationship_part", "chaining_part", "inverting_part", "type_featuring_part", 
-      "feature_specialization_part", "multiplicity_part", "feature_specilization", 
+      "feature_specialization_part", "multiplicity_part", "feature_specialization", 
       "typings", "typed_by", "subsettings", "subsets", "references", "redefinitions", 
       "redefines", "feature_typing", "owned_feature_typing", "subsetting", 
       "owned_subsetting", "owned_reference_subsetting", "redefinition", 
@@ -112,11 +115,11 @@ void kermlParserInitialize() {
       "feature_reference", "metadata_access_expression", "invocation_expression", 
       "internal_invocation_expression", "argument_list", "positional_argument_list", 
       "named_argument_list", "named_argument_member", "named_argument", 
-      "paramenter_redefinition", "body_expression", "expression_body_member", 
+      "parameter_redefinition", "body_expression", "expression_body_member", 
       "expression_body", "literal_expression", "literal_boolean", "boolean_value", 
       "literal_string", "literal_integer", "literal_real", "real_value", 
       "literal_infinity", "interaction", "item_flow", "succession_item_flow", 
-      "item_flow_declaration", "item_feature_member", "item_feature", "item_feature_specilization_part", 
+      "item_flow_declaration", "item_feature_member", "item_feature", "item_feature_specialization_part", 
       "item_flow_end_member", "item_flow_end", "item_flow_feature_member", 
       "item_flow_feature", "item_flow_redefinition", "value_part", "feature_value", 
       "feature_assignment", "multiplicity", "multiplicity_subset", "multiplicity_range", 
@@ -141,7 +144,7 @@ void kermlParserInitialize() {
       "'inverse'", "'inverting'", "'istype'", "'language'", "'member'", 
       "'metaclass'", "'metadata'", "'multiplicity'", "'namespace'", "'nonunique'", 
       "'not'", "'null'", "'of'", "'or'", "'ordered'", "'out'", "'package'", 
-      "'potion'", "'predicate'", "'private'", "'protected'", "'public'", 
+      "'portion'", "'predicate'", "'private'", "'protected'", "'public'", 
       "'readonly'", "'redefines'", "'redefinition'", "'references'", "'rep'", 
       "'return'", "'specialization'", "'specializes'", "'step'", "'struct'", 
       "'subclassifier'", "'subset'", "'subsets'", "'subtype'", "'succession'", 
@@ -156,7 +159,7 @@ void kermlParserInitialize() {
     },
     std::vector<std::string>{
       "", "", "MULTIPLICITY_PART_ELEMENTS", "TYPED_BY", "SPECIALIZES", "SUBSETS", 
-      "REFERENCES", "REDEFINES", "CONJUNGATES", "KEYWORD_ABOUT", "KEYWORD_ABSTRACT", 
+      "REFERENCES", "REDEFINES", "CONJUGATES", "KEYWORD_ABOUT", "KEYWORD_ABSTRACT", 
       "KEYWORD_ALIAS", "KEYWORD_ALL", "KEYWORD_AND", "KEYWORD_AS", "KEYWORD_ASSOC", 
       "KEYWORD_BEHAVIOR", "KEYWORD_BINDING", "KEYWORD_BOOL", "KEYWORD_BY", 
       "KEYWORD_CHAINS", "KEYWORD_CLASS", "KEYWORD_CLASSIFIER", "KEYWORD_COMMENT", 
@@ -175,21 +178,21 @@ void kermlParserInitialize() {
       "KEYWORD_OUT", "KEYWORD_PACKAGE", "KEYWORD_PORTION", "KEYWORD_PREDICATE", 
       "KEYWORD_PRIVATE", "KEYWORD_PROTECTED", "KEYWORD_PUBLIC", "KEYWORD_READONLY", 
       "KEYWORD_REDEFINES", "KEYWORD_REDEFINITION", "KEYWORD_REFERENCES", 
-      "KEYWORD_REP", "KEYWORD_RETURN", "KEYWORD_SPECILIZATION", "KEYWORD_SPECIALIZES", 
+      "KEYWORD_REP", "KEYWORD_RETURN", "KEYWORD_SPECIALIZATION", "KEYWORD_SPECIALIZES", 
       "KEYWORD_STEP", "KEYWORD_STRUCT", "KEYWORD_SUBCLASSIFIER", "KEYWORD_SUBSET", 
-      "KEYWORD_SUBSETS", "KEYWORD_SUBTYPE", "KEYWORD_SUCCSESSION", "KEYWORD_THEN", 
+      "KEYWORD_SUBSETS", "KEYWORD_SUBTYPE", "KEYWORD_SUCCESSION", "KEYWORD_THEN", 
       "KEYWORD_TO", "KEYWORD_TRUE", "KEYWORD_TYPE", "KEYWORD_TYPED", "KEYWORD_TYPING", 
       "KEYWORD_UNIONS", "KEYWORD_XOR", "KEYWORD_VAR", "KEYWORD_LOCALE", 
       "KEYWORD_STANDARD", "KEYWORD_LIBRARY", "KEYWORD_CONSTANT", "SINGLE_LINE_NOTE", 
       "MULTI_LINE_NOTE", "REGULAR_COMMENT", "SYMBOL_COMMENT_BLOCK_START", 
       "SYMBOL_NOTE_BLOCK_START", "SYMBOL_COMMENT_BLOCK_END", "SYMBOL_STATEMENT_DELIMITER", 
       "SYMBOL_STAR", "SYMBOL_NAMESPACE_SUBSET", "SYMBOL_TYPED_BY", "SYMBOL_SPECIALIZES", 
-      "SYMBOL_REFERENCES", "SYMBOL_REDEFINES", "SYMBOL_CONJUNGATES", "SYMBOL_ROUND_BRACKET_OPEN", 
+      "SYMBOL_REFERENCES", "SYMBOL_REDEFINES", "SYMBOL_CONJUGATES", "SYMBOL_ROUND_BRACKET_OPEN", 
       "SYMBOL_ROUND_BRACKET_CLOSE", "SYMBOL_CURLY_BRACKET_OPEN", "SYMBOL_CURLY_BRACKET_CLOSE", 
       "SYMBOL_SQUARE_BRACKET_OPEN", "SYMBOL_SQUARE_BRACKET_CLOSE", "SYMBOL_COMMA", 
       "SYMBOL_AT", "SYMBOL_HASHTAG", "SYMBOL_MOD", "SYMBOL_AND", "SYMBOL_UPPER", 
       "SYMBOL_VERTICAL_LINE", "SYMBOL_DOUBLE_STAR", "SYMBOL_PLUS", "SYMBOL_MINUS", 
-      "SYMBOL_SLASH", "SYMBOL_ARROOW", "SYMBOL_DOT", "SYMBOL_DDOT", "SYMBOL_SMALLER", 
+      "SYMBOL_SLASH", "SYMBOL_ARROW", "SYMBOL_DOT", "SYMBOL_DDOT", "SYMBOL_SMALLER", 
       "SYMBOL_SMALLER_EQUAL", "SYMBOL_ASSIGN", "SYMBOL_DEF_ASSIGN", "SYMBOL_EQUALS", 
       "SYMBOL_IFF_EQUALS", "SYMBOL_NOT_EQUALS", "SYMBOL_IFF_NOT_EQUALS", 
       "SYMBOL_GREATER", "SYMBOL_GREATER_EQUALS", "SYMBOL_QUESTION", "SYMBOL_DQUESTION", 
@@ -1028,6 +1031,14 @@ void KerMLParser::StartContext::exitRule(tree::ParseTreeListener *listener) {
     parserListener->exitStart(this);
 }
 
+
+std::any KerMLParser::StartContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitStart(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::StartContext* KerMLParser::start() {
   StartContext *_localctx = _tracker.createInstance<StartContext>(_ctx, getState());
   enterRule(_localctx, 0, KerMLParser::RuleStart);
@@ -1081,6 +1092,14 @@ void KerMLParser::StartRuleContext::exitRule(tree::ParseTreeListener *listener) 
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitStartRule(this);
+}
+
+
+std::any KerMLParser::StartRuleContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitStartRule(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::StartRuleContext* KerMLParser::startRule() {
@@ -1138,6 +1157,14 @@ void KerMLParser::ElementsContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitElements(this);
+}
+
+
+std::any KerMLParser::ElementsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitElements(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::ElementsContext* KerMLParser::elements() {
@@ -1217,6 +1244,14 @@ void KerMLParser::IdentificationContext::exitRule(tree::ParseTreeListener *liste
     parserListener->exitIdentification(this);
 }
 
+
+std::any KerMLParser::IdentificationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitIdentification(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::IdentificationContext* KerMLParser::identification() {
   IdentificationContext *_localctx = _tracker.createInstance<IdentificationContext>(_ctx, getState());
   enterRule(_localctx, 6, KerMLParser::RuleIdentification);
@@ -1270,8 +1305,8 @@ tree::TerminalNode* KerMLParser::Relationship_bodyContext::SYMBOL_CURLY_BRACKET_
   return getToken(KerMLParser::SYMBOL_CURLY_BRACKET_OPEN, 0);
 }
 
-KerMLParser::Relationship_onwed_elementsContext* KerMLParser::Relationship_bodyContext::relationship_onwed_elements() {
-  return getRuleContext<KerMLParser::Relationship_onwed_elementsContext>(0);
+KerMLParser::Relationship_owned_elementsContext* KerMLParser::Relationship_bodyContext::relationship_owned_elements() {
+  return getRuleContext<KerMLParser::Relationship_owned_elementsContext>(0);
 }
 
 tree::TerminalNode* KerMLParser::Relationship_bodyContext::SYMBOL_CURLY_BRACKET_CLOSE() {
@@ -1293,6 +1328,14 @@ void KerMLParser::Relationship_bodyContext::exitRule(tree::ParseTreeListener *li
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitRelationship_body(this);
+}
+
+
+std::any KerMLParser::Relationship_bodyContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitRelationship_body(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Relationship_bodyContext* KerMLParser::relationship_body() {
@@ -1322,7 +1365,7 @@ KerMLParser::Relationship_bodyContext* KerMLParser::relationship_body() {
         setState(535);
         match(KerMLParser::SYMBOL_CURLY_BRACKET_OPEN);
         setState(536);
-        relationship_onwed_elements();
+        relationship_owned_elements();
         setState(537);
         match(KerMLParser::SYMBOL_CURLY_BRACKET_CLOSE);
         break;
@@ -1342,40 +1385,48 @@ KerMLParser::Relationship_bodyContext* KerMLParser::relationship_body() {
   return _localctx;
 }
 
-//----------------- Relationship_onwed_elementsContext ------------------------------------------------------------------
+//----------------- Relationship_owned_elementsContext ------------------------------------------------------------------
 
-KerMLParser::Relationship_onwed_elementsContext::Relationship_onwed_elementsContext(ParserRuleContext *parent, size_t invokingState)
+KerMLParser::Relationship_owned_elementsContext::Relationship_owned_elementsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<KerMLParser::Relationship_owned_elementContext *> KerMLParser::Relationship_onwed_elementsContext::relationship_owned_element() {
+std::vector<KerMLParser::Relationship_owned_elementContext *> KerMLParser::Relationship_owned_elementsContext::relationship_owned_element() {
   return getRuleContexts<KerMLParser::Relationship_owned_elementContext>();
 }
 
-KerMLParser::Relationship_owned_elementContext* KerMLParser::Relationship_onwed_elementsContext::relationship_owned_element(size_t i) {
+KerMLParser::Relationship_owned_elementContext* KerMLParser::Relationship_owned_elementsContext::relationship_owned_element(size_t i) {
   return getRuleContext<KerMLParser::Relationship_owned_elementContext>(i);
 }
 
 
-size_t KerMLParser::Relationship_onwed_elementsContext::getRuleIndex() const {
-  return KerMLParser::RuleRelationship_onwed_elements;
+size_t KerMLParser::Relationship_owned_elementsContext::getRuleIndex() const {
+  return KerMLParser::RuleRelationship_owned_elements;
 }
 
-void KerMLParser::Relationship_onwed_elementsContext::enterRule(tree::ParseTreeListener *listener) {
+void KerMLParser::Relationship_owned_elementsContext::enterRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->enterRelationship_onwed_elements(this);
+    parserListener->enterRelationship_owned_elements(this);
 }
 
-void KerMLParser::Relationship_onwed_elementsContext::exitRule(tree::ParseTreeListener *listener) {
+void KerMLParser::Relationship_owned_elementsContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->exitRelationship_onwed_elements(this);
+    parserListener->exitRelationship_owned_elements(this);
 }
 
-KerMLParser::Relationship_onwed_elementsContext* KerMLParser::relationship_onwed_elements() {
-  Relationship_onwed_elementsContext *_localctx = _tracker.createInstance<Relationship_onwed_elementsContext>(_ctx, getState());
-  enterRule(_localctx, 10, KerMLParser::RuleRelationship_onwed_elements);
+
+std::any KerMLParser::Relationship_owned_elementsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitRelationship_owned_elements(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+KerMLParser::Relationship_owned_elementsContext* KerMLParser::relationship_owned_elements() {
+  Relationship_owned_elementsContext *_localctx = _tracker.createInstance<Relationship_owned_elementsContext>(_ctx, getState());
+  enterRule(_localctx, 10, KerMLParser::RuleRelationship_owned_elements);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -1440,6 +1491,14 @@ void KerMLParser::Relationship_owned_elementContext::exitRule(tree::ParseTreeLis
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitRelationship_owned_element(this);
+}
+
+
+std::any KerMLParser::Relationship_owned_elementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitRelationship_owned_element(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Relationship_owned_elementContext* KerMLParser::relationship_owned_element() {
@@ -1514,6 +1573,14 @@ void KerMLParser::Owned_related_elementContext::exitRule(tree::ParseTreeListener
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitOwned_related_element(this);
+}
+
+
+std::any KerMLParser::Owned_related_elementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_related_element(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Owned_related_elementContext* KerMLParser::owned_related_element() {
@@ -1624,6 +1691,14 @@ void KerMLParser::DependencyContext::exitRule(tree::ParseTreeListener *listener)
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitDependency(this);
+}
+
+
+std::any KerMLParser::DependencyContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitDependency(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::DependencyContext* KerMLParser::dependency() {
@@ -1743,6 +1818,14 @@ void KerMLParser::AnnotationContext::exitRule(tree::ParseTreeListener *listener)
     parserListener->exitAnnotation(this);
 }
 
+
+std::any KerMLParser::AnnotationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitAnnotation(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::AnnotationContext* KerMLParser::annotation() {
   AnnotationContext *_localctx = _tracker.createInstance<AnnotationContext>(_ctx, getState());
   enterRule(_localctx, 18, KerMLParser::RuleAnnotation);
@@ -1794,6 +1877,14 @@ void KerMLParser::Owned_annotationContext::exitRule(tree::ParseTreeListener *lis
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitOwned_annotation(this);
+}
+
+
+std::any KerMLParser::Owned_annotationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_annotation(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Owned_annotationContext* KerMLParser::owned_annotation() {
@@ -1859,6 +1950,14 @@ void KerMLParser::Annotating_elementContext::exitRule(tree::ParseTreeListener *l
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitAnnotating_element(this);
+}
+
+
+std::any KerMLParser::Annotating_elementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitAnnotating_element(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Annotating_elementContext* KerMLParser::annotating_element() {
@@ -1986,6 +2085,14 @@ void KerMLParser::CommentContext::exitRule(tree::ParseTreeListener *listener) {
     parserListener->exitComment(this);
 }
 
+
+std::any KerMLParser::CommentContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitComment(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::CommentContext* KerMLParser::comment() {
   CommentContext *_localctx = _tracker.createInstance<CommentContext>(_ctx, getState());
   enterRule(_localctx, 24, KerMLParser::RuleComment);
@@ -2098,6 +2205,14 @@ void KerMLParser::DocumentationContext::exitRule(tree::ParseTreeListener *listen
     parserListener->exitDocumentation(this);
 }
 
+
+std::any KerMLParser::DocumentationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitDocumentation(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::DocumentationContext* KerMLParser::documentation() {
   DocumentationContext *_localctx = _tracker.createInstance<DocumentationContext>(_ctx, getState());
   enterRule(_localctx, 26, KerMLParser::RuleDocumentation);
@@ -2190,6 +2305,14 @@ void KerMLParser::Textual_representationContext::exitRule(tree::ParseTreeListene
     parserListener->exitTextual_representation(this);
 }
 
+
+std::any KerMLParser::Textual_representationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitTextual_representation(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Textual_representationContext* KerMLParser::textual_representation() {
   Textual_representationContext *_localctx = _tracker.createInstance<Textual_representationContext>(_ctx, getState());
   enterRule(_localctx, 28, KerMLParser::RuleTextual_representation);
@@ -2258,6 +2381,14 @@ void KerMLParser::Root_namespaceContext::exitRule(tree::ParseTreeListener *liste
     parserListener->exitRoot_namespace(this);
 }
 
+
+std::any KerMLParser::Root_namespaceContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitRoot_namespace(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Root_namespaceContext* KerMLParser::root_namespace() {
   Root_namespaceContext *_localctx = _tracker.createInstance<Root_namespaceContext>(_ctx, getState());
   enterRule(_localctx, 30, KerMLParser::RuleRoot_namespace);
@@ -2321,6 +2452,14 @@ void KerMLParser::NamespaceContext::exitRule(tree::ParseTreeListener *listener) 
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitNamespace(this);
+}
+
+
+std::any KerMLParser::NamespaceContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNamespace(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::NamespaceContext* KerMLParser::namespace_() {
@@ -2393,6 +2532,14 @@ void KerMLParser::Namespace_declarationContext::exitRule(tree::ParseTreeListener
     parserListener->exitNamespace_declaration(this);
 }
 
+
+std::any KerMLParser::Namespace_declarationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNamespace_declaration(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Namespace_declarationContext* KerMLParser::namespace_declaration() {
   Namespace_declarationContext *_localctx = _tracker.createInstance<Namespace_declarationContext>(_ctx, getState());
   enterRule(_localctx, 34, KerMLParser::RuleNamespace_declaration);
@@ -2458,6 +2605,14 @@ void KerMLParser::Namespace_bodyContext::exitRule(tree::ParseTreeListener *liste
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitNamespace_body(this);
+}
+
+
+std::any KerMLParser::Namespace_bodyContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNamespace_body(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Namespace_bodyContext* KerMLParser::namespace_body() {
@@ -2534,6 +2689,14 @@ void KerMLParser::Namespace_body_elementsContext::exitRule(tree::ParseTreeListen
     parserListener->exitNamespace_body_elements(this);
 }
 
+
+std::any KerMLParser::Namespace_body_elementsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNamespace_body_elements(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Namespace_body_elementsContext* KerMLParser::namespace_body_elements() {
   Namespace_body_elementsContext *_localctx = _tracker.createInstance<Namespace_body_elementsContext>(_ctx, getState());
   enterRule(_localctx, 38, KerMLParser::RuleNamespace_body_elements);
@@ -2593,6 +2756,14 @@ void KerMLParser::Namespace_body_elementContext::exitRule(tree::ParseTreeListene
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitNamespace_body_element(this);
+}
+
+
+std::any KerMLParser::Namespace_body_elementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNamespace_body_element(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Namespace_body_elementContext* KerMLParser::namespace_body_element() {
@@ -2672,6 +2843,14 @@ void KerMLParser::Member_prefixContext::exitRule(tree::ParseTreeListener *listen
     parserListener->exitMember_prefix(this);
 }
 
+
+std::any KerMLParser::Member_prefixContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMember_prefix(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Member_prefixContext* KerMLParser::member_prefix() {
   Member_prefixContext *_localctx = _tracker.createInstance<Member_prefixContext>(_ctx, getState());
   enterRule(_localctx, 42, KerMLParser::RuleMember_prefix);
@@ -2741,6 +2920,14 @@ void KerMLParser::Visibility_indicatorContext::exitRule(tree::ParseTreeListener 
     parserListener->exitVisibility_indicator(this);
 }
 
+
+std::any KerMLParser::Visibility_indicatorContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitVisibility_indicator(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Visibility_indicatorContext* KerMLParser::visibility_indicator() {
   Visibility_indicatorContext *_localctx = _tracker.createInstance<Visibility_indicatorContext>(_ctx, getState());
   enterRule(_localctx, 44, KerMLParser::RuleVisibility_indicator);
@@ -2805,6 +2992,14 @@ void KerMLParser::Namespace_memberContext::exitRule(tree::ParseTreeListener *lis
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitNamespace_member(this);
+}
+
+
+std::any KerMLParser::Namespace_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNamespace_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Namespace_memberContext* KerMLParser::namespace_member() {
@@ -2877,6 +3072,14 @@ void KerMLParser::Non_feature_memberContext::exitRule(tree::ParseTreeListener *l
     parserListener->exitNon_feature_member(this);
 }
 
+
+std::any KerMLParser::Non_feature_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNon_feature_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Non_feature_memberContext* KerMLParser::non_feature_member() {
   Non_feature_memberContext *_localctx = _tracker.createInstance<Non_feature_memberContext>(_ctx, getState());
   enterRule(_localctx, 48, KerMLParser::RuleNon_feature_member);
@@ -2932,6 +3135,14 @@ void KerMLParser::Namespace_feature_memberContext::exitRule(tree::ParseTreeListe
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitNamespace_feature_member(this);
+}
+
+
+std::any KerMLParser::Namespace_feature_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNamespace_feature_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Namespace_feature_memberContext* KerMLParser::namespace_feature_member() {
@@ -3019,6 +3230,14 @@ void KerMLParser::Alias_memberContext::exitRule(tree::ParseTreeListener *listene
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitAlias_member(this);
+}
+
+
+std::any KerMLParser::Alias_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitAlias_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Alias_memberContext* KerMLParser::alias_member() {
@@ -3115,6 +3334,14 @@ void KerMLParser::Qualified_nameContext::exitRule(tree::ParseTreeListener *liste
     parserListener->exitQualified_name(this);
 }
 
+
+std::any KerMLParser::Qualified_nameContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitQualified_name(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Qualified_nameContext* KerMLParser::qualified_name() {
   Qualified_nameContext *_localctx = _tracker.createInstance<Qualified_nameContext>(_ctx, getState());
   enterRule(_localctx, 54, KerMLParser::RuleQualified_name);
@@ -3197,6 +3424,14 @@ void KerMLParser::Namespace_importContext::exitRule(tree::ParseTreeListener *lis
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitNamespace_import(this);
+}
+
+
+std::any KerMLParser::Namespace_importContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNamespace_import(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Namespace_importContext* KerMLParser::namespace_import() {
@@ -3286,6 +3521,14 @@ void KerMLParser::Import_declarationContext::exitRule(tree::ParseTreeListener *l
     parserListener->exitImport_declaration(this);
 }
 
+
+std::any KerMLParser::Import_declarationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitImport_declaration(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Import_declarationContext* KerMLParser::import_declaration() {
   Import_declarationContext *_localctx = _tracker.createInstance<Import_declarationContext>(_ctx, getState());
   enterRule(_localctx, 58, KerMLParser::RuleImport_declaration);
@@ -3366,6 +3609,14 @@ void KerMLParser::Membership_importContext::exitRule(tree::ParseTreeListener *li
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitMembership_import(this);
+}
+
+
+std::any KerMLParser::Membership_importContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMembership_import(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Membership_importContext* KerMLParser::membership_import() {
@@ -3457,6 +3708,14 @@ void KerMLParser::Filter_packageContext::exitRule(tree::ParseTreeListener *liste
     parserListener->exitFilter_package(this);
 }
 
+
+std::any KerMLParser::Filter_packageContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFilter_package(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Filter_packageContext* KerMLParser::filter_package() {
   Filter_packageContext *_localctx = _tracker.createInstance<Filter_packageContext>(_ctx, getState());
   enterRule(_localctx, 62, KerMLParser::RuleFilter_package);
@@ -3518,6 +3777,14 @@ void KerMLParser::Filter_package_memberContext::exitRule(tree::ParseTreeListener
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFilter_package_member(this);
+}
+
+
+std::any KerMLParser::Filter_package_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFilter_package_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Filter_package_memberContext* KerMLParser::filter_package_member() {
@@ -3587,6 +3854,14 @@ void KerMLParser::ElementContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitElement(this);
+}
+
+
+std::any KerMLParser::ElementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitElement(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::ElementContext* KerMLParser::element() {
@@ -3775,6 +4050,14 @@ void KerMLParser::Non_feature_elementContext::exitRule(tree::ParseTreeListener *
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitNon_feature_element(this);
+}
+
+
+std::any KerMLParser::Non_feature_elementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNon_feature_element(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Non_feature_elementContext* KerMLParser::non_feature_element() {
@@ -4058,6 +4341,14 @@ void KerMLParser::Feature_elementContext::exitRule(tree::ParseTreeListener *list
     parserListener->exitFeature_element(this);
 }
 
+
+std::any KerMLParser::Feature_elementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_element(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Feature_elementContext* KerMLParser::feature_element() {
   Feature_elementContext *_localctx = _tracker.createInstance<Feature_elementContext>(_ctx, getState());
   enterRule(_localctx, 70, KerMLParser::RuleFeature_element);
@@ -4184,6 +4475,14 @@ void KerMLParser::Additional_optionsContext::exitRule(tree::ParseTreeListener *l
     parserListener->exitAdditional_options(this);
 }
 
+
+std::any KerMLParser::Additional_optionsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitAdditional_options(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Additional_optionsContext* KerMLParser::additional_options() {
   Additional_optionsContext *_localctx = _tracker.createInstance<Additional_optionsContext>(_ctx, getState());
   enterRule(_localctx, 72, KerMLParser::RuleAdditional_options);
@@ -4247,6 +4546,14 @@ void KerMLParser::TypeContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitType(this);
+}
+
+
+std::any KerMLParser::TypeContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitType(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::TypeContext* KerMLParser::type() {
@@ -4314,6 +4621,14 @@ void KerMLParser::Type_prefixContext::exitRule(tree::ParseTreeListener *listener
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitType_prefix(this);
+}
+
+
+std::any KerMLParser::Type_prefixContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitType_prefix(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Type_prefixContext* KerMLParser::type_prefix() {
@@ -4418,6 +4733,14 @@ void KerMLParser::Type_declarationContext::exitRule(tree::ParseTreeListener *lis
     parserListener->exitType_declaration(this);
 }
 
+
+std::any KerMLParser::Type_declarationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitType_declaration(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Type_declarationContext* KerMLParser::type_declaration() {
   Type_declarationContext *_localctx = _tracker.createInstance<Type_declarationContext>(_ctx, getState());
   enterRule(_localctx, 78, KerMLParser::RuleType_declaration);
@@ -4463,7 +4786,7 @@ KerMLParser::Type_declarationContext* KerMLParser::type_declaration() {
           break;
         }
 
-        case KerMLParser::CONJUNGATES: {
+        case KerMLParser::CONJUGATES: {
           setState(800);
           conjugation_part();
           break;
@@ -4477,7 +4800,7 @@ KerMLParser::Type_declarationContext* KerMLParser::type_declaration() {
       _la = _input->LA(1);
     } while (_la == KerMLParser::SPECIALIZES
 
-    || _la == KerMLParser::CONJUNGATES);
+    || _la == KerMLParser::CONJUGATES);
     setState(808);
     _errHandler->sync(this);
     _la = _input->LA(1);
@@ -4543,6 +4866,14 @@ void KerMLParser::Specialization_partContext::exitRule(tree::ParseTreeListener *
     parserListener->exitSpecialization_part(this);
 }
 
+
+std::any KerMLParser::Specialization_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSpecialization_part(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Specialization_partContext* KerMLParser::specialization_part() {
   Specialization_partContext *_localctx = _tracker.createInstance<Specialization_partContext>(_ctx, getState());
   enterRule(_localctx, 80, KerMLParser::RuleSpecialization_part);
@@ -4590,8 +4921,8 @@ KerMLParser::Conjugation_partContext::Conjugation_partContext(ParserRuleContext 
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* KerMLParser::Conjugation_partContext::CONJUNGATES() {
-  return getToken(KerMLParser::CONJUNGATES, 0);
+tree::TerminalNode* KerMLParser::Conjugation_partContext::CONJUGATES() {
+  return getToken(KerMLParser::CONJUGATES, 0);
 }
 
 KerMLParser::Owned_conjugationContext* KerMLParser::Conjugation_partContext::owned_conjugation() {
@@ -4615,6 +4946,14 @@ void KerMLParser::Conjugation_partContext::exitRule(tree::ParseTreeListener *lis
     parserListener->exitConjugation_part(this);
 }
 
+
+std::any KerMLParser::Conjugation_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitConjugation_part(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Conjugation_partContext* KerMLParser::conjugation_part() {
   Conjugation_partContext *_localctx = _tracker.createInstance<Conjugation_partContext>(_ctx, getState());
   enterRule(_localctx, 82, KerMLParser::RuleConjugation_part);
@@ -4629,7 +4968,7 @@ KerMLParser::Conjugation_partContext* KerMLParser::conjugation_part() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(820);
-    match(KerMLParser::CONJUNGATES);
+    match(KerMLParser::CONJUGATES);
     setState(821);
     owned_conjugation();
    
@@ -4680,6 +5019,14 @@ void KerMLParser::Type_relationship_partContext::exitRule(tree::ParseTreeListene
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitType_relationship_part(this);
+}
+
+
+std::any KerMLParser::Type_relationship_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitType_relationship_part(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Type_relationship_partContext* KerMLParser::type_relationship_part() {
@@ -4786,6 +5133,14 @@ void KerMLParser::Disjoining_partContext::exitRule(tree::ParseTreeListener *list
     parserListener->exitDisjoining_part(this);
 }
 
+
+std::any KerMLParser::Disjoining_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitDisjoining_part(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Disjoining_partContext* KerMLParser::disjoining_part() {
   Disjoining_partContext *_localctx = _tracker.createInstance<Disjoining_partContext>(_ctx, getState());
   enterRule(_localctx, 86, KerMLParser::RuleDisjoining_part);
@@ -4872,6 +5227,14 @@ void KerMLParser::Unioning_partContext::exitRule(tree::ParseTreeListener *listen
     parserListener->exitUnioning_part(this);
 }
 
+
+std::any KerMLParser::Unioning_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitUnioning_part(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Unioning_partContext* KerMLParser::unioning_part() {
   Unioning_partContext *_localctx = _tracker.createInstance<Unioning_partContext>(_ctx, getState());
   enterRule(_localctx, 88, KerMLParser::RuleUnioning_part);
@@ -4954,6 +5317,14 @@ void KerMLParser::Intersecting_partContext::exitRule(tree::ParseTreeListener *li
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitIntersecting_part(this);
+}
+
+
+std::any KerMLParser::Intersecting_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitIntersecting_part(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Intersecting_partContext* KerMLParser::intersecting_part() {
@@ -5040,6 +5411,14 @@ void KerMLParser::Differencing_partContext::exitRule(tree::ParseTreeListener *li
     parserListener->exitDifferencing_part(this);
 }
 
+
+std::any KerMLParser::Differencing_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitDifferencing_part(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Differencing_partContext* KerMLParser::differencing_part() {
   Differencing_partContext *_localctx = _tracker.createInstance<Differencing_partContext>(_ctx, getState());
   enterRule(_localctx, 92, KerMLParser::RuleDifferencing_part);
@@ -5120,6 +5499,14 @@ void KerMLParser::Type_bodyContext::exitRule(tree::ParseTreeListener *listener) 
     parserListener->exitType_body(this);
 }
 
+
+std::any KerMLParser::Type_bodyContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitType_body(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Type_bodyContext* KerMLParser::type_body() {
   Type_bodyContext *_localctx = _tracker.createInstance<Type_bodyContext>(_ctx, getState());
   enterRule(_localctx, 94, KerMLParser::RuleType_body);
@@ -5198,6 +5585,14 @@ void KerMLParser::Type_body_elementsContext::exitRule(tree::ParseTreeListener *l
     parserListener->exitType_body_elements(this);
 }
 
+
+std::any KerMLParser::Type_body_elementsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitType_body_elements(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Type_body_elementsContext* KerMLParser::type_body_elements() {
   Type_body_elementsContext *_localctx = _tracker.createInstance<Type_body_elementsContext>(_ctx, getState());
   enterRule(_localctx, 96, KerMLParser::RuleType_body_elements);
@@ -5263,6 +5658,14 @@ void KerMLParser::Type_body_elementContext::exitRule(tree::ParseTreeListener *li
     parserListener->exitType_body_element(this);
 }
 
+
+std::any KerMLParser::Type_body_elementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitType_body_element(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Type_body_elementContext* KerMLParser::type_body_element() {
   Type_body_elementContext *_localctx = _tracker.createInstance<Type_body_elementContext>(_ctx, getState());
   enterRule(_localctx, 98, KerMLParser::RuleType_body_element);
@@ -5315,8 +5718,8 @@ KerMLParser::Relationship_bodyContext* KerMLParser::SpecializationContext::relat
   return getRuleContext<KerMLParser::Relationship_bodyContext>(0);
 }
 
-tree::TerminalNode* KerMLParser::SpecializationContext::KEYWORD_SPECILIZATION() {
-  return getToken(KerMLParser::KEYWORD_SPECILIZATION, 0);
+tree::TerminalNode* KerMLParser::SpecializationContext::KEYWORD_SPECIALIZATION() {
+  return getToken(KerMLParser::KEYWORD_SPECIALIZATION, 0);
 }
 
 KerMLParser::IdentificationContext* KerMLParser::SpecializationContext::identification() {
@@ -5340,6 +5743,14 @@ void KerMLParser::SpecializationContext::exitRule(tree::ParseTreeListener *liste
     parserListener->exitSpecialization(this);
 }
 
+
+std::any KerMLParser::SpecializationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSpecialization(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::SpecializationContext* KerMLParser::specialization() {
   SpecializationContext *_localctx = _tracker.createInstance<SpecializationContext>(_ctx, getState());
   enterRule(_localctx, 100, KerMLParser::RuleSpecialization);
@@ -5358,9 +5769,9 @@ KerMLParser::SpecializationContext* KerMLParser::specialization() {
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == KerMLParser::KEYWORD_SPECILIZATION) {
+    if (_la == KerMLParser::KEYWORD_SPECIALIZATION) {
       setState(881);
-      match(KerMLParser::KEYWORD_SPECILIZATION);
+      match(KerMLParser::KEYWORD_SPECIALIZATION);
       setState(882);
       identification();
     }
@@ -5410,6 +5821,14 @@ void KerMLParser::Owned_specializationContext::exitRule(tree::ParseTreeListener 
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitOwned_specialization(this);
+}
+
+
+std::any KerMLParser::Owned_specializationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_specialization(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Owned_specializationContext* KerMLParser::owned_specialization() {
@@ -5467,6 +5886,14 @@ void KerMLParser::Specific_typeContext::exitRule(tree::ParseTreeListener *listen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitSpecific_type(this);
+}
+
+
+std::any KerMLParser::Specific_typeContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSpecific_type(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Specific_typeContext* KerMLParser::specific_type() {
@@ -5543,6 +5970,14 @@ void KerMLParser::General_typeContext::exitRule(tree::ParseTreeListener *listene
     parserListener->exitGeneral_type(this);
 }
 
+
+std::any KerMLParser::General_typeContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitGeneral_type(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::General_typeContext* KerMLParser::general_type() {
   General_typeContext *_localctx = _tracker.createInstance<General_typeContext>(_ctx, getState());
   enterRule(_localctx, 106, KerMLParser::RuleGeneral_type);
@@ -5596,8 +6031,8 @@ tree::TerminalNode* KerMLParser::ConjunctionContext::KEYWORD_CONJUGATE() {
   return getToken(KerMLParser::KEYWORD_CONJUGATE, 0);
 }
 
-tree::TerminalNode* KerMLParser::ConjunctionContext::CONJUNGATES() {
-  return getToken(KerMLParser::CONJUNGATES, 0);
+tree::TerminalNode* KerMLParser::ConjunctionContext::CONJUGATES() {
+  return getToken(KerMLParser::CONJUGATES, 0);
 }
 
 KerMLParser::Relationship_bodyContext* KerMLParser::ConjunctionContext::relationship_body() {
@@ -5645,6 +6080,14 @@ void KerMLParser::ConjunctionContext::exitRule(tree::ParseTreeListener *listener
     parserListener->exitConjunction(this);
 }
 
+
+std::any KerMLParser::ConjunctionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitConjunction(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::ConjunctionContext* KerMLParser::conjunction() {
   ConjunctionContext *_localctx = _tracker.createInstance<ConjunctionContext>(_ctx, getState());
   enterRule(_localctx, 108, KerMLParser::RuleConjunction);
@@ -5690,7 +6133,7 @@ KerMLParser::ConjunctionContext* KerMLParser::conjunction() {
       break;
     }
     setState(910);
-    match(KerMLParser::CONJUNGATES);
+    match(KerMLParser::CONJUGATES);
     setState(913);
     _errHandler->sync(this);
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 56, _ctx)) {
@@ -5751,6 +6194,14 @@ void KerMLParser::Owned_conjugationContext::exitRule(tree::ParseTreeListener *li
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitOwned_conjugation(this);
+}
+
+
+std::any KerMLParser::Owned_conjugationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_conjugation(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Owned_conjugationContext* KerMLParser::owned_conjugation() {
@@ -5853,6 +6304,14 @@ void KerMLParser::DisjoiningContext::exitRule(tree::ParseTreeListener *listener)
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitDisjoining(this);
+}
+
+
+std::any KerMLParser::DisjoiningContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitDisjoining(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::DisjoiningContext* KerMLParser::disjoining() {
@@ -5963,6 +6422,14 @@ void KerMLParser::Owned_disjoiningContext::exitRule(tree::ParseTreeListener *lis
     parserListener->exitOwned_disjoining(this);
 }
 
+
+std::any KerMLParser::Owned_disjoiningContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_disjoining(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Owned_disjoiningContext* KerMLParser::owned_disjoining() {
   Owned_disjoiningContext *_localctx = _tracker.createInstance<Owned_disjoiningContext>(_ctx, getState());
   enterRule(_localctx, 114, KerMLParser::RuleOwned_disjoining);
@@ -6035,6 +6502,14 @@ void KerMLParser::UnioningContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitUnioning(this);
+}
+
+
+std::any KerMLParser::UnioningContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitUnioning(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::UnioningContext* KerMLParser::unioning() {
@@ -6111,6 +6586,14 @@ void KerMLParser::IntersectingContext::exitRule(tree::ParseTreeListener *listene
     parserListener->exitIntersecting(this);
 }
 
+
+std::any KerMLParser::IntersectingContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitIntersecting(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::IntersectingContext* KerMLParser::intersecting() {
   IntersectingContext *_localctx = _tracker.createInstance<IntersectingContext>(_ctx, getState());
   enterRule(_localctx, 118, KerMLParser::RuleIntersecting);
@@ -6185,6 +6668,14 @@ void KerMLParser::DifferencingContext::exitRule(tree::ParseTreeListener *listene
     parserListener->exitDifferencing(this);
 }
 
+
+std::any KerMLParser::DifferencingContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitDifferencing(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::DifferencingContext* KerMLParser::differencing() {
   DifferencingContext *_localctx = _tracker.createInstance<DifferencingContext>(_ctx, getState());
   enterRule(_localctx, 120, KerMLParser::RuleDifferencing);
@@ -6257,6 +6748,14 @@ void KerMLParser::Feature_memberContext::exitRule(tree::ParseTreeListener *liste
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFeature_member(this);
+}
+
+
+std::any KerMLParser::Feature_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Feature_memberContext* KerMLParser::feature_member() {
@@ -6337,6 +6836,14 @@ void KerMLParser::Type_feature_memberContext::exitRule(tree::ParseTreeListener *
     parserListener->exitType_feature_member(this);
 }
 
+
+std::any KerMLParser::Type_feature_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitType_feature_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Type_feature_memberContext* KerMLParser::type_feature_member() {
   Type_feature_memberContext *_localctx = _tracker.createInstance<Type_feature_memberContext>(_ctx, getState());
   enterRule(_localctx, 124, KerMLParser::RuleType_feature_member);
@@ -6396,6 +6903,14 @@ void KerMLParser::Owned_feature_memberContext::exitRule(tree::ParseTreeListener 
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitOwned_feature_member(this);
+}
+
+
+std::any KerMLParser::Owned_feature_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_feature_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Owned_feature_memberContext* KerMLParser::owned_feature_member() {
@@ -6463,6 +6978,14 @@ void KerMLParser::ClassifierContext::exitRule(tree::ParseTreeListener *listener)
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitClassifier(this);
+}
+
+
+std::any KerMLParser::ClassifierContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitClassifier(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::ClassifierContext* KerMLParser::classifier() {
@@ -6557,6 +7080,14 @@ void KerMLParser::Classifier_declarationContext::exitRule(tree::ParseTreeListene
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitClassifier_declaration(this);
+}
+
+
+std::any KerMLParser::Classifier_declarationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitClassifier_declaration(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Classifier_declarationContext* KerMLParser::classifier_declaration() {
@@ -6675,6 +7206,14 @@ void KerMLParser::Superclassing_partContext::exitRule(tree::ParseTreeListener *l
     parserListener->exitSuperclassing_part(this);
 }
 
+
+std::any KerMLParser::Superclassing_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSuperclassing_part(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Superclassing_partContext* KerMLParser::superclassing_part() {
   Superclassing_partContext *_localctx = _tracker.createInstance<Superclassing_partContext>(_ctx, getState());
   enterRule(_localctx, 132, KerMLParser::RuleSuperclassing_part);
@@ -6742,8 +7281,8 @@ KerMLParser::Relationship_bodyContext* KerMLParser::SubclassificationContext::re
   return getRuleContext<KerMLParser::Relationship_bodyContext>(0);
 }
 
-tree::TerminalNode* KerMLParser::SubclassificationContext::KEYWORD_SPECILIZATION() {
-  return getToken(KerMLParser::KEYWORD_SPECILIZATION, 0);
+tree::TerminalNode* KerMLParser::SubclassificationContext::KEYWORD_SPECIALIZATION() {
+  return getToken(KerMLParser::KEYWORD_SPECIALIZATION, 0);
 }
 
 KerMLParser::IdentificationContext* KerMLParser::SubclassificationContext::identification() {
@@ -6767,6 +7306,14 @@ void KerMLParser::SubclassificationContext::exitRule(tree::ParseTreeListener *li
     parserListener->exitSubclassification(this);
 }
 
+
+std::any KerMLParser::SubclassificationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSubclassification(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::SubclassificationContext* KerMLParser::subclassification() {
   SubclassificationContext *_localctx = _tracker.createInstance<SubclassificationContext>(_ctx, getState());
   enterRule(_localctx, 134, KerMLParser::RuleSubclassification);
@@ -6785,9 +7332,9 @@ KerMLParser::SubclassificationContext* KerMLParser::subclassification() {
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == KerMLParser::KEYWORD_SPECILIZATION) {
+    if (_la == KerMLParser::KEYWORD_SPECIALIZATION) {
       setState(997);
-      match(KerMLParser::KEYWORD_SPECILIZATION);
+      match(KerMLParser::KEYWORD_SPECIALIZATION);
       setState(998);
       identification();
     }
@@ -6837,6 +7384,14 @@ void KerMLParser::Owned_subclassificationContext::exitRule(tree::ParseTreeListen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitOwned_subclassification(this);
+}
+
+
+std::any KerMLParser::Owned_subclassificationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_subclassification(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Owned_subclassificationContext* KerMLParser::owned_subclassification() {
@@ -6918,6 +7473,14 @@ void KerMLParser::FeatureContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFeature(this);
+}
+
+
+std::any KerMLParser::FeatureContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::FeatureContext* KerMLParser::feature() {
@@ -7080,6 +7643,14 @@ void KerMLParser::Feature_prefixContext::exitRule(tree::ParseTreeListener *liste
     parserListener->exitFeature_prefix(this);
 }
 
+
+std::any KerMLParser::Feature_prefixContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_prefix(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Feature_prefixContext* KerMLParser::feature_prefix() {
   Feature_prefixContext *_localctx = _tracker.createInstance<Feature_prefixContext>(_ctx, getState());
   enterRule(_localctx, 140, KerMLParser::RuleFeature_prefix);
@@ -7213,6 +7784,14 @@ void KerMLParser::Feature_directionContext::exitRule(tree::ParseTreeListener *li
     parserListener->exitFeature_direction(this);
 }
 
+
+std::any KerMLParser::Feature_directionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_direction(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Feature_directionContext* KerMLParser::feature_direction() {
   Feature_directionContext *_localctx = _tracker.createInstance<Feature_directionContext>(_ctx, getState());
   enterRule(_localctx, 142, KerMLParser::RuleFeature_direction);
@@ -7299,6 +7878,14 @@ void KerMLParser::Feature_declarationContext::exitRule(tree::ParseTreeListener *
     parserListener->exitFeature_declaration(this);
 }
 
+
+std::any KerMLParser::Feature_declarationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_declaration(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Feature_declarationContext* KerMLParser::feature_declaration() {
   Feature_declarationContext *_localctx = _tracker.createInstance<Feature_declarationContext>(_ctx, getState());
   enterRule(_localctx, 144, KerMLParser::RuleFeature_declaration);
@@ -7363,7 +7950,7 @@ KerMLParser::Feature_declarationContext* KerMLParser::feature_declaration() {
         break;
       }
 
-      case KerMLParser::CONJUNGATES: {
+      case KerMLParser::CONJUGATES: {
         setState(1064);
         conjugation_part();
         break;
@@ -7444,6 +8031,14 @@ void KerMLParser::Feature_identificationContext::exitRule(tree::ParseTreeListene
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFeature_identification(this);
+}
+
+
+std::any KerMLParser::Feature_identificationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_identification(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Feature_identificationContext* KerMLParser::feature_identification() {
@@ -7541,6 +8136,14 @@ void KerMLParser::Feature_relationship_partContext::exitRule(tree::ParseTreeList
     parserListener->exitFeature_relationship_part(this);
 }
 
+
+std::any KerMLParser::Feature_relationship_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_relationship_part(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Feature_relationship_partContext* KerMLParser::feature_relationship_part() {
   Feature_relationship_partContext *_localctx = _tracker.createInstance<Feature_relationship_partContext>(_ctx, getState());
   enterRule(_localctx, 148, KerMLParser::RuleFeature_relationship_part);
@@ -7636,6 +8239,14 @@ void KerMLParser::Chaining_partContext::exitRule(tree::ParseTreeListener *listen
     parserListener->exitChaining_part(this);
 }
 
+
+std::any KerMLParser::Chaining_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitChaining_part(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Chaining_partContext* KerMLParser::chaining_part() {
   Chaining_partContext *_localctx = _tracker.createInstance<Chaining_partContext>(_ctx, getState());
   enterRule(_localctx, 150, KerMLParser::RuleChaining_part);
@@ -7715,6 +8326,14 @@ void KerMLParser::Inverting_partContext::exitRule(tree::ParseTreeListener *liste
     parserListener->exitInverting_part(this);
 }
 
+
+std::any KerMLParser::Inverting_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitInverting_part(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Inverting_partContext* KerMLParser::inverting_part() {
   Inverting_partContext *_localctx = _tracker.createInstance<Inverting_partContext>(_ctx, getState());
   enterRule(_localctx, 152, KerMLParser::RuleInverting_part);
@@ -7792,6 +8411,14 @@ void KerMLParser::Type_featuring_partContext::exitRule(tree::ParseTreeListener *
     parserListener->exitType_featuring_part(this);
 }
 
+
+std::any KerMLParser::Type_featuring_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitType_featuring_part(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Type_featuring_partContext* KerMLParser::type_featuring_part() {
   Type_featuring_partContext *_localctx = _tracker.createInstance<Type_featuring_partContext>(_ctx, getState());
   enterRule(_localctx, 154, KerMLParser::RuleType_featuring_part);
@@ -7841,12 +8468,12 @@ KerMLParser::Feature_specialization_partContext::Feature_specialization_partCont
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<KerMLParser::Feature_specilizationContext *> KerMLParser::Feature_specialization_partContext::feature_specilization() {
-  return getRuleContexts<KerMLParser::Feature_specilizationContext>();
+std::vector<KerMLParser::Feature_specializationContext *> KerMLParser::Feature_specialization_partContext::feature_specialization() {
+  return getRuleContexts<KerMLParser::Feature_specializationContext>();
 }
 
-KerMLParser::Feature_specilizationContext* KerMLParser::Feature_specialization_partContext::feature_specilization(size_t i) {
-  return getRuleContext<KerMLParser::Feature_specilizationContext>(i);
+KerMLParser::Feature_specializationContext* KerMLParser::Feature_specialization_partContext::feature_specialization(size_t i) {
+  return getRuleContext<KerMLParser::Feature_specializationContext>(i);
 }
 
 KerMLParser::Multiplicity_partContext* KerMLParser::Feature_specialization_partContext::multiplicity_part() {
@@ -7868,6 +8495,14 @@ void KerMLParser::Feature_specialization_partContext::exitRule(tree::ParseTreeLi
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFeature_specialization_part(this);
+}
+
+
+std::any KerMLParser::Feature_specialization_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_specialization_part(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Feature_specialization_partContext* KerMLParser::feature_specialization_part() {
@@ -7902,7 +8537,7 @@ KerMLParser::Feature_specialization_partContext* KerMLParser::feature_specializa
           switch (alt) {
             case 1: {
                   setState(1110);
-                  feature_specilization();
+                  feature_specialization();
                   break;
                 }
 
@@ -7927,7 +8562,7 @@ KerMLParser::Feature_specialization_partContext* KerMLParser::feature_specializa
         while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
           if (alt == 1) {
             setState(1118);
-            feature_specilization(); 
+            feature_specialization(); 
           }
           setState(1123);
           _errHandler->sync(this);
@@ -7947,7 +8582,7 @@ KerMLParser::Feature_specialization_partContext* KerMLParser::feature_specializa
           switch (alt) {
             case 1: {
                   setState(1125);
-                  feature_specilization();
+                  feature_specialization();
                   break;
                 }
 
@@ -8010,6 +8645,14 @@ void KerMLParser::Multiplicity_partContext::exitRule(tree::ParseTreeListener *li
     parserListener->exitMultiplicity_part(this);
 }
 
+
+std::any KerMLParser::Multiplicity_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMultiplicity_part(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Multiplicity_partContext* KerMLParser::multiplicity_part() {
   Multiplicity_partContext *_localctx = _tracker.createInstance<Multiplicity_partContext>(_ctx, getState());
   enterRule(_localctx, 158, KerMLParser::RuleMultiplicity_part);
@@ -8047,48 +8690,56 @@ KerMLParser::Multiplicity_partContext* KerMLParser::multiplicity_part() {
   return _localctx;
 }
 
-//----------------- Feature_specilizationContext ------------------------------------------------------------------
+//----------------- Feature_specializationContext ------------------------------------------------------------------
 
-KerMLParser::Feature_specilizationContext::Feature_specilizationContext(ParserRuleContext *parent, size_t invokingState)
+KerMLParser::Feature_specializationContext::Feature_specializationContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-KerMLParser::TypingsContext* KerMLParser::Feature_specilizationContext::typings() {
+KerMLParser::TypingsContext* KerMLParser::Feature_specializationContext::typings() {
   return getRuleContext<KerMLParser::TypingsContext>(0);
 }
 
-KerMLParser::SubsettingsContext* KerMLParser::Feature_specilizationContext::subsettings() {
+KerMLParser::SubsettingsContext* KerMLParser::Feature_specializationContext::subsettings() {
   return getRuleContext<KerMLParser::SubsettingsContext>(0);
 }
 
-KerMLParser::ReferencesContext* KerMLParser::Feature_specilizationContext::references() {
+KerMLParser::ReferencesContext* KerMLParser::Feature_specializationContext::references() {
   return getRuleContext<KerMLParser::ReferencesContext>(0);
 }
 
-KerMLParser::RedefinitionsContext* KerMLParser::Feature_specilizationContext::redefinitions() {
+KerMLParser::RedefinitionsContext* KerMLParser::Feature_specializationContext::redefinitions() {
   return getRuleContext<KerMLParser::RedefinitionsContext>(0);
 }
 
 
-size_t KerMLParser::Feature_specilizationContext::getRuleIndex() const {
-  return KerMLParser::RuleFeature_specilization;
+size_t KerMLParser::Feature_specializationContext::getRuleIndex() const {
+  return KerMLParser::RuleFeature_specialization;
 }
 
-void KerMLParser::Feature_specilizationContext::enterRule(tree::ParseTreeListener *listener) {
+void KerMLParser::Feature_specializationContext::enterRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->enterFeature_specilization(this);
+    parserListener->enterFeature_specialization(this);
 }
 
-void KerMLParser::Feature_specilizationContext::exitRule(tree::ParseTreeListener *listener) {
+void KerMLParser::Feature_specializationContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->exitFeature_specilization(this);
+    parserListener->exitFeature_specialization(this);
 }
 
-KerMLParser::Feature_specilizationContext* KerMLParser::feature_specilization() {
-  Feature_specilizationContext *_localctx = _tracker.createInstance<Feature_specilizationContext>(_ctx, getState());
-  enterRule(_localctx, 160, KerMLParser::RuleFeature_specilization);
+
+std::any KerMLParser::Feature_specializationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_specialization(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+KerMLParser::Feature_specializationContext* KerMLParser::feature_specialization() {
+  Feature_specializationContext *_localctx = _tracker.createInstance<Feature_specializationContext>(_ctx, getState());
+  enterRule(_localctx, 160, KerMLParser::RuleFeature_specialization);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -8189,6 +8840,14 @@ void KerMLParser::TypingsContext::exitRule(tree::ParseTreeListener *listener) {
     parserListener->exitTypings(this);
 }
 
+
+std::any KerMLParser::TypingsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitTypings(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::TypingsContext* KerMLParser::typings() {
   TypingsContext *_localctx = _tracker.createInstance<TypingsContext>(_ctx, getState());
   enterRule(_localctx, 162, KerMLParser::RuleTypings);
@@ -8257,6 +8916,14 @@ void KerMLParser::Typed_byContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitTyped_by(this);
+}
+
+
+std::any KerMLParser::Typed_byContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitTyped_by(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Typed_byContext* KerMLParser::typed_by() {
@@ -8328,6 +8995,14 @@ void KerMLParser::SubsettingsContext::exitRule(tree::ParseTreeListener *listener
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitSubsettings(this);
+}
+
+
+std::any KerMLParser::SubsettingsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSubsettings(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::SubsettingsContext* KerMLParser::subsettings() {
@@ -8408,6 +9083,14 @@ void KerMLParser::SubsetsContext::exitRule(tree::ParseTreeListener *listener) {
     parserListener->exitSubsets(this);
 }
 
+
+std::any KerMLParser::SubsetsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSubsets(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::SubsetsContext* KerMLParser::subsets() {
   SubsetsContext *_localctx = _tracker.createInstance<SubsetsContext>(_ctx, getState());
   enterRule(_localctx, 168, KerMLParser::RuleSubsets);
@@ -8465,6 +9148,14 @@ void KerMLParser::ReferencesContext::exitRule(tree::ParseTreeListener *listener)
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitReferences(this);
+}
+
+
+std::any KerMLParser::ReferencesContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitReferences(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::ReferencesContext* KerMLParser::references() {
@@ -8528,6 +9219,14 @@ void KerMLParser::RedefinitionsContext::exitRule(tree::ParseTreeListener *listen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitRedefinitions(this);
+}
+
+
+std::any KerMLParser::RedefinitionsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitRedefinitions(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::RedefinitionsContext* KerMLParser::redefinitions() {
@@ -8602,6 +9301,14 @@ void KerMLParser::RedefinesContext::exitRule(tree::ParseTreeListener *listener) 
     parserListener->exitRedefines(this);
 }
 
+
+std::any KerMLParser::RedefinesContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitRedefines(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::RedefinesContext* KerMLParser::redefines() {
   RedefinesContext *_localctx = _tracker.createInstance<RedefinesContext>(_ctx, getState());
   enterRule(_localctx, 174, KerMLParser::RuleRedefines);
@@ -8666,8 +9373,8 @@ KerMLParser::Relationship_bodyContext* KerMLParser::Feature_typingContext::relat
   return getRuleContext<KerMLParser::Relationship_bodyContext>(0);
 }
 
-tree::TerminalNode* KerMLParser::Feature_typingContext::KEYWORD_SPECILIZATION() {
-  return getToken(KerMLParser::KEYWORD_SPECILIZATION, 0);
+tree::TerminalNode* KerMLParser::Feature_typingContext::KEYWORD_SPECIALIZATION() {
+  return getToken(KerMLParser::KEYWORD_SPECIALIZATION, 0);
 }
 
 KerMLParser::IdentificationContext* KerMLParser::Feature_typingContext::identification() {
@@ -8691,6 +9398,14 @@ void KerMLParser::Feature_typingContext::exitRule(tree::ParseTreeListener *liste
     parserListener->exitFeature_typing(this);
 }
 
+
+std::any KerMLParser::Feature_typingContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_typing(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Feature_typingContext* KerMLParser::feature_typing() {
   Feature_typingContext *_localctx = _tracker.createInstance<Feature_typingContext>(_ctx, getState());
   enterRule(_localctx, 176, KerMLParser::RuleFeature_typing);
@@ -8709,9 +9424,9 @@ KerMLParser::Feature_typingContext* KerMLParser::feature_typing() {
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == KerMLParser::KEYWORD_SPECILIZATION) {
+    if (_la == KerMLParser::KEYWORD_SPECIALIZATION) {
       setState(1184);
-      match(KerMLParser::KEYWORD_SPECILIZATION);
+      match(KerMLParser::KEYWORD_SPECIALIZATION);
       setState(1185);
       identification();
     }
@@ -8763,6 +9478,14 @@ void KerMLParser::Owned_feature_typingContext::exitRule(tree::ParseTreeListener 
     parserListener->exitOwned_feature_typing(this);
 }
 
+
+std::any KerMLParser::Owned_feature_typingContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_feature_typing(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Owned_feature_typingContext* KerMLParser::owned_feature_typing() {
   Owned_feature_typingContext *_localctx = _tracker.createInstance<Owned_feature_typingContext>(_ctx, getState());
   enterRule(_localctx, 178, KerMLParser::RuleOwned_feature_typing);
@@ -8811,8 +9534,8 @@ KerMLParser::Relationship_bodyContext* KerMLParser::SubsettingContext::relations
   return getRuleContext<KerMLParser::Relationship_bodyContext>(0);
 }
 
-tree::TerminalNode* KerMLParser::SubsettingContext::KEYWORD_SPECILIZATION() {
-  return getToken(KerMLParser::KEYWORD_SPECILIZATION, 0);
+tree::TerminalNode* KerMLParser::SubsettingContext::KEYWORD_SPECIALIZATION() {
+  return getToken(KerMLParser::KEYWORD_SPECIALIZATION, 0);
 }
 
 KerMLParser::IdentificationContext* KerMLParser::SubsettingContext::identification() {
@@ -8844,6 +9567,14 @@ void KerMLParser::SubsettingContext::exitRule(tree::ParseTreeListener *listener)
     parserListener->exitSubsetting(this);
 }
 
+
+std::any KerMLParser::SubsettingContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSubsetting(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::SubsettingContext* KerMLParser::subsetting() {
   SubsettingContext *_localctx = _tracker.createInstance<SubsettingContext>(_ctx, getState());
   enterRule(_localctx, 180, KerMLParser::RuleSubsetting);
@@ -8862,9 +9593,9 @@ KerMLParser::SubsettingContext* KerMLParser::subsetting() {
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == KerMLParser::KEYWORD_SPECILIZATION) {
+    if (_la == KerMLParser::KEYWORD_SPECIALIZATION) {
       setState(1196);
-      match(KerMLParser::KEYWORD_SPECILIZATION);
+      match(KerMLParser::KEYWORD_SPECIALIZATION);
       setState(1197);
       identification();
     }
@@ -8930,6 +9661,14 @@ void KerMLParser::Owned_subsettingContext::exitRule(tree::ParseTreeListener *lis
     parserListener->exitOwned_subsetting(this);
 }
 
+
+std::any KerMLParser::Owned_subsettingContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_subsetting(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Owned_subsettingContext* KerMLParser::owned_subsetting() {
   Owned_subsettingContext *_localctx = _tracker.createInstance<Owned_subsettingContext>(_ctx, getState());
   enterRule(_localctx, 182, KerMLParser::RuleOwned_subsetting);
@@ -8983,6 +9722,14 @@ void KerMLParser::Owned_reference_subsettingContext::exitRule(tree::ParseTreeLis
     parserListener->exitOwned_reference_subsetting(this);
 }
 
+
+std::any KerMLParser::Owned_reference_subsettingContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_reference_subsetting(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Owned_reference_subsettingContext* KerMLParser::owned_reference_subsetting() {
   Owned_reference_subsettingContext *_localctx = _tracker.createInstance<Owned_reference_subsettingContext>(_ctx, getState());
   enterRule(_localctx, 184, KerMLParser::RuleOwned_reference_subsetting);
@@ -9031,8 +9778,8 @@ KerMLParser::Feature_directionContext* KerMLParser::RedefinitionContext::feature
   return getRuleContext<KerMLParser::Feature_directionContext>(0);
 }
 
-tree::TerminalNode* KerMLParser::RedefinitionContext::KEYWORD_SPECILIZATION() {
-  return getToken(KerMLParser::KEYWORD_SPECILIZATION, 0);
+tree::TerminalNode* KerMLParser::RedefinitionContext::KEYWORD_SPECIALIZATION() {
+  return getToken(KerMLParser::KEYWORD_SPECIALIZATION, 0);
 }
 
 KerMLParser::IdentificationContext* KerMLParser::RedefinitionContext::identification() {
@@ -9080,6 +9827,14 @@ void KerMLParser::RedefinitionContext::exitRule(tree::ParseTreeListener *listene
     parserListener->exitRedefinition(this);
 }
 
+
+std::any KerMLParser::RedefinitionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitRedefinition(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::RedefinitionContext* KerMLParser::redefinition() {
   RedefinitionContext *_localctx = _tracker.createInstance<RedefinitionContext>(_ctx, getState());
   enterRule(_localctx, 186, KerMLParser::RuleRedefinition);
@@ -9107,9 +9862,9 @@ KerMLParser::RedefinitionContext* KerMLParser::redefinition() {
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == KerMLParser::KEYWORD_SPECILIZATION) {
+    if (_la == KerMLParser::KEYWORD_SPECIALIZATION) {
       setState(1218);
-      match(KerMLParser::KEYWORD_SPECILIZATION);
+      match(KerMLParser::KEYWORD_SPECIALIZATION);
       setState(1219);
       identification();
     }
@@ -9199,6 +9954,14 @@ void KerMLParser::Owned_redefinitionContext::exitRule(tree::ParseTreeListener *l
     parserListener->exitOwned_redefinition(this);
 }
 
+
+std::any KerMLParser::Owned_redefinitionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_redefinition(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Owned_redefinitionContext* KerMLParser::owned_redefinition() {
   Owned_redefinitionContext *_localctx = _tracker.createInstance<Owned_redefinitionContext>(_ctx, getState());
   enterRule(_localctx, 188, KerMLParser::RuleOwned_redefinition);
@@ -9250,6 +10013,14 @@ void KerMLParser::Owned_feature_chainContext::exitRule(tree::ParseTreeListener *
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitOwned_feature_chain(this);
+}
+
+
+std::any KerMLParser::Owned_feature_chainContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_feature_chain(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Owned_feature_chainContext* KerMLParser::owned_feature_chain() {
@@ -9315,6 +10086,14 @@ void KerMLParser::Feature_chainContext::exitRule(tree::ParseTreeListener *listen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFeature_chain(this);
+}
+
+
+std::any KerMLParser::Feature_chainContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_chain(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Feature_chainContext* KerMLParser::feature_chain() {
@@ -9383,6 +10162,14 @@ void KerMLParser::Owned_feature_chainingContext::exitRule(tree::ParseTreeListene
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitOwned_feature_chaining(this);
+}
+
+
+std::any KerMLParser::Owned_feature_chainingContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_feature_chaining(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Owned_feature_chainingContext* KerMLParser::owned_feature_chaining() {
@@ -9468,6 +10255,14 @@ void KerMLParser::Feature_invertingContext::exitRule(tree::ParseTreeListener *li
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFeature_inverting(this);
+}
+
+
+std::any KerMLParser::Feature_invertingContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_inverting(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Feature_invertingContext* KerMLParser::feature_inverting() {
@@ -9578,6 +10373,14 @@ void KerMLParser::Owned_feature_invertingContext::exitRule(tree::ParseTreeListen
     parserListener->exitOwned_feature_inverting(this);
 }
 
+
+std::any KerMLParser::Owned_feature_invertingContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_feature_inverting(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Owned_feature_invertingContext* KerMLParser::owned_feature_inverting() {
   Owned_feature_invertingContext *_localctx = _tracker.createInstance<Owned_feature_invertingContext>(_ctx, getState());
   enterRule(_localctx, 198, KerMLParser::RuleOwned_feature_inverting);
@@ -9672,6 +10475,14 @@ void KerMLParser::Type_featuringContext::exitRule(tree::ParseTreeListener *liste
     parserListener->exitType_featuring(this);
 }
 
+
+std::any KerMLParser::Type_featuringContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitType_featuring(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Type_featuringContext* KerMLParser::type_featuring() {
   Type_featuringContext *_localctx = _tracker.createInstance<Type_featuringContext>(_ctx, getState());
   enterRule(_localctx, 200, KerMLParser::RuleType_featuring);
@@ -9748,6 +10559,14 @@ void KerMLParser::Owned_type_featuringContext::exitRule(tree::ParseTreeListener 
     parserListener->exitOwned_type_featuring(this);
 }
 
+
+std::any KerMLParser::Owned_type_featuringContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_type_featuring(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Owned_type_featuringContext* KerMLParser::owned_type_featuring() {
   Owned_type_featuringContext *_localctx = _tracker.createInstance<Owned_type_featuringContext>(_ctx, getState());
   enterRule(_localctx, 202, KerMLParser::RuleOwned_type_featuring);
@@ -9811,6 +10630,14 @@ void KerMLParser::Data_typeContext::exitRule(tree::ParseTreeListener *listener) 
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitData_type(this);
+}
+
+
+std::any KerMLParser::Data_typeContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitData_type(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Data_typeContext* KerMLParser::data_type() {
@@ -9884,6 +10711,14 @@ void KerMLParser::ClassContext::exitRule(tree::ParseTreeListener *listener) {
     parserListener->exitClass(this);
 }
 
+
+std::any KerMLParser::ClassContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitClass(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::ClassContext* KerMLParser::class_() {
   ClassContext *_localctx = _tracker.createInstance<ClassContext>(_ctx, getState());
   enterRule(_localctx, 206, KerMLParser::RuleClass);
@@ -9953,6 +10788,14 @@ void KerMLParser::StructureContext::exitRule(tree::ParseTreeListener *listener) 
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitStructure(this);
+}
+
+
+std::any KerMLParser::StructureContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitStructure(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::StructureContext* KerMLParser::structure() {
@@ -10037,6 +10880,14 @@ void KerMLParser::AssociationContext::exitRule(tree::ParseTreeListener *listener
     parserListener->exitAssociation(this);
 }
 
+
+std::any KerMLParser::AssociationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitAssociation(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::AssociationContext* KerMLParser::association() {
   AssociationContext *_localctx = _tracker.createInstance<AssociationContext>(_ctx, getState());
   enterRule(_localctx, 210, KerMLParser::RuleAssociation);
@@ -10112,6 +10963,14 @@ void KerMLParser::Association_structureContext::exitRule(tree::ParseTreeListener
     parserListener->exitAssociation_structure(this);
 }
 
+
+std::any KerMLParser::Association_structureContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitAssociation_structure(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Association_structureContext* KerMLParser::association_structure() {
   Association_structureContext *_localctx = _tracker.createInstance<Association_structureContext>(_ctx, getState());
   enterRule(_localctx, 212, KerMLParser::RuleAssociation_structure);
@@ -10183,6 +11042,14 @@ void KerMLParser::ConnectorContext::exitRule(tree::ParseTreeListener *listener) 
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitConnector(this);
+}
+
+
+std::any KerMLParser::ConnectorContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitConnector(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::ConnectorContext* KerMLParser::connector() {
@@ -10261,6 +11128,14 @@ void KerMLParser::Connector_declarationContext::exitRule(tree::ParseTreeListener
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitConnector_declaration(this);
+}
+
+
+std::any KerMLParser::Connector_declarationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitConnector_declaration(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Connector_declarationContext* KerMLParser::connector_declaration() {
@@ -10351,6 +11226,14 @@ void KerMLParser::Binary_connector_declarationContext::exitRule(tree::ParseTreeL
     parserListener->exitBinary_connector_declaration(this);
 }
 
+
+std::any KerMLParser::Binary_connector_declarationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBinary_connector_declaration(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Binary_connector_declarationContext* KerMLParser::binary_connector_declaration() {
   Binary_connector_declarationContext *_localctx = _tracker.createInstance<Binary_connector_declarationContext>(_ctx, getState());
   enterRule(_localctx, 218, KerMLParser::RuleBinary_connector_declaration);
@@ -10439,6 +11322,14 @@ void KerMLParser::Nary_connector_declarationContext::exitRule(tree::ParseTreeLis
     parserListener->exitNary_connector_declaration(this);
 }
 
+
+std::any KerMLParser::Nary_connector_declarationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNary_connector_declaration(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Nary_connector_declarationContext* KerMLParser::nary_connector_declaration() {
   Nary_connector_declarationContext *_localctx = _tracker.createInstance<Nary_connector_declarationContext>(_ctx, getState());
   enterRule(_localctx, 220, KerMLParser::RuleNary_connector_declaration);
@@ -10513,6 +11404,14 @@ void KerMLParser::Connector_end_memberContext::exitRule(tree::ParseTreeListener 
     parserListener->exitConnector_end_member(this);
 }
 
+
+std::any KerMLParser::Connector_end_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitConnector_end_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Connector_end_memberContext* KerMLParser::connector_end_member() {
   Connector_end_memberContext *_localctx = _tracker.createInstance<Connector_end_memberContext>(_ctx, getState());
   enterRule(_localctx, 222, KerMLParser::RuleConnector_end_member);
@@ -10576,6 +11475,14 @@ void KerMLParser::Connector_endContext::exitRule(tree::ParseTreeListener *listen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitConnector_end(this);
+}
+
+
+std::any KerMLParser::Connector_endContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitConnector_end(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Connector_endContext* KerMLParser::connector_end() {
@@ -10667,6 +11574,14 @@ void KerMLParser::Binding_connectorContext::exitRule(tree::ParseTreeListener *li
     parserListener->exitBinding_connector(this);
 }
 
+
+std::any KerMLParser::Binding_connectorContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBinding_connector(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Binding_connectorContext* KerMLParser::binding_connector() {
   Binding_connectorContext *_localctx = _tracker.createInstance<Binding_connectorContext>(_ctx, getState());
   enterRule(_localctx, 226, KerMLParser::RuleBinding_connector);
@@ -10744,6 +11659,14 @@ void KerMLParser::Binding_connector_declarationContext::exitRule(tree::ParseTree
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitBinding_connector_declaration(this);
+}
+
+
+std::any KerMLParser::Binding_connector_declarationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBinding_connector_declaration(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Binding_connector_declarationContext* KerMLParser::binding_connector_declaration() {
@@ -10842,8 +11765,8 @@ KerMLParser::Feature_prefixContext* KerMLParser::SuccessionContext::feature_pref
   return getRuleContext<KerMLParser::Feature_prefixContext>(0);
 }
 
-tree::TerminalNode* KerMLParser::SuccessionContext::KEYWORD_SUCCSESSION() {
-  return getToken(KerMLParser::KEYWORD_SUCCSESSION, 0);
+tree::TerminalNode* KerMLParser::SuccessionContext::KEYWORD_SUCCESSION() {
+  return getToken(KerMLParser::KEYWORD_SUCCESSION, 0);
 }
 
 KerMLParser::Succession_declarationContext* KerMLParser::SuccessionContext::succession_declaration() {
@@ -10871,6 +11794,14 @@ void KerMLParser::SuccessionContext::exitRule(tree::ParseTreeListener *listener)
     parserListener->exitSuccession(this);
 }
 
+
+std::any KerMLParser::SuccessionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSuccession(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::SuccessionContext* KerMLParser::succession() {
   SuccessionContext *_localctx = _tracker.createInstance<SuccessionContext>(_ctx, getState());
   enterRule(_localctx, 230, KerMLParser::RuleSuccession);
@@ -10887,7 +11818,7 @@ KerMLParser::SuccessionContext* KerMLParser::succession() {
     setState(1388);
     feature_prefix();
     setState(1389);
-    match(KerMLParser::KEYWORD_SUCCSESSION);
+    match(KerMLParser::KEYWORD_SUCCESSION);
     setState(1390);
     succession_declaration();
     setState(1391);
@@ -10948,6 +11879,14 @@ void KerMLParser::Succession_declarationContext::exitRule(tree::ParseTreeListene
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitSuccession_declaration(this);
+}
+
+
+std::any KerMLParser::Succession_declarationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSuccession_declaration(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Succession_declarationContext* KerMLParser::succession_declaration() {
@@ -11075,6 +12014,14 @@ void KerMLParser::BehaviorContext::exitRule(tree::ParseTreeListener *listener) {
     parserListener->exitBehavior(this);
 }
 
+
+std::any KerMLParser::BehaviorContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBehavior(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::BehaviorContext* KerMLParser::behavior() {
   BehaviorContext *_localctx = _tracker.createInstance<BehaviorContext>(_ctx, getState());
   enterRule(_localctx, 234, KerMLParser::RuleBehavior);
@@ -11148,6 +12095,14 @@ void KerMLParser::StepContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitStep(this);
+}
+
+
+std::any KerMLParser::StepContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitStep(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::StepContext* KerMLParser::step() {
@@ -11232,6 +12187,14 @@ void KerMLParser::FunctionContext::exitRule(tree::ParseTreeListener *listener) {
     parserListener->exitFunction(this);
 }
 
+
+std::any KerMLParser::FunctionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFunction(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::FunctionContext* KerMLParser::function() {
   FunctionContext *_localctx = _tracker.createInstance<FunctionContext>(_ctx, getState());
   enterRule(_localctx, 238, KerMLParser::RuleFunction);
@@ -11301,6 +12264,14 @@ void KerMLParser::Function_bodyContext::exitRule(tree::ParseTreeListener *listen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFunction_body(this);
+}
+
+
+std::any KerMLParser::Function_bodyContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFunction_body(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Function_bodyContext* KerMLParser::function_body() {
@@ -11391,6 +12362,14 @@ void KerMLParser::Function_body_partContext::exitRule(tree::ParseTreeListener *l
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFunction_body_part(this);
+}
+
+
+std::any KerMLParser::Function_body_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFunction_body_part(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Function_body_partContext* KerMLParser::function_body_part() {
@@ -11499,6 +12478,14 @@ void KerMLParser::Return_feature_memberContext::exitRule(tree::ParseTreeListener
     parserListener->exitReturn_feature_member(this);
 }
 
+
+std::any KerMLParser::Return_feature_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitReturn_feature_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Return_feature_memberContext* KerMLParser::return_feature_member() {
   Return_feature_memberContext *_localctx = _tracker.createInstance<Return_feature_memberContext>(_ctx, getState());
   enterRule(_localctx, 244, KerMLParser::RuleReturn_feature_member);
@@ -11558,6 +12545,14 @@ void KerMLParser::Result_expression_memberContext::exitRule(tree::ParseTreeListe
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitResult_expression_member(this);
+}
+
+
+std::any KerMLParser::Result_expression_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitResult_expression_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Result_expression_memberContext* KerMLParser::result_expression_member() {
@@ -11629,6 +12624,14 @@ void KerMLParser::ExpressionContext::exitRule(tree::ParseTreeListener *listener)
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitExpression(this);
+}
+
+
+std::any KerMLParser::ExpressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitExpression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::ExpressionContext* KerMLParser::expression() {
@@ -11713,6 +12716,14 @@ void KerMLParser::PredicateContext::exitRule(tree::ParseTreeListener *listener) 
     parserListener->exitPredicate(this);
 }
 
+
+std::any KerMLParser::PredicateContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitPredicate(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::PredicateContext* KerMLParser::predicate() {
   PredicateContext *_localctx = _tracker.createInstance<PredicateContext>(_ctx, getState());
   enterRule(_localctx, 250, KerMLParser::RulePredicate);
@@ -11786,6 +12797,14 @@ void KerMLParser::Boolean_expressionContext::exitRule(tree::ParseTreeListener *l
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitBoolean_expression(this);
+}
+
+
+std::any KerMLParser::Boolean_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBoolean_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Boolean_expressionContext* KerMLParser::boolean_expression() {
@@ -11882,6 +12901,14 @@ void KerMLParser::InvariantContext::exitRule(tree::ParseTreeListener *listener) 
     parserListener->exitInvariant(this);
 }
 
+
+std::any KerMLParser::InvariantContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitInvariant(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::InvariantContext* KerMLParser::invariant() {
   InvariantContext *_localctx = _tracker.createInstance<InvariantContext>(_ctx, getState());
   enterRule(_localctx, 254, KerMLParser::RuleInvariant);
@@ -11971,6 +12998,14 @@ void KerMLParser::Owned_expression_reference_memberContext::exitRule(tree::Parse
     parserListener->exitOwned_expression_reference_member(this);
 }
 
+
+std::any KerMLParser::Owned_expression_reference_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_expression_reference_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Owned_expression_reference_memberContext* KerMLParser::owned_expression_reference_member() {
   Owned_expression_reference_memberContext *_localctx = _tracker.createInstance<Owned_expression_reference_memberContext>(_ctx, getState());
   enterRule(_localctx, 256, KerMLParser::RuleOwned_expression_reference_member);
@@ -12024,6 +13059,14 @@ void KerMLParser::Owned_expression_referenceContext::exitRule(tree::ParseTreeLis
     parserListener->exitOwned_expression_reference(this);
 }
 
+
+std::any KerMLParser::Owned_expression_referenceContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_expression_reference(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Owned_expression_referenceContext* KerMLParser::owned_expression_reference() {
   Owned_expression_referenceContext *_localctx = _tracker.createInstance<Owned_expression_referenceContext>(_ctx, getState());
   enterRule(_localctx, 258, KerMLParser::RuleOwned_expression_reference);
@@ -12075,6 +13118,14 @@ void KerMLParser::Owned_expression_memberContext::exitRule(tree::ParseTreeListen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitOwned_expression_member(this);
+}
+
+
+std::any KerMLParser::Owned_expression_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_expression_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Owned_expression_memberContext* KerMLParser::owned_expression_member() {
@@ -12132,6 +13183,14 @@ void KerMLParser::Owned_expressionsContext::exitRule(tree::ParseTreeListener *li
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitOwned_expressions(this);
+}
+
+
+std::any KerMLParser::Owned_expressionsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_expressions(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Owned_expressionsContext* KerMLParser::owned_expressions() {
@@ -12234,6 +13293,14 @@ void KerMLParser::Owned_expressionContext::exitRule(tree::ParseTreeListener *lis
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitOwned_expression(this);
+}
+
+
+std::any KerMLParser::Owned_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Owned_expressionContext* KerMLParser::owned_expression() {
@@ -12367,6 +13434,14 @@ void KerMLParser::Eased_owned_expressionContext::exitRule(tree::ParseTreeListene
     parserListener->exitEased_owned_expression(this);
 }
 
+
+std::any KerMLParser::Eased_owned_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitEased_owned_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Eased_owned_expressionContext* KerMLParser::eased_owned_expression() {
   Eased_owned_expressionContext *_localctx = _tracker.createInstance<Eased_owned_expressionContext>(_ctx, getState());
   enterRule(_localctx, 266, KerMLParser::RuleEased_owned_expression);
@@ -12471,6 +13546,14 @@ void KerMLParser::Conditional_expressionContext::exitRule(tree::ParseTreeListene
     parserListener->exitConditional_expression(this);
 }
 
+
+std::any KerMLParser::Conditional_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitConditional_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Conditional_expressionContext* KerMLParser::conditional_expression() {
   Conditional_expressionContext *_localctx = _tracker.createInstance<Conditional_expressionContext>(_ctx, getState());
   enterRule(_localctx, 268, KerMLParser::RuleConditional_expression);
@@ -12542,6 +13625,14 @@ void KerMLParser::Conditional_binary_operator_expressionContext::exitRule(tree::
     parserListener->exitConditional_binary_operator_expression(this);
 }
 
+
+std::any KerMLParser::Conditional_binary_operator_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitConditional_binary_operator_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Conditional_binary_operator_expressionContext* KerMLParser::conditional_binary_operator_expression() {
   Conditional_binary_operator_expressionContext *_localctx = _tracker.createInstance<Conditional_binary_operator_expressionContext>(_ctx, getState());
   enterRule(_localctx, 270, KerMLParser::RuleConditional_binary_operator_expression);
@@ -12609,6 +13700,14 @@ void KerMLParser::Conditional_binary_operatorContext::exitRule(tree::ParseTreeLi
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitConditional_binary_operator(this);
+}
+
+
+std::any KerMLParser::Conditional_binary_operatorContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitConditional_binary_operator(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Conditional_binary_operatorContext* KerMLParser::conditional_binary_operator() {
@@ -12679,6 +13778,14 @@ void KerMLParser::Binary_operator_expressionContext::exitRule(tree::ParseTreeLis
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitBinary_operator_expression(this);
+}
+
+
+std::any KerMLParser::Binary_operator_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBinary_operator_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Binary_operator_expressionContext* KerMLParser::binary_operator_expression() {
@@ -12810,6 +13917,14 @@ void KerMLParser::Binary_operatorContext::exitRule(tree::ParseTreeListener *list
     parserListener->exitBinary_operator(this);
 }
 
+
+std::any KerMLParser::Binary_operatorContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBinary_operator(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Binary_operatorContext* KerMLParser::binary_operator() {
   Binary_operatorContext *_localctx = _tracker.createInstance<Binary_operatorContext>(_ctx, getState());
   enterRule(_localctx, 276, KerMLParser::RuleBinary_operator);
@@ -12876,6 +13991,14 @@ void KerMLParser::Unary_operator_expressionContext::exitRule(tree::ParseTreeList
     parserListener->exitUnary_operator_expression(this);
 }
 
+
+std::any KerMLParser::Unary_operator_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitUnary_operator_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Unary_operator_expressionContext* KerMLParser::unary_operator_expression() {
   Unary_operator_expressionContext *_localctx = _tracker.createInstance<Unary_operator_expressionContext>(_ctx, getState());
   enterRule(_localctx, 278, KerMLParser::RuleUnary_operator_expression);
@@ -12918,8 +14041,8 @@ tree::TerminalNode* KerMLParser::Unary_operatorContext::SYMBOL_MINUS() {
   return getToken(KerMLParser::SYMBOL_MINUS, 0);
 }
 
-tree::TerminalNode* KerMLParser::Unary_operatorContext::SYMBOL_CONJUNGATES() {
-  return getToken(KerMLParser::SYMBOL_CONJUNGATES, 0);
+tree::TerminalNode* KerMLParser::Unary_operatorContext::SYMBOL_CONJUGATES() {
+  return getToken(KerMLParser::SYMBOL_CONJUGATES, 0);
 }
 
 tree::TerminalNode* KerMLParser::Unary_operatorContext::KEYWORD_NOT() {
@@ -12943,6 +14066,14 @@ void KerMLParser::Unary_operatorContext::exitRule(tree::ParseTreeListener *liste
     parserListener->exitUnary_operator(this);
 }
 
+
+std::any KerMLParser::Unary_operatorContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitUnary_operator(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Unary_operatorContext* KerMLParser::unary_operator() {
   Unary_operatorContext *_localctx = _tracker.createInstance<Unary_operatorContext>(_ctx, getState());
   enterRule(_localctx, 280, KerMLParser::RuleUnary_operator);
@@ -12961,7 +14092,7 @@ KerMLParser::Unary_operatorContext* KerMLParser::unary_operator() {
     _la = _input->LA(1);
     if (!(_la == KerMLParser::KEYWORD_NOT
 
-    || _la == KerMLParser::SYMBOL_CONJUNGATES || _la == KerMLParser::SYMBOL_PLUS
+    || _la == KerMLParser::SYMBOL_CONJUGATES || _la == KerMLParser::SYMBOL_PLUS
 
     || _la == KerMLParser::SYMBOL_MINUS)) {
     _errHandler->recoverInline(this);
@@ -13022,6 +14153,14 @@ void KerMLParser::Classification_expressionContext::exitRule(tree::ParseTreeList
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitClassification_expression(this);
+}
+
+
+std::any KerMLParser::Classification_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitClassification_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Classification_expressionContext* KerMLParser::classification_expression() {
@@ -13127,6 +14266,14 @@ void KerMLParser::ClassificationContext::exitRule(tree::ParseTreeListener *liste
     parserListener->exitClassification(this);
 }
 
+
+std::any KerMLParser::ClassificationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitClassification(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::ClassificationContext* KerMLParser::classification() {
   ClassificationContext *_localctx = _tracker.createInstance<ClassificationContext>(_ctx, getState());
   enterRule(_localctx, 284, KerMLParser::RuleClassification);
@@ -13152,14 +14299,14 @@ KerMLParser::ClassificationContext* KerMLParser::classification() {
       case KerMLParser::KEYWORD_NULL:
       case KerMLParser::KEYWORD_TRUE:
       case KerMLParser::SYMBOL_STAR:
-      case KerMLParser::SYMBOL_CONJUNGATES:
+      case KerMLParser::SYMBOL_CONJUGATES:
       case KerMLParser::SYMBOL_ROUND_BRACKET_OPEN:
       case KerMLParser::SYMBOL_SQUARE_BRACKET_OPEN:
       case KerMLParser::SYMBOL_AT:
       case KerMLParser::SYMBOL_HASHTAG:
       case KerMLParser::SYMBOL_PLUS:
       case KerMLParser::SYMBOL_MINUS:
-      case KerMLParser::SYMBOL_ARROOW:
+      case KerMLParser::SYMBOL_ARROW:
       case KerMLParser::SYMBOL_DOT:
       case KerMLParser::SYMBOL_DOT_QUESTION:
       case KerMLParser::NAME:
@@ -13244,6 +14391,14 @@ void KerMLParser::Classification_test_operatorContext::exitRule(tree::ParseTreeL
     parserListener->exitClassification_test_operator(this);
 }
 
+
+std::any KerMLParser::Classification_test_operatorContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitClassification_test_operator(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Classification_test_operatorContext* KerMLParser::classification_test_operator() {
   Classification_test_operatorContext *_localctx = _tracker.createInstance<Classification_test_operatorContext>(_ctx, getState());
   enterRule(_localctx, 286, KerMLParser::RuleClassification_test_operator);
@@ -13305,6 +14460,14 @@ void KerMLParser::Cast_operatorContext::exitRule(tree::ParseTreeListener *listen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitCast_operator(this);
+}
+
+
+std::any KerMLParser::Cast_operatorContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitCast_operator(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Cast_operatorContext* KerMLParser::cast_operator() {
@@ -13374,6 +14537,14 @@ void KerMLParser::Metaclassification_expressionContext::exitRule(tree::ParseTree
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitMetaclassification_expression(this);
+}
+
+
+std::any KerMLParser::Metaclassification_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMetaclassification_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Metaclassification_expressionContext* KerMLParser::metaclassification_expression() {
@@ -13453,6 +14624,14 @@ void KerMLParser::Argument_memberContext::exitRule(tree::ParseTreeListener *list
     parserListener->exitArgument_member(this);
 }
 
+
+std::any KerMLParser::Argument_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitArgument_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Argument_memberContext* KerMLParser::argument_member() {
   Argument_memberContext *_localctx = _tracker.createInstance<Argument_memberContext>(_ctx, getState());
   enterRule(_localctx, 292, KerMLParser::RuleArgument_member);
@@ -13504,6 +14683,14 @@ void KerMLParser::ArgumentContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitArgument(this);
+}
+
+
+std::any KerMLParser::ArgumentContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitArgument(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::ArgumentContext* KerMLParser::argument() {
@@ -13561,6 +14748,14 @@ void KerMLParser::Argument_valueContext::exitRule(tree::ParseTreeListener *liste
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitArgument_value(this);
+}
+
+
+std::any KerMLParser::Argument_valueContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitArgument_value(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Argument_valueContext* KerMLParser::argument_value() {
@@ -13633,6 +14828,14 @@ void KerMLParser::Argument_expression_memberContext::exitRule(tree::ParseTreeLis
     parserListener->exitArgument_expression_member(this);
 }
 
+
+std::any KerMLParser::Argument_expression_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitArgument_expression_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Argument_expression_memberContext* KerMLParser::argument_expression_member() {
   Argument_expression_memberContext *_localctx = _tracker.createInstance<Argument_expression_memberContext>(_ctx, getState());
   enterRule(_localctx, 298, KerMLParser::RuleArgument_expression_member);
@@ -13684,6 +14887,14 @@ void KerMLParser::Argument_expressionContext::exitRule(tree::ParseTreeListener *
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitArgument_expression(this);
+}
+
+
+std::any KerMLParser::Argument_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitArgument_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Argument_expressionContext* KerMLParser::argument_expression() {
@@ -13739,6 +14950,14 @@ void KerMLParser::Argument_expression_valueContext::exitRule(tree::ParseTreeList
     parserListener->exitArgument_expression_value(this);
 }
 
+
+std::any KerMLParser::Argument_expression_valueContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitArgument_expression_value(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Argument_expression_valueContext* KerMLParser::argument_expression_value() {
   Argument_expression_valueContext *_localctx = _tracker.createInstance<Argument_expression_valueContext>(_ctx, getState());
   enterRule(_localctx, 302, KerMLParser::RuleArgument_expression_value);
@@ -13790,6 +15009,14 @@ void KerMLParser::Metadata_argument_memberContext::exitRule(tree::ParseTreeListe
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitMetadata_argument_member(this);
+}
+
+
+std::any KerMLParser::Metadata_argument_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMetadata_argument_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Metadata_argument_memberContext* KerMLParser::metadata_argument_member() {
@@ -13845,6 +15072,14 @@ void KerMLParser::Metadata_argumentContext::exitRule(tree::ParseTreeListener *li
     parserListener->exitMetadata_argument(this);
 }
 
+
+std::any KerMLParser::Metadata_argumentContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMetadata_argument(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Metadata_argumentContext* KerMLParser::metadata_argument() {
   Metadata_argumentContext *_localctx = _tracker.createInstance<Metadata_argumentContext>(_ctx, getState());
   enterRule(_localctx, 306, KerMLParser::RuleMetadata_argument);
@@ -13896,6 +15131,14 @@ void KerMLParser::Metadata_valueContext::exitRule(tree::ParseTreeListener *liste
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitMetadata_value(this);
+}
+
+
+std::any KerMLParser::Metadata_valueContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMetadata_value(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Metadata_valueContext* KerMLParser::metadata_value() {
@@ -13951,6 +15194,14 @@ void KerMLParser::Metadata_referenceContext::exitRule(tree::ParseTreeListener *l
     parserListener->exitMetadata_reference(this);
 }
 
+
+std::any KerMLParser::Metadata_referenceContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMetadata_reference(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Metadata_referenceContext* KerMLParser::metadata_reference() {
   Metadata_referenceContext *_localctx = _tracker.createInstance<Metadata_referenceContext>(_ctx, getState());
   enterRule(_localctx, 310, KerMLParser::RuleMetadata_reference);
@@ -14004,6 +15255,14 @@ void KerMLParser::Metadataclassification_test_operatorContext::exitRule(tree::Pa
     parserListener->exitMetadataclassification_test_operator(this);
 }
 
+
+std::any KerMLParser::Metadataclassification_test_operatorContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMetadataclassification_test_operator(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Metadataclassification_test_operatorContext* KerMLParser::metadataclassification_test_operator() {
   Metadataclassification_test_operatorContext *_localctx = _tracker.createInstance<Metadataclassification_test_operatorContext>(_ctx, getState());
   enterRule(_localctx, 312, KerMLParser::RuleMetadataclassification_test_operator);
@@ -14051,6 +15310,14 @@ void KerMLParser::Meta_cast_operatorContext::exitRule(tree::ParseTreeListener *l
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitMeta_cast_operator(this);
+}
+
+
+std::any KerMLParser::Meta_cast_operatorContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMeta_cast_operator(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Meta_cast_operatorContext* KerMLParser::meta_cast_operator() {
@@ -14110,6 +15377,14 @@ void KerMLParser::Extend_expressionContext::exitRule(tree::ParseTreeListener *li
     parserListener->exitExtend_expression(this);
 }
 
+
+std::any KerMLParser::Extend_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitExtend_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Extend_expressionContext* KerMLParser::extend_expression() {
   Extend_expressionContext *_localctx = _tracker.createInstance<Extend_expressionContext>(_ctx, getState());
   enterRule(_localctx, 316, KerMLParser::RuleExtend_expression);
@@ -14165,6 +15440,14 @@ void KerMLParser::Type_reference_memberContext::exitRule(tree::ParseTreeListener
     parserListener->exitType_reference_member(this);
 }
 
+
+std::any KerMLParser::Type_reference_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitType_reference_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Type_reference_memberContext* KerMLParser::type_reference_member() {
   Type_reference_memberContext *_localctx = _tracker.createInstance<Type_reference_memberContext>(_ctx, getState());
   enterRule(_localctx, 318, KerMLParser::RuleType_reference_member);
@@ -14216,6 +15499,14 @@ void KerMLParser::Type_result_memberContext::exitRule(tree::ParseTreeListener *l
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitType_result_member(this);
+}
+
+
+std::any KerMLParser::Type_result_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitType_result_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Type_result_memberContext* KerMLParser::type_result_member() {
@@ -14271,6 +15562,14 @@ void KerMLParser::Type_referenceContext::exitRule(tree::ParseTreeListener *liste
     parserListener->exitType_reference(this);
 }
 
+
+std::any KerMLParser::Type_referenceContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitType_reference(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Type_referenceContext* KerMLParser::type_reference() {
   Type_referenceContext *_localctx = _tracker.createInstance<Type_referenceContext>(_ctx, getState());
   enterRule(_localctx, 322, KerMLParser::RuleType_reference);
@@ -14322,6 +15621,14 @@ void KerMLParser::Reference_typingContext::exitRule(tree::ParseTreeListener *lis
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitReference_typing(this);
+}
+
+
+std::any KerMLParser::Reference_typingContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitReference_typing(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Reference_typingContext* KerMLParser::reference_typing() {
@@ -14379,6 +15686,14 @@ void KerMLParser::Primary_expressionsContext::exitRule(tree::ParseTreeListener *
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitPrimary_expressions(this);
+}
+
+
+std::any KerMLParser::Primary_expressionsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitPrimary_expressions(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Primary_expressionsContext* KerMLParser::primary_expressions() {
@@ -14447,6 +15762,14 @@ void KerMLParser::Primary_expressionContext::exitRule(tree::ParseTreeListener *l
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitPrimary_expression(this);
+}
+
+
+std::any KerMLParser::Primary_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitPrimary_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Primary_expressionContext* KerMLParser::primary_expression() {
@@ -14519,6 +15842,14 @@ void KerMLParser::Primary_argument_valueContext::exitRule(tree::ParseTreeListene
     parserListener->exitPrimary_argument_value(this);
 }
 
+
+std::any KerMLParser::Primary_argument_valueContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitPrimary_argument_value(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Primary_argument_valueContext* KerMLParser::primary_argument_value() {
   Primary_argument_valueContext *_localctx = _tracker.createInstance<Primary_argument_valueContext>(_ctx, getState());
   enterRule(_localctx, 330, KerMLParser::RulePrimary_argument_value);
@@ -14572,6 +15903,14 @@ void KerMLParser::Primary_argumentContext::exitRule(tree::ParseTreeListener *lis
     parserListener->exitPrimary_argument(this);
 }
 
+
+std::any KerMLParser::Primary_argumentContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitPrimary_argument(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Primary_argumentContext* KerMLParser::primary_argument() {
   Primary_argumentContext *_localctx = _tracker.createInstance<Primary_argumentContext>(_ctx, getState());
   enterRule(_localctx, 332, KerMLParser::RulePrimary_argument);
@@ -14623,6 +15962,14 @@ void KerMLParser::Primary_argument_memberContext::exitRule(tree::ParseTreeListen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitPrimary_argument_member(this);
+}
+
+
+std::any KerMLParser::Primary_argument_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitPrimary_argument_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Primary_argument_memberContext* KerMLParser::primary_argument_member() {
@@ -14700,6 +16047,14 @@ void KerMLParser::Non_feature_chain_primary_expressionContext::exitRule(tree::Pa
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitNon_feature_chain_primary_expression(this);
+}
+
+
+std::any KerMLParser::Non_feature_chain_primary_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNon_feature_chain_primary_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Non_feature_chain_primary_expressionContext* KerMLParser::non_feature_chain_primary_expression() {
@@ -14807,6 +16162,14 @@ void KerMLParser::Non_feature_chain_primary_argument_valueContext::exitRule(tree
     parserListener->exitNon_feature_chain_primary_argument_value(this);
 }
 
+
+std::any KerMLParser::Non_feature_chain_primary_argument_valueContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNon_feature_chain_primary_argument_value(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Non_feature_chain_primary_argument_valueContext* KerMLParser::non_feature_chain_primary_argument_value() {
   Non_feature_chain_primary_argument_valueContext *_localctx = _tracker.createInstance<Non_feature_chain_primary_argument_valueContext>(_ctx, getState());
   enterRule(_localctx, 338, KerMLParser::RuleNon_feature_chain_primary_argument_value);
@@ -14860,6 +16223,14 @@ void KerMLParser::Non_feature_chain_primary_argumentContext::exitRule(tree::Pars
     parserListener->exitNon_feature_chain_primary_argument(this);
 }
 
+
+std::any KerMLParser::Non_feature_chain_primary_argumentContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNon_feature_chain_primary_argument(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Non_feature_chain_primary_argumentContext* KerMLParser::non_feature_chain_primary_argument() {
   Non_feature_chain_primary_argumentContext *_localctx = _tracker.createInstance<Non_feature_chain_primary_argumentContext>(_ctx, getState());
   enterRule(_localctx, 340, KerMLParser::RuleNon_feature_chain_primary_argument);
@@ -14911,6 +16282,14 @@ void KerMLParser::Non_feature_chain_primary_argument_memberContext::exitRule(tre
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitNon_feature_chain_primary_argument_member(this);
+}
+
+
+std::any KerMLParser::Non_feature_chain_primary_argument_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNon_feature_chain_primary_argument_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Non_feature_chain_primary_argument_memberContext* KerMLParser::non_feature_chain_primary_argument_member() {
@@ -14972,6 +16351,14 @@ void KerMLParser::Bracket_expressionContext::exitRule(tree::ParseTreeListener *l
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitBracket_expression(this);
+}
+
+
+std::any KerMLParser::Bracket_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBracket_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Bracket_expressionContext* KerMLParser::bracket_expression() {
@@ -15043,6 +16430,14 @@ void KerMLParser::Index_expressionContext::exitRule(tree::ParseTreeListener *lis
     parserListener->exitIndex_expression(this);
 }
 
+
+std::any KerMLParser::Index_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitIndex_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Index_expressionContext* KerMLParser::index_expression() {
   Index_expressionContext *_localctx = _tracker.createInstance<Index_expressionContext>(_ctx, getState());
   enterRule(_localctx, 346, KerMLParser::RuleIndex_expression);
@@ -15110,6 +16505,14 @@ void KerMLParser::Sequence_expressionContext::exitRule(tree::ParseTreeListener *
     parserListener->exitSequence_expression(this);
 }
 
+
+std::any KerMLParser::Sequence_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSequence_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Sequence_expressionContext* KerMLParser::sequence_expression() {
   Sequence_expressionContext *_localctx = _tracker.createInstance<Sequence_expressionContext>(_ctx, getState());
   enterRule(_localctx, 348, KerMLParser::RuleSequence_expression);
@@ -15173,6 +16576,14 @@ void KerMLParser::Sequence_expression_listContext::exitRule(tree::ParseTreeListe
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitSequence_expression_list(this);
+}
+
+
+std::any KerMLParser::Sequence_expression_listContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSequence_expression_list(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Sequence_expression_listContext* KerMLParser::sequence_expression_list() {
@@ -15262,6 +16673,14 @@ void KerMLParser::Sequence_operator_expressionContext::exitRule(tree::ParseTreeL
     parserListener->exitSequence_operator_expression(this);
 }
 
+
+std::any KerMLParser::Sequence_operator_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSequence_operator_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Sequence_operator_expressionContext* KerMLParser::sequence_operator_expression() {
   Sequence_operator_expressionContext *_localctx = _tracker.createInstance<Sequence_operator_expressionContext>(_ctx, getState());
   enterRule(_localctx, 352, KerMLParser::RuleSequence_operator_expression);
@@ -15319,6 +16738,14 @@ void KerMLParser::Sequence_expression_list_memberContext::exitRule(tree::ParseTr
     parserListener->exitSequence_expression_list_member(this);
 }
 
+
+std::any KerMLParser::Sequence_expression_list_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSequence_expression_list_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Sequence_expression_list_memberContext* KerMLParser::sequence_expression_list_member() {
   Sequence_expression_list_memberContext *_localctx = _tracker.createInstance<Sequence_expression_list_memberContext>(_ctx, getState());
   enterRule(_localctx, 354, KerMLParser::RuleSequence_expression_list_member);
@@ -15374,6 +16801,14 @@ void KerMLParser::Feature_chain_expressionContext::exitRule(tree::ParseTreeListe
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFeature_chain_expression(this);
+}
+
+
+std::any KerMLParser::Feature_chain_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_chain_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Feature_chain_expressionContext* KerMLParser::feature_chain_expression() {
@@ -15435,6 +16870,14 @@ void KerMLParser::Collect_expressionContext::exitRule(tree::ParseTreeListener *l
     parserListener->exitCollect_expression(this);
 }
 
+
+std::any KerMLParser::Collect_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitCollect_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Collect_expressionContext* KerMLParser::collect_expression() {
   Collect_expressionContext *_localctx = _tracker.createInstance<Collect_expressionContext>(_ctx, getState());
   enterRule(_localctx, 358, KerMLParser::RuleCollect_expression);
@@ -15494,6 +16937,14 @@ void KerMLParser::Select_expressionContext::exitRule(tree::ParseTreeListener *li
     parserListener->exitSelect_expression(this);
 }
 
+
+std::any KerMLParser::Select_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSelect_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Select_expressionContext* KerMLParser::select_expression() {
   Select_expressionContext *_localctx = _tracker.createInstance<Select_expressionContext>(_ctx, getState());
   enterRule(_localctx, 360, KerMLParser::RuleSelect_expression);
@@ -15528,8 +16979,8 @@ KerMLParser::Function_operation_expressionContext::Function_operation_expression
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* KerMLParser::Function_operation_expressionContext::SYMBOL_ARROOW() {
-  return getToken(KerMLParser::SYMBOL_ARROOW, 0);
+tree::TerminalNode* KerMLParser::Function_operation_expressionContext::SYMBOL_ARROW() {
+  return getToken(KerMLParser::SYMBOL_ARROW, 0);
 }
 
 KerMLParser::Reference_typingContext* KerMLParser::Function_operation_expressionContext::reference_typing() {
@@ -15565,6 +17016,14 @@ void KerMLParser::Function_operation_expressionContext::exitRule(tree::ParseTree
     parserListener->exitFunction_operation_expression(this);
 }
 
+
+std::any KerMLParser::Function_operation_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFunction_operation_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Function_operation_expressionContext* KerMLParser::function_operation_expression() {
   Function_operation_expressionContext *_localctx = _tracker.createInstance<Function_operation_expressionContext>(_ctx, getState());
   enterRule(_localctx, 362, KerMLParser::RuleFunction_operation_expression);
@@ -15579,7 +17038,7 @@ KerMLParser::Function_operation_expressionContext* KerMLParser::function_operati
   try {
     enterOuterAlt(_localctx, 1);
     setState(1677);
-    match(KerMLParser::SYMBOL_ARROOW);
+    match(KerMLParser::SYMBOL_ARROW);
     setState(1678);
     reference_typing();
     setState(1682);
@@ -15644,6 +17103,14 @@ void KerMLParser::Body_argument_memberContext::exitRule(tree::ParseTreeListener 
     parserListener->exitBody_argument_member(this);
 }
 
+
+std::any KerMLParser::Body_argument_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBody_argument_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Body_argument_memberContext* KerMLParser::body_argument_member() {
   Body_argument_memberContext *_localctx = _tracker.createInstance<Body_argument_memberContext>(_ctx, getState());
   enterRule(_localctx, 364, KerMLParser::RuleBody_argument_member);
@@ -15695,6 +17162,14 @@ void KerMLParser::Body_argumentContext::exitRule(tree::ParseTreeListener *listen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitBody_argument(this);
+}
+
+
+std::any KerMLParser::Body_argumentContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBody_argument(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Body_argumentContext* KerMLParser::body_argument() {
@@ -15750,6 +17225,14 @@ void KerMLParser::Body_argument_valueContext::exitRule(tree::ParseTreeListener *
     parserListener->exitBody_argument_value(this);
 }
 
+
+std::any KerMLParser::Body_argument_valueContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBody_argument_value(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Body_argument_valueContext* KerMLParser::body_argument_value() {
   Body_argument_valueContext *_localctx = _tracker.createInstance<Body_argument_valueContext>(_ctx, getState());
   enterRule(_localctx, 368, KerMLParser::RuleBody_argument_value);
@@ -15801,6 +17284,14 @@ void KerMLParser::Body_expression_memberContext::exitRule(tree::ParseTreeListene
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitBody_expression_member(this);
+}
+
+
+std::any KerMLParser::Body_expression_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBody_expression_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Body_expression_memberContext* KerMLParser::body_expression_member() {
@@ -15856,6 +17347,14 @@ void KerMLParser::Function_reference_argument_memberContext::exitRule(tree::Pars
     parserListener->exitFunction_reference_argument_member(this);
 }
 
+
+std::any KerMLParser::Function_reference_argument_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFunction_reference_argument_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Function_reference_argument_memberContext* KerMLParser::function_reference_argument_member() {
   Function_reference_argument_memberContext *_localctx = _tracker.createInstance<Function_reference_argument_memberContext>(_ctx, getState());
   enterRule(_localctx, 372, KerMLParser::RuleFunction_reference_argument_member);
@@ -15907,6 +17406,14 @@ void KerMLParser::Function_reference_argumentContext::exitRule(tree::ParseTreeLi
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFunction_reference_argument(this);
+}
+
+
+std::any KerMLParser::Function_reference_argumentContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFunction_reference_argument(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Function_reference_argumentContext* KerMLParser::function_reference_argument() {
@@ -15962,6 +17469,14 @@ void KerMLParser::Function_reference_arugment_valueContext::exitRule(tree::Parse
     parserListener->exitFunction_reference_arugment_value(this);
 }
 
+
+std::any KerMLParser::Function_reference_arugment_valueContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFunction_reference_arugment_value(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Function_reference_arugment_valueContext* KerMLParser::function_reference_arugment_value() {
   Function_reference_arugment_valueContext *_localctx = _tracker.createInstance<Function_reference_arugment_valueContext>(_ctx, getState());
   enterRule(_localctx, 376, KerMLParser::RuleFunction_reference_arugment_value);
@@ -16013,6 +17528,14 @@ void KerMLParser::Function_reference_expressionContext::exitRule(tree::ParseTree
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFunction_reference_expression(this);
+}
+
+
+std::any KerMLParser::Function_reference_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFunction_reference_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Function_reference_expressionContext* KerMLParser::function_reference_expression() {
@@ -16068,6 +17591,14 @@ void KerMLParser::Function_reference_memberContext::exitRule(tree::ParseTreeList
     parserListener->exitFunction_reference_member(this);
 }
 
+
+std::any KerMLParser::Function_reference_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFunction_reference_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Function_reference_memberContext* KerMLParser::function_reference_member() {
   Function_reference_memberContext *_localctx = _tracker.createInstance<Function_reference_memberContext>(_ctx, getState());
   enterRule(_localctx, 380, KerMLParser::RuleFunction_reference_member);
@@ -16119,6 +17650,14 @@ void KerMLParser::Function_referenceContext::exitRule(tree::ParseTreeListener *l
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFunction_reference(this);
+}
+
+
+std::any KerMLParser::Function_referenceContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFunction_reference(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Function_referenceContext* KerMLParser::function_reference() {
@@ -16176,6 +17715,14 @@ void KerMLParser::Feature_chain_memberContext::exitRule(tree::ParseTreeListener 
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFeature_chain_member(this);
+}
+
+
+std::any KerMLParser::Feature_chain_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_chain_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Feature_chain_memberContext* KerMLParser::feature_chain_member() {
@@ -16246,6 +17793,14 @@ void KerMLParser::Owned_feature_chain_memberContext::exitRule(tree::ParseTreeLis
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitOwned_feature_chain_member(this);
+}
+
+
+std::any KerMLParser::Owned_feature_chain_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_feature_chain_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Owned_feature_chain_memberContext* KerMLParser::owned_feature_chain_member() {
@@ -16319,6 +17874,14 @@ void KerMLParser::Base_expressionContext::exitRule(tree::ParseTreeListener *list
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitBase_expression(this);
+}
+
+
+std::any KerMLParser::Base_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBase_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Base_expressionContext* KerMLParser::base_expression() {
@@ -16427,6 +17990,14 @@ void KerMLParser::Null_expressionContext::exitRule(tree::ParseTreeListener *list
     parserListener->exitNull_expression(this);
 }
 
+
+std::any KerMLParser::Null_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNull_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Null_expressionContext* KerMLParser::null_expression() {
   Null_expressionContext *_localctx = _tracker.createInstance<Null_expressionContext>(_ctx, getState());
   enterRule(_localctx, 390, KerMLParser::RuleNull_expression);
@@ -16499,6 +18070,14 @@ void KerMLParser::Feature_reference_expressionContext::exitRule(tree::ParseTreeL
     parserListener->exitFeature_reference_expression(this);
 }
 
+
+std::any KerMLParser::Feature_reference_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_reference_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Feature_reference_expressionContext* KerMLParser::feature_reference_expression() {
   Feature_reference_expressionContext *_localctx = _tracker.createInstance<Feature_reference_expressionContext>(_ctx, getState());
   enterRule(_localctx, 392, KerMLParser::RuleFeature_reference_expression);
@@ -16552,6 +18131,14 @@ void KerMLParser::Feature_reference_memberContext::exitRule(tree::ParseTreeListe
     parserListener->exitFeature_reference_member(this);
 }
 
+
+std::any KerMLParser::Feature_reference_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_reference_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Feature_reference_memberContext* KerMLParser::feature_reference_member() {
   Feature_reference_memberContext *_localctx = _tracker.createInstance<Feature_reference_memberContext>(_ctx, getState());
   enterRule(_localctx, 394, KerMLParser::RuleFeature_reference_member);
@@ -16603,6 +18190,14 @@ void KerMLParser::Feature_referenceContext::exitRule(tree::ParseTreeListener *li
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFeature_reference(this);
+}
+
+
+std::any KerMLParser::Feature_referenceContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_reference(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Feature_referenceContext* KerMLParser::feature_reference() {
@@ -16666,6 +18261,14 @@ void KerMLParser::Metadata_access_expressionContext::exitRule(tree::ParseTreeLis
     parserListener->exitMetadata_access_expression(this);
 }
 
+
+std::any KerMLParser::Metadata_access_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMetadata_access_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Metadata_access_expressionContext* KerMLParser::metadata_access_expression() {
   Metadata_access_expressionContext *_localctx = _tracker.createInstance<Metadata_access_expressionContext>(_ctx, getState());
   enterRule(_localctx, 398, KerMLParser::RuleMetadata_access_expression);
@@ -16723,6 +18326,14 @@ void KerMLParser::Invocation_expressionContext::exitRule(tree::ParseTreeListener
     parserListener->exitInvocation_expression(this);
 }
 
+
+std::any KerMLParser::Invocation_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitInvocation_expression(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Invocation_expressionContext* KerMLParser::invocation_expression() {
   Invocation_expressionContext *_localctx = _tracker.createInstance<Invocation_expressionContext>(_ctx, getState());
   enterRule(_localctx, 400, KerMLParser::RuleInvocation_expression);
@@ -16778,6 +18389,14 @@ void KerMLParser::Internal_invocation_expressionContext::exitRule(tree::ParseTre
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitInternal_invocation_expression(this);
+}
+
+
+std::any KerMLParser::Internal_invocation_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitInternal_invocation_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Internal_invocation_expressionContext* KerMLParser::internal_invocation_expression() {
@@ -16845,6 +18464,14 @@ void KerMLParser::Argument_listContext::exitRule(tree::ParseTreeListener *listen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitArgument_list(this);
+}
+
+
+std::any KerMLParser::Argument_listContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitArgument_list(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Argument_listContext* KerMLParser::argument_list() {
@@ -16933,6 +18560,14 @@ void KerMLParser::Positional_argument_listContext::exitRule(tree::ParseTreeListe
     parserListener->exitPositional_argument_list(this);
 }
 
+
+std::any KerMLParser::Positional_argument_listContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitPositional_argument_list(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Positional_argument_listContext* KerMLParser::positional_argument_list() {
   Positional_argument_listContext *_localctx = _tracker.createInstance<Positional_argument_listContext>(_ctx, getState());
   enterRule(_localctx, 406, KerMLParser::RulePositional_argument_list);
@@ -17011,6 +18646,14 @@ void KerMLParser::Named_argument_listContext::exitRule(tree::ParseTreeListener *
     parserListener->exitNamed_argument_list(this);
 }
 
+
+std::any KerMLParser::Named_argument_listContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNamed_argument_list(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Named_argument_listContext* KerMLParser::named_argument_list() {
   Named_argument_listContext *_localctx = _tracker.createInstance<Named_argument_listContext>(_ctx, getState());
   enterRule(_localctx, 408, KerMLParser::RuleNamed_argument_list);
@@ -17077,6 +18720,14 @@ void KerMLParser::Named_argument_memberContext::exitRule(tree::ParseTreeListener
     parserListener->exitNamed_argument_member(this);
 }
 
+
+std::any KerMLParser::Named_argument_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNamed_argument_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Named_argument_memberContext* KerMLParser::named_argument_member() {
   Named_argument_memberContext *_localctx = _tracker.createInstance<Named_argument_memberContext>(_ctx, getState());
   enterRule(_localctx, 410, KerMLParser::RuleNamed_argument_member);
@@ -17109,8 +18760,8 @@ KerMLParser::Named_argumentContext::Named_argumentContext(ParserRuleContext *par
   : ParserRuleContext(parent, invokingState) {
 }
 
-KerMLParser::Paramenter_redefinitionContext* KerMLParser::Named_argumentContext::paramenter_redefinition() {
-  return getRuleContext<KerMLParser::Paramenter_redefinitionContext>(0);
+KerMLParser::Parameter_redefinitionContext* KerMLParser::Named_argumentContext::parameter_redefinition() {
+  return getRuleContext<KerMLParser::Parameter_redefinitionContext>(0);
 }
 
 tree::TerminalNode* KerMLParser::Named_argumentContext::SYMBOL_EQUALS() {
@@ -17138,6 +18789,14 @@ void KerMLParser::Named_argumentContext::exitRule(tree::ParseTreeListener *liste
     parserListener->exitNamed_argument(this);
 }
 
+
+std::any KerMLParser::Named_argumentContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitNamed_argument(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Named_argumentContext* KerMLParser::named_argument() {
   Named_argumentContext *_localctx = _tracker.createInstance<Named_argumentContext>(_ctx, getState());
   enterRule(_localctx, 412, KerMLParser::RuleNamed_argument);
@@ -17152,7 +18811,7 @@ KerMLParser::Named_argumentContext* KerMLParser::named_argument() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(1763);
-    paramenter_redefinition();
+    parameter_redefinition();
 
     setState(1764);
     match(KerMLParser::SYMBOL_EQUALS);
@@ -17169,36 +18828,44 @@ KerMLParser::Named_argumentContext* KerMLParser::named_argument() {
   return _localctx;
 }
 
-//----------------- Paramenter_redefinitionContext ------------------------------------------------------------------
+//----------------- Parameter_redefinitionContext ------------------------------------------------------------------
 
-KerMLParser::Paramenter_redefinitionContext::Paramenter_redefinitionContext(ParserRuleContext *parent, size_t invokingState)
+KerMLParser::Parameter_redefinitionContext::Parameter_redefinitionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-KerMLParser::Qualified_nameContext* KerMLParser::Paramenter_redefinitionContext::qualified_name() {
+KerMLParser::Qualified_nameContext* KerMLParser::Parameter_redefinitionContext::qualified_name() {
   return getRuleContext<KerMLParser::Qualified_nameContext>(0);
 }
 
 
-size_t KerMLParser::Paramenter_redefinitionContext::getRuleIndex() const {
-  return KerMLParser::RuleParamenter_redefinition;
+size_t KerMLParser::Parameter_redefinitionContext::getRuleIndex() const {
+  return KerMLParser::RuleParameter_redefinition;
 }
 
-void KerMLParser::Paramenter_redefinitionContext::enterRule(tree::ParseTreeListener *listener) {
+void KerMLParser::Parameter_redefinitionContext::enterRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->enterParamenter_redefinition(this);
+    parserListener->enterParameter_redefinition(this);
 }
 
-void KerMLParser::Paramenter_redefinitionContext::exitRule(tree::ParseTreeListener *listener) {
+void KerMLParser::Parameter_redefinitionContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->exitParamenter_redefinition(this);
+    parserListener->exitParameter_redefinition(this);
 }
 
-KerMLParser::Paramenter_redefinitionContext* KerMLParser::paramenter_redefinition() {
-  Paramenter_redefinitionContext *_localctx = _tracker.createInstance<Paramenter_redefinitionContext>(_ctx, getState());
-  enterRule(_localctx, 414, KerMLParser::RuleParamenter_redefinition);
+
+std::any KerMLParser::Parameter_redefinitionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitParameter_redefinition(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+KerMLParser::Parameter_redefinitionContext* KerMLParser::parameter_redefinition() {
+  Parameter_redefinitionContext *_localctx = _tracker.createInstance<Parameter_redefinitionContext>(_ctx, getState());
+  enterRule(_localctx, 414, KerMLParser::RuleParameter_redefinition);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -17247,6 +18914,14 @@ void KerMLParser::Body_expressionContext::exitRule(tree::ParseTreeListener *list
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitBody_expression(this);
+}
+
+
+std::any KerMLParser::Body_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBody_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Body_expressionContext* KerMLParser::body_expression() {
@@ -17300,6 +18975,14 @@ void KerMLParser::Expression_body_memberContext::exitRule(tree::ParseTreeListene
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitExpression_body_member(this);
+}
+
+
+std::any KerMLParser::Expression_body_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitExpression_body_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Expression_body_memberContext* KerMLParser::expression_body_member() {
@@ -17361,6 +19044,14 @@ void KerMLParser::Expression_bodyContext::exitRule(tree::ParseTreeListener *list
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitExpression_body(this);
+}
+
+
+std::any KerMLParser::Expression_bodyContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitExpression_body(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Expression_bodyContext* KerMLParser::expression_body() {
@@ -17438,6 +19129,14 @@ void KerMLParser::Literal_expressionContext::exitRule(tree::ParseTreeListener *l
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitLiteral_expression(this);
+}
+
+
+std::any KerMLParser::Literal_expressionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitLiteral_expression(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Literal_expressionContext* KerMLParser::literal_expression() {
@@ -17548,6 +19247,14 @@ void KerMLParser::Literal_booleanContext::exitRule(tree::ParseTreeListener *list
     parserListener->exitLiteral_boolean(this);
 }
 
+
+std::any KerMLParser::Literal_booleanContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitLiteral_boolean(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Literal_booleanContext* KerMLParser::literal_boolean() {
   Literal_booleanContext *_localctx = _tracker.createInstance<Literal_booleanContext>(_ctx, getState());
   enterRule(_localctx, 424, KerMLParser::RuleLiteral_boolean);
@@ -17603,6 +19310,14 @@ void KerMLParser::Boolean_valueContext::exitRule(tree::ParseTreeListener *listen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitBoolean_value(this);
+}
+
+
+std::any KerMLParser::Boolean_valueContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitBoolean_value(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Boolean_valueContext* KerMLParser::boolean_value() {
@@ -17668,6 +19383,14 @@ void KerMLParser::Literal_stringContext::exitRule(tree::ParseTreeListener *liste
     parserListener->exitLiteral_string(this);
 }
 
+
+std::any KerMLParser::Literal_stringContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitLiteral_string(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Literal_stringContext* KerMLParser::literal_string() {
   Literal_stringContext *_localctx = _tracker.createInstance<Literal_stringContext>(_ctx, getState());
   enterRule(_localctx, 428, KerMLParser::RuleLiteral_string);
@@ -17721,6 +19444,14 @@ void KerMLParser::Literal_integerContext::exitRule(tree::ParseTreeListener *list
     parserListener->exitLiteral_integer(this);
 }
 
+
+std::any KerMLParser::Literal_integerContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitLiteral_integer(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Literal_integerContext* KerMLParser::literal_integer() {
   Literal_integerContext *_localctx = _tracker.createInstance<Literal_integerContext>(_ctx, getState());
   enterRule(_localctx, 430, KerMLParser::RuleLiteral_integer);
@@ -17772,6 +19503,14 @@ void KerMLParser::Literal_realContext::exitRule(tree::ParseTreeListener *listene
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitLiteral_real(this);
+}
+
+
+std::any KerMLParser::Literal_realContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitLiteral_real(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Literal_realContext* KerMLParser::literal_real() {
@@ -17837,6 +19576,14 @@ void KerMLParser::Real_valueContext::exitRule(tree::ParseTreeListener *listener)
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitReal_value(this);
+}
+
+
+std::any KerMLParser::Real_valueContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitReal_value(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Real_valueContext* KerMLParser::real_value() {
@@ -17930,6 +19677,14 @@ void KerMLParser::Literal_infinityContext::exitRule(tree::ParseTreeListener *lis
     parserListener->exitLiteral_infinity(this);
 }
 
+
+std::any KerMLParser::Literal_infinityContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitLiteral_infinity(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Literal_infinityContext* KerMLParser::literal_infinity() {
   Literal_infinityContext *_localctx = _tracker.createInstance<Literal_infinityContext>(_ctx, getState());
   enterRule(_localctx, 436, KerMLParser::RuleLiteral_infinity);
@@ -17993,6 +19748,14 @@ void KerMLParser::InteractionContext::exitRule(tree::ParseTreeListener *listener
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitInteraction(this);
+}
+
+
+std::any KerMLParser::InteractionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitInteraction(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::InteractionContext* KerMLParser::interaction() {
@@ -18066,6 +19829,14 @@ void KerMLParser::Item_flowContext::exitRule(tree::ParseTreeListener *listener) 
     parserListener->exitItem_flow(this);
 }
 
+
+std::any KerMLParser::Item_flowContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitItem_flow(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Item_flowContext* KerMLParser::item_flow() {
   Item_flowContext *_localctx = _tracker.createInstance<Item_flowContext>(_ctx, getState());
   enterRule(_localctx, 440, KerMLParser::RuleItem_flow);
@@ -18108,8 +19879,8 @@ KerMLParser::Feature_prefixContext* KerMLParser::Succession_item_flowContext::fe
   return getRuleContext<KerMLParser::Feature_prefixContext>(0);
 }
 
-tree::TerminalNode* KerMLParser::Succession_item_flowContext::KEYWORD_SUCCSESSION() {
-  return getToken(KerMLParser::KEYWORD_SUCCSESSION, 0);
+tree::TerminalNode* KerMLParser::Succession_item_flowContext::KEYWORD_SUCCESSION() {
+  return getToken(KerMLParser::KEYWORD_SUCCESSION, 0);
 }
 
 tree::TerminalNode* KerMLParser::Succession_item_flowContext::KEYWORD_FLOW() {
@@ -18141,6 +19912,14 @@ void KerMLParser::Succession_item_flowContext::exitRule(tree::ParseTreeListener 
     parserListener->exitSuccession_item_flow(this);
 }
 
+
+std::any KerMLParser::Succession_item_flowContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitSuccession_item_flow(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Succession_item_flowContext* KerMLParser::succession_item_flow() {
   Succession_item_flowContext *_localctx = _tracker.createInstance<Succession_item_flowContext>(_ctx, getState());
   enterRule(_localctx, 442, KerMLParser::RuleSuccession_item_flow);
@@ -18157,7 +19936,7 @@ KerMLParser::Succession_item_flowContext* KerMLParser::succession_item_flow() {
     setState(1815);
     feature_prefix();
     setState(1816);
-    match(KerMLParser::KEYWORD_SUCCSESSION);
+    match(KerMLParser::KEYWORD_SUCCESSION);
     setState(1817);
     match(KerMLParser::KEYWORD_FLOW);
     setState(1818);
@@ -18232,6 +20011,14 @@ void KerMLParser::Item_flow_declarationContext::exitRule(tree::ParseTreeListener
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitItem_flow_declaration(this);
+}
+
+
+std::any KerMLParser::Item_flow_declarationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitItem_flow_declaration(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Item_flow_declarationContext* KerMLParser::item_flow_declaration() {
@@ -18350,6 +20137,14 @@ void KerMLParser::Item_feature_memberContext::exitRule(tree::ParseTreeListener *
     parserListener->exitItem_feature_member(this);
 }
 
+
+std::any KerMLParser::Item_feature_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitItem_feature_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Item_feature_memberContext* KerMLParser::item_feature_member() {
   Item_feature_memberContext *_localctx = _tracker.createInstance<Item_feature_memberContext>(_ctx, getState());
   enterRule(_localctx, 446, KerMLParser::RuleItem_feature_member);
@@ -18386,8 +20181,8 @@ KerMLParser::IdentificationContext* KerMLParser::Item_featureContext::identifica
   return getRuleContext<KerMLParser::IdentificationContext>(0);
 }
 
-KerMLParser::Item_feature_specilization_partContext* KerMLParser::Item_featureContext::item_feature_specilization_part() {
-  return getRuleContext<KerMLParser::Item_feature_specilization_partContext>(0);
+KerMLParser::Item_feature_specialization_partContext* KerMLParser::Item_featureContext::item_feature_specialization_part() {
+  return getRuleContext<KerMLParser::Item_feature_specialization_partContext>(0);
 }
 
 KerMLParser::Value_partContext* KerMLParser::Item_featureContext::value_part() {
@@ -18419,6 +20214,14 @@ void KerMLParser::Item_featureContext::exitRule(tree::ParseTreeListener *listene
     parserListener->exitItem_feature(this);
 }
 
+
+std::any KerMLParser::Item_featureContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitItem_feature(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Item_featureContext* KerMLParser::item_feature() {
   Item_featureContext *_localctx = _tracker.createInstance<Item_featureContext>(_ctx, getState());
   enterRule(_localctx, 448, KerMLParser::RuleItem_feature);
@@ -18440,7 +20243,7 @@ KerMLParser::Item_featureContext* KerMLParser::item_feature() {
       setState(1847);
       identification();
       setState(1848);
-      item_feature_specilization_part();
+      item_feature_specialization_part();
       setState(1850);
       _errHandler->sync(this);
 
@@ -18498,44 +20301,52 @@ KerMLParser::Item_featureContext* KerMLParser::item_feature() {
   return _localctx;
 }
 
-//----------------- Item_feature_specilization_partContext ------------------------------------------------------------------
+//----------------- Item_feature_specialization_partContext ------------------------------------------------------------------
 
-KerMLParser::Item_feature_specilization_partContext::Item_feature_specilization_partContext(ParserRuleContext *parent, size_t invokingState)
+KerMLParser::Item_feature_specialization_partContext::Item_feature_specialization_partContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-KerMLParser::Multiplicity_partContext* KerMLParser::Item_feature_specilization_partContext::multiplicity_part() {
+KerMLParser::Multiplicity_partContext* KerMLParser::Item_feature_specialization_partContext::multiplicity_part() {
   return getRuleContext<KerMLParser::Multiplicity_partContext>(0);
 }
 
-std::vector<KerMLParser::Feature_specilizationContext *> KerMLParser::Item_feature_specilization_partContext::feature_specilization() {
-  return getRuleContexts<KerMLParser::Feature_specilizationContext>();
+std::vector<KerMLParser::Feature_specializationContext *> KerMLParser::Item_feature_specialization_partContext::feature_specialization() {
+  return getRuleContexts<KerMLParser::Feature_specializationContext>();
 }
 
-KerMLParser::Feature_specilizationContext* KerMLParser::Item_feature_specilization_partContext::feature_specilization(size_t i) {
-  return getRuleContext<KerMLParser::Feature_specilizationContext>(i);
+KerMLParser::Feature_specializationContext* KerMLParser::Item_feature_specialization_partContext::feature_specialization(size_t i) {
+  return getRuleContext<KerMLParser::Feature_specializationContext>(i);
 }
 
 
-size_t KerMLParser::Item_feature_specilization_partContext::getRuleIndex() const {
-  return KerMLParser::RuleItem_feature_specilization_part;
+size_t KerMLParser::Item_feature_specialization_partContext::getRuleIndex() const {
+  return KerMLParser::RuleItem_feature_specialization_part;
 }
 
-void KerMLParser::Item_feature_specilization_partContext::enterRule(tree::ParseTreeListener *listener) {
+void KerMLParser::Item_feature_specialization_partContext::enterRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->enterItem_feature_specilization_part(this);
+    parserListener->enterItem_feature_specialization_part(this);
 }
 
-void KerMLParser::Item_feature_specilization_partContext::exitRule(tree::ParseTreeListener *listener) {
+void KerMLParser::Item_feature_specialization_partContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->exitItem_feature_specilization_part(this);
+    parserListener->exitItem_feature_specialization_part(this);
 }
 
-KerMLParser::Item_feature_specilization_partContext* KerMLParser::item_feature_specilization_part() {
-  Item_feature_specilization_partContext *_localctx = _tracker.createInstance<Item_feature_specilization_partContext>(_ctx, getState());
-  enterRule(_localctx, 450, KerMLParser::RuleItem_feature_specilization_part);
+
+std::any KerMLParser::Item_feature_specialization_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitItem_feature_specialization_part(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+KerMLParser::Item_feature_specialization_partContext* KerMLParser::item_feature_specialization_part() {
+  Item_feature_specialization_partContext *_localctx = _tracker.createInstance<Item_feature_specialization_partContext>(_ctx, getState());
+  enterRule(_localctx, 450, KerMLParser::RuleItem_feature_specialization_part);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -18553,7 +20364,7 @@ KerMLParser::Item_feature_specilization_partContext* KerMLParser::item_feature_s
     while ((((_la & ~ 0x3fULL) == 0) &&
       ((1ULL << _la) & 108086391056892136) != 0) || _la == KerMLParser::KEYWORD_OUT) {
       setState(1862);
-      feature_specilization();
+      feature_specialization();
       setState(1867);
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -18568,7 +20379,7 @@ KerMLParser::Item_feature_specilization_partContext* KerMLParser::item_feature_s
     if ((((_la & ~ 0x3fULL) == 0) &&
       ((1ULL << _la) & 108086391056892136) != 0) || _la == KerMLParser::KEYWORD_OUT) {
       setState(1869);
-      feature_specilization();
+      feature_specialization();
     }
    
   }
@@ -18606,6 +20417,14 @@ void KerMLParser::Item_flow_end_memberContext::exitRule(tree::ParseTreeListener 
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitItem_flow_end_member(this);
+}
+
+
+std::any KerMLParser::Item_flow_end_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitItem_flow_end_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Item_flow_end_memberContext* KerMLParser::item_flow_end_member() {
@@ -18667,6 +20486,14 @@ void KerMLParser::Item_flow_endContext::exitRule(tree::ParseTreeListener *listen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitItem_flow_end(this);
+}
+
+
+std::any KerMLParser::Item_flow_endContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitItem_flow_end(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Item_flow_endContext* KerMLParser::item_flow_end() {
@@ -18737,6 +20564,14 @@ void KerMLParser::Item_flow_feature_memberContext::exitRule(tree::ParseTreeListe
     parserListener->exitItem_flow_feature_member(this);
 }
 
+
+std::any KerMLParser::Item_flow_feature_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitItem_flow_feature_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Item_flow_feature_memberContext* KerMLParser::item_flow_feature_member() {
   Item_flow_feature_memberContext *_localctx = _tracker.createInstance<Item_flow_feature_memberContext>(_ctx, getState());
   enterRule(_localctx, 456, KerMLParser::RuleItem_flow_feature_member);
@@ -18788,6 +20623,14 @@ void KerMLParser::Item_flow_featureContext::exitRule(tree::ParseTreeListener *li
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitItem_flow_feature(this);
+}
+
+
+std::any KerMLParser::Item_flow_featureContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitItem_flow_feature(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Item_flow_featureContext* KerMLParser::item_flow_feature() {
@@ -18843,6 +20686,14 @@ void KerMLParser::Item_flow_redefinitionContext::exitRule(tree::ParseTreeListene
     parserListener->exitItem_flow_redefinition(this);
 }
 
+
+std::any KerMLParser::Item_flow_redefinitionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitItem_flow_redefinition(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Item_flow_redefinitionContext* KerMLParser::item_flow_redefinition() {
   Item_flow_redefinitionContext *_localctx = _tracker.createInstance<Item_flow_redefinitionContext>(_ctx, getState());
   enterRule(_localctx, 460, KerMLParser::RuleItem_flow_redefinition);
@@ -18894,6 +20745,14 @@ void KerMLParser::Value_partContext::exitRule(tree::ParseTreeListener *listener)
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitValue_part(this);
+}
+
+
+std::any KerMLParser::Value_partContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitValue_part(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Value_partContext* KerMLParser::value_part() {
@@ -18959,6 +20818,14 @@ void KerMLParser::Feature_valueContext::exitRule(tree::ParseTreeListener *listen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFeature_value(this);
+}
+
+
+std::any KerMLParser::Feature_valueContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_value(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Feature_valueContext* KerMLParser::feature_value() {
@@ -19062,6 +20929,14 @@ void KerMLParser::Feature_assignmentContext::exitRule(tree::ParseTreeListener *l
     parserListener->exitFeature_assignment(this);
 }
 
+
+std::any KerMLParser::Feature_assignmentContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitFeature_assignment(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Feature_assignmentContext* KerMLParser::feature_assignment() {
   Feature_assignmentContext *_localctx = _tracker.createInstance<Feature_assignmentContext>(_ctx, getState());
   enterRule(_localctx, 466, KerMLParser::RuleFeature_assignment);
@@ -19119,6 +20994,14 @@ void KerMLParser::MultiplicityContext::exitRule(tree::ParseTreeListener *listene
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitMultiplicity(this);
+}
+
+
+std::any KerMLParser::MultiplicityContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMultiplicity(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::MultiplicityContext* KerMLParser::multiplicity() {
@@ -19203,6 +21086,14 @@ void KerMLParser::Multiplicity_subsetContext::exitRule(tree::ParseTreeListener *
     parserListener->exitMultiplicity_subset(this);
 }
 
+
+std::any KerMLParser::Multiplicity_subsetContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMultiplicity_subset(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Multiplicity_subsetContext* KerMLParser::multiplicity_subset() {
   Multiplicity_subsetContext *_localctx = _tracker.createInstance<Multiplicity_subsetContext>(_ctx, getState());
   enterRule(_localctx, 470, KerMLParser::RuleMultiplicity_subset);
@@ -19274,6 +21165,14 @@ void KerMLParser::Multiplicity_rangeContext::exitRule(tree::ParseTreeListener *l
     parserListener->exitMultiplicity_range(this);
 }
 
+
+std::any KerMLParser::Multiplicity_rangeContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMultiplicity_range(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Multiplicity_rangeContext* KerMLParser::multiplicity_range() {
   Multiplicity_rangeContext *_localctx = _tracker.createInstance<Multiplicity_rangeContext>(_ctx, getState());
   enterRule(_localctx, 472, KerMLParser::RuleMultiplicity_range);
@@ -19333,6 +21232,14 @@ void KerMLParser::Owned_multiplicityContext::exitRule(tree::ParseTreeListener *l
     parserListener->exitOwned_multiplicity(this);
 }
 
+
+std::any KerMLParser::Owned_multiplicityContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_multiplicity(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Owned_multiplicityContext* KerMLParser::owned_multiplicity() {
   Owned_multiplicityContext *_localctx = _tracker.createInstance<Owned_multiplicityContext>(_ctx, getState());
   enterRule(_localctx, 474, KerMLParser::RuleOwned_multiplicity);
@@ -19384,6 +21291,14 @@ void KerMLParser::Owned_multiplicity_rangeContext::exitRule(tree::ParseTreeListe
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitOwned_multiplicity_range(this);
+}
+
+
+std::any KerMLParser::Owned_multiplicity_rangeContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitOwned_multiplicity_range(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Owned_multiplicity_rangeContext* KerMLParser::owned_multiplicity_range() {
@@ -19453,6 +21368,14 @@ void KerMLParser::Multiplicity_boundsContext::exitRule(tree::ParseTreeListener *
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitMultiplicity_bounds(this);
+}
+
+
+std::any KerMLParser::Multiplicity_boundsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMultiplicity_bounds(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Multiplicity_boundsContext* KerMLParser::multiplicity_bounds() {
@@ -19527,6 +21450,14 @@ void KerMLParser::Multiplicity_expression_memberContext::exitRule(tree::ParseTre
     parserListener->exitMultiplicity_expression_member(this);
 }
 
+
+std::any KerMLParser::Multiplicity_expression_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMultiplicity_expression_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Multiplicity_expression_memberContext* KerMLParser::multiplicity_expression_member() {
   Multiplicity_expression_memberContext *_localctx = _tracker.createInstance<Multiplicity_expression_memberContext>(_ctx, getState());
   enterRule(_localctx, 480, KerMLParser::RuleMultiplicity_expression_member);
@@ -19582,6 +21513,14 @@ void KerMLParser::Internal_multiplicity_expression_memberContext::exitRule(tree:
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitInternal_multiplicity_expression_member(this);
+}
+
+
+std::any KerMLParser::Internal_multiplicity_expression_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitInternal_multiplicity_expression_member(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Internal_multiplicity_expression_memberContext* KerMLParser::internal_multiplicity_expression_member() {
@@ -19685,6 +21624,14 @@ void KerMLParser::MetaclassContext::exitRule(tree::ParseTreeListener *listener) 
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitMetaclass(this);
+}
+
+
+std::any KerMLParser::MetaclassContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMetaclass(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::MetaclassContext* KerMLParser::metaclass() {
@@ -19796,6 +21743,14 @@ void KerMLParser::Prefix_metadata_annotationContext::exitRule(tree::ParseTreeLis
     parserListener->exitPrefix_metadata_annotation(this);
 }
 
+
+std::any KerMLParser::Prefix_metadata_annotationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitPrefix_metadata_annotation(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Prefix_metadata_annotationContext* KerMLParser::prefix_metadata_annotation() {
   Prefix_metadata_annotationContext *_localctx = _tracker.createInstance<Prefix_metadata_annotationContext>(_ctx, getState());
   enterRule(_localctx, 486, KerMLParser::RulePrefix_metadata_annotation);
@@ -19855,6 +21810,14 @@ void KerMLParser::Prefix_metadata_memberContext::exitRule(tree::ParseTreeListene
     parserListener->exitPrefix_metadata_member(this);
 }
 
+
+std::any KerMLParser::Prefix_metadata_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitPrefix_metadata_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Prefix_metadata_memberContext* KerMLParser::prefix_metadata_member() {
   Prefix_metadata_memberContext *_localctx = _tracker.createInstance<Prefix_metadata_memberContext>(_ctx, getState());
   enterRule(_localctx, 488, KerMLParser::RulePrefix_metadata_member);
@@ -19908,6 +21871,14 @@ void KerMLParser::Prefix_metadata_featureContext::exitRule(tree::ParseTreeListen
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitPrefix_metadata_feature(this);
+}
+
+
+std::any KerMLParser::Prefix_metadata_featureContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitPrefix_metadata_feature(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Prefix_metadata_featureContext* KerMLParser::prefix_metadata_feature() {
@@ -19993,6 +21964,14 @@ void KerMLParser::Metadata_featureContext::exitRule(tree::ParseTreeListener *lis
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitMetadata_feature(this);
+}
+
+
+std::any KerMLParser::Metadata_featureContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMetadata_feature(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Metadata_featureContext* KerMLParser::metadata_feature() {
@@ -20092,6 +22071,14 @@ void KerMLParser::Metadata_feature_declarationContext::exitRule(tree::ParseTreeL
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitMetadata_feature_declaration(this);
+}
+
+
+std::any KerMLParser::Metadata_feature_declarationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMetadata_feature_declaration(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Metadata_feature_declarationContext* KerMLParser::metadata_feature_declaration() {
@@ -20196,6 +22183,14 @@ void KerMLParser::Metadata_bodyContext::exitRule(tree::ParseTreeListener *listen
     parserListener->exitMetadata_body(this);
 }
 
+
+std::any KerMLParser::Metadata_bodyContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMetadata_body(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Metadata_bodyContext* KerMLParser::metadata_body() {
   Metadata_bodyContext *_localctx = _tracker.createInstance<Metadata_bodyContext>(_ctx, getState());
   enterRule(_localctx, 496, KerMLParser::RuleMetadata_body);
@@ -20295,6 +22290,14 @@ void KerMLParser::Metadata_body_elementContext::exitRule(tree::ParseTreeListener
     parserListener->exitMetadata_body_element(this);
 }
 
+
+std::any KerMLParser::Metadata_body_elementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMetadata_body_element(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Metadata_body_elementContext* KerMLParser::metadata_body_element() {
   Metadata_body_elementContext *_localctx = _tracker.createInstance<Metadata_body_elementContext>(_ctx, getState());
   enterRule(_localctx, 498, KerMLParser::RuleMetadata_body_element);
@@ -20379,6 +22382,14 @@ void KerMLParser::Metadata_body_feature_memberContext::exitRule(tree::ParseTreeL
     parserListener->exitMetadata_body_feature_member(this);
 }
 
+
+std::any KerMLParser::Metadata_body_feature_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMetadata_body_feature_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Metadata_body_feature_memberContext* KerMLParser::metadata_body_feature_member() {
   Metadata_body_feature_memberContext *_localctx = _tracker.createInstance<Metadata_body_feature_memberContext>(_ctx, getState());
   enterRule(_localctx, 500, KerMLParser::RuleMetadata_body_feature_member);
@@ -20454,6 +22465,14 @@ void KerMLParser::Metadata_body_featureContext::exitRule(tree::ParseTreeListener
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitMetadata_body_feature(this);
+}
+
+
+std::any KerMLParser::Metadata_body_featureContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMetadata_body_feature(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Metadata_body_featureContext* KerMLParser::metadata_body_feature() {
@@ -20572,6 +22591,14 @@ void KerMLParser::PackageContext::exitRule(tree::ParseTreeListener *listener) {
     parserListener->exitPackage(this);
 }
 
+
+std::any KerMLParser::PackageContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitPackage(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::PackageContext* KerMLParser::package() {
   PackageContext *_localctx = _tracker.createInstance<PackageContext>(_ctx, getState());
   enterRule(_localctx, 504, KerMLParser::RulePackage);
@@ -20658,6 +22685,14 @@ void KerMLParser::Library_packageContext::exitRule(tree::ParseTreeListener *list
     parserListener->exitLibrary_package(this);
 }
 
+
+std::any KerMLParser::Library_packageContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitLibrary_package(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Library_packageContext* KerMLParser::library_package() {
   Library_packageContext *_localctx = _tracker.createInstance<Library_packageContext>(_ctx, getState());
   enterRule(_localctx, 506, KerMLParser::RuleLibrary_package);
@@ -20736,6 +22771,14 @@ void KerMLParser::Package_declarationContext::exitRule(tree::ParseTreeListener *
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitPackage_declaration(this);
+}
+
+
+std::any KerMLParser::Package_declarationContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitPackage_declaration(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Package_declarationContext* KerMLParser::package_declaration() {
@@ -20832,6 +22875,14 @@ void KerMLParser::Package_bodyContext::exitRule(tree::ParseTreeListener *listene
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitPackage_body(this);
+}
+
+
+std::any KerMLParser::Package_bodyContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitPackage_body(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Package_bodyContext* KerMLParser::package_body() {
@@ -20954,6 +23005,14 @@ void KerMLParser::Element_filter_memberContext::exitRule(tree::ParseTreeListener
     parserListener->exitElement_filter_member(this);
 }
 
+
+std::any KerMLParser::Element_filter_memberContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitElement_filter_member(this);
+  else
+    return visitor->visitChildren(this);
+}
+
 KerMLParser::Element_filter_memberContext* KerMLParser::element_filter_member() {
   Element_filter_memberContext *_localctx = _tracker.createInstance<Element_filter_memberContext>(_ctx, getState());
   enterRule(_localctx, 512, KerMLParser::RuleElement_filter_member);
@@ -21027,6 +23086,14 @@ void KerMLParser::Meta_assignmentContext::exitRule(tree::ParseTreeListener *list
   auto parserListener = dynamic_cast<KerMLListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitMeta_assignment(this);
+}
+
+
+std::any KerMLParser::Meta_assignmentContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<KerMLVisitor*>(visitor))
+    return parserVisitor->visitMeta_assignment(this);
+  else
+    return visitor->visitChildren(this);
 }
 
 KerMLParser::Meta_assignmentContext* KerMLParser::meta_assignment() {

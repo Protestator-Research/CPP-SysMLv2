@@ -1,11 +1,14 @@
 
+    #include <sysmlv2/sysmlv2file_global.h>
+
+
 // Generated from ./KerML.g4 by ANTLR 4.13.2
 
 #pragma once
 
 
-#include <antlr4-runtime.h>
-#include <sysmlv2/sysmlv2file_global.h>
+#include "antlr4-runtime.h"
+
 
 
 
@@ -13,7 +16,7 @@ class SYSMLV2FILE_EXPORT KerMLParser : public antlr4::Parser {
 public:
   enum {
     T__0 = 1, MULTIPLICITY_PART_ELEMENTS = 2, TYPED_BY = 3, SPECIALIZES = 4, 
-    SUBSETS = 5, REFERENCES = 6, REDEFINES = 7, CONJUNGATES = 8, KEYWORD_ABOUT = 9, 
+    SUBSETS = 5, REFERENCES = 6, REDEFINES = 7, CONJUGATES = 8, KEYWORD_ABOUT = 9, 
     KEYWORD_ABSTRACT = 10, KEYWORD_ALIAS = 11, KEYWORD_ALL = 12, KEYWORD_AND = 13, 
     KEYWORD_AS = 14, KEYWORD_ASSOC = 15, KEYWORD_BEHAVIOR = 16, KEYWORD_BINDING = 17, 
     KEYWORD_BOOL = 18, KEYWORD_BY = 19, KEYWORD_CHAINS = 20, KEYWORD_CLASS = 21, 
@@ -35,9 +38,9 @@ public:
     KEYWORD_PORTION = 76, KEYWORD_PREDICATE = 77, KEYWORD_PRIVATE = 78, 
     KEYWORD_PROTECTED = 79, KEYWORD_PUBLIC = 80, KEYWORD_READONLY = 81, 
     KEYWORD_REDEFINES = 82, KEYWORD_REDEFINITION = 83, KEYWORD_REFERENCES = 84, 
-    KEYWORD_REP = 85, KEYWORD_RETURN = 86, KEYWORD_SPECILIZATION = 87, KEYWORD_SPECIALIZES = 88, 
-    KEYWORD_STEP = 89, KEYWORD_STRUCT = 90, KEYWORD_SUBCLASSIFIER = 91, 
-    KEYWORD_SUBSET = 92, KEYWORD_SUBSETS = 93, KEYWORD_SUBTYPE = 94, KEYWORD_SUCCSESSION = 95, 
+    KEYWORD_REP = 85, KEYWORD_RETURN = 86, KEYWORD_SPECIALIZATION = 87, 
+    KEYWORD_SPECIALIZES = 88, KEYWORD_STEP = 89, KEYWORD_STRUCT = 90, KEYWORD_SUBCLASSIFIER = 91, 
+    KEYWORD_SUBSET = 92, KEYWORD_SUBSETS = 93, KEYWORD_SUBTYPE = 94, KEYWORD_SUCCESSION = 95, 
     KEYWORD_THEN = 96, KEYWORD_TO = 97, KEYWORD_TRUE = 98, KEYWORD_TYPE = 99, 
     KEYWORD_TYPED = 100, KEYWORD_TYPING = 101, KEYWORD_UNIONS = 102, KEYWORD_XOR = 103, 
     KEYWORD_VAR = 104, KEYWORD_LOCALE = 105, KEYWORD_STANDARD = 106, KEYWORD_LIBRARY = 107, 
@@ -45,13 +48,13 @@ public:
     REGULAR_COMMENT = 111, SYMBOL_COMMENT_BLOCK_START = 112, SYMBOL_NOTE_BLOCK_START = 113, 
     SYMBOL_COMMENT_BLOCK_END = 114, SYMBOL_STATEMENT_DELIMITER = 115, SYMBOL_STAR = 116, 
     SYMBOL_NAMESPACE_SUBSET = 117, SYMBOL_TYPED_BY = 118, SYMBOL_SPECIALIZES = 119, 
-    SYMBOL_REFERENCES = 120, SYMBOL_REDEFINES = 121, SYMBOL_CONJUNGATES = 122, 
+    SYMBOL_REFERENCES = 120, SYMBOL_REDEFINES = 121, SYMBOL_CONJUGATES = 122, 
     SYMBOL_ROUND_BRACKET_OPEN = 123, SYMBOL_ROUND_BRACKET_CLOSE = 124, SYMBOL_CURLY_BRACKET_OPEN = 125, 
     SYMBOL_CURLY_BRACKET_CLOSE = 126, SYMBOL_SQUARE_BRACKET_OPEN = 127, 
     SYMBOL_SQUARE_BRACKET_CLOSE = 128, SYMBOL_COMMA = 129, SYMBOL_AT = 130, 
     SYMBOL_HASHTAG = 131, SYMBOL_MOD = 132, SYMBOL_AND = 133, SYMBOL_UPPER = 134, 
     SYMBOL_VERTICAL_LINE = 135, SYMBOL_DOUBLE_STAR = 136, SYMBOL_PLUS = 137, 
-    SYMBOL_MINUS = 138, SYMBOL_SLASH = 139, SYMBOL_ARROOW = 140, SYMBOL_DOT = 141, 
+    SYMBOL_MINUS = 138, SYMBOL_SLASH = 139, SYMBOL_ARROW = 140, SYMBOL_DOT = 141, 
     SYMBOL_DDOT = 142, SYMBOL_SMALLER = 143, SYMBOL_SMALLER_EQUAL = 144, 
     SYMBOL_ASSIGN = 145, SYMBOL_DEF_ASSIGN = 146, SYMBOL_EQUALS = 147, SYMBOL_IFF_EQUALS = 148, 
     SYMBOL_NOT_EQUALS = 149, SYMBOL_IFF_NOT_EQUALS = 150, SYMBOL_GREATER = 151, 
@@ -62,7 +65,7 @@ public:
 
   enum {
     RuleStart = 0, RuleStartRule = 1, RuleElements = 2, RuleIdentification = 3, 
-    RuleRelationship_body = 4, RuleRelationship_onwed_elements = 5, RuleRelationship_owned_element = 6, 
+    RuleRelationship_body = 4, RuleRelationship_owned_elements = 5, RuleRelationship_owned_element = 6, 
     RuleOwned_related_element = 7, RuleDependency = 8, RuleAnnotation = 9, 
     RuleOwned_annotation = 10, RuleAnnotating_element = 11, RuleComment = 12, 
     RuleDocumentation = 13, RuleTextual_representation = 14, RuleRoot_namespace = 15, 
@@ -86,7 +89,7 @@ public:
     RuleFeature = 69, RuleFeature_prefix = 70, RuleFeature_direction = 71, 
     RuleFeature_declaration = 72, RuleFeature_identification = 73, RuleFeature_relationship_part = 74, 
     RuleChaining_part = 75, RuleInverting_part = 76, RuleType_featuring_part = 77, 
-    RuleFeature_specialization_part = 78, RuleMultiplicity_part = 79, RuleFeature_specilization = 80, 
+    RuleFeature_specialization_part = 78, RuleMultiplicity_part = 79, RuleFeature_specialization = 80, 
     RuleTypings = 81, RuleTyped_by = 82, RuleSubsettings = 83, RuleSubsets = 84, 
     RuleReferences = 85, RuleRedefinitions = 86, RuleRedefines = 87, RuleFeature_typing = 88, 
     RuleOwned_feature_typing = 89, RuleSubsetting = 90, RuleOwned_subsetting = 91, 
@@ -133,13 +136,13 @@ public:
     RuleFeature_reference = 198, RuleMetadata_access_expression = 199, RuleInvocation_expression = 200, 
     RuleInternal_invocation_expression = 201, RuleArgument_list = 202, RulePositional_argument_list = 203, 
     RuleNamed_argument_list = 204, RuleNamed_argument_member = 205, RuleNamed_argument = 206, 
-    RuleParamenter_redefinition = 207, RuleBody_expression = 208, RuleExpression_body_member = 209, 
+    RuleParameter_redefinition = 207, RuleBody_expression = 208, RuleExpression_body_member = 209, 
     RuleExpression_body = 210, RuleLiteral_expression = 211, RuleLiteral_boolean = 212, 
     RuleBoolean_value = 213, RuleLiteral_string = 214, RuleLiteral_integer = 215, 
     RuleLiteral_real = 216, RuleReal_value = 217, RuleLiteral_infinity = 218, 
     RuleInteraction = 219, RuleItem_flow = 220, RuleSuccession_item_flow = 221, 
     RuleItem_flow_declaration = 222, RuleItem_feature_member = 223, RuleItem_feature = 224, 
-    RuleItem_feature_specilization_part = 225, RuleItem_flow_end_member = 226, 
+    RuleItem_feature_specialization_part = 225, RuleItem_flow_end_member = 226, 
     RuleItem_flow_end = 227, RuleItem_flow_feature_member = 228, RuleItem_flow_feature = 229, 
     RuleItem_flow_redefinition = 230, RuleValue_part = 231, RuleFeature_value = 232, 
     RuleFeature_assignment = 233, RuleMultiplicity = 234, RuleMultiplicity_subset = 235, 
@@ -176,7 +179,7 @@ public:
   class ElementsContext;
   class IdentificationContext;
   class Relationship_bodyContext;
-  class Relationship_onwed_elementsContext;
+  class Relationship_owned_elementsContext;
   class Relationship_owned_elementContext;
   class Owned_related_elementContext;
   class DependencyContext;
@@ -251,7 +254,7 @@ public:
   class Type_featuring_partContext;
   class Feature_specialization_partContext;
   class Multiplicity_partContext;
-  class Feature_specilizationContext;
+  class Feature_specializationContext;
   class TypingsContext;
   class Typed_byContext;
   class SubsettingsContext;
@@ -378,7 +381,7 @@ public:
   class Named_argument_listContext;
   class Named_argument_memberContext;
   class Named_argumentContext;
-  class Paramenter_redefinitionContext;
+  class Parameter_redefinitionContext;
   class Body_expressionContext;
   class Expression_body_memberContext;
   class Expression_bodyContext;
@@ -396,7 +399,7 @@ public:
   class Item_flow_declarationContext;
   class Item_feature_memberContext;
   class Item_featureContext;
-  class Item_feature_specilization_partContext;
+  class Item_feature_specialization_partContext;
   class Item_flow_end_memberContext;
   class Item_flow_endContext;
   class Item_flow_feature_memberContext;
@@ -430,7 +433,7 @@ public:
   class Element_filter_memberContext;
   class Meta_assignmentContext; 
 
-  class  StartContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT StartContext : public antlr4::ParserRuleContext {
   public:
     StartContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -439,12 +442,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   StartContext* start();
 
-  class  StartRuleContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT StartRuleContext : public antlr4::ParserRuleContext {
   public:
     StartRuleContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -452,12 +457,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   StartRuleContext* startRule();
 
-  class  ElementsContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT ElementsContext : public antlr4::ParserRuleContext {
   public:
     ElementsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -466,12 +473,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   ElementsContext* elements();
 
-  class  IdentificationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT IdentificationContext : public antlr4::ParserRuleContext {
   public:
     IdentificationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -482,42 +491,48 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   IdentificationContext* identification();
 
-  class  Relationship_bodyContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Relationship_bodyContext : public antlr4::ParserRuleContext {
   public:
     Relationship_bodyContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *SYMBOL_STATEMENT_DELIMITER();
     antlr4::tree::TerminalNode *SYMBOL_CURLY_BRACKET_OPEN();
-    Relationship_onwed_elementsContext *relationship_onwed_elements();
+    Relationship_owned_elementsContext *relationship_owned_elements();
     antlr4::tree::TerminalNode *SYMBOL_CURLY_BRACKET_CLOSE();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Relationship_bodyContext* relationship_body();
 
-  class  Relationship_onwed_elementsContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Relationship_owned_elementsContext : public antlr4::ParserRuleContext {
   public:
-    Relationship_onwed_elementsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    Relationship_owned_elementsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<Relationship_owned_elementContext *> relationship_owned_element();
     Relationship_owned_elementContext* relationship_owned_element(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
-  Relationship_onwed_elementsContext* relationship_onwed_elements();
+  Relationship_owned_elementsContext* relationship_owned_elements();
 
-  class  Relationship_owned_elementContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Relationship_owned_elementContext : public antlr4::ParserRuleContext {
   public:
     Relationship_owned_elementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -526,12 +541,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Relationship_owned_elementContext* relationship_owned_element();
 
-  class  Owned_related_elementContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_related_elementContext : public antlr4::ParserRuleContext {
   public:
     Owned_related_elementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -540,12 +557,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_related_elementContext* owned_related_element();
 
-  class  DependencyContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT DependencyContext : public antlr4::ParserRuleContext {
   public:
     DependencyContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -563,12 +582,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   DependencyContext* dependency();
 
-  class  AnnotationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT AnnotationContext : public antlr4::ParserRuleContext {
   public:
     AnnotationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -576,12 +597,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   AnnotationContext* annotation();
 
-  class  Owned_annotationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_annotationContext : public antlr4::ParserRuleContext {
   public:
     Owned_annotationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -589,12 +612,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_annotationContext* owned_annotation();
 
-  class  Annotating_elementContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Annotating_elementContext : public antlr4::ParserRuleContext {
   public:
     Annotating_elementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -605,12 +630,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Annotating_elementContext* annotating_element();
 
-  class  CommentContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT CommentContext : public antlr4::ParserRuleContext {
   public:
     CommentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -627,12 +654,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   CommentContext* comment();
 
-  class  DocumentationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT DocumentationContext : public antlr4::ParserRuleContext {
   public:
     DocumentationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -644,12 +673,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   DocumentationContext* documentation();
 
-  class  Textual_representationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Textual_representationContext : public antlr4::ParserRuleContext {
   public:
     Textual_representationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -661,12 +692,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Textual_representationContext* textual_representation();
 
-  class  Root_namespaceContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Root_namespaceContext : public antlr4::ParserRuleContext {
   public:
     Root_namespaceContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -674,12 +707,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Root_namespaceContext* root_namespace();
 
-  class  NamespaceContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT NamespaceContext : public antlr4::ParserRuleContext {
   public:
     NamespaceContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -690,12 +725,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   NamespaceContext* namespace_();
 
-  class  Namespace_declarationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Namespace_declarationContext : public antlr4::ParserRuleContext {
   public:
     Namespace_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -704,12 +741,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Namespace_declarationContext* namespace_declaration();
 
-  class  Namespace_bodyContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Namespace_bodyContext : public antlr4::ParserRuleContext {
   public:
     Namespace_bodyContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -720,12 +759,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Namespace_bodyContext* namespace_body();
 
-  class  Namespace_body_elementsContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Namespace_body_elementsContext : public antlr4::ParserRuleContext {
   public:
     Namespace_body_elementsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -733,12 +774,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Namespace_body_elementsContext* namespace_body_elements();
 
-  class  Namespace_body_elementContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Namespace_body_elementContext : public antlr4::ParserRuleContext {
   public:
     Namespace_body_elementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -748,12 +791,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Namespace_body_elementContext* namespace_body_element();
 
-  class  Member_prefixContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Member_prefixContext : public antlr4::ParserRuleContext {
   public:
     Member_prefixContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -761,12 +806,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Member_prefixContext* member_prefix();
 
-  class  Visibility_indicatorContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Visibility_indicatorContext : public antlr4::ParserRuleContext {
   public:
     Visibility_indicatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -776,12 +823,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Visibility_indicatorContext* visibility_indicator();
 
-  class  Namespace_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Namespace_memberContext : public antlr4::ParserRuleContext {
   public:
     Namespace_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -790,12 +839,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Namespace_memberContext* namespace_member();
 
-  class  Non_feature_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Non_feature_memberContext : public antlr4::ParserRuleContext {
   public:
     Non_feature_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -803,12 +854,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Non_feature_memberContext* non_feature_member();
 
-  class  Namespace_feature_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Namespace_feature_memberContext : public antlr4::ParserRuleContext {
   public:
     Namespace_feature_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -817,12 +870,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Namespace_feature_memberContext* namespace_feature_member();
 
-  class  Alias_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Alias_memberContext : public antlr4::ParserRuleContext {
   public:
     Alias_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -838,12 +893,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Alias_memberContext* alias_member();
 
-  class  Qualified_nameContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Qualified_nameContext : public antlr4::ParserRuleContext {
   public:
     Qualified_nameContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -854,12 +911,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Qualified_nameContext* qualified_name();
 
-  class  Namespace_importContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Namespace_importContext : public antlr4::ParserRuleContext {
   public:
     Namespace_importContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -871,12 +930,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Namespace_importContext* namespace_import();
 
-  class  Import_declarationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Import_declarationContext : public antlr4::ParserRuleContext {
   public:
     Import_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -885,12 +946,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Import_declarationContext* import_declaration();
 
-  class  Membership_importContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Membership_importContext : public antlr4::ParserRuleContext {
   public:
     Membership_importContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -901,12 +964,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Membership_importContext* membership_import();
 
-  class  Filter_packageContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Filter_packageContext : public antlr4::ParserRuleContext {
   public:
     Filter_packageContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -915,12 +980,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Filter_packageContext* filter_package();
 
-  class  Filter_package_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Filter_package_memberContext : public antlr4::ParserRuleContext {
   public:
     Filter_package_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -930,12 +997,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Filter_package_memberContext* filter_package_member();
 
-  class  ElementContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT ElementContext : public antlr4::ParserRuleContext {
   public:
     ElementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -946,12 +1015,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   ElementContext* element();
 
-  class  Non_feature_elementContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Non_feature_elementContext : public antlr4::ParserRuleContext {
   public:
     Non_feature_elementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -985,12 +1056,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Non_feature_elementContext* non_feature_element();
 
-  class  Feature_elementContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_elementContext : public antlr4::ParserRuleContext {
   public:
     Feature_elementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1007,12 +1080,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_elementContext* feature_element();
 
-  class  Additional_optionsContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Additional_optionsContext : public antlr4::ParserRuleContext {
   public:
     Additional_optionsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1020,12 +1095,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Additional_optionsContext* additional_options();
 
-  class  TypeContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT TypeContext : public antlr4::ParserRuleContext {
   public:
     TypeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1036,12 +1113,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   TypeContext* type();
 
-  class  Type_prefixContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Type_prefixContext : public antlr4::ParserRuleContext {
   public:
     Type_prefixContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1051,12 +1130,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Type_prefixContext* type_prefix();
 
-  class  Type_declarationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Type_declarationContext : public antlr4::ParserRuleContext {
   public:
     Type_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1072,12 +1153,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Type_declarationContext* type_declaration();
 
-  class  Specialization_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Specialization_partContext : public antlr4::ParserRuleContext {
   public:
     Specialization_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1089,26 +1172,30 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Specialization_partContext* specialization_part();
 
-  class  Conjugation_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Conjugation_partContext : public antlr4::ParserRuleContext {
   public:
     Conjugation_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *CONJUNGATES();
+    antlr4::tree::TerminalNode *CONJUGATES();
     Owned_conjugationContext *owned_conjugation();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Conjugation_partContext* conjugation_part();
 
-  class  Type_relationship_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Type_relationship_partContext : public antlr4::ParserRuleContext {
   public:
     Type_relationship_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1119,12 +1206,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Type_relationship_partContext* type_relationship_part();
 
-  class  Disjoining_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Disjoining_partContext : public antlr4::ParserRuleContext {
   public:
     Disjoining_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1137,12 +1226,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Disjoining_partContext* disjoining_part();
 
-  class  Unioning_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Unioning_partContext : public antlr4::ParserRuleContext {
   public:
     Unioning_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1154,12 +1245,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Unioning_partContext* unioning_part();
 
-  class  Intersecting_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Intersecting_partContext : public antlr4::ParserRuleContext {
   public:
     Intersecting_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1171,12 +1264,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Intersecting_partContext* intersecting_part();
 
-  class  Differencing_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Differencing_partContext : public antlr4::ParserRuleContext {
   public:
     Differencing_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1188,12 +1283,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Differencing_partContext* differencing_part();
 
-  class  Type_bodyContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Type_bodyContext : public antlr4::ParserRuleContext {
   public:
     Type_bodyContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1204,12 +1301,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Type_bodyContext* type_body();
 
-  class  Type_body_elementsContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Type_body_elementsContext : public antlr4::ParserRuleContext {
   public:
     Type_body_elementsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1218,12 +1317,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Type_body_elementsContext* type_body_elements();
 
-  class  Type_body_elementContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Type_body_elementContext : public antlr4::ParserRuleContext {
   public:
     Type_body_elementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1231,12 +1332,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Type_body_elementContext* type_body_element();
 
-  class  SpecializationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT SpecializationContext : public antlr4::ParserRuleContext {
   public:
     SpecializationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1245,17 +1348,19 @@ public:
     antlr4::tree::TerminalNode *SPECIALIZES();
     General_typeContext *general_type();
     Relationship_bodyContext *relationship_body();
-    antlr4::tree::TerminalNode *KEYWORD_SPECILIZATION();
+    antlr4::tree::TerminalNode *KEYWORD_SPECIALIZATION();
     IdentificationContext *identification();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   SpecializationContext* specialization();
 
-  class  Owned_specializationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_specializationContext : public antlr4::ParserRuleContext {
   public:
     Owned_specializationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1263,12 +1368,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_specializationContext* owned_specialization();
 
-  class  Specific_typeContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Specific_typeContext : public antlr4::ParserRuleContext {
   public:
     Specific_typeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1277,12 +1384,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Specific_typeContext* specific_type();
 
-  class  General_typeContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT General_typeContext : public antlr4::ParserRuleContext {
   public:
     General_typeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1291,17 +1400,19 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   General_typeContext* general_type();
 
-  class  ConjunctionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT ConjunctionContext : public antlr4::ParserRuleContext {
   public:
     ConjunctionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *KEYWORD_CONJUGATE();
-    antlr4::tree::TerminalNode *CONJUNGATES();
+    antlr4::tree::TerminalNode *CONJUGATES();
     Relationship_bodyContext *relationship_body();
     std::vector<Qualified_nameContext *> qualified_name();
     Qualified_nameContext* qualified_name(size_t i);
@@ -1312,12 +1423,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   ConjunctionContext* conjunction();
 
-  class  Owned_conjugationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_conjugationContext : public antlr4::ParserRuleContext {
   public:
     Owned_conjugationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1326,12 +1439,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_conjugationContext* owned_conjugation();
 
-  class  DisjoiningContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT DisjoiningContext : public antlr4::ParserRuleContext {
   public:
     DisjoiningContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1347,12 +1462,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   DisjoiningContext* disjoining();
 
-  class  Owned_disjoiningContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_disjoiningContext : public antlr4::ParserRuleContext {
   public:
     Owned_disjoiningContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1361,12 +1478,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_disjoiningContext* owned_disjoining();
 
-  class  UnioningContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT UnioningContext : public antlr4::ParserRuleContext {
   public:
     UnioningContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1375,12 +1494,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   UnioningContext* unioning();
 
-  class  IntersectingContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT IntersectingContext : public antlr4::ParserRuleContext {
   public:
     IntersectingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1389,12 +1510,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   IntersectingContext* intersecting();
 
-  class  DifferencingContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT DifferencingContext : public antlr4::ParserRuleContext {
   public:
     DifferencingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1403,12 +1526,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   DifferencingContext* differencing();
 
-  class  Feature_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_memberContext : public antlr4::ParserRuleContext {
   public:
     Feature_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1417,12 +1542,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_memberContext* feature_member();
 
-  class  Type_feature_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Type_feature_memberContext : public antlr4::ParserRuleContext {
   public:
     Type_feature_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1432,12 +1559,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Type_feature_memberContext* type_feature_member();
 
-  class  Owned_feature_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_feature_memberContext : public antlr4::ParserRuleContext {
   public:
     Owned_feature_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1446,12 +1575,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_feature_memberContext* owned_feature_member();
 
-  class  ClassifierContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT ClassifierContext : public antlr4::ParserRuleContext {
   public:
     ClassifierContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1462,12 +1593,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   ClassifierContext* classifier();
 
-  class  Classifier_declarationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Classifier_declarationContext : public antlr4::ParserRuleContext {
   public:
     Classifier_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1481,12 +1614,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Classifier_declarationContext* classifier_declaration();
 
-  class  Superclassing_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Superclassing_partContext : public antlr4::ParserRuleContext {
   public:
     Superclassing_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1498,12 +1633,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Superclassing_partContext* superclassing_part();
 
-  class  SubclassificationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT SubclassificationContext : public antlr4::ParserRuleContext {
   public:
     SubclassificationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1512,17 +1649,19 @@ public:
     Qualified_nameContext* qualified_name(size_t i);
     antlr4::tree::TerminalNode *SPECIALIZES();
     Relationship_bodyContext *relationship_body();
-    antlr4::tree::TerminalNode *KEYWORD_SPECILIZATION();
+    antlr4::tree::TerminalNode *KEYWORD_SPECIALIZATION();
     IdentificationContext *identification();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   SubclassificationContext* subclassification();
 
-  class  Owned_subclassificationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_subclassificationContext : public antlr4::ParserRuleContext {
   public:
     Owned_subclassificationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1530,12 +1669,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_subclassificationContext* owned_subclassification();
 
-  class  FeatureContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT FeatureContext : public antlr4::ParserRuleContext {
   public:
     FeatureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1550,12 +1691,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   FeatureContext* feature();
 
-  class  Feature_prefixContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_prefixContext : public antlr4::ParserRuleContext {
   public:
     Feature_prefixContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1572,12 +1715,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_prefixContext* feature_prefix();
 
-  class  Feature_directionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_directionContext : public antlr4::ParserRuleContext {
   public:
     Feature_directionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1587,12 +1732,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_directionContext* feature_direction();
 
-  class  Feature_declarationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_declarationContext : public antlr4::ParserRuleContext {
   public:
     Feature_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1606,12 +1753,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_declarationContext* feature_declaration();
 
-  class  Feature_identificationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_identificationContext : public antlr4::ParserRuleContext {
   public:
     Feature_identificationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1622,12 +1771,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_identificationContext* feature_identification();
 
-  class  Feature_relationship_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_relationship_partContext : public antlr4::ParserRuleContext {
   public:
     Feature_relationship_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1638,12 +1789,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_relationship_partContext* feature_relationship_part();
 
-  class  Chaining_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Chaining_partContext : public antlr4::ParserRuleContext {
   public:
     Chaining_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1653,12 +1806,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Chaining_partContext* chaining_part();
 
-  class  Inverting_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Inverting_partContext : public antlr4::ParserRuleContext {
   public:
     Inverting_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1668,12 +1823,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Inverting_partContext* inverting_part();
 
-  class  Type_featuring_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Type_featuring_partContext : public antlr4::ParserRuleContext {
   public:
     Type_featuring_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1686,27 +1843,31 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Type_featuring_partContext* type_featuring_part();
 
-  class  Feature_specialization_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_specialization_partContext : public antlr4::ParserRuleContext {
   public:
     Feature_specialization_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    std::vector<Feature_specilizationContext *> feature_specilization();
-    Feature_specilizationContext* feature_specilization(size_t i);
+    std::vector<Feature_specializationContext *> feature_specialization();
+    Feature_specializationContext* feature_specialization(size_t i);
     Multiplicity_partContext *multiplicity_part();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_specialization_partContext* feature_specialization_part();
 
-  class  Multiplicity_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Multiplicity_partContext : public antlr4::ParserRuleContext {
   public:
     Multiplicity_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1716,14 +1877,16 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Multiplicity_partContext* multiplicity_part();
 
-  class  Feature_specilizationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_specializationContext : public antlr4::ParserRuleContext {
   public:
-    Feature_specilizationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    Feature_specializationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     TypingsContext *typings();
     SubsettingsContext *subsettings();
@@ -1732,12 +1895,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
-  Feature_specilizationContext* feature_specilization();
+  Feature_specializationContext* feature_specialization();
 
-  class  TypingsContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT TypingsContext : public antlr4::ParserRuleContext {
   public:
     TypingsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1749,12 +1914,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   TypingsContext* typings();
 
-  class  Typed_byContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Typed_byContext : public antlr4::ParserRuleContext {
   public:
     Typed_byContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1763,12 +1930,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Typed_byContext* typed_by();
 
-  class  SubsettingsContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT SubsettingsContext : public antlr4::ParserRuleContext {
   public:
     SubsettingsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1780,12 +1949,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   SubsettingsContext* subsettings();
 
-  class  SubsetsContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT SubsetsContext : public antlr4::ParserRuleContext {
   public:
     SubsetsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1794,12 +1965,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   SubsetsContext* subsets();
 
-  class  ReferencesContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT ReferencesContext : public antlr4::ParserRuleContext {
   public:
     ReferencesContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1808,12 +1981,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   ReferencesContext* references();
 
-  class  RedefinitionsContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT RedefinitionsContext : public antlr4::ParserRuleContext {
   public:
     RedefinitionsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1823,12 +1998,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   RedefinitionsContext* redefinitions();
 
-  class  RedefinesContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT RedefinesContext : public antlr4::ParserRuleContext {
   public:
     RedefinesContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1838,12 +2015,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   RedefinesContext* redefines();
 
-  class  Feature_typingContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_typingContext : public antlr4::ParserRuleContext {
   public:
     Feature_typingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1852,17 +2031,19 @@ public:
     antlr4::tree::TerminalNode *TYPED_BY();
     General_typeContext *general_type();
     Relationship_bodyContext *relationship_body();
-    antlr4::tree::TerminalNode *KEYWORD_SPECILIZATION();
+    antlr4::tree::TerminalNode *KEYWORD_SPECIALIZATION();
     IdentificationContext *identification();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_typingContext* feature_typing();
 
-  class  Owned_feature_typingContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_feature_typingContext : public antlr4::ParserRuleContext {
   public:
     Owned_feature_typingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1870,12 +2051,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_feature_typingContext* owned_feature_typing();
 
-  class  SubsettingContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT SubsettingContext : public antlr4::ParserRuleContext {
   public:
     SubsettingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1883,19 +2066,21 @@ public:
     antlr4::tree::TerminalNode *SUBSETS();
     General_typeContext *general_type();
     Relationship_bodyContext *relationship_body();
-    antlr4::tree::TerminalNode *KEYWORD_SPECILIZATION();
+    antlr4::tree::TerminalNode *KEYWORD_SPECIALIZATION();
     IdentificationContext *identification();
     antlr4::tree::TerminalNode *KEYWORD_SUBSET();
     Multiplicity_partContext *multiplicity_part();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   SubsettingContext* subsetting();
 
-  class  Owned_subsettingContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_subsettingContext : public antlr4::ParserRuleContext {
   public:
     Owned_subsettingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1903,12 +2088,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_subsettingContext* owned_subsetting();
 
-  class  Owned_reference_subsettingContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_reference_subsettingContext : public antlr4::ParserRuleContext {
   public:
     Owned_reference_subsettingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1916,12 +2103,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_reference_subsettingContext* owned_reference_subsetting();
 
-  class  RedefinitionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT RedefinitionContext : public antlr4::ParserRuleContext {
   public:
     RedefinitionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1929,7 +2118,7 @@ public:
     Qualified_nameContext *qualified_name();
     Relationship_bodyContext *relationship_body();
     Feature_directionContext *feature_direction();
-    antlr4::tree::TerminalNode *KEYWORD_SPECILIZATION();
+    antlr4::tree::TerminalNode *KEYWORD_SPECIALIZATION();
     IdentificationContext *identification();
     antlr4::tree::TerminalNode *KEYWORD_REDEFINITION();
     Specific_typeContext *specific_type();
@@ -1940,12 +2129,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   RedefinitionContext* redefinition();
 
-  class  Owned_redefinitionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_redefinitionContext : public antlr4::ParserRuleContext {
   public:
     Owned_redefinitionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1953,12 +2144,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_redefinitionContext* owned_redefinition();
 
-  class  Owned_feature_chainContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_feature_chainContext : public antlr4::ParserRuleContext {
   public:
     Owned_feature_chainContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1966,12 +2159,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_feature_chainContext* owned_feature_chain();
 
-  class  Feature_chainContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_chainContext : public antlr4::ParserRuleContext {
   public:
     Feature_chainContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1982,12 +2177,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_chainContext* feature_chain();
 
-  class  Owned_feature_chainingContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_feature_chainingContext : public antlr4::ParserRuleContext {
   public:
     Owned_feature_chainingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1995,12 +2192,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_feature_chainingContext* owned_feature_chaining();
 
-  class  Feature_invertingContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_invertingContext : public antlr4::ParserRuleContext {
   public:
     Feature_invertingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2016,12 +2215,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_invertingContext* feature_inverting();
 
-  class  Owned_feature_invertingContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_feature_invertingContext : public antlr4::ParserRuleContext {
   public:
     Owned_feature_invertingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2030,12 +2231,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_feature_invertingContext* owned_feature_inverting();
 
-  class  Type_featuringContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Type_featuringContext : public antlr4::ParserRuleContext {
   public:
     Type_featuringContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2049,12 +2252,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Type_featuringContext* type_featuring();
 
-  class  Owned_type_featuringContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_type_featuringContext : public antlr4::ParserRuleContext {
   public:
     Owned_type_featuringContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2062,12 +2267,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_type_featuringContext* owned_type_featuring();
 
-  class  Data_typeContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Data_typeContext : public antlr4::ParserRuleContext {
   public:
     Data_typeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2078,12 +2285,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Data_typeContext* data_type();
 
-  class  ClassContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT ClassContext : public antlr4::ParserRuleContext {
   public:
     ClassContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2094,12 +2303,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   ClassContext* class_();
 
-  class  StructureContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT StructureContext : public antlr4::ParserRuleContext {
   public:
     StructureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2110,12 +2321,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   StructureContext* structure();
 
-  class  AssociationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT AssociationContext : public antlr4::ParserRuleContext {
   public:
     AssociationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2126,12 +2339,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   AssociationContext* association();
 
-  class  Association_structureContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Association_structureContext : public antlr4::ParserRuleContext {
   public:
     Association_structureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2143,12 +2358,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Association_structureContext* association_structure();
 
-  class  ConnectorContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT ConnectorContext : public antlr4::ParserRuleContext {
   public:
     ConnectorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2159,12 +2376,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   ConnectorContext* connector();
 
-  class  Connector_declarationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Connector_declarationContext : public antlr4::ParserRuleContext {
   public:
     Connector_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2174,12 +2393,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Connector_declarationContext* connector_declaration();
 
-  class  Binary_connector_declarationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Binary_connector_declarationContext : public antlr4::ParserRuleContext {
   public:
     Binary_connector_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2191,12 +2412,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Binary_connector_declarationContext* binary_connector_declaration();
 
-  class  Nary_connector_declarationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Nary_connector_declarationContext : public antlr4::ParserRuleContext {
   public:
     Nary_connector_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2209,12 +2432,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Nary_connector_declarationContext* nary_connector_declaration();
 
-  class  Connector_end_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Connector_end_memberContext : public antlr4::ParserRuleContext {
   public:
     Connector_end_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2222,12 +2447,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Connector_end_memberContext* connector_end_member();
 
-  class  Connector_endContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Connector_endContext : public antlr4::ParserRuleContext {
   public:
     Connector_endContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2238,12 +2465,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Connector_endContext* connector_end();
 
-  class  Binding_connectorContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Binding_connectorContext : public antlr4::ParserRuleContext {
   public:
     Binding_connectorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2254,12 +2483,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Binding_connectorContext* binding_connector();
 
-  class  Binding_connector_declarationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Binding_connector_declarationContext : public antlr4::ParserRuleContext {
   public:
     Binding_connector_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2272,28 +2503,32 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Binding_connector_declarationContext* binding_connector_declaration();
 
-  class  SuccessionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT SuccessionContext : public antlr4::ParserRuleContext {
   public:
     SuccessionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Feature_prefixContext *feature_prefix();
-    antlr4::tree::TerminalNode *KEYWORD_SUCCSESSION();
+    antlr4::tree::TerminalNode *KEYWORD_SUCCESSION();
     Succession_declarationContext *succession_declaration();
     Type_bodyContext *type_body();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   SuccessionContext* succession();
 
-  class  Succession_declarationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Succession_declarationContext : public antlr4::ParserRuleContext {
   public:
     Succession_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2306,12 +2541,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Succession_declarationContext* succession_declaration();
 
-  class  BehaviorContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT BehaviorContext : public antlr4::ParserRuleContext {
   public:
     BehaviorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2322,12 +2559,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   BehaviorContext* behavior();
 
-  class  StepContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT StepContext : public antlr4::ParserRuleContext {
   public:
     StepContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2339,12 +2578,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   StepContext* step();
 
-  class  FunctionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT FunctionContext : public antlr4::ParserRuleContext {
   public:
     FunctionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2355,12 +2596,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   FunctionContext* function();
 
-  class  Function_bodyContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Function_bodyContext : public antlr4::ParserRuleContext {
   public:
     Function_bodyContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2371,12 +2614,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Function_bodyContext* function_body();
 
-  class  Function_body_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Function_body_partContext : public antlr4::ParserRuleContext {
   public:
     Function_body_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2388,12 +2633,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Function_body_partContext* function_body_part();
 
-  class  Return_feature_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Return_feature_memberContext : public antlr4::ParserRuleContext {
   public:
     Return_feature_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2403,12 +2650,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Return_feature_memberContext* return_feature_member();
 
-  class  Result_expression_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Result_expression_memberContext : public antlr4::ParserRuleContext {
   public:
     Result_expression_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2417,12 +2666,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Result_expression_memberContext* result_expression_member();
 
-  class  ExpressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT ExpressionContext : public antlr4::ParserRuleContext {
   public:
     ExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2434,12 +2685,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   ExpressionContext* expression();
 
-  class  PredicateContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT PredicateContext : public antlr4::ParserRuleContext {
   public:
     PredicateContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2450,12 +2703,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   PredicateContext* predicate();
 
-  class  Boolean_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Boolean_expressionContext : public antlr4::ParserRuleContext {
   public:
     Boolean_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2467,12 +2722,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Boolean_expressionContext* boolean_expression();
 
-  class  InvariantContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT InvariantContext : public antlr4::ParserRuleContext {
   public:
     InvariantContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2486,12 +2743,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   InvariantContext* invariant();
 
-  class  Owned_expression_reference_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_expression_reference_memberContext : public antlr4::ParserRuleContext {
   public:
     Owned_expression_reference_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2499,12 +2758,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_expression_reference_memberContext* owned_expression_reference_member();
 
-  class  Owned_expression_referenceContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_expression_referenceContext : public antlr4::ParserRuleContext {
   public:
     Owned_expression_referenceContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2512,12 +2773,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_expression_referenceContext* owned_expression_reference();
 
-  class  Owned_expression_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_expression_memberContext : public antlr4::ParserRuleContext {
   public:
     Owned_expression_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2525,12 +2788,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_expression_memberContext* owned_expression_member();
 
-  class  Owned_expressionsContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_expressionsContext : public antlr4::ParserRuleContext {
   public:
     Owned_expressionsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2539,12 +2804,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_expressionsContext* owned_expressions();
 
-  class  Owned_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_expressionContext : public antlr4::ParserRuleContext {
   public:
     Owned_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2560,12 +2827,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_expressionContext* owned_expression();
 
-  class  Eased_owned_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Eased_owned_expressionContext : public antlr4::ParserRuleContext {
   public:
     Eased_owned_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2576,12 +2845,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Eased_owned_expressionContext* eased_owned_expression();
 
-  class  Conditional_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Conditional_expressionContext : public antlr4::ParserRuleContext {
   public:
     Conditional_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2594,12 +2865,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Conditional_expressionContext* conditional_expression();
 
-  class  Conditional_binary_operator_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Conditional_binary_operator_expressionContext : public antlr4::ParserRuleContext {
   public:
     Conditional_binary_operator_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2609,12 +2882,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Conditional_binary_operator_expressionContext* conditional_binary_operator_expression();
 
-  class  Conditional_binary_operatorContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Conditional_binary_operatorContext : public antlr4::ParserRuleContext {
   public:
     Conditional_binary_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2625,12 +2900,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Conditional_binary_operatorContext* conditional_binary_operator();
 
-  class  Binary_operator_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Binary_operator_expressionContext : public antlr4::ParserRuleContext {
   public:
     Binary_operator_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2640,12 +2917,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Binary_operator_expressionContext* binary_operator_expression();
 
-  class  Binary_operatorContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Binary_operatorContext : public antlr4::ParserRuleContext {
   public:
     Binary_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2671,12 +2950,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Binary_operatorContext* binary_operator();
 
-  class  Unary_operator_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Unary_operator_expressionContext : public antlr4::ParserRuleContext {
   public:
     Unary_operator_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2685,28 +2966,32 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Unary_operator_expressionContext* unary_operator_expression();
 
-  class  Unary_operatorContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Unary_operatorContext : public antlr4::ParserRuleContext {
   public:
     Unary_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *SYMBOL_PLUS();
     antlr4::tree::TerminalNode *SYMBOL_MINUS();
-    antlr4::tree::TerminalNode *SYMBOL_CONJUNGATES();
+    antlr4::tree::TerminalNode *SYMBOL_CONJUGATES();
     antlr4::tree::TerminalNode *KEYWORD_NOT();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Unary_operatorContext* unary_operator();
 
-  class  Classification_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Classification_expressionContext : public antlr4::ParserRuleContext {
   public:
     Classification_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2718,12 +3003,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Classification_expressionContext* classification_expression();
 
-  class  ClassificationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT ClassificationContext : public antlr4::ParserRuleContext {
   public:
     ClassificationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2735,12 +3022,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   ClassificationContext* classification();
 
-  class  Classification_test_operatorContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Classification_test_operatorContext : public antlr4::ParserRuleContext {
   public:
     Classification_test_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2750,12 +3039,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Classification_test_operatorContext* classification_test_operator();
 
-  class  Cast_operatorContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Cast_operatorContext : public antlr4::ParserRuleContext {
   public:
     Cast_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2763,12 +3054,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Cast_operatorContext* cast_operator();
 
-  class  Metaclassification_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Metaclassification_expressionContext : public antlr4::ParserRuleContext {
   public:
     Metaclassification_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2780,12 +3073,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Metaclassification_expressionContext* metaclassification_expression();
 
-  class  Argument_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Argument_memberContext : public antlr4::ParserRuleContext {
   public:
     Argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2793,12 +3088,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Argument_memberContext* argument_member();
 
-  class  ArgumentContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT ArgumentContext : public antlr4::ParserRuleContext {
   public:
     ArgumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2806,12 +3103,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   ArgumentContext* argument();
 
-  class  Argument_valueContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Argument_valueContext : public antlr4::ParserRuleContext {
   public:
     Argument_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2820,12 +3119,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Argument_valueContext* argument_value();
 
-  class  Argument_expression_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Argument_expression_memberContext : public antlr4::ParserRuleContext {
   public:
     Argument_expression_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2833,12 +3134,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Argument_expression_memberContext* argument_expression_member();
 
-  class  Argument_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Argument_expressionContext : public antlr4::ParserRuleContext {
   public:
     Argument_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2846,12 +3149,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Argument_expressionContext* argument_expression();
 
-  class  Argument_expression_valueContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Argument_expression_valueContext : public antlr4::ParserRuleContext {
   public:
     Argument_expression_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2859,12 +3164,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Argument_expression_valueContext* argument_expression_value();
 
-  class  Metadata_argument_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Metadata_argument_memberContext : public antlr4::ParserRuleContext {
   public:
     Metadata_argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2872,12 +3179,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Metadata_argument_memberContext* metadata_argument_member();
 
-  class  Metadata_argumentContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Metadata_argumentContext : public antlr4::ParserRuleContext {
   public:
     Metadata_argumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2885,12 +3194,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Metadata_argumentContext* metadata_argument();
 
-  class  Metadata_valueContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Metadata_valueContext : public antlr4::ParserRuleContext {
   public:
     Metadata_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2898,12 +3209,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Metadata_valueContext* metadata_value();
 
-  class  Metadata_referenceContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Metadata_referenceContext : public antlr4::ParserRuleContext {
   public:
     Metadata_referenceContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2911,12 +3224,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Metadata_referenceContext* metadata_reference();
 
-  class  Metadataclassification_test_operatorContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Metadataclassification_test_operatorContext : public antlr4::ParserRuleContext {
   public:
     Metadataclassification_test_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2924,24 +3239,28 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Metadataclassification_test_operatorContext* metadataclassification_test_operator();
 
-  class  Meta_cast_operatorContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Meta_cast_operatorContext : public antlr4::ParserRuleContext {
   public:
     Meta_cast_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Meta_cast_operatorContext* meta_cast_operator();
 
-  class  Extend_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Extend_expressionContext : public antlr4::ParserRuleContext {
   public:
     Extend_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2950,12 +3269,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Extend_expressionContext* extend_expression();
 
-  class  Type_reference_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Type_reference_memberContext : public antlr4::ParserRuleContext {
   public:
     Type_reference_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2963,12 +3284,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Type_reference_memberContext* type_reference_member();
 
-  class  Type_result_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Type_result_memberContext : public antlr4::ParserRuleContext {
   public:
     Type_result_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2976,12 +3299,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Type_result_memberContext* type_result_member();
 
-  class  Type_referenceContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Type_referenceContext : public antlr4::ParserRuleContext {
   public:
     Type_referenceContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -2989,12 +3314,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Type_referenceContext* type_reference();
 
-  class  Reference_typingContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Reference_typingContext : public antlr4::ParserRuleContext {
   public:
     Reference_typingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3002,12 +3329,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Reference_typingContext* reference_typing();
 
-  class  Primary_expressionsContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Primary_expressionsContext : public antlr4::ParserRuleContext {
   public:
     Primary_expressionsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3016,12 +3345,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Primary_expressionsContext* primary_expressions();
 
-  class  Primary_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Primary_expressionContext : public antlr4::ParserRuleContext {
   public:
     Primary_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3030,12 +3361,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Primary_expressionContext* primary_expression();
 
-  class  Primary_argument_valueContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Primary_argument_valueContext : public antlr4::ParserRuleContext {
   public:
     Primary_argument_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3043,12 +3376,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Primary_argument_valueContext* primary_argument_value();
 
-  class  Primary_argumentContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Primary_argumentContext : public antlr4::ParserRuleContext {
   public:
     Primary_argumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3056,12 +3391,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Primary_argumentContext* primary_argument();
 
-  class  Primary_argument_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Primary_argument_memberContext : public antlr4::ParserRuleContext {
   public:
     Primary_argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3069,12 +3406,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Primary_argument_memberContext* primary_argument_member();
 
-  class  Non_feature_chain_primary_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Non_feature_chain_primary_expressionContext : public antlr4::ParserRuleContext {
   public:
     Non_feature_chain_primary_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3088,12 +3427,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Non_feature_chain_primary_expressionContext* non_feature_chain_primary_expression();
 
-  class  Non_feature_chain_primary_argument_valueContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Non_feature_chain_primary_argument_valueContext : public antlr4::ParserRuleContext {
   public:
     Non_feature_chain_primary_argument_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3101,12 +3442,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Non_feature_chain_primary_argument_valueContext* non_feature_chain_primary_argument_value();
 
-  class  Non_feature_chain_primary_argumentContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Non_feature_chain_primary_argumentContext : public antlr4::ParserRuleContext {
   public:
     Non_feature_chain_primary_argumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3114,12 +3457,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Non_feature_chain_primary_argumentContext* non_feature_chain_primary_argument();
 
-  class  Non_feature_chain_primary_argument_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Non_feature_chain_primary_argument_memberContext : public antlr4::ParserRuleContext {
   public:
     Non_feature_chain_primary_argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3127,12 +3472,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Non_feature_chain_primary_argument_memberContext* non_feature_chain_primary_argument_member();
 
-  class  Bracket_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Bracket_expressionContext : public antlr4::ParserRuleContext {
   public:
     Bracket_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3142,12 +3489,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Bracket_expressionContext* bracket_expression();
 
-  class  Index_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Index_expressionContext : public antlr4::ParserRuleContext {
   public:
     Index_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3158,12 +3507,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Index_expressionContext* index_expression();
 
-  class  Sequence_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Sequence_expressionContext : public antlr4::ParserRuleContext {
   public:
     Sequence_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3173,12 +3524,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Sequence_expressionContext* sequence_expression();
 
-  class  Sequence_expression_listContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Sequence_expression_listContext : public antlr4::ParserRuleContext {
   public:
     Sequence_expression_listContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3188,12 +3541,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Sequence_expression_listContext* sequence_expression_list();
 
-  class  Sequence_operator_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Sequence_operator_expressionContext : public antlr4::ParserRuleContext {
   public:
     Sequence_operator_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3203,12 +3558,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Sequence_operator_expressionContext* sequence_operator_expression();
 
-  class  Sequence_expression_list_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Sequence_expression_list_memberContext : public antlr4::ParserRuleContext {
   public:
     Sequence_expression_list_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3216,12 +3573,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Sequence_expression_list_memberContext* sequence_expression_list_member();
 
-  class  Feature_chain_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_chain_expressionContext : public antlr4::ParserRuleContext {
   public:
     Feature_chain_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3230,12 +3589,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_chain_expressionContext* feature_chain_expression();
 
-  class  Collect_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Collect_expressionContext : public antlr4::ParserRuleContext {
   public:
     Collect_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3244,12 +3605,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Collect_expressionContext* collect_expression();
 
-  class  Select_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Select_expressionContext : public antlr4::ParserRuleContext {
   public:
     Select_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3258,16 +3621,18 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Select_expressionContext* select_expression();
 
-  class  Function_operation_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Function_operation_expressionContext : public antlr4::ParserRuleContext {
   public:
     Function_operation_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SYMBOL_ARROOW();
+    antlr4::tree::TerminalNode *SYMBOL_ARROW();
     Reference_typingContext *reference_typing();
     Body_argument_memberContext *body_argument_member();
     Function_reference_argument_memberContext *function_reference_argument_member();
@@ -3275,12 +3640,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Function_operation_expressionContext* function_operation_expression();
 
-  class  Body_argument_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Body_argument_memberContext : public antlr4::ParserRuleContext {
   public:
     Body_argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3288,12 +3655,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Body_argument_memberContext* body_argument_member();
 
-  class  Body_argumentContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Body_argumentContext : public antlr4::ParserRuleContext {
   public:
     Body_argumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3301,12 +3670,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Body_argumentContext* body_argument();
 
-  class  Body_argument_valueContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Body_argument_valueContext : public antlr4::ParserRuleContext {
   public:
     Body_argument_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3314,12 +3685,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Body_argument_valueContext* body_argument_value();
 
-  class  Body_expression_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Body_expression_memberContext : public antlr4::ParserRuleContext {
   public:
     Body_expression_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3327,12 +3700,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Body_expression_memberContext* body_expression_member();
 
-  class  Function_reference_argument_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Function_reference_argument_memberContext : public antlr4::ParserRuleContext {
   public:
     Function_reference_argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3340,12 +3715,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Function_reference_argument_memberContext* function_reference_argument_member();
 
-  class  Function_reference_argumentContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Function_reference_argumentContext : public antlr4::ParserRuleContext {
   public:
     Function_reference_argumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3353,12 +3730,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Function_reference_argumentContext* function_reference_argument();
 
-  class  Function_reference_arugment_valueContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Function_reference_arugment_valueContext : public antlr4::ParserRuleContext {
   public:
     Function_reference_arugment_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3366,12 +3745,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Function_reference_arugment_valueContext* function_reference_arugment_value();
 
-  class  Function_reference_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Function_reference_expressionContext : public antlr4::ParserRuleContext {
   public:
     Function_reference_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3379,12 +3760,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Function_reference_expressionContext* function_reference_expression();
 
-  class  Function_reference_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Function_reference_memberContext : public antlr4::ParserRuleContext {
   public:
     Function_reference_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3392,12 +3775,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Function_reference_memberContext* function_reference_member();
 
-  class  Function_referenceContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Function_referenceContext : public antlr4::ParserRuleContext {
   public:
     Function_referenceContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3405,12 +3790,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Function_referenceContext* function_reference();
 
-  class  Feature_chain_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_chain_memberContext : public antlr4::ParserRuleContext {
   public:
     Feature_chain_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3419,12 +3806,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_chain_memberContext* feature_chain_member();
 
-  class  Owned_feature_chain_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_feature_chain_memberContext : public antlr4::ParserRuleContext {
   public:
     Owned_feature_chain_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3432,12 +3821,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_feature_chain_memberContext* owned_feature_chain_member();
 
-  class  Base_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Base_expressionContext : public antlr4::ParserRuleContext {
   public:
     Base_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3450,12 +3841,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Base_expressionContext* base_expression();
 
-  class  Null_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Null_expressionContext : public antlr4::ParserRuleContext {
   public:
     Null_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3465,12 +3858,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Null_expressionContext* null_expression();
 
-  class  Feature_reference_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_reference_expressionContext : public antlr4::ParserRuleContext {
   public:
     Feature_reference_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3478,12 +3873,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_reference_expressionContext* feature_reference_expression();
 
-  class  Feature_reference_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_reference_memberContext : public antlr4::ParserRuleContext {
   public:
     Feature_reference_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3491,12 +3888,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_reference_memberContext* feature_reference_member();
 
-  class  Feature_referenceContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_referenceContext : public antlr4::ParserRuleContext {
   public:
     Feature_referenceContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3504,12 +3903,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_referenceContext* feature_reference();
 
-  class  Metadata_access_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Metadata_access_expressionContext : public antlr4::ParserRuleContext {
   public:
     Metadata_access_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3519,12 +3920,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Metadata_access_expressionContext* metadata_access_expression();
 
-  class  Invocation_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Invocation_expressionContext : public antlr4::ParserRuleContext {
   public:
     Invocation_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3532,12 +3935,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Invocation_expressionContext* invocation_expression();
 
-  class  Internal_invocation_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Internal_invocation_expressionContext : public antlr4::ParserRuleContext {
   public:
     Internal_invocation_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3546,12 +3951,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Internal_invocation_expressionContext* internal_invocation_expression();
 
-  class  Argument_listContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Argument_listContext : public antlr4::ParserRuleContext {
   public:
     Argument_listContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3562,12 +3969,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Argument_listContext* argument_list();
 
-  class  Positional_argument_listContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Positional_argument_listContext : public antlr4::ParserRuleContext {
   public:
     Positional_argument_listContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3578,12 +3987,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Positional_argument_listContext* positional_argument_list();
 
-  class  Named_argument_listContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Named_argument_listContext : public antlr4::ParserRuleContext {
   public:
     Named_argument_listContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3594,12 +4005,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Named_argument_listContext* named_argument_list();
 
-  class  Named_argument_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Named_argument_memberContext : public antlr4::ParserRuleContext {
   public:
     Named_argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3607,40 +4020,46 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Named_argument_memberContext* named_argument_member();
 
-  class  Named_argumentContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Named_argumentContext : public antlr4::ParserRuleContext {
   public:
     Named_argumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Paramenter_redefinitionContext *paramenter_redefinition();
+    Parameter_redefinitionContext *parameter_redefinition();
     antlr4::tree::TerminalNode *SYMBOL_EQUALS();
     Owned_expressionsContext *owned_expressions();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Named_argumentContext* named_argument();
 
-  class  Paramenter_redefinitionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Parameter_redefinitionContext : public antlr4::ParserRuleContext {
   public:
-    Paramenter_redefinitionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    Parameter_redefinitionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Qualified_nameContext *qualified_name();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
-  Paramenter_redefinitionContext* paramenter_redefinition();
+  Parameter_redefinitionContext* parameter_redefinition();
 
-  class  Body_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Body_expressionContext : public antlr4::ParserRuleContext {
   public:
     Body_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3648,12 +4067,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Body_expressionContext* body_expression();
 
-  class  Expression_body_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Expression_body_memberContext : public antlr4::ParserRuleContext {
   public:
     Expression_body_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3661,12 +4082,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Expression_body_memberContext* expression_body_member();
 
-  class  Expression_bodyContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Expression_bodyContext : public antlr4::ParserRuleContext {
   public:
     Expression_bodyContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3676,12 +4099,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Expression_bodyContext* expression_body();
 
-  class  Literal_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Literal_expressionContext : public antlr4::ParserRuleContext {
   public:
     Literal_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3694,12 +4119,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Literal_expressionContext* literal_expression();
 
-  class  Literal_booleanContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Literal_booleanContext : public antlr4::ParserRuleContext {
   public:
     Literal_booleanContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3707,12 +4134,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Literal_booleanContext* literal_boolean();
 
-  class  Boolean_valueContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Boolean_valueContext : public antlr4::ParserRuleContext {
   public:
     Boolean_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3721,12 +4150,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Boolean_valueContext* boolean_value();
 
-  class  Literal_stringContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Literal_stringContext : public antlr4::ParserRuleContext {
   public:
     Literal_stringContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3734,12 +4165,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Literal_stringContext* literal_string();
 
-  class  Literal_integerContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Literal_integerContext : public antlr4::ParserRuleContext {
   public:
     Literal_integerContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3747,12 +4180,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Literal_integerContext* literal_integer();
 
-  class  Literal_realContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Literal_realContext : public antlr4::ParserRuleContext {
   public:
     Literal_realContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3760,12 +4195,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Literal_realContext* literal_real();
 
-  class  Real_valueContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Real_valueContext : public antlr4::ParserRuleContext {
   public:
     Real_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3776,12 +4213,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Real_valueContext* real_value();
 
-  class  Literal_infinityContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Literal_infinityContext : public antlr4::ParserRuleContext {
   public:
     Literal_infinityContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3789,12 +4228,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Literal_infinityContext* literal_infinity();
 
-  class  InteractionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT InteractionContext : public antlr4::ParserRuleContext {
   public:
     InteractionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3805,12 +4246,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   InteractionContext* interaction();
 
-  class  Item_flowContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Item_flowContext : public antlr4::ParserRuleContext {
   public:
     Item_flowContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3821,29 +4264,33 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Item_flowContext* item_flow();
 
-  class  Succession_item_flowContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Succession_item_flowContext : public antlr4::ParserRuleContext {
   public:
     Succession_item_flowContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Feature_prefixContext *feature_prefix();
-    antlr4::tree::TerminalNode *KEYWORD_SUCCSESSION();
+    antlr4::tree::TerminalNode *KEYWORD_SUCCESSION();
     antlr4::tree::TerminalNode *KEYWORD_FLOW();
     Item_flow_declarationContext *item_flow_declaration();
     Type_bodyContext *type_body();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Succession_item_flowContext* succession_item_flow();
 
-  class  Item_flow_declarationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Item_flow_declarationContext : public antlr4::ParserRuleContext {
   public:
     Item_flow_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3859,12 +4306,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Item_flow_declarationContext* item_flow_declaration();
 
-  class  Item_feature_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Item_feature_memberContext : public antlr4::ParserRuleContext {
   public:
     Item_feature_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3872,44 +4321,50 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Item_feature_memberContext* item_feature_member();
 
-  class  Item_featureContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Item_featureContext : public antlr4::ParserRuleContext {
   public:
     Item_featureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     IdentificationContext *identification();
-    Item_feature_specilization_partContext *item_feature_specilization_part();
+    Item_feature_specialization_partContext *item_feature_specialization_part();
     Value_partContext *value_part();
     Owned_feature_typingContext *owned_feature_typing();
     Multiplicity_boundsContext *multiplicity_bounds();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Item_featureContext* item_feature();
 
-  class  Item_feature_specilization_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Item_feature_specialization_partContext : public antlr4::ParserRuleContext {
   public:
-    Item_feature_specilization_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    Item_feature_specialization_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Multiplicity_partContext *multiplicity_part();
-    std::vector<Feature_specilizationContext *> feature_specilization();
-    Feature_specilizationContext* feature_specilization(size_t i);
+    std::vector<Feature_specializationContext *> feature_specialization();
+    Feature_specializationContext* feature_specialization(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
-  Item_feature_specilization_partContext* item_feature_specilization_part();
+  Item_feature_specialization_partContext* item_feature_specialization_part();
 
-  class  Item_flow_end_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Item_flow_end_memberContext : public antlr4::ParserRuleContext {
   public:
     Item_flow_end_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3917,12 +4372,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Item_flow_end_memberContext* item_flow_end_member();
 
-  class  Item_flow_endContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Item_flow_endContext : public antlr4::ParserRuleContext {
   public:
     Item_flow_endContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3932,12 +4389,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Item_flow_endContext* item_flow_end();
 
-  class  Item_flow_feature_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Item_flow_feature_memberContext : public antlr4::ParserRuleContext {
   public:
     Item_flow_feature_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3945,12 +4404,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Item_flow_feature_memberContext* item_flow_feature_member();
 
-  class  Item_flow_featureContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Item_flow_featureContext : public antlr4::ParserRuleContext {
   public:
     Item_flow_featureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3958,12 +4419,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Item_flow_featureContext* item_flow_feature();
 
-  class  Item_flow_redefinitionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Item_flow_redefinitionContext : public antlr4::ParserRuleContext {
   public:
     Item_flow_redefinitionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3971,12 +4434,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Item_flow_redefinitionContext* item_flow_redefinition();
 
-  class  Value_partContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Value_partContext : public antlr4::ParserRuleContext {
   public:
     Value_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -3984,12 +4449,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Value_partContext* value_part();
 
-  class  Feature_valueContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_valueContext : public antlr4::ParserRuleContext {
   public:
     Feature_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4000,12 +4467,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_valueContext* feature_value();
 
-  class  Feature_assignmentContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Feature_assignmentContext : public antlr4::ParserRuleContext {
   public:
     Feature_assignmentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4014,12 +4483,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Feature_assignmentContext* feature_assignment();
 
-  class  MultiplicityContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT MultiplicityContext : public antlr4::ParserRuleContext {
   public:
     MultiplicityContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4028,12 +4499,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   MultiplicityContext* multiplicity();
 
-  class  Multiplicity_subsetContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Multiplicity_subsetContext : public antlr4::ParserRuleContext {
   public:
     Multiplicity_subsetContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4044,12 +4517,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Multiplicity_subsetContext* multiplicity_subset();
 
-  class  Multiplicity_rangeContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Multiplicity_rangeContext : public antlr4::ParserRuleContext {
   public:
     Multiplicity_rangeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4060,12 +4535,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Multiplicity_rangeContext* multiplicity_range();
 
-  class  Owned_multiplicityContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_multiplicityContext : public antlr4::ParserRuleContext {
   public:
     Owned_multiplicityContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4073,12 +4550,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_multiplicityContext* owned_multiplicity();
 
-  class  Owned_multiplicity_rangeContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Owned_multiplicity_rangeContext : public antlr4::ParserRuleContext {
   public:
     Owned_multiplicity_rangeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4086,12 +4565,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Owned_multiplicity_rangeContext* owned_multiplicity_range();
 
-  class  Multiplicity_boundsContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Multiplicity_boundsContext : public antlr4::ParserRuleContext {
   public:
     Multiplicity_boundsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4103,12 +4584,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Multiplicity_boundsContext* multiplicity_bounds();
 
-  class  Multiplicity_expression_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Multiplicity_expression_memberContext : public antlr4::ParserRuleContext {
   public:
     Multiplicity_expression_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4116,12 +4599,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Multiplicity_expression_memberContext* multiplicity_expression_member();
 
-  class  Internal_multiplicity_expression_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Internal_multiplicity_expression_memberContext : public antlr4::ParserRuleContext {
   public:
     Internal_multiplicity_expression_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4130,12 +4615,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Internal_multiplicity_expression_memberContext* internal_multiplicity_expression_member();
 
-  class  MetaclassContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT MetaclassContext : public antlr4::ParserRuleContext {
   public:
     MetaclassContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4150,12 +4637,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   MetaclassContext* metaclass();
 
-  class  Prefix_metadata_annotationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Prefix_metadata_annotationContext : public antlr4::ParserRuleContext {
   public:
     Prefix_metadata_annotationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4164,12 +4653,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Prefix_metadata_annotationContext* prefix_metadata_annotation();
 
-  class  Prefix_metadata_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Prefix_metadata_memberContext : public antlr4::ParserRuleContext {
   public:
     Prefix_metadata_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4178,12 +4669,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Prefix_metadata_memberContext* prefix_metadata_member();
 
-  class  Prefix_metadata_featureContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Prefix_metadata_featureContext : public antlr4::ParserRuleContext {
   public:
     Prefix_metadata_featureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4191,12 +4684,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Prefix_metadata_featureContext* prefix_metadata_feature();
 
-  class  Metadata_featureContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Metadata_featureContext : public antlr4::ParserRuleContext {
   public:
     Metadata_featureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4212,12 +4707,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Metadata_featureContext* metadata_feature();
 
-  class  Metadata_feature_declarationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Metadata_feature_declarationContext : public antlr4::ParserRuleContext {
   public:
     Metadata_feature_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4229,12 +4726,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Metadata_feature_declarationContext* metadata_feature_declaration();
 
-  class  Metadata_bodyContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Metadata_bodyContext : public antlr4::ParserRuleContext {
   public:
     Metadata_bodyContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4246,12 +4745,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Metadata_bodyContext* metadata_body();
 
-  class  Metadata_body_elementContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Metadata_body_elementContext : public antlr4::ParserRuleContext {
   public:
     Metadata_body_elementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4262,12 +4763,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Metadata_body_elementContext* metadata_body_element();
 
-  class  Metadata_body_feature_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Metadata_body_feature_memberContext : public antlr4::ParserRuleContext {
   public:
     Metadata_body_feature_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4275,12 +4778,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Metadata_body_feature_memberContext* metadata_body_feature_member();
 
-  class  Metadata_body_featureContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Metadata_body_featureContext : public antlr4::ParserRuleContext {
   public:
     Metadata_body_featureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4294,12 +4799,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Metadata_body_featureContext* metadata_body_feature();
 
-  class  PackageContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT PackageContext : public antlr4::ParserRuleContext {
   public:
     PackageContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4310,12 +4817,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   PackageContext* package();
 
-  class  Library_packageContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Library_packageContext : public antlr4::ParserRuleContext {
   public:
     Library_packageContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4328,12 +4837,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Library_packageContext* library_package();
 
-  class  Package_declarationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Package_declarationContext : public antlr4::ParserRuleContext {
   public:
     Package_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4342,12 +4853,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Package_declarationContext* package_declaration();
 
-  class  Package_bodyContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Package_bodyContext : public antlr4::ParserRuleContext {
   public:
     Package_bodyContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4363,12 +4876,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Package_bodyContext* package_body();
 
-  class  Element_filter_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Element_filter_memberContext : public antlr4::ParserRuleContext {
   public:
     Element_filter_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4379,12 +4894,14 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Element_filter_memberContext* element_filter_member();
 
-  class  Meta_assignmentContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT Meta_assignmentContext : public antlr4::ParserRuleContext {
   public:
     Meta_assignmentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -4396,6 +4913,8 @@ public:
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 

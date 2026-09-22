@@ -1,14 +1,17 @@
 
+    #include <sysmlv2/sysmlv2file_global.h>
+
+
 // Generated from ./KerML.g4 by ANTLR 4.13.2
 
 #pragma once
 
 
-#include <antlr4-runtime.h>
+#include "antlr4-runtime.h"
 #include <kerml/parser/KerMLParser.h>
-#include <sysmlv2/sysmlv2file_global.h>
 
-/**
+
+    /**
  * This interface defines an abstract listener for a parse tree produced by KerMLParser.
  */
 class SYSMLV2FILE_EXPORT KerMLListener : public antlr4::tree::ParseTreeListener {
@@ -29,8 +32,8 @@ public:
   virtual void enterRelationship_body(KerMLParser::Relationship_bodyContext *ctx) = 0;
   virtual void exitRelationship_body(KerMLParser::Relationship_bodyContext *ctx) = 0;
 
-  virtual void enterRelationship_onwed_elements(KerMLParser::Relationship_onwed_elementsContext *ctx) = 0;
-  virtual void exitRelationship_onwed_elements(KerMLParser::Relationship_onwed_elementsContext *ctx) = 0;
+  virtual void enterRelationship_owned_elements(KerMLParser::Relationship_owned_elementsContext *ctx) = 0;
+  virtual void exitRelationship_owned_elements(KerMLParser::Relationship_owned_elementsContext *ctx) = 0;
 
   virtual void enterRelationship_owned_element(KerMLParser::Relationship_owned_elementContext *ctx) = 0;
   virtual void exitRelationship_owned_element(KerMLParser::Relationship_owned_elementContext *ctx) = 0;
@@ -254,8 +257,8 @@ public:
   virtual void enterMultiplicity_part(KerMLParser::Multiplicity_partContext *ctx) = 0;
   virtual void exitMultiplicity_part(KerMLParser::Multiplicity_partContext *ctx) = 0;
 
-  virtual void enterFeature_specilization(KerMLParser::Feature_specilizationContext *ctx) = 0;
-  virtual void exitFeature_specilization(KerMLParser::Feature_specilizationContext *ctx) = 0;
+  virtual void enterFeature_specialization(KerMLParser::Feature_specializationContext *ctx) = 0;
+  virtual void exitFeature_specialization(KerMLParser::Feature_specializationContext *ctx) = 0;
 
   virtual void enterTypings(KerMLParser::TypingsContext *ctx) = 0;
   virtual void exitTypings(KerMLParser::TypingsContext *ctx) = 0;
@@ -635,8 +638,8 @@ public:
   virtual void enterNamed_argument(KerMLParser::Named_argumentContext *ctx) = 0;
   virtual void exitNamed_argument(KerMLParser::Named_argumentContext *ctx) = 0;
 
-  virtual void enterParamenter_redefinition(KerMLParser::Paramenter_redefinitionContext *ctx) = 0;
-  virtual void exitParamenter_redefinition(KerMLParser::Paramenter_redefinitionContext *ctx) = 0;
+  virtual void enterParameter_redefinition(KerMLParser::Parameter_redefinitionContext *ctx) = 0;
+  virtual void exitParameter_redefinition(KerMLParser::Parameter_redefinitionContext *ctx) = 0;
 
   virtual void enterBody_expression(KerMLParser::Body_expressionContext *ctx) = 0;
   virtual void exitBody_expression(KerMLParser::Body_expressionContext *ctx) = 0;
@@ -689,8 +692,8 @@ public:
   virtual void enterItem_feature(KerMLParser::Item_featureContext *ctx) = 0;
   virtual void exitItem_feature(KerMLParser::Item_featureContext *ctx) = 0;
 
-  virtual void enterItem_feature_specilization_part(KerMLParser::Item_feature_specilization_partContext *ctx) = 0;
-  virtual void exitItem_feature_specilization_part(KerMLParser::Item_feature_specilization_partContext *ctx) = 0;
+  virtual void enterItem_feature_specialization_part(KerMLParser::Item_feature_specialization_partContext *ctx) = 0;
+  virtual void exitItem_feature_specialization_part(KerMLParser::Item_feature_specialization_partContext *ctx) = 0;
 
   virtual void enterItem_flow_end_member(KerMLParser::Item_flow_end_memberContext *ctx) = 0;
   virtual void exitItem_flow_end_member(KerMLParser::Item_flow_end_memberContext *ctx) = 0;

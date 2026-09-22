@@ -11,6 +11,10 @@
 
 namespace KerML::Entities {
     class Element;
+    class Type;
+    class Classifier;
+    class Feature;
+    class Expression;
 }
 
 /**
@@ -53,9 +57,9 @@ public:
 
     void exitRelationship_body(KerMLParser::Relationship_bodyContext *ctx) override;
 
-    void enterRelationship_onwed_elements(KerMLParser::Relationship_onwed_elementsContext *ctx) override;
+    void enterRelationship_owned_elements(KerMLParser::Relationship_owned_elementsContext *ctx) override;
 
-    void exitRelationship_onwed_elements(KerMLParser::Relationship_onwed_elementsContext *ctx) override;
+    void exitRelationship_owned_elements(KerMLParser::Relationship_owned_elementsContext *ctx) override;
 
     void enterRelationship_owned_element(KerMLParser::Relationship_owned_elementContext *ctx) override;
 
@@ -349,9 +353,9 @@ public:
 
     void exitMultiplicity_part(KerMLParser::Multiplicity_partContext *ctx) override;
 
-    void enterFeature_specilization(KerMLParser::Feature_specilizationContext *ctx) override;
+    void enterFeature_specialization(KerMLParser::Feature_specializationContext *ctx) override;
 
-    void exitFeature_specilization(KerMLParser::Feature_specilizationContext *ctx) override;
+    void exitFeature_specialization(KerMLParser::Feature_specializationContext *ctx) override;
 
     void enterTypings(KerMLParser::TypingsContext *ctx) override;
 
@@ -867,9 +871,9 @@ public:
 
     void exitNamed_argument(KerMLParser::Named_argumentContext *ctx) override;
 
-    void enterParamenter_redefinition(KerMLParser::Paramenter_redefinitionContext *ctx) override;
+    void enterParameter_redefinition(KerMLParser::Parameter_redefinitionContext *ctx) override;
 
-    void exitParamenter_redefinition(KerMLParser::Paramenter_redefinitionContext *ctx) override;
+    void exitParameter_redefinition(KerMLParser::Parameter_redefinitionContext *ctx) override;
 
     void enterBody_expression(KerMLParser::Body_expressionContext *ctx) override;
 
@@ -939,9 +943,9 @@ public:
 
     void exitItem_feature(KerMLParser::Item_featureContext *ctx) override;
 
-    void enterItem_feature_specilization_part(KerMLParser::Item_feature_specilization_partContext *ctx) override;
+    void enterItem_feature_specialization_part(KerMLParser::Item_feature_specialization_partContext *ctx) override;
 
-    void exitItem_feature_specilization_part(KerMLParser::Item_feature_specilization_partContext *ctx) override;
+    void exitItem_feature_specialization_part(KerMLParser::Item_feature_specialization_partContext *ctx) override;
 
     void enterItem_flow_end_member(KerMLParser::Item_flow_end_memberContext *ctx) override;
 
@@ -1080,7 +1084,14 @@ public:
     std::vector<std::shared_ptr<KerML::Entities::Element>> getElements();
 
 private:
+    void attachExpression(const std::shared_ptr<KerML::Entities::Expression>& expression);
+    void finishOperatorExpression(const std::string& operatorName);
+    void finishMembership(KerMLParser::Member_prefixContext *prefix);
+    void applyIdentification(KerMLParser::IdentificationContext *idCtx, const std::shared_ptr<KerML::Entities::Element>& elem);
     std::shared_ptr<KerML::Entities::Element> findElementWithName(std::string identification);
+    std::shared_ptr<KerML::Entities::Type> findOrCreateType(const std::string& name);
+    std::shared_ptr<KerML::Entities::Classifier> findOrCreateClassifier(const std::string& name);
+    std::shared_ptr<KerML::Entities::Feature> findOrCreateFeature(const std::string& name);
     void populateWithBaseDatatypes();
     std::vector<std::shared_ptr<KerML::Entities::Element>> Elements;
     std::stack<std::shared_ptr<KerML::Entities::Element>> ParentStack;

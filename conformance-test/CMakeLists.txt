@@ -11,6 +11,7 @@ find_package(antlr4-runtime REQUIRED)
 
 add_executable(conformance-test
         src/TestKerMLParser.cpp
+        src/TestSysMLParser.cpp
         src/TestProjectController.cpp
         src/TestRestAPI.cpp
         src/TestResourcePackages.cpp
@@ -28,6 +29,7 @@ add_executable(conformance-test
             sysmlv2service
             sysmlv2rest
             kerml)
+target_link_libraries(conformance-test sysml)
 #else ()
 #    target_link_libraries(conformance-test
 #            boost::boost

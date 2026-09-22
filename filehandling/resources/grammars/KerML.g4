@@ -6,6 +6,10 @@
 
 grammar KerML;
 
+@header {
+    #include <sysmlv2/sysmlv2file_global.h>
+}
+
 start: elements EOF;
 
 startRule: start;
@@ -13,8 +17,8 @@ startRule: start;
 elements: element*;
 
 identification: (SYMBOL_SMALLER NAME SYMBOL_GREATER)? NAME;
-relationship_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN relationship_onwed_elements SYMBOL_CURLY_BRACKET_CLOSE);
-relationship_onwed_elements: relationship_owned_element*;
+relationship_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN relationship_owned_elements SYMBOL_CURLY_BRACKET_CLOSE);
+relationship_owned_elements: relationship_owned_element*;
 relationship_owned_element: owned_related_element | owned_annotation;
 owned_related_element: non_feature_element | feature_element;
 dependency: (prefix_metadata_annotation)* KEYWORD_DEPENDENCY identification? KEYWORD_FROM? qualified_name (SYMBOL_COMMA qualified_name)* KEYWORD_TO qualified_name (SYMBOL_COMMA qualified_name)* relationship_body;
@@ -93,7 +97,7 @@ type: type_prefix KEYWORD_TYPE type_declaration type_body;
 type_prefix: KEYWORD_ABSTRACT? prefix_metadata_member*;
 type_declaration: KEYWORD_ALL? identification multiplicity_bounds? (specialization_part | conjugation_part)+ type_relationship_part*;
 specialization_part: SPECIALIZES owned_specialization (SYMBOL_COMMA owned_specialization)*;
-conjugation_part: CONJUNGATES owned_conjugation;
+conjugation_part: CONJUGATES owned_conjugation;
 type_relationship_part: disjoining_part | unioning_part | intersecting_part | differencing_part;
 disjoining_part: KEYWORD_DISJOINT KEYWORD_FROM owned_disjoining (SYMBOL_COMMA owned_disjoining)*;
 unioning_part: KEYWORD_UNIONS unioning (SYMBOL_COMMA unioning)*;
@@ -103,12 +107,12 @@ type_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN type_body_ele
 type_body_elements: element*;
 type_body_element: element;
 
-specialization: (KEYWORD_SPECILIZATION identification)? KEYWORD_SUBTYPE specific_type SPECIALIZES general_type relationship_body;
+specialization: (KEYWORD_SPECIALIZATION identification)? KEYWORD_SUBTYPE specific_type SPECIALIZES general_type relationship_body;
 owned_specialization: general_type;
 specific_type: qualified_name | owned_feature_chain;
 general_type: qualified_name | owned_feature_chain;
 
-conjunction: (KEYWORD_CONJUGATION identification)? KEYWORD_CONJUGATE (qualified_name | feature_chain) CONJUNGATES (qualified_name | feature_chain) relationship_body;
+conjunction: (KEYWORD_CONJUGATION identification)? KEYWORD_CONJUGATE (qualified_name | feature_chain) CONJUGATES (qualified_name | feature_chain) relationship_body;
 owned_conjugation: qualified_name | feature_chain;
 
 disjoining: (KEYWORD_DISJOINING identification)? KEYWORD_DISJOINT (qualified_name | feature_chain) KEYWORD_FROM (qualified_name | feature_chain) relationship_body;
@@ -125,7 +129,7 @@ owned_feature_member: member_prefix feature_element;
 classifier: type_prefix? KEYWORD_CLASSIFIER classifier_declaration type_body;
 classifier_declaration: KEYWORD_ALL? identification multiplicity_bounds? (superclassing_part | conjugation_part)? type_relationship_part*;
 superclassing_part: SPECIALIZES owned_subclassification (SYMBOL_COMMA owned_subclassification)*;
-subclassification: (KEYWORD_SPECILIZATION identification)? KEYWORD_SUBCLASSIFIER qualified_name SPECIALIZES qualified_name relationship_body;
+subclassification: (KEYWORD_SPECIALIZATION identification)? KEYWORD_SUBCLASSIFIER qualified_name SPECIALIZES qualified_name relationship_body;
 owned_subclassification: qualified_name;
 
 feature: feature_prefix? ((KEYWORD_FEATURE feature_declaration) | KEYWORD_FEATURE | prefix_metadata_member) subsettings? feature_assignment? feature_value? type_body;
@@ -137,10 +141,10 @@ feature_relationship_part: type_relationship_part | chaining_part | inverting_pa
 chaining_part: KEYWORD_CHAINS (owned_feature_chaining | feature_chain);
 inverting_part: KEYWORD_INVERSE KEYWORD_OF owned_feature_inverting;
 type_featuring_part: KEYWORD_FEATURED KEYWORD_BY owned_type_featuring (SYMBOL_COMMA owned_type_featuring)*;
-feature_specialization_part: feature_specilization+ multiplicity_part? feature_specilization* | multiplicity_part feature_specilization+;
+feature_specialization_part: feature_specialization+ multiplicity_part? feature_specialization* | multiplicity_part feature_specialization+;
 multiplicity_part: multiplicity_bounds MULTIPLICITY_PART_ELEMENTS*;
 MULTIPLICITY_PART_ELEMENTS: KEYWORD_ORDERED | KEYWORD_NONUNIQUE;
-feature_specilization: typings | subsettings | references | redefinitions;
+feature_specialization: typings | subsettings | references | redefinitions;
 typings: typed_by (SYMBOL_COMMA owned_feature_typing)*;
 typed_by: TYPED_BY owned_feature_typing;
 subsettings: subsets owned_subsetting? (SYMBOL_COMMA owned_subsetting)*;
@@ -149,14 +153,14 @@ references: REFERENCES owned_reference_subsetting;
 redefinitions: redefines (SYMBOL_COMMA owned_redefinition)?;
 redefines: feature_direction? REDEFINES owned_redefinition;
 
-feature_typing: (KEYWORD_SPECILIZATION identification)? KEYWORD_TYPING qualified_name TYPED_BY general_type relationship_body;
+feature_typing: (KEYWORD_SPECIALIZATION identification)? KEYWORD_TYPING qualified_name TYPED_BY general_type relationship_body;
 owned_feature_typing: general_type;
 
-subsetting: (KEYWORD_SPECILIZATION identification)? KEYWORD_SUBSET? specific_type SUBSETS general_type multiplicity_part? relationship_body;
+subsetting: (KEYWORD_SPECIALIZATION identification)? KEYWORD_SUBSET? specific_type SUBSETS general_type multiplicity_part? relationship_body;
 owned_subsetting: general_type;
 owned_reference_subsetting: general_type;
 
-redefinition: feature_direction? (KEYWORD_SPECILIZATION identification)? (KEYWORD_REDEFINITION specific_type)? REDEFINES qualified_name typed_by? multiplicity_part? subsets? feature_assignment? relationship_body;
+redefinition: feature_direction? (KEYWORD_SPECIALIZATION identification)? (KEYWORD_REDEFINITION specific_type)? REDEFINES qualified_name typed_by? multiplicity_part? subsets? feature_assignment? relationship_body;
 owned_redefinition: general_type;
 
 owned_feature_chain: feature_chain;
@@ -188,7 +192,7 @@ connector_end: (NAME REFERENCES)? multiplicity_bounds? owned_reference_subsettin
 binding_connector: feature_prefix KEYWORD_BINDING binding_connector_declaration type_body;
 binding_connector_declaration: feature_declaration (KEYWORD_OF connector_end_member SYMBOL_EQUALS connector_end_member)? | (KEYWORD_ALL? (KEYWORD_OF? connector_end_member SYMBOL_EQUALS connector_end_member)?);
 
-succession: feature_prefix KEYWORD_SUCCSESSION succession_declaration type_body;
+succession: feature_prefix KEYWORD_SUCCESSION succession_declaration type_body;
 succession_declaration: feature_declaration (KEYWORD_FIRST connector_end_member KEYWORD_THEN connector_end_member)? | ((KEYWORD_ALL)? (KEYWORD_FIRST? connector_end_member KEYWORD_THEN connector_end_member)?);
 
 behavior: type_prefix KEYWORD_BEHAVIOR classifier_declaration type_body;
@@ -227,7 +231,7 @@ conditional_binary_operator: SYMBOL_DQUESTION | KEYWORD_OR | KEYWORD_AND | KEYWO
 binary_operator_expression:  argument_member binary_operator owned_expressions;
 binary_operator: SYMBOL_VERTICAL_LINE | SYMBOL_AND | KEYWORD_XOR | SYMBOL_DDOT | SYMBOL_EQUALS | SYMBOL_NOT_EQUALS | SYMBOL_IFF_EQUALS | SYMBOL_IFF_NOT_EQUALS | SYMBOL_GREATER | SYMBOL_SMALLER | SYMBOL_GREATER_EQUALS | SYMBOL_SMALLER_EQUAL | SYMBOL_PLUS | SYMBOL_MINUS | SYMBOL_STAR | SYMBOL_SLASH | SYMBOL_MOD | SYMBOL_UPPER | SYMBOL_DOUBLE_STAR;
 unary_operator_expression: unary_operator owned_expressions;
-unary_operator: SYMBOL_PLUS | SYMBOL_MINUS | SYMBOL_CONJUNGATES | KEYWORD_NOT;
+unary_operator: SYMBOL_PLUS | SYMBOL_MINUS | SYMBOL_CONJUGATES | KEYWORD_NOT;
 classification_expression: argument_member?((classification_test_operator type_reference_member)|(cast_operator type_result_member));
 classification: argument_member? (classification_test_operator type_reference_member)|(cast_operator type_result_member);
 classification_test_operator: KEYWORD_ISTYPE | KEYWORD_HASTYPE | SYMBOL_AT;
@@ -275,7 +279,7 @@ sequence_expression_list_member: sequence_expression_list;
 feature_chain_expression: SYMBOL_DOT feature_chain_member;
 collect_expression: SYMBOL_DOT body_expression_member;
 select_expression: SYMBOL_DOT_QUESTION body_expression_member;
-function_operation_expression: '->' reference_typing (body_argument_member |function_reference_argument_member | argument_expression);
+function_operation_expression: SYMBOL_ARROW reference_typing (body_argument_member |function_reference_argument_member | argument_expression);
 body_argument_member: body_argument;
 body_argument: body_argument_value;
 body_argument_value: body_expression;
@@ -307,8 +311,8 @@ argument_list: SYMBOL_ROUND_BRACKET_OPEN (named_argument_list |  positional_argu
 positional_argument_list: owned_expression (SYMBOL_COMMA owned_expression)*;
 named_argument_list: named_argument_member (SYMBOL_COMMA named_argument_member)*;
 named_argument_member: named_argument;
-named_argument: paramenter_redefinition (SYMBOL_EQUALS owned_expressions);
-paramenter_redefinition: qualified_name;
+named_argument: parameter_redefinition (SYMBOL_EQUALS owned_expressions);
+parameter_redefinition: qualified_name;
 body_expression: expression_body_member;
 expression_body_member: expression_body;
 expression_body: SYMBOL_ROUND_BRACKET_OPEN function_body_part SYMBOL_ROUND_BRACKET_CLOSE;
@@ -330,11 +334,11 @@ literal_infinity: SYMBOL_STAR;
 interaction: type_prefix KEYWORD_INTERACTION classifier_declaration type_body;
 
 item_flow: feature_prefix KEYWORD_FLOW item_flow_declaration type_body;
-succession_item_flow: feature_prefix KEYWORD_SUCCSESSION KEYWORD_FLOW item_flow_declaration type_body;
+succession_item_flow: feature_prefix KEYWORD_SUCCESSION KEYWORD_FLOW item_flow_declaration type_body;
 item_flow_declaration: (feature_declaration value_part? (KEYWORD_OF item_feature_member)? (KEYWORD_FROM item_flow_end_member KEYWORD_TO item_flow_end_member)? | KEYWORD_ALL? item_flow_end_member KEYWORD_TO item_flow_end_member);
 item_feature_member: item_feature;
-item_feature: (identification item_feature_specilization_part value_part?) | (owned_feature_typing multiplicity_bounds?) | (multiplicity_bounds owned_feature_typing?);
-item_feature_specilization_part: feature_specilization* (multiplicity_part feature_specilization?);
+item_feature: (identification item_feature_specialization_part value_part?) | (owned_feature_typing multiplicity_bounds?) | (multiplicity_bounds owned_feature_typing?);
+item_feature_specialization_part: feature_specialization* (multiplicity_part feature_specialization?);
 item_flow_end_member: item_flow_end;
 item_flow_end: (owned_reference_subsetting SYMBOL_DOT)? item_flow_feature_member;
 item_flow_feature_member: item_flow_feature;
@@ -381,7 +385,7 @@ SPECIALIZES: SYMBOL_SPECIALIZES | KEYWORD_SPECIALIZES;
 SUBSETS:  SYMBOL_SPECIALIZES | KEYWORD_SUBSETS;
 REFERENCES: SYMBOL_REFERENCES | KEYWORD_REFERENCES;
 REDEFINES: SYMBOL_REDEFINES | KEYWORD_REDEFINES;
-CONJUNGATES: SYMBOL_CONJUNGATES | KEYWORD_CONJUGATES;
+CONJUGATES: SYMBOL_CONJUGATES | KEYWORD_CONJUGATES;
 
 // Keywords
 KEYWORD_ABOUT: 'about';
@@ -451,7 +455,7 @@ KEYWORD_OR: 'or';
 KEYWORD_ORDERED: 'ordered';
 KEYWORD_OUT: 'out';
 KEYWORD_PACKAGE: 'package';
-KEYWORD_PORTION: 'potion';
+KEYWORD_PORTION: 'portion';
 KEYWORD_PREDICATE: 'predicate';
 KEYWORD_PRIVATE: 'private';
 KEYWORD_PROTECTED: 'protected';
@@ -462,7 +466,7 @@ KEYWORD_REDEFINITION: 'redefinition';
 KEYWORD_REFERENCES: 'references';
 KEYWORD_REP: 'rep';
 KEYWORD_RETURN: 'return';
-KEYWORD_SPECILIZATION: 'specialization';
+KEYWORD_SPECIALIZATION: 'specialization';
 KEYWORD_SPECIALIZES: 'specializes';
 KEYWORD_STEP: 'step';
 KEYWORD_STRUCT: 'struct';
@@ -470,7 +474,7 @@ KEYWORD_SUBCLASSIFIER: 'subclassifier';
 KEYWORD_SUBSET: 'subset';
 KEYWORD_SUBSETS: 'subsets';
 KEYWORD_SUBTYPE: 'subtype';
-KEYWORD_SUCCSESSION: 'succession';
+KEYWORD_SUCCESSION: 'succession';
 KEYWORD_THEN: 'then';
 KEYWORD_TO: 'to';
 KEYWORD_TRUE: 'true';
@@ -486,8 +490,8 @@ KEYWORD_LIBRARY: 'library';
 KEYWORD_CONSTANT: 'constant';
 
 //Notes and Comments
-SINGLE_LINE_NOTE: '//'  ~( '\r' | '\n' )*;
-MULTI_LINE_NOTE: SYMBOL_NOTE_BLOCK_START .*? SYMBOL_COMMENT_BLOCK_END;
+SINGLE_LINE_NOTE: '//' ~( '\r' | '\n' )* -> channel(HIDDEN);
+MULTI_LINE_NOTE: SYMBOL_NOTE_BLOCK_START .*? SYMBOL_COMMENT_BLOCK_END -> channel(HIDDEN);
 REGULAR_COMMENT: SYMBOL_COMMENT_BLOCK_START .*? SYMBOL_COMMENT_BLOCK_END;
 
 //Symbols
@@ -501,7 +505,7 @@ SYMBOL_TYPED_BY: ':';
 SYMBOL_SPECIALIZES: ':>';
 SYMBOL_REFERENCES: '::>';
 SYMBOL_REDEFINES: ':>>';
-SYMBOL_CONJUNGATES: '~';
+SYMBOL_CONJUGATES: '~';
 SYMBOL_ROUND_BRACKET_OPEN: '(';
 SYMBOL_ROUND_BRACKET_CLOSE: ')';
 SYMBOL_CURLY_BRACKET_OPEN: '{';
@@ -519,7 +523,7 @@ SYMBOL_DOUBLE_STAR: '**';
 SYMBOL_PLUS: '+';
 SYMBOL_MINUS: '-';
 SYMBOL_SLASH: '/';
-SYMBOL_ARROOW: '->';
+SYMBOL_ARROW: '->';
 SYMBOL_DOT: '.';
 SYMBOL_DDOT: '..';
 SYMBOL_SMALLER: '<';
@@ -537,7 +541,7 @@ SYMBOL_DQUESTION: '??';
 SYMBOL_DOT_QUESTION: '.?';
 
 NAME: BASIC_NAME | UNRESTRICTED_NAME;
-BASIC_NAME: ('_'|[a-z]|[A-Z]|[0-9])+ ;
+BASIC_NAME: ('_'|[a-z]|[A-Z])('_'|[a-z]|[A-Z]|[0-9])* ;
 UNRESTRICTED_NAME: '\'' .*? '\'';
 
 //Values:
