@@ -562,12 +562,12 @@ DEFINE_DEF_METHODS(Extended_definition, SysMLv2::Entities::Definition)
 DEFINE_DEF_METHODS(Occurrence_definition, SysMLv2::Entities::OccurrenceDefinition)
 DEFINE_DEF_METHODS(Flow_definition, SysMLv2::Entities::FlowDefinition)
 
-void SysMLv2ListenerImplementation::enterIndividual_definition(SysMLv2Parser::Individual_definitionContext* ctx) {
+void SysMLv2ListenerImplementation::enterIndividual_definition(SysMLv2Parser::Individual_definitionContext* ) {
     auto def = std::make_shared<SysMLv2::Entities::OccurrenceDefinition>();
     def->setIsIndividual(true);
     ParentStack.push(def);
 }
-void SysMLv2ListenerImplementation::exitIndividual_definition(SysMLv2Parser::Individual_definitionContext* ctx) {
+void SysMLv2ListenerImplementation::exitIndividual_definition(SysMLv2Parser::Individual_definitionContext* ) {
     handleDefExit<SysMLv2::Entities::OccurrenceDefinition>(ParentStack, Elements);
 }
 
