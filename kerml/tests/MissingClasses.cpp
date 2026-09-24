@@ -5,6 +5,9 @@
 #include <kerml/kernel/functions/ResultExpressionMembership.h>
 #include <kerml/kernel/functions/ResultExpressionMembersip.h>
 #include <kerml/kernel/functions/Function.h>
+#include <kerml/root/namespaces/NamespaceImport.h>
+#include <kerml/root/namespaces/Namespace.h>
+#include <kerml/root/namespaces/Membership.h>
 #include <iostream>
 #include <stdexcept>
 #include <type_traits>
@@ -79,6 +82,34 @@ int main() {
         ResultExpressionMembersip legacy(result, function);
         require(legacy.ownedResultExpression() == result, "legacy alias construction");
         requireInvalid([&] { ResultExpressionMembership invalid(nullptr, function); });
+
+        // NamespaceImport::importedMemberships tests
+        {
+            NamespaceImport ni;
+            require(ni.importedMemberships({}).empty(), "null importedNamespace returns empty memberships");
+
+            auto targetNs = std::make_shared<Namespace>("TargetNS");
+            ni.setImportedNamespace(targetNs);
+            require(ni.importedMemberships({targetNs}).empty(), "excluded importedNamespace returns empty memberships");
+
+            auto mem1 = std::make_shared<Membership>();
+            mem1->setVisibility(PUBLIC);
+            auto mem2 = std::make_shared<Membership>();
+            mem2->setVisibility(PRIVATE);
+            targetNs->appendOwnedMembership(mem1);
+            targetNs->appendOwnedMembership(mem2);
+
+            // Default: isImportAll is false -> only PUBLIC memberships returned
+            auto imported = ni.importedMemberships({});
+            require(imported.size() == 1, "only public memberships imported when isImportAll is false");
+            require(imported[0] == mem1, "correct public membership imported");
+
+            // With isImportAll = true -> both PUBLIC and PRIVATE memberships returned
+            ni.setIsImportAll(true);
+            imported = ni.importedMemberships({});
+            require(imported.size() == 2, "all memberships imported when isImportAll is true");
+        }
+
         std::cout << "KerML representation tests passed\n";
     } catch (const std::exception& error) {
         std::cerr << error.what() << '\n';
