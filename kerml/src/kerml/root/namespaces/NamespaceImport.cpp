@@ -4,6 +4,7 @@
 
 #include <kerml/root/namespaces/NamespaceImport.h>
 #include <kerml/root/namespaces/Namespace.h>
+#include <algorithm>
 
 namespace KerML::Entities {
     NamespaceImport::NamespaceImport(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
@@ -19,11 +20,12 @@ namespace KerML::Entities {
     }
 
     std::vector<std::shared_ptr<Membership>> NamespaceImport::importedMemberships(std::vector<std::shared_ptr<Namespace>> excluded) {
-        if(std::find(excluded.begin(), excluded.end(),ImportedNamespace) != excluded.end() )
-            return {nullptr};
+        if (!ImportedNamespace || std::find(excluded.begin(), excluded.end(), ImportedNamespace) != excluded.end()) {
+            return {};
+        }
 
-        //TODO: Implement
-        return std::vector<std::shared_ptr<Membership>>();
+        excluded.push_back(ImportedNamespace);
+        return ImportedNamespace->visibleMemberships(excluded, isRecursive(), isImportAll());
     }
 
     NamespaceImport::NamespaceImport(VisibilityKind visibility, bool isRecursive, bool isImportAll, std::shared_ptr<Namespace> importOwningNamespace, std::shared_ptr<Namespace> importedNamespace, boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
