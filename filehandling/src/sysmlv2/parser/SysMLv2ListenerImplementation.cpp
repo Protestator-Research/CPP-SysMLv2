@@ -420,24 +420,29 @@ void SysMLv2ListenerImplementation::exitMultiplicity_range(SysMLv2Parser::Multip
 	if (!type || ctx->multiplicity_expression_member().empty()) return;
 
 	std::shared_ptr<KerML::Entities::Multiplicity> multiplicity;
-	if (ctx->multiplicity_expression_member().size() > 1) {
-		unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
-		if (ctx->multiplicity_expression_member().back()->getText() == "*") {
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, true);
+	try {
+		if (ctx->multiplicity_expression_member().size() > 1) {
+			unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
+			if (ctx->multiplicity_expression_member().back()->getText() == "*") {
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, true);
+			}
+			else {
+				unsigned maximum = std::stoul(ctx->multiplicity_expression_member().back()->getText());
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, maximum);
+			}
 		}
 		else {
-			unsigned maximum = std::stoul(ctx->multiplicity_expression_member().back()->getText());
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, maximum);
+			if (ctx->multiplicity_expression_member().front()->getText() == "*") {
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(0, true);
+			}
+			else {
+				unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum);
+			}
 		}
 	}
-	else {
-		if (ctx->multiplicity_expression_member().front()->getText() == "*") {
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(0, true);
-		}
-		else {
-			unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum);
-		}
+	catch (...) {
+		// Ignore non-numeric multiplicity expressions (e.g. invalid syntax, expressions or units)
 	}
 	if (multiplicity) {
 		type->setMultiplicity(multiplicity);
@@ -483,24 +488,29 @@ void SysMLv2ListenerImplementation::exitMultiplicity_bounds(SysMLv2Parser::Multi
 	if (!type || ctx->multiplicity_expression_member().empty()) return;
 
 	std::shared_ptr<KerML::Entities::Multiplicity> multiplicity;
-	if (ctx->multiplicity_expression_member().size() > 1) {
-		unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
-		if (ctx->multiplicity_expression_member().back()->getText() == "*") {
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, true);
+	try {
+		if (ctx->multiplicity_expression_member().size() > 1) {
+			unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
+			if (ctx->multiplicity_expression_member().back()->getText() == "*") {
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, true);
+			}
+			else {
+				unsigned maximum = std::stoul(ctx->multiplicity_expression_member().back()->getText());
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, maximum);
+			}
 		}
 		else {
-			unsigned maximum = std::stoul(ctx->multiplicity_expression_member().back()->getText());
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, maximum);
+			if (ctx->multiplicity_expression_member().front()->getText() == "*") {
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(0, true);
+			}
+			else {
+				unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum);
+			}
 		}
 	}
-	else {
-		if (ctx->multiplicity_expression_member().front()->getText() == "*") {
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(0, true);
-		}
-		else {
-			unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum);
-		}
+	catch (...) {
+		// Ignore non-numeric multiplicity expressions (e.g. invalid syntax, expressions or units)
 	}
 	if (multiplicity) {
 		type->setMultiplicity(multiplicity);
