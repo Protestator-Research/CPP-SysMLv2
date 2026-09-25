@@ -111,9 +111,13 @@ default_reference_usage: ref_prefix usage;
 reference_usage: (end_usage_prefix | ref_prefix) KEYWORD_REF usage;
 variant_reference: owned_reference_subsetting feature_specialization* usage_body;
 
+redefinition_usage_element: (usage_prefix (KEYWORD_ATTRIBUTE | KEYWORD_PART | KEYWORD_ITEM | KEYWORD_PORT | KEYWORD_ACTION | KEYWORD_CALC | KEYWORD_CONSTRAINT)?)? redefinition_usage;
+redefinition_usage: REDEFINES qualified_name (SYMBOL_COMMA qualified_name)* feature_specialization_part? value_part? usage_body;
+
 non_occurrence_usage_element: default_reference_usage |
                               reference_usage |
                               attribute_usage |
+                              redefinition_usage_element |
                               enumeration_usage |
                               binding_connector_as_usage |
                               succession_as_usage |
@@ -365,9 +369,9 @@ state_body_item: non_behavior_body_item |
                  entry_action_member entry_transition_member* |
                  do_action_member |
                  exit_action_member;
-entry_action_member: member_prefix {kind = KEYWORD_ENTRY} state_action_usage;
-do_action_member: member_prefix {kind = KEYWORD_DO} state_action_usage;
-exit_action_member: member_prefix {kind = KEYWORD_EXIT} state_action_usage;
+entry_action_member: member_prefix KEYWORD_ENTRY state_action_usage;
+do_action_member: member_prefix KEYWORD_DO state_action_usage;
+exit_action_member: member_prefix KEYWORD_EXIT state_action_usage;
 entry_transition_member: member_prefix (guarded_target_succession | KEYWORD_THEN target_succession) SYMBOL_STATEMENT_DELIMITER;
 state_action_usage: empty_action_usage SYMBOL_STATEMENT_DELIMITER |
                     state_perform_action_uage |
@@ -388,10 +392,10 @@ exhibit_state_usage: occurrence_usage_prefix KEYWORD_EXHIBIT (owned_reference_su
                
 transition_usage: KEYWORD_TRANSISTION (usage_declaration KEYWORD_FROM)? feature_chain_member trigger_action_member? guard_expression_member? effect_behavior_member? KEYWORD_THEN transition_succession_member action_body;
 target_transition_usage: (KEYWORD_TRANSISTION trigger_action_member? guard_expression_member? effect_behavior_member? | trigger_action_member guard_expression_member? effect_behavior_member? | guard_expression_member effect_behavior_member?)? KEYWORD_THEN transition_succession_member action_body;
-trigger_action_member: KEYWORD_ACCEPT {kind=KEYWORD_TRIGGER} trigger_action;
+trigger_action_member: KEYWORD_ACCEPT trigger_action;
 trigger_action: accept_parameter_part;
-guard_expression_member: KEYWORD_IF {kind=KEYWORD_GUARD} owned_expression;
-effect_behavior_member: KEYWORD_DO {kind=KEYWORD_TRIGGER} effect_behavior_usage;
+guard_expression_member: KEYWORD_IF owned_expression;
+effect_behavior_member: KEYWORD_DO effect_behavior_usage;
 effect_behavior_usage: empty_action_usage |
                        transition_perform_action_usage |
                        transition_accept_action_usage |
@@ -429,7 +433,7 @@ requirement_body_item: definition_body_item |
 subject_member: member_prefix subject_usage;
 subject_usage: KEYWORD_SUBJECT usage_extention_keyword* usage;
 requirement_constraint_member: member_prefix? requriement_kind requirement_constraint_usage;
-requriement_kind: KEYWORD_ASSUME {kind = 'assumption'} | KEYWORD_REQUIRE {kind = 'requirement'}; 
+requriement_kind: KEYWORD_ASSUME | KEYWORD_REQUIRE; 
 requirement_constraint_usage: owned_reference_subsetting feature_specialization_part? requirement_body | (usage_extention_keyword* KEYWORD_CONSTRAINT | usage_extention_keyword+) constraint_usage_declaration calculation_body;
 framed_concern_member: member_prefix? KEYWORD_FRAME framed_concern_usage;
 framed_concern_usage: owned_reference_subsetting feature_specialization_part? calculation_body | (usage_extention_keyword* KEYWORD_CONSTRAINT | usage_extention_keyword+) constraint_usage_declaration calculation_body;
@@ -464,7 +468,7 @@ analysis_case_usage: occurrence_usage_prefix KEYWORD_ANALYSIS constraint_usage_d
 verification_case_definition: occurrence_definition_prefix KEYWORD_VERIFICATION KEYWORD_DEF definition_declaration case_body;
 verification_case_usage: occurrence_usage_prefix KEYWORD_VERIFICATION constraint_usage_declaration case_body;
 
-requirement_verification_member: member_prefix KEYWORD_VERIFY {kind = 'requirement'} requirement_verification_usage;
+requirement_verification_member: member_prefix KEYWORD_VERIFY requirement_verification_usage;
 requirement_verification_usage: owned_reference_subsetting feature_specialization* requirement_body | (usage_extention_keyword* KEYWORD_REQUIREMENT | usage_extention_keyword+) constraint_usage_declaration requirement_body;
 
 use_case_definition: occurrence_definition_prefix KEYWORD_USE KEYWORD_CASE KEYWORD_DEF definition_declaration case_body;

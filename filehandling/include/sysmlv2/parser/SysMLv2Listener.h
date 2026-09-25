@@ -5,7 +5,7 @@
     #include <sysmlv2/sysmlv2file_global.h>
 
 
-// Generated from ./SysMLv2.g4 by ANTLR 4.13.2
+// Generated from filehandling/resources/grammars/SysMLv2.g4 by ANTLR 4.13.2
 
 #pragma once
 
@@ -14,7 +14,7 @@
 #include <sysmlv2/parser/SysMLv2Parser.h>
 
 
-    /**
+/**
  * This interface defines an abstract listener for a parse tree produced by SysMLv2Parser.
  */
 class SYSMLV2FILE_EXPORT SysMLv2Listener : public antlr4::tree::ParseTreeListener {
@@ -169,6 +169,12 @@ public:
 
   virtual void enterVariant_reference(SysMLv2Parser::Variant_referenceContext *ctx) = 0;
   virtual void exitVariant_reference(SysMLv2Parser::Variant_referenceContext *ctx) = 0;
+
+  virtual void enterRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext *ctx) = 0;
+  virtual void exitRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext *ctx) = 0;
+
+  virtual void enterRedefinition_usage(SysMLv2Parser::Redefinition_usageContext *ctx) = 0;
+  virtual void exitRedefinition_usage(SysMLv2Parser::Redefinition_usageContext *ctx) = 0;
 
   virtual void enterNon_occurrence_usage_element(SysMLv2Parser::Non_occurrence_usage_elementContext *ctx) = 0;
   virtual void exitNon_occurrence_usage_element(SysMLv2Parser::Non_occurrence_usage_elementContext *ctx) = 0;

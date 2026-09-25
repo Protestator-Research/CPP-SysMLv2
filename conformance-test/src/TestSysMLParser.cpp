@@ -217,3 +217,46 @@ TEST(TestSysMLParser, DependencyAndExplicitCommentTargets) {
     ASSERT_EQ(comment->annotatedElements().size(), 1u);
     EXPECT_EQ(comment->annotatedElements()[0], target);
 }
+
+TEST(TestSysMLParser, FeatureSpecializationRedefinition) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package P { "
+        "  part def Vehicle { attribute mass : Real; } "
+        "  part def Car :> Vehicle { attribute carMass :>> mass; } "
+        "}");
+    ASSERT_TRUE(errors.empty());
+    const auto carMass = named<SysMLv2::Entities::AttributeUsage>(elements, "carMass");
+    ASSERT_NE(carMass, nullptr);
+    ASSERT_EQ(carMass->ownedRedefinition().size(), 1u);
+    const auto redef = carMass->ownedRedefinition()[0];
+    ASSERT_NE(redef, nullptr);
+    ASSERT_NE(redef->redefinedFeature(), nullptr);
+    EXPECT_EQ(redef->redefinedFeature()->declaredName(), "mass");
+    EXPECT_EQ(redef->redefiningFeature(), carMass);
+}
+
+TEST(TestSysMLParser, AnonymousRedefinitionUsage) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package P { "
+        "  part def Vehicle { attribute mass : Real; } "
+        "  part def Car :> Vehicle { :>> mass; } "
+        "}");
+    ASSERT_TRUE(errors.empty());
+    std::shared_ptr<KerML::Entities::Feature> redefFeature;
+    for (const auto& elem : elements) {
+        if (auto feat = std::dynamic_pointer_cast<KerML::Entities::Feature>(elem)) {
+            if (feat->declaredName() == "mass" && !feat->ownedRedefinition().empty()) {
+                redefFeature = feat;
+                break;
+            }
+        }
+    }
+    ASSERT_NE(redefFeature, nullptr);
+    ASSERT_EQ(redefFeature->ownedRedefinition().size(), 1u);
+    const auto redef = redefFeature->ownedRedefinition()[0];
+    ASSERT_NE(redef, nullptr);
+    ASSERT_NE(redef->redefinedFeature(), nullptr);
+    EXPECT_EQ(redef->redefinedFeature()->declaredName(), "mass");
+    EXPECT_EQ(redef->redefiningFeature(), redefFeature);
+}
+

@@ -5,7 +5,7 @@
     #include <sysmlv2/sysmlv2file_global.h>
 
 
-// Generated from ./SysMLv2.g4 by ANTLR 4.13.2
+// Generated from filehandling/resources/grammars/SysMLv2.g4 by ANTLR 4.13.2
 
 #pragma once
 
@@ -14,7 +14,7 @@
 #include <sysmlv2/parser/SysMLv2Listener.h>
 
 
-    /**
+/**
  * This class provides an empty implementation of SysMLv2Listener,
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
@@ -171,6 +171,12 @@ public:
 
   virtual void enterVariant_reference(SysMLv2Parser::Variant_referenceContext * /*ctx*/) override { }
   virtual void exitVariant_reference(SysMLv2Parser::Variant_referenceContext * /*ctx*/) override { }
+
+  virtual void enterRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext * /*ctx*/) override { }
+  virtual void exitRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext * /*ctx*/) override { }
+
+  virtual void enterRedefinition_usage(SysMLv2Parser::Redefinition_usageContext * /*ctx*/) override { }
+  virtual void exitRedefinition_usage(SysMLv2Parser::Redefinition_usageContext * /*ctx*/) override { }
 
   virtual void enterNon_occurrence_usage_element(SysMLv2Parser::Non_occurrence_usage_elementContext * /*ctx*/) override { }
   virtual void exitNon_occurrence_usage_element(SysMLv2Parser::Non_occurrence_usage_elementContext * /*ctx*/) override { }

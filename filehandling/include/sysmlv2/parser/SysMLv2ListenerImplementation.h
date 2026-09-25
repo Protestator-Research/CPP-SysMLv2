@@ -176,6 +176,12 @@ public:
     virtual void enterVariant_reference(SysMLv2Parser::Variant_referenceContext* ctx) override;
     virtual void exitVariant_reference(SysMLv2Parser::Variant_referenceContext* ctx) override;
 
+    virtual void enterRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext* ctx) override;
+    virtual void exitRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext* ctx) override;
+
+    virtual void enterRedefinition_usage(SysMLv2Parser::Redefinition_usageContext* ctx) override;
+    virtual void exitRedefinition_usage(SysMLv2Parser::Redefinition_usageContext* ctx) override;
+
     virtual void enterNon_occurrence_usage_element(SysMLv2Parser::Non_occurrence_usage_elementContext* /*ctx*/) override {}
     virtual void exitNon_occurrence_usage_element(SysMLv2Parser::Non_occurrence_usage_elementContext* /*ctx*/) override {}
 
@@ -1074,6 +1080,12 @@ private:
         std::string superName;
     };
     std::vector<PendingSpecialization> pendingSpecializations_;
+
+    struct PendingRedefinition {
+        std::shared_ptr<KerML::Entities::Feature> feature;
+        std::string redefinedName;
+    };
+    std::vector<PendingRedefinition> pendingRedefinitions_;
 
     std::map<std::string, std::string> aliases_;
     std::map<std::string, std::vector<std::string>> packageImports_;

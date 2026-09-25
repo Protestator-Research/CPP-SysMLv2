@@ -12,6 +12,7 @@ void SysMLv2ListenerImplementation::enterStart(SysMLv2Parser::StartContext*) {
 	while (!ParentStack.empty()) ParentStack.pop();
 	pendingTypings_.clear();
 	pendingSpecializations_.clear();
+	pendingRedefinitions_.clear();
 	aliases_.clear();
 	packageImports_.clear();
 	populateWithBaseDatatypes();
@@ -326,6 +327,16 @@ void SysMLv2ListenerImplementation::applyFeatureSpecializationPart(SysMLv2Parser
 				pendingTypings_.push_back({ feature, typeName });
 			}
 		}
+		if (spec->redefinitions()) {
+			if (spec->redefinitions()->redefines() && spec->redefinitions()->redefines()->owned_redefinition()) {
+				std::string redefName = spec->redefinitions()->redefines()->owned_redefinition()->getText();
+				pendingRedefinitions_.push_back({ feature, redefName });
+			}
+			if (spec->redefinitions()->owned_redefinition()) {
+				std::string redefName = spec->redefinitions()->owned_redefinition()->getText();
+				pendingRedefinitions_.push_back({ feature, redefName });
+			}
+		}
 	}
 }
 
@@ -632,6 +643,62 @@ DEFINE_USAGE_METHODS(Include_use_case_usage, SysMLv2::Entities::IncludeUseCaseUs
 DEFINE_USAGE_METHODS(Flow_usage, SysMLv2::Entities::FlowUsage)
 DEFINE_USAGE_METHODS(Succession_flow_usage, SysMLv2::Entities::SuccessionFlowUsage)
 DEFINE_USAGE_METHODS(Message, SysMLv2::Entities::FlowUsage)
+
+void SysMLv2ListenerImplementation::enterRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext* ctx) {
+	std::shared_ptr<KerML::Entities::Feature> feature;
+	if (ctx && ctx->KEYWORD_ATTRIBUTE()) {
+		feature = std::make_shared<SysMLv2::Entities::AttributeUsage>();
+	} else if (ctx && ctx->KEYWORD_PART()) {
+		feature = std::make_shared<SysMLv2::Entities::PartUsage>();
+	} else if (ctx && ctx->KEYWORD_ITEM()) {
+		feature = std::make_shared<SysMLv2::Entities::ItemUsage>();
+	} else if (ctx && ctx->KEYWORD_PORT()) {
+		feature = std::make_shared<SysMLv2::Entities::PortUsage>();
+	} else if (ctx && ctx->KEYWORD_ACTION()) {
+		feature = std::make_shared<SysMLv2::Entities::ActionUsage>();
+	} else if (ctx && ctx->KEYWORD_CALC()) {
+		feature = std::make_shared<SysMLv2::Entities::CalculationUsage>();
+	} else if (ctx && ctx->KEYWORD_CONSTRAINT()) {
+		feature = std::make_shared<SysMLv2::Entities::ConstraintUsage>();
+	} else {
+		feature = std::make_shared<SysMLv2::Entities::Usage>();
+	}
+	if (ctx && ctx->usage_prefix()) {
+		applyUsagePrefix(ctx->usage_prefix(), feature);
+	}
+	ParentStack.push(feature);
+}
+
+void SysMLv2ListenerImplementation::exitRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext*) {
+	handleUsageExit<KerML::Entities::Feature>(ParentStack, Elements);
+}
+
+void SysMLv2ListenerImplementation::enterRedefinition_usage(SysMLv2Parser::Redefinition_usageContext*) {}
+
+void SysMLv2ListenerImplementation::exitRedefinition_usage(SysMLv2Parser::Redefinition_usageContext* ctx) {
+	if (ParentStack.empty()) return;
+	auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+	if (!feature) return;
+
+	if (ctx) {
+		if (!ctx->qualified_name().empty()) {
+			std::string fullName = ctx->qualified_name(0)->getText();
+			std::string shortName = fullName;
+			size_t lastColon = shortName.rfind("::");
+			if (lastColon != std::string::npos) {
+				shortName = shortName.substr(lastColon + 2);
+			}
+			feature->setDeclaredName(shortName);
+		}
+		for (auto qNameCtx : ctx->qualified_name()) {
+			std::string redefName = qNameCtx->getText();
+			pendingRedefinitions_.push_back({ feature, redefName });
+		}
+		if (ctx->feature_specialization_part()) {
+			applyFeatureSpecializationPart(ctx->feature_specialization_part(), feature);
+		}
+	}
+}
 
 void SysMLv2ListenerImplementation::enterIndividual_usage(SysMLv2Parser::Individual_usageContext*) {
 	auto u = std::make_shared<SysMLv2::Entities::OccurrenceUsage>();
@@ -1039,8 +1106,38 @@ void SysMLv2ListenerImplementation::enterFeature_typing(SysMLv2Parser::Feature_t
 void SysMLv2ListenerImplementation::exitFeature_typing(SysMLv2Parser::Feature_typingContext*) {}
 void SysMLv2ListenerImplementation::enterSubsetting(SysMLv2Parser::SubsettingContext*) {}
 void SysMLv2ListenerImplementation::exitSubsetting(SysMLv2Parser::SubsettingContext*) {}
-void SysMLv2ListenerImplementation::enterRedefinition(SysMLv2Parser::RedefinitionContext*) {}
-void SysMLv2ListenerImplementation::exitRedefinition(SysMLv2Parser::RedefinitionContext*) {}
+void SysMLv2ListenerImplementation::enterRedefinition(SysMLv2Parser::RedefinitionContext*) {
+	auto feature = std::make_shared<KerML::Entities::Feature>();
+	ParentStack.push(feature);
+}
+
+void SysMLv2ListenerImplementation::exitRedefinition(SysMLv2Parser::RedefinitionContext* ctx) {
+	if (ParentStack.empty()) return;
+	auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+	if (!feature) return;
+	ParentStack.pop();
+
+	if (ctx && ctx->qualified_name()) {
+		std::string redefName = ctx->qualified_name()->getText();
+		std::string shortName = redefName;
+		size_t lastColon = shortName.rfind("::");
+		if (lastColon != std::string::npos) {
+			shortName = shortName.substr(lastColon + 2);
+		}
+		feature->setDeclaredName(shortName);
+		pendingRedefinitions_.push_back({ feature, redefName });
+	}
+
+	Elements.push_back(feature);
+	if (!ParentStack.empty()) {
+		feature->setOwner(ParentStack.top());
+		ParentStack.top()->appendOwnedElement(feature);
+		if (auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top())) {
+			type->appendOwnedFeature(feature);
+			feature->setOwningType(type);
+		}
+	}
+}
 void SysMLv2ListenerImplementation::enterFeature_inverting(SysMLv2Parser::Feature_invertingContext*) {}
 void SysMLv2ListenerImplementation::exitFeature_inverting(SysMLv2Parser::Feature_invertingContext*) {}
 void SysMLv2ListenerImplementation::enterType_featuring(SysMLv2Parser::Type_featuringContext*) {}
@@ -1419,4 +1516,23 @@ void SysMLv2ListenerImplementation::resolveReferences() {
 		}
 	}
 	pendingSpecializations_.clear();
+
+	for (const auto& pending : pendingRedefinitions_) {
+		if (!pending.feature) continue;
+		auto target = resolveElement(pending.redefinedName, pending.feature);
+		auto redefinedFeature = std::dynamic_pointer_cast<KerML::Entities::Feature>(target);
+		if (!redefinedFeature) {
+			redefinedFeature = findOrCreateFeature(pending.redefinedName);
+		}
+		if (redefinedFeature) {
+			auto redef = std::make_shared<KerML::Entities::Redefinition>(redefinedFeature, pending.feature);
+			redef->setOwner(pending.feature);
+			pending.feature->appendOwnedRedefinition(redef);
+			pending.feature->appendOwnedSubsetting(redef);
+			pending.feature->appendOwnedSpecialization(redef);
+			pending.feature->appendOwnedElement(redef);
+			Elements.push_back(redef);
+		}
+	}
+	pendingRedefinitions_.clear();
 }
