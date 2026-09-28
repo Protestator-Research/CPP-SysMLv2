@@ -25,6 +25,12 @@ public:
   virtual void enterStart(SysMLv2Parser::StartContext * /*ctx*/) override { }
   virtual void exitStart(SysMLv2Parser::StartContext * /*ctx*/) override { }
 
+  virtual void enterIdentification(SysMLv2Parser::IdentificationContext * /*ctx*/) override { }
+  virtual void exitIdentification(SysMLv2Parser::IdentificationContext * /*ctx*/) override { }
+
+  virtual void enterSysml_name(SysMLv2Parser::Sysml_nameContext * /*ctx*/) override { }
+  virtual void exitSysml_name(SysMLv2Parser::Sysml_nameContext * /*ctx*/) override { }
+
   virtual void enterStart_element(SysMLv2Parser::Start_elementContext * /*ctx*/) override { }
   virtual void exitStart_element(SysMLv2Parser::Start_elementContext * /*ctx*/) override { }
 
@@ -930,9 +936,6 @@ public:
 
   virtual void enterElements(SysMLv2Parser::ElementsContext * /*ctx*/) override { }
   virtual void exitElements(SysMLv2Parser::ElementsContext * /*ctx*/) override { }
-
-  virtual void enterIdentification(SysMLv2Parser::IdentificationContext * /*ctx*/) override { }
-  virtual void exitIdentification(SysMLv2Parser::IdentificationContext * /*ctx*/) override { }
 
   virtual void enterRelationship_owned_elements(SysMLv2Parser::Relationship_owned_elementsContext * /*ctx*/) override { }
   virtual void exitRelationship_owned_elements(SysMLv2Parser::Relationship_owned_elementsContext * /*ctx*/) override { }

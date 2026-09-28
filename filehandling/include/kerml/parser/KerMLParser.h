@@ -2816,6 +2816,8 @@ public:
     Owned_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Base_expressionContext *base_expression();
+    std::vector<Bracket_expressionContext *> bracket_expression();
+    Bracket_expressionContext* bracket_expression(size_t i);
     Conditional_expressionContext *conditional_expression();
     Conditional_binary_operator_expressionContext *conditional_binary_operator_expression();
     Binary_operator_expressionContext *binary_operator_expression();

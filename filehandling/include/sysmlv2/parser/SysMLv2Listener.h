@@ -23,6 +23,12 @@ public:
   virtual void enterStart(SysMLv2Parser::StartContext *ctx) = 0;
   virtual void exitStart(SysMLv2Parser::StartContext *ctx) = 0;
 
+  virtual void enterIdentification(SysMLv2Parser::IdentificationContext *ctx) = 0;
+  virtual void exitIdentification(SysMLv2Parser::IdentificationContext *ctx) = 0;
+
+  virtual void enterSysml_name(SysMLv2Parser::Sysml_nameContext *ctx) = 0;
+  virtual void exitSysml_name(SysMLv2Parser::Sysml_nameContext *ctx) = 0;
+
   virtual void enterStart_element(SysMLv2Parser::Start_elementContext *ctx) = 0;
   virtual void exitStart_element(SysMLv2Parser::Start_elementContext *ctx) = 0;
 
@@ -928,9 +934,6 @@ public:
 
   virtual void enterElements(SysMLv2Parser::ElementsContext *ctx) = 0;
   virtual void exitElements(SysMLv2Parser::ElementsContext *ctx) = 0;
-
-  virtual void enterIdentification(SysMLv2Parser::IdentificationContext *ctx) = 0;
-  virtual void exitIdentification(SysMLv2Parser::IdentificationContext *ctx) = 0;
 
   virtual void enterRelationship_owned_elements(SysMLv2Parser::Relationship_owned_elementsContext *ctx) = 0;
   virtual void exitRelationship_owned_elements(SysMLv2Parser::Relationship_owned_elementsContext *ctx) = 0;

@@ -13,6 +13,8 @@ grammar SysMLv2;
 import KerML;
 
 start: start_element* EOF;
+identification: (SYMBOL_SMALLER sysml_name SYMBOL_GREATER)? sysml_name;
+sysml_name: NAME | KEYWORD_VAR;
 
 start_element: element | usage_element | definition_element;
 
@@ -28,7 +30,7 @@ annotating_member: annotating_element;
 annotating_element: comment | documentation | textual_representation | metadata_feature;
 
 comment: (KEYWORD_COMMENT identification (KEYWORD_ABOUT annotation (SYMBOL_COMMA annotation)*)?)?(KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
-documentation: KEYWORD_DOC identification (KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
+documentation: KEYWORD_DOC identification? (KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
 textual_representation: (KEYWORD_REP identification)? KEYWORD_LANGUAGE STRING_VALUE REGULAR_COMMENT;
 
 root_namespace: package_body_element*;

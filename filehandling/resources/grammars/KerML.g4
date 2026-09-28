@@ -216,7 +216,7 @@ owned_expression_reference_member: owned_expression_reference;
 owned_expression_reference: owned_expression_member;
 owned_expression_member: owned_expressions;
 owned_expressions: owned_expression+;
-owned_expression: base_expression | conditional_expression |
+owned_expression: base_expression bracket_expression* | conditional_expression |
                   conditional_binary_operator_expression |
                   binary_operator_expression |
                   unary_operator_expression |
@@ -546,7 +546,7 @@ UNRESTRICTED_NAME: '\'' .*? '\'';
 
 //Values:
 DECIMAL_VALUE: [0-9]+ ;
-EXPONENTIAL_VALUE: DECIMAL_VALUE ('e' | 'E') ('+'|'-') DECIMAL_VALUE;
+EXPONENTIAL_VALUE: DECIMAL_VALUE ('e' | 'E') ('+'|'-')? DECIMAL_VALUE;
 STRING_VALUE: '"' .*? '"';
 
 WS: [ \t\r\n]+ -> channel(HIDDEN) ;

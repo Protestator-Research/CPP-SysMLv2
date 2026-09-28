@@ -1341,7 +1341,7 @@ void SysMLv2ListenerImplementation::finishOperatorExpression(const std::string& 
 
 void SysMLv2ListenerImplementation::applyIdentification(SysMLv2Parser::IdentificationContext* idCtx, const std::shared_ptr<KerML::Entities::Element>& elem) {
 	if (!idCtx || !elem) return;
-	auto names = idCtx->NAME();
+	auto names = idCtx->sysml_name();
 	if (names.empty()) return;
 	if (idCtx->SYMBOL_SMALLER() != nullptr && names.size() >= 2) {
 		elem->setDeclaredShortName(names[0]->getText());
