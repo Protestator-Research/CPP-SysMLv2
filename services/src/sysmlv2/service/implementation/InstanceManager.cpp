@@ -164,7 +164,7 @@ namespace SysMLv2::API
 					bool namespaceChanged = false;
 					boost::uuids::uuid oldNamespaceImportUUID;
 
-					for (const auto elementOfFinding :elementsWithNames)
+					for (const auto& elementOfFinding :elementsWithNames)
 					{
 						if (elementOfFinding->getType() != "Namespace")
 						{
