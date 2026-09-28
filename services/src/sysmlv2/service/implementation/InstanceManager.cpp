@@ -7,10 +7,13 @@
 #include <kerml/root/elements/Element.h>
 #include <kerml/root/namespaces/NamespaceImport.h>
 #include <kerml/root/namespaces/Namespace.h>
+#include <kerml/root/namespaces/OwningMembership.h>
+#include <kerml/root/namespaces/Import.h>
 #include <sysmlv2/Parser.h>
 
 #include <boost/uuid/uuid.hpp>
 #include <iostream>
+#include <unordered_set>
 #include <cmrc/cmrc.hpp>
 
 #include "kerml/ErrorTypes.h"
@@ -61,6 +64,14 @@ namespace SysMLv2::API
 
 	std::shared_ptr<KerML::Entities::Element> InstanceManager::findElementWithQualifiedName(const std::string& name) const
 	{
+		auto it = std::find_if(Elements.begin(), Elements.end(), [&name](const std::shared_ptr<KerML::Entities::Element>& elem)
+			{
+				return (elem && elem->qualifiedName().has_value() && elem->qualifiedName().value() == name);
+			});
+
+		if (it != Elements.end())
+			return *it;
+
 		return nullptr;
 	}
 
@@ -82,11 +93,14 @@ namespace SysMLv2::API
 	{
 		Elements.clear();
 		ParserErrors.clear();
+		LogicalErrors.clear();
 		const auto modelResults = SysMLv2::Files::Parser::parseSysMLv2(InstanceModel);
 		Elements.insert(Elements.end(), modelResults.first.begin(), modelResults.first.end());
 		ParserErrors.insert(ParserErrors.end(), modelResults.second.begin(), modelResults.second.end());
 		importStandardLibraries();
 		parseNonStandardLibraries();
+		resolveNamespaceImports();
+		analyzeRootNamespaces();
 	}
 
 	void InstanceManager::importStandardLibraries() {
@@ -96,23 +110,25 @@ namespace SysMLv2::API
 				const auto& import = std::dynamic_pointer_cast<KerML::Entities::NamespaceImport>(element);
 				if (import->importedNamespace() != nullptr)
 				{
-					std::cout << "Imported Namespace: " << import->importedNamespace()->declaredName().value_or("error in getting namespace name") << std::endl;
+					if (!import->importedNamespace()->declaredName().has_value())
+					{
+						LogicalErrors.push_back("Namespace Import with no name is not allowed!");
+						continue;
+					}
 					auto it = std::ranges::find(StandardLibraries, import->importedNamespace()->declaredName());
 
 					if (it != StandardLibraries.end()) {
-						std::cout << "Use Standard Libary Namespaces: " << *it << '\n';
 						auto fs = cmrc::Library::get_filesystem();
 						std::size_t index = std::distance(StandardLibraries.begin(), it);
 						auto data = fs.open(StandardLibrariesPaths[index]);
 						std::string content(data.begin(), data.end());
 						const auto parserResults = SysMLv2::Files::Parser::parseSysMLv2(content);
 						elementsToAppend.insert(elementsToAppend.end(), parserResults.first.begin(), parserResults.first.end());
-						//ParserErrors.insert(ParserErrors.end(), parserResults.second.begin(), parserResults.second.end());
 					}
 				}
 				else
 				{
-					std::cout << "No Namespace created for import" << std::endl;
+					LogicalErrors.push_back("Error: No Namespace created for import");
 				}
 			}
 		}
@@ -139,8 +155,9 @@ namespace SysMLv2::API
 				if (import->importedNamespace() != nullptr) {
 					if (!import->importedNamespace()->declaredName().has_value())
 					{
-						std::cout << "Error: NamespaceImport of Namespace without name." << std::endl;
-						return;
+						//std::cout << "Error: NamespaceImport of Namespace without name." << std::endl;
+						LogicalErrors.push_back("Error: NamespaceImport of Namespace without name.");
+						continue;
 					}
 					const auto& elementsWithNames = findAllElementsWithDeclaredName(import->importedNamespace()->declaredName().value());
 					
@@ -151,7 +168,8 @@ namespace SysMLv2::API
 					{
 						if (elementOfFinding->getType() != "Namespace")
 						{
-							std::cout << "Error: NamespaceImport should result in an namespace that is Imported. Please use the Membership Import!" << std::endl;
+							//std::cout << "Error: NamespaceImport should result in an namespace that is Imported. Please use the Membership Import!" << std::endl;
+							LogicalErrors.push_back("Error: NamespaceImport should result in an namespace that is Imported. Please use the Membership Import!");
 							continue;
 						}
 						if (!elementOfFinding->ownedElements().empty())
@@ -172,26 +190,121 @@ namespace SysMLv2::API
 							Elements.erase(it);
 						}else
 						{
-							std::cout << "Internal Error: Element that is replaced not found in Element list." << std::endl;
+							//std::cout << "Internal Error: Element that is replaced not found in Element list." << std::endl;
+							LogicalErrors.push_back("Internal Error: Element that is replaced not found in Element list.");
 						}
 					}
 				}
-				else
-					std::cout << "Error: Namespace Import Without valid Namespace causes errors in model." << std::endl;
+				else {
+					//std::cout << "Error: Namespace Import Without valid Namespace causes errors in model." << std::endl;
+					LogicalErrors.push_back("Error: Namespace Import Without valid Namespace causes errors in model.");
+				}
 			}
 		}
 	}
 
 	void InstanceManager::analyzeRootNamespaces()
 	{
-		RootNamespace = std::make_shared<KerML::Entities::Namespace>("root");
+		RootNamespace = std::make_shared<KerML::Entities::Namespace>("");
+
+		std::vector<std::shared_ptr<KerML::Entities::Element>> rootCandidates;
 		for (const auto& elem : Elements)
 		{
-			if (elem->owner()==nullptr)
-			{
-				RootNamespace->appendOwnedMember(elem);
-				elem->setOwner(RootNamespace);
+			if (elem == nullptr || elem == RootNamespace) {
+				continue;
+			}
+
+			if (elem->owner() == nullptr) {
+				rootCandidates.push_back(elem);
 			}
 		}
+
+		for (const auto& elem : rootCandidates)
+		{
+			attachToRootNamespace(elem);
+		}
+
+		updateQualifiedNamesRecursively(RootNamespace, "");
+	}
+
+	void InstanceManager::attachToRootNamespace(const std::shared_ptr<KerML::Entities::Element>& elem)
+	{
+		if (!elem) return;
+
+		if (auto importElem = std::dynamic_pointer_cast<KerML::Entities::Import>(elem))
+		{
+			importElem->setOwner(RootNamespace);
+			importElem->setImportOwningNamespace(RootNamespace);
+			RootNamespace->appendOwnedImport(importElem);
+			RootNamespace->appendOwnedElement(importElem);
+			return;
+		}
+
+		auto membership = std::make_shared<KerML::Entities::OwningMembership>();
+		membership->setVisibility(KerML::Entities::PUBLIC);
+
+		if (elem->declaredName().has_value()) {
+			membership->setMemberName(elem->declaredName().value());
+			membership->setDeclaredName(elem->declaredName().value());
+		}
+		if (elem->declaredShortName().has_value()) {
+			membership->setMemberShortName(elem->declaredShortName().value());
+			membership->setDeclaredShortName(elem->declaredShortName().value());
+		}
+
+		membership->setMemberElement(elem);
+		membership->setMembershipOwningNamespace(RootNamespace);
+		membership->setOwner(RootNamespace);
+
+		elem->setOwner(RootNamespace);
+		elem->setOwningRelationship(membership);
+
+		RootNamespace->appendOwnedMember(elem);
+		RootNamespace->appendMember(elem);
+		RootNamespace->appendOwnedMembership(membership);
+		RootNamespace->appendMembership(membership);
+		RootNamespace->appendOwnedElement(elem);
+		RootNamespace->appendOwnedElement(membership);
+
+		Elements.push_back(membership);
+	}
+
+	void InstanceManager::updateQualifiedNamesRecursively(
+		const std::shared_ptr<KerML::Entities::Element>& elem, 
+		const std::string& parentQualifiedName)
+	{
+		if (!elem) return;
+
+		std::unordered_set<const KerML::Entities::Element*> visited;
+
+		auto recurse = [&](auto self, const std::shared_ptr<KerML::Entities::Element>& currentElem, const std::string& currentParentQName) -> void {
+			if (!currentElem) return;
+			if (visited.contains(currentElem.get())) return;
+			visited.insert(currentElem.get());
+
+			std::string currentName;
+			if (currentElem->declaredName().has_value() && !currentElem->declaredName()->empty()) {
+				currentName = currentElem->declaredName().value();
+			} else if (currentElem->declaredShortName().has_value() && !currentElem->declaredShortName()->empty()) {
+				currentName = currentElem->declaredShortName().value();
+			}
+
+			std::string nextQName = currentParentQName;
+			bool isRelationship = (std::dynamic_pointer_cast<KerML::Entities::Relationship>(currentElem) != nullptr);
+
+			if (!currentName.empty() && !isRelationship) {
+				nextQName = currentParentQName.empty() ? currentName : (currentParentQName + "::" + currentName);
+				currentElem->setQualifiedName(nextQName);
+			}
+
+			for (const auto& child : currentElem->ownedElements())
+			{
+				if (child) {
+					self(self, child, nextQName);
+				}
+			}
+		};
+
+		recurse(recurse, elem, parentQualifiedName);
 	}
 }

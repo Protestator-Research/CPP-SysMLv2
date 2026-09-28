@@ -37,3 +37,31 @@ TEST(ProjectConformanceTest, GetProjectsWithId) {
         EXPECT_EQ(projectService->getProjectById(project->getId())->getId(),project->getId());
     }
 }
+
+#include <sysmlv2/service/implementation/InstanceManager.h>
+#include <kerml/root/namespaces/Namespace.h>
+#include <kerml/root/namespaces/OwningMembership.h>
+#include <kerml/root/elements/Element.h>
+
+TEST(InstanceManagerTest, RootNamespaceCreationAndLookup) {
+    SysMLv2::API::InstanceManager manager;
+    std::string model = "package VehiclePackage { part def Car; }";
+
+    manager.parseModel(model);
+
+    auto rootNs = manager.getRootNamespace();
+    ASSERT_NE(rootNs, nullptr);
+
+    EXPECT_FALSE(rootNs->ownedMember().empty());
+
+    auto vehiclePkg = manager.findElementWithQualifiedName("VehiclePackage");
+    ASSERT_NE(vehiclePkg, nullptr);
+    EXPECT_EQ(vehiclePkg->declaredName().value_or(""), "VehiclePackage");
+    EXPECT_EQ(vehiclePkg->owner(), rootNs);
+    EXPECT_NE(vehiclePkg->owningMembership(), nullptr);
+
+    auto car = manager.findElementWithQualifiedName("VehiclePackage::Car");
+    ASSERT_NE(car, nullptr);
+    EXPECT_EQ(car->declaredName().value_or(""), "Car");
+    EXPECT_EQ(car->owner(), vehiclePkg);
+}

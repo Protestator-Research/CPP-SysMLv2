@@ -28,7 +28,7 @@ namespace KerML::Entities
 	IsPortion(false),
 	IsVariable(false),
 	IsConstant(false),
-	Direction( {} )
+	Direction( std::nullopt )
 	{
 		_dType = "Feature";
 	}

@@ -53,10 +53,13 @@ namespace SysMLv2::API
 		void parseNonStandardLibraries();
 		void resolveNamespaceImports();
 		void analyzeRootNamespaces();
+		void attachToRootNamespace(const std::shared_ptr<KerML::Entities::Element>& elem);
+		void updateQualifiedNamesRecursively(const std::shared_ptr<KerML::Entities::Element>& elem, const std::string& parentQualifiedName);
 
 		
 
 		std::vector<std::shared_ptr<SysMLv2::Files::ParserError>> ParserErrors;
+		std::vector<std::string> LogicalErrors;
 		std::vector<std::shared_ptr<KerML::Entities::Element>> Elements;
 		std::shared_ptr<KerML::Entities::Namespace> RootNamespace = nullptr;
 
