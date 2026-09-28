@@ -60,12 +60,14 @@ if(MSVC)
         ./include
         ../rest-api/include
         ../sysmlinterfaces/include
+        ../filehandling/include
         ../kerml/include)
 else ()
     target_compile_options(sysmlv2service PRIVATE -Wall -Wextra -Wpedantic -Werror)
     target_include_directories(sysmlv2service PRIVATE
         ./include
         ../rest-api/include
+        ../filehandling/include
         ../sysmlinterfaces/include
         ../kerml/include)
 endif()
