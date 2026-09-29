@@ -20,7 +20,7 @@ class CPPSysMLRecipe(ConanFile):
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False], "with_rest": [True, False], "with_services":[True, False], "with_parsing":[True,False]}
-    default_options = {"shared": True, "fPIC": False, "with_rest": True, "with_services": True, "with_parsing": True}
+    default_options = {"shared": True, "fPIC": True, "with_rest": True, "with_services": True, "with_parsing": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = "CMakeLists.txt", "interfaces/*", "conformance-test/*", "filehandling/*", "kerml/*", "rest-api/*", "services/*", "sysmlinterfaces/*", "resources/*", "sysml/*"
@@ -39,7 +39,6 @@ class CPPSysMLRecipe(ConanFile):
 
     def configure(self):
         if self.options.shared:
-            self.options.rm_safe("fPIC")
             self.options["boost/*"].shared = True
             self.options["nlohmann_json/*"].shared = True
             self.options["date/*"].shared = True

@@ -21981,7 +21981,7 @@ bool KerMLParser::sempred(RuleContext *context, size_t ruleIndex, size_t predica
   return true;
 }
 
-bool KerMLParser::owned_expressionSempred(Owned_expressionContext *_localctx, size_t predicateIndex) {
+bool KerMLParser::owned_expressionSempred(Owned_expressionContext *, size_t predicateIndex) {
   switch (predicateIndex) {
     case 0: return precpred(_ctx, 20);
     case 1: return precpred(_ctx, 19);

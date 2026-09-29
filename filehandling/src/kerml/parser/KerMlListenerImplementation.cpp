@@ -3232,7 +3232,7 @@ void KerMLListenerImplementation::enterConditionalExpr(KerMLParser::ConditionalE
     ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 }
 
-void KerMLListenerImplementation::exitConditionalExpr(KerMLParser::ConditionalExprContext *ctx) {
+void KerMLListenerImplementation::exitConditionalExpr(KerMLParser::ConditionalExprContext *) {
     finishOperatorExpression("if");
 }
 
@@ -3272,7 +3272,7 @@ void KerMLListenerImplementation::enterExtentExpr(KerMLParser::ExtentExprContext
     ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 }
 
-void KerMLListenerImplementation::exitExtentExpr(KerMLParser::ExtentExprContext *ctx) {
+void KerMLListenerImplementation::exitExtentExpr(KerMLParser::ExtentExprContext *) {
     finishOperatorExpression("all");
 }
 
@@ -3280,7 +3280,7 @@ void KerMLListenerImplementation::enterBracketExpr(KerMLParser::BracketExprConte
     ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 }
 
-void KerMLListenerImplementation::exitBracketExpr(KerMLParser::BracketExprContext *ctx) {
+void KerMLListenerImplementation::exitBracketExpr(KerMLParser::BracketExprContext *) {
     finishOperatorExpression("[");
 }
 

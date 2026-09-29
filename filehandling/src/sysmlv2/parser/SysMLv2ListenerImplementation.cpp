@@ -1264,7 +1264,7 @@ void SysMLv2ListenerImplementation::enterConditionalExpr(SysMLv2Parser::Conditio
 	ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 }
 
-void SysMLv2ListenerImplementation::exitConditionalExpr(SysMLv2Parser::ConditionalExprContext* ctx) {
+void SysMLv2ListenerImplementation::exitConditionalExpr(SysMLv2Parser::ConditionalExprContext*) {
 	finishOperatorExpression("if");
 }
 
@@ -1304,7 +1304,7 @@ void SysMLv2ListenerImplementation::enterExtentExpr(SysMLv2Parser::ExtentExprCon
 	ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 }
 
-void SysMLv2ListenerImplementation::exitExtentExpr(SysMLv2Parser::ExtentExprContext* ctx) {
+void SysMLv2ListenerImplementation::exitExtentExpr(SysMLv2Parser::ExtentExprContext*) {
 	finishOperatorExpression("all");
 }
 
@@ -1312,7 +1312,7 @@ void SysMLv2ListenerImplementation::enterBracketExpr(SysMLv2Parser::BracketExprC
 	ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 }
 
-void SysMLv2ListenerImplementation::exitBracketExpr(SysMLv2Parser::BracketExprContext* ctx) {
+void SysMLv2ListenerImplementation::exitBracketExpr(SysMLv2Parser::BracketExprContext*) {
 	finishOperatorExpression("[");
 }
 
@@ -1320,7 +1320,7 @@ void SysMLv2ListenerImplementation::enterSequence_operator_expression(SysMLv2Par
 	ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 }
 
-void SysMLv2ListenerImplementation::exitSequence_operator_expression(SysMLv2Parser::Sequence_operator_expressionContext* ctx) {
+void SysMLv2ListenerImplementation::exitSequence_operator_expression(SysMLv2Parser::Sequence_operator_expressionContext*) {
 	finishOperatorExpression(",");
 }
 
@@ -1328,7 +1328,7 @@ void SysMLv2ListenerImplementation::enterIndexExpr(SysMLv2Parser::IndexExprConte
 	ParentStack.push(std::make_shared<KerML::Entities::IndexExpression>());
 }
 
-void SysMLv2ListenerImplementation::exitIndexExpr(SysMLv2Parser::IndexExprContext* ctx) {
+void SysMLv2ListenerImplementation::exitIndexExpr(SysMLv2Parser::IndexExprContext*) {
 	if (ParentStack.empty()) return;
 	const auto expr = std::dynamic_pointer_cast<KerML::Entities::IndexExpression>(ParentStack.top());
 	if (!expr) return;
@@ -1341,7 +1341,7 @@ void SysMLv2ListenerImplementation::enterCollectExpr(SysMLv2Parser::CollectExprC
 	ParentStack.push(std::make_shared<KerML::Entities::CollectExpression>());
 }
 
-void SysMLv2ListenerImplementation::exitCollectExpr(SysMLv2Parser::CollectExprContext* ctx) {
+void SysMLv2ListenerImplementation::exitCollectExpr(SysMLv2Parser::CollectExprContext*) {
 	if (ParentStack.empty()) return;
 	const auto expr = std::dynamic_pointer_cast<KerML::Entities::CollectExpression>(ParentStack.top());
 	if (!expr) return;
@@ -1353,7 +1353,7 @@ void SysMLv2ListenerImplementation::enterSelectExpr(SysMLv2Parser::SelectExprCon
 	ParentStack.push(std::make_shared<KerML::Entities::SelectExpression>());
 }
 
-void SysMLv2ListenerImplementation::exitSelectExpr(SysMLv2Parser::SelectExprContext* ctx) {
+void SysMLv2ListenerImplementation::exitSelectExpr(SysMLv2Parser::SelectExprContext*) {
 	if (ParentStack.empty()) return;
 	const auto expr = std::dynamic_pointer_cast<KerML::Entities::SelectExpression>(ParentStack.top());
 	if (!expr) return;
@@ -1446,7 +1446,7 @@ void SysMLv2ListenerImplementation::enterNull_expression(SysMLv2Parser::Null_exp
 	ParentStack.push(std::make_shared<KerML::Entities::NullExpression>());
 }
 
-void SysMLv2ListenerImplementation::exitNull_expression(SysMLv2Parser::Null_expressionContext* ctx) {
+void SysMLv2ListenerImplementation::exitNull_expression(SysMLv2Parser::Null_expressionContext*) {
 	if (ParentStack.empty()) return;
 	const auto expr = std::dynamic_pointer_cast<KerML::Entities::NullExpression>(ParentStack.top());
 	if (!expr) return;
@@ -1474,7 +1474,7 @@ void SysMLv2ListenerImplementation::enterMetadata_access_expression(SysMLv2Parse
 	ParentStack.push(std::make_shared<KerML::Entities::MetadataAccessExpression>());
 }
 
-void SysMLv2ListenerImplementation::exitMetadata_access_expression(SysMLv2Parser::Metadata_access_expressionContext* ctx) {
+void SysMLv2ListenerImplementation::exitMetadata_access_expression(SysMLv2Parser::Metadata_access_expressionContext*) {
 	if (ParentStack.empty()) return;
 	const auto expr = std::dynamic_pointer_cast<KerML::Entities::MetadataAccessExpression>(ParentStack.top());
 	if (!expr) return;
@@ -1486,7 +1486,7 @@ void SysMLv2ListenerImplementation::enterBody_expression(SysMLv2Parser::Body_exp
 	ParentStack.push(std::make_shared<KerML::Entities::Expression>());
 }
 
-void SysMLv2ListenerImplementation::exitBody_expression(SysMLv2Parser::Body_expressionContext* ctx) {
+void SysMLv2ListenerImplementation::exitBody_expression(SysMLv2Parser::Body_expressionContext*) {
 	if (ParentStack.empty()) return;
 	const auto expr = std::dynamic_pointer_cast<KerML::Entities::Expression>(ParentStack.top());
 	if (!expr) return;
