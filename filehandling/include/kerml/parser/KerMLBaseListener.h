@@ -11,7 +11,7 @@
 #include <kerml/parser/KerMLListener.h>
 
 
-    /**
+/**
  * This class provides an empty implementation of KerMLListener,
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.

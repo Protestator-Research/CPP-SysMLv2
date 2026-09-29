@@ -12,7 +12,7 @@
 
 
 
-    /**
+/**
  * This class defines an abstract visitor for a parse tree
  * produced by KerMLParser.
  */

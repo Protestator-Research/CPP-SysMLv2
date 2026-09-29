@@ -5,7 +5,7 @@
     #include <sysmlv2/sysmlv2file_global.h>
 
 
-// Generated from ./SysMLv2.g4 by ANTLR 4.13.2
+// Generated from filehandling/resources/grammars/SysMLv2.g4 by ANTLR 4.13.2
 
 #pragma once
 
@@ -14,7 +14,7 @@
 #include <sysmlv2/parser/SysMLv2Visitor.h>
 
 
-    /**
+/**
  * This class provides an empty implementation of SysMLv2Visitor, which can be
  * extended to create a visitor which only needs to handle a subset of the available methods.
  */
@@ -22,6 +22,14 @@ class SYSMLV2FILE_EXPORT SysMLv2BaseVisitor : public SysMLv2Visitor {
 public:
 
   virtual std::any visitStart(SysMLv2Parser::StartContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitIdentification(SysMLv2Parser::IdentificationContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitSysml_name(SysMLv2Parser::Sysml_nameContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -218,6 +226,14 @@ public:
   }
 
   virtual std::any visitVariant_reference(SysMLv2Parser::Variant_referenceContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitRedefinition_usage(SysMLv2Parser::Redefinition_usageContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -1222,10 +1238,6 @@ public:
   }
 
   virtual std::any visitElements(SysMLv2Parser::ElementsContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitIdentification(SysMLv2Parser::IdentificationContext *ctx) override {
     return visitChildren(ctx);
   }
 

@@ -217,3 +217,252 @@ TEST(TestSysMLParser, DependencyAndExplicitCommentTargets) {
     ASSERT_EQ(comment->annotatedElements().size(), 1u);
     EXPECT_EQ(comment->annotatedElements()[0], target);
 }
+
+TEST(TestSysMLParser, FeatureSpecializationRedefinition) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package P { "
+        "  part def Vehicle { attribute mass : Real; } "
+        "  part def Car :> Vehicle { attribute carMass :>> mass; } "
+        "}");
+    ASSERT_TRUE(errors.empty());
+    const auto carMass = named<SysMLv2::Entities::AttributeUsage>(elements, "carMass");
+    ASSERT_NE(carMass, nullptr);
+    ASSERT_EQ(carMass->ownedRedefinition().size(), 1u);
+    const auto redef = carMass->ownedRedefinition()[0];
+    ASSERT_NE(redef, nullptr);
+    ASSERT_NE(redef->redefinedFeature(), nullptr);
+    EXPECT_EQ(redef->redefinedFeature()->declaredName(), "mass");
+    EXPECT_EQ(redef->redefiningFeature(), carMass);
+}
+
+TEST(TestSysMLParser, AnonymousRedefinitionUsage) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package P { "
+        "  part def Vehicle { attribute mass : Real; } "
+        "  part def Car :> Vehicle { :>> mass; } "
+        "}");
+    ASSERT_TRUE(errors.empty());
+    std::shared_ptr<KerML::Entities::Feature> redefFeature;
+    for (const auto& elem : elements) {
+        if (auto feat = std::dynamic_pointer_cast<KerML::Entities::Feature>(elem)) {
+            if (feat->declaredName() == "mass" && !feat->ownedRedefinition().empty()) {
+                redefFeature = feat;
+                break;
+            }
+        }
+    }
+    ASSERT_NE(redefFeature, nullptr);
+    ASSERT_EQ(redefFeature->ownedRedefinition().size(), 1u);
+    const auto redef = redefFeature->ownedRedefinition()[0];
+    ASSERT_NE(redef, nullptr);
+    ASSERT_NE(redef->redefinedFeature(), nullptr);
+    EXPECT_EQ(redef->redefinedFeature()->declaredName(), "mass");
+    EXPECT_EQ(redef->redefiningFeature(), redefFeature);
+}
+
+TEST(TestSysMLParser, IndividualDefinitionUsageAndDirection) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package P { individual part def Car; individual part myCar : Car; in part p : Car; }");
+    ASSERT_TRUE(errors.empty());
+    const auto car = named<SysMLv2::Entities::PartDefinition>(elements, "Car");
+    const auto myCar = named<SysMLv2::Entities::PartUsage>(elements, "myCar");
+    const auto p = named<SysMLv2::Entities::PartUsage>(elements, "p");
+    ASSERT_NE(car, nullptr);
+    ASSERT_NE(myCar, nullptr);
+    ASSERT_NE(p, nullptr);
+
+    EXPECT_TRUE(car->isIndividual());
+
+    EXPECT_TRUE(myCar->isIndividual());
+    EXPECT_FALSE(myCar->direction().has_value());
+    ASSERT_EQ(myCar->occurrenceDefinition().size(), 1u);
+    EXPECT_EQ(myCar->occurrenceDefinition()[0], car);
+    EXPECT_EQ(myCar->individualDefinition(), car);
+    ASSERT_EQ(myCar->partDefinition().size(), 1u);
+    EXPECT_EQ(myCar->partDefinition()[0], car);
+
+    ASSERT_TRUE(p->direction().has_value());
+    EXPECT_EQ(*p->direction(), KerML::Entities::IN);
+}
+
+TEST(TestSysMLParser, IndividualUsageDirectionAndOccurrenceDefinition) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package P { individual def Earth; in individual e : Earth; }");
+    ASSERT_TRUE(errors.empty());
+    const auto earth = named<SysMLv2::Entities::OccurrenceDefinition>(elements, "Earth");
+    const auto e = named<SysMLv2::Entities::OccurrenceUsage>(elements, "e");
+    ASSERT_NE(earth, nullptr);
+    ASSERT_NE(e, nullptr);
+    EXPECT_TRUE(earth->isIndividual());
+
+    EXPECT_TRUE(e->isIndividual());
+    ASSERT_TRUE(e->direction().has_value());
+    EXPECT_EQ(*e->direction(), KerML::Entities::IN);
+    EXPECT_EQ(e->individualDefinition(), earth);
+    ASSERT_EQ(e->occurrenceDefinition().size(), 1u);
+    EXPECT_EQ(e->occurrenceDefinition()[0], earth);
+}
+
+TEST(TestSysMLParser, PortionUsagesSetIsIndividualAndPortionKind) {
+    // "individual snapshot s1 : Earth;" hits the individual_usage rule with an
+    // optional portion_kind; "timeslice t1 : Earth;" hits portion_usage, whose
+    // KEYWORD_INDIVIDUAL is optional and absent here.
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "individual def Earth; individual snapshot s1 : Earth; timeslice t1 : Earth;");
+    ASSERT_TRUE(errors.empty());
+    const auto s1 = named<SysMLv2::Entities::OccurrenceUsage>(elements, "s1");
+    const auto t1 = named<SysMLv2::Entities::OccurrenceUsage>(elements, "t1");
+    ASSERT_NE(s1, nullptr);
+    ASSERT_NE(t1, nullptr);
+
+    EXPECT_TRUE(s1->isIndividual());
+    ASSERT_TRUE(s1->portionKind().has_value());
+    EXPECT_EQ(*s1->portionKind(), SysMLv2::Entities::PortionKind::snapshot);
+
+    EXPECT_FALSE(t1->isIndividual());
+    // No direction keyword: direction must stay unset (Feature default is std::nullopt).
+    EXPECT_FALSE(s1->direction().has_value());
+    EXPECT_FALSE(t1->direction().has_value());
+    ASSERT_TRUE(t1->portionKind().has_value());
+    EXPECT_EQ(*t1->portionKind(), SysMLv2::Entities::PortionKind::timeslice);
+}
+
+TEST(TestSysMLParser, PartUsageWithOccurrencePrefixPortionKindAndDirection) {
+    // "out snapshot part sp : Car;" is a part_usage, whose portion_kind and
+    // direction both live in its occurrence_usage_prefix, not in a dedicated
+    // portion/individual usage rule.
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "part def Car; out snapshot part sp : Car;");
+    ASSERT_TRUE(errors.empty());
+    const auto sp = named<SysMLv2::Entities::PartUsage>(elements, "sp");
+    ASSERT_NE(sp, nullptr);
+    ASSERT_TRUE(sp->portionKind().has_value());
+    EXPECT_EQ(*sp->portionKind(), SysMLv2::Entities::PortionKind::snapshot);
+    ASSERT_TRUE(sp->direction().has_value());
+    EXPECT_EQ(*sp->direction(), KerML::Entities::OUT);
+}
+
+TEST(TestSysMLParser, DerivedDefinitionSnapshotsAcrossUsageKinds) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "item def Widget; item w : Widget; "
+        "port def P; port pp : P; "
+        "attribute def Weight; attribute wt : Weight; "
+        "action def Move; action m : Move; "
+        "state def S; state st : S; "
+        "requirement def R; requirement r : R; "
+        "enum def Color { enum red; } attribute c2 : Color; "
+        "connection def Conn; connection cc : Conn; "
+        "interface def IF; interface ii : IF; "
+        "part def Car; part p : Car;");
+    ASSERT_TRUE(errors.empty());
+
+    const auto widget = named<SysMLv2::Entities::ItemDefinition>(elements, "Widget");
+    const auto w = named<SysMLv2::Entities::ItemUsage>(elements, "w");
+    ASSERT_NE(widget, nullptr);
+    ASSERT_NE(w, nullptr);
+    ASSERT_EQ(w->itemDefinition().size(), 1u);
+    EXPECT_EQ(w->itemDefinition()[0], widget);
+    ASSERT_EQ(w->occurrenceDefinition().size(), 1u);
+    EXPECT_EQ(w->occurrenceDefinition()[0], widget);
+
+    const auto portDef = named<SysMLv2::Entities::PortDefinition>(elements, "P");
+    const auto pp = named<SysMLv2::Entities::PortUsage>(elements, "pp");
+    ASSERT_NE(portDef, nullptr);
+    ASSERT_NE(pp, nullptr);
+    ASSERT_EQ(pp->portDefinition().size(), 1u);
+    EXPECT_EQ(pp->portDefinition()[0], portDef);
+
+    const auto weight = named<SysMLv2::Entities::AttributeDefinition>(elements, "Weight");
+    const auto wt = named<SysMLv2::Entities::AttributeUsage>(elements, "wt");
+    ASSERT_NE(weight, nullptr);
+    ASSERT_NE(wt, nullptr);
+    ASSERT_EQ(wt->attributeDefinition().size(), 1u);
+    EXPECT_EQ(wt->attributeDefinition()[0], weight);
+
+    const auto move = named<SysMLv2::Entities::ActionDefinition>(elements, "Move");
+    const auto m = named<SysMLv2::Entities::ActionUsage>(elements, "m");
+    ASSERT_NE(move, nullptr);
+    ASSERT_NE(m, nullptr);
+    ASSERT_EQ(m->actionDefinition().size(), 1u);
+    EXPECT_EQ(m->actionDefinition()[0], move);
+    ASSERT_EQ(m->occurrenceDefinition().size(), 1u);
+    EXPECT_EQ(m->occurrenceDefinition()[0], move);
+
+    const auto stateDef = named<SysMLv2::Entities::StateDefinition>(elements, "S");
+    const auto st = named<SysMLv2::Entities::StateUsage>(elements, "st");
+    ASSERT_NE(stateDef, nullptr);
+    ASSERT_NE(st, nullptr);
+    ASSERT_EQ(st->stateDefinition().size(), 1u);
+    EXPECT_EQ(st->stateDefinition()[0], stateDef);
+    ASSERT_EQ(st->actionDefinition().size(), 1u);
+    EXPECT_EQ(st->actionDefinition()[0], stateDef);
+    ASSERT_EQ(st->occurrenceDefinition().size(), 1u);
+    EXPECT_EQ(st->occurrenceDefinition()[0], stateDef);
+
+    const auto reqDef = named<SysMLv2::Entities::RequirementDefinition>(elements, "R");
+    const auto r = named<SysMLv2::Entities::RequirementUsage>(elements, "r");
+    ASSERT_NE(reqDef, nullptr);
+    ASSERT_NE(r, nullptr);
+    EXPECT_EQ(r->requirementDefinition(), reqDef);
+    EXPECT_EQ(r->constraintDefinition(), reqDef);
+    ASSERT_EQ(r->occurrenceDefinition().size(), 1u);
+    EXPECT_EQ(r->occurrenceDefinition()[0], reqDef);
+
+    // "attribute c2 : Color;" uses the attribute_usage rule (KEYWORD_ATTRIBUTE), so c2 is a
+    // plain AttributeUsage - not an EnumerationUsage, which only enumerated_value ("enum ...")
+    // usages become - so only attributeDefinition (not enumerationDefinition) applies here.
+    const auto colorDef = named<SysMLv2::Entities::EnumerationDefinition>(elements, "Color");
+    const auto c2 = named<SysMLv2::Entities::AttributeUsage>(elements, "c2");
+    ASSERT_NE(colorDef, nullptr);
+    ASSERT_NE(c2, nullptr);
+    ASSERT_EQ(c2->attributeDefinition().size(), 1u);
+    EXPECT_EQ(c2->attributeDefinition()[0], colorDef);
+
+    const auto connDef = named<SysMLv2::Entities::ConnectionDefinition>(elements, "Conn");
+    const auto cc = named<SysMLv2::Entities::ConnectionUsage>(elements, "cc");
+    ASSERT_NE(connDef, nullptr);
+    ASSERT_NE(cc, nullptr);
+    ASSERT_EQ(cc->connectionDefinition().size(), 1u);
+    EXPECT_EQ(cc->connectionDefinition()[0], connDef);
+    ASSERT_EQ(cc->partDefinition().size(), 1u);
+    EXPECT_EQ(cc->partDefinition()[0], connDef);
+
+    const auto ifDef = named<SysMLv2::Entities::InterfaceDefinition>(elements, "IF");
+    const auto ii = named<SysMLv2::Entities::InterfaceUsage>(elements, "ii");
+    ASSERT_NE(ifDef, nullptr);
+    ASSERT_NE(ii, nullptr);
+    ASSERT_EQ(ii->interfaceDefinition().size(), 1u);
+    EXPECT_EQ(ii->interfaceDefinition()[0], ifDef);
+    ASSERT_EQ(ii->connectionDefinition().size(), 1u);
+    EXPECT_EQ(ii->connectionDefinition()[0], ifDef);
+
+    const auto car = named<SysMLv2::Entities::PartDefinition>(elements, "Car");
+    const auto p = named<SysMLv2::Entities::PartUsage>(elements, "p");
+    ASSERT_NE(car, nullptr);
+    ASSERT_NE(p, nullptr);
+    ASSERT_EQ(p->partDefinition().size(), 1u);
+    EXPECT_EQ(p->partDefinition()[0], car);
+    ASSERT_EQ(p->itemDefinition().size(), 1u);
+    EXPECT_EQ(p->itemDefinition()[0], car);
+    ASSERT_EQ(p->occurrenceDefinition().size(), 1u);
+    EXPECT_EQ(p->occurrenceDefinition()[0], car);
+}
+
+TEST(TestSysMLParser, ConstraintDefinitionViaPredicateTyping) {
+    // NOTE: the SysMLv2.g4 constraint_definition rule ("occurrence_definition_prefix?
+    // definition_declaration calculation_body") is missing the "KEYWORD_CONSTRAINT
+    // KEYWORD_DEF" pair that every other *_definition rule has (e.g. calculation_definition),
+    // so a "constraint def X;" declaration cannot currently be parsed at all - it is not
+    // reachable from any start/definition_element alternative. ConstraintUsage::constraintDefinition
+    // is populated whenever a constraint is typed by anything derived from KerML::Predicate, so this
+    // is exercised here with a plain KerML predicate declaration instead.
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "predicate IsPositive; constraint c : IsPositive;");
+    ASSERT_TRUE(errors.empty());
+    const auto pred = named<KerML::Entities::Predicate>(elements, "IsPositive");
+    const auto c = named<SysMLv2::Entities::ConstraintUsage>(elements, "c");
+    ASSERT_NE(pred, nullptr);
+    ASSERT_NE(c, nullptr);
+    EXPECT_EQ(c->constraintDefinition(), pred);
+}
+

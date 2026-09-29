@@ -12,6 +12,7 @@ void SysMLv2ListenerImplementation::enterStart(SysMLv2Parser::StartContext*) {
 	while (!ParentStack.empty()) ParentStack.pop();
 	pendingTypings_.clear();
 	pendingSpecializations_.clear();
+	pendingRedefinitions_.clear();
 	aliases_.clear();
 	packageImports_.clear();
 	populateWithBaseDatatypes();
@@ -297,20 +298,37 @@ void SysMLv2ListenerImplementation::exitUsage_declaration(SysMLv2Parser::Usage_d
 	}
 }
 
+static void applyFeatureDirectionFromContext(SysMLv2Parser::Feature_directionContext* dirCtx, const std::shared_ptr<KerML::Entities::Feature>& feature) {
+	if (!dirCtx || !feature) return;
+	if (dirCtx->KEYWORD_INOUT() != nullptr) feature->setDirection(KerML::Entities::IN_OUT);
+	else if (dirCtx->KEYWORD_IN() != nullptr) feature->setDirection(KerML::Entities::IN);
+	else if (dirCtx->KEYWORD_OUT() != nullptr) feature->setDirection(KerML::Entities::OUT);
+}
+
+static void applyPortionKind(SysMLv2Parser::Portion_kindContext* pkCtx, const std::shared_ptr<SysMLv2::Entities::OccurrenceUsage>& occUsage) {
+	if (!pkCtx || !occUsage) return;
+	if (pkCtx->KEYWORD_SNAPSHOT() != nullptr) occUsage->setPortionKind(SysMLv2::Entities::PortionKind::snapshot);
+	else if (pkCtx->KEYWORD_TIMESLICE() != nullptr) occUsage->setPortionKind(SysMLv2::Entities::PortionKind::timeslice);
+}
+
 void SysMLv2ListenerImplementation::applyUsagePrefix(SysMLv2Parser::Usage_prefixContext* prefix, const std::shared_ptr<KerML::Entities::Feature>& feature) {
 	if (!prefix || !feature) return;
-	std::string text = prefix->getText();
-	if (text.find("inout") != std::string::npos) feature->setDirection(KerML::Entities::IN_OUT);
-	else if (text.find("in") != std::string::npos) feature->setDirection(KerML::Entities::IN);
-	else if (text.find("out") != std::string::npos) feature->setDirection(KerML::Entities::OUT);
+	auto unextended = prefix->unextended_usage_prefix();
+	if (!unextended) return;
+	auto basicPrefix = unextended->basic_usage_prefix();
+	if (!basicPrefix) return;
+	auto refPrefix = basicPrefix->ref_prefix();
+	if (!refPrefix) return;
+	applyFeatureDirectionFromContext(refPrefix->feature_direction(), feature);
 }
 
 void SysMLv2ListenerImplementation::applyOccurrenceUsagePrefix(SysMLv2Parser::Occurrence_usage_prefixContext* prefix, const std::shared_ptr<KerML::Entities::Feature>& feature) {
 	if (!prefix || !feature) return;
-	std::string text = prefix->getText();
-	if (text.find("inout") != std::string::npos) feature->setDirection(KerML::Entities::IN_OUT);
-	else if (text.find("in") != std::string::npos) feature->setDirection(KerML::Entities::IN);
-	else if (text.find("out") != std::string::npos) feature->setDirection(KerML::Entities::OUT);
+	auto basicPrefix = prefix->basic_usage_prefix();
+	if (!basicPrefix) return;
+	auto refPrefix = basicPrefix->ref_prefix();
+	if (!refPrefix) return;
+	applyFeatureDirectionFromContext(refPrefix->feature_direction(), feature);
 }
 
 void SysMLv2ListenerImplementation::applyFeatureSpecializationPart(SysMLv2Parser::Feature_specialization_partContext* part, const std::shared_ptr<KerML::Entities::Feature>& feature) {
@@ -324,6 +342,16 @@ void SysMLv2ListenerImplementation::applyFeatureSpecializationPart(SysMLv2Parser
 			if (spec->typings()->typed_by() && spec->typings()->typed_by()->owned_feature_typing()) {
 				std::string typeName = spec->typings()->typed_by()->owned_feature_typing()->getText();
 				pendingTypings_.push_back({ feature, typeName });
+			}
+		}
+		if (spec->redefinitions()) {
+			if (spec->redefinitions()->redefines() && spec->redefinitions()->redefines()->owned_redefinition()) {
+				std::string redefName = spec->redefinitions()->redefines()->owned_redefinition()->getText();
+				pendingRedefinitions_.push_back({ feature, redefName });
+			}
+			if (spec->redefinitions()->owned_redefinition()) {
+				std::string redefName = spec->redefinitions()->owned_redefinition()->getText();
+				pendingRedefinitions_.push_back({ feature, redefName });
 			}
 		}
 	}
@@ -349,6 +377,11 @@ void SysMLv2ListenerImplementation::exitOccurrence_definition_prefix(SysMLv2Pars
 			if (auto def = std::dynamic_pointer_cast<SysMLv2::Entities::Definition>(type)) {
 				def->setIsVariation(true);
 			}
+		}
+	}
+	if (ctx->KEYWORD_INDIVIDUAL() != nullptr) {
+		if (auto occDef = std::dynamic_pointer_cast<SysMLv2::Entities::OccurrenceDefinition>(ParentStack.top())) {
+			occDef->setIsIndividual(true);
 		}
 	}
 }
@@ -377,6 +410,12 @@ void SysMLv2ListenerImplementation::exitOccurrence_usage_prefix(SysMLv2Parser::O
 	if (ParentStack.empty() || !ctx) return;
 	if (auto feat = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top())) {
 		applyOccurrenceUsagePrefix(ctx, feat);
+	}
+	if (auto occUsage = std::dynamic_pointer_cast<SysMLv2::Entities::OccurrenceUsage>(ParentStack.top())) {
+		if (ctx->KEYWORD_INDIVIDUAL() != nullptr) {
+			occUsage->setIsIndividual(true);
+		}
+		applyPortionKind(ctx->portion_kind(), occUsage);
 	}
 }
 
@@ -420,24 +459,29 @@ void SysMLv2ListenerImplementation::exitMultiplicity_range(SysMLv2Parser::Multip
 	if (!type || ctx->multiplicity_expression_member().empty()) return;
 
 	std::shared_ptr<KerML::Entities::Multiplicity> multiplicity;
-	if (ctx->multiplicity_expression_member().size() > 1) {
-		unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
-		if (ctx->multiplicity_expression_member().back()->getText() == "*") {
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, true);
+	try {
+		if (ctx->multiplicity_expression_member().size() > 1) {
+			unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
+			if (ctx->multiplicity_expression_member().back()->getText() == "*") {
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, true);
+			}
+			else {
+				unsigned maximum = std::stoul(ctx->multiplicity_expression_member().back()->getText());
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, maximum);
+			}
 		}
 		else {
-			unsigned maximum = std::stoul(ctx->multiplicity_expression_member().back()->getText());
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, maximum);
+			if (ctx->multiplicity_expression_member().front()->getText() == "*") {
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(0, true);
+			}
+			else {
+				unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum);
+			}
 		}
 	}
-	else {
-		if (ctx->multiplicity_expression_member().front()->getText() == "*") {
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(0, true);
-		}
-		else {
-			unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum);
-		}
+	catch (...) {
+		// Ignore non-numeric multiplicity expressions (e.g. invalid syntax, expressions or units)
 	}
 	if (multiplicity) {
 		type->setMultiplicity(multiplicity);
@@ -483,24 +527,29 @@ void SysMLv2ListenerImplementation::exitMultiplicity_bounds(SysMLv2Parser::Multi
 	if (!type || ctx->multiplicity_expression_member().empty()) return;
 
 	std::shared_ptr<KerML::Entities::Multiplicity> multiplicity;
-	if (ctx->multiplicity_expression_member().size() > 1) {
-		unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
-		if (ctx->multiplicity_expression_member().back()->getText() == "*") {
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, true);
+	try {
+		if (ctx->multiplicity_expression_member().size() > 1) {
+			unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
+			if (ctx->multiplicity_expression_member().back()->getText() == "*") {
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, true);
+			}
+			else {
+				unsigned maximum = std::stoul(ctx->multiplicity_expression_member().back()->getText());
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, maximum);
+			}
 		}
 		else {
-			unsigned maximum = std::stoul(ctx->multiplicity_expression_member().back()->getText());
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, maximum);
+			if (ctx->multiplicity_expression_member().front()->getText() == "*") {
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(0, true);
+			}
+			else {
+				unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
+				multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum);
+			}
 		}
 	}
-	else {
-		if (ctx->multiplicity_expression_member().front()->getText() == "*") {
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(0, true);
-		}
-		else {
-			unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
-			multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum);
-		}
+	catch (...) {
+		// Ignore non-numeric multiplicity expressions (e.g. invalid syntax, expressions or units)
 	}
 	if (multiplicity) {
 		type->setMultiplicity(multiplicity);
@@ -623,12 +672,76 @@ DEFINE_USAGE_METHODS(Flow_usage, SysMLv2::Entities::FlowUsage)
 DEFINE_USAGE_METHODS(Succession_flow_usage, SysMLv2::Entities::SuccessionFlowUsage)
 DEFINE_USAGE_METHODS(Message, SysMLv2::Entities::FlowUsage)
 
+void SysMLv2ListenerImplementation::enterRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext* ctx) {
+	std::shared_ptr<KerML::Entities::Feature> feature;
+	if (ctx && ctx->KEYWORD_ATTRIBUTE()) {
+		feature = std::make_shared<SysMLv2::Entities::AttributeUsage>();
+	} else if (ctx && ctx->KEYWORD_PART()) {
+		feature = std::make_shared<SysMLv2::Entities::PartUsage>();
+	} else if (ctx && ctx->KEYWORD_ITEM()) {
+		feature = std::make_shared<SysMLv2::Entities::ItemUsage>();
+	} else if (ctx && ctx->KEYWORD_PORT()) {
+		feature = std::make_shared<SysMLv2::Entities::PortUsage>();
+	} else if (ctx && ctx->KEYWORD_ACTION()) {
+		feature = std::make_shared<SysMLv2::Entities::ActionUsage>();
+	} else if (ctx && ctx->KEYWORD_CALC()) {
+		feature = std::make_shared<SysMLv2::Entities::CalculationUsage>();
+	} else if (ctx && ctx->KEYWORD_CONSTRAINT()) {
+		feature = std::make_shared<SysMLv2::Entities::ConstraintUsage>();
+	} else {
+		feature = std::make_shared<SysMLv2::Entities::Usage>();
+	}
+	if (ctx && ctx->usage_prefix()) {
+		applyUsagePrefix(ctx->usage_prefix(), feature);
+	}
+	ParentStack.push(feature);
+}
+
+void SysMLv2ListenerImplementation::exitRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext*) {
+	handleUsageExit<KerML::Entities::Feature>(ParentStack, Elements);
+}
+
+void SysMLv2ListenerImplementation::enterRedefinition_usage(SysMLv2Parser::Redefinition_usageContext*) {}
+
+void SysMLv2ListenerImplementation::exitRedefinition_usage(SysMLv2Parser::Redefinition_usageContext* ctx) {
+	if (ParentStack.empty()) return;
+	auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+	if (!feature) return;
+
+	if (ctx) {
+		if (!ctx->qualified_name().empty()) {
+			std::string fullName = ctx->qualified_name(0)->getText();
+			std::string shortName = fullName;
+			size_t lastColon = shortName.rfind("::");
+			if (lastColon != std::string::npos) {
+				shortName = shortName.substr(lastColon + 2);
+			}
+			feature->setDeclaredName(shortName);
+		}
+		for (auto qNameCtx : ctx->qualified_name()) {
+			std::string redefName = qNameCtx->getText();
+			pendingRedefinitions_.push_back({ feature, redefName });
+		}
+		if (ctx->feature_specialization_part()) {
+			applyFeatureSpecializationPart(ctx->feature_specialization_part(), feature);
+		}
+	}
+}
+
 void SysMLv2ListenerImplementation::enterIndividual_usage(SysMLv2Parser::Individual_usageContext*) {
 	auto u = std::make_shared<SysMLv2::Entities::OccurrenceUsage>();
 	u->setIsIndividual(true);
 	ParentStack.push(u);
 }
-void SysMLv2ListenerImplementation::exitIndividual_usage(SysMLv2Parser::Individual_usageContext*) {
+void SysMLv2ListenerImplementation::exitIndividual_usage(SysMLv2Parser::Individual_usageContext* ctx) {
+	if (!ParentStack.empty() && ctx) {
+		if (auto occUsage = std::dynamic_pointer_cast<SysMLv2::Entities::OccurrenceUsage>(ParentStack.top())) {
+			if (ctx->basic_usage_prefix() && ctx->basic_usage_prefix()->ref_prefix()) {
+				applyFeatureDirectionFromContext(ctx->basic_usage_prefix()->ref_prefix()->feature_direction(), occUsage);
+			}
+			applyPortionKind(ctx->portion_kind(), occUsage);
+		}
+	}
 	handleUsageExit<SysMLv2::Entities::OccurrenceUsage>(ParentStack, Elements);
 }
 
@@ -636,7 +749,18 @@ void SysMLv2ListenerImplementation::enterPortion_usage(SysMLv2Parser::Portion_us
 	auto u = std::make_shared<SysMLv2::Entities::OccurrenceUsage>();
 	ParentStack.push(u);
 }
-void SysMLv2ListenerImplementation::exitPortion_usage(SysMLv2Parser::Portion_usageContext*) {
+void SysMLv2ListenerImplementation::exitPortion_usage(SysMLv2Parser::Portion_usageContext* ctx) {
+	if (!ParentStack.empty() && ctx) {
+		if (auto occUsage = std::dynamic_pointer_cast<SysMLv2::Entities::OccurrenceUsage>(ParentStack.top())) {
+			if (ctx->basic_usage_prefix() && ctx->basic_usage_prefix()->ref_prefix()) {
+				applyFeatureDirectionFromContext(ctx->basic_usage_prefix()->ref_prefix()->feature_direction(), occUsage);
+			}
+			if (ctx->KEYWORD_INDIVIDUAL() != nullptr) {
+				occUsage->setIsIndividual(true);
+			}
+			applyPortionKind(ctx->portion_kind(), occUsage);
+		}
+	}
 	handleUsageExit<SysMLv2::Entities::OccurrenceUsage>(ParentStack, Elements);
 }
 
@@ -1029,8 +1153,38 @@ void SysMLv2ListenerImplementation::enterFeature_typing(SysMLv2Parser::Feature_t
 void SysMLv2ListenerImplementation::exitFeature_typing(SysMLv2Parser::Feature_typingContext*) {}
 void SysMLv2ListenerImplementation::enterSubsetting(SysMLv2Parser::SubsettingContext*) {}
 void SysMLv2ListenerImplementation::exitSubsetting(SysMLv2Parser::SubsettingContext*) {}
-void SysMLv2ListenerImplementation::enterRedefinition(SysMLv2Parser::RedefinitionContext*) {}
-void SysMLv2ListenerImplementation::exitRedefinition(SysMLv2Parser::RedefinitionContext*) {}
+void SysMLv2ListenerImplementation::enterRedefinition(SysMLv2Parser::RedefinitionContext*) {
+	auto feature = std::make_shared<KerML::Entities::Feature>();
+	ParentStack.push(feature);
+}
+
+void SysMLv2ListenerImplementation::exitRedefinition(SysMLv2Parser::RedefinitionContext* ctx) {
+	if (ParentStack.empty()) return;
+	auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+	if (!feature) return;
+	ParentStack.pop();
+
+	if (ctx && ctx->qualified_name()) {
+		std::string redefName = ctx->qualified_name()->getText();
+		std::string shortName = redefName;
+		size_t lastColon = shortName.rfind("::");
+		if (lastColon != std::string::npos) {
+			shortName = shortName.substr(lastColon + 2);
+		}
+		feature->setDeclaredName(shortName);
+		pendingRedefinitions_.push_back({ feature, redefName });
+	}
+
+	Elements.push_back(feature);
+	if (!ParentStack.empty()) {
+		feature->setOwner(ParentStack.top());
+		ParentStack.top()->appendOwnedElement(feature);
+		if (auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top())) {
+			type->appendOwnedFeature(feature);
+			feature->setOwningType(type);
+		}
+	}
+}
 void SysMLv2ListenerImplementation::enterFeature_inverting(SysMLv2Parser::Feature_invertingContext*) {}
 void SysMLv2ListenerImplementation::exitFeature_inverting(SysMLv2Parser::Feature_invertingContext*) {}
 void SysMLv2ListenerImplementation::enterType_featuring(SysMLv2Parser::Type_featuringContext*) {}
@@ -1147,7 +1301,12 @@ void SysMLv2ListenerImplementation::enterPredicate(SysMLv2Parser::PredicateConte
 	auto p = std::make_shared<KerML::Entities::Predicate>();
 	ParentStack.push(p);
 }
-void SysMLv2ListenerImplementation::exitPredicate(SysMLv2Parser::PredicateContext*) {
+void SysMLv2ListenerImplementation::exitPredicate(SysMLv2Parser::PredicateContext* ctx) {
+	if (!ParentStack.empty() && ctx && ctx->classifier_declaration() && ctx->classifier_declaration()->identification()) {
+		if (auto predicate = std::dynamic_pointer_cast<KerML::Entities::Predicate>(ParentStack.top())) {
+			applyIdentification(ctx->classifier_declaration()->identification(), predicate);
+		}
+	}
 	handleUsageExit<KerML::Entities::Predicate>(ParentStack, Elements);
 }
 
@@ -1234,7 +1393,7 @@ void SysMLv2ListenerImplementation::finishOperatorExpression(const std::string& 
 
 void SysMLv2ListenerImplementation::applyIdentification(SysMLv2Parser::IdentificationContext* idCtx, const std::shared_ptr<KerML::Entities::Element>& elem) {
 	if (!idCtx || !elem) return;
-	auto names = idCtx->NAME();
+	auto names = idCtx->sysml_name();
 	if (names.empty()) return;
 	if (idCtx->SYMBOL_SMALLER() != nullptr && names.size() >= 2) {
 		elem->setDeclaredShortName(names[0]->getText());
@@ -1375,6 +1534,38 @@ void SysMLv2ListenerImplementation::populateWithBaseDatatypes() {
 	}
 }
 
+// Populates a derived "...Definition" snapshot vector property (e.g. PartUsage::partDefinition)
+// with the resolved type, if it is of the property's element type and not already present.
+template<typename UsageT, typename ElemT>
+static void appendDerivedDefinitionIfMissing(
+	const std::shared_ptr<KerML::Entities::Feature>& feature,
+	const std::shared_ptr<KerML::Entities::Type>& typeTarget,
+	std::vector<std::shared_ptr<ElemT>> (UsageT::* getter)() const,
+	void (UsageT::* appender)(std::shared_ptr<ElemT>)) {
+	auto usage = std::dynamic_pointer_cast<UsageT>(feature);
+	if (!usage) return;
+	auto value = std::dynamic_pointer_cast<ElemT>(typeTarget);
+	if (!value) return;
+	auto existing = (usage.get()->*getter)();
+	if (std::find(existing.begin(), existing.end(), value) == existing.end()) {
+		(usage.get()->*appender)(value);
+	}
+}
+
+// Populates a derived single-valued "...Definition" snapshot property (e.g. CalculationUsage::calculationDefinition)
+// with the resolved type, if it is of the property's element type.
+template<typename UsageT, typename ElemT>
+static void setDerivedDefinition(
+	const std::shared_ptr<KerML::Entities::Feature>& feature,
+	const std::shared_ptr<KerML::Entities::Type>& typeTarget,
+	void (UsageT::* setter)(std::shared_ptr<ElemT>)) {
+	auto usage = std::dynamic_pointer_cast<UsageT>(feature);
+	if (!usage) return;
+	auto value = std::dynamic_pointer_cast<ElemT>(typeTarget);
+	if (!value) return;
+	(usage.get()->*setter)(value);
+}
+
 void SysMLv2ListenerImplementation::resolveReferences() {
 	for (const auto& pending : pendingTypings_) {
 		if (!pending.feature) continue;
@@ -1389,6 +1580,87 @@ void SysMLv2ListenerImplementation::resolveReferences() {
 			pending.feature->appendOwnedTyping(typing);
 			pending.feature->appendOwnedElement(typing);
 			Elements.push_back(typing);
+
+			// OccurrenceUsage family: occurrenceDefinition (+ individualDefinition when the
+			// resolved OccurrenceDefinition is itself individual).
+			appendDerivedDefinitionIfMissing<SysMLv2::Entities::OccurrenceUsage, KerML::Entities::Class>(
+				pending.feature, typeTarget,
+				&SysMLv2::Entities::OccurrenceUsage::occurrenceDefinition,
+				&SysMLv2::Entities::OccurrenceUsage::appendOccurrenceDefinition);
+			if (auto occUsage = std::dynamic_pointer_cast<SysMLv2::Entities::OccurrenceUsage>(pending.feature)) {
+				if (auto occDef = std::dynamic_pointer_cast<SysMLv2::Entities::OccurrenceDefinition>(typeTarget)) {
+					if (occDef->isIndividual()) {
+						occUsage->setIndividualDefinition(occDef);
+					}
+				}
+			}
+			appendDerivedDefinitionIfMissing<SysMLv2::Entities::ItemUsage, KerML::Entities::Structure>(
+				pending.feature, typeTarget,
+				&SysMLv2::Entities::ItemUsage::itemDefinition,
+				&SysMLv2::Entities::ItemUsage::appendItemDefinition);
+			appendDerivedDefinitionIfMissing<SysMLv2::Entities::PartUsage, SysMLv2::Entities::PartDefinition>(
+				pending.feature, typeTarget,
+				&SysMLv2::Entities::PartUsage::partDefinition,
+				&SysMLv2::Entities::PartUsage::appendPartDefinition);
+			appendDerivedDefinitionIfMissing<SysMLv2::Entities::PortUsage, SysMLv2::Entities::PortDefinition>(
+				pending.feature, typeTarget,
+				&SysMLv2::Entities::PortUsage::portDefinition,
+				&SysMLv2::Entities::PortUsage::appendPortDefinition);
+			appendDerivedDefinitionIfMissing<SysMLv2::Entities::AttributeUsage, KerML::Entities::DataType>(
+				pending.feature, typeTarget,
+				&SysMLv2::Entities::AttributeUsage::attributeDefinition,
+				&SysMLv2::Entities::AttributeUsage::appendAttributeDefinition);
+			appendDerivedDefinitionIfMissing<SysMLv2::Entities::ActionUsage, KerML::Entities::Behavior>(
+				pending.feature, typeTarget,
+				&SysMLv2::Entities::ActionUsage::actionDefinition,
+				&SysMLv2::Entities::ActionUsage::appendActionDefinition);
+			appendDerivedDefinitionIfMissing<SysMLv2::Entities::StateUsage, KerML::Entities::Behavior>(
+				pending.feature, typeTarget,
+				&SysMLv2::Entities::StateUsage::stateDefinition,
+				&SysMLv2::Entities::StateUsage::appendStateDefinition);
+			appendDerivedDefinitionIfMissing<SysMLv2::Entities::ConnectionUsage, KerML::Entities::AssociationStructure>(
+				pending.feature, typeTarget,
+				&SysMLv2::Entities::ConnectionUsage::connectionDefinition,
+				&SysMLv2::Entities::ConnectionUsage::appendConnectionDefinition);
+			appendDerivedDefinitionIfMissing<SysMLv2::Entities::InterfaceUsage, SysMLv2::Entities::InterfaceDefinition>(
+				pending.feature, typeTarget,
+				&SysMLv2::Entities::InterfaceUsage::interfaceDefinition,
+				&SysMLv2::Entities::InterfaceUsage::appendInterfaceDefinition);
+			appendDerivedDefinitionIfMissing<SysMLv2::Entities::AllocationUsage, SysMLv2::Entities::AllocationDefinition>(
+				pending.feature, typeTarget,
+				&SysMLv2::Entities::AllocationUsage::allocationDefinition,
+				&SysMLv2::Entities::AllocationUsage::appendAllocationDefinition);
+			appendDerivedDefinitionIfMissing<SysMLv2::Entities::FlowUsage, KerML::Entities::Interaction>(
+				pending.feature, typeTarget,
+				&SysMLv2::Entities::FlowUsage::flowDefinition,
+				&SysMLv2::Entities::FlowUsage::appendFlowDefinition);
+
+			setDerivedDefinition<SysMLv2::Entities::CalculationUsage, KerML::Entities::Function>(
+				pending.feature, typeTarget, &SysMLv2::Entities::CalculationUsage::setCalculationDefinition);
+			setDerivedDefinition<SysMLv2::Entities::ConstraintUsage, KerML::Entities::Predicate>(
+				pending.feature, typeTarget, &SysMLv2::Entities::ConstraintUsage::setConstraintDefinition);
+			setDerivedDefinition<SysMLv2::Entities::EnumerationUsage, SysMLv2::Entities::EnumerationDefinition>(
+				pending.feature, typeTarget, &SysMLv2::Entities::EnumerationUsage::setEnumerationDefinition);
+			setDerivedDefinition<SysMLv2::Entities::MetadataUsage, KerML::Entities::Metaclass>(
+				pending.feature, typeTarget, &SysMLv2::Entities::MetadataUsage::setMetadataDefinition);
+			setDerivedDefinition<SysMLv2::Entities::RequirementUsage, SysMLv2::Entities::RequirementDefinition>(
+				pending.feature, typeTarget, &SysMLv2::Entities::RequirementUsage::setRequirementDefinition);
+			setDerivedDefinition<SysMLv2::Entities::ConcernUsage, SysMLv2::Entities::ConcernDefinition>(
+				pending.feature, typeTarget, &SysMLv2::Entities::ConcernUsage::setConcernDefinition);
+			setDerivedDefinition<SysMLv2::Entities::CaseUsage, SysMLv2::Entities::CaseDefinition>(
+				pending.feature, typeTarget, &SysMLv2::Entities::CaseUsage::setCaseDefinition);
+			setDerivedDefinition<SysMLv2::Entities::AnalysisCaseUsage, SysMLv2::Entities::AnalysisCaseDefinition>(
+				pending.feature, typeTarget, &SysMLv2::Entities::AnalysisCaseUsage::setAnalysisCaseDefinition);
+			setDerivedDefinition<SysMLv2::Entities::VerificationCaseUsage, SysMLv2::Entities::VerificationCaseDefinition>(
+				pending.feature, typeTarget, &SysMLv2::Entities::VerificationCaseUsage::setVerificationCaseDefinition);
+			setDerivedDefinition<SysMLv2::Entities::UseCaseUsage, SysMLv2::Entities::UseCaseDefinition>(
+				pending.feature, typeTarget, &SysMLv2::Entities::UseCaseUsage::setUseCaseDefinition);
+			setDerivedDefinition<SysMLv2::Entities::ViewUsage, SysMLv2::Entities::ViewDefinition>(
+				pending.feature, typeTarget, &SysMLv2::Entities::ViewUsage::setViewDefinition);
+			setDerivedDefinition<SysMLv2::Entities::ViewpointUsage, SysMLv2::Entities::ViewpointDefinition>(
+				pending.feature, typeTarget, &SysMLv2::Entities::ViewpointUsage::setViewpointDefinition);
+			setDerivedDefinition<SysMLv2::Entities::RenderingUsage, SysMLv2::Entities::RenderingDefinition>(
+				pending.feature, typeTarget, &SysMLv2::Entities::RenderingUsage::setRenderingDefinition);
 		}
 	}
 	pendingTypings_.clear();
@@ -1409,4 +1681,23 @@ void SysMLv2ListenerImplementation::resolveReferences() {
 		}
 	}
 	pendingSpecializations_.clear();
+
+	for (const auto& pending : pendingRedefinitions_) {
+		if (!pending.feature) continue;
+		auto target = resolveElement(pending.redefinedName, pending.feature);
+		auto redefinedFeature = std::dynamic_pointer_cast<KerML::Entities::Feature>(target);
+		if (!redefinedFeature) {
+			redefinedFeature = findOrCreateFeature(pending.redefinedName);
+		}
+		if (redefinedFeature) {
+			auto redef = std::make_shared<KerML::Entities::Redefinition>(redefinedFeature, pending.feature);
+			redef->setOwner(pending.feature);
+			pending.feature->appendOwnedRedefinition(redef);
+			pending.feature->appendOwnedSubsetting(redef);
+			pending.feature->appendOwnedSpecialization(redef);
+			pending.feature->appendOwnedElement(redef);
+			Elements.push_back(redef);
+		}
+	}
+	pendingRedefinitions_.clear();
 }

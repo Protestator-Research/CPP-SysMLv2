@@ -5,7 +5,7 @@
     #include <sysmlv2/sysmlv2file_global.h>
 
 
-// Generated from ./SysMLv2.g4 by ANTLR 4.13.2
+// Generated from filehandling/resources/grammars/SysMLv2.g4 by ANTLR 4.13.2
 
 #pragma once
 
@@ -14,7 +14,7 @@
 #include <sysmlv2/parser/SysMLv2Parser.h>
 
 
-    /**
+/**
  * This interface defines an abstract listener for a parse tree produced by SysMLv2Parser.
  */
 class SYSMLV2FILE_EXPORT SysMLv2Listener : public antlr4::tree::ParseTreeListener {
@@ -22,6 +22,12 @@ public:
 
   virtual void enterStart(SysMLv2Parser::StartContext *ctx) = 0;
   virtual void exitStart(SysMLv2Parser::StartContext *ctx) = 0;
+
+  virtual void enterIdentification(SysMLv2Parser::IdentificationContext *ctx) = 0;
+  virtual void exitIdentification(SysMLv2Parser::IdentificationContext *ctx) = 0;
+
+  virtual void enterSysml_name(SysMLv2Parser::Sysml_nameContext *ctx) = 0;
+  virtual void exitSysml_name(SysMLv2Parser::Sysml_nameContext *ctx) = 0;
 
   virtual void enterStart_element(SysMLv2Parser::Start_elementContext *ctx) = 0;
   virtual void exitStart_element(SysMLv2Parser::Start_elementContext *ctx) = 0;
@@ -169,6 +175,12 @@ public:
 
   virtual void enterVariant_reference(SysMLv2Parser::Variant_referenceContext *ctx) = 0;
   virtual void exitVariant_reference(SysMLv2Parser::Variant_referenceContext *ctx) = 0;
+
+  virtual void enterRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext *ctx) = 0;
+  virtual void exitRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext *ctx) = 0;
+
+  virtual void enterRedefinition_usage(SysMLv2Parser::Redefinition_usageContext *ctx) = 0;
+  virtual void exitRedefinition_usage(SysMLv2Parser::Redefinition_usageContext *ctx) = 0;
 
   virtual void enterNon_occurrence_usage_element(SysMLv2Parser::Non_occurrence_usage_elementContext *ctx) = 0;
   virtual void exitNon_occurrence_usage_element(SysMLv2Parser::Non_occurrence_usage_elementContext *ctx) = 0;
@@ -922,9 +934,6 @@ public:
 
   virtual void enterElements(SysMLv2Parser::ElementsContext *ctx) = 0;
   virtual void exitElements(SysMLv2Parser::ElementsContext *ctx) = 0;
-
-  virtual void enterIdentification(SysMLv2Parser::IdentificationContext *ctx) = 0;
-  virtual void exitIdentification(SysMLv2Parser::IdentificationContext *ctx) = 0;
 
   virtual void enterRelationship_owned_elements(SysMLv2Parser::Relationship_owned_elementsContext *ctx) = 0;
   virtual void exitRelationship_owned_elements(SysMLv2Parser::Relationship_owned_elementsContext *ctx) = 0;

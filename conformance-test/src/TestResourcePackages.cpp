@@ -23,7 +23,14 @@ TEST(TestResourcePackages, TestReadabilityOfBase) {
     ASSERT_EQ(content, expected);
 }
 
-//TEST(TestResourcePackages, TestParsingBase) {
+TEST(TestResourcePackages,TestParsablilityOfSI)
+{
+    auto fs = cmrc::Library::get_filesystem();
+    auto data = fs.open("sysml.library/DomainLibraries/QuantitiesAndUnits/SI.sysml");
+    std::string content(data.begin(), data.end());
+    const auto parseResult = SysMLv2::Files::Parser::parseSysMLv2(content);
+}
+
 //    auto fs = cmrc::Library::get_filesystem();
 //    auto data = fs.open("sysml.library/KerML/Semantic/Base.kerml");
 //    std::string content(data.begin(), data.end());
