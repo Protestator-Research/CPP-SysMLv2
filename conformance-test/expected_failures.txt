@@ -1,0 +1,18 @@
+# Ratchet file for the syntax and library conformance suites (AP2 of the test plan).
+# One entry per line: a relative path prefixed "syntax/" (relative to conformance-test/testdata/syntax)
+# or "library/" (relative to resources/sysml.library). '#' starts a comment; blank lines are ignored.
+#
+# A listed "syntax/" file is a spec-valid construct ("// expect: valid") that the current grammar/
+# parser does not yet accept; it documents the target while excusing today's known failure from
+# breaking the suite. Fixing the parser so the file now parses cleanly makes its test FAIL until the
+# entry below is removed.
+#
+# A listed "library/" file is a real standard-library file that the parser cannot yet parse with
+# zero errors (or, before AP4's crash fixes, could not parse at all). Same ratchet semantics.
+
+# --- syntax/sysml/known_broken (1) ---
+syntax/sysml/known_broken/port_conjugation.sysml
+
+# --- syntax/kerml/known_broken (0) ---
+
+# --- library/ : no entries left - all 94 standard-library files parse with zero syntax errors (Phase 2 gate) ---

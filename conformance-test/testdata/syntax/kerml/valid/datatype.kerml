@@ -1,0 +1,2 @@
+// expect: valid
+datatype D;
