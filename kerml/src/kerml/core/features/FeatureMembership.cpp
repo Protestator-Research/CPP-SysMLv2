@@ -10,6 +10,10 @@
 #include <kerml/core/features/Feature.h>
 
 namespace KerML::Entities {
+    FeatureMembership::FeatureMembership() {
+        _dType = "FeatureMembership";
+    }
+
     FeatureMembership::FeatureMembership(std::shared_ptr<Feature> ownedMemberFeature,
                                          std::shared_ptr<Type> owningType,
                                          std::vector<std::shared_ptr<Type>> type) {

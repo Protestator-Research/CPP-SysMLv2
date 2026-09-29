@@ -109,7 +109,11 @@ TEST(TestKerMLListener, NamespaceMembershipKeepsVisibilityAndTarget) {
     const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
         "namespace N { private feature value : Integer; }");
     ASSERT_TRUE(errors.empty());
-    const auto memberships = listenerElements<OwningMembership>(elements);
+    // (Every top level element is a member of the root namespace, so N has a membership as well; look at the one of `value`.)
+    std::vector<std::shared_ptr<OwningMembership>> memberships;
+    for (const auto& membership : listenerElements<OwningMembership>(elements)) {
+        if (membership->memberElement() && membership->memberElement()->declaredName().value_or("") == "value") memberships.push_back(membership);
+    }
     ASSERT_EQ(memberships.size(), 1u);
     EXPECT_EQ(memberships[0]->visibility(), PRIVATE);
     ASSERT_NE(memberships[0]->memberElement(), nullptr);
@@ -121,7 +125,7 @@ TEST(TestKerMLListener, NamespaceMembershipKeepsVisibilityAndTarget) {
 TEST(TestKerMLListener, NamedInvocationArgumentRetainsParameterAndValue) {
     using namespace KerML::Entities;
     const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
-        "function calculate; feature result = calculate(input == 42);");
+        "function calculate; feature result = calculate(input = 42);");
     ASSERT_TRUE(errors.empty());
     const auto invocations = listenerElements<InvocationExpression>(elements);
     ASSERT_EQ(invocations.size(), 1u);
@@ -1212,4 +1216,677 @@ TEST(TestKerMLParser, TestKerMLAdvancedEntities) {
     EXPECT_TRUE(foundResultExprMem);
     EXPECT_TRUE(foundFeatureMem);
     EXPECT_TRUE(foundEndFeatureMem);
+}
+
+namespace {
+// Returns the sequence of element type names, in creation order, skipping the DataTypes
+// injected by the parser's implicit prelude (they are identical for both forms below and
+// are not the point of the comparison).
+std::vector<std::string> typeSequenceSkippingDataTypes(const std::vector<std::shared_ptr<KerML::Entities::Element>>& elements) {
+    std::vector<std::string> result;
+    for (const auto& element : elements) {
+        if (!element) continue;
+        if (element->getType() == "DataType") continue;
+        result.push_back(element->getType());
+    }
+    return result;
+}
+}
+
+// Regression test for review defect A: `anonymous_feature` is an alternative INSIDE the
+// `feature` rule (feature: ... | anonymous_feature), not a separate parse-tree layer, so
+// enterFeature/exitFeature already push/pop/attach the Feature for that same context
+// regardless of which alternative matched. enter/exitAnonymous_feature must therefore be
+// true no-ops, so the anonymous form (`in x : T;`) produces an element-type sequence
+// IDENTICAL to the explicit form (`feature x : T;`), and `x` keeps direction IN and name
+// "x" either way.
+TEST(TestKerMLParser, AnonymousFeatureMatchesExplicitFeatureStructure) {
+    using namespace KerML::Entities;
+
+    const auto explicitForm = SysMLv2::Files::Parser::parseKerML(
+        "package P { function f { feature x : T; return feature r : R; } }");
+    ASSERT_TRUE(explicitForm.second.empty());
+
+    const auto anonymousForm = SysMLv2::Files::Parser::parseKerML(
+        "package P { function f { in x : T; return r : R; } }");
+    ASSERT_TRUE(anonymousForm.second.empty());
+
+    const auto explicitTypes = typeSequenceSkippingDataTypes(explicitForm.first);
+    const auto anonymousTypes = typeSequenceSkippingDataTypes(anonymousForm.first);
+    EXPECT_EQ(explicitTypes, anonymousTypes)
+        << "anonymous_feature must not push a second, empty Feature/OwningMembership pair";
+
+    // The anonymous form's `x` must be the same shape as the explicit form's: a Feature
+    // named "x" with direction IN, not an extra empty Feature.
+    const auto explicitFeatures = listenerElements<Feature>(explicitForm.first);
+    const auto anonymousFeatures = listenerElements<Feature>(anonymousForm.first);
+    ASSERT_EQ(explicitFeatures.size(), anonymousFeatures.size());
+
+    auto findByName = [](const std::vector<std::shared_ptr<Feature>>& features, const std::string& name) {
+        for (const auto& f : features) if (f->declaredName().value_or("") == name) return f;
+        return std::shared_ptr<Feature>();
+    };
+    auto anonX = findByName(anonymousFeatures, "x");
+    ASSERT_NE(anonX, nullptr);
+    ASSERT_TRUE(anonX->direction().has_value());
+    EXPECT_EQ(*anonX->direction(), FeatureDirectionKind::IN);
+
+    // No feature in the anonymous form's element list should be an unnamed/empty Feature
+    // (that was the symptom of the double-push bug: an extra Feature with no name).
+    for (const auto& f : anonymousFeatures) {
+        EXPECT_FALSE(f->declaredName().value_or("").empty())
+            << "found an unnamed Feature - likely a leftover double push from anonymous_feature";
+    }
+}
+
+// Regression test for the isUnique/KEYWORD_ALL bug: exitFeature_declaration used to set
+// isUnique from KEYWORD_ALL (FeatureDeclaration's unrelated "isSufficient" marker), which
+// forced isUnique() to false on every feature not using the (rare) 'all' marker. Uniqueness
+// must come only from 'nonunique' in the multiplicity part (default true when absent).
+TEST(TestKerMLParser, FeatureDeclarationIsUniqueNotFromKeywordAll) {
+    using namespace KerML::Entities;
+
+    const auto nonunique = SysMLv2::Files::Parser::parseKerML(
+        "package P { class C { feature a[*] nonunique; } }");
+    ASSERT_TRUE(nonunique.second.empty());
+    const auto nonuniqueFeatures = listenerElements<Feature>(nonunique.first);
+    bool foundA = false;
+    for (const auto& f : nonuniqueFeatures) {
+        if (f->declaredName().value_or("") == "a") {
+            foundA = true;
+            EXPECT_FALSE(f->isUnique());
+        }
+    }
+    EXPECT_TRUE(foundA);
+
+    const auto defaultUnique = SysMLv2::Files::Parser::parseKerML(
+        "package P { class C { feature b[*]; } }");
+    ASSERT_TRUE(defaultUnique.second.empty());
+    const auto defaultFeatures = listenerElements<Feature>(defaultUnique.first);
+    bool foundB = false;
+    for (const auto& f : defaultFeatures) {
+        if (f->declaredName().value_or("") == "b") {
+            foundB = true;
+            EXPECT_TRUE(f->isUnique());
+        }
+    }
+    EXPECT_TRUE(foundB);
+}
+
+// ---- AP8: expression grammar (KerML 1.1, clause 8.2.5.8), operator trees, precedence and associativity ----
+namespace {
+using namespace KerML::Entities;
+
+std::shared_ptr<Expression> kermlValue(const std::string& expression) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML("feature x = " + expression + ";");
+    if (!errors.empty()) {
+        ADD_FAILURE() << "syntax error in '" << expression << "': " << errors.front()->description();
+        return nullptr;
+    }
+    for (const auto& element : elements) {
+        if (auto value = std::dynamic_pointer_cast<FeatureValue>(element)) return value->value();
+    }
+    ADD_FAILURE() << "no feature value for '" << expression << "'";
+    return nullptr;
+}
+
+std::shared_ptr<OperatorExpression> operatorOf(const std::shared_ptr<Expression>& expression, const std::string& name,
+                                               size_t arguments) {
+    const auto op = std::dynamic_pointer_cast<OperatorExpression>(expression);
+    if (!op) {
+        ADD_FAILURE() << "expected an OperatorExpression '" << name << "'";
+        return nullptr;
+    }
+    EXPECT_EQ(op->operatorName(), name);
+    EXPECT_EQ(op->argument().size(), arguments);
+    return op->argument().size() == arguments ? op : nullptr;
+}
+
+void expectReference(const std::shared_ptr<Expression>& expression, const std::string& name) {
+    const auto reference = std::dynamic_pointer_cast<FeatureReferenceExpression>(expression);
+    ASSERT_NE(reference, nullptr);
+    ASSERT_NE(reference->referent(), nullptr);
+    EXPECT_EQ(reference->referent()->declaredName().value_or(""), name);
+}
+
+void expectInteger(const std::shared_ptr<Expression>& expression, long long value) {
+    const auto literal = std::dynamic_pointer_cast<LiteralInteger>(expression);
+    ASSERT_NE(literal, nullptr);
+    EXPECT_EQ(literal->value(), value);
+}
+
+void expectTypeReference(const std::shared_ptr<Expression>& expression, const std::string& name) {
+    const auto reference = std::dynamic_pointer_cast<InstantiationExpression>(expression);
+    ASSERT_NE(reference, nullptr);
+    ASSERT_NE(reference->instantiatedType(), nullptr);
+    EXPECT_EQ(reference->instantiatedType()->declaredName().value_or(""), name);
+}
+}
+
+TEST(TestKerMLExpressions, MultiplicationBindsTighterThanAddition) {
+    const auto sum = operatorOf(kermlValue("2 * 3 + 1"), "+", 2);
+    ASSERT_NE(sum, nullptr);
+    const auto product = operatorOf(sum->argument()[0], "*", 2);
+    ASSERT_NE(product, nullptr);
+    expectInteger(product->argument()[0], 2);
+    expectInteger(product->argument()[1], 3);
+    expectInteger(sum->argument()[1], 1);
+}
+
+TEST(TestKerMLExpressions, BinaryOperatorsGroupToTheLeft) {
+    const auto outer = operatorOf(kermlValue("1 - 2 - 3"), "-", 2);
+    ASSERT_NE(outer, nullptr);
+    const auto inner = operatorOf(outer->argument()[0], "-", 2);
+    ASSERT_NE(inner, nullptr);
+    expectInteger(inner->argument()[0], 1);
+    expectInteger(inner->argument()[1], 2);
+    expectInteger(outer->argument()[1], 3);
+}
+
+TEST(TestKerMLExpressions, ExponentiationGroupsToTheRightAndBindsTighterThanMultiplication) {
+    const auto power = operatorOf(kermlValue("a ^ b ^ c"), "^", 2);
+    ASSERT_NE(power, nullptr);
+    expectReference(power->argument()[0], "a");
+    const auto inner = operatorOf(power->argument()[1], "^", 2);
+    ASSERT_NE(inner, nullptr);
+    expectReference(inner->argument()[0], "b");
+    expectReference(inner->argument()[1], "c");
+
+    const auto product = operatorOf(kermlValue("2 * 3 ** 2"), "*", 2);
+    ASSERT_NE(product, nullptr);
+    expectInteger(product->argument()[0], 2);
+    ASSERT_NE(operatorOf(product->argument()[1], "**", 2), nullptr);
+}
+
+TEST(TestKerMLExpressions, UnaryOperatorsBindTighterThanExponentiation) {
+    const auto power = operatorOf(kermlValue("-x ** 2"), "**", 2);
+    ASSERT_NE(power, nullptr);
+    const auto negation = operatorOf(power->argument()[0], "-", 1);
+    ASSERT_NE(negation, nullptr);
+    expectReference(negation->argument()[0], "x");
+    expectInteger(power->argument()[1], 2);
+
+    const auto sum = operatorOf(kermlValue("-w + x * y"), "+", 2);
+    ASSERT_NE(sum, nullptr);
+    ASSERT_NE(operatorOf(sum->argument()[0], "-", 1), nullptr);
+    ASSERT_NE(operatorOf(sum->argument()[1], "*", 2), nullptr);
+}
+
+TEST(TestKerMLExpressions, LogicalOperatorPrecedence) {
+    const auto disjunction = operatorOf(kermlValue("a or b and c"), "or", 2);
+    ASSERT_NE(disjunction, nullptr);
+    expectReference(disjunction->argument()[0], "a");
+    const auto conjunction = operatorOf(disjunction->argument()[1], "and", 2);
+    ASSERT_NE(conjunction, nullptr);
+    expectReference(conjunction->argument()[0], "b");
+    expectReference(conjunction->argument()[1], "c");
+
+    // '|' and '&' share the level of 'or' and 'and'; 'xor' lies between them.
+    const auto bitwise = operatorOf(kermlValue("a | b xor c & d"), "|", 2);
+    ASSERT_NE(bitwise, nullptr);
+    const auto exclusive = operatorOf(bitwise->argument()[1], "xor", 2);
+    ASSERT_NE(exclusive, nullptr);
+    ASSERT_NE(operatorOf(exclusive->argument()[1], "&", 2), nullptr);
+
+    // implies binds tighter than ??, equality tighter than and, relational tighter than equality.
+    const auto coalescing = operatorOf(kermlValue("a ?? b implies c"), "??", 2);
+    ASSERT_NE(coalescing, nullptr);
+    ASSERT_NE(operatorOf(coalescing->argument()[1], "implies", 2), nullptr);
+    const auto both = operatorOf(kermlValue("a < b == c > d and e"), "and", 2);
+    ASSERT_NE(both, nullptr);
+    const auto equality = operatorOf(both->argument()[0], "==", 2);
+    ASSERT_NE(equality, nullptr);
+    ASSERT_NE(operatorOf(equality->argument()[0], "<", 2), nullptr);
+    ASSERT_NE(operatorOf(equality->argument()[1], ">", 2), nullptr);
+    ASSERT_NE(operatorOf(kermlValue("not a and b"), "and", 2), nullptr);
+}
+
+TEST(TestKerMLExpressions, RangeSitsBetweenAdditionAndRelational) {
+    const auto relation = operatorOf(kermlValue("1 .. 2 + 3 < 9"), "<", 2);
+    ASSERT_NE(relation, nullptr);
+    const auto range = operatorOf(relation->argument()[0], "..", 2);
+    ASSERT_NE(range, nullptr);
+    expectInteger(range->argument()[0], 1);
+    ASSERT_NE(operatorOf(range->argument()[1], "+", 2), nullptr);
+}
+
+TEST(TestKerMLExpressions, ClassificationAndCastOperators) {
+    const auto cast = operatorOf(kermlValue("x as T"), "as", 2);
+    ASSERT_NE(cast, nullptr);
+    expectReference(cast->argument()[0], "x");
+    expectTypeReference(cast->argument()[1], "T");
+
+    const auto equality = operatorOf(kermlValue("x istype T == true"), "==", 2);
+    ASSERT_NE(equality, nullptr);
+    ASSERT_NE(operatorOf(equality->argument()[0], "istype", 2), nullptr);
+    EXPECT_NE(std::dynamic_pointer_cast<LiteralBoolean>(equality->argument()[1]), nullptr);
+
+    // Relational operators bind tighter than classification.
+    const auto test = operatorOf(kermlValue("a + 1 hastype T"), "hastype", 2);
+    ASSERT_NE(test, nullptr);
+    ASSERT_NE(operatorOf(test->argument()[0], "+", 2), nullptr);
+
+    EXPECT_NE(operatorOf(kermlValue("x @ T"), "@", 2), nullptr);
+    // The operators may be used without a first operand.
+    const auto prefix = operatorOf(kermlValue("istype T"), "istype", 1);
+    ASSERT_NE(prefix, nullptr);
+    expectTypeReference(prefix->argument()[0], "T");
+    EXPECT_NE(operatorOf(kermlValue("@T"), "@", 1), nullptr);
+}
+
+TEST(TestKerMLExpressions, MetaclassificationOperators) {
+    const auto test = operatorOf(kermlValue("x @@ M"), "@@", 2);
+    ASSERT_NE(test, nullptr);
+    expectReference(test->argument()[0], "x");
+    expectTypeReference(test->argument()[1], "M");
+    const auto cast = operatorOf(kermlValue("x meta KerML::Feature"), "meta", 2);
+    ASSERT_NE(cast, nullptr);
+    expectTypeReference(cast->argument()[1], "Feature");
+}
+
+TEST(TestKerMLExpressions, ParenthesisedCastFeedsFeatureChain) {
+    const auto chain = std::dynamic_pointer_cast<FeatureChainExpression>(kermlValue("(x as T).y"));
+    ASSERT_NE(chain, nullptr);
+    ASSERT_NE(chain->targetFeature(), nullptr);
+    EXPECT_EQ(chain->targetFeature()->declaredName().value_or(""), "y");
+    ASSERT_EQ(chain->argument().size(), 1u);
+    ASSERT_NE(operatorOf(chain->argument()[0], "as", 2), nullptr);
+}
+
+TEST(TestKerMLExpressions, FeatureChainsAreLeftNested) {
+    const auto outer = std::dynamic_pointer_cast<FeatureChainExpression>(kermlValue("a.b.c"));
+    ASSERT_NE(outer, nullptr);
+    EXPECT_EQ(outer->targetFeature()->declaredName().value_or(""), "c");
+    ASSERT_EQ(outer->argument().size(), 1u);
+    const auto inner = std::dynamic_pointer_cast<FeatureChainExpression>(outer->argument()[0]);
+    ASSERT_NE(inner, nullptr);
+    EXPECT_EQ(inner->targetFeature()->declaredName().value_or(""), "b");
+    ASSERT_EQ(inner->argument().size(), 1u);
+    expectReference(inner->argument()[0], "a");
+}
+
+TEST(TestKerMLExpressions, IndexExpression) {
+    const auto index = std::dynamic_pointer_cast<IndexExpression>(kermlValue("a#(1)"));
+    ASSERT_NE(index, nullptr);
+    EXPECT_EQ(index->operatorName(), "#");
+    ASSERT_EQ(index->argument().size(), 2u);
+    expectReference(index->argument()[0], "a");
+    expectInteger(index->argument()[1], 1);
+
+    // Index and feature chain are postfix operators of the same precedence and group to the left.
+    const auto chain = std::dynamic_pointer_cast<FeatureChainExpression>(kermlValue("m#(1).c"));
+    ASSERT_NE(chain, nullptr);
+    ASSERT_EQ(chain->argument().size(), 1u);
+    EXPECT_NE(std::dynamic_pointer_cast<IndexExpression>(chain->argument()[0]), nullptr);
+}
+
+TEST(TestKerMLExpressions, BracketExpressionForQuantityUnits) {
+    const auto bracket = operatorOf(kermlValue("273.15 [K]"), "[", 2);
+    ASSERT_NE(bracket, nullptr);
+    const auto value = std::dynamic_pointer_cast<LiteralRational>(bracket->argument()[0]);
+    ASSERT_NE(value, nullptr);
+    EXPECT_DOUBLE_EQ(value->value(), 273.15);
+    expectReference(bracket->argument()[1], "K");
+
+    // The bracket binds tighter than the arithmetic operators around it.
+    const auto sum = operatorOf(kermlValue("1 + 2 [m] * 3"), "+", 2);
+    ASSERT_NE(sum, nullptr);
+    const auto product = operatorOf(sum->argument()[1], "*", 2);
+    ASSERT_NE(product, nullptr);
+    ASSERT_NE(operatorOf(product->argument()[0], "[", 2), nullptr);
+}
+
+TEST(TestKerMLExpressions, ConditionalExpression) {
+    const auto conditional = operatorOf(kermlValue("if a ? 1 else 2"), "if", 3);
+    ASSERT_NE(conditional, nullptr);
+    expectReference(conditional->argument()[0], "a");
+    expectInteger(conditional->argument()[1], 1);
+    expectInteger(conditional->argument()[2], 2);
+
+    // The conditional has the lowest precedence: its else branch extends over the rest of the expression.
+    const auto nested = operatorOf(kermlValue("if a ? 1 else if b ? 2 else 3 + 4"), "if", 3);
+    ASSERT_NE(nested, nullptr);
+    const auto inner = operatorOf(nested->argument()[2], "if", 3);
+    ASSERT_NE(inner, nullptr);
+    ASSERT_NE(operatorOf(inner->argument()[2], "+", 2), nullptr);
+}
+
+TEST(TestKerMLExpressions, SequenceExpressions) {
+    const auto sequence = operatorOf(kermlValue("(1, 2, 3)"), ",", 2);
+    ASSERT_NE(sequence, nullptr);
+    expectInteger(sequence->argument()[0], 1);
+    const auto rest = operatorOf(sequence->argument()[1], ",", 2);
+    ASSERT_NE(rest, nullptr);
+    expectInteger(rest->argument()[0], 2);
+    expectInteger(rest->argument()[1], 3);
+
+    // A parenthesised expression is just the expression, a trailing comma is allowed, () is null.
+    ASSERT_NE(operatorOf(kermlValue("(1 + 2) * 3"), "*", 2), nullptr);
+    expectInteger(kermlValue("(1,)"), 1);
+    EXPECT_NE(std::dynamic_pointer_cast<NullExpression>(kermlValue("()")), nullptr);
+    EXPECT_NE(std::dynamic_pointer_cast<NullExpression>(kermlValue("null")), nullptr);
+}
+
+TEST(TestKerMLExpressions, InvocationSelectCollectAndBodyExpressions) {
+    const auto arrow = std::dynamic_pointer_cast<OperatorExpression>(kermlValue("s->select {in x; x > 0}"));
+    ASSERT_NE(arrow, nullptr);
+    EXPECT_EQ(arrow->operatorName(), "->");
+    ASSERT_NE(arrow->instantiatedType(), nullptr);
+    EXPECT_EQ(arrow->instantiatedType()->declaredName().value_or(""), "select");
+    ASSERT_EQ(arrow->argument().size(), 2u);
+    expectReference(arrow->argument()[0], "s");
+    EXPECT_NE(arrow->argument()[1], nullptr);
+
+    const auto reduce = std::dynamic_pointer_cast<OperatorExpression>(kermlValue("s->reduce '+'"));
+    ASSERT_NE(reduce, nullptr);
+    ASSERT_EQ(reduce->argument().size(), 2u);
+    expectTypeReference(reduce->argument()[1], "'+'");
+
+    const auto sized = std::dynamic_pointer_cast<OperatorExpression>(kermlValue("s->size()"));
+    ASSERT_NE(sized, nullptr);
+    EXPECT_EQ(sized->argument().size(), 1u);
+
+    const auto select = std::dynamic_pointer_cast<SelectExpression>(kermlValue("s.?{ x > 0 }"));
+    ASSERT_NE(select, nullptr);
+    ASSERT_EQ(select->argument().size(), 2u);
+    expectReference(select->argument()[0], "s");
+    const auto collect = std::dynamic_pointer_cast<CollectExpression>(kermlValue("s.{ x }"));
+    ASSERT_NE(collect, nullptr);
+    ASSERT_EQ(collect->argument().size(), 2u);
+}
+
+TEST(TestKerMLExpressions, InvocationsWithPositionalAndNamedArguments) {
+    const auto call = std::dynamic_pointer_cast<InvocationExpression>(kermlValue("f(a, b + 1)"));
+    ASSERT_NE(call, nullptr);
+    ASSERT_NE(call->instantiatedType(), nullptr);
+    EXPECT_EQ(call->instantiatedType()->declaredName().value_or(""), "f");
+    ASSERT_EQ(call->argument().size(), 2u);
+    expectReference(call->argument()[0], "a");
+    ASSERT_NE(operatorOf(call->argument()[1], "+", 2), nullptr);
+
+    const auto named = std::dynamic_pointer_cast<InvocationExpression>(kermlValue("f(x = 1, y = a == b)"));
+    ASSERT_NE(named, nullptr);
+    ASSERT_EQ(named->argument().size(), 2u);
+    ASSERT_EQ(named->argument()[1]->ownedRedefinition().size(), 1u);
+    EXPECT_EQ(named->argument()[1]->ownedRedefinition()[0]->redefinedFeature()->declaredName().value_or(""), "y");
+
+    const auto constructed = std::dynamic_pointer_cast<ConstructorExpression>(kermlValue("new T(1, 2)"));
+    ASSERT_NE(constructed, nullptr);
+    ASSERT_NE(constructed->instantiatedType(), nullptr);
+    EXPECT_EQ(constructed->instantiatedType()->declaredName().value_or(""), "T");
+    EXPECT_EQ(constructed->argument().size(), 2u);
+}
+
+TEST(TestKerMLExpressions, ExtentMetadataAccessAndLiterals) {
+    const auto extent = operatorOf(kermlValue("all T"), "all", 1);
+    ASSERT_NE(extent, nullptr);
+    expectTypeReference(extent->argument()[0], "T");
+    EXPECT_NE(std::dynamic_pointer_cast<MetadataAccessExpression>(kermlValue("x.metadata")), nullptr);
+    EXPECT_NE(std::dynamic_pointer_cast<LiteralInfinity>(kermlValue("*")), nullptr);
+    const auto text = std::dynamic_pointer_cast<LiteralString>(kermlValue("\"hi\""));
+    ASSERT_NE(text, nullptr);
+    EXPECT_EQ(text->value(), "hi");
+    const auto exponent = std::dynamic_pointer_cast<LiteralRational>(kermlValue("1.5e3"));
+    ASSERT_NE(exponent, nullptr);
+    EXPECT_DOUBLE_EQ(exponent->value(), 1500.0);
+    const auto plain = std::dynamic_pointer_cast<LiteralRational>(kermlValue("2e2"));
+    ASSERT_NE(plain, nullptr);
+    EXPECT_DOUBLE_EQ(plain->value(), 200.0);
+}
+
+TEST(TestKerMLExpressions, JuxtapositionIsNoLongerASequence) {
+    // "2 3" used to parse as a two-element sequence; only a comma builds a sequence.
+    const auto result = SysMLv2::Files::Parser::parseKerML("feature x = 2 3;");
+    EXPECT_FALSE(result.second.empty());
+    EXPECT_FALSE(SysMLv2::Files::Parser::parseKerML("feature x = 1 + ;").second.empty());
+    EXPECT_FALSE(SysMLv2::Files::Parser::parseKerML("feature x = if a ? 1;").second.empty());
+}
+
+// ---- Phase 2 gate: constructs of the standard library that the grammar used to reject ----
+namespace {
+template<class T>
+std::shared_ptr<T> namedElement(const std::vector<std::shared_ptr<KerML::Entities::Element>>& elements, const std::string& name) {
+    for (const auto& element : elements) {
+        if (element && element->declaredName() == name) {
+            if (auto typed = std::dynamic_pointer_cast<T>(element)) return typed;
+        }
+    }
+    return nullptr;
+}
+
+template<class T>
+bool ownsElement(const std::shared_ptr<KerML::Entities::Element>& parent, const std::shared_ptr<T>& child) {
+    if (!parent || !child) return false;
+    const auto owned = parent->ownedElements();
+    return std::find(owned.begin(), owned.end(), std::static_pointer_cast<KerML::Entities::Element>(child)) != owned.end();
+}
+}
+
+TEST(TestKerMLListener, EndFeatureOwnsItsCrossFeature) {
+    using namespace KerML::Entities;
+    // KerML 8.2.4.3.1: EndFeaturePrefix ( OwnedCrossFeatureMember )? - the cross feature is a Feature of its own,
+    // declared between 'end' and 'feature', and owned by the end feature.
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "assoc A { end p [*] feature b : T; }");
+    ASSERT_TRUE(errors.empty());
+    const auto end = namedElement<Feature>(elements, "b");
+    const auto cross = namedElement<Feature>(elements, "p");
+    ASSERT_NE(end, nullptr);
+    ASSERT_NE(cross, nullptr);
+    EXPECT_TRUE(end->isEnd());
+    EXPECT_FALSE(cross->isEnd());
+    EXPECT_EQ(cross->owner(), end);
+    EXPECT_TRUE(ownsElement(end, cross));
+    ASSERT_TRUE(end->crossFeature().has_value());
+    EXPECT_EQ(end->crossFeature().value(), cross);
+    // The bounds belong to the cross feature, not to the end feature.
+    EXPECT_TRUE(cross->multiplicity().has_value());
+    EXPECT_FALSE(end->multiplicity().has_value());
+    // ... and the cross feature is not one of the featured members of the end feature.
+    EXPECT_TRUE(end->ownedFeature().empty());
+}
+
+TEST(TestKerMLListener, AnonymousCrossFeatureCarriesTheBounds) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "assoc A { end [1] feature a references x; end feature c; }");
+    ASSERT_TRUE(errors.empty());
+    const auto end = namedElement<Feature>(elements, "a");
+    ASSERT_NE(end, nullptr);
+    EXPECT_TRUE(end->isEnd());
+    ASSERT_TRUE(end->crossFeature().has_value());
+    const auto cross = end->crossFeature().value();
+    ASSERT_NE(cross, nullptr);
+    EXPECT_FALSE(cross->declaredName().has_value());
+    EXPECT_EQ(cross->owner(), end);
+    EXPECT_TRUE(cross->multiplicity().has_value());
+    EXPECT_FALSE(end->multiplicity().has_value());
+    // An end feature without cross feature member has none.
+    const auto plain = namedElement<Feature>(elements, "c");
+    ASSERT_NE(plain, nullptr);
+    EXPECT_TRUE(plain->isEnd());
+    EXPECT_FALSE(plain->crossFeature().has_value());
+}
+
+TEST(TestKerMLListener, CrossesClauseCreatesCrossSubsetting) {
+    using namespace KerML::Entities;
+    // KerML 8.2.4.3.1: Crosses = CROSSES OwnedCrossSubsetting (both 'crosses' and '=>'; feature chains are allowed)
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "assoc A { end feature f : T crosses a.b; end feature g : T => h; }");
+    ASSERT_TRUE(errors.empty());
+    const auto crossings = listenerElements<CrossSubsetting>(elements);
+    ASSERT_EQ(crossings.size(), 2u);
+    const auto f = namedElement<Feature>(elements, "f");
+    const auto g = namedElement<Feature>(elements, "g");
+    ASSERT_NE(f, nullptr);
+    ASSERT_NE(g, nullptr);
+    ASSERT_TRUE(f->ownedCrossSubsetting().has_value());
+    EXPECT_EQ(f->ownedCrossSubsetting().value()->crossedFeature()->declaredName().value_or(""), "a.b");
+    EXPECT_EQ(f->ownedCrossSubsetting().value()->crossingFeature(), f);
+    ASSERT_TRUE(g->ownedCrossSubsetting().has_value());
+    EXPECT_EQ(g->ownedCrossSubsetting().value()->crossedFeature()->declaredName().value_or(""), "h");
+    EXPECT_TRUE(ownsElement(f, f->ownedCrossSubsetting().value()));
+}
+
+TEST(TestKerMLListener, InvariantWithoutDeclarationBelongsToItsBehavior) {
+    using namespace KerML::Entities;
+    // KerML 7.4.9.4 / 8.2.5.7.4: 'inv { ... }' and 'inv false { ... }' need no name or feature declaration.
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "behavior B { inv { true } private inv { false } inv false { true } inv true named { true } }");
+    ASSERT_TRUE(errors.empty());
+    const auto behavior = namedElement<Behavior>(elements, "B");
+    ASSERT_NE(behavior, nullptr);
+    const auto invariants = listenerElements<Invariant>(elements);
+    ASSERT_EQ(invariants.size(), 4u);
+    size_t negated = 0;
+    for (const auto& invariant : invariants) {
+        EXPECT_TRUE(ownsElement(behavior, invariant));
+        const auto features = behavior->ownedFeature();
+        EXPECT_NE(std::find(features.begin(), features.end(), std::static_pointer_cast<Feature>(invariant)), features.end());
+        if (invariant->isNegated()) ++negated;
+    }
+    EXPECT_EQ(negated, 1u);
+    EXPECT_EQ(invariants[3]->declaredName().value_or(""), "named");
+    EXPECT_FALSE(invariants[0]->declaredName().has_value());
+}
+
+TEST(TestKerMLListener, FeaturePrefixModifiersInSpecOrder) {
+    using namespace KerML::Entities;
+    // BasicFeaturePrefix = direction? derived? abstract? ( composite | portion )? var?
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "class C { derived composite var feature f : T; abstract portion feature p; in feature i; end feature e; }");
+    ASSERT_TRUE(errors.empty());
+    const auto f = namedElement<Feature>(elements, "f");
+    ASSERT_NE(f, nullptr);
+    EXPECT_TRUE(f->isDerived());
+    EXPECT_TRUE(f->isComposite());
+    EXPECT_TRUE(f->isVariable());
+    EXPECT_FALSE(f->isPortion());
+    EXPECT_FALSE(f->isEnd());
+    const auto p = namedElement<Feature>(elements, "p");
+    ASSERT_NE(p, nullptr);
+    EXPECT_TRUE(p->isAbstract());
+    EXPECT_TRUE(p->isPortion());
+    EXPECT_FALSE(p->isComposite());
+    const auto i = namedElement<Feature>(elements, "i");
+    ASSERT_NE(i, nullptr);
+    ASSERT_TRUE(i->direction().has_value());
+    EXPECT_EQ(i->direction().value(), FeatureDirectionKind::IN);
+    const auto e = namedElement<Feature>(elements, "e");
+    ASSERT_NE(e, nullptr);
+    EXPECT_TRUE(e->isEnd());
+    EXPECT_FALSE(e->isDerived());
+}
+
+TEST(TestKerMLListener, BindingConnectorUsesSingleEqualsSign) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "class C { feature a; feature b; binding x of a = b; binding [0..1] a = [1] b; }");
+    ASSERT_TRUE(errors.empty());
+    const auto bindings = listenerElements<BindingConnector>(elements);
+    ASSERT_EQ(bindings.size(), 2u);
+    EXPECT_EQ(bindings[0]->declaredName().value_or(""), "x");
+    EXPECT_FALSE(bindings[1]->declaredName().has_value());
+    for (const auto& binding : bindings) {
+        EXPECT_EQ(binding->connectorEnd().size(), 2u);
+    }
+    const auto cls = namedElement<Class>(elements, "C");
+    ASSERT_NE(cls, nullptr);
+    EXPECT_TRUE(ownsElement(cls, bindings[0]));
+    EXPECT_TRUE(ownsElement(cls, bindings[1]));
+    EXPECT_FALSE(SysMLv2::Files::Parser::parseKerML("class C { feature a; feature b; binding a == b; }").second.empty());
+}
+
+TEST(TestKerMLListener, ConnectorsWithoutFromAndWithoutEnds) {
+    using namespace KerML::Entities;
+    // Connector = FeaturePrefix 'connector' ( FeatureDeclaration? ValuePart? | ConnectorDeclaration ) TypeBody
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "class C { feature a; feature b; connector [0..1] a to [1..*] b; connector k : T { } "
+        "abstract connector m : T from a to b; }");
+    ASSERT_TRUE(errors.empty());
+    const auto connectors = listenerElements<Connector>(elements);
+    ASSERT_EQ(connectors.size(), 3u);
+    EXPECT_EQ(connectors[0]->connectorEnd().size(), 2u);
+    EXPECT_EQ(connectors[1]->declaredName().value_or(""), "k");
+    EXPECT_TRUE(connectors[1]->connectorEnd().empty());
+    EXPECT_EQ(connectors[2]->declaredName().value_or(""), "m");
+    EXPECT_TRUE(connectors[2]->isAbstract());
+    EXPECT_EQ(connectors[2]->connectorEnd().size(), 2u);
+    // the end multiplicities stay on the ends, not on the connector
+    EXPECT_FALSE(connectors[0]->multiplicity().has_value());
+    for (const auto& end : connectors[0]->connectorEnd()) {
+        EXPECT_TRUE(end->isEnd());
+        EXPECT_TRUE(end->multiplicity().has_value());
+    }
+}
+
+TEST(TestKerMLListener, MemberFeatureInTypeBody) {
+    using namespace KerML::Entities;
+    // TypeFeatureMember = MemberPrefix 'member' FeatureElement is part of the TypeBodyElement alternatives
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "datatype D { member feature 'private' : D[1]; private member feature 'protected' : D[1]; }");
+    ASSERT_TRUE(errors.empty());
+    const auto datatype = namedElement<DataType>(elements, "D");
+    ASSERT_NE(datatype, nullptr);
+    const auto priv = namedElement<Feature>(elements, "'private'");
+    const auto prot = namedElement<Feature>(elements, "'protected'");
+    ASSERT_NE(priv, nullptr);
+    ASSERT_NE(prot, nullptr);
+    EXPECT_TRUE(ownsElement(datatype, priv));
+    EXPECT_TRUE(ownsElement(datatype, prot));
+    EXPECT_EQ(priv->owner(), datatype);
+}
+
+TEST(TestKerMLListener, RedefinitionAndSubsettingListsKeepEveryTarget) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "class C { feature a redefines x, y::z, w; feature b subsets p, q, r; }");
+    ASSERT_TRUE(errors.empty());
+    const auto a = namedElement<Feature>(elements, "a");
+    const auto b = namedElement<Feature>(elements, "b");
+    ASSERT_NE(a, nullptr);
+    ASSERT_NE(b, nullptr);
+    ASSERT_EQ(a->ownedRedefinition().size(), 3u);
+    EXPECT_EQ(a->ownedRedefinition()[2]->redefinedFeature()->declaredName().value_or(""), "w");
+    EXPECT_EQ(b->ownedSubsetting().size(), 3u);
+}
+
+TEST(TestKerMLListener, CommentAboutWithoutName) {
+    using namespace KerML::Entities;
+    // Comment = ( 'comment' Identification ( 'about' Annotation ( ',' Annotation )* )? )? ...: the Identification may be empty
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "class A; class B; comment about A, B /* about two */ comment named about A /* about one */");
+    ASSERT_TRUE(errors.empty());
+    const auto comments = listenerElements<Comment>(elements);
+    ASSERT_EQ(comments.size(), 2u);
+    EXPECT_FALSE(comments[0]->declaredName().has_value());
+    EXPECT_EQ(comments[0]->annotatedElement().size(), 2u);
+    EXPECT_EQ(comments[1]->declaredName().value_or(""), "named");
+}
+
+TEST(TestKerMLListener, MultiplicityModifiersWithoutBounds) {
+    using namespace KerML::Entities;
+    // MultiplicityPart = OwnedMultiplicity | ( OwnedMultiplicity )? ( 'ordered' ( 'nonunique' )? | 'nonunique' ( 'ordered' )? )
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "class C { feature a : T ordered; feature b : T nonunique; feature c : T nonunique ordered; feature d : T[2]; }");
+    ASSERT_TRUE(errors.empty());
+    const auto a = namedElement<Feature>(elements, "a");
+    const auto b = namedElement<Feature>(elements, "b");
+    const auto c = namedElement<Feature>(elements, "c");
+    const auto d = namedElement<Feature>(elements, "d");
+    ASSERT_NE(a, nullptr);
+    ASSERT_NE(b, nullptr);
+    ASSERT_NE(c, nullptr);
+    ASSERT_NE(d, nullptr);
+    EXPECT_TRUE(a->isOrdered());
+    EXPECT_TRUE(a->isUnique());
+    EXPECT_FALSE(b->isOrdered());
+    EXPECT_FALSE(b->isUnique());
+    EXPECT_TRUE(c->isOrdered());
+    EXPECT_FALSE(c->isUnique());
+    EXPECT_FALSE(d->isOrdered());
+    EXPECT_TRUE(d->isUnique());
+    EXPECT_FALSE(a->multiplicity().has_value());
+    EXPECT_TRUE(d->multiplicity().has_value());
+    EXPECT_FALSE(SysMLv2::Files::Parser::parseKerML("feature f : T ordered ordered;").second.empty());
 }

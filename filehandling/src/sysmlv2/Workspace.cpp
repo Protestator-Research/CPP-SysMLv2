@@ -18,6 +18,7 @@
 
 #include <kerml/kernel/packages/Package.h>
 #include <kerml/root/elements/Relationship.h>
+#include <kerml/root/namespaces/Namespace.h>
 
 #include <antlr4-common.h>
 #include <BailErrorStrategy.h>
@@ -80,6 +81,7 @@ namespace SysMLv2::Files {
             std::vector<std::shared_ptr<ParserError>> errors;
             ResolutionData data;
             std::vector<std::shared_ptr<KerML::Entities::Element>> topLevel;
+            std::shared_ptr<KerML::Entities::Namespace> root;
         };
 
         std::vector<std::unique_ptr<Source>> sources;
@@ -106,6 +108,23 @@ namespace SysMLv2::Files {
                 if (!element || owned.count(element.get()) != 0) continue;
                 if (element == source.data.root) continue;
                 source.topLevel.push_back(element);
+            }
+        }
+
+        // The root namespace of a source: the one the KerML listener created, or, for SysML v2 (where the ownership builder creates
+        // it and only the top-level elements refer to it), the namespace that owns an element of the source without being one of them.
+        static void findRoot(Source& source) {
+            source.root = std::dynamic_pointer_cast<KerML::Entities::Namespace>(source.data.root);
+            if (source.root) return;
+            std::unordered_set<const KerML::Entities::Element*> own;
+            for (const auto& element : source.elements) own.insert(element.get());
+            for (const auto& element : source.elements) {
+                if (!element) continue;
+                auto owner = std::dynamic_pointer_cast<KerML::Entities::Namespace>(element->owner());
+                if (owner && own.count(owner.get()) == 0) {
+                    source.root = std::move(owner);
+                    return;
+                }
             }
         }
 
@@ -191,6 +210,7 @@ namespace SysMLv2::Files {
             reference.source = index;
         }
         Impl::computeTopLevel(*source);
+        Impl::findRoot(*source);
         impl_->sources.push_back(std::move(source));
         impl_->resolver.reset();
         return index;
@@ -269,6 +289,17 @@ namespace SysMLv2::Files {
 
     const std::string& Workspace::sourceName(size_t source) const {
         return impl_->sources.at(source)->name;
+    }
+
+    size_t Workspace::findSource(const std::string& name) const {
+        for (size_t index = 0; index < impl_->sources.size(); ++index) {
+            if (impl_->sources[index]->name == name) return index;
+        }
+        return impl_->sources.size();
+    }
+
+    std::shared_ptr<KerML::Entities::Namespace> Workspace::rootNamespace(size_t source) const {
+        return impl_->sources.at(source)->root;
     }
 
     const std::vector<std::shared_ptr<KerML::Entities::Element>>& Workspace::elements(size_t source) const {

@@ -7,6 +7,11 @@
 
 namespace KerML::Entities
 {
+	Conjugation::Conjugation()
+	{
+		_dType = "Conjugation";
+	}
+
 	Conjugation::Conjugation(std::shared_ptr<Type> originalType, std::shared_ptr<Type> conjugatedType)
 	{
 		_dType = "Conjugation";

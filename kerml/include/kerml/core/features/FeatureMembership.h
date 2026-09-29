@@ -21,7 +21,7 @@ namespace KerML::Entities {
     public:
     public:
         // Derived metamodel elements may be populated in two phases.
-        FeatureMembership() = default;
+        FeatureMembership();
     public:
         FeatureMembership(std::shared_ptr<Feature> ownedMemberFeature, std::shared_ptr<Type> owningType,  std::vector<std::shared_ptr<Type>> type);
         ~FeatureMembership() override = default;

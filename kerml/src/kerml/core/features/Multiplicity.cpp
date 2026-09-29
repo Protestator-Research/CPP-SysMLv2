@@ -21,6 +21,7 @@ namespace KerML::Entities {
 
 	Multiplicity::Multiplicity(unsigned minimum, bool unlimited)
 	{
+		_dType = "Multiplicity";
 		MinimumNumber = minimum;
 		setIsUnlimited(unlimited);
 	}

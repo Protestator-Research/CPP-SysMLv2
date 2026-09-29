@@ -6,8 +6,11 @@
 
 #include <sysmlv2/sysmlv2file_global.h>
 #include <kerml/parser/KerMLListener.h>
+#include <sysmlv2/resolution/ResolutionData.h>
+#include <sysmlv2/ownership/Ownership.h>
 #include <memory>
 #include <stack>
+#include <functional>
 
 namespace KerML::Entities {
     class Element;
@@ -36,6 +39,70 @@ public:
     void enterEveryRule(antlr4::ParserRuleContext *ctx) override;
 
     void exitEveryRule(antlr4::ParserRuleContext *ctx) override;
+
+    void enterConstructor_expression(KerMLParser::Constructor_expressionContext *ctx) override;
+
+    void exitConstructor_expression(KerMLParser::Constructor_expressionContext *ctx) override;
+
+    void enterFunction_operation_arguments(KerMLParser::Function_operation_argumentsContext *ctx) override;
+
+    void exitFunction_operation_arguments(KerMLParser::Function_operation_argumentsContext *ctx) override;
+
+    void enterConditionalExpr(KerMLParser::ConditionalExprContext *ctx) override;
+
+    void exitConditionalExpr(KerMLParser::ConditionalExprContext *ctx) override;
+
+    void enterBinaryExpr(KerMLParser::BinaryExprContext *ctx) override;
+
+    void exitBinaryExpr(KerMLParser::BinaryExprContext *ctx) override;
+
+    void enterUnaryExpr(KerMLParser::UnaryExprContext *ctx) override;
+
+    void exitUnaryExpr(KerMLParser::UnaryExprContext *ctx) override;
+
+    void enterClassificationExpr(KerMLParser::ClassificationExprContext *ctx) override;
+
+    void exitClassificationExpr(KerMLParser::ClassificationExprContext *ctx) override;
+
+    void enterMetaclassificationExpr(KerMLParser::MetaclassificationExprContext *ctx) override;
+
+    void exitMetaclassificationExpr(KerMLParser::MetaclassificationExprContext *ctx) override;
+
+    void enterExtentExpr(KerMLParser::ExtentExprContext *ctx) override;
+
+    void exitExtentExpr(KerMLParser::ExtentExprContext *ctx) override;
+
+    void enterIndexExpr(KerMLParser::IndexExprContext *ctx) override;
+
+    void exitIndexExpr(KerMLParser::IndexExprContext *ctx) override;
+
+    void enterBracketExpr(KerMLParser::BracketExprContext *ctx) override;
+
+    void exitBracketExpr(KerMLParser::BracketExprContext *ctx) override;
+
+    void enterFeatureChainExpr(KerMLParser::FeatureChainExprContext *ctx) override;
+
+    void exitFeatureChainExpr(KerMLParser::FeatureChainExprContext *ctx) override;
+
+    void enterCollectExpr(KerMLParser::CollectExprContext *ctx) override;
+
+    void exitCollectExpr(KerMLParser::CollectExprContext *ctx) override;
+
+    void enterSelectExpr(KerMLParser::SelectExprContext *ctx) override;
+
+    void exitSelectExpr(KerMLParser::SelectExprContext *ctx) override;
+
+    void enterFunctionOperationExpr(KerMLParser::FunctionOperationExprContext *ctx) override;
+
+    void exitFunctionOperationExpr(KerMLParser::FunctionOperationExprContext *ctx) override;
+
+    void enterSequenceExpr(KerMLParser::SequenceExprContext *ctx) override;
+
+    void exitSequenceExpr(KerMLParser::SequenceExprContext *ctx) override;
+
+    void enterBaseExpr(KerMLParser::BaseExprContext *ctx) override;
+
+    void exitBaseExpr(KerMLParser::BaseExprContext *ctx) override;
 
     void enterStart(KerMLParser::StartContext *ctx) override;
 
@@ -313,9 +380,45 @@ public:
 
     void exitFeature(KerMLParser::FeatureContext *ctx) override;
 
+    void enterAnonymous_feature(KerMLParser::Anonymous_featureContext *ctx) override;
+
+    void exitAnonymous_feature(KerMLParser::Anonymous_featureContext *ctx) override;
+
     void enterFeature_prefix(KerMLParser::Feature_prefixContext *ctx) override;
 
     void exitFeature_prefix(KerMLParser::Feature_prefixContext *ctx) override;
+
+    void enterEnd_feature_prefix(KerMLParser::End_feature_prefixContext *ctx) override;
+
+    void exitEnd_feature_prefix(KerMLParser::End_feature_prefixContext *ctx) override;
+
+    void enterBasic_feature_prefix(KerMLParser::Basic_feature_prefixContext *ctx) override;
+
+    void exitBasic_feature_prefix(KerMLParser::Basic_feature_prefixContext *ctx) override;
+
+    void enterOwned_cross_feature_member(KerMLParser::Owned_cross_feature_memberContext *ctx) override;
+
+    void exitOwned_cross_feature_member(KerMLParser::Owned_cross_feature_memberContext *ctx) override;
+
+    void enterOwned_cross_feature(KerMLParser::Owned_cross_featureContext *ctx) override;
+
+    void exitOwned_cross_feature(KerMLParser::Owned_cross_featureContext *ctx) override;
+
+    void enterOwned_cross_multiplicity_member(KerMLParser::Owned_cross_multiplicity_memberContext *ctx) override;
+
+    void exitOwned_cross_multiplicity_member(KerMLParser::Owned_cross_multiplicity_memberContext *ctx) override;
+
+    void enterOwned_cross_multiplicity(KerMLParser::Owned_cross_multiplicityContext *ctx) override;
+
+    void exitOwned_cross_multiplicity(KerMLParser::Owned_cross_multiplicityContext *ctx) override;
+
+    void enterCrosses(KerMLParser::CrossesContext *ctx) override;
+
+    void exitCrosses(KerMLParser::CrossesContext *ctx) override;
+
+    void enterOwned_cross_subsetting(KerMLParser::Owned_cross_subsettingContext *ctx) override;
+
+    void exitOwned_cross_subsetting(KerMLParser::Owned_cross_subsettingContext *ctx) override;
 
     void enterFeature_direction(KerMLParser::Feature_directionContext *ctx) override;
 
@@ -352,6 +455,38 @@ public:
     void enterMultiplicity_part(KerMLParser::Multiplicity_partContext *ctx) override;
 
     void exitMultiplicity_part(KerMLParser::Multiplicity_partContext *ctx) override;
+
+    void enterMultiplicity_modifier(KerMLParser::Multiplicity_modifierContext *ctx) override;
+
+    void exitMultiplicity_modifier(KerMLParser::Multiplicity_modifierContext *ctx) override;
+
+    void enterTyped_by_operator(KerMLParser::Typed_by_operatorContext *ctx) override;
+
+    void exitTyped_by_operator(KerMLParser::Typed_by_operatorContext *ctx) override;
+
+    void enterSpecializes_operator(KerMLParser::Specializes_operatorContext *ctx) override;
+
+    void exitSpecializes_operator(KerMLParser::Specializes_operatorContext *ctx) override;
+
+    void enterSubsets_operator(KerMLParser::Subsets_operatorContext *ctx) override;
+
+    void exitSubsets_operator(KerMLParser::Subsets_operatorContext *ctx) override;
+
+    void enterReferences_operator(KerMLParser::References_operatorContext *ctx) override;
+
+    void exitReferences_operator(KerMLParser::References_operatorContext *ctx) override;
+
+    void enterRedefines_operator(KerMLParser::Redefines_operatorContext *ctx) override;
+
+    void exitRedefines_operator(KerMLParser::Redefines_operatorContext *ctx) override;
+
+    void enterConjugates_operator(KerMLParser::Conjugates_operatorContext *ctx) override;
+
+    void exitConjugates_operator(KerMLParser::Conjugates_operatorContext *ctx) override;
+
+    void enterCrosses_operator(KerMLParser::Crosses_operatorContext *ctx) override;
+
+    void exitCrosses_operator(KerMLParser::Crosses_operatorContext *ctx) override;
 
     void enterFeature_specialization(KerMLParser::Feature_specializationContext *ctx) override;
 
@@ -557,122 +692,6 @@ public:
 
     void exitOwned_expression_member(KerMLParser::Owned_expression_memberContext *ctx) override;
 
-    void enterOwned_expressions(KerMLParser::Owned_expressionsContext *ctx) override;
-
-    void exitOwned_expressions(KerMLParser::Owned_expressionsContext *ctx) override;
-
-    void enterOwned_expression(KerMLParser::Owned_expressionContext *ctx) override;
-
-    void exitOwned_expression(KerMLParser::Owned_expressionContext *ctx) override;
-
-    void enterEased_owned_expression(KerMLParser::Eased_owned_expressionContext *ctx) override;
-
-    void exitEased_owned_expression(KerMLParser::Eased_owned_expressionContext *ctx) override;
-
-    void enterConditional_expression(KerMLParser::Conditional_expressionContext *ctx) override;
-
-    void exitConditional_expression(KerMLParser::Conditional_expressionContext *ctx) override;
-
-    void enterConditional_binary_operator_expression(
-            KerMLParser::Conditional_binary_operator_expressionContext *ctx) override;
-
-    void exitConditional_binary_operator_expression(
-            KerMLParser::Conditional_binary_operator_expressionContext *ctx) override;
-
-    void enterConditional_binary_operator(KerMLParser::Conditional_binary_operatorContext *ctx) override;
-
-    void exitConditional_binary_operator(KerMLParser::Conditional_binary_operatorContext *ctx) override;
-
-    void enterBinary_operator_expression(KerMLParser::Binary_operator_expressionContext *ctx) override;
-
-    void exitBinary_operator_expression(KerMLParser::Binary_operator_expressionContext *ctx) override;
-
-    void enterBinary_operator(KerMLParser::Binary_operatorContext *ctx) override;
-
-    void exitBinary_operator(KerMLParser::Binary_operatorContext *ctx) override;
-
-    void enterUnary_operator_expression(KerMLParser::Unary_operator_expressionContext *ctx) override;
-
-    void exitUnary_operator_expression(KerMLParser::Unary_operator_expressionContext *ctx) override;
-
-    void enterUnary_operator(KerMLParser::Unary_operatorContext *ctx) override;
-
-    void exitUnary_operator(KerMLParser::Unary_operatorContext *ctx) override;
-
-    void enterClassification_expression(KerMLParser::Classification_expressionContext *ctx) override;
-
-    void exitClassification_expression(KerMLParser::Classification_expressionContext *ctx) override;
-
-    void enterClassification(KerMLParser::ClassificationContext *ctx) override;
-
-    void exitClassification(KerMLParser::ClassificationContext *ctx) override;
-
-    void enterClassification_test_operator(KerMLParser::Classification_test_operatorContext *ctx) override;
-
-    void exitClassification_test_operator(KerMLParser::Classification_test_operatorContext *ctx) override;
-
-    void enterCast_operator(KerMLParser::Cast_operatorContext *ctx) override;
-
-    void exitCast_operator(KerMLParser::Cast_operatorContext *ctx) override;
-
-    void enterMetaclassification_expression(KerMLParser::Metaclassification_expressionContext *ctx) override;
-
-    void exitMetaclassification_expression(KerMLParser::Metaclassification_expressionContext *ctx) override;
-
-    void enterArgument_member(KerMLParser::Argument_memberContext *ctx) override;
-
-    void exitArgument_member(KerMLParser::Argument_memberContext *ctx) override;
-
-    void enterArgument(KerMLParser::ArgumentContext *ctx) override;
-
-    void exitArgument(KerMLParser::ArgumentContext *ctx) override;
-
-    void enterArgument_value(KerMLParser::Argument_valueContext *ctx) override;
-
-    void exitArgument_value(KerMLParser::Argument_valueContext *ctx) override;
-
-    void enterArgument_expression_member(KerMLParser::Argument_expression_memberContext *ctx) override;
-
-    void exitArgument_expression_member(KerMLParser::Argument_expression_memberContext *ctx) override;
-
-    void enterArgument_expression(KerMLParser::Argument_expressionContext *ctx) override;
-
-    void exitArgument_expression(KerMLParser::Argument_expressionContext *ctx) override;
-
-    void enterArgument_expression_value(KerMLParser::Argument_expression_valueContext *ctx) override;
-
-    void exitArgument_expression_value(KerMLParser::Argument_expression_valueContext *ctx) override;
-
-    void enterMetadata_argument_member(KerMLParser::Metadata_argument_memberContext *ctx) override;
-
-    void exitMetadata_argument_member(KerMLParser::Metadata_argument_memberContext *ctx) override;
-
-    void enterMetadata_argument(KerMLParser::Metadata_argumentContext *ctx) override;
-
-    void exitMetadata_argument(KerMLParser::Metadata_argumentContext *ctx) override;
-
-    void enterMetadata_value(KerMLParser::Metadata_valueContext *ctx) override;
-
-    void exitMetadata_value(KerMLParser::Metadata_valueContext *ctx) override;
-
-    void enterMetadata_reference(KerMLParser::Metadata_referenceContext *ctx) override;
-
-    void exitMetadata_reference(KerMLParser::Metadata_referenceContext *ctx) override;
-
-    void
-    enterMetadataclassification_test_operator(KerMLParser::Metadataclassification_test_operatorContext *ctx) override;
-
-    void
-    exitMetadataclassification_test_operator(KerMLParser::Metadataclassification_test_operatorContext *ctx) override;
-
-    void enterMeta_cast_operator(KerMLParser::Meta_cast_operatorContext *ctx) override;
-
-    void exitMeta_cast_operator(KerMLParser::Meta_cast_operatorContext *ctx) override;
-
-    void enterExtend_expression(KerMLParser::Extend_expressionContext *ctx) override;
-
-    void exitExtend_expression(KerMLParser::Extend_expressionContext *ctx) override;
-
     void enterType_reference_member(KerMLParser::Type_reference_memberContext *ctx) override;
 
     void exitType_reference_member(KerMLParser::Type_reference_memberContext *ctx) override;
@@ -689,56 +708,6 @@ public:
 
     void exitReference_typing(KerMLParser::Reference_typingContext *ctx) override;
 
-    void enterPrimary_expressions(KerMLParser::Primary_expressionsContext *ctx) override;
-
-    void exitPrimary_expressions(KerMLParser::Primary_expressionsContext *ctx) override;
-
-    void enterPrimary_expression(KerMLParser::Primary_expressionContext *ctx) override;
-
-    void exitPrimary_expression(KerMLParser::Primary_expressionContext *ctx) override;
-
-    void enterPrimary_argument_value(KerMLParser::Primary_argument_valueContext *ctx) override;
-
-    void exitPrimary_argument_value(KerMLParser::Primary_argument_valueContext *ctx) override;
-
-    void enterPrimary_argument(KerMLParser::Primary_argumentContext *ctx) override;
-
-    void exitPrimary_argument(KerMLParser::Primary_argumentContext *ctx) override;
-
-    void enterPrimary_argument_member(KerMLParser::Primary_argument_memberContext *ctx) override;
-
-    void exitPrimary_argument_member(KerMLParser::Primary_argument_memberContext *ctx) override;
-
-    void
-    enterNon_feature_chain_primary_expression(KerMLParser::Non_feature_chain_primary_expressionContext *ctx) override;
-
-    void
-    exitNon_feature_chain_primary_expression(KerMLParser::Non_feature_chain_primary_expressionContext *ctx) override;
-
-    void enterNon_feature_chain_primary_argument_value(
-            KerMLParser::Non_feature_chain_primary_argument_valueContext *ctx) override;
-
-    void exitNon_feature_chain_primary_argument_value(
-            KerMLParser::Non_feature_chain_primary_argument_valueContext *ctx) override;
-
-    void enterNon_feature_chain_primary_argument(KerMLParser::Non_feature_chain_primary_argumentContext *ctx) override;
-
-    void exitNon_feature_chain_primary_argument(KerMLParser::Non_feature_chain_primary_argumentContext *ctx) override;
-
-    void enterNon_feature_chain_primary_argument_member(
-            KerMLParser::Non_feature_chain_primary_argument_memberContext *ctx) override;
-
-    void exitNon_feature_chain_primary_argument_member(
-            KerMLParser::Non_feature_chain_primary_argument_memberContext *ctx) override;
-
-    void enterBracket_expression(KerMLParser::Bracket_expressionContext *ctx) override;
-
-    void exitBracket_expression(KerMLParser::Bracket_expressionContext *ctx) override;
-
-    void enterIndex_expression(KerMLParser::Index_expressionContext *ctx) override;
-
-    void exitIndex_expression(KerMLParser::Index_expressionContext *ctx) override;
-
     void enterSequence_expression(KerMLParser::Sequence_expressionContext *ctx) override;
 
     void exitSequence_expression(KerMLParser::Sequence_expressionContext *ctx) override;
@@ -754,58 +723,6 @@ public:
     void enterSequence_expression_list_member(KerMLParser::Sequence_expression_list_memberContext *ctx) override;
 
     void exitSequence_expression_list_member(KerMLParser::Sequence_expression_list_memberContext *ctx) override;
-
-    void enterFeature_chain_expression(KerMLParser::Feature_chain_expressionContext *ctx) override;
-
-    void exitFeature_chain_expression(KerMLParser::Feature_chain_expressionContext *ctx) override;
-
-    void enterCollect_expression(KerMLParser::Collect_expressionContext *ctx) override;
-
-    void exitCollect_expression(KerMLParser::Collect_expressionContext *ctx) override;
-
-    void enterSelect_expression(KerMLParser::Select_expressionContext *ctx) override;
-
-    void exitSelect_expression(KerMLParser::Select_expressionContext *ctx) override;
-
-    void enterFunction_operation_expression(KerMLParser::Function_operation_expressionContext *ctx) override;
-
-    void exitFunction_operation_expression(KerMLParser::Function_operation_expressionContext *ctx) override;
-
-    void enterBody_argument_member(KerMLParser::Body_argument_memberContext *ctx) override;
-
-    void exitBody_argument_member(KerMLParser::Body_argument_memberContext *ctx) override;
-
-    void enterBody_argument(KerMLParser::Body_argumentContext *ctx) override;
-
-    void exitBody_argument(KerMLParser::Body_argumentContext *ctx) override;
-
-    void enterBody_argument_value(KerMLParser::Body_argument_valueContext *ctx) override;
-
-    void exitBody_argument_value(KerMLParser::Body_argument_valueContext *ctx) override;
-
-    void enterBody_expression_member(KerMLParser::Body_expression_memberContext *ctx) override;
-
-    void exitBody_expression_member(KerMLParser::Body_expression_memberContext *ctx) override;
-
-    void enterFunction_reference_argument_member(KerMLParser::Function_reference_argument_memberContext *ctx) override;
-
-    void exitFunction_reference_argument_member(KerMLParser::Function_reference_argument_memberContext *ctx) override;
-
-    void enterFunction_reference_argument(KerMLParser::Function_reference_argumentContext *ctx) override;
-
-    void exitFunction_reference_argument(KerMLParser::Function_reference_argumentContext *ctx) override;
-
-    void enterFunction_reference_arugment_value(KerMLParser::Function_reference_arugment_valueContext *ctx) override;
-
-    void exitFunction_reference_arugment_value(KerMLParser::Function_reference_arugment_valueContext *ctx) override;
-
-    void enterFunction_reference_expression(KerMLParser::Function_reference_expressionContext *ctx) override;
-
-    void exitFunction_reference_expression(KerMLParser::Function_reference_expressionContext *ctx) override;
-
-    void enterFunction_reference_member(KerMLParser::Function_reference_memberContext *ctx) override;
-
-    void exitFunction_reference_member(KerMLParser::Function_reference_memberContext *ctx) override;
 
     void enterFunction_reference(KerMLParser::Function_referenceContext *ctx) override;
 
@@ -1083,16 +1000,33 @@ public:
 
     std::vector<std::shared_ptr<KerML::Entities::Element>> getElements();
 
+    /// Moves out everything recorded for name resolution (pending references, imports, aliases, visibilities).
+    /// Names are not resolved by the listener; a SysMLv2::Files::Workspace resolves them.
+    SysMLv2::Files::ResolutionData takeResolutionData();
+
 private:
     void attachExpression(const std::shared_ptr<KerML::Entities::Expression>& expression);
     void finishOperatorExpression(const std::string& operatorName);
-    void finishMembership(KerMLParser::Member_prefixContext *prefix);
+    void finishMembership(KerMLParser::Member_prefixContext *prefix, bool owningOnly = false);
     void applyIdentification(KerMLParser::IdentificationContext *idCtx, const std::shared_ptr<KerML::Entities::Element>& elem);
-    std::shared_ptr<KerML::Entities::Element> findElementWithName(std::string identification);
-    std::shared_ptr<KerML::Entities::Type> findOrCreateType(const std::string& name);
-    std::shared_ptr<KerML::Entities::Classifier> findOrCreateClassifier(const std::string& name);
-    std::shared_ptr<KerML::Entities::Feature> findOrCreateFeature(const std::string& name);
-    void populateWithBaseDatatypes();
+    void recordImport(const std::shared_ptr<KerML::Entities::Element>& importElement, antlr4::ParserRuleContext *importCtx,
+                      const std::string& target, bool star, bool recursive, bool importAll, KerML::Entities::VisibilityKind visibility,
+                      const std::shared_ptr<KerML::Entities::Membership>& importedMembership = nullptr);
+    KerML::Entities::VisibilityKind importVisibility(KerMLParser::Visibility_indicatorContext *indicator) const;
+    std::shared_ptr<KerML::Entities::Type> typeReference(const std::string& name, const std::shared_ptr<KerML::Entities::Element>& context,
+                                                         bool relativeToOwner, antlr4::ParserRuleContext *position,
+                                                         std::function<void(const std::shared_ptr<KerML::Entities::Type>&)> patch);
+    std::shared_ptr<KerML::Entities::Feature> featureReference(const std::string& name, const std::shared_ptr<KerML::Entities::Element>& context,
+                                                               bool relativeToOwner, antlr4::ParserRuleContext *position,
+                                                               std::function<void(const std::shared_ptr<KerML::Entities::Feature>&)> patch);
+    /// Records a general type / feature of @p specific (role Generalization or Redefinition) whose relationship is patched by @p patch.
+    void generalReference(const std::shared_ptr<KerML::Entities::Element>& placeholder, const std::string& name, SysMLv2::Files::ReferenceKind kind,
+                          SysMLv2::Files::ReferenceRole role, const std::shared_ptr<KerML::Entities::Element>& specific,
+                          antlr4::ParserRuleContext *position, std::function<void(const std::shared_ptr<KerML::Entities::Element>&)> patch);
+    SysMLv2::Files::ReferenceRecorder Recorder;
+    /// The memberships that member rules stand for (see SysMLv2::Files::buildOwnership) and the member rules that are being walked.
+    SysMLv2::Files::MembershipKinds OwnershipKinds;
+    std::vector<SysMLv2::Files::MemberMark> MemberMarks;
     std::vector<std::shared_ptr<KerML::Entities::Element>> Elements;
     std::stack<std::shared_ptr<KerML::Entities::Element>> ParentStack;
 };

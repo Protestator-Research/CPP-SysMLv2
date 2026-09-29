@@ -5,7 +5,7 @@
     #include <sysmlv2/sysmlv2file_global.h>
 
 
-// Generated from filehandling/resources/grammars/SysMLv2.g4 by ANTLR 4.13.2
+// Generated from ./SysMLv2.g4 by ANTLR 4.13.2
 
 #pragma once
 
@@ -15,7 +15,7 @@
 
 
 
-/**
+    /**
  * This class defines an abstract visitor for a parse tree
  * produced by SysMLv2Parser.
  */
@@ -26,10 +26,6 @@ public:
    * Visit parse trees produced by SysMLv2Parser.
    */
     virtual std::any visitStart(SysMLv2Parser::StartContext *context) = 0;
-
-    virtual std::any visitIdentification(SysMLv2Parser::IdentificationContext *context) = 0;
-
-    virtual std::any visitSysml_name(SysMLv2Parser::Sysml_nameContext *context) = 0;
 
     virtual std::any visitStart_element(SysMLv2Parser::Start_elementContext *context) = 0;
 
@@ -128,10 +124,6 @@ public:
     virtual std::any visitReference_usage(SysMLv2Parser::Reference_usageContext *context) = 0;
 
     virtual std::any visitVariant_reference(SysMLv2Parser::Variant_referenceContext *context) = 0;
-
-    virtual std::any visitRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext *context) = 0;
-
-    virtual std::any visitRedefinition_usage(SysMLv2Parser::Redefinition_usageContext *context) = 0;
 
     virtual std::any visitNon_occurrence_usage_element(SysMLv2Parser::Non_occurrence_usage_elementContext *context) = 0;
 
@@ -634,6 +626,8 @@ public:
     virtual std::any visitDefined_by(SysMLv2Parser::Defined_byContext *context) = 0;
 
     virtual std::any visitElements(SysMLv2Parser::ElementsContext *context) = 0;
+
+    virtual std::any visitIdentification(SysMLv2Parser::IdentificationContext *context) = 0;
 
     virtual std::any visitRelationship_owned_elements(SysMLv2Parser::Relationship_owned_elementsContext *context) = 0;
 

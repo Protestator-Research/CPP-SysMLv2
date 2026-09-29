@@ -35,7 +35,7 @@ namespace KerML::Entities {
 	    /**
 	     * Constructor
 	     */
-	    Specialization() = default;
+	    Specialization();
 	    /**
 	     * Constructor for the specialization class. Since the standard does not allow for empty general and specific type.
 	     * @param general The type that is specialized by the specific type.

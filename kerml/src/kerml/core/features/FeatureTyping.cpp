@@ -15,7 +15,9 @@ namespace KerML::Entities
 
 	FeatureTyping::FeatureTyping(const std::shared_ptr<KerML::Entities::Type>& type,
 		const std::shared_ptr<KerML::Entities::Feature>& typedFeature) : Specialization(type, typedFeature)
-	{ 	}
+	{
+		_dType = "FeatureTyping";
+	}
 
 	std::shared_ptr<KerML::Entities::Feature> FeatureTyping::typedFeature()
 	{

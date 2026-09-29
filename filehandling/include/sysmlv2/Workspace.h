@@ -20,6 +20,12 @@
 #include <sysmlv2/resolution/ResolutionData.h>
 #include <sysmlv2/sysmlv2file_global.h>
 //---------------------------------------------------------
+// Forwarding
+//---------------------------------------------------------
+namespace KerML::Entities {
+    class Namespace;
+}
+//---------------------------------------------------------
 
 namespace SysMLv2::Files {
 
@@ -100,6 +106,18 @@ namespace SysMLv2::Files {
         size_t sourceCount() const;
         /// The name (usually the path) the source was added with.
         const std::string& sourceName(size_t source) const;
+        /**
+         * The index of the first source that was added under @p name.
+         * @return the index, or sourceCount() if there is no such source.
+         */
+        size_t findSource(const std::string& name) const;
+        /**
+         * The root namespace of one source: the namespace that owns the top-level elements of the source (through their memberships)
+         * and its top-level imports. Every source with at least one element has one; its members are the top-level packages
+         * of the source. The root namespace is not part of elements().
+         * @return the root namespace, or null if the source has no elements (empty text, unreadable file).
+         */
+        std::shared_ptr<KerML::Entities::Namespace> rootNamespace(size_t source) const;
         /// The elements of one source, without placeholders.
         const std::vector<std::shared_ptr<KerML::Entities::Element>>& elements(size_t source) const;
         /// The elements of all sources in the order the sources were added, without placeholders.

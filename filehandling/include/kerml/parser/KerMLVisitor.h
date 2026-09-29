@@ -162,7 +162,17 @@ public:
 
     virtual std::any visitFeature(KerMLParser::FeatureContext *context) = 0;
 
+    virtual std::any visitAnonymous_feature(KerMLParser::Anonymous_featureContext *context) = 0;
+
     virtual std::any visitFeature_prefix(KerMLParser::Feature_prefixContext *context) = 0;
+
+    virtual std::any visitEnd_feature_prefix(KerMLParser::End_feature_prefixContext *context) = 0;
+
+    virtual std::any visitBasic_feature_prefix(KerMLParser::Basic_feature_prefixContext *context) = 0;
+
+    virtual std::any visitOwned_cross_feature_member(KerMLParser::Owned_cross_feature_memberContext *context) = 0;
+
+    virtual std::any visitOwned_cross_feature(KerMLParser::Owned_cross_featureContext *context) = 0;
 
     virtual std::any visitFeature_direction(KerMLParser::Feature_directionContext *context) = 0;
 
@@ -182,6 +192,8 @@ public:
 
     virtual std::any visitMultiplicity_part(KerMLParser::Multiplicity_partContext *context) = 0;
 
+    virtual std::any visitMultiplicity_modifier(KerMLParser::Multiplicity_modifierContext *context) = 0;
+
     virtual std::any visitFeature_specialization(KerMLParser::Feature_specializationContext *context) = 0;
 
     virtual std::any visitTypings(KerMLParser::TypingsContext *context) = 0;
@@ -193,6 +205,8 @@ public:
     virtual std::any visitSubsets(KerMLParser::SubsetsContext *context) = 0;
 
     virtual std::any visitReferences(KerMLParser::ReferencesContext *context) = 0;
+
+    virtual std::any visitCrosses(KerMLParser::CrossesContext *context) = 0;
 
     virtual std::any visitRedefinitions(KerMLParser::RedefinitionsContext *context) = 0;
 
@@ -207,6 +221,8 @@ public:
     virtual std::any visitOwned_subsetting(KerMLParser::Owned_subsettingContext *context) = 0;
 
     virtual std::any visitOwned_reference_subsetting(KerMLParser::Owned_reference_subsettingContext *context) = 0;
+
+    virtual std::any visitOwned_cross_subsetting(KerMLParser::Owned_cross_subsettingContext *context) = 0;
 
     virtual std::any visitRedefinition(KerMLParser::RedefinitionContext *context) = 0;
 
@@ -248,6 +264,10 @@ public:
 
     virtual std::any visitConnector_end(KerMLParser::Connector_endContext *context) = 0;
 
+    virtual std::any visitOwned_cross_multiplicity_member(KerMLParser::Owned_cross_multiplicity_memberContext *context) = 0;
+
+    virtual std::any visitOwned_cross_multiplicity(KerMLParser::Owned_cross_multiplicityContext *context) = 0;
+
     virtual std::any visitBinding_connector(KerMLParser::Binding_connectorContext *context) = 0;
 
     virtual std::any visitBinding_connector_declaration(KerMLParser::Binding_connector_declarationContext *context) = 0;
@@ -284,61 +304,35 @@ public:
 
     virtual std::any visitOwned_expression_member(KerMLParser::Owned_expression_memberContext *context) = 0;
 
-    virtual std::any visitOwned_expressions(KerMLParser::Owned_expressionsContext *context) = 0;
+    virtual std::any visitSelectExpr(KerMLParser::SelectExprContext *context) = 0;
 
-    virtual std::any visitOwned_expression(KerMLParser::Owned_expressionContext *context) = 0;
+    virtual std::any visitCollectExpr(KerMLParser::CollectExprContext *context) = 0;
 
-    virtual std::any visitEased_owned_expression(KerMLParser::Eased_owned_expressionContext *context) = 0;
+    virtual std::any visitBinaryExpr(KerMLParser::BinaryExprContext *context) = 0;
 
-    virtual std::any visitConditional_expression(KerMLParser::Conditional_expressionContext *context) = 0;
+    virtual std::any visitExtentExpr(KerMLParser::ExtentExprContext *context) = 0;
 
-    virtual std::any visitConditional_binary_operator_expression(KerMLParser::Conditional_binary_operator_expressionContext *context) = 0;
+    virtual std::any visitConditionalExpr(KerMLParser::ConditionalExprContext *context) = 0;
 
-    virtual std::any visitConditional_binary_operator(KerMLParser::Conditional_binary_operatorContext *context) = 0;
+    virtual std::any visitUnaryExpr(KerMLParser::UnaryExprContext *context) = 0;
 
-    virtual std::any visitBinary_operator_expression(KerMLParser::Binary_operator_expressionContext *context) = 0;
+    virtual std::any visitIndexExpr(KerMLParser::IndexExprContext *context) = 0;
 
-    virtual std::any visitBinary_operator(KerMLParser::Binary_operatorContext *context) = 0;
+    virtual std::any visitBaseExpr(KerMLParser::BaseExprContext *context) = 0;
 
-    virtual std::any visitUnary_operator_expression(KerMLParser::Unary_operator_expressionContext *context) = 0;
+    virtual std::any visitFeatureChainExpr(KerMLParser::FeatureChainExprContext *context) = 0;
 
-    virtual std::any visitUnary_operator(KerMLParser::Unary_operatorContext *context) = 0;
+    virtual std::any visitBracketExpr(KerMLParser::BracketExprContext *context) = 0;
 
-    virtual std::any visitClassification_expression(KerMLParser::Classification_expressionContext *context) = 0;
+    virtual std::any visitMetaclassificationExpr(KerMLParser::MetaclassificationExprContext *context) = 0;
 
-    virtual std::any visitClassification(KerMLParser::ClassificationContext *context) = 0;
+    virtual std::any visitClassificationExpr(KerMLParser::ClassificationExprContext *context) = 0;
 
-    virtual std::any visitClassification_test_operator(KerMLParser::Classification_test_operatorContext *context) = 0;
+    virtual std::any visitSequenceExpr(KerMLParser::SequenceExprContext *context) = 0;
 
-    virtual std::any visitCast_operator(KerMLParser::Cast_operatorContext *context) = 0;
+    virtual std::any visitFunctionOperationExpr(KerMLParser::FunctionOperationExprContext *context) = 0;
 
-    virtual std::any visitMetaclassification_expression(KerMLParser::Metaclassification_expressionContext *context) = 0;
-
-    virtual std::any visitArgument_member(KerMLParser::Argument_memberContext *context) = 0;
-
-    virtual std::any visitArgument(KerMLParser::ArgumentContext *context) = 0;
-
-    virtual std::any visitArgument_value(KerMLParser::Argument_valueContext *context) = 0;
-
-    virtual std::any visitArgument_expression_member(KerMLParser::Argument_expression_memberContext *context) = 0;
-
-    virtual std::any visitArgument_expression(KerMLParser::Argument_expressionContext *context) = 0;
-
-    virtual std::any visitArgument_expression_value(KerMLParser::Argument_expression_valueContext *context) = 0;
-
-    virtual std::any visitMetadata_argument_member(KerMLParser::Metadata_argument_memberContext *context) = 0;
-
-    virtual std::any visitMetadata_argument(KerMLParser::Metadata_argumentContext *context) = 0;
-
-    virtual std::any visitMetadata_value(KerMLParser::Metadata_valueContext *context) = 0;
-
-    virtual std::any visitMetadata_reference(KerMLParser::Metadata_referenceContext *context) = 0;
-
-    virtual std::any visitMetadataclassification_test_operator(KerMLParser::Metadataclassification_test_operatorContext *context) = 0;
-
-    virtual std::any visitMeta_cast_operator(KerMLParser::Meta_cast_operatorContext *context) = 0;
-
-    virtual std::any visitExtend_expression(KerMLParser::Extend_expressionContext *context) = 0;
+    virtual std::any visitFunction_operation_arguments(KerMLParser::Function_operation_argumentsContext *context) = 0;
 
     virtual std::any visitType_reference_member(KerMLParser::Type_reference_memberContext *context) = 0;
 
@@ -348,28 +342,6 @@ public:
 
     virtual std::any visitReference_typing(KerMLParser::Reference_typingContext *context) = 0;
 
-    virtual std::any visitPrimary_expressions(KerMLParser::Primary_expressionsContext *context) = 0;
-
-    virtual std::any visitPrimary_expression(KerMLParser::Primary_expressionContext *context) = 0;
-
-    virtual std::any visitPrimary_argument_value(KerMLParser::Primary_argument_valueContext *context) = 0;
-
-    virtual std::any visitPrimary_argument(KerMLParser::Primary_argumentContext *context) = 0;
-
-    virtual std::any visitPrimary_argument_member(KerMLParser::Primary_argument_memberContext *context) = 0;
-
-    virtual std::any visitNon_feature_chain_primary_expression(KerMLParser::Non_feature_chain_primary_expressionContext *context) = 0;
-
-    virtual std::any visitNon_feature_chain_primary_argument_value(KerMLParser::Non_feature_chain_primary_argument_valueContext *context) = 0;
-
-    virtual std::any visitNon_feature_chain_primary_argument(KerMLParser::Non_feature_chain_primary_argumentContext *context) = 0;
-
-    virtual std::any visitNon_feature_chain_primary_argument_member(KerMLParser::Non_feature_chain_primary_argument_memberContext *context) = 0;
-
-    virtual std::any visitBracket_expression(KerMLParser::Bracket_expressionContext *context) = 0;
-
-    virtual std::any visitIndex_expression(KerMLParser::Index_expressionContext *context) = 0;
-
     virtual std::any visitSequence_expression(KerMLParser::Sequence_expressionContext *context) = 0;
 
     virtual std::any visitSequence_expression_list(KerMLParser::Sequence_expression_listContext *context) = 0;
@@ -377,32 +349,6 @@ public:
     virtual std::any visitSequence_operator_expression(KerMLParser::Sequence_operator_expressionContext *context) = 0;
 
     virtual std::any visitSequence_expression_list_member(KerMLParser::Sequence_expression_list_memberContext *context) = 0;
-
-    virtual std::any visitFeature_chain_expression(KerMLParser::Feature_chain_expressionContext *context) = 0;
-
-    virtual std::any visitCollect_expression(KerMLParser::Collect_expressionContext *context) = 0;
-
-    virtual std::any visitSelect_expression(KerMLParser::Select_expressionContext *context) = 0;
-
-    virtual std::any visitFunction_operation_expression(KerMLParser::Function_operation_expressionContext *context) = 0;
-
-    virtual std::any visitBody_argument_member(KerMLParser::Body_argument_memberContext *context) = 0;
-
-    virtual std::any visitBody_argument(KerMLParser::Body_argumentContext *context) = 0;
-
-    virtual std::any visitBody_argument_value(KerMLParser::Body_argument_valueContext *context) = 0;
-
-    virtual std::any visitBody_expression_member(KerMLParser::Body_expression_memberContext *context) = 0;
-
-    virtual std::any visitFunction_reference_argument_member(KerMLParser::Function_reference_argument_memberContext *context) = 0;
-
-    virtual std::any visitFunction_reference_argument(KerMLParser::Function_reference_argumentContext *context) = 0;
-
-    virtual std::any visitFunction_reference_arugment_value(KerMLParser::Function_reference_arugment_valueContext *context) = 0;
-
-    virtual std::any visitFunction_reference_expression(KerMLParser::Function_reference_expressionContext *context) = 0;
-
-    virtual std::any visitFunction_reference_member(KerMLParser::Function_reference_memberContext *context) = 0;
 
     virtual std::any visitFunction_reference(KerMLParser::Function_referenceContext *context) = 0;
 
@@ -425,6 +371,8 @@ public:
     virtual std::any visitInvocation_expression(KerMLParser::Invocation_expressionContext *context) = 0;
 
     virtual std::any visitInternal_invocation_expression(KerMLParser::Internal_invocation_expressionContext *context) = 0;
+
+    virtual std::any visitConstructor_expression(KerMLParser::Constructor_expressionContext *context) = 0;
 
     virtual std::any visitArgument_list(KerMLParser::Argument_listContext *context) = 0;
 
@@ -537,6 +485,20 @@ public:
     virtual std::any visitElement_filter_member(KerMLParser::Element_filter_memberContext *context) = 0;
 
     virtual std::any visitMeta_assignment(KerMLParser::Meta_assignmentContext *context) = 0;
+
+    virtual std::any visitTyped_by_operator(KerMLParser::Typed_by_operatorContext *context) = 0;
+
+    virtual std::any visitSpecializes_operator(KerMLParser::Specializes_operatorContext *context) = 0;
+
+    virtual std::any visitSubsets_operator(KerMLParser::Subsets_operatorContext *context) = 0;
+
+    virtual std::any visitReferences_operator(KerMLParser::References_operatorContext *context) = 0;
+
+    virtual std::any visitRedefines_operator(KerMLParser::Redefines_operatorContext *context) = 0;
+
+    virtual std::any visitConjugates_operator(KerMLParser::Conjugates_operatorContext *context) = 0;
+
+    virtual std::any visitCrosses_operator(KerMLParser::Crosses_operatorContext *context) = 0;
 
 
 };

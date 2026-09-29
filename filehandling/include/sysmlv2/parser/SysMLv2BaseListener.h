@@ -31,6 +31,9 @@ public:
   virtual void enterSysml_name(SysMLv2Parser::Sysml_nameContext * /*ctx*/) override { }
   virtual void exitSysml_name(SysMLv2Parser::Sysml_nameContext * /*ctx*/) override { }
 
+  virtual void enterQualified_name(SysMLv2Parser::Qualified_nameContext * /*ctx*/) override { }
+  virtual void exitQualified_name(SysMLv2Parser::Qualified_nameContext * /*ctx*/) override { }
+
   virtual void enterStart_element(SysMLv2Parser::Start_elementContext * /*ctx*/) override { }
   virtual void exitStart_element(SysMLv2Parser::Start_elementContext * /*ctx*/) override { }
 
@@ -201,12 +204,6 @@ public:
 
   virtual void enterSubsclassification_part(SysMLv2Parser::Subsclassification_partContext * /*ctx*/) override { }
   virtual void exitSubsclassification_part(SysMLv2Parser::Subsclassification_partContext * /*ctx*/) override { }
-
-  virtual void enterCrosses(SysMLv2Parser::CrossesContext * /*ctx*/) override { }
-  virtual void exitCrosses(SysMLv2Parser::CrossesContext * /*ctx*/) override { }
-
-  virtual void enterOwned_cross_subsetting(SysMLv2Parser::Owned_cross_subsettingContext * /*ctx*/) override { }
-  virtual void exitOwned_cross_subsetting(SysMLv2Parser::Owned_cross_subsettingContext * /*ctx*/) override { }
 
   virtual void enterMultiplicity_part(SysMLv2Parser::Multiplicity_partContext * /*ctx*/) override { }
   virtual void exitMultiplicity_part(SysMLv2Parser::Multiplicity_partContext * /*ctx*/) override { }
@@ -570,6 +567,9 @@ public:
 
   virtual void enterOwned_feature_chain_member(SysMLv2Parser::Owned_feature_chain_memberContext * /*ctx*/) override { }
   virtual void exitOwned_feature_chain_member(SysMLv2Parser::Owned_feature_chain_memberContext * /*ctx*/) override { }
+
+  virtual void enterExpression_body(SysMLv2Parser::Expression_bodyContext * /*ctx*/) override { }
+  virtual void exitExpression_body(SysMLv2Parser::Expression_bodyContext * /*ctx*/) override { }
 
   virtual void enterTerminate_node(SysMLv2Parser::Terminate_nodeContext * /*ctx*/) override { }
   virtual void exitTerminate_node(SysMLv2Parser::Terminate_nodeContext * /*ctx*/) override { }
@@ -976,9 +976,6 @@ public:
   virtual void enterNamespace_feature_member(SysMLv2Parser::Namespace_feature_memberContext * /*ctx*/) override { }
   virtual void exitNamespace_feature_member(SysMLv2Parser::Namespace_feature_memberContext * /*ctx*/) override { }
 
-  virtual void enterQualified_name(SysMLv2Parser::Qualified_nameContext * /*ctx*/) override { }
-  virtual void exitQualified_name(SysMLv2Parser::Qualified_nameContext * /*ctx*/) override { }
-
   virtual void enterNamespace_import(SysMLv2Parser::Namespace_importContext * /*ctx*/) override { }
   virtual void exitNamespace_import(SysMLv2Parser::Namespace_importContext * /*ctx*/) override { }
 
@@ -1105,8 +1102,17 @@ public:
   virtual void enterFeature(SysMLv2Parser::FeatureContext * /*ctx*/) override { }
   virtual void exitFeature(SysMLv2Parser::FeatureContext * /*ctx*/) override { }
 
+  virtual void enterAnonymous_feature(SysMLv2Parser::Anonymous_featureContext * /*ctx*/) override { }
+  virtual void exitAnonymous_feature(SysMLv2Parser::Anonymous_featureContext * /*ctx*/) override { }
+
   virtual void enterFeature_prefix(SysMLv2Parser::Feature_prefixContext * /*ctx*/) override { }
   virtual void exitFeature_prefix(SysMLv2Parser::Feature_prefixContext * /*ctx*/) override { }
+
+  virtual void enterEnd_feature_prefix(SysMLv2Parser::End_feature_prefixContext * /*ctx*/) override { }
+  virtual void exitEnd_feature_prefix(SysMLv2Parser::End_feature_prefixContext * /*ctx*/) override { }
+
+  virtual void enterBasic_feature_prefix(SysMLv2Parser::Basic_feature_prefixContext * /*ctx*/) override { }
+  virtual void exitBasic_feature_prefix(SysMLv2Parser::Basic_feature_prefixContext * /*ctx*/) override { }
 
   virtual void enterFeature_declaration(SysMLv2Parser::Feature_declarationContext * /*ctx*/) override { }
   virtual void exitFeature_declaration(SysMLv2Parser::Feature_declarationContext * /*ctx*/) override { }
@@ -1129,6 +1135,9 @@ public:
   virtual void enterFeature_specialization_part(SysMLv2Parser::Feature_specialization_partContext * /*ctx*/) override { }
   virtual void exitFeature_specialization_part(SysMLv2Parser::Feature_specialization_partContext * /*ctx*/) override { }
 
+  virtual void enterMultiplicity_modifier(SysMLv2Parser::Multiplicity_modifierContext * /*ctx*/) override { }
+  virtual void exitMultiplicity_modifier(SysMLv2Parser::Multiplicity_modifierContext * /*ctx*/) override { }
+
   virtual void enterFeature_specialization(SysMLv2Parser::Feature_specializationContext * /*ctx*/) override { }
   virtual void exitFeature_specialization(SysMLv2Parser::Feature_specializationContext * /*ctx*/) override { }
 
@@ -1146,6 +1155,9 @@ public:
 
   virtual void enterReferences(SysMLv2Parser::ReferencesContext * /*ctx*/) override { }
   virtual void exitReferences(SysMLv2Parser::ReferencesContext * /*ctx*/) override { }
+
+  virtual void enterCrosses(SysMLv2Parser::CrossesContext * /*ctx*/) override { }
+  virtual void exitCrosses(SysMLv2Parser::CrossesContext * /*ctx*/) override { }
 
   virtual void enterRedefinitions(SysMLv2Parser::RedefinitionsContext * /*ctx*/) override { }
   virtual void exitRedefinitions(SysMLv2Parser::RedefinitionsContext * /*ctx*/) override { }
@@ -1167,6 +1179,9 @@ public:
 
   virtual void enterOwned_reference_subsetting(SysMLv2Parser::Owned_reference_subsettingContext * /*ctx*/) override { }
   virtual void exitOwned_reference_subsetting(SysMLv2Parser::Owned_reference_subsettingContext * /*ctx*/) override { }
+
+  virtual void enterOwned_cross_subsetting(SysMLv2Parser::Owned_cross_subsettingContext * /*ctx*/) override { }
+  virtual void exitOwned_cross_subsetting(SysMLv2Parser::Owned_cross_subsettingContext * /*ctx*/) override { }
 
   virtual void enterRedefinition(SysMLv2Parser::RedefinitionContext * /*ctx*/) override { }
   virtual void exitRedefinition(SysMLv2Parser::RedefinitionContext * /*ctx*/) override { }
@@ -1276,89 +1291,50 @@ public:
   virtual void enterOwned_expression_member(SysMLv2Parser::Owned_expression_memberContext * /*ctx*/) override { }
   virtual void exitOwned_expression_member(SysMLv2Parser::Owned_expression_memberContext * /*ctx*/) override { }
 
-  virtual void enterOwned_expressions(SysMLv2Parser::Owned_expressionsContext * /*ctx*/) override { }
-  virtual void exitOwned_expressions(SysMLv2Parser::Owned_expressionsContext * /*ctx*/) override { }
+  virtual void enterSelectExpr(SysMLv2Parser::SelectExprContext * /*ctx*/) override { }
+  virtual void exitSelectExpr(SysMLv2Parser::SelectExprContext * /*ctx*/) override { }
 
-  virtual void enterOwned_expression(SysMLv2Parser::Owned_expressionContext * /*ctx*/) override { }
-  virtual void exitOwned_expression(SysMLv2Parser::Owned_expressionContext * /*ctx*/) override { }
+  virtual void enterCollectExpr(SysMLv2Parser::CollectExprContext * /*ctx*/) override { }
+  virtual void exitCollectExpr(SysMLv2Parser::CollectExprContext * /*ctx*/) override { }
 
-  virtual void enterEased_owned_expression(SysMLv2Parser::Eased_owned_expressionContext * /*ctx*/) override { }
-  virtual void exitEased_owned_expression(SysMLv2Parser::Eased_owned_expressionContext * /*ctx*/) override { }
+  virtual void enterBinaryExpr(SysMLv2Parser::BinaryExprContext * /*ctx*/) override { }
+  virtual void exitBinaryExpr(SysMLv2Parser::BinaryExprContext * /*ctx*/) override { }
 
-  virtual void enterConditional_expression(SysMLv2Parser::Conditional_expressionContext * /*ctx*/) override { }
-  virtual void exitConditional_expression(SysMLv2Parser::Conditional_expressionContext * /*ctx*/) override { }
+  virtual void enterExtentExpr(SysMLv2Parser::ExtentExprContext * /*ctx*/) override { }
+  virtual void exitExtentExpr(SysMLv2Parser::ExtentExprContext * /*ctx*/) override { }
 
-  virtual void enterConditional_binary_operator_expression(SysMLv2Parser::Conditional_binary_operator_expressionContext * /*ctx*/) override { }
-  virtual void exitConditional_binary_operator_expression(SysMLv2Parser::Conditional_binary_operator_expressionContext * /*ctx*/) override { }
+  virtual void enterConditionalExpr(SysMLv2Parser::ConditionalExprContext * /*ctx*/) override { }
+  virtual void exitConditionalExpr(SysMLv2Parser::ConditionalExprContext * /*ctx*/) override { }
 
-  virtual void enterConditional_binary_operator(SysMLv2Parser::Conditional_binary_operatorContext * /*ctx*/) override { }
-  virtual void exitConditional_binary_operator(SysMLv2Parser::Conditional_binary_operatorContext * /*ctx*/) override { }
+  virtual void enterUnaryExpr(SysMLv2Parser::UnaryExprContext * /*ctx*/) override { }
+  virtual void exitUnaryExpr(SysMLv2Parser::UnaryExprContext * /*ctx*/) override { }
 
-  virtual void enterBinary_operator_expression(SysMLv2Parser::Binary_operator_expressionContext * /*ctx*/) override { }
-  virtual void exitBinary_operator_expression(SysMLv2Parser::Binary_operator_expressionContext * /*ctx*/) override { }
+  virtual void enterIndexExpr(SysMLv2Parser::IndexExprContext * /*ctx*/) override { }
+  virtual void exitIndexExpr(SysMLv2Parser::IndexExprContext * /*ctx*/) override { }
 
-  virtual void enterBinary_operator(SysMLv2Parser::Binary_operatorContext * /*ctx*/) override { }
-  virtual void exitBinary_operator(SysMLv2Parser::Binary_operatorContext * /*ctx*/) override { }
+  virtual void enterBaseExpr(SysMLv2Parser::BaseExprContext * /*ctx*/) override { }
+  virtual void exitBaseExpr(SysMLv2Parser::BaseExprContext * /*ctx*/) override { }
 
-  virtual void enterUnary_operator_expression(SysMLv2Parser::Unary_operator_expressionContext * /*ctx*/) override { }
-  virtual void exitUnary_operator_expression(SysMLv2Parser::Unary_operator_expressionContext * /*ctx*/) override { }
+  virtual void enterFeatureChainExpr(SysMLv2Parser::FeatureChainExprContext * /*ctx*/) override { }
+  virtual void exitFeatureChainExpr(SysMLv2Parser::FeatureChainExprContext * /*ctx*/) override { }
 
-  virtual void enterUnary_operator(SysMLv2Parser::Unary_operatorContext * /*ctx*/) override { }
-  virtual void exitUnary_operator(SysMLv2Parser::Unary_operatorContext * /*ctx*/) override { }
+  virtual void enterBracketExpr(SysMLv2Parser::BracketExprContext * /*ctx*/) override { }
+  virtual void exitBracketExpr(SysMLv2Parser::BracketExprContext * /*ctx*/) override { }
 
-  virtual void enterClassification_expression(SysMLv2Parser::Classification_expressionContext * /*ctx*/) override { }
-  virtual void exitClassification_expression(SysMLv2Parser::Classification_expressionContext * /*ctx*/) override { }
+  virtual void enterMetaclassificationExpr(SysMLv2Parser::MetaclassificationExprContext * /*ctx*/) override { }
+  virtual void exitMetaclassificationExpr(SysMLv2Parser::MetaclassificationExprContext * /*ctx*/) override { }
 
-  virtual void enterClassification(SysMLv2Parser::ClassificationContext * /*ctx*/) override { }
-  virtual void exitClassification(SysMLv2Parser::ClassificationContext * /*ctx*/) override { }
+  virtual void enterClassificationExpr(SysMLv2Parser::ClassificationExprContext * /*ctx*/) override { }
+  virtual void exitClassificationExpr(SysMLv2Parser::ClassificationExprContext * /*ctx*/) override { }
 
-  virtual void enterClassification_test_operator(SysMLv2Parser::Classification_test_operatorContext * /*ctx*/) override { }
-  virtual void exitClassification_test_operator(SysMLv2Parser::Classification_test_operatorContext * /*ctx*/) override { }
+  virtual void enterSequenceExpr(SysMLv2Parser::SequenceExprContext * /*ctx*/) override { }
+  virtual void exitSequenceExpr(SysMLv2Parser::SequenceExprContext * /*ctx*/) override { }
 
-  virtual void enterCast_operator(SysMLv2Parser::Cast_operatorContext * /*ctx*/) override { }
-  virtual void exitCast_operator(SysMLv2Parser::Cast_operatorContext * /*ctx*/) override { }
+  virtual void enterFunctionOperationExpr(SysMLv2Parser::FunctionOperationExprContext * /*ctx*/) override { }
+  virtual void exitFunctionOperationExpr(SysMLv2Parser::FunctionOperationExprContext * /*ctx*/) override { }
 
-  virtual void enterMetaclassification_expression(SysMLv2Parser::Metaclassification_expressionContext * /*ctx*/) override { }
-  virtual void exitMetaclassification_expression(SysMLv2Parser::Metaclassification_expressionContext * /*ctx*/) override { }
-
-  virtual void enterArgument_member(SysMLv2Parser::Argument_memberContext * /*ctx*/) override { }
-  virtual void exitArgument_member(SysMLv2Parser::Argument_memberContext * /*ctx*/) override { }
-
-  virtual void enterArgument(SysMLv2Parser::ArgumentContext * /*ctx*/) override { }
-  virtual void exitArgument(SysMLv2Parser::ArgumentContext * /*ctx*/) override { }
-
-  virtual void enterArgument_value(SysMLv2Parser::Argument_valueContext * /*ctx*/) override { }
-  virtual void exitArgument_value(SysMLv2Parser::Argument_valueContext * /*ctx*/) override { }
-
-  virtual void enterArgument_expression_member(SysMLv2Parser::Argument_expression_memberContext * /*ctx*/) override { }
-  virtual void exitArgument_expression_member(SysMLv2Parser::Argument_expression_memberContext * /*ctx*/) override { }
-
-  virtual void enterArgument_expression(SysMLv2Parser::Argument_expressionContext * /*ctx*/) override { }
-  virtual void exitArgument_expression(SysMLv2Parser::Argument_expressionContext * /*ctx*/) override { }
-
-  virtual void enterArgument_expression_value(SysMLv2Parser::Argument_expression_valueContext * /*ctx*/) override { }
-  virtual void exitArgument_expression_value(SysMLv2Parser::Argument_expression_valueContext * /*ctx*/) override { }
-
-  virtual void enterMetadata_argument_member(SysMLv2Parser::Metadata_argument_memberContext * /*ctx*/) override { }
-  virtual void exitMetadata_argument_member(SysMLv2Parser::Metadata_argument_memberContext * /*ctx*/) override { }
-
-  virtual void enterMetadata_argument(SysMLv2Parser::Metadata_argumentContext * /*ctx*/) override { }
-  virtual void exitMetadata_argument(SysMLv2Parser::Metadata_argumentContext * /*ctx*/) override { }
-
-  virtual void enterMetadata_value(SysMLv2Parser::Metadata_valueContext * /*ctx*/) override { }
-  virtual void exitMetadata_value(SysMLv2Parser::Metadata_valueContext * /*ctx*/) override { }
-
-  virtual void enterMetadata_reference(SysMLv2Parser::Metadata_referenceContext * /*ctx*/) override { }
-  virtual void exitMetadata_reference(SysMLv2Parser::Metadata_referenceContext * /*ctx*/) override { }
-
-  virtual void enterMetadataclassification_test_operator(SysMLv2Parser::Metadataclassification_test_operatorContext * /*ctx*/) override { }
-  virtual void exitMetadataclassification_test_operator(SysMLv2Parser::Metadataclassification_test_operatorContext * /*ctx*/) override { }
-
-  virtual void enterMeta_cast_operator(SysMLv2Parser::Meta_cast_operatorContext * /*ctx*/) override { }
-  virtual void exitMeta_cast_operator(SysMLv2Parser::Meta_cast_operatorContext * /*ctx*/) override { }
-
-  virtual void enterExtend_expression(SysMLv2Parser::Extend_expressionContext * /*ctx*/) override { }
-  virtual void exitExtend_expression(SysMLv2Parser::Extend_expressionContext * /*ctx*/) override { }
+  virtual void enterFunction_operation_arguments(SysMLv2Parser::Function_operation_argumentsContext * /*ctx*/) override { }
+  virtual void exitFunction_operation_arguments(SysMLv2Parser::Function_operation_argumentsContext * /*ctx*/) override { }
 
   virtual void enterType_reference_member(SysMLv2Parser::Type_reference_memberContext * /*ctx*/) override { }
   virtual void exitType_reference_member(SysMLv2Parser::Type_reference_memberContext * /*ctx*/) override { }
@@ -1372,39 +1348,6 @@ public:
   virtual void enterReference_typing(SysMLv2Parser::Reference_typingContext * /*ctx*/) override { }
   virtual void exitReference_typing(SysMLv2Parser::Reference_typingContext * /*ctx*/) override { }
 
-  virtual void enterPrimary_expressions(SysMLv2Parser::Primary_expressionsContext * /*ctx*/) override { }
-  virtual void exitPrimary_expressions(SysMLv2Parser::Primary_expressionsContext * /*ctx*/) override { }
-
-  virtual void enterPrimary_expression(SysMLv2Parser::Primary_expressionContext * /*ctx*/) override { }
-  virtual void exitPrimary_expression(SysMLv2Parser::Primary_expressionContext * /*ctx*/) override { }
-
-  virtual void enterPrimary_argument_value(SysMLv2Parser::Primary_argument_valueContext * /*ctx*/) override { }
-  virtual void exitPrimary_argument_value(SysMLv2Parser::Primary_argument_valueContext * /*ctx*/) override { }
-
-  virtual void enterPrimary_argument(SysMLv2Parser::Primary_argumentContext * /*ctx*/) override { }
-  virtual void exitPrimary_argument(SysMLv2Parser::Primary_argumentContext * /*ctx*/) override { }
-
-  virtual void enterPrimary_argument_member(SysMLv2Parser::Primary_argument_memberContext * /*ctx*/) override { }
-  virtual void exitPrimary_argument_member(SysMLv2Parser::Primary_argument_memberContext * /*ctx*/) override { }
-
-  virtual void enterNon_feature_chain_primary_expression(SysMLv2Parser::Non_feature_chain_primary_expressionContext * /*ctx*/) override { }
-  virtual void exitNon_feature_chain_primary_expression(SysMLv2Parser::Non_feature_chain_primary_expressionContext * /*ctx*/) override { }
-
-  virtual void enterNon_feature_chain_primary_argument_value(SysMLv2Parser::Non_feature_chain_primary_argument_valueContext * /*ctx*/) override { }
-  virtual void exitNon_feature_chain_primary_argument_value(SysMLv2Parser::Non_feature_chain_primary_argument_valueContext * /*ctx*/) override { }
-
-  virtual void enterNon_feature_chain_primary_argument(SysMLv2Parser::Non_feature_chain_primary_argumentContext * /*ctx*/) override { }
-  virtual void exitNon_feature_chain_primary_argument(SysMLv2Parser::Non_feature_chain_primary_argumentContext * /*ctx*/) override { }
-
-  virtual void enterNon_feature_chain_primary_argument_member(SysMLv2Parser::Non_feature_chain_primary_argument_memberContext * /*ctx*/) override { }
-  virtual void exitNon_feature_chain_primary_argument_member(SysMLv2Parser::Non_feature_chain_primary_argument_memberContext * /*ctx*/) override { }
-
-  virtual void enterBracket_expression(SysMLv2Parser::Bracket_expressionContext * /*ctx*/) override { }
-  virtual void exitBracket_expression(SysMLv2Parser::Bracket_expressionContext * /*ctx*/) override { }
-
-  virtual void enterIndex_expression(SysMLv2Parser::Index_expressionContext * /*ctx*/) override { }
-  virtual void exitIndex_expression(SysMLv2Parser::Index_expressionContext * /*ctx*/) override { }
-
   virtual void enterSequence_expression(SysMLv2Parser::Sequence_expressionContext * /*ctx*/) override { }
   virtual void exitSequence_expression(SysMLv2Parser::Sequence_expressionContext * /*ctx*/) override { }
 
@@ -1416,45 +1359,6 @@ public:
 
   virtual void enterSequence_expression_list_member(SysMLv2Parser::Sequence_expression_list_memberContext * /*ctx*/) override { }
   virtual void exitSequence_expression_list_member(SysMLv2Parser::Sequence_expression_list_memberContext * /*ctx*/) override { }
-
-  virtual void enterFeature_chain_expression(SysMLv2Parser::Feature_chain_expressionContext * /*ctx*/) override { }
-  virtual void exitFeature_chain_expression(SysMLv2Parser::Feature_chain_expressionContext * /*ctx*/) override { }
-
-  virtual void enterCollect_expression(SysMLv2Parser::Collect_expressionContext * /*ctx*/) override { }
-  virtual void exitCollect_expression(SysMLv2Parser::Collect_expressionContext * /*ctx*/) override { }
-
-  virtual void enterSelect_expression(SysMLv2Parser::Select_expressionContext * /*ctx*/) override { }
-  virtual void exitSelect_expression(SysMLv2Parser::Select_expressionContext * /*ctx*/) override { }
-
-  virtual void enterFunction_operation_expression(SysMLv2Parser::Function_operation_expressionContext * /*ctx*/) override { }
-  virtual void exitFunction_operation_expression(SysMLv2Parser::Function_operation_expressionContext * /*ctx*/) override { }
-
-  virtual void enterBody_argument_member(SysMLv2Parser::Body_argument_memberContext * /*ctx*/) override { }
-  virtual void exitBody_argument_member(SysMLv2Parser::Body_argument_memberContext * /*ctx*/) override { }
-
-  virtual void enterBody_argument(SysMLv2Parser::Body_argumentContext * /*ctx*/) override { }
-  virtual void exitBody_argument(SysMLv2Parser::Body_argumentContext * /*ctx*/) override { }
-
-  virtual void enterBody_argument_value(SysMLv2Parser::Body_argument_valueContext * /*ctx*/) override { }
-  virtual void exitBody_argument_value(SysMLv2Parser::Body_argument_valueContext * /*ctx*/) override { }
-
-  virtual void enterBody_expression_member(SysMLv2Parser::Body_expression_memberContext * /*ctx*/) override { }
-  virtual void exitBody_expression_member(SysMLv2Parser::Body_expression_memberContext * /*ctx*/) override { }
-
-  virtual void enterFunction_reference_argument_member(SysMLv2Parser::Function_reference_argument_memberContext * /*ctx*/) override { }
-  virtual void exitFunction_reference_argument_member(SysMLv2Parser::Function_reference_argument_memberContext * /*ctx*/) override { }
-
-  virtual void enterFunction_reference_argument(SysMLv2Parser::Function_reference_argumentContext * /*ctx*/) override { }
-  virtual void exitFunction_reference_argument(SysMLv2Parser::Function_reference_argumentContext * /*ctx*/) override { }
-
-  virtual void enterFunction_reference_arugment_value(SysMLv2Parser::Function_reference_arugment_valueContext * /*ctx*/) override { }
-  virtual void exitFunction_reference_arugment_value(SysMLv2Parser::Function_reference_arugment_valueContext * /*ctx*/) override { }
-
-  virtual void enterFunction_reference_expression(SysMLv2Parser::Function_reference_expressionContext * /*ctx*/) override { }
-  virtual void exitFunction_reference_expression(SysMLv2Parser::Function_reference_expressionContext * /*ctx*/) override { }
-
-  virtual void enterFunction_reference_member(SysMLv2Parser::Function_reference_memberContext * /*ctx*/) override { }
-  virtual void exitFunction_reference_member(SysMLv2Parser::Function_reference_memberContext * /*ctx*/) override { }
 
   virtual void enterFunction_reference(SysMLv2Parser::Function_referenceContext * /*ctx*/) override { }
   virtual void exitFunction_reference(SysMLv2Parser::Function_referenceContext * /*ctx*/) override { }
@@ -1483,6 +1387,9 @@ public:
   virtual void enterInternal_invocation_expression(SysMLv2Parser::Internal_invocation_expressionContext * /*ctx*/) override { }
   virtual void exitInternal_invocation_expression(SysMLv2Parser::Internal_invocation_expressionContext * /*ctx*/) override { }
 
+  virtual void enterConstructor_expression(SysMLv2Parser::Constructor_expressionContext * /*ctx*/) override { }
+  virtual void exitConstructor_expression(SysMLv2Parser::Constructor_expressionContext * /*ctx*/) override { }
+
   virtual void enterArgument_list(SysMLv2Parser::Argument_listContext * /*ctx*/) override { }
   virtual void exitArgument_list(SysMLv2Parser::Argument_listContext * /*ctx*/) override { }
 
@@ -1506,9 +1413,6 @@ public:
 
   virtual void enterExpression_body_member(SysMLv2Parser::Expression_body_memberContext * /*ctx*/) override { }
   virtual void exitExpression_body_member(SysMLv2Parser::Expression_body_memberContext * /*ctx*/) override { }
-
-  virtual void enterExpression_body(SysMLv2Parser::Expression_bodyContext * /*ctx*/) override { }
-  virtual void exitExpression_body(SysMLv2Parser::Expression_bodyContext * /*ctx*/) override { }
 
   virtual void enterLiteral_expression(SysMLv2Parser::Literal_expressionContext * /*ctx*/) override { }
   virtual void exitLiteral_expression(SysMLv2Parser::Literal_expressionContext * /*ctx*/) override { }
@@ -1629,6 +1533,27 @@ public:
 
   virtual void enterMeta_assignment(SysMLv2Parser::Meta_assignmentContext * /*ctx*/) override { }
   virtual void exitMeta_assignment(SysMLv2Parser::Meta_assignmentContext * /*ctx*/) override { }
+
+  virtual void enterTyped_by_operator(SysMLv2Parser::Typed_by_operatorContext * /*ctx*/) override { }
+  virtual void exitTyped_by_operator(SysMLv2Parser::Typed_by_operatorContext * /*ctx*/) override { }
+
+  virtual void enterSpecializes_operator(SysMLv2Parser::Specializes_operatorContext * /*ctx*/) override { }
+  virtual void exitSpecializes_operator(SysMLv2Parser::Specializes_operatorContext * /*ctx*/) override { }
+
+  virtual void enterSubsets_operator(SysMLv2Parser::Subsets_operatorContext * /*ctx*/) override { }
+  virtual void exitSubsets_operator(SysMLv2Parser::Subsets_operatorContext * /*ctx*/) override { }
+
+  virtual void enterReferences_operator(SysMLv2Parser::References_operatorContext * /*ctx*/) override { }
+  virtual void exitReferences_operator(SysMLv2Parser::References_operatorContext * /*ctx*/) override { }
+
+  virtual void enterRedefines_operator(SysMLv2Parser::Redefines_operatorContext * /*ctx*/) override { }
+  virtual void exitRedefines_operator(SysMLv2Parser::Redefines_operatorContext * /*ctx*/) override { }
+
+  virtual void enterConjugates_operator(SysMLv2Parser::Conjugates_operatorContext * /*ctx*/) override { }
+  virtual void exitConjugates_operator(SysMLv2Parser::Conjugates_operatorContext * /*ctx*/) override { }
+
+  virtual void enterCrosses_operator(SysMLv2Parser::Crosses_operatorContext * /*ctx*/) override { }
+  virtual void exitCrosses_operator(SysMLv2Parser::Crosses_operatorContext * /*ctx*/) override { }
 
 
   virtual void enterEveryRule(antlr4::ParserRuleContext * /*ctx*/) override { }

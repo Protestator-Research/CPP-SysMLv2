@@ -14,7 +14,19 @@ import KerML;
 
 start: start_element* EOF;
 identification: (SYMBOL_SMALLER sysml_name SYMBOL_GREATER)? sysml_name;
-sysml_name: NAME | KEYWORD_VAR;
+sysml_name: NAME | KEYWORD_VAR | KEYWORD_ASSOC | KEYWORD_BEHAVIOR | KEYWORD_BOOL | KEYWORD_CHAINS |
+            KEYWORD_CLASS | KEYWORD_CLASSIFIER | KEYWORD_COMPOSITE | KEYWORD_CONJUGATE | KEYWORD_CONJUGATES |
+            KEYWORD_CONJUGATION | KEYWORD_CONNECTOR | KEYWORD_DATATYPE | KEYWORD_DIFFERENCES | KEYWORD_DISJOINING |
+            KEYWORD_DISJOINT | KEYWORD_EXPR | KEYWORD_FEATURE | KEYWORD_FEATURED | KEYWORD_FEATURING |
+            KEYWORD_FUNCTION | KEYWORD_INTERACTION | KEYWORD_INTERSECTS | KEYWORD_INV | KEYWORD_INVERSE |
+            KEYWORD_INVERTING | KEYWORD_MEMBER | KEYWORD_METACLASS | KEYWORD_MULTIPLICITY | KEYWORD_NAMESPACE |
+            KEYWORD_PORTION | KEYWORD_PREDICATE | KEYWORD_REDEFINITION | KEYWORD_SPECIALIZATION | KEYWORD_STEP |
+            KEYWORD_STRUCT | KEYWORD_SUBCLASSIFIER | KEYWORD_SUBSET | KEYWORD_SUBTYPE | KEYWORD_TYPE |
+            KEYWORD_TYPED | KEYWORD_TYPING | KEYWORD_UNIONS;
+
+// SysML lexical structure (8.2.2.1.2): the reserved keywords of SysML do not include the KerML-only keywords
+// (step, bool, expr, function, feature, ...), so those remain usable as names, also in qualified names.
+qualified_name: sysml_name (SYMBOL_NAMESPACE_SUBSET sysml_name)*;
 
 start_element: element | usage_element | definition_element;
 
@@ -41,8 +53,8 @@ package_body_element: package_member |
                       alias_member |
                       namespace_import;
 
-package_member: usage_element | definition_element ;
-alias_member: member_prefix KEYWORD_ALIAS ('<'NAME'>')? NAME? KEYWORD_FOR qualified_name relationship_body;
+package_member: member_prefix (usage_element | definition_element);
+alias_member: member_prefix KEYWORD_ALIAS ('<'sysml_name'>')? sysml_name? KEYWORD_FOR qualified_name relationship_body;
 
 definition_element: package |
                     library_package |
@@ -58,6 +70,7 @@ definition_element: package |
                     flow_definition |
                     interface_definition |
                     port_definition |
+                    allocation_definition |
                     action_definition |
                     calculation_definition |
                     state_definition |
@@ -67,6 +80,7 @@ definition_element: package |
                     case_definition |
                     analysis_case_definition |
                     verification_case_definition |
+                    use_case_definition |
                     view_definition |
                     viewpoint_definition |
                     rendering_definition |
@@ -96,16 +110,16 @@ structure_usage_member: member_prefix structure_usage_element;
 behavior_usage_member: member_prefix behavior_usage_element;
 
 feature_direction: KEYWORD_IN | KEYWORD_OUT | KEYWORD_INOUT;
-ref_prefix: feature_direction? KEYWORD_DERIVED? (KEYWORD_VARIATION | KEYWORD_CONSTANT | KEYWORD_ABSTRACT KEYWORD_CONSTANT?)?;
+ref_prefix: feature_direction? KEYWORD_DERIVED? (KEYWORD_ABSTRACT | KEYWORD_VARIATION)? KEYWORD_CONSTANT?;
 basic_usage_prefix: ref_prefix KEYWORD_REF?;
-end_usage_prefix: KEYWORD_END? owned_cross_feature_member?;
+end_usage_prefix: KEYWORD_END owned_cross_feature_member?;
 owned_cross_feature_member: owned_cross_feature;
 owned_cross_feature: basic_usage_prefix usage_declaration;
 usage_extention_keyword: prefix_metadata_member;
 unextended_usage_prefix: end_usage_prefix | basic_usage_prefix;
 usage_prefix: unextended_usage_prefix usage_extention_keyword*;
 usage: usage_declaration usage_completion;
-usage_declaration: identification feature_specialization_part?;
+usage_declaration: identification feature_specialization_part? | feature_specialization_part;
 usage_completion: value_part? usage_body;
 usage_body: definition_body;
 
@@ -114,7 +128,7 @@ reference_usage: (end_usage_prefix | ref_prefix) KEYWORD_REF usage;
 variant_reference: owned_reference_subsetting feature_specialization* usage_body;
 
 redefinition_usage_element: (usage_prefix (KEYWORD_ATTRIBUTE | KEYWORD_PART | KEYWORD_ITEM | KEYWORD_PORT | KEYWORD_ACTION | KEYWORD_CALC | KEYWORD_CONSTRAINT)?)? redefinition_usage;
-redefinition_usage: REDEFINES qualified_name (SYMBOL_COMMA qualified_name)* feature_specialization_part? value_part? usage_body;
+redefinition_usage: redefines_operator qualified_name (SYMBOL_COMMA qualified_name)* feature_specialization_part? value_part? usage_body;
 
 non_occurrence_usage_element: default_reference_usage |
                               reference_usage |
@@ -178,11 +192,9 @@ variant_usage_element: variant_reference |
                        succession_flow_usage |
                        behavior_usage_element;
 
-subsclassification_part: SPECIALIZES owned_subclassification (SYMBOL_COMMA owned_subclassification)*;
+subsclassification_part: specializes_operator owned_subclassification (SYMBOL_COMMA owned_subclassification)*;
 
-crosses: CROSSES owned_cross_subsetting;
-owned_cross_subsetting: qualified_name | owned_feature_chain;
-multiplicity_part: owned_multiplicity (KEYWORD_ORDERED? KEYWORD_NONUNIQUE? | KEYWORD_NONUNIQUE KEYWORD_ORDERED?);
+multiplicity_part: owned_multiplicity | owned_multiplicity? (KEYWORD_ORDERED KEYWORD_NONUNIQUE? | KEYWORD_NONUNIQUE KEYWORD_ORDERED?);
 owned_multiplicity: multiplicity_range;
 multiplicity_range: SYMBOL_SQUARE_BRACKET_OPEN (multiplicity_expression_member SYMBOL_DDOT)? multiplicity_expression_member SYMBOL_SQUARE_BRACKET_CLOSE;
 
@@ -199,7 +211,7 @@ occurrence_definition_prefix: basic_definition_prefix? KEYWORD_INDIVIDUAL? defin
 occurrence_definition: occurrence_definition_prefix KEYWORD_OCCURRENCE KEYWORD_DEF definition;
 individual_definition: basic_definition_prefix? KEYWORD_INDIVIDUAL KEYWORD_DEF definition;
 
-occurrence_usage_prefix: basic_usage_prefix KEYWORD_INDIVIDUAL? portion_kind? usage_extention_keyword*;
+occurrence_usage_prefix: (end_usage_prefix | basic_usage_prefix) KEYWORD_INDIVIDUAL? portion_kind? usage_extention_keyword*;
 occurrence_usage: occurrence_usage_prefix KEYWORD_OCCURRENCE usage;
 individual_usage: basic_usage_prefix KEYWORD_INDIVIDUAL portion_kind? usage_extention_keyword* usage;
 portion_usage: basic_usage_prefix KEYWORD_INDIVIDUAL? portion_kind usage_extention_keyword* usage;
@@ -219,7 +231,7 @@ part_usage: occurrence_usage_prefix KEYWORD_PART usage;
 
 port_definition: definition_prefix KEYWORD_PORT KEYWORD_DEF definition;
 port_usage: occurrence_usage_prefix KEYWORD_PORT usage;
-conjungated_port_typing: SYMBOL_CONJUNGATES qualified_name;
+conjungated_port_typing: SYMBOL_CONJUGATES qualified_name;
 
 connection_definition: occurrence_definition_prefix KEYWORD_CONNECTION KEYWORD_DEF definition;
 connection_usage: occurrence_usage_prefix ((KEYWORD_CONNECTION usage_declaration value_part? (KEYWORD_CONNECT connector_part)?)| (KEYWORD_CONNECT connector_part)) usage_body;
@@ -227,13 +239,13 @@ connector_part: binary_connector_part | nary_connector_part;
 binary_connector_part: connector_end_member KEYWORD_TO connector_end_member;
 nary_connector_part: SYMBOL_ROUND_BRACKET_OPEN connector_end_member (SYMBOL_COMMA connector_end_member)+ SYMBOL_ROUND_BRACKET_CLOSE;
 connector_end_member: connector_end;
-connecotr_end: owned_cross_multiplicity_member? (declared_name = NAME REFERENCES)? owned_reference_subsetting;
+connecotr_end: owned_cross_multiplicity_member? (declared_name = NAME references_operator)? owned_reference_subsetting;
 owned_cross_multiplicity_member: owned_cross_multiplicity;
 owned_cross_multiplicity: owned_multiplicity;
 
 binding_connector_as_usage: usage_prefix (KEYWORD_BINDING usage_declaration)? KEYWORD_BIND connector_end_member binding_end_usage_member;
 binding_end_usage_member: SYMBOL_ASSIGN connector_end_member usage_body;
-succession_as_usage: usage_prefix (KEYWORD_SUCCSESSION usage_declaration)? KEYWORD_FIRST connector_end_member KEYWORD_THEN connector_end_member usage_body;
+succession_as_usage: usage_prefix (KEYWORD_SUCCESSION usage_declaration)? KEYWORD_FIRST connector_end_member KEYWORD_THEN connector_end_member usage_body;
 
 interface_definition: occurrence_definition_prefix KEYWORD_INTERFACE KEYWORD_DEF definition_declaration interface_body;
 interface_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN interface_body_item* SYMBOL_CURLY_BRACKET_CLOSE);
@@ -259,7 +271,7 @@ interface_part: binary_interface_part | nary_interface_part;
 binary_interface_part: interface_end_member KEYWORD_TO interface_end_member;
 nary_interface_part: SYMBOL_ROUND_BRACKET_OPEN interface_end_member (SYMBOL_COMMA interface_end_member)+ SYMBOL_ROUND_BRACKET_CLOSE;
 interface_end_member: interface_end;
-interface_end: owned_cross_multiplicity_member? (declared_name=NAME REFERENCES)? owned_reference_subsetting;
+interface_end: owned_cross_multiplicity_member? (declared_name=NAME references_operator)? owned_reference_subsetting;
 
 allocation_definition: occurrence_definition_prefix KEYWORD_ALLOCATION KEYWORD_DEF definition;
 allocation_usage: occurrence_usage_prefix allocation_usage_declaration usage_body;
@@ -271,12 +283,12 @@ message_declaration: usage_declaration value_part? (KEYWORD_OF flow_payload_feat
 message_event_member: message_event;
 message_event: owned_reference_subsetting;
 flow_usage: occurrence_usage_prefix KEYWORD_FLOW flow_declaration definition_body;
-succession_flow_usage: occurrence_usage_prefix KEYWORD_SUCCSESSION KEYWORD_FLOW flow_declaration definition_body;
+succession_flow_usage: occurrence_usage_prefix KEYWORD_SUCCESSION KEYWORD_FLOW flow_declaration definition_body;
 flow_declaration: usage_declaration value_part? (KEYWORD_OF flow_payload_feature_member)? (KEYWORD_OF flow_end_member KEYWORD_TO flow_end_member)? | flow_end_member KEYWORD_TO flow_end_member;
 flow_payload_feature_member: flow_payload_feature;
 flow_payload_feature: payload_feature;
-payload_feature: identification payload_feature_specialization_part value_part | owned_feature_typing | owned_multiplicity owned_feature_typing;
-payload_feature_specialization_part: feature_specialization+ multiplicity_part? feature_specialization* | multiplicity_part feature_specialization+;
+payload_feature: identification? payload_feature_specialization_part value_part? | owned_feature_typing owned_multiplicity? | owned_multiplicity owned_feature_typing;
+payload_feature_specialization_part: feature_specialization+ (multiplicity_part feature_specialization*)? | multiplicity_part feature_specialization+;
 flow_end_member: flow_end;
 flow_end: flow_end_subsetting? flow_feature_member;
 flow_end_subsetting: qualified_name | feature_chain_prefix;
@@ -289,12 +301,13 @@ action_definition: occurrence_definition_prefix KEYWORD_ACTION KEYWORD_DEF defin
 action_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN action_body_item* SYMBOL_CURLY_BRACKET_CLOSE;
 action_body_item: non_behavior_body_item |
                   initial_node_member action_target_succession_member*|
-                  source_succession_member? action_behavior_member action_target_succession_member?|
+                  source_succession_member? action_behavior_member action_target_succession_member*|
                   guarded_succession_member;
 non_behavior_body_item: namespace_import |
                         alias_member |
                         definition_member |
                         variant_usage_member |
+                        non_occurrence_usage_member |
                         source_succession_member? structure_usage_member;
 action_behavior_member: behavior_usage_member | action_node_member;
 initial_node_member: member_prefix KEYWORD_FIRST qualified_name relationship_body;
@@ -318,7 +331,7 @@ action_node_usage_declaration: KEYWORD_ACTION usage_declaration?;
 action_node_prefix: occurrence_usage_prefix action_node_usage_declaration?;
 
 control_node: merge_node | decision_node | join_node | fork_node;
-control_node_prefix: ref_prefix KEYWORD_INDIVIDIAL? portion_kind? usage_extention_keyword?;
+control_node_prefix: ref_prefix KEYWORD_INDIVIDUAL? portion_kind? usage_extention_keyword?;
 merge_node: control_node_prefix KEYWORD_MERGE? usage_declaration action_body;
 decision_node: control_node_prefix KEYWORD_DECIDE? usage_declaration action_body;
 join_node: control_node_prefix KEYWORD_DECIDE? usage_declaration action_body;
@@ -330,7 +343,7 @@ accept_parameter_part: payload_parameter_member (KEYWORD_VIA node_parameter_memb
 payload_parameter_member: payload_parameter;
 payload_parameter: payload_feature | identification payload_feature_specialization_part? trigger_value_part;
 trigger_value_part: trigger_expression;
-trigger_expression: kind=(KEYWORD_AT | KEYWORD_AFTER) argument_member | kind=KEYWORD_WHEN argument_expression_member;
+trigger_expression: kind=(KEYWORD_AT | KEYWORD_AFTER) owned_expression | kind=KEYWORD_WHEN owned_expression;
 send_node: occurrence_usage_prefix action_usage_declaration? KEYWORD_SEND (node_parameter_member sender_receiver_part? | sender_receiver_part)? action_body;
 send_node_declaration: action_node_usage_declaration? KEYWORD_SEND  node_parameter_member sender_receiver_part?;
 sender_receiver_part: KEYWORD_VIA node_parameter_member (KEYWORD_TO node_parameter_member)? | KEYWORD_TO node_parameter_member;
@@ -341,18 +354,20 @@ assignment_node: occurrence_usage_prefix assignment_node_declaration action_body
 assignment_node_declaration: action_node_usage_declaration? KEYWORD_ASSIGN assignment_target_member feature_chain_member SYMBOL_DEF_ASSIGN node_parameter_member;
 assignment_target_member: assignment_target_parameter;
 assignment_target_parameter: (assignment_target_binding SYMBOL_DOT)?;
-assignment_target_binding: non_feature_chain_primary_expression;
+assignment_target_binding: base_expression | sequence_expression;
 feature_chain_member: memberElement = qualified_name | owned_feature_chain;
 owned_feature_chain_member: owned_feature_chain;
+// In SysML the body of an expression may contain any calculation body item (the standard library uses usages such as 'in x;' and 'in ref a {...}' there).
+expression_body: SYMBOL_CURLY_BRACKET_OPEN calculation_body_part SYMBOL_CURLY_BRACKET_CLOSE;
 
 terminate_node: occurrence_usage_prefix action_node_usage_declaration? KEYWORD_TERMINATE node_parameter_member? action_body;
 
-if_node: action_node_prefix KEYWORD_IF expression_parameter_member action_body_parameter_member (KEYWORD_ELSE (action_body_parameter_member | if_node_parameter_member));
+if_node: action_node_prefix KEYWORD_IF expression_parameter_member action_body_parameter_member (KEYWORD_ELSE (action_body_parameter_member | if_node_parameter_member))?;
 expression_parameter_member: owned_expression;
 action_body_parameter_member: action_body_parameter;
 action_body_parameter: (KEYWORD_ACTION usage_declaration?)? SYMBOL_CURLY_BRACKET_OPEN action_body_item* SYMBOL_CURLY_BRACKET_CLOSE;
 if_node_parameter_member: if_node;
-while_loop_node: action_node_prefix (KEYWORD_WHILE expression_parameter_member | KEYWORD_LOOP ) action_body_parameter_member (KEYWORD_UNTIL expression_parameter_member SYMBOL_STATEMENT_DELIMITER);
+while_loop_node: action_node_prefix (KEYWORD_WHILE expression_parameter_member | KEYWORD_LOOP ) action_body_parameter_member (KEYWORD_UNTIL expression_parameter_member SYMBOL_STATEMENT_DELIMITER)?;
 for_loop_node: action_node_prefix KEYWORD_FOR for_variable_declaration_member KEYWORD_IN node_parameter_member action_body_parameter_member;
 for_variable_declaration_member: usage_declaration;
 for_variable_declaration: usage_declaration;
@@ -361,10 +376,10 @@ action_target_succession: (target_succession | guarded_target_succession | defau
 target_succession: source_end_member KEYWORD_THEN connector_end_member;
 guarded_target_succession: guard_expression_member KEYWORD_THEN transition_succession_member;
 default_target_succession: KEYWORD_ELSE transition_succession_member;
-guarded_succession: (KEYWORD_SUCCSESSION usage_declaration)? KEYWORD_FIRST feature_chain_member guard_expression_member KEYWORD_THEN transition_succession_member usage_body;
+guarded_succession: (KEYWORD_SUCCESSION usage_declaration)? KEYWORD_FIRST feature_chain_member guard_expression_member KEYWORD_THEN transition_succession_member usage_body;
 
 state_definition: occurrence_definition_prefix KEYWORD_STATE KEYWORD_DEF definition_declaration state_def_body;
-state_def_body: SYMBOL_STATEMENT_DELIMITER | KEYWORD_PARALLEL? SYMBOL_CURLY_BRACKET_OPEN state_body_item SYMBOL_CURLY_BRACKET_CLOSE;
+state_def_body: SYMBOL_STATEMENT_DELIMITER | KEYWORD_PARALLEL? SYMBOL_CURLY_BRACKET_OPEN state_body_item* SYMBOL_CURLY_BRACKET_CLOSE;
 state_body_item: non_behavior_body_item |
                  source_succession_member? behavior_usage_member target_transition_usage_member* |
                  transition_usage_member |
@@ -392,8 +407,8 @@ state_usage: occurrence_usage_prefix KEYWORD_STATE action_usage_declaration stat
 state_usage_body: SYMBOL_STATEMENT_DELIMITER | KEYWORD_PARALLEL? SYMBOL_CURLY_BRACKET_OPEN state_body_item* SYMBOL_CURLY_BRACKET_CLOSE; 
 exhibit_state_usage: occurrence_usage_prefix KEYWORD_EXHIBIT (owned_reference_subsetting feature_specialization_part? | KEYWORD_STATE usage_declaration) value_part? state_usage_body;
                
-transition_usage: KEYWORD_TRANSISTION (usage_declaration KEYWORD_FROM)? feature_chain_member trigger_action_member? guard_expression_member? effect_behavior_member? KEYWORD_THEN transition_succession_member action_body;
-target_transition_usage: (KEYWORD_TRANSISTION trigger_action_member? guard_expression_member? effect_behavior_member? | trigger_action_member guard_expression_member? effect_behavior_member? | guard_expression_member effect_behavior_member?)? KEYWORD_THEN transition_succession_member action_body;
+transition_usage: KEYWORD_TRANSITION (usage_declaration? KEYWORD_FIRST)? feature_chain_member trigger_action_member? guard_expression_member? effect_behavior_member? KEYWORD_THEN transition_succession_member action_body;
+target_transition_usage: (KEYWORD_TRANSITION trigger_action_member? guard_expression_member? effect_behavior_member? | trigger_action_member guard_expression_member? effect_behavior_member? | guard_expression_member effect_behavior_member?)? KEYWORD_THEN transition_succession_member action_body;
 trigger_action_member: KEYWORD_ACCEPT trigger_action;
 trigger_action: accept_parameter_part;
 guard_expression_member: KEYWORD_IF owned_expression;
@@ -418,10 +433,10 @@ calculation_body_item: action_body_item | return_parameter_member;
 return_parameter_member: member_prefix? KEYWORD_RETURN usage_element;
 result_expression_member: member_prefix? owned_expression;
 
-constraint_definition: occurrence_definition_prefix? definition_declaration calculation_body;
+constraint_definition: occurrence_definition_prefix? KEYWORD_CONSTRAINT KEYWORD_DEF definition_declaration calculation_body;
 constraint_usage: occurrence_usage_prefix? KEYWORD_CONSTRAINT constraint_usage_declaration calculation_body;
 assert_constriant_usage: occurrence_usage_prefix KEYWORD_ASSERT KEYWORD_NOT? (owned_reference_subsetting feature_specialization_part? | KEYWORD_CONSTRAINT constraint_usage_declaration) calculation_body;
-constraint_usage_declaration: usage_declaration value_part?;
+constraint_usage_declaration: usage_declaration? value_part?;
 
 requirement_definition: occurrence_definition_prefix KEYWORD_REQUIREMENT KEYWORD_DEF definition_declaration requirement_body;
 requirement_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN requirement_body_item* SYMBOL_CURLY_BRACKET_CLOSE;
@@ -445,7 +460,7 @@ stakeholder_member: member_prefix stakeholder_usage;
 stakeholder_usage: KEYWORD_STAKEHOLDER usage_extention_keyword;
 
 requirement_usage: occurrence_usage_prefix KEYWORD_REQUIREMENT constraint_usage_declaration requirement_body;
-satisfy_requirement_usage: occurrence_usage_prefix KEYWORD_ASSERT KEYWORD_NOT? KEYWORD_SATISFY (owned_reference_subsetting feature_specialization_part? | KEYWORD_REQUIREMENT usage_declaration ) value_part? (KEYWORD_BY satisfaction_subject_member)? requirement_body;
+satisfy_requirement_usage: occurrence_usage_prefix (KEYWORD_ASSERT KEYWORD_NOT?)? KEYWORD_SATISFY (owned_reference_subsetting feature_specialization_part? | KEYWORD_REQUIREMENT usage_declaration ) value_part? (KEYWORD_BY satisfaction_subject_member)? requirement_body;
 satisfaction_subject_member: satisfaction_parameter;
 satisfaction_parameter: satisfaction_feature_value;
 satisfaction_feature_value: satisfaction_reference_expression;
@@ -458,6 +473,7 @@ case_definition: occurrence_definition_prefix KEYWORD_CASE KEYWORD_DEF definitio
 case_usage: occurrence_usage_prefix KEYWORD_CASE constraint_usage_declaration case_body;
 case_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN case_body_item* result_expression_member? SYMBOL_CURLY_BRACKET_CLOSE;
 case_body_item: action_body_item |
+                return_parameter_member |
                 subject_member |
                 actor_member |
                 objective_member;
@@ -509,12 +525,11 @@ metadata_usage: usage_extention_keyword* (SYMBOL_AT | KEYWORD_METADATA) metadata
 metadata_usage_declaration: (identification defined_by)? owned_feature_typing;
 metadata_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN (definition_member | metadata_body_usage_member | alias_member | namespace_import) SYMBOL_CURLY_BRACKET_CLOSE;
 metadata_body_usage_member: metadata_body_usage;
-metadata_body_usage: KEYWORD_REF? REDEFINES? owned_redefinition feature_specialization_part? value_part? metadata_body;
+metadata_body_usage: KEYWORD_REF? redefines_operator? owned_redefinition feature_specialization_part? value_part? metadata_body;
 extended_definition: basic_definition_prefix? definition_extension_keyword+ KEYWORD_DEF definition;
 extended_usage: unextended_usage_prefix usage_extention_keyword+ usage;
 
 defined_by: SYMBOL_TYPED_BY | KEYWORD_DEFINED KEYWORD_BY;
-CROSSES: SYMBOL_CROSSES | KEYWORD_CROSSES;
 
 //Keywords
 KEYWORD_ACCEPT: 'accept';
@@ -531,14 +546,12 @@ KEYWORD_ASSUME: 'assume';
 KEYWORD_AT: 'at';
 KEYWORD_ATTRIBUTE: 'attribute';
 KEYWORD_BIND: 'bind';
-KEYWORD_BLOCK: 'block';
 KEYWORD_CALC: 'calc';
 KEYWORD_CASE: 'case';
 KEYWORD_CONCERN: 'concern';
 KEYWORD_CONNECT: 'connect';
 KEYWORD_CONNECTION: 'connection';
 KEYWORD_CONSTRAINT: 'constraint';
-KEYWORD_CROSSES: 'crosses';
 KEYWORD_DECIDE: 'decide';
 KEYWORD_DEF: 'def';
 KEYWORD_DEFINED: 'defined';
@@ -552,7 +565,6 @@ KEYWORD_EXIT: 'exit';
 KEYWORD_EXPOSE: 'expose';
 KEYWORD_FORK: 'fork';
 KEYWORD_FRAME: 'frame';
-KEYWORD_GUARD: 'guard';
 KEYWORD_INCLUDE: 'include';
 KEYWORD_INDIVIDUAL: 'individual';
 KEYWORD_INTERFACE:'interface';
@@ -583,7 +595,6 @@ KEYWORD_SUBJECT: 'subject';
 KEYWORD_TERMINATE: 'terminate';
 KEYWORD_TIMESLICE: 'timeslice';
 KEYWORD_TRANSITION: 'transition';
-KEYWORD_TRIGGER: 'trigger';
 KEYWORD_UNTIL: 'until';
 KEYWORD_USE: 'use';
 KEYWORD_VARIANT: 'variant';
@@ -597,4 +608,3 @@ KEYWORD_WHEN: 'when';
 KEYWORD_WHILE: 'while';
 
 //Symbols
-SYMBOL_CROSSES: '=>';

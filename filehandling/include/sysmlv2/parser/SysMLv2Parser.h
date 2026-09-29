@@ -18,144 +18,139 @@
 class SYSMLV2FILE_EXPORT SysMLv2Parser : public antlr4::Parser {
 public:
   enum {
-    T__0 = 1, CROSSES = 2, KEYWORD_ACCEPT = 3, KEYWORD_ACTION = 4, KEYWORD_ACTOR = 5, 
-    KEYWORD_AFTER = 6, KEYWORD_ALIAS = 7, KEYWORD_ALLOCATE = 8, KEYWORD_ALLOCATION = 9, 
-    KEYWORD_ANALYSIS = 10, KEYWORD_ASSIGN = 11, KEYWORD_ASSERT = 12, KEYWORD_ASSUME = 13, 
-    KEYWORD_AT = 14, KEYWORD_ATTRIBUTE = 15, KEYWORD_BIND = 16, KEYWORD_BLOCK = 17, 
-    KEYWORD_CALC = 18, KEYWORD_CASE = 19, KEYWORD_CONCERN = 20, KEYWORD_CONNECT = 21, 
-    KEYWORD_CONNECTION = 22, KEYWORD_CONSTRAINT = 23, KEYWORD_CROSSES = 24, 
-    KEYWORD_DECIDE = 25, KEYWORD_DEF = 26, KEYWORD_DEFINED = 27, KEYWORD_DERIVED = 28, 
-    KEYWORD_DO = 29, KEYWORD_ENTRY = 30, KEYWORD_ENUM = 31, KEYWORD_EVENT = 32, 
-    KEYWORD_EXHIBIT = 33, KEYWORD_EXIT = 34, KEYWORD_EXPOSE = 35, KEYWORD_FORK = 36, 
-    KEYWORD_FRAME = 37, KEYWORD_GUARD = 38, KEYWORD_INCLUDE = 39, KEYWORD_INDIVIDUAL = 40, 
-    KEYWORD_INTERFACE = 41, KEYWORD_ITEM = 42, KEYWORD_JOIN = 43, KEYWORD_LOOP = 44, 
-    KEYWORD_MERGE = 45, KEYWORD_MESSAGE = 46, KEYWORD_NONUNIQUE = 47, KEYWORD_OBJECTIVE = 48, 
-    KEYWORD_OCCURRENCE = 49, KEYWORD_PARALLEL = 50, KEYWORD_PART = 51, KEYWORD_PERFORM = 52, 
-    KEYWORD_PORT = 53, KEYWORD_REF = 54, KEYWORD_REFERENCES = 55, KEYWORD_RENDER = 56, 
-    KEYWORD_RENDERING = 57, KEYWORD_REQUIRE = 58, KEYWORD_REQUIREMENT = 59, 
-    KEYWORD_SATISFY = 60, KEYWORD_SEND = 61, KEYWORD_SNAPSHOT = 62, KEYWORD_STAKEHOLDER = 63, 
-    KEYWORD_STATE = 64, KEYWORD_SUBJECT = 65, KEYWORD_TERMINATE = 66, KEYWORD_TIMESLICE = 67, 
-    KEYWORD_TRANSITION = 68, KEYWORD_TRIGGER = 69, KEYWORD_UNTIL = 70, KEYWORD_USE = 71, 
-    KEYWORD_VARIANT = 72, KEYWORD_VARIATION = 73, KEYWORD_VERIFICATION = 74, 
-    KEYWORD_VERIFY = 75, KEYWORD_VIA = 76, KEYWORD_VIEW = 77, KEYWORD_VIEWPOINT = 78, 
-    KEYWORD_WHEN = 79, KEYWORD_WHILE = 80, SYMBOL_CROSSES = 81, MULTIPLICITY_PART_ELEMENTS = 82, 
-    TYPED_BY = 83, SPECIALIZES = 84, SUBSETS = 85, REFERENCES = 86, REDEFINES = 87, 
-    CONJUGATES = 88, KEYWORD_ABOUT = 89, KEYWORD_ABSTRACT = 90, KEYWORD_ALL = 91, 
-    KEYWORD_AND = 92, KEYWORD_AS = 93, KEYWORD_ASSOC = 94, KEYWORD_BEHAVIOR = 95, 
-    KEYWORD_BINDING = 96, KEYWORD_BOOL = 97, KEYWORD_BY = 98, KEYWORD_CHAINS = 99, 
-    KEYWORD_CLASS = 100, KEYWORD_CLASSIFIER = 101, KEYWORD_COMMENT = 102, 
-    KEYWORD_COMPOSITE = 103, KEYWORD_CONJUGATE = 104, KEYWORD_CONJUGATES = 105, 
-    KEYWORD_CONJUGATION = 106, KEYWORD_CONNECTOR = 107, KEYWORD_DATATYPE = 108, 
-    KEYWORD_DEFAULT = 109, KEYWORD_DEPENDENCY = 110, KEYWORD_DIFFERENCES = 111, 
-    KEYWORD_DISJOINING = 112, KEYWORD_DISJOINT = 113, KEYWORD_DOC = 114, 
-    KEYWORD_ELSE = 115, KEYWORD_END = 116, KEYWORD_EXPR = 117, KEYWORD_FALSE = 118, 
-    KEYWORD_FEATURE = 119, KEYWORD_FEATURED = 120, KEYWORD_FEATURING = 121, 
-    KEYWORD_FILTER = 122, KEYWORD_FIRST = 123, KEYWORD_FLOW = 124, KEYWORD_FOR = 125, 
-    KEYWORD_FROM = 126, KEYWORD_FUNCTION = 127, KEYWORD_HASTYPE = 128, KEYWORD_IF = 129, 
-    KEYWORD_INTERSECTS = 130, KEYWORD_IMPLIES = 131, KEYWORD_IMPORT = 132, 
-    KEYWORD_IN = 133, KEYWORD_INOUT = 134, KEYWORD_INTERACTION = 135, KEYWORD_INV = 136, 
-    KEYWORD_INVERSE = 137, KEYWORD_INVERTING = 138, KEYWORD_ISTYPE = 139, 
-    KEYWORD_LANGUAGE = 140, KEYWORD_MEMBER = 141, KEYWORD_METACLASS = 142, 
-    KEYWORD_METADATA = 143, KEYWORD_MULTIPLICITY = 144, KEYWORD_NAMESPACE = 145, 
-    KEYWORD_NOT = 146, KEYWORD_NULL = 147, KEYWORD_OF = 148, KEYWORD_OR = 149, 
-    KEYWORD_ORDERED = 150, KEYWORD_OUT = 151, KEYWORD_PACKAGE = 152, KEYWORD_PORTION = 153, 
-    KEYWORD_PREDICATE = 154, KEYWORD_PRIVATE = 155, KEYWORD_PROTECTED = 156, 
-    KEYWORD_PUBLIC = 157, KEYWORD_READONLY = 158, KEYWORD_REDEFINES = 159, 
-    KEYWORD_REDEFINITION = 160, KEYWORD_REP = 161, KEYWORD_RETURN = 162, 
-    KEYWORD_SPECIALIZATION = 163, KEYWORD_SPECIALIZES = 164, KEYWORD_STEP = 165, 
-    KEYWORD_STRUCT = 166, KEYWORD_SUBCLASSIFIER = 167, KEYWORD_SUBSET = 168, 
-    KEYWORD_SUBSETS = 169, KEYWORD_SUBTYPE = 170, KEYWORD_SUCCESSION = 171, 
-    KEYWORD_THEN = 172, KEYWORD_TO = 173, KEYWORD_TRUE = 174, KEYWORD_TYPE = 175, 
-    KEYWORD_TYPED = 176, KEYWORD_TYPING = 177, KEYWORD_UNIONS = 178, KEYWORD_XOR = 179, 
-    KEYWORD_VAR = 180, KEYWORD_LOCALE = 181, KEYWORD_STANDARD = 182, KEYWORD_LIBRARY = 183, 
-    KEYWORD_CONSTANT = 184, SINGLE_LINE_NOTE = 185, MULTI_LINE_NOTE = 186, 
-    REGULAR_COMMENT = 187, SYMBOL_COMMENT_BLOCK_START = 188, SYMBOL_NOTE_BLOCK_START = 189, 
-    SYMBOL_COMMENT_BLOCK_END = 190, SYMBOL_STATEMENT_DELIMITER = 191, SYMBOL_STAR = 192, 
-    SYMBOL_NAMESPACE_SUBSET = 193, SYMBOL_TYPED_BY = 194, SYMBOL_SPECIALIZES = 195, 
-    SYMBOL_REFERENCES = 196, SYMBOL_REDEFINES = 197, SYMBOL_CONJUGATES = 198, 
-    SYMBOL_ROUND_BRACKET_OPEN = 199, SYMBOL_ROUND_BRACKET_CLOSE = 200, SYMBOL_CURLY_BRACKET_OPEN = 201, 
-    SYMBOL_CURLY_BRACKET_CLOSE = 202, SYMBOL_SQUARE_BRACKET_OPEN = 203, 
-    SYMBOL_SQUARE_BRACKET_CLOSE = 204, SYMBOL_COMMA = 205, SYMBOL_AT = 206, 
-    SYMBOL_HASHTAG = 207, SYMBOL_MOD = 208, SYMBOL_AND = 209, SYMBOL_UPPER = 210, 
-    SYMBOL_VERTICAL_LINE = 211, SYMBOL_DOUBLE_STAR = 212, SYMBOL_PLUS = 213, 
-    SYMBOL_MINUS = 214, SYMBOL_SLASH = 215, SYMBOL_ARROW = 216, SYMBOL_DOT = 217, 
-    SYMBOL_DDOT = 218, SYMBOL_SMALLER = 219, SYMBOL_SMALLER_EQUAL = 220, 
-    SYMBOL_ASSIGN = 221, SYMBOL_DEF_ASSIGN = 222, SYMBOL_EQUALS = 223, SYMBOL_IFF_EQUALS = 224, 
-    SYMBOL_NOT_EQUALS = 225, SYMBOL_IFF_NOT_EQUALS = 226, SYMBOL_GREATER = 227, 
-    SYMBOL_GREATER_EQUALS = 228, SYMBOL_QUESTION = 229, SYMBOL_DQUESTION = 230, 
-    SYMBOL_DOT_QUESTION = 231, NAME = 232, BASIC_NAME = 233, UNRESTRICTED_NAME = 234, 
-    DECIMAL_VALUE = 235, EXPONENTIAL_VALUE = 236, STRING_VALUE = 237, WS = 238, 
-    SYMBOL_CONJUNGATES = 239, KEYWORD_SUCCSESSION = 240, KEYWORD_INDIVIDIAL = 241, 
-    KEYWORD_TRANSISTION = 242
+    KEYWORD_ACCEPT = 1, KEYWORD_ACTION = 2, KEYWORD_ACTOR = 3, KEYWORD_AFTER = 4, 
+    KEYWORD_ALIAS = 5, KEYWORD_ALLOCATE = 6, KEYWORD_ALLOCATION = 7, KEYWORD_ANALYSIS = 8, 
+    KEYWORD_ASSIGN = 9, KEYWORD_ASSERT = 10, KEYWORD_ASSUME = 11, KEYWORD_AT = 12, 
+    KEYWORD_ATTRIBUTE = 13, KEYWORD_BIND = 14, KEYWORD_CALC = 15, KEYWORD_CASE = 16, 
+    KEYWORD_CONCERN = 17, KEYWORD_CONNECT = 18, KEYWORD_CONNECTION = 19, 
+    KEYWORD_CONSTRAINT = 20, KEYWORD_DECIDE = 21, KEYWORD_DEF = 22, KEYWORD_DEFINED = 23, 
+    KEYWORD_DERIVED = 24, KEYWORD_DO = 25, KEYWORD_ENTRY = 26, KEYWORD_ENUM = 27, 
+    KEYWORD_EVENT = 28, KEYWORD_EXHIBIT = 29, KEYWORD_EXIT = 30, KEYWORD_EXPOSE = 31, 
+    KEYWORD_FORK = 32, KEYWORD_FRAME = 33, KEYWORD_INCLUDE = 34, KEYWORD_INDIVIDUAL = 35, 
+    KEYWORD_INTERFACE = 36, KEYWORD_ITEM = 37, KEYWORD_JOIN = 38, KEYWORD_LOOP = 39, 
+    KEYWORD_MERGE = 40, KEYWORD_MESSAGE = 41, KEYWORD_NONUNIQUE = 42, KEYWORD_OBJECTIVE = 43, 
+    KEYWORD_OCCURRENCE = 44, KEYWORD_PARALLEL = 45, KEYWORD_PART = 46, KEYWORD_PERFORM = 47, 
+    KEYWORD_PORT = 48, KEYWORD_REF = 49, KEYWORD_REFERENCES = 50, KEYWORD_RENDER = 51, 
+    KEYWORD_RENDERING = 52, KEYWORD_REQUIRE = 53, KEYWORD_REQUIREMENT = 54, 
+    KEYWORD_SATISFY = 55, KEYWORD_SEND = 56, KEYWORD_SNAPSHOT = 57, KEYWORD_STAKEHOLDER = 58, 
+    KEYWORD_STATE = 59, KEYWORD_SUBJECT = 60, KEYWORD_TERMINATE = 61, KEYWORD_TIMESLICE = 62, 
+    KEYWORD_TRANSITION = 63, KEYWORD_UNTIL = 64, KEYWORD_USE = 65, KEYWORD_VARIANT = 66, 
+    KEYWORD_VARIATION = 67, KEYWORD_VERIFICATION = 68, KEYWORD_VERIFY = 69, 
+    KEYWORD_VIA = 70, KEYWORD_VIEW = 71, KEYWORD_VIEWPOINT = 72, KEYWORD_WHEN = 73, 
+    KEYWORD_WHILE = 74, KEYWORD_ABOUT = 75, KEYWORD_ABSTRACT = 76, KEYWORD_ALL = 77, 
+    KEYWORD_AND = 78, KEYWORD_AS = 79, KEYWORD_ASSOC = 80, KEYWORD_BEHAVIOR = 81, 
+    KEYWORD_BINDING = 82, KEYWORD_BOOL = 83, KEYWORD_BY = 84, KEYWORD_CHAINS = 85, 
+    KEYWORD_CLASS = 86, KEYWORD_CLASSIFIER = 87, KEYWORD_COMMENT = 88, KEYWORD_COMPOSITE = 89, 
+    KEYWORD_CONJUGATE = 90, KEYWORD_CONJUGATES = 91, KEYWORD_CONJUGATION = 92, 
+    KEYWORD_CONNECTOR = 93, KEYWORD_DATATYPE = 94, KEYWORD_DEFAULT = 95, 
+    KEYWORD_DEPENDENCY = 96, KEYWORD_DIFFERENCES = 97, KEYWORD_DISJOINING = 98, 
+    KEYWORD_DISJOINT = 99, KEYWORD_DOC = 100, KEYWORD_ELSE = 101, KEYWORD_END = 102, 
+    KEYWORD_EXPR = 103, KEYWORD_FALSE = 104, KEYWORD_FEATURE = 105, KEYWORD_FEATURED = 106, 
+    KEYWORD_FEATURING = 107, KEYWORD_FILTER = 108, KEYWORD_FIRST = 109, 
+    KEYWORD_FLOW = 110, KEYWORD_FOR = 111, KEYWORD_FROM = 112, KEYWORD_FUNCTION = 113, 
+    KEYWORD_HASTYPE = 114, KEYWORD_IF = 115, KEYWORD_INTERSECTS = 116, KEYWORD_IMPLIES = 117, 
+    KEYWORD_IMPORT = 118, KEYWORD_IN = 119, KEYWORD_INOUT = 120, KEYWORD_INTERACTION = 121, 
+    KEYWORD_INV = 122, KEYWORD_INVERSE = 123, KEYWORD_INVERTING = 124, KEYWORD_ISTYPE = 125, 
+    KEYWORD_LANGUAGE = 126, KEYWORD_MEMBER = 127, KEYWORD_METACLASS = 128, 
+    KEYWORD_METADATA = 129, KEYWORD_MULTIPLICITY = 130, KEYWORD_NAMESPACE = 131, 
+    KEYWORD_NOT = 132, KEYWORD_NULL = 133, KEYWORD_OF = 134, KEYWORD_OR = 135, 
+    KEYWORD_ORDERED = 136, KEYWORD_OUT = 137, KEYWORD_PACKAGE = 138, KEYWORD_PORTION = 139, 
+    KEYWORD_PREDICATE = 140, KEYWORD_PRIVATE = 141, KEYWORD_PROTECTED = 142, 
+    KEYWORD_PUBLIC = 143, KEYWORD_READONLY = 144, KEYWORD_REDEFINES = 145, 
+    KEYWORD_REDEFINITION = 146, KEYWORD_REP = 147, KEYWORD_RETURN = 148, 
+    KEYWORD_SPECIALIZATION = 149, KEYWORD_SPECIALIZES = 150, KEYWORD_STEP = 151, 
+    KEYWORD_STRUCT = 152, KEYWORD_SUBCLASSIFIER = 153, KEYWORD_SUBSET = 154, 
+    KEYWORD_SUBSETS = 155, KEYWORD_SUBTYPE = 156, KEYWORD_SUCCESSION = 157, 
+    KEYWORD_THEN = 158, KEYWORD_TO = 159, KEYWORD_TRUE = 160, KEYWORD_TYPE = 161, 
+    KEYWORD_TYPED = 162, KEYWORD_TYPING = 163, KEYWORD_UNIONS = 164, KEYWORD_XOR = 165, 
+    KEYWORD_VAR = 166, KEYWORD_LOCALE = 167, KEYWORD_STANDARD = 168, KEYWORD_LIBRARY = 169, 
+    KEYWORD_CONSTANT = 170, KEYWORD_CROSSES = 171, KEYWORD_META = 172, KEYWORD_NEW = 173, 
+    SINGLE_LINE_NOTE = 174, MULTI_LINE_NOTE = 175, REGULAR_COMMENT = 176, 
+    SYMBOL_COMMENT_BLOCK_START = 177, SYMBOL_NOTE_BLOCK_START = 178, SYMBOL_COMMENT_BLOCK_END = 179, 
+    SYMBOL_STATEMENT_DELIMITER = 180, SYMBOL_STAR = 181, SYMBOL_NAMESPACE_SUBSET = 182, 
+    SYMBOL_TYPED_BY = 183, SYMBOL_SPECIALIZES = 184, SYMBOL_REFERENCES = 185, 
+    SYMBOL_REDEFINES = 186, SYMBOL_CONJUGATES = 187, SYMBOL_CROSSES = 188, 
+    SYMBOL_ROUND_BRACKET_OPEN = 189, SYMBOL_ROUND_BRACKET_CLOSE = 190, SYMBOL_CURLY_BRACKET_OPEN = 191, 
+    SYMBOL_CURLY_BRACKET_CLOSE = 192, SYMBOL_SQUARE_BRACKET_OPEN = 193, 
+    SYMBOL_SQUARE_BRACKET_CLOSE = 194, SYMBOL_COMMA = 195, SYMBOL_AT = 196, 
+    SYMBOL_HASHTAG = 197, SYMBOL_MOD = 198, SYMBOL_AND = 199, SYMBOL_UPPER = 200, 
+    SYMBOL_VERTICAL_LINE = 201, SYMBOL_DOUBLE_STAR = 202, SYMBOL_PLUS = 203, 
+    SYMBOL_MINUS = 204, SYMBOL_SLASH = 205, SYMBOL_ARROW = 206, SYMBOL_DOT = 207, 
+    SYMBOL_DDOT = 208, SYMBOL_SMALLER = 209, SYMBOL_SMALLER_EQUAL = 210, 
+    SYMBOL_ASSIGN = 211, SYMBOL_DEF_ASSIGN = 212, SYMBOL_EQUALS = 213, SYMBOL_IFF_EQUALS = 214, 
+    SYMBOL_NOT_EQUALS = 215, SYMBOL_IFF_NOT_EQUALS = 216, SYMBOL_GREATER = 217, 
+    SYMBOL_GREATER_EQUALS = 218, SYMBOL_QUESTION = 219, SYMBOL_DQUESTION = 220, 
+    SYMBOL_DOT_QUESTION = 221, SYMBOL_ATAT = 222, NAME = 223, BASIC_NAME = 224, 
+    UNRESTRICTED_NAME = 225, DECIMAL_VALUE = 226, EXPONENTIAL_VALUE = 227, 
+    STRING_VALUE = 228, WS = 229
   };
 
   enum {
-    RuleStart = 0, RuleIdentification = 1, RuleSysml_name = 2, RuleStart_element = 3, 
-    RuleStartRule = 4, RuleRelationship_body = 5, RuleDependency = 6, RuleDependency_declaration = 7, 
-    RuleAnnotation = 8, RuleOwned_annotation = 9, RuleAnnotating_member = 10, 
-    RuleAnnotating_element = 11, RuleComment = 12, RuleDocumentation = 13, 
-    RuleTextual_representation = 14, RuleRoot_namespace = 15, RulePackage = 16, 
-    RulePackage_body = 17, RulePackage_body_element = 18, RulePackage_member = 19, 
-    RuleAlias_member = 20, RuleDefinition_element = 21, RuleUsage_element = 22, 
-    RuleBasic_definition_prefix = 23, RuleDefinition_extension_keyword = 24, 
-    RuleDefinition_prefix = 25, RuleDefinition = 26, RuleDefinition_declaration = 27, 
-    RuleDefinition_body = 28, RuleDefinition_body_item = 29, RuleDefinition_member = 30, 
-    RuleVariant_usage_member = 31, RuleNon_occurrence_usage_member = 32, 
-    RuleOccurrence_usage_member = 33, RuleStructure_usage_member = 34, RuleBehavior_usage_member = 35, 
-    RuleFeature_direction = 36, RuleRef_prefix = 37, RuleBasic_usage_prefix = 38, 
-    RuleEnd_usage_prefix = 39, RuleOwned_cross_feature_member = 40, RuleOwned_cross_feature = 41, 
-    RuleUsage_extention_keyword = 42, RuleUnextended_usage_prefix = 43, 
-    RuleUsage_prefix = 44, RuleUsage = 45, RuleUsage_declaration = 46, RuleUsage_completion = 47, 
-    RuleUsage_body = 48, RuleDefault_reference_usage = 49, RuleReference_usage = 50, 
-    RuleVariant_reference = 51, RuleRedefinition_usage_element = 52, RuleRedefinition_usage = 53, 
-    RuleNon_occurrence_usage_element = 54, RuleOccurrence_usage_element = 55, 
-    RuleStructure_usage_element = 56, RuleBehavior_usage_element = 57, RuleVariant_usage_element = 58, 
-    RuleSubsclassification_part = 59, RuleCrosses = 60, RuleOwned_cross_subsetting = 61, 
-    RuleMultiplicity_part = 62, RuleOwned_multiplicity = 63, RuleMultiplicity_range = 64, 
-    RuleAttribute_definition = 65, RuleAttribute_usage = 66, RuleEnumeration_definition = 67, 
-    RuleEnumeration_body = 68, RuleEnumeration_usage_member = 69, RuleEnumerated_value = 70, 
-    RuleEnumeration_usage = 71, RuleOccurrence_definition_prefix = 72, RuleOccurrence_definition = 73, 
-    RuleIndividual_definition = 74, RuleOccurrence_usage_prefix = 75, RuleOccurrence_usage = 76, 
-    RuleIndividual_usage = 77, RulePortion_usage = 78, RulePortion_kind = 79, 
-    RuleEvent_occurrence_usage = 80, RuleSource_succession_member = 81, 
-    RuleSource_succession = 82, RuleSource_end_member = 83, RuleSource_end = 84, 
-    RuleItem_definition = 85, RuleItem_usage = 86, RulePart_definition = 87, 
-    RulePart_usage = 88, RulePort_definition = 89, RulePort_usage = 90, 
-    RuleConjungated_port_typing = 91, RuleConnection_definition = 92, RuleConnection_usage = 93, 
-    RuleConnector_part = 94, RuleBinary_connector_part = 95, RuleNary_connector_part = 96, 
-    RuleConnector_end_member = 97, RuleConnecotr_end = 98, RuleOwned_cross_multiplicity_member = 99, 
-    RuleOwned_cross_multiplicity = 100, RuleBinding_connector_as_usage = 101, 
-    RuleBinding_end_usage_member = 102, RuleSuccession_as_usage = 103, RuleInterface_definition = 104, 
-    RuleInterface_body = 105, RuleInterface_body_item = 106, RuleInterface_non_occurrence_usage_member = 107, 
-    RuleInterface_non_occurrence_usage_element = 108, RuleInterface_occurrence_usage_member = 109, 
-    RuleInterface_occurrence_usage_element = 110, RuleDefault_interface_end = 111, 
-    RuleInterface_usage = 112, RuleInterface_usage_declaration = 113, RuleInterface_part = 114, 
-    RuleBinary_interface_part = 115, RuleNary_interface_part = 116, RuleInterface_end_member = 117, 
-    RuleInterface_end = 118, RuleAllocation_definition = 119, RuleAllocation_usage = 120, 
-    RuleAllocation_usage_declaration = 121, RuleFlow_definition = 122, RuleMessage = 123, 
-    RuleMessage_declaration = 124, RuleMessage_event_member = 125, RuleMessage_event = 126, 
-    RuleFlow_usage = 127, RuleSuccession_flow_usage = 128, RuleFlow_declaration = 129, 
-    RuleFlow_payload_feature_member = 130, RuleFlow_payload_feature = 131, 
-    RulePayload_feature = 132, RulePayload_feature_specialization_part = 133, 
-    RuleFlow_end_member = 134, RuleFlow_end = 135, RuleFlow_end_subsetting = 136, 
-    RuleFeature_chain_prefix = 137, RuleFlow_feature_member = 138, RuleFlow_feature = 139, 
-    RuleFlow_feature_redefinition = 140, RuleAction_definition = 141, RuleAction_body = 142, 
-    RuleAction_body_item = 143, RuleNon_behavior_body_item = 144, RuleAction_behavior_member = 145, 
-    RuleInitial_node_member = 146, RuleAction_node_member = 147, RuleAction_target_succession_member = 148, 
-    RuleGuarded_succession_member = 149, RuleAction_usage = 150, RuleAction_usage_declaration = 151, 
-    RulePerform_action_usage = 152, RulePerform_action_usage_declaration = 153, 
-    RuleAction_node = 154, RuleAction_node_usage_declaration = 155, RuleAction_node_prefix = 156, 
-    RuleControl_node = 157, RuleControl_node_prefix = 158, RuleMerge_node = 159, 
-    RuleDecision_node = 160, RuleJoin_node = 161, RuleFork_node = 162, RuleAccept_node = 163, 
-    RuleAccept_node_declaration = 164, RuleAccept_parameter_part = 165, 
-    RulePayload_parameter_member = 166, RulePayload_parameter = 167, RuleTrigger_value_part = 168, 
-    RuleTrigger_expression = 169, RuleSend_node = 170, RuleSend_node_declaration = 171, 
-    RuleSender_receiver_part = 172, RuleNode_parameter_member = 173, RuleNode_parameter = 174, 
-    RuleFeature_binding = 175, RuleAssignment_node = 176, RuleAssignment_node_declaration = 177, 
-    RuleAssignment_target_member = 178, RuleAssignment_target_parameter = 179, 
-    RuleAssignment_target_binding = 180, RuleFeature_chain_member = 181, 
-    RuleOwned_feature_chain_member = 182, RuleTerminate_node = 183, RuleIf_node = 184, 
-    RuleExpression_parameter_member = 185, RuleAction_body_parameter_member = 186, 
+    RuleStart = 0, RuleIdentification = 1, RuleSysml_name = 2, RuleQualified_name = 3, 
+    RuleStart_element = 4, RuleStartRule = 5, RuleRelationship_body = 6, 
+    RuleDependency = 7, RuleDependency_declaration = 8, RuleAnnotation = 9, 
+    RuleOwned_annotation = 10, RuleAnnotating_member = 11, RuleAnnotating_element = 12, 
+    RuleComment = 13, RuleDocumentation = 14, RuleTextual_representation = 15, 
+    RuleRoot_namespace = 16, RulePackage = 17, RulePackage_body = 18, RulePackage_body_element = 19, 
+    RulePackage_member = 20, RuleAlias_member = 21, RuleDefinition_element = 22, 
+    RuleUsage_element = 23, RuleBasic_definition_prefix = 24, RuleDefinition_extension_keyword = 25, 
+    RuleDefinition_prefix = 26, RuleDefinition = 27, RuleDefinition_declaration = 28, 
+    RuleDefinition_body = 29, RuleDefinition_body_item = 30, RuleDefinition_member = 31, 
+    RuleVariant_usage_member = 32, RuleNon_occurrence_usage_member = 33, 
+    RuleOccurrence_usage_member = 34, RuleStructure_usage_member = 35, RuleBehavior_usage_member = 36, 
+    RuleFeature_direction = 37, RuleRef_prefix = 38, RuleBasic_usage_prefix = 39, 
+    RuleEnd_usage_prefix = 40, RuleOwned_cross_feature_member = 41, RuleOwned_cross_feature = 42, 
+    RuleUsage_extention_keyword = 43, RuleUnextended_usage_prefix = 44, 
+    RuleUsage_prefix = 45, RuleUsage = 46, RuleUsage_declaration = 47, RuleUsage_completion = 48, 
+    RuleUsage_body = 49, RuleDefault_reference_usage = 50, RuleReference_usage = 51, 
+    RuleVariant_reference = 52, RuleRedefinition_usage_element = 53, RuleRedefinition_usage = 54, 
+    RuleNon_occurrence_usage_element = 55, RuleOccurrence_usage_element = 56, 
+    RuleStructure_usage_element = 57, RuleBehavior_usage_element = 58, RuleVariant_usage_element = 59, 
+    RuleSubsclassification_part = 60, RuleMultiplicity_part = 61, RuleOwned_multiplicity = 62, 
+    RuleMultiplicity_range = 63, RuleAttribute_definition = 64, RuleAttribute_usage = 65, 
+    RuleEnumeration_definition = 66, RuleEnumeration_body = 67, RuleEnumeration_usage_member = 68, 
+    RuleEnumerated_value = 69, RuleEnumeration_usage = 70, RuleOccurrence_definition_prefix = 71, 
+    RuleOccurrence_definition = 72, RuleIndividual_definition = 73, RuleOccurrence_usage_prefix = 74, 
+    RuleOccurrence_usage = 75, RuleIndividual_usage = 76, RulePortion_usage = 77, 
+    RulePortion_kind = 78, RuleEvent_occurrence_usage = 79, RuleSource_succession_member = 80, 
+    RuleSource_succession = 81, RuleSource_end_member = 82, RuleSource_end = 83, 
+    RuleItem_definition = 84, RuleItem_usage = 85, RulePart_definition = 86, 
+    RulePart_usage = 87, RulePort_definition = 88, RulePort_usage = 89, 
+    RuleConjungated_port_typing = 90, RuleConnection_definition = 91, RuleConnection_usage = 92, 
+    RuleConnector_part = 93, RuleBinary_connector_part = 94, RuleNary_connector_part = 95, 
+    RuleConnector_end_member = 96, RuleConnecotr_end = 97, RuleOwned_cross_multiplicity_member = 98, 
+    RuleOwned_cross_multiplicity = 99, RuleBinding_connector_as_usage = 100, 
+    RuleBinding_end_usage_member = 101, RuleSuccession_as_usage = 102, RuleInterface_definition = 103, 
+    RuleInterface_body = 104, RuleInterface_body_item = 105, RuleInterface_non_occurrence_usage_member = 106, 
+    RuleInterface_non_occurrence_usage_element = 107, RuleInterface_occurrence_usage_member = 108, 
+    RuleInterface_occurrence_usage_element = 109, RuleDefault_interface_end = 110, 
+    RuleInterface_usage = 111, RuleInterface_usage_declaration = 112, RuleInterface_part = 113, 
+    RuleBinary_interface_part = 114, RuleNary_interface_part = 115, RuleInterface_end_member = 116, 
+    RuleInterface_end = 117, RuleAllocation_definition = 118, RuleAllocation_usage = 119, 
+    RuleAllocation_usage_declaration = 120, RuleFlow_definition = 121, RuleMessage = 122, 
+    RuleMessage_declaration = 123, RuleMessage_event_member = 124, RuleMessage_event = 125, 
+    RuleFlow_usage = 126, RuleSuccession_flow_usage = 127, RuleFlow_declaration = 128, 
+    RuleFlow_payload_feature_member = 129, RuleFlow_payload_feature = 130, 
+    RulePayload_feature = 131, RulePayload_feature_specialization_part = 132, 
+    RuleFlow_end_member = 133, RuleFlow_end = 134, RuleFlow_end_subsetting = 135, 
+    RuleFeature_chain_prefix = 136, RuleFlow_feature_member = 137, RuleFlow_feature = 138, 
+    RuleFlow_feature_redefinition = 139, RuleAction_definition = 140, RuleAction_body = 141, 
+    RuleAction_body_item = 142, RuleNon_behavior_body_item = 143, RuleAction_behavior_member = 144, 
+    RuleInitial_node_member = 145, RuleAction_node_member = 146, RuleAction_target_succession_member = 147, 
+    RuleGuarded_succession_member = 148, RuleAction_usage = 149, RuleAction_usage_declaration = 150, 
+    RulePerform_action_usage = 151, RulePerform_action_usage_declaration = 152, 
+    RuleAction_node = 153, RuleAction_node_usage_declaration = 154, RuleAction_node_prefix = 155, 
+    RuleControl_node = 156, RuleControl_node_prefix = 157, RuleMerge_node = 158, 
+    RuleDecision_node = 159, RuleJoin_node = 160, RuleFork_node = 161, RuleAccept_node = 162, 
+    RuleAccept_node_declaration = 163, RuleAccept_parameter_part = 164, 
+    RulePayload_parameter_member = 165, RulePayload_parameter = 166, RuleTrigger_value_part = 167, 
+    RuleTrigger_expression = 168, RuleSend_node = 169, RuleSend_node_declaration = 170, 
+    RuleSender_receiver_part = 171, RuleNode_parameter_member = 172, RuleNode_parameter = 173, 
+    RuleFeature_binding = 174, RuleAssignment_node = 175, RuleAssignment_node_declaration = 176, 
+    RuleAssignment_target_member = 177, RuleAssignment_target_parameter = 178, 
+    RuleAssignment_target_binding = 179, RuleFeature_chain_member = 180, 
+    RuleOwned_feature_chain_member = 181, RuleExpression_body = 182, RuleTerminate_node = 183, 
+    RuleIf_node = 184, RuleExpression_parameter_member = 185, RuleAction_body_parameter_member = 186, 
     RuleAction_body_parameter = 187, RuleIf_node_parameter_member = 188, 
     RuleWhile_loop_node = 189, RuleFor_loop_node = 190, RuleFor_variable_declaration_member = 191, 
     RuleFor_variable_declaration = 192, RuleAction_target_succession = 193, 
@@ -205,84 +200,70 @@ public:
     RuleOwned_related_element = 307, RuleNamespace = 308, RuleNamespace_declaration = 309, 
     RuleNamespace_body = 310, RuleNamespace_body_elements = 311, RuleNamespace_body_element = 312, 
     RuleMember_prefix = 313, RuleVisibility_indicator = 314, RuleNamespace_member = 315, 
-    RuleNon_feature_member = 316, RuleNamespace_feature_member = 317, RuleQualified_name = 318, 
-    RuleNamespace_import = 319, RuleImport_declaration = 320, RuleMembership_import = 321, 
-    RuleFilter_package = 322, RuleFilter_package_member = 323, RuleElement = 324, 
-    RuleNon_feature_element = 325, RuleFeature_element = 326, RuleAdditional_options = 327, 
-    RuleType = 328, RuleType_prefix = 329, RuleType_declaration = 330, RuleSpecialization_part = 331, 
-    RuleConjugation_part = 332, RuleType_relationship_part = 333, RuleDisjoining_part = 334, 
-    RuleUnioning_part = 335, RuleIntersecting_part = 336, RuleDifferencing_part = 337, 
-    RuleType_body = 338, RuleType_body_elements = 339, RuleType_body_element = 340, 
-    RuleSpecialization = 341, RuleOwned_specialization = 342, RuleSpecific_type = 343, 
-    RuleGeneral_type = 344, RuleConjunction = 345, RuleOwned_conjugation = 346, 
-    RuleDisjoining = 347, RuleOwned_disjoining = 348, RuleUnioning = 349, 
-    RuleIntersecting = 350, RuleDifferencing = 351, RuleFeature_member = 352, 
-    RuleType_feature_member = 353, RuleOwned_feature_member = 354, RuleClassifier = 355, 
-    RuleClassifier_declaration = 356, RuleSuperclassing_part = 357, RuleSubclassification = 358, 
-    RuleOwned_subclassification = 359, RuleFeature = 360, RuleFeature_prefix = 361, 
-    RuleFeature_declaration = 362, RuleFeature_identification = 363, RuleFeature_relationship_part = 364, 
-    RuleChaining_part = 365, RuleInverting_part = 366, RuleType_featuring_part = 367, 
-    RuleFeature_specialization_part = 368, RuleFeature_specialization = 369, 
-    RuleTypings = 370, RuleTyped_by = 371, RuleSubsettings = 372, RuleSubsets = 373, 
-    RuleReferences = 374, RuleRedefinitions = 375, RuleRedefines = 376, 
-    RuleFeature_typing = 377, RuleOwned_feature_typing = 378, RuleSubsetting = 379, 
-    RuleOwned_subsetting = 380, RuleOwned_reference_subsetting = 381, RuleRedefinition = 382, 
-    RuleOwned_redefinition = 383, RuleOwned_feature_chain = 384, RuleFeature_chain = 385, 
-    RuleOwned_feature_chaining = 386, RuleFeature_inverting = 387, RuleOwned_feature_inverting = 388, 
-    RuleType_featuring = 389, RuleOwned_type_featuring = 390, RuleData_type = 391, 
-    RuleClass = 392, RuleStructure = 393, RuleAssociation = 394, RuleAssociation_structure = 395, 
-    RuleConnector = 396, RuleConnector_declaration = 397, RuleBinary_connector_declaration = 398, 
-    RuleNary_connector_declaration = 399, RuleConnector_end = 400, RuleBinding_connector = 401, 
-    RuleBinding_connector_declaration = 402, RuleSuccession = 403, RuleSuccession_declaration = 404, 
-    RuleBehavior = 405, RuleStep = 406, RuleFunction = 407, RuleFunction_body = 408, 
-    RuleFunction_body_part = 409, RuleReturn_feature_member = 410, RuleExpression = 411, 
-    RulePredicate = 412, RuleBoolean_expression = 413, RuleInvariant = 414, 
-    RuleOwned_expression_reference_member = 415, RuleOwned_expression_reference = 416, 
-    RuleOwned_expression_member = 417, RuleOwned_expressions = 418, RuleOwned_expression = 419, 
-    RuleEased_owned_expression = 420, RuleConditional_expression = 421, 
-    RuleConditional_binary_operator_expression = 422, RuleConditional_binary_operator = 423, 
-    RuleBinary_operator_expression = 424, RuleBinary_operator = 425, RuleUnary_operator_expression = 426, 
-    RuleUnary_operator = 427, RuleClassification_expression = 428, RuleClassification = 429, 
-    RuleClassification_test_operator = 430, RuleCast_operator = 431, RuleMetaclassification_expression = 432, 
-    RuleArgument_member = 433, RuleArgument = 434, RuleArgument_value = 435, 
-    RuleArgument_expression_member = 436, RuleArgument_expression = 437, 
-    RuleArgument_expression_value = 438, RuleMetadata_argument_member = 439, 
-    RuleMetadata_argument = 440, RuleMetadata_value = 441, RuleMetadata_reference = 442, 
-    RuleMetadataclassification_test_operator = 443, RuleMeta_cast_operator = 444, 
-    RuleExtend_expression = 445, RuleType_reference_member = 446, RuleType_result_member = 447, 
-    RuleType_reference = 448, RuleReference_typing = 449, RulePrimary_expressions = 450, 
-    RulePrimary_expression = 451, RulePrimary_argument_value = 452, RulePrimary_argument = 453, 
-    RulePrimary_argument_member = 454, RuleNon_feature_chain_primary_expression = 455, 
-    RuleNon_feature_chain_primary_argument_value = 456, RuleNon_feature_chain_primary_argument = 457, 
-    RuleNon_feature_chain_primary_argument_member = 458, RuleBracket_expression = 459, 
-    RuleIndex_expression = 460, RuleSequence_expression = 461, RuleSequence_expression_list = 462, 
-    RuleSequence_operator_expression = 463, RuleSequence_expression_list_member = 464, 
-    RuleFeature_chain_expression = 465, RuleCollect_expression = 466, RuleSelect_expression = 467, 
-    RuleFunction_operation_expression = 468, RuleBody_argument_member = 469, 
-    RuleBody_argument = 470, RuleBody_argument_value = 471, RuleBody_expression_member = 472, 
-    RuleFunction_reference_argument_member = 473, RuleFunction_reference_argument = 474, 
-    RuleFunction_reference_arugment_value = 475, RuleFunction_reference_expression = 476, 
-    RuleFunction_reference_member = 477, RuleFunction_reference = 478, RuleBase_expression = 479, 
-    RuleNull_expression = 480, RuleFeature_reference_expression = 481, RuleFeature_reference_member = 482, 
-    RuleFeature_reference = 483, RuleMetadata_access_expression = 484, RuleInvocation_expression = 485, 
-    RuleInternal_invocation_expression = 486, RuleArgument_list = 487, RulePositional_argument_list = 488, 
-    RuleNamed_argument_list = 489, RuleNamed_argument_member = 490, RuleNamed_argument = 491, 
-    RuleParameter_redefinition = 492, RuleBody_expression = 493, RuleExpression_body_member = 494, 
-    RuleExpression_body = 495, RuleLiteral_expression = 496, RuleLiteral_boolean = 497, 
-    RuleBoolean_value = 498, RuleLiteral_string = 499, RuleLiteral_integer = 500, 
-    RuleLiteral_real = 501, RuleReal_value = 502, RuleLiteral_infinity = 503, 
-    RuleInteraction = 504, RuleItem_flow = 505, RuleSuccession_item_flow = 506, 
-    RuleItem_flow_declaration = 507, RuleItem_feature_member = 508, RuleItem_feature = 509, 
-    RuleItem_feature_specialization_part = 510, RuleItem_flow_end_member = 511, 
-    RuleItem_flow_end = 512, RuleItem_flow_feature_member = 513, RuleItem_flow_feature = 514, 
-    RuleItem_flow_redefinition = 515, RuleValue_part = 516, RuleFeature_value = 517, 
-    RuleFeature_assignment = 518, RuleMultiplicity = 519, RuleMultiplicity_subset = 520, 
-    RuleOwned_multiplicity_range = 521, RuleMultiplicity_bounds = 522, RuleMultiplicity_expression_member = 523, 
-    RuleInternal_multiplicity_expression_member = 524, RuleMetaclass = 525, 
-    RulePrefix_metadata_feature = 526, RuleMetadata_feature = 527, RuleMetadata_feature_declaration = 528, 
-    RuleMetadata_body_element = 529, RuleMetadata_body_feature_member = 530, 
-    RuleMetadata_body_feature = 531, RuleLibrary_package = 532, RulePackage_declaration = 533, 
-    RuleElement_filter_member = 534, RuleMeta_assignment = 535
+    RuleNon_feature_member = 316, RuleNamespace_feature_member = 317, RuleNamespace_import = 318, 
+    RuleImport_declaration = 319, RuleMembership_import = 320, RuleFilter_package = 321, 
+    RuleFilter_package_member = 322, RuleElement = 323, RuleNon_feature_element = 324, 
+    RuleFeature_element = 325, RuleAdditional_options = 326, RuleType = 327, 
+    RuleType_prefix = 328, RuleType_declaration = 329, RuleSpecialization_part = 330, 
+    RuleConjugation_part = 331, RuleType_relationship_part = 332, RuleDisjoining_part = 333, 
+    RuleUnioning_part = 334, RuleIntersecting_part = 335, RuleDifferencing_part = 336, 
+    RuleType_body = 337, RuleType_body_elements = 338, RuleType_body_element = 339, 
+    RuleSpecialization = 340, RuleOwned_specialization = 341, RuleSpecific_type = 342, 
+    RuleGeneral_type = 343, RuleConjunction = 344, RuleOwned_conjugation = 345, 
+    RuleDisjoining = 346, RuleOwned_disjoining = 347, RuleUnioning = 348, 
+    RuleIntersecting = 349, RuleDifferencing = 350, RuleFeature_member = 351, 
+    RuleType_feature_member = 352, RuleOwned_feature_member = 353, RuleClassifier = 354, 
+    RuleClassifier_declaration = 355, RuleSuperclassing_part = 356, RuleSubclassification = 357, 
+    RuleOwned_subclassification = 358, RuleFeature = 359, RuleAnonymous_feature = 360, 
+    RuleFeature_prefix = 361, RuleEnd_feature_prefix = 362, RuleBasic_feature_prefix = 363, 
+    RuleFeature_declaration = 364, RuleFeature_identification = 365, RuleFeature_relationship_part = 366, 
+    RuleChaining_part = 367, RuleInverting_part = 368, RuleType_featuring_part = 369, 
+    RuleFeature_specialization_part = 370, RuleMultiplicity_modifier = 371, 
+    RuleFeature_specialization = 372, RuleTypings = 373, RuleTyped_by = 374, 
+    RuleSubsettings = 375, RuleSubsets = 376, RuleReferences = 377, RuleCrosses = 378, 
+    RuleRedefinitions = 379, RuleRedefines = 380, RuleFeature_typing = 381, 
+    RuleOwned_feature_typing = 382, RuleSubsetting = 383, RuleOwned_subsetting = 384, 
+    RuleOwned_reference_subsetting = 385, RuleOwned_cross_subsetting = 386, 
+    RuleRedefinition = 387, RuleOwned_redefinition = 388, RuleOwned_feature_chain = 389, 
+    RuleFeature_chain = 390, RuleOwned_feature_chaining = 391, RuleFeature_inverting = 392, 
+    RuleOwned_feature_inverting = 393, RuleType_featuring = 394, RuleOwned_type_featuring = 395, 
+    RuleData_type = 396, RuleClass = 397, RuleStructure = 398, RuleAssociation = 399, 
+    RuleAssociation_structure = 400, RuleConnector = 401, RuleConnector_declaration = 402, 
+    RuleBinary_connector_declaration = 403, RuleNary_connector_declaration = 404, 
+    RuleConnector_end = 405, RuleBinding_connector = 406, RuleBinding_connector_declaration = 407, 
+    RuleSuccession = 408, RuleSuccession_declaration = 409, RuleBehavior = 410, 
+    RuleStep = 411, RuleFunction = 412, RuleFunction_body = 413, RuleFunction_body_part = 414, 
+    RuleReturn_feature_member = 415, RuleExpression = 416, RulePredicate = 417, 
+    RuleBoolean_expression = 418, RuleInvariant = 419, RuleOwned_expression_reference_member = 420, 
+    RuleOwned_expression_reference = 421, RuleOwned_expression_member = 422, 
+    RuleOwned_expression = 423, RuleFunction_operation_arguments = 424, 
+    RuleType_reference_member = 425, RuleType_result_member = 426, RuleType_reference = 427, 
+    RuleReference_typing = 428, RuleSequence_expression = 429, RuleSequence_expression_list = 430, 
+    RuleSequence_operator_expression = 431, RuleSequence_expression_list_member = 432, 
+    RuleFunction_reference = 433, RuleBase_expression = 434, RuleNull_expression = 435, 
+    RuleFeature_reference_expression = 436, RuleFeature_reference_member = 437, 
+    RuleFeature_reference = 438, RuleMetadata_access_expression = 439, RuleInvocation_expression = 440, 
+    RuleInternal_invocation_expression = 441, RuleConstructor_expression = 442, 
+    RuleArgument_list = 443, RulePositional_argument_list = 444, RuleNamed_argument_list = 445, 
+    RuleNamed_argument_member = 446, RuleNamed_argument = 447, RuleParameter_redefinition = 448, 
+    RuleBody_expression = 449, RuleExpression_body_member = 450, RuleLiteral_expression = 451, 
+    RuleLiteral_boolean = 452, RuleBoolean_value = 453, RuleLiteral_string = 454, 
+    RuleLiteral_integer = 455, RuleLiteral_real = 456, RuleReal_value = 457, 
+    RuleLiteral_infinity = 458, RuleInteraction = 459, RuleItem_flow = 460, 
+    RuleSuccession_item_flow = 461, RuleItem_flow_declaration = 462, RuleItem_feature_member = 463, 
+    RuleItem_feature = 464, RuleItem_feature_specialization_part = 465, 
+    RuleItem_flow_end_member = 466, RuleItem_flow_end = 467, RuleItem_flow_feature_member = 468, 
+    RuleItem_flow_feature = 469, RuleItem_flow_redefinition = 470, RuleValue_part = 471, 
+    RuleFeature_value = 472, RuleFeature_assignment = 473, RuleMultiplicity = 474, 
+    RuleMultiplicity_subset = 475, RuleOwned_multiplicity_range = 476, RuleMultiplicity_bounds = 477, 
+    RuleMultiplicity_expression_member = 478, RuleInternal_multiplicity_expression_member = 479, 
+    RuleMetaclass = 480, RulePrefix_metadata_feature = 481, RuleMetadata_feature = 482, 
+    RuleMetadata_feature_declaration = 483, RuleMetadata_body_element = 484, 
+    RuleMetadata_body_feature_member = 485, RuleMetadata_body_feature = 486, 
+    RuleLibrary_package = 487, RulePackage_declaration = 488, RuleElement_filter_member = 489, 
+    RuleMeta_assignment = 490, RuleTyped_by_operator = 491, RuleSpecializes_operator = 492, 
+    RuleSubsets_operator = 493, RuleReferences_operator = 494, RuleRedefines_operator = 495, 
+    RuleConjugates_operator = 496, RuleCrosses_operator = 497
   };
 
   explicit SysMLv2Parser(antlr4::TokenStream *input);
@@ -305,6 +286,7 @@ public:
   class StartContext;
   class IdentificationContext;
   class Sysml_nameContext;
+  class Qualified_nameContext;
   class Start_elementContext;
   class StartRuleContext;
   class Relationship_bodyContext;
@@ -362,8 +344,6 @@ public:
   class Behavior_usage_elementContext;
   class Variant_usage_elementContext;
   class Subsclassification_partContext;
-  class CrossesContext;
-  class Owned_cross_subsettingContext;
   class Multiplicity_partContext;
   class Owned_multiplicityContext;
   class Multiplicity_rangeContext;
@@ -485,6 +465,7 @@ public:
   class Assignment_target_bindingContext;
   class Feature_chain_memberContext;
   class Owned_feature_chain_memberContext;
+  class Expression_bodyContext;
   class Terminate_nodeContext;
   class If_nodeContext;
   class Expression_parameter_memberContext;
@@ -620,7 +601,6 @@ public:
   class Namespace_memberContext;
   class Non_feature_memberContext;
   class Namespace_feature_memberContext;
-  class Qualified_nameContext;
   class Namespace_importContext;
   class Import_declarationContext;
   class Membership_importContext;
@@ -663,7 +643,10 @@ public:
   class SubclassificationContext;
   class Owned_subclassificationContext;
   class FeatureContext;
+  class Anonymous_featureContext;
   class Feature_prefixContext;
+  class End_feature_prefixContext;
+  class Basic_feature_prefixContext;
   class Feature_declarationContext;
   class Feature_identificationContext;
   class Feature_relationship_partContext;
@@ -671,12 +654,14 @@ public:
   class Inverting_partContext;
   class Type_featuring_partContext;
   class Feature_specialization_partContext;
+  class Multiplicity_modifierContext;
   class Feature_specializationContext;
   class TypingsContext;
   class Typed_byContext;
   class SubsettingsContext;
   class SubsetsContext;
   class ReferencesContext;
+  class CrossesContext;
   class RedefinitionsContext;
   class RedefinesContext;
   class Feature_typingContext;
@@ -684,6 +669,7 @@ public:
   class SubsettingContext;
   class Owned_subsettingContext;
   class Owned_reference_subsettingContext;
+  class Owned_cross_subsettingContext;
   class RedefinitionContext;
   class Owned_redefinitionContext;
   class Owned_feature_chainContext;
@@ -720,66 +706,16 @@ public:
   class Owned_expression_reference_memberContext;
   class Owned_expression_referenceContext;
   class Owned_expression_memberContext;
-  class Owned_expressionsContext;
   class Owned_expressionContext;
-  class Eased_owned_expressionContext;
-  class Conditional_expressionContext;
-  class Conditional_binary_operator_expressionContext;
-  class Conditional_binary_operatorContext;
-  class Binary_operator_expressionContext;
-  class Binary_operatorContext;
-  class Unary_operator_expressionContext;
-  class Unary_operatorContext;
-  class Classification_expressionContext;
-  class ClassificationContext;
-  class Classification_test_operatorContext;
-  class Cast_operatorContext;
-  class Metaclassification_expressionContext;
-  class Argument_memberContext;
-  class ArgumentContext;
-  class Argument_valueContext;
-  class Argument_expression_memberContext;
-  class Argument_expressionContext;
-  class Argument_expression_valueContext;
-  class Metadata_argument_memberContext;
-  class Metadata_argumentContext;
-  class Metadata_valueContext;
-  class Metadata_referenceContext;
-  class Metadataclassification_test_operatorContext;
-  class Meta_cast_operatorContext;
-  class Extend_expressionContext;
+  class Function_operation_argumentsContext;
   class Type_reference_memberContext;
   class Type_result_memberContext;
   class Type_referenceContext;
   class Reference_typingContext;
-  class Primary_expressionsContext;
-  class Primary_expressionContext;
-  class Primary_argument_valueContext;
-  class Primary_argumentContext;
-  class Primary_argument_memberContext;
-  class Non_feature_chain_primary_expressionContext;
-  class Non_feature_chain_primary_argument_valueContext;
-  class Non_feature_chain_primary_argumentContext;
-  class Non_feature_chain_primary_argument_memberContext;
-  class Bracket_expressionContext;
-  class Index_expressionContext;
   class Sequence_expressionContext;
   class Sequence_expression_listContext;
   class Sequence_operator_expressionContext;
   class Sequence_expression_list_memberContext;
-  class Feature_chain_expressionContext;
-  class Collect_expressionContext;
-  class Select_expressionContext;
-  class Function_operation_expressionContext;
-  class Body_argument_memberContext;
-  class Body_argumentContext;
-  class Body_argument_valueContext;
-  class Body_expression_memberContext;
-  class Function_reference_argument_memberContext;
-  class Function_reference_argumentContext;
-  class Function_reference_arugment_valueContext;
-  class Function_reference_expressionContext;
-  class Function_reference_memberContext;
   class Function_referenceContext;
   class Base_expressionContext;
   class Null_expressionContext;
@@ -789,6 +725,7 @@ public:
   class Metadata_access_expressionContext;
   class Invocation_expressionContext;
   class Internal_invocation_expressionContext;
+  class Constructor_expressionContext;
   class Argument_listContext;
   class Positional_argument_listContext;
   class Named_argument_listContext;
@@ -797,7 +734,6 @@ public:
   class Parameter_redefinitionContext;
   class Body_expressionContext;
   class Expression_body_memberContext;
-  class Expression_bodyContext;
   class Literal_expressionContext;
   class Literal_booleanContext;
   class Boolean_valueContext;
@@ -837,7 +773,14 @@ public:
   class Library_packageContext;
   class Package_declarationContext;
   class Element_filter_memberContext;
-  class Meta_assignmentContext; 
+  class Meta_assignmentContext;
+  class Typed_by_operatorContext;
+  class Specializes_operatorContext;
+  class Subsets_operatorContext;
+  class References_operatorContext;
+  class Redefines_operatorContext;
+  class Conjugates_operatorContext;
+  class Crosses_operatorContext; 
 
   class SYSMLV2FILE_EXPORT StartContext : public antlr4::ParserRuleContext {
   public:
@@ -876,6 +819,48 @@ public:
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *NAME();
     antlr4::tree::TerminalNode *KEYWORD_VAR();
+    antlr4::tree::TerminalNode *KEYWORD_ASSOC();
+    antlr4::tree::TerminalNode *KEYWORD_BEHAVIOR();
+    antlr4::tree::TerminalNode *KEYWORD_BOOL();
+    antlr4::tree::TerminalNode *KEYWORD_CHAINS();
+    antlr4::tree::TerminalNode *KEYWORD_CLASS();
+    antlr4::tree::TerminalNode *KEYWORD_CLASSIFIER();
+    antlr4::tree::TerminalNode *KEYWORD_COMPOSITE();
+    antlr4::tree::TerminalNode *KEYWORD_CONJUGATE();
+    antlr4::tree::TerminalNode *KEYWORD_CONJUGATES();
+    antlr4::tree::TerminalNode *KEYWORD_CONJUGATION();
+    antlr4::tree::TerminalNode *KEYWORD_CONNECTOR();
+    antlr4::tree::TerminalNode *KEYWORD_DATATYPE();
+    antlr4::tree::TerminalNode *KEYWORD_DIFFERENCES();
+    antlr4::tree::TerminalNode *KEYWORD_DISJOINING();
+    antlr4::tree::TerminalNode *KEYWORD_DISJOINT();
+    antlr4::tree::TerminalNode *KEYWORD_EXPR();
+    antlr4::tree::TerminalNode *KEYWORD_FEATURE();
+    antlr4::tree::TerminalNode *KEYWORD_FEATURED();
+    antlr4::tree::TerminalNode *KEYWORD_FEATURING();
+    antlr4::tree::TerminalNode *KEYWORD_FUNCTION();
+    antlr4::tree::TerminalNode *KEYWORD_INTERACTION();
+    antlr4::tree::TerminalNode *KEYWORD_INTERSECTS();
+    antlr4::tree::TerminalNode *KEYWORD_INV();
+    antlr4::tree::TerminalNode *KEYWORD_INVERSE();
+    antlr4::tree::TerminalNode *KEYWORD_INVERTING();
+    antlr4::tree::TerminalNode *KEYWORD_MEMBER();
+    antlr4::tree::TerminalNode *KEYWORD_METACLASS();
+    antlr4::tree::TerminalNode *KEYWORD_MULTIPLICITY();
+    antlr4::tree::TerminalNode *KEYWORD_NAMESPACE();
+    antlr4::tree::TerminalNode *KEYWORD_PORTION();
+    antlr4::tree::TerminalNode *KEYWORD_PREDICATE();
+    antlr4::tree::TerminalNode *KEYWORD_REDEFINITION();
+    antlr4::tree::TerminalNode *KEYWORD_SPECIALIZATION();
+    antlr4::tree::TerminalNode *KEYWORD_STEP();
+    antlr4::tree::TerminalNode *KEYWORD_STRUCT();
+    antlr4::tree::TerminalNode *KEYWORD_SUBCLASSIFIER();
+    antlr4::tree::TerminalNode *KEYWORD_SUBSET();
+    antlr4::tree::TerminalNode *KEYWORD_SUBTYPE();
+    antlr4::tree::TerminalNode *KEYWORD_TYPE();
+    antlr4::tree::TerminalNode *KEYWORD_TYPED();
+    antlr4::tree::TerminalNode *KEYWORD_TYPING();
+    antlr4::tree::TerminalNode *KEYWORD_UNIONS();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -883,6 +868,22 @@ public:
   };
 
   Sysml_nameContext* sysml_name();
+
+  class SYSMLV2FILE_EXPORT Qualified_nameContext : public antlr4::ParserRuleContext {
+  public:
+    Qualified_nameContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    std::vector<Sysml_nameContext *> sysml_name();
+    Sysml_nameContext* sysml_name(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> SYMBOL_NAMESPACE_SUBSET();
+    antlr4::tree::TerminalNode* SYMBOL_NAMESPACE_SUBSET(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Qualified_nameContext* qualified_name();
 
   class SYSMLV2FILE_EXPORT Start_elementContext : public antlr4::ParserRuleContext {
   public:
@@ -1142,6 +1143,7 @@ public:
   public:
     Package_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    Member_prefixContext *member_prefix();
     Usage_elementContext *usage_element();
     Definition_elementContext *definition_element();
 
@@ -1162,8 +1164,8 @@ public:
     Qualified_nameContext *qualified_name();
     Relationship_bodyContext *relationship_body();
     antlr4::tree::TerminalNode *SYMBOL_SMALLER();
-    std::vector<antlr4::tree::TerminalNode *> NAME();
-    antlr4::tree::TerminalNode* NAME(size_t i);
+    std::vector<Sysml_nameContext *> sysml_name();
+    Sysml_nameContext* sysml_name(size_t i);
     antlr4::tree::TerminalNode *SYMBOL_GREATER();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1191,6 +1193,7 @@ public:
     Flow_definitionContext *flow_definition();
     Interface_definitionContext *interface_definition();
     Port_definitionContext *port_definition();
+    Allocation_definitionContext *allocation_definition();
     Action_definitionContext *action_definition();
     Calculation_definitionContext *calculation_definition();
     State_definitionContext *state_definition();
@@ -1200,6 +1203,7 @@ public:
     Case_definitionContext *case_definition();
     Analysis_case_definitionContext *analysis_case_definition();
     Verification_case_definitionContext *verification_case_definition();
+    Use_case_definitionContext *use_case_definition();
     View_definitionContext *view_definition();
     Viewpoint_definitionContext *viewpoint_definition();
     Rendering_definitionContext *rendering_definition();
@@ -1441,9 +1445,9 @@ public:
     virtual size_t getRuleIndex() const override;
     Feature_directionContext *feature_direction();
     antlr4::tree::TerminalNode *KEYWORD_DERIVED();
-    antlr4::tree::TerminalNode *KEYWORD_VARIATION();
     antlr4::tree::TerminalNode *KEYWORD_CONSTANT();
     antlr4::tree::TerminalNode *KEYWORD_ABSTRACT();
+    antlr4::tree::TerminalNode *KEYWORD_VARIATION();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1675,7 +1679,7 @@ public:
   public:
     Redefinition_usageContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *REDEFINES();
+    Redefines_operatorContext *redefines_operator();
     std::vector<Qualified_nameContext *> qualified_name();
     Qualified_nameContext* qualified_name(size_t i);
     Usage_bodyContext *usage_body();
@@ -1817,7 +1821,7 @@ public:
   public:
     Subsclassification_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SPECIALIZES();
+    Specializes_operatorContext *specializes_operator();
     std::vector<Owned_subclassificationContext *> owned_subclassification();
     Owned_subclassificationContext* owned_subclassification(size_t i);
     std::vector<antlr4::tree::TerminalNode *> SYMBOL_COMMA();
@@ -1830,41 +1834,13 @@ public:
 
   Subsclassification_partContext* subsclassification_part();
 
-  class SYSMLV2FILE_EXPORT CrossesContext : public antlr4::ParserRuleContext {
-  public:
-    CrossesContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *CROSSES();
-    Owned_cross_subsettingContext *owned_cross_subsetting();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  CrossesContext* crosses();
-
-  class SYSMLV2FILE_EXPORT Owned_cross_subsettingContext : public antlr4::ParserRuleContext {
-  public:
-    Owned_cross_subsettingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Qualified_nameContext *qualified_name();
-    Owned_feature_chainContext *owned_feature_chain();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Owned_cross_subsettingContext* owned_cross_subsetting();
-
   class SYSMLV2FILE_EXPORT Multiplicity_partContext : public antlr4::ParserRuleContext {
   public:
     Multiplicity_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Owned_multiplicityContext *owned_multiplicity();
-    antlr4::tree::TerminalNode *KEYWORD_NONUNIQUE();
     antlr4::tree::TerminalNode *KEYWORD_ORDERED();
+    antlr4::tree::TerminalNode *KEYWORD_NONUNIQUE();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -2066,6 +2042,7 @@ public:
   public:
     Occurrence_usage_prefixContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    End_usage_prefixContext *end_usage_prefix();
     Basic_usage_prefixContext *basic_usage_prefix();
     antlr4::tree::TerminalNode *KEYWORD_INDIVIDUAL();
     Portion_kindContext *portion_kind();
@@ -2313,7 +2290,7 @@ public:
   public:
     Conjungated_port_typingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SYMBOL_CONJUNGATES();
+    antlr4::tree::TerminalNode *SYMBOL_CONJUGATES();
     Qualified_nameContext *qualified_name();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -2425,7 +2402,7 @@ public:
     virtual size_t getRuleIndex() const override;
     Owned_reference_subsettingContext *owned_reference_subsetting();
     Owned_cross_multiplicity_memberContext *owned_cross_multiplicity_member();
-    antlr4::tree::TerminalNode *REFERENCES();
+    References_operatorContext *references_operator();
     antlr4::tree::TerminalNode *NAME();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -2504,7 +2481,7 @@ public:
     Connector_end_memberContext* connector_end_member(size_t i);
     antlr4::tree::TerminalNode *KEYWORD_THEN();
     Usage_bodyContext *usage_body();
-    antlr4::tree::TerminalNode *KEYWORD_SUCCSESSION();
+    antlr4::tree::TerminalNode *KEYWORD_SUCCESSION();
     Usage_declarationContext *usage_declaration();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -2740,7 +2717,7 @@ public:
     virtual size_t getRuleIndex() const override;
     Owned_reference_subsettingContext *owned_reference_subsetting();
     Owned_cross_multiplicity_memberContext *owned_cross_multiplicity_member();
-    antlr4::tree::TerminalNode *REFERENCES();
+    References_operatorContext *references_operator();
     antlr4::tree::TerminalNode *NAME();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -2897,7 +2874,7 @@ public:
     Succession_flow_usageContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Occurrence_usage_prefixContext *occurrence_usage_prefix();
-    antlr4::tree::TerminalNode *KEYWORD_SUCCSESSION();
+    antlr4::tree::TerminalNode *KEYWORD_SUCCESSION();
     antlr4::tree::TerminalNode *KEYWORD_FLOW();
     Flow_declarationContext *flow_declaration();
     Definition_bodyContext *definition_body();
@@ -2959,8 +2936,8 @@ public:
   public:
     Payload_featureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    IdentificationContext *identification();
     Payload_feature_specialization_partContext *payload_feature_specialization_part();
+    IdentificationContext *identification();
     Value_partContext *value_part();
     Owned_feature_typingContext *owned_feature_typing();
     Owned_multiplicityContext *owned_multiplicity();
@@ -3144,6 +3121,7 @@ public:
     Alias_memberContext *alias_member();
     Definition_memberContext *definition_member();
     Variant_usage_memberContext *variant_usage_member();
+    Non_occurrence_usage_memberContext *non_occurrence_usage_member();
     Structure_usage_memberContext *structure_usage_member();
     Source_succession_memberContext *source_succession_member();
 
@@ -3358,7 +3336,7 @@ public:
     Control_node_prefixContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Ref_prefixContext *ref_prefix();
-    antlr4::tree::TerminalNode *KEYWORD_INDIVIDIAL();
+    antlr4::tree::TerminalNode *KEYWORD_INDIVIDUAL();
     Portion_kindContext *portion_kind();
     Usage_extention_keywordContext *usage_extention_keyword();
 
@@ -3525,10 +3503,9 @@ public:
     antlr4::Token *kind = nullptr;
     Trigger_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Argument_memberContext *argument_member();
+    Owned_expressionContext *owned_expression();
     antlr4::tree::TerminalNode *KEYWORD_AT();
     antlr4::tree::TerminalNode *KEYWORD_AFTER();
-    Argument_expression_memberContext *argument_expression_member();
     antlr4::tree::TerminalNode *KEYWORD_WHEN();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -3691,7 +3668,8 @@ public:
   public:
     Assignment_target_bindingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Non_feature_chain_primary_expressionContext *non_feature_chain_primary_expression();
+    Base_expressionContext *base_expression();
+    Sequence_expressionContext *sequence_expression();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -3727,6 +3705,21 @@ public:
   };
 
   Owned_feature_chain_memberContext* owned_feature_chain_member();
+
+  class SYSMLV2FILE_EXPORT Expression_bodyContext : public antlr4::ParserRuleContext {
+  public:
+    Expression_bodyContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *SYMBOL_CURLY_BRACKET_OPEN();
+    Calculation_body_partContext *calculation_body_part();
+    antlr4::tree::TerminalNode *SYMBOL_CURLY_BRACKET_CLOSE();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Expression_bodyContext* expression_body();
 
   class SYSMLV2FILE_EXPORT Terminate_nodeContext : public antlr4::ParserRuleContext {
   public:
@@ -3955,7 +3948,7 @@ public:
     antlr4::tree::TerminalNode *KEYWORD_THEN();
     Transition_succession_memberContext *transition_succession_member();
     Usage_bodyContext *usage_body();
-    antlr4::tree::TerminalNode *KEYWORD_SUCCSESSION();
+    antlr4::tree::TerminalNode *KEYWORD_SUCCESSION();
     Usage_declarationContext *usage_declaration();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -3988,9 +3981,10 @@ public:
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *SYMBOL_STATEMENT_DELIMITER();
     antlr4::tree::TerminalNode *SYMBOL_CURLY_BRACKET_OPEN();
-    State_body_itemContext *state_body_item();
     antlr4::tree::TerminalNode *SYMBOL_CURLY_BRACKET_CLOSE();
     antlr4::tree::TerminalNode *KEYWORD_PARALLEL();
+    std::vector<State_body_itemContext *> state_body_item();
+    State_body_itemContext* state_body_item(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -4256,16 +4250,16 @@ public:
   public:
     Transition_usageContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *KEYWORD_TRANSISTION();
+    antlr4::tree::TerminalNode *KEYWORD_TRANSITION();
     Feature_chain_memberContext *feature_chain_member();
     antlr4::tree::TerminalNode *KEYWORD_THEN();
     Transition_succession_memberContext *transition_succession_member();
     Action_bodyContext *action_body();
-    Usage_declarationContext *usage_declaration();
-    antlr4::tree::TerminalNode *KEYWORD_FROM();
+    antlr4::tree::TerminalNode *KEYWORD_FIRST();
     Trigger_action_memberContext *trigger_action_member();
     Guard_expression_memberContext *guard_expression_member();
     Effect_behavior_memberContext *effect_behavior_member();
+    Usage_declarationContext *usage_declaration();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -4281,7 +4275,7 @@ public:
     antlr4::tree::TerminalNode *KEYWORD_THEN();
     Transition_succession_memberContext *transition_succession_member();
     Action_bodyContext *action_body();
-    antlr4::tree::TerminalNode *KEYWORD_TRANSISTION();
+    antlr4::tree::TerminalNode *KEYWORD_TRANSITION();
     Trigger_action_memberContext *trigger_action_member();
     Guard_expression_memberContext *guard_expression_member();
     Effect_behavior_memberContext *effect_behavior_member();
@@ -4570,6 +4564,8 @@ public:
   public:
     Constraint_definitionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *KEYWORD_CONSTRAINT();
+    antlr4::tree::TerminalNode *KEYWORD_DEF();
     Definition_declarationContext *definition_declaration();
     Calculation_bodyContext *calculation_body();
     Occurrence_definition_prefixContext *occurrence_definition_prefix();
@@ -4876,17 +4872,17 @@ public:
     Satisfy_requirement_usageContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Occurrence_usage_prefixContext *occurrence_usage_prefix();
-    antlr4::tree::TerminalNode *KEYWORD_ASSERT();
     antlr4::tree::TerminalNode *KEYWORD_SATISFY();
     Requirement_bodyContext *requirement_body();
     Owned_reference_subsettingContext *owned_reference_subsetting();
     antlr4::tree::TerminalNode *KEYWORD_REQUIREMENT();
     Usage_declarationContext *usage_declaration();
-    antlr4::tree::TerminalNode *KEYWORD_NOT();
+    antlr4::tree::TerminalNode *KEYWORD_ASSERT();
     Value_partContext *value_part();
     antlr4::tree::TerminalNode *KEYWORD_BY();
     Satisfaction_subject_memberContext *satisfaction_subject_member();
     Feature_specialization_partContext *feature_specialization_part();
+    antlr4::tree::TerminalNode *KEYWORD_NOT();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -5036,6 +5032,7 @@ public:
     Case_body_itemContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Action_body_itemContext *action_body_item();
+    Return_parameter_memberContext *return_parameter_member();
     Subject_memberContext *subject_member();
     Actor_memberContext *actor_member();
     Objective_memberContext *objective_member();
@@ -5611,7 +5608,7 @@ public:
     Owned_redefinitionContext *owned_redefinition();
     Metadata_bodyContext *metadata_body();
     antlr4::tree::TerminalNode *KEYWORD_REF();
-    antlr4::tree::TerminalNode *REDEFINES();
+    Redefines_operatorContext *redefines_operator();
     Feature_specialization_partContext *feature_specialization_part();
     Value_partContext *value_part();
 
@@ -5674,6 +5671,8 @@ public:
   public:
     ElementsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    std::vector<Member_prefixContext *> member_prefix();
+    Member_prefixContext* member_prefix(size_t i);
     std::vector<ElementContext *> element();
     ElementContext* element(size_t i);
 
@@ -5846,6 +5845,7 @@ public:
   public:
     Non_feature_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    Member_prefixContext *member_prefix();
     Non_feature_elementContext *non_feature_element();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -5869,31 +5869,15 @@ public:
 
   Namespace_feature_memberContext* namespace_feature_member();
 
-  class SYSMLV2FILE_EXPORT Qualified_nameContext : public antlr4::ParserRuleContext {
-  public:
-    Qualified_nameContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    std::vector<antlr4::tree::TerminalNode *> NAME();
-    antlr4::tree::TerminalNode* NAME(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> SYMBOL_NAMESPACE_SUBSET();
-    antlr4::tree::TerminalNode* SYMBOL_NAMESPACE_SUBSET(size_t i);
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Qualified_nameContext* qualified_name();
-
   class SYSMLV2FILE_EXPORT Namespace_importContext : public antlr4::ParserRuleContext {
   public:
     Namespace_importContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *KEYWORD_IMPORT();
     Import_declarationContext *import_declaration();
+    Relationship_bodyContext *relationship_body();
     Visibility_indicatorContext *visibility_indicator();
     antlr4::tree::TerminalNode *KEYWORD_ALL();
-    Relationship_bodyContext *relationship_body();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -5965,10 +5949,10 @@ public:
   public:
     ElementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    Additional_optionsContext *additional_options();
     Annotating_elementContext *annotating_element();
     Non_feature_elementContext *non_feature_element();
     Feature_elementContext *feature_element();
-    Additional_optionsContext *additional_options();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -6107,7 +6091,7 @@ public:
   public:
     Specialization_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SPECIALIZES();
+    Specializes_operatorContext *specializes_operator();
     std::vector<Owned_specializationContext *> owned_specialization();
     Owned_specializationContext* owned_specialization(size_t i);
     std::vector<antlr4::tree::TerminalNode *> SYMBOL_COMMA();
@@ -6124,7 +6108,7 @@ public:
   public:
     Conjugation_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *CONJUGATES();
+    Conjugates_operatorContext *conjugates_operator();
     Owned_conjugationContext *owned_conjugation();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -6239,8 +6223,8 @@ public:
   public:
     Type_body_elementsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    std::vector<ElementContext *> element();
-    ElementContext* element(size_t i);
+    std::vector<Type_body_elementContext *> type_body_element();
+    Type_body_elementContext* type_body_element(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -6253,6 +6237,8 @@ public:
   public:
     Type_body_elementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    Type_feature_memberContext *type_feature_member();
+    Member_prefixContext *member_prefix();
     ElementContext *element();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -6268,7 +6254,7 @@ public:
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *KEYWORD_SUBTYPE();
     Specific_typeContext *specific_type();
-    antlr4::tree::TerminalNode *SPECIALIZES();
+    Specializes_operatorContext *specializes_operator();
     General_typeContext *general_type();
     Relationship_bodyContext *relationship_body();
     antlr4::tree::TerminalNode *KEYWORD_SPECIALIZATION();
@@ -6327,7 +6313,7 @@ public:
     ConjunctionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *KEYWORD_CONJUGATE();
-    antlr4::tree::TerminalNode *CONJUGATES();
+    Conjugates_operatorContext *conjugates_operator();
     Relationship_bodyContext *relationship_body();
     std::vector<Qualified_nameContext *> qualified_name();
     Qualified_nameContext* qualified_name(size_t i);
@@ -6516,7 +6502,7 @@ public:
   public:
     Superclassing_partContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SPECIALIZES();
+    Specializes_operatorContext *specializes_operator();
     std::vector<Owned_subclassificationContext *> owned_subclassification();
     Owned_subclassificationContext* owned_subclassification(size_t i);
     std::vector<antlr4::tree::TerminalNode *> SYMBOL_COMMA();
@@ -6536,7 +6522,7 @@ public:
     antlr4::tree::TerminalNode *KEYWORD_SUBCLASSIFIER();
     std::vector<Qualified_nameContext *> qualified_name();
     Qualified_nameContext* qualified_name(size_t i);
-    antlr4::tree::TerminalNode *SPECIALIZES();
+    Specializes_operatorContext *specializes_operator();
     Relationship_bodyContext *relationship_body();
     antlr4::tree::TerminalNode *KEYWORD_SPECIALIZATION();
     IdentificationContext *identification();
@@ -6565,14 +6551,13 @@ public:
   public:
     FeatureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    Feature_prefixContext *feature_prefix();
     Type_bodyContext *type_body();
     antlr4::tree::TerminalNode *KEYWORD_FEATURE();
     Prefix_metadata_memberContext *prefix_metadata_member();
-    Feature_prefixContext *feature_prefix();
-    SubsettingsContext *subsettings();
-    Feature_assignmentContext *feature_assignment();
-    Feature_valueContext *feature_value();
     Feature_declarationContext *feature_declaration();
+    Value_partContext *value_part();
+    Anonymous_featureContext *anonymous_feature();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -6581,18 +6566,62 @@ public:
 
   FeatureContext* feature();
 
+  class SYSMLV2FILE_EXPORT Anonymous_featureContext : public antlr4::ParserRuleContext {
+  public:
+    Anonymous_featureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Feature_declarationContext *feature_declaration();
+    Type_bodyContext *type_body();
+    End_feature_prefixContext *end_feature_prefix();
+    Basic_feature_prefixContext *basic_feature_prefix();
+    Value_partContext *value_part();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Anonymous_featureContext* anonymous_feature();
+
   class SYSMLV2FILE_EXPORT Feature_prefixContext : public antlr4::ParserRuleContext {
   public:
     Feature_prefixContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Feature_directionContext *feature_direction();
-    antlr4::tree::TerminalNode *KEYWORD_ABSTRACT();
-    antlr4::tree::TerminalNode *KEYWORD_READONLY();
-    antlr4::tree::TerminalNode *KEYWORD_DERIVED();
-    antlr4::tree::TerminalNode *KEYWORD_END();
+    End_feature_prefixContext *end_feature_prefix();
+    Basic_feature_prefixContext *basic_feature_prefix();
     std::vector<Prefix_metadata_memberContext *> prefix_metadata_member();
     Prefix_metadata_memberContext* prefix_metadata_member(size_t i);
+    Owned_cross_feature_memberContext *owned_cross_feature_member();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Feature_prefixContext* feature_prefix();
+
+  class SYSMLV2FILE_EXPORT End_feature_prefixContext : public antlr4::ParserRuleContext {
+  public:
+    End_feature_prefixContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *KEYWORD_END();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  End_feature_prefixContext* end_feature_prefix();
+
+  class SYSMLV2FILE_EXPORT Basic_feature_prefixContext : public antlr4::ParserRuleContext {
+  public:
+    Basic_feature_prefixContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Feature_directionContext *feature_direction();
+    antlr4::tree::TerminalNode *KEYWORD_DERIVED();
+    antlr4::tree::TerminalNode *KEYWORD_ABSTRACT();
     antlr4::tree::TerminalNode *KEYWORD_VAR();
+    antlr4::tree::TerminalNode *KEYWORD_READONLY();
     antlr4::tree::TerminalNode *KEYWORD_COMPOSITE();
     antlr4::tree::TerminalNode *KEYWORD_PORTION();
 
@@ -6601,7 +6630,7 @@ public:
    
   };
 
-  Feature_prefixContext* feature_prefix();
+  Basic_feature_prefixContext* basic_feature_prefix();
 
   class SYSMLV2FILE_EXPORT Feature_declarationContext : public antlr4::ParserRuleContext {
   public:
@@ -6613,7 +6642,6 @@ public:
     antlr4::tree::TerminalNode *KEYWORD_ALL();
     std::vector<Feature_relationship_partContext *> feature_relationship_part();
     Feature_relationship_partContext* feature_relationship_part(size_t i);
-    Type_bodyContext *type_body();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -6717,6 +6745,20 @@ public:
 
   Feature_specialization_partContext* feature_specialization_part();
 
+  class SYSMLV2FILE_EXPORT Multiplicity_modifierContext : public antlr4::ParserRuleContext {
+  public:
+    Multiplicity_modifierContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *KEYWORD_ORDERED();
+    antlr4::tree::TerminalNode *KEYWORD_NONUNIQUE();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Multiplicity_modifierContext* multiplicity_modifier();
+
   class SYSMLV2FILE_EXPORT Feature_specializationContext : public antlr4::ParserRuleContext {
   public:
     Feature_specializationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -6724,6 +6766,7 @@ public:
     TypingsContext *typings();
     SubsettingsContext *subsettings();
     ReferencesContext *references();
+    CrossesContext *crosses();
     RedefinitionsContext *redefinitions();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -6754,7 +6797,7 @@ public:
   public:
     Typed_byContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *TYPED_BY();
+    Typed_by_operatorContext *typed_by_operator();
     Owned_feature_typingContext *owned_feature_typing();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -6769,10 +6812,10 @@ public:
     SubsettingsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     SubsetsContext *subsets();
-    std::vector<Owned_subsettingContext *> owned_subsetting();
-    Owned_subsettingContext* owned_subsetting(size_t i);
     std::vector<antlr4::tree::TerminalNode *> SYMBOL_COMMA();
     antlr4::tree::TerminalNode* SYMBOL_COMMA(size_t i);
+    std::vector<Owned_subsettingContext *> owned_subsetting();
+    Owned_subsettingContext* owned_subsetting(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -6785,7 +6828,7 @@ public:
   public:
     SubsetsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SUBSETS();
+    Subsets_operatorContext *subsets_operator();
     Owned_subsettingContext *owned_subsetting();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -6799,7 +6842,7 @@ public:
   public:
     ReferencesContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *REFERENCES();
+    References_operatorContext *references_operator();
     Owned_reference_subsettingContext *owned_reference_subsetting();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -6809,13 +6852,29 @@ public:
 
   ReferencesContext* references();
 
+  class SYSMLV2FILE_EXPORT CrossesContext : public antlr4::ParserRuleContext {
+  public:
+    CrossesContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Crosses_operatorContext *crosses_operator();
+    Owned_cross_subsettingContext *owned_cross_subsetting();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  CrossesContext* crosses();
+
   class SYSMLV2FILE_EXPORT RedefinitionsContext : public antlr4::ParserRuleContext {
   public:
     RedefinitionsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     RedefinesContext *redefines();
-    antlr4::tree::TerminalNode *SYMBOL_COMMA();
-    Owned_redefinitionContext *owned_redefinition();
+    std::vector<antlr4::tree::TerminalNode *> SYMBOL_COMMA();
+    antlr4::tree::TerminalNode* SYMBOL_COMMA(size_t i);
+    std::vector<Owned_redefinitionContext *> owned_redefinition();
+    Owned_redefinitionContext* owned_redefinition(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -6828,7 +6887,7 @@ public:
   public:
     RedefinesContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *REDEFINES();
+    Redefines_operatorContext *redefines_operator();
     Owned_redefinitionContext *owned_redefinition();
     Feature_directionContext *feature_direction();
 
@@ -6845,7 +6904,7 @@ public:
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *KEYWORD_TYPING();
     Qualified_nameContext *qualified_name();
-    antlr4::tree::TerminalNode *TYPED_BY();
+    Typed_by_operatorContext *typed_by_operator();
     General_typeContext *general_type();
     Relationship_bodyContext *relationship_body();
     antlr4::tree::TerminalNode *KEYWORD_SPECIALIZATION();
@@ -6876,7 +6935,7 @@ public:
     SubsettingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Specific_typeContext *specific_type();
-    antlr4::tree::TerminalNode *SUBSETS();
+    Subsets_operatorContext *subsets_operator();
     General_typeContext *general_type();
     Relationship_bodyContext *relationship_body();
     antlr4::tree::TerminalNode *KEYWORD_SPECIALIZATION();
@@ -6917,11 +6976,24 @@ public:
 
   Owned_reference_subsettingContext* owned_reference_subsetting();
 
+  class SYSMLV2FILE_EXPORT Owned_cross_subsettingContext : public antlr4::ParserRuleContext {
+  public:
+    Owned_cross_subsettingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    General_typeContext *general_type();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Owned_cross_subsettingContext* owned_cross_subsetting();
+
   class SYSMLV2FILE_EXPORT RedefinitionContext : public antlr4::ParserRuleContext {
   public:
     RedefinitionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *REDEFINES();
+    Redefines_operatorContext *redefines_operator();
     Qualified_nameContext *qualified_name();
     Relationship_bodyContext *relationship_body();
     Feature_directionContext *feature_direction();
@@ -7148,10 +7220,12 @@ public:
   public:
     ConnectorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    Feature_prefixContext *feature_prefix();
     antlr4::tree::TerminalNode *KEYWORD_CONNECTOR();
-    Connector_declarationContext *connector_declaration();
     Type_bodyContext *type_body();
-    Type_prefixContext *type_prefix();
+    Connector_declarationContext *connector_declaration();
+    Feature_declarationContext *feature_declaration();
+    Value_partContext *value_part();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -7164,7 +7238,6 @@ public:
   public:
     Connector_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Feature_declarationContext *feature_declaration();
     Binary_connector_declarationContext *binary_connector_declaration();
     Nary_connector_declarationContext *nary_connector_declaration();
 
@@ -7179,11 +7252,12 @@ public:
   public:
     Binary_connector_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *KEYWORD_FROM();
     std::vector<Connector_end_memberContext *> connector_end_member();
     Connector_end_memberContext* connector_end_member(size_t i);
     antlr4::tree::TerminalNode *KEYWORD_TO();
+    antlr4::tree::TerminalNode *KEYWORD_FROM();
     antlr4::tree::TerminalNode *KEYWORD_ALL();
+    Feature_declarationContext *feature_declaration();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -7202,6 +7276,7 @@ public:
     std::vector<antlr4::tree::TerminalNode *> SYMBOL_COMMA();
     antlr4::tree::TerminalNode* SYMBOL_COMMA(size_t i);
     antlr4::tree::TerminalNode *SYMBOL_ROUND_BRACKET_CLOSE();
+    Feature_declarationContext *feature_declaration();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -7215,9 +7290,9 @@ public:
     Connector_endContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Owned_reference_subsettingContext *owned_reference_subsetting();
+    Owned_cross_multiplicity_memberContext *owned_cross_multiplicity_member();
     antlr4::tree::TerminalNode *NAME();
-    antlr4::tree::TerminalNode *REFERENCES();
-    Multiplicity_boundsContext *multiplicity_bounds();
+    References_operatorContext *references_operator();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -7250,7 +7325,7 @@ public:
     antlr4::tree::TerminalNode *KEYWORD_OF();
     std::vector<Connector_end_memberContext *> connector_end_member();
     Connector_end_memberContext* connector_end_member(size_t i);
-    antlr4::tree::TerminalNode *SYMBOL_EQUALS();
+    antlr4::tree::TerminalNode *SYMBOL_ASSIGN();
     antlr4::tree::TerminalNode *KEYWORD_ALL();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -7447,8 +7522,8 @@ public:
     virtual size_t getRuleIndex() const override;
     Feature_prefixContext *feature_prefix();
     antlr4::tree::TerminalNode *KEYWORD_INV();
-    Feature_declarationContext *feature_declaration();
     Function_bodyContext *function_body();
+    Feature_declarationContext *feature_declaration();
     Value_partContext *value_part();
     antlr4::tree::TerminalNode *KEYWORD_TRUE();
     antlr4::tree::TerminalNode *KEYWORD_FALSE();
@@ -7490,7 +7565,7 @@ public:
   public:
     Owned_expression_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Owned_expressionsContext *owned_expressions();
+    Owned_expressionContext *owned_expression();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -7499,432 +7574,224 @@ public:
 
   Owned_expression_memberContext* owned_expression_member();
 
-  class SYSMLV2FILE_EXPORT Owned_expressionsContext : public antlr4::ParserRuleContext {
-  public:
-    Owned_expressionsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    std::vector<Owned_expressionContext *> owned_expression();
-    Owned_expressionContext* owned_expression(size_t i);
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Owned_expressionsContext* owned_expressions();
-
   class SYSMLV2FILE_EXPORT Owned_expressionContext : public antlr4::ParserRuleContext {
   public:
     Owned_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Base_expressionContext *base_expression();
-    std::vector<Bracket_expressionContext *> bracket_expression();
-    Bracket_expressionContext* bracket_expression(size_t i);
-    Conditional_expressionContext *conditional_expression();
-    Conditional_binary_operator_expressionContext *conditional_binary_operator_expression();
-    Binary_operator_expressionContext *binary_operator_expression();
-    Unary_operator_expressionContext *unary_operator_expression();
-    Classification_expressionContext *classification_expression();
-    Metaclassification_expressionContext *metaclassification_expression();
-    Extend_expressionContext *extend_expression();
-    Primary_expressionContext *primary_expression();
+   
+    Owned_expressionContext() = default;
+    void copyFrom(Owned_expressionContext *context);
+    using antlr4::ParserRuleContext::copyFrom;
 
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual size_t getRuleIndex() const override;
+
    
   };
 
-  Owned_expressionContext* owned_expression();
-
-  class SYSMLV2FILE_EXPORT Eased_owned_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT SelectExprContext : public Owned_expressionContext {
   public:
-    Eased_owned_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Primary_expressionContext *primary_expression();
-    Extend_expressionContext *extend_expression();
-    Metaclassification_expressionContext *metaclassification_expression();
-    Unary_operator_expressionContext *unary_operator_expression();
+    SelectExprContext(Owned_expressionContext *ctx);
 
+    Owned_expressionContext *owned_expression();
+    antlr4::tree::TerminalNode *SYMBOL_DOT_QUESTION();
+    Body_expressionContext *body_expression();
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
   };
 
-  Eased_owned_expressionContext* eased_owned_expression();
-
-  class SYSMLV2FILE_EXPORT Conditional_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT CollectExprContext : public Owned_expressionContext {
   public:
-    Conditional_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *KEYWORD_IF();
-    Argument_memberContext *argument_member();
-    antlr4::tree::TerminalNode *SYMBOL_QUESTION();
-    std::vector<Argument_expression_memberContext *> argument_expression_member();
-    Argument_expression_memberContext* argument_expression_member(size_t i);
-    antlr4::tree::TerminalNode *KEYWORD_ELSE();
+    CollectExprContext(Owned_expressionContext *ctx);
 
+    Owned_expressionContext *owned_expression();
+    antlr4::tree::TerminalNode *SYMBOL_DOT();
+    Body_expressionContext *body_expression();
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
   };
 
-  Conditional_expressionContext* conditional_expression();
-
-  class SYSMLV2FILE_EXPORT Conditional_binary_operator_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT BinaryExprContext : public Owned_expressionContext {
   public:
-    Conditional_binary_operator_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Argument_memberContext *argument_member();
-    Conditional_binary_operatorContext *conditional_binary_operator();
-    Argument_expression_memberContext *argument_expression_member();
+    BinaryExprContext(Owned_expressionContext *ctx);
 
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Conditional_binary_operator_expressionContext* conditional_binary_operator_expression();
-
-  class SYSMLV2FILE_EXPORT Conditional_binary_operatorContext : public antlr4::ParserRuleContext {
-  public:
-    Conditional_binary_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SYMBOL_DQUESTION();
-    antlr4::tree::TerminalNode *KEYWORD_OR();
-    antlr4::tree::TerminalNode *KEYWORD_AND();
-    antlr4::tree::TerminalNode *KEYWORD_IMPLIES();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Conditional_binary_operatorContext* conditional_binary_operator();
-
-  class SYSMLV2FILE_EXPORT Binary_operator_expressionContext : public antlr4::ParserRuleContext {
-  public:
-    Binary_operator_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Argument_memberContext *argument_member();
-    Binary_operatorContext *binary_operator();
-    Owned_expressionsContext *owned_expressions();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Binary_operator_expressionContext* binary_operator_expression();
-
-  class SYSMLV2FILE_EXPORT Binary_operatorContext : public antlr4::ParserRuleContext {
-  public:
-    Binary_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SYMBOL_VERTICAL_LINE();
-    antlr4::tree::TerminalNode *SYMBOL_AND();
-    antlr4::tree::TerminalNode *KEYWORD_XOR();
+    antlr4::Token *op = nullptr;
+    std::vector<Owned_expressionContext *> owned_expression();
+    Owned_expressionContext* owned_expression(size_t i);
+    antlr4::tree::TerminalNode *SYMBOL_DOUBLE_STAR();
+    antlr4::tree::TerminalNode *SYMBOL_UPPER();
+    antlr4::tree::TerminalNode *SYMBOL_STAR();
+    antlr4::tree::TerminalNode *SYMBOL_SLASH();
+    antlr4::tree::TerminalNode *SYMBOL_MOD();
+    antlr4::tree::TerminalNode *SYMBOL_PLUS();
+    antlr4::tree::TerminalNode *SYMBOL_MINUS();
     antlr4::tree::TerminalNode *SYMBOL_DDOT();
-    antlr4::tree::TerminalNode *SYMBOL_EQUALS();
-    antlr4::tree::TerminalNode *SYMBOL_NOT_EQUALS();
-    antlr4::tree::TerminalNode *SYMBOL_IFF_EQUALS();
-    antlr4::tree::TerminalNode *SYMBOL_IFF_NOT_EQUALS();
     antlr4::tree::TerminalNode *SYMBOL_GREATER();
     antlr4::tree::TerminalNode *SYMBOL_SMALLER();
     antlr4::tree::TerminalNode *SYMBOL_GREATER_EQUALS();
     antlr4::tree::TerminalNode *SYMBOL_SMALLER_EQUAL();
-    antlr4::tree::TerminalNode *SYMBOL_PLUS();
-    antlr4::tree::TerminalNode *SYMBOL_MINUS();
-    antlr4::tree::TerminalNode *SYMBOL_STAR();
-    antlr4::tree::TerminalNode *SYMBOL_SLASH();
-    antlr4::tree::TerminalNode *SYMBOL_MOD();
-    antlr4::tree::TerminalNode *SYMBOL_UPPER();
-    antlr4::tree::TerminalNode *SYMBOL_DOUBLE_STAR();
-
+    antlr4::tree::TerminalNode *SYMBOL_EQUALS();
+    antlr4::tree::TerminalNode *SYMBOL_NOT_EQUALS();
+    antlr4::tree::TerminalNode *SYMBOL_IFF_EQUALS();
+    antlr4::tree::TerminalNode *SYMBOL_IFF_NOT_EQUALS();
+    antlr4::tree::TerminalNode *SYMBOL_AND();
+    antlr4::tree::TerminalNode *KEYWORD_AND();
+    antlr4::tree::TerminalNode *KEYWORD_XOR();
+    antlr4::tree::TerminalNode *SYMBOL_VERTICAL_LINE();
+    antlr4::tree::TerminalNode *KEYWORD_OR();
+    antlr4::tree::TerminalNode *KEYWORD_IMPLIES();
+    antlr4::tree::TerminalNode *SYMBOL_DQUESTION();
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
   };
 
-  Binary_operatorContext* binary_operator();
-
-  class SYSMLV2FILE_EXPORT Unary_operator_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT ExtentExprContext : public Owned_expressionContext {
   public:
-    Unary_operator_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Unary_operatorContext *unary_operator();
-    Owned_expressionsContext *owned_expressions();
+    ExtentExprContext(Owned_expressionContext *ctx);
 
+    antlr4::tree::TerminalNode *KEYWORD_ALL();
+    Type_reference_memberContext *type_reference_member();
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
   };
 
-  Unary_operator_expressionContext* unary_operator_expression();
-
-  class SYSMLV2FILE_EXPORT Unary_operatorContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT ConditionalExprContext : public Owned_expressionContext {
   public:
-    Unary_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
+    ConditionalExprContext(Owned_expressionContext *ctx);
+
+    antlr4::tree::TerminalNode *KEYWORD_IF();
+    std::vector<Owned_expressionContext *> owned_expression();
+    Owned_expressionContext* owned_expression(size_t i);
+    antlr4::tree::TerminalNode *SYMBOL_QUESTION();
+    antlr4::tree::TerminalNode *KEYWORD_ELSE();
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+  };
+
+  class SYSMLV2FILE_EXPORT UnaryExprContext : public Owned_expressionContext {
+  public:
+    UnaryExprContext(Owned_expressionContext *ctx);
+
+    antlr4::Token *op = nullptr;
+    Owned_expressionContext *owned_expression();
     antlr4::tree::TerminalNode *SYMBOL_PLUS();
     antlr4::tree::TerminalNode *SYMBOL_MINUS();
     antlr4::tree::TerminalNode *SYMBOL_CONJUGATES();
     antlr4::tree::TerminalNode *KEYWORD_NOT();
-
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
   };
 
-  Unary_operatorContext* unary_operator();
-
-  class SYSMLV2FILE_EXPORT Classification_expressionContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT IndexExprContext : public Owned_expressionContext {
   public:
-    Classification_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Argument_memberContext *argument_member();
-    Classification_test_operatorContext *classification_test_operator();
+    IndexExprContext(Owned_expressionContext *ctx);
+
+    Owned_expressionContext *owned_expression();
+    antlr4::tree::TerminalNode *SYMBOL_HASHTAG();
+    antlr4::tree::TerminalNode *SYMBOL_ROUND_BRACKET_OPEN();
+    Sequence_expression_list_memberContext *sequence_expression_list_member();
+    antlr4::tree::TerminalNode *SYMBOL_ROUND_BRACKET_CLOSE();
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+  };
+
+  class SYSMLV2FILE_EXPORT BaseExprContext : public Owned_expressionContext {
+  public:
+    BaseExprContext(Owned_expressionContext *ctx);
+
+    Base_expressionContext *base_expression();
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+  };
+
+  class SYSMLV2FILE_EXPORT FeatureChainExprContext : public Owned_expressionContext {
+  public:
+    FeatureChainExprContext(Owned_expressionContext *ctx);
+
+    Owned_expressionContext *owned_expression();
+    antlr4::tree::TerminalNode *SYMBOL_DOT();
+    Feature_reference_memberContext *feature_reference_member();
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+  };
+
+  class SYSMLV2FILE_EXPORT BracketExprContext : public Owned_expressionContext {
+  public:
+    BracketExprContext(Owned_expressionContext *ctx);
+
+    Owned_expressionContext *owned_expression();
+    antlr4::tree::TerminalNode *SYMBOL_SQUARE_BRACKET_OPEN();
+    Sequence_expression_list_memberContext *sequence_expression_list_member();
+    antlr4::tree::TerminalNode *SYMBOL_SQUARE_BRACKET_CLOSE();
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+  };
+
+  class SYSMLV2FILE_EXPORT MetaclassificationExprContext : public Owned_expressionContext {
+  public:
+    MetaclassificationExprContext(Owned_expressionContext *ctx);
+
+    antlr4::Token *op = nullptr;
+    Owned_expressionContext *owned_expression();
     Type_reference_memberContext *type_reference_member();
-    Cast_operatorContext *cast_operator();
+    antlr4::tree::TerminalNode *SYMBOL_ATAT();
     Type_result_memberContext *type_result_member();
-
+    antlr4::tree::TerminalNode *KEYWORD_META();
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
   };
 
-  Classification_expressionContext* classification_expression();
-
-  class SYSMLV2FILE_EXPORT ClassificationContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT ClassificationExprContext : public Owned_expressionContext {
   public:
-    ClassificationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Classification_test_operatorContext *classification_test_operator();
+    ClassificationExprContext(Owned_expressionContext *ctx);
+
+    antlr4::Token *op = nullptr;
     Type_reference_memberContext *type_reference_member();
-    Argument_memberContext *argument_member();
-    Cast_operatorContext *cast_operator();
-    Type_result_memberContext *type_result_member();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  ClassificationContext* classification();
-
-  class SYSMLV2FILE_EXPORT Classification_test_operatorContext : public antlr4::ParserRuleContext {
-  public:
-    Classification_test_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *KEYWORD_ISTYPE();
     antlr4::tree::TerminalNode *KEYWORD_HASTYPE();
     antlr4::tree::TerminalNode *SYMBOL_AT();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Classification_test_operatorContext* classification_test_operator();
-
-  class SYSMLV2FILE_EXPORT Cast_operatorContext : public antlr4::ParserRuleContext {
-  public:
-    Cast_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *KEYWORD_AS();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Cast_operatorContext* cast_operator();
-
-  class SYSMLV2FILE_EXPORT Metaclassification_expressionContext : public antlr4::ParserRuleContext {
-  public:
-    Metaclassification_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Metadata_argument_memberContext *metadata_argument_member();
-    Metadataclassification_test_operatorContext *metadataclassification_test_operator();
-    Type_reference_memberContext *type_reference_member();
-    Meta_cast_operatorContext *meta_cast_operator();
+    Owned_expressionContext *owned_expression();
     Type_result_memberContext *type_result_member();
-
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
   };
 
-  Metaclassification_expressionContext* metaclassification_expression();
-
-  class SYSMLV2FILE_EXPORT Argument_memberContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT SequenceExprContext : public Owned_expressionContext {
   public:
-    Argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    ArgumentContext *argument();
+    SequenceExprContext(Owned_expressionContext *ctx);
 
+    Sequence_expressionContext *sequence_expression();
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
   };
 
-  Argument_memberContext* argument_member();
-
-  class SYSMLV2FILE_EXPORT ArgumentContext : public antlr4::ParserRuleContext {
+  class SYSMLV2FILE_EXPORT FunctionOperationExprContext : public Owned_expressionContext {
   public:
-    ArgumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Argument_valueContext *argument_value();
+    FunctionOperationExprContext(Owned_expressionContext *ctx);
 
+    Owned_expressionContext *owned_expression();
+    antlr4::tree::TerminalNode *SYMBOL_ARROW();
+    Reference_typingContext *reference_typing();
+    Function_operation_argumentsContext *function_operation_arguments();
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
   };
 
-  ArgumentContext* argument();
-
-  class SYSMLV2FILE_EXPORT Argument_valueContext : public antlr4::ParserRuleContext {
+  Owned_expressionContext* owned_expression();
+  Owned_expressionContext* owned_expression(int precedence);
+  class SYSMLV2FILE_EXPORT Function_operation_argumentsContext : public antlr4::ParserRuleContext {
   public:
-    Argument_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    Function_operation_argumentsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Eased_owned_expressionContext *eased_owned_expression();
-    antlr4::tree::TerminalNode *STRING_VALUE();
+    Body_expressionContext *body_expression();
+    Function_referenceContext *function_reference();
+    Argument_listContext *argument_list();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
    
   };
 
-  Argument_valueContext* argument_value();
-
-  class SYSMLV2FILE_EXPORT Argument_expression_memberContext : public antlr4::ParserRuleContext {
-  public:
-    Argument_expression_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Argument_expressionContext *argument_expression();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Argument_expression_memberContext* argument_expression_member();
-
-  class SYSMLV2FILE_EXPORT Argument_expressionContext : public antlr4::ParserRuleContext {
-  public:
-    Argument_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Argument_expression_valueContext *argument_expression_value();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Argument_expressionContext* argument_expression();
-
-  class SYSMLV2FILE_EXPORT Argument_expression_valueContext : public antlr4::ParserRuleContext {
-  public:
-    Argument_expression_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Owned_expression_referenceContext *owned_expression_reference();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Argument_expression_valueContext* argument_expression_value();
-
-  class SYSMLV2FILE_EXPORT Metadata_argument_memberContext : public antlr4::ParserRuleContext {
-  public:
-    Metadata_argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Metadata_argumentContext *metadata_argument();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Metadata_argument_memberContext* metadata_argument_member();
-
-  class SYSMLV2FILE_EXPORT Metadata_argumentContext : public antlr4::ParserRuleContext {
-  public:
-    Metadata_argumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Metadata_valueContext *metadata_value();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Metadata_argumentContext* metadata_argument();
-
-  class SYSMLV2FILE_EXPORT Metadata_valueContext : public antlr4::ParserRuleContext {
-  public:
-    Metadata_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Metadata_referenceContext *metadata_reference();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Metadata_valueContext* metadata_value();
-
-  class SYSMLV2FILE_EXPORT Metadata_referenceContext : public antlr4::ParserRuleContext {
-  public:
-    Metadata_referenceContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Qualified_nameContext *qualified_name();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Metadata_referenceContext* metadata_reference();
-
-  class SYSMLV2FILE_EXPORT Metadataclassification_test_operatorContext : public antlr4::ParserRuleContext {
-  public:
-    Metadataclassification_test_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SYMBOL_DOT();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Metadataclassification_test_operatorContext* metadataclassification_test_operator();
-
-  class SYSMLV2FILE_EXPORT Meta_cast_operatorContext : public antlr4::ParserRuleContext {
-  public:
-    Meta_cast_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Meta_cast_operatorContext* meta_cast_operator();
-
-  class SYSMLV2FILE_EXPORT Extend_expressionContext : public antlr4::ParserRuleContext {
-  public:
-    Extend_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *KEYWORD_ALL();
-    Type_reference_memberContext *type_reference_member();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Extend_expressionContext* extend_expression();
+  Function_operation_argumentsContext* function_operation_arguments();
 
   class SYSMLV2FILE_EXPORT Type_reference_memberContext : public antlr4::ParserRuleContext {
   public:
@@ -7978,162 +7845,6 @@ public:
 
   Reference_typingContext* reference_typing();
 
-  class SYSMLV2FILE_EXPORT Primary_expressionsContext : public antlr4::ParserRuleContext {
-  public:
-    Primary_expressionsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    std::vector<Primary_expressionContext *> primary_expression();
-    Primary_expressionContext* primary_expression(size_t i);
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Primary_expressionsContext* primary_expressions();
-
-  class SYSMLV2FILE_EXPORT Primary_expressionContext : public antlr4::ParserRuleContext {
-  public:
-    Primary_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Feature_chain_expressionContext *feature_chain_expression();
-    Non_feature_chain_primary_expressionContext *non_feature_chain_primary_expression();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Primary_expressionContext* primary_expression();
-
-  class SYSMLV2FILE_EXPORT Primary_argument_valueContext : public antlr4::ParserRuleContext {
-  public:
-    Primary_argument_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Primary_expressionContext *primary_expression();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Primary_argument_valueContext* primary_argument_value();
-
-  class SYSMLV2FILE_EXPORT Primary_argumentContext : public antlr4::ParserRuleContext {
-  public:
-    Primary_argumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Primary_argument_valueContext *primary_argument_value();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Primary_argumentContext* primary_argument();
-
-  class SYSMLV2FILE_EXPORT Primary_argument_memberContext : public antlr4::ParserRuleContext {
-  public:
-    Primary_argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Primary_argumentContext *primary_argument();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Primary_argument_memberContext* primary_argument_member();
-
-  class SYSMLV2FILE_EXPORT Non_feature_chain_primary_expressionContext : public antlr4::ParserRuleContext {
-  public:
-    Non_feature_chain_primary_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Bracket_expressionContext *bracket_expression();
-    Index_expressionContext *index_expression();
-    Sequence_expressionContext *sequence_expression();
-    Select_expressionContext *select_expression();
-    Collect_expressionContext *collect_expression();
-    Function_operation_expressionContext *function_operation_expression();
-    Base_expressionContext *base_expression();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Non_feature_chain_primary_expressionContext* non_feature_chain_primary_expression();
-
-  class SYSMLV2FILE_EXPORT Non_feature_chain_primary_argument_valueContext : public antlr4::ParserRuleContext {
-  public:
-    Non_feature_chain_primary_argument_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Non_feature_chain_primary_expressionContext *non_feature_chain_primary_expression();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Non_feature_chain_primary_argument_valueContext* non_feature_chain_primary_argument_value();
-
-  class SYSMLV2FILE_EXPORT Non_feature_chain_primary_argumentContext : public antlr4::ParserRuleContext {
-  public:
-    Non_feature_chain_primary_argumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Primary_argumentContext *primary_argument();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Non_feature_chain_primary_argumentContext* non_feature_chain_primary_argument();
-
-  class SYSMLV2FILE_EXPORT Non_feature_chain_primary_argument_memberContext : public antlr4::ParserRuleContext {
-  public:
-    Non_feature_chain_primary_argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Primary_argumentContext *primary_argument();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Non_feature_chain_primary_argument_memberContext* non_feature_chain_primary_argument_member();
-
-  class SYSMLV2FILE_EXPORT Bracket_expressionContext : public antlr4::ParserRuleContext {
-  public:
-    Bracket_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SYMBOL_SQUARE_BRACKET_OPEN();
-    Sequence_expression_list_memberContext *sequence_expression_list_member();
-    antlr4::tree::TerminalNode *SYMBOL_SQUARE_BRACKET_CLOSE();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Bracket_expressionContext* bracket_expression();
-
-  class SYSMLV2FILE_EXPORT Index_expressionContext : public antlr4::ParserRuleContext {
-  public:
-    Index_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SYMBOL_HASHTAG();
-    antlr4::tree::TerminalNode *SYMBOL_ROUND_BRACKET_OPEN();
-    Sequence_expression_list_memberContext *sequence_expression_list_member();
-    antlr4::tree::TerminalNode *SYMBOL_ROUND_BRACKET_CLOSE();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Index_expressionContext* index_expression();
-
   class SYSMLV2FILE_EXPORT Sequence_expressionContext : public antlr4::ParserRuleContext {
   public:
     Sequence_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -8153,9 +7864,9 @@ public:
   public:
     Sequence_expression_listContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Owned_expressionsContext *owned_expressions();
-    antlr4::tree::TerminalNode *SYMBOL_COMMA();
     Sequence_operator_expressionContext *sequence_operator_expression();
+    Owned_expressionContext *owned_expression();
+    antlr4::tree::TerminalNode *SYMBOL_COMMA();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -8192,182 +7903,6 @@ public:
 
   Sequence_expression_list_memberContext* sequence_expression_list_member();
 
-  class SYSMLV2FILE_EXPORT Feature_chain_expressionContext : public antlr4::ParserRuleContext {
-  public:
-    Feature_chain_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SYMBOL_DOT();
-    Feature_chain_memberContext *feature_chain_member();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Feature_chain_expressionContext* feature_chain_expression();
-
-  class SYSMLV2FILE_EXPORT Collect_expressionContext : public antlr4::ParserRuleContext {
-  public:
-    Collect_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SYMBOL_DOT();
-    Body_expression_memberContext *body_expression_member();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Collect_expressionContext* collect_expression();
-
-  class SYSMLV2FILE_EXPORT Select_expressionContext : public antlr4::ParserRuleContext {
-  public:
-    Select_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SYMBOL_DOT_QUESTION();
-    Body_expression_memberContext *body_expression_member();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Select_expressionContext* select_expression();
-
-  class SYSMLV2FILE_EXPORT Function_operation_expressionContext : public antlr4::ParserRuleContext {
-  public:
-    Function_operation_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SYMBOL_ARROW();
-    Reference_typingContext *reference_typing();
-    Body_argument_memberContext *body_argument_member();
-    Function_reference_argument_memberContext *function_reference_argument_member();
-    Argument_expressionContext *argument_expression();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Function_operation_expressionContext* function_operation_expression();
-
-  class SYSMLV2FILE_EXPORT Body_argument_memberContext : public antlr4::ParserRuleContext {
-  public:
-    Body_argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Body_argumentContext *body_argument();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Body_argument_memberContext* body_argument_member();
-
-  class SYSMLV2FILE_EXPORT Body_argumentContext : public antlr4::ParserRuleContext {
-  public:
-    Body_argumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Body_argument_valueContext *body_argument_value();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Body_argumentContext* body_argument();
-
-  class SYSMLV2FILE_EXPORT Body_argument_valueContext : public antlr4::ParserRuleContext {
-  public:
-    Body_argument_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Body_expressionContext *body_expression();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Body_argument_valueContext* body_argument_value();
-
-  class SYSMLV2FILE_EXPORT Body_expression_memberContext : public antlr4::ParserRuleContext {
-  public:
-    Body_expression_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Body_expressionContext *body_expression();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Body_expression_memberContext* body_expression_member();
-
-  class SYSMLV2FILE_EXPORT Function_reference_argument_memberContext : public antlr4::ParserRuleContext {
-  public:
-    Function_reference_argument_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Function_reference_argumentContext *function_reference_argument();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Function_reference_argument_memberContext* function_reference_argument_member();
-
-  class SYSMLV2FILE_EXPORT Function_reference_argumentContext : public antlr4::ParserRuleContext {
-  public:
-    Function_reference_argumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Function_reference_memberContext *function_reference_member();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Function_reference_argumentContext* function_reference_argument();
-
-  class SYSMLV2FILE_EXPORT Function_reference_arugment_valueContext : public antlr4::ParserRuleContext {
-  public:
-    Function_reference_arugment_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Function_reference_expressionContext *function_reference_expression();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Function_reference_arugment_valueContext* function_reference_arugment_value();
-
-  class SYSMLV2FILE_EXPORT Function_reference_expressionContext : public antlr4::ParserRuleContext {
-  public:
-    Function_reference_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Reference_typingContext *reference_typing();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Function_reference_expressionContext* function_reference_expression();
-
-  class SYSMLV2FILE_EXPORT Function_reference_memberContext : public antlr4::ParserRuleContext {
-  public:
-    Function_reference_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Function_referenceContext *function_reference();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Function_reference_memberContext* function_reference_member();
-
   class SYSMLV2FILE_EXPORT Function_referenceContext : public antlr4::ParserRuleContext {
   public:
     Function_referenceContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -8386,10 +7921,11 @@ public:
     Base_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Invocation_expressionContext *invocation_expression();
+    Constructor_expressionContext *constructor_expression();
     Null_expressionContext *null_expression();
     Literal_expressionContext *literal_expression();
-    Feature_reference_expressionContext *feature_reference_expression();
     Metadata_access_expressionContext *metadata_access_expression();
+    Feature_reference_expressionContext *feature_reference_expression();
     Body_expressionContext *body_expression();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -8495,6 +8031,21 @@ public:
 
   Internal_invocation_expressionContext* internal_invocation_expression();
 
+  class SYSMLV2FILE_EXPORT Constructor_expressionContext : public antlr4::ParserRuleContext {
+  public:
+    Constructor_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *KEYWORD_NEW();
+    Owned_feature_typingContext *owned_feature_typing();
+    Argument_listContext *argument_list();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Constructor_expressionContext* constructor_expression();
+
   class SYSMLV2FILE_EXPORT Argument_listContext : public antlr4::ParserRuleContext {
   public:
     Argument_listContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -8561,8 +8112,8 @@ public:
     Named_argumentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Parameter_redefinitionContext *parameter_redefinition();
-    antlr4::tree::TerminalNode *SYMBOL_EQUALS();
-    Owned_expressionsContext *owned_expressions();
+    antlr4::tree::TerminalNode *SYMBOL_ASSIGN();
+    Owned_expressionContext *owned_expression();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -8609,21 +8160,6 @@ public:
   };
 
   Expression_body_memberContext* expression_body_member();
-
-  class SYSMLV2FILE_EXPORT Expression_bodyContext : public antlr4::ParserRuleContext {
-  public:
-    Expression_bodyContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SYMBOL_ROUND_BRACKET_OPEN();
-    Function_body_partContext *function_body_part();
-    antlr4::tree::TerminalNode *SYMBOL_ROUND_BRACKET_CLOSE();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Expression_bodyContext* expression_body();
 
   class SYSMLV2FILE_EXPORT Literal_expressionContext : public antlr4::ParserRuleContext {
   public:
@@ -9061,7 +8597,7 @@ public:
     Type_prefixContext *type_prefix();
     std::vector<antlr4::tree::TerminalNode *> NAME();
     antlr4::tree::TerminalNode* NAME(size_t i);
-    antlr4::tree::TerminalNode *SPECIALIZES();
+    Specializes_operatorContext *specializes_operator();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -9110,9 +8646,7 @@ public:
     virtual size_t getRuleIndex() const override;
     Owned_feature_typingContext *owned_feature_typing();
     IdentificationContext *identification();
-    antlr4::tree::TerminalNode *SYMBOL_TYPED_BY();
-    antlr4::tree::TerminalNode *KEYWORD_TYPED();
-    antlr4::tree::TerminalNode *KEYWORD_BY();
+    Typed_by_operatorContext *typed_by_operator();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -9157,10 +8691,9 @@ public:
     Owned_redefinitionContext *owned_redefinition();
     Metadata_bodyContext *metadata_body();
     antlr4::tree::TerminalNode *KEYWORD_FEATURE();
+    Redefines_operatorContext *redefines_operator();
     Feature_specialization_partContext *feature_specialization_part();
     Value_partContext *value_part();
-    antlr4::tree::TerminalNode *SYMBOL_REDEFINES();
-    antlr4::tree::TerminalNode *KEYWORD_REDEFINES();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -9225,6 +8758,7 @@ public:
     Qualified_nameContext* qualified_name(size_t i);
     antlr4::tree::TerminalNode *SYMBOL_ASSIGN();
     IdentificationContext *identification();
+    antlr4::tree::TerminalNode *KEYWORD_META();
     antlr4::tree::TerminalNode *SYMBOL_STATEMENT_DELIMITER();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -9234,6 +8768,109 @@ public:
 
   Meta_assignmentContext* meta_assignment();
 
+  class SYSMLV2FILE_EXPORT Typed_by_operatorContext : public antlr4::ParserRuleContext {
+  public:
+    Typed_by_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *SYMBOL_TYPED_BY();
+    antlr4::tree::TerminalNode *KEYWORD_TYPED();
+    antlr4::tree::TerminalNode *KEYWORD_BY();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Typed_by_operatorContext* typed_by_operator();
+
+  class SYSMLV2FILE_EXPORT Specializes_operatorContext : public antlr4::ParserRuleContext {
+  public:
+    Specializes_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *SYMBOL_SPECIALIZES();
+    antlr4::tree::TerminalNode *KEYWORD_SPECIALIZES();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Specializes_operatorContext* specializes_operator();
+
+  class SYSMLV2FILE_EXPORT Subsets_operatorContext : public antlr4::ParserRuleContext {
+  public:
+    Subsets_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *SYMBOL_SPECIALIZES();
+    antlr4::tree::TerminalNode *KEYWORD_SUBSETS();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Subsets_operatorContext* subsets_operator();
+
+  class SYSMLV2FILE_EXPORT References_operatorContext : public antlr4::ParserRuleContext {
+  public:
+    References_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *SYMBOL_REFERENCES();
+    antlr4::tree::TerminalNode *KEYWORD_REFERENCES();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  References_operatorContext* references_operator();
+
+  class SYSMLV2FILE_EXPORT Redefines_operatorContext : public antlr4::ParserRuleContext {
+  public:
+    Redefines_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *SYMBOL_REDEFINES();
+    antlr4::tree::TerminalNode *KEYWORD_REDEFINES();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Redefines_operatorContext* redefines_operator();
+
+  class SYSMLV2FILE_EXPORT Conjugates_operatorContext : public antlr4::ParserRuleContext {
+  public:
+    Conjugates_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *SYMBOL_CONJUGATES();
+    antlr4::tree::TerminalNode *KEYWORD_CONJUGATES();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Conjugates_operatorContext* conjugates_operator();
+
+  class SYSMLV2FILE_EXPORT Crosses_operatorContext : public antlr4::ParserRuleContext {
+  public:
+    Crosses_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *SYMBOL_CROSSES();
+    antlr4::tree::TerminalNode *KEYWORD_CROSSES();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Crosses_operatorContext* crosses_operator();
+
+
+  bool sempred(antlr4::RuleContext *_localctx, size_t ruleIndex, size_t predicateIndex) override;
+
+  bool owned_expressionSempred(Owned_expressionContext *_localctx, size_t predicateIndex);
 
   // By default the static state used to implement the parser is lazily initialized during the first
   // call to the constructor. You can call this function if you wish to initialize the static state
