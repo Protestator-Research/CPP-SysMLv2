@@ -21,6 +21,11 @@
 //---------------------------------------------------------
 namespace KerML::Entities
 {
+	Specialization::Specialization()
+	{
+		_dType = "Specialization";
+	}
+
 	Specialization::Specialization(std::shared_ptr<Type> general, std::shared_ptr<Type> specific)
 	{
 		_dType = "Specialization";

@@ -4,11 +4,16 @@
 #include "antlr4-runtime.h"
 #include <sysmlv2/parser/SysMLv2BaseListener.h>
 #include <kerml/root/elements/Element.h>
+#include <sysmlv2/resolution/ResolutionData.h>
+#include <sysmlv2/ownership/Ownership.h>
 #include <memory>
 #include <stack>
 #include <string>
 #include <vector>
 #include <map>
+#include <set>
+#include <functional>
+#include <optional>
 
 namespace KerML::Entities {
     class Type;
@@ -138,13 +143,13 @@ public:
     virtual void exitBasic_usage_prefix(SysMLv2Parser::Basic_usage_prefixContext* /*ctx*/) override {}
 
     virtual void enterEnd_usage_prefix(SysMLv2Parser::End_usage_prefixContext* /*ctx*/) override {}
-    virtual void exitEnd_usage_prefix(SysMLv2Parser::End_usage_prefixContext* /*ctx*/) override {}
+    virtual void exitEnd_usage_prefix(SysMLv2Parser::End_usage_prefixContext* ctx) override;
 
     virtual void enterOwned_cross_feature_member(SysMLv2Parser::Owned_cross_feature_memberContext* /*ctx*/) override {}
     virtual void exitOwned_cross_feature_member(SysMLv2Parser::Owned_cross_feature_memberContext* /*ctx*/) override {}
 
-    virtual void enterOwned_cross_feature(SysMLv2Parser::Owned_cross_featureContext* /*ctx*/) override {}
-    virtual void exitOwned_cross_feature(SysMLv2Parser::Owned_cross_featureContext* /*ctx*/) override {}
+    virtual void enterOwned_cross_feature(SysMLv2Parser::Owned_cross_featureContext* ctx) override;
+    virtual void exitOwned_cross_feature(SysMLv2Parser::Owned_cross_featureContext* ctx) override;
 
     virtual void enterUsage_extention_keyword(SysMLv2Parser::Usage_extention_keywordContext* /*ctx*/) override {}
     virtual void exitUsage_extention_keyword(SysMLv2Parser::Usage_extention_keywordContext* /*ctx*/) override {}
@@ -176,6 +181,12 @@ public:
     virtual void enterVariant_reference(SysMLv2Parser::Variant_referenceContext* ctx) override;
     virtual void exitVariant_reference(SysMLv2Parser::Variant_referenceContext* ctx) override;
 
+    virtual void enterRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext* ctx) override;
+    virtual void exitRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext* ctx) override;
+
+    virtual void enterRedefinition_usage(SysMLv2Parser::Redefinition_usageContext* ctx) override;
+    virtual void exitRedefinition_usage(SysMLv2Parser::Redefinition_usageContext* ctx) override;
+
     virtual void enterNon_occurrence_usage_element(SysMLv2Parser::Non_occurrence_usage_elementContext* /*ctx*/) override {}
     virtual void exitNon_occurrence_usage_element(SysMLv2Parser::Non_occurrence_usage_elementContext* /*ctx*/) override {}
 
@@ -198,10 +209,34 @@ public:
     virtual void exitCrosses(SysMLv2Parser::CrossesContext* /*ctx*/) override {}
 
     virtual void enterOwned_cross_subsetting(SysMLv2Parser::Owned_cross_subsettingContext* /*ctx*/) override {}
-    virtual void exitOwned_cross_subsetting(SysMLv2Parser::Owned_cross_subsettingContext* /*ctx*/) override {}
+    virtual void exitOwned_cross_subsetting(SysMLv2Parser::Owned_cross_subsettingContext* ctx) override;
 
     virtual void enterMultiplicity_part(SysMLv2Parser::Multiplicity_partContext* /*ctx*/) override {}
     virtual void exitMultiplicity_part(SysMLv2Parser::Multiplicity_partContext* ctx) override;
+
+    virtual void enterMultiplicity_modifier(SysMLv2Parser::Multiplicity_modifierContext* /*ctx*/) override {}
+    virtual void exitMultiplicity_modifier(SysMLv2Parser::Multiplicity_modifierContext* /*ctx*/) override {}
+
+    virtual void enterTyped_by_operator(SysMLv2Parser::Typed_by_operatorContext* /*ctx*/) override {}
+    virtual void exitTyped_by_operator(SysMLv2Parser::Typed_by_operatorContext* /*ctx*/) override {}
+
+    virtual void enterSpecializes_operator(SysMLv2Parser::Specializes_operatorContext* /*ctx*/) override {}
+    virtual void exitSpecializes_operator(SysMLv2Parser::Specializes_operatorContext* /*ctx*/) override {}
+
+    virtual void enterSubsets_operator(SysMLv2Parser::Subsets_operatorContext* /*ctx*/) override {}
+    virtual void exitSubsets_operator(SysMLv2Parser::Subsets_operatorContext* /*ctx*/) override {}
+
+    virtual void enterReferences_operator(SysMLv2Parser::References_operatorContext* /*ctx*/) override {}
+    virtual void exitReferences_operator(SysMLv2Parser::References_operatorContext* /*ctx*/) override {}
+
+    virtual void enterRedefines_operator(SysMLv2Parser::Redefines_operatorContext* /*ctx*/) override {}
+    virtual void exitRedefines_operator(SysMLv2Parser::Redefines_operatorContext* /*ctx*/) override {}
+
+    virtual void enterConjugates_operator(SysMLv2Parser::Conjugates_operatorContext* /*ctx*/) override {}
+    virtual void exitConjugates_operator(SysMLv2Parser::Conjugates_operatorContext* /*ctx*/) override {}
+
+    virtual void enterCrosses_operator(SysMLv2Parser::Crosses_operatorContext* /*ctx*/) override {}
+    virtual void exitCrosses_operator(SysMLv2Parser::Crosses_operatorContext* /*ctx*/) override {}
 
     virtual void enterOwned_multiplicity(SysMLv2Parser::Owned_multiplicityContext* /*ctx*/) override {}
     virtual void exitOwned_multiplicity(SysMLv2Parser::Owned_multiplicityContext* /*ctx*/) override {}
@@ -506,8 +541,8 @@ public:
     virtual void enterFork_node(SysMLv2Parser::Fork_nodeContext* /*ctx*/) override {}
     virtual void exitFork_node(SysMLv2Parser::Fork_nodeContext* /*ctx*/) override {}
 
-    virtual void enterAccept_node(SysMLv2Parser::Accept_nodeContext* /*ctx*/) override {}
-    virtual void exitAccept_node(SysMLv2Parser::Accept_nodeContext* /*ctx*/) override {}
+    virtual void enterAccept_node(SysMLv2Parser::Accept_nodeContext* ctx) override;
+    virtual void exitAccept_node(SysMLv2Parser::Accept_nodeContext* ctx) override;
 
     virtual void enterAccept_node_declaration(SysMLv2Parser::Accept_node_declarationContext* /*ctx*/) override {}
     virtual void exitAccept_node_declaration(SysMLv2Parser::Accept_node_declarationContext* /*ctx*/) override {}
@@ -518,8 +553,8 @@ public:
     virtual void enterPayload_parameter_member(SysMLv2Parser::Payload_parameter_memberContext* /*ctx*/) override {}
     virtual void exitPayload_parameter_member(SysMLv2Parser::Payload_parameter_memberContext* /*ctx*/) override {}
 
-    virtual void enterPayload_parameter(SysMLv2Parser::Payload_parameterContext* /*ctx*/) override {}
-    virtual void exitPayload_parameter(SysMLv2Parser::Payload_parameterContext* /*ctx*/) override {}
+    virtual void enterPayload_parameter(SysMLv2Parser::Payload_parameterContext* ctx) override;
+    virtual void exitPayload_parameter(SysMLv2Parser::Payload_parameterContext* ctx) override;
 
     virtual void enterTrigger_value_part(SysMLv2Parser::Trigger_value_partContext* /*ctx*/) override {}
     virtual void exitTrigger_value_part(SysMLv2Parser::Trigger_value_partContext* /*ctx*/) override {}
@@ -527,8 +562,8 @@ public:
     virtual void enterTrigger_expression(SysMLv2Parser::Trigger_expressionContext* /*ctx*/) override {}
     virtual void exitTrigger_expression(SysMLv2Parser::Trigger_expressionContext* /*ctx*/) override {}
 
-    virtual void enterSend_node(SysMLv2Parser::Send_nodeContext* /*ctx*/) override {}
-    virtual void exitSend_node(SysMLv2Parser::Send_nodeContext* /*ctx*/) override {}
+    virtual void enterSend_node(SysMLv2Parser::Send_nodeContext* ctx) override;
+    virtual void exitSend_node(SysMLv2Parser::Send_nodeContext* ctx) override;
 
     virtual void enterSend_node_declaration(SysMLv2Parser::Send_node_declarationContext* /*ctx*/) override {}
     virtual void exitSend_node_declaration(SysMLv2Parser::Send_node_declarationContext* /*ctx*/) override {}
@@ -545,8 +580,8 @@ public:
     virtual void enterFeature_binding(SysMLv2Parser::Feature_bindingContext* /*ctx*/) override {}
     virtual void exitFeature_binding(SysMLv2Parser::Feature_bindingContext* /*ctx*/) override {}
 
-    virtual void enterAssignment_node(SysMLv2Parser::Assignment_nodeContext* /*ctx*/) override {}
-    virtual void exitAssignment_node(SysMLv2Parser::Assignment_nodeContext* /*ctx*/) override {}
+    virtual void enterAssignment_node(SysMLv2Parser::Assignment_nodeContext* ctx) override;
+    virtual void exitAssignment_node(SysMLv2Parser::Assignment_nodeContext* ctx) override;
 
     virtual void enterAssignment_node_declaration(SysMLv2Parser::Assignment_node_declarationContext* /*ctx*/) override {}
     virtual void exitAssignment_node_declaration(SysMLv2Parser::Assignment_node_declarationContext* /*ctx*/) override {}
@@ -569,8 +604,8 @@ public:
     virtual void enterTerminate_node(SysMLv2Parser::Terminate_nodeContext* /*ctx*/) override {}
     virtual void exitTerminate_node(SysMLv2Parser::Terminate_nodeContext* /*ctx*/) override {}
 
-    virtual void enterIf_node(SysMLv2Parser::If_nodeContext* /*ctx*/) override {}
-    virtual void exitIf_node(SysMLv2Parser::If_nodeContext* /*ctx*/) override {}
+    virtual void enterIf_node(SysMLv2Parser::If_nodeContext* ctx) override;
+    virtual void exitIf_node(SysMLv2Parser::If_nodeContext* ctx) override;
 
     virtual void enterExpression_parameter_member(SysMLv2Parser::Expression_parameter_memberContext* /*ctx*/) override {}
     virtual void exitExpression_parameter_member(SysMLv2Parser::Expression_parameter_memberContext* /*ctx*/) override {}
@@ -584,11 +619,11 @@ public:
     virtual void enterIf_node_parameter_member(SysMLv2Parser::If_node_parameter_memberContext* /*ctx*/) override {}
     virtual void exitIf_node_parameter_member(SysMLv2Parser::If_node_parameter_memberContext* /*ctx*/) override {}
 
-    virtual void enterWhile_loop_node(SysMLv2Parser::While_loop_nodeContext* /*ctx*/) override {}
-    virtual void exitWhile_loop_node(SysMLv2Parser::While_loop_nodeContext* /*ctx*/) override {}
+    virtual void enterWhile_loop_node(SysMLv2Parser::While_loop_nodeContext* ctx) override;
+    virtual void exitWhile_loop_node(SysMLv2Parser::While_loop_nodeContext* ctx) override;
 
-    virtual void enterFor_loop_node(SysMLv2Parser::For_loop_nodeContext* /*ctx*/) override {}
-    virtual void exitFor_loop_node(SysMLv2Parser::For_loop_nodeContext* /*ctx*/) override {}
+    virtual void enterFor_loop_node(SysMLv2Parser::For_loop_nodeContext* ctx) override;
+    virtual void exitFor_loop_node(SysMLv2Parser::For_loop_nodeContext* ctx) override;
 
     virtual void enterFor_variable_declaration_member(SysMLv2Parser::For_variable_declaration_memberContext* /*ctx*/) override {}
     virtual void exitFor_variable_declaration_member(SysMLv2Parser::For_variable_declaration_memberContext* /*ctx*/) override {}
@@ -632,23 +667,27 @@ public:
     virtual void enterEntry_transition_member(SysMLv2Parser::Entry_transition_memberContext* /*ctx*/) override {}
     virtual void exitEntry_transition_member(SysMLv2Parser::Entry_transition_memberContext* /*ctx*/) override {}
 
+    // state_action_usage is a pure alternation (empty_action_usage | state_perform_action_uage |
+    // state_accept_action_usage | state_send_action_usage | state_assignment_action_usage) with no
+    // tokens of its own, so - like anonymous_feature - it must stay a no-op: each alternative below
+    // pushes its own element.
     virtual void enterState_action_usage(SysMLv2Parser::State_action_usageContext* /*ctx*/) override {}
     virtual void exitState_action_usage(SysMLv2Parser::State_action_usageContext* /*ctx*/) override {}
 
-    virtual void enterEmpty_action_usage(SysMLv2Parser::Empty_action_usageContext* /*ctx*/) override {}
-    virtual void exitEmpty_action_usage(SysMLv2Parser::Empty_action_usageContext* /*ctx*/) override {}
+    virtual void enterEmpty_action_usage(SysMLv2Parser::Empty_action_usageContext* ctx) override;
+    virtual void exitEmpty_action_usage(SysMLv2Parser::Empty_action_usageContext* ctx) override;
 
-    virtual void enterState_perform_action_uage(SysMLv2Parser::State_perform_action_uageContext* /*ctx*/) override {}
-    virtual void exitState_perform_action_uage(SysMLv2Parser::State_perform_action_uageContext* /*ctx*/) override {}
+    virtual void enterState_perform_action_uage(SysMLv2Parser::State_perform_action_uageContext* ctx) override;
+    virtual void exitState_perform_action_uage(SysMLv2Parser::State_perform_action_uageContext* ctx) override;
 
-    virtual void enterState_accept_action_usage(SysMLv2Parser::State_accept_action_usageContext* /*ctx*/) override {}
-    virtual void exitState_accept_action_usage(SysMLv2Parser::State_accept_action_usageContext* /*ctx*/) override {}
+    virtual void enterState_accept_action_usage(SysMLv2Parser::State_accept_action_usageContext* ctx) override;
+    virtual void exitState_accept_action_usage(SysMLv2Parser::State_accept_action_usageContext* ctx) override;
 
-    virtual void enterState_send_action_usage(SysMLv2Parser::State_send_action_usageContext* /*ctx*/) override {}
-    virtual void exitState_send_action_usage(SysMLv2Parser::State_send_action_usageContext* /*ctx*/) override {}
+    virtual void enterState_send_action_usage(SysMLv2Parser::State_send_action_usageContext* ctx) override;
+    virtual void exitState_send_action_usage(SysMLv2Parser::State_send_action_usageContext* ctx) override;
 
-    virtual void enterState_assignment_action_usage(SysMLv2Parser::State_assignment_action_usageContext* /*ctx*/) override {}
-    virtual void exitState_assignment_action_usage(SysMLv2Parser::State_assignment_action_usageContext* /*ctx*/) override {}
+    virtual void enterState_assignment_action_usage(SysMLv2Parser::State_assignment_action_usageContext* ctx) override;
+    virtual void exitState_assignment_action_usage(SysMLv2Parser::State_assignment_action_usageContext* ctx) override;
 
     virtual void enterTransition_usage_member(SysMLv2Parser::Transition_usage_memberContext* /*ctx*/) override {}
     virtual void exitTransition_usage_member(SysMLv2Parser::Transition_usage_memberContext* /*ctx*/) override {}
@@ -665,11 +704,11 @@ public:
     virtual void enterExhibit_state_usage(SysMLv2Parser::Exhibit_state_usageContext* ctx) override;
     virtual void exitExhibit_state_usage(SysMLv2Parser::Exhibit_state_usageContext* ctx) override;
 
-    virtual void enterTransition_usage(SysMLv2Parser::Transition_usageContext* /*ctx*/) override {}
-    virtual void exitTransition_usage(SysMLv2Parser::Transition_usageContext* /*ctx*/) override {}
+    virtual void enterTransition_usage(SysMLv2Parser::Transition_usageContext* ctx) override;
+    virtual void exitTransition_usage(SysMLv2Parser::Transition_usageContext* ctx) override;
 
-    virtual void enterTarget_transition_usage(SysMLv2Parser::Target_transition_usageContext* /*ctx*/) override {}
-    virtual void exitTarget_transition_usage(SysMLv2Parser::Target_transition_usageContext* /*ctx*/) override {}
+    virtual void enterTarget_transition_usage(SysMLv2Parser::Target_transition_usageContext* ctx) override;
+    virtual void exitTarget_transition_usage(SysMLv2Parser::Target_transition_usageContext* ctx) override;
 
     virtual void enterTrigger_action_member(SysMLv2Parser::Trigger_action_memberContext* /*ctx*/) override {}
     virtual void exitTrigger_action_member(SysMLv2Parser::Trigger_action_memberContext* /*ctx*/) override {}
@@ -728,26 +767,26 @@ public:
     virtual void enterRequirement_constraint_member(SysMLv2Parser::Requirement_constraint_memberContext* /*ctx*/) override {}
     virtual void exitRequirement_constraint_member(SysMLv2Parser::Requirement_constraint_memberContext* /*ctx*/) override {}
 
-    virtual void enterRequirement_constraint_usage(SysMLv2Parser::Requirement_constraint_usageContext* /*ctx*/) override {}
-    virtual void exitRequirement_constraint_usage(SysMLv2Parser::Requirement_constraint_usageContext* /*ctx*/) override {}
+    virtual void enterRequirement_constraint_usage(SysMLv2Parser::Requirement_constraint_usageContext* ctx) override;
+    virtual void exitRequirement_constraint_usage(SysMLv2Parser::Requirement_constraint_usageContext* ctx) override;
 
     virtual void enterFramed_concern_member(SysMLv2Parser::Framed_concern_memberContext* /*ctx*/) override {}
     virtual void exitFramed_concern_member(SysMLv2Parser::Framed_concern_memberContext* /*ctx*/) override {}
 
-    virtual void enterFramed_concern_usage(SysMLv2Parser::Framed_concern_usageContext* /*ctx*/) override {}
-    virtual void exitFramed_concern_usage(SysMLv2Parser::Framed_concern_usageContext* /*ctx*/) override {}
+    virtual void enterFramed_concern_usage(SysMLv2Parser::Framed_concern_usageContext* ctx) override;
+    virtual void exitFramed_concern_usage(SysMLv2Parser::Framed_concern_usageContext* ctx) override;
 
     virtual void enterActor_member(SysMLv2Parser::Actor_memberContext* /*ctx*/) override {}
     virtual void exitActor_member(SysMLv2Parser::Actor_memberContext* /*ctx*/) override {}
 
-    virtual void enterActor_usage(SysMLv2Parser::Actor_usageContext* /*ctx*/) override {}
-    virtual void exitActor_usage(SysMLv2Parser::Actor_usageContext* /*ctx*/) override {}
+    virtual void enterActor_usage(SysMLv2Parser::Actor_usageContext* ctx) override;
+    virtual void exitActor_usage(SysMLv2Parser::Actor_usageContext* ctx) override;
 
     virtual void enterStakeholder_member(SysMLv2Parser::Stakeholder_memberContext* /*ctx*/) override {}
     virtual void exitStakeholder_member(SysMLv2Parser::Stakeholder_memberContext* /*ctx*/) override {}
 
-    virtual void enterStakeholder_usage(SysMLv2Parser::Stakeholder_usageContext* /*ctx*/) override {}
-    virtual void exitStakeholder_usage(SysMLv2Parser::Stakeholder_usageContext* /*ctx*/) override {}
+    virtual void enterStakeholder_usage(SysMLv2Parser::Stakeholder_usageContext* ctx) override;
+    virtual void exitStakeholder_usage(SysMLv2Parser::Stakeholder_usageContext* ctx) override;
 
     virtual void enterSubject_member(SysMLv2Parser::Subject_memberContext* ctx) override;
     virtual void exitSubject_member(SysMLv2Parser::Subject_memberContext* ctx) override;
@@ -803,11 +842,11 @@ public:
     virtual void enterObjective_member(SysMLv2Parser::Objective_memberContext* /*ctx*/) override {}
     virtual void exitObjective_member(SysMLv2Parser::Objective_memberContext* /*ctx*/) override {}
 
-    virtual void enterObjective_requirement_usage(SysMLv2Parser::Objective_requirement_usageContext* /*ctx*/) override {}
-    virtual void exitObjective_requirement_usage(SysMLv2Parser::Objective_requirement_usageContext* /*ctx*/) override {}
+    virtual void enterObjective_requirement_usage(SysMLv2Parser::Objective_requirement_usageContext* ctx) override;
+    virtual void exitObjective_requirement_usage(SysMLv2Parser::Objective_requirement_usageContext* ctx) override;
 
-    virtual void enterUse_case_definition(SysMLv2Parser::Use_case_definitionContext* /*ctx*/) override {}
-    virtual void exitUse_case_definition(SysMLv2Parser::Use_case_definitionContext* /*ctx*/) override {}
+    virtual void enterUse_case_definition(SysMLv2Parser::Use_case_definitionContext* ctx) override;
+    virtual void exitUse_case_definition(SysMLv2Parser::Use_case_definitionContext* ctx) override;
 
     virtual void enterUse_case_usage(SysMLv2Parser::Use_case_usageContext* ctx) override;
     virtual void exitUse_case_usage(SysMLv2Parser::Use_case_usageContext* ctx) override;
@@ -824,8 +863,8 @@ public:
     virtual void enterView_definition_body_item(SysMLv2Parser::View_definition_body_itemContext* /*ctx*/) override {}
     virtual void exitView_definition_body_item(SysMLv2Parser::View_definition_body_itemContext* /*ctx*/) override {}
 
-    virtual void enterView_rendering_usage(SysMLv2Parser::View_rendering_usageContext* /*ctx*/) override {}
-    virtual void exitView_rendering_usage(SysMLv2Parser::View_rendering_usageContext* /*ctx*/) override {}
+    virtual void enterView_rendering_usage(SysMLv2Parser::View_rendering_usageContext* ctx) override;
+    virtual void exitView_rendering_usage(SysMLv2Parser::View_rendering_usageContext* ctx) override;
 
     virtual void enterView_usage(SysMLv2Parser::View_usageContext* ctx) override;
     virtual void exitView_usage(SysMLv2Parser::View_usageContext* ctx) override;
@@ -854,8 +893,8 @@ public:
     virtual void enterMetadata_body(SysMLv2Parser::Metadata_bodyContext* /*ctx*/) override {}
     virtual void exitMetadata_body(SysMLv2Parser::Metadata_bodyContext* /*ctx*/) override {}
 
-    virtual void enterMetadata_body_usage(SysMLv2Parser::Metadata_body_usageContext* /*ctx*/) override {}
-    virtual void exitMetadata_body_usage(SysMLv2Parser::Metadata_body_usageContext* /*ctx*/) override {}
+    virtual void enterMetadata_body_usage(SysMLv2Parser::Metadata_body_usageContext* ctx) override;
+    virtual void exitMetadata_body_usage(SysMLv2Parser::Metadata_body_usageContext* ctx) override;
 
     virtual void enterMetadata_usage(SysMLv2Parser::Metadata_usageContext* ctx) override;
     virtual void exitMetadata_usage(SysMLv2Parser::Metadata_usageContext* ctx) override;
@@ -950,20 +989,83 @@ public:
     virtual void enterInvariant(SysMLv2Parser::InvariantContext* ctx) override;
     virtual void exitInvariant(SysMLv2Parser::InvariantContext* ctx) override;
 
-    virtual void enterClassification(SysMLv2Parser::ClassificationContext* ctx) override;
-    virtual void exitClassification(SysMLv2Parser::ClassificationContext* ctx) override;
+    virtual void enterFunction_operation_arguments(SysMLv2Parser::Function_operation_argumentsContext* ctx) override;
+    virtual void exitFunction_operation_arguments(SysMLv2Parser::Function_operation_argumentsContext* ctx) override;
 
-    virtual void enterConditional_expression(SysMLv2Parser::Conditional_expressionContext* ctx) override;
-    virtual void exitConditional_expression(SysMLv2Parser::Conditional_expressionContext* ctx) override;
+    virtual void enterConstructor_expression(SysMLv2Parser::Constructor_expressionContext* ctx) override;
+    virtual void exitConstructor_expression(SysMLv2Parser::Constructor_expressionContext* ctx) override;
 
-    virtual void enterConditional_binary_operator_expression(SysMLv2Parser::Conditional_binary_operator_expressionContext* ctx) override;
-    virtual void exitConditional_binary_operator_expression(SysMLv2Parser::Conditional_binary_operator_expressionContext* ctx) override;
+    virtual void enterNull_expression(SysMLv2Parser::Null_expressionContext* ctx) override;
+    virtual void exitNull_expression(SysMLv2Parser::Null_expressionContext* ctx) override;
 
-    virtual void enterBinary_operator_expression(SysMLv2Parser::Binary_operator_expressionContext* ctx) override;
-    virtual void exitBinary_operator_expression(SysMLv2Parser::Binary_operator_expressionContext* ctx) override;
+    virtual void enterFeature_reference_expression(SysMLv2Parser::Feature_reference_expressionContext* ctx) override;
+    virtual void exitFeature_reference_expression(SysMLv2Parser::Feature_reference_expressionContext* ctx) override;
 
-    virtual void enterUnary_operator_expression(SysMLv2Parser::Unary_operator_expressionContext* ctx) override;
-    virtual void exitUnary_operator_expression(SysMLv2Parser::Unary_operator_expressionContext* ctx) override;
+    virtual void enterMetadata_access_expression(SysMLv2Parser::Metadata_access_expressionContext* ctx) override;
+    virtual void exitMetadata_access_expression(SysMLv2Parser::Metadata_access_expressionContext* ctx) override;
+
+    virtual void enterInvocation_expression(SysMLv2Parser::Invocation_expressionContext* ctx) override;
+    virtual void exitInvocation_expression(SysMLv2Parser::Invocation_expressionContext* ctx) override;
+
+    virtual void enterBody_expression(SysMLv2Parser::Body_expressionContext* ctx) override;
+    virtual void exitBody_expression(SysMLv2Parser::Body_expressionContext* ctx) override;
+
+    virtual void enterType_reference(SysMLv2Parser::Type_referenceContext* ctx) override;
+    virtual void exitType_reference(SysMLv2Parser::Type_referenceContext* ctx) override;
+
+    virtual void enterFunction_reference(SysMLv2Parser::Function_referenceContext* ctx) override;
+    virtual void exitFunction_reference(SysMLv2Parser::Function_referenceContext* ctx) override;
+
+    virtual void enterSequence_operator_expression(SysMLv2Parser::Sequence_operator_expressionContext* ctx) override;
+    virtual void exitSequence_operator_expression(SysMLv2Parser::Sequence_operator_expressionContext* ctx) override;
+
+    virtual void enterNamed_argument(SysMLv2Parser::Named_argumentContext* ctx) override;
+    virtual void exitNamed_argument(SysMLv2Parser::Named_argumentContext* ctx) override;
+
+    virtual void enterParameter_redefinition(SysMLv2Parser::Parameter_redefinitionContext* ctx) override;
+    virtual void exitParameter_redefinition(SysMLv2Parser::Parameter_redefinitionContext* ctx) override;
+
+    virtual void enterConditionalExpr(SysMLv2Parser::ConditionalExprContext* ctx) override;
+    virtual void exitConditionalExpr(SysMLv2Parser::ConditionalExprContext* ctx) override;
+
+    virtual void enterBinaryExpr(SysMLv2Parser::BinaryExprContext* ctx) override;
+    virtual void exitBinaryExpr(SysMLv2Parser::BinaryExprContext* ctx) override;
+
+    virtual void enterUnaryExpr(SysMLv2Parser::UnaryExprContext* ctx) override;
+    virtual void exitUnaryExpr(SysMLv2Parser::UnaryExprContext* ctx) override;
+
+    virtual void enterClassificationExpr(SysMLv2Parser::ClassificationExprContext* ctx) override;
+    virtual void exitClassificationExpr(SysMLv2Parser::ClassificationExprContext* ctx) override;
+
+    virtual void enterMetaclassificationExpr(SysMLv2Parser::MetaclassificationExprContext* ctx) override;
+    virtual void exitMetaclassificationExpr(SysMLv2Parser::MetaclassificationExprContext* ctx) override;
+
+    virtual void enterExtentExpr(SysMLv2Parser::ExtentExprContext* ctx) override;
+    virtual void exitExtentExpr(SysMLv2Parser::ExtentExprContext* ctx) override;
+
+    virtual void enterIndexExpr(SysMLv2Parser::IndexExprContext* ctx) override;
+    virtual void exitIndexExpr(SysMLv2Parser::IndexExprContext* ctx) override;
+
+    virtual void enterBracketExpr(SysMLv2Parser::BracketExprContext* ctx) override;
+    virtual void exitBracketExpr(SysMLv2Parser::BracketExprContext* ctx) override;
+
+    virtual void enterFeatureChainExpr(SysMLv2Parser::FeatureChainExprContext* ctx) override;
+    virtual void exitFeatureChainExpr(SysMLv2Parser::FeatureChainExprContext* ctx) override;
+
+    virtual void enterCollectExpr(SysMLv2Parser::CollectExprContext* ctx) override;
+    virtual void exitCollectExpr(SysMLv2Parser::CollectExprContext* ctx) override;
+
+    virtual void enterSelectExpr(SysMLv2Parser::SelectExprContext* ctx) override;
+    virtual void exitSelectExpr(SysMLv2Parser::SelectExprContext* ctx) override;
+
+    virtual void enterFunctionOperationExpr(SysMLv2Parser::FunctionOperationExprContext* ctx) override;
+    virtual void exitFunctionOperationExpr(SysMLv2Parser::FunctionOperationExprContext* ctx) override;
+
+    virtual void enterSequenceExpr(SysMLv2Parser::SequenceExprContext* ctx) override;
+    virtual void exitSequenceExpr(SysMLv2Parser::SequenceExprContext* ctx) override;
+
+    virtual void enterBaseExpr(SysMLv2Parser::BaseExprContext* ctx) override;
+    virtual void exitBaseExpr(SysMLv2Parser::BaseExprContext* ctx) override;
 
     virtual void enterLiteral_expression(SysMLv2Parser::Literal_expressionContext* ctx) override;
     virtual void exitLiteral_expression(SysMLv2Parser::Literal_expressionContext* ctx) override;
@@ -1037,44 +1139,88 @@ public:
     virtual void enterMeta_assignment(SysMLv2Parser::Meta_assignmentContext* ctx) override;
     virtual void exitMeta_assignment(SysMLv2Parser::Meta_assignmentContext* ctx) override;
 
-    virtual void enterEveryRule(antlr4::ParserRuleContext* /*ctx*/) override {}
-    virtual void exitEveryRule(antlr4::ParserRuleContext* /*ctx*/) override {}
+    virtual void enterEveryRule(antlr4::ParserRuleContext* ctx) override;
+    virtual void exitEveryRule(antlr4::ParserRuleContext* ctx) override;
     virtual void visitTerminal(antlr4::tree::TerminalNode* /*node*/) override {}
     virtual void visitErrorNode(antlr4::tree::ErrorNode* /*node*/) override {}
 
     std::vector<std::shared_ptr<KerML::Entities::Element>> getElements() const;
 
+    /**
+     * The names recorded while walking the parse tree (references, imports, aliases, declared visibility). The listener
+     * never resolves names itself: a SysMLv2::Files::Workspace resolves them over all loaded sources. Moves the data out of
+     * the listener.
+     */
+    SysMLv2::Files::ResolutionData takeResolutionData();
+
 private:
     void attachExpression(const std::shared_ptr<KerML::Entities::Expression>& expression);
     void finishOperatorExpression(const std::string& operatorName);
     void applyIdentification(SysMLv2Parser::IdentificationContext *idCtx, const std::shared_ptr<KerML::Entities::Element>& elem);
-    std::shared_ptr<KerML::Entities::Element> findElementWithName(std::string identification);
-    std::shared_ptr<KerML::Entities::Type> findOrCreateType(const std::string& name);
-    std::shared_ptr<KerML::Entities::Classifier> findOrCreateClassifier(const std::string& name);
-    std::shared_ptr<KerML::Entities::Feature> findOrCreateFeature(const std::string& name);
-    std::shared_ptr<KerML::Entities::Element> resolveElement(const std::string& name, const std::shared_ptr<KerML::Entities::Element>& context);
-    void populateWithBaseDatatypes();
-    void resolveReferences();
+
+    // Name references. Each helper creates the placeholder the model uses until the workspace resolves the name, and records
+    // the reference together with a patch that puts the resolved element into the model (see SysMLv2::Files::ReferenceRecorder).
+    std::shared_ptr<KerML::Entities::Type> typeReference(const std::string& name, const std::shared_ptr<KerML::Entities::Element>& context,
+                                                         antlr4::ParserRuleContext* position,
+                                                         std::function<void(const std::shared_ptr<KerML::Entities::Type>&)> patch);
+    std::shared_ptr<KerML::Entities::Feature> featureReference(const std::string& name, const std::shared_ptr<KerML::Entities::Element>& context,
+                                                               antlr4::ParserRuleContext* position,
+                                                               std::function<void(const std::shared_ptr<KerML::Entities::Feature>&)> patch);
+    /// Creates the (unresolved) typing of @p feature by the type named @p typeName; resolution later patches the typing, the
+    /// feature's types and the derived ...Definition properties of the usage.
+    void addTyping(const std::shared_ptr<KerML::Entities::Feature>& feature, const std::string& typeName, antlr4::ParserRuleContext* position);
+    /// The same for the specialization of a classifier by the classifier named @p superName.
+    void addSubclassification(const std::shared_ptr<KerML::Entities::Classifier>& classifier, const std::string& superName, antlr4::ParserRuleContext* position);
+    /// Subsetting, redefinition and reference subsetting of @p feature by the feature named @p name.
+    void addSubsetting(const std::shared_ptr<KerML::Entities::Feature>& feature, const std::string& name, antlr4::ParserRuleContext* position);
+    void addRedefinition(const std::shared_ptr<KerML::Entities::Feature>& feature, const std::string& name, antlr4::ParserRuleContext* position);
+    void addReferenceSubsetting(const std::shared_ptr<KerML::Entities::Feature>& feature, const std::string& name, antlr4::ParserRuleContext* position);
+    std::shared_ptr<KerML::Entities::Feature> expressionFeatureReference(const std::string& name, antlr4::ParserRuleContext* position,
+                                                                        std::function<void(const std::shared_ptr<KerML::Entities::Feature>&)> patch);
+    std::shared_ptr<KerML::Entities::Type> expressionTypeReference(const std::string& name, antlr4::ParserRuleContext* position,
+                                                                  std::function<void(const std::shared_ptr<KerML::Entities::Type>&)> patch);
+    void recordImport(const std::shared_ptr<KerML::Entities::Element>& importElement, antlr4::ParserRuleContext* importCtx,
+                      const std::string& target, bool star, bool recursive, bool importAll, KerML::Entities::VisibilityKind visibility,
+                      const std::shared_ptr<KerML::Entities::Membership>& importedMembership = nullptr);
+    /// Declared visibility of the member declared by @p ctx (its member_prefix); public if there is none.
+    KerML::Entities::VisibilityKind declaredVisibility(antlr4::ParserRuleContext* ctx) const;
+    /// The visibility keyword written before the member declared by ctx; nullopt if there is none.
+    std::optional<KerML::Entities::VisibilityKind> explicitVisibility(antlr4::ParserRuleContext* ctx) const;
+    void computeVisibilities();
 
     void applyUsagePrefix(SysMLv2Parser::Usage_prefixContext* prefix, const std::shared_ptr<KerML::Entities::Feature>& feature);
     void applyOccurrenceUsagePrefix(SysMLv2Parser::Occurrence_usage_prefixContext* prefix, const std::shared_ptr<KerML::Entities::Feature>& feature);
     void applyFeatureSpecializationPart(SysMLv2Parser::Feature_specialization_partContext* part, const std::shared_ptr<KerML::Entities::Feature>& feature);
+    void applyFeatureSpecifications(const std::vector<SysMLv2Parser::Feature_specializationContext*>& specifications, const std::shared_ptr<KerML::Entities::Feature>& feature);
 
     std::vector<std::shared_ptr<KerML::Entities::Element>> Elements;
     std::stack<std::shared_ptr<KerML::Entities::Element>> ParentStack;
 
-    struct PendingTyping {
-        std::shared_ptr<KerML::Entities::Feature> feature;
-        std::string typeName;
-    };
-    std::vector<PendingTyping> pendingTypings_;
+    // Guard against the class of bug where a construct with an empty enter/exit handler (one that
+    // never pushes anything onto ParentStack) lets exitUsage_declaration/exitDefinition_declaration
+    // apply an inner identification to whatever ENCLOSING element happens to be on top of the stack
+    // instead of to the construct the identification textually belongs to (e.g. "use case u : U;"
+    // renaming the enclosing Package). PushedByContext records, for every context that legitimately
+    // pushed an element (all Definition-/Usage-family enter handlers, see handleDefEnter/
+    // handleUsageEnter), which element it pushed. shouldApplyToTop() walks up from a declaration-ish
+    // context to the nearest ancestor context recorded here and only allows the caller to touch
+    // ParentStack.top() when that ancestor's pushed element IS still the current top - i.e. the
+    // enclosing construct is really the one that pushed what we're about to mutate. When no recorded
+    // ancestor is found at all (a push site this map does not yet cover), it permits the apply, so
+    // constructs outside this guard's current coverage keep their prior (unguarded) behavior rather
+    // than silently losing identification.
+    std::map<antlr4::ParserRuleContext*, std::weak_ptr<KerML::Entities::Element>> PushedByContext;
+    void recordPush(antlr4::ParserRuleContext* ctx, const std::shared_ptr<KerML::Entities::Element>& elem);
+    bool shouldApplyToTop(antlr4::ParserRuleContext* ctx) const;
 
-    struct PendingSpecialization {
-        std::shared_ptr<KerML::Entities::Classifier> classifier;
-        std::string superName;
-    };
-    std::vector<PendingSpecialization> pendingSpecializations_;
+    /// The memberships that the member rules of the grammar stand for (`variant`, `objective`, `entry`, `return`, ... members);
+    /// see SysMLv2::Files::buildOwnership, which creates the membership of every member when the source is complete.
+    SysMLv2::Files::MembershipKinds OwnershipKinds;
+    std::vector<SysMLv2::Files::MemberMark> MemberMarks;
+    /// The owned_cross_feature rules that do not declare a cross feature (see enterOwned_cross_feature).
+    std::set<antlr4::ParserRuleContext*> SkippedCrossFeatures;
 
-    std::map<std::string, std::string> aliases_;
-    std::map<std::string, std::vector<std::string>> packageImports_;
+    SysMLv2::Files::ReferenceRecorder Recorder;
+    /// Contexts (and their elements) whose declared visibility has to be recorded, in addition to PushedByContext.
+    std::vector<std::pair<antlr4::ParserRuleContext*, std::weak_ptr<KerML::Entities::Element>>> VisibilityContexts;
 };

@@ -11,7 +11,7 @@
 #include <kerml/parser/KerMLVisitor.h>
 
 
-    /**
+/**
  * This class provides an empty implementation of KerMLVisitor, which can be
  * extended to create a visitor which only needs to handle a subset of the available methods.
  */
@@ -298,7 +298,27 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitAnonymous_feature(KerMLParser::Anonymous_featureContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitFeature_prefix(KerMLParser::Feature_prefixContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitEnd_feature_prefix(KerMLParser::End_feature_prefixContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitBasic_feature_prefix(KerMLParser::Basic_feature_prefixContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitOwned_cross_feature_member(KerMLParser::Owned_cross_feature_memberContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitOwned_cross_feature(KerMLParser::Owned_cross_featureContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -338,6 +358,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitMultiplicity_modifier(KerMLParser::Multiplicity_modifierContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitFeature_specialization(KerMLParser::Feature_specializationContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -359,6 +383,10 @@ public:
   }
 
   virtual std::any visitReferences(KerMLParser::ReferencesContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitCrosses(KerMLParser::CrossesContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -387,6 +415,10 @@ public:
   }
 
   virtual std::any visitOwned_reference_subsetting(KerMLParser::Owned_reference_subsettingContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitOwned_cross_subsetting(KerMLParser::Owned_cross_subsettingContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -470,6 +502,14 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitOwned_cross_multiplicity_member(KerMLParser::Owned_cross_multiplicity_memberContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitOwned_cross_multiplicity(KerMLParser::Owned_cross_multiplicityContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitBinding_connector(KerMLParser::Binding_connectorContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -542,115 +582,63 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual std::any visitOwned_expressions(KerMLParser::Owned_expressionsContext *ctx) override {
+  virtual std::any visitSelectExpr(KerMLParser::SelectExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitOwned_expression(KerMLParser::Owned_expressionContext *ctx) override {
+  virtual std::any visitCollectExpr(KerMLParser::CollectExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitEased_owned_expression(KerMLParser::Eased_owned_expressionContext *ctx) override {
+  virtual std::any visitBinaryExpr(KerMLParser::BinaryExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitConditional_expression(KerMLParser::Conditional_expressionContext *ctx) override {
+  virtual std::any visitExtentExpr(KerMLParser::ExtentExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitConditional_binary_operator_expression(KerMLParser::Conditional_binary_operator_expressionContext *ctx) override {
+  virtual std::any visitConditionalExpr(KerMLParser::ConditionalExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitConditional_binary_operator(KerMLParser::Conditional_binary_operatorContext *ctx) override {
+  virtual std::any visitUnaryExpr(KerMLParser::UnaryExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitBinary_operator_expression(KerMLParser::Binary_operator_expressionContext *ctx) override {
+  virtual std::any visitIndexExpr(KerMLParser::IndexExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitBinary_operator(KerMLParser::Binary_operatorContext *ctx) override {
+  virtual std::any visitBaseExpr(KerMLParser::BaseExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitUnary_operator_expression(KerMLParser::Unary_operator_expressionContext *ctx) override {
+  virtual std::any visitFeatureChainExpr(KerMLParser::FeatureChainExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitUnary_operator(KerMLParser::Unary_operatorContext *ctx) override {
+  virtual std::any visitBracketExpr(KerMLParser::BracketExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitClassification_expression(KerMLParser::Classification_expressionContext *ctx) override {
+  virtual std::any visitMetaclassificationExpr(KerMLParser::MetaclassificationExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitClassification(KerMLParser::ClassificationContext *ctx) override {
+  virtual std::any visitClassificationExpr(KerMLParser::ClassificationExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitClassification_test_operator(KerMLParser::Classification_test_operatorContext *ctx) override {
+  virtual std::any visitSequenceExpr(KerMLParser::SequenceExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitCast_operator(KerMLParser::Cast_operatorContext *ctx) override {
+  virtual std::any visitFunctionOperationExpr(KerMLParser::FunctionOperationExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitMetaclassification_expression(KerMLParser::Metaclassification_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitArgument_member(KerMLParser::Argument_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitArgument(KerMLParser::ArgumentContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitArgument_value(KerMLParser::Argument_valueContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitArgument_expression_member(KerMLParser::Argument_expression_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitArgument_expression(KerMLParser::Argument_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitArgument_expression_value(KerMLParser::Argument_expression_valueContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitMetadata_argument_member(KerMLParser::Metadata_argument_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitMetadata_argument(KerMLParser::Metadata_argumentContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitMetadata_value(KerMLParser::Metadata_valueContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitMetadata_reference(KerMLParser::Metadata_referenceContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitMetadataclassification_test_operator(KerMLParser::Metadataclassification_test_operatorContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitMeta_cast_operator(KerMLParser::Meta_cast_operatorContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitExtend_expression(KerMLParser::Extend_expressionContext *ctx) override {
+  virtual std::any visitFunction_operation_arguments(KerMLParser::Function_operation_argumentsContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -670,50 +658,6 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual std::any visitPrimary_expressions(KerMLParser::Primary_expressionsContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitPrimary_expression(KerMLParser::Primary_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitPrimary_argument_value(KerMLParser::Primary_argument_valueContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitPrimary_argument(KerMLParser::Primary_argumentContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitPrimary_argument_member(KerMLParser::Primary_argument_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitNon_feature_chain_primary_expression(KerMLParser::Non_feature_chain_primary_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitNon_feature_chain_primary_argument_value(KerMLParser::Non_feature_chain_primary_argument_valueContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitNon_feature_chain_primary_argument(KerMLParser::Non_feature_chain_primary_argumentContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitNon_feature_chain_primary_argument_member(KerMLParser::Non_feature_chain_primary_argument_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitBracket_expression(KerMLParser::Bracket_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitIndex_expression(KerMLParser::Index_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual std::any visitSequence_expression(KerMLParser::Sequence_expressionContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -727,58 +671,6 @@ public:
   }
 
   virtual std::any visitSequence_expression_list_member(KerMLParser::Sequence_expression_list_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitFeature_chain_expression(KerMLParser::Feature_chain_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitCollect_expression(KerMLParser::Collect_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitSelect_expression(KerMLParser::Select_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitFunction_operation_expression(KerMLParser::Function_operation_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitBody_argument_member(KerMLParser::Body_argument_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitBody_argument(KerMLParser::Body_argumentContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitBody_argument_value(KerMLParser::Body_argument_valueContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitBody_expression_member(KerMLParser::Body_expression_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitFunction_reference_argument_member(KerMLParser::Function_reference_argument_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitFunction_reference_argument(KerMLParser::Function_reference_argumentContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitFunction_reference_arugment_value(KerMLParser::Function_reference_arugment_valueContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitFunction_reference_expression(KerMLParser::Function_reference_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitFunction_reference_member(KerMLParser::Function_reference_memberContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -823,6 +715,10 @@ public:
   }
 
   virtual std::any visitInternal_invocation_expression(KerMLParser::Internal_invocation_expressionContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitConstructor_expression(KerMLParser::Constructor_expressionContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -1047,6 +943,34 @@ public:
   }
 
   virtual std::any visitMeta_assignment(KerMLParser::Meta_assignmentContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitTyped_by_operator(KerMLParser::Typed_by_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitSpecializes_operator(KerMLParser::Specializes_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitSubsets_operator(KerMLParser::Subsets_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitReferences_operator(KerMLParser::References_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitRedefines_operator(KerMLParser::Redefines_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitConjugates_operator(KerMLParser::Conjugates_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitCrosses_operator(KerMLParser::Crosses_operatorContext *ctx) override {
     return visitChildren(ctx);
   }
 

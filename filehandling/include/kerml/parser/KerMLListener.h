@@ -11,7 +11,7 @@
 #include <kerml/parser/KerMLParser.h>
 
 
-    /**
+/**
  * This interface defines an abstract listener for a parse tree produced by KerMLParser.
  */
 class SYSMLV2FILE_EXPORT KerMLListener : public antlr4::tree::ParseTreeListener {
@@ -227,8 +227,23 @@ public:
   virtual void enterFeature(KerMLParser::FeatureContext *ctx) = 0;
   virtual void exitFeature(KerMLParser::FeatureContext *ctx) = 0;
 
+  virtual void enterAnonymous_feature(KerMLParser::Anonymous_featureContext *ctx) = 0;
+  virtual void exitAnonymous_feature(KerMLParser::Anonymous_featureContext *ctx) = 0;
+
   virtual void enterFeature_prefix(KerMLParser::Feature_prefixContext *ctx) = 0;
   virtual void exitFeature_prefix(KerMLParser::Feature_prefixContext *ctx) = 0;
+
+  virtual void enterEnd_feature_prefix(KerMLParser::End_feature_prefixContext *ctx) = 0;
+  virtual void exitEnd_feature_prefix(KerMLParser::End_feature_prefixContext *ctx) = 0;
+
+  virtual void enterBasic_feature_prefix(KerMLParser::Basic_feature_prefixContext *ctx) = 0;
+  virtual void exitBasic_feature_prefix(KerMLParser::Basic_feature_prefixContext *ctx) = 0;
+
+  virtual void enterOwned_cross_feature_member(KerMLParser::Owned_cross_feature_memberContext *ctx) = 0;
+  virtual void exitOwned_cross_feature_member(KerMLParser::Owned_cross_feature_memberContext *ctx) = 0;
+
+  virtual void enterOwned_cross_feature(KerMLParser::Owned_cross_featureContext *ctx) = 0;
+  virtual void exitOwned_cross_feature(KerMLParser::Owned_cross_featureContext *ctx) = 0;
 
   virtual void enterFeature_direction(KerMLParser::Feature_directionContext *ctx) = 0;
   virtual void exitFeature_direction(KerMLParser::Feature_directionContext *ctx) = 0;
@@ -257,6 +272,9 @@ public:
   virtual void enterMultiplicity_part(KerMLParser::Multiplicity_partContext *ctx) = 0;
   virtual void exitMultiplicity_part(KerMLParser::Multiplicity_partContext *ctx) = 0;
 
+  virtual void enterMultiplicity_modifier(KerMLParser::Multiplicity_modifierContext *ctx) = 0;
+  virtual void exitMultiplicity_modifier(KerMLParser::Multiplicity_modifierContext *ctx) = 0;
+
   virtual void enterFeature_specialization(KerMLParser::Feature_specializationContext *ctx) = 0;
   virtual void exitFeature_specialization(KerMLParser::Feature_specializationContext *ctx) = 0;
 
@@ -274,6 +292,9 @@ public:
 
   virtual void enterReferences(KerMLParser::ReferencesContext *ctx) = 0;
   virtual void exitReferences(KerMLParser::ReferencesContext *ctx) = 0;
+
+  virtual void enterCrosses(KerMLParser::CrossesContext *ctx) = 0;
+  virtual void exitCrosses(KerMLParser::CrossesContext *ctx) = 0;
 
   virtual void enterRedefinitions(KerMLParser::RedefinitionsContext *ctx) = 0;
   virtual void exitRedefinitions(KerMLParser::RedefinitionsContext *ctx) = 0;
@@ -295,6 +316,9 @@ public:
 
   virtual void enterOwned_reference_subsetting(KerMLParser::Owned_reference_subsettingContext *ctx) = 0;
   virtual void exitOwned_reference_subsetting(KerMLParser::Owned_reference_subsettingContext *ctx) = 0;
+
+  virtual void enterOwned_cross_subsetting(KerMLParser::Owned_cross_subsettingContext *ctx) = 0;
+  virtual void exitOwned_cross_subsetting(KerMLParser::Owned_cross_subsettingContext *ctx) = 0;
 
   virtual void enterRedefinition(KerMLParser::RedefinitionContext *ctx) = 0;
   virtual void exitRedefinition(KerMLParser::RedefinitionContext *ctx) = 0;
@@ -356,6 +380,12 @@ public:
   virtual void enterConnector_end(KerMLParser::Connector_endContext *ctx) = 0;
   virtual void exitConnector_end(KerMLParser::Connector_endContext *ctx) = 0;
 
+  virtual void enterOwned_cross_multiplicity_member(KerMLParser::Owned_cross_multiplicity_memberContext *ctx) = 0;
+  virtual void exitOwned_cross_multiplicity_member(KerMLParser::Owned_cross_multiplicity_memberContext *ctx) = 0;
+
+  virtual void enterOwned_cross_multiplicity(KerMLParser::Owned_cross_multiplicityContext *ctx) = 0;
+  virtual void exitOwned_cross_multiplicity(KerMLParser::Owned_cross_multiplicityContext *ctx) = 0;
+
   virtual void enterBinding_connector(KerMLParser::Binding_connectorContext *ctx) = 0;
   virtual void exitBinding_connector(KerMLParser::Binding_connectorContext *ctx) = 0;
 
@@ -410,89 +440,50 @@ public:
   virtual void enterOwned_expression_member(KerMLParser::Owned_expression_memberContext *ctx) = 0;
   virtual void exitOwned_expression_member(KerMLParser::Owned_expression_memberContext *ctx) = 0;
 
-  virtual void enterOwned_expressions(KerMLParser::Owned_expressionsContext *ctx) = 0;
-  virtual void exitOwned_expressions(KerMLParser::Owned_expressionsContext *ctx) = 0;
+  virtual void enterSelectExpr(KerMLParser::SelectExprContext *ctx) = 0;
+  virtual void exitSelectExpr(KerMLParser::SelectExprContext *ctx) = 0;
 
-  virtual void enterOwned_expression(KerMLParser::Owned_expressionContext *ctx) = 0;
-  virtual void exitOwned_expression(KerMLParser::Owned_expressionContext *ctx) = 0;
+  virtual void enterCollectExpr(KerMLParser::CollectExprContext *ctx) = 0;
+  virtual void exitCollectExpr(KerMLParser::CollectExprContext *ctx) = 0;
 
-  virtual void enterEased_owned_expression(KerMLParser::Eased_owned_expressionContext *ctx) = 0;
-  virtual void exitEased_owned_expression(KerMLParser::Eased_owned_expressionContext *ctx) = 0;
+  virtual void enterBinaryExpr(KerMLParser::BinaryExprContext *ctx) = 0;
+  virtual void exitBinaryExpr(KerMLParser::BinaryExprContext *ctx) = 0;
 
-  virtual void enterConditional_expression(KerMLParser::Conditional_expressionContext *ctx) = 0;
-  virtual void exitConditional_expression(KerMLParser::Conditional_expressionContext *ctx) = 0;
+  virtual void enterExtentExpr(KerMLParser::ExtentExprContext *ctx) = 0;
+  virtual void exitExtentExpr(KerMLParser::ExtentExprContext *ctx) = 0;
 
-  virtual void enterConditional_binary_operator_expression(KerMLParser::Conditional_binary_operator_expressionContext *ctx) = 0;
-  virtual void exitConditional_binary_operator_expression(KerMLParser::Conditional_binary_operator_expressionContext *ctx) = 0;
+  virtual void enterConditionalExpr(KerMLParser::ConditionalExprContext *ctx) = 0;
+  virtual void exitConditionalExpr(KerMLParser::ConditionalExprContext *ctx) = 0;
 
-  virtual void enterConditional_binary_operator(KerMLParser::Conditional_binary_operatorContext *ctx) = 0;
-  virtual void exitConditional_binary_operator(KerMLParser::Conditional_binary_operatorContext *ctx) = 0;
+  virtual void enterUnaryExpr(KerMLParser::UnaryExprContext *ctx) = 0;
+  virtual void exitUnaryExpr(KerMLParser::UnaryExprContext *ctx) = 0;
 
-  virtual void enterBinary_operator_expression(KerMLParser::Binary_operator_expressionContext *ctx) = 0;
-  virtual void exitBinary_operator_expression(KerMLParser::Binary_operator_expressionContext *ctx) = 0;
+  virtual void enterIndexExpr(KerMLParser::IndexExprContext *ctx) = 0;
+  virtual void exitIndexExpr(KerMLParser::IndexExprContext *ctx) = 0;
 
-  virtual void enterBinary_operator(KerMLParser::Binary_operatorContext *ctx) = 0;
-  virtual void exitBinary_operator(KerMLParser::Binary_operatorContext *ctx) = 0;
+  virtual void enterBaseExpr(KerMLParser::BaseExprContext *ctx) = 0;
+  virtual void exitBaseExpr(KerMLParser::BaseExprContext *ctx) = 0;
 
-  virtual void enterUnary_operator_expression(KerMLParser::Unary_operator_expressionContext *ctx) = 0;
-  virtual void exitUnary_operator_expression(KerMLParser::Unary_operator_expressionContext *ctx) = 0;
+  virtual void enterFeatureChainExpr(KerMLParser::FeatureChainExprContext *ctx) = 0;
+  virtual void exitFeatureChainExpr(KerMLParser::FeatureChainExprContext *ctx) = 0;
 
-  virtual void enterUnary_operator(KerMLParser::Unary_operatorContext *ctx) = 0;
-  virtual void exitUnary_operator(KerMLParser::Unary_operatorContext *ctx) = 0;
+  virtual void enterBracketExpr(KerMLParser::BracketExprContext *ctx) = 0;
+  virtual void exitBracketExpr(KerMLParser::BracketExprContext *ctx) = 0;
 
-  virtual void enterClassification_expression(KerMLParser::Classification_expressionContext *ctx) = 0;
-  virtual void exitClassification_expression(KerMLParser::Classification_expressionContext *ctx) = 0;
+  virtual void enterMetaclassificationExpr(KerMLParser::MetaclassificationExprContext *ctx) = 0;
+  virtual void exitMetaclassificationExpr(KerMLParser::MetaclassificationExprContext *ctx) = 0;
 
-  virtual void enterClassification(KerMLParser::ClassificationContext *ctx) = 0;
-  virtual void exitClassification(KerMLParser::ClassificationContext *ctx) = 0;
+  virtual void enterClassificationExpr(KerMLParser::ClassificationExprContext *ctx) = 0;
+  virtual void exitClassificationExpr(KerMLParser::ClassificationExprContext *ctx) = 0;
 
-  virtual void enterClassification_test_operator(KerMLParser::Classification_test_operatorContext *ctx) = 0;
-  virtual void exitClassification_test_operator(KerMLParser::Classification_test_operatorContext *ctx) = 0;
+  virtual void enterSequenceExpr(KerMLParser::SequenceExprContext *ctx) = 0;
+  virtual void exitSequenceExpr(KerMLParser::SequenceExprContext *ctx) = 0;
 
-  virtual void enterCast_operator(KerMLParser::Cast_operatorContext *ctx) = 0;
-  virtual void exitCast_operator(KerMLParser::Cast_operatorContext *ctx) = 0;
+  virtual void enterFunctionOperationExpr(KerMLParser::FunctionOperationExprContext *ctx) = 0;
+  virtual void exitFunctionOperationExpr(KerMLParser::FunctionOperationExprContext *ctx) = 0;
 
-  virtual void enterMetaclassification_expression(KerMLParser::Metaclassification_expressionContext *ctx) = 0;
-  virtual void exitMetaclassification_expression(KerMLParser::Metaclassification_expressionContext *ctx) = 0;
-
-  virtual void enterArgument_member(KerMLParser::Argument_memberContext *ctx) = 0;
-  virtual void exitArgument_member(KerMLParser::Argument_memberContext *ctx) = 0;
-
-  virtual void enterArgument(KerMLParser::ArgumentContext *ctx) = 0;
-  virtual void exitArgument(KerMLParser::ArgumentContext *ctx) = 0;
-
-  virtual void enterArgument_value(KerMLParser::Argument_valueContext *ctx) = 0;
-  virtual void exitArgument_value(KerMLParser::Argument_valueContext *ctx) = 0;
-
-  virtual void enterArgument_expression_member(KerMLParser::Argument_expression_memberContext *ctx) = 0;
-  virtual void exitArgument_expression_member(KerMLParser::Argument_expression_memberContext *ctx) = 0;
-
-  virtual void enterArgument_expression(KerMLParser::Argument_expressionContext *ctx) = 0;
-  virtual void exitArgument_expression(KerMLParser::Argument_expressionContext *ctx) = 0;
-
-  virtual void enterArgument_expression_value(KerMLParser::Argument_expression_valueContext *ctx) = 0;
-  virtual void exitArgument_expression_value(KerMLParser::Argument_expression_valueContext *ctx) = 0;
-
-  virtual void enterMetadata_argument_member(KerMLParser::Metadata_argument_memberContext *ctx) = 0;
-  virtual void exitMetadata_argument_member(KerMLParser::Metadata_argument_memberContext *ctx) = 0;
-
-  virtual void enterMetadata_argument(KerMLParser::Metadata_argumentContext *ctx) = 0;
-  virtual void exitMetadata_argument(KerMLParser::Metadata_argumentContext *ctx) = 0;
-
-  virtual void enterMetadata_value(KerMLParser::Metadata_valueContext *ctx) = 0;
-  virtual void exitMetadata_value(KerMLParser::Metadata_valueContext *ctx) = 0;
-
-  virtual void enterMetadata_reference(KerMLParser::Metadata_referenceContext *ctx) = 0;
-  virtual void exitMetadata_reference(KerMLParser::Metadata_referenceContext *ctx) = 0;
-
-  virtual void enterMetadataclassification_test_operator(KerMLParser::Metadataclassification_test_operatorContext *ctx) = 0;
-  virtual void exitMetadataclassification_test_operator(KerMLParser::Metadataclassification_test_operatorContext *ctx) = 0;
-
-  virtual void enterMeta_cast_operator(KerMLParser::Meta_cast_operatorContext *ctx) = 0;
-  virtual void exitMeta_cast_operator(KerMLParser::Meta_cast_operatorContext *ctx) = 0;
-
-  virtual void enterExtend_expression(KerMLParser::Extend_expressionContext *ctx) = 0;
-  virtual void exitExtend_expression(KerMLParser::Extend_expressionContext *ctx) = 0;
+  virtual void enterFunction_operation_arguments(KerMLParser::Function_operation_argumentsContext *ctx) = 0;
+  virtual void exitFunction_operation_arguments(KerMLParser::Function_operation_argumentsContext *ctx) = 0;
 
   virtual void enterType_reference_member(KerMLParser::Type_reference_memberContext *ctx) = 0;
   virtual void exitType_reference_member(KerMLParser::Type_reference_memberContext *ctx) = 0;
@@ -506,39 +497,6 @@ public:
   virtual void enterReference_typing(KerMLParser::Reference_typingContext *ctx) = 0;
   virtual void exitReference_typing(KerMLParser::Reference_typingContext *ctx) = 0;
 
-  virtual void enterPrimary_expressions(KerMLParser::Primary_expressionsContext *ctx) = 0;
-  virtual void exitPrimary_expressions(KerMLParser::Primary_expressionsContext *ctx) = 0;
-
-  virtual void enterPrimary_expression(KerMLParser::Primary_expressionContext *ctx) = 0;
-  virtual void exitPrimary_expression(KerMLParser::Primary_expressionContext *ctx) = 0;
-
-  virtual void enterPrimary_argument_value(KerMLParser::Primary_argument_valueContext *ctx) = 0;
-  virtual void exitPrimary_argument_value(KerMLParser::Primary_argument_valueContext *ctx) = 0;
-
-  virtual void enterPrimary_argument(KerMLParser::Primary_argumentContext *ctx) = 0;
-  virtual void exitPrimary_argument(KerMLParser::Primary_argumentContext *ctx) = 0;
-
-  virtual void enterPrimary_argument_member(KerMLParser::Primary_argument_memberContext *ctx) = 0;
-  virtual void exitPrimary_argument_member(KerMLParser::Primary_argument_memberContext *ctx) = 0;
-
-  virtual void enterNon_feature_chain_primary_expression(KerMLParser::Non_feature_chain_primary_expressionContext *ctx) = 0;
-  virtual void exitNon_feature_chain_primary_expression(KerMLParser::Non_feature_chain_primary_expressionContext *ctx) = 0;
-
-  virtual void enterNon_feature_chain_primary_argument_value(KerMLParser::Non_feature_chain_primary_argument_valueContext *ctx) = 0;
-  virtual void exitNon_feature_chain_primary_argument_value(KerMLParser::Non_feature_chain_primary_argument_valueContext *ctx) = 0;
-
-  virtual void enterNon_feature_chain_primary_argument(KerMLParser::Non_feature_chain_primary_argumentContext *ctx) = 0;
-  virtual void exitNon_feature_chain_primary_argument(KerMLParser::Non_feature_chain_primary_argumentContext *ctx) = 0;
-
-  virtual void enterNon_feature_chain_primary_argument_member(KerMLParser::Non_feature_chain_primary_argument_memberContext *ctx) = 0;
-  virtual void exitNon_feature_chain_primary_argument_member(KerMLParser::Non_feature_chain_primary_argument_memberContext *ctx) = 0;
-
-  virtual void enterBracket_expression(KerMLParser::Bracket_expressionContext *ctx) = 0;
-  virtual void exitBracket_expression(KerMLParser::Bracket_expressionContext *ctx) = 0;
-
-  virtual void enterIndex_expression(KerMLParser::Index_expressionContext *ctx) = 0;
-  virtual void exitIndex_expression(KerMLParser::Index_expressionContext *ctx) = 0;
-
   virtual void enterSequence_expression(KerMLParser::Sequence_expressionContext *ctx) = 0;
   virtual void exitSequence_expression(KerMLParser::Sequence_expressionContext *ctx) = 0;
 
@@ -550,45 +508,6 @@ public:
 
   virtual void enterSequence_expression_list_member(KerMLParser::Sequence_expression_list_memberContext *ctx) = 0;
   virtual void exitSequence_expression_list_member(KerMLParser::Sequence_expression_list_memberContext *ctx) = 0;
-
-  virtual void enterFeature_chain_expression(KerMLParser::Feature_chain_expressionContext *ctx) = 0;
-  virtual void exitFeature_chain_expression(KerMLParser::Feature_chain_expressionContext *ctx) = 0;
-
-  virtual void enterCollect_expression(KerMLParser::Collect_expressionContext *ctx) = 0;
-  virtual void exitCollect_expression(KerMLParser::Collect_expressionContext *ctx) = 0;
-
-  virtual void enterSelect_expression(KerMLParser::Select_expressionContext *ctx) = 0;
-  virtual void exitSelect_expression(KerMLParser::Select_expressionContext *ctx) = 0;
-
-  virtual void enterFunction_operation_expression(KerMLParser::Function_operation_expressionContext *ctx) = 0;
-  virtual void exitFunction_operation_expression(KerMLParser::Function_operation_expressionContext *ctx) = 0;
-
-  virtual void enterBody_argument_member(KerMLParser::Body_argument_memberContext *ctx) = 0;
-  virtual void exitBody_argument_member(KerMLParser::Body_argument_memberContext *ctx) = 0;
-
-  virtual void enterBody_argument(KerMLParser::Body_argumentContext *ctx) = 0;
-  virtual void exitBody_argument(KerMLParser::Body_argumentContext *ctx) = 0;
-
-  virtual void enterBody_argument_value(KerMLParser::Body_argument_valueContext *ctx) = 0;
-  virtual void exitBody_argument_value(KerMLParser::Body_argument_valueContext *ctx) = 0;
-
-  virtual void enterBody_expression_member(KerMLParser::Body_expression_memberContext *ctx) = 0;
-  virtual void exitBody_expression_member(KerMLParser::Body_expression_memberContext *ctx) = 0;
-
-  virtual void enterFunction_reference_argument_member(KerMLParser::Function_reference_argument_memberContext *ctx) = 0;
-  virtual void exitFunction_reference_argument_member(KerMLParser::Function_reference_argument_memberContext *ctx) = 0;
-
-  virtual void enterFunction_reference_argument(KerMLParser::Function_reference_argumentContext *ctx) = 0;
-  virtual void exitFunction_reference_argument(KerMLParser::Function_reference_argumentContext *ctx) = 0;
-
-  virtual void enterFunction_reference_arugment_value(KerMLParser::Function_reference_arugment_valueContext *ctx) = 0;
-  virtual void exitFunction_reference_arugment_value(KerMLParser::Function_reference_arugment_valueContext *ctx) = 0;
-
-  virtual void enterFunction_reference_expression(KerMLParser::Function_reference_expressionContext *ctx) = 0;
-  virtual void exitFunction_reference_expression(KerMLParser::Function_reference_expressionContext *ctx) = 0;
-
-  virtual void enterFunction_reference_member(KerMLParser::Function_reference_memberContext *ctx) = 0;
-  virtual void exitFunction_reference_member(KerMLParser::Function_reference_memberContext *ctx) = 0;
 
   virtual void enterFunction_reference(KerMLParser::Function_referenceContext *ctx) = 0;
   virtual void exitFunction_reference(KerMLParser::Function_referenceContext *ctx) = 0;
@@ -622,6 +541,9 @@ public:
 
   virtual void enterInternal_invocation_expression(KerMLParser::Internal_invocation_expressionContext *ctx) = 0;
   virtual void exitInternal_invocation_expression(KerMLParser::Internal_invocation_expressionContext *ctx) = 0;
+
+  virtual void enterConstructor_expression(KerMLParser::Constructor_expressionContext *ctx) = 0;
+  virtual void exitConstructor_expression(KerMLParser::Constructor_expressionContext *ctx) = 0;
 
   virtual void enterArgument_list(KerMLParser::Argument_listContext *ctx) = 0;
   virtual void exitArgument_list(KerMLParser::Argument_listContext *ctx) = 0;
@@ -790,6 +712,27 @@ public:
 
   virtual void enterMeta_assignment(KerMLParser::Meta_assignmentContext *ctx) = 0;
   virtual void exitMeta_assignment(KerMLParser::Meta_assignmentContext *ctx) = 0;
+
+  virtual void enterTyped_by_operator(KerMLParser::Typed_by_operatorContext *ctx) = 0;
+  virtual void exitTyped_by_operator(KerMLParser::Typed_by_operatorContext *ctx) = 0;
+
+  virtual void enterSpecializes_operator(KerMLParser::Specializes_operatorContext *ctx) = 0;
+  virtual void exitSpecializes_operator(KerMLParser::Specializes_operatorContext *ctx) = 0;
+
+  virtual void enterSubsets_operator(KerMLParser::Subsets_operatorContext *ctx) = 0;
+  virtual void exitSubsets_operator(KerMLParser::Subsets_operatorContext *ctx) = 0;
+
+  virtual void enterReferences_operator(KerMLParser::References_operatorContext *ctx) = 0;
+  virtual void exitReferences_operator(KerMLParser::References_operatorContext *ctx) = 0;
+
+  virtual void enterRedefines_operator(KerMLParser::Redefines_operatorContext *ctx) = 0;
+  virtual void exitRedefines_operator(KerMLParser::Redefines_operatorContext *ctx) = 0;
+
+  virtual void enterConjugates_operator(KerMLParser::Conjugates_operatorContext *ctx) = 0;
+  virtual void exitConjugates_operator(KerMLParser::Conjugates_operatorContext *ctx) = 0;
+
+  virtual void enterCrosses_operator(KerMLParser::Crosses_operatorContext *ctx) = 0;
+  virtual void exitCrosses_operator(KerMLParser::Crosses_operatorContext *ctx) = 0;
 
 
 };

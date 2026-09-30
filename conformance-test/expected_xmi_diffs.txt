@@ -1,0 +1,7 @@
+# Ratchet file of the abstract-syntax suite (AP11, conformance-test/src/abstractsyntax/TestAbstractSyntax.cpp).
+# Format: library/<path relative to resources/sysml.library>: <number of differences from the XMI oracle that remain for the file>
+# A file that is not listed must have 0 differences. More differences than listed fails, fewer fails as well ("update the list"),
+# so that a fix cannot get lost again. Regenerate with XMI_DIFF_COUNTS_OUT=<file>.
+#
+# No file is listed: all 94 library files (21 Systems Library, 37 Domain Libraries, 36 Kernel Libraries) have 0 differences.
+# The categories that are excluded on purpose are documented in support/ModelDiff.h (kChainReason, documentedXmiExclusions()).

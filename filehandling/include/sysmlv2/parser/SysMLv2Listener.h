@@ -5,7 +5,7 @@
     #include <sysmlv2/sysmlv2file_global.h>
 
 
-// Generated from ./SysMLv2.g4 by ANTLR 4.13.2
+// Generated from filehandling/resources/grammars/SysMLv2.g4 by ANTLR 4.13.2
 
 #pragma once
 
@@ -14,7 +14,7 @@
 #include <sysmlv2/parser/SysMLv2Parser.h>
 
 
-    /**
+/**
  * This interface defines an abstract listener for a parse tree produced by SysMLv2Parser.
  */
 class SYSMLV2FILE_EXPORT SysMLv2Listener : public antlr4::tree::ParseTreeListener {
@@ -22,6 +22,15 @@ public:
 
   virtual void enterStart(SysMLv2Parser::StartContext *ctx) = 0;
   virtual void exitStart(SysMLv2Parser::StartContext *ctx) = 0;
+
+  virtual void enterIdentification(SysMLv2Parser::IdentificationContext *ctx) = 0;
+  virtual void exitIdentification(SysMLv2Parser::IdentificationContext *ctx) = 0;
+
+  virtual void enterSysml_name(SysMLv2Parser::Sysml_nameContext *ctx) = 0;
+  virtual void exitSysml_name(SysMLv2Parser::Sysml_nameContext *ctx) = 0;
+
+  virtual void enterQualified_name(SysMLv2Parser::Qualified_nameContext *ctx) = 0;
+  virtual void exitQualified_name(SysMLv2Parser::Qualified_nameContext *ctx) = 0;
 
   virtual void enterStart_element(SysMLv2Parser::Start_elementContext *ctx) = 0;
   virtual void exitStart_element(SysMLv2Parser::Start_elementContext *ctx) = 0;
@@ -170,6 +179,12 @@ public:
   virtual void enterVariant_reference(SysMLv2Parser::Variant_referenceContext *ctx) = 0;
   virtual void exitVariant_reference(SysMLv2Parser::Variant_referenceContext *ctx) = 0;
 
+  virtual void enterRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext *ctx) = 0;
+  virtual void exitRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext *ctx) = 0;
+
+  virtual void enterRedefinition_usage(SysMLv2Parser::Redefinition_usageContext *ctx) = 0;
+  virtual void exitRedefinition_usage(SysMLv2Parser::Redefinition_usageContext *ctx) = 0;
+
   virtual void enterNon_occurrence_usage_element(SysMLv2Parser::Non_occurrence_usage_elementContext *ctx) = 0;
   virtual void exitNon_occurrence_usage_element(SysMLv2Parser::Non_occurrence_usage_elementContext *ctx) = 0;
 
@@ -187,12 +202,6 @@ public:
 
   virtual void enterSubsclassification_part(SysMLv2Parser::Subsclassification_partContext *ctx) = 0;
   virtual void exitSubsclassification_part(SysMLv2Parser::Subsclassification_partContext *ctx) = 0;
-
-  virtual void enterCrosses(SysMLv2Parser::CrossesContext *ctx) = 0;
-  virtual void exitCrosses(SysMLv2Parser::CrossesContext *ctx) = 0;
-
-  virtual void enterOwned_cross_subsetting(SysMLv2Parser::Owned_cross_subsettingContext *ctx) = 0;
-  virtual void exitOwned_cross_subsetting(SysMLv2Parser::Owned_cross_subsettingContext *ctx) = 0;
 
   virtual void enterMultiplicity_part(SysMLv2Parser::Multiplicity_partContext *ctx) = 0;
   virtual void exitMultiplicity_part(SysMLv2Parser::Multiplicity_partContext *ctx) = 0;
@@ -556,6 +565,9 @@ public:
 
   virtual void enterOwned_feature_chain_member(SysMLv2Parser::Owned_feature_chain_memberContext *ctx) = 0;
   virtual void exitOwned_feature_chain_member(SysMLv2Parser::Owned_feature_chain_memberContext *ctx) = 0;
+
+  virtual void enterExpression_body(SysMLv2Parser::Expression_bodyContext *ctx) = 0;
+  virtual void exitExpression_body(SysMLv2Parser::Expression_bodyContext *ctx) = 0;
 
   virtual void enterTerminate_node(SysMLv2Parser::Terminate_nodeContext *ctx) = 0;
   virtual void exitTerminate_node(SysMLv2Parser::Terminate_nodeContext *ctx) = 0;
@@ -923,9 +935,6 @@ public:
   virtual void enterElements(SysMLv2Parser::ElementsContext *ctx) = 0;
   virtual void exitElements(SysMLv2Parser::ElementsContext *ctx) = 0;
 
-  virtual void enterIdentification(SysMLv2Parser::IdentificationContext *ctx) = 0;
-  virtual void exitIdentification(SysMLv2Parser::IdentificationContext *ctx) = 0;
-
   virtual void enterRelationship_owned_elements(SysMLv2Parser::Relationship_owned_elementsContext *ctx) = 0;
   virtual void exitRelationship_owned_elements(SysMLv2Parser::Relationship_owned_elementsContext *ctx) = 0;
 
@@ -964,9 +973,6 @@ public:
 
   virtual void enterNamespace_feature_member(SysMLv2Parser::Namespace_feature_memberContext *ctx) = 0;
   virtual void exitNamespace_feature_member(SysMLv2Parser::Namespace_feature_memberContext *ctx) = 0;
-
-  virtual void enterQualified_name(SysMLv2Parser::Qualified_nameContext *ctx) = 0;
-  virtual void exitQualified_name(SysMLv2Parser::Qualified_nameContext *ctx) = 0;
 
   virtual void enterNamespace_import(SysMLv2Parser::Namespace_importContext *ctx) = 0;
   virtual void exitNamespace_import(SysMLv2Parser::Namespace_importContext *ctx) = 0;
@@ -1094,8 +1100,17 @@ public:
   virtual void enterFeature(SysMLv2Parser::FeatureContext *ctx) = 0;
   virtual void exitFeature(SysMLv2Parser::FeatureContext *ctx) = 0;
 
+  virtual void enterAnonymous_feature(SysMLv2Parser::Anonymous_featureContext *ctx) = 0;
+  virtual void exitAnonymous_feature(SysMLv2Parser::Anonymous_featureContext *ctx) = 0;
+
   virtual void enterFeature_prefix(SysMLv2Parser::Feature_prefixContext *ctx) = 0;
   virtual void exitFeature_prefix(SysMLv2Parser::Feature_prefixContext *ctx) = 0;
+
+  virtual void enterEnd_feature_prefix(SysMLv2Parser::End_feature_prefixContext *ctx) = 0;
+  virtual void exitEnd_feature_prefix(SysMLv2Parser::End_feature_prefixContext *ctx) = 0;
+
+  virtual void enterBasic_feature_prefix(SysMLv2Parser::Basic_feature_prefixContext *ctx) = 0;
+  virtual void exitBasic_feature_prefix(SysMLv2Parser::Basic_feature_prefixContext *ctx) = 0;
 
   virtual void enterFeature_declaration(SysMLv2Parser::Feature_declarationContext *ctx) = 0;
   virtual void exitFeature_declaration(SysMLv2Parser::Feature_declarationContext *ctx) = 0;
@@ -1118,6 +1133,9 @@ public:
   virtual void enterFeature_specialization_part(SysMLv2Parser::Feature_specialization_partContext *ctx) = 0;
   virtual void exitFeature_specialization_part(SysMLv2Parser::Feature_specialization_partContext *ctx) = 0;
 
+  virtual void enterMultiplicity_modifier(SysMLv2Parser::Multiplicity_modifierContext *ctx) = 0;
+  virtual void exitMultiplicity_modifier(SysMLv2Parser::Multiplicity_modifierContext *ctx) = 0;
+
   virtual void enterFeature_specialization(SysMLv2Parser::Feature_specializationContext *ctx) = 0;
   virtual void exitFeature_specialization(SysMLv2Parser::Feature_specializationContext *ctx) = 0;
 
@@ -1135,6 +1153,9 @@ public:
 
   virtual void enterReferences(SysMLv2Parser::ReferencesContext *ctx) = 0;
   virtual void exitReferences(SysMLv2Parser::ReferencesContext *ctx) = 0;
+
+  virtual void enterCrosses(SysMLv2Parser::CrossesContext *ctx) = 0;
+  virtual void exitCrosses(SysMLv2Parser::CrossesContext *ctx) = 0;
 
   virtual void enterRedefinitions(SysMLv2Parser::RedefinitionsContext *ctx) = 0;
   virtual void exitRedefinitions(SysMLv2Parser::RedefinitionsContext *ctx) = 0;
@@ -1156,6 +1177,9 @@ public:
 
   virtual void enterOwned_reference_subsetting(SysMLv2Parser::Owned_reference_subsettingContext *ctx) = 0;
   virtual void exitOwned_reference_subsetting(SysMLv2Parser::Owned_reference_subsettingContext *ctx) = 0;
+
+  virtual void enterOwned_cross_subsetting(SysMLv2Parser::Owned_cross_subsettingContext *ctx) = 0;
+  virtual void exitOwned_cross_subsetting(SysMLv2Parser::Owned_cross_subsettingContext *ctx) = 0;
 
   virtual void enterRedefinition(SysMLv2Parser::RedefinitionContext *ctx) = 0;
   virtual void exitRedefinition(SysMLv2Parser::RedefinitionContext *ctx) = 0;
@@ -1265,89 +1289,50 @@ public:
   virtual void enterOwned_expression_member(SysMLv2Parser::Owned_expression_memberContext *ctx) = 0;
   virtual void exitOwned_expression_member(SysMLv2Parser::Owned_expression_memberContext *ctx) = 0;
 
-  virtual void enterOwned_expressions(SysMLv2Parser::Owned_expressionsContext *ctx) = 0;
-  virtual void exitOwned_expressions(SysMLv2Parser::Owned_expressionsContext *ctx) = 0;
+  virtual void enterSelectExpr(SysMLv2Parser::SelectExprContext *ctx) = 0;
+  virtual void exitSelectExpr(SysMLv2Parser::SelectExprContext *ctx) = 0;
 
-  virtual void enterOwned_expression(SysMLv2Parser::Owned_expressionContext *ctx) = 0;
-  virtual void exitOwned_expression(SysMLv2Parser::Owned_expressionContext *ctx) = 0;
+  virtual void enterCollectExpr(SysMLv2Parser::CollectExprContext *ctx) = 0;
+  virtual void exitCollectExpr(SysMLv2Parser::CollectExprContext *ctx) = 0;
 
-  virtual void enterEased_owned_expression(SysMLv2Parser::Eased_owned_expressionContext *ctx) = 0;
-  virtual void exitEased_owned_expression(SysMLv2Parser::Eased_owned_expressionContext *ctx) = 0;
+  virtual void enterBinaryExpr(SysMLv2Parser::BinaryExprContext *ctx) = 0;
+  virtual void exitBinaryExpr(SysMLv2Parser::BinaryExprContext *ctx) = 0;
 
-  virtual void enterConditional_expression(SysMLv2Parser::Conditional_expressionContext *ctx) = 0;
-  virtual void exitConditional_expression(SysMLv2Parser::Conditional_expressionContext *ctx) = 0;
+  virtual void enterExtentExpr(SysMLv2Parser::ExtentExprContext *ctx) = 0;
+  virtual void exitExtentExpr(SysMLv2Parser::ExtentExprContext *ctx) = 0;
 
-  virtual void enterConditional_binary_operator_expression(SysMLv2Parser::Conditional_binary_operator_expressionContext *ctx) = 0;
-  virtual void exitConditional_binary_operator_expression(SysMLv2Parser::Conditional_binary_operator_expressionContext *ctx) = 0;
+  virtual void enterConditionalExpr(SysMLv2Parser::ConditionalExprContext *ctx) = 0;
+  virtual void exitConditionalExpr(SysMLv2Parser::ConditionalExprContext *ctx) = 0;
 
-  virtual void enterConditional_binary_operator(SysMLv2Parser::Conditional_binary_operatorContext *ctx) = 0;
-  virtual void exitConditional_binary_operator(SysMLv2Parser::Conditional_binary_operatorContext *ctx) = 0;
+  virtual void enterUnaryExpr(SysMLv2Parser::UnaryExprContext *ctx) = 0;
+  virtual void exitUnaryExpr(SysMLv2Parser::UnaryExprContext *ctx) = 0;
 
-  virtual void enterBinary_operator_expression(SysMLv2Parser::Binary_operator_expressionContext *ctx) = 0;
-  virtual void exitBinary_operator_expression(SysMLv2Parser::Binary_operator_expressionContext *ctx) = 0;
+  virtual void enterIndexExpr(SysMLv2Parser::IndexExprContext *ctx) = 0;
+  virtual void exitIndexExpr(SysMLv2Parser::IndexExprContext *ctx) = 0;
 
-  virtual void enterBinary_operator(SysMLv2Parser::Binary_operatorContext *ctx) = 0;
-  virtual void exitBinary_operator(SysMLv2Parser::Binary_operatorContext *ctx) = 0;
+  virtual void enterBaseExpr(SysMLv2Parser::BaseExprContext *ctx) = 0;
+  virtual void exitBaseExpr(SysMLv2Parser::BaseExprContext *ctx) = 0;
 
-  virtual void enterUnary_operator_expression(SysMLv2Parser::Unary_operator_expressionContext *ctx) = 0;
-  virtual void exitUnary_operator_expression(SysMLv2Parser::Unary_operator_expressionContext *ctx) = 0;
+  virtual void enterFeatureChainExpr(SysMLv2Parser::FeatureChainExprContext *ctx) = 0;
+  virtual void exitFeatureChainExpr(SysMLv2Parser::FeatureChainExprContext *ctx) = 0;
 
-  virtual void enterUnary_operator(SysMLv2Parser::Unary_operatorContext *ctx) = 0;
-  virtual void exitUnary_operator(SysMLv2Parser::Unary_operatorContext *ctx) = 0;
+  virtual void enterBracketExpr(SysMLv2Parser::BracketExprContext *ctx) = 0;
+  virtual void exitBracketExpr(SysMLv2Parser::BracketExprContext *ctx) = 0;
 
-  virtual void enterClassification_expression(SysMLv2Parser::Classification_expressionContext *ctx) = 0;
-  virtual void exitClassification_expression(SysMLv2Parser::Classification_expressionContext *ctx) = 0;
+  virtual void enterMetaclassificationExpr(SysMLv2Parser::MetaclassificationExprContext *ctx) = 0;
+  virtual void exitMetaclassificationExpr(SysMLv2Parser::MetaclassificationExprContext *ctx) = 0;
 
-  virtual void enterClassification(SysMLv2Parser::ClassificationContext *ctx) = 0;
-  virtual void exitClassification(SysMLv2Parser::ClassificationContext *ctx) = 0;
+  virtual void enterClassificationExpr(SysMLv2Parser::ClassificationExprContext *ctx) = 0;
+  virtual void exitClassificationExpr(SysMLv2Parser::ClassificationExprContext *ctx) = 0;
 
-  virtual void enterClassification_test_operator(SysMLv2Parser::Classification_test_operatorContext *ctx) = 0;
-  virtual void exitClassification_test_operator(SysMLv2Parser::Classification_test_operatorContext *ctx) = 0;
+  virtual void enterSequenceExpr(SysMLv2Parser::SequenceExprContext *ctx) = 0;
+  virtual void exitSequenceExpr(SysMLv2Parser::SequenceExprContext *ctx) = 0;
 
-  virtual void enterCast_operator(SysMLv2Parser::Cast_operatorContext *ctx) = 0;
-  virtual void exitCast_operator(SysMLv2Parser::Cast_operatorContext *ctx) = 0;
+  virtual void enterFunctionOperationExpr(SysMLv2Parser::FunctionOperationExprContext *ctx) = 0;
+  virtual void exitFunctionOperationExpr(SysMLv2Parser::FunctionOperationExprContext *ctx) = 0;
 
-  virtual void enterMetaclassification_expression(SysMLv2Parser::Metaclassification_expressionContext *ctx) = 0;
-  virtual void exitMetaclassification_expression(SysMLv2Parser::Metaclassification_expressionContext *ctx) = 0;
-
-  virtual void enterArgument_member(SysMLv2Parser::Argument_memberContext *ctx) = 0;
-  virtual void exitArgument_member(SysMLv2Parser::Argument_memberContext *ctx) = 0;
-
-  virtual void enterArgument(SysMLv2Parser::ArgumentContext *ctx) = 0;
-  virtual void exitArgument(SysMLv2Parser::ArgumentContext *ctx) = 0;
-
-  virtual void enterArgument_value(SysMLv2Parser::Argument_valueContext *ctx) = 0;
-  virtual void exitArgument_value(SysMLv2Parser::Argument_valueContext *ctx) = 0;
-
-  virtual void enterArgument_expression_member(SysMLv2Parser::Argument_expression_memberContext *ctx) = 0;
-  virtual void exitArgument_expression_member(SysMLv2Parser::Argument_expression_memberContext *ctx) = 0;
-
-  virtual void enterArgument_expression(SysMLv2Parser::Argument_expressionContext *ctx) = 0;
-  virtual void exitArgument_expression(SysMLv2Parser::Argument_expressionContext *ctx) = 0;
-
-  virtual void enterArgument_expression_value(SysMLv2Parser::Argument_expression_valueContext *ctx) = 0;
-  virtual void exitArgument_expression_value(SysMLv2Parser::Argument_expression_valueContext *ctx) = 0;
-
-  virtual void enterMetadata_argument_member(SysMLv2Parser::Metadata_argument_memberContext *ctx) = 0;
-  virtual void exitMetadata_argument_member(SysMLv2Parser::Metadata_argument_memberContext *ctx) = 0;
-
-  virtual void enterMetadata_argument(SysMLv2Parser::Metadata_argumentContext *ctx) = 0;
-  virtual void exitMetadata_argument(SysMLv2Parser::Metadata_argumentContext *ctx) = 0;
-
-  virtual void enterMetadata_value(SysMLv2Parser::Metadata_valueContext *ctx) = 0;
-  virtual void exitMetadata_value(SysMLv2Parser::Metadata_valueContext *ctx) = 0;
-
-  virtual void enterMetadata_reference(SysMLv2Parser::Metadata_referenceContext *ctx) = 0;
-  virtual void exitMetadata_reference(SysMLv2Parser::Metadata_referenceContext *ctx) = 0;
-
-  virtual void enterMetadataclassification_test_operator(SysMLv2Parser::Metadataclassification_test_operatorContext *ctx) = 0;
-  virtual void exitMetadataclassification_test_operator(SysMLv2Parser::Metadataclassification_test_operatorContext *ctx) = 0;
-
-  virtual void enterMeta_cast_operator(SysMLv2Parser::Meta_cast_operatorContext *ctx) = 0;
-  virtual void exitMeta_cast_operator(SysMLv2Parser::Meta_cast_operatorContext *ctx) = 0;
-
-  virtual void enterExtend_expression(SysMLv2Parser::Extend_expressionContext *ctx) = 0;
-  virtual void exitExtend_expression(SysMLv2Parser::Extend_expressionContext *ctx) = 0;
+  virtual void enterFunction_operation_arguments(SysMLv2Parser::Function_operation_argumentsContext *ctx) = 0;
+  virtual void exitFunction_operation_arguments(SysMLv2Parser::Function_operation_argumentsContext *ctx) = 0;
 
   virtual void enterType_reference_member(SysMLv2Parser::Type_reference_memberContext *ctx) = 0;
   virtual void exitType_reference_member(SysMLv2Parser::Type_reference_memberContext *ctx) = 0;
@@ -1361,39 +1346,6 @@ public:
   virtual void enterReference_typing(SysMLv2Parser::Reference_typingContext *ctx) = 0;
   virtual void exitReference_typing(SysMLv2Parser::Reference_typingContext *ctx) = 0;
 
-  virtual void enterPrimary_expressions(SysMLv2Parser::Primary_expressionsContext *ctx) = 0;
-  virtual void exitPrimary_expressions(SysMLv2Parser::Primary_expressionsContext *ctx) = 0;
-
-  virtual void enterPrimary_expression(SysMLv2Parser::Primary_expressionContext *ctx) = 0;
-  virtual void exitPrimary_expression(SysMLv2Parser::Primary_expressionContext *ctx) = 0;
-
-  virtual void enterPrimary_argument_value(SysMLv2Parser::Primary_argument_valueContext *ctx) = 0;
-  virtual void exitPrimary_argument_value(SysMLv2Parser::Primary_argument_valueContext *ctx) = 0;
-
-  virtual void enterPrimary_argument(SysMLv2Parser::Primary_argumentContext *ctx) = 0;
-  virtual void exitPrimary_argument(SysMLv2Parser::Primary_argumentContext *ctx) = 0;
-
-  virtual void enterPrimary_argument_member(SysMLv2Parser::Primary_argument_memberContext *ctx) = 0;
-  virtual void exitPrimary_argument_member(SysMLv2Parser::Primary_argument_memberContext *ctx) = 0;
-
-  virtual void enterNon_feature_chain_primary_expression(SysMLv2Parser::Non_feature_chain_primary_expressionContext *ctx) = 0;
-  virtual void exitNon_feature_chain_primary_expression(SysMLv2Parser::Non_feature_chain_primary_expressionContext *ctx) = 0;
-
-  virtual void enterNon_feature_chain_primary_argument_value(SysMLv2Parser::Non_feature_chain_primary_argument_valueContext *ctx) = 0;
-  virtual void exitNon_feature_chain_primary_argument_value(SysMLv2Parser::Non_feature_chain_primary_argument_valueContext *ctx) = 0;
-
-  virtual void enterNon_feature_chain_primary_argument(SysMLv2Parser::Non_feature_chain_primary_argumentContext *ctx) = 0;
-  virtual void exitNon_feature_chain_primary_argument(SysMLv2Parser::Non_feature_chain_primary_argumentContext *ctx) = 0;
-
-  virtual void enterNon_feature_chain_primary_argument_member(SysMLv2Parser::Non_feature_chain_primary_argument_memberContext *ctx) = 0;
-  virtual void exitNon_feature_chain_primary_argument_member(SysMLv2Parser::Non_feature_chain_primary_argument_memberContext *ctx) = 0;
-
-  virtual void enterBracket_expression(SysMLv2Parser::Bracket_expressionContext *ctx) = 0;
-  virtual void exitBracket_expression(SysMLv2Parser::Bracket_expressionContext *ctx) = 0;
-
-  virtual void enterIndex_expression(SysMLv2Parser::Index_expressionContext *ctx) = 0;
-  virtual void exitIndex_expression(SysMLv2Parser::Index_expressionContext *ctx) = 0;
-
   virtual void enterSequence_expression(SysMLv2Parser::Sequence_expressionContext *ctx) = 0;
   virtual void exitSequence_expression(SysMLv2Parser::Sequence_expressionContext *ctx) = 0;
 
@@ -1405,45 +1357,6 @@ public:
 
   virtual void enterSequence_expression_list_member(SysMLv2Parser::Sequence_expression_list_memberContext *ctx) = 0;
   virtual void exitSequence_expression_list_member(SysMLv2Parser::Sequence_expression_list_memberContext *ctx) = 0;
-
-  virtual void enterFeature_chain_expression(SysMLv2Parser::Feature_chain_expressionContext *ctx) = 0;
-  virtual void exitFeature_chain_expression(SysMLv2Parser::Feature_chain_expressionContext *ctx) = 0;
-
-  virtual void enterCollect_expression(SysMLv2Parser::Collect_expressionContext *ctx) = 0;
-  virtual void exitCollect_expression(SysMLv2Parser::Collect_expressionContext *ctx) = 0;
-
-  virtual void enterSelect_expression(SysMLv2Parser::Select_expressionContext *ctx) = 0;
-  virtual void exitSelect_expression(SysMLv2Parser::Select_expressionContext *ctx) = 0;
-
-  virtual void enterFunction_operation_expression(SysMLv2Parser::Function_operation_expressionContext *ctx) = 0;
-  virtual void exitFunction_operation_expression(SysMLv2Parser::Function_operation_expressionContext *ctx) = 0;
-
-  virtual void enterBody_argument_member(SysMLv2Parser::Body_argument_memberContext *ctx) = 0;
-  virtual void exitBody_argument_member(SysMLv2Parser::Body_argument_memberContext *ctx) = 0;
-
-  virtual void enterBody_argument(SysMLv2Parser::Body_argumentContext *ctx) = 0;
-  virtual void exitBody_argument(SysMLv2Parser::Body_argumentContext *ctx) = 0;
-
-  virtual void enterBody_argument_value(SysMLv2Parser::Body_argument_valueContext *ctx) = 0;
-  virtual void exitBody_argument_value(SysMLv2Parser::Body_argument_valueContext *ctx) = 0;
-
-  virtual void enterBody_expression_member(SysMLv2Parser::Body_expression_memberContext *ctx) = 0;
-  virtual void exitBody_expression_member(SysMLv2Parser::Body_expression_memberContext *ctx) = 0;
-
-  virtual void enterFunction_reference_argument_member(SysMLv2Parser::Function_reference_argument_memberContext *ctx) = 0;
-  virtual void exitFunction_reference_argument_member(SysMLv2Parser::Function_reference_argument_memberContext *ctx) = 0;
-
-  virtual void enterFunction_reference_argument(SysMLv2Parser::Function_reference_argumentContext *ctx) = 0;
-  virtual void exitFunction_reference_argument(SysMLv2Parser::Function_reference_argumentContext *ctx) = 0;
-
-  virtual void enterFunction_reference_arugment_value(SysMLv2Parser::Function_reference_arugment_valueContext *ctx) = 0;
-  virtual void exitFunction_reference_arugment_value(SysMLv2Parser::Function_reference_arugment_valueContext *ctx) = 0;
-
-  virtual void enterFunction_reference_expression(SysMLv2Parser::Function_reference_expressionContext *ctx) = 0;
-  virtual void exitFunction_reference_expression(SysMLv2Parser::Function_reference_expressionContext *ctx) = 0;
-
-  virtual void enterFunction_reference_member(SysMLv2Parser::Function_reference_memberContext *ctx) = 0;
-  virtual void exitFunction_reference_member(SysMLv2Parser::Function_reference_memberContext *ctx) = 0;
 
   virtual void enterFunction_reference(SysMLv2Parser::Function_referenceContext *ctx) = 0;
   virtual void exitFunction_reference(SysMLv2Parser::Function_referenceContext *ctx) = 0;
@@ -1472,6 +1385,9 @@ public:
   virtual void enterInternal_invocation_expression(SysMLv2Parser::Internal_invocation_expressionContext *ctx) = 0;
   virtual void exitInternal_invocation_expression(SysMLv2Parser::Internal_invocation_expressionContext *ctx) = 0;
 
+  virtual void enterConstructor_expression(SysMLv2Parser::Constructor_expressionContext *ctx) = 0;
+  virtual void exitConstructor_expression(SysMLv2Parser::Constructor_expressionContext *ctx) = 0;
+
   virtual void enterArgument_list(SysMLv2Parser::Argument_listContext *ctx) = 0;
   virtual void exitArgument_list(SysMLv2Parser::Argument_listContext *ctx) = 0;
 
@@ -1495,9 +1411,6 @@ public:
 
   virtual void enterExpression_body_member(SysMLv2Parser::Expression_body_memberContext *ctx) = 0;
   virtual void exitExpression_body_member(SysMLv2Parser::Expression_body_memberContext *ctx) = 0;
-
-  virtual void enterExpression_body(SysMLv2Parser::Expression_bodyContext *ctx) = 0;
-  virtual void exitExpression_body(SysMLv2Parser::Expression_bodyContext *ctx) = 0;
 
   virtual void enterLiteral_expression(SysMLv2Parser::Literal_expressionContext *ctx) = 0;
   virtual void exitLiteral_expression(SysMLv2Parser::Literal_expressionContext *ctx) = 0;
@@ -1618,6 +1531,27 @@ public:
 
   virtual void enterMeta_assignment(SysMLv2Parser::Meta_assignmentContext *ctx) = 0;
   virtual void exitMeta_assignment(SysMLv2Parser::Meta_assignmentContext *ctx) = 0;
+
+  virtual void enterTyped_by_operator(SysMLv2Parser::Typed_by_operatorContext *ctx) = 0;
+  virtual void exitTyped_by_operator(SysMLv2Parser::Typed_by_operatorContext *ctx) = 0;
+
+  virtual void enterSpecializes_operator(SysMLv2Parser::Specializes_operatorContext *ctx) = 0;
+  virtual void exitSpecializes_operator(SysMLv2Parser::Specializes_operatorContext *ctx) = 0;
+
+  virtual void enterSubsets_operator(SysMLv2Parser::Subsets_operatorContext *ctx) = 0;
+  virtual void exitSubsets_operator(SysMLv2Parser::Subsets_operatorContext *ctx) = 0;
+
+  virtual void enterReferences_operator(SysMLv2Parser::References_operatorContext *ctx) = 0;
+  virtual void exitReferences_operator(SysMLv2Parser::References_operatorContext *ctx) = 0;
+
+  virtual void enterRedefines_operator(SysMLv2Parser::Redefines_operatorContext *ctx) = 0;
+  virtual void exitRedefines_operator(SysMLv2Parser::Redefines_operatorContext *ctx) = 0;
+
+  virtual void enterConjugates_operator(SysMLv2Parser::Conjugates_operatorContext *ctx) = 0;
+  virtual void exitConjugates_operator(SysMLv2Parser::Conjugates_operatorContext *ctx) = 0;
+
+  virtual void enterCrosses_operator(SysMLv2Parser::Crosses_operatorContext *ctx) = 0;
+  virtual void exitCrosses_operator(SysMLv2Parser::Crosses_operatorContext *ctx) = 0;
 
 
 };

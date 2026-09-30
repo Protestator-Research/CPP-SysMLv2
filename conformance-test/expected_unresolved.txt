@@ -1,0 +1,6 @@
+# Library references that the resolver does not resolve yet (ratchet).
+# Format: library/<path relative to resources/sysml.library>:<line>:<name as written>
+# A listed entry that resolves now fails the test (remove it); an unresolved reference that is not listed fails the test.
+#
+# (Nothing is listed: the payload parameter of the transition in Actions.sysml, `accept apayload : Anything via receiver`, is modelled
+# since the ownership work, so `aState.aTransition.apayload` resolves.)

@@ -9,7 +9,8 @@ set(API_HEADER
         include/sysmlv2/service/implementation/ElementNavigationService.h
         include/sysmlv2/service/implementation/ProjectService.h
         include/sysmlv2/service/implementation/ProjectUsageService.h
-        include/sysmlv2/service/implementation/ProjectVersioningService.h)
+        include/sysmlv2/service/implementation/ProjectVersioningService.h
+        include/sysmlv2/service/implementation/InstanceManager.h)
 
 set(ONLINE_HEADER
         include/sysmlv2/service/online/ConnectionError.h
@@ -31,7 +32,8 @@ add_library(sysmlv2service
         src/sysmlv2/service/online/ConnectionError.cpp
         src/sysmlv2/service/online/HttpException.cpp
         src/sysmlv2/service/online/NotEnoughMemoryError.cpp
-        src/sysmlv2/service/online/SysMLAPIImplementation.cpp)
+        src/sysmlv2/service/online/SysMLAPIImplementation.cpp
+        src/sysmlv2/service/implementation/InstanceManager.cpp)
 
 target_link_libraries(sysmlv2service
         boost::boost
@@ -39,7 +41,9 @@ target_link_libraries(sysmlv2service
         date::date
         sysmlv2rest
         kerml
-        sysmlv2interfaces)
+        sysmlv2interfaces
+        sysmlv2parser
+        sysmlv2resources)
 
 
 include(GNUInstallDirs)
@@ -56,12 +60,14 @@ if(MSVC)
         ./include
         ../rest-api/include
         ../sysmlinterfaces/include
+        ../filehandling/include
         ../kerml/include)
 else ()
     target_compile_options(sysmlv2service PRIVATE -Wall -Wextra -Wpedantic -Werror)
     target_include_directories(sysmlv2service PRIVATE
         ./include
         ../rest-api/include
+        ../filehandling/include
         ../sysmlinterfaces/include
         ../kerml/include)
 endif()

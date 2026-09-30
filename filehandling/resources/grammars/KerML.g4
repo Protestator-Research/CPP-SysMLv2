@@ -14,7 +14,7 @@ start: elements EOF;
 
 startRule: start;
 
-elements: element*;
+elements: (member_prefix element)*;
 
 identification: (SYMBOL_SMALLER NAME SYMBOL_GREATER)? NAME;
 relationship_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN relationship_owned_elements SYMBOL_CURLY_BRACKET_CLOSE);
@@ -26,7 +26,7 @@ dependency: (prefix_metadata_annotation)* KEYWORD_DEPENDENCY identification? KEY
 annotation: qualified_name;
 owned_annotation: annotating_element;
 annotating_element: comment | documentation | textual_representation | metadata_feature;
-comment: (KEYWORD_COMMENT identification (KEYWORD_ABOUT annotation (SYMBOL_COMMA  annotation)*)?)? (KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
+comment: (KEYWORD_COMMENT identification? (KEYWORD_ABOUT annotation (SYMBOL_COMMA  annotation)*)?)? (KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
 documentation: KEYWORD_DOC identification? (KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
 textual_representation: (KEYWORD_REP identification)? KEYWORD_LANGUAGE STRING_VALUE REGULAR_COMMENT;
 
@@ -39,18 +39,18 @@ namespace_body_element: namespace_member | alias_member | namespace_import;
 member_prefix: (visibility_indicator)?;
 visibility_indicator: KEYWORD_PUBLIC | KEYWORD_PRIVATE | KEYWORD_PROTECTED;
 namespace_member: non_feature_member | namespace_feature_member;
-non_feature_member: non_feature_element;
+non_feature_member: member_prefix non_feature_element;
 namespace_feature_member: member_prefix feature_element;
 alias_member: member_prefix KEYWORD_ALIAS (SYMBOL_SMALLER NAME SYMBOL_GREATER)? (NAME)? KEYWORD_FOR qualified_name relationship_body;
 qualified_name: NAME  (SYMBOL_NAMESPACE_SUBSET NAME)*;
 
-namespace_import: visibility_indicator? KEYWORD_IMPORT KEYWORD_ALL? import_declaration relationship_body?;
+namespace_import: visibility_indicator? KEYWORD_IMPORT KEYWORD_ALL? import_declaration relationship_body;
 import_declaration: membership_import | filter_package;
 membership_import: qualified_name (SYMBOL_NAMESPACE_SUBSET? (SYMBOL_DOUBLE_STAR|SYMBOL_STAR)?);
 filter_package: membership_import filter_package_member;
 filter_package_member: SYMBOL_SQUARE_BRACKET_OPEN owned_expression SYMBOL_SQUARE_BRACKET_CLOSE;
 
-element: annotating_element | non_feature_element | feature_element | additional_options;
+element: additional_options | annotating_element | non_feature_element | feature_element;
 
 non_feature_element: dependency |
                      type |
@@ -96,23 +96,23 @@ additional_options: meta_assignment;
 type: type_prefix KEYWORD_TYPE type_declaration type_body;
 type_prefix: KEYWORD_ABSTRACT? prefix_metadata_member*;
 type_declaration: KEYWORD_ALL? identification multiplicity_bounds? (specialization_part | conjugation_part)+ type_relationship_part*;
-specialization_part: SPECIALIZES owned_specialization (SYMBOL_COMMA owned_specialization)*;
-conjugation_part: CONJUGATES owned_conjugation;
+specialization_part: specializes_operator owned_specialization (SYMBOL_COMMA owned_specialization)*;
+conjugation_part: conjugates_operator owned_conjugation;
 type_relationship_part: disjoining_part | unioning_part | intersecting_part | differencing_part;
 disjoining_part: KEYWORD_DISJOINT KEYWORD_FROM owned_disjoining (SYMBOL_COMMA owned_disjoining)*;
 unioning_part: KEYWORD_UNIONS unioning (SYMBOL_COMMA unioning)*;
 intersecting_part: KEYWORD_INTERSECTS intersecting (SYMBOL_COMMA intersecting)*;
 differencing_part: KEYWORD_DIFFERENCES differencing (SYMBOL_COMMA differencing)*;
 type_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN type_body_elements SYMBOL_CURLY_BRACKET_CLOSE);
-type_body_elements: element*;
-type_body_element: element;
+type_body_elements: type_body_element*;
+type_body_element: type_feature_member | member_prefix element;
 
-specialization: (KEYWORD_SPECIALIZATION identification)? KEYWORD_SUBTYPE specific_type SPECIALIZES general_type relationship_body;
+specialization: (KEYWORD_SPECIALIZATION identification)? KEYWORD_SUBTYPE specific_type specializes_operator general_type relationship_body;
 owned_specialization: general_type;
 specific_type: qualified_name | owned_feature_chain;
 general_type: qualified_name | owned_feature_chain;
 
-conjunction: (KEYWORD_CONJUGATION identification)? KEYWORD_CONJUGATE (qualified_name | feature_chain) CONJUGATES (qualified_name | feature_chain) relationship_body;
+conjunction: (KEYWORD_CONJUGATION identification)? KEYWORD_CONJUGATE (qualified_name | feature_chain) conjugates_operator (qualified_name | feature_chain) relationship_body;
 owned_conjugation: qualified_name | feature_chain;
 
 disjoining: (KEYWORD_DISJOINING identification)? KEYWORD_DISJOINT (qualified_name | feature_chain) KEYWORD_FROM (qualified_name | feature_chain) relationship_body;
@@ -128,43 +128,61 @@ owned_feature_member: member_prefix feature_element;
 
 classifier: type_prefix? KEYWORD_CLASSIFIER classifier_declaration type_body;
 classifier_declaration: KEYWORD_ALL? identification multiplicity_bounds? (superclassing_part | conjugation_part)? type_relationship_part*;
-superclassing_part: SPECIALIZES owned_subclassification (SYMBOL_COMMA owned_subclassification)*;
-subclassification: (KEYWORD_SPECIALIZATION identification)? KEYWORD_SUBCLASSIFIER qualified_name SPECIALIZES qualified_name relationship_body;
+superclassing_part: specializes_operator owned_subclassification (SYMBOL_COMMA owned_subclassification)*;
+subclassification: (KEYWORD_SPECIALIZATION identification)? KEYWORD_SUBCLASSIFIER qualified_name specializes_operator qualified_name relationship_body;
 owned_subclassification: qualified_name;
 
-feature: feature_prefix? ((KEYWORD_FEATURE feature_declaration) | KEYWORD_FEATURE | prefix_metadata_member) subsettings? feature_assignment? feature_value? type_body;
-feature_prefix: (feature_direction)? KEYWORD_ABSTRACT? (KEYWORD_VAR | KEYWORD_COMPOSITE | KEYWORD_PORTION)? KEYWORD_READONLY? KEYWORD_DERIVED? KEYWORD_END? prefix_metadata_member*;
+feature: feature_prefix (KEYWORD_FEATURE | prefix_metadata_member) feature_declaration? value_part? type_body
+        | anonymous_feature;
+// Anonymous owned feature: a feature declared without the explicit 'feature' keyword, as permitted by
+// the KerML textual notation (Feature = ... | (EndFeaturePrefix | BasicFeaturePrefix) FeatureDeclaration
+// ValuePart? TypeBody). Used pervasively for directed parameters ("in x : T;"), result declarations
+// ("return : R;") and plain owned features ("x : T[1] = 1;") inside function/predicate/expression bodies.
+// feature_declaration always begins with a token (NAME, '<', a specialization operator, or '[') disjoint
+// from KEYWORD_FEATURE and SYMBOL_HASHTAG, so this alternative is unambiguous against the one above.
+anonymous_feature: (end_feature_prefix | basic_feature_prefix) feature_declaration value_part? type_body;
+// KerML 1.1 clause 8.2.4.3.1: FeaturePrefix = ( EndFeaturePrefix ( OwnedCrossFeatureMember )? | BasicFeaturePrefix ) PrefixMetadataMember*
+feature_prefix: (end_feature_prefix owned_cross_feature_member? | basic_feature_prefix) prefix_metadata_member*;
+end_feature_prefix: KEYWORD_END;
+basic_feature_prefix: feature_direction? KEYWORD_DERIVED? KEYWORD_ABSTRACT? (KEYWORD_COMPOSITE | KEYWORD_PORTION)? KEYWORD_VAR? KEYWORD_READONLY?;
+owned_cross_feature_member: owned_cross_feature;
+owned_cross_feature: basic_feature_prefix feature_declaration;
 feature_direction: (KEYWORD_IN | KEYWORD_OUT | KEYWORD_INOUT);
-feature_declaration: KEYWORD_ALL? (feature_identification (feature_specialization_part | conjugation_part)? | feature_specialization_part | conjugation_part) feature_relationship_part* type_body?;
+feature_declaration: KEYWORD_ALL? (feature_identification (feature_specialization_part | conjugation_part)? | feature_specialization_part | conjugation_part) feature_relationship_part*;
 feature_identification: SYMBOL_SMALLER NAME SYMBOL_GREATER (NAME)? | NAME;
 feature_relationship_part: type_relationship_part | chaining_part | inverting_part | type_featuring_part;
 chaining_part: KEYWORD_CHAINS (owned_feature_chaining | feature_chain);
 inverting_part: KEYWORD_INVERSE KEYWORD_OF owned_feature_inverting;
 type_featuring_part: KEYWORD_FEATURED KEYWORD_BY owned_type_featuring (SYMBOL_COMMA owned_type_featuring)*;
-feature_specialization_part: feature_specialization+ multiplicity_part? feature_specialization* | multiplicity_part feature_specialization+;
-multiplicity_part: multiplicity_bounds MULTIPLICITY_PART_ELEMENTS*;
-MULTIPLICITY_PART_ELEMENTS: KEYWORD_ORDERED | KEYWORD_NONUNIQUE;
-feature_specialization: typings | subsettings | references | redefinitions;
+feature_specialization_part: feature_specialization+ (multiplicity_part feature_specialization*)? | multiplicity_part feature_specialization*;
+// MultiplicityPart = OwnedMultiplicity | ( OwnedMultiplicity )? ( 'ordered' ( 'nonunique' )? | 'nonunique' ( 'ordered' )? )
+multiplicity_part: multiplicity_bounds | multiplicity_bounds? (KEYWORD_ORDERED KEYWORD_NONUNIQUE? | KEYWORD_NONUNIQUE KEYWORD_ORDERED?);
+multiplicity_modifier: KEYWORD_ORDERED | KEYWORD_NONUNIQUE;
+feature_specialization: typings | subsettings | references | crosses | redefinitions;
 typings: typed_by (SYMBOL_COMMA owned_feature_typing)*;
-typed_by: TYPED_BY owned_feature_typing;
-subsettings: subsets owned_subsetting? (SYMBOL_COMMA owned_subsetting)*;
-subsets: SUBSETS owned_subsetting;
-references: REFERENCES owned_reference_subsetting;
-redefinitions: redefines (SYMBOL_COMMA owned_redefinition)?;
-redefines: feature_direction? REDEFINES owned_redefinition;
+typed_by: typed_by_operator owned_feature_typing;
+subsettings: subsets (SYMBOL_COMMA owned_subsetting)*;
+subsets: subsets_operator owned_subsetting;
+references: references_operator owned_reference_subsetting;
+crosses: crosses_operator owned_cross_subsetting;
+redefinitions: redefines (SYMBOL_COMMA owned_redefinition)*;
+redefines: feature_direction? redefines_operator owned_redefinition;
 
-feature_typing: (KEYWORD_SPECIALIZATION identification)? KEYWORD_TYPING qualified_name TYPED_BY general_type relationship_body;
+feature_typing: (KEYWORD_SPECIALIZATION identification)? KEYWORD_TYPING qualified_name typed_by_operator general_type relationship_body;
 owned_feature_typing: general_type;
 
-subsetting: (KEYWORD_SPECIALIZATION identification)? KEYWORD_SUBSET? specific_type SUBSETS general_type multiplicity_part? relationship_body;
+subsetting: (KEYWORD_SPECIALIZATION identification)? KEYWORD_SUBSET? specific_type subsets_operator general_type multiplicity_part? relationship_body;
 owned_subsetting: general_type;
 owned_reference_subsetting: general_type;
+owned_cross_subsetting: general_type;
 
-redefinition: feature_direction? (KEYWORD_SPECIALIZATION identification)? (KEYWORD_REDEFINITION specific_type)? REDEFINES qualified_name typed_by? multiplicity_part? subsets? feature_assignment? relationship_body;
+redefinition: feature_direction? (KEYWORD_SPECIALIZATION identification)? (KEYWORD_REDEFINITION specific_type)? redefines_operator qualified_name typed_by? multiplicity_part? subsets? feature_assignment? relationship_body;
 owned_redefinition: general_type;
 
 owned_feature_chain: feature_chain;
-feature_chain: owned_feature_chaining (SYMBOL_DOT owned_feature_chaining)*;
+// A chain has at least two links: every use site also offers qualified_name (which is a chain of one),
+// so admitting one link here only made those alternatives ambiguous.
+feature_chain: owned_feature_chaining (SYMBOL_DOT owned_feature_chaining)+;
 owned_feature_chaining: qualified_name;
 
 feature_inverting: (KEYWORD_INVERTING identification)? KEYWORD_INVERSE (qualified_name | owned_feature_chain) KEYWORD_OF (qualified_name | owned_feature_chain) relationship_body;
@@ -182,15 +200,17 @@ structure: type_prefix? KEYWORD_STRUCT classifier_declaration type_body;
 association: type_prefix KEYWORD_ASSOC classifier_declaration type_body;
 association_structure: type_prefix KEYWORD_ASSOC KEYWORD_STRUCT classifier_declaration type_body;
 
-connector: type_prefix? KEYWORD_CONNECTOR connector_declaration type_body;
-connector_declaration: feature_declaration (binary_connector_declaration | nary_connector_declaration);
-binary_connector_declaration: KEYWORD_ALL? KEYWORD_FROM connector_end_member 'to' connector_end_member;
-nary_connector_declaration: SYMBOL_ROUND_BRACKET_OPEN connector_end_member SYMBOL_COMMA connector_end_member (SYMBOL_COMMA connector_end_member)* SYMBOL_ROUND_BRACKET_CLOSE;
+connector: feature_prefix KEYWORD_CONNECTOR (feature_declaration? value_part? | connector_declaration) type_body;
+connector_declaration: binary_connector_declaration | nary_connector_declaration;
+binary_connector_declaration: (feature_declaration? KEYWORD_FROM | KEYWORD_ALL KEYWORD_FROM?)? connector_end_member KEYWORD_TO connector_end_member;
+nary_connector_declaration: feature_declaration? SYMBOL_ROUND_BRACKET_OPEN connector_end_member SYMBOL_COMMA connector_end_member (SYMBOL_COMMA connector_end_member)* SYMBOL_ROUND_BRACKET_CLOSE;
 connector_end_member: connector_end;
-connector_end: (NAME REFERENCES)? multiplicity_bounds? owned_reference_subsetting;
+connector_end: owned_cross_multiplicity_member? (NAME references_operator)? owned_reference_subsetting;
+owned_cross_multiplicity_member: owned_cross_multiplicity;
+owned_cross_multiplicity: owned_multiplicity;
 
 binding_connector: feature_prefix KEYWORD_BINDING binding_connector_declaration type_body;
-binding_connector_declaration: feature_declaration (KEYWORD_OF connector_end_member SYMBOL_EQUALS connector_end_member)? | (KEYWORD_ALL? (KEYWORD_OF? connector_end_member SYMBOL_EQUALS connector_end_member)?);
+binding_connector_declaration: feature_declaration (KEYWORD_OF connector_end_member SYMBOL_ASSIGN connector_end_member)? | (KEYWORD_ALL? (KEYWORD_OF? connector_end_member SYMBOL_ASSIGN connector_end_member)?);
 
 succession: feature_prefix KEYWORD_SUCCESSION succession_declaration type_body;
 succession_declaration: feature_declaration (KEYWORD_FIRST connector_end_member KEYWORD_THEN connector_end_member)? | ((KEYWORD_ALL)? (KEYWORD_FIRST? connector_end_member KEYWORD_THEN connector_end_member)?);
@@ -201,7 +221,7 @@ step: feature_prefix KEYWORD_STEP feature_declaration value_part? type_body;
 
 function: type_prefix KEYWORD_FUNCTION classifier_declaration function_body;
 function_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN function_body_part SYMBOL_CURLY_BRACKET_CLOSE;
-function_body_part: (type_body_element | return_feature_member)+ (result_expression_member)?;
+function_body_part: (type_body_element | return_feature_member)* (result_expression_member)?;
 return_feature_member: member_prefix KEYWORD_RETURN feature_element;
 result_expression_member: member_prefix owned_expression;
 
@@ -210,94 +230,68 @@ expression: feature_prefix KEYWORD_EXPR feature_declaration value_part? function
 predicate: type_prefix KEYWORD_PREDICATE classifier_declaration function_body;
 
 boolean_expression: feature_prefix KEYWORD_BOOL feature_declaration value_part? function_body;
-invariant: feature_prefix KEYWORD_INV (KEYWORD_TRUE | KEYWORD_FALSE)? feature_declaration value_part? function_body;
+invariant: feature_prefix KEYWORD_INV (KEYWORD_TRUE | KEYWORD_FALSE)? feature_declaration? value_part? function_body;
 
 owned_expression_reference_member: owned_expression_reference;
 owned_expression_reference: owned_expression_member;
-owned_expression_member: owned_expressions;
-owned_expressions: owned_expression+;
-owned_expression: base_expression | conditional_expression |
-                  conditional_binary_operator_expression |
-                  binary_operator_expression |
-                  unary_operator_expression |
-                  classification_expression |
-                  metaclassification_expression |
-                  extend_expression |
-                  primary_expression;
-eased_owned_expression: primary_expression | extend_expression | metaclassification_expression | unary_operator_expression;
-conditional_expression: KEYWORD_IF argument_member SYMBOL_QUESTION argument_expression_member KEYWORD_ELSE argument_expression_member;
-conditional_binary_operator_expression: argument_member conditional_binary_operator argument_expression_member;
-conditional_binary_operator: SYMBOL_DQUESTION | KEYWORD_OR | KEYWORD_AND | KEYWORD_IMPLIES;
-binary_operator_expression:  argument_member binary_operator owned_expressions;
-binary_operator: SYMBOL_VERTICAL_LINE | SYMBOL_AND | KEYWORD_XOR | SYMBOL_DDOT | SYMBOL_EQUALS | SYMBOL_NOT_EQUALS | SYMBOL_IFF_EQUALS | SYMBOL_IFF_NOT_EQUALS | SYMBOL_GREATER | SYMBOL_SMALLER | SYMBOL_GREATER_EQUALS | SYMBOL_SMALLER_EQUAL | SYMBOL_PLUS | SYMBOL_MINUS | SYMBOL_STAR | SYMBOL_SLASH | SYMBOL_MOD | SYMBOL_UPPER | SYMBOL_DOUBLE_STAR;
-unary_operator_expression: unary_operator owned_expressions;
-unary_operator: SYMBOL_PLUS | SYMBOL_MINUS | SYMBOL_CONJUGATES | KEYWORD_NOT;
-classification_expression: argument_member?((classification_test_operator type_reference_member)|(cast_operator type_result_member));
-classification: argument_member? (classification_test_operator type_reference_member)|(cast_operator type_result_member);
-classification_test_operator: KEYWORD_ISTYPE | KEYWORD_HASTYPE | SYMBOL_AT;
-cast_operator: KEYWORD_AS;
-metaclassification_expression: metadata_argument_member (metadataclassification_test_operator type_reference_member) | (meta_cast_operator type_result_member);
-argument_member: argument;
-argument: argument_value;
-argument_value: eased_owned_expression | STRING_VALUE;
-argument_expression_member: argument_expression;
-argument_expression: argument_expression_value;
-argument_expression_value: owned_expression_reference;
-metadata_argument_member: metadata_argument;
-metadata_argument: metadata_value;
-metadata_value: metadata_reference;
-metadata_reference: qualified_name;
-metadataclassification_test_operator: SYMBOL_DOT;
-meta_cast_operator: 'meta';
-extend_expression: KEYWORD_ALL type_reference_member;
+owned_expression_member: owned_expression;
+
+// Expressions, KerML 1.1 clause 8.2.5.8. This is one left-recursive rule; ANTLR 4 gives an
+// alternative a higher precedence the earlier it is listed (Table 6 of the KerML specification,
+// highest first): primary postfix operators, unary, '**' '^' (right associative), '*' '/' '%',
+// '+' '-', '..', relational, classification (istype hastype @ as), metaclassification (@@ meta),
+// equality, '&' 'and', 'xor', '|' 'or', 'implies', '??', and finally the conditional 'if'.
+// All binary operators other than exponentiation group to the left. The extent operator 'all',
+// the prefix forms of the classification operators and the base expressions are the operands.
+owned_expression
+    : owned_expression SYMBOL_DOT_QUESTION body_expression                                              # SelectExpr
+    | owned_expression SYMBOL_DOT body_expression                                                       # CollectExpr
+    | owned_expression SYMBOL_DOT feature_reference_member                                              # FeatureChainExpr
+    | owned_expression SYMBOL_ARROW reference_typing function_operation_arguments                       # FunctionOperationExpr
+    | owned_expression SYMBOL_HASHTAG SYMBOL_ROUND_BRACKET_OPEN sequence_expression_list_member SYMBOL_ROUND_BRACKET_CLOSE  # IndexExpr
+    | owned_expression SYMBOL_SQUARE_BRACKET_OPEN sequence_expression_list_member SYMBOL_SQUARE_BRACKET_CLOSE               # BracketExpr
+    | op=(SYMBOL_PLUS | SYMBOL_MINUS | SYMBOL_CONJUGATES | KEYWORD_NOT) owned_expression                # UnaryExpr
+    | <assoc=right> owned_expression op=(SYMBOL_DOUBLE_STAR | SYMBOL_UPPER) owned_expression            # BinaryExpr
+    | owned_expression op=(SYMBOL_STAR | SYMBOL_SLASH | SYMBOL_MOD) owned_expression                    # BinaryExpr
+    | owned_expression op=(SYMBOL_PLUS | SYMBOL_MINUS) owned_expression                                 # BinaryExpr
+    | owned_expression op=SYMBOL_DDOT owned_expression                                                  # BinaryExpr
+    | owned_expression op=(SYMBOL_GREATER | SYMBOL_SMALLER | SYMBOL_GREATER_EQUALS | SYMBOL_SMALLER_EQUAL) owned_expression  # BinaryExpr
+    | owned_expression op=(KEYWORD_ISTYPE | KEYWORD_HASTYPE | SYMBOL_AT) type_reference_member          # ClassificationExpr
+    | owned_expression op=KEYWORD_AS type_result_member                                                 # ClassificationExpr
+    | owned_expression op=SYMBOL_ATAT type_reference_member                                             # MetaclassificationExpr
+    | owned_expression op=KEYWORD_META type_result_member                                               # MetaclassificationExpr
+    | owned_expression op=(SYMBOL_EQUALS | SYMBOL_NOT_EQUALS | SYMBOL_IFF_EQUALS | SYMBOL_IFF_NOT_EQUALS) owned_expression  # BinaryExpr
+    | owned_expression op=(SYMBOL_AND | KEYWORD_AND) owned_expression                                   # BinaryExpr
+    | owned_expression op=KEYWORD_XOR owned_expression                                                  # BinaryExpr
+    | owned_expression op=(SYMBOL_VERTICAL_LINE | KEYWORD_OR) owned_expression                          # BinaryExpr
+    | owned_expression op=KEYWORD_IMPLIES owned_expression                                              # BinaryExpr
+    | owned_expression op=SYMBOL_DQUESTION owned_expression                                             # BinaryExpr
+    | KEYWORD_IF owned_expression SYMBOL_QUESTION owned_expression KEYWORD_ELSE owned_expression        # ConditionalExpr
+    | op=(KEYWORD_ISTYPE | KEYWORD_HASTYPE | SYMBOL_AT | KEYWORD_AS) type_reference_member              # ClassificationExpr
+    | KEYWORD_ALL type_reference_member                                                                 # ExtentExpr
+    | sequence_expression                                                                               # SequenceExpr
+    | base_expression                                                                                   # BaseExpr
+    ;
+function_operation_arguments: body_expression | function_reference | argument_list;
 type_reference_member: type_reference;
 type_result_member: type_reference;
 type_reference: reference_typing;
 reference_typing: qualified_name;
 
-primary_expressions: primary_expression+;
-primary_expression: feature_chain_expression | non_feature_chain_primary_expression;
-primary_argument_value: primary_expression;
-primary_argument: primary_argument_value;
-primary_argument_member: primary_argument;
-non_feature_chain_primary_expression: bracket_expression |
-                                index_expression |
-                                sequence_expression |
-                                select_expression |
-                                collect_expression |
-                                function_operation_expression |
-                                base_expression;
-non_feature_chain_primary_argument_value: non_feature_chain_primary_expression;
-non_feature_chain_primary_argument: primary_argument;
-non_feature_chain_primary_argument_member: primary_argument;
-bracket_expression: SYMBOL_SQUARE_BRACKET_OPEN sequence_expression_list_member SYMBOL_SQUARE_BRACKET_CLOSE;
-index_expression: SYMBOL_HASHTAG SYMBOL_ROUND_BRACKET_OPEN sequence_expression_list_member SYMBOL_ROUND_BRACKET_CLOSE;
 sequence_expression: SYMBOL_ROUND_BRACKET_OPEN sequence_expression_list SYMBOL_ROUND_BRACKET_CLOSE;
-sequence_expression_list: owned_expressions SYMBOL_COMMA? | sequence_operator_expression;
+sequence_expression_list: sequence_operator_expression | owned_expression SYMBOL_COMMA?;
 sequence_operator_expression: owned_expression_member SYMBOL_COMMA sequence_expression_list_member;
 sequence_expression_list_member: sequence_expression_list;
-feature_chain_expression: SYMBOL_DOT feature_chain_member;
-collect_expression: SYMBOL_DOT body_expression_member;
-select_expression: SYMBOL_DOT_QUESTION body_expression_member;
-function_operation_expression: SYMBOL_ARROW reference_typing (body_argument_member |function_reference_argument_member | argument_expression);
-body_argument_member: body_argument;
-body_argument: body_argument_value;
-body_argument_value: body_expression;
-body_expression_member: body_expression;
-function_reference_argument_member: function_reference_argument;
-function_reference_argument: function_reference_member;
-function_reference_arugment_value: function_reference_expression;
-function_reference_expression: reference_typing;
-function_reference_member: function_reference;
 function_reference:  reference_typing;
 feature_chain_member: feature_reference_member | owned_feature_chain_member;
 owned_feature_chain_member: feature_chain;
 
 base_expression: invocation_expression |
+                 constructor_expression |
                  null_expression |
                  literal_expression |
-                 feature_reference_expression |
                  metadata_access_expression |
+                 feature_reference_expression |
                  body_expression;
 null_expression: KEYWORD_NULL | SYMBOL_ROUND_BRACKET_OPEN SYMBOL_ROUND_BRACKET_CLOSE;
 feature_reference_expression: feature_reference_member;
@@ -306,22 +300,22 @@ feature_reference: qualified_name;
 
 metadata_access_expression: qualified_name SYMBOL_DOT KEYWORD_METADATA;
 invocation_expression: internal_invocation_expression;
-internal_invocation_expression: owned_feature_typing  argument_list; //named_argument_list
-argument_list: SYMBOL_ROUND_BRACKET_OPEN (named_argument_list |  positional_argument_list)? SYMBOL_ROUND_BRACKET_CLOSE;
+internal_invocation_expression: owned_feature_typing argument_list;
+constructor_expression: KEYWORD_NEW owned_feature_typing argument_list;
+argument_list: SYMBOL_ROUND_BRACKET_OPEN (named_argument_list | positional_argument_list)? SYMBOL_ROUND_BRACKET_CLOSE;
 positional_argument_list: owned_expression (SYMBOL_COMMA owned_expression)*;
 named_argument_list: named_argument_member (SYMBOL_COMMA named_argument_member)*;
 named_argument_member: named_argument;
-named_argument: parameter_redefinition (SYMBOL_EQUALS owned_expressions);
+named_argument: parameter_redefinition SYMBOL_ASSIGN owned_expression;
 parameter_redefinition: qualified_name;
 body_expression: expression_body_member;
 expression_body_member: expression_body;
-expression_body: SYMBOL_ROUND_BRACKET_OPEN function_body_part SYMBOL_ROUND_BRACKET_CLOSE;
+expression_body: SYMBOL_CURLY_BRACKET_OPEN function_body_part SYMBOL_CURLY_BRACKET_CLOSE;
 
-literal_expression: (KEYWORD_TRUE | KEYWORD_FALSE) |
+literal_expression: KEYWORD_TRUE | KEYWORD_FALSE |
                     literal_string |
                     literal_integer |
                     literal_real |
-                    literal_integer |
                     literal_infinity;
 literal_boolean: boolean_value;
 boolean_value:  (KEYWORD_TRUE | KEYWORD_FALSE);
@@ -358,34 +352,35 @@ multiplicity_bounds: SYMBOL_SQUARE_BRACKET_OPEN (multiplicity_expression_member 
 multiplicity_expression_member: internal_multiplicity_expression_member;
 internal_multiplicity_expression_member: (literal_expression | feature_reference_expression);
 
-metaclass: type_prefix? KEYWORD_METACLASS (identification | classifier_declaration) NAME? (SPECIALIZES NAME)? type_body;
+metaclass: type_prefix? KEYWORD_METACLASS (identification | classifier_declaration) NAME? (specializes_operator NAME)? type_body;
 prefix_metadata_annotation: SYMBOL_HASHTAG prefix_metadata_feature;
 prefix_metadata_member: SYMBOL_HASHTAG prefix_metadata_feature;
 prefix_metadata_feature: owned_feature_typing;
 metadata_feature: (prefix_metadata_member)* (SYMBOL_AT | KEYWORD_METADATA) metadata_feature_declaration (KEYWORD_ABOUT annotation (SYMBOL_COMMA annotation));
-metadata_feature_declaration: (identification (SYMBOL_TYPED_BY | KEYWORD_TYPED KEYWORD_BY))? owned_feature_typing;
+metadata_feature_declaration: (identification typed_by_operator)? owned_feature_typing;
 metadata_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN (metadata_body_element)* SYMBOL_CURLY_BRACKET_CLOSE);
 metadata_body_element: non_feature_member |
                        metadata_body_feature_member |
                        alias_member |
                        import_declaration;
 metadata_body_feature_member: metadata_body_feature;
-metadata_body_feature: KEYWORD_FEATURE? (SYMBOL_REDEFINES | KEYWORD_REDEFINES)? owned_redefinition feature_specialization_part? value_part? metadata_body;
+metadata_body_feature: KEYWORD_FEATURE? redefines_operator? owned_redefinition feature_specialization_part? value_part? metadata_body;
 
 package:(prefix_metadata_member)* package_declaration package_body;
 library_package: (KEYWORD_STANDARD)? KEYWORD_LIBRARY (prefix_metadata_member)* package_declaration package_body;
 package_declaration: KEYWORD_PACKAGE identification?;
-package_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN (namespace_body_element | element_filter_member | element)+ SYMBOL_CURLY_BRACKET_CLOSE);
+package_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN (namespace_body_element | element_filter_member | element)* SYMBOL_CURLY_BRACKET_CLOSE);
 element_filter_member: member_prefix KEYWORD_FILTER owned_expression ';';
 
-meta_assignment: qualified_name SYMBOL_ASSIGN identification 'meta' qualified_name ';';
+meta_assignment: qualified_name SYMBOL_ASSIGN identification KEYWORD_META qualified_name ';';
 
-TYPED_BY: SYMBOL_TYPED_BY | KEYWORD_TYPED KEYWORD_BY;
-SPECIALIZES: SYMBOL_SPECIALIZES | KEYWORD_SPECIALIZES;
-SUBSETS:  SYMBOL_SPECIALIZES | KEYWORD_SUBSETS;
-REFERENCES: SYMBOL_REFERENCES | KEYWORD_REFERENCES;
-REDEFINES: SYMBOL_REDEFINES | KEYWORD_REDEFINES;
-CONJUGATES: SYMBOL_CONJUGATES | KEYWORD_CONJUGATES;
+typed_by_operator: SYMBOL_TYPED_BY | KEYWORD_TYPED KEYWORD_BY;
+specializes_operator: SYMBOL_SPECIALIZES | KEYWORD_SPECIALIZES;
+subsets_operator:  SYMBOL_SPECIALIZES | KEYWORD_SUBSETS;
+references_operator: SYMBOL_REFERENCES | KEYWORD_REFERENCES;
+redefines_operator: SYMBOL_REDEFINES | KEYWORD_REDEFINES;
+conjugates_operator: SYMBOL_CONJUGATES | KEYWORD_CONJUGATES;
+crosses_operator: SYMBOL_CROSSES | KEYWORD_CROSSES;
 
 // Keywords
 KEYWORD_ABOUT: 'about';
@@ -488,6 +483,9 @@ KEYWORD_LOCALE: 'locale';
 KEYWORD_STANDARD: 'standard';
 KEYWORD_LIBRARY: 'library';
 KEYWORD_CONSTANT: 'constant';
+KEYWORD_CROSSES: 'crosses';
+KEYWORD_META: 'meta';
+KEYWORD_NEW: 'new';
 
 //Notes and Comments
 SINGLE_LINE_NOTE: '//' ~( '\r' | '\n' )* -> channel(HIDDEN);
@@ -506,6 +504,7 @@ SYMBOL_SPECIALIZES: ':>';
 SYMBOL_REFERENCES: '::>';
 SYMBOL_REDEFINES: ':>>';
 SYMBOL_CONJUGATES: '~';
+SYMBOL_CROSSES: '=>';
 SYMBOL_ROUND_BRACKET_OPEN: '(';
 SYMBOL_ROUND_BRACKET_CLOSE: ')';
 SYMBOL_CURLY_BRACKET_OPEN: '{';
@@ -539,6 +538,7 @@ SYMBOL_GREATER_EQUALS: '>=';
 SYMBOL_QUESTION: '?';
 SYMBOL_DQUESTION: '??';
 SYMBOL_DOT_QUESTION: '.?';
+SYMBOL_ATAT: '@@';
 
 NAME: BASIC_NAME | UNRESTRICTED_NAME;
 BASIC_NAME: ('_'|[a-z]|[A-Z])('_'|[a-z]|[A-Z]|[0-9])* ;
@@ -546,7 +546,7 @@ UNRESTRICTED_NAME: '\'' .*? '\'';
 
 //Values:
 DECIMAL_VALUE: [0-9]+ ;
-EXPONENTIAL_VALUE: DECIMAL_VALUE ('e' | 'E') ('+'|'-') DECIMAL_VALUE;
+EXPONENTIAL_VALUE: DECIMAL_VALUE ('e' | 'E') ('+'|'-')? DECIMAL_VALUE;
 STRING_VALUE: '"' .*? '"';
 
 WS: [ \t\r\n]+ -> channel(HIDDEN) ;

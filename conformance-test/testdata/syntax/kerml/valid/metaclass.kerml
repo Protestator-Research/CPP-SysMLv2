@@ -1,0 +1,2 @@
+// expect: valid
+metaclass M;

@@ -11,7 +11,15 @@ find_package(antlr4-runtime REQUIRED)
 set(GLOBAL_HEADER
         include/sysmlv2/sysmlv2file_global.h
         include/sysmlv2/ParserError.h
-        include/sysmlv2/Parser.h)
+        include/sysmlv2/Parser.h
+        include/sysmlv2/Workspace.h)
+
+set(RESOLUTION_HEADER
+        include/sysmlv2/resolution/ResolutionData.h
+        include/sysmlv2/resolution/Retarget.h)
+
+set(OWNERSHIP_HEADER
+        include/sysmlv2/ownership/Ownership.h)
 
 set(KERML_PARSER_HEADER
         include/kerml/ErrorTypes.h
@@ -36,6 +44,8 @@ add_library(sysmlv2parser
         ${KERML_PARSER_HEADER}
         ${SYSML_PARSER_HEADER}
         ${GLOBAL_HEADER}
+        ${RESOLUTION_HEADER}
+        ${OWNERSHIP_HEADER}
         src/kerml/parser/KerMLBaseListener.cpp
         src/kerml/parser/KerMLLexer.cpp
         src/kerml/parser/KerMLListener.cpp
@@ -51,6 +61,13 @@ add_library(sysmlv2parser
         src/sysmlv2/parser/SysMLv2Error.cpp
         src/sysmlv2/Parser.cpp
         src/sysmlv2/ParserError.cpp
+        src/sysmlv2/Workspace.cpp
+        src/sysmlv2/resolution/ImplicitGenerals.cpp
+        src/sysmlv2/resolution/ImplicitGenerals.h
+        src/sysmlv2/resolution/ResolutionData.cpp
+        src/sysmlv2/resolution/Resolver.cpp
+        src/sysmlv2/resolution/Resolver.h
+        src/sysmlv2/ownership/Ownership.cpp
         src/kerml/parser/KerMlListenerImplementation.cpp)
 
 #if((EXISTS antlr4_shared) OR (MSVC))
@@ -79,6 +96,8 @@ install(TARGETS sysmlv2parser RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${KERML_PARSER_HEADER} DESTINATION include/kerml/parser)
 install(FILES ${SYSML_PARSER_HEADER} DESTINATION include/sysmlv2/parser)
 install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2)
+install(FILES ${RESOLUTION_HEADER} DESTINATION include/sysmlv2/resolution)
+install(FILES ${OWNERSHIP_HEADER} DESTINATION include/sysmlv2/ownership)
 
 if(MSVC)
     target_compile_options(sysmlv2parser PRIVATE /W4 /WX- /bigobj)

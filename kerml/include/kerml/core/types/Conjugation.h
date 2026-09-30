@@ -24,7 +24,7 @@ namespace KerML::Entities {
 	     */
 	    public:
         // Allow derived representations to be populated before validation.
-        Conjugation() = default;
+        Conjugation();
     public:
 	    /**
 	     * Constructor for the Conjugation. This is required considering the Standard
