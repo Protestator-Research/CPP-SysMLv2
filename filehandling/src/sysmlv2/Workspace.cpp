@@ -32,6 +32,7 @@
 #include <algorithm>
 #include <filesystem>
 #include <fstream>
+#include <future>
 #include <memory>
 #include <sstream>
 #include <stdexcept>
@@ -84,7 +85,7 @@ namespace SysMLv2::Files {
             std::shared_ptr<KerML::Entities::Namespace> root;
         };
 
-        std::vector<std::unique_ptr<Source>> sources;
+        std::vector<std::shared_ptr<Source>> sources;
         std::vector<UnresolvedReferenceInfo> unresolved;
         std::vector<UnresolvedReferenceInfo> notAttempted;
         std::unique_ptr<Detail::Resolver> resolver;
@@ -95,40 +96,44 @@ namespace SysMLv2::Files {
             return std::make_shared<ParserError>(boost::uuids::random_generator()(), "", type, message, line, column, source);
         }
 
-        static void computeTopLevel(Source& source) {
-            std::unordered_set<const KerML::Entities::Element*> owned;
-            for (const auto& element : source.elements) {
+        static void computeTopLevel(std::shared_ptr<Source> source) {
+            std::unordered_set<std::shared_ptr<KerML::Entities::Element>> owned;
+            for (const auto& element : source->elements) {
                 if (!element) continue;
-                for (const auto& child : element->ownedElements()) owned.insert(child.get());
+
+                const auto& ownedElements = element->ownedElements();
+
+                for (const auto& child : ownedElements)
+                    owned.insert(child);
             }
-            if (source.data.root) {
-                for (const auto& child : source.data.root->ownedElements()) source.topLevel.push_back(child);
+            if (source->data.root) {
+                for (const auto& child : source->data.root->ownedElements()) source->topLevel.push_back(child);
             }
-            for (const auto& element : source.elements) {
-                if (!element || owned.count(element.get()) != 0) continue;
-                if (element == source.data.root) continue;
-                source.topLevel.push_back(element);
+            for (const auto& element : source->elements) {
+                if (!element || owned.count(element) != 0) continue;
+                if (element == source->data.root) continue;
+                source->topLevel.push_back(element);
             }
         }
 
         // The root namespace of a source: the one the KerML listener created, or, for SysML v2 (where the ownership builder creates
         // it and only the top-level elements refer to it), the namespace that owns an element of the source without being one of them.
-        static void findRoot(Source& source) {
-            source.root = std::dynamic_pointer_cast<KerML::Entities::Namespace>(source.data.root);
-            if (source.root) return;
-            std::unordered_set<const KerML::Entities::Element*> own;
-            for (const auto& element : source.elements) own.insert(element.get());
-            for (const auto& element : source.elements) {
+        static void findRoot(std::shared_ptr<Source> source) {
+            source->root = std::dynamic_pointer_cast<KerML::Entities::Namespace>(source->data.root);
+            if (source->root) return;
+            std::unordered_set<std::shared_ptr<KerML::Entities::Element>> own;
+            for (const auto& element : source->elements) own.insert(element);
+            for (const auto& element : source->elements) {
                 if (!element) continue;
                 auto owner = std::dynamic_pointer_cast<KerML::Entities::Namespace>(element->owner());
-                if (owner && own.count(owner.get()) == 0) {
-                    source.root = std::move(owner);
+                if (owner && own.count(owner) == 0) {
+                    source->root = std::move(owner);
                     return;
                 }
             }
         }
 
-        void parseKerML(Source& source, const std::string& text) {
+        void parseKerML(std::shared_ptr<Source> source, const std::string& text) {
             antlr4::ANTLRInputStream input(text);
             auto errorListener = std::make_unique<KerMLErrorListener>();
             auto listener = std::make_unique<KerMLListenerImplementation>();
@@ -143,23 +148,23 @@ namespace SysMLv2::Files {
             KerMLParser::StartContext* tree = parseTwoStage(parser, tokens, *errorListener, &KerMLParser::start);
 
             const auto syntaxErrors = errorListener->getSyntaxErrors();
-            source.errors.reserve(syntaxErrors.size());
+            source->errors.reserve(syntaxErrors.size());
             for (const auto& error : syntaxErrors) {
-                source.errors.push_back(makeError(ErrorType::ERROR, error->message(), error->line(), error->positionInLine(), source.name));
+                source->errors.push_back(makeError(ErrorType::ERROR, error->message(), error->line(), error->positionInLine(), source->name));
             }
 
             try {
                 antlr4::tree::ParseTreeWalker::DEFAULT.walk(listener.get(), tree);
-                source.elements = listener->getElements();
-                source.data = listener->takeResolutionData();
+                source->elements = listener->getElements();
+                source->data = listener->takeResolutionData();
             } catch (const std::exception& ex) {
-                source.errors.push_back(makeError(ErrorType::ERROR, std::string("internal: ") + ex.what(), -1, -1, source.name));
+                source->errors.push_back(makeError(ErrorType::ERROR, std::string("internal: ") + ex.what(), -1, -1, source->name));
             } catch (...) {
-                source.errors.push_back(makeError(ErrorType::ERROR, "internal: unknown exception while walking the KerML parse tree", -1, -1, source.name));
+                source->errors.push_back(makeError(ErrorType::ERROR, "internal: unknown exception while walking the KerML parse tree", -1, -1, source->name));
             }
         }
 
-        void parseSysML(Source& source, const std::string& text) {
+        void parseSysML(std::shared_ptr<Source> source, const std::string& text) {
             antlr4::ANTLRInputStream input(text);
             SysMLErrorListenener errorListener;
             SysMLv2ListenerImplementation listener;
@@ -172,19 +177,19 @@ namespace SysMLv2::Files {
             SysMLv2Parser::StartContext* tree = parseTwoStage(parser, tokens, errorListener, &SysMLv2Parser::start);
 
             const auto syntaxErrors = errorListener.getSyntaxErrors();
-            source.errors.reserve(syntaxErrors.size());
+            source->errors.reserve(syntaxErrors.size());
             for (const auto& error : syntaxErrors) {
-                source.errors.push_back(makeError(ErrorType::ERROR, error->message(), error->line(), error->positionInLine(), source.name));
+                source->errors.push_back(makeError(ErrorType::ERROR, error->message(), error->line(), error->positionInLine(), source->name));
             }
 
             try {
                 antlr4::tree::ParseTreeWalker::DEFAULT.walk(&listener, tree);
-                source.elements = listener.getElements();
-                source.data = listener.takeResolutionData();
+                source->elements = listener.getElements();
+                source->data = listener.takeResolutionData();
             } catch (const std::exception& ex) {
-                source.errors.push_back(makeError(ErrorType::ERROR, std::string("internal: ") + ex.what(), -1, -1, source.name));
+                source->errors.push_back(makeError(ErrorType::ERROR, std::string("internal: ") + ex.what(), -1, -1, source->name));
             } catch (...) {
-                source.errors.push_back(makeError(ErrorType::ERROR, "internal: unknown exception while walking the SysML v2 parse tree", -1, -1, source.name));
+                source->errors.push_back(makeError(ErrorType::ERROR, "internal: unknown exception while walking the SysML v2 parse tree", -1, -1, source->name));
             }
         }
     };
@@ -197,21 +202,21 @@ namespace SysMLv2::Files {
         if (language == SourceLanguage::Auto) {
             language = endsWith(sourceName, ".kerml") ? SourceLanguage::KerML : SourceLanguage::SysML;
         }
-        auto source = std::make_unique<Impl::Source>();
+        auto source = std::make_shared<Impl::Source>();
         source->name = std::move(sourceName);
         source->language = language;
         const size_t index = impl_->sources.size();
         if (language == SourceLanguage::KerML) {
-            impl_->parseKerML(*source, text);
+            impl_->parseKerML(source, text);
         } else {
-            impl_->parseSysML(*source, text);
+            impl_->parseSysML(source, text);
         }
         for (auto& reference : source->data.references) {
             reference.source = index;
         }
-        Impl::computeTopLevel(*source);
-        Impl::findRoot(*source);
-        impl_->sources.push_back(std::move(source));
+        Impl::computeTopLevel(source);
+        Impl::findRoot(source);
+        impl_->sources.push_back(source);
         impl_->resolver.reset();
         return index;
     }
