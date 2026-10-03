@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT BooleanExpression : public virtual Expression {
+    friend struct ElementDisposer;
 public:
     BooleanExpression();
     ~BooleanExpression() override;

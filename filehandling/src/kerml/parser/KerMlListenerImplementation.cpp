@@ -514,7 +514,7 @@ void KerMLListenerImplementation::exitType(KerMLParser::TypeContext *ctx) {
     const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top());
     if(!type)
     {
-        std::cout << "Error wrong type in Parentstack" << std::endl;
+        std::cerr << "Error wrong type in Parentstack" << std::endl;
         return;
     }
     
@@ -1616,7 +1616,7 @@ void KerMLListenerImplementation::exitOwned_feature_inverting(KerMLParser::Owned
     if (ParentStack.empty()) return;
     const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
     if (!feature) {
-        std::cout << "Wrong Type in parent stack." << std::endl;
+        std::cerr << "Wrong Type in parent stack." << std::endl;
         return;
     }
 
@@ -1688,7 +1688,7 @@ void KerMLListenerImplementation::exitOwned_type_featuring(KerMLParser::Owned_ty
     const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
     if (!feature)
     {
-        std::cout << "Wrong Type in parent stack." << std::endl;
+        std::cerr << "Wrong Type in parent stack." << std::endl;
         return;
     }
 

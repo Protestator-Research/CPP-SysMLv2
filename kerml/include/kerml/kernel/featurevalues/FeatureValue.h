@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT FeatureValue : public virtual OwningMembership {
+    friend struct ElementDisposer;
 public:
     FeatureValue();
     ~FeatureValue() override;

@@ -31,6 +31,7 @@ namespace KerML::Entities {
 	 */
 	class KERML_EXPORT CrossSubsetting : public Subsetting
 	{
+        friend struct ::KerML::Entities::ElementDisposer;
 	public:
 		/**
 		 * Constructor is deleted, because the standard requires to have a crossing feature and crossed feature;

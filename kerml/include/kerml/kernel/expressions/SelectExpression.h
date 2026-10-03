@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT SelectExpression : public virtual OperatorExpression {
+    friend struct ElementDisposer;
 public:
     SelectExpression();
     ~SelectExpression() override;

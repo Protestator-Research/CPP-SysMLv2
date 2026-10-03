@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT FlowEnd : public virtual Feature {
+    friend struct ElementDisposer;
 public:
     FlowEnd();
     ~FlowEnd() override;

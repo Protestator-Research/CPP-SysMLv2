@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT LiteralRational : public virtual LiteralExpression {
+    friend struct ElementDisposer;
 public:
     LiteralRational();
     ~LiteralRational() override;

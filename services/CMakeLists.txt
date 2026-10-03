@@ -20,25 +20,31 @@ set(ONLINE_HEADER
         include/sysmlv2/service/online/StatusCode.h
         include/sysmlv2/service/online/SysMLAPIImplementation.h)
 
+set(ONLINE_SOURCE
+        src/sysmlv2/service/online/ConnectionError.cpp
+        src/sysmlv2/service/online/HttpException.cpp
+        src/sysmlv2/service/online/NotEnoughMemoryError.cpp
+        src/sysmlv2/service/online/SysMLAPIImplementation.cpp)
+
 add_library(sysmlv2service
         ${GLOBAL_HEADER}
         ${API_HEADER}
         ${INTERFACE_HEADER}
-        ${ONLINE_HEADER}
         src/sysmlv2/service/implementation/ElementNavigationService.cpp
         src/sysmlv2/service/implementation/ProjectService.cpp
         src/sysmlv2/service/implementation/ProjectUsageService.cpp
         src/sysmlv2/service/implementation/ProjectVersioningService.cpp
-        src/sysmlv2/service/online/ConnectionError.cpp
-        src/sysmlv2/service/online/HttpException.cpp
-        src/sysmlv2/service/online/NotEnoughMemoryError.cpp
-        src/sysmlv2/service/online/SysMLAPIImplementation.cpp
         src/sysmlv2/service/implementation/InstanceManager.cpp)
 
+if(BUILD_WITH_ONLINE)
+    find_package(CURL REQUIRED)
+    target_sources(sysmlv2service PRIVATE ${ONLINE_HEADER} ${ONLINE_SOURCE})
+    target_link_libraries(sysmlv2service CURL::libcurl)
+endif()
+
 target_link_libraries(sysmlv2service
-        boost::boost
+        Boost::headers
         nlohmann_json::nlohmann_json
-        date::date
         sysmlv2rest
         kerml
         sysmlv2interfaces
@@ -51,7 +57,9 @@ install(TARGETS sysmlv2service ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS sysmlv2service RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2/service)
 install(FILES ${API_HEADER} DESTINATION include/sysmlv2/service/implementation)
-install(FILES ${ONLINE_HEADER} DESTINATION include/sysmlv2/service/online)
+if(BUILD_WITH_ONLINE)
+    install(FILES ${ONLINE_HEADER} DESTINATION include/sysmlv2/service/online)
+endif()
 
 if(MSVC)
     target_compile_options(sysmlv2service PRIVATE /W4 /WX- /bigobj)
@@ -63,7 +71,7 @@ if(MSVC)
         ../filehandling/include
         ../kerml/include)
 else ()
-    target_compile_options(sysmlv2service PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_compile_options(sysmlv2service PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
     target_include_directories(sysmlv2service PRIVATE
         ./include
         ../rest-api/include

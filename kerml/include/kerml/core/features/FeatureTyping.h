@@ -13,6 +13,7 @@ namespace KerML::Entities {
     class Feature;
 
     class KERML_EXPORT FeatureTyping : public Specialization{
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
         FeatureTyping();
         FeatureTyping(const std::shared_ptr<KerML::Entities::Type>& type, const std::shared_ptr<KerML::Entities::Feature>& typedFeature = nullptr);

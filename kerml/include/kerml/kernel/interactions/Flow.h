@@ -11,6 +11,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT Flow : public virtual Connector, public virtual Step {
+    friend struct ElementDisposer;
 public:
     Flow();
     ~Flow() override;

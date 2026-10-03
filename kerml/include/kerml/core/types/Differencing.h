@@ -14,6 +14,7 @@ namespace KerML::Entities {
      * @version 1.0 Beta 4
      */
     class KERML_EXPORT Differencing : public Relationship{
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
         Differencing() = delete;
         Differencing(std::shared_ptr<Type> typeDifferenced, std::shared_ptr<Type> differencingType);

@@ -266,9 +266,8 @@ add_library(sysml
 target_link_libraries(sysml PUBLIC
         kerml
         sysmlv2interfaces
-        boost::boost
-        nlohmann_json::nlohmann_json
-        date::date)
+        Boost::headers
+        nlohmann_json::nlohmann_json)
 
 target_include_directories(sysml PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -276,7 +275,7 @@ target_include_directories(sysml PUBLIC
 if(MSVC)
     target_compile_options(sysml PRIVATE /W4 /WX- /bigobj)
 else()
-    target_compile_options(sysml PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_compile_options(sysml PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
 endif()
 
 include(GNUInstallDirs)

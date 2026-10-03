@@ -25,6 +25,7 @@ namespace KerML::Entities {
      *
      */
     class KERML_EXPORT Annotation : public Relationship {
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
         /**
          * Constructor of the Relationship. This constructor does allow for an empty elementID.

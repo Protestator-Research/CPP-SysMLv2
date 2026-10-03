@@ -31,6 +31,7 @@ namespace KerML::Entities {
      * @brief Represents an element that allows for anntoations.
      */
     class KERML_EXPORT AnnotatingElement : public virtual Element{
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
         /**
          * @brief Constructor

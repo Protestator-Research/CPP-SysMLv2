@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT MultiplicityRange : public virtual Multiplicity {
+    friend struct ElementDisposer;
 public:
     MultiplicityRange();
     ~MultiplicityRange() override;

@@ -17,6 +17,7 @@ namespace KerML::Entities {
      * @date 02.06.2026
      */
     class KERML_EXPORT TypeFeaturing : public Relationship {
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
         TypeFeaturing() = delete;
         TypeFeaturing(const std::shared_ptr<Type>& typeFeaturingOfType, const std::shared_ptr<Feature>& featureOfType, const std::shared_ptr<Feature>& owningFeatureOfType = nullptr);

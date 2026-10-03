@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT PayloadFeature : public virtual Feature {
+    friend struct ElementDisposer;
 public:
     PayloadFeature();
     ~PayloadFeature() override;

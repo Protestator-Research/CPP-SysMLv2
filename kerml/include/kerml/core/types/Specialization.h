@@ -31,6 +31,7 @@ namespace KerML::Entities {
      * 
      */
     class KERML_EXPORT Specialization  : public Relationship {
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
 	    /**
 	     * Constructor

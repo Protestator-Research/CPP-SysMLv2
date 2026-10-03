@@ -11,6 +11,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT Connector : public virtual Feature, public virtual Relationship {
+    friend struct ElementDisposer;
 public:
     Connector();
     ~Connector() override;

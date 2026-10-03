@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT Predicate : public virtual Function {
+    friend struct ElementDisposer;
 public:
     Predicate();
     ~Predicate() override;

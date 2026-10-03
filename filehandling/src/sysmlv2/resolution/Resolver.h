@@ -6,16 +6,23 @@
 
 #include <sysmlv2/resolution/ResolutionData.h>
 
+#include <chrono>
 #include <memory>
+#include <optional>
 #include <string>
 #include <vector>
 
 namespace SysMLv2::Files::Detail {
 
+    /// Thrown by Resolver::run() when the deadline has passed; what was resolved until then stays resolved.
+    struct ResolveDeadlineReached {};
+
     /// The elements and the recorded resolution data of one source.
     struct SourceInput {
         const std::vector<std::shared_ptr<KerML::Entities::Element>>* elements = nullptr;
         ResolutionData* data = nullptr;
+        /// Level of the source: a reference only resolves to elements of sources of the same or a lower level.
+        int level = 0;
     };
 
     /**
@@ -37,7 +44,8 @@ namespace SysMLv2::Files::Detail {
 
         /// Resolves the given references (in dependency order, to a fixed point) and calls their patch callbacks.
         /// @return the number of references that were resolved.
-        size_t run(const std::vector<PendingReference*>& pending);
+        /// @param deadline throws ResolveDeadlineReached after this point in time (checked between references).
+        size_t run(const std::vector<PendingReference*>& pending, std::optional<std::chrono::steady_clock::time_point> deadline = std::nullopt);
 
         /**
          * Looks up @p name (qualified names and feature chains allowed).

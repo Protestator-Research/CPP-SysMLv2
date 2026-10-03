@@ -1,0 +1,27 @@
+{
+    "version": 4,
+    "configurePresets": [
+        {
+            "name": "emscripten-check",
+            "displayName": "sysmlv2check as WebAssembly module (Emscripten)",
+            "description": "Needs the Conan install described in check/cmake/Emscripten.cmake (output folder build/wasm) and an activated emsdk.",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/wasm",
+            "toolchainFile": "${sourceDir}/build/wasm/build/Release/generators/conan_toolchain.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "BUILD_SHARED_LIBS": "OFF",
+                "CMAKE_CXX_FLAGS": "-fwasm-exceptions -O2",
+                "CMAKE_C_FLAGS": "-fwasm-exceptions -O2",
+                "CMAKE_EXE_LINKER_FLAGS": "-fwasm-exceptions",
+                "SYSMLV2_WERROR": "OFF",
+                "BUILD_WITH_REST": "OFF",
+                "BUILD_WITH_SERVICES": "OFF",
+                "BUILD_WITH_ONLINE": "OFF",
+                "BUILD_TESTING": "OFF",
+                "BUILD_WITH_PARSING": "ON",
+                "BUILD_WITH_CHECK": "ON"
+            }
+        }
+    ]
+}

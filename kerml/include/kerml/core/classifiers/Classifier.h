@@ -32,6 +32,7 @@ namespace KerML::Entities {
      */
     class KERML_EXPORT Classifier : public virtual Type
 	{
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
 	    /**
 	     * Constructor, with default values to be initialized

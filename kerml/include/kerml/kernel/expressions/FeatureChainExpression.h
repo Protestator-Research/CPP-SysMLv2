@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT FeatureChainExpression : public virtual OperatorExpression {
+    friend struct ElementDisposer;
 public:
     FeatureChainExpression();
     ~FeatureChainExpression() override;

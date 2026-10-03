@@ -28,6 +28,7 @@ namespace KerML::Entities {
 	 * 
 	 */
 	class KERML_EXPORT Documentation : public Comment {
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
 		explicit Documentation(std::shared_ptr<Element> documentedElement = nullptr, std::string locale = "", std::string body = "");
 

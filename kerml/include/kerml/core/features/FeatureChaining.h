@@ -12,6 +12,7 @@ namespace KerML::Entities {
 
 namespace KerML::Entities {
     class KERML_EXPORT FeatureChaining : public Relationship {
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
         FeatureChaining() = delete;
         FeatureChaining(std::shared_ptr<Feature> chainingFeature, std::shared_ptr<Feature> featureChained, boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);

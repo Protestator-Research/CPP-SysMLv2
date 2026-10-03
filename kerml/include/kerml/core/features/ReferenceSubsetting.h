@@ -15,6 +15,7 @@ namespace KerML::Entities {
 	 * 
 	 */
 	class KERML_EXPORT ReferenceSubsetting : public Subsetting {
+        friend struct ::KerML::Entities::ElementDisposer;
 	public:
 		ReferenceSubsetting() = delete;
 		ReferenceSubsetting(std::shared_ptr<Feature> referencedFeature, std::shared_ptr<Feature> referencingFeature);

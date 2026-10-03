@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT Expression : public virtual Step {
+    friend struct ElementDisposer;
 public:
     Expression();
     ~Expression() override;

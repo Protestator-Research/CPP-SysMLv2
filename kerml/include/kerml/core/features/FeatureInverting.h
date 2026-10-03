@@ -20,6 +20,7 @@ namespace KerML::Entities {
      *
      */
     class KERML_EXPORT FeatureInverting : public Relationship{
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
         /**
          *

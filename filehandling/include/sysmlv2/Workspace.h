@@ -9,8 +9,11 @@
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
+#include <chrono>
 #include <cstddef>
 #include <memory>
+#include <optional>
+#include <stdexcept>
 #include <string>
 #include <vector>
 //---------------------------------------------------------
@@ -34,6 +37,13 @@ namespace SysMLv2::Files {
         Auto,
         KerML,
         SysML
+    };
+
+    /// Thrown by addText(), addFile(), replaceSource() (the workspace is unchanged) and resolve() (what was resolved stays resolved) when the
+    /// deadline (setParseDeadline()) has passed.
+    class SYSMLV2FILE_EXPORT ParseTimeout : public std::runtime_error {
+    public:
+        ParseTimeout() : std::runtime_error("the parse deadline has passed") {}
     };
 
     /**
@@ -84,20 +94,66 @@ namespace SysMLv2::Files {
          * without elements and with one error.
          * @return the index of the new source.
          */
-        size_t addFile(const std::string& path);
+        size_t addFile(const std::string& path, int level = 0);
 
         /**
          * Parses @p text.
          * @param sourceName recorded on the errors and unresolved references of this source (usually a file path).
+         * @param level the level of the source, see setSourceLevel().
          * @return the index of the new source.
          */
-        size_t addText(std::string text, std::string sourceName, SourceLanguage language = SourceLanguage::Auto);
+        size_t addText(std::string text, std::string sourceName, SourceLanguage language = SourceLanguage::Auto, int level = 0);
+
+        /**
+         * Sets the level of a source (the default is 0). A reference only resolves to elements of sources of the same or a lower
+         * level: names written in a library (level 0) never find the elements of a model (level 1, 2, ...) that happens to define a
+         * package with the same name, whereas the model sees the library. The level also applies to the implicit general types
+         * (`Base::Anything`, ...), which are looked up on the lowest level. Set it before resolve(); sources whose references were
+         * already resolved keep what they resolved to. replaceSource() keeps the level.
+         * @throws std::out_of_range if @p source is not the index of a source.
+         */
+        void setSourceLevel(size_t source, int level);
+        /// The level of a source (see setSourceLevel()).
+        int sourceLevel(size_t source) const;
+
+        /**
+         * Replaces the content of one source by the parse of @p text, keeping its index and name. The elements, the syntax
+         * errors and the recorded references of the old source are discarded (so are its entries in unresolvedReferences()
+         * and notAttemptedReferences()); the new text is parsed like addText() does. Nothing of the new source is resolved
+         * until the next resolve(), which resolves its references over the union of all sources. The other sources are not
+         * parsed again and their already resolved references stay resolved, which makes this the cheap way to re-check a
+         * changing text against a fixed (library) context: load the library sources once, then call replaceSource() and
+         * resolve() for every new version of the text.
+         *
+         * Assumption: the other sources do not refer to the elements of the replaced source (a standard library does not
+         * refer to a user model). A reference of another source that was resolved to an element of the old source keeps
+         * that (now detached) element, and an unresolved reference of another source may be resolved to an element of the
+         * new source by the next resolve(). Replace such sources together, or build a new Workspace.
+         * The elements of the old source are taken apart (KerML::Entities::disposeLinks: owners, owned elements, relationships,
+         * types, ... are cleared), because the model refers to itself through std::shared_ptr in cycles and would never be freed
+         * otherwise. A pointer to an old element that the caller still holds stays valid as an object, but the element is detached
+         * from its model and must not be used any more.
+         * @param source index of the source (see addText()).
+         * @param language SourceLanguage::Auto keeps the language the source had.
+         * @throws std::out_of_range if @p source is not the index of a source.
+         */
+        void replaceSource(size_t source, std::string text, SourceLanguage language = SourceLanguage::Auto);
 
         /**
          * Parses every ".kerml" and ".sysml" file below @p directory (recursively, in sorted path order).
          * @return the number of files added.
          */
         size_t loadLibrary(const std::string& directory);
+
+        /**
+         * Sets a point in time after which parsing a text is aborted with ParseTimeout (the parser is checked while it reads tokens, so
+         * the abort comes soon after the deadline, but not at once if a single prediction step takes long). Applies to all following
+         * addText(), addFile(), replaceSource() and resolve() calls until it is cleared (resolve() is checked between references). Without a deadline (the
+         * default) parsing is never aborted. Meant to stop pathological input, which makes the ANTLR parser run for minutes.
+         */
+        void setParseDeadline(std::chrono::steady_clock::time_point deadline);
+        /// Removes the parse deadline.
+        void clearParseDeadline();
 
         /// Resolves all pending references of all sources. May be called again after more sources were added.
         void resolve();
@@ -136,6 +192,9 @@ namespace SysMLv2::Files {
         const std::vector<UnresolvedReferenceInfo>& notAttemptedReferences() const;
         /// The unresolved references of one source as ParserErrors of type WARNING (with position).
         std::vector<std::shared_ptr<ParserError>> unresolvedAsWarnings(size_t source) const;
+        /// The names (as written) of all references recorded in one source, resolved or not, without the ones that are not attempted.
+        /// Available right after parsing; meant to find out which library packages a text needs before it is resolved.
+        std::vector<std::string> referenceNames(size_t source) const;
         /// Number of references recorded in all sources (resolved, unresolved and not attempted).
         size_t referenceCount() const;
         /// Number of references resolved so far.

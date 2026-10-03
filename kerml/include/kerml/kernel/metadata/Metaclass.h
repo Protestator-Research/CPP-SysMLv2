@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT Metaclass : public virtual Structure {
+    friend struct ElementDisposer;
 public:
     Metaclass();
     ~Metaclass() override;

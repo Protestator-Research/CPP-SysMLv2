@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT ReturnParameterMembership : public virtual ParameterMembership {
+    friend struct ElementDisposer;
 public:
     ReturnParameterMembership();
     ~ReturnParameterMembership() override;

@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT InvocationExpression : public virtual InstantiationExpression {
+    friend struct ElementDisposer;
 public:
     InvocationExpression();
     ~InvocationExpression() override;

@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT ElementFilterMembership : public virtual OwningMembership {
+    friend struct ElementDisposer;
 public:
     ElementFilterMembership();
     ~ElementFilterMembership() override;

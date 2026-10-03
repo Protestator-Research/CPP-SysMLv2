@@ -11,6 +11,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT SuccessionFlow : public virtual Succession, public virtual Flow {
+    friend struct ElementDisposer;
 public:
     SuccessionFlow();
     ~SuccessionFlow() override;
