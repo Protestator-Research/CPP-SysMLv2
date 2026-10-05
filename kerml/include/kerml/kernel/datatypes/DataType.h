@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT DataType : public virtual Classifier {
+    friend struct ElementDisposer;
 public:
     DataType();
     ~DataType() override;

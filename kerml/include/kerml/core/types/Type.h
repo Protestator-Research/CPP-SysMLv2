@@ -29,6 +29,7 @@ namespace KerML::Entities {
      * @brief Represents the Type Class according to the SysMLv2 Standard.
      */
     class KERML_EXPORT Type : public Namespace{
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
 	    /**
 	     * 

@@ -30,6 +30,7 @@ namespace KerML::Entities {
 	 */
 	class KERML_EXPORT Subclassification : public Specialization
 	{
+        friend struct ::KerML::Entities::ElementDisposer;
 	public:
 		/**
 		 * Constuctor is deleted, bacause considering the standard the Elements are required by eaech Subclassification.

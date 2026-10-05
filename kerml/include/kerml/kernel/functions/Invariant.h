@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT Invariant : public virtual BooleanExpression {
+    friend struct ElementDisposer;
 public:
     Invariant();
     ~Invariant() override;

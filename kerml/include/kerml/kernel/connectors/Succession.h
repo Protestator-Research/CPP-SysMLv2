@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT Succession : public virtual Connector {
+    friend struct ElementDisposer;
 public:
     Succession();
     ~Succession() override;

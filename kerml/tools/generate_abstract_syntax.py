@@ -84,7 +84,7 @@ for n in KERNEL:
  includes=[TYPES[b]['header'] for b in n['bases']]+['kerml/model/Forward.h','kerml/kerml_global.h']
  lines=[BANNER+'#pragma once\n']+['#include <'+h+'>\n' for h in dict.fromkeys(includes)]+['#include <cstdint>\n#include <memory>\n#include <string>\n#include <vector>\n\nnamespace KerML::Entities {\n']
  # Virtual bases preserve one Element for SysML multiple inheritance.
- lines+=['class KERML_EXPORT '+name+' : '+', '.join('public virtual '+b for b in n['bases'])+' {\npublic:\n    '+name+'();\n    ~'+name+'() override;\n']
+ lines+=['class KERML_EXPORT '+name+' : '+', '.join('public virtual '+b for b in n['bases'])+' {\n    friend struct ElementDisposer;\npublic:\n    '+name+'();\n    ~'+name+'() override;\n']
  source=[BANNER+'#include <kerml/KerML.h>\n#include <utility>\n#include <stdexcept>\n#include "../../model/RepresentationSupport.h"\n\nnamespace KerML::Entities {\n']
  # Relative path from any kernel category is ../../model.
  ctor=['_dType = "'+name+'";']
@@ -144,9 +144,10 @@ alias={'Type':{'feature':'features','featureMembership':'featureMemberships','in
 validators=[BANNER+'#include <kerml/KerML.h>\n#include <algorithm>\n#include <optional>\n\nnamespace KerML::Entities {\n']
 validators += ['const std::vector<MetaclassDescriptor>& metaclasses() {\n    static const std::vector<MetaclassDescriptor> result = {\n'+''.join('        {"'+n['name']+'", '+str(n['abstract']).lower()+', '+str(len(n['properties']))+'},\n' for n in CLASSES)+'    }; return result;\n}\n']
 validators+=['''namespace {
-template<class T> bool present(const std::shared_ptr<T>& value) { return bool(value); }
-template<class T> bool present(const std::optional<T>& value) { return value && present(*value); }
 template<class T> bool present(const T&) { return true; }
+template<class T> bool present(const std::shared_ptr<T>& value) { return bool(value); }
+template<class T> bool present(const std::optional<T>& value);
+template<class T> bool present(const std::optional<T>& value) { return value && present(*value); }
 template<class T> void check(std::vector<RepresentationIssue>& issues, const T& value, const char* path, int lower, int, bool) {
     if (lower > 0 && !present(value)) issues.push_back({path, "Required property is missing"});
 }

@@ -251,12 +251,11 @@ target_sources(kerml PRIVATE
         src/kerml/kernel/functions/ResultExpressionMembership.cpp)
 
 include(KernelSources.cmake)
-target_sources(kerml PRIVATE src/kerml/model/RootProperties.cpp src/kerml/model/Representation.cpp)
+target_sources(kerml PRIVATE src/kerml/model/RootProperties.cpp src/kerml/model/Representation.cpp src/kerml/model/ElementDisposer.cpp)
 
 target_link_libraries(kerml PRIVATE
-        boost::boost
+        Boost::headers
         nlohmann_json::nlohmann_json
-        date::date
         sysmlv2interfaces)
 
 
@@ -295,7 +294,7 @@ if(MSVC)
             ./include
             ../sysmlinterfaces/include)
 else ()
-    target_compile_options(kerml PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_compile_options(kerml PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
     target_include_directories(kerml PUBLIC
             ./include
             ../sysmlinterfaces/include)

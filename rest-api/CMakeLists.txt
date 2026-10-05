@@ -63,7 +63,7 @@ add_library(sysmlv2rest
         ${GLOBAL_HEADER})
 
 target_link_libraries(sysmlv2rest
-        boost::boost
+        Boost::headers
         nlohmann_json::nlohmann_json
         date::date
         sysmlv2interfaces
@@ -86,7 +86,7 @@ if(MSVC)
         ../sysmlinterfaces/include
         ../kerml/include)
 else ()
-    target_compile_options(sysmlv2rest PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_compile_options(sysmlv2rest PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
     target_include_directories(sysmlv2rest PRIVATE
         ./include/
         ../sysmlinterfaces/include

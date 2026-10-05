@@ -33,6 +33,7 @@ namespace KerML::Entities {
      * 
      */
     class KERML_EXPORT NamespaceImport : public virtual Import {
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
         explicit NamespaceImport(boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
         explicit NamespaceImport(std::string elementID, std::shared_ptr<Element> owner = nullptr);

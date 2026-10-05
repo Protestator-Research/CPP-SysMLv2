@@ -11,6 +11,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT Interaction : public virtual Association, public virtual Behavior {
+    friend struct ElementDisposer;
 public:
     Interaction();
     ~Interaction() override;

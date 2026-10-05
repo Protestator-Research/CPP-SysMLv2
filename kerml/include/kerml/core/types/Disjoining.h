@@ -17,6 +17,7 @@ namespace KerML::Entities {
      * @author Moritz Herzog <herzogm@rptu.de>
      */
     class KERML_EXPORT Disjoining : public Relationship{
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
 	    Disjoining() = delete;
 	    /**

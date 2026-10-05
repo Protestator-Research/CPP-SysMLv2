@@ -18,6 +18,7 @@ namespace KerML::Entities {
      * @brief Representation of the Feature Membership according to the SysML Standard.
      */
     class KERML_EXPORT FeatureMembership : public OwningMembership {
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
     public:
         // Derived metamodel elements may be populated in two phases.

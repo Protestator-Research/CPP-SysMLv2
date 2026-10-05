@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT MetadataAccessExpression : public virtual Expression {
+    friend struct ElementDisposer;
 public:
     MetadataAccessExpression();
     ~MetadataAccessExpression() override;

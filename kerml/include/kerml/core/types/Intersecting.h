@@ -15,6 +15,7 @@ namespace KerML::Entities {
      * @version 1.0 Beta 4
      */
     class KERML_EXPORT Intersecting : public Relationship{
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
         Intersecting() = delete;
         Intersecting(std::shared_ptr<Type> typeIntersecting, std::shared_ptr<Type> intersectingType);

@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT Function : public virtual Behavior {
+    friend struct ElementDisposer;
 public:
     Function();
     ~Function() override;

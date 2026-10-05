@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT IndexExpression : public virtual OperatorExpression {
+    friend struct ElementDisposer;
 public:
     IndexExpression();
     ~IndexExpression() override;

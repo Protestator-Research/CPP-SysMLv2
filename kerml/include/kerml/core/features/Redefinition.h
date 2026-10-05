@@ -14,6 +14,7 @@ namespace KerML::Entities {
 	 * 
 	 */
 	class KERML_EXPORT Redefinition : public Subsetting{
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
         Redefinition() = delete;
 		Redefinition(std::shared_ptr<Feature> redefinedFeature, std::shared_ptr<Feature> redefiningFeature);

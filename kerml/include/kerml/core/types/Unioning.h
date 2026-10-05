@@ -15,6 +15,7 @@ namespace KerML::Entities {
      * 
      */
     class KERML_EXPORT Unioning : public Relationship {
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
         Unioning() = delete;
 

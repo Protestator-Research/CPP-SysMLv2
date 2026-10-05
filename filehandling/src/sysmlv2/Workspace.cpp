@@ -30,6 +30,15 @@
 #include <boost/uuid/uuid_generators.hpp>
 
 #include <algorithm>
+#include <exception>
+#include <iostream>
+#include <mutex>
+#include <functional>
+#if defined(_WIN32)
+#include <windows.h>
+#elif !defined(__EMSCRIPTEN__)
+#include <pthread.h>
+#endif
 #include <filesystem>
 #include <fstream>
 #include <future>
@@ -39,6 +48,89 @@
 #include <unordered_set>
 
 namespace {
+    /// Stack of the thread that parses a text. The parser and the listener walk recurse once per nesting level of the text (and the
+    /// parser's prediction recurses deeply for runs of operators), which the 8 MB of an ordinary stack does not always survive.
+    constexpr size_t ParseStackSize = size_t(512) << 20;
+
+    /// Runs @p function on a thread with a large stack and waits for it. Where no thread can be created (and with Emscripten, which
+    /// has one stack for everything, see STACK_SIZE in check/cmake/Emscripten.cmake) it runs on the calling thread.
+    void runOnLargeStack(const std::function<void()>& function) {
+#if defined(__EMSCRIPTEN__)
+        function();
+#elif defined(_WIN32)
+        struct Context { const std::function<void()>* function; };
+        Context context{&function};
+        HANDLE thread = CreateThread(nullptr, ParseStackSize, [](LPVOID argument) -> DWORD {
+            (*static_cast<Context*>(argument)->function)();
+            return 0;
+        }, &context, STACK_SIZE_PARAM_IS_A_RESERVATION, nullptr);
+        if (thread == nullptr) {
+            function();
+            return;
+        }
+        WaitForSingleObject(thread, INFINITE);
+        CloseHandle(thread);
+#else
+        pthread_attr_t attributes;
+        pthread_t thread;
+        bool started = false;
+        if (pthread_attr_init(&attributes) == 0) {
+            if (pthread_attr_setstacksize(&attributes, ParseStackSize) == 0) {
+                started = pthread_create(&thread, &attributes, [](void* argument) -> void* {
+                    (*static_cast<const std::function<void()>*>(argument))();
+                    return nullptr;
+                }, const_cast<std::function<void()>*>(&function)) == 0;
+            }
+            pthread_attr_destroy(&attributes);
+        }
+        if (started) {
+            pthread_join(thread, nullptr);
+        } else {
+            static std::once_flag warned;
+            std::call_once(warned, [] {
+                std::cerr << "sysmlv2parser: cannot create a thread with a " << (ParseStackSize >> 20)
+                          << " MB stack; parsing on the calling thread (deeply nested texts can overflow its stack)\n";
+            });
+            function();
+        }
+#endif
+    }
+
+    /// Thrown by DeadlineTokenStream; not derived from ParseCancellationException, which parseTwoStage handles.
+    struct DeadlineReached {};
+
+    /**
+     * A token stream that checks a deadline while the parser reads tokens (every prediction step reads them), so that a parse that
+     * runs for too long can be abandoned by throwing DeadlineReached.
+     */
+    class DeadlineTokenStream : public antlr4::CommonTokenStream {
+    public:
+        DeadlineTokenStream(antlr4::TokenSource* source, std::optional<std::chrono::steady_clock::time_point> deadline)
+            : antlr4::CommonTokenStream(source), Deadline(deadline) {}
+
+        // Only a look-ahead (k >= 1) and consume() throw. LT(-1) is called by Parser::exitRule from the destructor of a scope guard,
+        // which must never throw (the exception would end the process).
+        antlr4::Token* LT(ssize_t k) override {
+            if (k >= 1) check();
+            return antlr4::CommonTokenStream::LT(k);
+        }
+        size_t LA(ssize_t i) override {
+            if (i >= 1) check();
+            return antlr4::CommonTokenStream::LA(i);
+        }
+        void consume() override {
+            check();
+            antlr4::CommonTokenStream::consume();
+        }
+
+    private:
+        void check() {
+            if (Deadline && (++Calls & 0xFF) == 0 && std::chrono::steady_clock::now() > *Deadline) throw DeadlineReached();
+        }
+        std::optional<std::chrono::steady_clock::time_point> Deadline;
+        size_t Calls = 0;
+    };
+
     /**
      * Two-stage parse (the standard ANTLR 4 pattern). Stage one runs the parser in SLL prediction mode with the
      * BailErrorStrategy and without error listeners: it is considerably faster than full LL prediction, and for every
@@ -78,6 +170,7 @@ namespace SysMLv2::Files {
         struct Source {
             std::string name;
             SourceLanguage language = SourceLanguage::SysML;
+            int level = 0;
             std::vector<std::shared_ptr<KerML::Entities::Element>> elements;
             std::vector<std::shared_ptr<ParserError>> errors;
             ResolutionData data;
@@ -86,10 +179,21 @@ namespace SysMLv2::Files {
         };
 
         std::vector<std::shared_ptr<Source>> sources;
+        std::optional<std::chrono::steady_clock::time_point> deadline;
         std::vector<UnresolvedReferenceInfo> unresolved;
         std::vector<UnresolvedReferenceInfo> notAttempted;
         std::unique_ptr<Detail::Resolver> resolver;
         size_t resolvedCount = 0;
+
+        /// ANTLR messages can contain the whole list of expected tokens; they are cut to this many bytes (at a character boundary).
+        static constexpr size_t MaxMessageLength = 200;
+
+        static std::string shortened(const std::string& message) {
+            if (message.size() <= MaxMessageLength) return message;
+            size_t end = MaxMessageLength;
+            while (end > 0 && (static_cast<unsigned char>(message[end]) & 0xC0) == 0x80) --end;  // do not split a UTF-8 sequence
+            return message.substr(0, end) + "...";
+        }
 
         static std::shared_ptr<ParserError> makeError(ErrorType type, const std::string& message, int line, int column,
                                                        const std::string& source) {
@@ -138,8 +242,9 @@ namespace SysMLv2::Files {
             auto errorListener = std::make_unique<KerMLErrorListener>();
             auto listener = std::make_unique<KerMLListenerImplementation>();
             KerMLLexer lexer(&input);
+            lexer.removeErrorListeners();  // no ConsoleErrorListener: nothing is written to stderr
             lexer.addErrorListener(errorListener.get());
-            antlr4::CommonTokenStream tokens(&lexer);
+            DeadlineTokenStream tokens(&lexer, deadline);
             KerMLParser parser(&tokens);
 
             // Parse first, then walk the completed tree with the listener. Running the listener
@@ -150,7 +255,7 @@ namespace SysMLv2::Files {
             const auto syntaxErrors = errorListener->getSyntaxErrors();
             source->errors.reserve(syntaxErrors.size());
             for (const auto& error : syntaxErrors) {
-                source->errors.push_back(makeError(ErrorType::ERROR, error->message(), error->line(), error->positionInLine(), source->name));
+                source->errors.push_back(makeError(ErrorType::ERROR, shortened(error->message()), error->line(), error->positionInLine(), source->name));
             }
 
             try {
@@ -169,8 +274,9 @@ namespace SysMLv2::Files {
             SysMLErrorListenener errorListener;
             SysMLv2ListenerImplementation listener;
             SysMLv2Lexer lexer(&input);
+            lexer.removeErrorListeners();  // no ConsoleErrorListener: nothing is written to stderr
             lexer.addErrorListener(&errorListener);
-            antlr4::CommonTokenStream tokens(&lexer);
+            DeadlineTokenStream tokens(&lexer, deadline);
             SysMLv2Parser parser(&tokens);
 
             // Parse first, then walk the completed tree with the listener (see parseKerML for why).
@@ -179,7 +285,7 @@ namespace SysMLv2::Files {
             const auto syntaxErrors = errorListener.getSyntaxErrors();
             source->errors.reserve(syntaxErrors.size());
             for (const auto& error : syntaxErrors) {
-                source->errors.push_back(makeError(ErrorType::ERROR, error->message(), error->line(), error->positionInLine(), source->name));
+                source->errors.push_back(makeError(ErrorType::ERROR, shortened(error->message()), error->line(), error->positionInLine(), source->name));
             }
 
             try {
@@ -192,41 +298,118 @@ namespace SysMLv2::Files {
                 source->errors.push_back(makeError(ErrorType::ERROR, "internal: unknown exception while walking the SysML v2 parse tree", -1, -1, source->name));
             }
         }
+
+        /// Breaks the reference cycles of the model of a source that is thrown away (see KerML::Entities::disposeLinks), so that it is
+        /// freed as soon as nobody else holds a pointer to it. The elements are detached afterwards.
+        static void dispose(Source& source) {
+            std::unordered_set<KerML::Entities::Element*> seen;
+            std::vector<std::shared_ptr<KerML::Entities::Element>> pending;
+            const auto add = [&](const std::shared_ptr<KerML::Entities::Element>& element) {
+                if (element && seen.insert(element.get()).second) pending.push_back(element);
+            };
+            for (const auto& element : source.elements) add(element);
+            for (const auto& element : source.topLevel) add(element);
+            add(source.root);
+            add(source.data.root);
+            for (const auto& reference : source.data.references) {
+                add(reference.placeholder);
+                add(reference.context);
+                add(reference.specific);
+            }
+            for (size_t index = 0; index < pending.size(); ++index) {
+                for (const auto& child : pending[index]->ownedElements()) add(child);
+            }
+            for (const auto& element : pending) KerML::Entities::disposeLinks(*element);
+            source.elements.clear();
+            source.topLevel.clear();
+            source.root.reset();
+            source.data = ResolutionData();
+        }
+
+        /// Parses @p text into a new source whose references are recorded for the source index @p index.
+        std::shared_ptr<Source> makeSource(const std::string& text, std::string name, SourceLanguage language, size_t index, int level) {
+            auto source = std::make_shared<Source>();
+            source->level = level;
+            source->name = std::move(name);
+            source->language = language;
+            std::exception_ptr failure;
+            runOnLargeStack([&] {
+                try {
+                    if (language == SourceLanguage::KerML) {
+                        parseKerML(source, text);
+                    } else {
+                        parseSysML(source, text);
+                    }
+                } catch (...) {
+                    failure = std::current_exception();   // rethrown on the calling thread
+                }
+            });
+            if (failure) {
+                try {
+                    std::rethrow_exception(failure);
+                } catch (const DeadlineReached&) {
+                    throw ParseTimeout();
+                }
+            }
+            for (auto& reference : source->data.references) {
+                reference.source = index;
+            }
+            computeTopLevel(source);
+            findRoot(source);
+            return source;
+        }
     };
 
     Workspace::Workspace() : impl_(std::make_unique<Impl>()) {}
 
     Workspace::~Workspace() = default;
 
-    size_t Workspace::addText(std::string text, std::string sourceName, SourceLanguage language) {
+    void Workspace::setParseDeadline(std::chrono::steady_clock::time_point deadline) {
+        impl_->deadline = deadline;
+    }
+
+    void Workspace::clearParseDeadline() {
+        impl_->deadline.reset();
+    }
+
+    size_t Workspace::addText(std::string text, std::string sourceName, SourceLanguage language, int level) {
         if (language == SourceLanguage::Auto) {
             language = endsWith(sourceName, ".kerml") ? SourceLanguage::KerML : SourceLanguage::SysML;
         }
-        auto source = std::make_shared<Impl::Source>();
-        source->name = std::move(sourceName);
-        source->language = language;
         const size_t index = impl_->sources.size();
-        if (language == SourceLanguage::KerML) {
-            impl_->parseKerML(source, text);
-        } else {
-            impl_->parseSysML(source, text);
-        }
-        for (auto& reference : source->data.references) {
-            reference.source = index;
-        }
-        Impl::computeTopLevel(source);
-        Impl::findRoot(source);
-        impl_->sources.push_back(source);
+        impl_->sources.push_back(impl_->makeSource(text, std::move(sourceName), language, index, level));
         impl_->resolver.reset();
         return index;
     }
 
-    size_t Workspace::addFile(const std::string& path) {
+    void Workspace::replaceSource(size_t source, std::string text, SourceLanguage language) {
+        const auto old = impl_->sources.at(source);
+        if (language == SourceLanguage::Auto) language = old->language;
+
+        // The new source is built first: if parsing throws, the workspace is unchanged.
+        auto replacement = impl_->makeSource(text, old->name, language, source, old->level);
+
+        // The references that the old source had resolved no longer count; resolve() recounts everything.
+        for (const auto& reference : old->data.references) {
+            if (reference.resolved && impl_->resolvedCount > 0) --impl_->resolvedCount;
+        }
+        const auto belongsToSource = [source](const UnresolvedReferenceInfo& info) { return info.source == source; };
+        impl_->unresolved.erase(std::remove_if(impl_->unresolved.begin(), impl_->unresolved.end(), belongsToSource), impl_->unresolved.end());
+        impl_->notAttempted.erase(std::remove_if(impl_->notAttempted.begin(), impl_->notAttempted.end(), belongsToSource), impl_->notAttempted.end());
+
+        // The new source takes the index and the name of the old one; the other sources are not touched.
+        impl_->sources[source] = std::move(replacement);
+        impl_->resolver.reset();
+        Impl::dispose(*old);
+    }
+
+    size_t Workspace::addFile(const std::string& path, int level) {
         std::ifstream in(path);
         if (!in) {
             auto source = std::make_unique<Impl::Source>();
             source->name = path;
             source->language = endsWith(path, ".kerml") ? SourceLanguage::KerML : SourceLanguage::SysML;
+            source->level = level;
             source->errors.push_back(Impl::makeError(ErrorType::ERROR, "could not open file: " + path, -1, -1, path));
             impl_->sources.push_back(std::move(source));
             impl_->resolver.reset();
@@ -234,7 +417,7 @@ namespace SysMLv2::Files {
         }
         std::stringstream buffer;
         buffer << in.rdbuf();
-        return addText(buffer.str(), path, SourceLanguage::Auto);
+        return addText(buffer.str(), path, SourceLanguage::Auto, level);
     }
 
     size_t Workspace::loadLibrary(const std::string& directory) {
@@ -257,11 +440,16 @@ namespace SysMLv2::Files {
         std::vector<PendingReference*> all;
         inputs.reserve(impl_->sources.size());
         for (auto& source : impl_->sources) {
-            inputs.push_back({&source->elements, &source->data});
+            inputs.push_back({&source->elements, &source->data, source->level});
             for (auto& reference : source->data.references) all.push_back(&reference);
         }
         impl_->resolver = std::make_unique<Detail::Resolver>(std::move(inputs));
-        impl_->resolver->run(all);
+        try {
+            impl_->resolver->run(all, impl_->deadline);
+        } catch (const Detail::ResolveDeadlineReached&) {
+            impl_->resolver.reset();   // what was resolved stays resolved; the unresolved list is not updated
+            throw ParseTimeout();
+        }
 
         impl_->unresolved.clear();
         impl_->notAttempted.clear();
@@ -286,6 +474,15 @@ namespace SysMLv2::Files {
                 (reference.role == ReferenceRole::NotAttempted ? impl_->notAttempted : impl_->unresolved).push_back(std::move(info));
             }
         }
+    }
+
+    void Workspace::setSourceLevel(size_t source, int level) {
+        impl_->sources.at(source)->level = level;
+        impl_->resolver.reset();
+    }
+
+    int Workspace::sourceLevel(size_t source) const {
+        return impl_->sources.at(source)->level;
     }
 
     size_t Workspace::sourceCount() const {
@@ -363,6 +560,14 @@ namespace SysMLv2::Files {
         return warnings;
     }
 
+    std::vector<std::string> Workspace::referenceNames(size_t source) const {
+        std::vector<std::string> names;
+        for (const auto& reference : impl_->sources.at(source)->data.references) {
+            if (reference.role != ReferenceRole::NotAttempted) names.push_back(reference.name);
+        }
+        return names;
+    }
+
     size_t Workspace::referenceCount() const {
         size_t count = 0;
         for (const auto& source : impl_->sources) count += source->data.references.size();
@@ -379,7 +584,7 @@ namespace SysMLv2::Files {
         if (!impl_->resolver) {
             // Sources were added since the last resolve(): build the index without resolving anything.
             std::vector<Detail::SourceInput> inputs;
-            for (auto& source : impl_->sources) inputs.push_back({&source->elements, &source->data});
+            for (auto& source : impl_->sources) inputs.push_back({&source->elements, &source->data, source->level});
             impl_->resolver = std::make_unique<Detail::Resolver>(std::move(inputs));
         }
         return impl_->resolver->find(name, scope, kind, true);

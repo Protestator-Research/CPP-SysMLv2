@@ -18,6 +18,7 @@ namespace KerML::Entities {
      * @author Moritz Herzog <herzogm@rptu.de>
      */
     class KERML_EXPORT Conjugation : public Relationship{
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
 	    /**
 	     * Protected construction supports derived representations before their references are populated.

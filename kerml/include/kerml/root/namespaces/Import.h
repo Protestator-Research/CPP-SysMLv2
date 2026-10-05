@@ -36,6 +36,7 @@ namespace KerML::Entities {
      *
      */
     class KERML_EXPORT Import : public Relationship{
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
         /**
          *

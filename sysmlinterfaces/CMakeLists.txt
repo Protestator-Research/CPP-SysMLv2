@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.15)
 project(sysmlv2interfaces CXX C)
 
 find_package(Boost REQUIRED)
-find_package(date REQUIRED)
 find_package(nlohmann_json REQUIRED)
 
 set(GLOBAL_HEADER
@@ -36,9 +35,8 @@ add_library(sysmlv2interfaces
         src/sysmlv2/WindowsCorrection.cpp)
 
 target_link_libraries(sysmlv2interfaces
-        boost::boost
-        nlohmann_json::nlohmann_json
-        date::date)
+        Boost::headers
+        nlohmann_json::nlohmann_json)
 
 target_include_directories(sysmlv2interfaces PUBLIC
         ./include)
@@ -55,7 +53,7 @@ if(MSVC)
     target_compile_options(sysmlv2interfaces PRIVATE /W4 /WX- /bigobj)
     target_link_directories(sysmlv2interfaces PUBLIC ${CMAKE_BINARY_DIR}/out)
 else ()
-    target_compile_options(sysmlv2interfaces PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_compile_options(sysmlv2interfaces PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
 endif()
 
 file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)

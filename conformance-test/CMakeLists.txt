@@ -19,7 +19,7 @@ add_executable(conformance-test
 
 #if((EXISTS antlr4_shared) OR (MSVC))
     target_link_libraries(conformance-test
-            boost::boost
+            Boost::headers
             nlohmann_json::nlohmann_json
             date::date
             gtest::gtest
@@ -32,7 +32,7 @@ add_executable(conformance-test
 target_link_libraries(conformance-test sysml)
 #else ()
 #    target_link_libraries(conformance-test
-#            boost::boost
+#            Boost::headers
 #            nlohmann_json::nlohmann_json
 #            date::date
 #            gtest::gtest
@@ -79,7 +79,7 @@ endforeach()
 # target's, regardless of this subdirectory's own project(conformance-test ...) call above.
 # ---------------------------------------------------------------------------
 set(CONFORMANCE_LIBRARY_LINK_LIBS
-        boost::boost
+        Boost::headers
         nlohmann_json::nlohmann_json
         date::date
         gtest::gtest

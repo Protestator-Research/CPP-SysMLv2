@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT FeatureReferenceExpression : public virtual Expression {
+    friend struct ElementDisposer;
 public:
     FeatureReferenceExpression();
     ~FeatureReferenceExpression() override;

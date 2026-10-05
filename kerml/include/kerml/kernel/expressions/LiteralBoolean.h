@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT LiteralBoolean : public virtual LiteralExpression {
+    friend struct ElementDisposer;
 public:
     LiteralBoolean();
     ~LiteralBoolean() override;

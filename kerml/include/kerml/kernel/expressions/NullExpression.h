@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT NullExpression : public virtual Expression {
+    friend struct ElementDisposer;
 public:
     NullExpression();
     ~NullExpression() override;

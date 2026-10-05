@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT Package : public virtual Namespace {
+    friend struct ElementDisposer;
 public:
     Package();
     ~Package() override;

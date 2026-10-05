@@ -1,6 +1,7 @@
 //
 // Scoped, qualified name resolution over the union of all sources of a Workspace. See Resolver.h.
 //
+#include <limits>
 #include "Resolver.h"
 #include "ImplicitGenerals.h"
 
@@ -132,6 +133,8 @@ namespace SysMLv2::Files::Detail {
             std::shared_ptr<Element> element;
             VisibilityKind visibility = KerML::Entities::PUBLIC;
             const AliasRecord* alias = nullptr;
+            /// Level of the source of an alias (an alias has no element of its own that could tell it).
+            int level = 0;
         };
         struct Child {
             const Scope* scope = nullptr;
@@ -153,10 +156,22 @@ namespace SysMLv2::Files::Detail {
             /// The lookup goes through the general types of a type that declares end features: the inherited end features
             /// are redefined by the declared ones (by position) and are not visible under their own names.
             bool hideEnds = false;
+            /// Elements of sources of a higher level are invisible (see SourceInput::level).
+            int maxLevel = std::numeric_limits<int>::max();
         };
         using Visited = std::vector<std::pair<const Scope*, unsigned>>;
 
         std::vector<std::unique_ptr<Scope>> pool;
+        /// Level of every source (by index), of every indexed element, and the level that is currently indexed.
+        std::vector<int> sourceLevels;
+        std::unordered_map<const Element*, int> elementLevel;
+        int currentLevel = 0;
+        int lowestLevel = 0;
+        int levelOfSource(size_t source) const { return source < sourceLevels.size() ? sourceLevels[source] : lowestLevel; }
+        int levelOf(const Element* element) const {
+            auto it = elementLevel.find(element);
+            return it == elementLevel.end() ? lowestLevel : it->second;
+        }
         std::vector<Scope*> sourceRoots;
         std::unordered_map<const Element*, Scope*> scopeOf;
         /// Relationships (memberships, imports, ...) are transparent: they map to the scope their owned elements belong to.
@@ -209,6 +224,7 @@ namespace SysMLv2::Files::Detail {
                         bool globalOnly = false;
                         const auto segments = splitName(name, globalOnly);
                         Query query;
+                        query.maxLevel = lowestLevel;  // the implicit generals are library elements: a model must not shadow them
                         auto library = resolveSegments(segments, true, nullptr, query);
                         found = libraryElements.find(name);
                         found->second = library;
@@ -236,12 +252,13 @@ namespace SysMLv2::Files::Detail {
 
         void addNames(Scope* scope, const std::shared_ptr<Element>& element, const AliasRecord* alias, VisibilityKind vis,
                       const std::string& name, const std::string& shortName) {
-            if (!name.empty()) scope->members[normalizeName(name)].push_back({element, vis, alias});
-            if (!shortName.empty() && shortName != name) scope->members[normalizeName(shortName)].push_back({element, vis, alias});
+            if (!name.empty()) scope->members[normalizeName(name)].push_back({element, vis, alias, currentLevel});
+            if (!shortName.empty() && shortName != name) scope->members[normalizeName(shortName)].push_back({element, vis, alias, currentLevel});
         }
 
         void visit(const std::shared_ptr<Element>& element, Scope* memberScope) {
             if (!element || !visitedElements.insert(element.get()).second) return;
+            elementLevel[element.get()] = currentLevel;
             if (dynamic_cast<const Relationship*>(element.get()) != nullptr && dynamic_cast<const Namespace*>(element.get()) == nullptr) {
                 relationshipScope[element.get()] = memberScope;
                 const bool returnParameter = dynamic_cast<const KerML::Entities::ReturnParameterMembership*>(element.get()) != nullptr;
@@ -266,6 +283,9 @@ namespace SysMLv2::Files::Detail {
         void indexSource(const SourceInput& source) {
             Scope* root = newScope(nullptr, nullptr);
             sourceRoots.push_back(root);
+            currentLevel = source.level;
+            sourceLevels.push_back(source.level);
+            lowestLevel = sourceLevels.size() == 1 ? source.level : std::min(lowestLevel, source.level);
             if (!source.elements || !source.data) return;
             for (const auto& [element, vis] : source.data->visibility) visibility[element] = vis;
 
@@ -273,6 +293,7 @@ namespace SysMLv2::Files::Detail {
                 root->element = source.data->root;
                 scopeOf[source.data->root.get()] = root;
                 visitedElements.insert(source.data->root.get());
+                elementLevel[source.data->root.get()] = currentLevel;
                 for (const auto& child : source.data->root->ownedElements()) visit(child, root);
             }
             std::unordered_set<const Element*> owned;
@@ -333,6 +354,7 @@ namespace SysMLv2::Files::Detail {
 
         bool accepts(const Query& q, const Element* element) const {
             if (!element || element == q.exclude) return false;
+            if (q.maxLevel != std::numeric_limits<int>::max() && levelOf(element) > q.maxLevel) return false;
             switch (q.kind) {
                 case ReferenceKind::Element: return true;
                 case ReferenceKind::Namespace: return dynamic_cast<const Namespace*>(element) != nullptr;
@@ -424,6 +446,7 @@ namespace SysMLv2::Files::Detail {
             if (own != scope->members.end()) {
                 for (const auto& entry : own->second) {
                     if (!visibleUnder(entry.visibility, access)) continue;
+                    if (entry.alias && entry.level > q.maxLevel) continue;
                     const std::shared_ptr<Element>& target = entry.alias ? entry.alias->resolvedTarget : entry.element;
                     if (q.hideEnds && isEndFeature(target.get())) continue;
                     if (target && accepts(q, target.get())) return target;
@@ -510,6 +533,7 @@ namespace SysMLv2::Files::Detail {
             if (it != global.end()) {
                 for (const auto& entry : it->second) {
                     if (entry.visibility == KerML::Entities::PRIVATE) continue;
+                    if (entry.alias && entry.level > q.maxLevel) continue;
                     const std::shared_ptr<Element>& target = entry.alias ? entry.alias->resolvedTarget : entry.element;
                     if (target && accepts(q, target.get()) && seen.insert(target.get()).second && callback(target)) return true;
                 }
@@ -537,6 +561,7 @@ namespace SysMLv2::Files::Detail {
             }
             Query middle;
             middle.kind = ReferenceKind::Namespace;
+            middle.maxLevel = finalQuery.maxLevel;
             forEachStartCandidate(start, globalOnly, segments[0], middle, [&](const std::shared_ptr<Element>& candidate) {
                 std::shared_ptr<Element> current = candidate;
                 for (size_t i = 1; i < segments.size(); ++i) {
@@ -562,6 +587,7 @@ namespace SysMLv2::Files::Detail {
             Query finalQuery;
             finalQuery.kind = pending.kind;
             finalQuery.exclude = canonical(pending.specific);
+            finalQuery.maxLevel = levelOfSource(pending.source);
 
             if (pending.role == ReferenceRole::Redefinition && segments.size() == 1 && start && start->element) {
                 noteInheritance(start->element.get());
@@ -601,6 +627,7 @@ namespace SysMLv2::Files::Detail {
                     for (const auto& general : implicitGeneralsOf(start->parent->element)) ownerGenerals.push_back(general);
                     Query endQuery;
                     endQuery.kind = ReferenceKind::Feature;
+                    endQuery.maxLevel = finalQuery.maxLevel;
                     endQuery.exclude = start->element.get();
                     for (const auto& general : ownerGenerals) {
                         Visited visitedEnd;
@@ -614,7 +641,7 @@ namespace SysMLv2::Files::Detail {
             return resolveSegments(segments, globalOnly, start, finalQuery);
         }
 
-        size_t run(const std::vector<PendingReference*>& pending) {
+        size_t run(const std::vector<PendingReference*>& pending, std::optional<std::chrono::steady_clock::time_point> deadline) {
             std::vector<PendingReference*> todo;
             for (const PendingReference* reference : pending) {
                 if (reference && reference->resolved && reference->placeholder && reference->resolvedTarget &&
@@ -679,7 +706,9 @@ namespace SysMLv2::Files::Detail {
                 progress = false;
                 std::vector<PendingReference*> next;
                 bool lenientAccepted = false;
+                size_t visited = 0;
                 for (PendingReference* reference : todo) {
+                    if (deadline && (++visited & 0xF) == 0 && std::chrono::steady_clock::now() > *deadline) throw ResolveDeadlineReached();
                     if (lenientAccepted) {
                         next.push_back(reference);
                         continue;
@@ -856,8 +885,8 @@ namespace SysMLv2::Files::Detail {
 
     Resolver::~Resolver() = default;
 
-    size_t Resolver::run(const std::vector<PendingReference*>& pending) {
-        return impl_->run(pending);
+    size_t Resolver::run(const std::vector<PendingReference*>& pending, std::optional<std::chrono::steady_clock::time_point> deadline) {
+        return impl_->run(pending, deadline);
     }
 
     std::shared_ptr<Element> Resolver::find(const std::string& name, const std::shared_ptr<Element>& scope, ReferenceKind kind,

@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT Structure : public virtual Class {
+    friend struct ElementDisposer;
 public:
     Structure();
     ~Structure() override;

@@ -11,6 +11,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT AssociationStructure : public virtual Structure, public virtual Association {
+    friend struct ElementDisposer;
 public:
     AssociationStructure();
     ~AssociationStructure() override;

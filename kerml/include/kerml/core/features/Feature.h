@@ -29,6 +29,7 @@ namespace KerML::Entities {
 	 * @brief Describes the Feature class according to the Standard.
 	 */
 	class KERML_EXPORT Feature : public virtual Type, public std::enable_shared_from_this<Feature> {
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
 		/**
 		 * Constuctor

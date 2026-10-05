@@ -16,6 +16,7 @@ namespace KerML::Entities {
      * @brief
      */
     class KERML_EXPORT Subsetting : public Specialization{
+        friend struct ::KerML::Entities::ElementDisposer;
     public:
         Subsetting(std::shared_ptr<Feature> subsettedFeature, std::shared_ptr<Feature> subsettingFeature);
         Subsetting() = delete;

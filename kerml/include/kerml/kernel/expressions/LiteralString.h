@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT LiteralString : public virtual LiteralExpression {
+    friend struct ElementDisposer;
 public:
     LiteralString();
     ~LiteralString() override;

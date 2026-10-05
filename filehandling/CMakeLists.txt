@@ -4,8 +4,16 @@ project(sysmlv2parser CXX C)
 
 find_package(nlohmann_json REQUIRED)
 find_package(Boost REQUIRED)
-find_package(date REQUIRED)
 find_package(antlr4-runtime REQUIRED)
+
+# The Conan package of the ANTLR runtime provides antlr4_shared or antlr4_static, depending on its option.
+if(TARGET antlr4_shared)
+    set(SYSMLV2_ANTLR4_TARGET antlr4_shared)
+elseif(TARGET antlr4_static)
+    set(SYSMLV2_ANTLR4_TARGET antlr4_static)
+else()
+    set(SYSMLV2_ANTLR4_TARGET antlr4_shared)
+endif()
 
 
 set(GLOBAL_HEADER
@@ -72,23 +80,28 @@ add_library(sysmlv2parser
 
 #if((EXISTS antlr4_shared) OR (MSVC))
     target_link_libraries(sysmlv2parser
-            boost::boost
+            Boost::headers
             nlohmann_json::nlohmann_json
-            date::date
-            antlr4_shared
+            ${SYSMLV2_ANTLR4_TARGET}
             kerml
             sysml
             sysmlv2resources
             sysmlv2interfaces)
 #else ()
 #    target_link_libraries(sysmlv2parser
-#            boost::boost
+#            Boost::headers
 #            nlohmann_json::nlohmann_json
 #            date::date
 #            antlr4_static
 #            kerml)
 #endif ()
 
+
+if(NOT EMSCRIPTEN AND NOT WIN32)
+    # texts are parsed on a thread with a large stack
+    find_package(Threads REQUIRED)
+    target_link_libraries(sysmlv2parser Threads::Threads)
+endif()
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2parser ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
@@ -106,7 +119,7 @@ if(MSVC)
         ../kerml/include
         include)
 else ()
-    target_compile_options(sysmlv2parser PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_compile_options(sysmlv2parser PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
     target_include_directories(sysmlv2parser PRIVATE
         ../kerml/include
         include)

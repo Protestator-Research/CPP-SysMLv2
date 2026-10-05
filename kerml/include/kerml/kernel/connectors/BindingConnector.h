@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT BindingConnector : public virtual Connector {
+    friend struct ElementDisposer;
 public:
     BindingConnector();
     ~BindingConnector() override;

@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT ResultExpressionMembership : public virtual FeatureMembership {
+    friend struct ElementDisposer;
 public:
     ResultExpressionMembership();
     ~ResultExpressionMembership() override;

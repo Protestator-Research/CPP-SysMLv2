@@ -11,6 +11,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT MetadataFeature : public virtual AnnotatingElement, public virtual Feature {
+    friend struct ElementDisposer;
 public:
     MetadataFeature();
     ~MetadataFeature() override;

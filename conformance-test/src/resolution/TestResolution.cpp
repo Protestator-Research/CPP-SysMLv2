@@ -8,12 +8,14 @@
 // expected_failures.txt: a listed reference that now resolves fails, an unlisted unresolved one fails).
 #include <gtest/gtest.h>
 
+#include <algorithm>
 #include <chrono>
 #include <cstdlib>
 #include <filesystem>
 #include <iostream>
 #include <memory>
 #include <set>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -644,6 +646,305 @@ TEST_F(LibraryResolution, SysMLMetadataDefinitionsReachKerMLThroughImports) {
     ASSERT_NE(definition, nullptr);
     ASSERT_FALSE(definition->ownedSubclassification().empty());
     EXPECT_EQ(definition->ownedSubclassification().front()->superclassifier().get(), workspace->find("KerML::Core::Classifier").get());
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Workspace::replaceSource: exchange one source, keep the others (library) resolved
+// ---------------------------------------------------------------------------------------------------------------------
+
+/// A small "library" (source 0) and a replaceable user text (source 1) that imports it.
+struct ReplaceFixture {
+    Workspace ws;
+    size_t library = 0;
+    size_t user = 0;
+    ReplaceFixture() {
+        library = ws.addText("package Lib { part def Base; part def Other { part inner : Base; } part def Broken : Missing; }", "lib.sysml");
+        user = ws.addText("package U { import Lib::*; part x : Base; }", "user.sysml");
+        ws.resolve();
+    }
+    size_t unresolvedOf(size_t source) const {
+        size_t count = 0;
+        for (const auto& info : ws.unresolvedReferences()) {
+            if (info.source == source) ++count;
+        }
+        return count;
+    }
+};
+
+TEST(ReplaceSource, ReplacedTextIsResolvedAgainstTheOtherSources) {
+    ReplaceFixture f;
+    EXPECT_EQ(f.unresolvedOf(f.user), 0u);
+    const auto oldX = f.ws.find("U::x");
+    ASSERT_NE(oldX, nullptr);
+
+    f.ws.replaceSource(f.user, "package V { import Lib::*; part y : Other; part z : Base; }");
+    f.ws.resolve();
+
+    EXPECT_EQ(f.ws.sourceCount(), 2u);
+    EXPECT_EQ(f.ws.sourceName(f.user), "user.sysml");
+    EXPECT_EQ(f.ws.find("U::x"), nullptr);
+    EXPECT_NE(f.ws.find("V::y"), nullptr);
+    EXPECT_EQ(f.unresolvedOf(f.user), 0u);
+    EXPECT_EQ(typeOf(f.ws, "V::y").get(), f.ws.find("Lib::Other").get());
+    EXPECT_EQ(typeOf(f.ws, "V::z").get(), f.ws.find("Lib::Base").get());
+    EXPECT_NE(f.ws.find("U::x"), oldX);
+}
+
+TEST(ReplaceSource, UnresolvedReferencesAppearAndDisappear) {
+    ReplaceFixture f;
+    EXPECT_EQ(f.unresolvedOf(f.user), 0u);
+
+    f.ws.replaceSource(f.user, "package U { import Lib::*; part x : Nope; part y : AlsoNope; }");
+    f.ws.resolve();
+    EXPECT_EQ(f.unresolvedOf(f.user), 2u);
+    const auto warnings = f.ws.unresolvedAsWarnings(f.user);
+    ASSERT_EQ(warnings.size(), 2u);
+    EXPECT_EQ(warnings[0]->getSource(), "user.sysml");
+
+    f.ws.replaceSource(f.user, "package U { import Lib::*; part x : Nope; }");
+    f.ws.resolve();
+    EXPECT_EQ(f.unresolvedOf(f.user), 1u);
+
+    f.ws.replaceSource(f.user, "package U { import Lib::*; part x : Base; }");
+    f.ws.resolve();
+    EXPECT_EQ(f.unresolvedOf(f.user), 0u);
+    EXPECT_TRUE(f.ws.errors(f.user).empty());
+}
+
+TEST(ReplaceSource, ReplacingDropsTheOldErrorsAndElements) {
+    ReplaceFixture f;
+    f.ws.replaceSource(f.user, "package U { part def ;;; }");
+    f.ws.resolve();
+    EXPECT_FALSE(f.ws.errors(f.user).empty());
+
+    f.ws.replaceSource(f.user, "package U { part def A; }");
+    f.ws.resolve();
+    EXPECT_TRUE(f.ws.errors(f.user).empty());
+
+    f.ws.replaceSource(f.user, "");
+    f.ws.resolve();
+    EXPECT_TRUE(f.ws.elements(f.user).empty());
+    EXPECT_EQ(f.ws.rootNamespace(f.user), nullptr);
+    EXPECT_EQ(f.unresolvedOf(f.user), 0u);
+    EXPECT_EQ(f.ws.find("U::A"), nullptr);
+}
+
+TEST(ReplaceSource, OtherSourcesKeepTheirResolvedAndUnresolvedReferences) {
+    ReplaceFixture f;
+    const auto inner = typeOf(f.ws, "Lib::Other::inner");
+    ASSERT_NE(inner, nullptr);
+    EXPECT_EQ(inner.get(), f.ws.find("Lib::Base").get());
+    EXPECT_EQ(f.unresolvedOf(f.library), 1u);  // `Missing`
+    const size_t libraryReferences = f.ws.referenceCount() - 2;  // everything but the two references of the user text (import, type)
+
+    for (int round = 0; round < 3; ++round) {
+        f.ws.replaceSource(f.user, "package U" + std::to_string(round) + " { import Lib::*; part x : Base; part y : Gone; }");
+        f.ws.resolve();
+        EXPECT_EQ(typeOf(f.ws, "Lib::Other::inner").get(), inner.get());
+        EXPECT_EQ(f.unresolvedOf(f.library), 1u);
+        EXPECT_EQ(f.unresolvedOf(f.user), 1u);
+        EXPECT_EQ(f.ws.resolvedReferenceCount(), libraryReferences - 1 + 2);  // library: all but `Missing`; user: import and `Base`
+    }
+    // The replaced source is not mentioned in the list of the library's unresolved references.
+    for (const auto& info : f.ws.unresolvedReferences()) {
+        EXPECT_TRUE(info.source == f.library || info.source == f.user);
+        EXPECT_EQ(info.sourceName, info.source == f.library ? "lib.sysml" : "user.sysml");
+    }
+}
+
+TEST(ReplaceSource, MultipleReplacementsGiveTheSameResultAsAFreshWorkspace) {
+    ReplaceFixture f;
+    const std::vector<std::string> texts = {
+        "package U { import Lib::*; part x : Base; }",
+        "package U { part x : Base; }",
+        "package W { import Lib::*; part a : Other; part b : Base; part c : Missing2; }",
+        "package W { import Lib::Base; part a : Base; }",
+        "package U { import Lib::*; part x : Base; }",
+    };
+    for (const auto& text : texts) {
+        f.ws.replaceSource(f.user, text);
+        f.ws.resolve();
+
+        Workspace fresh;
+        fresh.addText("package Lib { part def Base; part def Other { part inner : Base; } part def Broken : Missing; }", "lib.sysml");
+        const size_t freshUser = fresh.addText(text, "user.sysml");
+        fresh.resolve();
+        EXPECT_EQ(f.unresolvedOf(f.user), [&] {
+            size_t count = 0;
+            for (const auto& info : fresh.unresolvedReferences()) count += info.source == freshUser ? 1 : 0;
+            return count;
+        }()) << text;
+        EXPECT_EQ(f.ws.elements(f.user).size(), fresh.elements(freshUser).size()) << text;
+        EXPECT_EQ(f.ws.resolvedReferenceCount(), fresh.resolvedReferenceCount()) << text;
+    }
+}
+
+TEST(ReplaceSource, KeepsTheLanguageOfTheSourceUnlessGiven) {
+    Workspace ws;
+    const size_t kerml = ws.addText("package K { class A; }", "k.kerml");
+    ws.replaceSource(kerml, "package K { class B; classifier C specializes B; }");
+    ws.resolve();
+    EXPECT_TRUE(ws.errors(kerml).empty());
+    EXPECT_NE(ws.find("K::B"), nullptr);
+    EXPECT_TRUE(ws.unresolvedReferences().empty());
+
+    ws.replaceSource(kerml, "package S { part def A; }", SourceLanguage::SysML);
+    ws.resolve();
+    EXPECT_TRUE(ws.errors(kerml).empty());
+    EXPECT_NE(ws.find("S::A"), nullptr);
+    EXPECT_THROW(ws.replaceSource(7, "package X;"), std::out_of_range);
+}
+
+TEST(ReplaceSource, ReplacedElementsAreFreed) {
+    Workspace ws;
+    ws.addText("package Lib { part def Base; part def Other :> Base { part inner : Base; } }", "lib.sysml");
+    const size_t user = ws.addText("package U { import Lib::*; }", "user.sysml");
+    ws.resolve();
+    for (int round = 0; round < 5; ++round) {
+        ws.replaceSource(user, "package U { import Lib::*; part def A :> Other { part p : A; part q : Base; attribute n; } part a : A; part gone : Nope; }");
+        ws.resolve();
+        std::vector<std::weak_ptr<KerML::Entities::Element>> probes;
+        for (const auto& element : ws.elements(user)) probes.push_back(element);
+        probes.push_back(ws.rootNamespace(user));
+        for (const auto& info : ws.unresolvedReferences()) probes.push_back(info.placeholder);
+        ASSERT_GT(probes.size(), 10u);
+        ws.replaceSource(user, "package U { }");
+        size_t alive = 0;
+        for (const auto& probe : probes) alive += probe.expired() ? 0 : 1;
+        EXPECT_EQ(alive, 0u) << "round " << round << " of " << probes.size() << " elements";
+    }
+    // The library is intact.
+    ws.resolve();
+    EXPECT_TRUE(ws.find("Lib::Other::inner") != nullptr);
+    EXPECT_EQ(typeOf(ws, "Lib::Other::inner").get(), ws.find("Lib::Base").get());
+}
+
+TEST(ReplaceSource, ReferenceNamesAreAvailableBeforeResolve) {
+    Workspace ws;
+    const size_t user = ws.addText("package U { import ISQ::*; part x : Parts::Part; }", "user.sysml");
+    const auto names = ws.referenceNames(user);
+    EXPECT_NE(std::find(names.begin(), names.end(), "ISQ"), names.end());
+    EXPECT_NE(std::find(names.begin(), names.end(), "Parts::Part"), names.end());
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Source levels
+// ---------------------------------------------------------------------------------------------------------------------
+
+namespace {
+size_t unresolvedIn(const Workspace& ws, size_t source) {
+    size_t count = 0;
+    for (const auto& info : ws.unresolvedReferences()) count += info.source == source ? 1 : 0;
+    return count;
+}
+// The library refers to two names it does not define (`Missing`, a top-level element, and the package `Foo`), which the model defines.
+const char* LevelLibrary = "package Lib { part def Base; part uses : Missing; }\npackage Lib2 { public import Lib::*; part b : Base; }\npackage Lib3 { import Foo::*; }";
+const char* LevelUser = "part def Missing;\npackage Foo { part def F; }\npackage U { import Lib2::*; part x : Base; part m : Missing; part f : Foo::F; }";
+}
+
+TEST(SourceLevels, WithoutLevelsALibraryReferenceCanResolveToAModelElement) {
+    Workspace ws;
+    const size_t library = ws.addText(LevelLibrary, "lib.sysml");
+    ws.addText(LevelUser, "user.sysml");
+    ws.resolve();
+    EXPECT_EQ(unresolvedIn(ws, library), 0u);  // `Missing` and `Foo` of the library found the elements of the model: the problem the levels solve
+}
+
+TEST(SourceLevels, ALibraryReferenceNeverResolvesToAHigherLevel) {
+    Workspace ws;
+    const size_t library = ws.addText(LevelLibrary, "lib.sysml", SourceLanguage::Auto, 0);
+    const size_t user = ws.addText(LevelUser, "user.sysml", SourceLanguage::Auto, 2);
+    EXPECT_EQ(ws.sourceLevel(library), 0);
+    EXPECT_EQ(ws.sourceLevel(user), 2);
+    ws.resolve();
+    EXPECT_EQ(unresolvedIn(ws, library), 2u);   // `Missing` and `Foo` stay unresolved in the library
+    EXPECT_EQ(unresolvedIn(ws, user), 0u);      // the model sees the library (Base through Lib2) and its own Missing and Foo
+    EXPECT_EQ(typeOf(ws, "U::x").get(), ws.find("Lib::Base").get());
+    // Replacing the model keeps the level, and the library stays clean.
+    ws.replaceSource(user, LevelUser);
+    ws.resolve();
+    EXPECT_EQ(ws.sourceLevel(user), 2);
+    EXPECT_EQ(unresolvedIn(ws, library), 2u);
+}
+
+TEST(SourceLevels, EqualLevelsSeeEachOtherAndAMiddleLevelSeesTheLowerOnly) {
+    Workspace ws;
+    const size_t a = ws.addText("package A { part def X; part ya : B::Y; }", "a.sysml", SourceLanguage::Auto, 1);
+    const size_t b = ws.addText("package B { part def Y; part xb : A::X; }", "b.sysml", SourceLanguage::Auto, 1);
+    ws.resolve();
+    EXPECT_EQ(unresolvedIn(ws, a), 0u);
+    EXPECT_EQ(unresolvedIn(ws, b), 0u);
+
+    Workspace levels;
+    const size_t low = levels.addText("package A { part def X; part ya : B::Y; }", "a.sysml", SourceLanguage::Auto, 0);
+    const size_t high = levels.addText("package B { part def Y; part xb : A::X; }", "b.sysml", SourceLanguage::Auto, 1);
+    levels.resolve();
+    EXPECT_EQ(unresolvedIn(levels, low), 1u);   // `B::Y` is in the higher source
+    EXPECT_EQ(unresolvedIn(levels, high), 0u);
+}
+
+TEST(SourceLevels, ImplicitGeneralsAreNotShadowedByAModel) {
+    Workspace ws;
+    ws.addText("standard library package Base { abstract classifier Anything; abstract feature things : Anything; }\n"
+               "package Parts { part def Part; }", "lib.kerml", SourceLanguage::KerML, 0);
+    const size_t user = ws.addText("package Base { part def Fake; }\npackage U { part def A; part a : A; }", "user.sysml", SourceLanguage::SysML, 2);
+    ws.resolve();
+    EXPECT_EQ(unresolvedIn(ws, user), 0u);
+    const auto a = as<KerML::Entities::Feature>(ws.find("U::a"));
+    ASSERT_NE(a, nullptr);
+}
+
+TEST(SourceLevels, AnAliasOfAHigherLevelIsInvisibleToALowerOne) {
+    const char* library = "package Lib { part def Base; part uses : Shortcut; }";
+    // (an alias at the top level is KerML only)
+    const char* model = "alias Shortcut for Lib::Base;\npackage U { feature x : Shortcut; }";
+    Workspace ws;
+    const size_t lib = ws.addText(library, "lib.sysml", SourceLanguage::Auto, 0);
+    const size_t user = ws.addText(model, "user.kerml", SourceLanguage::KerML, 2);
+    ws.resolve();
+    EXPECT_EQ(unresolvedIn(ws, lib), 1u);
+    EXPECT_EQ(unresolvedIn(ws, user), 0u);
+}
+
+TEST(ReplaceSource, ElementsOfSysMLSpecificMetaclassesAreFreed) {
+    const char* text =
+        "package M {\n"
+        "  import ScalarValues::*;\n"
+        "  item def Stoff; item stoff : Stoff;\n"
+        "  part def Motor { port p : Anschluss; attribute n : Integer = 3; }\n"
+        "  port def Anschluss; part motor : Motor { port q : Anschluss; }\n"
+        "  connection def Verbindung; connection v : Verbindung connect a to b;\n"
+        "  action def Fahre { in x : Integer; action schritt; first start; then schritt; then done; }\n"
+        "  state def Zustand { entry action e; state s1; state s2; transition t first s1 then s2; }\n"
+        "  requirement def Anf { subject s : Motor; doc /* text */ require constraint { n > 0 } }\n"
+        "  constraint def Grenze { in x : Integer; x < 10 }\n"
+        "  calc def Rechne { in a : Integer; return : Integer = a + 1; }\n"
+        "  enum def Farbe { enum rot; enum gruen; }\n"
+        "  view def Sicht; use case def Fall { objective o; }\n"
+        "  metadata def Meta; occurrence def Ereignis; interface def Schnitt; allocation def Zuordnung;\n"
+        "  part def A :> Motor; part a : A redefines motor; alias Kurz for Motor; comment /* c */\n"
+        "}\n";
+    Workspace ws;
+    ws.addText("package Lib { part def Base; }", "lib.sysml");
+    const size_t user = ws.addText("", "user.sysml");
+    for (int round = 0; round < 3; ++round) {
+        ws.replaceSource(user, text);
+        ws.resolve();
+        std::vector<std::weak_ptr<KerML::Entities::Element>> probes;
+        std::set<std::string> metaclasses;
+        for (const auto& element : ws.elements(user)) {
+            probes.push_back(element);
+            metaclasses.insert(element->getType());
+        }
+        probes.push_back(ws.rootNamespace(user));
+        for (const auto& info : ws.unresolvedReferences()) probes.push_back(info.placeholder);
+        ASSERT_GT(probes.size(), 50u);
+        EXPECT_GT(metaclasses.size(), 15u);   // many different metaclasses were exercised
+        ws.replaceSource(user, "");
+        size_t alive = 0;
+        for (const auto& probe : probes) alive += probe.expired() ? 0 : 1;
+        EXPECT_EQ(alive, 0u) << "round " << round << " of " << probes.size() << " elements";
+    }
 }
 
 }  // namespace

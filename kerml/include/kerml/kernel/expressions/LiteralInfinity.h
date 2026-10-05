@@ -10,6 +10,7 @@
 
 namespace KerML::Entities {
 class KERML_EXPORT LiteralInfinity : public virtual LiteralExpression {
+    friend struct ElementDisposer;
 public:
     LiteralInfinity();
     ~LiteralInfinity() override;
