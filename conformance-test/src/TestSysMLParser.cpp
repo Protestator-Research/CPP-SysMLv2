@@ -802,3 +802,109 @@ TEST(TestSysMLListener, UsageWithBodyExpression) {
     EXPECT_NE(gateNamed<SysMLv2::Entities::CalculationDefinition>(elements, "C"), nullptr);
     EXPECT_NE(gateNamed<SysMLv2::Entities::AttributeUsage>(elements, "y"), nullptr);
 }
+
+namespace {
+std::vector<std::shared_ptr<SysMLv2::Entities::MetadataUsage>> metadataUsagesOf(const std::shared_ptr<KerML::Entities::Element>& owner) {
+    std::vector<std::shared_ptr<SysMLv2::Entities::MetadataUsage>> result;
+    for (const auto& child : owner->ownedElements()) {
+        if (auto candidate = std::dynamic_pointer_cast<SysMLv2::Entities::MetadataUsage>(child)) result.push_back(candidate);
+    }
+    return result;
+}
+
+void expectPrefixMetadata(const std::shared_ptr<SysMLv2::Entities::MetadataUsage>& metadata, const std::shared_ptr<KerML::Entities::Element>& owner,
+                          const std::string& definitionName) {
+    ASSERT_NE(metadata, nullptr);
+    ASSERT_NE(metadata->metadataDefinition(), nullptr);
+    EXPECT_EQ(metadata->metadataDefinition()->declaredName(), definitionName);
+    ASSERT_EQ(metadata->annotatedElements().size(), 1u);
+    EXPECT_EQ(metadata->annotatedElements()[0], owner);
+    EXPECT_EQ(metadata->owner(), owner);
+    EXPECT_FALSE(metadata->owningType().has_value());
+    const auto membership = metadata->owningMembership();
+    ASSERT_NE(membership, nullptr);
+    EXPECT_NE(std::dynamic_pointer_cast<KerML::Entities::OwningMembership>(membership), nullptr);
+    EXPECT_EQ(std::dynamic_pointer_cast<KerML::Entities::FeatureMembership>(membership), nullptr);
+}
+}
+
+TEST(TestSysMLParser, PrefixMetadataOnUsage) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package P { metadata def measurable; part def A { #measurable attribute x1 : Real := 0.0; } }");
+    ASSERT_TRUE(errors.empty());
+    const auto x1 = named<SysMLv2::Entities::AttributeUsage>(elements, "x1");
+    ASSERT_NE(x1, nullptr);
+    const auto found = metadataUsagesOf(x1);
+    ASSERT_EQ(found.size(), 1u);
+    const auto measurable = std::dynamic_pointer_cast<KerML::Entities::Metaclass>(named<SysMLv2::Entities::MetadataDefinition>(elements, "measurable"));
+    ASSERT_NE(measurable, nullptr);
+    EXPECT_EQ(found[0]->metadataDefinition(), measurable);
+    expectPrefixMetadata(found[0], x1, "measurable");
+    EXPECT_TRUE(x1->nestedUsage().empty());
+    for (const auto& type : x1->type()) EXPECT_NE(type, measurable);
+    EXPECT_EQ(x1->type().size(), 1u);
+}
+
+TEST(TestSysMLParser, PrefixMetadataOnDefinition) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package P { metadata def measurable; #measurable part def B; }");
+    ASSERT_TRUE(errors.empty());
+    const auto b = named<SysMLv2::Entities::PartDefinition>(elements, "B");
+    ASSERT_NE(b, nullptr);
+    const auto found = metadataUsagesOf(b);
+    ASSERT_EQ(found.size(), 1u);
+    expectPrefixMetadata(found[0], b, "measurable");
+    EXPECT_TRUE(b->ownedUsage().empty());
+}
+
+TEST(TestSysMLParser, PrefixMetadataForwardReference) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package P { #measurable part def B; metadata def measurable; }");
+    ASSERT_TRUE(errors.empty());
+    const auto b = named<SysMLv2::Entities::PartDefinition>(elements, "B");
+    ASSERT_NE(b, nullptr);
+    const auto found = metadataUsagesOf(b);
+    ASSERT_EQ(found.size(), 1u);
+    expectPrefixMetadata(found[0], b, "measurable");
+    EXPECT_TRUE(b->ownedUsage().empty());
+}
+
+TEST(TestSysMLParser, PrefixMetadataImportedAndQualified) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package Q { metadata def measurable; } package P { import Q::*; #Q::measurable part def B; #measurable part def C; }");
+    ASSERT_TRUE(errors.empty());
+    for (const char* name : {"B", "C"}) {
+        const auto def = named<SysMLv2::Entities::PartDefinition>(elements, name);
+        ASSERT_NE(def, nullptr);
+        const auto found = metadataUsagesOf(def);
+        ASSERT_EQ(found.size(), 1u) << name;
+        expectPrefixMetadata(found[0], def, "measurable");
+    }
+}
+
+TEST(TestSysMLParser, PrefixMetadataMultiple) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package P { metadata def a; metadata def b; part def D { #a #b part p; } }");
+    ASSERT_TRUE(errors.empty());
+    const auto p = named<SysMLv2::Entities::PartUsage>(elements, "p");
+    ASSERT_NE(p, nullptr);
+    const auto found = metadataUsagesOf(p);
+    ASSERT_EQ(found.size(), 2u);
+    expectPrefixMetadata(found[0], p, "a");
+    expectPrefixMetadata(found[1], p, "b");
+    EXPECT_TRUE(p->nestedUsage().empty());
+}
+
+TEST(TestSysMLParser, PrefixMetadataOnControlNodeDoesNotAnnotateAction) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package P { metadata def m; action def Act { #m merge mm; #m terminate; } }");
+    ASSERT_TRUE(errors.empty());
+    const auto act = named<SysMLv2::Entities::ActionDefinition>(elements, "Act");
+    ASSERT_NE(act, nullptr);
+    EXPECT_TRUE(metadataUsagesOf(act).empty());
+    for (const auto& element : elements) {
+        if (auto metadata = std::dynamic_pointer_cast<SysMLv2::Entities::MetadataUsage>(element)) {
+            for (const auto& annotated : metadata->annotatedElements()) EXPECT_NE(annotated, act);
+        }
+    }
+}
