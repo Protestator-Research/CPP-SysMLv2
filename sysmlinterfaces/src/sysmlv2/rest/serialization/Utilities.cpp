@@ -1,5 +1,7 @@
 #include <sysmlv2/rest/serialization/Utilities.h>
+#include <cctype>
 #include <iomanip>
+#include <sstream>
 std::string SysMLv2::REST::Utilities::toIso8601(std::chrono::time_point<std::chrono::system_clock> t)
 {
 	time_t epochSeconds = std::chrono::system_clock::to_time_t(t);
@@ -19,22 +21,51 @@ std::string SysMLv2::REST::Utilities::toIso8601(std::chrono::time_point<std::chr
 
 std::chrono::time_point<std::chrono::system_clock> SysMLv2::REST::Utilities::fromIso8601(std::string value)
 {
-#if (defined(WIN32) && (_MSC_VER > 1931) || defined(__GNUC__) && (__GNUC___ > 13)) && !defined(__APPLE__)
-	std::istringstream in{ value };
-	std::chrono::sys_time<std::chrono::milliseconds> tp;
-	in >> std::chrono::parse("%FT%TZ", tp);
-	if (in.fail())
+#if (defined(WIN32) && (_MSC_VER > 1931) || defined(__GNUC__) && (__GNUC__ > 13)) && !defined(__APPLE__)
+	// Full clock precision, so fractional seconds (milli-, micro- or nanoseconds) are accepted.
+	std::chrono::sys_time<std::chrono::system_clock::duration> tp;
+	for (const char* format : { "%FT%TZ", "%FT%T%Ez", "%FT%T" })
 	{
-		in.clear();
-		in.exceptions(std::ios::failbit);
-		in.str(value);
-		in >> std::chrono::parse("%FT%T%Ez", tp);
+		std::istringstream in{ value };
+		in >> std::chrono::parse(format, tp);
+		if (!in.fail())
+			return tp;
 	}
+	throw std::ios_base::failure("Utilities::fromIso8601: invalid timestamp '" + value + "'");
 #else
+	// Fallback without std::chrono::parse: YYYY-MM-DDTHH:MM:SS[.fraction][Z|+HH:MM|-HH:MM]
 	std::tm tm = {};
-	std::stringstream ss(value);
-	ss >> std::get_time(&tm, "%b %d %Y %H:%M:%S");
-	auto tp = std::chrono::system_clock::from_time_t(std::mktime(&tm));
+	std::istringstream ss(value);
+	ss >> std::get_time(&tm, "%Y-%m-%dT%H:%M:%S");
+	if (ss.fail())
+		throw std::ios_base::failure("Utilities::fromIso8601: invalid timestamp '" + value + "'");
+#ifdef WIN32
+	auto tp = std::chrono::system_clock::from_time_t(_mkgmtime(&tm));
+#else
+	auto tp = std::chrono::system_clock::from_time_t(timegm(&tm));
 #endif
+	if (ss.peek() == '.')
+	{
+		ss.get();
+		std::chrono::nanoseconds fraction{ 0 };
+		long long scale = 100000000;
+		while (std::isdigit(ss.peek()))
+		{
+			fraction += std::chrono::nanoseconds((ss.get() - '0') * scale);
+			scale /= 10;
+		}
+		tp += std::chrono::duration_cast<std::chrono::system_clock::duration>(fraction);
+	}
+	const int sign = ss.peek();
+	if (sign == '+' || sign == '-')
+	{
+		ss.get();
+		int hours = 0, minutes = 0;
+		char colon;
+		ss >> hours >> colon >> minutes;
+		const auto offset = std::chrono::hours(hours) + std::chrono::minutes(minutes);
+		tp += (sign == '+') ? -offset : offset;
+	}
 	return tp;
+#endif
 }

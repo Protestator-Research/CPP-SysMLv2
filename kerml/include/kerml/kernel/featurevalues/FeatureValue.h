@@ -8,26 +8,27 @@
 #include <string>
 #include <vector>
 
-namespace KerML::Entities {
-class KERML_EXPORT FeatureValue : public virtual OwningMembership {
-    friend struct ElementDisposer;
-public:
-    FeatureValue();
-    ~FeatureValue() override;
-    /// Computed from the underlying representation.
-    std::shared_ptr<Feature> featureWithValue() const;
-    void setFeatureWithValue(std::shared_ptr<Feature> value);
-    /// Computed from the underlying representation.
-    std::shared_ptr<Expression> value() const;
-    void setValue(std::shared_ptr<Expression> value);
-    /// Stored metamodel property.
-    bool isInitial() const;
-    void setIsInitial(bool value);
-    /// Stored metamodel property.
-    bool isDefault() const;
-    void setIsDefault(bool value);
-private:
-    bool isInitial_ = false;
-    bool isDefault_ = false;
-};
+namespace KerML::Entities
+{
+    class KERML_EXPORT FeatureValue : public virtual OwningMembership {
+        friend struct ElementDisposer;
+    public:
+        FeatureValue();
+        ~FeatureValue() override;
+        /// Computed from the underlying representation.
+        std::shared_ptr<Feature> featureWithValue() const;
+        void setFeatureWithValue(std::shared_ptr<Feature> value);
+        /// Computed from the underlying representation.
+        std::shared_ptr<Expression> value() const;
+        void setValue(std::shared_ptr<Expression> value);
+        /// Stored metamodel property.
+        bool isInitial() const;
+        void setIsInitial(bool value);
+        /// Stored metamodel property.
+        bool isDefault() const;
+        void setIsDefault(bool value);
+    private:
+        bool isInitial_ = false;
+        bool isDefault_ = false;
+    };
 }

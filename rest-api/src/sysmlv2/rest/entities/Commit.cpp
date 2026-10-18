@@ -132,7 +132,7 @@ namespace SysMLv2::REST{
             }
         }
 
-        if (parsedElement.contains(JSON_DESCRIPTION_ENTITY))
+        if (parsedElement.contains(JSON_TIMESTAMP_ENTITY))
     		Created = Utilities::fromIso8601(parsedElement[JSON_TIMESTAMP_ENTITY]);
 
         if (parsedElement.contains(JSON_OWNING_PROJECT))
