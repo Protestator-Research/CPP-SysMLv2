@@ -254,6 +254,33 @@ namespace KerML::Entities {
          */
         virtual bool includes(std::shared_ptr<Element> element);
 
+        /**
+         * Creates an Element from its JSON representation (as produced by serializeToJson() or by a SysML v2 API server).
+         * This is a factory, because a second constructor taking a std::string would be ambiguous to
+         * Element(std::string elementID, ...). It is used for every element type that has no dedicated C++ class in the
+         * deserialization (e.g. "Package" or "Feature" payloads of a commit), so the result is always a plain Element.
+         *
+         * The following keys are read: "@id" (required), "@type" (the original type is kept, getType() returns e.g.
+         * "Package"), "elementId" (falls back to "@id" if missing, empty or no valid UUID), "name", "declaredName",
+         * "declaredShortName", "shortName", "qualifiedName", "aliasIds", "isLibraryElement" and "isImpliedIncluded".
+         * Missing keys, empty strings, nulls and values of a wrong JSON type are tolerated and keep the default.
+         *
+         * Lossless round trip: the (normalized) JSON is stored and returned unchanged by serializeToJson(), as long as
+         * the Element is created by this function. The relations (owner, owned elements, relationships, documentation,
+         * annotations, ...) are NOT reconstructed as objects; they are only kept inside this stored JSON. Changing the
+         * Element by its setters afterwards does not change the stored JSON.
+         * @param jsonString The JSON representation of the element.
+         * @return The populated Element.
+         * @throws std::invalid_argument If the JSON is no object or "@id" is missing or no valid UUID.
+         * @throws nlohmann::json::parse_error If the string is no valid JSON.
+         */
+        static std::shared_ptr<Element> fromJson(const std::string& jsonString);
+
+        /**
+         * Serializes the Element to JSON. If the Element was created by fromJson() the stored JSON is returned
+         * unchanged, otherwise the JSON is generated from the members of the Element.
+         * @return The JSON representation of the Element.
+         */
         std::string serializeToJson() override;
     protected:
         /**
@@ -351,6 +378,11 @@ namespace KerML::Entities {
          * 
          */
         std::shared_ptr<Relationship> OwningRelationship;
+
+        /**
+         * The normalized JSON the Element was created from by fromJson(). If it is not empty, serializeToJson() returns it.
+         */
+        std::string OriginalJson;
     public:
         std::vector<std::shared_ptr<Relationship>> ownedRelationship() const;
         void setOwnedRelationship(std::vector<std::shared_ptr<Relationship>> value);

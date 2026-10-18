@@ -15,6 +15,8 @@ add_executable(conformance-test
         src/TestProjectController.cpp
         src/TestRestAPI.cpp
         src/TestResourcePackages.cpp
+        src/TestElementDeserialization.cpp
+        src/TestBranchRequest.cpp
 )
 
 #if((EXISTS antlr4_shared) OR (MSVC))

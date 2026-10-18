@@ -9,6 +9,7 @@
 #include <sysmlv2/rest/entities/JSONEntities.h>
 
 #include <utility>
+#include <stdexcept>
 #include <functional>
 #include <boost/uuid/string_generator.hpp>
 #include <boost/uuid/uuid_io.hpp>
@@ -192,7 +193,66 @@ namespace KerML::Entities {
         return false;
     }
 
+    std::shared_ptr<Element> Element::fromJson(const std::string& jsonString) {
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        if (!json.is_object())
+            throw std::invalid_argument("The JSON of an Element must be an object.");
+
+        const auto stringValue = [&json](const std::string& key) -> std::string {
+            const auto it = json.find(key);
+            return (it != json.end() && it->is_string()) ? it->get<std::string>() : std::string();
+        };
+        const auto boolValue = [&json](const std::string& key) -> bool {
+            const auto it = json.find(key);
+            return it != json.end() && it->is_boolean() && it->get<bool>();
+        };
+
+        boost::uuids::uuid id;
+        try {
+            id = boost::uuids::string_generator()(stringValue(SysMLv2::REST::JSON_ID_ENTITY));
+        } catch (const std::exception&) {
+            throw std::invalid_argument("The JSON of an Element requires a valid \"@id\".");
+        }
+
+        boost::uuids::uuid elementId = id;
+        try {
+            const std::string elementIdString = stringValue(SysMLv2::REST::JSON_ELEMENT_ID_ENTITY);
+            if (!elementIdString.empty())
+                elementId = boost::uuids::string_generator()(elementIdString);
+        } catch (const std::exception&) {
+            elementId = id;
+        }
+
+        auto element = std::make_shared<Element>(elementId);
+        element->_dId = id;
+        const std::string type = stringValue(SysMLv2::REST::JSON_TYPE_ENTITY);
+        if (!type.empty())
+            element->_dType = type;
+
+        const auto aliasIds = json.find(SysMLv2::REST::JSON_ALIAS_ID_ENTITY);
+        if (aliasIds != json.end() && aliasIds->is_array()) {
+            for (const auto& alias : *aliasIds) {
+                if (alias.is_string())
+                    element->AliasIds.push_back(alias.get<std::string>());
+            }
+        }
+
+        element->Name = stringValue(SysMLv2::REST::JSON_NAME_ENTITY);
+        element->DeclaredName = stringValue(SysMLv2::REST::JSON_DECLARED_NAME_ENTITY);
+        element->DeclaredShortName = stringValue(SysMLv2::REST::JSON_DECLARED_SHORT_NAME_ENTITY);
+        element->ShortName = stringValue(SysMLv2::REST::JSON_SHORT_NAME_ENTITY);
+        element->QualifiedName = stringValue(SysMLv2::REST::JSON_QUALIFIED_NAME_ENTITY);
+        element->IsLibraryElement = boolValue(SysMLv2::REST::JSON_IS_LIBRARY_ELEMENT_ENTITY);
+        element->IsImpliedIncluded = boolValue(SysMLv2::REST::JSON_IS_IMPLIED_INCLUDED_ENTITY);
+
+        element->OriginalJson = json.dump(element->JSON_INTENT);
+        return element;
+    }
+
     std::string Element::serializeToJson() {
+        if (!OriginalJson.empty())
+            return OriginalJson;
+
         nlohmann::json json = nlohmann::json::parse(Data::serializeToJson());
 
         json[SysMLv2::REST::JSON_ELEMENT_ID_ENTITY] = boost::uuids::to_string(ElementId);

@@ -97,12 +97,24 @@ namespace SysMLv2::API::EXCEPTIONS {
         UNRECOVERABLE_POLL,
         TOO_LARGE
     };
+    /**
+     * Thrown if a request could not be performed at all (host not reachable, timeout, TLS problem, ...), in contrast
+     * to HTTPException, which signals a received HTTP error status.
+     */
     class SYSMLV2SERVICE_EXPORT ConnectionError : public std::runtime_error {
     public:
         ConnectionError() = delete;
-        ConnectionError(SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE errorType);
 
-        const char * what() const noexcept override;
+        /**
+         * @param errorType The error of the network stack (mirrors CURLcode). what() returns a readable one line
+         *                  description that is built once here.
+         */
+        explicit ConnectionError(SysMLv2::API::EXCEPTIONS::CONNECTION_ERROR_TYPE errorType);
+
+        /**
+         * @return The error of the network stack that caused the exception.
+         */
+        CONNECTION_ERROR_TYPE errorType() const noexcept;
     private:
         CONNECTION_ERROR_TYPE ErrorType;
     };

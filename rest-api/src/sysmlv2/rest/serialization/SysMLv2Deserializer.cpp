@@ -47,11 +47,14 @@ namespace SysMLv2 {
         if(type==REST::COMMIT_TYPE)
             return std::make_shared<REST::Commit>(inputValue);
 
-        if (type==REST::ELEMENT_TYPE)
-            return std::make_shared<KerML::Entities::Element>(inputValue);
-
         if (type==REST::TEXTUAL_REPRESENTATION_TYPE)
             return std::make_shared<KerML::Entities::TextualRepresentation>(inputValue);
+
+        // Every other type ("Element", "Package", "PartDefinition", "Feature", ...) is an element of the model. It is
+        // restored as a plain Element that keeps the original type and JSON, as long as it has an identifier.
+        const auto id = json.find(REST::JSON_ID_ENTITY);
+        if (id != json.end() && id->is_string())
+            return KerML::Entities::Element::fromJson(inputValue);
 
         return nullptr;
     }
