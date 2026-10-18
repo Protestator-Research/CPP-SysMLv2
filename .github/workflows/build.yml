@@ -31,7 +31,10 @@ jobs:
         cd build
         conan build .. --version=wip -o "&:with_check=True"
     - name: test
-      run: ctest --test-dir build/Release --output-on-failure --timeout 1800
+      run: |
+        # the dependencies are shared libraries in the Conan cache: conanrun.sh puts them on LD_LIBRARY_PATH
+        source build/Release/generators/conanrun.sh
+        ctest --test-dir build/Release --output-on-failure --timeout 1800
     - uses: actions/upload-artifact@v4
       if: failure()
       with:
