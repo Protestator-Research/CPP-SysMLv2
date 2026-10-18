@@ -1109,6 +1109,9 @@ public:
     virtual void enterMetaclass(SysMLv2Parser::MetaclassContext* ctx) override;
     virtual void exitMetaclass(SysMLv2Parser::MetaclassContext* ctx) override;
 
+    virtual void enterPrefix_metadata_usage(SysMLv2Parser::Prefix_metadata_usageContext* ctx) override;
+    virtual void exitPrefix_metadata_usage(SysMLv2Parser::Prefix_metadata_usageContext* ctx) override;
+
     virtual void enterPrefix_metadata_feature(SysMLv2Parser::Prefix_metadata_featureContext* /*ctx*/) override {}
     virtual void exitPrefix_metadata_feature(SysMLv2Parser::Prefix_metadata_featureContext* /*ctx*/) override {}
 
@@ -1217,8 +1220,9 @@ private:
     /// see SysMLv2::Files::buildOwnership, which creates the membership of every member when the source is complete.
     SysMLv2::Files::MembershipKinds OwnershipKinds;
     std::vector<SysMLv2::Files::MemberMark> MemberMarks;
-    /// The owned_cross_feature rules that do not declare a cross feature (see enterOwned_cross_feature).
-    std::set<antlr4::ParserRuleContext*> SkippedCrossFeatures;
+    /// The rule contexts whose exit handler must do nothing, because the enter handler pushed no element: owned_cross_feature rules that do not
+    /// declare a cross feature (see enterOwned_cross_feature) and prefix metadata without an owner (see enterPrefix_metadata_usage).
+    std::set<antlr4::ParserRuleContext*> SkippedContexts;
 
     SysMLv2::Files::ReferenceRecorder Recorder;
     /// Contexts (and their elements) whose declared visibility has to be recorded, in addition to PushedByContext.

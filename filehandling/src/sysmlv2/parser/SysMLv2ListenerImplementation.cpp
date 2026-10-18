@@ -114,7 +114,7 @@ void SysMLv2ListenerImplementation::enterStart(SysMLv2Parser::StartContext*) {
 	PushedByContext.clear();
 	OwnershipKinds.clear();
 	MemberMarks.clear();
-	SkippedCrossFeatures.clear();
+	SkippedContexts.clear();
 }
 
 void SysMLv2ListenerImplementation::enterEveryRule(antlr4::ParserRuleContext* ctx) {
@@ -507,7 +507,7 @@ void SysMLv2ListenerImplementation::enterOwned_cross_feature(SysMLv2Parser::Owne
 		}
 	}
 	if (!declaresCrossFeature) {
-		SkippedCrossFeatures.insert(ctx);
+		SkippedContexts.insert(ctx);
 		return;
 	}
 	auto cross = std::make_shared<SysMLv2::Entities::ReferenceUsage>();
@@ -516,7 +516,7 @@ void SysMLv2ListenerImplementation::enterOwned_cross_feature(SysMLv2Parser::Owne
 }
 
 void SysMLv2ListenerImplementation::exitOwned_cross_feature(SysMLv2Parser::Owned_cross_featureContext* ctx) {
-	if (SkippedCrossFeatures.erase(ctx) != 0) return;
+	if (SkippedContexts.erase(ctx) != 0) return;
 	if (ParentStack.empty()) return;
 	auto cross = std::dynamic_pointer_cast<SysMLv2::Entities::ReferenceUsage>(ParentStack.top());
 	if (!cross) return;
@@ -968,6 +968,43 @@ DEFINE_USAGE_METHODS(Assignment_node, SysMLv2::Entities::AssignmentActionUsage)
 DEFINE_USAGE_METHODS(If_node, SysMLv2::Entities::IfActionUsage)
 DEFINE_USAGE_METHODS(While_loop_node, SysMLv2::Entities::WhileLoopActionUsage)
 DEFINE_USAGE_METHODS(For_loop_node, SysMLv2::Entities::ForLoopActionUsage)
+
+// `#measurable attribute x1 ...`: an abbreviated MetadataUsage, typed by the metadata definition, that is owned by and annotates the
+// element whose prefix it belongs to (the owner is on top of the stack, because the prefix is a child of the usage/definition/package).
+void SysMLv2ListenerImplementation::enterPrefix_metadata_usage(SysMLv2Parser::Prefix_metadata_usageContext* ctx) {
+	// The prefix of a control node (`#m merge mm;`) or of a `terminate` belongs to an element that is not pushed, so there is no owner.
+	for (antlr4::tree::ParseTree* node = ctx ? ctx->parent : nullptr; node; node = node->parent) {
+		auto* rule = dynamic_cast<antlr4::ParserRuleContext*>(node);
+		if (!rule) break;
+		if (PushedByContext.count(rule) != 0) break;
+		if (dynamic_cast<SysMLv2Parser::Control_node_prefixContext*>(rule) || dynamic_cast<SysMLv2Parser::Terminate_nodeContext*>(rule)) {
+			SkippedContexts.insert(ctx);
+			return;
+		}
+	}
+	handleUsageEnter<SysMLv2::Entities::MetadataUsage>(ParentStack, &PushedByContext, ctx);
+}
+
+void SysMLv2ListenerImplementation::exitPrefix_metadata_usage(SysMLv2Parser::Prefix_metadata_usageContext* ctx) {
+	if (SkippedContexts.erase(ctx) != 0) return;
+	if (ParentStack.empty()) return;
+	const auto metadata = std::dynamic_pointer_cast<SysMLv2::Entities::MetadataUsage>(ParentStack.top());
+	if (!metadata) return;
+	ParentStack.pop();
+
+	if (ctx && ctx->owned_feature_typing()) {
+		addTyping(metadata, ctx->owned_feature_typing()->getText(), ctx->owned_feature_typing());
+	}
+	Elements.push_back(metadata);
+	if (!ParentStack.empty()) {
+		const auto owner = ParentStack.top();
+		metadata->setOwner(owner);
+		metadata->appendAnnotatedElement(owner);
+		// A PrefixMetadataMember is an OwningMembership: the metadata is not a feature of its owner.
+		OwnershipKinds[metadata.get()] = SysMLv2::Files::MembershipKind::Owning;
+		owner->appendOwnedElement(metadata);
+	}
+}
 
 // The payload of an `accept` (of a transition or of an accept node) is a parameter (a ReferenceUsage with direction in).
 void SysMLv2ListenerImplementation::enterPayload_parameter(SysMLv2Parser::Payload_parameterContext* ctx) {
