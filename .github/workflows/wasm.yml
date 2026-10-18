@@ -1,0 +1,53 @@
+name: WebAssembly Build
+
+# Reusable workflow: builds the WebAssembly module of sysmlv2check (check/cmake/build-wasm.sh), runs the smoke test
+# and uploads sysmlv2check.js + sysmlv2check.wasm as the artifact "sysmlv2check-wasm".
+on:
+  workflow_call:
+    inputs:
+      version:
+        description: "Version used in the name of the archive"
+        required: true
+        type: string
+
+jobs:
+  wasm:
+    runs-on: ubuntu-latest
+    env:
+      ARTIFACTORY_URL: ${{ secrets.ARTIFACTORY_URL }}
+      ARTIFACTORY_TOKEN: ${{ secrets.ARTIFACTORY_TOKEN }}
+      ARTIFACTORY_USER: ${{secrets.ARTIFACTORY_USERNAME}}
+      EMSDK_VERSION: 5.0.2
+      VERSION: ${{ inputs.version }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: prepare runner
+      run: |
+        sudo apt update && sudo apt -y install python3 python3-pip cmake ninja-build uuid-dev
+        sudo pip install --ignore-installed --upgrade conan
+        conan profile detect
+        conan remote add protestator-conan $ARTIFACTORY_URL
+        conan remote login -p $ARTIFACTORY_TOKEN protestator-conan $ARTIFACTORY_USER
+        conan remote remove conancenter
+    - name: install emsdk
+      run: |
+        git clone --depth 1 https://github.com/emscripten-core/emsdk.git "$RUNNER_TEMP/emsdk"
+        "$RUNNER_TEMP/emsdk/emsdk" install $EMSDK_VERSION
+        "$RUNNER_TEMP/emsdk/emsdk" activate $EMSDK_VERSION
+        echo "EMSDK_ENV=$RUNNER_TEMP/emsdk/emsdk_env.sh" >> "$GITHUB_ENV"
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 24
+    - name: build sysmlv2check WebAssembly module
+      run: check/cmake/build-wasm.sh
+    - name: smoke test
+      run: node check/tests/wasm-smoke.mjs build/wasm/out/sysmlv2check.js
+    - name: package
+      run: |
+        mkdir -p dist
+        tar -czf "dist/sysmlv2check-wasm-$VERSION.tar.gz" -C build/wasm/out sysmlv2check.js sysmlv2check.wasm
+    - uses: actions/upload-artifact@v4
+      with:
+        name: sysmlv2check-wasm
+        path: dist/*.tar.gz
+        if-no-files-found: error
