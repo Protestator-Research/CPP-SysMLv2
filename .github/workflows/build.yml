@@ -24,14 +24,17 @@ jobs:
     - name: prepare dependencies
       run: |
        mkdir build && cd build
-       conan install .. --build missing
+       conan install .. --build missing -o "&:with_check=True"
     - name: build sysmlv2lib
       run: |
         ls -al
         cd build
-        conan build .. --version=wip
-    # - name: test
-    #   run: |
-    #     cd build
-    #     conan test .. sysmlv2/wip
+        conan build .. --version=wip -o "&:with_check=True"
+    - name: test
+      run: ctest --test-dir build/Release --output-on-failure --timeout 1800
+    - uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: test-logs
+        path: build/Release/Testing/Temporary/
           
