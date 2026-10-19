@@ -15,6 +15,7 @@
 #include <sysmlv2/parser/SysMLv2ListenerImplementation.h>
 #include <sysmlv2/parser/SysMLv2Lexer.h>
 #include <sysmlv2/parser/SysMLv2Parser.h>
+#include <sysmlv2/ParserError.h>
 
 #include <kerml/kernel/packages/Package.h>
 #include <kerml/root/elements/Relationship.h>
@@ -255,7 +256,8 @@ namespace SysMLv2::Files {
             const auto syntaxErrors = errorListener->getSyntaxErrors();
             source->errors.reserve(syntaxErrors.size());
             for (const auto& error : syntaxErrors) {
-                source->errors.push_back(makeError(ErrorType::ERROR, shortened(error->message()), error->line(), error->positionInLine(), source->name));
+                source->errors.push_back(makeError(SysMLv2::
+                	Files::SYNTAX_ERROR, shortened(error->message()), error->line(), error->positionInLine(), source->name));
             }
 
             try {
@@ -263,9 +265,9 @@ namespace SysMLv2::Files {
                 source->elements = listener->getElements();
                 source->data = listener->takeResolutionData();
             } catch (const std::exception& ex) {
-                source->errors.push_back(makeError(ErrorType::ERROR, std::string("internal: ") + ex.what(), -1, -1, source->name));
+                source->errors.push_back(makeError(ErrorType::INTERNAL_ERROR, std::string("internal: ") + ex.what(), -1, -1, source->name));
             } catch (...) {
-                source->errors.push_back(makeError(ErrorType::ERROR, "internal: unknown exception while walking the KerML parse tree", -1, -1, source->name));
+                source->errors.push_back(makeError(ErrorType::INTERNAL_ERROR, "internal: unknown exception while walking the KerML parse tree", -1, -1, source->name));
             }
         }
 
@@ -285,7 +287,7 @@ namespace SysMLv2::Files {
             const auto syntaxErrors = errorListener.getSyntaxErrors();
             source->errors.reserve(syntaxErrors.size());
             for (const auto& error : syntaxErrors) {
-                source->errors.push_back(makeError(ErrorType::ERROR, shortened(error->message()), error->line(), error->positionInLine(), source->name));
+                source->errors.push_back(makeError(ErrorType::SYNTAX_ERROR, shortened(error->message()), error->line(), error->positionInLine(), source->name));
             }
 
             try {
@@ -293,9 +295,9 @@ namespace SysMLv2::Files {
                 source->elements = listener.getElements();
                 source->data = listener.takeResolutionData();
             } catch (const std::exception& ex) {
-                source->errors.push_back(makeError(ErrorType::ERROR, std::string("internal: ") + ex.what(), -1, -1, source->name));
+                source->errors.push_back(makeError(ErrorType::INTERNAL_ERROR, std::string("internal: ") + ex.what(), -1, -1, source->name));
             } catch (...) {
-                source->errors.push_back(makeError(ErrorType::ERROR, "internal: unknown exception while walking the SysML v2 parse tree", -1, -1, source->name));
+                source->errors.push_back(makeError(ErrorType::INTERNAL_ERROR, "internal: unknown exception while walking the SysML v2 parse tree", -1, -1, source->name));
             }
         }
 
@@ -410,7 +412,7 @@ namespace SysMLv2::Files {
             source->name = path;
             source->language = endsWith(path, ".kerml") ? SourceLanguage::KerML : SourceLanguage::SysML;
             source->level = level;
-            source->errors.push_back(Impl::makeError(ErrorType::ERROR, "could not open file: " + path, -1, -1, path));
+            source->errors.push_back(Impl::makeError(ErrorType::INTERNAL_ERROR, "could not open file: " + path, -1, -1, path));
             impl_->sources.push_back(std::move(source));
             impl_->resolver.reset();
             return impl_->sources.size() - 1;

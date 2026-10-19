@@ -9,7 +9,9 @@
 
 namespace SysMLv2::Files {
     enum SYSMLV2FILE_EXPORT ErrorType {
-        ERROR,
+        SYNTAX_ERROR,
+        LOGICAL_ERROR,
+        INTERNAL_ERROR,
         WARNING
     };
 
