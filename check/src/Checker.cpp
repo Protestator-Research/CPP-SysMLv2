@@ -501,7 +501,7 @@ namespace SysMLv2::Check {
             };
             for (const auto& error : workspace.errors(source)) {
                 if (full()) continue;
-                const bool isError = error->errorType() == SysMLv2::Files::ErrorType::ERROR;
+                const bool isError = error->errorType() == SysMLv2::Files::ErrorType::SYNTAX_ERROR || error->errorType() == SysMLv2::Files::ErrorType::LOGICAL_ERROR || error->errorType() == SysMLv2::Files::ErrorType::INTERNAL_ERROR;
                 json entry = diagnosis(isError ? "GRAMMATIK" : "WARNUNG", syntaxSource, error->description());
                 setPosition(entry, error->getLine(), error->getColumn());
                 out.push_back(std::move(entry));
@@ -574,7 +574,7 @@ namespace SysMLv2::Check {
             // element with an unresolved reference is already reported as UNRESOLVED (its missing target is the same problem); placeholders are skipped.
             bool syntaxErrors = false;
             for (const auto& error : workspace.errors(userSource)) {
-                if (error->errorType() == SysMLv2::Files::ErrorType::ERROR) syntaxErrors = true;
+                if (error->errorType() == SysMLv2::Files::ErrorType::SYNTAX_ERROR || error->errorType() == SysMLv2::Files::ErrorType::INTERNAL_ERROR) syntaxErrors = true;
             }
             std::unordered_set<const Element*> unresolvedContext;
             std::unordered_set<const Element*> unresolvedNeighbours;

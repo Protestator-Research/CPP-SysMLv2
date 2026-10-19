@@ -51,7 +51,7 @@
 namespace {
     /// Stack of the thread that parses a text. The parser and the listener walk recurse once per nesting level of the text (and the
     /// parser's prediction recurses deeply for runs of operators), which the 8 MB of an ordinary stack does not always survive.
-    constexpr size_t ParseStackSize = size_t(512) << 20;
+    constexpr [[maybe_unused]] size_t ParseStackSize = size_t(512) << 20;
 
     /// Runs @p function on a thread with a large stack and waits for it. Where no thread can be created (and with Emscripten, which
     /// has one stack for everything, see STACK_SIZE in check/cmake/Emscripten.cmake) it runs on the calling thread.
