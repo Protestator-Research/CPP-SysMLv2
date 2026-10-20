@@ -198,7 +198,7 @@ TEST(InstanceManagerTest, SyntaxErrorsOfModelAndLibrariesAreReported) {
     manager.parseModel("package P { attribute def ; ");
     ASSERT_FALSE(manager.getParserErrors().empty());
     for (const auto& error : manager.getParserErrors()) {
-        EXPECT_EQ(error->errorType(), SysMLv2::Files::ErrorType::ERROR);
+        EXPECT_EQ(error->errorType(), SysMLv2::Files::ErrorType::SYNTAX_ERROR);
         EXPECT_EQ(error->getSource(), "InstanceModel");
     }
     // The rest of the model is still available and there is a root namespace.
