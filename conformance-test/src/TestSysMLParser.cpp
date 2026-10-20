@@ -908,3 +908,24 @@ TEST(TestSysMLParser, PrefixMetadataOnControlNodeDoesNotAnnotateAction) {
         }
     }
 }
+
+TEST(TestSysMLParser, AttributeInitialValueFlags) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "part def P { attribute a = 1; attribute b := 1; attribute c default = 1; attribute d default := 1; }");
+    ASSERT_TRUE(errors.empty());
+    const auto check = [&](const std::string& name, bool initial, bool isDefault) {
+        const auto attribute = named<SysMLv2::Entities::AttributeUsage>(elements, name);
+        ASSERT_NE(attribute, nullptr) << name;
+        std::shared_ptr<KerML::Entities::FeatureValue> value;
+        for (const auto& child : attribute->ownedElements()) {
+            if (auto candidate = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(child)) value = candidate;
+        }
+        ASSERT_NE(value, nullptr) << name;
+        EXPECT_EQ(value->isInitial(), initial) << name;
+        EXPECT_EQ(value->isDefault(), isDefault) << name;
+    };
+    check("a", false, false);
+    check("b", true, false);
+    check("c", false, true);
+    check("d", true, true);
+}

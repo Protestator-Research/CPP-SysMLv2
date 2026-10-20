@@ -1890,3 +1890,25 @@ TEST(TestKerMLListener, MultiplicityModifiersWithoutBounds) {
     EXPECT_TRUE(d->multiplicity().has_value());
     EXPECT_FALSE(SysMLv2::Files::Parser::parseKerML("feature f : T ordered ordered;").second.empty());
 }
+
+TEST(TestKerMLListener, FeatureValueInitialAndDefaultFlags) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "feature a = 1; feature b := 1; feature c default = 1; feature d default := 1;");
+    ASSERT_TRUE(errors.empty());
+    const auto values = listenerElements<FeatureValue>(elements);
+    ASSERT_EQ(values.size(), 4u);
+    const auto check = [&](const std::string& name, bool initial, bool isDefault) {
+        std::shared_ptr<FeatureValue> found;
+        for (const auto& value : values) {
+            if (value->featureWithValue() && value->featureWithValue()->declaredName() == name) found = value;
+        }
+        ASSERT_NE(found, nullptr) << name;
+        EXPECT_EQ(found->isInitial(), initial) << name;
+        EXPECT_EQ(found->isDefault(), isDefault) << name;
+    };
+    check("a", false, false);
+    check("b", true, false);
+    check("c", false, true);
+    check("d", true, true);
+}

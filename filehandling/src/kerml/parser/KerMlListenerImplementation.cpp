@@ -2791,6 +2791,9 @@ void KerMLListenerImplementation::enterFeature_value(KerMLParser::Feature_valueC
     if (ctx && ctx->KEYWORD_DEFAULT() != nullptr) {
         fv->setIsDefault(true);
     }
+    if (ctx && ctx->SYMBOL_DEF_ASSIGN() != nullptr) {
+        fv->setIsInitial(true);
+    }
     ParentStack.push(fv);
 }
 

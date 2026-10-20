@@ -1259,6 +1259,7 @@ void SysMLv2ListenerImplementation::exitSuccession_as_usage(SysMLv2Parser::Succe
 void SysMLv2ListenerImplementation::enterFeature_value(SysMLv2Parser::Feature_valueContext* ctx) {
 	auto fv = std::make_shared<KerML::Entities::FeatureValue>();
 	if (ctx && ctx->KEYWORD_DEFAULT()) fv->setIsDefault(true);
+	if (ctx && ctx->SYMBOL_DEF_ASSIGN()) fv->setIsInitial(true);
 	ParentStack.push(fv);
 	recordPush(ctx, fv);
 }
