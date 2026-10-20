@@ -12,6 +12,7 @@
 #include <sysmlv2/rest/serialization/Utilities.h>
 #include <chrono>
 #include <cstdlib>
+#include <ctime>
 #include <ios>
 #include <string>
 
@@ -81,18 +82,51 @@ namespace {
                 sys_days{std::chrono::year{2025} / std::chrono::March / 13} + timeOfDay);
     }
 
+    // The MSVC runtime does not understand IANA names, it expects the POSIX form "std offset dst".
+#if defined(_WIN32)
+    constexpr const char* BERLIN_TIME_ZONE = "CET-1CEST";
+#else
+    constexpr const char* BERLIN_TIME_ZONE = "Europe/Berlin";
+#endif
+
+    // Portable wrappers: setenv/unsetenv/tzset are POSIX and not available in the MSVC runtime.
+    void setTimeZoneVariable(const char* value) {
+#if defined(_WIN32)
+        _putenv_s("TZ", value);
+#else
+        setenv("TZ", value, 1);
+#endif
+    }
+
+    void unsetTimeZoneVariable() {
+#if defined(_WIN32)
+        // An empty value removes the variable from the environment of the process.
+        _putenv_s("TZ", "");
+#else
+        unsetenv("TZ");
+#endif
+    }
+
+    void applyTimeZone() {
+#if defined(_WIN32)
+        _tzset();
+#else
+        tzset();
+#endif
+    }
+
     // Sets TZ for the lifetime of the object and restores the previous value afterwards.
     class ScopedTimeZone {
     public:
         explicit ScopedTimeZone(const char* tz) {
             const char* old = std::getenv("TZ");
             if (old) { _had = true; _old = old; }
-            setenv("TZ", tz, 1);
-            tzset();
+            setTimeZoneVariable(tz);
+            applyTimeZone();
         }
         ~ScopedTimeZone() {
-            if (_had) setenv("TZ", _old.c_str(), 1); else unsetenv("TZ");
-            tzset();
+            if (_had) setTimeZoneVariable(_old.c_str()); else unsetTimeZoneVariable();
+            applyTimeZone();
         }
     private:
         bool _had = false;
@@ -111,7 +145,7 @@ TEST(TestIso8601, ParsesUtcTimeOfDay) {
 }
 
 TEST(TestIso8601, UtcIsIndependentOfLocalTimeZone) {
-    ScopedTimeZone tz("Europe/Berlin");
+    ScopedTimeZone tz(BERLIN_TIME_ZONE);
     EXPECT_EQ(SysMLv2::REST::Utilities::fromIso8601("2025-03-13T00:00:00Z"),
               utc20250313(std::chrono::hours{0}));
     EXPECT_EQ(SysMLv2::REST::Utilities::fromIso8601("2025-03-13T12:30:00Z"),
@@ -146,7 +180,7 @@ TEST(TestIso8601, RoundTripKeepsMicrosecondPrecision) {
 }
 
 TEST(TestIso8601, RoundTripIndependentOfLocalTimeZone) {
-    ScopedTimeZone tz("Europe/Berlin");
+    ScopedTimeZone tz(BERLIN_TIME_ZONE);
     const auto tp = utc20250313(std::chrono::hours{9} + std::chrono::microseconds{654321});
     EXPECT_EQ(SysMLv2::REST::Utilities::fromIso8601(SysMLv2::REST::Utilities::toIso8601(tp)), tp);
 }
@@ -165,7 +199,7 @@ TEST(TestRESTfulAPI, CommitGetCreatedParsesTimestampAsUtc) {
 }
 
 TEST(TestRESTfulAPI, CommitGetCreatedIndependentOfLocalTimeZone) {
-    ScopedTimeZone tz("Europe/Berlin");
+    ScopedTimeZone tz(BERLIN_TIME_ZONE);
     const std::string json =
             "{\"@id\": \"6f9619ff-8b86-d011-b42d-00c04fc964ff\", \"@type\": \"Commit\", "
             "\"description\": \"c\", \"timestamp\": \"2025-03-13T10:00:00Z\"}";
