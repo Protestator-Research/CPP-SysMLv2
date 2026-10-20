@@ -929,3 +929,52 @@ TEST(TestSysMLParser, AttributeInitialValueFlags) {
     check("c", false, true);
     check("d", true, true);
 }
+
+TEST(TestSysMLParser, ConstantUsagePrefix) {
+    // RefPrefix = direction? derived? ( abstract | variation )? ( isConstant ?= 'constant' )?
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "part def P { constant attribute a = 1; attribute b = 2; }");
+    ASSERT_TRUE(errors.empty());
+    const auto a = named<SysMLv2::Entities::AttributeUsage>(elements, "a");
+    const auto b = named<SysMLv2::Entities::AttributeUsage>(elements, "b");
+    ASSERT_NE(a, nullptr);
+    ASSERT_NE(b, nullptr);
+    EXPECT_TRUE(a->isConstant());
+    EXPECT_FALSE(b->isConstant());
+    // 'const' is a KerML keyword only; it stays usable as a name in SysML.
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseSysMLv2("part def Q { attribute const; }").second.empty());
+}
+
+TEST(TestSysMLParser, ConstantOccurrenceAndReferenceUsagePrefix) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "part def P { constant part p1; part p2; } part def R { constant ref r1 : P; ref r2 : P; }");
+    ASSERT_TRUE(errors.empty());
+    const auto p1 = named<SysMLv2::Entities::PartUsage>(elements, "p1");
+    const auto p2 = named<SysMLv2::Entities::PartUsage>(elements, "p2");
+    const auto r1 = named<SysMLv2::Entities::ReferenceUsage>(elements, "r1");
+    const auto r2 = named<SysMLv2::Entities::ReferenceUsage>(elements, "r2");
+    ASSERT_NE(p1, nullptr);
+    ASSERT_NE(p2, nullptr);
+    ASSERT_NE(r1, nullptr);
+    ASSERT_NE(r2, nullptr);
+    EXPECT_TRUE(p1->isConstant());
+    EXPECT_FALSE(p2->isConstant());
+    EXPECT_TRUE(r1->isConstant());
+    EXPECT_FALSE(r2->isConstant());
+}
+
+TEST(TestSysMLParser, ConstantOnCrossFeature) {
+    // OwnedCrossFeature = BasicUsagePrefix UsageDeclaration: the 'constant' belongs to the cross feature, not to the end feature.
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "part def Hub; connection def C { end constant connectingHub [1..*] part hub : Hub; end otherCross [1] part other : Hub; }");
+    ASSERT_TRUE(errors.empty());
+    const auto hub = named<SysMLv2::Entities::PartUsage>(elements, "hub");
+    const auto cross = named<SysMLv2::Entities::ReferenceUsage>(elements, "connectingHub");
+    const auto other = named<SysMLv2::Entities::ReferenceUsage>(elements, "otherCross");
+    ASSERT_NE(hub, nullptr);
+    ASSERT_NE(cross, nullptr);
+    ASSERT_NE(other, nullptr);
+    EXPECT_TRUE(cross->isConstant());
+    EXPECT_FALSE(hub->isConstant());
+    EXPECT_FALSE(other->isConstant());
+}

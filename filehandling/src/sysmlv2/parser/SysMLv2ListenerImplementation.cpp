@@ -477,6 +477,8 @@ void SysMLv2ListenerImplementation::exitSubject_usage(SysMLv2Parser::Subject_usa
 	}
 }
 
+static void applyRefPrefix(SysMLv2Parser::Ref_prefixContext* refCtx, const std::shared_ptr<KerML::Entities::Feature>& feature);
+
 // EndUsagePrefix = isEnd ?= 'end' ( OwnedCrossFeatureMember )?
 void SysMLv2ListenerImplementation::exitEnd_usage_prefix(SysMLv2Parser::End_usage_prefixContext* ctx) {
 	if (ParentStack.empty() || !ctx || !shouldApplyToTop(ctx)) return;
@@ -513,6 +515,7 @@ void SysMLv2ListenerImplementation::enterOwned_cross_feature(SysMLv2Parser::Owne
 	auto cross = std::make_shared<SysMLv2::Entities::ReferenceUsage>();
 	ParentStack.push(cross);
 	recordPush(ctx, cross);
+	if (ctx->basic_usage_prefix()) applyRefPrefix(ctx->basic_usage_prefix()->ref_prefix(), cross);
 }
 
 void SysMLv2ListenerImplementation::exitOwned_cross_feature(SysMLv2Parser::Owned_cross_featureContext* ctx) {
@@ -581,6 +584,13 @@ static void applyFeatureDirectionFromContext(SysMLv2Parser::Feature_directionCon
 	else if (dirCtx->KEYWORD_OUT() != nullptr) feature->setDirection(KerML::Entities::OUT);
 }
 
+// RefPrefix = direction? derived? (abstract|variation)? isConstant ?= 'constant'?. In SysML isVariable is derived, so only isConstant is set.
+static void applyRefPrefix(SysMLv2Parser::Ref_prefixContext* refCtx, const std::shared_ptr<KerML::Entities::Feature>& feature) {
+	if (!refCtx || !feature) return;
+	applyFeatureDirectionFromContext(refCtx->feature_direction(), feature);
+	if (refCtx->KEYWORD_CONSTANT() != nullptr) feature->setIsConstant(true);
+}
+
 static void applyPortionKind(SysMLv2Parser::Portion_kindContext* pkCtx, const std::shared_ptr<SysMLv2::Entities::OccurrenceUsage>& occUsage) {
 	if (!pkCtx || !occUsage) return;
 	if (pkCtx->KEYWORD_SNAPSHOT() != nullptr) occUsage->setPortionKind(SysMLv2::Entities::PortionKind::snapshot);
@@ -595,7 +605,7 @@ void SysMLv2ListenerImplementation::applyUsagePrefix(SysMLv2Parser::Usage_prefix
 	if (!basicPrefix) return;
 	auto refPrefix = basicPrefix->ref_prefix();
 	if (!refPrefix) return;
-	applyFeatureDirectionFromContext(refPrefix->feature_direction(), feature);
+	applyRefPrefix(refPrefix, feature);
 }
 
 void SysMLv2ListenerImplementation::applyOccurrenceUsagePrefix(SysMLv2Parser::Occurrence_usage_prefixContext* prefix, const std::shared_ptr<KerML::Entities::Feature>& feature) {
@@ -604,7 +614,7 @@ void SysMLv2ListenerImplementation::applyOccurrenceUsagePrefix(SysMLv2Parser::Oc
 	if (!basicPrefix) return;
 	auto refPrefix = basicPrefix->ref_prefix();
 	if (!refPrefix) return;
-	applyFeatureDirectionFromContext(refPrefix->feature_direction(), feature);
+	applyRefPrefix(refPrefix, feature);
 }
 
 void SysMLv2ListenerImplementation::applyFeatureSpecializationPart(SysMLv2Parser::Feature_specialization_partContext* part, const std::shared_ptr<KerML::Entities::Feature>& feature) {
@@ -1035,7 +1045,7 @@ void SysMLv2ListenerImplementation::enterDefault_reference_usage(SysMLv2Parser::
 void SysMLv2ListenerImplementation::exitDefault_reference_usage(SysMLv2Parser::Default_reference_usageContext* ctx) {
 	if (!ParentStack.empty() && ctx && ctx->ref_prefix()) {
 		if (auto usage = std::dynamic_pointer_cast<SysMLv2::Entities::ReferenceUsage>(ParentStack.top())) {
-			applyFeatureDirectionFromContext(ctx->ref_prefix()->feature_direction(), usage);
+			applyRefPrefix(ctx->ref_prefix(), usage);
 		}
 	}
 	handleUsageExit<SysMLv2::Entities::ReferenceUsage>(ParentStack, Elements);
@@ -1046,7 +1056,7 @@ void SysMLv2ListenerImplementation::enterReference_usage(SysMLv2Parser::Referenc
 void SysMLv2ListenerImplementation::exitReference_usage(SysMLv2Parser::Reference_usageContext* ctx) {
 	if (!ParentStack.empty() && ctx && ctx->ref_prefix()) {
 		if (auto usage = std::dynamic_pointer_cast<SysMLv2::Entities::ReferenceUsage>(ParentStack.top())) {
-			applyFeatureDirectionFromContext(ctx->ref_prefix()->feature_direction(), usage);
+			applyRefPrefix(ctx->ref_prefix(), usage);
 		}
 	}
 	handleUsageExit<SysMLv2::Entities::ReferenceUsage>(ParentStack, Elements);
@@ -1161,7 +1171,7 @@ void SysMLv2ListenerImplementation::exitIndividual_usage(SysMLv2Parser::Individu
 	if (!ParentStack.empty() && ctx) {
 		if (auto occUsage = std::dynamic_pointer_cast<SysMLv2::Entities::OccurrenceUsage>(ParentStack.top())) {
 			if (ctx->basic_usage_prefix() && ctx->basic_usage_prefix()->ref_prefix()) {
-				applyFeatureDirectionFromContext(ctx->basic_usage_prefix()->ref_prefix()->feature_direction(), occUsage);
+				applyRefPrefix(ctx->basic_usage_prefix()->ref_prefix(), occUsage);
 			}
 			applyPortionKind(ctx->portion_kind(), occUsage);
 		}
@@ -1178,7 +1188,7 @@ void SysMLv2ListenerImplementation::exitPortion_usage(SysMLv2Parser::Portion_usa
 	if (!ParentStack.empty() && ctx) {
 		if (auto occUsage = std::dynamic_pointer_cast<SysMLv2::Entities::OccurrenceUsage>(ParentStack.top())) {
 			if (ctx->basic_usage_prefix() && ctx->basic_usage_prefix()->ref_prefix()) {
-				applyFeatureDirectionFromContext(ctx->basic_usage_prefix()->ref_prefix()->feature_direction(), occUsage);
+				applyRefPrefix(ctx->basic_usage_prefix()->ref_prefix(), occUsage);
 			}
 			if (ctx->KEYWORD_INDIVIDUAL() != nullptr) {
 				occUsage->setIsIndividual(true);

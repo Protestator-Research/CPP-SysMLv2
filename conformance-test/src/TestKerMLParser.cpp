@@ -1912,3 +1912,25 @@ TEST(TestKerMLListener, FeatureValueInitialAndDefaultFlags) {
     check("c", false, true);
     check("d", true, true);
 }
+
+TEST(TestKerMLListener, FeatureConstAndVarFlags) {
+    using namespace KerML::Entities;
+    // BasicFeaturePrefix = ... ( isVariable ?= 'var' | isConstant ?= 'const' { isVariable = true } )?; 'readonly' is a legacy alias of 'const'.
+    // EndFeaturePrefix = ( isConstant ?= 'const' { isVariable = true } )? isEnd ?= 'end'
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "class C { var feature a; const feature b; feature c; readonly feature d; } assoc A { const end feature x; end feature y; }");
+    ASSERT_TRUE(errors.empty());
+    const auto check = [&](const std::string& name, bool isVariable, bool isConstant) {
+        const auto feature = namedElement<Feature>(elements, name);
+        ASSERT_NE(feature, nullptr) << name;
+        EXPECT_EQ(feature->isVariable(), isVariable) << name;
+        EXPECT_EQ(feature->isConstant(), isConstant) << name;
+    };
+    check("a", true, false);
+    check("b", true, true);
+    check("c", false, false);
+    check("d", true, true);
+    check("x", true, true);
+    check("y", false, false);
+    EXPECT_FALSE(SysMLv2::Files::Parser::parseKerML("class C { var const feature z; }").second.empty());
+}

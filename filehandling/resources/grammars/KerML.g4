@@ -143,8 +143,8 @@ feature: feature_prefix (KEYWORD_FEATURE | prefix_metadata_member) feature_decla
 anonymous_feature: (end_feature_prefix | basic_feature_prefix) feature_declaration value_part? type_body;
 // KerML 1.1 clause 8.2.4.3.1: FeaturePrefix = ( EndFeaturePrefix ( OwnedCrossFeatureMember )? | BasicFeaturePrefix ) PrefixMetadataMember*
 feature_prefix: (end_feature_prefix owned_cross_feature_member? | basic_feature_prefix) prefix_metadata_member*;
-end_feature_prefix: KEYWORD_END;
-basic_feature_prefix: feature_direction? KEYWORD_DERIVED? KEYWORD_ABSTRACT? (KEYWORD_COMPOSITE | KEYWORD_PORTION)? KEYWORD_VAR? KEYWORD_READONLY?;
+end_feature_prefix: KEYWORD_CONST? KEYWORD_END;
+basic_feature_prefix: feature_direction? KEYWORD_DERIVED? KEYWORD_ABSTRACT? (KEYWORD_COMPOSITE | KEYWORD_PORTION)? (KEYWORD_VAR | KEYWORD_CONST | KEYWORD_READONLY)?;
 owned_cross_feature_member: owned_cross_feature;
 owned_cross_feature: basic_feature_prefix feature_declaration;
 feature_direction: (KEYWORD_IN | KEYWORD_OUT | KEYWORD_INOUT);
@@ -482,6 +482,7 @@ KEYWORD_VAR: 'var';
 KEYWORD_LOCALE: 'locale';
 KEYWORD_STANDARD: 'standard';
 KEYWORD_LIBRARY: 'library';
+KEYWORD_CONST: 'const';
 KEYWORD_CONSTANT: 'constant';
 KEYWORD_CROSSES: 'crosses';
 KEYWORD_META: 'meta';

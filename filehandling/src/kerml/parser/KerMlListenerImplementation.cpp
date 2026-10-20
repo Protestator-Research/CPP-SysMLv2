@@ -1057,10 +1057,15 @@ void KerMLListenerImplementation::exitFeature_prefix(KerMLParser::Feature_prefix
 
 void KerMLListenerImplementation::enterEnd_feature_prefix(KerMLParser::End_feature_prefixContext *) { }
 
-void KerMLListenerImplementation::exitEnd_feature_prefix(KerMLParser::End_feature_prefixContext *) {
+void KerMLListenerImplementation::exitEnd_feature_prefix(KerMLParser::End_feature_prefixContext *ctx) {
     if (ParentStack.empty()) return;
     if (const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top())) {
         feature->setIsEnd(true);
+        // EndFeaturePrefix: 'const' implies isVariable = true.
+        if (ctx && ctx->KEYWORD_CONST() != nullptr) {
+            feature->setIsConstant(true);
+            feature->setIsVariable(true);
+        }
     }
 }
 
@@ -1073,7 +1078,10 @@ void KerMLListenerImplementation::exitBasic_feature_prefix(KerMLParser::Basic_fe
         return;
     }
     feature->setAbstract(ctx->KEYWORD_ABSTRACT() != nullptr);
-    feature->setIsVariable(ctx->KEYWORD_VAR() != nullptr);
+    // BasicFeaturePrefix: 'const' (and the legacy alias 'readonly') implies isVariable = true.
+    const bool isConstant = ctx->KEYWORD_CONST() != nullptr || ctx->KEYWORD_READONLY() != nullptr;
+    feature->setIsConstant(isConstant);
+    feature->setIsVariable(ctx->KEYWORD_VAR() != nullptr || isConstant);
     feature->setIsComposite(ctx->KEYWORD_COMPOSITE() != nullptr);
     feature->setIsPortion(ctx->KEYWORD_PORTION() != nullptr);
     feature->setIsDerived(ctx->KEYWORD_DERIVED() != nullptr);
