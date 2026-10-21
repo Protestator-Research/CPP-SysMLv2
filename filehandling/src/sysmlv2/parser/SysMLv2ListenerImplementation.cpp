@@ -558,9 +558,9 @@ void SysMLv2ListenerImplementation::enterUsage_declaration(SysMLv2Parser::Usage_
 void SysMLv2ListenerImplementation::exitUsage_declaration(SysMLv2Parser::Usage_declarationContext* ctx) {
 	if (ParentStack.empty() || !ctx) return;
 	if (!shouldApplyToTop(ctx)) return;
-	// The control nodes (`merge`, `decide`, `join`, `fork`) do not create an element yet, and neither do the nodes that are not usages
-	// of their own: their identification and specialization must not be applied to the definition or usage that encloses them (that
-	// used to rename, for example, `action def ForLoopAction` to the name of its nested `action whileLoop while ...`). The
+	// The `terminate` node does not create an element yet, and so do the nodes that are not usages of their own: their identification
+	// and specialization must not be applied to the definition or usage that encloses them (that used to rename, for example,
+	// `action def ForLoopAction` to the name of its nested `action whileLoop while ...`). The `merge`, `decide`, `join`, `fork`,
 	// `assign`, `while`, `for`, `if`, `send` and `accept` nodes push their own usage, which ends the walk up below.
 	for (antlr4::ParserRuleContext* c = ctx; c != nullptr; c = c->parent ? dynamic_cast<antlr4::ParserRuleContext*>(c->parent) : nullptr) {
 		if (dynamic_cast<SysMLv2Parser::Action_nodeContext*>(c) != nullptr) return;
@@ -979,15 +979,43 @@ DEFINE_USAGE_METHODS(If_node, SysMLv2::Entities::IfActionUsage)
 DEFINE_USAGE_METHODS(While_loop_node, SysMLv2::Entities::WhileLoopActionUsage)
 DEFINE_USAGE_METHODS(For_loop_node, SysMLv2::Entities::ForLoopActionUsage)
 
+// The control nodes (`merge`, `decide`, `join`, `fork`) are usages of their own: `isComposite ?= keyword`. Their ControlNodePrefix
+// (a child of the node) is applied on exit of the prefix, see exitControl_node_prefix.
+#define DEFINE_CONTROL_NODE_METHODS(Name, Type) \
+void SysMLv2ListenerImplementation::enter##Name(SysMLv2Parser::Name##Context* ctx) { \
+    handleUsageEnter<Type>(ParentStack, &PushedByContext, ctx); \
+    if (auto node = std::dynamic_pointer_cast<Type>(ParentStack.top())) node->setIsComposite(true); \
+} \
+void SysMLv2ListenerImplementation::exit##Name(SysMLv2Parser::Name##Context*) { \
+    handleUsageExit<Type>(ParentStack, Elements); \
+}
+
+DEFINE_CONTROL_NODE_METHODS(Merge_node, SysMLv2::Entities::MergeNode)
+DEFINE_CONTROL_NODE_METHODS(Decision_node, SysMLv2::Entities::DecisionNode)
+DEFINE_CONTROL_NODE_METHODS(Join_node, SysMLv2::Entities::JoinNode)
+DEFINE_CONTROL_NODE_METHODS(Fork_node, SysMLv2::Entities::ForkNode)
+
+// ControlNodePrefix = RefPrefix ( isIndividual ?= 'individual' )? ( portionKind )? UsageExtensionKeyword*
+void SysMLv2ListenerImplementation::exitControl_node_prefix(SysMLv2Parser::Control_node_prefixContext* ctx) {
+	if (ParentStack.empty() || !ctx) return;
+	if (auto feat = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top())) {
+		applyRefPrefix(ctx->ref_prefix(), feat);
+	}
+	if (auto occUsage = std::dynamic_pointer_cast<SysMLv2::Entities::OccurrenceUsage>(ParentStack.top())) {
+		if (ctx->KEYWORD_INDIVIDUAL() != nullptr) occUsage->setIsIndividual(true);
+		applyPortionKind(ctx->portion_kind(), occUsage);
+	}
+}
+
 // `#measurable attribute x1 ...`: an abbreviated MetadataUsage, typed by the metadata definition, that is owned by and annotates the
 // element whose prefix it belongs to (the owner is on top of the stack, because the prefix is a child of the usage/definition/package).
 void SysMLv2ListenerImplementation::enterPrefix_metadata_usage(SysMLv2Parser::Prefix_metadata_usageContext* ctx) {
-	// The prefix of a control node (`#m merge mm;`) or of a `terminate` belongs to an element that is not pushed, so there is no owner.
+	// The prefix of a `terminate` belongs to an element that is not pushed, so there is no owner.
 	for (antlr4::tree::ParseTree* node = ctx ? ctx->parent : nullptr; node; node = node->parent) {
 		auto* rule = dynamic_cast<antlr4::ParserRuleContext*>(node);
 		if (!rule) break;
 		if (PushedByContext.count(rule) != 0) break;
-		if (dynamic_cast<SysMLv2Parser::Control_node_prefixContext*>(rule) || dynamic_cast<SysMLv2Parser::Terminate_nodeContext*>(rule)) {
+		if (dynamic_cast<SysMLv2Parser::Terminate_nodeContext*>(rule)) {
 			SkippedContexts.insert(ctx);
 			return;
 		}

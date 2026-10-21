@@ -5,6 +5,7 @@
 
 #include <algorithm>
 #include <cctype>
+#include <cstdlib>
 #include <filesystem>
 #include <fstream>
 #include <memory>
@@ -39,6 +40,13 @@ inline std::string readFile(const std::filesystem::path& path) {
     std::ostringstream buffer;
     buffer << in.rdbuf();
     return buffer.str();
+}
+
+// Timing / performance assertions only run when SYSML_ENABLE_PERFORMANCE_TESTS is set to a non-empty value other than "0"; they depend
+// on the machine and must not fail CI.
+inline bool performanceTestsEnabled() {
+    const char* env = std::getenv("SYSML_ENABLE_PERFORMANCE_TESTS");
+    return env != nullptr && env[0] != '\0' && std::string(env) != "0";
 }
 
 // Parses the file at `path` picking parseKerML/parseSysMLv2 by extension (".kerml" vs. everything

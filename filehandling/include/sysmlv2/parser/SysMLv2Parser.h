@@ -3339,7 +3339,8 @@ public:
     Ref_prefixContext *ref_prefix();
     antlr4::tree::TerminalNode *KEYWORD_INDIVIDUAL();
     Portion_kindContext *portion_kind();
-    Usage_extention_keywordContext *usage_extention_keyword();
+    std::vector<Usage_extention_keywordContext *> usage_extention_keyword();
+    Usage_extention_keywordContext* usage_extention_keyword(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -3353,9 +3354,9 @@ public:
     Merge_nodeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Control_node_prefixContext *control_node_prefix();
-    Usage_declarationContext *usage_declaration();
-    Action_bodyContext *action_body();
     antlr4::tree::TerminalNode *KEYWORD_MERGE();
+    Action_bodyContext *action_body();
+    Usage_declarationContext *usage_declaration();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -3369,9 +3370,9 @@ public:
     Decision_nodeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Control_node_prefixContext *control_node_prefix();
-    Usage_declarationContext *usage_declaration();
-    Action_bodyContext *action_body();
     antlr4::tree::TerminalNode *KEYWORD_DECIDE();
+    Action_bodyContext *action_body();
+    Usage_declarationContext *usage_declaration();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -3385,9 +3386,9 @@ public:
     Join_nodeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Control_node_prefixContext *control_node_prefix();
-    Usage_declarationContext *usage_declaration();
+    antlr4::tree::TerminalNode *KEYWORD_JOIN();
     Action_bodyContext *action_body();
-    antlr4::tree::TerminalNode *KEYWORD_DECIDE();
+    Usage_declarationContext *usage_declaration();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -3401,9 +3402,9 @@ public:
     Fork_nodeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Control_node_prefixContext *control_node_prefix();
-    Usage_declarationContext *usage_declaration();
-    Action_bodyContext *action_body();
     antlr4::tree::TerminalNode *KEYWORD_FORK();
+    Action_bodyContext *action_body();
+    Usage_declarationContext *usage_declaration();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

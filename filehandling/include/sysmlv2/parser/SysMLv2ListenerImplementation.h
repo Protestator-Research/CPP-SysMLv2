@@ -527,19 +527,19 @@ public:
     virtual void exitControl_node(SysMLv2Parser::Control_nodeContext* /*ctx*/) override {}
 
     virtual void enterControl_node_prefix(SysMLv2Parser::Control_node_prefixContext* /*ctx*/) override {}
-    virtual void exitControl_node_prefix(SysMLv2Parser::Control_node_prefixContext* /*ctx*/) override {}
+    virtual void exitControl_node_prefix(SysMLv2Parser::Control_node_prefixContext* ctx) override;
 
-    virtual void enterMerge_node(SysMLv2Parser::Merge_nodeContext* /*ctx*/) override {}
-    virtual void exitMerge_node(SysMLv2Parser::Merge_nodeContext* /*ctx*/) override {}
+    virtual void enterMerge_node(SysMLv2Parser::Merge_nodeContext* ctx) override;
+    virtual void exitMerge_node(SysMLv2Parser::Merge_nodeContext* ctx) override;
 
-    virtual void enterDecision_node(SysMLv2Parser::Decision_nodeContext* /*ctx*/) override {}
-    virtual void exitDecision_node(SysMLv2Parser::Decision_nodeContext* /*ctx*/) override {}
+    virtual void enterDecision_node(SysMLv2Parser::Decision_nodeContext* ctx) override;
+    virtual void exitDecision_node(SysMLv2Parser::Decision_nodeContext* ctx) override;
 
-    virtual void enterJoin_node(SysMLv2Parser::Join_nodeContext* /*ctx*/) override {}
-    virtual void exitJoin_node(SysMLv2Parser::Join_nodeContext* /*ctx*/) override {}
+    virtual void enterJoin_node(SysMLv2Parser::Join_nodeContext* ctx) override;
+    virtual void exitJoin_node(SysMLv2Parser::Join_nodeContext* ctx) override;
 
-    virtual void enterFork_node(SysMLv2Parser::Fork_nodeContext* /*ctx*/) override {}
-    virtual void exitFork_node(SysMLv2Parser::Fork_nodeContext* /*ctx*/) override {}
+    virtual void enterFork_node(SysMLv2Parser::Fork_nodeContext* ctx) override;
+    virtual void exitFork_node(SysMLv2Parser::Fork_nodeContext* ctx) override;
 
     virtual void enterAccept_node(SysMLv2Parser::Accept_nodeContext* ctx) override;
     virtual void exitAccept_node(SysMLv2Parser::Accept_nodeContext* ctx) override;

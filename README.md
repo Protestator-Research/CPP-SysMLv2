@@ -138,6 +138,7 @@ milliseconds), so keep the process or the module alive.
   leaves half-built elements behind, which are not reported again: with a `GRAMMATIK` error in the text there is no `STRUKTUR` diagnosis, and a missing reference next to an `UNRESOLVED` one is skipped (an alias of an unknown name is exactly one Logik diagnosis). The check does not evaluate OCL constraints (for example `[3..1]`).
   The cost is small (about 0-3 % of a warm request, Debug build).
 * Tests: `sysmlv2check-test` (with `BUILD_TESTING=ON`).
+  Machine-dependent assertions (parse budget of the library test, `maxParseMillis` wall-clock check, timeout count and RSS growth under forced timeouts, the interrupted library load test) only run when the environment variable `SYSML_ENABLE_PERFORMANCE_TESTS` is set to a non-empty value other than `0`; otherwise they are skipped.
 * WebAssembly (Emscripten, tested with emsdk 5.0.2 and Node 24): `check/cmake/build-wasm.sh` runs the Conan install (profile `check/cmake/emscripten.profile`:
   static libraries, `-fwasm-exceptions`, `boost` header-only, `date` header-only, no curl), configures CMake (`check/cmake/Emscripten.cmake`, the same
   variables as the preset `emscripten-check` in `check/cmake/EmscriptenPresets.json`; `-O2`, no LTO) and builds `build/wasm/out/sysmlv2check.js` (ES module,

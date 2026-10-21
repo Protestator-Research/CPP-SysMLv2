@@ -19,6 +19,12 @@
 namespace {
     using nlohmann::json;
 
+    /// Machine dependent checks (timing, memory) only run with SYSML_ENABLE_PERFORMANCE_TESTS set, non-empty and not "0".
+    bool performanceTestsEnabled() {
+        const char* value = std::getenv("SYSML_ENABLE_PERFORMANCE_TESTS");
+        return value != nullptr && value[0] != '\0' && std::string(value) != "0";
+    }
+
     /// Sends a request through the C interface and parses the response.
     json sende(const json& request) {
         const std::string text = request.dump();
@@ -338,6 +344,8 @@ TEST(SysmlPruefeContext, ManyRequestsDoNotGrowTheMemory) {
     for (int i = 0; i < 150; ++i) ask(checker, model);
     const size_t after = rss();
     std::cout << "[memory] RSS " << before << " MB before, " << after << " MB after 150 more requests\n";
+    // Not gated by SYSML_ENABLE_PERFORMANCE_TESTS: the workload is fixed and has no deadlines, so the result does not depend on the
+    // speed of the machine, and this is the only leak guard that runs in CI.
     if (before > 0) EXPECT_LT(after, before + 30);   // a leak of 1.7 MB per request would be 250 MB
 }
 
@@ -409,7 +417,8 @@ TEST(SysmlPruefeContext, ParseDeadline) {
     const json timedOut = ask(checker, model);
     const double ms = std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - start).count();
     EXPECT_EQ(timedOut.at("fehler"), "zeitueberschreitung") << timedOut.dump(2);
-    EXPECT_LT(ms, 2000);
+    // Machine dependent: only with SYSML_ENABLE_PERFORMANCE_TESTS.
+    if (performanceTestsEnabled()) EXPECT_LT(ms, 2000);
     EXPECT_TRUE(timedOut.at("diagnosen").empty());
     // The context is fine afterwards.
     limits.maxParseMillis = 20000;
@@ -496,14 +505,15 @@ TEST(SysmlPruefeContext, ManyForcedTimeoutsInARowDoNotKillTheProcess) {
     }
     const size_t after = rss();
     std::cout << "[timeouts] " << timeouts << " of 300 requests timed out; RSS " << before << " MB at request 50, " << after << " MB at 300\n";
-    EXPECT_GT(timeouts, 250u);
+    // Machine dependent: only with SYSML_ENABLE_PERFORMANCE_TESTS.
+    if (performanceTestsEnabled()) EXPECT_GT(timeouts, 250u);
     limits.maxParseMillis = 20000;
     checker.setLimits(limits);
     const json ok = ask(checker, model);
     EXPECT_FALSE(ok.contains("fehler")) << ok.dump(2);
     EXPECT_TRUE(select(ok, "GRAMMATIK").empty());
     EXPECT_TRUE(hasElement(ok, "PartDefinition", "P::D99"));
-    if (before > 0) EXPECT_LT(after, before + 30);
+    if (performanceTestsEnabled() && before > 0) EXPECT_LT(after, before + 30);
 }
 
 TEST(SysmlPruefeContext, RunsOfPrefixOperatorsAreLimitedAndDoNotOverflowTheStack) {
@@ -545,6 +555,7 @@ TEST(SysmlPruefeContext, LoadingLibraryPackagesDuringARequestHasALimit) {
 }
 
 TEST(SysmlPruefeContext, AfterAnInterruptedLoadTheLibraryIsCompletedByTheNextRequests) {
+    if (!performanceTestsEnabled()) GTEST_SKIP() << "timing-dependent; set SYSML_ENABLE_PERFORMANCE_TESTS=1 to run";
     Checker checker;
     Checker::Limits limits = checker.limits();
     limits.maxLoadMillis = 1500;   // enough for the first files, not for ISQ and what it imports

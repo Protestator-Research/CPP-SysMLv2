@@ -331,11 +331,11 @@ action_node_usage_declaration: KEYWORD_ACTION usage_declaration?;
 action_node_prefix: occurrence_usage_prefix action_node_usage_declaration?;
 
 control_node: merge_node | decision_node | join_node | fork_node;
-control_node_prefix: ref_prefix KEYWORD_INDIVIDUAL? portion_kind? usage_extention_keyword?;
-merge_node: control_node_prefix KEYWORD_MERGE? usage_declaration action_body;
-decision_node: control_node_prefix KEYWORD_DECIDE? usage_declaration action_body;
-join_node: control_node_prefix KEYWORD_DECIDE? usage_declaration action_body;
-fork_node: control_node_prefix KEYWORD_FORK? usage_declaration action_body;
+control_node_prefix: ref_prefix KEYWORD_INDIVIDUAL? portion_kind? usage_extention_keyword*;
+merge_node: control_node_prefix KEYWORD_MERGE usage_declaration? action_body;
+decision_node: control_node_prefix KEYWORD_DECIDE usage_declaration? action_body;
+join_node: control_node_prefix KEYWORD_JOIN usage_declaration? action_body;
+fork_node: control_node_prefix KEYWORD_FORK usage_declaration? action_body;
 
 accept_node: occurrence_usage_prefix accept_node_declaration action_body;
 accept_node_declaration: action_node_usage_declaration? KEYWORD_ACCEPT accept_parameter_part;
