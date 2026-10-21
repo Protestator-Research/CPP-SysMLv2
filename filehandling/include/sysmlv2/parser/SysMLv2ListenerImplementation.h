@@ -1158,6 +1158,8 @@ public:
 
 private:
     void attachExpression(const std::shared_ptr<KerML::Entities::Expression>& expression);
+    void appendArgumentParameter(const std::shared_ptr<KerML::Entities::Feature>& parameter, const std::shared_ptr<KerML::Entities::Expression>& value);
+    void setInstantiatedTypeWithMembership(const std::shared_ptr<KerML::Entities::InstantiationExpression>& expr, SysMLv2Parser::Owned_feature_typingContext* typing);
     void finishOperatorExpression(const std::string& operatorName);
     void applyIdentification(SysMLv2Parser::IdentificationContext *idCtx, const std::shared_ptr<KerML::Entities::Element>& elem);
 

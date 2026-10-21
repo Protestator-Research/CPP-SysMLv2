@@ -600,7 +600,10 @@ std::shared_ptr<KerML::Entities::Expression> sysmlAttributeValue(const std::stri
         return nullptr;
     }
     for (const auto& element : elements) {
-        if (auto value = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(element)) return value->value();
+        // The feature value of the attribute (the arguments of an invocation own feature values of their own).
+        if (auto value = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(element)) {
+            if (value->featureWithValue() && value->featureWithValue()->declaredName() == "x") return value->value();
+        }
     }
     ADD_FAILURE() << "no feature value for '" << expression << "'";
     return nullptr;
@@ -673,6 +676,14 @@ TEST(TestSysMLExpressions, InvocationsAndCollectionOperators) {
     ASSERT_NE(call->instantiatedType(), nullptr);
     EXPECT_EQ(call->instantiatedType()->declaredName().value_or(""), "f");
     EXPECT_EQ(call->argument().size(), 2u);
+    // The abstract syntax: a membership of the invoked type, then one parameter membership per argument.
+    ASSERT_EQ(call->ownedRelationship().size(), 3u);
+    const auto typeMembership = std::dynamic_pointer_cast<Membership>(call->ownedRelationship()[0]);
+    ASSERT_NE(typeMembership, nullptr);
+    EXPECT_EQ(std::dynamic_pointer_cast<OwningMembership>(typeMembership), nullptr);
+    EXPECT_EQ(typeMembership->memberElement().get(), call->instantiatedType().get());
+    EXPECT_NE(std::dynamic_pointer_cast<ParameterMembership>(call->ownedRelationship()[1]), nullptr);
+    EXPECT_NE(std::dynamic_pointer_cast<ParameterMembership>(call->ownedRelationship()[2]), nullptr);
 
     const auto select = std::dynamic_pointer_cast<OperatorExpression>(sysmlAttributeValue("s->select {in x; x > 0}"));
     ASSERT_NE(select, nullptr);

@@ -4,6 +4,7 @@
 #include <sysmlv2/resolution/Retarget.h>
 #include <iostream>
 #include <algorithm>
+#include "ArgumentStructure.h"
 
 namespace {
 	using SysMLv2::Files::ReferenceKind;
@@ -22,6 +23,16 @@ namespace {
 		return recorder.reference<KerML::Entities::Feature>(name, ReferenceKind::Feature, ReferenceRole::NotAttempted, context, false, nullptr,
 			position, nullptr);
 	}
+}
+
+namespace {
+	using SysMLv2::Files::acceptsArgumentParameters;
+	using SysMLv2::Files::argumentParameterOwner;
+	using SysMLv2::Files::isArgumentParameter;
+	using SysMLv2::Files::makeArgumentParameter;
+	using SysMLv2::Files::makeConstructorResult;
+	using SysMLv2::Files::makePositionalArgument;
+	using SysMLv2::Files::makeTypeMembership;
 }
 
 namespace {
@@ -1485,7 +1496,11 @@ void SysMLv2ListenerImplementation::exitFunctionOperationExpr(SysMLv2Parser::Fun
 }
 
 void SysMLv2ListenerImplementation::enterConstructor_expression(SysMLv2Parser::Constructor_expressionContext*) {
-	ParentStack.push(std::make_shared<KerML::Entities::ConstructorExpression>());
+	const auto expr = std::make_shared<KerML::Entities::ConstructorExpression>();
+	// The result of the constructor: it exists without arguments too and owns the parameters of the arguments. It is registered when
+	// the constructor is finished (exitConstructor_expression).
+	makeConstructorResult(expr);
+	ParentStack.push(expr);
 }
 
 void SysMLv2ListenerImplementation::exitConstructor_expression(SysMLv2Parser::Constructor_expressionContext* ctx) {
@@ -1493,9 +1508,12 @@ void SysMLv2ListenerImplementation::exitConstructor_expression(SysMLv2Parser::Co
 	const auto expr = std::dynamic_pointer_cast<KerML::Entities::ConstructorExpression>(ParentStack.top());
 	if (!expr) return;
 	ParentStack.pop();
+	if (const auto result = argumentParameterOwner(expr)) {
+		Elements.push_back(result);
+		OwnershipKinds[result.get()] = SysMLv2::Files::MembershipKind::ReturnParameter;
+	}
 	if (ctx && ctx->owned_feature_typing() && ctx->owned_feature_typing()->general_type()) {
-		expr->setInstantiatedType(expressionTypeReference(ctx->owned_feature_typing()->general_type()->getText(), ctx->owned_feature_typing(),
-			[expr](const std::shared_ptr<KerML::Entities::Type>& target) { expr->setInstantiatedType(target); }));
+		setInstantiatedTypeWithMembership(expr, ctx->owned_feature_typing());
 	}
 	attachExpression(expr);
 }
@@ -1511,9 +1529,7 @@ void SysMLv2ListenerImplementation::exitInvocation_expression(SysMLv2Parser::Inv
 	ParentStack.pop();
 	if (ctx && ctx->internal_invocation_expression() && ctx->internal_invocation_expression()->owned_feature_typing() &&
 		ctx->internal_invocation_expression()->owned_feature_typing()->general_type()) {
-		expr->setInstantiatedType(expressionTypeReference(ctx->internal_invocation_expression()->owned_feature_typing()->general_type()->getText(),
-			ctx->internal_invocation_expression()->owned_feature_typing(),
-			[expr](const std::shared_ptr<KerML::Entities::Type>& target) { expr->setInstantiatedType(target); }));
+		setInstantiatedTypeWithMembership(expr, ctx->internal_invocation_expression()->owned_feature_typing());
 	}
 	attachExpression(expr);
 }
@@ -1591,11 +1607,39 @@ void SysMLv2ListenerImplementation::exitFunction_reference(SysMLv2Parser::Functi
 }
 
 void SysMLv2ListenerImplementation::enterNamed_argument(SysMLv2Parser::Named_argumentContext*) {
+	// The argument of a plain invocation or constructor is a parameter feature (with the redefinition of the named parameter and a
+	// feature value).
+	if (!ParentStack.empty() && acceptsArgumentParameters(ParentStack.top())) {
+		ParentStack.push(makeArgumentParameter());
+		return;
+	}
 	ParentStack.push(std::make_shared<KerML::Entities::Expression>());
 }
 
 void SysMLv2ListenerImplementation::exitNamed_argument(SysMLv2Parser::Named_argumentContext*) {
 	if (ParentStack.empty()) return;
+	std::shared_ptr<KerML::Entities::FeatureValue> value;
+	if (auto fv = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(ParentStack.top())) {
+		// The feature value of the parameter of an invocation or constructor (see exitParameter_redefinition).
+		ParentStack.pop();
+		value = fv;
+	}
+	// A syntax error (`f(x = )`) leaves the feature value without a value: it is dropped, the parameter keeps its redefinition.
+	if (value && !value->value()) value = nullptr;
+	if (ParentStack.empty()) return;
+	if (isArgumentParameter(ParentStack.top())) {
+		const auto parameter = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+		ParentStack.pop();
+		if (value) {
+			value->setFeatureWithValue(parameter);
+			value->setOwner(parameter);
+			parameter->appendOwnedElement(value);
+			Elements.push_back(value);
+		}
+		// Without a value the parameter is kept, but it adds no argument: argument() only holds the values that exist.
+		appendArgumentParameter(parameter, value ? value->value() : nullptr);
+		return;
+	}
 	const auto argument = std::dynamic_pointer_cast<KerML::Entities::Expression>(ParentStack.top());
 	if (!argument) return;
 	ParentStack.pop();
@@ -1608,13 +1652,18 @@ void SysMLv2ListenerImplementation::exitParameter_redefinition(SysMLv2Parser::Pa
 	if (!ctx || !ctx->qualified_name() || ParentStack.empty()) return;
 	const auto argument = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
 	if (!argument) return;
-	argument->setDeclaredName(ctx->qualified_name()->getText());
+	const bool invocationParameter = isArgumentParameter(argument);
+	// The parameter of an invocation or constructor has no name of its own (it redefines the named parameter): a name would shadow
+	// the referenced features in the scope of the invocation.
+	if (!invocationParameter) argument->setDeclaredName(ctx->qualified_name()->getText());
 	// The name of a named argument is a parameter of the invoked function: not resolved yet (see notAttemptedFeature).
 	const auto redefinition = std::make_shared<KerML::Entities::Redefinition>(
 		notAttemptedFeature(Recorder, ctx->qualified_name()->getText(), argument, ctx->qualified_name()), argument);
 	argument->appendOwnedRedefinition(redefinition);
 	argument->appendOwnedElement(redefinition);
 	Elements.push_back(redefinition);
+	// The expression that follows is the value of the parameter: it is attached to the feature value on top of the stack.
+	if (invocationParameter) ParentStack.push(std::make_shared<KerML::Entities::FeatureValue>());
 }
 
 void SysMLv2ListenerImplementation::enterSequenceExpr(SysMLv2Parser::SequenceExprContext*) {}
@@ -2127,6 +2176,13 @@ void SysMLv2ListenerImplementation::attachExpression(const std::shared_ptr<KerML
 	if (!expression) return;
 	Elements.push_back(expression);
 	if (ParentStack.empty()) return;
+	if (acceptsArgumentParameters(ParentStack.top())) {
+		// A positional argument of an invocation or constructor: a parameter feature whose feature value is the expression.
+		std::shared_ptr<KerML::Entities::Feature> parameter;
+		Elements.push_back(makePositionalArgument(expression, parameter));
+		appendArgumentParameter(parameter, expression);
+		return;
+	}
 	expression->setOwner(ParentStack.top());
 	ParentStack.top()->appendOwnedElement(expression);
 	if (auto invocation = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top())) {
@@ -2135,6 +2191,34 @@ void SysMLv2ListenerImplementation::attachExpression(const std::shared_ptr<KerML
 	if (auto value = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(ParentStack.top())) {
 		value->setValue(expression);
 	}
+}
+
+// Appends the parameter of an argument to the invocation or constructor on top of the stack, as a feature of the element that owns the
+// parameters (see argumentParameterOwner) with a ParameterMembership.
+void SysMLv2ListenerImplementation::appendArgumentParameter(const std::shared_ptr<KerML::Entities::Feature>& parameter,
+	const std::shared_ptr<KerML::Entities::Expression>& value) {
+	if (!parameter || ParentStack.empty()) return;
+	const auto host = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top());
+	const auto owner = argumentParameterOwner(ParentStack.top());
+	if (!host || !owner) return;
+	Elements.push_back(parameter);
+	parameter->setOwner(owner);
+	owner->appendOwnedElement(parameter);
+	OwnershipKinds[parameter.get()] = SysMLv2::Files::MembershipKind::Parameter;
+	if (value) host->appendArgument(value);
+}
+
+// Sets the instantiated type of the invocation or constructor and makes its first owned relationship a (non-owning) membership of the type.
+void SysMLv2ListenerImplementation::setInstantiatedTypeWithMembership(const std::shared_ptr<KerML::Entities::InstantiationExpression>& expr,
+	SysMLv2Parser::Owned_feature_typingContext* typing) {
+	const auto typeMembership = makeTypeMembership(expr);
+	expr->setInstantiatedType(expressionTypeReference(typing->general_type()->getText(), typing,
+		[expr, typeMembership](const std::shared_ptr<KerML::Entities::Type>& target) {
+			expr->setInstantiatedType(target);
+			typeMembership->setMemberElement(target);
+		}));
+	typeMembership->setMemberElement(expr->instantiatedType());
+	Elements.push_back(typeMembership);
 }
 
 void SysMLv2ListenerImplementation::finishOperatorExpression(const std::string& operatorName) {
