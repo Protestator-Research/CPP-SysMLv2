@@ -119,6 +119,16 @@ private:
         return false;
     }
 
+    /// The XMI importer builds a feature chain like the XMI has it: an anonymous Feature that owns FeatureChainings (no Feature named after the text).
+    static bool isAnonymousChain(const Element* element) {
+        if (element == nullptr || element->declaredName() || element->declaredShortName()) return false;
+        if (dynamic_cast<const KerML::Entities::Feature*>(element) == nullptr) return false;
+        for (const auto& child : const_cast<Element*>(element)->ownedElements()) {
+            if (dynamic_cast<const KerML::Entities::FeatureChaining*>(child.get()) != nullptr) return true;
+        }
+        return false;
+    }
+
     static bool canTargetChain(const std::string& type) { return type == "Subsetting" || type == "CrossSubsetting" || type == "ReferenceSubsetting"; }
 
     static std::string lastSegment(const std::string& qualifiedName) {
@@ -293,6 +303,10 @@ private:
                 const auto sourceName = ourName(source.get(), 0);
                 if (!sourceName || sourceName->empty()) {
                     ++result.skippedRelationships;
+                    continue;
+                }
+                if (canTargetChain(type) && isAnonymousChain(target.get())) {
+                    ++result.excluded["rel"][kChainReason];
                     continue;
                 }
                 if (canTargetChain(type) && chainTargets_.count(type + "|" + *sourceName + "|" + targetName(target)) != 0) {

@@ -16,6 +16,7 @@
 #include <sysmlv2/parser/SysMLv2Lexer.h>
 #include <sysmlv2/parser/SysMLv2Parser.h>
 #include <sysmlv2/ParserError.h>
+#include <sysmlv2/xmi/XmiReader.h>
 
 #include <kerml/kernel/packages/Package.h>
 #include <kerml/root/elements/Relationship.h>
@@ -163,6 +164,14 @@ namespace {
     bool endsWith(const std::string& text, const std::string& suffix) {
         return text.size() >= suffix.size() && text.compare(text.size() - suffix.size(), suffix.size(), suffix) == 0;
     }
+
+    /// The language a source is written in, judged by its name: ".kerml" is KerML, ".kermlx", ".sysmlx" and ".xmi" are XMI files, the rest SysML v2.
+    SysMLv2::Files::SourceLanguage languageOf(const std::string& name) {
+        using SysMLv2::Files::SourceLanguage;
+        if (endsWith(name, ".kerml")) return SourceLanguage::KerML;
+        if (endsWith(name, ".kermlx") || endsWith(name, ".sysmlx") || endsWith(name, ".xmi")) return SourceLanguage::Xmi;
+        return SourceLanguage::SysML;
+    }
 }
 
 namespace SysMLv2::Files {
@@ -177,9 +186,15 @@ namespace SysMLv2::Files {
             ResolutionData data;
             std::vector<std::shared_ptr<KerML::Entities::Element>> topLevel;
             std::shared_ptr<KerML::Entities::Namespace> root;
+            /// XMI sources: the document (ids, references) and the specializations it contributes to the name resolution as
+            /// references that are resolved already (rebuilt by every resolve()).
+            std::shared_ptr<XmiDocument> xmi;
+            std::vector<PendingReference> xmiGeneralizations;
         };
 
         std::vector<std::shared_ptr<Source>> sources;
+        /// The ids of the elements of all XMI sources.
+        XmiIndex xmiIndex;
         std::optional<std::chrono::steady_clock::time_point> deadline;
         std::vector<UnresolvedReferenceInfo> unresolved;
         std::vector<UnresolvedReferenceInfo> notAttempted;
@@ -301,6 +316,14 @@ namespace SysMLv2::Files {
             }
         }
 
+        void readXmi(std::shared_ptr<Source> source, const std::string& text) {
+            std::shared_ptr<XmiDocument> document = XmiReader::read(text, source->name);
+            source->errors = document->errors();
+            source->elements = document->elements();
+            source->data = document->resolutionData();
+            source->xmi = std::move(document);
+        }
+
         /// Breaks the reference cycles of the model of a source that is thrown away (see KerML::Entities::disposeLinks), so that it is
         /// freed as soon as nobody else holds a pointer to it. The elements are detached afterwards.
         static void dispose(Source& source) {
@@ -337,7 +360,9 @@ namespace SysMLv2::Files {
             std::exception_ptr failure;
             runOnLargeStack([&] {
                 try {
-                    if (language == SourceLanguage::KerML) {
+                    if (language == SourceLanguage::Xmi) {
+                        readXmi(source, text);
+                    } else if (language == SourceLanguage::KerML) {
                         parseKerML(source, text);
                     } else {
                         parseSysML(source, text);
@@ -375,11 +400,10 @@ namespace SysMLv2::Files {
     }
 
     size_t Workspace::addText(std::string text, std::string sourceName, SourceLanguage language, int level) {
-        if (language == SourceLanguage::Auto) {
-            language = endsWith(sourceName, ".kerml") ? SourceLanguage::KerML : SourceLanguage::SysML;
-        }
+        if (language == SourceLanguage::Auto) language = languageOf(sourceName);
         const size_t index = impl_->sources.size();
         impl_->sources.push_back(impl_->makeSource(text, std::move(sourceName), language, index, level));
+        if (impl_->sources.back()->xmi) impl_->xmiIndex.add(*impl_->sources.back()->xmi);
         impl_->resolver.reset();
         return index;
     }
@@ -400,17 +424,20 @@ namespace SysMLv2::Files {
         impl_->notAttempted.erase(std::remove_if(impl_->notAttempted.begin(), impl_->notAttempted.end(), belongsToSource), impl_->notAttempted.end());
 
         // The new source takes the index and the name of the old one; the other sources are not touched.
+        if (old->xmi) impl_->xmiIndex.remove(*old->xmi);
         impl_->sources[source] = std::move(replacement);
+        if (impl_->sources[source]->xmi) impl_->xmiIndex.add(*impl_->sources[source]->xmi);
         impl_->resolver.reset();
         Impl::dispose(*old);
     }
 
     size_t Workspace::addFile(const std::string& path, int level) {
-        std::ifstream in(path);
+        const SourceLanguage language = languageOf(path);
+        std::ifstream in(path, language == SourceLanguage::Xmi ? std::ios::in | std::ios::binary : std::ios::in);
         if (!in) {
             auto source = std::make_unique<Impl::Source>();
             source->name = path;
-            source->language = endsWith(path, ".kerml") ? SourceLanguage::KerML : SourceLanguage::SysML;
+            source->language = language;
             source->level = level;
             source->errors.push_back(Impl::makeError(ErrorType::INTERNAL_ERROR, "could not open file: " + path, -1, -1, path));
             impl_->sources.push_back(std::move(source));
@@ -419,7 +446,7 @@ namespace SysMLv2::Files {
         }
         std::stringstream buffer;
         buffer << in.rdbuf();
-        return addText(buffer.str(), path, SourceLanguage::Auto, level);
+        return addText(buffer.str(), path, language, level);
     }
 
     size_t Workspace::loadLibrary(const std::string& directory) {
@@ -430,7 +457,9 @@ namespace SysMLv2::Files {
         for (fs::recursive_directory_iterator it(directory, ec), end; !ec && it != end; it.increment(ec)) {
             if (!it->is_regular_file(ec)) continue;
             const auto extension = it->path().extension().string();
-            if (extension == ".kerml" || extension == ".sysml") files.push_back(it->path().string());
+            if (extension == ".kerml" || extension == ".sysml" || extension == ".kermlx" || extension == ".sysmlx" || extension == ".xmi") {
+                files.push_back(it->path().string());
+            }
         }
         std::sort(files.begin(), files.end());
         for (const auto& file : files) addFile(file);
@@ -438,12 +467,21 @@ namespace SysMLv2::Files {
     }
 
     void Workspace::resolve() {
+        // The references of the XMI sources are resolved by id over the ids of all XMI sources; what they resolve to is not resolved again
+        // by name, but the resolver learns the specializations from the XMI sources (inherited members).
+        for (auto& source : impl_->sources) {
+            if (!source->xmi) continue;
+            XmiReader::link(*source->xmi, impl_->xmiIndex);
+            source->errors = source->xmi->errors();   // (the document keeps the errors of reading and of linking)
+            source->xmiGeneralizations = source->xmi->generalizations();
+        }
         std::vector<Detail::SourceInput> inputs;
         std::vector<PendingReference*> all;
         inputs.reserve(impl_->sources.size());
         for (auto& source : impl_->sources) {
             inputs.push_back({&source->elements, &source->data, source->level});
             for (auto& reference : source->data.references) all.push_back(&reference);
+            for (auto& reference : source->xmiGeneralizations) all.push_back(&reference);
         }
         impl_->resolver = std::make_unique<Detail::Resolver>(std::move(inputs));
         try {
@@ -474,6 +512,19 @@ namespace SysMLv2::Files {
                 info.context = reference.context;
                 info.placeholder = reference.placeholder;
                 (reference.role == ReferenceRole::NotAttempted ? impl_->notAttempted : impl_->unresolved).push_back(std::move(info));
+            }
+            if (source.xmi) {
+                for (auto& reference : source.xmi->unresolved()) {
+                    UnresolvedReferenceInfo info;
+                    info.name = std::move(reference.name);
+                    info.kind = reference.kind;
+                    info.sourceName = source.name;
+                    info.line = reference.line;
+                    info.source = index;
+                    info.context = std::move(reference.context);
+                    info.placeholder = std::move(reference.placeholder);
+                    impl_->unresolved.push_back(std::move(info));
+                }
             }
         }
     }

@@ -169,6 +169,7 @@ add_library(sysml
         ${USE_CASES_HEADER}
         ${VERIFICATION_CASES_HEADER}
         ${VIEWS_HEADER}
+        src/sysml/AbstractSyntax.cpp
         src/sysml/flows/FlowDefinition.cpp
         src/sysml/flows/FlowUsage.cpp
         src/sysml/flows/SuccessionFlowUsage.cpp

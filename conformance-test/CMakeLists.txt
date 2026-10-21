@@ -167,3 +167,19 @@ target_compile_definitions(conformance-abstract-syntax PRIVATE
         CONFORMANCE_EXPECTED_XMI_DIFFS_FILE="${CMAKE_CURRENT_SOURCE_DIR}/expected_xmi_diffs.txt")
 add_test(NAME conformance-abstract-syntax COMMAND conformance-abstract-syntax)
 set_tests_properties(conformance-abstract-syntax PROPERTIES LABELS abstract-syntax)
+
+# XMI import: the XMI files of the pilot implementation (resources/sysml.library.xmi) are read by SysMLv2::Files::XmiReader into a Workspace and
+# compared with the same files through the oracle of the abstract-syntax suite (src/support/ModelDiff.h); testdata/xmi/negative holds the
+# malformed and inconsistent files whose ParserErrors are checked.
+add_executable(conformance-xmi
+        src/xmi/TestXmiImport.cpp
+        src/support/TestHelpers.h
+        src/support/XmiReader.h
+        src/support/ModelDiff.h)
+target_link_libraries(conformance-xmi ${CONFORMANCE_LIBRARY_LINK_LIBS})
+target_include_directories(conformance-xmi PRIVATE ${CONFORMANCE_LIBRARY_INCLUDE_DIRS} ../sysml/include)
+target_compile_definitions(conformance-xmi PRIVATE
+        SYSML_LIBRARY_XMI_DIR="${CMAKE_SOURCE_DIR}/resources/sysml.library.xmi"
+        XMI_NEGATIVE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/testdata/xmi/negative")
+add_test(NAME conformance-xmi COMMAND conformance-xmi)
+set_tests_properties(conformance-xmi PROPERTIES LABELS xmi)

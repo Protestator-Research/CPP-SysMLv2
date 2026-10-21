@@ -70,6 +70,14 @@ namespace KerML::Entities {
         [[nodiscard]] std::string elementId() const;
 
         /**
+         * Replaces the generated element id by the id of an imported model (for example the elementId of an XMI file). The id of an
+         * element is fixed by definition once it is part of a model: call this directly after the creation of the element, before it is
+         * stored anywhere by id.
+         * @param elementId The wanted element id.
+         */
+        void assignElementId(const boost::uuids::uuid& elementId);
+
+        /**
          * Gives acces to the ElementId as a uuid. This makes the internal comparison eayser.
          * @return Element id of the Element as a uuid.
          */
@@ -303,7 +311,7 @@ namespace KerML::Entities {
          * In this case the ElementId is stored as a UUID, against the standard. Allowing us to address even more elements in an
          * ElementId is according to the KerML standard not allowed to change.
          */
-        const boost::uuids::uuid ElementId;
+        boost::uuids::uuid ElementId;
 
         /**
          * Alternative descriptors of the specific element.

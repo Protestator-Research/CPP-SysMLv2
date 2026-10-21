@@ -32,11 +32,16 @@ namespace KerML::Entities {
 
 namespace SysMLv2::Files {
 
-    /// The language of a source. Auto picks KerML for names ending in ".kerml" and SysML v2 for everything else.
+    /// The language of a source. Auto picks KerML for names ending in ".kerml", the XMI serialization for names ending in ".kermlx",
+    /// ".sysmlx" or ".xmi", and SysML v2 for everything else.
     enum class SourceLanguage {
         Auto,
         KerML,
-        SysML
+        SysML,
+        /// The XMI serialization of the pilot implementation (see XmiReader). The ids of its elements are indexed by the workspace, so
+        /// that references between XMI sources (hrefs such as "Base.kermlx#<id>") are resolved by resolve(); references that are
+        /// resolved in the file are not resolved again by name.
+        Xmi
     };
 
     /// Thrown by addText(), addFile(), replaceSource() (the workspace is unchanged) and resolve() (what was resolved stays resolved) when the
@@ -90,8 +95,8 @@ namespace SysMLv2::Files {
         Workspace& operator=(const Workspace&) = delete;
 
         /**
-         * Parses the file at @p path (KerML for ".kerml", SysML v2 otherwise). A file that cannot be opened becomes a source
-         * without elements and with one error.
+         * Parses the file at @p path (KerML for ".kerml", XMI for ".kermlx", ".sysmlx" and ".xmi", SysML v2 otherwise). A file that
+         * cannot be opened becomes a source without elements and with one error.
          * @return the index of the new source.
          */
         size_t addFile(const std::string& path, int level = 0);
@@ -140,7 +145,8 @@ namespace SysMLv2::Files {
         void replaceSource(size_t source, std::string text, SourceLanguage language = SourceLanguage::Auto);
 
         /**
-         * Parses every ".kerml" and ".sysml" file below @p directory (recursively, in sorted path order).
+         * Parses every ".kerml" and ".sysml" file and every ".kermlx", ".sysmlx" and ".xmi" file below @p directory (recursively, in
+         * sorted path order).
          * @return the number of files added.
          */
         size_t loadLibrary(const std::string& directory);
@@ -155,7 +161,8 @@ namespace SysMLv2::Files {
         /// Removes the parse deadline.
         void clearParseDeadline();
 
-        /// Resolves all pending references of all sources. May be called again after more sources were added.
+        /// Resolves all pending references of all sources: the names of the textual sources, the ids and hrefs of the XMI sources.
+        /// May be called again after more sources were added.
         void resolve();
 
         /// Number of loaded sources.

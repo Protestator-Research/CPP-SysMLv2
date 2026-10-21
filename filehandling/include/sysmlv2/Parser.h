@@ -60,8 +60,21 @@ namespace SysMLv2::Files {
 		static std::pair<std::vector<std::shared_ptr<KerML::Entities::Element>>,std::vector<std::shared_ptr<ParserError>>> parseSysMLv2(std::string text, std::string sourceName = "", bool reportUnresolvedAsWarnings = false);
 
 		/**
-		 * Reads the file at @p path and parses it with parseKerML or parseSysMLv2, chosen by its extension
-		 * (".kerml" vs. everything else, treated as SysML v2). The file's path is used as the ParserError source name.
+		 * Reads the XMI serialization of a model (the files of the pilot implementation, for example resources/sysml.library.xmi).
+		 * The text is a workspace of one source: references to other files (hrefs) cannot be resolved here and are reported as
+		 * unresolved; load the files into a SysMLv2::Files::Workspace to resolve them.
+		 * @param text XMI text that should be read.
+		 * @param sourceName Optional file name / source identifier, recorded on any ParserError produced.
+		 * @param reportUnresolvedAsWarnings see parseKerML: every reference that no element of the text defines becomes a WARNING.
+		 * @return A pair of the vectors of the created Elements (the root namespace first), but also the Parser Errors (malformed XML,
+		 *         unknown or abstract metaclasses, invalid values, ...).
+		 */
+		static std::pair<std::vector<std::shared_ptr<KerML::Entities::Element>>,std::vector<std::shared_ptr<ParserError>>> parseXmi(std::string text, std::string sourceName = "", bool reportUnresolvedAsWarnings = false);
+
+		/**
+		 * Reads the file at @p path and parses it with parseKerML, parseXmi or parseSysMLv2, chosen by its extension
+		 * (".kerml"; ".kermlx", ".sysmlx" and ".xmi"; everything else is treated as SysML v2). The file's path is used as the
+		 * ParserError source name.
 		 * @param path Path to the file to parse.
 		 * @param reportUnresolvedAsWarnings see parseKerML.
 		 * @return A pair of the vectors of the parsed Elements, but also the Parser Errors. On a file that cannot be
