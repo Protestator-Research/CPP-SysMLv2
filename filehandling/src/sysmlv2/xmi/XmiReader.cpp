@@ -159,13 +159,6 @@ namespace SysMLv2::Files {
         private:
             std::vector<size_t> starts_;
         };
-
-        bool isWhitespace(const char* text) {
-            for (; *text != '\0'; ++text) {
-                if (std::isspace(static_cast<unsigned char>(*text)) == 0) return false;
-            }
-            return true;
-        }
     }
 
     // -----------------------------------------------------------------------------------------------------------------
