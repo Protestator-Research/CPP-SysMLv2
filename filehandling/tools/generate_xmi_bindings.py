@@ -5,7 +5,9 @@ Reads kerml/model/abstract_syntax.json and sysml/model/abstract_syntax.json (the
 model classes. For every concrete KerML and SysML metaclass the output holds
   - a factory (KerML: std::make_shared of the hand-written class, SysML: SysMLv2::Entities::createRepresentation), and
   - a table of its properties (inherited ones included) that the importer reads from an XMI file: name, kind (bool / integer / real /
-    string / enumeration / reference), multiplicity and a setter that works on KerML::Entities::Element& through dynamic_cast.
+    string / enumeration / reference), multiplicity, a setter that works on KerML::Entities::Element& through dynamic_cast (used by
+    the XMI reader) and the matching getters (used by the XMI writer): the XMI text of a value (none when it equals the metamodel
+    default, so that it is not written) and the targets of a reference.
 Only stored (non-derived) properties are bound, and only if the C++ class has a setter for them; derived properties are recomputed and
 are ignored when they occur in an XMI file. The containment properties (ownedRelationship, ownedRelatedElement, ...) and the elementId are
 structure and are handled by the importer itself (see SKIPPED). Setters whose name does not follow the pattern set<Property> are
@@ -35,6 +37,11 @@ SETTER_NAMES = {
     'originalType': 'setOrginalType',
     'conjugatedType': 'setConjungatedType',
     'isImpliedIncluded': 'setImpliedIncluded',
+}
+
+# Getters that are not called like the property: property -> getter name.
+GETTER_NAMES = {
+    'operator': 'operatorName',
 }
 
 SCALARS = {'bool': 'Boolean', 'std::int64_t': 'Integer', 'int': 'Integer', 'long': 'Integer', 'double': 'Real', 'std::string': 'String'}
@@ -134,6 +141,33 @@ def find_setter(c, prop, many):
     return None
 
 
+def find_getter(c, prop):
+    """The class that declares the parameterless getter of the property (nearest class first, like find_setter), and its name, or None."""
+    getter = GETTER_NAMES.get(prop, prop)
+    for owner in linearize(c):
+        if re.search(r'\b' + getter + r'\s*\(\s*\)\s*(?:const)?\s*(?:override|final|noexcept)?\s*[;{]', owner.text):
+            return owner, getter
+    return None
+
+
+def default_text(p, scalar):
+    """The metamodel default of a value property as the XMI text, or None if there is none (the value is always written)."""
+    default = p.get('default')
+    if scalar == 'Boolean':
+        return default or 'false'
+    if scalar == 'Integer':
+        return default or '0'
+    if scalar == 'Real':
+        return '%g' % float(default) if default else '0'
+    if scalar == 'String':
+        return default or ''
+    return default
+
+
+def cpp_literal(text):
+    return 'nullptr' if text is None else json.dumps(text)
+
+
 def placeholder_kind(target):
     """The placeholder (makePlaceholder) that is-a target, or None."""
     if target == 'Element':
@@ -172,6 +206,10 @@ def enum_parser(enum_name):
     for lit, value in mapping.items():
         lines.append('    if (text == "' + lit + '") { out = ' + value + '; return true; }')
     lines += ['    return false;', '}', '']
+    lines += ['std::string format' + enum_name + '(' + ctype + ' value) {', '    switch (value) {']
+    for lit, value in mapping.items():
+        lines.append('        case ' + value + ': return "' + lit + '";')
+    lines += ['    }', '    return "";', '}', '']
     return '\n'.join(lines)
 
 
@@ -199,6 +237,12 @@ def binding_for(declaring, p):
     ident = 'p_' + declaring.name + '_' + prop
     target_class = owner.qualified
     call = 'as<' + target_class + '>(e).' + target_class + '::' + setter
+    got = find_getter(declaring, prop)
+    if got is None:
+        GAPS.append(declaring.name + '.' + prop + ' (no getter)')
+        return None
+    # (the getters of the hand-written classes are not const)
+    read = 'as<' + got[0].qualified + '>(const_cast<Element&>(e)).' + got[0].qualified + '::' + got[1] + '()'
     multiplicity = 'true' if many else 'false'
 
     def head(kind, target, placeholder, can_placeholder):
@@ -229,7 +273,8 @@ def binding_for(declaring, p):
             code += ['        std::shared_ptr<' + target.qualified + '> typed;',
                      '        if (!castReference(values.front(), typed, "' + target.name + '", error)) return false;',
                      '        ' + call + '(typed);']
-        code += ['        return true;', '    }};', '']
+        code += ['        return true;', '    }, nullptr,',
+                 '    [](const Element& e) -> std::vector<ElementPtr> { return toElements(' + read + '); }};', '']
         return ident, '\n'.join(code)
     if enum or inner in ENUMS:
         name = enum or inner
@@ -240,7 +285,9 @@ def binding_for(declaring, p):
                 '        if (!parse' + name + '(text, value)) return false;',
                 '        ' + call + '(value);',
                 '        return true;',
-                '    }, nullptr};', '']
+                '    }, nullptr,',
+                '    [](const Element& e) { return valueText(' + read + ', format' + name + ', ' + cpp_literal(default_text(p, None)) + '); },',
+                '    nullptr};', '']
         return ident, '\n'.join(code)
     if inner in SCALARS:
         scalar = SCALARS[inner]
@@ -252,7 +299,9 @@ def binding_for(declaring, p):
             body += ['        value = text;']
         body += ['        ' + call + '(value);', '        return true;']
         code = [head(scalar, '', 'Element', 'false') + '',
-                '    [](Element& e, const std::string& text) {'] + body + ['    }, nullptr};', '']
+                '    [](Element& e, const std::string& text) {'] + body + ['    }, nullptr,',
+                 '    [](const Element& e) { return valueText(' + read + ', format' + scalar + ', ' + cpp_literal(default_text(p, scalar)) + '); },',
+                 '    nullptr};', '']
         return ident, '\n'.join(code)
     GAPS.append(declaring.name + '.' + prop + ' (parameter ' + parameter + ')')
     return None
@@ -331,8 +380,7 @@ def build():
                     idents.append('&' + bindings[(ancestor.name, p['name'])][0])
         tables.append((c, idents))
     for c, idents in tables:
-        if not c.abstract:
-            out.append('const PropertyBinding* const props_' + c.name + '[] = {' + ', '.join(idents + ['nullptr']) + '};\n')
+        out.append('const PropertyBinding* const props_' + c.name + '[] = {' + ', '.join(idents + ['nullptr']) + '};\n')
     out.append('\n')
     for c, _ in tables:
         if c.abstract:
@@ -346,7 +394,8 @@ def build():
     out.append('\nconst MetaclassBinding metaclassTable[] = {\n')
     for c, idents in tables:
         if c.abstract:
-            out.append('    {"' + c.name + '", true, nullptr, nullptr, 0},\n')
+            # (the properties of an abstract metaclass are there for the writer, which writes an instance of it as a concrete one)
+            out.append('    {"' + c.name + '", true, nullptr, props_' + c.name + ', ' + str(len(idents)) + '},\n')
         else:
             out.append('    {"' + c.name + '", false, &create_' + c.name + ', props_' + c.name + ', ' + str(len(idents)) + '},\n')
     out.append('};\n\n}  // namespace\n\n')

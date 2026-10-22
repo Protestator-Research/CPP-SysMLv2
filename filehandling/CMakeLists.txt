@@ -31,7 +31,8 @@ set(OWNERSHIP_HEADER
         include/sysmlv2/ownership/Ownership.h)
 
 set(XMI_HEADER
-        include/sysmlv2/xmi/XmiReader.h)
+        include/sysmlv2/xmi/XmiReader.h
+        include/sysmlv2/xmi/XmiWriter.h)
 
 set(KERML_PARSER_HEADER
         include/kerml/ErrorTypes.h
@@ -85,6 +86,8 @@ add_library(sysmlv2parser
         src/sysmlv2/xmi/XmiBindings.h
         src/sysmlv2/xmi/XmiBindings.generated.cpp
         src/sysmlv2/xmi/XmiReader.cpp
+        src/sysmlv2/xmi/XmiWriter.cpp
+        src/sysmlv2/xmi/XmiText.h
         src/kerml/parser/KerMlListenerImplementation.cpp)
 
 #if((EXISTS antlr4_shared) OR (MSVC))

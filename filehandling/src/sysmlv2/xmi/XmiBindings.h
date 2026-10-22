@@ -11,9 +11,13 @@
 // External Classes
 //---------------------------------------------------------
 #include <cerrno>
+#include <cmath>
 #include <cstdint>
 #include <cstdlib>
+#include <charconv>
+#include <limits>
 #include <memory>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <type_traits>
@@ -63,6 +67,11 @@ namespace SysMLv2::Files::Xmi {
         /// Reference: stores the targets (exactly one for a single valued property); false (and an error text) if a target does not
         /// have the metaclass the property expects.
         bool (*setReferences)(KerML::Entities::Element& element, const std::vector<ElementPtr>& targets, std::string& error);
+        /// Boolean, Integer, Real, String, Enumeration: the value as it is written in an XMI file; nullopt if the property has no value
+        /// or the value equals the default of the metamodel (it is not written then).
+        std::optional<std::string> (*getValue)(const KerML::Entities::Element& element);
+        /// Reference: the targets in order (empty if there are none). Placeholders of unresolved references are included, see isUnresolved().
+        std::vector<ElementPtr> (*getReferences)(const KerML::Entities::Element& element);
     };
 
     /// A concrete or abstract metaclass of KerML or SysML with its factory and the properties it has (inherited ones included).
@@ -123,12 +132,79 @@ namespace SysMLv2::Files::Xmi {
 
     inline bool parseReal(const std::string& text, double& value) {
         if (text.empty()) return false;
+        // (the xsd:double literals of the special values)
+        if (text == "INF" || text == "+INF") {
+            value = std::numeric_limits<double>::infinity();
+            return true;
+        }
+        if (text == "-INF") {
+            value = -std::numeric_limits<double>::infinity();
+            return true;
+        }
+        if (text == "NaN") {
+            value = std::numeric_limits<double>::quiet_NaN();
+            return true;
+        }
         errno = 0;
         char* end = nullptr;
         const double parsed = std::strtod(text.c_str(), &end);
         if (errno != 0 || end == nullptr || *end != '\0') return false;
         value = parsed;
         return true;
+    }
+
+    // ---------------------------------------------------------------------------------------------------------------
+    // Helpers of the generated getters (XMI writer)
+    // ---------------------------------------------------------------------------------------------------------------
+
+    inline std::string formatBoolean(bool value) { return value ? "true" : "false"; }
+
+    inline std::string formatInteger(long long value) { return std::to_string(value); }
+
+    /// The shortest text that reads back as the same double; the special values as the xsd:double literals INF, -INF and NaN.
+    inline std::string formatReal(double value) {
+        if (std::isnan(value)) return "NaN";
+        if (std::isinf(value)) return value < 0 ? "-INF" : "INF";
+        char buffer[64];
+        const auto result = std::to_chars(buffer, buffer + sizeof(buffer), value);
+        return std::string(buffer, result.ptr);
+    }
+
+    inline std::string formatString(const std::string& value) { return value; }
+
+    /// The XMI text of a value, or nullopt if it equals the default (@p defaultText, null: there is none).
+    template <class T, class Format>
+    std::optional<std::string> valueText(const T& value, Format format, const char* defaultText) {
+        std::string text = format(value);
+        if (defaultText != nullptr && text == defaultText) return std::nullopt;
+        return text;
+    }
+
+    template <class T, class Format>
+    std::optional<std::string> valueText(const std::optional<T>& value, Format format, const char* defaultText) {
+        if (!value) return std::nullopt;
+        return valueText(*value, format, defaultText);
+    }
+
+    /// The targets of a reference property, whichever way the getter of the class delivers them.
+    template <class T>
+    std::vector<ElementPtr> toElements(const std::shared_ptr<T>& value) {
+        return value ? std::vector<ElementPtr>{value} : std::vector<ElementPtr>{};
+    }
+
+    template <class T>
+    std::vector<ElementPtr> toElements(const std::optional<std::shared_ptr<T>>& value) {
+        return value ? toElements(*value) : std::vector<ElementPtr>{};
+    }
+
+    template <class T>
+    std::vector<ElementPtr> toElements(const std::vector<std::shared_ptr<T>>& values) {
+        std::vector<ElementPtr> result;
+        result.reserve(values.size());
+        for (const auto& value : values) {
+            if (value) result.push_back(value);
+        }
+        return result;
     }
 
     /// Casts a reference target to the class a setter expects; on failure @p error names the expected metaclass.

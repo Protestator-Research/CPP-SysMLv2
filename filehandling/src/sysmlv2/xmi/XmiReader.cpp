@@ -25,6 +25,7 @@
 #include <sysmlv2/xmi/XmiReader.h>
 
 #include "XmiBindings.h"
+#include "XmiText.h"
 //---------------------------------------------------------
 
 namespace SysMLv2::Files {
@@ -55,6 +56,54 @@ namespace SysMLv2::Files {
                 }
             }
             return out;
+        }
+
+        /// The file part of an href, for display (the target of a reference is found by its id, the file only names it in messages): relative to the
+        /// directory of the file @p name that holds the href, normalised, with "/" as separator. The file part is UTF-8 as the writer makes it; an
+        /// href from another producer can hold bytes that are no UTF-8 (a percent escape of Latin-1, a raw byte), which the filesystem library
+        /// refuses to turn into a path (std::system_error). Such a part, and anything else the library refuses, is joined and normalised as plain
+        /// text instead: this never throws.
+        std::string displayPath(const std::string& name, const std::string& file) {
+            if (Xmi::isValidUtf8(file)) {
+                try {
+                    const std::filesystem::path base = std::filesystem::path(name).parent_path();
+                    const auto normalized = (base / std::filesystem::path(std::u8string(file.begin(), file.end()))).lexically_normal().generic_u8string();
+                    return std::string(normalized.begin(), normalized.end());
+                } catch (const std::exception&) {
+                    // (plain text below)
+                }
+            }
+            std::string joined = file;
+            std::replace(joined.begin(), joined.end(), '\\', '/');
+            const bool absolute = !joined.empty() && (joined[0] == '/' || (joined.size() >= 2 && joined[1] == ':'));
+            if (!absolute) {
+                const auto slash = name.find_last_of("/\\");
+                if (slash != std::string::npos) {
+                    std::string directory = name.substr(0, slash + 1);
+                    std::replace(directory.begin(), directory.end(), '\\', '/');
+                    joined.insert(0, directory);
+                }
+            }
+            // ("." and ".." segments; the leading separators of an absolute path stay)
+            const size_t lead = joined.find_first_not_of('/');
+            const std::string prefix = joined.substr(0, lead == std::string::npos ? joined.size() : lead);
+            const std::string rest = joined.substr(prefix.size());
+            std::vector<std::string> segments;
+            for (size_t position = 0; position <= rest.size();) {
+                size_t end = rest.find('/', position);
+                if (end == std::string::npos) end = rest.size();
+                const std::string segment = rest.substr(position, end - position);
+                position = end + 1;
+                if (segment.empty() || segment == ".") continue;
+                if (segment == ".." && !segments.empty() && segments.back() != "..") {
+                    segments.pop_back();
+                } else if (segment != ".." || prefix.empty()) {
+                    segments.push_back(segment);
+                }
+            }
+            std::string result = prefix;
+            for (size_t i = 0; i < segments.size(); ++i) result += (i == 0 ? "" : "/") + segments[i];
+            return result;
         }
 
         std::vector<std::string> splitWords(const std::string& text) {
@@ -287,10 +336,20 @@ namespace SysMLv2::Files {
                     return token;
                 }
                 token.id = word.substr(hash + 1);
-                const std::string file = urlDecode(word.substr(0, hash));
+                std::string file = urlDecode(word.substr(0, hash));
                 if (!file.empty()) {
-                    const std::filesystem::path base = std::filesystem::path(D.name).parent_path();
-                    token.file = (base / std::filesystem::path(file)).lexically_normal().generic_string();
+                    // (a file URI, the form the writer uses for a file it cannot reach by a relative path: "file:///D:/dir/f.sysmlx", "file://server/share/f.sysmlx"
+                    // and "file:///dir/f.sysmlx")
+                    if (file.compare(0, 7, "file://") == 0) {
+                        file.erase(0, 7);
+                        const bool drive = file.size() >= 3 && file[0] == '/' && std::isalpha(static_cast<unsigned char>(file[1])) != 0 && file[2] == ':';
+                        if (drive) {
+                            file.erase(0, 1);
+                        } else if (file.empty() || file[0] != '/') {
+                            file.insert(0, "//");
+                        }
+                    }
+                    token.file = displayPath(D.name, file);
                 }
                 token.display = (token.file.empty() ? std::string() : token.file) + "#" + token.id;
                 return token;

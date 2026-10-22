@@ -21,16 +21,41 @@ bool parseFeatureDirectionKind(const std::string& text, KerML::Entities::Feature
     return false;
 }
 
+std::string formatFeatureDirectionKind(KerML::Entities::FeatureDirectionKind value) {
+    switch (value) {
+        case KerML::Entities::IN: return "in";
+        case KerML::Entities::IN_OUT: return "inout";
+        case KerML::Entities::OUT: return "out";
+    }
+    return "";
+}
+
 bool parsePortionKind(const std::string& text, SysMLv2::Entities::PortionKind& out) {
     if (text == "timeslice") { out = SysMLv2::Entities::PortionKind::timeslice; return true; }
     if (text == "snapshot") { out = SysMLv2::Entities::PortionKind::snapshot; return true; }
     return false;
 }
 
+std::string formatPortionKind(SysMLv2::Entities::PortionKind value) {
+    switch (value) {
+        case SysMLv2::Entities::PortionKind::timeslice: return "timeslice";
+        case SysMLv2::Entities::PortionKind::snapshot: return "snapshot";
+    }
+    return "";
+}
+
 bool parseRequirementConstraintKind(const std::string& text, SysMLv2::Entities::RequirementConstraintKind& out) {
     if (text == "assumption") { out = SysMLv2::Entities::RequirementConstraintKind::assumption; return true; }
     if (text == "requirement") { out = SysMLv2::Entities::RequirementConstraintKind::requirement; return true; }
     return false;
+}
+
+std::string formatRequirementConstraintKind(SysMLv2::Entities::RequirementConstraintKind value) {
+    switch (value) {
+        case SysMLv2::Entities::RequirementConstraintKind::assumption: return "assumption";
+        case SysMLv2::Entities::RequirementConstraintKind::requirement: return "requirement";
+    }
+    return "";
 }
 
 bool parseStateSubactionKind(const std::string& text, SysMLv2::Entities::StateSubactionKind& out) {
@@ -40,11 +65,29 @@ bool parseStateSubactionKind(const std::string& text, SysMLv2::Entities::StateSu
     return false;
 }
 
+std::string formatStateSubactionKind(SysMLv2::Entities::StateSubactionKind value) {
+    switch (value) {
+        case SysMLv2::Entities::StateSubactionKind::entry: return "entry";
+        case SysMLv2::Entities::StateSubactionKind::do_: return "do";
+        case SysMLv2::Entities::StateSubactionKind::exit: return "exit";
+    }
+    return "";
+}
+
 bool parseTransitionFeatureKind(const std::string& text, SysMLv2::Entities::TransitionFeatureKind& out) {
     if (text == "trigger") { out = SysMLv2::Entities::TransitionFeatureKind::trigger; return true; }
     if (text == "guard") { out = SysMLv2::Entities::TransitionFeatureKind::guard; return true; }
     if (text == "effect") { out = SysMLv2::Entities::TransitionFeatureKind::effect; return true; }
     return false;
+}
+
+std::string formatTransitionFeatureKind(SysMLv2::Entities::TransitionFeatureKind value) {
+    switch (value) {
+        case SysMLv2::Entities::TransitionFeatureKind::trigger: return "trigger";
+        case SysMLv2::Entities::TransitionFeatureKind::guard: return "guard";
+        case SysMLv2::Entities::TransitionFeatureKind::effect: return "effect";
+    }
+    return "";
 }
 
 bool parseTriggerKind(const std::string& text, SysMLv2::Entities::TriggerKind& out) {
@@ -54,11 +97,29 @@ bool parseTriggerKind(const std::string& text, SysMLv2::Entities::TriggerKind& o
     return false;
 }
 
+std::string formatTriggerKind(SysMLv2::Entities::TriggerKind value) {
+    switch (value) {
+        case SysMLv2::Entities::TriggerKind::when: return "when";
+        case SysMLv2::Entities::TriggerKind::at: return "at";
+        case SysMLv2::Entities::TriggerKind::after: return "after";
+    }
+    return "";
+}
+
 bool parseVisibilityKind(const std::string& text, KerML::Entities::VisibilityKind& out) {
     if (text == "private") { out = KerML::Entities::PRIVATE; return true; }
     if (text == "protected") { out = KerML::Entities::PROTECTED; return true; }
     if (text == "public") { out = KerML::Entities::PUBLIC; return true; }
     return false;
+}
+
+std::string formatVisibilityKind(KerML::Entities::VisibilityKind value) {
+    switch (value) {
+        case KerML::Entities::PRIVATE: return "private";
+        case KerML::Entities::PROTECTED: return "protected";
+        case KerML::Entities::PUBLIC: return "public";
+    }
+    return "";
 }
 
 const PropertyBinding p_Annotation_annotatedElement = {"annotatedElement", PropertyKind::Reference, false, "Annotation", "Element", ReferenceKind::Element, true, nullptr,
@@ -67,7 +128,8 @@ const PropertyBinding p_Annotation_annotatedElement = {"annotatedElement", Prope
         if (!castReference(values.front(), typed, "Element", error)) return false;
         as<KerML::Entities::Annotation>(e).KerML::Entities::Annotation::setAnnotatedElement(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Annotation>(const_cast<Element&>(e)).KerML::Entities::Annotation::annotatedElement()); }};
 
 const PropertyBinding p_CollectExpression_operator = {"operator", PropertyKind::String, false, "CollectExpression", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -75,7 +137,9 @@ const PropertyBinding p_CollectExpression_operator = {"operator", PropertyKind::
         value = text;
         as<KerML::Entities::CollectExpression>(e).KerML::Entities::CollectExpression::setOperatorName(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::OperatorExpression>(const_cast<Element&>(e)).KerML::Entities::OperatorExpression::operatorName(), formatString, "collect"); },
+    nullptr};
 
 const PropertyBinding p_Comment_body = {"body", PropertyKind::String, false, "Comment", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -83,7 +147,9 @@ const PropertyBinding p_Comment_body = {"body", PropertyKind::String, false, "Co
         value = text;
         as<KerML::Entities::Comment>(e).KerML::Entities::Comment::setBody(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Comment>(const_cast<Element&>(e)).KerML::Entities::Comment::body(), formatString, ""); },
+    nullptr};
 
 const PropertyBinding p_Comment_locale = {"locale", PropertyKind::String, false, "Comment", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -91,7 +157,9 @@ const PropertyBinding p_Comment_locale = {"locale", PropertyKind::String, false,
         value = text;
         as<KerML::Entities::Comment>(e).KerML::Entities::Comment::setLocale(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Comment>(const_cast<Element&>(e)).KerML::Entities::Comment::locale(), formatString, ""); },
+    nullptr};
 
 const PropertyBinding p_ConjugatedPortTyping_conjugatedPortDefinition = {"conjugatedPortDefinition", PropertyKind::Reference, false, "ConjugatedPortTyping", "ConjugatedPortDefinition", ReferenceKind::Element, false, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -99,7 +167,8 @@ const PropertyBinding p_ConjugatedPortTyping_conjugatedPortDefinition = {"conjug
         if (!castReference(values.front(), typed, "ConjugatedPortDefinition", error)) return false;
         as<SysMLv2::Entities::ConjugatedPortTyping>(e).SysMLv2::Entities::ConjugatedPortTyping::setConjugatedPortDefinition(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<SysMLv2::Entities::ConjugatedPortTyping>(const_cast<Element&>(e)).SysMLv2::Entities::ConjugatedPortTyping::conjugatedPortDefinition()); }};
 
 const PropertyBinding p_Conjugation_conjugatedType = {"conjugatedType", PropertyKind::Reference, false, "Conjugation", "Type", ReferenceKind::Type, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -107,7 +176,8 @@ const PropertyBinding p_Conjugation_conjugatedType = {"conjugatedType", Property
         if (!castReference(values.front(), typed, "Type", error)) return false;
         as<KerML::Entities::Conjugation>(e).KerML::Entities::Conjugation::setConjungatedType(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Conjugation>(const_cast<Element&>(e)).KerML::Entities::Conjugation::conjugatedType()); }};
 
 const PropertyBinding p_Conjugation_originalType = {"originalType", PropertyKind::Reference, false, "Conjugation", "Type", ReferenceKind::Type, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -115,7 +185,8 @@ const PropertyBinding p_Conjugation_originalType = {"originalType", PropertyKind
         if (!castReference(values.front(), typed, "Type", error)) return false;
         as<KerML::Entities::Conjugation>(e).KerML::Entities::Conjugation::setOrginalType(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Conjugation>(const_cast<Element&>(e)).KerML::Entities::Conjugation::originalType()); }};
 
 const PropertyBinding p_ConnectionDefinition_isSufficient = {"isSufficient", PropertyKind::Boolean, false, "ConnectionDefinition", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -123,7 +194,9 @@ const PropertyBinding p_ConnectionDefinition_isSufficient = {"isSufficient", Pro
         if (!parseBoolean(text, value)) return false;
         as<SysMLv2::Entities::ConnectionDefinition>(e).SysMLv2::Entities::ConnectionDefinition::setIsSufficient(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::ConnectionDefinition>(const_cast<Element&>(e)).SysMLv2::Entities::ConnectionDefinition::isSufficient(), formatBoolean, "true"); },
+    nullptr};
 
 const PropertyBinding p_CrossSubsetting_crossedFeature = {"crossedFeature", PropertyKind::Reference, false, "CrossSubsetting", "Feature", ReferenceKind::Feature, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -131,7 +204,8 @@ const PropertyBinding p_CrossSubsetting_crossedFeature = {"crossedFeature", Prop
         if (!castReference(values.front(), typed, "Feature", error)) return false;
         as<KerML::Entities::CrossSubsetting>(e).KerML::Entities::CrossSubsetting::setCrossedFeature(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::CrossSubsetting>(const_cast<Element&>(e)).KerML::Entities::CrossSubsetting::crossedFeature()); }};
 
 const PropertyBinding p_Definition_isVariation = {"isVariation", PropertyKind::Boolean, false, "Definition", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -139,7 +213,9 @@ const PropertyBinding p_Definition_isVariation = {"isVariation", PropertyKind::B
         if (!parseBoolean(text, value)) return false;
         as<SysMLv2::Entities::Definition>(e).SysMLv2::Entities::Definition::setIsVariation(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::Definition>(const_cast<Element&>(e)).SysMLv2::Entities::Definition::isVariation(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_Dependency_client = {"client", PropertyKind::Reference, true, "Dependency", "Element", ReferenceKind::Element, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -151,7 +227,8 @@ const PropertyBinding p_Dependency_client = {"client", PropertyKind::Reference, 
         }
         as<KerML::Entities::Dependency>(e).KerML::Entities::Dependency::setClient(std::move(typed));
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Dependency>(const_cast<Element&>(e)).KerML::Entities::Dependency::client()); }};
 
 const PropertyBinding p_Dependency_supplier = {"supplier", PropertyKind::Reference, true, "Dependency", "Element", ReferenceKind::Element, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -163,7 +240,8 @@ const PropertyBinding p_Dependency_supplier = {"supplier", PropertyKind::Referen
         }
         as<KerML::Entities::Dependency>(e).KerML::Entities::Dependency::setSupplier(std::move(typed));
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Dependency>(const_cast<Element&>(e)).KerML::Entities::Dependency::supplier()); }};
 
 const PropertyBinding p_Differencing_differencingType = {"differencingType", PropertyKind::Reference, false, "Differencing", "Type", ReferenceKind::Type, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -171,7 +249,8 @@ const PropertyBinding p_Differencing_differencingType = {"differencingType", Pro
         if (!castReference(values.front(), typed, "Type", error)) return false;
         as<KerML::Entities::Differencing>(e).KerML::Entities::Differencing::setDifferencingType(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Differencing>(const_cast<Element&>(e)).KerML::Entities::Differencing::differencingType()); }};
 
 const PropertyBinding p_Disjoining_disjoiningType = {"disjoiningType", PropertyKind::Reference, false, "Disjoining", "Type", ReferenceKind::Type, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -179,7 +258,8 @@ const PropertyBinding p_Disjoining_disjoiningType = {"disjoiningType", PropertyK
         if (!castReference(values.front(), typed, "Type", error)) return false;
         as<KerML::Entities::Disjoining>(e).KerML::Entities::Disjoining::setDisjoiningType(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Disjoining>(const_cast<Element&>(e)).KerML::Entities::Disjoining::disjoiningType()); }};
 
 const PropertyBinding p_Disjoining_typeDisjoined = {"typeDisjoined", PropertyKind::Reference, false, "Disjoining", "Type", ReferenceKind::Type, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -187,7 +267,8 @@ const PropertyBinding p_Disjoining_typeDisjoined = {"typeDisjoined", PropertyKin
         if (!castReference(values.front(), typed, "Type", error)) return false;
         as<KerML::Entities::Disjoining>(e).KerML::Entities::Disjoining::setTypeDisjoined(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Disjoining>(const_cast<Element&>(e)).KerML::Entities::Disjoining::typeDisjoined()); }};
 
 const PropertyBinding p_Element_declaredName = {"declaredName", PropertyKind::String, false, "Element", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -195,7 +276,9 @@ const PropertyBinding p_Element_declaredName = {"declaredName", PropertyKind::St
         value = text;
         as<KerML::Entities::Element>(e).KerML::Entities::Element::setDeclaredName(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Element>(const_cast<Element&>(e)).KerML::Entities::Element::declaredName(), formatString, ""); },
+    nullptr};
 
 const PropertyBinding p_Element_declaredShortName = {"declaredShortName", PropertyKind::String, false, "Element", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -203,7 +286,9 @@ const PropertyBinding p_Element_declaredShortName = {"declaredShortName", Proper
         value = text;
         as<KerML::Entities::Element>(e).KerML::Entities::Element::setDeclaredShortName(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Element>(const_cast<Element&>(e)).KerML::Entities::Element::declaredShortName(), formatString, ""); },
+    nullptr};
 
 const PropertyBinding p_Element_isImpliedIncluded = {"isImpliedIncluded", PropertyKind::Boolean, false, "Element", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -211,7 +296,9 @@ const PropertyBinding p_Element_isImpliedIncluded = {"isImpliedIncluded", Proper
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Element>(e).KerML::Entities::Element::setImpliedIncluded(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Element>(const_cast<Element&>(e)).KerML::Entities::Element::isImpliedIncluded(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_EnumerationDefinition_isVariation = {"isVariation", PropertyKind::Boolean, false, "EnumerationDefinition", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -219,7 +306,9 @@ const PropertyBinding p_EnumerationDefinition_isVariation = {"isVariation", Prop
         if (!parseBoolean(text, value)) return false;
         as<SysMLv2::Entities::EnumerationDefinition>(e).SysMLv2::Entities::EnumerationDefinition::setIsVariation(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::EnumerationDefinition>(const_cast<Element&>(e)).SysMLv2::Entities::EnumerationDefinition::isVariation(), formatBoolean, "true"); },
+    nullptr};
 
 const PropertyBinding p_Expose_isImportAll = {"isImportAll", PropertyKind::Boolean, false, "Expose", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -227,7 +316,9 @@ const PropertyBinding p_Expose_isImportAll = {"isImportAll", PropertyKind::Boole
         if (!parseBoolean(text, value)) return false;
         as<SysMLv2::Entities::Expose>(e).SysMLv2::Entities::Expose::setIsImportAll(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::Expose>(const_cast<Element&>(e)).SysMLv2::Entities::Expose::isImportAll(), formatBoolean, "true"); },
+    nullptr};
 
 const PropertyBinding p_Expose_visibility = {"visibility", PropertyKind::Enumeration, false, "Expose", "VisibilityKind", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -235,7 +326,9 @@ const PropertyBinding p_Expose_visibility = {"visibility", PropertyKind::Enumera
         if (!parseVisibilityKind(text, value)) return false;
         as<SysMLv2::Entities::Expose>(e).SysMLv2::Entities::Expose::setVisibility(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::Expose>(const_cast<Element&>(e)).SysMLv2::Entities::Expose::visibility(), formatVisibilityKind, "protected"); },
+    nullptr};
 
 const PropertyBinding p_Feature_direction = {"direction", PropertyKind::Enumeration, false, "Feature", "FeatureDirectionKind", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -243,7 +336,9 @@ const PropertyBinding p_Feature_direction = {"direction", PropertyKind::Enumerat
         if (!parseFeatureDirectionKind(text, value)) return false;
         as<KerML::Entities::Feature>(e).KerML::Entities::Feature::setDirection(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Feature>(const_cast<Element&>(e)).KerML::Entities::Feature::direction(), formatFeatureDirectionKind, nullptr); },
+    nullptr};
 
 const PropertyBinding p_Feature_isComposite = {"isComposite", PropertyKind::Boolean, false, "Feature", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -251,7 +346,9 @@ const PropertyBinding p_Feature_isComposite = {"isComposite", PropertyKind::Bool
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Feature>(e).KerML::Entities::Feature::setIsComposite(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Feature>(const_cast<Element&>(e)).KerML::Entities::Feature::isComposite(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_Feature_isConstant = {"isConstant", PropertyKind::Boolean, false, "Feature", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -259,7 +356,9 @@ const PropertyBinding p_Feature_isConstant = {"isConstant", PropertyKind::Boolea
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Feature>(e).KerML::Entities::Feature::setIsConstant(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Feature>(const_cast<Element&>(e)).KerML::Entities::Feature::isConstant(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_Feature_isDerived = {"isDerived", PropertyKind::Boolean, false, "Feature", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -267,7 +366,9 @@ const PropertyBinding p_Feature_isDerived = {"isDerived", PropertyKind::Boolean,
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Feature>(e).KerML::Entities::Feature::setIsDerived(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Feature>(const_cast<Element&>(e)).KerML::Entities::Feature::isDerived(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_Feature_isEnd = {"isEnd", PropertyKind::Boolean, false, "Feature", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -275,7 +376,9 @@ const PropertyBinding p_Feature_isEnd = {"isEnd", PropertyKind::Boolean, false, 
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Feature>(e).KerML::Entities::Feature::setIsEnd(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Feature>(const_cast<Element&>(e)).KerML::Entities::Feature::isEnd(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_Feature_isOrdered = {"isOrdered", PropertyKind::Boolean, false, "Feature", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -283,7 +386,9 @@ const PropertyBinding p_Feature_isOrdered = {"isOrdered", PropertyKind::Boolean,
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Feature>(e).KerML::Entities::Feature::setIsOrdered(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Feature>(const_cast<Element&>(e)).KerML::Entities::Feature::isOrdered(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_Feature_isPortion = {"isPortion", PropertyKind::Boolean, false, "Feature", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -291,7 +396,9 @@ const PropertyBinding p_Feature_isPortion = {"isPortion", PropertyKind::Boolean,
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Feature>(e).KerML::Entities::Feature::setIsPortion(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Feature>(const_cast<Element&>(e)).KerML::Entities::Feature::isPortion(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_Feature_isUnique = {"isUnique", PropertyKind::Boolean, false, "Feature", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -299,7 +406,9 @@ const PropertyBinding p_Feature_isUnique = {"isUnique", PropertyKind::Boolean, f
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Feature>(e).KerML::Entities::Feature::setIsUnique(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Feature>(const_cast<Element&>(e)).KerML::Entities::Feature::isUnique(), formatBoolean, "true"); },
+    nullptr};
 
 const PropertyBinding p_Feature_isVariable = {"isVariable", PropertyKind::Boolean, false, "Feature", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -307,7 +416,9 @@ const PropertyBinding p_Feature_isVariable = {"isVariable", PropertyKind::Boolea
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Feature>(e).KerML::Entities::Feature::setIsVariable(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Feature>(const_cast<Element&>(e)).KerML::Entities::Feature::isVariable(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_FeatureChainExpression_operator = {"operator", PropertyKind::String, false, "FeatureChainExpression", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -315,7 +426,9 @@ const PropertyBinding p_FeatureChainExpression_operator = {"operator", PropertyK
         value = text;
         as<KerML::Entities::FeatureChainExpression>(e).KerML::Entities::FeatureChainExpression::setOperatorName(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::OperatorExpression>(const_cast<Element&>(e)).KerML::Entities::OperatorExpression::operatorName(), formatString, "."); },
+    nullptr};
 
 const PropertyBinding p_FeatureChaining_chainingFeature = {"chainingFeature", PropertyKind::Reference, false, "FeatureChaining", "Feature", ReferenceKind::Feature, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -323,7 +436,8 @@ const PropertyBinding p_FeatureChaining_chainingFeature = {"chainingFeature", Pr
         if (!castReference(values.front(), typed, "Feature", error)) return false;
         as<KerML::Entities::FeatureChaining>(e).KerML::Entities::FeatureChaining::setChainingFeature(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::FeatureChaining>(const_cast<Element&>(e)).KerML::Entities::FeatureChaining::chainingFeature()); }};
 
 const PropertyBinding p_FeatureInverting_featureInverted = {"featureInverted", PropertyKind::Reference, false, "FeatureInverting", "Feature", ReferenceKind::Feature, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -331,7 +445,8 @@ const PropertyBinding p_FeatureInverting_featureInverted = {"featureInverted", P
         if (!castReference(values.front(), typed, "Feature", error)) return false;
         as<KerML::Entities::FeatureInverting>(e).KerML::Entities::FeatureInverting::setFeatureInverted(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::FeatureInverting>(const_cast<Element&>(e)).KerML::Entities::FeatureInverting::featureInverted()); }};
 
 const PropertyBinding p_FeatureInverting_invertingFeature = {"invertingFeature", PropertyKind::Reference, false, "FeatureInverting", "Feature", ReferenceKind::Feature, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -339,7 +454,8 @@ const PropertyBinding p_FeatureInverting_invertingFeature = {"invertingFeature",
         if (!castReference(values.front(), typed, "Feature", error)) return false;
         as<KerML::Entities::FeatureInverting>(e).KerML::Entities::FeatureInverting::setInvertingFeature(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::FeatureInverting>(const_cast<Element&>(e)).KerML::Entities::FeatureInverting::invertingFeature()); }};
 
 const PropertyBinding p_FeatureTyping_type = {"type", PropertyKind::Reference, false, "FeatureTyping", "Type", ReferenceKind::Type, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -347,7 +463,8 @@ const PropertyBinding p_FeatureTyping_type = {"type", PropertyKind::Reference, f
         if (!castReference(values.front(), typed, "Type", error)) return false;
         as<KerML::Entities::FeatureTyping>(e).KerML::Entities::FeatureTyping::setType(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::FeatureTyping>(const_cast<Element&>(e)).KerML::Entities::FeatureTyping::type()); }};
 
 const PropertyBinding p_FeatureTyping_typedFeature = {"typedFeature", PropertyKind::Reference, false, "FeatureTyping", "Feature", ReferenceKind::Feature, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -355,7 +472,8 @@ const PropertyBinding p_FeatureTyping_typedFeature = {"typedFeature", PropertyKi
         if (!castReference(values.front(), typed, "Feature", error)) return false;
         as<KerML::Entities::FeatureTyping>(e).KerML::Entities::FeatureTyping::setTypedFeature(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::FeatureTyping>(const_cast<Element&>(e)).KerML::Entities::FeatureTyping::typedFeature()); }};
 
 const PropertyBinding p_FeatureValue_isDefault = {"isDefault", PropertyKind::Boolean, false, "FeatureValue", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -363,7 +481,9 @@ const PropertyBinding p_FeatureValue_isDefault = {"isDefault", PropertyKind::Boo
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::FeatureValue>(e).KerML::Entities::FeatureValue::setIsDefault(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::FeatureValue>(const_cast<Element&>(e)).KerML::Entities::FeatureValue::isDefault(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_FeatureValue_isInitial = {"isInitial", PropertyKind::Boolean, false, "FeatureValue", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -371,7 +491,9 @@ const PropertyBinding p_FeatureValue_isInitial = {"isInitial", PropertyKind::Boo
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::FeatureValue>(e).KerML::Entities::FeatureValue::setIsInitial(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::FeatureValue>(const_cast<Element&>(e)).KerML::Entities::FeatureValue::isInitial(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_FramedConcernMembership_kind = {"kind", PropertyKind::Enumeration, false, "FramedConcernMembership", "RequirementConstraintKind", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -379,7 +501,9 @@ const PropertyBinding p_FramedConcernMembership_kind = {"kind", PropertyKind::En
         if (!parseRequirementConstraintKind(text, value)) return false;
         as<SysMLv2::Entities::FramedConcernMembership>(e).SysMLv2::Entities::FramedConcernMembership::setKind(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::FramedConcernMembership>(const_cast<Element&>(e)).SysMLv2::Entities::FramedConcernMembership::kind(), formatRequirementConstraintKind, "requirement"); },
+    nullptr};
 
 const PropertyBinding p_Import_isImportAll = {"isImportAll", PropertyKind::Boolean, false, "Import", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -387,7 +511,9 @@ const PropertyBinding p_Import_isImportAll = {"isImportAll", PropertyKind::Boole
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Import>(e).KerML::Entities::Import::setIsImportAll(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Import>(const_cast<Element&>(e)).KerML::Entities::Import::isImportAll(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_Import_isRecursive = {"isRecursive", PropertyKind::Boolean, false, "Import", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -395,7 +521,9 @@ const PropertyBinding p_Import_isRecursive = {"isRecursive", PropertyKind::Boole
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Import>(e).KerML::Entities::Import::setIsRecursive(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Import>(const_cast<Element&>(e)).KerML::Entities::Import::isRecursive(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_Import_visibility = {"visibility", PropertyKind::Enumeration, false, "Import", "VisibilityKind", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -403,7 +531,9 @@ const PropertyBinding p_Import_visibility = {"visibility", PropertyKind::Enumera
         if (!parseVisibilityKind(text, value)) return false;
         as<KerML::Entities::Import>(e).KerML::Entities::Import::setVisibility(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Import>(const_cast<Element&>(e)).KerML::Entities::Import::visibility(), formatVisibilityKind, "private"); },
+    nullptr};
 
 const PropertyBinding p_IndexExpression_operator = {"operator", PropertyKind::String, false, "IndexExpression", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -411,7 +541,9 @@ const PropertyBinding p_IndexExpression_operator = {"operator", PropertyKind::St
         value = text;
         as<KerML::Entities::IndexExpression>(e).KerML::Entities::IndexExpression::setOperatorName(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::OperatorExpression>(const_cast<Element&>(e)).KerML::Entities::OperatorExpression::operatorName(), formatString, "#"); },
+    nullptr};
 
 const PropertyBinding p_Intersecting_intersectingType = {"intersectingType", PropertyKind::Reference, false, "Intersecting", "Type", ReferenceKind::Type, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -419,7 +551,8 @@ const PropertyBinding p_Intersecting_intersectingType = {"intersectingType", Pro
         if (!castReference(values.front(), typed, "Type", error)) return false;
         as<KerML::Entities::Intersecting>(e).KerML::Entities::Intersecting::setIntersectingType(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Intersecting>(const_cast<Element&>(e)).KerML::Entities::Intersecting::intersectingType()); }};
 
 const PropertyBinding p_Invariant_isNegated = {"isNegated", PropertyKind::Boolean, false, "Invariant", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -427,7 +560,9 @@ const PropertyBinding p_Invariant_isNegated = {"isNegated", PropertyKind::Boolea
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Invariant>(e).KerML::Entities::Invariant::setIsNegated(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Invariant>(const_cast<Element&>(e)).KerML::Entities::Invariant::isNegated(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_LibraryPackage_isStandard = {"isStandard", PropertyKind::Boolean, false, "LibraryPackage", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -435,7 +570,9 @@ const PropertyBinding p_LibraryPackage_isStandard = {"isStandard", PropertyKind:
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::LibraryPackage>(e).KerML::Entities::LibraryPackage::setIsStandard(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::LibraryPackage>(const_cast<Element&>(e)).KerML::Entities::LibraryPackage::isStandard(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_LiteralBoolean_value = {"value", PropertyKind::Boolean, false, "LiteralBoolean", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -443,7 +580,9 @@ const PropertyBinding p_LiteralBoolean_value = {"value", PropertyKind::Boolean, 
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::LiteralBoolean>(e).KerML::Entities::LiteralBoolean::setValue(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::LiteralBoolean>(const_cast<Element&>(e)).KerML::Entities::LiteralBoolean::value(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_LiteralInteger_value = {"value", PropertyKind::Integer, false, "LiteralInteger", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -451,7 +590,9 @@ const PropertyBinding p_LiteralInteger_value = {"value", PropertyKind::Integer, 
         if (!parseInteger(text, value)) return false;
         as<KerML::Entities::LiteralInteger>(e).KerML::Entities::LiteralInteger::setValue(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::LiteralInteger>(const_cast<Element&>(e)).KerML::Entities::LiteralInteger::value(), formatInteger, "0"); },
+    nullptr};
 
 const PropertyBinding p_LiteralRational_value = {"value", PropertyKind::Real, false, "LiteralRational", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -459,7 +600,9 @@ const PropertyBinding p_LiteralRational_value = {"value", PropertyKind::Real, fa
         if (!parseReal(text, value)) return false;
         as<KerML::Entities::LiteralRational>(e).KerML::Entities::LiteralRational::setValue(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::LiteralRational>(const_cast<Element&>(e)).KerML::Entities::LiteralRational::value(), formatReal, "0"); },
+    nullptr};
 
 const PropertyBinding p_LiteralString_value = {"value", PropertyKind::String, false, "LiteralString", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -467,7 +610,9 @@ const PropertyBinding p_LiteralString_value = {"value", PropertyKind::String, fa
         value = text;
         as<KerML::Entities::LiteralString>(e).KerML::Entities::LiteralString::setValue(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::LiteralString>(const_cast<Element&>(e)).KerML::Entities::LiteralString::value(), formatString, ""); },
+    nullptr};
 
 const PropertyBinding p_Membership_memberElement = {"memberElement", PropertyKind::Reference, false, "Membership", "Element", ReferenceKind::Element, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -475,7 +620,8 @@ const PropertyBinding p_Membership_memberElement = {"memberElement", PropertyKin
         if (!castReference(values.front(), typed, "Element", error)) return false;
         as<KerML::Entities::Membership>(e).KerML::Entities::Membership::setMemberElement(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Membership>(const_cast<Element&>(e)).KerML::Entities::Membership::memberElement()); }};
 
 const PropertyBinding p_Membership_memberName = {"memberName", PropertyKind::String, false, "Membership", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -483,7 +629,9 @@ const PropertyBinding p_Membership_memberName = {"memberName", PropertyKind::Str
         value = text;
         as<KerML::Entities::Membership>(e).KerML::Entities::Membership::setMemberName(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Membership>(const_cast<Element&>(e)).KerML::Entities::Membership::memberName(), formatString, ""); },
+    nullptr};
 
 const PropertyBinding p_Membership_memberShortName = {"memberShortName", PropertyKind::String, false, "Membership", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -491,7 +639,9 @@ const PropertyBinding p_Membership_memberShortName = {"memberShortName", Propert
         value = text;
         as<KerML::Entities::Membership>(e).KerML::Entities::Membership::setMemberShortName(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Membership>(const_cast<Element&>(e)).KerML::Entities::Membership::memberShortName(), formatString, ""); },
+    nullptr};
 
 const PropertyBinding p_Membership_visibility = {"visibility", PropertyKind::Enumeration, false, "Membership", "VisibilityKind", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -499,7 +649,9 @@ const PropertyBinding p_Membership_visibility = {"visibility", PropertyKind::Enu
         if (!parseVisibilityKind(text, value)) return false;
         as<KerML::Entities::Membership>(e).KerML::Entities::Membership::setVisibility(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Membership>(const_cast<Element&>(e)).KerML::Entities::Membership::visibility(), formatVisibilityKind, "public"); },
+    nullptr};
 
 const PropertyBinding p_MembershipImport_importedMembership = {"importedMembership", PropertyKind::Reference, false, "MembershipImport", "Membership", ReferenceKind::Element, false, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -507,7 +659,8 @@ const PropertyBinding p_MembershipImport_importedMembership = {"importedMembersh
         if (!castReference(values.front(), typed, "Membership", error)) return false;
         as<KerML::Entities::MembershipImport>(e).KerML::Entities::MembershipImport::setImportedMembership(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::MembershipImport>(const_cast<Element&>(e)).KerML::Entities::MembershipImport::importedMembership()); }};
 
 const PropertyBinding p_NamespaceImport_importedNamespace = {"importedNamespace", PropertyKind::Reference, false, "NamespaceImport", "Namespace", ReferenceKind::Type, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -515,7 +668,8 @@ const PropertyBinding p_NamespaceImport_importedNamespace = {"importedNamespace"
         if (!castReference(values.front(), typed, "Namespace", error)) return false;
         as<KerML::Entities::NamespaceImport>(e).KerML::Entities::NamespaceImport::setImportedNamespace(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::NamespaceImport>(const_cast<Element&>(e)).KerML::Entities::NamespaceImport::importedNamespace()); }};
 
 const PropertyBinding p_OccurrenceDefinition_isIndividual = {"isIndividual", PropertyKind::Boolean, false, "OccurrenceDefinition", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -523,7 +677,9 @@ const PropertyBinding p_OccurrenceDefinition_isIndividual = {"isIndividual", Pro
         if (!parseBoolean(text, value)) return false;
         as<SysMLv2::Entities::OccurrenceDefinition>(e).SysMLv2::Entities::OccurrenceDefinition::setIsIndividual(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::OccurrenceDefinition>(const_cast<Element&>(e)).SysMLv2::Entities::OccurrenceDefinition::isIndividual(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_OccurrenceUsage_isIndividual = {"isIndividual", PropertyKind::Boolean, false, "OccurrenceUsage", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -531,7 +687,9 @@ const PropertyBinding p_OccurrenceUsage_isIndividual = {"isIndividual", Property
         if (!parseBoolean(text, value)) return false;
         as<SysMLv2::Entities::OccurrenceUsage>(e).SysMLv2::Entities::OccurrenceUsage::setIsIndividual(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::OccurrenceUsage>(const_cast<Element&>(e)).SysMLv2::Entities::OccurrenceUsage::isIndividual(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_OccurrenceUsage_portionKind = {"portionKind", PropertyKind::Enumeration, false, "OccurrenceUsage", "PortionKind", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -539,7 +697,9 @@ const PropertyBinding p_OccurrenceUsage_portionKind = {"portionKind", PropertyKi
         if (!parsePortionKind(text, value)) return false;
         as<SysMLv2::Entities::OccurrenceUsage>(e).SysMLv2::Entities::OccurrenceUsage::setPortionKind(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::OccurrenceUsage>(const_cast<Element&>(e)).SysMLv2::Entities::OccurrenceUsage::portionKind(), formatPortionKind, nullptr); },
+    nullptr};
 
 const PropertyBinding p_OperatorExpression_operator = {"operator", PropertyKind::String, false, "OperatorExpression", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -547,7 +707,9 @@ const PropertyBinding p_OperatorExpression_operator = {"operator", PropertyKind:
         value = text;
         as<KerML::Entities::OperatorExpression>(e).KerML::Entities::OperatorExpression::setOperatorName(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::OperatorExpression>(const_cast<Element&>(e)).KerML::Entities::OperatorExpression::operatorName(), formatString, ""); },
+    nullptr};
 
 const PropertyBinding p_PortConjugation_originalPortDefinition = {"originalPortDefinition", PropertyKind::Reference, false, "PortConjugation", "PortDefinition", ReferenceKind::Element, false, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -555,7 +717,8 @@ const PropertyBinding p_PortConjugation_originalPortDefinition = {"originalPortD
         if (!castReference(values.front(), typed, "PortDefinition", error)) return false;
         as<SysMLv2::Entities::PortConjugation>(e).SysMLv2::Entities::PortConjugation::setOriginalPortDefinition(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<SysMLv2::Entities::PortConjugation>(const_cast<Element&>(e)).SysMLv2::Entities::PortConjugation::originalPortDefinition()); }};
 
 const PropertyBinding p_Redefinition_redefinedFeature = {"redefinedFeature", PropertyKind::Reference, false, "Redefinition", "Feature", ReferenceKind::Feature, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -563,7 +726,8 @@ const PropertyBinding p_Redefinition_redefinedFeature = {"redefinedFeature", Pro
         if (!castReference(values.front(), typed, "Feature", error)) return false;
         as<KerML::Entities::Redefinition>(e).KerML::Entities::Redefinition::setRedefinedFeature(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Redefinition>(const_cast<Element&>(e)).KerML::Entities::Redefinition::redefinedFeature()); }};
 
 const PropertyBinding p_Redefinition_redefiningFeature = {"redefiningFeature", PropertyKind::Reference, false, "Redefinition", "Feature", ReferenceKind::Feature, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -571,7 +735,8 @@ const PropertyBinding p_Redefinition_redefiningFeature = {"redefiningFeature", P
         if (!castReference(values.front(), typed, "Feature", error)) return false;
         as<KerML::Entities::Redefinition>(e).KerML::Entities::Redefinition::setRedefiningFeature(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Redefinition>(const_cast<Element&>(e)).KerML::Entities::Redefinition::redefiningFeature()); }};
 
 const PropertyBinding p_ReferenceSubsetting_referencedFeature = {"referencedFeature", PropertyKind::Reference, false, "ReferenceSubsetting", "Feature", ReferenceKind::Feature, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -579,7 +744,8 @@ const PropertyBinding p_ReferenceSubsetting_referencedFeature = {"referencedFeat
         if (!castReference(values.front(), typed, "Feature", error)) return false;
         as<KerML::Entities::ReferenceSubsetting>(e).KerML::Entities::ReferenceSubsetting::setReferencedFeature(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::ReferenceSubsetting>(const_cast<Element&>(e)).KerML::Entities::ReferenceSubsetting::referencedFeature()); }};
 
 const PropertyBinding p_Relationship_isImplied = {"isImplied", PropertyKind::Boolean, false, "Relationship", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -587,7 +753,9 @@ const PropertyBinding p_Relationship_isImplied = {"isImplied", PropertyKind::Boo
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Relationship>(e).KerML::Entities::Relationship::setIsImplied(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Relationship>(const_cast<Element&>(e)).KerML::Entities::Relationship::isImplied(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_RequirementConstraintMembership_kind = {"kind", PropertyKind::Enumeration, false, "RequirementConstraintMembership", "RequirementConstraintKind", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -595,7 +763,9 @@ const PropertyBinding p_RequirementConstraintMembership_kind = {"kind", Property
         if (!parseRequirementConstraintKind(text, value)) return false;
         as<SysMLv2::Entities::RequirementConstraintMembership>(e).SysMLv2::Entities::RequirementConstraintMembership::setKind(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::RequirementConstraintMembership>(const_cast<Element&>(e)).SysMLv2::Entities::RequirementConstraintMembership::kind(), formatRequirementConstraintKind, nullptr); },
+    nullptr};
 
 const PropertyBinding p_RequirementDefinition_reqId = {"reqId", PropertyKind::String, false, "RequirementDefinition", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -603,7 +773,9 @@ const PropertyBinding p_RequirementDefinition_reqId = {"reqId", PropertyKind::St
         value = text;
         as<SysMLv2::Entities::RequirementDefinition>(e).SysMLv2::Entities::RequirementDefinition::setReqId(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::RequirementDefinition>(const_cast<Element&>(e)).SysMLv2::Entities::RequirementDefinition::reqId(), formatString, ""); },
+    nullptr};
 
 const PropertyBinding p_RequirementUsage_reqId = {"reqId", PropertyKind::String, false, "RequirementUsage", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -611,7 +783,9 @@ const PropertyBinding p_RequirementUsage_reqId = {"reqId", PropertyKind::String,
         value = text;
         as<SysMLv2::Entities::RequirementUsage>(e).SysMLv2::Entities::RequirementUsage::setReqId(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::RequirementUsage>(const_cast<Element&>(e)).SysMLv2::Entities::RequirementUsage::reqId(), formatString, ""); },
+    nullptr};
 
 const PropertyBinding p_RequirementVerificationMembership_kind = {"kind", PropertyKind::Enumeration, false, "RequirementVerificationMembership", "RequirementConstraintKind", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -619,7 +793,9 @@ const PropertyBinding p_RequirementVerificationMembership_kind = {"kind", Proper
         if (!parseRequirementConstraintKind(text, value)) return false;
         as<SysMLv2::Entities::RequirementVerificationMembership>(e).SysMLv2::Entities::RequirementVerificationMembership::setKind(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::RequirementVerificationMembership>(const_cast<Element&>(e)).SysMLv2::Entities::RequirementVerificationMembership::kind(), formatRequirementConstraintKind, "requirement"); },
+    nullptr};
 
 const PropertyBinding p_SelectExpression_operator = {"operator", PropertyKind::String, false, "SelectExpression", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -627,7 +803,9 @@ const PropertyBinding p_SelectExpression_operator = {"operator", PropertyKind::S
         value = text;
         as<KerML::Entities::SelectExpression>(e).KerML::Entities::SelectExpression::setOperatorName(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::OperatorExpression>(const_cast<Element&>(e)).KerML::Entities::OperatorExpression::operatorName(), formatString, "select"); },
+    nullptr};
 
 const PropertyBinding p_Specialization_general = {"general", PropertyKind::Reference, false, "Specialization", "Type", ReferenceKind::Type, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -635,7 +813,8 @@ const PropertyBinding p_Specialization_general = {"general", PropertyKind::Refer
         if (!castReference(values.front(), typed, "Type", error)) return false;
         as<KerML::Entities::Specialization>(e).KerML::Entities::Specialization::setGeneral(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Specialization>(const_cast<Element&>(e)).KerML::Entities::Specialization::general()); }};
 
 const PropertyBinding p_Specialization_specific = {"specific", PropertyKind::Reference, false, "Specialization", "Type", ReferenceKind::Type, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -643,7 +822,8 @@ const PropertyBinding p_Specialization_specific = {"specific", PropertyKind::Ref
         if (!castReference(values.front(), typed, "Type", error)) return false;
         as<KerML::Entities::Specialization>(e).KerML::Entities::Specialization::setSpecific(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Specialization>(const_cast<Element&>(e)).KerML::Entities::Specialization::specific()); }};
 
 const PropertyBinding p_StateDefinition_isParallel = {"isParallel", PropertyKind::Boolean, false, "StateDefinition", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -651,7 +831,9 @@ const PropertyBinding p_StateDefinition_isParallel = {"isParallel", PropertyKind
         if (!parseBoolean(text, value)) return false;
         as<SysMLv2::Entities::StateDefinition>(e).SysMLv2::Entities::StateDefinition::setIsParallel(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::StateDefinition>(const_cast<Element&>(e)).SysMLv2::Entities::StateDefinition::isParallel(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_StateSubactionMembership_kind = {"kind", PropertyKind::Enumeration, false, "StateSubactionMembership", "StateSubactionKind", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -659,7 +841,9 @@ const PropertyBinding p_StateSubactionMembership_kind = {"kind", PropertyKind::E
         if (!parseStateSubactionKind(text, value)) return false;
         as<SysMLv2::Entities::StateSubactionMembership>(e).SysMLv2::Entities::StateSubactionMembership::setKind(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::StateSubactionMembership>(const_cast<Element&>(e)).SysMLv2::Entities::StateSubactionMembership::kind(), formatStateSubactionKind, nullptr); },
+    nullptr};
 
 const PropertyBinding p_StateUsage_isParallel = {"isParallel", PropertyKind::Boolean, false, "StateUsage", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -667,7 +851,9 @@ const PropertyBinding p_StateUsage_isParallel = {"isParallel", PropertyKind::Boo
         if (!parseBoolean(text, value)) return false;
         as<SysMLv2::Entities::StateUsage>(e).SysMLv2::Entities::StateUsage::setIsParallel(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::StateUsage>(const_cast<Element&>(e)).SysMLv2::Entities::StateUsage::isParallel(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_Subclassification_subclassifier = {"subclassifier", PropertyKind::Reference, false, "Subclassification", "Classifier", ReferenceKind::Classifier, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -675,7 +861,8 @@ const PropertyBinding p_Subclassification_subclassifier = {"subclassifier", Prop
         if (!castReference(values.front(), typed, "Classifier", error)) return false;
         as<KerML::Entities::Subclassification>(e).KerML::Entities::Subclassification::setSubclassifier(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Subclassification>(const_cast<Element&>(e)).KerML::Entities::Subclassification::subclassifier()); }};
 
 const PropertyBinding p_Subclassification_superclassifier = {"superclassifier", PropertyKind::Reference, false, "Subclassification", "Classifier", ReferenceKind::Classifier, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -683,7 +870,8 @@ const PropertyBinding p_Subclassification_superclassifier = {"superclassifier", 
         if (!castReference(values.front(), typed, "Classifier", error)) return false;
         as<KerML::Entities::Subclassification>(e).KerML::Entities::Subclassification::setSuperclassifier(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Subclassification>(const_cast<Element&>(e)).KerML::Entities::Subclassification::superclassifier()); }};
 
 const PropertyBinding p_Subsetting_subsettedFeature = {"subsettedFeature", PropertyKind::Reference, false, "Subsetting", "Feature", ReferenceKind::Feature, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -691,7 +879,8 @@ const PropertyBinding p_Subsetting_subsettedFeature = {"subsettedFeature", Prope
         if (!castReference(values.front(), typed, "Feature", error)) return false;
         as<KerML::Entities::Subsetting>(e).KerML::Entities::Subsetting::setSubsettedFeature(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Subsetting>(const_cast<Element&>(e)).KerML::Entities::Subsetting::subsettedFeature()); }};
 
 const PropertyBinding p_Subsetting_subsettingFeature = {"subsettingFeature", PropertyKind::Reference, false, "Subsetting", "Feature", ReferenceKind::Feature, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -699,7 +888,8 @@ const PropertyBinding p_Subsetting_subsettingFeature = {"subsettingFeature", Pro
         if (!castReference(values.front(), typed, "Feature", error)) return false;
         as<KerML::Entities::Subsetting>(e).KerML::Entities::Subsetting::setSubsettingFeature(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Subsetting>(const_cast<Element&>(e)).KerML::Entities::Subsetting::subsettingFeature()); }};
 
 const PropertyBinding p_TextualRepresentation_body = {"body", PropertyKind::String, false, "TextualRepresentation", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -707,7 +897,9 @@ const PropertyBinding p_TextualRepresentation_body = {"body", PropertyKind::Stri
         value = text;
         as<KerML::Entities::TextualRepresentation>(e).KerML::Entities::TextualRepresentation::setBody(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::TextualRepresentation>(const_cast<Element&>(e)).KerML::Entities::TextualRepresentation::body(), formatString, ""); },
+    nullptr};
 
 const PropertyBinding p_TextualRepresentation_language = {"language", PropertyKind::String, false, "TextualRepresentation", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -715,7 +907,9 @@ const PropertyBinding p_TextualRepresentation_language = {"language", PropertyKi
         value = text;
         as<KerML::Entities::TextualRepresentation>(e).KerML::Entities::TextualRepresentation::setLanguage(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::TextualRepresentation>(const_cast<Element&>(e)).KerML::Entities::TextualRepresentation::language(), formatString, ""); },
+    nullptr};
 
 const PropertyBinding p_TransitionFeatureMembership_kind = {"kind", PropertyKind::Enumeration, false, "TransitionFeatureMembership", "TransitionFeatureKind", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -723,7 +917,9 @@ const PropertyBinding p_TransitionFeatureMembership_kind = {"kind", PropertyKind
         if (!parseTransitionFeatureKind(text, value)) return false;
         as<SysMLv2::Entities::TransitionFeatureMembership>(e).SysMLv2::Entities::TransitionFeatureMembership::setKind(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::TransitionFeatureMembership>(const_cast<Element&>(e)).SysMLv2::Entities::TransitionFeatureMembership::kind(), formatTransitionFeatureKind, nullptr); },
+    nullptr};
 
 const PropertyBinding p_TriggerInvocationExpression_kind = {"kind", PropertyKind::Enumeration, false, "TriggerInvocationExpression", "TriggerKind", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -731,7 +927,9 @@ const PropertyBinding p_TriggerInvocationExpression_kind = {"kind", PropertyKind
         if (!parseTriggerKind(text, value)) return false;
         as<SysMLv2::Entities::TriggerInvocationExpression>(e).SysMLv2::Entities::TriggerInvocationExpression::setKind(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::TriggerInvocationExpression>(const_cast<Element&>(e)).SysMLv2::Entities::TriggerInvocationExpression::kind(), formatTriggerKind, nullptr); },
+    nullptr};
 
 const PropertyBinding p_Type_isAbstract = {"isAbstract", PropertyKind::Boolean, false, "Type", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -739,7 +937,9 @@ const PropertyBinding p_Type_isAbstract = {"isAbstract", PropertyKind::Boolean, 
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Type>(e).KerML::Entities::Type::setAbstract(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Type>(const_cast<Element&>(e)).KerML::Entities::Type::isAbstract(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_Type_isSufficient = {"isSufficient", PropertyKind::Boolean, false, "Type", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -747,7 +947,9 @@ const PropertyBinding p_Type_isSufficient = {"isSufficient", PropertyKind::Boole
         if (!parseBoolean(text, value)) return false;
         as<KerML::Entities::Type>(e).KerML::Entities::Type::setIsSufficient(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<KerML::Entities::Type>(const_cast<Element&>(e)).KerML::Entities::Type::isSufficient(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding p_TypeFeaturing_featureOfType = {"featureOfType", PropertyKind::Reference, false, "TypeFeaturing", "Feature", ReferenceKind::Feature, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -755,7 +957,8 @@ const PropertyBinding p_TypeFeaturing_featureOfType = {"featureOfType", Property
         if (!castReference(values.front(), typed, "Feature", error)) return false;
         as<KerML::Entities::TypeFeaturing>(e).KerML::Entities::TypeFeaturing::setFeatureOfType(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::TypeFeaturing>(const_cast<Element&>(e)).KerML::Entities::TypeFeaturing::featureOfType()); }};
 
 const PropertyBinding p_TypeFeaturing_featuringType = {"featuringType", PropertyKind::Reference, false, "TypeFeaturing", "Type", ReferenceKind::Type, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -763,7 +966,8 @@ const PropertyBinding p_TypeFeaturing_featuringType = {"featuringType", Property
         if (!castReference(values.front(), typed, "Type", error)) return false;
         as<KerML::Entities::TypeFeaturing>(e).KerML::Entities::TypeFeaturing::setFeaturingType(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::TypeFeaturing>(const_cast<Element&>(e)).KerML::Entities::TypeFeaturing::featuringType()); }};
 
 const PropertyBinding p_Unioning_unioningType = {"unioningType", PropertyKind::Reference, false, "Unioning", "Type", ReferenceKind::Type, true, nullptr,
     [](Element& e, const std::vector<ElementPtr>& values, std::string& error) {
@@ -771,7 +975,8 @@ const PropertyBinding p_Unioning_unioningType = {"unioningType", PropertyKind::R
         if (!castReference(values.front(), typed, "Type", error)) return false;
         as<KerML::Entities::Unioning>(e).KerML::Entities::Unioning::setUnioningType(typed);
         return true;
-    }};
+    }, nullptr,
+    [](const Element& e) -> std::vector<ElementPtr> { return toElements(as<KerML::Entities::Unioning>(const_cast<Element&>(e)).KerML::Entities::Unioning::unioningType()); }};
 
 const PropertyBinding p_Usage_isVariation = {"isVariation", PropertyKind::Boolean, false, "Usage", "", ReferenceKind::Element, false, 
     [](Element& e, const std::string& text) {
@@ -779,7 +984,9 @@ const PropertyBinding p_Usage_isVariation = {"isVariation", PropertyKind::Boolea
         if (!parseBoolean(text, value)) return false;
         as<SysMLv2::Entities::Usage>(e).SysMLv2::Entities::Usage::setIsVariation(value);
         return true;
-    }, nullptr};
+    }, nullptr,
+    [](const Element& e) { return valueText(as<SysMLv2::Entities::Usage>(const_cast<Element&>(e)).SysMLv2::Entities::Usage::isVariation(), formatBoolean, "false"); },
+    nullptr};
 
 const PropertyBinding* const props_AcceptActionUsage[] = {&p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_OccurrenceUsage_isIndividual, &p_OccurrenceUsage_portionKind, &p_Usage_isVariation, nullptr};
 const PropertyBinding* const props_ActionDefinition[] = {&p_OccurrenceDefinition_isIndividual, &p_Definition_isVariation, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
@@ -817,9 +1024,11 @@ const PropertyBinding* const props_Conjugation[] = {&p_Conjugation_originalType,
 const PropertyBinding* const props_ConnectionDefinition[] = {&p_ConnectionDefinition_isSufficient, &p_Type_isAbstract, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_Relationship_isImplied, &p_OccurrenceDefinition_isIndividual, &p_Definition_isVariation, nullptr};
 const PropertyBinding* const props_ConnectionUsage[] = {&p_OccurrenceUsage_isIndividual, &p_OccurrenceUsage_portionKind, &p_Usage_isVariation, &p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_Relationship_isImplied, nullptr};
 const PropertyBinding* const props_Connector[] = {&p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_Relationship_isImplied, nullptr};
+const PropertyBinding* const props_ConnectorAsUsage[] = {&p_Usage_isVariation, &p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_Relationship_isImplied, nullptr};
 const PropertyBinding* const props_ConstraintDefinition[] = {&p_OccurrenceDefinition_isIndividual, &p_Definition_isVariation, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_ConstraintUsage[] = {&p_OccurrenceUsage_isIndividual, &p_OccurrenceUsage_portionKind, &p_Usage_isVariation, &p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_ConstructorExpression[] = {&p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
+const PropertyBinding* const props_ControlNode[] = {&p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_OccurrenceUsage_isIndividual, &p_OccurrenceUsage_portionKind, &p_Usage_isVariation, nullptr};
 const PropertyBinding* const props_CrossSubsetting[] = {&p_CrossSubsetting_crossedFeature, &p_Subsetting_subsettedFeature, &p_Subsetting_subsettingFeature, &p_Specialization_general, &p_Specialization_specific, &p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_DataType[] = {&p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_DecisionNode[] = {&p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_OccurrenceUsage_isIndividual, &p_OccurrenceUsage_portionKind, &p_Usage_isVariation, nullptr};
@@ -828,12 +1037,14 @@ const PropertyBinding* const props_Dependency[] = {&p_Dependency_client, &p_Depe
 const PropertyBinding* const props_Differencing[] = {&p_Differencing_differencingType, &p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_Disjoining[] = {&p_Disjoining_typeDisjoined, &p_Disjoining_disjoiningType, &p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_Documentation[] = {&p_Comment_locale, &p_Comment_body, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
+const PropertyBinding* const props_Element[] = {&p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_ElementFilterMembership[] = {&p_Membership_memberShortName, &p_Membership_memberElement, &p_Membership_memberName, &p_Membership_visibility, &p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_EndFeatureMembership[] = {&p_Membership_memberShortName, &p_Membership_memberElement, &p_Membership_memberName, &p_Membership_visibility, &p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_EnumerationDefinition[] = {&p_EnumerationDefinition_isVariation, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_EnumerationUsage[] = {&p_Usage_isVariation, &p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_EventOccurrenceUsage[] = {&p_OccurrenceUsage_isIndividual, &p_OccurrenceUsage_portionKind, &p_Usage_isVariation, &p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_ExhibitStateUsage[] = {&p_OccurrenceUsage_isIndividual, &p_OccurrenceUsage_portionKind, &p_Usage_isVariation, &p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_StateUsage_isParallel, nullptr};
+const PropertyBinding* const props_Expose[] = {&p_Expose_visibility, &p_Expose_isImportAll, &p_Import_isRecursive, &p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_Expression[] = {&p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_Feature[] = {&p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_FeatureChainExpression[] = {&p_FeatureChainExpression_operator, &p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
@@ -852,8 +1063,10 @@ const PropertyBinding* const props_ForkNode[] = {&p_Feature_isUnique, &p_Feature
 const PropertyBinding* const props_FramedConcernMembership[] = {&p_FramedConcernMembership_kind, &p_Membership_memberShortName, &p_Membership_memberElement, &p_Membership_memberName, &p_Membership_visibility, &p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_Function[] = {&p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_IfActionUsage[] = {&p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_OccurrenceUsage_isIndividual, &p_OccurrenceUsage_portionKind, &p_Usage_isVariation, nullptr};
+const PropertyBinding* const props_Import[] = {&p_Import_visibility, &p_Import_isRecursive, &p_Import_isImportAll, &p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_IncludeUseCaseUsage[] = {&p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_OccurrenceUsage_isIndividual, &p_OccurrenceUsage_portionKind, &p_Usage_isVariation, nullptr};
 const PropertyBinding* const props_IndexExpression[] = {&p_IndexExpression_operator, &p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
+const PropertyBinding* const props_InstantiationExpression[] = {&p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_Interaction[] = {&p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_Relationship_isImplied, nullptr};
 const PropertyBinding* const props_InterfaceDefinition[] = {&p_ConnectionDefinition_isSufficient, &p_Type_isAbstract, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_Relationship_isImplied, &p_OccurrenceDefinition_isIndividual, &p_Definition_isVariation, nullptr};
 const PropertyBinding* const props_InterfaceUsage[] = {&p_OccurrenceUsage_isIndividual, &p_OccurrenceUsage_portionKind, &p_Usage_isVariation, &p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_Relationship_isImplied, nullptr};
@@ -870,6 +1083,7 @@ const PropertyBinding* const props_LiteralInfinity[] = {&p_Feature_isUnique, &p_
 const PropertyBinding* const props_LiteralInteger[] = {&p_LiteralInteger_value, &p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_LiteralRational[] = {&p_LiteralRational_value, &p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_LiteralString[] = {&p_LiteralString_value, &p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
+const PropertyBinding* const props_LoopActionUsage[] = {&p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_OccurrenceUsage_isIndividual, &p_OccurrenceUsage_portionKind, &p_Usage_isVariation, nullptr};
 const PropertyBinding* const props_Membership[] = {&p_Membership_memberShortName, &p_Membership_memberElement, &p_Membership_memberName, &p_Membership_visibility, &p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_MembershipExpose[] = {&p_MembershipImport_importedMembership, &p_Import_visibility, &p_Import_isRecursive, &p_Import_isImportAll, &p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_MembershipImport[] = {&p_MembershipImport_importedMembership, &p_Import_visibility, &p_Import_isRecursive, &p_Import_isImportAll, &p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
@@ -903,6 +1117,7 @@ const PropertyBinding* const props_Predicate[] = {&p_Type_isAbstract, &p_Type_is
 const PropertyBinding* const props_Redefinition[] = {&p_Redefinition_redefiningFeature, &p_Redefinition_redefinedFeature, &p_Subsetting_subsettedFeature, &p_Subsetting_subsettingFeature, &p_Specialization_general, &p_Specialization_specific, &p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_ReferenceSubsetting[] = {&p_ReferenceSubsetting_referencedFeature, &p_Subsetting_subsettedFeature, &p_Subsetting_subsettingFeature, &p_Specialization_general, &p_Specialization_specific, &p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_ReferenceUsage[] = {&p_Usage_isVariation, &p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
+const PropertyBinding* const props_Relationship[] = {&p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_RenderingDefinition[] = {&p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, &p_OccurrenceDefinition_isIndividual, &p_Definition_isVariation, nullptr};
 const PropertyBinding* const props_RenderingUsage[] = {&p_OccurrenceUsage_isIndividual, &p_OccurrenceUsage_portionKind, &p_Usage_isVariation, &p_Feature_isUnique, &p_Feature_isOrdered, &p_Feature_isComposite, &p_Feature_isEnd, &p_Feature_isDerived, &p_Feature_isPortion, &p_Feature_isVariable, &p_Feature_isConstant, &p_Feature_direction, &p_Type_isAbstract, &p_Type_isSufficient, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
 const PropertyBinding* const props_RequirementConstraintMembership[] = {&p_RequirementConstraintMembership_kind, &p_Membership_memberShortName, &p_Membership_memberElement, &p_Membership_memberName, &p_Membership_visibility, &p_Relationship_isImplied, &p_Element_declaredShortName, &p_Element_declaredName, &p_Element_isImpliedIncluded, nullptr};
@@ -1488,11 +1703,11 @@ const MetaclassBinding metaclassTable[] = {
     {"ConnectionDefinition", false, &create_ConnectionDefinition, props_ConnectionDefinition, 8},
     {"ConnectionUsage", false, &create_ConnectionUsage, props_ConnectionUsage, 18},
     {"Connector", false, &create_Connector, props_Connector, 15},
-    {"ConnectorAsUsage", true, nullptr, nullptr, 0},
+    {"ConnectorAsUsage", true, nullptr, props_ConnectorAsUsage, 16},
     {"ConstraintDefinition", false, &create_ConstraintDefinition, props_ConstraintDefinition, 7},
     {"ConstraintUsage", false, &create_ConstraintUsage, props_ConstraintUsage, 17},
     {"ConstructorExpression", false, &create_ConstructorExpression, props_ConstructorExpression, 14},
-    {"ControlNode", true, nullptr, nullptr, 0},
+    {"ControlNode", true, nullptr, props_ControlNode, 17},
     {"CrossSubsetting", false, &create_CrossSubsetting, props_CrossSubsetting, 9},
     {"DataType", false, &create_DataType, props_DataType, 5},
     {"DecisionNode", false, &create_DecisionNode, props_DecisionNode, 17},
@@ -1501,14 +1716,14 @@ const MetaclassBinding metaclassTable[] = {
     {"Differencing", false, &create_Differencing, props_Differencing, 5},
     {"Disjoining", false, &create_Disjoining, props_Disjoining, 6},
     {"Documentation", false, &create_Documentation, props_Documentation, 5},
-    {"Element", true, nullptr, nullptr, 0},
+    {"Element", true, nullptr, props_Element, 3},
     {"ElementFilterMembership", false, &create_ElementFilterMembership, props_ElementFilterMembership, 8},
     {"EndFeatureMembership", false, &create_EndFeatureMembership, props_EndFeatureMembership, 8},
     {"EnumerationDefinition", false, &create_EnumerationDefinition, props_EnumerationDefinition, 6},
     {"EnumerationUsage", false, &create_EnumerationUsage, props_EnumerationUsage, 15},
     {"EventOccurrenceUsage", false, &create_EventOccurrenceUsage, props_EventOccurrenceUsage, 17},
     {"ExhibitStateUsage", false, &create_ExhibitStateUsage, props_ExhibitStateUsage, 18},
-    {"Expose", true, nullptr, nullptr, 0},
+    {"Expose", true, nullptr, props_Expose, 7},
     {"Expression", false, &create_Expression, props_Expression, 14},
     {"Feature", false, &create_Feature, props_Feature, 14},
     {"FeatureChainExpression", false, &create_FeatureChainExpression, props_FeatureChainExpression, 15},
@@ -1527,10 +1742,10 @@ const MetaclassBinding metaclassTable[] = {
     {"FramedConcernMembership", false, &create_FramedConcernMembership, props_FramedConcernMembership, 9},
     {"Function", false, &create_Function, props_Function, 5},
     {"IfActionUsage", false, &create_IfActionUsage, props_IfActionUsage, 17},
-    {"Import", true, nullptr, nullptr, 0},
+    {"Import", true, nullptr, props_Import, 7},
     {"IncludeUseCaseUsage", false, &create_IncludeUseCaseUsage, props_IncludeUseCaseUsage, 17},
     {"IndexExpression", false, &create_IndexExpression, props_IndexExpression, 15},
-    {"InstantiationExpression", true, nullptr, nullptr, 0},
+    {"InstantiationExpression", true, nullptr, props_InstantiationExpression, 14},
     {"Interaction", false, &create_Interaction, props_Interaction, 6},
     {"InterfaceDefinition", false, &create_InterfaceDefinition, props_InterfaceDefinition, 8},
     {"InterfaceUsage", false, &create_InterfaceUsage, props_InterfaceUsage, 18},
@@ -1547,7 +1762,7 @@ const MetaclassBinding metaclassTable[] = {
     {"LiteralInteger", false, &create_LiteralInteger, props_LiteralInteger, 15},
     {"LiteralRational", false, &create_LiteralRational, props_LiteralRational, 15},
     {"LiteralString", false, &create_LiteralString, props_LiteralString, 15},
-    {"LoopActionUsage", true, nullptr, nullptr, 0},
+    {"LoopActionUsage", true, nullptr, props_LoopActionUsage, 17},
     {"Membership", false, &create_Membership, props_Membership, 8},
     {"MembershipExpose", false, &create_MembershipExpose, props_MembershipExpose, 8},
     {"MembershipImport", false, &create_MembershipImport, props_MembershipImport, 8},
@@ -1581,7 +1796,7 @@ const MetaclassBinding metaclassTable[] = {
     {"Redefinition", false, &create_Redefinition, props_Redefinition, 10},
     {"ReferenceSubsetting", false, &create_ReferenceSubsetting, props_ReferenceSubsetting, 9},
     {"ReferenceUsage", false, &create_ReferenceUsage, props_ReferenceUsage, 15},
-    {"Relationship", true, nullptr, nullptr, 0},
+    {"Relationship", true, nullptr, props_Relationship, 4},
     {"RenderingDefinition", false, &create_RenderingDefinition, props_RenderingDefinition, 7},
     {"RenderingUsage", false, &create_RenderingUsage, props_RenderingUsage, 17},
     {"RequirementConstraintMembership", false, &create_RequirementConstraintMembership, props_RequirementConstraintMembership, 9},

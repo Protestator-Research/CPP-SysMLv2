@@ -457,6 +457,102 @@ TEST(XmiNegative, ReferenceToAnElementOfTheWrongMetaclass) {
     EXPECT_TRUE(workspace.unresolvedReferences().empty());
 }
 
+// A package with a classifier A and a feature f whose FeatureTyping points to @p href (the href attribute of the type tag).
+std::string typingXmi(const std::string& href) {
+    return
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+        "<sysml:Package xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
+        "xmlns:sysml=\"https://www.omg.org/spec/SysML/20250201\" xmi:id=\"00000000-0000-4000-8000-000000000001\" "
+        "elementId=\"00000000-0000-4000-8000-000000000001\" declaredName=\"P\">\n"
+        "  <ownedRelationship xsi:type=\"sysml:OwningMembership\" xmi:id=\"00000000-0000-4000-8000-000000000002\" elementId=\"00000000-0000-4000-8000-000000000002\">\n"
+        "    <ownedRelatedElement xsi:type=\"sysml:Classifier\" xmi:id=\"00000000-0000-4000-8000-000000000201\" elementId=\"00000000-0000-4000-8000-000000000201\" declaredName=\"A\"/>\n"
+        "  </ownedRelationship>\n"
+        "  <ownedRelationship xsi:type=\"sysml:OwningMembership\" xmi:id=\"00000000-0000-4000-8000-000000000003\" elementId=\"00000000-0000-4000-8000-000000000003\">\n"
+        "    <ownedRelatedElement xsi:type=\"sysml:Feature\" xmi:id=\"00000000-0000-4000-8000-000000000202\" elementId=\"00000000-0000-4000-8000-000000000202\" declaredName=\"f\">\n"
+        "      <ownedRelationship xsi:type=\"sysml:FeatureTyping\" xmi:id=\"00000000-0000-4000-8000-000000000301\" elementId=\"00000000-0000-4000-8000-000000000301\" "
+        "typedFeature=\"00000000-0000-4000-8000-000000000202\">\n"
+        "        <type href=\"" + href + "\"/>\n"
+        "      </ownedRelationship>\n"
+        "    </ownedRelatedElement>\n"
+        "  </ownedRelationship>\n"
+        "</sysml:Package>\n";
+}
+
+// The file part of an href is for display only: bytes that are no UTF-8 (a percent escape of Latin-1, a raw byte, a lone surrogate) never throw,
+// and the target is found by its id.
+TEST(XmiNegative, HrefWithInvalidUtf8InTheFilePartDoesNotThrow) {
+    const std::string target = "00000000-0000-4000-8000-000000000201";
+    const std::vector<std::string> files = {"x%FF.sysmlx", "Gr%F6%DFen.sysmlx", std::string("raw\xFF\xFE.sysmlx"), "%C3.sysmlx", "%ED%A0%80.sysmlx",
+                                            "file:///d/%FF/f.sysmlx", "../%80%80/x.sysmlx"};
+    for (const auto& file : files) {
+        SCOPED_TRACE(file);
+        Workspace workspace;
+        size_t source = 0;
+        ASSERT_NO_THROW(source = workspace.addText(typingXmi(file + "#" + target), "m.sysmlx", SourceLanguage::Xmi, 0));
+        ASSERT_NO_THROW(workspace.resolve());
+        EXPECT_TRUE(workspace.unresolvedReferences().empty()) << allErrors(workspace.errors(source));
+        const auto f = ConformanceTest::named<K::Feature>(workspace.elements(source), "f");
+        ASSERT_NE(f, nullptr);
+        ASSERT_EQ(f->ownedTyping().size(), 1u);
+        const auto type = f->ownedTyping().front()->type();
+        ASSERT_NE(type, nullptr);
+        EXPECT_EQ(type->declaredName().value_or(""), "A");
+        EXPECT_FALSE(SysMLv2::Files::isUnresolved(type));
+    }
+}
+
+TEST(XmiNegative, HrefWithInvalidUtf8ToAnUnknownIdIsAnUnresolvedReference) {
+    for (const std::string file : {std::string("x%FF.sysmlx"), std::string("raw\xFF.sysmlx")}) {
+        SCOPED_TRACE(file);
+        Workspace workspace;
+        size_t source = 0;
+        ASSERT_NO_THROW(source = workspace.addText(typingXmi(file + "#00000000-0000-4000-8000-0000000009ff"), "m.sysmlx", SourceLanguage::Xmi, 0));
+        ASSERT_NO_THROW(workspace.resolve());
+        EXPECT_TRUE(workspace.errors(source).empty()) << allErrors(workspace.errors(source));
+        ASSERT_EQ(workspace.unresolvedReferences().size(), 1u);
+        EXPECT_NE(workspace.unresolvedReferences().front().name.find("00000000-0000-4000-8000-0000000009ff"), std::string::npos);
+        EXPECT_EQ(workspace.unresolvedAsWarnings(source).size(), 1u);
+    }
+}
+
+// A well-formed UTF-8 file part is still normalised relative to the directory of the file that holds the href.
+TEST(XmiNegative, HrefWithUtf8InTheFilePartIsShownNormalised) {
+    Workspace workspace;
+    const size_t source = workspace.addText(typingXmi("sub/../Gr%C3%B6%C3%9Fen.sysmlx#00000000-0000-4000-8000-0000000009ff"), "dir/m.sysmlx", SourceLanguage::Xmi, 0);
+    workspace.resolve();
+    ASSERT_EQ(workspace.unresolvedReferences().size(), 1u) << allErrors(workspace.errors(source));
+    const std::string& name = workspace.unresolvedReferences().front().name;
+    EXPECT_NE(name.find("dir/Gr\xC3\xB6\xC3\x9F" "en.sysmlx#"), std::string::npos) << name;
+}
+
+// The text shown for an href whose file part is no UTF-8 (the fallback of the reader joins and normalises it as plain text): relative to the
+// directory of the file that holds the href, with "/" as separator, "." and ".." resolved, absolute forms kept.
+TEST(XmiNegative, DisplayTextOfAnHrefWithInvalidUtf8InTheFilePart) {
+    struct Case {
+        std::string name;
+        std::string href;
+        std::string expected;
+    };
+    const std::vector<Case> cases = {
+        {"dir/m.sysmlx", "x%FF.sysmlx", "dir/x\xFF.sysmlx"},
+        {"dir/m.sysmlx", "sub/../x%FF.sysmlx", "dir/x\xFF.sysmlx"},
+        {"dir/m.sysmlx", "../%FF/x.sysmlx", "\xFF/x.sysmlx"},
+        {"dir/m.sysmlx", "../../x%FF.sysmlx", "../x\xFF.sysmlx"},
+        {"m.sysmlx", "a/%FF.sysmlx", "a/\xFF.sysmlx"},
+        {"dir\\m.sysmlx", "x%FF.sysmlx", "dir/x\xFF.sysmlx"},
+        {"dir/m.sysmlx", "file:///d/%FF/f.sysmlx", "/d/\xFF/f.sysmlx"},
+        {"dir/m.sysmlx", "file:///D:/x%FF/f.sysmlx", "D:/x\xFF/f.sysmlx"},
+    };
+    for (const auto& c : cases) {
+        SCOPED_TRACE(c.name + " + " + c.href);
+        Workspace workspace;
+        const size_t source = workspace.addText(typingXmi(c.href + "#00000000-0000-4000-8000-0000000009ff"), c.name, SourceLanguage::Xmi, 0);
+        workspace.resolve();
+        ASSERT_EQ(workspace.unresolvedReferences().size(), 1u) << allErrors(workspace.errors(source));
+        EXPECT_EQ(workspace.unresolvedReferences().front().name, c.expected + "#00000000-0000-4000-8000-0000000009ff");
+    }
+}
+
 TEST(XmiNegative, MissingFileIsAnErrorOfTheSource) {
     Workspace workspace;
     const size_t source = workspace.addFile((std::filesystem::path(XMI_NEGATIVE_DIR) / "does_not_exist.sysmlx").string());
