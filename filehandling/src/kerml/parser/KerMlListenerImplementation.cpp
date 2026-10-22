@@ -14,8 +14,8 @@ namespace {
     using SysMLv2::Files::ReferenceKind;
     using SysMLv2::Files::ReferenceRole;
     using ElementPtr = std::shared_ptr<KerML::Entities::Element>;
-    using SysMLv2::Files::acceptsArgumentParameters;
     using SysMLv2::Files::argumentParameterOwner;
+    using SysMLv2::Files::isArgumentHost;
     using SysMLv2::Files::isArgumentParameter;
     using SysMLv2::Files::makeArgumentParameter;
     using SysMLv2::Files::makeConstructorResult;
@@ -1361,7 +1361,7 @@ void KerMLListenerImplementation::exitOwned_feature_typing(KerMLParser::Owned_fe
             // A plain invocation or constructor owns a non-owning membership of the invoked type as first owned relationship. The
             // arguments are not parsed yet, so it comes before their parameters.
             std::shared_ptr<KerML::Entities::Membership> typeMembership;
-            if (SysMLv2::Files::isArgumentHost(instExpr)) typeMembership = makeTypeMembership(instExpr);
+            if (isArgumentHost(instExpr)) typeMembership = makeTypeMembership(instExpr);
             const auto type = typeReference(typeName, instExpr, false, ctx->general_type(),
                 [instExpr, typeMembership](const std::shared_ptr<KerML::Entities::Type>& target) {
                     instExpr->setInstantiatedType(target);
@@ -1372,8 +1372,8 @@ void KerMLListenerImplementation::exitOwned_feature_typing(KerMLParser::Owned_fe
                 typeMembership->setMemberElement(type);
                 Elements.push_back(typeMembership);
             }
-            // The result of a constructor (second owned relationship): it exists without arguments too and owns their parameters.
-            // Without a type (syntax error) there is no result and the arguments are kept the flat way.
+            // The result of a constructor: it exists without arguments too and owns their parameters. A constructor always has a type
+            // here (the parser recovers a missing one); a feature chain type adds its feature before the result.
             if (SysMLv2::Files::isConstructor(instExpr)) {
                 const auto result = makeConstructorResult(std::dynamic_pointer_cast<KerML::Entities::ConstructorExpression>(instExpr));
                 Elements.push_back(result);
@@ -2467,7 +2467,7 @@ void KerMLListenerImplementation::exitNamed_argument_member(KerMLParser::Named_a
 void KerMLListenerImplementation::enterNamed_argument(KerMLParser::Named_argumentContext *) {
     // The argument of a plain invocation or constructor is a parameter feature (with the redefinition of the named parameter and a
     // feature value).
-    if (!ParentStack.empty() && acceptsArgumentParameters(ParentStack.top())) {
+    if (!ParentStack.empty() && isArgumentHost(ParentStack.top())) {
         ParentStack.push(makeArgumentParameter());
         return;
     }
@@ -3570,7 +3570,7 @@ void KerMLListenerImplementation::attachExpression(const std::shared_ptr<KerML::
     if (!expression) return;
     Elements.push_back(expression);
     if (ParentStack.empty()) return;
-    if (acceptsArgumentParameters(ParentStack.top())) {
+    if (isArgumentHost(ParentStack.top())) {
         // A positional argument of an invocation or constructor: a parameter feature whose feature value is the expression.
         std::shared_ptr<KerML::Entities::Feature> parameter;
         Elements.push_back(makePositionalArgument(expression, parameter));
@@ -3593,7 +3593,14 @@ void KerMLListenerImplementation::appendArgumentParameter(const std::shared_ptr<
     const std::shared_ptr<KerML::Entities::Expression>& value) {
     if (!parameter || ParentStack.empty()) return;
     const auto host = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top());
-    const auto owner = argumentParameterOwner(ParentStack.top());
+    auto owner = argumentParameterOwner(ParentStack.top());
+    if (host && !owner && SysMLv2::Files::isConstructor(host)) {
+        // Not reachable by the grammar (the result is created with the type); kept so that a constructor never loses an argument.
+        const auto result = makeConstructorResult(std::dynamic_pointer_cast<KerML::Entities::ConstructorExpression>(host));
+        Elements.push_back(result);
+        OwnershipKinds[result.get()] = SysMLv2::Files::MembershipKind::ReturnParameter;
+        owner = result;
+    }
     if (!host || !owner) return;
     Elements.push_back(parameter);
     parameter->setOwner(owner);

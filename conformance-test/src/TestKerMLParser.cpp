@@ -135,6 +135,11 @@ TEST(TestKerMLListener, NamedInvocationArgumentRetainsParameterAndValue) {
     const auto parameter = invocations[0]->ownedFeature()[0];
     ASSERT_EQ(parameter->ownedRedefinition().size(), 1u);
     EXPECT_EQ(parameter->ownedRedefinition()[0]->redefinedFeature()->declaredName().value_or(""), "input");
+    EXPECT_FALSE(parameter->declaredName().has_value());
+    ASSERT_EQ(parameter->ownedRelationship().size(), 2u);
+    const auto featureValue = std::dynamic_pointer_cast<FeatureValue>(parameter->ownedRelationship()[1]);
+    ASSERT_NE(featureValue, nullptr);
+    EXPECT_EQ(featureValue->value().get(), invocations[0]->argument()[0].get());
     const auto literal = std::dynamic_pointer_cast<LiteralInteger>(invocations[0]->argument()[0]);
     ASSERT_NE(literal, nullptr);
     EXPECT_EQ(literal->value(), 42);
@@ -1623,6 +1628,27 @@ TEST(TestKerMLExpressions, InvocationsWithPositionalAndNamedArguments) {
     EXPECT_EQ(typeMembership->memberElement().get(), call->instantiatedType().get());
     EXPECT_NE(std::dynamic_pointer_cast<ParameterMembership>(call->ownedRelationship()[1]), nullptr);
     EXPECT_NE(std::dynamic_pointer_cast<ParameterMembership>(call->ownedRelationship()[2]), nullptr);
+    // The same for the named arguments: each parameter is unnamed, redefines the named parameter and owns the feature value.
+    ASSERT_EQ(named->ownedRelationship().size(), 3u);
+    const auto namedTypeMembership = std::dynamic_pointer_cast<Membership>(named->ownedRelationship()[0]);
+    ASSERT_NE(namedTypeMembership, nullptr);
+    EXPECT_EQ(std::dynamic_pointer_cast<OwningMembership>(namedTypeMembership), nullptr);
+    EXPECT_EQ(namedTypeMembership->memberElement().get(), named->instantiatedType().get());
+    for (size_t i = 0; i < 2; ++i) {
+        const auto membership = std::dynamic_pointer_cast<ParameterMembership>(named->ownedRelationship()[i + 1]);
+        ASSERT_NE(membership, nullptr);
+        const auto parameter = std::dynamic_pointer_cast<Feature>(membership->memberElement());
+        ASSERT_NE(parameter, nullptr);
+        EXPECT_EQ(parameter.get(), named->ownedFeature()[i].get());
+        EXPECT_FALSE(parameter->declaredName().has_value());
+        EXPECT_EQ(parameter->direction(), IN);
+        ASSERT_EQ(parameter->ownedRelationship().size(), 2u);
+        EXPECT_NE(std::dynamic_pointer_cast<Redefinition>(parameter->ownedRelationship()[0]), nullptr);
+        const auto featureValue = std::dynamic_pointer_cast<FeatureValue>(parameter->ownedRelationship()[1]);
+        ASSERT_NE(featureValue, nullptr);
+        EXPECT_EQ(featureValue->value().get(), named->argument()[i].get());
+    }
+    ASSERT_NE(operatorOf(named->argument()[1], "==", 2), nullptr);
 
     const auto constructed = std::dynamic_pointer_cast<ConstructorExpression>(kermlValue("new T(1, 2)"));
     ASSERT_NE(constructed, nullptr);

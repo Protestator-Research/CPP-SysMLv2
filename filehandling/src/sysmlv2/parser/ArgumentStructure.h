@@ -29,8 +29,8 @@ namespace SysMLv2::Files {
 		return isPlainInvocation(element) || isConstructor(element);
 	}
 
-	// A feature that is exactly a Feature (not an Expression or any other subclass): the parameter features that were created for the
-	// arguments and the result feature of a constructor, which argumentParameterOwner relies on.
+	// A feature that is exactly a Feature (not an Expression or any other subclass): the parameter feature that is created for an
+	// argument while it is parsed.
 	inline bool isArgumentParameter(const std::shared_ptr<KerML::Entities::Element>& element) {
 		return element != nullptr && typeid(*element) == typeid(KerML::Entities::Feature);
 	}
@@ -41,21 +41,18 @@ namespace SysMLv2::Files {
 		return parameter;
 	}
 
-	// The element that owns the parameters of the arguments: the invocation itself, but for a constructor its result feature (the
-	// only feature it owns directly). It is null for a constructor without a result feature.
+	// The element that owns the parameters of the arguments: the invocation itself, but for a constructor its result feature. The result
+	// is selected by its direction (OUT) and not by its position: a constructor typed by a feature chain (`new q.c(p)`) owns the chain
+	// feature as well, which is a plain Feature too but has feature chainings. It is null for a constructor without a result feature.
 	inline std::shared_ptr<KerML::Entities::Type> argumentParameterOwner(const std::shared_ptr<KerML::Entities::Element>& host) {
 		if (isPlainInvocation(host)) return std::dynamic_pointer_cast<KerML::Entities::Type>(host);
 		if (!isConstructor(host)) return nullptr;
 		for (const auto& owned : host->ownedElements()) {
-			if (isArgumentParameter(owned)) return std::dynamic_pointer_cast<KerML::Entities::Type>(owned);
+			if (!isArgumentParameter(owned)) continue;
+			const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(owned);
+			if (feature->direction() == KerML::Entities::OUT && feature->ownedFeatureChaining().empty()) return feature;
 		}
 		return nullptr;
-	}
-
-	// Whether the arguments of the element are parameter features. False for a constructor whose type is missing (syntax error): its
-	// arguments are then kept the flat way.
-	inline bool acceptsArgumentParameters(const std::shared_ptr<KerML::Entities::Element>& element) {
-		return isArgumentHost(element) && argumentParameterOwner(element) != nullptr;
 	}
 
 	// The result of a constructor: it exists without arguments too and owns the parameters of the arguments. The caller registers it

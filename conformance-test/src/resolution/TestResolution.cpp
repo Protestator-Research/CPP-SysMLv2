@@ -1332,8 +1332,110 @@ TEST(InvocationStructure, KerMLSyntaxErrorsInArguments) {
     expectArgumentsWithoutValue(m.ws);
 }
 
-// Broken constructors (the type is missing or not an identifier): the parse does not break and the result stays consistent with the
-// parameters (a constructor without a type has no result and keeps its arguments the flat way).
+// A constructor typed by a feature chain (`new q.c(p)`): the arguments are parameters of the result. In KerML the chain feature is
+// owned by the constructor as well (relationships: type membership, FeatureMembership of the chain, result as ReturnParameterMembership,
+// as the chain is built before the result); SysML builds no chain feature.
+void expectChainConstructor(Workspace& ws, bool chainFeature) {
+    using namespace KerML::Entities;
+    const auto call = constructorOf(ws, "M::P::a");
+    ASSERT_NE(call, nullptr);
+    const auto relationships = call->ownedRelationship();
+    ASSERT_EQ(relationships.size(), chainFeature ? 3u : 2u);
+    EXPECT_NE(std::dynamic_pointer_cast<Membership>(relationships[0]), nullptr);
+    const auto resultMembership = std::dynamic_pointer_cast<ReturnParameterMembership>(relationships.back());
+    ASSERT_NE(resultMembership, nullptr);
+    const auto result = std::dynamic_pointer_cast<Feature>(resultMembership->memberElement());
+    ASSERT_NE(result, nullptr);
+    EXPECT_EQ(result->direction(), OUT);
+    if (chainFeature) {
+        // The chain feature owns no parameter.
+        const auto chainMembership = std::dynamic_pointer_cast<FeatureMembership>(relationships[1]);
+        ASSERT_NE(chainMembership, nullptr);
+        const auto chain = std::dynamic_pointer_cast<Feature>(chainMembership->memberElement());
+        ASSERT_NE(chain, nullptr);
+        EXPECT_NE(chain.get(), result.get());
+        EXPECT_FALSE(chain->ownedFeatureChaining().empty());
+        for (const auto& relationship : chain->ownedRelationship())
+            EXPECT_EQ(std::dynamic_pointer_cast<ParameterMembership>(relationship), nullptr);
+    }
+    EXPECT_EQ(call->ownedFeature().size(), chainFeature ? 2u : 1u);
+    // The only argument is the one parameter of the result and refers to the outer feature.
+    const auto parameters = result->ownedRelationship();
+    ASSERT_EQ(parameters.size(), 1u);
+    const auto membership = std::dynamic_pointer_cast<ParameterMembership>(parameters[0]);
+    ASSERT_NE(membership, nullptr);
+    EXPECT_EQ(membership->owningType().get(), result.get());
+    ASSERT_EQ(call->argument().size(), 1u);
+    const auto reference = std::dynamic_pointer_cast<FeatureReferenceExpression>(call->argument()[0]);
+    ASSERT_NE(reference, nullptr);
+    EXPECT_EQ(reference->referent().get(), ws.find("M::P::p").get());
+}
+
+TEST(InvocationStructure, KerMLChainTypedConstructorKeepsArgumentsOnTheResult) {
+    One m("package M {\n"
+          "  datatype Real;\n"
+          "  classifier Q { feature c : Real; }\n"
+          "  classifier P {\n"
+          "    feature q : Q;\n"
+          "    feature p : Real;\n"
+          "    feature a = new q.c(p);\n"
+          "  }\n"
+          "}\n", SourceLanguage::KerML, "chain.kerml");
+    expectChainConstructor(m.ws, true);
+}
+
+TEST(InvocationStructure, ChainTypedConstructorKeepsArgumentsOnTheResult) {
+    One m("package M {\n"
+          "  attribute def Real;\n"
+          "  part def Q { attribute c : Real; }\n"
+          "  part def P {\n"
+          "    attribute q : Q;\n"
+          "    attribute p : Real;\n"
+          "    attribute a = new q.c(p);\n"
+          "  }\n"
+          "}\n");
+    expectChainConstructor(m.ws, false);
+}
+
+// An invocation of a function by a feature chain (`q.c(p)`): next to the type membership and the chain feature the call owns one
+// ParameterMembership per argument (the chain feature owns none).
+TEST(InvocationStructure, KerMLChainInvocationOwnsItsParameterMemberships) {
+    One m("package M {\n"
+          "  datatype Real;\n"
+          "  classifier Q { function c { in x : Real; } }\n"
+          "  classifier P {\n"
+          "    feature q : Q;\n"
+          "    feature p : Real;\n"
+          "    feature a = q.c(p);\n"
+          "  }\n"
+          "}\n", SourceLanguage::KerML, "chain.kerml");
+    const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(m.ws.find("M::P::a"));
+    ASSERT_NE(feature, nullptr);
+    std::shared_ptr<KerML::Entities::InvocationExpression> call;
+    for (const auto& relationship : feature->ownedRelationship()) {
+        if (auto value = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(relationship))
+            call = std::dynamic_pointer_cast<KerML::Entities::InvocationExpression>(value->value());
+    }
+    ASSERT_NE(call, nullptr);
+    ASSERT_EQ(call->ownedRelationship().size(), 3u);
+    EXPECT_NE(std::dynamic_pointer_cast<KerML::Entities::Membership>(call->ownedRelationship()[0]), nullptr);
+    EXPECT_NE(std::dynamic_pointer_cast<KerML::Entities::FeatureMembership>(call->ownedRelationship()[1]), nullptr);
+    size_t parameters = 0;
+    for (const auto& relationship : call->ownedRelationship()) {
+        const auto membership = std::dynamic_pointer_cast<KerML::Entities::ParameterMembership>(relationship);
+        if (!membership) continue;
+        ++parameters;
+        EXPECT_EQ(membership->owningType().get(), call.get());
+    }
+    EXPECT_EQ(parameters, 1u);
+    ASSERT_EQ(call->argument().size(), 1u);
+    const auto reference = std::dynamic_pointer_cast<KerML::Entities::FeatureReferenceExpression>(call->argument()[0]);
+    ASSERT_NE(reference, nullptr);
+    EXPECT_EQ(reference->referent().get(), m.ws.find("M::P::p").get());
+}
+
+// Broken constructors (the type is missing or not an identifier): the parse does not break and the structure stays consistent. The
+// parser recovers a type, so the constructor has a result that owns the parameters of the arguments.
 TEST(InvocationStructure, KerMLBrokenConstructorsStayConsistent) {
     One m("package M {\n"
           "  datatype Real;\n"
@@ -1346,14 +1448,13 @@ TEST(InvocationStructure, KerMLBrokenConstructorsStayConsistent) {
     for (const auto& element : m.ws.elements(0)) {
         if (auto value = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(element)) EXPECT_NE(value->value(), nullptr);
         if (auto call = std::dynamic_pointer_cast<KerML::Entities::ConstructorExpression>(element)) {
-            // The result and the parameters belong together: without the result (no type) the arguments have no parameters.
-            bool result = false;
-            bool parameter = false;
+            // The arguments are parameters of the result, never of the constructor itself.
+            size_t results = 0;
             for (const auto& relationship : call->ownedRelationship()) {
-                if (std::dynamic_pointer_cast<KerML::Entities::ReturnParameterMembership>(relationship)) result = true;
-                else if (std::dynamic_pointer_cast<KerML::Entities::ParameterMembership>(relationship)) parameter = true;
+                if (std::dynamic_pointer_cast<KerML::Entities::ReturnParameterMembership>(relationship)) ++results;
+                else EXPECT_EQ(std::dynamic_pointer_cast<KerML::Entities::ParameterMembership>(relationship), nullptr);
             }
-            EXPECT_TRUE(result || !parameter);
+            EXPECT_EQ(results, 1u);
         }
     }
 }

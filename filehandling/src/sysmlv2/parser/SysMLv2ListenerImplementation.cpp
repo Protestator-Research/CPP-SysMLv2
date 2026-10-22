@@ -26,7 +26,7 @@ namespace {
 }
 
 namespace {
-	using SysMLv2::Files::acceptsArgumentParameters;
+	using SysMLv2::Files::isArgumentHost;
 	using SysMLv2::Files::argumentParameterOwner;
 	using SysMLv2::Files::isArgumentParameter;
 	using SysMLv2::Files::makeArgumentParameter;
@@ -1609,7 +1609,7 @@ void SysMLv2ListenerImplementation::exitFunction_reference(SysMLv2Parser::Functi
 void SysMLv2ListenerImplementation::enterNamed_argument(SysMLv2Parser::Named_argumentContext*) {
 	// The argument of a plain invocation or constructor is a parameter feature (with the redefinition of the named parameter and a
 	// feature value).
-	if (!ParentStack.empty() && acceptsArgumentParameters(ParentStack.top())) {
+	if (!ParentStack.empty() && isArgumentHost(ParentStack.top())) {
 		ParentStack.push(makeArgumentParameter());
 		return;
 	}
@@ -2176,7 +2176,7 @@ void SysMLv2ListenerImplementation::attachExpression(const std::shared_ptr<KerML
 	if (!expression) return;
 	Elements.push_back(expression);
 	if (ParentStack.empty()) return;
-	if (acceptsArgumentParameters(ParentStack.top())) {
+	if (isArgumentHost(ParentStack.top())) {
 		// A positional argument of an invocation or constructor: a parameter feature whose feature value is the expression.
 		std::shared_ptr<KerML::Entities::Feature> parameter;
 		Elements.push_back(makePositionalArgument(expression, parameter));
