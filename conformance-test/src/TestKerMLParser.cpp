@@ -130,12 +130,19 @@ TEST(TestKerMLListener, NamedInvocationArgumentRetainsParameterAndValue) {
     const auto invocations = listenerElements<InvocationExpression>(elements);
     ASSERT_EQ(invocations.size(), 1u);
     ASSERT_EQ(invocations[0]->argument().size(), 1u);
-    const auto argument = invocations[0]->argument()[0];
-    ASSERT_EQ(argument->ownedRedefinition().size(), 1u);
-    EXPECT_EQ(argument->ownedRedefinition()[0]->redefinedFeature()->declaredName().value_or(""), "input");
-    const auto literals = listenerElements<LiteralInteger>(argument->ownedElements());
-    ASSERT_EQ(literals.size(), 1u);
-    EXPECT_EQ(literals[0]->value(), 42);
+    // The argument is a parameter of the invocation that redefines the named parameter and has the value as its feature value.
+    ASSERT_EQ(invocations[0]->ownedFeature().size(), 1u);
+    const auto parameter = invocations[0]->ownedFeature()[0];
+    ASSERT_EQ(parameter->ownedRedefinition().size(), 1u);
+    EXPECT_EQ(parameter->ownedRedefinition()[0]->redefinedFeature()->declaredName().value_or(""), "input");
+    EXPECT_FALSE(parameter->declaredName().has_value());
+    ASSERT_EQ(parameter->ownedRelationship().size(), 2u);
+    const auto featureValue = std::dynamic_pointer_cast<FeatureValue>(parameter->ownedRelationship()[1]);
+    ASSERT_NE(featureValue, nullptr);
+    EXPECT_EQ(featureValue->value().get(), invocations[0]->argument()[0].get());
+    const auto literal = std::dynamic_pointer_cast<LiteralInteger>(invocations[0]->argument()[0]);
+    ASSERT_NE(literal, nullptr);
+    EXPECT_EQ(literal->value(), 42);
 }
 
 TEST(TestKerMLListener, FeatureChainPreservesOrderAndRelationships) {
@@ -1324,7 +1331,10 @@ std::shared_ptr<Expression> kermlValue(const std::string& expression) {
         return nullptr;
     }
     for (const auto& element : elements) {
-        if (auto value = std::dynamic_pointer_cast<FeatureValue>(element)) return value->value();
+        // The feature value of the feature (the arguments of an invocation own feature values of their own).
+        if (auto value = std::dynamic_pointer_cast<FeatureValue>(element)) {
+            if (value->featureWithValue() && value->featureWithValue()->declaredName() == "x") return value->value();
+        }
     }
     ADD_FAILURE() << "no feature value for '" << expression << "'";
     return nullptr;
@@ -1607,8 +1617,38 @@ TEST(TestKerMLExpressions, InvocationsWithPositionalAndNamedArguments) {
     const auto named = std::dynamic_pointer_cast<InvocationExpression>(kermlValue("f(x = 1, y = a == b)"));
     ASSERT_NE(named, nullptr);
     ASSERT_EQ(named->argument().size(), 2u);
-    ASSERT_EQ(named->argument()[1]->ownedRedefinition().size(), 1u);
-    EXPECT_EQ(named->argument()[1]->ownedRedefinition()[0]->redefinedFeature()->declaredName().value_or(""), "y");
+    ASSERT_EQ(named->ownedFeature().size(), 2u);
+    ASSERT_EQ(named->ownedFeature()[1]->ownedRedefinition().size(), 1u);
+    EXPECT_EQ(named->ownedFeature()[1]->ownedRedefinition()[0]->redefinedFeature()->declaredName().value_or(""), "y");
+    // The abstract syntax: a membership of the invoked type, then one parameter membership per argument.
+    ASSERT_EQ(call->ownedRelationship().size(), 3u);
+    const auto typeMembership = std::dynamic_pointer_cast<Membership>(call->ownedRelationship()[0]);
+    ASSERT_NE(typeMembership, nullptr);
+    EXPECT_EQ(std::dynamic_pointer_cast<OwningMembership>(typeMembership), nullptr);
+    EXPECT_EQ(typeMembership->memberElement().get(), call->instantiatedType().get());
+    EXPECT_NE(std::dynamic_pointer_cast<ParameterMembership>(call->ownedRelationship()[1]), nullptr);
+    EXPECT_NE(std::dynamic_pointer_cast<ParameterMembership>(call->ownedRelationship()[2]), nullptr);
+    // The same for the named arguments: each parameter is unnamed, redefines the named parameter and owns the feature value.
+    ASSERT_EQ(named->ownedRelationship().size(), 3u);
+    const auto namedTypeMembership = std::dynamic_pointer_cast<Membership>(named->ownedRelationship()[0]);
+    ASSERT_NE(namedTypeMembership, nullptr);
+    EXPECT_EQ(std::dynamic_pointer_cast<OwningMembership>(namedTypeMembership), nullptr);
+    EXPECT_EQ(namedTypeMembership->memberElement().get(), named->instantiatedType().get());
+    for (size_t i = 0; i < 2; ++i) {
+        const auto membership = std::dynamic_pointer_cast<ParameterMembership>(named->ownedRelationship()[i + 1]);
+        ASSERT_NE(membership, nullptr);
+        const auto parameter = std::dynamic_pointer_cast<Feature>(membership->memberElement());
+        ASSERT_NE(parameter, nullptr);
+        EXPECT_EQ(parameter.get(), named->ownedFeature()[i].get());
+        EXPECT_FALSE(parameter->declaredName().has_value());
+        EXPECT_EQ(parameter->direction(), IN);
+        ASSERT_EQ(parameter->ownedRelationship().size(), 2u);
+        EXPECT_NE(std::dynamic_pointer_cast<Redefinition>(parameter->ownedRelationship()[0]), nullptr);
+        const auto featureValue = std::dynamic_pointer_cast<FeatureValue>(parameter->ownedRelationship()[1]);
+        ASSERT_NE(featureValue, nullptr);
+        EXPECT_EQ(featureValue->value().get(), named->argument()[i].get());
+    }
+    ASSERT_NE(operatorOf(named->argument()[1], "==", 2), nullptr);
 
     const auto constructed = std::dynamic_pointer_cast<ConstructorExpression>(kermlValue("new T(1, 2)"));
     ASSERT_NE(constructed, nullptr);
@@ -1889,4 +1929,48 @@ TEST(TestKerMLListener, MultiplicityModifiersWithoutBounds) {
     EXPECT_FALSE(a->multiplicity().has_value());
     EXPECT_TRUE(d->multiplicity().has_value());
     EXPECT_FALSE(SysMLv2::Files::Parser::parseKerML("feature f : T ordered ordered;").second.empty());
+}
+
+TEST(TestKerMLListener, FeatureValueInitialAndDefaultFlags) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "feature a = 1; feature b := 1; feature c default = 1; feature d default := 1;");
+    ASSERT_TRUE(errors.empty());
+    const auto values = listenerElements<FeatureValue>(elements);
+    ASSERT_EQ(values.size(), 4u);
+    const auto check = [&](const std::string& name, bool initial, bool isDefault) {
+        std::shared_ptr<FeatureValue> found;
+        for (const auto& value : values) {
+            if (value->featureWithValue() && value->featureWithValue()->declaredName() == name) found = value;
+        }
+        ASSERT_NE(found, nullptr) << name;
+        EXPECT_EQ(found->isInitial(), initial) << name;
+        EXPECT_EQ(found->isDefault(), isDefault) << name;
+    };
+    check("a", false, false);
+    check("b", true, false);
+    check("c", false, true);
+    check("d", true, true);
+}
+
+TEST(TestKerMLListener, FeatureConstAndVarFlags) {
+    using namespace KerML::Entities;
+    // BasicFeaturePrefix = ... ( isVariable ?= 'var' | isConstant ?= 'const' { isVariable = true } )?; 'readonly' is a legacy alias of 'const'.
+    // EndFeaturePrefix = ( isConstant ?= 'const' { isVariable = true } )? isEnd ?= 'end'
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "class C { var feature a; const feature b; feature c; readonly feature d; } assoc A { const end feature x; end feature y; }");
+    ASSERT_TRUE(errors.empty());
+    const auto check = [&](const std::string& name, bool isVariable, bool isConstant) {
+        const auto feature = namedElement<Feature>(elements, name);
+        ASSERT_NE(feature, nullptr) << name;
+        EXPECT_EQ(feature->isVariable(), isVariable) << name;
+        EXPECT_EQ(feature->isConstant(), isConstant) << name;
+    };
+    check("a", true, false);
+    check("b", true, true);
+    check("c", false, false);
+    check("d", true, true);
+    check("x", true, true);
+    check("y", false, false);
+    EXPECT_FALSE(SysMLv2::Files::Parser::parseKerML("class C { var const feature z; }").second.empty());
 }

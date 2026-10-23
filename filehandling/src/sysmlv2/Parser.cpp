@@ -34,6 +34,12 @@ namespace SysMLv2::Files {
         return finish(workspace, reportUnresolvedAsWarnings);
     }
 
+    Result Parser::parseXmi(std::string text, std::string sourceName, bool reportUnresolvedAsWarnings) {
+        Workspace workspace;
+        workspace.addText(std::move(text), std::move(sourceName), SourceLanguage::Xmi);
+        return finish(workspace, reportUnresolvedAsWarnings);
+    }
+
     Result Parser::parseFile(const std::string& path, bool reportUnresolvedAsWarnings) {
         Workspace workspace;
         workspace.addFile(path);

@@ -28,6 +28,7 @@ class CPPSysMLRecipe(ConanFile):
     def requirements(self):
         self.requires("boost/[>=1.86.0 <2]")
         self.requires("nlohmann_json/[>=3.11.3 <44]")
+        self.requires("pugixml/[>=1.14 <2]")
         self.requires("date/3.0.4")
         if self.options.with_online:
             self.requires("libcurl/[>=8.4.0 <9]")

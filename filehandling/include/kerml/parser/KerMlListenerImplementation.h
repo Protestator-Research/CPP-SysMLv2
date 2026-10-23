@@ -1006,6 +1006,7 @@ public:
 
 private:
     void attachExpression(const std::shared_ptr<KerML::Entities::Expression>& expression);
+    void appendArgumentParameter(const std::shared_ptr<KerML::Entities::Feature>& parameter, const std::shared_ptr<KerML::Entities::Expression>& value);
     void finishOperatorExpression(const std::string& operatorName);
     void finishMembership(KerMLParser::Member_prefixContext *prefix, bool owningOnly = false);
     void applyIdentification(KerMLParser::IdentificationContext *idCtx, const std::shared_ptr<KerML::Entities::Element>& elem);

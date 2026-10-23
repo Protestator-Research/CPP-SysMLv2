@@ -5,6 +5,7 @@ project(sysmlv2parser CXX C)
 find_package(nlohmann_json REQUIRED)
 find_package(Boost REQUIRED)
 find_package(antlr4-runtime REQUIRED)
+find_package(pugixml REQUIRED)
 
 # The Conan package of the ANTLR runtime provides antlr4_shared or antlr4_static, depending on its option.
 if(TARGET antlr4_shared)
@@ -28,6 +29,10 @@ set(RESOLUTION_HEADER
 
 set(OWNERSHIP_HEADER
         include/sysmlv2/ownership/Ownership.h)
+
+set(XMI_HEADER
+        include/sysmlv2/xmi/XmiReader.h
+        include/sysmlv2/xmi/XmiWriter.h)
 
 set(KERML_PARSER_HEADER
         include/kerml/ErrorTypes.h
@@ -54,11 +59,13 @@ add_library(sysmlv2parser
         ${GLOBAL_HEADER}
         ${RESOLUTION_HEADER}
         ${OWNERSHIP_HEADER}
+        ${XMI_HEADER}
         src/kerml/parser/KerMLBaseListener.cpp
         src/kerml/parser/KerMLLexer.cpp
         src/kerml/parser/KerMLListener.cpp
         src/kerml/parser/KerMLParser.cpp
         src/sysmlv2/parser/SysMLv2BaseListener.cpp
+        src/sysmlv2/parser/ArgumentStructure.h
         src/sysmlv2/parser/SysMLv2ListenerImplementation.cpp
         src/sysmlv2/parser/SysMLv2Lexer.cpp
         src/sysmlv2/parser/SysMLv2Listener.cpp
@@ -76,6 +83,11 @@ add_library(sysmlv2parser
         src/sysmlv2/resolution/Resolver.cpp
         src/sysmlv2/resolution/Resolver.h
         src/sysmlv2/ownership/Ownership.cpp
+        src/sysmlv2/xmi/XmiBindings.h
+        src/sysmlv2/xmi/XmiBindings.generated.cpp
+        src/sysmlv2/xmi/XmiReader.cpp
+        src/sysmlv2/xmi/XmiWriter.cpp
+        src/sysmlv2/xmi/XmiText.h
         src/kerml/parser/KerMlListenerImplementation.cpp)
 
 #if((EXISTS antlr4_shared) OR (MSVC))
@@ -83,6 +95,7 @@ add_library(sysmlv2parser
             Boost::headers
             nlohmann_json::nlohmann_json
             ${SYSMLV2_ANTLR4_TARGET}
+            pugixml::pugixml
             kerml
             sysml
             sysmlv2resources
@@ -111,6 +124,7 @@ install(FILES ${SYSML_PARSER_HEADER} DESTINATION include/sysmlv2/parser)
 install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2)
 install(FILES ${RESOLUTION_HEADER} DESTINATION include/sysmlv2/resolution)
 install(FILES ${OWNERSHIP_HEADER} DESTINATION include/sysmlv2/ownership)
+install(FILES ${XMI_HEADER} DESTINATION include/sysmlv2/xmi)
 
 if(MSVC)
     target_compile_options(sysmlv2parser PRIVATE /W4 /WX- /bigobj)

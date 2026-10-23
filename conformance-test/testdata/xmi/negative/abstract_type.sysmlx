@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sysml:Namespace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sysml="https://www.omg.org/spec/SysML/20250201" xmi:id="00000000-0000-4000-8000-000000000001" elementId="00000000-0000-4000-8000-000000000001">
+  <ownedRelationship xsi:type="sysml:OwningMembership" xmi:id="00000000-0000-4000-8000-000000000002" elementId="00000000-0000-4000-8000-000000000002">
+    <ownedRelatedElement xsi:type="sysml:LibraryPackage" xmi:id="00000000-0000-4000-8000-000000000003" elementId="00000000-0000-4000-8000-000000000003" declaredName="Neg" isStandard="true">
+      <ownedRelationship xsi:type="sysml:OwningMembership" xmi:id="00000000-0000-4000-8000-000000000101" elementId="00000000-0000-4000-8000-000000000101">
+        <ownedRelatedElement xsi:type="sysml:Relationship" xmi:id="00000000-0000-4000-8000-000000000201" elementId="00000000-0000-4000-8000-000000000201" declaredName="A">
+        </ownedRelatedElement>
+      </ownedRelationship>
+    </ownedRelatedElement>
+  </ownedRelationship>
+</sysml:Namespace>

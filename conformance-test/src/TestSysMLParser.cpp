@@ -600,7 +600,10 @@ std::shared_ptr<KerML::Entities::Expression> sysmlAttributeValue(const std::stri
         return nullptr;
     }
     for (const auto& element : elements) {
-        if (auto value = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(element)) return value->value();
+        // The feature value of the attribute (the arguments of an invocation own feature values of their own).
+        if (auto value = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(element)) {
+            if (value->featureWithValue() && value->featureWithValue()->declaredName() == "x") return value->value();
+        }
     }
     ADD_FAILURE() << "no feature value for '" << expression << "'";
     return nullptr;
@@ -673,6 +676,14 @@ TEST(TestSysMLExpressions, InvocationsAndCollectionOperators) {
     ASSERT_NE(call->instantiatedType(), nullptr);
     EXPECT_EQ(call->instantiatedType()->declaredName().value_or(""), "f");
     EXPECT_EQ(call->argument().size(), 2u);
+    // The abstract syntax: a membership of the invoked type, then one parameter membership per argument.
+    ASSERT_EQ(call->ownedRelationship().size(), 3u);
+    const auto typeMembership = std::dynamic_pointer_cast<Membership>(call->ownedRelationship()[0]);
+    ASSERT_NE(typeMembership, nullptr);
+    EXPECT_EQ(std::dynamic_pointer_cast<OwningMembership>(typeMembership), nullptr);
+    EXPECT_EQ(typeMembership->memberElement().get(), call->instantiatedType().get());
+    EXPECT_NE(std::dynamic_pointer_cast<ParameterMembership>(call->ownedRelationship()[1]), nullptr);
+    EXPECT_NE(std::dynamic_pointer_cast<ParameterMembership>(call->ownedRelationship()[2]), nullptr);
 
     const auto select = std::dynamic_pointer_cast<OperatorExpression>(sysmlAttributeValue("s->select {in x; x > 0}"));
     ASSERT_NE(select, nullptr);
@@ -907,4 +918,218 @@ TEST(TestSysMLParser, PrefixMetadataOnControlNodeDoesNotAnnotateAction) {
             for (const auto& annotated : metadata->annotatedElements()) EXPECT_NE(annotated, act);
         }
     }
+    // The control node is an element of its own, so the prefix metadata annotates it (the `terminate` node still creates no element).
+    const auto mm = named<SysMLv2::Entities::MergeNode>(elements, "mm");
+    ASSERT_NE(mm, nullptr);
+    EXPECT_EQ(metadataUsagesOf(mm).size(), 1u);
+}
+
+TEST(TestSysMLParser, ControlNodesCreateElements) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("action def A { merge m; decide d; join j; fork f; }");
+    ASSERT_TRUE(errors.empty());
+    const auto act = named<SysMLv2::Entities::ActionDefinition>(elements, "A");
+    ASSERT_NE(act, nullptr);
+    const auto m = named<SysMLv2::Entities::MergeNode>(elements, "m");
+    const auto d = named<SysMLv2::Entities::DecisionNode>(elements, "d");
+    const auto j = named<SysMLv2::Entities::JoinNode>(elements, "j");
+    const auto f = named<SysMLv2::Entities::ForkNode>(elements, "f");
+    ASSERT_NE(m, nullptr);
+    ASSERT_NE(d, nullptr);
+    ASSERT_NE(j, nullptr);
+    ASSERT_NE(f, nullptr);
+    EXPECT_EQ(m->owner(), act);
+    EXPECT_EQ(d->owner(), act);
+    EXPECT_EQ(j->owner(), act);
+    EXPECT_EQ(f->owner(), act);
+    EXPECT_TRUE(m->isComposite());
+    EXPECT_TRUE(d->isComposite());
+    EXPECT_TRUE(j->isComposite());
+    EXPECT_TRUE(f->isComposite());
+    EXPECT_EQ(act->declaredName().value_or(""), "A");
+}
+
+TEST(TestSysMLParser, ControlNodePrefixConstant) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("action def A { constant merge m1; merge m2; }");
+    ASSERT_TRUE(errors.empty());
+    const auto m1 = named<SysMLv2::Entities::MergeNode>(elements, "m1");
+    const auto m2 = named<SysMLv2::Entities::MergeNode>(elements, "m2");
+    ASSERT_NE(m1, nullptr);
+    ASSERT_NE(m2, nullptr);
+    EXPECT_TRUE(m1->isConstant());
+    EXPECT_FALSE(m2->isConstant());
+}
+
+TEST(TestSysMLParser, ControlNodeRequiresKeyword) {
+    // Without the keyword `x;` is a default reference usage (and no longer a control node), a bare `merge m` lacks the body.
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("action def A { x; }");
+    ASSERT_TRUE(errors.empty());
+    EXPECT_EQ(named<SysMLv2::Entities::MergeNode>(elements, "x"), nullptr);
+    EXPECT_EQ(named<SysMLv2::Entities::DecisionNode>(elements, "x"), nullptr);
+    EXPECT_EQ(named<SysMLv2::Entities::JoinNode>(elements, "x"), nullptr);
+    EXPECT_EQ(named<SysMLv2::Entities::ForkNode>(elements, "x"), nullptr);
+    EXPECT_NE(named<SysMLv2::Entities::ReferenceUsage>(elements, "x"), nullptr);
+    const auto [elements2, errors2] = SysMLv2::Files::Parser::parseSysMLv2("action def A { merge m }");
+    EXPECT_FALSE(errors2.empty());
+}
+
+TEST(TestSysMLParser, AnonymousControlNodes) {
+    // UsageDeclaration may be empty, so the control nodes need no name.
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("action def A { merge; decide; join; fork; merge named; decide { } }");
+    ASSERT_TRUE(errors.empty());
+    const auto act = named<SysMLv2::Entities::ActionDefinition>(elements, "A");
+    ASSERT_NE(act, nullptr);
+    size_t merges = 0, decisions = 0, joins = 0, forks = 0, anonymousMerges = 0, anonymousDecisions = 0;
+    for (const auto& element : elements) {
+        if (element->owner() != act) continue;
+        if (std::dynamic_pointer_cast<SysMLv2::Entities::MergeNode>(element)) {
+            ++merges;
+            if (!element->declaredName().has_value()) ++anonymousMerges;
+        } else if (std::dynamic_pointer_cast<SysMLv2::Entities::DecisionNode>(element)) {
+            ++decisions;
+            if (!element->declaredName().has_value()) ++anonymousDecisions;
+        } else if (std::dynamic_pointer_cast<SysMLv2::Entities::JoinNode>(element)) {
+            ++joins;
+            EXPECT_FALSE(element->declaredName().has_value());
+        } else if (std::dynamic_pointer_cast<SysMLv2::Entities::ForkNode>(element)) {
+            ++forks;
+            EXPECT_FALSE(element->declaredName().has_value());
+        } else {
+            continue;
+        }
+        const auto usage = std::dynamic_pointer_cast<SysMLv2::Entities::Usage>(element);
+        ASSERT_NE(usage, nullptr);
+        EXPECT_TRUE(usage->isComposite());
+    }
+    EXPECT_EQ(merges, 2u);
+    EXPECT_EQ(anonymousMerges, 1u);
+    EXPECT_EQ(decisions, 2u);
+    EXPECT_EQ(anonymousDecisions, 2u);
+    EXPECT_EQ(joins, 1u);
+    EXPECT_EQ(forks, 1u);
+    EXPECT_NE(named<SysMLv2::Entities::MergeNode>(elements, "named"), nullptr);
+}
+
+TEST(TestSysMLParser, AnonymousControlNodeSpecializationBelongsToNode) {
+    // `fork :> x;` and `merge : T;` have an empty UsageDeclaration identification; the specialization / typing belongs to the node.
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "action def T; action def A { action x; fork :> x; merge : T; }");
+    ASSERT_TRUE(errors.empty());
+    const auto act = named<SysMLv2::Entities::ActionDefinition>(elements, "A");
+    const auto x = named<SysMLv2::Entities::ActionUsage>(elements, "x");
+    const auto t = named<SysMLv2::Entities::ActionDefinition>(elements, "T");
+    ASSERT_NE(act, nullptr);
+    ASSERT_NE(x, nullptr);
+    ASSERT_NE(t, nullptr);
+    std::shared_ptr<SysMLv2::Entities::ForkNode> fork;
+    std::shared_ptr<SysMLv2::Entities::MergeNode> merge;
+    size_t forks = 0, merges = 0;
+    for (const auto& element : elements) {
+        if (element->owner() != act) continue;
+        if (auto f = std::dynamic_pointer_cast<SysMLv2::Entities::ForkNode>(element)) { fork = f; ++forks; }
+        if (auto m = std::dynamic_pointer_cast<SysMLv2::Entities::MergeNode>(element)) { merge = m; ++merges; }
+    }
+    ASSERT_EQ(forks, 1u);
+    ASSERT_EQ(merges, 1u);
+    EXPECT_FALSE(fork->declaredName().has_value());
+    EXPECT_FALSE(merge->declaredName().has_value());
+    ASSERT_EQ(fork->ownedSubsetting().size(), 1u);
+    EXPECT_EQ(fork->ownedSubsetting()[0]->subsettedFeature(), x);
+    EXPECT_TRUE(merge->ownedSubsetting().empty());
+    ASSERT_EQ(merge->ownedTyping().size(), 1u);
+    EXPECT_EQ(merge->ownedTyping()[0]->type(), t);
+    EXPECT_TRUE(fork->ownedTyping().empty());
+    // The enclosing definition keeps its name and receives neither the specialization nor the typing.
+    EXPECT_EQ(act->declaredName().value_or(""), "A");
+    EXPECT_TRUE(act->ownedSpecialization().empty());
+    EXPECT_TRUE(act->ownedSubclassification().empty());
+    EXPECT_TRUE(x->ownedSubsetting().empty());
+    EXPECT_TRUE(x->ownedTyping().empty());
+}
+
+TEST(TestSysMLParser, ThenMergeAfterSourceSuccession) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "action def A { action a; action b; first a; then merge; then b; }");
+    ASSERT_TRUE(errors.empty());
+    const auto act = named<SysMLv2::Entities::ActionDefinition>(elements, "A");
+    ASSERT_NE(act, nullptr);
+    size_t merges = 0;
+    for (const auto& element : elements) {
+        if (element->owner() != act) continue;
+        if (std::dynamic_pointer_cast<SysMLv2::Entities::MergeNode>(element)) {
+            ++merges;
+            EXPECT_FALSE(element->declaredName().has_value());
+        }
+    }
+    EXPECT_EQ(merges, 1u);
+    EXPECT_EQ(act->declaredName().value_or(""), "A");
+}
+
+TEST(TestSysMLParser, AttributeInitialValueFlags) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "part def P { attribute a = 1; attribute b := 1; attribute c default = 1; attribute d default := 1; }");
+    ASSERT_TRUE(errors.empty());
+    const auto check = [&](const std::string& name, bool initial, bool isDefault) {
+        const auto attribute = named<SysMLv2::Entities::AttributeUsage>(elements, name);
+        ASSERT_NE(attribute, nullptr) << name;
+        std::shared_ptr<KerML::Entities::FeatureValue> value;
+        for (const auto& child : attribute->ownedElements()) {
+            if (auto candidate = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(child)) value = candidate;
+        }
+        ASSERT_NE(value, nullptr) << name;
+        EXPECT_EQ(value->isInitial(), initial) << name;
+        EXPECT_EQ(value->isDefault(), isDefault) << name;
+    };
+    check("a", false, false);
+    check("b", true, false);
+    check("c", false, true);
+    check("d", true, true);
+}
+
+TEST(TestSysMLParser, ConstantUsagePrefix) {
+    // RefPrefix = direction? derived? ( abstract | variation )? ( isConstant ?= 'constant' )?
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "part def P { constant attribute a = 1; attribute b = 2; }");
+    ASSERT_TRUE(errors.empty());
+    const auto a = named<SysMLv2::Entities::AttributeUsage>(elements, "a");
+    const auto b = named<SysMLv2::Entities::AttributeUsage>(elements, "b");
+    ASSERT_NE(a, nullptr);
+    ASSERT_NE(b, nullptr);
+    EXPECT_TRUE(a->isConstant());
+    EXPECT_FALSE(b->isConstant());
+    // 'const' is a KerML keyword only; it stays usable as a name in SysML.
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseSysMLv2("part def Q { attribute const; }").second.empty());
+}
+
+TEST(TestSysMLParser, ConstantOccurrenceAndReferenceUsagePrefix) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "part def P { constant part p1; part p2; } part def R { constant ref r1 : P; ref r2 : P; }");
+    ASSERT_TRUE(errors.empty());
+    const auto p1 = named<SysMLv2::Entities::PartUsage>(elements, "p1");
+    const auto p2 = named<SysMLv2::Entities::PartUsage>(elements, "p2");
+    const auto r1 = named<SysMLv2::Entities::ReferenceUsage>(elements, "r1");
+    const auto r2 = named<SysMLv2::Entities::ReferenceUsage>(elements, "r2");
+    ASSERT_NE(p1, nullptr);
+    ASSERT_NE(p2, nullptr);
+    ASSERT_NE(r1, nullptr);
+    ASSERT_NE(r2, nullptr);
+    EXPECT_TRUE(p1->isConstant());
+    EXPECT_FALSE(p2->isConstant());
+    EXPECT_TRUE(r1->isConstant());
+    EXPECT_FALSE(r2->isConstant());
+}
+
+TEST(TestSysMLParser, ConstantOnCrossFeature) {
+    // OwnedCrossFeature = BasicUsagePrefix UsageDeclaration: the 'constant' belongs to the cross feature, not to the end feature.
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "part def Hub; connection def C { end constant connectingHub [1..*] part hub : Hub; end otherCross [1] part other : Hub; }");
+    ASSERT_TRUE(errors.empty());
+    const auto hub = named<SysMLv2::Entities::PartUsage>(elements, "hub");
+    const auto cross = named<SysMLv2::Entities::ReferenceUsage>(elements, "connectingHub");
+    const auto other = named<SysMLv2::Entities::ReferenceUsage>(elements, "otherCross");
+    ASSERT_NE(hub, nullptr);
+    ASSERT_NE(cross, nullptr);
+    ASSERT_NE(other, nullptr);
+    EXPECT_TRUE(cross->isConstant());
+    EXPECT_FALSE(hub->isConstant());
+    EXPECT_FALSE(other->isConstant());
 }

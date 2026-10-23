@@ -14,7 +14,7 @@ import KerML;
 
 start: start_element* EOF;
 identification: (SYMBOL_SMALLER sysml_name SYMBOL_GREATER)? sysml_name;
-sysml_name: NAME | KEYWORD_VAR | KEYWORD_ASSOC | KEYWORD_BEHAVIOR | KEYWORD_BOOL | KEYWORD_CHAINS |
+sysml_name: NAME | KEYWORD_VAR | KEYWORD_CONST | KEYWORD_ASSOC | KEYWORD_BEHAVIOR | KEYWORD_BOOL | KEYWORD_CHAINS |
             KEYWORD_CLASS | KEYWORD_CLASSIFIER | KEYWORD_COMPOSITE | KEYWORD_CONJUGATE | KEYWORD_CONJUGATES |
             KEYWORD_CONJUGATION | KEYWORD_CONNECTOR | KEYWORD_DATATYPE | KEYWORD_DIFFERENCES | KEYWORD_DISJOINING |
             KEYWORD_DISJOINT | KEYWORD_EXPR | KEYWORD_FEATURE | KEYWORD_FEATURED | KEYWORD_FEATURING |
@@ -331,11 +331,11 @@ action_node_usage_declaration: KEYWORD_ACTION usage_declaration?;
 action_node_prefix: occurrence_usage_prefix action_node_usage_declaration?;
 
 control_node: merge_node | decision_node | join_node | fork_node;
-control_node_prefix: ref_prefix KEYWORD_INDIVIDUAL? portion_kind? usage_extention_keyword?;
-merge_node: control_node_prefix KEYWORD_MERGE? usage_declaration action_body;
-decision_node: control_node_prefix KEYWORD_DECIDE? usage_declaration action_body;
-join_node: control_node_prefix KEYWORD_DECIDE? usage_declaration action_body;
-fork_node: control_node_prefix KEYWORD_FORK? usage_declaration action_body;
+control_node_prefix: ref_prefix KEYWORD_INDIVIDUAL? portion_kind? usage_extention_keyword*;
+merge_node: control_node_prefix KEYWORD_MERGE usage_declaration? action_body;
+decision_node: control_node_prefix KEYWORD_DECIDE usage_declaration? action_body;
+join_node: control_node_prefix KEYWORD_JOIN usage_declaration? action_body;
+fork_node: control_node_prefix KEYWORD_FORK usage_declaration? action_body;
 
 accept_node: occurrence_usage_prefix accept_node_declaration action_body;
 accept_node_declaration: action_node_usage_declaration? KEYWORD_ACCEPT accept_parameter_part;

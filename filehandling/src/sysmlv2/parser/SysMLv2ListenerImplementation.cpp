@@ -4,6 +4,7 @@
 #include <sysmlv2/resolution/Retarget.h>
 #include <iostream>
 #include <algorithm>
+#include "ArgumentStructure.h"
 
 namespace {
 	using SysMLv2::Files::ReferenceKind;
@@ -22,6 +23,16 @@ namespace {
 		return recorder.reference<KerML::Entities::Feature>(name, ReferenceKind::Feature, ReferenceRole::NotAttempted, context, false, nullptr,
 			position, nullptr);
 	}
+}
+
+namespace {
+	using SysMLv2::Files::isArgumentHost;
+	using SysMLv2::Files::argumentParameterOwner;
+	using SysMLv2::Files::isArgumentParameter;
+	using SysMLv2::Files::makeArgumentParameter;
+	using SysMLv2::Files::makeConstructorResult;
+	using SysMLv2::Files::makePositionalArgument;
+	using SysMLv2::Files::makeTypeMembership;
 }
 
 namespace {
@@ -477,6 +488,8 @@ void SysMLv2ListenerImplementation::exitSubject_usage(SysMLv2Parser::Subject_usa
 	}
 }
 
+static void applyRefPrefix(SysMLv2Parser::Ref_prefixContext* refCtx, const std::shared_ptr<KerML::Entities::Feature>& feature);
+
 // EndUsagePrefix = isEnd ?= 'end' ( OwnedCrossFeatureMember )?
 void SysMLv2ListenerImplementation::exitEnd_usage_prefix(SysMLv2Parser::End_usage_prefixContext* ctx) {
 	if (ParentStack.empty() || !ctx || !shouldApplyToTop(ctx)) return;
@@ -513,6 +526,7 @@ void SysMLv2ListenerImplementation::enterOwned_cross_feature(SysMLv2Parser::Owne
 	auto cross = std::make_shared<SysMLv2::Entities::ReferenceUsage>();
 	ParentStack.push(cross);
 	recordPush(ctx, cross);
+	if (ctx->basic_usage_prefix()) applyRefPrefix(ctx->basic_usage_prefix()->ref_prefix(), cross);
 }
 
 void SysMLv2ListenerImplementation::exitOwned_cross_feature(SysMLv2Parser::Owned_cross_featureContext* ctx) {
@@ -555,9 +569,9 @@ void SysMLv2ListenerImplementation::enterUsage_declaration(SysMLv2Parser::Usage_
 void SysMLv2ListenerImplementation::exitUsage_declaration(SysMLv2Parser::Usage_declarationContext* ctx) {
 	if (ParentStack.empty() || !ctx) return;
 	if (!shouldApplyToTop(ctx)) return;
-	// The control nodes (`merge`, `decide`, `join`, `fork`) do not create an element yet, and neither do the nodes that are not usages
-	// of their own: their identification and specialization must not be applied to the definition or usage that encloses them (that
-	// used to rename, for example, `action def ForLoopAction` to the name of its nested `action whileLoop while ...`). The
+	// The `terminate` node does not create an element yet, and so do the nodes that are not usages of their own: their identification
+	// and specialization must not be applied to the definition or usage that encloses them (that used to rename, for example,
+	// `action def ForLoopAction` to the name of its nested `action whileLoop while ...`). The `merge`, `decide`, `join`, `fork`,
 	// `assign`, `while`, `for`, `if`, `send` and `accept` nodes push their own usage, which ends the walk up below.
 	for (antlr4::ParserRuleContext* c = ctx; c != nullptr; c = c->parent ? dynamic_cast<antlr4::ParserRuleContext*>(c->parent) : nullptr) {
 		if (dynamic_cast<SysMLv2Parser::Action_nodeContext*>(c) != nullptr) return;
@@ -581,6 +595,13 @@ static void applyFeatureDirectionFromContext(SysMLv2Parser::Feature_directionCon
 	else if (dirCtx->KEYWORD_OUT() != nullptr) feature->setDirection(KerML::Entities::OUT);
 }
 
+// RefPrefix = direction? derived? (abstract|variation)? isConstant ?= 'constant'?. In SysML isVariable is derived, so only isConstant is set.
+static void applyRefPrefix(SysMLv2Parser::Ref_prefixContext* refCtx, const std::shared_ptr<KerML::Entities::Feature>& feature) {
+	if (!refCtx || !feature) return;
+	applyFeatureDirectionFromContext(refCtx->feature_direction(), feature);
+	if (refCtx->KEYWORD_CONSTANT() != nullptr) feature->setIsConstant(true);
+}
+
 static void applyPortionKind(SysMLv2Parser::Portion_kindContext* pkCtx, const std::shared_ptr<SysMLv2::Entities::OccurrenceUsage>& occUsage) {
 	if (!pkCtx || !occUsage) return;
 	if (pkCtx->KEYWORD_SNAPSHOT() != nullptr) occUsage->setPortionKind(SysMLv2::Entities::PortionKind::snapshot);
@@ -595,7 +616,7 @@ void SysMLv2ListenerImplementation::applyUsagePrefix(SysMLv2Parser::Usage_prefix
 	if (!basicPrefix) return;
 	auto refPrefix = basicPrefix->ref_prefix();
 	if (!refPrefix) return;
-	applyFeatureDirectionFromContext(refPrefix->feature_direction(), feature);
+	applyRefPrefix(refPrefix, feature);
 }
 
 void SysMLv2ListenerImplementation::applyOccurrenceUsagePrefix(SysMLv2Parser::Occurrence_usage_prefixContext* prefix, const std::shared_ptr<KerML::Entities::Feature>& feature) {
@@ -604,7 +625,7 @@ void SysMLv2ListenerImplementation::applyOccurrenceUsagePrefix(SysMLv2Parser::Oc
 	if (!basicPrefix) return;
 	auto refPrefix = basicPrefix->ref_prefix();
 	if (!refPrefix) return;
-	applyFeatureDirectionFromContext(refPrefix->feature_direction(), feature);
+	applyRefPrefix(refPrefix, feature);
 }
 
 void SysMLv2ListenerImplementation::applyFeatureSpecializationPart(SysMLv2Parser::Feature_specialization_partContext* part, const std::shared_ptr<KerML::Entities::Feature>& feature) {
@@ -969,15 +990,43 @@ DEFINE_USAGE_METHODS(If_node, SysMLv2::Entities::IfActionUsage)
 DEFINE_USAGE_METHODS(While_loop_node, SysMLv2::Entities::WhileLoopActionUsage)
 DEFINE_USAGE_METHODS(For_loop_node, SysMLv2::Entities::ForLoopActionUsage)
 
+// The control nodes (`merge`, `decide`, `join`, `fork`) are usages of their own: `isComposite ?= keyword`. Their ControlNodePrefix
+// (a child of the node) is applied on exit of the prefix, see exitControl_node_prefix.
+#define DEFINE_CONTROL_NODE_METHODS(Name, Type) \
+void SysMLv2ListenerImplementation::enter##Name(SysMLv2Parser::Name##Context* ctx) { \
+    handleUsageEnter<Type>(ParentStack, &PushedByContext, ctx); \
+    if (auto node = std::dynamic_pointer_cast<Type>(ParentStack.top())) node->setIsComposite(true); \
+} \
+void SysMLv2ListenerImplementation::exit##Name(SysMLv2Parser::Name##Context*) { \
+    handleUsageExit<Type>(ParentStack, Elements); \
+}
+
+DEFINE_CONTROL_NODE_METHODS(Merge_node, SysMLv2::Entities::MergeNode)
+DEFINE_CONTROL_NODE_METHODS(Decision_node, SysMLv2::Entities::DecisionNode)
+DEFINE_CONTROL_NODE_METHODS(Join_node, SysMLv2::Entities::JoinNode)
+DEFINE_CONTROL_NODE_METHODS(Fork_node, SysMLv2::Entities::ForkNode)
+
+// ControlNodePrefix = RefPrefix ( isIndividual ?= 'individual' )? ( portionKind )? UsageExtensionKeyword*
+void SysMLv2ListenerImplementation::exitControl_node_prefix(SysMLv2Parser::Control_node_prefixContext* ctx) {
+	if (ParentStack.empty() || !ctx) return;
+	if (auto feat = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top())) {
+		applyRefPrefix(ctx->ref_prefix(), feat);
+	}
+	if (auto occUsage = std::dynamic_pointer_cast<SysMLv2::Entities::OccurrenceUsage>(ParentStack.top())) {
+		if (ctx->KEYWORD_INDIVIDUAL() != nullptr) occUsage->setIsIndividual(true);
+		applyPortionKind(ctx->portion_kind(), occUsage);
+	}
+}
+
 // `#measurable attribute x1 ...`: an abbreviated MetadataUsage, typed by the metadata definition, that is owned by and annotates the
 // element whose prefix it belongs to (the owner is on top of the stack, because the prefix is a child of the usage/definition/package).
 void SysMLv2ListenerImplementation::enterPrefix_metadata_usage(SysMLv2Parser::Prefix_metadata_usageContext* ctx) {
-	// The prefix of a control node (`#m merge mm;`) or of a `terminate` belongs to an element that is not pushed, so there is no owner.
+	// The prefix of a `terminate` belongs to an element that is not pushed, so there is no owner.
 	for (antlr4::tree::ParseTree* node = ctx ? ctx->parent : nullptr; node; node = node->parent) {
 		auto* rule = dynamic_cast<antlr4::ParserRuleContext*>(node);
 		if (!rule) break;
 		if (PushedByContext.count(rule) != 0) break;
-		if (dynamic_cast<SysMLv2Parser::Control_node_prefixContext*>(rule) || dynamic_cast<SysMLv2Parser::Terminate_nodeContext*>(rule)) {
+		if (dynamic_cast<SysMLv2Parser::Terminate_nodeContext*>(rule)) {
 			SkippedContexts.insert(ctx);
 			return;
 		}
@@ -1035,7 +1084,7 @@ void SysMLv2ListenerImplementation::enterDefault_reference_usage(SysMLv2Parser::
 void SysMLv2ListenerImplementation::exitDefault_reference_usage(SysMLv2Parser::Default_reference_usageContext* ctx) {
 	if (!ParentStack.empty() && ctx && ctx->ref_prefix()) {
 		if (auto usage = std::dynamic_pointer_cast<SysMLv2::Entities::ReferenceUsage>(ParentStack.top())) {
-			applyFeatureDirectionFromContext(ctx->ref_prefix()->feature_direction(), usage);
+			applyRefPrefix(ctx->ref_prefix(), usage);
 		}
 	}
 	handleUsageExit<SysMLv2::Entities::ReferenceUsage>(ParentStack, Elements);
@@ -1046,7 +1095,7 @@ void SysMLv2ListenerImplementation::enterReference_usage(SysMLv2Parser::Referenc
 void SysMLv2ListenerImplementation::exitReference_usage(SysMLv2Parser::Reference_usageContext* ctx) {
 	if (!ParentStack.empty() && ctx && ctx->ref_prefix()) {
 		if (auto usage = std::dynamic_pointer_cast<SysMLv2::Entities::ReferenceUsage>(ParentStack.top())) {
-			applyFeatureDirectionFromContext(ctx->ref_prefix()->feature_direction(), usage);
+			applyRefPrefix(ctx->ref_prefix(), usage);
 		}
 	}
 	handleUsageExit<SysMLv2::Entities::ReferenceUsage>(ParentStack, Elements);
@@ -1161,7 +1210,7 @@ void SysMLv2ListenerImplementation::exitIndividual_usage(SysMLv2Parser::Individu
 	if (!ParentStack.empty() && ctx) {
 		if (auto occUsage = std::dynamic_pointer_cast<SysMLv2::Entities::OccurrenceUsage>(ParentStack.top())) {
 			if (ctx->basic_usage_prefix() && ctx->basic_usage_prefix()->ref_prefix()) {
-				applyFeatureDirectionFromContext(ctx->basic_usage_prefix()->ref_prefix()->feature_direction(), occUsage);
+				applyRefPrefix(ctx->basic_usage_prefix()->ref_prefix(), occUsage);
 			}
 			applyPortionKind(ctx->portion_kind(), occUsage);
 		}
@@ -1178,7 +1227,7 @@ void SysMLv2ListenerImplementation::exitPortion_usage(SysMLv2Parser::Portion_usa
 	if (!ParentStack.empty() && ctx) {
 		if (auto occUsage = std::dynamic_pointer_cast<SysMLv2::Entities::OccurrenceUsage>(ParentStack.top())) {
 			if (ctx->basic_usage_prefix() && ctx->basic_usage_prefix()->ref_prefix()) {
-				applyFeatureDirectionFromContext(ctx->basic_usage_prefix()->ref_prefix()->feature_direction(), occUsage);
+				applyRefPrefix(ctx->basic_usage_prefix()->ref_prefix(), occUsage);
 			}
 			if (ctx->KEYWORD_INDIVIDUAL() != nullptr) {
 				occUsage->setIsIndividual(true);
@@ -1259,6 +1308,7 @@ void SysMLv2ListenerImplementation::exitSuccession_as_usage(SysMLv2Parser::Succe
 void SysMLv2ListenerImplementation::enterFeature_value(SysMLv2Parser::Feature_valueContext* ctx) {
 	auto fv = std::make_shared<KerML::Entities::FeatureValue>();
 	if (ctx && ctx->KEYWORD_DEFAULT()) fv->setIsDefault(true);
+	if (ctx && ctx->SYMBOL_DEF_ASSIGN()) fv->setIsInitial(true);
 	ParentStack.push(fv);
 	recordPush(ctx, fv);
 }
@@ -1446,7 +1496,11 @@ void SysMLv2ListenerImplementation::exitFunctionOperationExpr(SysMLv2Parser::Fun
 }
 
 void SysMLv2ListenerImplementation::enterConstructor_expression(SysMLv2Parser::Constructor_expressionContext*) {
-	ParentStack.push(std::make_shared<KerML::Entities::ConstructorExpression>());
+	const auto expr = std::make_shared<KerML::Entities::ConstructorExpression>();
+	// The result of the constructor: it exists without arguments too and owns the parameters of the arguments. It is registered when
+	// the constructor is finished (exitConstructor_expression).
+	makeConstructorResult(expr);
+	ParentStack.push(expr);
 }
 
 void SysMLv2ListenerImplementation::exitConstructor_expression(SysMLv2Parser::Constructor_expressionContext* ctx) {
@@ -1454,9 +1508,12 @@ void SysMLv2ListenerImplementation::exitConstructor_expression(SysMLv2Parser::Co
 	const auto expr = std::dynamic_pointer_cast<KerML::Entities::ConstructorExpression>(ParentStack.top());
 	if (!expr) return;
 	ParentStack.pop();
+	if (const auto result = argumentParameterOwner(expr)) {
+		Elements.push_back(result);
+		OwnershipKinds[result.get()] = SysMLv2::Files::MembershipKind::ReturnParameter;
+	}
 	if (ctx && ctx->owned_feature_typing() && ctx->owned_feature_typing()->general_type()) {
-		expr->setInstantiatedType(expressionTypeReference(ctx->owned_feature_typing()->general_type()->getText(), ctx->owned_feature_typing(),
-			[expr](const std::shared_ptr<KerML::Entities::Type>& target) { expr->setInstantiatedType(target); }));
+		setInstantiatedTypeWithMembership(expr, ctx->owned_feature_typing());
 	}
 	attachExpression(expr);
 }
@@ -1472,9 +1529,7 @@ void SysMLv2ListenerImplementation::exitInvocation_expression(SysMLv2Parser::Inv
 	ParentStack.pop();
 	if (ctx && ctx->internal_invocation_expression() && ctx->internal_invocation_expression()->owned_feature_typing() &&
 		ctx->internal_invocation_expression()->owned_feature_typing()->general_type()) {
-		expr->setInstantiatedType(expressionTypeReference(ctx->internal_invocation_expression()->owned_feature_typing()->general_type()->getText(),
-			ctx->internal_invocation_expression()->owned_feature_typing(),
-			[expr](const std::shared_ptr<KerML::Entities::Type>& target) { expr->setInstantiatedType(target); }));
+		setInstantiatedTypeWithMembership(expr, ctx->internal_invocation_expression()->owned_feature_typing());
 	}
 	attachExpression(expr);
 }
@@ -1552,11 +1607,39 @@ void SysMLv2ListenerImplementation::exitFunction_reference(SysMLv2Parser::Functi
 }
 
 void SysMLv2ListenerImplementation::enterNamed_argument(SysMLv2Parser::Named_argumentContext*) {
+	// The argument of a plain invocation or constructor is a parameter feature (with the redefinition of the named parameter and a
+	// feature value).
+	if (!ParentStack.empty() && isArgumentHost(ParentStack.top())) {
+		ParentStack.push(makeArgumentParameter());
+		return;
+	}
 	ParentStack.push(std::make_shared<KerML::Entities::Expression>());
 }
 
 void SysMLv2ListenerImplementation::exitNamed_argument(SysMLv2Parser::Named_argumentContext*) {
 	if (ParentStack.empty()) return;
+	std::shared_ptr<KerML::Entities::FeatureValue> value;
+	if (auto fv = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(ParentStack.top())) {
+		// The feature value of the parameter of an invocation or constructor (see exitParameter_redefinition).
+		ParentStack.pop();
+		value = fv;
+	}
+	// A syntax error (`f(x = )`) leaves the feature value without a value: it is dropped, the parameter keeps its redefinition.
+	if (value && !value->value()) value = nullptr;
+	if (ParentStack.empty()) return;
+	if (isArgumentParameter(ParentStack.top())) {
+		const auto parameter = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+		ParentStack.pop();
+		if (value) {
+			value->setFeatureWithValue(parameter);
+			value->setOwner(parameter);
+			parameter->appendOwnedElement(value);
+			Elements.push_back(value);
+		}
+		// Without a value the parameter is kept, but it adds no argument: argument() only holds the values that exist.
+		appendArgumentParameter(parameter, value ? value->value() : nullptr);
+		return;
+	}
 	const auto argument = std::dynamic_pointer_cast<KerML::Entities::Expression>(ParentStack.top());
 	if (!argument) return;
 	ParentStack.pop();
@@ -1569,13 +1652,18 @@ void SysMLv2ListenerImplementation::exitParameter_redefinition(SysMLv2Parser::Pa
 	if (!ctx || !ctx->qualified_name() || ParentStack.empty()) return;
 	const auto argument = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
 	if (!argument) return;
-	argument->setDeclaredName(ctx->qualified_name()->getText());
+	const bool invocationParameter = isArgumentParameter(argument);
+	// The parameter of an invocation or constructor has no name of its own (it redefines the named parameter): a name would shadow
+	// the referenced features in the scope of the invocation.
+	if (!invocationParameter) argument->setDeclaredName(ctx->qualified_name()->getText());
 	// The name of a named argument is a parameter of the invoked function: not resolved yet (see notAttemptedFeature).
 	const auto redefinition = std::make_shared<KerML::Entities::Redefinition>(
 		notAttemptedFeature(Recorder, ctx->qualified_name()->getText(), argument, ctx->qualified_name()), argument);
 	argument->appendOwnedRedefinition(redefinition);
 	argument->appendOwnedElement(redefinition);
 	Elements.push_back(redefinition);
+	// The expression that follows is the value of the parameter: it is attached to the feature value on top of the stack.
+	if (invocationParameter) ParentStack.push(std::make_shared<KerML::Entities::FeatureValue>());
 }
 
 void SysMLv2ListenerImplementation::enterSequenceExpr(SysMLv2Parser::SequenceExprContext*) {}
@@ -2088,6 +2176,13 @@ void SysMLv2ListenerImplementation::attachExpression(const std::shared_ptr<KerML
 	if (!expression) return;
 	Elements.push_back(expression);
 	if (ParentStack.empty()) return;
+	if (isArgumentHost(ParentStack.top())) {
+		// A positional argument of an invocation or constructor: a parameter feature whose feature value is the expression.
+		std::shared_ptr<KerML::Entities::Feature> parameter;
+		Elements.push_back(makePositionalArgument(expression, parameter));
+		appendArgumentParameter(parameter, expression);
+		return;
+	}
 	expression->setOwner(ParentStack.top());
 	ParentStack.top()->appendOwnedElement(expression);
 	if (auto invocation = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top())) {
@@ -2096,6 +2191,34 @@ void SysMLv2ListenerImplementation::attachExpression(const std::shared_ptr<KerML
 	if (auto value = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(ParentStack.top())) {
 		value->setValue(expression);
 	}
+}
+
+// Appends the parameter of an argument to the invocation or constructor on top of the stack, as a feature of the element that owns the
+// parameters (see argumentParameterOwner) with a ParameterMembership.
+void SysMLv2ListenerImplementation::appendArgumentParameter(const std::shared_ptr<KerML::Entities::Feature>& parameter,
+	const std::shared_ptr<KerML::Entities::Expression>& value) {
+	if (!parameter || ParentStack.empty()) return;
+	const auto host = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top());
+	const auto owner = argumentParameterOwner(ParentStack.top());
+	if (!host || !owner) return;
+	Elements.push_back(parameter);
+	parameter->setOwner(owner);
+	owner->appendOwnedElement(parameter);
+	OwnershipKinds[parameter.get()] = SysMLv2::Files::MembershipKind::Parameter;
+	if (value) host->appendArgument(value);
+}
+
+// Sets the instantiated type of the invocation or constructor and makes its first owned relationship a (non-owning) membership of the type.
+void SysMLv2ListenerImplementation::setInstantiatedTypeWithMembership(const std::shared_ptr<KerML::Entities::InstantiationExpression>& expr,
+	SysMLv2Parser::Owned_feature_typingContext* typing) {
+	const auto typeMembership = makeTypeMembership(expr);
+	expr->setInstantiatedType(expressionTypeReference(typing->general_type()->getText(), typing,
+		[expr, typeMembership](const std::shared_ptr<KerML::Entities::Type>& target) {
+			expr->setInstantiatedType(target);
+			typeMembership->setMemberElement(target);
+		}));
+	typeMembership->setMemberElement(expr->instantiatedType());
+	Elements.push_back(typeMembership);
 }
 
 void SysMLv2ListenerImplementation::finishOperatorExpression(const std::string& operatorName) {

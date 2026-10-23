@@ -121,6 +121,11 @@ namespace KerML::Entities {
         Owner = owner;
     }
 
+    void Element::assignElementId(const boost::uuids::uuid& elementId) {
+        ElementId = elementId;
+        _dId = elementId;
+    }
+
     boost::uuids::uuid Element::elementIdAsUUID() const {
         return ElementId;
     }

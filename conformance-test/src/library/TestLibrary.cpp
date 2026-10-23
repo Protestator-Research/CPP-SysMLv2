@@ -75,7 +75,8 @@ TEST_P(LibraryFileTest, ParsesCleanly) {
     }
     elapsedMs = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start).count();
 
-    const bool overBudget = elapsedMs > budgetMs;
+    // The budget is machine dependent: only enforced with SYSML_ENABLE_PERFORMANCE_TESTS.
+    const bool overBudget = ConformanceTest::performanceTestsEnabled() && elapsedMs > budgetMs;
     const bool failed = crashed || errorCount > 0 || overBudget;
     const bool listedAsExpectedFailure = expectedFailures.count(testCase.relativeKey) > 0;
 
