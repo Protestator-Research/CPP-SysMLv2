@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::int64_t LiteralInteger::value() const {
@@ -19,3 +21,43 @@ LiteralInteger::LiteralInteger() {
 
 LiteralInteger::~LiteralInteger() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    LiteralInteger::LiteralInteger(const std::string& nameOrJson) :
+        LiteralInteger() {
+        _dType = "LiteralInteger";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string LiteralInteger::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(LiteralExpression::serializeToJson());
+        json["value"] = Json::value(LiteralInteger::value());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void LiteralInteger::deserializeAndPopulate(const std::string& jsonString) {
+        LiteralExpression::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        {
+            std::int64_t value{};
+            if (Json::readInt(json, "value", value)) {
+                try {
+                    LiteralInteger::setValue(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+    }
+
+    void LiteralInteger::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        LiteralExpression::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

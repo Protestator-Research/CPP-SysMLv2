@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::shared_ptr<Element> MetadataAccessExpression::referencedElement() const {
@@ -10,6 +12,7 @@ std::shared_ptr<Element> MetadataAccessExpression::referencedElement() const {
 }
 
 void MetadataAccessExpression::setReferencedElement(std::shared_ptr<Element> value) {
+    clearUnresolvedJsonReferences("referencedElement");
     referencedElement_ = std::move(value);
 }
 
@@ -19,3 +22,47 @@ MetadataAccessExpression::MetadataAccessExpression() {
 
 MetadataAccessExpression::~MetadataAccessExpression() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    MetadataAccessExpression::MetadataAccessExpression(const std::string& nameOrJson) :
+        MetadataAccessExpression() {
+        _dType = "MetadataAccessExpression";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string MetadataAccessExpression::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Expression::serializeToJson());
+        json["referencedElement"] = Json::reference(unresolvedJsonReferences("referencedElement"), MetadataAccessExpression::referencedElement());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void MetadataAccessExpression::deserializeAndPopulate(const std::string& jsonString) {
+        Expression::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "referencedElement", ids))
+            setUnresolvedJsonReferences("referencedElement", ids);
+    }
+
+    void MetadataAccessExpression::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Expression::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("referencedElement")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Element>(lookup(ids->front()))) {
+                    MetadataAccessExpression::setReferencedElement(std::move(target));
+                    clearUnresolvedJsonReferences("referencedElement");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("referencedElement", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

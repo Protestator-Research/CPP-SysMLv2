@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 const std::string& OperatorExpression::operatorName() const {
@@ -19,3 +21,43 @@ OperatorExpression::OperatorExpression() {
 
 OperatorExpression::~OperatorExpression() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    OperatorExpression::OperatorExpression(const std::string& nameOrJson) :
+        OperatorExpression() {
+        _dType = "OperatorExpression";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string OperatorExpression::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(InvocationExpression::serializeToJson());
+        json["operator"] = Json::value(OperatorExpression::operatorName());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void OperatorExpression::deserializeAndPopulate(const std::string& jsonString) {
+        InvocationExpression::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        {
+            std::string value{};
+            if (Json::readString(json, "operator", value)) {
+                try {
+                    setOperatorName(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+    }
+
+    void OperatorExpression::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        InvocationExpression::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

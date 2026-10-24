@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 Interaction::Interaction() {
@@ -11,3 +13,34 @@ Interaction::Interaction() {
 
 Interaction::~Interaction() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    Interaction::Interaction(const std::string& nameOrJson) :
+        Interaction() {
+        _dType = "Interaction";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string Interaction::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Association::serializeToJson());
+        json.update(nlohmann::json::parse(Behavior::serializeToJson()));
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Interaction::deserializeAndPopulate(const std::string& jsonString) {
+        Association::deserializeAndPopulate(jsonString);
+        Behavior::deserializeAndPopulate(jsonString);
+    }
+
+    void Interaction::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Association::resolveJsonReferences(lookup);
+        Behavior::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

@@ -3,6 +3,9 @@
 //
 
 #include <kerml/root/annotations/AnnotatingElement.h>
+#include <kerml/KerML.h>
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 
@@ -56,6 +59,7 @@ namespace KerML::Entities {
     }
 
     void AnnotatingElement::setOwningAnnotatingRelationship(std::shared_ptr<Annotation> annotation) {
+        clearUnresolvedJsonReferences("owningAnnotatingRelationship");
         OwningAnnotatingRelationship = annotation;
     }
 
@@ -63,3 +67,50 @@ namespace KerML::Entities {
 
     }
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    AnnotatingElement::AnnotatingElement(const std::string& nameOrJson) :
+        AnnotatingElement() {
+        _dType = "AnnotatingElement";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string AnnotatingElement::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Element::serializeToJson());
+        json["annotatedElement"] = Json::reference(unresolvedJsonReferences("annotatedElement"), AnnotatingElement::annotatedElement());
+        json["ownedAnnotatingRelationship"] = Json::reference(unresolvedJsonReferences("ownedAnnotatingRelationship"), AnnotatingElement::ownedAnnotatingRelationship());
+        json["owningAnnotatingRelationship"] = Json::reference(unresolvedJsonReferences("owningAnnotatingRelationship"), AnnotatingElement::owningAnnotatingRelationship());
+        json["annotation"] = Json::reference(unresolvedJsonReferences("annotation"), AnnotatingElement::annotation());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void AnnotatingElement::deserializeAndPopulate(const std::string& jsonString) {
+        Element::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "owningAnnotatingRelationship", ids))
+            setUnresolvedJsonReferences("owningAnnotatingRelationship", ids);
+    }
+
+    void AnnotatingElement::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Element::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("owningAnnotatingRelationship")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Annotation>(lookup(ids->front()))) {
+                    AnnotatingElement::setOwningAnnotatingRelationship(std::move(target));
+                    clearUnresolvedJsonReferences("owningAnnotatingRelationship");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("owningAnnotatingRelationship", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

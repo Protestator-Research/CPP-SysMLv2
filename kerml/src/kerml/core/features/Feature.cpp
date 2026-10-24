@@ -15,6 +15,9 @@
 #include <kerml/root/namespaces/Membership.h>
 #include <kerml/root/namespaces/VisibilityKind.h>
 #include <kerml/core/types/Type.h>
+#include <kerml/KerML.h>
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities
 {
@@ -125,6 +128,7 @@ namespace KerML::Entities
 
 	void Feature::setType(std::vector<std::shared_ptr<Type>> type)
 	{
+		clearUnresolvedJsonReferences("type");
 		_Type = type;
 	}
 
@@ -393,6 +397,7 @@ namespace KerML::Entities
 
 	void Feature::setFeaturingType(std::vector<std::shared_ptr<Type>> featuringType)
 	{
+		clearUnresolvedJsonReferences("featuringType");
 		FeaturingType = featuringType;
 	}
 
@@ -413,6 +418,7 @@ namespace KerML::Entities
 
 	void Feature::setOwnedTypeFeaturing(std::vector<std::shared_ptr<TypeFeaturing>> ownedTypeFeaturing)
 	{
+		clearUnresolvedJsonReferences("ownedTypeFeaturing");
 		OwnedTypeFeaturing = ownedTypeFeaturing;
 	}
 
@@ -433,6 +439,7 @@ namespace KerML::Entities
 
 	void Feature::setChainingFeature(std::vector<std::shared_ptr<Feature>> chainingFeature)
 	{
+        clearUnresolvedJsonReferences("chainingFeature");
         ChainingFeature = chainingFeature;
 	}
 
@@ -461,6 +468,7 @@ namespace KerML::Entities
 
 	void Feature::setCrossFeature(std::optional<std::shared_ptr<Feature>> crossFeature)
 	{
+        clearUnresolvedJsonReferences("crossFeature");
         CrossFeatureSnapshot = crossFeature.value_or(nullptr);
     }
 
@@ -474,6 +482,7 @@ namespace KerML::Entities
 
 	void Feature::setEndOwningType(std::optional<std::shared_ptr<Type>> endOwningType)
 	{
+        clearUnresolvedJsonReferences("endOwningType");
         EndOwningType = endOwningType.value_or(nullptr);
     }
 
@@ -495,11 +504,13 @@ namespace KerML::Entities
 
 	void Feature::setOwnedCrossSubsetting(std::optional<std::shared_ptr<CrossSubsetting>> ownedCrossSubsetting)
 	{
+        clearUnresolvedJsonReferences("ownedCrossSubsetting");
         OwnedCrossSubsetting = ownedCrossSubsetting.value_or(nullptr);
     }
 
 	void Feature::setOwnedFeatureChaining(std::vector<std::shared_ptr<FeatureChaining>> ownedFeatureChaining)
 	{
+        clearUnresolvedJsonReferences("ownedFeatureChaining");
         OwnedFeatureChaining = ownedFeatureChaining;
 	}
 
@@ -520,6 +531,7 @@ namespace KerML::Entities
 
 	void Feature::setOwnedFeatureInverting(std::vector<std::shared_ptr<FeatureInverting>> ownedFeatureInverting)
 	{
+        clearUnresolvedJsonReferences("ownedFeatureInverting");
         OwnedFeatureInverting = ownedFeatureInverting;
 	}
 
@@ -540,6 +552,7 @@ namespace KerML::Entities
 
 	void Feature::setOwnedRedefinition(std::vector<std::shared_ptr<Redefinition>> ownedRedefinition)
 	{
+        clearUnresolvedJsonReferences("ownedRedefinition");
         OwnedRedefinition = ownedRedefinition;
 	}
 
@@ -561,6 +574,7 @@ namespace KerML::Entities
 	void Feature::setOwnedReferenceSubsetting(
 		std::optional<std::shared_ptr<Entities::ReferenceSubsetting>> referenceSubsetting)
 	{
+        clearUnresolvedJsonReferences("ownedReferenceSubsetting");
         OwnedReferenceSubsetting = referenceSubsetting.value_or(nullptr);
     }
 
@@ -594,6 +608,7 @@ namespace KerML::Entities
 
 	void Feature::setOwnedTyping(std::vector<std::shared_ptr<FeatureTyping>> ownedTyping)
 	{
+        clearUnresolvedJsonReferences("ownedTyping");
         OwnedTyping = ownedTyping;
 	}
 
@@ -614,6 +629,7 @@ namespace KerML::Entities
 
 	void Feature::setOwningFeatureMembership(std::optional<std::shared_ptr<FeatureMembership>> owningMembership)
 	{
+        clearUnresolvedJsonReferences("owningFeatureMembership");
         OwningFeatureMembership = owningMembership.value_or(nullptr);
     }
 
@@ -627,6 +643,7 @@ namespace KerML::Entities
 
 	void Feature::setOwningType(std::optional<std::shared_ptr<Type>> owningType)
 	{
+        clearUnresolvedJsonReferences("owningType");
         OwningType = owningType.value_or(nullptr);
     }
 
@@ -638,3 +655,394 @@ namespace KerML::Entities
         return OwningType;
 	}
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    Feature::Feature(const std::string& nameOrJson) :
+        Feature() {
+        _dType = "Feature";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string Feature::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Type::serializeToJson());
+        json["owningType"] = Json::reference(unresolvedJsonReferences("owningType"), Feature::owningType());
+        json["isUnique"] = Json::value(Feature::isUnique());
+        json["isOrdered"] = Json::value(Feature::isOrdered());
+        json["type"] = Json::reference(unresolvedJsonReferences("type"), Feature::type());
+        json["ownedRedefinition"] = Json::reference(unresolvedJsonReferences("ownedRedefinition"), Feature::ownedRedefinition());
+        json["ownedSubsetting"] = Json::reference(unresolvedJsonReferences("ownedSubsetting"), Feature::ownedSubsetting());
+        json["owningFeatureMembership"] = Json::reference(unresolvedJsonReferences("owningFeatureMembership"), Feature::owningFeatureMembership());
+        json["isComposite"] = Json::value(Feature::isComposite());
+        json["isEnd"] = Json::value(Feature::isEnd());
+        json["endOwningType"] = Json::reference(unresolvedJsonReferences("endOwningType"), Feature::endOwningType());
+        json["ownedTyping"] = Json::reference(unresolvedJsonReferences("ownedTyping"), Feature::ownedTyping());
+        json["featuringType"] = Json::reference(unresolvedJsonReferences("featuringType"), Feature::featuringType());
+        json["ownedTypeFeaturing"] = Json::reference(unresolvedJsonReferences("ownedTypeFeaturing"), Feature::ownedTypeFeaturing());
+        json["isDerived"] = Json::value(Feature::isDerived());
+        json["chainingFeature"] = Json::reference(unresolvedJsonReferences("chainingFeature"), Feature::chainingFeature());
+        json["ownedFeatureInverting"] = Json::reference(unresolvedJsonReferences("ownedFeatureInverting"), Feature::ownedFeatureInverting());
+        json["ownedFeatureChaining"] = Json::reference(unresolvedJsonReferences("ownedFeatureChaining"), Feature::ownedFeatureChaining());
+        json["isPortion"] = Json::value(Feature::isPortion());
+        json["isVariable"] = Json::value(Feature::isVariable());
+        json["isConstant"] = Json::value(Feature::isConstant());
+        json["ownedReferenceSubsetting"] = Json::reference(unresolvedJsonReferences("ownedReferenceSubsetting"), Feature::ownedReferenceSubsetting());
+        json["featureTarget"] = Json::reference(unresolvedJsonReferences("featureTarget"), Feature::featureTarget());
+        json["crossFeature"] = Json::reference(unresolvedJsonReferences("crossFeature"), Feature::crossFeature());
+        json["direction"] = Json::value(Feature::direction());
+        json["ownedCrossSubsetting"] = Json::reference(unresolvedJsonReferences("ownedCrossSubsetting"), Feature::ownedCrossSubsetting());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Feature::deserializeAndPopulate(const std::string& jsonString) {
+        Type::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "owningType", ids))
+            setUnresolvedJsonReferences("owningType", ids);
+        {
+            bool value{};
+            if (Json::readBool(json, "isUnique", value)) {
+                try {
+                    Feature::setIsUnique(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+        {
+            bool value{};
+            if (Json::readBool(json, "isOrdered", value)) {
+                try {
+                    Feature::setIsOrdered(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+        if (Json::readReferences(json, "type", ids))
+            setUnresolvedJsonReferences("type", ids);
+        if (Json::readReferences(json, "ownedRedefinition", ids))
+            setUnresolvedJsonReferences("ownedRedefinition", ids);
+        if (Json::readReferences(json, "owningFeatureMembership", ids))
+            setUnresolvedJsonReferences("owningFeatureMembership", ids);
+        {
+            bool value{};
+            if (Json::readBool(json, "isComposite", value)) {
+                try {
+                    Feature::setIsComposite(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+        {
+            bool value{};
+            if (Json::readBool(json, "isEnd", value)) {
+                try {
+                    Feature::setIsEnd(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+        if (Json::readReferences(json, "endOwningType", ids))
+            setUnresolvedJsonReferences("endOwningType", ids);
+        if (Json::readReferences(json, "ownedTyping", ids))
+            setUnresolvedJsonReferences("ownedTyping", ids);
+        if (Json::readReferences(json, "featuringType", ids))
+            setUnresolvedJsonReferences("featuringType", ids);
+        if (Json::readReferences(json, "ownedTypeFeaturing", ids))
+            setUnresolvedJsonReferences("ownedTypeFeaturing", ids);
+        {
+            bool value{};
+            if (Json::readBool(json, "isDerived", value)) {
+                try {
+                    Feature::setIsDerived(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+        if (Json::readReferences(json, "chainingFeature", ids))
+            setUnresolvedJsonReferences("chainingFeature", ids);
+        if (Json::readReferences(json, "ownedFeatureInverting", ids))
+            setUnresolvedJsonReferences("ownedFeatureInverting", ids);
+        if (Json::readReferences(json, "ownedFeatureChaining", ids))
+            setUnresolvedJsonReferences("ownedFeatureChaining", ids);
+        {
+            bool value{};
+            if (Json::readBool(json, "isPortion", value)) {
+                try {
+                    Feature::setIsPortion(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+        {
+            bool value{};
+            if (Json::readBool(json, "isVariable", value)) {
+                try {
+                    Feature::setIsVariable(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+        {
+            bool value{};
+            if (Json::readBool(json, "isConstant", value)) {
+                try {
+                    Feature::setIsConstant(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+        if (Json::readReferences(json, "ownedReferenceSubsetting", ids))
+            setUnresolvedJsonReferences("ownedReferenceSubsetting", ids);
+        if (Json::readReferences(json, "crossFeature", ids))
+            setUnresolvedJsonReferences("crossFeature", ids);
+        {
+            FeatureDirectionKind value{};
+            if (Json::readEnum(json, "direction", value)) {
+                try {
+                    Feature::setDirection(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+        if (Json::readReferences(json, "ownedCrossSubsetting", ids))
+            setUnresolvedJsonReferences("ownedCrossSubsetting", ids);
+    }
+
+    void Feature::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Type::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("owningType")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Type>(lookup(ids->front()))) {
+                    Feature::setOwningType(std::move(target));
+                    clearUnresolvedJsonReferences("owningType");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("owningType", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("type")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Type>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Type>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Feature::setType(std::move(resolved));
+                    clearUnresolvedJsonReferences("type");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("type", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedRedefinition")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Redefinition>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Redefinition>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Feature::setOwnedRedefinition(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedRedefinition");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedRedefinition", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("owningFeatureMembership")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::FeatureMembership>(lookup(ids->front()))) {
+                    Feature::setOwningFeatureMembership(std::move(target));
+                    clearUnresolvedJsonReferences("owningFeatureMembership");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("owningFeatureMembership", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("endOwningType")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Type>(lookup(ids->front()))) {
+                    Feature::setEndOwningType(std::move(target));
+                    clearUnresolvedJsonReferences("endOwningType");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("endOwningType", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedTyping")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::FeatureTyping>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::FeatureTyping>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Feature::setOwnedTyping(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedTyping");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedTyping", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("featuringType")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Type>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Type>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Feature::setFeaturingType(std::move(resolved));
+                    clearUnresolvedJsonReferences("featuringType");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("featuringType", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedTypeFeaturing")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::TypeFeaturing>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::TypeFeaturing>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Feature::setOwnedTypeFeaturing(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedTypeFeaturing");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedTypeFeaturing", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("chainingFeature")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Feature>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Feature::setChainingFeature(std::move(resolved));
+                    clearUnresolvedJsonReferences("chainingFeature");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("chainingFeature", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedFeatureInverting")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::FeatureInverting>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::FeatureInverting>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Feature::setOwnedFeatureInverting(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedFeatureInverting");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedFeatureInverting", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedFeatureChaining")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::FeatureChaining>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::FeatureChaining>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Feature::setOwnedFeatureChaining(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedFeatureChaining");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedFeatureChaining", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedReferenceSubsetting")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::ReferenceSubsetting>(lookup(ids->front()))) {
+                    Feature::setOwnedReferenceSubsetting(std::move(target));
+                    clearUnresolvedJsonReferences("ownedReferenceSubsetting");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedReferenceSubsetting", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("crossFeature")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(ids->front()))) {
+                    Feature::setCrossFeature(std::move(target));
+                    clearUnresolvedJsonReferences("crossFeature");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("crossFeature", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedCrossSubsetting")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::CrossSubsetting>(lookup(ids->front()))) {
+                    Feature::setOwnedCrossSubsetting(std::move(target));
+                    clearUnresolvedJsonReferences("ownedCrossSubsetting");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedCrossSubsetting", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

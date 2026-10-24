@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 SuccessionFlow::SuccessionFlow() {
@@ -11,3 +13,34 @@ SuccessionFlow::SuccessionFlow() {
 
 SuccessionFlow::~SuccessionFlow() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    SuccessionFlow::SuccessionFlow(const std::string& nameOrJson) :
+        SuccessionFlow() {
+        _dType = "SuccessionFlow";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string SuccessionFlow::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Succession::serializeToJson());
+        json.update(nlohmann::json::parse(Flow::serializeToJson()));
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void SuccessionFlow::deserializeAndPopulate(const std::string& jsonString) {
+        Succession::deserializeAndPopulate(jsonString);
+        Flow::deserializeAndPopulate(jsonString);
+    }
+
+    void SuccessionFlow::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Succession::resolveJsonReferences(lookup);
+        Flow::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

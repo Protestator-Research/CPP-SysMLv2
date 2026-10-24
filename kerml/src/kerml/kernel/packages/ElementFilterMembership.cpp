@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::shared_ptr<Expression> ElementFilterMembership::condition() const {
@@ -10,6 +12,7 @@ std::shared_ptr<Expression> ElementFilterMembership::condition() const {
 }
 
 void ElementFilterMembership::setCondition(std::shared_ptr<Expression> value) {
+    clearUnresolvedJsonReferences("condition");
     setOwnedMemberElement(std::move(value));
 }
 
@@ -19,3 +22,47 @@ ElementFilterMembership::ElementFilterMembership() {
 
 ElementFilterMembership::~ElementFilterMembership() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    ElementFilterMembership::ElementFilterMembership(const std::string& nameOrJson) :
+        ElementFilterMembership() {
+        _dType = "ElementFilterMembership";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string ElementFilterMembership::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(OwningMembership::serializeToJson());
+        json["condition"] = Json::reference(unresolvedJsonReferences("condition"), ElementFilterMembership::condition());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void ElementFilterMembership::deserializeAndPopulate(const std::string& jsonString) {
+        OwningMembership::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "condition", ids))
+            setUnresolvedJsonReferences("condition", ids);
+    }
+
+    void ElementFilterMembership::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        OwningMembership::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("condition")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Expression>(lookup(ids->front()))) {
+                    ElementFilterMembership::setCondition(std::move(target));
+                    clearUnresolvedJsonReferences("condition");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("condition", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

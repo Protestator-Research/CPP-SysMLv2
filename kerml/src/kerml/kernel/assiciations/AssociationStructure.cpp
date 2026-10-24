@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 AssociationStructure::AssociationStructure() {
@@ -11,3 +13,34 @@ AssociationStructure::AssociationStructure() {
 
 AssociationStructure::~AssociationStructure() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    AssociationStructure::AssociationStructure(const std::string& nameOrJson) :
+        AssociationStructure() {
+        _dType = "AssociationStructure";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string AssociationStructure::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Structure::serializeToJson());
+        json.update(nlohmann::json::parse(Association::serializeToJson()));
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void AssociationStructure::deserializeAndPopulate(const std::string& jsonString) {
+        Structure::deserializeAndPopulate(jsonString);
+        Association::deserializeAndPopulate(jsonString);
+    }
+
+    void AssociationStructure::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Structure::resolveJsonReferences(lookup);
+        Association::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

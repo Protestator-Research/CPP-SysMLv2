@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 Succession::Succession() {
@@ -11,3 +13,31 @@ Succession::Succession() {
 
 Succession::~Succession() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    Succession::Succession(const std::string& nameOrJson) :
+        Succession() {
+        _dType = "Succession";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string Succession::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Connector::serializeToJson());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Succession::deserializeAndPopulate(const std::string& jsonString) {
+        Connector::deserializeAndPopulate(jsonString);
+    }
+
+    void Succession::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Connector::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

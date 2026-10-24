@@ -20,6 +20,8 @@
 
 #include "kerml/root/annotations/TextualRepresentation.h"
 #include "kerml/root/elements/Element.h"
+#include "kerml/model/ElementFactory.h"
+#include "kerml/model/ElementLinker.h"
 
 namespace SysMLv2 {
     std::shared_ptr<SysMLv2::REST::IEntity> SysMLv2Deserializer::deserializeJsonString(std::string inputValue) {
@@ -50,11 +52,12 @@ namespace SysMLv2 {
         if (type==REST::TEXTUAL_REPRESENTATION_TYPE)
             return std::make_shared<KerML::Entities::TextualRepresentation>(inputValue);
 
-        // Every other type ("Element", "Package", "PartDefinition", "Feature", ...) is an element of the model. It is
-        // restored as a plain Element that keeps the original type and JSON, as long as it has an identifier.
+        // Every other type ("Element", "Package", "PartDefinition", "Feature", ...) is an element of the model, as long as
+        // it has an identifier. The KerML metaclasses ("Package", "Feature", ...) are restored as objects of their class, every
+        // other type as a plain Element that keeps the original type and JSON (see KerML::Entities::createElementFromJson).
         const auto id = json.find(REST::JSON_ID_ENTITY);
         if (id != json.end() && id->is_string())
-            return KerML::Entities::Element::fromJson(inputValue);
+            return KerML::Entities::createElementFromJson(inputValue);
 
         return nullptr;
     }
@@ -67,6 +70,15 @@ namespace SysMLv2 {
         for(const nlohmann::json& elem : arrayValues) {
             returnValues.emplace_back(SysMLv2Deserializer::deserializeJsonString(elem.dump()));
         }
+
+        // The elements of one array belong together: their references are resolved by the element ids and their derived properties
+        // (owner, ownedElement, the members of the namespaces, ...) are rebuilt. What stays unresolved is written back unchanged.
+        std::vector<std::shared_ptr<KerML::Entities::Element>> elements;
+        for (const auto& value : returnValues) {
+            if (auto element = std::dynamic_pointer_cast<KerML::Entities::Element>(value))
+                elements.push_back(std::move(element));
+        }
+        KerML::Entities::linkElements(elements);
         return returnValues;
     }
 

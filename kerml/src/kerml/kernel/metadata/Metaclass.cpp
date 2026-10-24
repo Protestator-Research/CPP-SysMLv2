@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 Metaclass::Metaclass() {
@@ -11,3 +13,31 @@ Metaclass::Metaclass() {
 
 Metaclass::~Metaclass() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    Metaclass::Metaclass(const std::string& nameOrJson) :
+        Metaclass() {
+        _dType = "Metaclass";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string Metaclass::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Structure::serializeToJson());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Metaclass::deserializeAndPopulate(const std::string& jsonString) {
+        Structure::deserializeAndPopulate(jsonString);
+    }
+
+    void Metaclass::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Structure::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

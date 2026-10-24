@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::shared_ptr<Feature> FeatureValue::featureWithValue() const {
@@ -10,6 +12,7 @@ std::shared_ptr<Feature> FeatureValue::featureWithValue() const {
 }
 
 void FeatureValue::setFeatureWithValue(std::shared_ptr<Feature> value) {
+    clearUnresolvedJsonReferences("featureWithValue");
     setMembershipOwningNamespace(std::move(value));
 }
 
@@ -18,6 +21,7 @@ std::shared_ptr<Expression> FeatureValue::value() const {
 }
 
 void FeatureValue::setValue(std::shared_ptr<Expression> value) {
+    clearUnresolvedJsonReferences("value");
     setOwnedMemberElement(std::move(value));
 }
 
@@ -43,3 +47,83 @@ FeatureValue::FeatureValue() {
 
 FeatureValue::~FeatureValue() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    FeatureValue::FeatureValue(const std::string& nameOrJson) :
+        FeatureValue() {
+        _dType = "FeatureValue";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string FeatureValue::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(OwningMembership::serializeToJson());
+        json["featureWithValue"] = Json::reference(unresolvedJsonReferences("featureWithValue"), FeatureValue::featureWithValue());
+        json["value"] = Json::reference(unresolvedJsonReferences("value"), FeatureValue::value());
+        json["isInitial"] = Json::value(FeatureValue::isInitial());
+        json["isDefault"] = Json::value(FeatureValue::isDefault());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void FeatureValue::deserializeAndPopulate(const std::string& jsonString) {
+        OwningMembership::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "featureWithValue", ids))
+            setUnresolvedJsonReferences("featureWithValue", ids);
+        if (Json::readReferences(json, "value", ids))
+            setUnresolvedJsonReferences("value", ids);
+        {
+            bool value{};
+            if (Json::readBool(json, "isInitial", value)) {
+                try {
+                    FeatureValue::setIsInitial(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+        {
+            bool value{};
+            if (Json::readBool(json, "isDefault", value)) {
+                try {
+                    FeatureValue::setIsDefault(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+    }
+
+    void FeatureValue::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        OwningMembership::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("featureWithValue")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(ids->front()))) {
+                    FeatureValue::setFeatureWithValue(std::move(target));
+                    clearUnresolvedJsonReferences("featureWithValue");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("featureWithValue", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("value")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Expression>(lookup(ids->front()))) {
+                    FeatureValue::setValue(std::move(target));
+                    clearUnresolvedJsonReferences("value");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("value", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

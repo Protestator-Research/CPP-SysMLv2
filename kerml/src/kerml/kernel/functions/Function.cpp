@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::vector<std::shared_ptr<Expression>> Function::expression() const {
@@ -14,6 +16,7 @@ std::shared_ptr<Feature> Function::result() const {
 }
 
 void Function::setResult(std::shared_ptr<Feature> value) {
+    clearUnresolvedJsonReferences("result");
     result_ = std::move(value);
 }
 
@@ -31,3 +34,49 @@ Function::Function() {
 
 Function::~Function() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    Function::Function(const std::string& nameOrJson) :
+        Function() {
+        _dType = "Function";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string Function::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Behavior::serializeToJson());
+        json["expression"] = Json::reference(unresolvedJsonReferences("expression"), Function::expression());
+        json["result"] = Json::reference(unresolvedJsonReferences("result"), Function::result());
+        json["isModelLevelEvaluable"] = Json::value(Function::isModelLevelEvaluable());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Function::deserializeAndPopulate(const std::string& jsonString) {
+        Behavior::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "result", ids))
+            setUnresolvedJsonReferences("result", ids);
+    }
+
+    void Function::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Behavior::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("result")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(ids->front()))) {
+                    Function::setResult(std::move(target));
+                    clearUnresolvedJsonReferences("result");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("result", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON
