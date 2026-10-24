@@ -201,6 +201,8 @@ public:
 
     virtual std::any visitConjungated_port_typing(SysMLv2Parser::Conjungated_port_typingContext *context) = 0;
 
+    virtual std::any visitFeature_typing_target(SysMLv2Parser::Feature_typing_targetContext *context) = 0;
+
     virtual std::any visitConnection_definition(SysMLv2Parser::Connection_definitionContext *context) = 0;
 
     virtual std::any visitConnection_usage(SysMLv2Parser::Connection_usageContext *context) = 0;

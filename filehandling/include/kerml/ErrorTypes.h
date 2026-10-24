@@ -7,6 +7,8 @@ namespace KerML::Parser {
         SYNTAX_ERROR,
         AMBIGUITY_ERROR,
         CONTEXT_SENSITIVITY_ERROR,
-        ATTEMPTING_FULL_CONTEXT_ERROR
+        ATTEMPTING_FULL_CONTEXT_ERROR,
+        /// A misused keyword, diagnosed by SysMLv2::Files::KeywordMisuseDiagnoser instead of the message of the parser.
+        KEYWORD_MISUSE
     };
 }

@@ -5,6 +5,7 @@
 #include <sysmlv2/parser/SysMLv2Lexer.h>
 #include <sysmlv2/parser/SysMLv2Parser.h>
 #include <sysmlv2/parser/SysMLv2ListenerImplementation.h>
+#include <sysmlv2/parser/KeywordMisuseDiagnoser.h>
 #include <kerml/kernel/packages/Package.h>
 
 namespace {
@@ -1132,4 +1133,139 @@ TEST(TestSysMLParser, ConstantOnCrossFeature) {
     EXPECT_TRUE(cross->isConstant());
     EXPECT_FALSE(hub->isConstant());
     EXPECT_FALSE(other->isConstant());
+}
+
+namespace {
+/// The errors of the given type among the errors of a parse.
+std::vector<std::shared_ptr<SysMLv2::Files::ParserError>> errorsOfType(const std::vector<std::shared_ptr<SysMLv2::Files::ParserError>>& errors,
+                                                                      SysMLv2::Files::ErrorType type) {
+    std::vector<std::shared_ptr<SysMLv2::Files::ParserError>> result;
+    for (const auto& error : errors) {
+        if (error->errorType() == type) result.push_back(error);
+    }
+    return result;
+}
+}
+
+TEST(TestSysMLParser, KeywordMisuseReservedWordAsName) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("action def T {\n  then action send { in cs : Integer; }\n}");
+    const auto misuse = errorsOfType(errors, SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    ASSERT_EQ(misuse.size(), 1u);
+    EXPECT_NE(misuse[0]->description().find("'send' is a reserved keyword"), std::string::npos) << misuse[0]->description();
+    EXPECT_EQ(misuse[0]->getLine(), 2);
+    EXPECT_EQ(misuse[0]->getColumn(), 14);
+    // the follow-up errors of the statement are suppressed
+    EXPECT_TRUE(errorsOfType(errors, SysMLv2::Files::ErrorType::SYNTAX_ERROR).empty());
+}
+
+TEST(TestSysMLParser, KeywordMisuseReservedWordInFeatureChain) {
+    const auto errors = SysMLv2::Files::Parser::parseSysMLv2("part def P { part a { port b; } flow a.b to send.cs; }").second;
+    const auto misuse = errorsOfType(errors, SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    ASSERT_EQ(misuse.size(), 1u);
+    EXPECT_NE(misuse[0]->description().find("'send'"), std::string::npos) << misuse[0]->description();
+}
+
+TEST(TestSysMLParser, KeywordMisusePerformAfterStateAction) {
+    for (const char* keyword : {"entry", "do", "exit"}) {
+        const std::string text = std::string("state def R { ") + keyword + " perform action init : Init; }";
+        const auto errors = SysMLv2::Files::Parser::parseSysMLv2(text).second;
+        const auto misuse = errorsOfType(errors, SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+        ASSERT_EQ(misuse.size(), 1u) << text;
+        EXPECT_NE(misuse[0]->description().find(std::string("'perform' is not written after '") + keyword + "'; write e.g."), std::string::npos)
+            << misuse[0]->description();
+    }
+}
+
+TEST(TestSysMLParser, KeywordMisuseInvocationInTyping) {
+    const auto errors = SysMLv2::Files::Parser::parseSysMLv2("action def T { action c : C(payload); }").second;
+    const auto misuse = errorsOfType(errors, SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    ASSERT_EQ(misuse.size(), 1u);
+    EXPECT_NE(misuse[0]->description().find("invocation is not allowed in a typing"), std::string::npos) << misuse[0]->description();
+}
+
+TEST(TestSysMLParser, KeywordMisuseIsNotReportedForValidTextOrOtherErrors) {
+    // reserved words as unrestricted names, KerML-only keywords as names, the correct state action forms: no error at all
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseSysMLv2("action def T { then action 'send' { in cs : Integer; } }").second.empty());
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseSysMLv2("part def P { part feature; part step; }").second.empty());
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseSysMLv2("state def R { entry action init : Init; entry init2; } action def Init;").second.empty());
+    // an ordinary syntax error keeps the message of the parser
+    const auto errors = SysMLv2::Files::Parser::parseSysMLv2("part def A { attribute x [0..*] = ; }").second;
+    ASSERT_FALSE(errors.empty());
+    EXPECT_TRUE(errorsOfType(errors, SysMLv2::Files::ErrorType::KEYWORD_MISUSE).empty());
+}
+
+TEST(TestSysMLParser, KeywordMisusePositions) {
+    for (const char* keyword : {"entry", "do", "exit"}) {
+        const std::string text = std::string("state def R { ") + keyword + " perform action init : Init; }";
+        const auto misuse = errorsOfType(SysMLv2::Files::Parser::parseSysMLv2(text).second, SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+        ASSERT_EQ(misuse.size(), 1u) << text;
+        EXPECT_EQ(misuse[0]->getLine(), 1);
+        EXPECT_EQ(misuse[0]->getColumn(), static_cast<int>(text.find("perform"))) << text;
+    }
+    const std::string typing = "action def T { action c : C(payload); }";
+    const auto misuse = errorsOfType(SysMLv2::Files::Parser::parseSysMLv2(typing).second, SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    ASSERT_EQ(misuse.size(), 1u);
+    EXPECT_EQ(misuse[0]->getLine(), 1);
+    EXPECT_EQ(misuse[0]->getColumn(), static_cast<int>(typing.find('(')));
+}
+
+TEST(TestSysMLParser, KeywordMisuseInvocationInTypedBy) {
+    for (const char* text : {"action def T { action c typed by C(1); }"}) {   // the grammar has no "defined by"
+        const auto misuse = errorsOfType(SysMLv2::Files::Parser::parseSysMLv2(text).second, SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+        ASSERT_EQ(misuse.size(), 1u) << text;
+        EXPECT_NE(misuse[0]->description().find("invocation is not allowed in a typing"), std::string::npos) << text;
+        EXPECT_EQ(misuse[0]->getColumn(), static_cast<int>(std::string(text).find('(')));
+    }
+    // an invocation as a value, 'typed by' and 'defined by' are valid
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseSysMLv2(
+        "attribute def C { attribute v : Integer; } part def P { attribute c : C = C(1); part d typed by P; }").second.empty());
+}
+
+TEST(TestSysMLParser, KeywordMisuseInChainsAndQualifiedNamesReplacesThePlainError) {
+    for (const char* text : {"part def P { part a; attribute x = a.send; }", "part def P { part x : Q::part; }", "part def P { part b :> P::part; }"}) {
+        const auto errors = SysMLv2::Files::Parser::parseSysMLv2(text).second;
+        ASSERT_EQ(errors.size(), 1u) << text;   // no plain error of the same statement next to the diagnosis
+        EXPECT_EQ(errors[0]->errorType(), SysMLv2::Files::ErrorType::KEYWORD_MISUSE) << text << ": " << errors[0]->description();
+    }
+}
+
+TEST(TestSysMLParser, KeywordMisuseAtTheEndOfTheText) {
+    // the parser stops at the end of the text: the diagnosis is reported there, too
+    const auto errors = SysMLv2::Files::Parser::parseSysMLv2("part def P { part loop").second;
+    ASSERT_FALSE(errors.empty());
+    EXPECT_EQ(errors[0]->errorType(), SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    EXPECT_NE(errors[0]->description().find("'loop' is a reserved keyword"), std::string::npos);
+    // the suppression of the follow-up errors ends with the statement: a later error is reported
+    const auto later = SysMLv2::Files::Parser::parseSysMLv2("part def P { part loop; attribute x [0..*] = ; }").second;
+    ASSERT_GE(later.size(), 2u);
+    EXPECT_EQ(later[0]->errorType(), SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    EXPECT_EQ(later.back()->errorType(), SysMLv2::Files::ErrorType::SYNTAX_ERROR);
+}
+
+TEST(TestSysMLParser, MissingSemicolonOrNameIsNoKeywordMisuse) {
+    const std::vector<std::string> texts = {
+        "state def S { entry action a do action b; }", "state def S { entry state a; }", "state def S { entry then off; state off; }",
+        "action def A { fork then b; }", "action def A { decide then b; action b; }", "package P { alias A for B part def C; }",
+        "part def P { attribute def part def X; }", "part def P { part x :> part y; }", "part def P { abstract abstract part b; }",
+        // KerML-only keywords are names in SysML v2 and are not flagged, also when the text is broken elsewhere
+        "part def P { part feature; attribute x [0..*] = ; }",
+        // SysML v2 has no invariants: 'inv' is an ordinary name
+        "part def P { attribute inv : Boolean; constraint c { inv not true } }"};
+    for (const auto& text : texts) {
+        const auto errors = SysMLv2::Files::Parser::parseSysMLv2(text).second;
+        EXPECT_FALSE(errors.empty()) << text;
+        EXPECT_TRUE(errorsOfType(errors, SysMLv2::Files::ErrorType::KEYWORD_MISUSE).empty()) << text << ": " << (errors.empty() ? "" : errors[0]->description());
+    }
+}
+
+TEST(TestSysMLParser, KeywordMisuseDiagnoserFindsTheGrammarElementsItDependsOn) {
+    antlr4::ANTLRInputStream input("");
+    SysMLv2Lexer lexer(&input);
+    antlr4::CommonTokenStream tokens(&lexer);
+    SysMLv2Parser parser(&tokens);
+    EXPECT_TRUE(SysMLv2::Files::KeywordMisuseDiagnoser::missingGrammarElements(parser).empty());
+    EXPECT_TRUE(SysMLv2::Files::KeywordMisuseDiagnoser::isReservedKeyword(parser, "KEYWORD_SEND"));
+    EXPECT_TRUE(SysMLv2::Files::KeywordMisuseDiagnoser::isReservedKeyword(parser, "KEYWORD_LOOP"));
+    EXPECT_FALSE(SysMLv2::Files::KeywordMisuseDiagnoser::isReservedKeyword(parser, "KEYWORD_INV"));      // a name in SysML v2
+    EXPECT_FALSE(SysMLv2::Files::KeywordMisuseDiagnoser::isReservedKeyword(parser, "KEYWORD_FEATURE"));  // KerML-only keyword
 }

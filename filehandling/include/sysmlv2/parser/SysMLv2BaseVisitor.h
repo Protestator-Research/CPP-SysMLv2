@@ -373,6 +373,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitFeature_typing_target(SysMLv2Parser::Feature_typing_targetContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitConnection_definition(SysMLv2Parser::Connection_definitionContext *ctx) override {
     return visitChildren(ctx);
   }

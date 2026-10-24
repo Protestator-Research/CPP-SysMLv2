@@ -12,7 +12,9 @@ namespace SysMLv2::Files {
         SYNTAX_ERROR,
         LOGICAL_ERROR,
         INTERNAL_ERROR,
-        WARNING
+        WARNING,
+        /// A keyword is misused (e.g. a reserved word as a name); the text does not parse and the parse tree is incomplete, like after a SYNTAX_ERROR.
+        KEYWORD_MISUSE
     };
 
     class SYSMLV2FILE_EXPORT ParserError {

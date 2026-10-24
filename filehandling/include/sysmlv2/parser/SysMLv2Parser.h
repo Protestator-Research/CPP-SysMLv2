@@ -116,154 +116,154 @@ public:
     RuleSource_succession = 81, RuleSource_end_member = 82, RuleSource_end = 83, 
     RuleItem_definition = 84, RuleItem_usage = 85, RulePart_definition = 86, 
     RulePart_usage = 87, RulePort_definition = 88, RulePort_usage = 89, 
-    RuleConjungated_port_typing = 90, RuleConnection_definition = 91, RuleConnection_usage = 92, 
-    RuleConnector_part = 93, RuleBinary_connector_part = 94, RuleNary_connector_part = 95, 
-    RuleConnector_end_member = 96, RuleConnecotr_end = 97, RuleOwned_cross_multiplicity_member = 98, 
-    RuleOwned_cross_multiplicity = 99, RuleBinding_connector_as_usage = 100, 
-    RuleBinding_end_usage_member = 101, RuleSuccession_as_usage = 102, RuleInterface_definition = 103, 
-    RuleInterface_body = 104, RuleInterface_body_item = 105, RuleInterface_non_occurrence_usage_member = 106, 
-    RuleInterface_non_occurrence_usage_element = 107, RuleInterface_occurrence_usage_member = 108, 
-    RuleInterface_occurrence_usage_element = 109, RuleDefault_interface_end = 110, 
-    RuleInterface_usage = 111, RuleInterface_usage_declaration = 112, RuleInterface_part = 113, 
-    RuleBinary_interface_part = 114, RuleNary_interface_part = 115, RuleInterface_end_member = 116, 
-    RuleInterface_end = 117, RuleAllocation_definition = 118, RuleAllocation_usage = 119, 
-    RuleAllocation_usage_declaration = 120, RuleFlow_definition = 121, RuleMessage = 122, 
-    RuleMessage_declaration = 123, RuleMessage_event_member = 124, RuleMessage_event = 125, 
-    RuleFlow_usage = 126, RuleSuccession_flow_usage = 127, RuleFlow_declaration = 128, 
-    RuleFlow_payload_feature_member = 129, RuleFlow_payload_feature = 130, 
-    RulePayload_feature = 131, RulePayload_feature_specialization_part = 132, 
-    RuleFlow_end_member = 133, RuleFlow_end = 134, RuleFlow_end_subsetting = 135, 
-    RuleFeature_chain_prefix = 136, RuleFlow_feature_member = 137, RuleFlow_feature = 138, 
-    RuleFlow_feature_redefinition = 139, RuleAction_definition = 140, RuleAction_body = 141, 
-    RuleAction_body_item = 142, RuleNon_behavior_body_item = 143, RuleAction_behavior_member = 144, 
-    RuleInitial_node_member = 145, RuleAction_node_member = 146, RuleAction_target_succession_member = 147, 
-    RuleGuarded_succession_member = 148, RuleAction_usage = 149, RuleAction_usage_declaration = 150, 
-    RulePerform_action_usage = 151, RulePerform_action_usage_declaration = 152, 
-    RuleAction_node = 153, RuleAction_node_usage_declaration = 154, RuleAction_node_prefix = 155, 
-    RuleControl_node = 156, RuleControl_node_prefix = 157, RuleMerge_node = 158, 
-    RuleDecision_node = 159, RuleJoin_node = 160, RuleFork_node = 161, RuleAccept_node = 162, 
-    RuleAccept_node_declaration = 163, RuleAccept_parameter_part = 164, 
-    RulePayload_parameter_member = 165, RulePayload_parameter = 166, RuleTrigger_value_part = 167, 
-    RuleTrigger_expression = 168, RuleSend_node = 169, RuleSend_node_declaration = 170, 
-    RuleSender_receiver_part = 171, RuleNode_parameter_member = 172, RuleNode_parameter = 173, 
-    RuleFeature_binding = 174, RuleAssignment_node = 175, RuleAssignment_node_declaration = 176, 
-    RuleAssignment_target_member = 177, RuleAssignment_target_parameter = 178, 
-    RuleAssignment_target_binding = 179, RuleFeature_chain_member = 180, 
-    RuleOwned_feature_chain_member = 181, RuleExpression_body = 182, RuleTerminate_node = 183, 
-    RuleIf_node = 184, RuleExpression_parameter_member = 185, RuleAction_body_parameter_member = 186, 
-    RuleAction_body_parameter = 187, RuleIf_node_parameter_member = 188, 
-    RuleWhile_loop_node = 189, RuleFor_loop_node = 190, RuleFor_variable_declaration_member = 191, 
-    RuleFor_variable_declaration = 192, RuleAction_target_succession = 193, 
-    RuleTarget_succession = 194, RuleGuarded_target_succession = 195, RuleDefault_target_succession = 196, 
-    RuleGuarded_succession = 197, RuleState_definition = 198, RuleState_def_body = 199, 
-    RuleState_body_item = 200, RuleEntry_action_member = 201, RuleDo_action_member = 202, 
-    RuleExit_action_member = 203, RuleEntry_transition_member = 204, RuleState_action_usage = 205, 
-    RuleEmpty_action_usage = 206, RuleState_perform_action_uage = 207, RuleState_accept_action_usage = 208, 
-    RuleState_send_action_usage = 209, RuleState_assignment_action_usage = 210, 
-    RuleTransition_usage_member = 211, RuleTarget_transition_usage_member = 212, 
-    RuleState_usage = 213, RuleState_usage_body = 214, RuleExhibit_state_usage = 215, 
-    RuleTransition_usage = 216, RuleTarget_transition_usage = 217, RuleTrigger_action_member = 218, 
-    RuleTrigger_action = 219, RuleGuard_expression_member = 220, RuleEffect_behavior_member = 221, 
-    RuleEffect_behavior_usage = 222, RuleTransition_perform_action_usage = 223, 
-    RuleTransition_accept_action_usage = 224, RuleTransition_send_action_usage = 225, 
-    RuleTransition_assignment_action_usage = 226, RuleTransition_succession_member = 227, 
-    RuleTransition_succession = 228, RuleCalculation_definition = 229, RuleCalculation_usage = 230, 
-    RuleCalculation_body = 231, RuleCalculation_body_part = 232, RuleCalculation_body_item = 233, 
-    RuleReturn_parameter_member = 234, RuleResult_expression_member = 235, 
-    RuleConstraint_definition = 236, RuleConstraint_usage = 237, RuleAssert_constriant_usage = 238, 
-    RuleConstraint_usage_declaration = 239, RuleRequirement_definition = 240, 
-    RuleRequirement_body = 241, RuleRequirement_body_item = 242, RuleSubject_member = 243, 
-    RuleSubject_usage = 244, RuleRequirement_constraint_member = 245, RuleRequriement_kind = 246, 
-    RuleRequirement_constraint_usage = 247, RuleFramed_concern_member = 248, 
-    RuleFramed_concern_usage = 249, RuleActor_member = 250, RuleActor_usage = 251, 
-    RuleStakeholder_member = 252, RuleStakeholder_usage = 253, RuleRequirement_usage = 254, 
-    RuleSatisfy_requirement_usage = 255, RuleSatisfaction_subject_member = 256, 
-    RuleSatisfaction_parameter = 257, RuleSatisfaction_feature_value = 258, 
-    RuleSatisfaction_reference_expression = 259, RuleConcern_definition = 260, 
-    RuleConcern_usage = 261, RuleCase_definition = 262, RuleCase_usage = 263, 
-    RuleCase_body = 264, RuleCase_body_item = 265, RuleObjective_member = 266, 
-    RuleObjective_requirement_usage = 267, RuleAnalysis_case_definition = 268, 
-    RuleAnalysis_case_usage = 269, RuleVerification_case_definition = 270, 
-    RuleVerification_case_usage = 271, RuleRequirement_verification_member = 272, 
-    RuleRequirement_verification_usage = 273, RuleUse_case_definition = 274, 
-    RuleUse_case_usage = 275, RuleInclude_use_case_usage = 276, RuleView_definition = 277, 
-    RuleView_definition_body = 278, RuleView_definition_body_item = 279, 
-    RuleView_rendering_member = 280, RuleView_rendering_usage = 281, RuleView_usage = 282, 
-    RuleView_body = 283, RuleView_body_item = 284, RuleExpose = 285, RuleMembership_expose = 286, 
-    RuleNamespace_expose = 287, RuleViewpoint_definition = 288, RuleViewpoint_usage = 289, 
-    RuleRendering_definition = 290, RuleRendering_usage = 291, RuleMetadata_definition = 292, 
-    RulePrefix_metadata_annotation = 293, RulePrefix_metadata_member = 294, 
-    RulePrefix_metadata_usage = 295, RuleMetadata_usage = 296, RuleMetadata_usage_declaration = 297, 
-    RuleMetadata_body = 298, RuleMetadata_body_usage_member = 299, RuleMetadata_body_usage = 300, 
-    RuleExtended_definition = 301, RuleExtended_usage = 302, RuleDefined_by = 303, 
-    RuleElements = 304, RuleRelationship_owned_elements = 305, RuleRelationship_owned_element = 306, 
-    RuleOwned_related_element = 307, RuleNamespace = 308, RuleNamespace_declaration = 309, 
-    RuleNamespace_body = 310, RuleNamespace_body_elements = 311, RuleNamespace_body_element = 312, 
-    RuleMember_prefix = 313, RuleVisibility_indicator = 314, RuleNamespace_member = 315, 
-    RuleNon_feature_member = 316, RuleNamespace_feature_member = 317, RuleNamespace_import = 318, 
-    RuleImport_declaration = 319, RuleMembership_import = 320, RuleFilter_package = 321, 
-    RuleFilter_package_member = 322, RuleElement = 323, RuleNon_feature_element = 324, 
-    RuleFeature_element = 325, RuleAdditional_options = 326, RuleType = 327, 
-    RuleType_prefix = 328, RuleType_declaration = 329, RuleSpecialization_part = 330, 
-    RuleConjugation_part = 331, RuleType_relationship_part = 332, RuleDisjoining_part = 333, 
-    RuleUnioning_part = 334, RuleIntersecting_part = 335, RuleDifferencing_part = 336, 
-    RuleType_body = 337, RuleType_body_elements = 338, RuleType_body_element = 339, 
-    RuleSpecialization = 340, RuleOwned_specialization = 341, RuleSpecific_type = 342, 
-    RuleGeneral_type = 343, RuleConjunction = 344, RuleOwned_conjugation = 345, 
-    RuleDisjoining = 346, RuleOwned_disjoining = 347, RuleUnioning = 348, 
-    RuleIntersecting = 349, RuleDifferencing = 350, RuleFeature_member = 351, 
-    RuleType_feature_member = 352, RuleOwned_feature_member = 353, RuleClassifier = 354, 
-    RuleClassifier_declaration = 355, RuleSuperclassing_part = 356, RuleSubclassification = 357, 
-    RuleOwned_subclassification = 358, RuleFeature = 359, RuleAnonymous_feature = 360, 
-    RuleFeature_prefix = 361, RuleEnd_feature_prefix = 362, RuleBasic_feature_prefix = 363, 
-    RuleFeature_declaration = 364, RuleFeature_identification = 365, RuleFeature_relationship_part = 366, 
-    RuleChaining_part = 367, RuleInverting_part = 368, RuleType_featuring_part = 369, 
-    RuleFeature_specialization_part = 370, RuleMultiplicity_modifier = 371, 
-    RuleFeature_specialization = 372, RuleTypings = 373, RuleTyped_by = 374, 
-    RuleSubsettings = 375, RuleSubsets = 376, RuleReferences = 377, RuleCrosses = 378, 
-    RuleRedefinitions = 379, RuleRedefines = 380, RuleFeature_typing = 381, 
-    RuleOwned_feature_typing = 382, RuleSubsetting = 383, RuleOwned_subsetting = 384, 
-    RuleOwned_reference_subsetting = 385, RuleOwned_cross_subsetting = 386, 
-    RuleRedefinition = 387, RuleOwned_redefinition = 388, RuleOwned_feature_chain = 389, 
-    RuleFeature_chain = 390, RuleOwned_feature_chaining = 391, RuleFeature_inverting = 392, 
-    RuleOwned_feature_inverting = 393, RuleType_featuring = 394, RuleOwned_type_featuring = 395, 
-    RuleData_type = 396, RuleClass = 397, RuleStructure = 398, RuleAssociation = 399, 
-    RuleAssociation_structure = 400, RuleConnector = 401, RuleConnector_declaration = 402, 
-    RuleBinary_connector_declaration = 403, RuleNary_connector_declaration = 404, 
-    RuleConnector_end = 405, RuleBinding_connector = 406, RuleBinding_connector_declaration = 407, 
-    RuleSuccession = 408, RuleSuccession_declaration = 409, RuleBehavior = 410, 
-    RuleStep = 411, RuleFunction = 412, RuleFunction_body = 413, RuleFunction_body_part = 414, 
-    RuleReturn_feature_member = 415, RuleExpression = 416, RulePredicate = 417, 
-    RuleBoolean_expression = 418, RuleInvariant = 419, RuleOwned_expression_reference_member = 420, 
-    RuleOwned_expression_reference = 421, RuleOwned_expression_member = 422, 
-    RuleOwned_expression = 423, RuleFunction_operation_arguments = 424, 
-    RuleType_reference_member = 425, RuleType_result_member = 426, RuleType_reference = 427, 
-    RuleReference_typing = 428, RuleSequence_expression = 429, RuleSequence_expression_list = 430, 
-    RuleSequence_operator_expression = 431, RuleSequence_expression_list_member = 432, 
-    RuleFunction_reference = 433, RuleBase_expression = 434, RuleNull_expression = 435, 
-    RuleFeature_reference_expression = 436, RuleFeature_reference_member = 437, 
-    RuleFeature_reference = 438, RuleMetadata_access_expression = 439, RuleInvocation_expression = 440, 
-    RuleInternal_invocation_expression = 441, RuleConstructor_expression = 442, 
-    RuleArgument_list = 443, RulePositional_argument_list = 444, RuleNamed_argument_list = 445, 
-    RuleNamed_argument_member = 446, RuleNamed_argument = 447, RuleParameter_redefinition = 448, 
-    RuleBody_expression = 449, RuleExpression_body_member = 450, RuleLiteral_expression = 451, 
-    RuleLiteral_boolean = 452, RuleBoolean_value = 453, RuleLiteral_string = 454, 
-    RuleLiteral_integer = 455, RuleLiteral_real = 456, RuleReal_value = 457, 
-    RuleLiteral_infinity = 458, RuleInteraction = 459, RuleItem_flow = 460, 
-    RuleSuccession_item_flow = 461, RuleItem_flow_declaration = 462, RuleItem_feature_member = 463, 
-    RuleItem_feature = 464, RuleItem_feature_specialization_part = 465, 
-    RuleItem_flow_end_member = 466, RuleItem_flow_end = 467, RuleItem_flow_feature_member = 468, 
-    RuleItem_flow_feature = 469, RuleItem_flow_redefinition = 470, RuleValue_part = 471, 
-    RuleFeature_value = 472, RuleFeature_assignment = 473, RuleMultiplicity = 474, 
-    RuleMultiplicity_subset = 475, RuleOwned_multiplicity_range = 476, RuleMultiplicity_bounds = 477, 
-    RuleMultiplicity_expression_member = 478, RuleInternal_multiplicity_expression_member = 479, 
-    RuleMetaclass = 480, RulePrefix_metadata_feature = 481, RuleMetadata_feature = 482, 
-    RuleMetadata_feature_declaration = 483, RuleMetadata_body_element = 484, 
-    RuleMetadata_body_feature_member = 485, RuleMetadata_body_feature = 486, 
-    RuleLibrary_package = 487, RulePackage_declaration = 488, RuleElement_filter_member = 489, 
-    RuleMeta_assignment = 490, RuleTyped_by_operator = 491, RuleSpecializes_operator = 492, 
-    RuleSubsets_operator = 493, RuleReferences_operator = 494, RuleRedefines_operator = 495, 
-    RuleConjugates_operator = 496, RuleCrosses_operator = 497
+    RuleConjungated_port_typing = 90, RuleFeature_typing_target = 91, RuleTypings = 92, 
+    RuleTyped_by = 93, RuleConnection_definition = 94, RuleConnection_usage = 95, 
+    RuleConnector_part = 96, RuleBinary_connector_part = 97, RuleNary_connector_part = 98, 
+    RuleConnector_end_member = 99, RuleConnecotr_end = 100, RuleOwned_cross_multiplicity_member = 101, 
+    RuleOwned_cross_multiplicity = 102, RuleBinding_connector_as_usage = 103, 
+    RuleBinding_end_usage_member = 104, RuleSuccession_as_usage = 105, RuleInterface_definition = 106, 
+    RuleInterface_body = 107, RuleInterface_body_item = 108, RuleInterface_non_occurrence_usage_member = 109, 
+    RuleInterface_non_occurrence_usage_element = 110, RuleInterface_occurrence_usage_member = 111, 
+    RuleInterface_occurrence_usage_element = 112, RuleDefault_interface_end = 113, 
+    RuleInterface_usage = 114, RuleInterface_usage_declaration = 115, RuleInterface_part = 116, 
+    RuleBinary_interface_part = 117, RuleNary_interface_part = 118, RuleInterface_end_member = 119, 
+    RuleInterface_end = 120, RuleAllocation_definition = 121, RuleAllocation_usage = 122, 
+    RuleAllocation_usage_declaration = 123, RuleFlow_definition = 124, RuleMessage = 125, 
+    RuleMessage_declaration = 126, RuleMessage_event_member = 127, RuleMessage_event = 128, 
+    RuleFlow_usage = 129, RuleSuccession_flow_usage = 130, RuleFlow_declaration = 131, 
+    RuleFlow_payload_feature_member = 132, RuleFlow_payload_feature = 133, 
+    RulePayload_feature = 134, RulePayload_feature_specialization_part = 135, 
+    RuleFlow_end_member = 136, RuleFlow_end = 137, RuleFlow_end_subsetting = 138, 
+    RuleFeature_chain_prefix = 139, RuleFlow_feature_member = 140, RuleFlow_feature = 141, 
+    RuleFlow_feature_redefinition = 142, RuleAction_definition = 143, RuleAction_body = 144, 
+    RuleAction_body_item = 145, RuleNon_behavior_body_item = 146, RuleAction_behavior_member = 147, 
+    RuleInitial_node_member = 148, RuleAction_node_member = 149, RuleAction_target_succession_member = 150, 
+    RuleGuarded_succession_member = 151, RuleAction_usage = 152, RuleAction_usage_declaration = 153, 
+    RulePerform_action_usage = 154, RulePerform_action_usage_declaration = 155, 
+    RuleAction_node = 156, RuleAction_node_usage_declaration = 157, RuleAction_node_prefix = 158, 
+    RuleControl_node = 159, RuleControl_node_prefix = 160, RuleMerge_node = 161, 
+    RuleDecision_node = 162, RuleJoin_node = 163, RuleFork_node = 164, RuleAccept_node = 165, 
+    RuleAccept_node_declaration = 166, RuleAccept_parameter_part = 167, 
+    RulePayload_parameter_member = 168, RulePayload_parameter = 169, RuleTrigger_value_part = 170, 
+    RuleTrigger_expression = 171, RuleSend_node = 172, RuleSend_node_declaration = 173, 
+    RuleSender_receiver_part = 174, RuleNode_parameter_member = 175, RuleNode_parameter = 176, 
+    RuleFeature_binding = 177, RuleAssignment_node = 178, RuleAssignment_node_declaration = 179, 
+    RuleAssignment_target_member = 180, RuleAssignment_target_parameter = 181, 
+    RuleAssignment_target_binding = 182, RuleFeature_chain_member = 183, 
+    RuleOwned_feature_chain_member = 184, RuleExpression_body = 185, RuleTerminate_node = 186, 
+    RuleIf_node = 187, RuleExpression_parameter_member = 188, RuleAction_body_parameter_member = 189, 
+    RuleAction_body_parameter = 190, RuleIf_node_parameter_member = 191, 
+    RuleWhile_loop_node = 192, RuleFor_loop_node = 193, RuleFor_variable_declaration_member = 194, 
+    RuleFor_variable_declaration = 195, RuleAction_target_succession = 196, 
+    RuleTarget_succession = 197, RuleGuarded_target_succession = 198, RuleDefault_target_succession = 199, 
+    RuleGuarded_succession = 200, RuleState_definition = 201, RuleState_def_body = 202, 
+    RuleState_body_item = 203, RuleEntry_action_member = 204, RuleDo_action_member = 205, 
+    RuleExit_action_member = 206, RuleEntry_transition_member = 207, RuleState_action_usage = 208, 
+    RuleEmpty_action_usage = 209, RuleState_perform_action_uage = 210, RuleState_accept_action_usage = 211, 
+    RuleState_send_action_usage = 212, RuleState_assignment_action_usage = 213, 
+    RuleTransition_usage_member = 214, RuleTarget_transition_usage_member = 215, 
+    RuleState_usage = 216, RuleState_usage_body = 217, RuleExhibit_state_usage = 218, 
+    RuleTransition_usage = 219, RuleTarget_transition_usage = 220, RuleTrigger_action_member = 221, 
+    RuleTrigger_action = 222, RuleGuard_expression_member = 223, RuleEffect_behavior_member = 224, 
+    RuleEffect_behavior_usage = 225, RuleTransition_perform_action_usage = 226, 
+    RuleTransition_accept_action_usage = 227, RuleTransition_send_action_usage = 228, 
+    RuleTransition_assignment_action_usage = 229, RuleTransition_succession_member = 230, 
+    RuleTransition_succession = 231, RuleCalculation_definition = 232, RuleCalculation_usage = 233, 
+    RuleCalculation_body = 234, RuleCalculation_body_part = 235, RuleCalculation_body_item = 236, 
+    RuleReturn_parameter_member = 237, RuleResult_expression_member = 238, 
+    RuleConstraint_definition = 239, RuleConstraint_usage = 240, RuleAssert_constriant_usage = 241, 
+    RuleConstraint_usage_declaration = 242, RuleRequirement_definition = 243, 
+    RuleRequirement_body = 244, RuleRequirement_body_item = 245, RuleSubject_member = 246, 
+    RuleSubject_usage = 247, RuleRequirement_constraint_member = 248, RuleRequriement_kind = 249, 
+    RuleRequirement_constraint_usage = 250, RuleFramed_concern_member = 251, 
+    RuleFramed_concern_usage = 252, RuleActor_member = 253, RuleActor_usage = 254, 
+    RuleStakeholder_member = 255, RuleStakeholder_usage = 256, RuleRequirement_usage = 257, 
+    RuleSatisfy_requirement_usage = 258, RuleSatisfaction_subject_member = 259, 
+    RuleSatisfaction_parameter = 260, RuleSatisfaction_feature_value = 261, 
+    RuleSatisfaction_reference_expression = 262, RuleConcern_definition = 263, 
+    RuleConcern_usage = 264, RuleCase_definition = 265, RuleCase_usage = 266, 
+    RuleCase_body = 267, RuleCase_body_item = 268, RuleObjective_member = 269, 
+    RuleObjective_requirement_usage = 270, RuleAnalysis_case_definition = 271, 
+    RuleAnalysis_case_usage = 272, RuleVerification_case_definition = 273, 
+    RuleVerification_case_usage = 274, RuleRequirement_verification_member = 275, 
+    RuleRequirement_verification_usage = 276, RuleUse_case_definition = 277, 
+    RuleUse_case_usage = 278, RuleInclude_use_case_usage = 279, RuleView_definition = 280, 
+    RuleView_definition_body = 281, RuleView_definition_body_item = 282, 
+    RuleView_rendering_member = 283, RuleView_rendering_usage = 284, RuleView_usage = 285, 
+    RuleView_body = 286, RuleView_body_item = 287, RuleExpose = 288, RuleMembership_expose = 289, 
+    RuleNamespace_expose = 290, RuleViewpoint_definition = 291, RuleViewpoint_usage = 292, 
+    RuleRendering_definition = 293, RuleRendering_usage = 294, RuleMetadata_definition = 295, 
+    RulePrefix_metadata_annotation = 296, RulePrefix_metadata_member = 297, 
+    RulePrefix_metadata_usage = 298, RuleMetadata_usage = 299, RuleMetadata_usage_declaration = 300, 
+    RuleMetadata_body = 301, RuleMetadata_body_usage_member = 302, RuleMetadata_body_usage = 303, 
+    RuleExtended_definition = 304, RuleExtended_usage = 305, RuleDefined_by = 306, 
+    RuleElements = 307, RuleRelationship_owned_elements = 308, RuleRelationship_owned_element = 309, 
+    RuleOwned_related_element = 310, RuleNamespace = 311, RuleNamespace_declaration = 312, 
+    RuleNamespace_body = 313, RuleNamespace_body_elements = 314, RuleNamespace_body_element = 315, 
+    RuleMember_prefix = 316, RuleVisibility_indicator = 317, RuleNamespace_member = 318, 
+    RuleNon_feature_member = 319, RuleNamespace_feature_member = 320, RuleNamespace_import = 321, 
+    RuleImport_declaration = 322, RuleMembership_import = 323, RuleFilter_package = 324, 
+    RuleFilter_package_member = 325, RuleElement = 326, RuleNon_feature_element = 327, 
+    RuleFeature_element = 328, RuleAdditional_options = 329, RuleType = 330, 
+    RuleType_prefix = 331, RuleType_declaration = 332, RuleSpecialization_part = 333, 
+    RuleConjugation_part = 334, RuleType_relationship_part = 335, RuleDisjoining_part = 336, 
+    RuleUnioning_part = 337, RuleIntersecting_part = 338, RuleDifferencing_part = 339, 
+    RuleType_body = 340, RuleType_body_elements = 341, RuleType_body_element = 342, 
+    RuleSpecialization = 343, RuleOwned_specialization = 344, RuleSpecific_type = 345, 
+    RuleGeneral_type = 346, RuleConjunction = 347, RuleOwned_conjugation = 348, 
+    RuleDisjoining = 349, RuleOwned_disjoining = 350, RuleUnioning = 351, 
+    RuleIntersecting = 352, RuleDifferencing = 353, RuleFeature_member = 354, 
+    RuleType_feature_member = 355, RuleOwned_feature_member = 356, RuleClassifier = 357, 
+    RuleClassifier_declaration = 358, RuleSuperclassing_part = 359, RuleSubclassification = 360, 
+    RuleOwned_subclassification = 361, RuleFeature = 362, RuleAnonymous_feature = 363, 
+    RuleFeature_prefix = 364, RuleEnd_feature_prefix = 365, RuleBasic_feature_prefix = 366, 
+    RuleFeature_declaration = 367, RuleFeature_identification = 368, RuleFeature_relationship_part = 369, 
+    RuleChaining_part = 370, RuleInverting_part = 371, RuleType_featuring_part = 372, 
+    RuleFeature_specialization_part = 373, RuleMultiplicity_modifier = 374, 
+    RuleFeature_specialization = 375, RuleSubsettings = 376, RuleSubsets = 377, 
+    RuleReferences = 378, RuleCrosses = 379, RuleRedefinitions = 380, RuleRedefines = 381, 
+    RuleFeature_typing = 382, RuleOwned_feature_typing = 383, RuleSubsetting = 384, 
+    RuleOwned_subsetting = 385, RuleOwned_reference_subsetting = 386, RuleOwned_cross_subsetting = 387, 
+    RuleRedefinition = 388, RuleOwned_redefinition = 389, RuleOwned_feature_chain = 390, 
+    RuleFeature_chain = 391, RuleOwned_feature_chaining = 392, RuleFeature_inverting = 393, 
+    RuleOwned_feature_inverting = 394, RuleType_featuring = 395, RuleOwned_type_featuring = 396, 
+    RuleData_type = 397, RuleClass = 398, RuleStructure = 399, RuleAssociation = 400, 
+    RuleAssociation_structure = 401, RuleConnector = 402, RuleConnector_declaration = 403, 
+    RuleBinary_connector_declaration = 404, RuleNary_connector_declaration = 405, 
+    RuleConnector_end = 406, RuleBinding_connector = 407, RuleBinding_connector_declaration = 408, 
+    RuleSuccession = 409, RuleSuccession_declaration = 410, RuleBehavior = 411, 
+    RuleStep = 412, RuleFunction = 413, RuleFunction_body = 414, RuleFunction_body_part = 415, 
+    RuleReturn_feature_member = 416, RuleExpression = 417, RulePredicate = 418, 
+    RuleBoolean_expression = 419, RuleInvariant = 420, RuleOwned_expression_reference_member = 421, 
+    RuleOwned_expression_reference = 422, RuleOwned_expression_member = 423, 
+    RuleOwned_expression = 424, RuleFunction_operation_arguments = 425, 
+    RuleType_reference_member = 426, RuleType_result_member = 427, RuleType_reference = 428, 
+    RuleReference_typing = 429, RuleSequence_expression = 430, RuleSequence_expression_list = 431, 
+    RuleSequence_operator_expression = 432, RuleSequence_expression_list_member = 433, 
+    RuleFunction_reference = 434, RuleBase_expression = 435, RuleNull_expression = 436, 
+    RuleFeature_reference_expression = 437, RuleFeature_reference_member = 438, 
+    RuleFeature_reference = 439, RuleMetadata_access_expression = 440, RuleInvocation_expression = 441, 
+    RuleInternal_invocation_expression = 442, RuleConstructor_expression = 443, 
+    RuleArgument_list = 444, RulePositional_argument_list = 445, RuleNamed_argument_list = 446, 
+    RuleNamed_argument_member = 447, RuleNamed_argument = 448, RuleParameter_redefinition = 449, 
+    RuleBody_expression = 450, RuleExpression_body_member = 451, RuleLiteral_expression = 452, 
+    RuleLiteral_boolean = 453, RuleBoolean_value = 454, RuleLiteral_string = 455, 
+    RuleLiteral_integer = 456, RuleLiteral_real = 457, RuleReal_value = 458, 
+    RuleLiteral_infinity = 459, RuleInteraction = 460, RuleItem_flow = 461, 
+    RuleSuccession_item_flow = 462, RuleItem_flow_declaration = 463, RuleItem_feature_member = 464, 
+    RuleItem_feature = 465, RuleItem_feature_specialization_part = 466, 
+    RuleItem_flow_end_member = 467, RuleItem_flow_end = 468, RuleItem_flow_feature_member = 469, 
+    RuleItem_flow_feature = 470, RuleItem_flow_redefinition = 471, RuleValue_part = 472, 
+    RuleFeature_value = 473, RuleFeature_assignment = 474, RuleMultiplicity = 475, 
+    RuleMultiplicity_subset = 476, RuleOwned_multiplicity_range = 477, RuleMultiplicity_bounds = 478, 
+    RuleMultiplicity_expression_member = 479, RuleInternal_multiplicity_expression_member = 480, 
+    RuleMetaclass = 481, RulePrefix_metadata_feature = 482, RuleMetadata_feature = 483, 
+    RuleMetadata_feature_declaration = 484, RuleMetadata_body_element = 485, 
+    RuleMetadata_body_feature_member = 486, RuleMetadata_body_feature = 487, 
+    RuleLibrary_package = 488, RulePackage_declaration = 489, RuleElement_filter_member = 490, 
+    RuleMeta_assignment = 491, RuleTyped_by_operator = 492, RuleSpecializes_operator = 493, 
+    RuleSubsets_operator = 494, RuleReferences_operator = 495, RuleRedefines_operator = 496, 
+    RuleConjugates_operator = 497, RuleCrosses_operator = 498
   };
 
   explicit SysMLv2Parser(antlr4::TokenStream *input);
@@ -374,6 +374,9 @@ public:
   class Port_definitionContext;
   class Port_usageContext;
   class Conjungated_port_typingContext;
+  class Feature_typing_targetContext;
+  class TypingsContext;
+  class Typed_byContext;
   class Connection_definitionContext;
   class Connection_usageContext;
   class Connector_partContext;
@@ -656,8 +659,6 @@ public:
   class Feature_specialization_partContext;
   class Multiplicity_modifierContext;
   class Feature_specializationContext;
-  class TypingsContext;
-  class Typed_byContext;
   class SubsettingsContext;
   class SubsetsContext;
   class ReferencesContext;
@@ -2301,6 +2302,51 @@ public:
 
   Conjungated_port_typingContext* conjungated_port_typing();
 
+  class SYSMLV2FILE_EXPORT Feature_typing_targetContext : public antlr4::ParserRuleContext {
+  public:
+    Feature_typing_targetContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Owned_feature_typingContext *owned_feature_typing();
+    Conjungated_port_typingContext *conjungated_port_typing();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Feature_typing_targetContext* feature_typing_target();
+
+  class SYSMLV2FILE_EXPORT TypingsContext : public antlr4::ParserRuleContext {
+  public:
+    TypingsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Typed_byContext *typed_by();
+    std::vector<antlr4::tree::TerminalNode *> SYMBOL_COMMA();
+    antlr4::tree::TerminalNode* SYMBOL_COMMA(size_t i);
+    std::vector<Feature_typing_targetContext *> feature_typing_target();
+    Feature_typing_targetContext* feature_typing_target(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  TypingsContext* typings();
+
+  class SYSMLV2FILE_EXPORT Typed_byContext : public antlr4::ParserRuleContext {
+  public:
+    Typed_byContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Typed_by_operatorContext *typed_by_operator();
+    Feature_typing_targetContext *feature_typing_target();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Typed_byContext* typed_by();
+
   class SYSMLV2FILE_EXPORT Connection_definitionContext : public antlr4::ParserRuleContext {
   public:
     Connection_definitionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -2893,9 +2939,9 @@ public:
     virtual size_t getRuleIndex() const override;
     Usage_declarationContext *usage_declaration();
     Value_partContext *value_part();
-    std::vector<antlr4::tree::TerminalNode *> KEYWORD_OF();
-    antlr4::tree::TerminalNode* KEYWORD_OF(size_t i);
+    antlr4::tree::TerminalNode *KEYWORD_OF();
     Flow_payload_feature_memberContext *flow_payload_feature_member();
+    antlr4::tree::TerminalNode *KEYWORD_FROM();
     std::vector<Flow_end_memberContext *> flow_end_member();
     Flow_end_memberContext* flow_end_member(size_t i);
     antlr4::tree::TerminalNode *KEYWORD_TO();
@@ -2997,6 +3043,7 @@ public:
     Flow_end_subsettingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Qualified_nameContext *qualified_name();
+    antlr4::tree::TerminalNode *SYMBOL_DOT();
     Feature_chain_prefixContext *feature_chain_prefix();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -6779,37 +6826,6 @@ public:
   };
 
   Feature_specializationContext* feature_specialization();
-
-  class SYSMLV2FILE_EXPORT TypingsContext : public antlr4::ParserRuleContext {
-  public:
-    TypingsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Typed_byContext *typed_by();
-    std::vector<antlr4::tree::TerminalNode *> SYMBOL_COMMA();
-    antlr4::tree::TerminalNode* SYMBOL_COMMA(size_t i);
-    std::vector<Owned_feature_typingContext *> owned_feature_typing();
-    Owned_feature_typingContext* owned_feature_typing(size_t i);
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  TypingsContext* typings();
-
-  class SYSMLV2FILE_EXPORT Typed_byContext : public antlr4::ParserRuleContext {
-  public:
-    Typed_byContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Typed_by_operatorContext *typed_by_operator();
-    Owned_feature_typingContext *owned_feature_typing();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  Typed_byContext* typed_by();
 
   class SYSMLV2FILE_EXPORT SubsettingsContext : public antlr4::ParserRuleContext {
   public:

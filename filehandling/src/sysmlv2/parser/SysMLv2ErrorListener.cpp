@@ -5,12 +5,22 @@
 #include <sysmlv2/parser/SysMLv2ErrorListener.h>
 #include <kerml/ErrorTypes.h>
 
+#include <sysmlv2/parser/KeywordMisuseDiagnoser.h>
+
 SysMLErrorListenener::SysMLErrorListenener() {
 
 }
 
-void SysMLErrorListenener::syntaxError(antlr4::Recognizer *, antlr4::Token *, size_t line,
+void SysMLErrorListenener::syntaxError(antlr4::Recognizer *recognizer, antlr4::Token *offendingSymbol, size_t line,
                                      size_t charPositionInLine, const std::string &msg, std::exception_ptr ) {
+    // A keyword misuse is reported instead of the message of the parser; the follow-up errors of its statement are dropped.
+    auto decision = Filter.onSyntaxError(recognizer, offendingSymbol);
+    if (decision.What == SysMLv2::Files::KeywordMisuseFilter::Kind::Suppressed) return;
+    if (decision.What == SysMLv2::Files::KeywordMisuseFilter::Kind::Misuse) {
+        SyntaxErrors.resize(SyntaxErrors.size() - decision.DropPlain);
+        SyntaxErrors.push_back(std::make_shared<SysMLError>(KerML::Parser::KEYWORD_MISUSE, decision.Misuse.line, decision.Misuse.column, decision.Misuse.message));
+        return;
+    }
     SyntaxErrors.push_back(std::make_shared<SysMLError>(KerML::Parser::SYNTAX_ERROR,line,charPositionInLine,msg));
 }
 

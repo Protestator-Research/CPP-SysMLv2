@@ -232,6 +232,10 @@ part_usage: occurrence_usage_prefix KEYWORD_PART usage;
 port_definition: definition_prefix KEYWORD_PORT KEYWORD_DEF definition;
 port_usage: occurrence_usage_prefix KEYWORD_PORT usage;
 conjungated_port_typing: SYMBOL_CONJUGATES qualified_name;
+// SysML 8.2.2.6.5: FeatureTyping/Typings/TypedBy; FeatureTyping = OwnedFeatureTyping | ConjugatedPortTyping (8.2.2.12). Overrides the KerML typed_by/typings rules (which only allow owned_feature_typing).
+feature_typing_target: owned_feature_typing | conjungated_port_typing;
+typings: typed_by (SYMBOL_COMMA feature_typing_target)*;
+typed_by: typed_by_operator feature_typing_target;
 
 connection_definition: occurrence_definition_prefix KEYWORD_CONNECTION KEYWORD_DEF definition;
 connection_usage: occurrence_usage_prefix ((KEYWORD_CONNECTION usage_declaration value_part? (KEYWORD_CONNECT connector_part)?)| (KEYWORD_CONNECT connector_part)) usage_body;
@@ -279,19 +283,19 @@ allocation_usage_declaration: KEYWORD_ALLOCATION usage_declaration (KEYWORD_ALLO
 
 flow_definition: occurrence_definition_prefix KEYWORD_FLOW KEYWORD_DEF definition;
 message: occurrence_usage_prefix KEYWORD_MESSAGE message_declaration definition_body;
-message_declaration: usage_declaration value_part? (KEYWORD_OF flow_payload_feature_member)? (KEYWORD_FROM message_event_member KEYWORD_TO message_event_member)? | message_event_member KEYWORD_TO message_event_member;
+message_declaration: usage_declaration? value_part? (KEYWORD_OF flow_payload_feature_member)? (KEYWORD_FROM message_event_member KEYWORD_TO message_event_member)? | message_event_member KEYWORD_TO message_event_member;
 message_event_member: message_event;
 message_event: owned_reference_subsetting;
 flow_usage: occurrence_usage_prefix KEYWORD_FLOW flow_declaration definition_body;
 succession_flow_usage: occurrence_usage_prefix KEYWORD_SUCCESSION KEYWORD_FLOW flow_declaration definition_body;
-flow_declaration: usage_declaration value_part? (KEYWORD_OF flow_payload_feature_member)? (KEYWORD_OF flow_end_member KEYWORD_TO flow_end_member)? | flow_end_member KEYWORD_TO flow_end_member;
+flow_declaration: usage_declaration? value_part? (KEYWORD_OF flow_payload_feature_member)? (KEYWORD_FROM flow_end_member KEYWORD_TO flow_end_member)? | flow_end_member KEYWORD_TO flow_end_member;
 flow_payload_feature_member: flow_payload_feature;
 flow_payload_feature: payload_feature;
 payload_feature: identification? payload_feature_specialization_part value_part? | owned_feature_typing owned_multiplicity? | owned_multiplicity owned_feature_typing;
 payload_feature_specialization_part: feature_specialization+ (multiplicity_part feature_specialization*)? | multiplicity_part feature_specialization+;
 flow_end_member: flow_end;
 flow_end: flow_end_subsetting? flow_feature_member;
-flow_end_subsetting: qualified_name | feature_chain_prefix;
+flow_end_subsetting: qualified_name SYMBOL_DOT | feature_chain_prefix;
 feature_chain_prefix: owned_feature_chaining SYMBOL_DOT (owned_feature_chaining SYMBOL_DOT)+;
 flow_feature_member: flow_feature;
 flow_feature: flow_feature_redefinition;

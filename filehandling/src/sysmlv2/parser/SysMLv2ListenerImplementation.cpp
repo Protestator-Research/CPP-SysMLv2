@@ -637,12 +637,9 @@ void SysMLv2ListenerImplementation::applyFeatureSpecifications(const std::vector
 	if (!feature) return;
 	for (auto spec : specifications) {
 		if (spec->typings()) {
-			for (auto typingCtx : spec->typings()->owned_feature_typing()) {
-				addTyping(feature, typingCtx->getText(), typingCtx);
-			}
-			if (spec->typings()->typed_by() && spec->typings()->typed_by()->owned_feature_typing()) {
-				auto* typingCtx = spec->typings()->typed_by()->owned_feature_typing();
-				addTyping(feature, typingCtx->getText(), typingCtx);
+			if (spec->typings()->typed_by()) addTypingTarget(feature, spec->typings()->typed_by()->feature_typing_target());
+			for (auto targetCtx : spec->typings()->feature_typing_target()) {
+				addTypingTarget(feature, targetCtx);
 			}
 		}
 		if (spec->subsettings()) {
@@ -1955,10 +1952,7 @@ void SysMLv2ListenerImplementation::exitRedefinition(SysMLv2Parser::Redefinition
 		addRedefinition(feature, redefName, ctx->qualified_name());
 	}
 	// `:>> x : T :> y;` (the typing and the subsetting of the redefining feature)
-	if (ctx && ctx->typed_by() && ctx->typed_by()->owned_feature_typing()) {
-		auto* typingCtx = ctx->typed_by()->owned_feature_typing();
-		addTyping(feature, typingCtx->getText(), typingCtx);
-	}
+	if (ctx && ctx->typed_by()) addTypingTarget(feature, ctx->typed_by()->feature_typing_target());
 	if (ctx && ctx->subsets() && ctx->subsets()->owned_subsetting()) {
 		auto* subsetCtx = ctx->subsets()->owned_subsetting();
 		addSubsetting(feature, subsetCtx->getText(), subsetCtx);
@@ -2393,6 +2387,18 @@ static void applyDerivedDefinitions(const std::shared_ptr<KerML::Entities::Featu
 		feature, typeTarget, &SysMLv2::Entities::ViewpointUsage::setViewpointDefinition);
 	setDerivedDefinition<SysMLv2::Entities::RenderingUsage, SysMLv2::Entities::RenderingDefinition>(
 		feature, typeTarget, &SysMLv2::Entities::RenderingUsage::setRenderingDefinition);
+}
+
+// `: P` (OwnedFeatureTyping) or `: ~P` (ConjugatedPortTyping). A conjugated typing is currently approximated by a
+// plain FeatureTyping to the port definition P (the ConjugatedPortDefinition `P::'~P'` is not synthesised yet).
+void SysMLv2ListenerImplementation::addTypingTarget(const std::shared_ptr<KerML::Entities::Feature>& feature,
+	SysMLv2Parser::Feature_typing_targetContext* target) {
+	if (!feature || !target) return;
+	if (auto* owned = target->owned_feature_typing()) {
+		addTyping(feature, owned->getText(), owned);
+	} else if (auto* conj = target->conjungated_port_typing()) {
+		if (conj->qualified_name()) addTyping(feature, conj->qualified_name()->getText(), conj->qualified_name());
+	}
 }
 
 void SysMLv2ListenerImplementation::addTyping(const std::shared_ptr<KerML::Entities::Feature>& feature, const std::string& typeName,

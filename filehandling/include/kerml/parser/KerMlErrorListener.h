@@ -10,6 +10,7 @@
 #include <memory>
 
 #include <kerml/parser/KerMlError.h>
+#include <sysmlv2/parser/KeywordMisuseDiagnoser.h>
 #include <sysmlv2/sysmlv2file_global.h>
 
 class SYSMLV2FILE_EXPORT KerMLErrorListener : public antlr4::BaseErrorListener {
@@ -29,4 +30,6 @@ public:
                                           size_t prediction, antlr4::atn::ATNConfigSet *configs) override;
 private:
     std::vector<std::shared_ptr<KerMLError>> SyntaxErrors;
+    /// Decides which errors are reported as keyword misuse, which are plain syntax errors and which are follow-ups that are dropped.
+    SysMLv2::Files::KeywordMisuseFilter Filter;
 };

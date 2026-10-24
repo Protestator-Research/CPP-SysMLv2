@@ -43,7 +43,7 @@ using ElementPtr = std::shared_ptr<K::Element>;
 std::vector<std::filesystem::path> xmiFiles() { return ConformanceTest::listFiles(SYSML_LIBRARY_XMI_DIR, {".sysmlx", ".kermlx"}); }
 
 std::string describe(const std::shared_ptr<ParserError>& error) {
-    static const char* kinds[] = {"SYNTAX_ERROR", "LOGICAL_ERROR", "INTERNAL_ERROR", "WARNING"};
+    static const char* kinds[] = {"SYNTAX_ERROR", "LOGICAL_ERROR", "INTERNAL_ERROR", "WARNING", "KEYWORD_MISUSE"};
     return std::string(kinds[static_cast<int>(error->errorType())]) + " " + error->getSource() + ":" + std::to_string(error->getLine()) + ": " +
            error->description();
 }

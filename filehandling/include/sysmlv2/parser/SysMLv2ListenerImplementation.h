@@ -1174,6 +1174,7 @@ private:
     /// Creates the (unresolved) typing of @p feature by the type named @p typeName; resolution later patches the typing, the
     /// feature's types and the derived ...Definition properties of the usage.
     void addTyping(const std::shared_ptr<KerML::Entities::Feature>& feature, const std::string& typeName, antlr4::ParserRuleContext* position);
+    void addTypingTarget(const std::shared_ptr<KerML::Entities::Feature>& feature, SysMLv2Parser::Feature_typing_targetContext* target);
     /// The same for the specialization of a classifier by the classifier named @p superName.
     void addSubclassification(const std::shared_ptr<KerML::Entities::Classifier>& classifier, const std::string& superName, antlr4::ParserRuleContext* position);
     /// Subsetting, redefinition and reference subsetting of @p feature by the feature named @p name.

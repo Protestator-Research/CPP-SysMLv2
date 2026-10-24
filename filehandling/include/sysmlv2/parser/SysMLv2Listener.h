@@ -293,6 +293,15 @@ public:
   virtual void enterConjungated_port_typing(SysMLv2Parser::Conjungated_port_typingContext *ctx) = 0;
   virtual void exitConjungated_port_typing(SysMLv2Parser::Conjungated_port_typingContext *ctx) = 0;
 
+  virtual void enterFeature_typing_target(SysMLv2Parser::Feature_typing_targetContext *ctx) = 0;
+  virtual void exitFeature_typing_target(SysMLv2Parser::Feature_typing_targetContext *ctx) = 0;
+
+  virtual void enterTypings(SysMLv2Parser::TypingsContext *ctx) = 0;
+  virtual void exitTypings(SysMLv2Parser::TypingsContext *ctx) = 0;
+
+  virtual void enterTyped_by(SysMLv2Parser::Typed_byContext *ctx) = 0;
+  virtual void exitTyped_by(SysMLv2Parser::Typed_byContext *ctx) = 0;
+
   virtual void enterConnection_definition(SysMLv2Parser::Connection_definitionContext *ctx) = 0;
   virtual void exitConnection_definition(SysMLv2Parser::Connection_definitionContext *ctx) = 0;
 
@@ -1138,12 +1147,6 @@ public:
 
   virtual void enterFeature_specialization(SysMLv2Parser::Feature_specializationContext *ctx) = 0;
   virtual void exitFeature_specialization(SysMLv2Parser::Feature_specializationContext *ctx) = 0;
-
-  virtual void enterTypings(SysMLv2Parser::TypingsContext *ctx) = 0;
-  virtual void exitTypings(SysMLv2Parser::TypingsContext *ctx) = 0;
-
-  virtual void enterTyped_by(SysMLv2Parser::Typed_byContext *ctx) = 0;
-  virtual void exitTyped_by(SysMLv2Parser::Typed_byContext *ctx) = 0;
 
   virtual void enterSubsettings(SysMLv2Parser::SubsettingsContext *ctx) = 0;
   virtual void exitSubsettings(SysMLv2Parser::SubsettingsContext *ctx) = 0;
