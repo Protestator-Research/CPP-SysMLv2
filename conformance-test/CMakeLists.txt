@@ -17,12 +17,13 @@ add_executable(conformance-test
         src/TestResourcePackages.cpp
         src/TestElementDeserialization.cpp
         src/TestKerMLJson.cpp
+        src/TestSysMLJson.cpp
         src/TestBranchRequest.cpp
 )
 
-# TestKerMLJson.cpp instantiates its round trip for every KerML metaclass and needs more sections than an object file allows by default.
+# TestKerMLJson.cpp and TestSysMLJson.cpp instantiate their round trip for every KerML/SysML metaclass and need more sections than an object file allows by default.
 if(MSVC)
-    set_source_files_properties(src/TestKerMLJson.cpp PROPERTIES COMPILE_OPTIONS /bigobj)
+    set_source_files_properties(src/TestKerMLJson.cpp src/TestSysMLJson.cpp PROPERTIES COMPILE_OPTIONS /bigobj)
 endif()
 
 #if((EXISTS antlr4_shared) OR (MSVC))

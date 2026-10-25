@@ -2,6 +2,8 @@
 #include <sysml/states/TransitionUsage.h>
 #include <sysml/actions/ActionUsage.h>
 #include <sysml/actions/AcceptActionUsage.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -12,6 +14,7 @@ std::shared_ptr<ActionUsage> TransitionUsage::source() const {
 }
 
 void TransitionUsage::setSource(std::shared_ptr<ActionUsage> value) {
+    clearUnresolvedJsonReferences("source");
     source_ = std::move(value);
 }
 
@@ -20,6 +23,7 @@ std::shared_ptr<ActionUsage> TransitionUsage::target() const {
 }
 
 void TransitionUsage::setTarget(std::shared_ptr<ActionUsage> value) {
+    clearUnresolvedJsonReferences("target");
     target_ = std::move(value);
 }
 
@@ -28,6 +32,7 @@ std::vector<std::shared_ptr<AcceptActionUsage>> TransitionUsage::triggerAction()
 }
 
 void TransitionUsage::setTriggerAction(std::vector<std::shared_ptr<AcceptActionUsage>> value) {
+    clearUnresolvedJsonReferences("triggerAction");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("TransitionUsage.triggerAction: null entry");
     }
@@ -50,6 +55,7 @@ std::vector<std::shared_ptr<KerML::Entities::Expression>> TransitionUsage::guard
 }
 
 void TransitionUsage::setGuardExpression(std::vector<std::shared_ptr<KerML::Entities::Expression>> value) {
+    clearUnresolvedJsonReferences("guardExpression");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("TransitionUsage.guardExpression: null entry");
     }
@@ -72,6 +78,7 @@ std::vector<std::shared_ptr<ActionUsage>> TransitionUsage::effectAction() const 
 }
 
 void TransitionUsage::setEffectAction(std::vector<std::shared_ptr<ActionUsage>> value) {
+    clearUnresolvedJsonReferences("effectAction");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("TransitionUsage.effectAction: null entry");
     }
@@ -94,6 +101,7 @@ std::shared_ptr<KerML::Entities::Succession> TransitionUsage::succession() const
 }
 
 void TransitionUsage::setSuccession(std::shared_ptr<KerML::Entities::Succession> value) {
+    clearUnresolvedJsonReferences("succession");
     succession_ = std::move(value);
 }
 
@@ -114,6 +122,147 @@ std::vector<RepresentationIssue> TransitionUsage::validateRepresentation(bool in
     if (includeDerived) if (!TransitionUsage::target()) issues.push_back({"TransitionUsage.target", "required reference is missing"});
     if (includeDerived) if (!TransitionUsage::succession()) issues.push_back({"TransitionUsage.succession", "required reference is missing"});
     return issues;
+}
+
+TransitionUsage::TransitionUsage(const std::string& nameOrJson) : TransitionUsage() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string TransitionUsage::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(ActionUsage::serializeToJson());
+    json["source"] = Json::reference(unresolvedJsonReferences("source"), TransitionUsage::source());
+    json["target"] = Json::reference(unresolvedJsonReferences("target"), TransitionUsage::target());
+    json["triggerAction"] = Json::reference(unresolvedJsonReferences("triggerAction"), TransitionUsage::triggerAction());
+    json["guardExpression"] = Json::reference(unresolvedJsonReferences("guardExpression"), TransitionUsage::guardExpression());
+    json["effectAction"] = Json::reference(unresolvedJsonReferences("effectAction"), TransitionUsage::effectAction());
+    json["succession"] = Json::reference(unresolvedJsonReferences("succession"), TransitionUsage::succession());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void TransitionUsage::deserializeAndPopulate(const std::string& jsonString) {
+    ActionUsage::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    if (Json::readReferences(json, "source", ids)) {
+        setUnresolvedJsonReferences("source", ids);
+    }
+    if (Json::readReferences(json, "target", ids)) {
+        setUnresolvedJsonReferences("target", ids);
+    }
+    if (Json::readReferences(json, "triggerAction", ids)) {
+        setUnresolvedJsonReferences("triggerAction", ids);
+    }
+    if (Json::readReferences(json, "guardExpression", ids)) {
+        setUnresolvedJsonReferences("guardExpression", ids);
+    }
+    if (Json::readReferences(json, "effectAction", ids)) {
+        setUnresolvedJsonReferences("effectAction", ids);
+    }
+    if (Json::readReferences(json, "succession", ids)) {
+        setUnresolvedJsonReferences("succession", ids);
+    }
+}
+
+void TransitionUsage::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    ActionUsage::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("source")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<ActionUsage>(lookup(ids->front()))) {
+                TransitionUsage::setSource(std::move(target));
+                clearUnresolvedJsonReferences("source");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("source", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("target")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<ActionUsage>(lookup(ids->front()))) {
+                TransitionUsage::setTarget(std::move(target));
+                clearUnresolvedJsonReferences("target");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("target", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("triggerAction")) {
+        try {
+            std::vector<std::shared_ptr<AcceptActionUsage>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<AcceptActionUsage>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                TransitionUsage::setTriggerAction(std::move(resolved));
+                clearUnresolvedJsonReferences("triggerAction");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("triggerAction", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("guardExpression")) {
+        try {
+            std::vector<std::shared_ptr<KerML::Entities::Expression>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<KerML::Entities::Expression>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                TransitionUsage::setGuardExpression(std::move(resolved));
+                clearUnresolvedJsonReferences("guardExpression");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("guardExpression", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("effectAction")) {
+        try {
+            std::vector<std::shared_ptr<ActionUsage>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<ActionUsage>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                TransitionUsage::setEffectAction(std::move(resolved));
+                clearUnresolvedJsonReferences("effectAction");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("effectAction", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("succession")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<KerML::Entities::Succession>(lookup(ids->front()))) {
+                TransitionUsage::setSuccession(std::move(target));
+                clearUnresolvedJsonReferences("succession");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("succession", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

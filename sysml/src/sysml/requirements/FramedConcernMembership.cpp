@@ -2,6 +2,8 @@
 #include <sysml/requirements/FramedConcernMembership.h>
 #include <sysml/requirements/RequirementConstraintKind.h>
 #include <sysml/requirements/ConcernUsage.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -20,6 +22,7 @@ std::shared_ptr<ConcernUsage> FramedConcernMembership::ownedConcern() const {
 }
 
 void FramedConcernMembership::setOwnedConcern(std::shared_ptr<ConcernUsage> value) {
+    clearUnresolvedJsonReferences("ownedConcern");
     ownedConcern_ = std::move(value);
 }
 
@@ -28,6 +31,7 @@ std::shared_ptr<ConcernUsage> FramedConcernMembership::referencedConcern() const
 }
 
 void FramedConcernMembership::setReferencedConcern(std::shared_ptr<ConcernUsage> value) {
+    clearUnresolvedJsonReferences("referencedConcern");
     referencedConcern_ = std::move(value);
 }
 
@@ -50,6 +54,71 @@ std::vector<RepresentationIssue> FramedConcernMembership::validateRepresentation
     if (includeDerived) if (!FramedConcernMembership::ownedConcern()) issues.push_back({"FramedConcernMembership.ownedConcern", "required reference is missing"});
     if (includeDerived) if (!FramedConcernMembership::referencedConcern()) issues.push_back({"FramedConcernMembership.referencedConcern", "required reference is missing"});
     return issues;
+}
+
+FramedConcernMembership::FramedConcernMembership(const std::string& nameOrJson) : FramedConcernMembership() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string FramedConcernMembership::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(RequirementConstraintMembership::serializeToJson());
+    json["kind"] = Json::value(FramedConcernMembership::kind());
+    json["ownedConcern"] = Json::reference(unresolvedJsonReferences("ownedConcern"), FramedConcernMembership::ownedConcern());
+    json["referencedConcern"] = Json::reference(unresolvedJsonReferences("referencedConcern"), FramedConcernMembership::referencedConcern());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void FramedConcernMembership::deserializeAndPopulate(const std::string& jsonString) {
+    RequirementConstraintMembership::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    {
+        RequirementConstraintKind value{};
+        if (Json::readEnum(json, "kind", value)) {
+            try {
+                FramedConcernMembership::setKind(value);
+            } catch (const std::invalid_argument&) {
+                // A value the metaclass refuses is ignored.
+            }
+        }
+    }
+    if (Json::readReferences(json, "ownedConcern", ids)) {
+        setUnresolvedJsonReferences("ownedConcern", ids);
+    }
+    if (Json::readReferences(json, "referencedConcern", ids)) {
+        setUnresolvedJsonReferences("referencedConcern", ids);
+    }
+}
+
+void FramedConcernMembership::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    RequirementConstraintMembership::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("ownedConcern")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<ConcernUsage>(lookup(ids->front()))) {
+                FramedConcernMembership::setOwnedConcern(std::move(target));
+                clearUnresolvedJsonReferences("ownedConcern");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("ownedConcern", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("referencedConcern")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<ConcernUsage>(lookup(ids->front()))) {
+                FramedConcernMembership::setReferencedConcern(std::move(target));
+                clearUnresolvedJsonReferences("referencedConcern");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("referencedConcern", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

@@ -2,6 +2,8 @@
 #include <sysml/occurrences/OccurrenceUsage.h>
 #include <sysml/occurrences/OccurrenceDefinition.h>
 #include <sysml/occurrences/PortionKind.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -12,6 +14,7 @@ std::vector<std::shared_ptr<KerML::Entities::Class>> OccurrenceUsage::occurrence
 }
 
 void OccurrenceUsage::setOccurrenceDefinition(std::vector<std::shared_ptr<KerML::Entities::Class>> value) {
+    clearUnresolvedJsonReferences("occurrenceDefinition");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("OccurrenceUsage.occurrenceDefinition: null entry");
     }
@@ -34,6 +37,7 @@ std::shared_ptr<OccurrenceDefinition> OccurrenceUsage::individualDefinition() co
 }
 
 void OccurrenceUsage::setIndividualDefinition(std::shared_ptr<OccurrenceDefinition> value) {
+    clearUnresolvedJsonReferences("individualDefinition");
     individualDefinition_ = std::move(value);
 }
 
@@ -67,6 +71,91 @@ std::vector<RepresentationIssue> OccurrenceUsage::validateRepresentation(bool in
     std::vector<RepresentationIssue> issues; (void)includeDerived;
     { auto optional = OccurrenceUsage::portionKind(); if (optional) { auto value = *optional; if (!(value == PortionKind::timeslice || value == PortionKind::snapshot)) issues.push_back({"OccurrenceUsage.portionKind", "invalid enumeration value"}); } }
     return issues;
+}
+
+OccurrenceUsage::OccurrenceUsage(const std::string& nameOrJson) : OccurrenceUsage() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string OccurrenceUsage::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(Usage::serializeToJson());
+    json["occurrenceDefinition"] = Json::reference(unresolvedJsonReferences("occurrenceDefinition"), OccurrenceUsage::occurrenceDefinition());
+    json["individualDefinition"] = Json::reference(unresolvedJsonReferences("individualDefinition"), OccurrenceUsage::individualDefinition());
+    json["isIndividual"] = Json::value(OccurrenceUsage::isIndividual());
+    json["portionKind"] = Json::value(OccurrenceUsage::portionKind());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void OccurrenceUsage::deserializeAndPopulate(const std::string& jsonString) {
+    Usage::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    if (Json::readReferences(json, "occurrenceDefinition", ids)) {
+        setUnresolvedJsonReferences("occurrenceDefinition", ids);
+    }
+    if (Json::readReferences(json, "individualDefinition", ids)) {
+        setUnresolvedJsonReferences("individualDefinition", ids);
+    }
+    {
+        bool value{};
+        if (Json::readBool(json, "isIndividual", value)) {
+            try {
+                OccurrenceUsage::setIsIndividual(value);
+            } catch (const std::invalid_argument&) {
+                // A value the metaclass refuses is ignored.
+            }
+        }
+    }
+    {
+        PortionKind value{};
+        if (Json::readEnum(json, "portionKind", value)) {
+            try {
+                OccurrenceUsage::setPortionKind(value);
+            } catch (const std::invalid_argument&) {
+                // A value the metaclass refuses is ignored.
+            }
+        }
+    }
+}
+
+void OccurrenceUsage::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    Usage::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("occurrenceDefinition")) {
+        try {
+            std::vector<std::shared_ptr<KerML::Entities::Class>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<KerML::Entities::Class>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                OccurrenceUsage::setOccurrenceDefinition(std::move(resolved));
+                clearUnresolvedJsonReferences("occurrenceDefinition");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("occurrenceDefinition", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("individualDefinition")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<OccurrenceDefinition>(lookup(ids->front()))) {
+                OccurrenceUsage::setIndividualDefinition(std::move(target));
+                clearUnresolvedJsonReferences("individualDefinition");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("individualDefinition", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

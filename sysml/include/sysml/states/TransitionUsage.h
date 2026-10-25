@@ -33,6 +33,35 @@ public:
     /// Derived snapshot; populated by a semantic evaluator or importer.
     std::shared_ptr<KerML::Entities::Succession> succession() const;
     void setSuccession(std::shared_ptr<KerML::Entities::Succession> value);
+
+    /**
+     * Creates a TransitionUsage either from its JSON representation (if the string starts with '{') or with the given declared name.
+     * Reading JSON only stores the ids of the referenced elements, see Element::resolveJsonReferences(). The type of the object stays "TransitionUsage".
+     * @param nameOrJson The JSON representation of the TransitionUsage, or its declared name.
+     */
+    explicit TransitionUsage(const std::string& nameOrJson);
+    /**
+     * Serializes the TransitionUsage to JSON: all properties of the metaclass (stored and derived ones) and of its base classes. References to
+     * other elements are only written as identities ({"@id": "<uuid>"}), never recursively.
+     * @return The JSON representation of the TransitionUsage.
+     */
+    std::string serializeToJson() override;
+
+    /**
+     * Resolves the references that were read from JSON to the elements (see Element::resolveJsonReferences()), for the properties
+     * of TransitionUsage and of its base classes.
+     * @param lookup Returns the element of an element id, or an empty pointer if it is not known.
+     */
+    void resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) override;
+
+protected:
+    /**
+     * Populates the TransitionUsage from its JSON representation; the stored properties of TransitionUsage and of its base classes are read,
+     * computed derived properties are ignored, the derived references that the model keeps as snapshots are read like the stored ones,
+     * and references are only stored as ids.
+     * @param jsonString The JSON representation of the TransitionUsage.
+     */
+    void deserializeAndPopulate(const std::string& jsonString) override;
 private:
     std::shared_ptr<ActionUsage> source_ = {};
     std::shared_ptr<ActionUsage> target_ = {};

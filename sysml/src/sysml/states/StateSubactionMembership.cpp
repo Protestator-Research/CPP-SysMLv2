@@ -2,6 +2,8 @@
 #include <sysml/states/StateSubactionMembership.h>
 #include <sysml/states/StateSubactionKind.h>
 #include <sysml/actions/ActionUsage.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -20,6 +22,7 @@ std::shared_ptr<ActionUsage> StateSubactionMembership::action() const {
 }
 
 void StateSubactionMembership::setAction(std::shared_ptr<ActionUsage> value) {
+    clearUnresolvedJsonReferences("action");
     action_ = std::move(value);
 }
 
@@ -38,6 +41,56 @@ std::vector<RepresentationIssue> StateSubactionMembership::validateRepresentatio
     { auto value = StateSubactionMembership::kind(); if (!(value == StateSubactionKind::entry || value == StateSubactionKind::do_ || value == StateSubactionKind::exit)) issues.push_back({"StateSubactionMembership.kind", "invalid enumeration value"}); }
     if (includeDerived) if (!StateSubactionMembership::action()) issues.push_back({"StateSubactionMembership.action", "required reference is missing"});
     return issues;
+}
+
+StateSubactionMembership::StateSubactionMembership(const std::string& nameOrJson) : StateSubactionMembership() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string StateSubactionMembership::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(KerML::Entities::FeatureMembership::serializeToJson());
+    json["kind"] = Json::value(StateSubactionMembership::kind());
+    json["action"] = Json::reference(unresolvedJsonReferences("action"), StateSubactionMembership::action());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void StateSubactionMembership::deserializeAndPopulate(const std::string& jsonString) {
+    KerML::Entities::FeatureMembership::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    {
+        StateSubactionKind value{};
+        if (Json::readEnum(json, "kind", value)) {
+            try {
+                StateSubactionMembership::setKind(value);
+            } catch (const std::invalid_argument&) {
+                // A value the metaclass refuses is ignored.
+            }
+        }
+    }
+    if (Json::readReferences(json, "action", ids)) {
+        setUnresolvedJsonReferences("action", ids);
+    }
+}
+
+void StateSubactionMembership::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    KerML::Entities::FeatureMembership::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("action")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<ActionUsage>(lookup(ids->front()))) {
+                StateSubactionMembership::setAction(std::move(target));
+                clearUnresolvedJsonReferences("action");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("action", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

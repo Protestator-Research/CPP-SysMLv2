@@ -97,3 +97,4 @@
 #include <sysml/verificationcases/RequirementVerificationMembership.h>
 #include <sysml/verificationcases/VerificationCaseDefinition.h>
 #include <sysml/verificationcases/VerificationCaseUsage.h>
+#include <sysml/model/ElementFactory.h>

@@ -19,6 +19,35 @@ public:
     std::vector<std::shared_ptr<RequirementUsage>> verifiedRequirement() const;
     void setVerifiedRequirement(std::vector<std::shared_ptr<RequirementUsage>> value);
     void appendVerifiedRequirement(std::shared_ptr<RequirementUsage> value);
+
+    /**
+     * Creates a VerificationCaseUsage either from its JSON representation (if the string starts with '{') or with the given declared name.
+     * Reading JSON only stores the ids of the referenced elements, see Element::resolveJsonReferences(). The type of the object stays "VerificationCaseUsage".
+     * @param nameOrJson The JSON representation of the VerificationCaseUsage, or its declared name.
+     */
+    explicit VerificationCaseUsage(const std::string& nameOrJson);
+    /**
+     * Serializes the VerificationCaseUsage to JSON: all properties of the metaclass (stored and derived ones) and of its base classes. References to
+     * other elements are only written as identities ({"@id": "<uuid>"}), never recursively.
+     * @return The JSON representation of the VerificationCaseUsage.
+     */
+    std::string serializeToJson() override;
+
+    /**
+     * Resolves the references that were read from JSON to the elements (see Element::resolveJsonReferences()), for the properties
+     * of VerificationCaseUsage and of its base classes.
+     * @param lookup Returns the element of an element id, or an empty pointer if it is not known.
+     */
+    void resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) override;
+
+protected:
+    /**
+     * Populates the VerificationCaseUsage from its JSON representation; the stored properties of VerificationCaseUsage and of its base classes are read,
+     * computed derived properties are ignored, the derived references that the model keeps as snapshots are read like the stored ones,
+     * and references are only stored as ids.
+     * @param jsonString The JSON representation of the VerificationCaseUsage.
+     */
+    void deserializeAndPopulate(const std::string& jsonString) override;
 private:
     std::shared_ptr<VerificationCaseDefinition> verificationCaseDefinition_ = {};
     std::vector<std::shared_ptr<RequirementUsage>> verifiedRequirement_ = {};

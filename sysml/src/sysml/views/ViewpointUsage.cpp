@@ -2,6 +2,8 @@
 #include <sysml/views/ViewpointUsage.h>
 #include <sysml/views/ViewpointDefinition.h>
 #include <sysml/parts/PartUsage.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -12,6 +14,7 @@ std::shared_ptr<ViewpointDefinition> ViewpointUsage::viewpointDefinition() const
 }
 
 void ViewpointUsage::setViewpointDefinition(std::shared_ptr<ViewpointDefinition> value) {
+    clearUnresolvedJsonReferences("viewpointDefinition");
     viewpointDefinition_ = std::move(value);
 }
 
@@ -20,6 +23,7 @@ std::vector<std::shared_ptr<PartUsage>> ViewpointUsage::viewpointStakeholder() c
 }
 
 void ViewpointUsage::setViewpointStakeholder(std::vector<std::shared_ptr<PartUsage>> value) {
+    clearUnresolvedJsonReferences("viewpointStakeholder");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("ViewpointUsage.viewpointStakeholder: null entry");
     }
@@ -52,6 +56,69 @@ std::vector<RepresentationIssue> ViewpointUsage::validateRepresentation(bool inc
     { auto optional = OccurrenceUsage::portionKind(); if (optional) { auto value = *optional; if (!(value == PortionKind::timeslice || value == PortionKind::snapshot)) issues.push_back({"OccurrenceUsage.portionKind", "invalid enumeration value"}); } }
     if (includeDerived) if (!RequirementUsage::subjectParameter()) issues.push_back({"RequirementUsage.subjectParameter", "required reference is missing"});
     return issues;
+}
+
+ViewpointUsage::ViewpointUsage(const std::string& nameOrJson) : ViewpointUsage() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string ViewpointUsage::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(RequirementUsage::serializeToJson());
+    json["viewpointDefinition"] = Json::reference(unresolvedJsonReferences("viewpointDefinition"), ViewpointUsage::viewpointDefinition());
+    json["viewpointStakeholder"] = Json::reference(unresolvedJsonReferences("viewpointStakeholder"), ViewpointUsage::viewpointStakeholder());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void ViewpointUsage::deserializeAndPopulate(const std::string& jsonString) {
+    RequirementUsage::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    if (Json::readReferences(json, "viewpointDefinition", ids)) {
+        setUnresolvedJsonReferences("viewpointDefinition", ids);
+    }
+    if (Json::readReferences(json, "viewpointStakeholder", ids)) {
+        setUnresolvedJsonReferences("viewpointStakeholder", ids);
+    }
+}
+
+void ViewpointUsage::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    RequirementUsage::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("viewpointDefinition")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<ViewpointDefinition>(lookup(ids->front()))) {
+                ViewpointUsage::setViewpointDefinition(std::move(target));
+                clearUnresolvedJsonReferences("viewpointDefinition");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("viewpointDefinition", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("viewpointStakeholder")) {
+        try {
+            std::vector<std::shared_ptr<PartUsage>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<PartUsage>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                ViewpointUsage::setViewpointStakeholder(std::move(resolved));
+                clearUnresolvedJsonReferences("viewpointStakeholder");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("viewpointStakeholder", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

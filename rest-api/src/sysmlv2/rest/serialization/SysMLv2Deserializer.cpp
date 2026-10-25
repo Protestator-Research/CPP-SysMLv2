@@ -22,6 +22,7 @@
 #include "kerml/root/elements/Element.h"
 #include "kerml/model/ElementFactory.h"
 #include "kerml/model/ElementLinker.h"
+#include "sysml/model/ElementFactory.h"
 
 namespace SysMLv2 {
     std::shared_ptr<SysMLv2::REST::IEntity> SysMLv2Deserializer::deserializeJsonString(std::string inputValue) {
@@ -53,11 +54,12 @@ namespace SysMLv2 {
             return std::make_shared<KerML::Entities::TextualRepresentation>(inputValue);
 
         // Every other type ("Element", "Package", "PartDefinition", "Feature", ...) is an element of the model, as long as
-        // it has an identifier. The KerML metaclasses ("Package", "Feature", ...) are restored as objects of their class, every
-        // other type as a plain Element that keeps the original type and JSON (see KerML::Entities::createElementFromJson).
+        // it has an identifier. The SysML and KerML metaclasses ("PartUsage", "Package", "Feature", ...) are restored as objects of
+        // their class, every other type as a plain Element that keeps the original type and JSON (see
+        // SysMLv2::Entities::createElementFromJson, which falls back to KerML::Entities::createElementFromJson).
         const auto id = json.find(REST::JSON_ID_ENTITY);
         if (id != json.end() && id->is_string())
-            return KerML::Entities::createElementFromJson(inputValue);
+            return SysMLv2::Entities::createElementFromJson(inputValue);
 
         return nullptr;
     }

@@ -67,7 +67,8 @@ target_link_libraries(sysmlv2rest
         nlohmann_json::nlohmann_json
         date::date
         sysmlv2interfaces
-        kerml)
+        kerml
+        sysml)
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2rest ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
