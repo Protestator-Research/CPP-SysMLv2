@@ -8,27 +8,7 @@
 #include <sysmlv2/rest/entities/Commit.h>
 #include <sysmlv2/rest/entities/BranchRequest.h>
 #include <sysmlv2/rest/entities/JSONEntities.h>
-
-namespace {
-    /**
-     * Reads an optional identification object ({"@id": "<uuid>"}) from the given key.
-     * @return The identification object or a null JSON, if the key is missing or null.
-     * @throws std::invalid_argument If the value is not an object with a valid UUID string as "@id".
-     */
-    nlohmann::json readIdentification(const nlohmann::json &json, const std::string &key) {
-        if (!json.contains(key) || json[key].is_null())
-            return nlohmann::json();
-        const auto &value = json[key];
-        if (!value.is_object() || !value.contains(SysMLv2::REST::JSON_ID_ENTITY) || !value[SysMLv2::REST::JSON_ID_ENTITY].is_string())
-            throw std::invalid_argument("BranchRequest: '" + key + "' must be an object with an '@id'.");
-        try {
-            boost::uuids::string_generator()(value[SysMLv2::REST::JSON_ID_ENTITY].get<std::string>());
-        } catch (const std::exception &) {
-            throw std::invalid_argument("BranchRequest: '" + key + "' has an invalid '@id'.");
-        }
-        return value;
-    }
-}
+#include "RestJson.h"
 
 namespace SysMLv2::REST {
     BranchRequest::BranchRequest(std::string name, std::shared_ptr<Project> project, std::shared_ptr<Commit> commit) {
@@ -36,6 +16,8 @@ namespace SysMLv2::REST {
         Name = name;
         OwingProject = project;
         Head = commit;
+        if (Head == nullptr)
+            warnDeprecated("a BranchRequest without \"head\"", "a BranchRequest with a \"head\" reference");
     }
 
     BranchRequest::BranchRequest(std::string jsonString) : _dType("Branch") {
@@ -47,9 +29,9 @@ namespace SysMLv2::REST {
         json[JSON_TYPE_ENTITY] = _dType.empty() ? "Branch" : _dType;
         json[JSON_NAME_ENTITY] = Name;
         if (Head != nullptr)
-            json[JSON_HEAD_ID] = nlohmann::json::parse(Head->serializeIdentification());
+            Internal::writeReference(json, JSON_HEAD_ID, Head->getId());
         if (OwingProject != nullptr)
-            json[JSON_OWNING_PROJECT] = nlohmann::json::parse(OwingProject->serializeIdentification());
+            Internal::writeReference(json, JSON_OWNING_PROJECT, OwingProject->getId());
         return json.dump(JSON_INTENT);
     }
 
@@ -66,9 +48,7 @@ namespace SysMLv2::REST {
     }
 
     void BranchRequest::deserializeAndPopulate(const std::string &jsonString) {
-        nlohmann::json json = nlohmann::json::parse(jsonString, nullptr, false);
-        if (json.is_discarded() || !json.is_object())
-            throw std::invalid_argument("BranchRequest: the JSON must be an object.");
+        const nlohmann::json json = Internal::parseObject(jsonString, "BranchRequest");
 
         if (!json.contains(JSON_NAME_ENTITY) || !json[JSON_NAME_ENTITY].is_string() ||
             json[JSON_NAME_ENTITY].get<std::string>().empty())
@@ -78,11 +58,22 @@ namespace SysMLv2::REST {
         if (json.contains(JSON_TYPE_ENTITY) && json[JSON_TYPE_ENTITY].is_string())
             _dType = json[JSON_TYPE_ENTITY].get<std::string>();
 
-        const nlohmann::json head = readIdentification(json, JSON_HEAD_ID);
-        const nlohmann::json project = readIdentification(json, JSON_OWNING_PROJECT);
+        std::optional<boost::uuids::uuid> head;
+        std::optional<boost::uuids::uuid> project;
+        try {
+            head = Internal::readReference(json, JSON_HEAD_ID);
+            project = Internal::readReference(json, JSON_OWNING_PROJECT);
+        } catch (const std::exception& ex) {
+            throw std::invalid_argument(std::string("BranchRequest: ") + ex.what());
+        }
+
+        // The API needs the head to create a branch. Requests without head were accepted by earlier library versions, they
+        // are still read but reported.
+        if (!head.has_value())
+            warnDeprecated("a BranchRequest without \"head\"", "a BranchRequest with a \"head\" reference");
 
         Name = json[JSON_NAME_ENTITY].get<std::string>();
-        Head = head.is_null() ? nullptr : std::make_shared<Commit>(head.dump());
-        OwingProject = project.is_null() ? nullptr : std::make_shared<Project>(project.dump());
+        Head = head.has_value() ? std::make_shared<Commit>(Internal::referenceObjectText(*head)) : nullptr;
+        OwingProject = project.has_value() ? std::make_shared<Project>(Internal::referenceObjectText(*project)) : nullptr;
     }
 } // SysMLv2::REST

@@ -19,7 +19,6 @@
 //---------------------------------------------------------
 #include <sysmlv2/rest/entities/Commit.h>
 
-#include <iostream>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <nlohmann/detail/meta/std_fs.hpp>
@@ -31,12 +30,13 @@
 #include <sysmlv2/rest/entities/JSONEntities.h>
 
 #include <sysmlv2/rest/serialization/Utilities.h>
+#include "RestJson.h"
 
 
 namespace SysMLv2::REST{
     Commit::Commit(boost::uuids::uuid id, std::string description, std::shared_ptr<Project> owningProject, std::vector<std::shared_ptr<Commit>> previusCommits) : Record(id,"",description){
         Type = "Commit";
-        PreviusCommits = previusCommits;
+        PreviousCommits = previusCommits;
         OwningProject = owningProject;
         Created = std::chrono::system_clock::now();
     }
@@ -45,11 +45,11 @@ namespace SysMLv2::REST{
             Record(boost::uuids::random_generator()(), std::string(), description) {
         Type = "Commit";
     	OwningProject = owningProject;
-        PreviusCommits = previusCommits;
+        PreviousCommits = previusCommits;
         Created = std::chrono::system_clock::now();
     }
 
-    Commit::Commit(std::string jsonString) : Record(jsonString) {
+    Commit::Commit(std::string jsonString) : Record(jsonString, "Commit") {
         Type = "Commit";
         Commit::deserializeAndPopulate(jsonString);
     }
@@ -72,81 +72,81 @@ namespace SysMLv2::REST{
         Change.push_back(dataVersion);
     }
 
-    std::vector<std::shared_ptr<DataVersion>> Commit::getDataVersion() {
+    std::vector<std::shared_ptr<DataVersion>> Commit::getChange() const {
         return Change;
     }
 
+    std::vector<std::shared_ptr<DataVersion>> Commit::getDataVersion() {
+        warnDeprecated("Commit::getDataVersion()", "Commit::getChange()");
+        return Change;
+    }
+
+    std::vector<std::shared_ptr<Commit>> Commit::getPreviousCommits() const {
+        return PreviousCommits;
+    }
+
     std::vector<std::shared_ptr<Commit>> Commit::getPreviusCommits() const {
-        return PreviusCommits;
+        warnDeprecated("Commit::getPreviusCommits()", "Commit::getPreviousCommits()");
+        return PreviousCommits;
     }
 
     std::string Commit::serializeToJson() {
         nlohmann::json json = nlohmann::json::parse(Record::serializeToJson());
 
-        std::string jsonElements = "[\r\n";
-        for (size_t i = 0; i < Change.size(); i++) {
-            jsonElements += Change[i]->serializeToJson();
-
-            if (i != (Change.size()-1))
-                jsonElements += ",\r\n";
+        nlohmann::json changes = nlohmann::json::array();
+        for (const auto& change : Change) {
+            if (change != nullptr)
+                changes.push_back(nlohmann::json::parse(change->serializeToJson()));
         }
-        jsonElements += "]\r\n";
+        json[JSON_CHANGE_ENTITY] = changes;
 
-        json[JSON_CHANGE_ENTITY] = nlohmann::json::parse(jsonElements);
-        json[JSON_TIMESTAMP_ENTITY ] = Utilities::toIso8601(Created);
+        Internal::writeOptionalTimestamp(json, JSON_CREATED_ENTITY, Created);
 
-        json[JSON_OWNING_PROJECT] = nlohmann::json::parse(OwningProject->serializeIdentification());
+        // A commit without project writes null.
+        Internal::writeReference(json, JSON_OWNING_PROJECT,
+                                 OwningProject != nullptr ? std::optional<boost::uuids::uuid>(OwningProject->getId()) : std::nullopt);
 
-        std::string jsonElementsPrevCommits = "[\r\n";
-        for (size_t i = 0; i < PreviusCommits.size(); i++) {
-            jsonElementsPrevCommits += PreviusCommits[i]->serializeIdentification();
-
-            if (i != (PreviusCommits.size() - 1))
-                jsonElementsPrevCommits += ",\r\n";
+        std::vector<boost::uuids::uuid> previousIds;
+        for (const auto& previous : PreviousCommits) {
+            if (previous != nullptr)
+                previousIds.push_back(previous->getId());
         }
-        jsonElementsPrevCommits += "]\r\n";
-
-        json[JSON_PREV_COMMITS] = nlohmann::json::parse(jsonElementsPrevCommits);
+        Internal::writeReferences(json, JSON_PREVIOUS_COMMITS_ENTITY, previousIds);
 
         return json.dump(JSON_INTENT);
     }
 
     std::chrono::system_clock::time_point Commit::getCreated() const {
-        return Created;
+        return Created.value_or(std::chrono::system_clock::time_point{});
     }
 
     void Commit::deserializeAndPopulate(const std::string& jsonString)
     {
-        //std::cout << "Commit::deserializeAndPopulate" << std::endl;
-        nlohmann::json parsedElement = nlohmann::json::parse(jsonString);
-
-        if (parsedElement.contains(JSON_DESCRIPTION_ENTITY))
-			Description = parsedElement[JSON_DESCRIPTION_ENTITY];
-
-        if (parsedElement.contains(JSON_CHANGE_ENTITY)) {
-            std::vector<nlohmann::json> arrayValues = parsedElement[JSON_CHANGE_ENTITY].get<std::vector<nlohmann::json>>();
-            for (const auto& value : arrayValues)
-            {
-                auto changeToBeAdded = std::make_shared<DataVersion>(value.dump());
-                Change.push_back(changeToBeAdded);
+        const nlohmann::json parsedElement = Internal::parseObject(jsonString, "Commit");
+        try {
+            Change.clear();
+            const auto changeEntry = parsedElement.find(JSON_CHANGE_ENTITY);
+            if (changeEntry != parsedElement.end() && !changeEntry->is_null()) {
+                if (!changeEntry->is_array())
+                    throw std::invalid_argument("'" + JSON_CHANGE_ENTITY + "' must be an array or null");
+                // Null entries are skipped, like in the other arrays.
+                for (const auto& value : *changeEntry)
+                    if (!value.is_null())
+                        Change.push_back(std::make_shared<DataVersion>(value.dump()));
             }
+
+            // "timestamp" is the name of earlier library versions and of Annex B of the specification.
+            Created = Internal::readOptionalTimestamp(parsedElement, JSON_CREATED_ENTITY, JSON_TIMESTAMP_ENTITY);
+
+            if (const auto projectId = Internal::readReference(parsedElement, JSON_OWNING_PROJECT))
+                OwningProject = std::make_shared<Project>(Internal::referenceObjectText(*projectId));
+
+            // "previousCommit" (array, single object or null) is the name of earlier library versions.
+            PreviousCommits.clear();
+            for (const auto& id : Internal::readReferences(parsedElement, JSON_PREVIOUS_COMMITS_ENTITY, JSON_PREV_COMMITS))
+                PreviousCommits.push_back(std::make_shared<Commit>(Internal::referenceObjectText(id)));
+        } catch (const std::exception& ex) {
+            throw std::invalid_argument(std::string("Commit: ") + ex.what());
         }
-
-        if (parsedElement.contains(JSON_TIMESTAMP_ENTITY))
-    		Created = Utilities::fromIso8601(parsedElement[JSON_TIMESTAMP_ENTITY]);
-
-        if (parsedElement.contains(JSON_OWNING_PROJECT))
-			OwningProject = std::make_shared<Project>(parsedElement[JSON_OWNING_PROJECT].dump());
-
-        if (parsedElement.contains(JSON_PREV_COMMITS)) {
-            std::vector<nlohmann::json> arrayValuesPrevCommits = parsedElement[JSON_PREV_COMMITS].get<std::vector<nlohmann::json>>();
-            for (const auto& value : arrayValuesPrevCommits)
-            {
-                auto changeToBeAdded = std::make_shared<Commit>(value.dump());
-                PreviusCommits.push_back(changeToBeAdded);
-            }
-        }
-        //std::cout << "Commit::deserializeAndPopulate finished" << std::endl;
     }
 }
-

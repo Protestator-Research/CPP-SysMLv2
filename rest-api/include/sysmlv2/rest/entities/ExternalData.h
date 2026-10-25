@@ -22,6 +22,11 @@ namespace SysMLv2::REST {
     class SYSMLV2REST_EXPORT ExternalData : public Data {
     public:
         ExternalData() = delete;
+        /**
+         * @param jsonStringOrIRI A JSON object (the text starts with '{') or the resource identifier (IRI) of the new
+         * ExternalData.
+         * @throws std::invalid_argument If the text looks like JSON but is malformed or has values of a wrong type.
+         */
         explicit ExternalData(std::string jsonStringOrIRI);
         ~ExternalData() override = default;
 

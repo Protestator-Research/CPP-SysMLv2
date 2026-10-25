@@ -4,7 +4,10 @@
 #include <sstream>
 std::string SysMLv2::REST::Utilities::toIso8601(std::chrono::time_point<std::chrono::system_clock> t)
 {
-	time_t epochSeconds = std::chrono::system_clock::to_time_t(t);
+	// floor (not to_time_t) so that times before 1970 get a non-negative fraction.
+	const auto flooredSeconds = std::chrono::floor<std::chrono::seconds>(t);
+	time_t epochSeconds = std::chrono::system_clock::to_time_t(
+		std::chrono::time_point_cast<std::chrono::system_clock::duration>(flooredSeconds));
 	std::stringstream stream;
 	struct tm buf;
 #ifdef WIN32
@@ -13,9 +16,10 @@ std::string SysMLv2::REST::Utilities::toIso8601(std::chrono::time_point<std::chr
 	gmtime_r(&epochSeconds, &buf);
 #endif
 	stream << std::put_time(&buf, "%FT%T");
-	auto truncated = std::chrono::system_clock::from_time_t(epochSeconds);
-	auto USDelta = std::chrono::duration_cast<std::chrono::microseconds>(t - truncated).count();
+	auto USDelta = std::chrono::duration_cast<std::chrono::microseconds>(t - flooredSeconds).count();
 	stream << "." << std::fixed << std::setw(6) << std::setfill('0') << USDelta;
+	// The timestamps of the API are UTC (SysML v2 API, 7.1.2), so the zone designator is always written.
+	stream << "Z";
 	return stream.str();
 }
 

@@ -8,6 +8,7 @@ find_package(date REQUIRED)
 
 set(GLOBAL_HEADER
         include/sysmlv2/rest/sysmlv2rest_global.h
+        include/sysmlv2/rest/Deprecation.h
 )
 
 set(ENTITIES_HEADER
@@ -32,6 +33,9 @@ set(ENTITIES_HEADER
         include/sysmlv2/rest/entities/ProjectRequest.h
         src/sysmlv2/rest/entities/BranchRequest.cpp
         include/sysmlv2/rest/entities/BranchRequest.h
+        include/sysmlv2/rest/entities/TagRequest.h
+        include/sysmlv2/rest/entities/QueryRequest.h
+        include/sysmlv2/rest/entities/Constraint.h
 )
 
 set(SERIALIZATION_HEADER
@@ -57,7 +61,13 @@ add_library(sysmlv2rest
         src/sysmlv2/rest/entities/MergeResult.cpp
         src/sysmlv2/rest/entities/DataDifference.cpp
         src/sysmlv2/rest/entities/ProjectRequest.cpp
+        src/sysmlv2/rest/entities/TagRequest.cpp
+        src/sysmlv2/rest/entities/QueryRequest.cpp
+        src/sysmlv2/rest/entities/Constraint.cpp
+        src/sysmlv2/rest/entities/QueryJson.h
         src/sysmlv2/rest/WindowsFix.cpp
+        src/sysmlv2/rest/Deprecation.cpp
+        src/sysmlv2/rest/entities/RestJson.h
         ${ENTITIES_HEADER}
         ${SERIALIZATION_HEADER}
         ${GLOBAL_HEADER})

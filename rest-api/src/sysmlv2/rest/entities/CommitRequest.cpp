@@ -1,27 +1,28 @@
 #include <nlohmann/json.hpp>
+#include <stdexcept>
 #include <sysmlv2/rest/entities/CommitRequest.h>
 #include <sysmlv2/rest/entities/DataVersion.h>
 #include <sysmlv2/rest/entities/JSONEntities.h>
+#include "RestJson.h"
 
 namespace SysMLv2::REST
 {
 	CommitRequest::CommitRequest(const std::string& jsonStringOrDescription) :
-	Type("CommitRequest")
+	Type("Commit")
 	{
-		try {
+		if (Internal::looksLikeJson(jsonStringOrDescription))
 			CommitRequest::deserializeAndPopulate(jsonStringOrDescription);
-		}
-		catch (...)
-		{
+		else
 			Description = jsonStringOrDescription;
-		}
 	}
 
-	CommitRequest::CommitRequest(const std::string& description, const std::vector<std::shared_ptr<DataVersion>>& changeRequested) :
-	Type("CommitRequest")
+	CommitRequest::CommitRequest(const std::string& description, const std::vector<std::shared_ptr<DataVersion>>& changeRequested,
+	                             const std::vector<boost::uuids::uuid>& previousCommits) :
+	Type("Commit")
 	{
 		Description = description;
 		ChangeRequested = changeRequested;
+		PreviousCommits = previousCommits;
 	}
 
 	std::string CommitRequest::serializeToJson()
@@ -31,16 +32,16 @@ namespace SysMLv2::REST
 		jsonGeneration[JSON_TYPE_ENTITY] = Type;
 		jsonGeneration[JSON_DESCRIPTION_ENTITY] = Description;
 
-		std::string jsonElements = "[\r\n";
-		for (size_t i = 0; i < ChangeRequested.size(); i++) {
-			jsonElements += ChangeRequested[i]->serializeToJson();
-
-			if (i != (ChangeRequested.size() - 1))
-				jsonElements += ",\r\n";
+		// create: payload (identity omitted); update: payload and identity; delete: identity and no payload.
+		nlohmann::json changes = nlohmann::json::array();
+		for (const auto& change : ChangeRequested) {
+			if (change != nullptr)
+				changes.push_back(nlohmann::json::parse(change->serializeAsRequest()));
 		}
-		jsonElements += "]\r\n";
+		jsonGeneration[JSON_CHANGE_ENTITY] = changes;
 
-		jsonGeneration[JSON_CHANGE_ENTITY] = nlohmann::json::parse(jsonElements);
+		if (!PreviousCommits.empty())
+			Internal::writeReferences(jsonGeneration, JSON_PREVIOUS_COMMITS_ENTITY, PreviousCommits);
 		return jsonGeneration.dump(JSON_INTENT);
 	}
 
@@ -54,15 +55,35 @@ namespace SysMLv2::REST
 		return Description;
 	}
 
+	std::vector<boost::uuids::uuid> CommitRequest::previousCommits() const
+	{
+		return PreviousCommits;
+	}
+
 	void CommitRequest::deserializeAndPopulate(const std::string& jsonValue)
 	{
-		nlohmann::json parsedElement = nlohmann::json::parse(jsonValue);
-		Description = parsedElement[JSON_DESCRIPTION_ENTITY];
-		std::vector<nlohmann::json> arrayValues = parsedElement[JSON_CHANGE_ENTITY].get<std::vector<nlohmann::json>>();
-		for (const auto& value : arrayValues)
-		{
-			auto changeToBeAdded = std::make_shared<DataVersion>(value.dump());
-			ChangeRequested.push_back(changeToBeAdded);
+		const nlohmann::json parsedElement = Internal::parseObject(jsonValue, "CommitRequest");
+		try {
+			const auto type = parsedElement.find(JSON_TYPE_ENTITY);
+			if (type != parsedElement.end() && type->is_string() && type->get<std::string>() == "CommitRequest")
+				warnDeprecated("JSON \"@type\": \"CommitRequest\"", "\"@type\": \"Commit\"");
+
+			Description = Internal::readOptionalString(parsedElement, JSON_DESCRIPTION_ENTITY);
+
+			ChangeRequested.clear();
+			const auto changeEntry = parsedElement.find(JSON_CHANGE_ENTITY);
+			if (changeEntry != parsedElement.end() && !changeEntry->is_null()) {
+				if (!changeEntry->is_array())
+					throw std::invalid_argument("'" + JSON_CHANGE_ENTITY + "' must be an array or null");
+				// Null entries are skipped, like in the other arrays.
+				for (const auto& value : *changeEntry)
+					if (!value.is_null())
+						ChangeRequested.push_back(std::make_shared<DataVersion>(value.dump()));
+			}
+
+			PreviousCommits = Internal::readReferences(parsedElement, JSON_PREVIOUS_COMMITS_ENTITY, JSON_PREV_COMMITS);
+		} catch (const std::exception& ex) {
+			throw std::invalid_argument(std::string("CommitRequest: ") + ex.what());
 		}
 	}
 }
