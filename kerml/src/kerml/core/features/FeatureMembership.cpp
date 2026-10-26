@@ -8,6 +8,9 @@
 
 #include <kerml/core/types/Type.h>
 #include <kerml/core/features/Feature.h>
+#include <kerml/KerML.h>
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
     FeatureMembership::FeatureMembership() {
@@ -25,6 +28,7 @@ namespace KerML::Entities {
     }
 
     void FeatureMembership::setOwnedMemberFeature(std::shared_ptr<Feature> ownedMemberFeature) {
+        clearUnresolvedJsonReferences("ownedMemberFeature");
         setOwnedMemberElement(ownedMemberFeature);
     }
 
@@ -33,6 +37,7 @@ namespace KerML::Entities {
     }
 
     void FeatureMembership::setOwningType(std::shared_ptr<Type> owningType) {
+        clearUnresolvedJsonReferences("owningType");
         setMembershipOwningNamespace(owningType);
     }
 
@@ -56,3 +61,61 @@ namespace KerML::Entities {
         _Type.push_back(type);
     }
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    FeatureMembership::FeatureMembership(const std::string& nameOrJson) :
+        FeatureMembership() {
+        _dType = "FeatureMembership";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string FeatureMembership::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(OwningMembership::serializeToJson());
+        json["owningType"] = Json::reference(unresolvedJsonReferences("owningType"), FeatureMembership::owningType());
+        json["ownedMemberFeature"] = Json::reference(unresolvedJsonReferences("ownedMemberFeature"), FeatureMembership::ownedMemberFeature());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void FeatureMembership::deserializeAndPopulate(const std::string& jsonString) {
+        OwningMembership::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "owningType", ids))
+            setUnresolvedJsonReferences("owningType", ids);
+        if (Json::readReferences(json, "ownedMemberFeature", ids))
+            setUnresolvedJsonReferences("ownedMemberFeature", ids);
+    }
+
+    void FeatureMembership::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        OwningMembership::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("owningType")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Type>(lookup(ids->front()))) {
+                    FeatureMembership::setOwningType(std::move(target));
+                    clearUnresolvedJsonReferences("owningType");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("owningType", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedMemberFeature")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(ids->front()))) {
+                    FeatureMembership::setOwnedMemberFeature(std::move(target));
+                    clearUnresolvedJsonReferences("ownedMemberFeature");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedMemberFeature", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

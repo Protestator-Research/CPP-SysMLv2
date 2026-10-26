@@ -19,6 +19,35 @@ public:
     std::vector<std::shared_ptr<UseCaseUsage>> includedUseCase() const;
     void setIncludedUseCase(std::vector<std::shared_ptr<UseCaseUsage>> value);
     void appendIncludedUseCase(std::shared_ptr<UseCaseUsage> value);
+
+    /**
+     * Creates a UseCaseUsage either from its JSON representation (if the string starts with '{') or with the given declared name.
+     * Reading JSON only stores the ids of the referenced elements, see Element::resolveJsonReferences(). The type of the object stays "UseCaseUsage".
+     * @param nameOrJson The JSON representation of the UseCaseUsage, or its declared name.
+     */
+    explicit UseCaseUsage(const std::string& nameOrJson);
+    /**
+     * Serializes the UseCaseUsage to JSON: all properties of the metaclass (stored and derived ones) and of its base classes. References to
+     * other elements are only written as identities ({"@id": "<uuid>"}), never recursively.
+     * @return The JSON representation of the UseCaseUsage.
+     */
+    std::string serializeToJson() override;
+
+    /**
+     * Resolves the references that were read from JSON to the elements (see Element::resolveJsonReferences()), for the properties
+     * of UseCaseUsage and of its base classes.
+     * @param lookup Returns the element of an element id, or an empty pointer if it is not known.
+     */
+    void resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) override;
+
+protected:
+    /**
+     * Populates the UseCaseUsage from its JSON representation; the stored properties of UseCaseUsage and of its base classes are read,
+     * computed derived properties are ignored, the derived references that the model keeps as snapshots are read like the stored ones,
+     * and references are only stored as ids.
+     * @param jsonString The JSON representation of the UseCaseUsage.
+     */
+    void deserializeAndPopulate(const std::string& jsonString) override;
 private:
     std::shared_ptr<UseCaseDefinition> useCaseDefinition_ = {};
     std::vector<std::shared_ptr<UseCaseUsage>> includedUseCase_ = {};

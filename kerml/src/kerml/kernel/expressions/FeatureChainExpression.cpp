@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 void FeatureChainExpression::setOperatorName(const std::string& name) {
@@ -15,6 +17,7 @@ std::shared_ptr<Feature> FeatureChainExpression::targetFeature() const {
 }
 
 void FeatureChainExpression::setTargetFeature(std::shared_ptr<Feature> value) {
+    clearUnresolvedJsonReferences("targetFeature");
     targetFeature_ = std::move(value);
 }
 
@@ -25,3 +28,58 @@ FeatureChainExpression::FeatureChainExpression() {
 
 FeatureChainExpression::~FeatureChainExpression() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    FeatureChainExpression::FeatureChainExpression(const std::string& nameOrJson) :
+        FeatureChainExpression() {
+        _dType = "FeatureChainExpression";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string FeatureChainExpression::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(OperatorExpression::serializeToJson());
+        json["operator"] = Json::value(OperatorExpression::operatorName());
+        json["targetFeature"] = Json::reference(unresolvedJsonReferences("targetFeature"), FeatureChainExpression::targetFeature());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void FeatureChainExpression::deserializeAndPopulate(const std::string& jsonString) {
+        OperatorExpression::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        {
+            std::string value{};
+            if (Json::readString(json, "operator", value)) {
+                try {
+                    setOperatorName(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+        if (Json::readReferences(json, "targetFeature", ids))
+            setUnresolvedJsonReferences("targetFeature", ids);
+    }
+
+    void FeatureChainExpression::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        OperatorExpression::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("targetFeature")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(ids->front()))) {
+                    FeatureChainExpression::setTargetFeature(std::move(target));
+                    clearUnresolvedJsonReferences("targetFeature");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("targetFeature", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

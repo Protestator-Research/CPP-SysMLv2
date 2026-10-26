@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::shared_ptr<Feature> ParameterMembership::ownedMemberParameter() const {
@@ -10,6 +12,7 @@ std::shared_ptr<Feature> ParameterMembership::ownedMemberParameter() const {
 }
 
 void ParameterMembership::setOwnedMemberParameter(std::shared_ptr<Feature> value) {
+    clearUnresolvedJsonReferences("ownedMemberParameter");
     FeatureMembership::setOwnedMemberFeature(std::move(value));
 }
 
@@ -19,3 +22,47 @@ ParameterMembership::ParameterMembership() {
 
 ParameterMembership::~ParameterMembership() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    ParameterMembership::ParameterMembership(const std::string& nameOrJson) :
+        ParameterMembership() {
+        _dType = "ParameterMembership";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string ParameterMembership::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(FeatureMembership::serializeToJson());
+        json["ownedMemberParameter"] = Json::reference(unresolvedJsonReferences("ownedMemberParameter"), ParameterMembership::ownedMemberParameter());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void ParameterMembership::deserializeAndPopulate(const std::string& jsonString) {
+        FeatureMembership::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "ownedMemberParameter", ids))
+            setUnresolvedJsonReferences("ownedMemberParameter", ids);
+    }
+
+    void ParameterMembership::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        FeatureMembership::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("ownedMemberParameter")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(ids->front()))) {
+                    ParameterMembership::setOwnedMemberParameter(std::move(target));
+                    clearUnresolvedJsonReferences("ownedMemberParameter");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedMemberParameter", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

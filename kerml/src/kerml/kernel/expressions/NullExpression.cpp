@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 NullExpression::NullExpression() {
@@ -11,3 +13,31 @@ NullExpression::NullExpression() {
 
 NullExpression::~NullExpression() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    NullExpression::NullExpression(const std::string& nameOrJson) :
+        NullExpression() {
+        _dType = "NullExpression";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string NullExpression::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Expression::serializeToJson());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void NullExpression::deserializeAndPopulate(const std::string& jsonString) {
+        Expression::deserializeAndPopulate(jsonString);
+    }
+
+    void NullExpression::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Expression::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

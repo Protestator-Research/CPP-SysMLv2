@@ -97,6 +97,26 @@ namespace SysMLv2::REST {
     const std::string JSON_QUALIFIED_NAME_ENTITY = "qualifiedName";
     const std::string JSON_OWNED_ANNOTATION_ENTITY = "ownedAnnotation";
 
+    // Names of the SysML v2 API (PIM/PSM). The older names above are still read for compatibility.
+    const std::string JSON_PREVIOUS_COMMITS_ENTITY = "previousCommits";
+    const std::string JSON_ORDER_BY_ENTITY = "orderBy";
+    const std::string JSON_WHERE_ENTITY = "where";
+    const std::string JSON_USED_PROJECT_COMMIT_ENTITY = "usedProjectCommit";
+    const std::string JSON_USED_PROJECT_ENTITY = "usedProject";
+    const std::string JSON_TAGGED_COMMIT_ENTITY = "taggedCommit";
+    const std::string JSON_ELEMENT_END_ENTITY = "elementEnd";
+    const std::string JSON_EXTERNAL_DATA_END_ENTITY = "externalDataEnd";
+    const std::string JSON_BASE_DATA_ENTITY = "baseData";
+    const std::string JSON_COMPARE_DATA_ENTITY = "compareData";
+    const std::string JSON_CREATED_AT_ENTITY = "createdAt";
+    const std::string JSON_DELETED_AT_ENTITY = "deletedAt";
+    const std::string JSON_COMMIT_ENTITY = "commit";
+    const std::string JSON_INVERSE_ENTITY = "inverse";
+    const std::string JSON_PROPERTY_ENTITY = "property";
+    const std::string JSON_OPERATOR_ENTITY = "operator";
+    const std::string JSON_VALUE_ENTITY = "value";
+    const std::string JSON_CONSTRAINT_ENTITY = "constraint";
+
     //Type Strings
     const std::string PROJECT_TYPE="project";
     const std::string DATA_IDENTITY_TYPE="dataidentity";

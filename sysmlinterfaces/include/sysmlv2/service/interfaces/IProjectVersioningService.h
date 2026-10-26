@@ -108,10 +108,15 @@ namespace SysMLv2::API {
         virtual std::shared_ptr<SysMLv2::REST::Commit> createCommit(std::shared_ptr<SysMLv2::REST::DataVersion> change, std::shared_ptr<SysMLv2::REST::Project> project) = 0;
 
         /**
-         *
-         * @param project
-         * @param commit
-         * @return
+         * Returns the changes of a commit, filtered by change type.
+         * @param project The project of the commit.
+         * @param commit The commit.
+         * @param changeType The ChangeType values (as int) that are returned; other values are ignored. An empty vector
+         * means no filter: all changes are returned.
+         * DELETED: the version has no payload. CREATED: the version has a payload and the Data does not exist in the
+         * previous commits (no version of it, or the nearest version is a deletion). UPDATED: the version has a payload and the
+         * Data exists in the previous commits.
+         * @return The matching changes in the order of the commit.
          */
         virtual std::vector<std::shared_ptr<SysMLv2::REST::DataVersion>> getCommitChange(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, std::vector<int> ) = 0 ;
 

@@ -29,6 +29,8 @@
 #include <sysml/views/RenderingUsage.h>
 #include <sysml/metadata/MetadataUsage.h>
 #include "../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -203,6 +205,76 @@ std::string_view Usage::metaclassName() const noexcept {
 std::vector<RepresentationIssue> Usage::validateRepresentation(bool includeDerived) const {
     std::vector<RepresentationIssue> issues; (void)includeDerived;
     return issues;
+}
+
+Usage::Usage(const std::string& nameOrJson) : Usage() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string Usage::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(KerML::Entities::Feature::serializeToJson());
+    json["mayTimeVary"] = Json::value(Usage::mayTimeVary());
+    json["isReference"] = Json::value(Usage::isReference());
+    json["variant"] = Json::reference(unresolvedJsonReferences("variant"), Usage::variant());
+    json["variantMembership"] = Json::reference(unresolvedJsonReferences("variantMembership"), Usage::variantMembership());
+    json["owningDefinition"] = Json::reference(unresolvedJsonReferences("owningDefinition"), Usage::owningDefinition());
+    json["owningUsage"] = Json::reference(unresolvedJsonReferences("owningUsage"), Usage::owningUsage());
+    json["definition"] = Json::reference(unresolvedJsonReferences("definition"), Usage::definition());
+    json["usage"] = Json::reference(unresolvedJsonReferences("usage"), Usage::usage());
+    json["directedUsage"] = Json::reference(unresolvedJsonReferences("directedUsage"), Usage::directedUsage());
+    json["nestedUsage"] = Json::reference(unresolvedJsonReferences("nestedUsage"), Usage::nestedUsage());
+    json["nestedReference"] = Json::reference(unresolvedJsonReferences("nestedReference"), Usage::nestedReference());
+    json["nestedAttribute"] = Json::reference(unresolvedJsonReferences("nestedAttribute"), Usage::nestedAttribute());
+    json["nestedEnumeration"] = Json::reference(unresolvedJsonReferences("nestedEnumeration"), Usage::nestedEnumeration());
+    json["nestedOccurrence"] = Json::reference(unresolvedJsonReferences("nestedOccurrence"), Usage::nestedOccurrence());
+    json["nestedItem"] = Json::reference(unresolvedJsonReferences("nestedItem"), Usage::nestedItem());
+    json["nestedPart"] = Json::reference(unresolvedJsonReferences("nestedPart"), Usage::nestedPart());
+    json["nestedPort"] = Json::reference(unresolvedJsonReferences("nestedPort"), Usage::nestedPort());
+    json["nestedConnection"] = Json::reference(unresolvedJsonReferences("nestedConnection"), Usage::nestedConnection());
+    json["nestedFlow"] = Json::reference(unresolvedJsonReferences("nestedFlow"), Usage::nestedFlow());
+    json["nestedInterface"] = Json::reference(unresolvedJsonReferences("nestedInterface"), Usage::nestedInterface());
+    json["nestedAllocation"] = Json::reference(unresolvedJsonReferences("nestedAllocation"), Usage::nestedAllocation());
+    json["nestedAction"] = Json::reference(unresolvedJsonReferences("nestedAction"), Usage::nestedAction());
+    json["nestedState"] = Json::reference(unresolvedJsonReferences("nestedState"), Usage::nestedState());
+    json["nestedTransition"] = Json::reference(unresolvedJsonReferences("nestedTransition"), Usage::nestedTransition());
+    json["nestedCalculation"] = Json::reference(unresolvedJsonReferences("nestedCalculation"), Usage::nestedCalculation());
+    json["nestedConstraint"] = Json::reference(unresolvedJsonReferences("nestedConstraint"), Usage::nestedConstraint());
+    json["nestedRequirement"] = Json::reference(unresolvedJsonReferences("nestedRequirement"), Usage::nestedRequirement());
+    json["nestedConcern"] = Json::reference(unresolvedJsonReferences("nestedConcern"), Usage::nestedConcern());
+    json["nestedCase"] = Json::reference(unresolvedJsonReferences("nestedCase"), Usage::nestedCase());
+    json["nestedAnalysisCase"] = Json::reference(unresolvedJsonReferences("nestedAnalysisCase"), Usage::nestedAnalysisCase());
+    json["nestedVerificationCase"] = Json::reference(unresolvedJsonReferences("nestedVerificationCase"), Usage::nestedVerificationCase());
+    json["nestedUseCase"] = Json::reference(unresolvedJsonReferences("nestedUseCase"), Usage::nestedUseCase());
+    json["nestedView"] = Json::reference(unresolvedJsonReferences("nestedView"), Usage::nestedView());
+    json["nestedViewpoint"] = Json::reference(unresolvedJsonReferences("nestedViewpoint"), Usage::nestedViewpoint());
+    json["nestedRendering"] = Json::reference(unresolvedJsonReferences("nestedRendering"), Usage::nestedRendering());
+    json["nestedMetadata"] = Json::reference(unresolvedJsonReferences("nestedMetadata"), Usage::nestedMetadata());
+    json["isVariation"] = Json::value(Usage::isVariation());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void Usage::deserializeAndPopulate(const std::string& jsonString) {
+    KerML::Entities::Feature::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    {
+        bool value{};
+        if (Json::readBool(json, "isVariation", value)) {
+            try {
+                Usage::setIsVariation(value);
+            } catch (const std::invalid_argument&) {
+                // A value the metaclass refuses is ignored.
+            }
+        }
+    }
+}
+
+void Usage::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    KerML::Entities::Feature::resolveJsonReferences(lookup);
 }
 
 } // namespace SysMLv2::Entities

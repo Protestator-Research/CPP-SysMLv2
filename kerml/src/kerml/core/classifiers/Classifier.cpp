@@ -13,6 +13,9 @@
 // Internal Classes
 //---------------------------------------------------------
 #include <kerml/core/classifiers/Classifier.h>
+#include <kerml/KerML.h>
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 //---------------------------------------------------------
 // Forwarding
 //---------------------------------------------------------
@@ -25,9 +28,13 @@ namespace KerML::Entities {
 	}
 
 	Classifier::Classifier(std::string namespaceName, boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
-	Element(elementID, owner), Type(namespaceName,elementID,owner)
+	Element(elementID, owner), Type(Json::looksLikeJson(namespaceName) ? std::string() : namespaceName, elementID, owner)
 	{
 		_dType = "Classifier";
+		if (Json::looksLikeJson(namespaceName)) {
+		    deserializeAndPopulate(namespaceName);
+		    captureJsonSource(namespaceName);
+		}
 	}
 
 	void Classifier::setOwnedSubsclassification(std::vector<std::shared_ptr<Subclassification>> ownedSubclassification)
@@ -51,3 +58,21 @@ namespace KerML::Entities {
 		OwnedSubclassification.push_back(ownedSubclassification);
 	}
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    std::string Classifier::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Type::serializeToJson());
+        json["ownedSubclassification"] = Json::reference(unresolvedJsonReferences("ownedSubclassification"), Classifier::ownedSubclassification());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Classifier::deserializeAndPopulate(const std::string& jsonString) {
+        Type::deserializeAndPopulate(jsonString);
+    }
+
+    void Classifier::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Type::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

@@ -17,6 +17,7 @@ set(ONLINE_HEADER
         include/sysmlv2/service/online/HttpException.h
         include/sysmlv2/service/online/NotEnoughMemoryError.h
         include/sysmlv2/service/online/HttpReturnCodes.h
+        include/sysmlv2/service/online/LinkHeader.h
         include/sysmlv2/service/online/StatusCode.h
         include/sysmlv2/service/online/SysMLAPIImplementation.h)
 

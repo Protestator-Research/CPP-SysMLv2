@@ -47,7 +47,9 @@ namespace SysMLv2::REST {
 
         /**
          * Converts a JSON String into a valid Record
-         * @param jsonString The JSON String that is converted to a Record or a valid name of the Record.
+         * @param jsonString The JSON String that is converted to a Record or a valid name of the Record. A text that
+         * starts with '{' is parsed as JSON.
+         * @throws std::invalid_argument If the text looks like JSON but is malformed.
          */
         explicit Record(const std::string& jsonStringOrName);
 
@@ -71,10 +73,20 @@ namespace SysMLv2::REST {
         [[nodiscard]] std::string getName() const;
 
         /**
-         * Sets a new Human Identifier.
+         * Sets a new Human Identifier. The old name is replaced in the alias list, an empty name is not added to it.
          * @param name The new Human Identifier.
          */
         void setName(std::string name);
+
+        /**
+         * Returns the resource identifier (an IRI) of the Record. Empty if there is none.
+         */
+        [[nodiscard]] std::string getResourceIdentifier() const;
+
+        /**
+         * Sets the resource identifier (an IRI) of the Record.
+         */
+        void setResourceIdentifier(std::string resourceIdentifier);
 
         /**
          * Returns the list of all Aliases according ot the SysML Standard. Hereby also holds that the name aka. the
@@ -127,7 +139,11 @@ namespace SysMLv2::REST {
 		 */
         std::string serializeIdentification();
 protected:
-
+        /**
+         * Like Record(const std::string&), but errors of malformed JSON name the given class.
+         * @param context Name of the concrete class, e.g. "Branch".
+         */
+        Record(const std::string& jsonStringOrName, std::string context);
 
         void deserializeAndPopulate(const std::string& jsonString) override;
 
@@ -149,11 +165,19 @@ protected:
          */
         std::string Description;
         /**
+         * Resource identifier (IRI) of the Record. Not serialized when empty.
+         */
+        std::string ResourceIdentifier;
+        /**
          * Contains the ID of a single Record. This is also stored as a UUID.
          * @see boost::uuids::uuid
          */
-        boost::uuids::uuid Id;
+        boost::uuids::uuid Id = boost::uuids::uuid{};
 
         bool IsForCreation = false;
+
+    private:
+        /** Class name for error messages of the JSON parsing. */
+        std::string ErrorContext = "Record";
     };
 }

@@ -2,6 +2,8 @@
 #include <sysml/states/StateDefinition.h>
 #include <sysml/states/StateUsage.h>
 #include <sysml/actions/ActionUsage.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -12,6 +14,7 @@ std::vector<std::shared_ptr<StateUsage>> StateDefinition::state() const {
 }
 
 void StateDefinition::setState(std::vector<std::shared_ptr<StateUsage>> value) {
+    clearUnresolvedJsonReferences("state");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("StateDefinition.state: null entry");
     }
@@ -34,6 +37,7 @@ std::shared_ptr<ActionUsage> StateDefinition::entryAction() const {
 }
 
 void StateDefinition::setEntryAction(std::shared_ptr<ActionUsage> value) {
+    clearUnresolvedJsonReferences("entryAction");
     entryAction_ = std::move(value);
 }
 
@@ -42,6 +46,7 @@ std::shared_ptr<ActionUsage> StateDefinition::doAction() const {
 }
 
 void StateDefinition::setDoAction(std::shared_ptr<ActionUsage> value) {
+    clearUnresolvedJsonReferences("doAction");
     doAction_ = std::move(value);
 }
 
@@ -50,6 +55,7 @@ std::shared_ptr<ActionUsage> StateDefinition::exitAction() const {
 }
 
 void StateDefinition::setExitAction(std::shared_ptr<ActionUsage> value) {
+    clearUnresolvedJsonReferences("exitAction");
     exitAction_ = std::move(value);
 }
 
@@ -74,6 +80,110 @@ std::string_view StateDefinition::metaclassName() const noexcept {
 std::vector<RepresentationIssue> StateDefinition::validateRepresentation(bool includeDerived) const {
     std::vector<RepresentationIssue> issues; (void)includeDerived;
     return issues;
+}
+
+StateDefinition::StateDefinition(const std::string& nameOrJson) : StateDefinition() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string StateDefinition::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(ActionDefinition::serializeToJson());
+    json["state"] = Json::reference(unresolvedJsonReferences("state"), StateDefinition::state());
+    json["entryAction"] = Json::reference(unresolvedJsonReferences("entryAction"), StateDefinition::entryAction());
+    json["doAction"] = Json::reference(unresolvedJsonReferences("doAction"), StateDefinition::doAction());
+    json["exitAction"] = Json::reference(unresolvedJsonReferences("exitAction"), StateDefinition::exitAction());
+    json["isParallel"] = Json::value(StateDefinition::isParallel());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void StateDefinition::deserializeAndPopulate(const std::string& jsonString) {
+    ActionDefinition::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    if (Json::readReferences(json, "state", ids)) {
+        setUnresolvedJsonReferences("state", ids);
+    }
+    if (Json::readReferences(json, "entryAction", ids)) {
+        setUnresolvedJsonReferences("entryAction", ids);
+    }
+    if (Json::readReferences(json, "doAction", ids)) {
+        setUnresolvedJsonReferences("doAction", ids);
+    }
+    if (Json::readReferences(json, "exitAction", ids)) {
+        setUnresolvedJsonReferences("exitAction", ids);
+    }
+    {
+        bool value{};
+        if (Json::readBool(json, "isParallel", value)) {
+            try {
+                StateDefinition::setIsParallel(value);
+            } catch (const std::invalid_argument&) {
+                // A value the metaclass refuses is ignored.
+            }
+        }
+    }
+}
+
+void StateDefinition::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    ActionDefinition::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("state")) {
+        try {
+            std::vector<std::shared_ptr<StateUsage>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<StateUsage>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                StateDefinition::setState(std::move(resolved));
+                clearUnresolvedJsonReferences("state");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("state", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("entryAction")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<ActionUsage>(lookup(ids->front()))) {
+                StateDefinition::setEntryAction(std::move(target));
+                clearUnresolvedJsonReferences("entryAction");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("entryAction", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("doAction")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<ActionUsage>(lookup(ids->front()))) {
+                StateDefinition::setDoAction(std::move(target));
+                clearUnresolvedJsonReferences("doAction");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("doAction", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("exitAction")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<ActionUsage>(lookup(ids->front()))) {
+                StateDefinition::setExitAction(std::move(target));
+                clearUnresolvedJsonReferences("exitAction");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("exitAction", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

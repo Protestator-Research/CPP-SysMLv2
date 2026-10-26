@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::vector<std::shared_ptr<Type>> Association::relatedType() const {
@@ -22,6 +24,7 @@ std::vector<std::shared_ptr<Feature>> Association::associationEnd() const {
 }
 
 void Association::setAssociationEnd(std::vector<std::shared_ptr<Feature>> value) {
+    clearUnresolvedJsonReferences("associationEnd");
     detail::checkCollection(value, true, -1);
     setEndFeatures(std::move(value));
 }
@@ -36,3 +39,61 @@ Association::Association() {
 
 Association::~Association() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    Association::Association(const std::string& nameOrJson) :
+        Association() {
+        _dType = "Association";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string Association::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Classifier::serializeToJson());
+        json.update(nlohmann::json::parse(Relationship::serializeToJson()));
+        json["relatedType"] = Json::reference(unresolvedJsonReferences("relatedType"), Association::relatedType());
+        json["sourceType"] = Json::reference(unresolvedJsonReferences("sourceType"), Association::sourceType());
+        json["targetType"] = Json::reference(unresolvedJsonReferences("targetType"), Association::targetType());
+        json["associationEnd"] = Json::reference(unresolvedJsonReferences("associationEnd"), Association::associationEnd());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Association::deserializeAndPopulate(const std::string& jsonString) {
+        Classifier::deserializeAndPopulate(jsonString);
+        Relationship::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "associationEnd", ids))
+            setUnresolvedJsonReferences("associationEnd", ids);
+    }
+
+    void Association::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Classifier::resolveJsonReferences(lookup);
+        Relationship::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("associationEnd")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Feature>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Association::setAssociationEnd(std::move(resolved));
+                    clearUnresolvedJsonReferences("associationEnd");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("associationEnd", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

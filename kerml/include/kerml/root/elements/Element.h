@@ -10,6 +10,10 @@
 // External Classes
 //---------------------------------------------------------
 #include <memory>
+#include <functional>
+#include <map>
+#include <stdexcept>
+#include <string>
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/random_generator.hpp>
 #include <vector>
@@ -53,8 +57,13 @@ namespace KerML::Entities {
 
         /**
          * Constructor of the Element. This constructor does not allow for an empty elementID.
-         * @param elementID The Element ID of the Element as string.
+         * If the string is a JSON object (its first character that is no whitespace is '{') it is the JSON representation of
+         * the Element (see serializeToJson()): the Element is created with a random id and populated from the JSON (the id is read
+         * from "@id" or "elementId").
+         * @param elementID The Element ID of the Element as string, or the JSON representation of the Element.
          * @param owner The Element that owns this element. If no Element is provided the owning element is automatically set to null.
+         * @throws std::runtime_error If the string is neither JSON nor a valid UUID.
+         * @throws nlohmann::json::parse_error If the string looks like JSON but is not valid JSON.
          */
         explicit Element(std::string elementID, std::shared_ptr<Element> owner = nullptr);
 
@@ -285,6 +294,42 @@ namespace KerML::Entities {
         static std::shared_ptr<Element> fromJson(const std::string& jsonString);
 
         /**
+         * Replaces the references to other elements that were read from JSON and are not resolved yet by the elements themselves.
+         * Reading JSON (the constructors that take a JSON string) only knows the ids of the referenced elements, because they are
+         * delivered as separate JSON objects. The ids are kept until this function is called; serializeToJson() writes them as
+         * long as the property is not resolved, so parsing and serializing again does not lose them. Every metaclass overrides this
+         * function for its own properties (and calls the function of its base classes first).
+         * The stored properties and the derived references that the model keeps as collections or caches (owner, ownedElement, type, ...) are
+         * resolved, as far as the JSON holds them; the other derived properties are computed. This only links the elements with each other: the
+         * derived properties that the JSON does not hold are rebuilt by linkElements() / createElementsFromJson(), see ElementLinker.h.
+         * A reference stays unresolved if the lookup returns no element or an element of a type the property does not accept. A many-valued
+         * property is only resolved if all its elements are found.
+         * @param lookup Returns the element of an element id, or an empty pointer if it is not known.
+         */
+        virtual void resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup);
+
+        /**
+         * Tells if references that were read from JSON are still not resolved (see resolveJsonReferences()).
+         * @return True if there is at least one reference that is not resolved.
+         */
+        [[nodiscard]] bool hasUnresolvedJsonReferences() const;
+
+        /**
+         * Forgets the JSON the element was created from. An element that was created from JSON (by the constructors that take a
+         * JSON string, or by createElementFromJson()) returns the properties of that JSON that it can not reproduce itself (derived
+         * properties that are not rebuilt, unknown keys) unchanged as long as the property was not changed after the creation; so a payload of
+         * a server is not damaged by reading and writing it. After this call serializeToJson() only reflects the state of the object.
+         */
+        void discardSourceJson();
+
+        /**
+         * Gives the JSON the element was created from, as far as it is still known (see discardSourceJson()). Used when the derived properties
+         * are rebuilt: a derived property that the JSON delivered is not rebuilt.
+         * @return The JSON, or an empty string if the element was not created from JSON.
+         */
+        [[nodiscard]] std::string sourceJson() const;
+
+        /**
          * Serializes the Element to JSON. If the Element was created by fromJson() the stored JSON is returned
          * unchanged, otherwise the JSON is generated from the members of the Element.
          * @return The JSON representation of the Element.
@@ -297,8 +342,100 @@ namespace KerML::Entities {
          */
         std::vector<std::shared_ptr<Relationship>> ownedRelationships();
 
+        /**
+         * Populates the Element from its JSON representation. Reads only the stored properties; the derived properties (for example
+         * ownedElement or owner) are recomputed and ignored. Missing keys, nulls and values of a wrong JSON type are tolerated. The references
+         * are only stored as ids, see resolveJsonReferences().
+         * @param jsonString The JSON representation of the element.
+         */
         void deserializeAndPopulate(const std::string &jsonString) override;
 
+        /**
+         * Gives the ids of the elements the property refers to, if they were read from JSON and are not resolved yet.
+         * @param property The name of the property of the metamodel.
+         * @return The ids, or no value if there are none.
+         */
+        [[nodiscard]] std::optional<std::vector<boost::uuids::uuid>> unresolvedJsonReferences(const std::string& property) const;
+
+        /**
+         * Stores the ids of the elements the property refers to until they are resolved (an empty vector removes the entry).
+         * @param property The name of the property of the metamodel.
+         * @param ids The ids of the referenced elements.
+         */
+        void setUnresolvedJsonReferences(const std::string& property, std::vector<boost::uuids::uuid> ids);
+
+        /**
+         * Removes the unresolved references of a property, because they are resolved.
+         * @param property The name of the property of the metamodel.
+         */
+        void clearUnresolvedJsonReferences(const std::string& property);
+
+        /**
+         * Resolves a single-valued reference that is kept in a cache (see resolveJsonReferences()).
+         * @param property The name of the property.
+         * @param lookup Finds the elements by their id.
+         * @param apply Sets the resolved element.
+         */
+        template <class T, class Apply>
+        void resolveCache(const std::string& property, const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup, Apply&& apply) {
+            const auto ids = unresolvedJsonReferences(property);
+            if (!ids)
+                return;
+            try {
+                if (auto target = std::dynamic_pointer_cast<T>(lookup(ids->front()))) {
+                    apply(std::move(target));
+                    clearUnresolvedJsonReferences(property);
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences(property, *ids);
+            }
+        }
+
+        /**
+         * Resolves a many-valued reference that is kept in a cache; it is resolved if all elements are found (see resolveJsonReferences()).
+         * @param property The name of the property.
+         * @param lookup Finds the elements by their id.
+         * @param apply Sets the resolved elements.
+         */
+        template <class T, class Apply>
+        void resolveCaches(const std::string& property, const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup, Apply&& apply) {
+            const auto ids = unresolvedJsonReferences(property);
+            if (!ids)
+                return;
+            try {
+                std::vector<std::shared_ptr<T>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<T>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                if (resolved.size() == ids->size()) {
+                    apply(std::move(resolved));
+                    clearUnresolvedJsonReferences(property);
+                }
+            } catch (const std::exception&) {
+                // The references stay unresolved if the model refuses them.
+                setUnresolvedJsonReferences(property, *ids);
+            }
+        }
+
+        /**
+         * Remembers the JSON the element was created from, see discardSourceJson(). Called by the constructors that populate the element from
+         * JSON, as the last step (the object is complete then).
+         * @param jsonString The JSON the element was populated from.
+         */
+        void captureJsonSource(const std::string& jsonString);
+
+        /**
+         * Completes the JSON that serializeToJson() of a class produced: the properties of the source JSON that the element did not change
+         * since it was created are replaced by the values of the source JSON, and its keys that the class does not produce are added.
+         * Every serializeToJson() of the metaclasses ends with this call.
+         * @param produced The JSON the class produced.
+         * @return The completed JSON.
+         */
+        std::string applyJsonSource(const std::string& produced);
 
     private:
         /**
@@ -391,6 +528,18 @@ namespace KerML::Entities {
          * The normalized JSON the Element was created from by fromJson(). If it is not empty, serializeToJson() returns it.
          */
         std::string OriginalJson;
+
+        /**
+         * The ids of the references that were read from JSON and are not resolved yet, by the name of the property.
+         */
+        std::map<std::string, std::vector<boost::uuids::uuid>> UnresolvedJsonReferences;
+
+        /**
+         * The JSON the element was populated from (see captureJsonSource()) and what the element serialized right after that. Empty if the
+         * element was not created from JSON.
+         */
+        std::string SourceJson;
+        std::string BaselineJson;
     public:
         std::vector<std::shared_ptr<Relationship>> ownedRelationship() const;
         void setOwnedRelationship(std::vector<std::shared_ptr<Relationship>> value);

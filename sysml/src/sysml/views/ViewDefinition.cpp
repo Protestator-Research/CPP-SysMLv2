@@ -3,6 +3,8 @@
 #include <sysml/views/ViewUsage.h>
 #include <sysml/views/ViewpointUsage.h>
 #include <sysml/views/RenderingUsage.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -13,6 +15,7 @@ std::vector<std::shared_ptr<ViewUsage>> ViewDefinition::view() const {
 }
 
 void ViewDefinition::setView(std::vector<std::shared_ptr<ViewUsage>> value) {
+    clearUnresolvedJsonReferences("view");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("ViewDefinition.view: null entry");
     }
@@ -35,6 +38,7 @@ std::vector<std::shared_ptr<ViewpointUsage>> ViewDefinition::satisfiedViewpoint(
 }
 
 void ViewDefinition::setSatisfiedViewpoint(std::vector<std::shared_ptr<ViewpointUsage>> value) {
+    clearUnresolvedJsonReferences("satisfiedViewpoint");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("ViewDefinition.satisfiedViewpoint: null entry");
     }
@@ -57,6 +61,7 @@ std::shared_ptr<RenderingUsage> ViewDefinition::viewRendering() const {
 }
 
 void ViewDefinition::setViewRendering(std::shared_ptr<RenderingUsage> value) {
+    clearUnresolvedJsonReferences("viewRendering");
     viewRendering_ = std::move(value);
 }
 
@@ -65,6 +70,7 @@ std::vector<std::shared_ptr<KerML::Entities::Expression>> ViewDefinition::viewCo
 }
 
 void ViewDefinition::setViewCondition(std::vector<std::shared_ptr<KerML::Entities::Expression>> value) {
+    clearUnresolvedJsonReferences("viewCondition");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("ViewDefinition.viewCondition: null entry");
     }
@@ -95,6 +101,117 @@ std::string_view ViewDefinition::metaclassName() const noexcept {
 std::vector<RepresentationIssue> ViewDefinition::validateRepresentation(bool includeDerived) const {
     std::vector<RepresentationIssue> issues; (void)includeDerived;
     return issues;
+}
+
+ViewDefinition::ViewDefinition(const std::string& nameOrJson) : ViewDefinition() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string ViewDefinition::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(PartDefinition::serializeToJson());
+    json["view"] = Json::reference(unresolvedJsonReferences("view"), ViewDefinition::view());
+    json["satisfiedViewpoint"] = Json::reference(unresolvedJsonReferences("satisfiedViewpoint"), ViewDefinition::satisfiedViewpoint());
+    json["viewRendering"] = Json::reference(unresolvedJsonReferences("viewRendering"), ViewDefinition::viewRendering());
+    json["viewCondition"] = Json::reference(unresolvedJsonReferences("viewCondition"), ViewDefinition::viewCondition());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void ViewDefinition::deserializeAndPopulate(const std::string& jsonString) {
+    PartDefinition::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    if (Json::readReferences(json, "view", ids)) {
+        setUnresolvedJsonReferences("view", ids);
+    }
+    if (Json::readReferences(json, "satisfiedViewpoint", ids)) {
+        setUnresolvedJsonReferences("satisfiedViewpoint", ids);
+    }
+    if (Json::readReferences(json, "viewRendering", ids)) {
+        setUnresolvedJsonReferences("viewRendering", ids);
+    }
+    if (Json::readReferences(json, "viewCondition", ids)) {
+        setUnresolvedJsonReferences("viewCondition", ids);
+    }
+}
+
+void ViewDefinition::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    PartDefinition::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("view")) {
+        try {
+            std::vector<std::shared_ptr<ViewUsage>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<ViewUsage>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                ViewDefinition::setView(std::move(resolved));
+                clearUnresolvedJsonReferences("view");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("view", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("satisfiedViewpoint")) {
+        try {
+            std::vector<std::shared_ptr<ViewpointUsage>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<ViewpointUsage>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                ViewDefinition::setSatisfiedViewpoint(std::move(resolved));
+                clearUnresolvedJsonReferences("satisfiedViewpoint");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("satisfiedViewpoint", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("viewRendering")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<RenderingUsage>(lookup(ids->front()))) {
+                ViewDefinition::setViewRendering(std::move(target));
+                clearUnresolvedJsonReferences("viewRendering");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("viewRendering", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("viewCondition")) {
+        try {
+            std::vector<std::shared_ptr<KerML::Entities::Expression>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<KerML::Entities::Expression>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                ViewDefinition::setViewCondition(std::move(resolved));
+                clearUnresolvedJsonReferences("viewCondition");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("viewCondition", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

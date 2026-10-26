@@ -2,6 +2,8 @@
 #include <sysml/requirements/RequirementConstraintMembership.h>
 #include <sysml/requirements/RequirementConstraintKind.h>
 #include <sysml/constraints/ConstraintUsage.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -20,6 +22,7 @@ std::shared_ptr<ConstraintUsage> RequirementConstraintMembership::ownedConstrain
 }
 
 void RequirementConstraintMembership::setOwnedConstraint(std::shared_ptr<ConstraintUsage> value) {
+    clearUnresolvedJsonReferences("ownedConstraint");
     ownedConstraint_ = std::move(value);
 }
 
@@ -28,6 +31,7 @@ std::shared_ptr<ConstraintUsage> RequirementConstraintMembership::referencedCons
 }
 
 void RequirementConstraintMembership::setReferencedConstraint(std::shared_ptr<ConstraintUsage> value) {
+    clearUnresolvedJsonReferences("referencedConstraint");
     referencedConstraint_ = std::move(value);
 }
 
@@ -47,6 +51,71 @@ std::vector<RepresentationIssue> RequirementConstraintMembership::validateRepres
     if (includeDerived) if (!RequirementConstraintMembership::ownedConstraint()) issues.push_back({"RequirementConstraintMembership.ownedConstraint", "required reference is missing"});
     if (includeDerived) if (!RequirementConstraintMembership::referencedConstraint()) issues.push_back({"RequirementConstraintMembership.referencedConstraint", "required reference is missing"});
     return issues;
+}
+
+RequirementConstraintMembership::RequirementConstraintMembership(const std::string& nameOrJson) : RequirementConstraintMembership() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string RequirementConstraintMembership::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(KerML::Entities::FeatureMembership::serializeToJson());
+    json["kind"] = Json::value(RequirementConstraintMembership::kind());
+    json["ownedConstraint"] = Json::reference(unresolvedJsonReferences("ownedConstraint"), RequirementConstraintMembership::ownedConstraint());
+    json["referencedConstraint"] = Json::reference(unresolvedJsonReferences("referencedConstraint"), RequirementConstraintMembership::referencedConstraint());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void RequirementConstraintMembership::deserializeAndPopulate(const std::string& jsonString) {
+    KerML::Entities::FeatureMembership::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    {
+        RequirementConstraintKind value{};
+        if (Json::readEnum(json, "kind", value)) {
+            try {
+                RequirementConstraintMembership::setKind(value);
+            } catch (const std::invalid_argument&) {
+                // A value the metaclass refuses is ignored.
+            }
+        }
+    }
+    if (Json::readReferences(json, "ownedConstraint", ids)) {
+        setUnresolvedJsonReferences("ownedConstraint", ids);
+    }
+    if (Json::readReferences(json, "referencedConstraint", ids)) {
+        setUnresolvedJsonReferences("referencedConstraint", ids);
+    }
+}
+
+void RequirementConstraintMembership::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    KerML::Entities::FeatureMembership::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("ownedConstraint")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<ConstraintUsage>(lookup(ids->front()))) {
+                RequirementConstraintMembership::setOwnedConstraint(std::move(target));
+                clearUnresolvedJsonReferences("ownedConstraint");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("ownedConstraint", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("referencedConstraint")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<ConstraintUsage>(lookup(ids->front()))) {
+                RequirementConstraintMembership::setReferencedConstraint(std::move(target));
+                clearUnresolvedJsonReferences("referencedConstraint");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("referencedConstraint", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

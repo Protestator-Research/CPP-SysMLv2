@@ -17,10 +17,12 @@
 //---------------------------------------------------------
 #include <sysmlv2/rest/entities/DataIdentity.h>
 #include <sysmlv2/rest/entities/DataVersion.h>
+#include <sysmlv2/rest/entities/Commit.h>
 #include <sysmlv2/rest/entities/Project.h>
 #include <sysmlv2/rest/entities/JSONEntities.h>
 
 #include <sysmlv2/rest/serialization/Utilities.h>
+#include "RestJson.h"
 
 
 namespace SysMLv2::REST {
@@ -30,38 +32,52 @@ namespace SysMLv2::REST {
         Record::Type = "DataIdentity";
     }
 
-    DataIdentity::DataIdentity(std::string jsonStringOrName) : Record(jsonStringOrName) {
+    DataIdentity::DataIdentity(std::string jsonStringOrName) : Record(jsonStringOrName, "DataIdentity") {
         Record::Type = "DataIdentity";
-        DataIdentity::deserializeAndPopulate(jsonStringOrName);
+        if (Internal::looksLikeJson(jsonStringOrName))
+            DataIdentity::deserializeAndPopulate(jsonStringOrName);
     }
 
     std::vector<std::shared_ptr<DataVersion>> DataIdentity::getDataVersions() const {
         return Version;
     }
 
-    std::chrono::system_clock::time_point DataIdentity::createdAt() {
-        return Created;
+    std::chrono::system_clock::time_point DataIdentity::createdAt() const {
+        if (CreatedAt != nullptr && CreatedAt->getCreated() != std::chrono::system_clock::time_point{})
+            return CreatedAt->getCreated();
+        return Created.value_or(std::chrono::system_clock::time_point{});
     }
 
-    std::chrono::system_clock::time_point DataIdentity::deletedAt() {
-        return Deleted;
+    std::chrono::system_clock::time_point DataIdentity::deletedAt() const {
+        if (DeletedAt != nullptr && DeletedAt->getCreated() != std::chrono::system_clock::time_point{})
+            return DeletedAt->getCreated();
+        return Deleted.value_or(std::chrono::system_clock::time_point{});
+    }
+
+    std::shared_ptr<Commit> DataIdentity::getCreatedAt() const {
+        return CreatedAt;
+    }
+
+    void DataIdentity::setCreatedAt(std::shared_ptr<Commit> commit) {
+        CreatedAt = std::move(commit);
+    }
+
+    std::shared_ptr<Commit> DataIdentity::getDeletedAt() const {
+        return DeletedAt;
+    }
+
+    void DataIdentity::setDeletedAt(std::shared_ptr<Commit> commit) {
+        DeletedAt = std::move(commit);
     }
 
     std::string DataIdentity::serializeToJson() {
         nlohmann::json json = nlohmann::json::parse(Record::serializeToJson());
 
-        std::string jsonElements = "[\r\n";
-        for (size_t i = 0; i < Version.size(); i++) {
-            jsonElements += Version[i]->serializeToJson();
-
-            if (i != (Version.size() - 1))
-                jsonElements += ",\r\n";
-        }
-        jsonElements += "]\r\n";
-
-        json[JSON_DATA_VER_ENTITIY] = nlohmann::json::parse(jsonElements);
-    	json[JSON_CREATED_ENTITY] = Utilities::toIso8601(Created);
-        json[JSON_DELETED_ENTITY] = Utilities::toIso8601(Deleted);
+        // createdAt and deletedAt are derived properties; they are written only if they are known.
+        if (CreatedAt != nullptr)
+            Internal::writeReference(json, JSON_CREATED_AT_ENTITY, CreatedAt->getId());
+        if (DeletedAt != nullptr)
+            Internal::writeReference(json, JSON_DELETED_AT_ENTITY, DeletedAt->getId());
 
         return json.dump(JSON_INTENT);
     }
@@ -87,16 +103,42 @@ namespace SysMLv2::REST {
 
     void DataIdentity::deserializeAndPopulate(const std::string& jsonString)
     {
-        nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
+        const nlohmann::json parsedJson = Internal::parseObject(jsonString, "DataIdentity");
+        Record::deserializeAndPopulate(jsonString);
+        Type = "DataIdentity";
 
-    	Deleted = Utilities::fromIso8601(parsedJson[JSON_DELETED_ENTITY]);
-        Created = Utilities::fromIso8601(parsedJson[JSON_CREATED_ENTITY]);
+        try {
+            CreatedAt.reset();
+            DeletedAt.reset();
+            if (const auto createdId = Internal::readReference(parsedJson, JSON_CREATED_AT_ENTITY))
+                CreatedAt = std::make_shared<Commit>(Internal::referenceObjectText(*createdId));
+            if (const auto deletedId = Internal::readReference(parsedJson, JSON_DELETED_AT_ENTITY))
+                DeletedAt = std::make_shared<Commit>(Internal::referenceObjectText(*deletedId));
 
-        std::vector<nlohmann::json> arrayValues = parsedJson[JSON_DATA_VER_ENTITIY].get<std::vector<nlohmann::json>>();
-        for (const auto& value : arrayValues)
-        {
-            auto versionToBeAdded = std::make_shared<DataVersion>(value.dump());
-            Version.push_back(versionToBeAdded);
+            // Fields of earlier library versions. The timestamps cannot be turned into commit references, they are kept
+            // for createdAt() and deletedAt().
+            if (parsedJson.contains(JSON_CREATED_ENTITY)) {
+                warnDeprecated("JSON field \"created\" of a DataIdentity", "\"createdAt\" (a reference to the creating commit)");
+                Created = Internal::readOptionalTimestamp(parsedJson, JSON_CREATED_ENTITY);
+            }
+            if (parsedJson.contains(JSON_DELETED_ENTITY)) {
+                warnDeprecated("JSON field \"deleted\" of a DataIdentity", "\"deletedAt\" (a reference to the deleting commit)");
+                Deleted = Internal::readOptionalTimestamp(parsedJson, JSON_DELETED_ENTITY);
+            }
+
+            if (parsedJson.contains(JSON_DATA_VER_ENTITIY)) {
+                warnDeprecated("JSON field \"dataVersions\" of a DataIdentity", "the DataVersions of the commits that reference the identity");
+                const auto& versions = parsedJson[JSON_DATA_VER_ENTITIY];
+                if (!versions.is_null()) {
+                    if (!versions.is_array())
+                        throw std::invalid_argument("'" + JSON_DATA_VER_ENTITIY + "' must be an array or null");
+                    Version.clear();
+                    for (const auto& value : versions)
+                        Version.push_back(std::make_shared<DataVersion>(value.dump()));
+                }
+            }
+        } catch (const std::exception& ex) {
+            throw std::invalid_argument(std::string("DataIdentity: ") + ex.what());
         }
     }
 

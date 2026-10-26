@@ -2,6 +2,8 @@
 #include <sysml/ports/PortConjugation.h>
 #include <sysml/ports/PortDefinition.h>
 #include <sysml/ports/ConjugatedPortDefinition.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -12,6 +14,7 @@ std::shared_ptr<PortDefinition> PortConjugation::originalPortDefinition() const 
 }
 
 void PortConjugation::setOriginalPortDefinition(std::shared_ptr<PortDefinition> value) {
+    clearUnresolvedJsonReferences("originalPortDefinition");
     originalPortDefinition_ = std::move(value);
 }
 
@@ -20,6 +23,7 @@ std::shared_ptr<ConjugatedPortDefinition> PortConjugation::conjugatedPortDefinit
 }
 
 void PortConjugation::setConjugatedPortDefinition(std::shared_ptr<ConjugatedPortDefinition> value) {
+    clearUnresolvedJsonReferences("conjugatedPortDefinition");
     conjugatedPortDefinition_ = std::move(value);
 }
 
@@ -38,6 +42,60 @@ std::vector<RepresentationIssue> PortConjugation::validateRepresentation(bool in
     if (!PortConjugation::originalPortDefinition()) issues.push_back({"PortConjugation.originalPortDefinition", "required reference is missing"});
     if (includeDerived) if (!PortConjugation::conjugatedPortDefinition()) issues.push_back({"PortConjugation.conjugatedPortDefinition", "required reference is missing"});
     return issues;
+}
+
+PortConjugation::PortConjugation(const std::string& nameOrJson) : PortConjugation() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string PortConjugation::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(KerML::Entities::Conjugation::serializeToJson());
+    json["originalPortDefinition"] = Json::reference(unresolvedJsonReferences("originalPortDefinition"), PortConjugation::originalPortDefinition());
+    json["conjugatedPortDefinition"] = Json::reference(unresolvedJsonReferences("conjugatedPortDefinition"), PortConjugation::conjugatedPortDefinition());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void PortConjugation::deserializeAndPopulate(const std::string& jsonString) {
+    KerML::Entities::Conjugation::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    if (Json::readReferences(json, "originalPortDefinition", ids)) {
+        setUnresolvedJsonReferences("originalPortDefinition", ids);
+    }
+    if (Json::readReferences(json, "conjugatedPortDefinition", ids)) {
+        setUnresolvedJsonReferences("conjugatedPortDefinition", ids);
+    }
+}
+
+void PortConjugation::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    KerML::Entities::Conjugation::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("originalPortDefinition")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<PortDefinition>(lookup(ids->front()))) {
+                PortConjugation::setOriginalPortDefinition(std::move(target));
+                clearUnresolvedJsonReferences("originalPortDefinition");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("originalPortDefinition", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("conjugatedPortDefinition")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<ConjugatedPortDefinition>(lookup(ids->front()))) {
+                PortConjugation::setConjugatedPortDefinition(std::move(target));
+                clearUnresolvedJsonReferences("conjugatedPortDefinition");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("conjugatedPortDefinition", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

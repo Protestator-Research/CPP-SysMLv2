@@ -251,7 +251,7 @@ target_sources(kerml PRIVATE
         src/kerml/kernel/functions/ResultExpressionMembership.cpp)
 
 include(KernelSources.cmake)
-target_sources(kerml PRIVATE src/kerml/model/RootProperties.cpp src/kerml/model/Representation.cpp src/kerml/model/ElementDisposer.cpp)
+target_sources(kerml PRIVATE src/kerml/model/RootProperties.cpp src/kerml/model/Representation.cpp src/kerml/model/ElementDisposer.cpp src/kerml/model/ElementFactory.cpp src/kerml/model/ElementLinker.cpp)
 
 target_link_libraries(kerml PRIVATE
         Boost::headers

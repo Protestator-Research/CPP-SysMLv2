@@ -5,6 +5,8 @@
 #include <sysml/usage/Usage.h>
 #include <sysml/requirements/ConcernUsage.h>
 #include <sysml/parts/PartUsage.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -15,6 +17,7 @@ std::shared_ptr<RequirementDefinition> RequirementUsage::requirementDefinition()
 }
 
 void RequirementUsage::setRequirementDefinition(std::shared_ptr<RequirementDefinition> value) {
+    clearUnresolvedJsonReferences("requirementDefinition");
     requirementDefinition_ = std::move(value);
 }
 
@@ -50,6 +53,7 @@ std::vector<std::shared_ptr<ConstraintUsage>> RequirementUsage::requiredConstrai
 }
 
 void RequirementUsage::setRequiredConstraint(std::vector<std::shared_ptr<ConstraintUsage>> value) {
+    clearUnresolvedJsonReferences("requiredConstraint");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("RequirementUsage.requiredConstraint: null entry");
     }
@@ -72,6 +76,7 @@ std::vector<std::shared_ptr<ConstraintUsage>> RequirementUsage::assumedConstrain
 }
 
 void RequirementUsage::setAssumedConstraint(std::vector<std::shared_ptr<ConstraintUsage>> value) {
+    clearUnresolvedJsonReferences("assumedConstraint");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("RequirementUsage.assumedConstraint: null entry");
     }
@@ -94,6 +99,7 @@ std::shared_ptr<Usage> RequirementUsage::subjectParameter() const {
 }
 
 void RequirementUsage::setSubjectParameter(std::shared_ptr<Usage> value) {
+    clearUnresolvedJsonReferences("subjectParameter");
     subjectParameter_ = std::move(value);
 }
 
@@ -102,6 +108,7 @@ std::vector<std::shared_ptr<ConcernUsage>> RequirementUsage::framedConcern() con
 }
 
 void RequirementUsage::setFramedConcern(std::vector<std::shared_ptr<ConcernUsage>> value) {
+    clearUnresolvedJsonReferences("framedConcern");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("RequirementUsage.framedConcern: null entry");
     }
@@ -124,6 +131,7 @@ std::vector<std::shared_ptr<PartUsage>> RequirementUsage::actorParameter() const
 }
 
 void RequirementUsage::setActorParameter(std::vector<std::shared_ptr<PartUsage>> value) {
+    clearUnresolvedJsonReferences("actorParameter");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("RequirementUsage.actorParameter: null entry");
     }
@@ -146,6 +154,7 @@ std::vector<std::shared_ptr<PartUsage>> RequirementUsage::stakeholderParameter()
 }
 
 void RequirementUsage::setStakeholderParameter(std::vector<std::shared_ptr<PartUsage>> value) {
+    clearUnresolvedJsonReferences("stakeholderParameter");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("RequirementUsage.stakeholderParameter: null entry");
     }
@@ -178,6 +187,192 @@ std::vector<RepresentationIssue> RequirementUsage::validateRepresentation(bool i
     { auto optional = OccurrenceUsage::portionKind(); if (optional) { auto value = *optional; if (!(value == PortionKind::timeslice || value == PortionKind::snapshot)) issues.push_back({"OccurrenceUsage.portionKind", "invalid enumeration value"}); } }
     if (includeDerived) if (!RequirementUsage::subjectParameter()) issues.push_back({"RequirementUsage.subjectParameter", "required reference is missing"});
     return issues;
+}
+
+RequirementUsage::RequirementUsage(const std::string& nameOrJson) : RequirementUsage() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string RequirementUsage::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(ConstraintUsage::serializeToJson());
+    json["requirementDefinition"] = Json::reference(unresolvedJsonReferences("requirementDefinition"), RequirementUsage::requirementDefinition());
+    json["reqId"] = Json::value(RequirementUsage::reqId());
+    json["text"] = Json::value(RequirementUsage::text());
+    json["requiredConstraint"] = Json::reference(unresolvedJsonReferences("requiredConstraint"), RequirementUsage::requiredConstraint());
+    json["assumedConstraint"] = Json::reference(unresolvedJsonReferences("assumedConstraint"), RequirementUsage::assumedConstraint());
+    json["subjectParameter"] = Json::reference(unresolvedJsonReferences("subjectParameter"), RequirementUsage::subjectParameter());
+    json["framedConcern"] = Json::reference(unresolvedJsonReferences("framedConcern"), RequirementUsage::framedConcern());
+    json["actorParameter"] = Json::reference(unresolvedJsonReferences("actorParameter"), RequirementUsage::actorParameter());
+    json["stakeholderParameter"] = Json::reference(unresolvedJsonReferences("stakeholderParameter"), RequirementUsage::stakeholderParameter());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void RequirementUsage::deserializeAndPopulate(const std::string& jsonString) {
+    ConstraintUsage::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    if (Json::readReferences(json, "requirementDefinition", ids)) {
+        setUnresolvedJsonReferences("requirementDefinition", ids);
+    }
+    {
+        std::string value{};
+        if (Json::readString(json, "reqId", value)) {
+            try {
+                RequirementUsage::setReqId(value);
+            } catch (const std::invalid_argument&) {
+                // A value the metaclass refuses is ignored.
+            }
+        }
+    }
+    if (Json::readReferences(json, "requiredConstraint", ids)) {
+        setUnresolvedJsonReferences("requiredConstraint", ids);
+    }
+    if (Json::readReferences(json, "assumedConstraint", ids)) {
+        setUnresolvedJsonReferences("assumedConstraint", ids);
+    }
+    if (Json::readReferences(json, "subjectParameter", ids)) {
+        setUnresolvedJsonReferences("subjectParameter", ids);
+    }
+    if (Json::readReferences(json, "framedConcern", ids)) {
+        setUnresolvedJsonReferences("framedConcern", ids);
+    }
+    if (Json::readReferences(json, "actorParameter", ids)) {
+        setUnresolvedJsonReferences("actorParameter", ids);
+    }
+    if (Json::readReferences(json, "stakeholderParameter", ids)) {
+        setUnresolvedJsonReferences("stakeholderParameter", ids);
+    }
+}
+
+void RequirementUsage::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    ConstraintUsage::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("requirementDefinition")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<RequirementDefinition>(lookup(ids->front()))) {
+                RequirementUsage::setRequirementDefinition(std::move(target));
+                clearUnresolvedJsonReferences("requirementDefinition");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("requirementDefinition", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("requiredConstraint")) {
+        try {
+            std::vector<std::shared_ptr<ConstraintUsage>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<ConstraintUsage>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                RequirementUsage::setRequiredConstraint(std::move(resolved));
+                clearUnresolvedJsonReferences("requiredConstraint");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("requiredConstraint", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("assumedConstraint")) {
+        try {
+            std::vector<std::shared_ptr<ConstraintUsage>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<ConstraintUsage>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                RequirementUsage::setAssumedConstraint(std::move(resolved));
+                clearUnresolvedJsonReferences("assumedConstraint");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("assumedConstraint", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("subjectParameter")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<Usage>(lookup(ids->front()))) {
+                RequirementUsage::setSubjectParameter(std::move(target));
+                clearUnresolvedJsonReferences("subjectParameter");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("subjectParameter", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("framedConcern")) {
+        try {
+            std::vector<std::shared_ptr<ConcernUsage>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<ConcernUsage>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                RequirementUsage::setFramedConcern(std::move(resolved));
+                clearUnresolvedJsonReferences("framedConcern");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("framedConcern", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("actorParameter")) {
+        try {
+            std::vector<std::shared_ptr<PartUsage>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<PartUsage>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                RequirementUsage::setActorParameter(std::move(resolved));
+                clearUnresolvedJsonReferences("actorParameter");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("actorParameter", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("stakeholderParameter")) {
+        try {
+            std::vector<std::shared_ptr<PartUsage>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<PartUsage>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                RequirementUsage::setStakeholderParameter(std::move(resolved));
+                clearUnresolvedJsonReferences("stakeholderParameter");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("stakeholderParameter", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

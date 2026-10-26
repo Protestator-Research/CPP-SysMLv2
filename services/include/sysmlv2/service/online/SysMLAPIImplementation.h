@@ -66,7 +66,7 @@ namespace SysMLv2::API {
          * The data is returned as elements from type std::vector<SysMLv2:Entities:Project*>, please consider the
          * polimorphism of all SysMLV2 elements.
          * @param barrierString The barrier authentication that is provided by the server.
-         * @return A list of all Projects.
+         * @return A list of all Projects. Paginated answers (Link header rel="next") are followed automatically.
          * @throws EXCEPTIONS::HTTPException on a non 2xx answer.
          */
         std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> getAllProjects(std::string barrierString);
@@ -156,8 +156,11 @@ namespace SysMLv2::API {
          * Performs a custom GET request.
          * @param endpoint The endpoint (leading '/' are ignored).
          * @param barrierString The current Barrierstring.
-         * @return The body of the response.
+         * @return The body of the response. If it is a JSON array and the server announces further pages with a Link
+         *         header (rel="next"), all pages are requested and merged into one JSON array. Any other answer is
+         *         returned unchanged.
          * @throws EXCEPTIONS::HTTPException on a non 2xx answer (behavior change: formerly the body was returned).
+         * @throws std::runtime_error if a Link points to another server, loops or is malformed.
          */
         std::string getCustomRequest(std::string const& endpoint, std::string const& barrierString);
 
@@ -203,6 +206,19 @@ namespace SysMLv2::API {
          */
         HttpResponse performRequest(const std::string& method, const std::string& endpoint,
                                     const std::string& payload, const std::string& barrierString);
+
+        /**
+         * Performs a GET and follows the Link header (RFC 8288, rel="next") until the last page. The targets are
+         * reduced to path and query relative to the configured server address, so the bearer token is never sent to
+         * another scheme, host or port.
+         * @param endpoint The endpoint of the first page.
+         * @param barrierString The bearer token.
+         * @param onlyIfArray If true, a first page that is no JSON array is returned unchanged (no paging).
+         * @return Without a Link header the body of the answer unchanged, otherwise the merged JSON array.
+         * @throws std::runtime_error if a Link points to a foreign server, a page repeats, more than 10000 pages are
+         *         announced, a page is no JSON array or the Link header is malformed.
+         */
+        std::string performPagedGet(const std::string& endpoint, const std::string& barrierString, bool onlyIfArray = false);
 
         static size_t WriteBufferCallback(char *contents, size_t size, size_t nmemb, void* userp);
 

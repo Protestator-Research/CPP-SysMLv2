@@ -22,7 +22,7 @@ namespace SysMLv2::REST {
         /**
          * Creates a branch request from the JSON, as it is sent by a client.
          * @param jsonString The JSON of the request.
-         * @throws std::invalid_argument If the JSON is not an object, the name is missing or empty, or head / owningProject are malformed.
+         * @throws std::invalid_argument If the JSON is not an object, the name is missing or empty, or head / owningProject are malformed. A missing head is still accepted (earlier library versions), but prints a deprecation warning.
          */
         BranchRequest(std::string jsonString);
 
@@ -47,7 +47,7 @@ namespace SysMLv2::REST {
         /**
          * Populates the request from JSON.
          * @param jsonString The JSON of the request.
-         * @throws std::invalid_argument If the JSON is not an object, the name is missing or empty, or head / owningProject are malformed.
+         * @throws std::invalid_argument If the JSON is not an object, the name is missing or empty, or head / owningProject are malformed. A missing head is still accepted (earlier library versions), but prints a deprecation warning.
          */
         void deserializeAndPopulate(const std::string &jsonString) override;
 

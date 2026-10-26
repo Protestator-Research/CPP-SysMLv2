@@ -2,6 +2,8 @@
 #include <sysml/ports/ConjugatedPortDefinition.h>
 #include <sysml/ports/PortDefinition.h>
 #include <sysml/ports/PortConjugation.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -12,6 +14,7 @@ std::shared_ptr<PortDefinition> ConjugatedPortDefinition::originalPortDefinition
 }
 
 void ConjugatedPortDefinition::setOriginalPortDefinition(std::shared_ptr<PortDefinition> value) {
+    clearUnresolvedJsonReferences("originalPortDefinition");
     originalPortDefinition_ = std::move(value);
 }
 
@@ -20,6 +23,7 @@ std::shared_ptr<PortConjugation> ConjugatedPortDefinition::ownedPortConjugator()
 }
 
 void ConjugatedPortDefinition::setOwnedPortConjugator(std::shared_ptr<PortConjugation> value) {
+    clearUnresolvedJsonReferences("ownedPortConjugator");
     ownedPortConjugator_ = std::move(value);
 }
 
@@ -38,6 +42,60 @@ std::vector<RepresentationIssue> ConjugatedPortDefinition::validateRepresentatio
     if (includeDerived) if (!ConjugatedPortDefinition::originalPortDefinition()) issues.push_back({"ConjugatedPortDefinition.originalPortDefinition", "required reference is missing"});
     if (includeDerived) if (!ConjugatedPortDefinition::ownedPortConjugator()) issues.push_back({"ConjugatedPortDefinition.ownedPortConjugator", "required reference is missing"});
     return issues;
+}
+
+ConjugatedPortDefinition::ConjugatedPortDefinition(const std::string& nameOrJson) : ConjugatedPortDefinition() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string ConjugatedPortDefinition::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(PortDefinition::serializeToJson());
+    json["originalPortDefinition"] = Json::reference(unresolvedJsonReferences("originalPortDefinition"), ConjugatedPortDefinition::originalPortDefinition());
+    json["ownedPortConjugator"] = Json::reference(unresolvedJsonReferences("ownedPortConjugator"), ConjugatedPortDefinition::ownedPortConjugator());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void ConjugatedPortDefinition::deserializeAndPopulate(const std::string& jsonString) {
+    PortDefinition::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    if (Json::readReferences(json, "originalPortDefinition", ids)) {
+        setUnresolvedJsonReferences("originalPortDefinition", ids);
+    }
+    if (Json::readReferences(json, "ownedPortConjugator", ids)) {
+        setUnresolvedJsonReferences("ownedPortConjugator", ids);
+    }
+}
+
+void ConjugatedPortDefinition::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    PortDefinition::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("originalPortDefinition")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<PortDefinition>(lookup(ids->front()))) {
+                ConjugatedPortDefinition::setOriginalPortDefinition(std::move(target));
+                clearUnresolvedJsonReferences("originalPortDefinition");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("originalPortDefinition", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("ownedPortConjugator")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<PortConjugation>(lookup(ids->front()))) {
+                ConjugatedPortDefinition::setOwnedPortConjugator(std::move(target));
+                clearUnresolvedJsonReferences("ownedPortConjugator");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("ownedPortConjugator", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

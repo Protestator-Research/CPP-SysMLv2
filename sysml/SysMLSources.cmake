@@ -94,4 +94,5 @@ set(SYSML_SOURCES
     src/sysml/verificationcases/RequirementVerificationMembership.cpp
     src/sysml/verificationcases/VerificationCaseDefinition.cpp
     src/sysml/verificationcases/VerificationCaseUsage.cpp
+    src/sysml/model/ElementFactory.cpp
 )

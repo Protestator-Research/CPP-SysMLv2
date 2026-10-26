@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 double LiteralRational::value() const {
@@ -19,3 +21,43 @@ LiteralRational::LiteralRational() {
 
 LiteralRational::~LiteralRational() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    LiteralRational::LiteralRational(const std::string& nameOrJson) :
+        LiteralRational() {
+        _dType = "LiteralRational";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string LiteralRational::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(LiteralExpression::serializeToJson());
+        json["value"] = Json::value(LiteralRational::value());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void LiteralRational::deserializeAndPopulate(const std::string& jsonString) {
+        LiteralExpression::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        {
+            double value{};
+            if (Json::readDouble(json, "value", value)) {
+                try {
+                    LiteralRational::setValue(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+    }
+
+    void LiteralRational::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        LiteralExpression::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

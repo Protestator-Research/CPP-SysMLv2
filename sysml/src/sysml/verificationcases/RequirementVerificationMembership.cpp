@@ -2,6 +2,8 @@
 #include <sysml/verificationcases/RequirementVerificationMembership.h>
 #include <sysml/requirements/RequirementUsage.h>
 #include <sysml/requirements/RequirementConstraintKind.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -12,6 +14,7 @@ std::shared_ptr<RequirementUsage> RequirementVerificationMembership::ownedRequir
 }
 
 void RequirementVerificationMembership::setOwnedRequirement(std::shared_ptr<RequirementUsage> value) {
+    clearUnresolvedJsonReferences("ownedRequirement");
     ownedRequirement_ = std::move(value);
 }
 
@@ -28,6 +31,7 @@ std::shared_ptr<RequirementUsage> RequirementVerificationMembership::verifiedReq
 }
 
 void RequirementVerificationMembership::setVerifiedRequirement(std::shared_ptr<RequirementUsage> value) {
+    clearUnresolvedJsonReferences("verifiedRequirement");
     verifiedRequirement_ = std::move(value);
 }
 
@@ -50,6 +54,71 @@ std::vector<RepresentationIssue> RequirementVerificationMembership::validateRepr
     { auto value = RequirementVerificationMembership::kind(); if (!(value == RequirementConstraintKind::assumption || value == RequirementConstraintKind::requirement)) issues.push_back({"RequirementVerificationMembership.kind", "invalid enumeration value"}); }
     if (includeDerived) if (!RequirementVerificationMembership::verifiedRequirement()) issues.push_back({"RequirementVerificationMembership.verifiedRequirement", "required reference is missing"});
     return issues;
+}
+
+RequirementVerificationMembership::RequirementVerificationMembership(const std::string& nameOrJson) : RequirementVerificationMembership() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string RequirementVerificationMembership::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(RequirementConstraintMembership::serializeToJson());
+    json["ownedRequirement"] = Json::reference(unresolvedJsonReferences("ownedRequirement"), RequirementVerificationMembership::ownedRequirement());
+    json["kind"] = Json::value(RequirementVerificationMembership::kind());
+    json["verifiedRequirement"] = Json::reference(unresolvedJsonReferences("verifiedRequirement"), RequirementVerificationMembership::verifiedRequirement());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void RequirementVerificationMembership::deserializeAndPopulate(const std::string& jsonString) {
+    RequirementConstraintMembership::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    if (Json::readReferences(json, "ownedRequirement", ids)) {
+        setUnresolvedJsonReferences("ownedRequirement", ids);
+    }
+    {
+        RequirementConstraintKind value{};
+        if (Json::readEnum(json, "kind", value)) {
+            try {
+                RequirementVerificationMembership::setKind(value);
+            } catch (const std::invalid_argument&) {
+                // A value the metaclass refuses is ignored.
+            }
+        }
+    }
+    if (Json::readReferences(json, "verifiedRequirement", ids)) {
+        setUnresolvedJsonReferences("verifiedRequirement", ids);
+    }
+}
+
+void RequirementVerificationMembership::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    RequirementConstraintMembership::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("ownedRequirement")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<RequirementUsage>(lookup(ids->front()))) {
+                RequirementVerificationMembership::setOwnedRequirement(std::move(target));
+                clearUnresolvedJsonReferences("ownedRequirement");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("ownedRequirement", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("verifiedRequirement")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<RequirementUsage>(lookup(ids->front()))) {
+                RequirementVerificationMembership::setVerifiedRequirement(std::move(target));
+                clearUnresolvedJsonReferences("verifiedRequirement");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("verifiedRequirement", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

@@ -547,63 +547,8 @@ namespace SysMLv2::Files {
                     const auto owner = relationship->owningRelatedElement();
                     if (!owner) continue;
                     D.relationships.push_back(relationship);
-                    const auto feature = std::dynamic_pointer_cast<K::Feature>(owner);
-                    const auto type = std::dynamic_pointer_cast<K::Type>(owner);
-                    if (const auto redefinition = std::dynamic_pointer_cast<K::Redefinition>(relationship)) {
-                        if (!feature) continue;
-                        feature->appendOwnedRedefinition(redefinition);
-                        feature->appendOwnedSubsetting(redefinition);
-                        feature->appendOwnedSpecialization(redefinition);
-                        redefinition->setOwningFeature(feature);
-                    } else if (const auto referenceSubsetting = std::dynamic_pointer_cast<K::ReferenceSubsetting>(relationship)) {
-                        if (!feature) continue;
-                        feature->setOwnedReferenceSubsetting(referenceSubsetting);
-                        referenceSubsetting->setOwningFeature(feature);
-                    } else if (const auto crossSubsetting = std::dynamic_pointer_cast<K::CrossSubsetting>(relationship)) {
-                        if (!feature) continue;
-                        feature->setOwnedCrossSubsetting(crossSubsetting);
-                        crossSubsetting->setOwningFeature(feature);
-                    } else if (const auto subsetting = std::dynamic_pointer_cast<K::Subsetting>(relationship)) {
-                        if (!feature) continue;
-                        feature->appendOwnedSubsetting(subsetting);
-                        feature->appendOwnedSpecialization(subsetting);
-                        subsetting->setOwningFeature(feature);
-                    } else if (const auto typing = std::dynamic_pointer_cast<K::FeatureTyping>(relationship)) {
-                        if (!feature) continue;
-                        feature->appendOwnedTyping(typing);
-                        typing->setOwningFeature(feature);
-                    } else if (const auto subclassification = std::dynamic_pointer_cast<K::Subclassification>(relationship)) {
-                        const auto classifier = std::dynamic_pointer_cast<K::Classifier>(owner);
-                        if (!classifier) continue;
-                        classifier->appendOwnedSubclassification(subclassification);
-                        classifier->appendOwnedSpecialization(subclassification);
-                    } else if (const auto specialization = std::dynamic_pointer_cast<K::Specialization>(relationship)) {
-                        if (!type) continue;
-                        type->appendOwnedSpecialization(specialization);
-                        specialization->setOwningType(type);
-                    } else if (const auto conjugation = std::dynamic_pointer_cast<K::Conjugation>(relationship)) {
-                        if (!type) continue;
-                        type->setConjugation(conjugation);
-                        conjugation->setOwningType(type);
-                    } else if (const auto disjoining = std::dynamic_pointer_cast<K::Disjoining>(relationship)) {
-                        if (!type) continue;
-                        type->appendOwnedDisjoining(disjoining);
-                        disjoining->setOwningType(type);
-                    } else if (const auto unioning = std::dynamic_pointer_cast<K::Unioning>(relationship)) {
-                        if (type) type->appendOwnedUnioning(unioning);
-                    } else if (const auto intersecting = std::dynamic_pointer_cast<K::Intersecting>(relationship)) {
-                        if (type) type->appendOwnedIntersecting(intersecting);
-                    } else if (const auto differencing = std::dynamic_pointer_cast<K::Differencing>(relationship)) {
-                        if (type) type->appendOwnedDifferencing(differencing);
-                    } else if (const auto inverting = std::dynamic_pointer_cast<K::FeatureInverting>(relationship)) {
-                        if (!feature) continue;
-                        feature->appendOwnedFeatureInverting(inverting);
-                        inverting->setOwningFeature(feature);
-                    } else if (const auto chaining = std::dynamic_pointer_cast<K::FeatureChaining>(relationship)) {
-                        if (feature) feature->appendOwnedFeatureChaining(chaining);
-                    } else if (const auto featuring = std::dynamic_pointer_cast<K::TypeFeaturing>(relationship)) {
-                        if (feature) feature->appendOwnedTypeFeaturing(featuring);
-                    }
+                    // (the typed collections of the owner: shared with the JSON reader, see kerml/model/ElementLinker.h)
+                    K::registerOwnedRelationship(relationship);
                 }
             }
 

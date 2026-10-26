@@ -13,8 +13,9 @@
 #include <sstream>
 #include <date/date.h>
 #include <boost/uuid/string_generator.hpp>
-#include <iostream>
 #include <boost/uuid/random_generator.hpp>
+#include <algorithm>
+#include <stdexcept>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
@@ -28,6 +29,7 @@
 #include <sysmlv2/rest/entities/ProjectUsage.h>
 #include <sysmlv2/rest/entities/Tag.h>
 #include <sysmlv2/rest/entities/Query.h>
+#include "RestJson.h"
 
 
 namespace SysMLv2::REST {
@@ -50,19 +52,13 @@ namespace SysMLv2::REST {
         m_DataVersion = other.m_DataVersion;
     }
 
-    Project::Project(const std::string& JsonString) : Record(JsonString) {
-        try {
-            nlohmann::json parsedJson = nlohmann::json::parse(JsonString);
-
-            const auto branch = parsedJson[JSON_DEFAULT_BRANCH_ENTITY];
-            if(!branch.empty())
-                DefaultBranch = std::make_shared<Branch>(branch.dump());
-
-        }
-        catch (std::exception&) {
-            Name = JsonString;
-        }
+    Project::Project(const std::string& JsonString) : Record(JsonString, "Project") {
         Type = "Project";
+        // A text that is no JSON is the name of the project and was handled by Record.
+        if (Internal::looksLikeJson(JsonString))
+            Project::deserializeAndPopulate(JsonString);
+        else
+            Created = std::chrono::system_clock::now();
     }
 
     Project::~Project() {
@@ -81,20 +77,51 @@ namespace SysMLv2::REST {
     std::string Project::serializeToJson() {
         nlohmann::json json = nlohmann::json::parse(Record::serializeToJson());
 
-        json[JSON_DEFAULT_BRANCH_ENTITY] = nlohmann::json::parse(DefaultBranch->serializeIdentification());
+        Internal::writeOptionalTimestamp(json, JSON_CREATED_ENTITY, Created);
+        // A project without default branch writes null.
+        Internal::writeReference(json, JSON_DEFAULT_BRANCH_ENTITY,
+                                 DefaultBranch != nullptr ? std::optional<boost::uuids::uuid>(DefaultBranch->getId()) : std::nullopt);
 
         return json.dump(JSON_INTENT);
+    }
+
+    void Project::deserializeAndPopulate(const std::string& jsonString) {
+        const nlohmann::json parsedJson = Internal::parseObject(jsonString, "Project");
+        try {
+            Created = Internal::readOptionalTimestamp(parsedJson, JSON_CREATED_ENTITY);
+            if (const auto branchId = Internal::readReference(parsedJson, JSON_DEFAULT_BRANCH_ENTITY)) {
+                setDefaultBranch(std::make_shared<Branch>(Internal::referenceObjectText(*branchId)));
+            }
+        } catch (const std::exception& ex) {
+            throw std::invalid_argument(std::string("Project: ") + ex.what());
+        }
     }
 
     Project::Project(std::string projectName, std::string projectDescription, std::string branchName) : Record(projectName){
         Type = "Project";
         Description = projectDescription;
-        DefaultBranch = std::make_shared<Branch>(branchName);
+        Created = std::chrono::system_clock::now();
         Record::Id = boost::uuids::random_generator()();
+        setDefaultBranch(std::make_shared<Branch>(branchName));
     }
 
     void Project::setDefaultBranch(std::shared_ptr<Branch> branch) {
         DefaultBranch = branch;
-        Branches.push_back(branch);
+        if (branch == nullptr)
+            return;
+        // The default branch is one of the branches. It is added only once.
+        const auto alreadyContained = std::any_of(Branches.begin(), Branches.end(), [&branch](const std::shared_ptr<Branch>& other) {
+            return other == branch || (other != nullptr && !branch->getId().is_nil() && other->getId() == branch->getId());
+        });
+        if (!alreadyContained)
+            Branches.push_back(branch);
+    }
+
+    std::vector<std::shared_ptr<Branch>> Project::getBranches() const {
+        return Branches;
+    }
+
+    std::optional<std::chrono::system_clock::time_point> Project::getCreated() const {
+        return Created;
     }
 }

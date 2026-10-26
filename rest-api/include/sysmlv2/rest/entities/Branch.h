@@ -30,8 +30,8 @@ namespace SysMLv2::REST {
     class SYSMLV2REST_EXPORT Branch : public CommitReference {
     public:
         /**
-         * 
-         * @param jsonStringOrName
+         * @param jsonStringOrName A JSON object (the text starts with '{') or the name of the branch.
+         * @throws std::invalid_argument If the text looks like JSON but is malformed or has values of a wrong type.
          */
         Branch(std::string jsonStringOrName);
 
@@ -51,7 +51,17 @@ namespace SysMLv2::REST {
          */
         std::shared_ptr<Commit> getHead();
 
+        /**
+         * Sets the head. The referenced commit of the CommitReference is kept equal to the head.
+         */
         void setHead(std::shared_ptr<Commit> head);
+
+        /**
+         * Sets the head (the referenced commit of a branch).
+         * @deprecated Use setHead.
+         */
+        [[deprecated("Use Branch::setHead.")]]
+        void setReferencedCommit(std::shared_ptr<Commit> referencedCommit);
 
 protected:
         void deserializeAndPopulate(const std::string& jsonString) override;

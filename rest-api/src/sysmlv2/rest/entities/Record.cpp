@@ -11,12 +11,13 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include <nlohmann/json.hpp>
-#include <iostream>
+#include <algorithm>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
 #include <sysmlv2/rest/entities/JSONEntities.h>
 #include <sysmlv2/rest/entities/Record.h>
+#include "RestJson.h"
 
 
 namespace SysMLv2::REST {
@@ -25,21 +26,27 @@ namespace SysMLv2::REST {
         Id=id;
         Alias = std::list<std::string>();
         Name = name;
-        Alias.emplace_back(name);
+        if(!name.empty())
+            Alias.emplace_back(name);
         Description = description;
     }
 
-    Record::Record(const std::string& jsonString) {
-        try {
-            Record::deserializeAndPopulate(jsonString);
-        }
-        catch (std::exception& ex) {
-            std::cerr << ex.what() << std::endl;
-            Name = jsonString;
-            Id = boost::uuids::random_generator()();
-        }
+    Record::Record(const std::string& jsonString) : Record(jsonString, "Record") {
     }
 
+    Record::Record(const std::string& jsonString, std::string context) : ErrorContext(std::move(context)) {
+        if (Internal::looksLikeJson(jsonString)) {
+            // Requests have no "@id", so the id stays nil unless the JSON contains one.
+            Record::deserializeAndPopulate(jsonString);
+            return;
+        }
+        Id = boost::uuids::random_generator()();
+        Name = jsonString;
+        if(!Name.empty())
+            Alias.emplace_back(Name);
+    }
+
+    // ResourceIdentifier is intentionally not compared.
     bool Record::operator==(const Record &other) const {
         if(Id != other.Id)
             return false;
@@ -80,7 +87,9 @@ namespace SysMLv2::REST {
     std::string Record::serializeToJson() {
         nlohmann::json jsonGeneration;
 
-        jsonGeneration[JSON_ID_ENTITY] = boost::uuids::to_string(Id);
+        // Requests have no id.
+        if(!Id.is_nil())
+            jsonGeneration[JSON_ID_ENTITY] = boost::uuids::to_string(Id);
         jsonGeneration[JSON_TYPE_ENTITY] = Type;
 
         if(!Name.empty())
@@ -91,6 +100,9 @@ namespace SysMLv2::REST {
 
         if(!Description.empty())
             jsonGeneration[JSON_DESCRIPTION_ENTITY] = Description;
+
+        if(!ResourceIdentifier.empty())
+            jsonGeneration[JSON_RESOURCE_IDENTIFIER_ENTITY] = ResourceIdentifier;
 
         return jsonGeneration.dump(JSON_INTENT);
     }
@@ -104,25 +116,38 @@ namespace SysMLv2::REST {
 
     void Record::deserializeAndPopulate(const std::string& jsonString)
     {
-        nlohmann::json parsedJson = nlohmann::json::parse(jsonString);
-        // std::cout << "Record::deserializeAndPopulate" << std::endl;
-        // std::cout << "Loading Id " << parsedJson[JSON_ID_ENTITY].get<std::string>() << std::endl;
-        Id = boost::uuids::string_generator()(parsedJson[JSON_ID_ENTITY].get<std::string>());
-        // std::cout << "Stored Id " << Id << std::endl;
+        const nlohmann::json parsedJson = Internal::parseObject(jsonString, ErrorContext);
 
-        if (parsedJson.contains(JSON_TYPE_ENTITY))
-            Type = parsedJson[JSON_TYPE_ENTITY];
+        try {
+            // Requests do not have an "@id". Then the id is left as it is.
+            if (const auto id = Internal::readOptionalId(parsedJson))
+                Id = *id;
 
-        if (parsedJson.contains(JSON_NAME_ENTITY))
-            Name = parsedJson[JSON_NAME_ENTITY];
+            if (parsedJson.contains(JSON_TYPE_ENTITY) && !parsedJson[JSON_TYPE_ENTITY].is_null()) {
+                if (!parsedJson[JSON_TYPE_ENTITY].is_string())
+                    throw std::invalid_argument("'@type' must be a string or null");
+                Type = parsedJson[JSON_TYPE_ENTITY].get<std::string>();
+            }
 
-        if (parsedJson.contains(JSON_ALIAS_ENTITY))
-            Alias = parsedJson[JSON_ALIAS_ENTITY];
+            Name = Internal::readOptionalString(parsedJson, JSON_NAME_ENTITY);
+            Description = Internal::readOptionalString(parsedJson, JSON_DESCRIPTION_ENTITY);
+            ResourceIdentifier = Internal::readOptionalString(parsedJson, JSON_RESOURCE_IDENTIFIER_ENTITY);
 
-        if (parsedJson.contains(JSON_DESCRIPTION_ENTITY))
-            Description = parsedJson[JSON_DESCRIPTION_ENTITY];
+            Alias.clear();
+            for (auto& entry : Internal::readStringList(parsedJson, JSON_ALIAS_ENTITY)) {
+                if (entry.empty()) { // earlier library versions wrote [""]
+                    warnDeprecated("JSON field \"alias\" with an empty entry", "no empty aliases");
+                    continue;
+                }
+                Alias.emplace_back(std::move(entry));
+            }
+        } catch (const std::exception& ex) {
+            throw std::invalid_argument(ErrorContext + ": " + ex.what());
+        }
 
-        // std::cout << "Record::deserializeAndPopulate finished" << std::endl;
+        // The human identifier is part of the aliases.
+        if (!Name.empty() && std::find(Alias.begin(), Alias.end(), Name) == Alias.end())
+            Alias.emplace_front(Name);
     }
 
     std::string Record::getType() const {
@@ -134,7 +159,25 @@ namespace SysMLv2::REST {
     }
 
     void Record::setName(std::string name) {
-        Name = name;
+        const auto oldName = std::find(Alias.begin(), Alias.end(), Name);
+        const bool nameAlreadyAlias = !name.empty() && std::find(Alias.begin(), Alias.end(), name) != Alias.end();
+        if (!Name.empty() && oldName != Alias.end()) {
+            if (name.empty() || nameAlreadyAlias)
+                Alias.erase(oldName);
+            else
+                *oldName = name;
+        } else if (!name.empty() && !nameAlreadyAlias) {
+            Alias.emplace_front(name);
+        }
+        Name = std::move(name);
+    }
+
+    std::string Record::getResourceIdentifier() const {
+        return ResourceIdentifier;
+    }
+
+    void Record::setResourceIdentifier(std::string resourceIdentifier) {
+        ResourceIdentifier = std::move(resourceIdentifier);
     }
 
 }

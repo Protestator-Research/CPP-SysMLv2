@@ -2,6 +2,8 @@
 #include <sysml/ports/ConjugatedPortTyping.h>
 #include <sysml/ports/PortDefinition.h>
 #include <sysml/ports/ConjugatedPortDefinition.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -12,6 +14,7 @@ std::shared_ptr<PortDefinition> ConjugatedPortTyping::portDefinition() const {
 }
 
 void ConjugatedPortTyping::setPortDefinition(std::shared_ptr<PortDefinition> value) {
+    clearUnresolvedJsonReferences("portDefinition");
     portDefinition_ = std::move(value);
 }
 
@@ -20,6 +23,7 @@ std::shared_ptr<ConjugatedPortDefinition> ConjugatedPortTyping::conjugatedPortDe
 }
 
 void ConjugatedPortTyping::setConjugatedPortDefinition(std::shared_ptr<ConjugatedPortDefinition> value) {
+    clearUnresolvedJsonReferences("conjugatedPortDefinition");
     conjugatedPortDefinition_ = std::move(value);
 }
 
@@ -38,6 +42,60 @@ std::vector<RepresentationIssue> ConjugatedPortTyping::validateRepresentation(bo
     if (includeDerived) if (!ConjugatedPortTyping::portDefinition()) issues.push_back({"ConjugatedPortTyping.portDefinition", "required reference is missing"});
     if (!ConjugatedPortTyping::conjugatedPortDefinition()) issues.push_back({"ConjugatedPortTyping.conjugatedPortDefinition", "required reference is missing"});
     return issues;
+}
+
+ConjugatedPortTyping::ConjugatedPortTyping(const std::string& nameOrJson) : ConjugatedPortTyping() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string ConjugatedPortTyping::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(KerML::Entities::FeatureTyping::serializeToJson());
+    json["portDefinition"] = Json::reference(unresolvedJsonReferences("portDefinition"), ConjugatedPortTyping::portDefinition());
+    json["conjugatedPortDefinition"] = Json::reference(unresolvedJsonReferences("conjugatedPortDefinition"), ConjugatedPortTyping::conjugatedPortDefinition());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void ConjugatedPortTyping::deserializeAndPopulate(const std::string& jsonString) {
+    KerML::Entities::FeatureTyping::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    if (Json::readReferences(json, "portDefinition", ids)) {
+        setUnresolvedJsonReferences("portDefinition", ids);
+    }
+    if (Json::readReferences(json, "conjugatedPortDefinition", ids)) {
+        setUnresolvedJsonReferences("conjugatedPortDefinition", ids);
+    }
+}
+
+void ConjugatedPortTyping::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    KerML::Entities::FeatureTyping::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("portDefinition")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<PortDefinition>(lookup(ids->front()))) {
+                ConjugatedPortTyping::setPortDefinition(std::move(target));
+                clearUnresolvedJsonReferences("portDefinition");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("portDefinition", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("conjugatedPortDefinition")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<ConjugatedPortDefinition>(lookup(ids->front()))) {
+                ConjugatedPortTyping::setConjugatedPortDefinition(std::move(target));
+                clearUnresolvedJsonReferences("conjugatedPortDefinition");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("conjugatedPortDefinition", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

@@ -7,6 +7,9 @@
 #include <kerml/root/namespaces/Import.h>
 
 #include <vector>
+#include <kerml/KerML.h>
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 
@@ -23,9 +26,14 @@ namespace KerML::Entities {
     }
 
     Namespace::Namespace(std::string namespaceName, boost::uuids::uuid elementID, std::shared_ptr<Element> owner) : Element(elementID, owner) {
-        setDeclaredName(namespaceName);
         IsImported = false;
         _dType = "Namespace";
+        if (Json::looksLikeJson(namespaceName)) {
+            deserializeAndPopulate(namespaceName);
+            captureJsonSource(namespaceName);
+        }
+        else
+            setDeclaredName(namespaceName);
     }
 
     bool Namespace::isImported() {
@@ -184,6 +192,7 @@ namespace KerML::Entities {
     }
 
     void Namespace::setMember(std::vector<std::shared_ptr<Element>> member) {
+        clearUnresolvedJsonReferences("member");
         Member = member;
     }
 
@@ -216,6 +225,7 @@ namespace KerML::Entities {
     }
 
     void Namespace::setOwnedImport(std::vector<std::shared_ptr<Import>> ownedImports) {
+        clearUnresolvedJsonReferences("ownedImport");
         OwnedImport = ownedImports;
     }
 
@@ -232,6 +242,7 @@ namespace KerML::Entities {
     }
 
     void Namespace::setOwnedMember(std::vector<std::shared_ptr<Element>> ownedMemeber) {
+        clearUnresolvedJsonReferences("ownedMember");
         OwnedMember = ownedMemeber;
     }
 
@@ -248,6 +259,7 @@ namespace KerML::Entities {
     }
 
     void Namespace::setOwnedMembership(std::vector<std::shared_ptr<Membership>> ownedMembership) {
+        clearUnresolvedJsonReferences("ownedMembership");
         OwnedMembership = ownedMembership;
     }
 
@@ -259,3 +271,112 @@ namespace KerML::Entities {
         OwnedMembership.insert(OwnedMembership.end(),ownedMembership.begin(),ownedMembership.end());
     }
 } // KerML::Entities
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    std::string Namespace::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Element::serializeToJson());
+        json["membership"] = Json::reference(unresolvedJsonReferences("membership"), Namespace::membership());
+        json["ownedImport"] = Json::reference(unresolvedJsonReferences("ownedImport"), Namespace::ownedImport());
+        json["member"] = Json::reference(unresolvedJsonReferences("member"), Namespace::member());
+        json["ownedMember"] = Json::reference(unresolvedJsonReferences("ownedMember"), Namespace::ownedMember());
+        json["ownedMembership"] = Json::reference(unresolvedJsonReferences("ownedMembership"), Namespace::ownedMembership());
+        json["importedMembership"] = Json::reference(unresolvedJsonReferences("importedMembership"), Namespace::importedMembership());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Namespace::deserializeAndPopulate(const std::string& jsonString) {
+        Element::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "ownedImport", ids))
+            setUnresolvedJsonReferences("ownedImport", ids);
+        if (Json::readReferences(json, "member", ids))
+            setUnresolvedJsonReferences("member", ids);
+        if (Json::readReferences(json, "ownedMember", ids))
+            setUnresolvedJsonReferences("ownedMember", ids);
+        if (Json::readReferences(json, "ownedMembership", ids))
+            setUnresolvedJsonReferences("ownedMembership", ids);
+    }
+
+    void Namespace::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Element::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("ownedImport")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Import>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Import>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Namespace::setOwnedImport(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedImport");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedImport", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("member")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Element>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Element>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Namespace::setMember(std::move(resolved));
+                    clearUnresolvedJsonReferences("member");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("member", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedMember")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Element>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Element>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Namespace::setOwnedMember(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedMember");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedMember", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedMembership")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Membership>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Membership>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Namespace::setOwnedMembership(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedMembership");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedMembership", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON
