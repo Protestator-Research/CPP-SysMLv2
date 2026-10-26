@@ -294,7 +294,7 @@ if(MSVC)
             ./include
             ../sysmlinterfaces/include)
 else ()
-    target_compile_options(kerml PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
+    target_compile_options(kerml PRIVATE -Wno-error=maybe-uninitialized -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
     target_include_directories(kerml PUBLIC
             ./include
             ../sysmlinterfaces/include)

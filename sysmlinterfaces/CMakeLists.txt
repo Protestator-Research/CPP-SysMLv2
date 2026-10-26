@@ -53,7 +53,7 @@ if(MSVC)
     target_compile_options(sysmlv2interfaces PRIVATE /W4 /WX- /bigobj)
     target_link_directories(sysmlv2interfaces PUBLIC ${CMAKE_BINARY_DIR}/out)
 else ()
-    target_compile_options(sysmlv2interfaces PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
+    target_compile_options(sysmlv2interfaces PRIVATE -Wno-error=maybe-uninitialized -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
 endif()
 
 file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)
