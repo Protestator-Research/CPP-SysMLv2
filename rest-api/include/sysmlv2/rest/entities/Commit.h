@@ -137,6 +137,13 @@ namespace SysMLv2::REST {
 
         [[nodiscard]] std::chrono::system_clock::time_point getCreated() const;
 
+        /**
+         * Sets the timestamp of the commit. Commit() sets the current time; a service that has to keep the timestamps of a
+         * history strictly increasing (7.1.2) replaces it.
+         * @param created The new timestamp.
+         */
+        void setCreated(std::chrono::system_clock::time_point created);
+
 protected:
         void deserializeAndPopulate(const std::string& jsonString) override;
 

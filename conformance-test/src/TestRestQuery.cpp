@@ -10,7 +10,13 @@
 #include <nlohmann/json.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
+#include <algorithm>
+#include <kerml/core/types/Specialization.h>
 #include <kerml/kernel/packages/Package.h>
+#include <kerml/root/namespaces/Membership.h>
+#include <sysmlv2/rest/entities/ExternalData.h>
+#include <sysmlv2/rest/entities/ExternalRelationship.h>
+#include <sysmlv2/rest/entities/ProjectUsage.h>
 #include "support/CerrCapture.h"
 #include <sysmlv2/rest/Deprecation.h>
 #include <sysmlv2/rest/entities/ChangeType.h>
@@ -24,6 +30,7 @@
 #include <sysmlv2/rest/entities/Project.h>
 #include <sysmlv2/rest/entities/Query.h>
 #include <sysmlv2/rest/entities/QueryRequest.h>
+#include <sysmlv2/rest/versioning/QueryEvaluation.h>
 #include <sysmlv2/service/implementation/ProjectVersioningService.h>
 
 using namespace SysMLv2::REST;
@@ -622,4 +629,257 @@ TEST_F(RestQuery, QueryRejectsWrongType) {
     EXPECT_NO_THROW(Query(bad.dump()));
     bad.erase("@type");
     EXPECT_NO_THROW(Query(bad.dump()));
+}
+
+// ---------------------------------------------------------------------------------------------------------------------------
+// Evaluation of a query on the data of a commit (7.1.4)
+// ---------------------------------------------------------------------------------------------------------------------------
+
+namespace {
+    namespace V = SysMLv2::REST::Versioning;
+
+    json reference(const std::string& id) {
+        return json{{"@id", id}};
+    }
+
+    std::shared_ptr<Data> element(const std::string& type, const std::string& name, const json& extra = json::object()) {
+        json payload = {{"@id", boost::uuids::to_string(boost::uuids::random_generator()())}, {"@type", type}, {"declaredName", name}};
+        payload.update(extra);
+        return std::make_shared<KerML::Entities::Package>(payload.dump());
+    }
+
+    void add(V::VersionedData& state, const std::shared_ptr<Data>& data) {
+        state[data->getId()] = std::make_shared<DataVersion>(data);
+    }
+
+    std::shared_ptr<Constraint> primitive(const std::string& property, const std::string& op, const json& value, bool inverse = false) {
+        return Constraint::fromJsonValue(json{{"@type", "PrimitiveConstraint"}, {"property", property}, {"operator", op},
+                                              {"value", value}, {"inverse", inverse}});
+    }
+
+    std::shared_ptr<Constraint> composite(const std::string& op, const std::vector<std::shared_ptr<Constraint>>& parts) {
+        json constraints = json::array();
+        for (const auto& part : parts)
+            constraints.push_back(json::parse(part->serializeToJson()));
+        return Constraint::fromJsonValue(json{{"@type", "CompositeConstraint"}, {"operator", op}, {"constraint", constraints}});
+    }
+
+    std::vector<std::string> names(const std::vector<json>& rows) {
+        std::vector<std::string> result;
+        for (const auto& row : rows)
+            result.push_back(row.value("declaredName", std::string("-")));
+        std::sort(result.begin(), result.end());
+        return result;
+    }
+
+    using Names = std::vector<std::string>;
+
+    std::string CommitIdForUsage() {
+        return "c4fc0b1e-2d3a-4b5c-8d6e-7f8091a2b3c4";
+    }
+
+    /** Three packages with a mass, one of them owned by the first, a part definition and a relationship. */
+    struct QueryData {
+        V::VersionedData State;
+        std::shared_ptr<Data> Light, Medium, Heavy, Part;
+
+        QueryData() {
+            Light = element("Package", "Light", {{"mass", 1}, {"tags", json::array({"a", "b"})}, {"active", true}});
+            Medium = element("Package", "Medium", {{"mass", 4}, {"tags", json::array({"b"})}, {"active", false}});
+            const auto lightId = boost::uuids::to_string(Light->getId());
+            Heavy = element("Package", "Heavy", {{"mass", 9}, {"owner", reference(lightId)}});
+            Part = element("PartDefinition", "Part", {{"mass", 2.5}, {"owningRelationship", reference(lightId)}});
+            for (const auto& data : {Light, Medium, Heavy, Part})
+                add(State, data);
+        }
+    };
+}
+
+TEST(RestQueryEvaluation, EqualsOnTypeIdAndProperties) {
+    QueryData data;
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("@type", "=", "Package"), data.State)), (Names{"Heavy", "Light", "Medium"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("@type", "=", "PartDefinition"), data.State)), (Names{"Part"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("@id", "=", boost::uuids::to_string(data.Medium->getId())), data.State)), (Names{"Medium"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("declaredName", "=", "Light"), data.State)), (Names{"Light"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("active", "=", true), data.State)), (Names{"Light"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("mass", "=", 4), data.State)), (Names{"Medium"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("mass", "=", 4.0), data.State)), (Names{"Medium"}));
+    // no constraint selects everything
+    EXPECT_EQ(V::executeQuery({}, {}, {}, nullptr, data.State).size(), 4u);
+    // a missing property is null
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("tags", "=", nullptr), data.State)), (Names{"Heavy", "Part"}));
+}
+
+TEST(RestQueryEvaluation, ReferencesAreComparedById) {
+    QueryData data;
+    const auto lightId = boost::uuids::to_string(data.Light->getId());
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("owner", "=", lightId), data.State)), (Names{"Heavy"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("owningRelationship", "=", lightId), data.State)), (Names{"Part"}));
+    // a path through the reference
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("owner.@id", "=", lightId), data.State)), (Names{"Heavy"}));
+}
+
+TEST(RestQueryEvaluation, ArraysMatchIfOneEntryMatches) {
+    QueryData data;
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("tags", "=", "a"), data.State)), (Names{"Light"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("tags", "=", "b"), data.State)), (Names{"Light", "Medium"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("tags", "in", json::array({"x", "a"})), data.State)), (Names{"Light"}));
+}
+
+TEST(RestQueryEvaluation, OrderingOperators) {
+    QueryData data;
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("mass", "<", 4), data.State)), (Names{"Light", "Part"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("mass", "<=", 4), data.State)), (Names{"Light", "Medium", "Part"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("mass", ">", 4), data.State)), (Names{"Heavy"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("mass", ">=", 4), data.State)), (Names{"Heavy", "Medium"}));
+    // strings are compared lexicographically; a number is not comparable with a string
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("declaredName", "<", "Li"), data.State)), (Names{"Heavy"}));
+    EXPECT_TRUE(V::executeQuery({}, {}, {}, primitive("mass", "<", "9"), data.State).empty());
+    // missing properties do not satisfy an ordering
+    EXPECT_TRUE(V::executeQuery({}, {}, {}, primitive("nothing", ">=", 0), data.State).empty());
+}
+
+TEST(RestQueryEvaluation, InOperator) {
+    QueryData data;
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("mass", "in", json::array({1, 9})), data.State)), (Names{"Heavy", "Light"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("@type", "in", json::array({"PartDefinition", "Nope"})), data.State)), (Names{"Part"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("mass", "in", json::array({100})), data.State)), (Names{}));
+}
+
+TEST(RestQueryEvaluation, InstanceOfUsesTheTypeAndTheKnownSupertypes) {
+    QueryData data;
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("@type", "instanceOf", "PartDefinition"), data.State)), (Names{"Part"}));
+    // a KerML element is an Element, whatever its metaclass
+    EXPECT_EQ(V::executeQuery({}, {}, {}, primitive("@type", "instanceOf", "Element"), data.State).size(), 4u);
+    EXPECT_EQ(V::executeQuery({}, {}, {}, primitive("@type", "instanceOf", "Data"), data.State).size(), 4u);
+    EXPECT_TRUE(V::executeQuery({}, {}, {}, primitive("@type", "instanceOf", "Relationship"), data.State).empty());
+    // there is no hierarchy of the metaclasses, so a supertype that is not Element or Relationship does not match
+    EXPECT_TRUE(V::executeQuery({}, {}, {}, primitive("@type", "instanceOf", "Type"), data.State).empty());
+
+    // a relationship is a Relationship
+    V::VersionedData withRelationship = data.State;
+    withRelationship[uuidOf(DataId)] = std::make_shared<DataVersion>(std::make_shared<KerML::Entities::Specialization>(
+        json{{"@id", DataId}, {"@type", "Specialization"}}.dump()));
+    EXPECT_EQ(V::executeQuery({}, {}, {}, primitive("@type", "instanceOf", "Relationship"), withRelationship).size(), 1u);
+}
+
+TEST(RestQueryEvaluation, InverseNegatesThePrimitiveConstraint) {
+    QueryData data;
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("@type", "=", "Package", true), data.State)), (Names{"Part"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("mass", "<", 4, true), data.State)), (Names{"Heavy", "Medium"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, primitive("tags", "=", "b", true), data.State)), (Names{"Heavy", "Part"}));
+    // a missing property satisfies the inverse
+    EXPECT_EQ(V::executeQuery({}, {}, {}, primitive("nothing", "=", 1, true), data.State).size(), 4u);
+}
+
+TEST(RestQueryEvaluation, CompositeConstraintsAndOr) {
+    QueryData data;
+    const auto packages = primitive("@type", "=", "Package");
+    const auto heavy = primitive("mass", ">", 3);
+    const auto light = primitive("mass", "<", 2);
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, composite("and", {packages, heavy}), data.State)), (Names{"Heavy", "Medium"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, composite("or", {heavy, light}), data.State)), (Names{"Heavy", "Light", "Medium"}));
+    // nested, as in getExternalRelationshipsByElement
+    const auto nested = composite("and", {packages, composite("or", {heavy, light})});
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, nested, data.State)), (Names{"Heavy", "Light", "Medium"}));
+    EXPECT_EQ(names(V::executeQuery({}, {}, {}, composite("and", {primitive("@type", "=", "Package"), primitive("mass", "=", 9),
+                                                                   primitive("declaredName", "=", "Other")}), data.State)), (Names{}));
+}
+
+TEST(RestQueryEvaluation, ScopeIsTheGivenDataAndWhatTheyOwn) {
+    QueryData data;
+    // Heavy names Light as its owner and Part names it as its owning relationship
+    EXPECT_EQ(names(V::executeQuery({}, {data.Light->getId()}, {}, nullptr, data.State)), (Names{"Heavy", "Light", "Part"}));
+    EXPECT_EQ(names(V::executeQuery({}, {data.Heavy->getId()}, {}, nullptr, data.State)), (Names{"Heavy"}));
+    EXPECT_EQ(names(V::executeQuery({}, {data.Medium->getId(), data.Heavy->getId()}, {}, nullptr, data.State)), (Names{"Heavy", "Medium"}));
+    EXPECT_EQ(names(V::executeQuery({}, {data.Light->getId()}, {}, primitive("@type", "=", "Package"), data.State)), (Names{"Heavy", "Light"}));
+    // identities that are not in the state add nothing
+    EXPECT_TRUE(V::executeQuery({}, {uuidOf(DataId)}, {}, nullptr, data.State).empty());
+    EXPECT_EQ(V::scopeClosure({data.Light->getId()}, data.State).size(), 3u);
+}
+
+TEST(RestQueryEvaluation, ScopeFollowsOwnedElementsAndMemberships) {
+    V::VersionedData state;
+    const auto childId = boost::uuids::to_string(boost::uuids::random_generator()());
+    const auto membershipId = boost::uuids::to_string(boost::uuids::random_generator()());
+    const auto owner = element("Package", "Owner", {{"ownedRelationship", json::array({reference(membershipId)})}});
+    const auto membership = std::make_shared<KerML::Entities::Membership>(
+        json{{"@id", membershipId}, {"@type", "Membership"}, {"ownedRelatedElement", json::array({reference(childId)})}}.dump());
+    const auto child = std::make_shared<KerML::Entities::Package>(json{{"@id", childId}, {"@type", "Package"}, {"declaredName", "Child"}}.dump());
+    const auto unrelated = element("Package", "Unrelated");
+    for (const auto& data : std::vector<std::shared_ptr<Data>>{owner, membership, child, unrelated})
+        add(state, data);
+    const auto closure = V::scopeClosure({owner->getId()}, state);
+    EXPECT_EQ(closure.size(), 3u);
+    EXPECT_EQ(names(V::executeQuery({}, {owner->getId()}, {}, primitive("@type", "=", "Package"), state)), (Names{"Child", "Owner"}));
+}
+
+TEST(RestQueryEvaluation, SelectKeepsTheIdAndTheTypeAndTheSelectedProperties) {
+    QueryData data;
+    const auto rows = V::executeQuery({"mass"}, {}, {}, primitive("declaredName", "=", "Light"), data.State);
+    ASSERT_EQ(rows.size(), 1u);
+    EXPECT_EQ(rows[0].size(), 3u);
+    EXPECT_EQ(rows[0]["@id"], boost::uuids::to_string(data.Light->getId()));
+    EXPECT_EQ(rows[0]["@type"], "Package");
+    EXPECT_EQ(rows[0]["mass"], 1);
+    EXPECT_FALSE(rows[0].contains("declaredName"));
+    // no select keeps everything
+    EXPECT_TRUE(V::executeQuery({}, {}, {}, primitive("declaredName", "=", "Light"), data.State)[0].contains("declaredName"));
+    // a property that does not exist is just not there
+    EXPECT_EQ(V::executeQuery({"nothing"}, {}, {}, primitive("declaredName", "=", "Light"), data.State)[0].size(), 2u);
+}
+
+TEST(RestQueryEvaluation, OrderByProperties) {
+    QueryData data;
+    auto ordered = [&](const std::vector<std::string>& orderBy) {
+        std::vector<std::string> result;
+        for (const auto& row : V::executeQuery({}, {}, orderBy, nullptr, data.State))
+            result.push_back(row.value("declaredName", std::string()));
+        return result;
+    };
+    EXPECT_EQ(ordered({"mass"}), (Names{"Light", "Part", "Medium", "Heavy"}));
+    EXPECT_EQ(ordered({"declaredName"}), (Names{"Heavy", "Light", "Medium", "Part"}));
+    // the first property governs, the next one breaks ties; missing values come first
+    EXPECT_EQ(ordered({"@type", "mass"}), (Names{"Light", "Medium", "Heavy", "Part"}));
+    // an array sorts by its first entry
+    EXPECT_EQ(ordered({"tags", "declaredName"}), (Names{"Heavy", "Part", "Light", "Medium"}));
+    // without orderBy the order is the order of the identities, which is stable
+    EXPECT_EQ(ordered({}), ordered({}));
+}
+
+TEST(RestQueryEvaluation, QueryAndQueryRequestOverloads) {
+    QueryData data;
+    Query query("q", {"mass"}, {}, {"mass"}, primitive("@type", "=", "Package"), nullptr);
+    const auto rows = V::executeQuery(query, data.State);
+    ASSERT_EQ(rows.size(), 3u);
+    EXPECT_EQ(rows[0]["mass"], 1);
+    EXPECT_EQ(rows[2]["mass"], 9);
+
+    QueryRequest request("q", {}, {data.Medium}, {}, nullptr);
+    EXPECT_EQ(names(V::executeQuery(request, data.State)), (Names{"Medium"}));
+}
+
+TEST(RestQueryEvaluation, ProjectUsageAndExternalRelationshipPayloadsAreQueryable) {
+    V::VersionedData state;
+    const auto elementId = boost::uuids::to_string(boost::uuids::random_generator()());
+    const auto usageCommit = std::make_shared<Commit>(uuidOf(CommitIdForUsage()), "used", nullptr);
+    const auto usage = std::make_shared<ProjectUsage>(usageCommit);
+    const auto relationship = std::make_shared<ExternalRelationship>(std::make_shared<Data>(uuidOf(elementId)),
+                                                                     std::make_shared<ExternalData>("https://example.com/x"), "select *", "SQL");
+    const auto relationshipId = boost::uuids::to_string(relationship->getId());
+    add(state, usage);
+    add(state, relationship);
+    add(state, element("Package", "Other"));
+
+    EXPECT_EQ(V::executeQuery({}, {}, {}, primitive("@type", "=", "ProjectUsage"), state).size(), 1u);
+    const auto relationships = V::executeQuery({}, {}, {}, primitive("@type", "=", "ExternalRelationship"), state);
+    ASSERT_EQ(relationships.size(), 1u);
+    EXPECT_EQ(relationships[0]["@id"], relationshipId);
+    // getExternalRelationshipsByElement: type and elementEnd
+    EXPECT_EQ(V::executeQuery({}, {}, {}, composite("and", {primitive("@type", "=", "ExternalRelationship"), primitive("elementEnd", "=", elementId)}), state).size(), 1u);
+    EXPECT_TRUE(V::executeQuery({}, {}, {}, composite("and", {primitive("@type", "=", "ExternalRelationship"), primitive("elementEnd", "=", DataId)}), state).empty());
+    // getExternalRelationshipsById: type and @id
+    EXPECT_EQ(V::executeQuery({}, {}, {}, composite("and", {primitive("@type", "=", "ExternalRelationship"), primitive("@id", "=", relationshipId)}), state).size(), 1u);
+    // the project usage by the commit that it uses
+    EXPECT_EQ(V::executeQuery({}, {}, {}, primitive("usedProjectCommit", "=", CommitIdForUsage()), state).size(), 1u);
 }

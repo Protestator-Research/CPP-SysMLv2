@@ -41,6 +41,13 @@ set(ENTITIES_HEADER
 set(SERIALIZATION_HEADER
         include/sysmlv2/rest/serialization/SysMLv2Deserializer.h)
 
+set(VERSIONING_HEADER
+        include/sysmlv2/rest/versioning/VersionedData.h
+        include/sysmlv2/rest/versioning/CommitFactory.h
+        include/sysmlv2/rest/versioning/Merge.h
+        include/sysmlv2/rest/versioning/ElementReferences.h
+        include/sysmlv2/rest/versioning/QueryEvaluation.h)
+
 
 add_library(sysmlv2rest
         src/sysmlv2/rest/entities/DataIdentity.cpp
@@ -64,12 +71,19 @@ add_library(sysmlv2rest
         src/sysmlv2/rest/entities/TagRequest.cpp
         src/sysmlv2/rest/entities/QueryRequest.cpp
         src/sysmlv2/rest/entities/Constraint.cpp
+        src/sysmlv2/rest/versioning/VersionedData.cpp
+        src/sysmlv2/rest/versioning/CommitFactory.cpp
+        src/sysmlv2/rest/versioning/Merge.cpp
+        src/sysmlv2/rest/versioning/ElementReferences.cpp
+        src/sysmlv2/rest/versioning/QueryEvaluation.cpp
+        src/sysmlv2/rest/versioning/VersioningDetail.h
         src/sysmlv2/rest/entities/QueryJson.h
         src/sysmlv2/rest/WindowsFix.cpp
         src/sysmlv2/rest/Deprecation.cpp
         src/sysmlv2/rest/entities/RestJson.h
         ${ENTITIES_HEADER}
         ${SERIALIZATION_HEADER}
+        ${VERSIONING_HEADER}
         ${GLOBAL_HEADER})
 
 target_link_libraries(sysmlv2rest
@@ -86,6 +100,7 @@ install(TARGETS sysmlv2rest RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${ENTITIES_HEADER} DESTINATION include/sysmlv2/rest/entities)
 install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2/rest)
 install(FILES ${SERIALIZATION_HEADER} DESTINATION include/sysmlv2/rest/serialization)
+install(FILES ${VERSIONING_HEADER} DESTINATION include/sysmlv2/rest/versioning)
 
 
 

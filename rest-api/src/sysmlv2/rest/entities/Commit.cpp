@@ -120,6 +120,10 @@ namespace SysMLv2::REST{
         return Created.value_or(std::chrono::system_clock::time_point{});
     }
 
+    void Commit::setCreated(std::chrono::system_clock::time_point created) {
+        Created = created;
+    }
+
     void Commit::deserializeAndPopulate(const std::string& jsonString)
     {
         const nlohmann::json parsedElement = Internal::parseObject(jsonString, "Commit");
