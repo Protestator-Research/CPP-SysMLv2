@@ -899,6 +899,8 @@ public:
     virtual void enterMetadata_usage(SysMLv2Parser::Metadata_usageContext* ctx) override;
     virtual void exitMetadata_usage(SysMLv2Parser::Metadata_usageContext* ctx) override;
 
+    virtual void exitMetadata_usage_declaration(SysMLv2Parser::Metadata_usage_declarationContext* ctx) override;
+
     virtual void enterExtended_definition(SysMLv2Parser::Extended_definitionContext* ctx) override;
     virtual void exitExtended_definition(SysMLv2Parser::Extended_definitionContext* ctx) override;
 
@@ -1114,9 +1116,6 @@ public:
 
     virtual void enterPrefix_metadata_feature(SysMLv2Parser::Prefix_metadata_featureContext* /*ctx*/) override {}
     virtual void exitPrefix_metadata_feature(SysMLv2Parser::Prefix_metadata_featureContext* /*ctx*/) override {}
-
-    virtual void enterMetadata_feature(SysMLv2Parser::Metadata_featureContext* ctx) override;
-    virtual void exitMetadata_feature(SysMLv2Parser::Metadata_featureContext* ctx) override;
 
     virtual void enterMetadata_feature_declaration(SysMLv2Parser::Metadata_feature_declarationContext* /*ctx*/) override {}
     virtual void exitMetadata_feature_declaration(SysMLv2Parser::Metadata_feature_declarationContext* /*ctx*/) override {}

@@ -4225,14 +4225,16 @@ public:
     Metadata_featureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Metadata_feature_declarationContext *metadata_feature_declaration();
+    Metadata_bodyContext *metadata_body();
     antlr4::tree::TerminalNode *SYMBOL_AT();
     antlr4::tree::TerminalNode *KEYWORD_METADATA();
+    std::vector<Prefix_metadata_memberContext *> prefix_metadata_member();
+    Prefix_metadata_memberContext* prefix_metadata_member(size_t i);
     antlr4::tree::TerminalNode *KEYWORD_ABOUT();
     std::vector<AnnotationContext *> annotation();
     AnnotationContext* annotation(size_t i);
-    std::vector<Prefix_metadata_memberContext *> prefix_metadata_member();
-    Prefix_metadata_memberContext* prefix_metadata_member(size_t i);
-    antlr4::tree::TerminalNode *SYMBOL_COMMA();
+    std::vector<antlr4::tree::TerminalNode *> SYMBOL_COMMA();
+    antlr4::tree::TerminalNode* SYMBOL_COMMA(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

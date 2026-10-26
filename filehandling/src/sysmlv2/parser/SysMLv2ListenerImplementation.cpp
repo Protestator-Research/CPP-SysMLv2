@@ -970,7 +970,6 @@ DEFINE_USAGE_METHODS(Verification_case_usage, SysMLv2::Entities::VerificationCas
 DEFINE_USAGE_METHODS(View_usage, SysMLv2::Entities::ViewUsage)
 DEFINE_USAGE_METHODS(Viewpoint_usage, SysMLv2::Entities::ViewpointUsage)
 DEFINE_USAGE_METHODS(Rendering_usage, SysMLv2::Entities::RenderingUsage)
-DEFINE_USAGE_METHODS(Metadata_usage, SysMLv2::Entities::MetadataUsage)
 DEFINE_USAGE_METHODS(Occurrence_usage, SysMLv2::Entities::OccurrenceUsage)
 DEFINE_USAGE_METHODS(Enumeration_usage, SysMLv2::Entities::EnumerationUsage)
 DEFINE_USAGE_METHODS(State_usage, SysMLv2::Entities::StateUsage)
@@ -1050,6 +1049,65 @@ void SysMLv2ListenerImplementation::exitPrefix_metadata_usage(SysMLv2Parser::Pre
 		OwnershipKinds[metadata.get()] = SysMLv2::Files::MembershipKind::Owning;
 		owner->appendOwnedElement(metadata);
 	}
+}
+
+// `metadata M about A, B { ... }` / `@M;`: a MetadataUsage that annotates the elements named after `about`, or else the namespace that owns it.
+// The metadata is owned through an OwningMembership (as for `#M`): it is not a feature of its owner. The prefix `#N metadata M;` is
+// handled by enterPrefix_metadata_usage (a child of this rule, whose owner is this MetadataUsage).
+void SysMLv2ListenerImplementation::enterMetadata_usage(SysMLv2Parser::Metadata_usageContext* ctx) {
+	handleUsageEnter<SysMLv2::Entities::MetadataUsage>(ParentStack, &PushedByContext, ctx);
+}
+
+// MetadataUsageDeclaration = ( Identification DefinedBy )? OwnedFeatureTyping: the name is only taken from an explicit declaration.
+void SysMLv2ListenerImplementation::exitMetadata_usage_declaration(SysMLv2Parser::Metadata_usage_declarationContext* ctx) {
+	if (ParentStack.empty() || !ctx || !shouldApplyToTop(ctx)) return;
+	const auto metadata = std::dynamic_pointer_cast<SysMLv2::Entities::MetadataUsage>(ParentStack.top());
+	if (!metadata) return;
+	if (ctx->identification()) applyIdentification(ctx->identification(), metadata);
+	if (ctx->owned_feature_typing()) addTyping(metadata, ctx->owned_feature_typing()->getText(), ctx->owned_feature_typing());
+}
+
+void SysMLv2ListenerImplementation::exitMetadata_usage(SysMLv2Parser::Metadata_usageContext* ctx) {
+	if (ParentStack.empty()) return;
+	const auto metadata = std::dynamic_pointer_cast<SysMLv2::Entities::MetadataUsage>(ParentStack.top());
+	if (!metadata) return;
+	ParentStack.pop();
+	Elements.push_back(metadata);
+
+	const auto owner = ParentStack.empty() ? nullptr : ParentStack.top();
+	if (ctx && ctx->KEYWORD_ABOUT() != nullptr && !ctx->annotation().empty()) {
+		// `about` targets are resolved from the namespace that owns the metadata, as for `comment ... about`.
+		for (auto& about : ctx->annotation()) {
+			Recorder.reference<KerML::Entities::Element>(about->getText(), SysMLv2::Files::ReferenceKind::Element,
+				SysMLv2::Files::ReferenceRole::Plain, owner, false, nullptr, about,
+				[metadata](const std::shared_ptr<KerML::Entities::Element>& target) { metadata->appendAnnotatedElement(target); });
+		}
+	}
+	else if (owner) {
+		metadata->appendAnnotatedElement(owner);
+	}
+
+	if (owner) {
+		metadata->setOwner(owner);
+		OwnershipKinds[metadata.get()] = SysMLv2::Files::MembershipKind::Owning;
+		owner->appendOwnedElement(metadata);
+	}
+}
+
+// MetadataBodyUsage = 'ref'? ( ':>>' | 'redefines' )? OwnedRedefinition FeatureSpecializationPart? ValuePart? MetadataBody:
+// a ReferenceUsage that redefines the feature of the metadata definition that is named by the OwnedRedefinition (`serviceId = 1;`).
+// The redefined feature is resolved in the context of the usage, i.e. through the definition that types the enclosing MetadataUsage.
+void SysMLv2ListenerImplementation::enterMetadata_body_usage(SysMLv2Parser::Metadata_body_usageContext* ctx) {
+	handleUsageEnter<SysMLv2::Entities::ReferenceUsage>(ParentStack, &PushedByContext, ctx);
+	if (!ctx) return;
+	const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+	if (!feature) return;
+	if (ctx->owned_redefinition()) addRedefinition(feature, ctx->owned_redefinition()->getText(), ctx->owned_redefinition());
+	if (ctx->feature_specialization_part()) applyFeatureSpecializationPart(ctx->feature_specialization_part(), feature);
+}
+
+void SysMLv2ListenerImplementation::exitMetadata_body_usage(SysMLv2Parser::Metadata_body_usageContext*) {
+	handleUsageExit<SysMLv2::Entities::ReferenceUsage>(ParentStack, Elements);
 }
 
 // The payload of an `accept` (of a transition or of an accept node) is a parameter (a ReferenceUsage with direction in).
@@ -1138,7 +1196,6 @@ DEFINE_USAGE_METHODS(State_assignment_action_usage, SysMLv2::Entities::Assignmen
 DEFINE_USAGE_METHODS(Transition_usage, SysMLv2::Entities::TransitionUsage)
 DEFINE_USAGE_METHODS(Target_transition_usage, SysMLv2::Entities::TransitionUsage)
 DEFINE_USAGE_METHODS(View_rendering_usage, SysMLv2::Entities::RenderingUsage)
-DEFINE_USAGE_METHODS(Metadata_body_usage, SysMLv2::Entities::ReferenceUsage)
 
 void SysMLv2ListenerImplementation::enterRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext* ctx) {
 	std::shared_ptr<KerML::Entities::Feature> feature;
@@ -2137,15 +2194,6 @@ void SysMLv2ListenerImplementation::enterMetaclass(SysMLv2Parser::MetaclassConte
 }
 void SysMLv2ListenerImplementation::exitMetaclass(SysMLv2Parser::MetaclassContext*) {
 	handleUsageExit<KerML::Entities::Metaclass>(ParentStack, Elements);
-}
-
-void SysMLv2ListenerImplementation::enterMetadata_feature(SysMLv2Parser::Metadata_featureContext* ctx) {
-	auto mf = std::make_shared<KerML::Entities::MetadataFeature>();
-	ParentStack.push(mf);
-	recordPush(ctx, mf);
-}
-void SysMLv2ListenerImplementation::exitMetadata_feature(SysMLv2Parser::Metadata_featureContext*) {
-	handleUsageExit<KerML::Entities::MetadataFeature>(ParentStack, Elements);
 }
 
 void SysMLv2ListenerImplementation::enterLibrary_package(SysMLv2Parser::Library_packageContext* ctx) {

@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <gtest/gtest.h>
 #include <sysmlv2/Parser.h>
 #include <sysml/SysML.h>
@@ -1268,4 +1269,203 @@ TEST(TestSysMLParser, KeywordMisuseDiagnoserFindsTheGrammarElementsItDependsOn) 
     EXPECT_TRUE(SysMLv2::Files::KeywordMisuseDiagnoser::isReservedKeyword(parser, "KEYWORD_LOOP"));
     EXPECT_FALSE(SysMLv2::Files::KeywordMisuseDiagnoser::isReservedKeyword(parser, "KEYWORD_INV"));      // a name in SysML v2
     EXPECT_FALSE(SysMLv2::Files::KeywordMisuseDiagnoser::isReservedKeyword(parser, "KEYWORD_FEATURE"));  // KerML-only keyword
+}
+
+namespace {
+std::shared_ptr<KerML::Entities::FeatureValue> featureValueOf(const std::shared_ptr<KerML::Entities::Element>& owner) {
+    for (const auto& child : owner->ownedElements()) {
+        if (auto candidate = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(child)) return candidate;
+    }
+    return nullptr;
+}
+}
+
+// `metadata M { name = value; ... }` (annotating element, body with several redefining features) used to fail with "expecting 'about'".
+TEST(TestSysMLParser, MetadataUsageWithBody) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(R"(
+        enum def ObdTrigger { Startup; Cyclic; }
+        metadata def ObdSignal {
+            attribute serviceId : Natural;
+            attribute pid : Natural[0..1];
+            attribute trigger : ObdTrigger[0..1];
+            attribute startOrder : Natural[0..1];
+        }
+        part def SUPPORTED_PIDS_01_20 {
+            metadata ObdSignal {
+                serviceId = 1;
+                pid = 0;
+                trigger = ObdTrigger::Startup;
+                startOrder = 1;
+            }
+        }
+    )");
+    EXPECT_TRUE(errors.empty());
+    const auto pids = named<SysMLv2::Entities::PartDefinition>(elements, "SUPPORTED_PIDS_01_20");
+    const auto signal = named<SysMLv2::Entities::MetadataDefinition>(elements, "ObdSignal");
+    ASSERT_NE(pids, nullptr);
+    ASSERT_NE(signal, nullptr);
+    const auto found = metadataUsagesOf(pids);
+    ASSERT_EQ(found.size(), 1u);
+    const auto& metadata = found[0];
+    ASSERT_NE(metadata->metadataDefinition(), nullptr);
+    EXPECT_EQ(metadata->metadataDefinition(), signal);
+    EXPECT_EQ(metadata->metadataDefinition()->declaredName(), "ObdSignal");
+    ASSERT_EQ(metadata->annotatedElements().size(), 1u);
+    EXPECT_EQ(metadata->annotatedElements()[0], pids);
+    EXPECT_FALSE(metadata->owningType().has_value());
+
+    const auto features = metadata->ownedFeature();
+    ASSERT_EQ(features.size(), 4u);
+    const std::vector<std::string> redefined = {"serviceId", "pid", "trigger", "startOrder"};
+    for (size_t i = 0; i < features.size(); ++i) {
+        ASSERT_EQ(features[i]->ownedRedefinition().size(), 1u);
+        const auto target = features[i]->ownedRedefinition()[0]->redefinedFeature();
+        ASSERT_NE(target, nullptr);
+        EXPECT_EQ(target->declaredName(), redefined[i]);
+        EXPECT_TRUE(std::find(signal->ownedFeature().begin(), signal->ownedFeature().end(), target) != signal->ownedFeature().end());
+        EXPECT_NE(featureValueOf(features[i]), nullptr);
+    }
+    const auto serviceId = std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(featureValueOf(features[0])->value());
+    ASSERT_NE(serviceId, nullptr);
+    EXPECT_EQ(serviceId->value(), 1);
+    const auto pid = std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(featureValueOf(features[1])->value());
+    ASSERT_NE(pid, nullptr);
+    EXPECT_EQ(pid->value(), 0);
+    const auto startOrder = std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(featureValueOf(features[3])->value());
+    ASSERT_NE(startOrder, nullptr);
+    EXPECT_EQ(startOrder->value(), 1);
+    // `ObdTrigger::Startup` is a reference expression, not a literal.
+    EXPECT_EQ(std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(featureValueOf(features[2])->value()), nullptr);
+}
+
+TEST(TestSysMLParser, MetadataUsageForms) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "metadata def M; part def A; part def B; part def P { metadata M; @M; metadata m : M; metadata n defined by M; } "
+        "metadata M about A, B;");
+    EXPECT_TRUE(errors.empty());
+    const auto p = named<SysMLv2::Entities::PartDefinition>(elements, "P");
+    ASSERT_NE(p, nullptr);
+    const auto found = metadataUsagesOf(p);
+    ASSERT_EQ(found.size(), 4u);
+    for (const auto& metadata : found) expectPrefixMetadata(metadata, p, "M");
+    EXPECT_EQ(found[2]->declaredName(), "m");
+    EXPECT_EQ(found[3]->declaredName(), "n");
+    const auto a = named<SysMLv2::Entities::PartDefinition>(elements, "A");
+    const auto b = named<SysMLv2::Entities::PartDefinition>(elements, "B");
+    std::shared_ptr<SysMLv2::Entities::MetadataUsage> trailing;
+    for (const auto& element : elements) {
+        if (auto candidate = std::dynamic_pointer_cast<SysMLv2::Entities::MetadataUsage>(element)) {
+            if (candidate->owner() != p) trailing = candidate;
+        }
+    }
+    ASSERT_NE(trailing, nullptr);
+    ASSERT_EQ(trailing->annotatedElements().size(), 2u);
+    EXPECT_EQ(trailing->annotatedElements()[0], a);
+    EXPECT_EQ(trailing->annotatedElements()[1], b);
+}
+
+// KerML-style metadata stays valid in SysML text: `typed by` and `feature x = 1;` body members.
+TEST(TestSysMLParser, MetadataUsageKerMLStyle) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "metadata def M { attribute x : Natural; } part def A; "
+        "part def P { metadata m typed by M; metadata M about A { feature x = 1; } }");
+    EXPECT_TRUE(errors.empty());
+    const auto p = named<SysMLv2::Entities::PartDefinition>(elements, "P");
+    const auto a = named<SysMLv2::Entities::PartDefinition>(elements, "A");
+    const auto definition = named<SysMLv2::Entities::MetadataDefinition>(elements, "M");
+    ASSERT_NE(p, nullptr);
+    ASSERT_NE(definition, nullptr);
+    const auto found = metadataUsagesOf(p);
+    ASSERT_EQ(found.size(), 2u);
+    EXPECT_EQ(found[0]->declaredName(), "m");
+    EXPECT_EQ(found[0]->metadataDefinition(), definition);
+    EXPECT_EQ(found[1]->metadataDefinition(), definition);
+    ASSERT_EQ(found[1]->annotatedElements().size(), 1u);
+    EXPECT_EQ(found[1]->annotatedElements()[0], a);
+    const auto features = found[1]->ownedFeature();
+    ASSERT_EQ(features.size(), 1u);
+    ASSERT_EQ(features[0]->ownedRedefinition().size(), 1u);
+    const auto target = features[0]->ownedRedefinition()[0]->redefinedFeature();
+    ASSERT_NE(target, nullptr);
+    EXPECT_EQ(target->declaredName(), "x");
+    const auto value = featureValueOf(features[0]);
+    ASSERT_NE(value, nullptr);
+    const auto literal = std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(value->value());
+    ASSERT_NE(literal, nullptr);
+    EXPECT_EQ(literal->value(), 1);
+}
+
+// `b = 1;`, `:>> b = 2;` and `redefines b = 3;` are all metadata body usages (unnamed redefining ReferenceUsages); a body can be nested.
+TEST(TestSysMLParser, MetadataBodyUsageForms) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "metadata def M { attribute b : Natural; attribute c : Natural; attribute d : Natural; } "
+        "part def P { metadata M { b = 1; :>> b = 2; redefines b = 3; c { d = 3; } } }");
+    EXPECT_TRUE(errors.empty());
+    const auto p = named<SysMLv2::Entities::PartDefinition>(elements, "P");
+    ASSERT_NE(p, nullptr);
+    const auto found = metadataUsagesOf(p);
+    ASSERT_EQ(found.size(), 1u);
+    const auto features = found[0]->ownedFeature();
+    ASSERT_EQ(features.size(), 4u);
+    const std::vector<std::string> redefined = {"b", "b", "b", "c"};
+    for (size_t i = 0; i < features.size(); ++i) {
+        EXPECT_NE(std::dynamic_pointer_cast<SysMLv2::Entities::ReferenceUsage>(features[i]), nullptr);
+        EXPECT_TRUE(features[i]->declaredName().value_or("").empty());
+        ASSERT_EQ(features[i]->ownedRedefinition().size(), 1u);
+        const auto target = features[i]->ownedRedefinition()[0]->redefinedFeature();
+        ASSERT_NE(target, nullptr);
+        EXPECT_EQ(target->declaredName(), redefined[i]);
+    }
+    for (size_t i = 0; i < 3; ++i) {
+        const auto value = featureValueOf(features[i]);
+        ASSERT_NE(value, nullptr);
+        const auto literal = std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(value->value());
+        ASSERT_NE(literal, nullptr);
+        EXPECT_EQ(literal->value(), static_cast<std::int64_t>(i + 1));
+    }
+    const auto nested = features[3]->ownedFeature();
+    ASSERT_EQ(nested.size(), 1u);
+    ASSERT_EQ(nested[0]->ownedRedefinition().size(), 1u);
+    ASSERT_NE(nested[0]->ownedRedefinition()[0]->redefinedFeature(), nullptr);
+    EXPECT_EQ(nested[0]->ownedRedefinition()[0]->redefinedFeature()->declaredName(), "d");
+}
+
+// `#X metadata Y;`: the prefix metadata annotates the metadata usage `Y`, which annotates the namespace.
+TEST(TestSysMLParser, PrefixMetadataOnMetadataUsage) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("metadata def X; metadata def Y; part def P { #X metadata Y; }");
+    EXPECT_TRUE(errors.empty());
+    const auto p = named<SysMLv2::Entities::PartDefinition>(elements, "P");
+    const auto x = named<SysMLv2::Entities::MetadataDefinition>(elements, "X");
+    const auto y = named<SysMLv2::Entities::MetadataDefinition>(elements, "Y");
+    ASSERT_NE(p, nullptr);
+    const auto outer = metadataUsagesOf(p);
+    ASSERT_EQ(outer.size(), 1u);
+    expectPrefixMetadata(outer[0], p, "Y");
+    EXPECT_EQ(outer[0]->metadataDefinition(), y);
+    const auto inner = metadataUsagesOf(outer[0]);
+    ASSERT_EQ(inner.size(), 1u);
+    expectPrefixMetadata(inner[0], outer[0], "X");
+    EXPECT_EQ(inner[0]->metadataDefinition(), x);
+}
+
+TEST(TestSysMLParser, MetadataUsageAboutAnnotatesTheTargets) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("metadata def M; part def A; part def B; metadata M about A, B;");
+    EXPECT_TRUE(errors.empty());
+    const auto a = named<SysMLv2::Entities::PartDefinition>(elements, "A");
+    const auto b = named<SysMLv2::Entities::PartDefinition>(elements, "B");
+    ASSERT_NE(a, nullptr);
+    ASSERT_NE(b, nullptr);
+    std::shared_ptr<SysMLv2::Entities::MetadataUsage> metadata;
+    for (const auto& element : elements) {
+        if (auto candidate = std::dynamic_pointer_cast<SysMLv2::Entities::MetadataUsage>(element)) metadata = candidate;
+    }
+    ASSERT_NE(metadata, nullptr);
+    ASSERT_EQ(metadata->annotatedElements().size(), 2u);
+    EXPECT_EQ(metadata->annotatedElements()[0], a);
+    EXPECT_EQ(metadata->annotatedElements()[1], b);
+}
+
+TEST(TestSysMLParser, MetadataUsageWithoutTypeIsAnError) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("part def P { metadata ; }");
+    EXPECT_FALSE(errors.empty());
 }

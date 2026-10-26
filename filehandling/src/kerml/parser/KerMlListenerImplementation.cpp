@@ -3095,7 +3095,7 @@ void KerMLListenerImplementation::enterMetadata_feature(KerMLParser::Metadata_fe
     ParentStack.push(metaFeature);
 }
 
-void KerMLListenerImplementation::exitMetadata_feature(KerMLParser::Metadata_featureContext *) {
+void KerMLListenerImplementation::exitMetadata_feature(KerMLParser::Metadata_featureContext *ctx) {
     if (ParentStack.empty()) return;
     const auto metaFeature = std::dynamic_pointer_cast<KerML::Entities::MetadataFeature>(ParentStack.top());
     if (!metaFeature) return;
@@ -3103,6 +3103,8 @@ void KerMLListenerImplementation::exitMetadata_feature(KerMLParser::Metadata_fea
 
     Elements.push_back(metaFeature);
     if (!ParentStack.empty()) {
+        // Without `about` the metadata annotates the namespace that owns it (the targets of `about` are resolved in exitAnnotation).
+        if (ctx && ctx->KEYWORD_ABOUT() == nullptr) metaFeature->appendAnnotatedElement(ParentStack.top());
         ParentStack.top()->appendOwnedElement(metaFeature);
         if (auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top())) {
             type->appendOwnedFeature(metaFeature);

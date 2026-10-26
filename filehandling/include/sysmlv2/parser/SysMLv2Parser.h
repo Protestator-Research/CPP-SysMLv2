@@ -1013,7 +1013,7 @@ public:
     CommentContext *comment();
     DocumentationContext *documentation();
     Textual_representationContext *textual_representation();
-    Metadata_featureContext *metadata_feature();
+    Metadata_usageContext *metadata_usage();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -5610,6 +5610,7 @@ public:
     Owned_feature_typingContext *owned_feature_typing();
     IdentificationContext *identification();
     Defined_byContext *defined_by();
+    Typed_by_operatorContext *typed_by_operator();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -5625,10 +5626,14 @@ public:
     antlr4::tree::TerminalNode *SYMBOL_STATEMENT_DELIMITER();
     antlr4::tree::TerminalNode *SYMBOL_CURLY_BRACKET_OPEN();
     antlr4::tree::TerminalNode *SYMBOL_CURLY_BRACKET_CLOSE();
-    Definition_memberContext *definition_member();
-    Metadata_body_usage_memberContext *metadata_body_usage_member();
-    Alias_memberContext *alias_member();
-    Namespace_importContext *namespace_import();
+    std::vector<Metadata_body_usage_memberContext *> metadata_body_usage_member();
+    Metadata_body_usage_memberContext* metadata_body_usage_member(size_t i);
+    std::vector<Definition_memberContext *> definition_member();
+    Definition_memberContext* definition_member(size_t i);
+    std::vector<Alias_memberContext *> alias_member();
+    Alias_memberContext* alias_member(size_t i);
+    std::vector<Namespace_importContext *> namespace_import();
+    Namespace_importContext* namespace_import(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -5657,6 +5662,7 @@ public:
     Owned_redefinitionContext *owned_redefinition();
     Metadata_bodyContext *metadata_body();
     antlr4::tree::TerminalNode *KEYWORD_REF();
+    antlr4::tree::TerminalNode *KEYWORD_FEATURE();
     Redefines_operatorContext *redefines_operator();
     Feature_specialization_partContext *feature_specialization_part();
     Value_partContext *value_part();
@@ -8644,14 +8650,16 @@ public:
     Metadata_featureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Metadata_feature_declarationContext *metadata_feature_declaration();
+    Metadata_bodyContext *metadata_body();
     antlr4::tree::TerminalNode *SYMBOL_AT();
     antlr4::tree::TerminalNode *KEYWORD_METADATA();
+    std::vector<Prefix_metadata_memberContext *> prefix_metadata_member();
+    Prefix_metadata_memberContext* prefix_metadata_member(size_t i);
     antlr4::tree::TerminalNode *KEYWORD_ABOUT();
     std::vector<AnnotationContext *> annotation();
     AnnotationContext* annotation(size_t i);
-    std::vector<Prefix_metadata_memberContext *> prefix_metadata_member();
-    Prefix_metadata_memberContext* prefix_metadata_member(size_t i);
-    antlr4::tree::TerminalNode *SYMBOL_COMMA();
+    std::vector<antlr4::tree::TerminalNode *> SYMBOL_COMMA();
+    antlr4::tree::TerminalNode* SYMBOL_COMMA(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

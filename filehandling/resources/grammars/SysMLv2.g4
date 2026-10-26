@@ -39,7 +39,7 @@ dependency_declaration: (identification KEYWORD_FROM)? qualified_name (SYMBOL_CO
 annotation: qualified_name;
 owned_annotation: annotating_element;
 annotating_member: annotating_element;
-annotating_element: comment | documentation | textual_representation | metadata_feature;
+annotating_element: comment | documentation | textual_representation | metadata_usage;
 
 comment: (KEYWORD_COMMENT identification (KEYWORD_ABOUT annotation (SYMBOL_COMMA annotation)*)?)?(KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
 documentation: KEYWORD_DOC identification? (KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
@@ -526,10 +526,10 @@ prefix_metadata_annotation: SYMBOL_HASHTAG prefix_metadata_usage annotating_elem
 prefix_metadata_member: SYMBOL_HASHTAG prefix_metadata_usage;
 prefix_metadata_usage: owned_feature_typing;
 metadata_usage: usage_extention_keyword* (SYMBOL_AT | KEYWORD_METADATA) metadata_usage_declaration (KEYWORD_ABOUT annotation (SYMBOL_COMMA annotation)*)? metadata_body;
-metadata_usage_declaration: (identification defined_by)? owned_feature_typing;
-metadata_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN (definition_member | metadata_body_usage_member | alias_member | namespace_import) SYMBOL_CURLY_BRACKET_CLOSE;
+metadata_usage_declaration: (identification (defined_by | typed_by_operator))? owned_feature_typing;
+metadata_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN (metadata_body_usage_member | definition_member | alias_member | namespace_import)* SYMBOL_CURLY_BRACKET_CLOSE;
 metadata_body_usage_member: metadata_body_usage;
-metadata_body_usage: KEYWORD_REF? redefines_operator? owned_redefinition feature_specialization_part? value_part? metadata_body;
+metadata_body_usage: KEYWORD_REF? KEYWORD_FEATURE? redefines_operator? owned_redefinition feature_specialization_part? value_part? metadata_body;
 extended_definition: basic_definition_prefix? definition_extension_keyword+ KEYWORD_DEF definition;
 extended_usage: unextended_usage_prefix usage_extention_keyword+ usage;
 
