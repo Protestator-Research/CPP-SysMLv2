@@ -934,6 +934,9 @@ public:
     virtual void enterFeature(SysMLv2Parser::FeatureContext* ctx) override;
     virtual void exitFeature(SysMLv2Parser::FeatureContext* ctx) override;
 
+    virtual void enterKerml_explicit_feature(SysMLv2Parser::Kerml_explicit_featureContext* ctx) override;
+    virtual void exitKerml_explicit_feature(SysMLv2Parser::Kerml_explicit_featureContext* ctx) override;
+
     virtual void enterFeature_typing(SysMLv2Parser::Feature_typingContext* ctx) override;
     virtual void exitFeature_typing(SysMLv2Parser::Feature_typingContext* ctx) override;
 
@@ -1195,6 +1198,7 @@ private:
 
     void applyUsagePrefix(SysMLv2Parser::Usage_prefixContext* prefix, const std::shared_ptr<KerML::Entities::Feature>& feature);
     void applyOccurrenceUsagePrefix(SysMLv2Parser::Occurrence_usage_prefixContext* prefix, const std::shared_ptr<KerML::Entities::Feature>& feature);
+    void finishFeature(SysMLv2Parser::Feature_prefixContext* prefix, SysMLv2Parser::Feature_declarationContext* declaration);
     void applyFeatureSpecializationPart(SysMLv2Parser::Feature_specialization_partContext* part, const std::shared_ptr<KerML::Entities::Feature>& feature);
     void applyFeatureSpecifications(const std::vector<SysMLv2Parser::Feature_specializationContext*>& specifications, const std::shared_ptr<KerML::Entities::Feature>& feature);
 

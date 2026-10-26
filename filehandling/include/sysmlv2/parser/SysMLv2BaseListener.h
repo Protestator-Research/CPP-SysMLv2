@@ -127,6 +127,12 @@ public:
   virtual void enterOccurrence_usage_member(SysMLv2Parser::Occurrence_usage_memberContext * /*ctx*/) override { }
   virtual void exitOccurrence_usage_member(SysMLv2Parser::Occurrence_usage_memberContext * /*ctx*/) override { }
 
+  virtual void enterKerml_feature_member(SysMLv2Parser::Kerml_feature_memberContext * /*ctx*/) override { }
+  virtual void exitKerml_feature_member(SysMLv2Parser::Kerml_feature_memberContext * /*ctx*/) override { }
+
+  virtual void enterKerml_explicit_feature(SysMLv2Parser::Kerml_explicit_featureContext * /*ctx*/) override { }
+  virtual void exitKerml_explicit_feature(SysMLv2Parser::Kerml_explicit_featureContext * /*ctx*/) override { }
+
   virtual void enterStructure_usage_member(SysMLv2Parser::Structure_usage_memberContext * /*ctx*/) override { }
   virtual void exitStructure_usage_member(SysMLv2Parser::Structure_usage_memberContext * /*ctx*/) override { }
 

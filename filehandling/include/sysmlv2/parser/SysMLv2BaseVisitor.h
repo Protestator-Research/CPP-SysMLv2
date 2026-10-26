@@ -149,6 +149,14 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitKerml_feature_member(SysMLv2Parser::Kerml_feature_memberContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitKerml_explicit_feature(SysMLv2Parser::Kerml_explicit_featureContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitStructure_usage_member(SysMLv2Parser::Structure_usage_memberContext *ctx) override {
     return visitChildren(ctx);
   }

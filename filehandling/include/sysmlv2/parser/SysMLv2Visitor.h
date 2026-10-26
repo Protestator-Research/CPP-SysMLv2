@@ -89,6 +89,10 @@ public:
 
     virtual std::any visitOccurrence_usage_member(SysMLv2Parser::Occurrence_usage_memberContext *context) = 0;
 
+    virtual std::any visitKerml_feature_member(SysMLv2Parser::Kerml_feature_memberContext *context) = 0;
+
+    virtual std::any visitKerml_explicit_feature(SysMLv2Parser::Kerml_explicit_featureContext *context) = 0;
+
     virtual std::any visitStructure_usage_member(SysMLv2Parser::Structure_usage_memberContext *context) = 0;
 
     virtual std::any visitBehavior_usage_member(SysMLv2Parser::Behavior_usage_memberContext *context) = 0;

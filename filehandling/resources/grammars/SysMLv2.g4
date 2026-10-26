@@ -101,11 +101,15 @@ definition_body_item: definition_member |
                       non_occurrence_usage_member |
                       source_succession_member? occurrence_usage_member |
                       alias_member |
-                      namespace_import;
+                      namespace_import |
+                      kerml_feature_member;
 definition_member: member_prefix definition_element;
 variant_usage_member: member_prefix KEYWORD_VARIANT variant_usage_element;
 non_occurrence_usage_member: member_prefix non_occurrence_usage_element;
 occurrence_usage_member: member_prefix occurrence_usage_element;
+// KerML features in SysML bodies. Must stay the last alternative of the body rules: where an input reads both ways, SysML wins.
+kerml_feature_member: member_prefix kerml_explicit_feature;
+kerml_explicit_feature: feature_prefix KEYWORD_FEATURE feature_declaration? value_part? type_body;
 structure_usage_member: member_prefix structure_usage_element;
 behavior_usage_member: member_prefix behavior_usage_element;
 
@@ -258,7 +262,8 @@ interface_body_item: definition_member |
                      interface_non_occurrence_usage_member source_succession_member? |
                      interface_occurrence_usage_member |
                      alias_member |
-                     namespace_import;
+                     namespace_import |
+                     kerml_feature_member;
 interface_non_occurrence_usage_member: member_prefix interface_non_occurrence_usage_element;
 interface_non_occurrence_usage_element: reference_usage |
                                         attribute_usage |
@@ -312,7 +317,8 @@ non_behavior_body_item: namespace_import |
                         definition_member |
                         variant_usage_member |
                         non_occurrence_usage_member |
-                        source_succession_member? structure_usage_member;
+                        source_succession_member? structure_usage_member |
+                        kerml_feature_member;
 action_behavior_member: behavior_usage_member | action_node_member;
 initial_node_member: member_prefix KEYWORD_FIRST qualified_name relationship_body;
 action_node_member: member_prefix action_node;

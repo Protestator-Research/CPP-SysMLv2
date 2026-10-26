@@ -1929,31 +1929,58 @@ void SysMLv2ListenerImplementation::enterFeature(SysMLv2Parser::FeatureContext* 
 	recordPush(ctx, f);
 }
 void SysMLv2ListenerImplementation::exitFeature(SysMLv2Parser::FeatureContext* ctx) {
+	finishFeature(ctx->feature_prefix(), ctx->feature_declaration());
+}
+
+// A KerML feature written with the keyword `feature` inside the body of a SysML definition or usage (kerml_explicit_feature).
+void SysMLv2ListenerImplementation::enterKerml_explicit_feature(SysMLv2Parser::Kerml_explicit_featureContext* ctx) {
+	auto f = std::make_shared<KerML::Entities::Feature>();
+	ParentStack.push(f);
+	recordPush(ctx, f);
+}
+void SysMLv2ListenerImplementation::exitKerml_explicit_feature(SysMLv2Parser::Kerml_explicit_featureContext* ctx) {
+	finishFeature(ctx->feature_prefix(), ctx->feature_declaration());
+}
+
+// BasicFeaturePrefix = direction? derived? abstract? (composite | portion)? (var | const | readonly)? (the same flags as in the KerML parser).
+static void applyBasicFeaturePrefix(SysMLv2Parser::Basic_feature_prefixContext* prefix, const std::shared_ptr<KerML::Entities::Feature>& feature) {
+	if (!prefix || !feature) return;
+	applyFeatureDirectionFromContext(prefix->feature_direction(), feature);
+	if (prefix->KEYWORD_ABSTRACT() != nullptr) feature->setAbstract(true);
+	if (prefix->KEYWORD_DERIVED() != nullptr) feature->setIsDerived(true);
+	if (prefix->KEYWORD_COMPOSITE() != nullptr) feature->setIsComposite(true);
+	if (prefix->KEYWORD_PORTION() != nullptr) feature->setIsPortion(true);
+	// 'const' (and the legacy alias 'readonly') implies isVariable = true.
+	const bool isConstant = prefix->KEYWORD_CONST() != nullptr || prefix->KEYWORD_READONLY() != nullptr;
+	if (isConstant) feature->setIsConstant(true);
+	if (isConstant || prefix->KEYWORD_VAR() != nullptr) feature->setIsVariable(true);
+}
+
+// Completes the feature on top of the stack from its prefix and declaration, and hands it to its owner.
+void SysMLv2ListenerImplementation::finishFeature(SysMLv2Parser::Feature_prefixContext* prefix, SysMLv2Parser::Feature_declarationContext* declaration) {
 	if (ParentStack.empty()) return;
 	auto f = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+	if (!f) return;
 	ParentStack.pop();
 
-	if (ctx->feature_prefix() != nullptr)
+	if (prefix != nullptr)
 	{
 		// FeaturePrefix = ( EndFeaturePrefix ( OwnedCrossFeatureMember )? | BasicFeaturePrefix ) PrefixMetadataMember*
-		if (ctx->feature_prefix()->end_feature_prefix() != nullptr)
+		if (const auto endPrefix = prefix->end_feature_prefix()) {
 			f->setIsEnd(true);
-		const auto basicPrefix = ctx->feature_prefix()->basic_feature_prefix();
-		if (basicPrefix != nullptr && basicPrefix->feature_direction() != nullptr)
-		{
-			if (basicPrefix->feature_direction()->KEYWORD_IN() != nullptr)
-				f->setDirection(KerML::Entities::FeatureDirectionKind::IN);
-			if (basicPrefix->feature_direction()->KEYWORD_INOUT() != nullptr)
-				f->setDirection(KerML::Entities::FeatureDirectionKind::IN_OUT);
-			if (basicPrefix->feature_direction()->KEYWORD_OUT() != nullptr)
-				f->setDirection(KerML::Entities::FeatureDirectionKind::OUT);
+			// EndFeaturePrefix: 'const' implies isVariable = true.
+			if (endPrefix->KEYWORD_CONST() != nullptr) {
+				f->setIsConstant(true);
+				f->setIsVariable(true);
+			}
 		}
+		applyBasicFeaturePrefix(prefix->basic_feature_prefix(), f);
 	}
 
-	if (ctx->feature_declaration() != nullptr)
+	if (declaration != nullptr)
 	{
-		if (ctx->feature_declaration()->feature_identification() != nullptr) {
-			const auto idCtx = ctx->feature_declaration()->feature_identification();
+		if (declaration->feature_identification() != nullptr) {
+			const auto idCtx = declaration->feature_identification();
 
 			auto names = idCtx->NAME();
 
@@ -1964,20 +1991,26 @@ void SysMLv2ListenerImplementation::exitFeature(SysMLv2Parser::FeatureContext* c
 			else if (idCtx->SYMBOL_SMALLER() != nullptr && names.size() == 1) {
 				f->setDeclaredShortName(names[0]->getText());
 			}
-			else {
+			else if (!names.empty()) {
 				f->setDeclaredName(names[0]->getText());
 			}
 		}
 
-		if (ctx->feature_declaration()->feature_specialization_part() != nullptr && f)
+		if (declaration->feature_specialization_part() != nullptr)
 		{
-			applyFeatureSpecializationPart(ctx->feature_declaration()->feature_specialization_part(), f);
+			applyFeatureSpecializationPart(declaration->feature_specialization_part(), f);
 		}
 	}
 
-	if (f) {
-		Elements.push_back(f);
-		if (!ParentStack.empty()) ParentStack.top()->appendOwnedElement(f);
+	Elements.push_back(f);
+	if (!ParentStack.empty()) {
+		ParentStack.top()->appendOwnedElement(f);
+		// In the body of a type the feature is one of its owned features (a directed one is a parameter of a behavior, as for `in x : T;`).
+		if (auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top())) {
+			f->setOwner(type);
+			type->appendOwnedFeature(f);
+			f->setOwningType(type);
+		}
 	}
 }
 

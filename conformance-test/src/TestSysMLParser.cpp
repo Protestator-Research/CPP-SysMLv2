@@ -1469,3 +1469,160 @@ TEST(TestSysMLParser, MetadataUsageWithoutTypeIsAnError) {
     const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("part def P { metadata ; }");
     EXPECT_FALSE(errors.empty());
 }
+
+// KerML features (`feature`) in the bodies of SysML definitions and usages.
+namespace {
+std::vector<std::shared_ptr<KerML::Entities::Feature>> featuresNamed(const std::vector<std::shared_ptr<KerML::Entities::Element>>& elements, const std::string& name) {
+    std::vector<std::shared_ptr<KerML::Entities::Feature>> result;
+    for (const auto& element : elements) {
+        if (element->declaredName() != name) continue;
+        if (auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(element)) result.push_back(feature);
+    }
+    return result;
+}
+
+bool isKerMLFeature(const std::shared_ptr<KerML::Entities::Feature>& feature) {
+    return typeid(*feature) == typeid(KerML::Entities::Feature);
+}
+}
+
+TEST(TestSysMLParser, KerMLFeatureInDefinitionBody) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("attribute def Integer; part def P { in feature x : Integer; }");
+    EXPECT_TRUE(errors.empty());
+    const auto p = named<SysMLv2::Entities::PartDefinition>(elements, "P");
+    const auto integer = named<SysMLv2::Entities::AttributeDefinition>(elements, "Integer");
+    const auto candidates = featuresNamed(elements, "x");
+    ASSERT_NE(p, nullptr);
+    ASSERT_EQ(candidates.size(), 1u);
+    const auto x = candidates[0];
+    EXPECT_TRUE(isKerMLFeature(x));
+    ASSERT_TRUE(x->direction().has_value());
+    EXPECT_EQ(*x->direction(), KerML::Entities::IN);
+    ASSERT_EQ(x->ownedTyping().size(), 1u);
+    EXPECT_EQ(x->ownedTyping()[0]->type(), integer);
+    ASSERT_TRUE(x->owningType().has_value());
+    EXPECT_EQ(*x->owningType(), p);
+    EXPECT_EQ(x->owner(), p);
+    ASSERT_TRUE(x->owningFeatureMembership().has_value());
+    EXPECT_NE(*x->owningFeatureMembership(), nullptr);
+}
+
+TEST(TestSysMLParser, KerMLFeatureModifiersInBodies) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "part def P { out feature a : Real[0..1]; derived feature b; abstract feature c; inout feature d; }");
+    EXPECT_TRUE(errors.empty());
+    const auto a = featuresNamed(elements, "a");
+    const auto b = featuresNamed(elements, "b");
+    const auto c = featuresNamed(elements, "c");
+    const auto d = featuresNamed(elements, "d");
+    ASSERT_EQ(a.size(), 1u);
+    ASSERT_EQ(b.size(), 1u);
+    ASSERT_EQ(c.size(), 1u);
+    ASSERT_EQ(d.size(), 1u);
+    EXPECT_EQ(*a[0]->direction(), KerML::Entities::OUT);
+    EXPECT_EQ(*d[0]->direction(), KerML::Entities::IN_OUT);
+    EXPECT_TRUE(b[0]->isDerived());
+    EXPECT_FALSE(a[0]->isDerived());
+    EXPECT_TRUE(c[0]->isAbstract());
+    EXPECT_FALSE(a[0]->isAbstract());
+    bool hasMultiplicity = false;
+    for (const auto& child : a[0]->ownedElements()) {
+        if (std::dynamic_pointer_cast<KerML::Entities::Multiplicity>(child)) hasMultiplicity = true;
+    }
+    EXPECT_TRUE(hasMultiplicity);
+}
+
+TEST(TestSysMLParser, KerMLFeatureInUsageAndBehaviorBodies) {
+    for (const char* text : {"part p { in feature x : Integer; }", "interface def I { in feature x : Integer; }", "action def A { in feature x : Integer; }",
+                             "state def S { in feature x : Integer; }", "case def K { in feature x : Integer; }", "requirement def R { in feature x : Integer; }",
+                             "calc c { in feature x : Integer; }"}) {
+        const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(text);
+        EXPECT_TRUE(errors.empty()) << text;
+        const auto x = featuresNamed(elements, "x");
+        ASSERT_EQ(x.size(), 1u) << text;
+        EXPECT_TRUE(isKerMLFeature(x[0])) << text;
+        ASSERT_TRUE(x[0]->owningType().has_value()) << text;
+        EXPECT_EQ(x[0]->owner(), *x[0]->owningType()) << text;
+    }
+}
+
+// Where an input reads both ways, SysML wins: `feature` stays the name of a usage.
+TEST(TestSysMLParser, FeatureAsNameInBodyStaysAUsage) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("part def P { in feature : Integer; feature; ref feature :>> function::expr; }");
+    EXPECT_TRUE(errors.empty());
+    const auto features = featuresNamed(elements, "feature");
+    ASSERT_EQ(features.size(), 3u);
+    for (const auto& feature : features) EXPECT_FALSE(isKerMLFeature(feature));
+    EXPECT_NE(std::dynamic_pointer_cast<SysMLv2::Entities::ReferenceUsage>(features[0]), nullptr);
+    EXPECT_EQ(*features[0]->direction(), KerML::Entities::IN);
+}
+
+// A directed KerML feature in a calculation gets the same direction, owner and membership as the SysML `in y : T;`.
+TEST(TestSysMLParser, KerMLFeatureInCalculationIsTreatedLikeASysMLDirectedUsage) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("calc def C { in feature x : Integer; in y : Integer; }");
+    EXPECT_TRUE(errors.empty());
+    const auto c = named<SysMLv2::Entities::CalculationDefinition>(elements, "C");
+    const auto x = featuresNamed(elements, "x");
+    const auto y = featuresNamed(elements, "y");
+    ASSERT_NE(c, nullptr);
+    ASSERT_EQ(x.size(), 1u);
+    ASSERT_EQ(y.size(), 1u);
+    EXPECT_EQ(x[0]->direction(), y[0]->direction());
+    EXPECT_EQ(x[0]->owner(), y[0]->owner());
+    EXPECT_EQ(typeid(*x[0]->owningFeatureMembership().value()), typeid(*y[0]->owningFeatureMembership().value()));
+}
+
+TEST(TestSysMLParser, KerMLFeatureWithMissingTypeOrSemicolonIsAnError) {
+    EXPECT_FALSE(SysMLv2::Files::Parser::parseSysMLv2("part def P { in feature x : ; }").second.empty());
+    EXPECT_FALSE(SysMLv2::Files::Parser::parseSysMLv2("part def P { feature x : Integer }").second.empty());
+}
+
+TEST(TestSysMLParser, KerMLFeaturePrefixFlagsAtPackageLevel) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("package Q { abstract feature a; var feature b; const feature c; }");
+    EXPECT_TRUE(errors.empty());
+    const auto a = featuresNamed(elements, "a");
+    const auto b = featuresNamed(elements, "b");
+    const auto c = featuresNamed(elements, "c");
+    ASSERT_EQ(a.size(), 1u);
+    ASSERT_EQ(b.size(), 1u);
+    ASSERT_EQ(c.size(), 1u);
+    EXPECT_TRUE(a[0]->isAbstract());
+    EXPECT_FALSE(a[0]->isVariable());
+    EXPECT_TRUE(b[0]->isVariable());
+    EXPECT_FALSE(b[0]->isConstant());
+    EXPECT_TRUE(c[0]->isConstant());
+    EXPECT_TRUE(c[0]->isVariable());
+}
+
+TEST(TestSysMLParser, ConstEndKerMLFeatureInInterfaceAndConnectionDefinitions) {
+    for (const char* text : {"interface def I { const end feature x; }", "connection def C { const end feature x; }"}) {
+        const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(text);
+        EXPECT_TRUE(errors.empty()) << text;
+        const auto x = featuresNamed(elements, "x");
+        ASSERT_EQ(x.size(), 1u) << text;
+        EXPECT_TRUE(x[0]->isEnd()) << text;
+        EXPECT_TRUE(x[0]->isConstant()) << text;
+        EXPECT_TRUE(x[0]->isVariable()) << text;
+    }
+}
+
+TEST(TestSysMLParser, KerMLFeatureValueBelongsToTheFeature) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("part def P { feature x : Integer = 1; }");
+    EXPECT_TRUE(errors.empty());
+    const auto x = featuresNamed(elements, "x");
+    ASSERT_EQ(x.size(), 1u);
+    std::shared_ptr<KerML::Entities::FeatureValue> value;
+    for (const auto& element : elements) {
+        if (auto candidate = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(element)) value = candidate;
+    }
+    ASSERT_NE(value, nullptr);
+    ASSERT_NE(value->featureWithValue(), nullptr);
+    EXPECT_EQ(value->featureWithValue(), x[0]);
+}
+
+// A misspelled `feature` is still reported as before (no accidental recovery into a KerML feature).
+TEST(TestSysMLParser, MisspelledFeatureKeywordInBodyIsStillAnError) {
+    const auto errors = SysMLv2::Files::Parser::parseSysMLv2("part def P { featur x : Integer; }").second;
+    ASSERT_FALSE(errors.empty());
+    EXPECT_EQ(errors[0]->errorType(), SysMLv2::Files::ErrorType::SYNTAX_ERROR);
+}
