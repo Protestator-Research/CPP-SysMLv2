@@ -15,7 +15,7 @@ jobs:
     - name: Set up GCC 16
       uses: egor-tensin/setup-gcc@v2
       with:
-        version: latest
+        version: 16
         platform: x64
         cc: 1
     - uses: actions/checkout@v4
