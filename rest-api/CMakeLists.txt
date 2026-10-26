@@ -112,7 +112,7 @@ if(MSVC)
         ../sysmlinterfaces/include
         ../kerml/include)
 else ()
-    target_compile_options(sysmlv2rest PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
+    target_compile_options(sysmlv2rest PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror> $<$<AND:$<BOOL:${SYSMLV2_WERROR}>,$<CXX_COMPILER_ID:GNU>>:-Wno-error=uninitialized -Wno-error=maybe-uninitialized>)
     target_include_directories(sysmlv2rest PRIVATE
         ./include/
         ../sysmlinterfaces/include

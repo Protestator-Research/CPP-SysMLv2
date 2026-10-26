@@ -72,7 +72,7 @@ if(MSVC)
         ../filehandling/include
         ../kerml/include)
 else ()
-    target_compile_options(sysmlv2service PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
+    target_compile_options(sysmlv2service PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror> $<$<AND:$<BOOL:${SYSMLV2_WERROR}>,$<CXX_COMPILER_ID:GNU>>:-Wno-error=uninitialized -Wno-error=maybe-uninitialized>)
     target_include_directories(sysmlv2service PRIVATE
         ./include
         ../rest-api/include
