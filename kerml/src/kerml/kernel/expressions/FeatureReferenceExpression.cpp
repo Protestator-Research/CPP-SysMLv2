@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::shared_ptr<Feature> FeatureReferenceExpression::referent() const {
@@ -10,6 +12,7 @@ std::shared_ptr<Feature> FeatureReferenceExpression::referent() const {
 }
 
 void FeatureReferenceExpression::setReferent(std::shared_ptr<Feature> value) {
+    clearUnresolvedJsonReferences("referent");
     referent_ = std::move(value);
 }
 
@@ -19,3 +22,47 @@ FeatureReferenceExpression::FeatureReferenceExpression() {
 
 FeatureReferenceExpression::~FeatureReferenceExpression() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    FeatureReferenceExpression::FeatureReferenceExpression(const std::string& nameOrJson) :
+        FeatureReferenceExpression() {
+        _dType = "FeatureReferenceExpression";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string FeatureReferenceExpression::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Expression::serializeToJson());
+        json["referent"] = Json::reference(unresolvedJsonReferences("referent"), FeatureReferenceExpression::referent());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void FeatureReferenceExpression::deserializeAndPopulate(const std::string& jsonString) {
+        Expression::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "referent", ids))
+            setUnresolvedJsonReferences("referent", ids);
+    }
+
+    void FeatureReferenceExpression::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Expression::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("referent")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(ids->front()))) {
+                    FeatureReferenceExpression::setReferent(std::move(target));
+                    clearUnresolvedJsonReferences("referent");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("referent", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

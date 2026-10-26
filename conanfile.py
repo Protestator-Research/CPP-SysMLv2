@@ -32,7 +32,7 @@ class CPPSysMLRecipe(ConanFile):
         self.requires("date/3.0.4")
         if self.options.with_online:
             self.requires("libcurl/[>=8.4.0 <9]")
-        self.requires("antlr4-cppruntime/4.13.2")
+        self.requires("antlr4-cppruntime/4.13.2", transitive_headers=True)
 
     def config_options(self):
         if self.settings.os == "Windows":

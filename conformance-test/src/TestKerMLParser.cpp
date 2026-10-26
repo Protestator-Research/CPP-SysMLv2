@@ -8,6 +8,7 @@
 #include <kerml/parser/KerMLLexer.h>
 #include <kerml/parser/KerMLListener.h>
 #include <kerml/parser/KerMlErrorListener.h>
+#include <sysmlv2/parser/KeywordMisuseDiagnoser.h>
 #include <sysmlv2/Parser.h>
 #include <kerml/parser/KerMlListenerImplementation.h>
 #include <kerml/kernel/packages/Package.h>
@@ -1973,4 +1974,57 @@ TEST(TestKerMLListener, FeatureConstAndVarFlags) {
     check("x", true, true);
     check("y", false, false);
     EXPECT_FALSE(SysMLv2::Files::Parser::parseKerML("class C { var const feature z; }").second.empty());
+}
+
+TEST(TestKerMLListener, KeywordMisuseInvNot) {
+    const auto errors = SysMLv2::Files::Parser::parseKerML("classifier B { inv not { x > 1.0 } }").second;
+    ASSERT_EQ(errors.size(), 1u);
+    EXPECT_EQ(errors[0]->errorType(), SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    EXPECT_NE(errors[0]->description().find("inv false"), std::string::npos) << errors[0]->description();
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseKerML("classifier B { feature x : Real; inv false { x > 1.0 } }").second.empty());
+}
+
+TEST(TestKerMLListener, KeywordMisuseReservedWordAsName) {
+    const auto errors = SysMLv2::Files::Parser::parseKerML("class C { feature feature; }").second;
+    ASSERT_EQ(errors.size(), 1u);
+    EXPECT_EQ(errors[0]->errorType(), SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    EXPECT_NE(errors[0]->description().find("'feature' is a reserved keyword"), std::string::npos) << errors[0]->description();
+    // in KerML every keyword is reserved, an unrestricted name is fine
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseKerML("class C { feature 'feature'; }").second.empty());
+}
+
+TEST(TestKerMLListener, KeywordMisuseInvocationInTyping) {
+    const auto errors = SysMLv2::Files::Parser::parseKerML("class C { feature c : D(payload); }").second;
+    ASSERT_EQ(errors.size(), 1u);
+    EXPECT_EQ(errors[0]->errorType(), SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    EXPECT_NE(errors[0]->description().find("invocation"), std::string::npos) << errors[0]->description();
+}
+
+TEST(TestKerMLListener, KeywordMisusePositionAndChainSegment) {
+    const std::string invNot = "classifier B { inv not { x > 1.0 } }";
+    auto errors = SysMLv2::Files::Parser::parseKerML(invNot).second;
+    ASSERT_EQ(errors.size(), 1u);
+    EXPECT_EQ(errors[0]->getLine(), 1);
+    EXPECT_EQ(errors[0]->getColumn(), static_cast<int>(invNot.find("inv")));
+
+    const std::string typing = "class C { feature c : D(payload); }";
+    errors = SysMLv2::Files::Parser::parseKerML(typing).second;
+    ASSERT_EQ(errors.size(), 1u);
+    EXPECT_EQ(errors[0]->getColumn(), static_cast<int>(typing.find('(')));
+
+    // a keyword as a segment of a chain: the diagnosis replaces the plain syntax error at the same position
+    errors = SysMLv2::Files::Parser::parseKerML("class C { feature a; feature b = a.class; }").second;
+    ASSERT_EQ(errors.size(), 1u);
+    EXPECT_EQ(errors[0]->errorType(), SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    EXPECT_NE(errors[0]->description().find("'class' is a reserved keyword"), std::string::npos);
+}
+
+TEST(TestKerMLListener, KeywordMisuseDiagnoserFindsTheGrammarElementsItDependsOn) {
+    antlr4::ANTLRInputStream input("");
+    KerMLLexer lexer(&input);
+    antlr4::CommonTokenStream tokens(&lexer);
+    KerMLParser parser(&tokens);
+    EXPECT_TRUE(SysMLv2::Files::KeywordMisuseDiagnoser::missingGrammarElements(parser).empty());
+    EXPECT_TRUE(SysMLv2::Files::KeywordMisuseDiagnoser::isReservedKeyword(parser, "KEYWORD_INV"));
+    EXPECT_TRUE(SysMLv2::Files::KeywordMisuseDiagnoser::isReservedKeyword(parser, "KEYWORD_FEATURE"));
 }

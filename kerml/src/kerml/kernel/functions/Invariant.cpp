@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 bool Invariant::isNegated() const {
@@ -19,3 +21,43 @@ Invariant::Invariant() {
 
 Invariant::~Invariant() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    Invariant::Invariant(const std::string& nameOrJson) :
+        Invariant() {
+        _dType = "Invariant";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string Invariant::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(BooleanExpression::serializeToJson());
+        json["isNegated"] = Json::value(Invariant::isNegated());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Invariant::deserializeAndPopulate(const std::string& jsonString) {
+        BooleanExpression::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        {
+            bool value{};
+            if (Json::readBool(json, "isNegated", value)) {
+                try {
+                    Invariant::setIsNegated(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+    }
+
+    void Invariant::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        BooleanExpression::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

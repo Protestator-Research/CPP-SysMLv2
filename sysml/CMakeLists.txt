@@ -76,6 +76,7 @@ set(METADATA_HEADER
         include/sysml/metadata/MetadataUsage.h)
 
 set(MODEL_HEADER
+        include/sysml/model/ElementFactory.h
         include/sysml/model/Forward.h
         include/sysml/model/KerMLTypes.h
         include/sysml/model/Representation.h)
@@ -170,6 +171,7 @@ add_library(sysml
         ${VERIFICATION_CASES_HEADER}
         ${VIEWS_HEADER}
         src/sysml/AbstractSyntax.cpp
+        src/sysml/model/ElementFactory.cpp
         src/sysml/flows/FlowDefinition.cpp
         src/sysml/flows/FlowUsage.cpp
         src/sysml/flows/SuccessionFlowUsage.cpp
@@ -273,10 +275,13 @@ target_link_libraries(sysml PUBLIC
 target_include_directories(sysml PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>)
+# The JSON helpers of the KerML library (kerml/src/kerml/model/JsonSupport.h) are private to the libraries and are not installed.
+target_include_directories(sysml PRIVATE
+        ${PROJECT_SOURCE_DIR}/kerml/src)
 if(MSVC)
     target_compile_options(sysml PRIVATE /W4 /WX- /bigobj)
 else()
-    target_compile_options(sysml PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
+    target_compile_options(sysml PRIVATE -Wno-error=maybe-uninitialized -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror> $<$<AND:$<BOOL:${SYSMLV2_WERROR}>,$<CXX_COMPILER_ID:GNU>>:-Wno-error=uninitialized -Wno-error=maybe-uninitialized>)
 endif()
 
 include(GNUInstallDirs)

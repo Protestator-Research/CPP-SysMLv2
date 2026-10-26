@@ -12,6 +12,7 @@
 #include <chrono>
 #include <string>
 #include <memory>
+#include <optional>
 #include <vector>
 //---------------------------------------------------------
 // Internal Classes
@@ -54,8 +55,9 @@ namespace SysMLv2::REST {
         Project(Project &other);
 
         /**
-         * Generates a Project object from a JSON string. This will be used for the JSON interface of the Parser.
-         * @param JsonString
+         * Generates a Project object from a JSON string or from a plain name. This will be used for the JSON interface of the Parser.
+         * @param JsonString A JSON object (the text starts with '{') or the name of the Project.
+         * @throws std::invalid_argument If the text looks like JSON but is malformed or has values of a wrong type.
          */
         explicit Project(const std::string& JsonString);
 
@@ -77,15 +79,32 @@ namespace SysMLv2::REST {
          * @return
          */
         std::shared_ptr<Branch> getDefaultBranch();
+
+        /**
+         * Sets the default branch. The branch is also added to the branches of the project, if it is not contained yet.
+         * @param branch The new default branch.
+         */
         void setDefaultBranch(std::shared_ptr<Branch> branch);
+
+        /**
+         * All branches of the project. The default branch is contained.
+         */
+        [[nodiscard]] std::vector<std::shared_ptr<Branch>> getBranches() const;
+
+        /**
+         * The creation time of the project. Empty if the project was read from JSON without "created".
+         */
+        [[nodiscard]] std::optional<std::chrono::system_clock::time_point> getCreated() const;
 
         std::string serializeToJson() override;
 
     protected:
+        void deserializeAndPopulate(const std::string& jsonString) override;
+
         std::shared_ptr<DataVersion> m_DataVersion;
 
 
-        std::chrono::system_clock::time_point Created;
+        std::optional<std::chrono::system_clock::time_point> Created;
 
         std::vector<std::shared_ptr<Commit>> Commits;
         std::vector<std::shared_ptr<CommitReference>> CommitReferences;

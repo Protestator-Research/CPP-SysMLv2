@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <gtest/gtest.h>
 #include <sysmlv2/Parser.h>
 #include <sysml/SysML.h>
@@ -5,6 +6,7 @@
 #include <sysmlv2/parser/SysMLv2Lexer.h>
 #include <sysmlv2/parser/SysMLv2Parser.h>
 #include <sysmlv2/parser/SysMLv2ListenerImplementation.h>
+#include <sysmlv2/parser/KeywordMisuseDiagnoser.h>
 #include <kerml/kernel/packages/Package.h>
 
 namespace {
@@ -1132,4 +1134,495 @@ TEST(TestSysMLParser, ConstantOnCrossFeature) {
     EXPECT_TRUE(cross->isConstant());
     EXPECT_FALSE(hub->isConstant());
     EXPECT_FALSE(other->isConstant());
+}
+
+namespace {
+/// The errors of the given type among the errors of a parse.
+std::vector<std::shared_ptr<SysMLv2::Files::ParserError>> errorsOfType(const std::vector<std::shared_ptr<SysMLv2::Files::ParserError>>& errors,
+                                                                      SysMLv2::Files::ErrorType type) {
+    std::vector<std::shared_ptr<SysMLv2::Files::ParserError>> result;
+    for (const auto& error : errors) {
+        if (error->errorType() == type) result.push_back(error);
+    }
+    return result;
+}
+}
+
+TEST(TestSysMLParser, KeywordMisuseReservedWordAsName) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("action def T {\n  then action send { in cs : Integer; }\n}");
+    const auto misuse = errorsOfType(errors, SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    ASSERT_EQ(misuse.size(), 1u);
+    EXPECT_NE(misuse[0]->description().find("'send' is a reserved keyword"), std::string::npos) << misuse[0]->description();
+    EXPECT_EQ(misuse[0]->getLine(), 2);
+    EXPECT_EQ(misuse[0]->getColumn(), 14);
+    // the follow-up errors of the statement are suppressed
+    EXPECT_TRUE(errorsOfType(errors, SysMLv2::Files::ErrorType::SYNTAX_ERROR).empty());
+}
+
+TEST(TestSysMLParser, KeywordMisuseReservedWordInFeatureChain) {
+    const auto errors = SysMLv2::Files::Parser::parseSysMLv2("part def P { part a { port b; } flow a.b to send.cs; }").second;
+    const auto misuse = errorsOfType(errors, SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    ASSERT_EQ(misuse.size(), 1u);
+    EXPECT_NE(misuse[0]->description().find("'send'"), std::string::npos) << misuse[0]->description();
+}
+
+TEST(TestSysMLParser, KeywordMisusePerformAfterStateAction) {
+    for (const char* keyword : {"entry", "do", "exit"}) {
+        const std::string text = std::string("state def R { ") + keyword + " perform action init : Init; }";
+        const auto errors = SysMLv2::Files::Parser::parseSysMLv2(text).second;
+        const auto misuse = errorsOfType(errors, SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+        ASSERT_EQ(misuse.size(), 1u) << text;
+        EXPECT_NE(misuse[0]->description().find(std::string("'perform' is not written after '") + keyword + "'; write e.g."), std::string::npos)
+            << misuse[0]->description();
+    }
+}
+
+TEST(TestSysMLParser, KeywordMisuseInvocationInTyping) {
+    const auto errors = SysMLv2::Files::Parser::parseSysMLv2("action def T { action c : C(payload); }").second;
+    const auto misuse = errorsOfType(errors, SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    ASSERT_EQ(misuse.size(), 1u);
+    EXPECT_NE(misuse[0]->description().find("invocation is not allowed in a typing"), std::string::npos) << misuse[0]->description();
+}
+
+TEST(TestSysMLParser, KeywordMisuseIsNotReportedForValidTextOrOtherErrors) {
+    // reserved words as unrestricted names, KerML-only keywords as names, the correct state action forms: no error at all
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseSysMLv2("action def T { then action 'send' { in cs : Integer; } }").second.empty());
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseSysMLv2("part def P { part feature; part step; }").second.empty());
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseSysMLv2("state def R { entry action init : Init; entry init2; } action def Init;").second.empty());
+    // an ordinary syntax error keeps the message of the parser
+    const auto errors = SysMLv2::Files::Parser::parseSysMLv2("part def A { attribute x [0..*] = ; }").second;
+    ASSERT_FALSE(errors.empty());
+    EXPECT_TRUE(errorsOfType(errors, SysMLv2::Files::ErrorType::KEYWORD_MISUSE).empty());
+}
+
+TEST(TestSysMLParser, KeywordMisusePositions) {
+    for (const char* keyword : {"entry", "do", "exit"}) {
+        const std::string text = std::string("state def R { ") + keyword + " perform action init : Init; }";
+        const auto misuse = errorsOfType(SysMLv2::Files::Parser::parseSysMLv2(text).second, SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+        ASSERT_EQ(misuse.size(), 1u) << text;
+        EXPECT_EQ(misuse[0]->getLine(), 1);
+        EXPECT_EQ(misuse[0]->getColumn(), static_cast<int>(text.find("perform"))) << text;
+    }
+    const std::string typing = "action def T { action c : C(payload); }";
+    const auto misuse = errorsOfType(SysMLv2::Files::Parser::parseSysMLv2(typing).second, SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    ASSERT_EQ(misuse.size(), 1u);
+    EXPECT_EQ(misuse[0]->getLine(), 1);
+    EXPECT_EQ(misuse[0]->getColumn(), static_cast<int>(typing.find('(')));
+}
+
+TEST(TestSysMLParser, KeywordMisuseInvocationInTypedBy) {
+    for (const char* text : {"action def T { action c typed by C(1); }"}) {   // the grammar has no "defined by"
+        const auto misuse = errorsOfType(SysMLv2::Files::Parser::parseSysMLv2(text).second, SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+        ASSERT_EQ(misuse.size(), 1u) << text;
+        EXPECT_NE(misuse[0]->description().find("invocation is not allowed in a typing"), std::string::npos) << text;
+        EXPECT_EQ(misuse[0]->getColumn(), static_cast<int>(std::string(text).find('(')));
+    }
+    // an invocation as a value, 'typed by' and 'defined by' are valid
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseSysMLv2(
+        "attribute def C { attribute v : Integer; } part def P { attribute c : C = C(1); part d typed by P; }").second.empty());
+}
+
+TEST(TestSysMLParser, KeywordMisuseInChainsAndQualifiedNamesReplacesThePlainError) {
+    for (const char* text : {"part def P { part a; attribute x = a.send; }", "part def P { part x : Q::part; }", "part def P { part b :> P::part; }"}) {
+        const auto errors = SysMLv2::Files::Parser::parseSysMLv2(text).second;
+        ASSERT_EQ(errors.size(), 1u) << text;   // no plain error of the same statement next to the diagnosis
+        EXPECT_EQ(errors[0]->errorType(), SysMLv2::Files::ErrorType::KEYWORD_MISUSE) << text << ": " << errors[0]->description();
+    }
+}
+
+TEST(TestSysMLParser, KeywordMisuseAtTheEndOfTheText) {
+    // the parser stops at the end of the text: the diagnosis is reported there, too
+    const auto errors = SysMLv2::Files::Parser::parseSysMLv2("part def P { part loop").second;
+    ASSERT_FALSE(errors.empty());
+    EXPECT_EQ(errors[0]->errorType(), SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    EXPECT_NE(errors[0]->description().find("'loop' is a reserved keyword"), std::string::npos);
+    // the suppression of the follow-up errors ends with the statement: a later error is reported
+    const auto later = SysMLv2::Files::Parser::parseSysMLv2("part def P { part loop; attribute x [0..*] = ; }").second;
+    ASSERT_GE(later.size(), 2u);
+    EXPECT_EQ(later[0]->errorType(), SysMLv2::Files::ErrorType::KEYWORD_MISUSE);
+    EXPECT_EQ(later.back()->errorType(), SysMLv2::Files::ErrorType::SYNTAX_ERROR);
+}
+
+TEST(TestSysMLParser, MissingSemicolonOrNameIsNoKeywordMisuse) {
+    const std::vector<std::string> texts = {
+        "state def S { entry action a do action b; }", "state def S { entry state a; }", "state def S { entry then off; state off; }",
+        "action def A { fork then b; }", "action def A { decide then b; action b; }", "package P { alias A for B part def C; }",
+        "part def P { attribute def part def X; }", "part def P { part x :> part y; }", "part def P { abstract abstract part b; }",
+        // KerML-only keywords are names in SysML v2 and are not flagged, also when the text is broken elsewhere
+        "part def P { part feature; attribute x [0..*] = ; }",
+        // SysML v2 has no invariants: 'inv' is an ordinary name
+        "part def P { attribute inv : Boolean; constraint c { inv not true } }"};
+    for (const auto& text : texts) {
+        const auto errors = SysMLv2::Files::Parser::parseSysMLv2(text).second;
+        EXPECT_FALSE(errors.empty()) << text;
+        EXPECT_TRUE(errorsOfType(errors, SysMLv2::Files::ErrorType::KEYWORD_MISUSE).empty()) << text << ": " << (errors.empty() ? "" : errors[0]->description());
+    }
+}
+
+TEST(TestSysMLParser, KeywordMisuseDiagnoserFindsTheGrammarElementsItDependsOn) {
+    antlr4::ANTLRInputStream input("");
+    SysMLv2Lexer lexer(&input);
+    antlr4::CommonTokenStream tokens(&lexer);
+    SysMLv2Parser parser(&tokens);
+    EXPECT_TRUE(SysMLv2::Files::KeywordMisuseDiagnoser::missingGrammarElements(parser).empty());
+    EXPECT_TRUE(SysMLv2::Files::KeywordMisuseDiagnoser::isReservedKeyword(parser, "KEYWORD_SEND"));
+    EXPECT_TRUE(SysMLv2::Files::KeywordMisuseDiagnoser::isReservedKeyword(parser, "KEYWORD_LOOP"));
+    EXPECT_FALSE(SysMLv2::Files::KeywordMisuseDiagnoser::isReservedKeyword(parser, "KEYWORD_INV"));      // a name in SysML v2
+    EXPECT_FALSE(SysMLv2::Files::KeywordMisuseDiagnoser::isReservedKeyword(parser, "KEYWORD_FEATURE"));  // KerML-only keyword
+}
+
+namespace {
+std::shared_ptr<KerML::Entities::FeatureValue> featureValueOf(const std::shared_ptr<KerML::Entities::Element>& owner) {
+    for (const auto& child : owner->ownedElements()) {
+        if (auto candidate = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(child)) return candidate;
+    }
+    return nullptr;
+}
+}
+
+// `metadata M { name = value; ... }` (annotating element, body with several redefining features) used to fail with "expecting 'about'".
+TEST(TestSysMLParser, MetadataUsageWithBody) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(R"(
+        enum def ObdTrigger { Startup; Cyclic; }
+        metadata def ObdSignal {
+            attribute serviceId : Natural;
+            attribute pid : Natural[0..1];
+            attribute trigger : ObdTrigger[0..1];
+            attribute startOrder : Natural[0..1];
+        }
+        part def SUPPORTED_PIDS_01_20 {
+            metadata ObdSignal {
+                serviceId = 1;
+                pid = 0;
+                trigger = ObdTrigger::Startup;
+                startOrder = 1;
+            }
+        }
+    )");
+    EXPECT_TRUE(errors.empty());
+    const auto pids = named<SysMLv2::Entities::PartDefinition>(elements, "SUPPORTED_PIDS_01_20");
+    const auto signal = named<SysMLv2::Entities::MetadataDefinition>(elements, "ObdSignal");
+    ASSERT_NE(pids, nullptr);
+    ASSERT_NE(signal, nullptr);
+    const auto found = metadataUsagesOf(pids);
+    ASSERT_EQ(found.size(), 1u);
+    const auto& metadata = found[0];
+    ASSERT_NE(metadata->metadataDefinition(), nullptr);
+    EXPECT_EQ(metadata->metadataDefinition(), signal);
+    EXPECT_EQ(metadata->metadataDefinition()->declaredName(), "ObdSignal");
+    ASSERT_EQ(metadata->annotatedElements().size(), 1u);
+    EXPECT_EQ(metadata->annotatedElements()[0], pids);
+    EXPECT_FALSE(metadata->owningType().has_value());
+
+    const auto features = metadata->ownedFeature();
+    ASSERT_EQ(features.size(), 4u);
+    const std::vector<std::string> redefined = {"serviceId", "pid", "trigger", "startOrder"};
+    for (size_t i = 0; i < features.size(); ++i) {
+        ASSERT_EQ(features[i]->ownedRedefinition().size(), 1u);
+        const auto target = features[i]->ownedRedefinition()[0]->redefinedFeature();
+        ASSERT_NE(target, nullptr);
+        EXPECT_EQ(target->declaredName(), redefined[i]);
+        EXPECT_TRUE(std::find(signal->ownedFeature().begin(), signal->ownedFeature().end(), target) != signal->ownedFeature().end());
+        EXPECT_NE(featureValueOf(features[i]), nullptr);
+    }
+    const auto serviceId = std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(featureValueOf(features[0])->value());
+    ASSERT_NE(serviceId, nullptr);
+    EXPECT_EQ(serviceId->value(), 1);
+    const auto pid = std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(featureValueOf(features[1])->value());
+    ASSERT_NE(pid, nullptr);
+    EXPECT_EQ(pid->value(), 0);
+    const auto startOrder = std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(featureValueOf(features[3])->value());
+    ASSERT_NE(startOrder, nullptr);
+    EXPECT_EQ(startOrder->value(), 1);
+    // `ObdTrigger::Startup` is a reference expression, not a literal.
+    EXPECT_EQ(std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(featureValueOf(features[2])->value()), nullptr);
+}
+
+TEST(TestSysMLParser, MetadataUsageForms) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "metadata def M; part def A; part def B; part def P { metadata M; @M; metadata m : M; metadata n defined by M; } "
+        "metadata M about A, B;");
+    EXPECT_TRUE(errors.empty());
+    const auto p = named<SysMLv2::Entities::PartDefinition>(elements, "P");
+    ASSERT_NE(p, nullptr);
+    const auto found = metadataUsagesOf(p);
+    ASSERT_EQ(found.size(), 4u);
+    for (const auto& metadata : found) expectPrefixMetadata(metadata, p, "M");
+    EXPECT_EQ(found[2]->declaredName(), "m");
+    EXPECT_EQ(found[3]->declaredName(), "n");
+    const auto a = named<SysMLv2::Entities::PartDefinition>(elements, "A");
+    const auto b = named<SysMLv2::Entities::PartDefinition>(elements, "B");
+    std::shared_ptr<SysMLv2::Entities::MetadataUsage> trailing;
+    for (const auto& element : elements) {
+        if (auto candidate = std::dynamic_pointer_cast<SysMLv2::Entities::MetadataUsage>(element)) {
+            if (candidate->owner() != p) trailing = candidate;
+        }
+    }
+    ASSERT_NE(trailing, nullptr);
+    ASSERT_EQ(trailing->annotatedElements().size(), 2u);
+    EXPECT_EQ(trailing->annotatedElements()[0], a);
+    EXPECT_EQ(trailing->annotatedElements()[1], b);
+}
+
+// KerML-style metadata stays valid in SysML text: `typed by` and `feature x = 1;` body members.
+TEST(TestSysMLParser, MetadataUsageKerMLStyle) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "metadata def M { attribute x : Natural; } part def A; "
+        "part def P { metadata m typed by M; metadata M about A { feature x = 1; } }");
+    EXPECT_TRUE(errors.empty());
+    const auto p = named<SysMLv2::Entities::PartDefinition>(elements, "P");
+    const auto a = named<SysMLv2::Entities::PartDefinition>(elements, "A");
+    const auto definition = named<SysMLv2::Entities::MetadataDefinition>(elements, "M");
+    ASSERT_NE(p, nullptr);
+    ASSERT_NE(definition, nullptr);
+    const auto found = metadataUsagesOf(p);
+    ASSERT_EQ(found.size(), 2u);
+    EXPECT_EQ(found[0]->declaredName(), "m");
+    EXPECT_EQ(found[0]->metadataDefinition(), definition);
+    EXPECT_EQ(found[1]->metadataDefinition(), definition);
+    ASSERT_EQ(found[1]->annotatedElements().size(), 1u);
+    EXPECT_EQ(found[1]->annotatedElements()[0], a);
+    const auto features = found[1]->ownedFeature();
+    ASSERT_EQ(features.size(), 1u);
+    ASSERT_EQ(features[0]->ownedRedefinition().size(), 1u);
+    const auto target = features[0]->ownedRedefinition()[0]->redefinedFeature();
+    ASSERT_NE(target, nullptr);
+    EXPECT_EQ(target->declaredName(), "x");
+    const auto value = featureValueOf(features[0]);
+    ASSERT_NE(value, nullptr);
+    const auto literal = std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(value->value());
+    ASSERT_NE(literal, nullptr);
+    EXPECT_EQ(literal->value(), 1);
+}
+
+// `b = 1;`, `:>> b = 2;` and `redefines b = 3;` are all metadata body usages (unnamed redefining ReferenceUsages); a body can be nested.
+TEST(TestSysMLParser, MetadataBodyUsageForms) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "metadata def M { attribute b : Natural; attribute c : Natural; attribute d : Natural; } "
+        "part def P { metadata M { b = 1; :>> b = 2; redefines b = 3; c { d = 3; } } }");
+    EXPECT_TRUE(errors.empty());
+    const auto p = named<SysMLv2::Entities::PartDefinition>(elements, "P");
+    ASSERT_NE(p, nullptr);
+    const auto found = metadataUsagesOf(p);
+    ASSERT_EQ(found.size(), 1u);
+    const auto features = found[0]->ownedFeature();
+    ASSERT_EQ(features.size(), 4u);
+    const std::vector<std::string> redefined = {"b", "b", "b", "c"};
+    for (size_t i = 0; i < features.size(); ++i) {
+        EXPECT_NE(std::dynamic_pointer_cast<SysMLv2::Entities::ReferenceUsage>(features[i]), nullptr);
+        EXPECT_TRUE(features[i]->declaredName().value_or("").empty());
+        ASSERT_EQ(features[i]->ownedRedefinition().size(), 1u);
+        const auto target = features[i]->ownedRedefinition()[0]->redefinedFeature();
+        ASSERT_NE(target, nullptr);
+        EXPECT_EQ(target->declaredName(), redefined[i]);
+    }
+    for (size_t i = 0; i < 3; ++i) {
+        const auto value = featureValueOf(features[i]);
+        ASSERT_NE(value, nullptr);
+        const auto literal = std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(value->value());
+        ASSERT_NE(literal, nullptr);
+        EXPECT_EQ(literal->value(), static_cast<std::int64_t>(i + 1));
+    }
+    const auto nested = features[3]->ownedFeature();
+    ASSERT_EQ(nested.size(), 1u);
+    ASSERT_EQ(nested[0]->ownedRedefinition().size(), 1u);
+    ASSERT_NE(nested[0]->ownedRedefinition()[0]->redefinedFeature(), nullptr);
+    EXPECT_EQ(nested[0]->ownedRedefinition()[0]->redefinedFeature()->declaredName(), "d");
+}
+
+// `#X metadata Y;`: the prefix metadata annotates the metadata usage `Y`, which annotates the namespace.
+TEST(TestSysMLParser, PrefixMetadataOnMetadataUsage) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("metadata def X; metadata def Y; part def P { #X metadata Y; }");
+    EXPECT_TRUE(errors.empty());
+    const auto p = named<SysMLv2::Entities::PartDefinition>(elements, "P");
+    const auto x = named<SysMLv2::Entities::MetadataDefinition>(elements, "X");
+    const auto y = named<SysMLv2::Entities::MetadataDefinition>(elements, "Y");
+    ASSERT_NE(p, nullptr);
+    const auto outer = metadataUsagesOf(p);
+    ASSERT_EQ(outer.size(), 1u);
+    expectPrefixMetadata(outer[0], p, "Y");
+    EXPECT_EQ(outer[0]->metadataDefinition(), y);
+    const auto inner = metadataUsagesOf(outer[0]);
+    ASSERT_EQ(inner.size(), 1u);
+    expectPrefixMetadata(inner[0], outer[0], "X");
+    EXPECT_EQ(inner[0]->metadataDefinition(), x);
+}
+
+TEST(TestSysMLParser, MetadataUsageAboutAnnotatesTheTargets) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("metadata def M; part def A; part def B; metadata M about A, B;");
+    EXPECT_TRUE(errors.empty());
+    const auto a = named<SysMLv2::Entities::PartDefinition>(elements, "A");
+    const auto b = named<SysMLv2::Entities::PartDefinition>(elements, "B");
+    ASSERT_NE(a, nullptr);
+    ASSERT_NE(b, nullptr);
+    std::shared_ptr<SysMLv2::Entities::MetadataUsage> metadata;
+    for (const auto& element : elements) {
+        if (auto candidate = std::dynamic_pointer_cast<SysMLv2::Entities::MetadataUsage>(element)) metadata = candidate;
+    }
+    ASSERT_NE(metadata, nullptr);
+    ASSERT_EQ(metadata->annotatedElements().size(), 2u);
+    EXPECT_EQ(metadata->annotatedElements()[0], a);
+    EXPECT_EQ(metadata->annotatedElements()[1], b);
+}
+
+TEST(TestSysMLParser, MetadataUsageWithoutTypeIsAnError) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("part def P { metadata ; }");
+    EXPECT_FALSE(errors.empty());
+}
+
+// KerML features (`feature`) in the bodies of SysML definitions and usages.
+namespace {
+std::vector<std::shared_ptr<KerML::Entities::Feature>> featuresNamed(const std::vector<std::shared_ptr<KerML::Entities::Element>>& elements, const std::string& name) {
+    std::vector<std::shared_ptr<KerML::Entities::Feature>> result;
+    for (const auto& element : elements) {
+        if (element->declaredName() != name) continue;
+        if (auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(element)) result.push_back(feature);
+    }
+    return result;
+}
+
+bool isKerMLFeature(const std::shared_ptr<KerML::Entities::Feature>& feature) {
+    return typeid(*feature) == typeid(KerML::Entities::Feature);
+}
+}
+
+TEST(TestSysMLParser, KerMLFeatureInDefinitionBody) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("attribute def Integer; part def P { in feature x : Integer; }");
+    EXPECT_TRUE(errors.empty());
+    const auto p = named<SysMLv2::Entities::PartDefinition>(elements, "P");
+    const auto integer = named<SysMLv2::Entities::AttributeDefinition>(elements, "Integer");
+    const auto candidates = featuresNamed(elements, "x");
+    ASSERT_NE(p, nullptr);
+    ASSERT_EQ(candidates.size(), 1u);
+    const auto x = candidates[0];
+    EXPECT_TRUE(isKerMLFeature(x));
+    ASSERT_TRUE(x->direction().has_value());
+    EXPECT_EQ(*x->direction(), KerML::Entities::IN);
+    ASSERT_EQ(x->ownedTyping().size(), 1u);
+    EXPECT_EQ(x->ownedTyping()[0]->type(), integer);
+    ASSERT_TRUE(x->owningType().has_value());
+    EXPECT_EQ(*x->owningType(), p);
+    EXPECT_EQ(x->owner(), p);
+    ASSERT_TRUE(x->owningFeatureMembership().has_value());
+    EXPECT_NE(*x->owningFeatureMembership(), nullptr);
+}
+
+TEST(TestSysMLParser, KerMLFeatureModifiersInBodies) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "part def P { out feature a : Real[0..1]; derived feature b; abstract feature c; inout feature d; }");
+    EXPECT_TRUE(errors.empty());
+    const auto a = featuresNamed(elements, "a");
+    const auto b = featuresNamed(elements, "b");
+    const auto c = featuresNamed(elements, "c");
+    const auto d = featuresNamed(elements, "d");
+    ASSERT_EQ(a.size(), 1u);
+    ASSERT_EQ(b.size(), 1u);
+    ASSERT_EQ(c.size(), 1u);
+    ASSERT_EQ(d.size(), 1u);
+    EXPECT_EQ(*a[0]->direction(), KerML::Entities::OUT);
+    EXPECT_EQ(*d[0]->direction(), KerML::Entities::IN_OUT);
+    EXPECT_TRUE(b[0]->isDerived());
+    EXPECT_FALSE(a[0]->isDerived());
+    EXPECT_TRUE(c[0]->isAbstract());
+    EXPECT_FALSE(a[0]->isAbstract());
+    bool hasMultiplicity = false;
+    for (const auto& child : a[0]->ownedElements()) {
+        if (std::dynamic_pointer_cast<KerML::Entities::Multiplicity>(child)) hasMultiplicity = true;
+    }
+    EXPECT_TRUE(hasMultiplicity);
+}
+
+TEST(TestSysMLParser, KerMLFeatureInUsageAndBehaviorBodies) {
+    for (const char* text : {"part p { in feature x : Integer; }", "interface def I { in feature x : Integer; }", "action def A { in feature x : Integer; }",
+                             "state def S { in feature x : Integer; }", "case def K { in feature x : Integer; }", "requirement def R { in feature x : Integer; }",
+                             "calc c { in feature x : Integer; }"}) {
+        const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(text);
+        EXPECT_TRUE(errors.empty()) << text;
+        const auto x = featuresNamed(elements, "x");
+        ASSERT_EQ(x.size(), 1u) << text;
+        EXPECT_TRUE(isKerMLFeature(x[0])) << text;
+        ASSERT_TRUE(x[0]->owningType().has_value()) << text;
+        EXPECT_EQ(x[0]->owner(), *x[0]->owningType()) << text;
+    }
+}
+
+// Where an input reads both ways, SysML wins: `feature` stays the name of a usage.
+TEST(TestSysMLParser, FeatureAsNameInBodyStaysAUsage) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("part def P { in feature : Integer; feature; ref feature :>> function::expr; }");
+    EXPECT_TRUE(errors.empty());
+    const auto features = featuresNamed(elements, "feature");
+    ASSERT_EQ(features.size(), 3u);
+    for (const auto& feature : features) EXPECT_FALSE(isKerMLFeature(feature));
+    EXPECT_NE(std::dynamic_pointer_cast<SysMLv2::Entities::ReferenceUsage>(features[0]), nullptr);
+    EXPECT_EQ(*features[0]->direction(), KerML::Entities::IN);
+}
+
+// A directed KerML feature in a calculation gets the same direction, owner and membership as the SysML `in y : T;`.
+TEST(TestSysMLParser, KerMLFeatureInCalculationIsTreatedLikeASysMLDirectedUsage) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("calc def C { in feature x : Integer; in y : Integer; }");
+    EXPECT_TRUE(errors.empty());
+    const auto c = named<SysMLv2::Entities::CalculationDefinition>(elements, "C");
+    const auto x = featuresNamed(elements, "x");
+    const auto y = featuresNamed(elements, "y");
+    ASSERT_NE(c, nullptr);
+    ASSERT_EQ(x.size(), 1u);
+    ASSERT_EQ(y.size(), 1u);
+    EXPECT_EQ(x[0]->direction(), y[0]->direction());
+    EXPECT_EQ(x[0]->owner(), y[0]->owner());
+    EXPECT_EQ(typeid(*x[0]->owningFeatureMembership().value()), typeid(*y[0]->owningFeatureMembership().value()));
+}
+
+TEST(TestSysMLParser, KerMLFeatureWithMissingTypeOrSemicolonIsAnError) {
+    EXPECT_FALSE(SysMLv2::Files::Parser::parseSysMLv2("part def P { in feature x : ; }").second.empty());
+    EXPECT_FALSE(SysMLv2::Files::Parser::parseSysMLv2("part def P { feature x : Integer }").second.empty());
+}
+
+TEST(TestSysMLParser, KerMLFeaturePrefixFlagsAtPackageLevel) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("package Q { abstract feature a; var feature b; const feature c; }");
+    EXPECT_TRUE(errors.empty());
+    const auto a = featuresNamed(elements, "a");
+    const auto b = featuresNamed(elements, "b");
+    const auto c = featuresNamed(elements, "c");
+    ASSERT_EQ(a.size(), 1u);
+    ASSERT_EQ(b.size(), 1u);
+    ASSERT_EQ(c.size(), 1u);
+    EXPECT_TRUE(a[0]->isAbstract());
+    EXPECT_FALSE(a[0]->isVariable());
+    EXPECT_TRUE(b[0]->isVariable());
+    EXPECT_FALSE(b[0]->isConstant());
+    EXPECT_TRUE(c[0]->isConstant());
+    EXPECT_TRUE(c[0]->isVariable());
+}
+
+TEST(TestSysMLParser, ConstEndKerMLFeatureInInterfaceAndConnectionDefinitions) {
+    for (const char* text : {"interface def I { const end feature x; }", "connection def C { const end feature x; }"}) {
+        const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(text);
+        EXPECT_TRUE(errors.empty()) << text;
+        const auto x = featuresNamed(elements, "x");
+        ASSERT_EQ(x.size(), 1u) << text;
+        EXPECT_TRUE(x[0]->isEnd()) << text;
+        EXPECT_TRUE(x[0]->isConstant()) << text;
+        EXPECT_TRUE(x[0]->isVariable()) << text;
+    }
+}
+
+TEST(TestSysMLParser, KerMLFeatureValueBelongsToTheFeature) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("part def P { feature x : Integer = 1; }");
+    EXPECT_TRUE(errors.empty());
+    const auto x = featuresNamed(elements, "x");
+    ASSERT_EQ(x.size(), 1u);
+    std::shared_ptr<KerML::Entities::FeatureValue> value;
+    for (const auto& element : elements) {
+        if (auto candidate = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(element)) value = candidate;
+    }
+    ASSERT_NE(value, nullptr);
+    ASSERT_NE(value->featureWithValue(), nullptr);
+    EXPECT_EQ(value->featureWithValue(), x[0]);
+}
+
+// A misspelled `feature` is still reported as before (no accidental recovery into a KerML feature).
+TEST(TestSysMLParser, MisspelledFeatureKeywordInBodyIsStillAnError) {
+    const auto errors = SysMLv2::Files::Parser::parseSysMLv2("part def P { featur x : Integer; }").second;
+    ASSERT_FALSE(errors.empty());
+    EXPECT_EQ(errors[0]->errorType(), SysMLv2::Files::ErrorType::SYNTAX_ERROR);
 }

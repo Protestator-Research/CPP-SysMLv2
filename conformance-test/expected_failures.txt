@@ -10,8 +10,7 @@
 # A listed "library/" file is a real standard-library file that the parser cannot yet parse with
 # zero errors (or, before AP4's crash fixes, could not parse at all). Same ratchet semantics.
 
-# --- syntax/sysml/known_broken (1) ---
-syntax/sysml/known_broken/port_conjugation.sysml
+# --- syntax/sysml/known_broken (0) ---
 
 # --- syntax/kerml/known_broken (0) ---
 

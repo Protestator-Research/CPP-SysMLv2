@@ -17,6 +17,29 @@ public:
     /// Stored metamodel property.
     bool isImportAll() const;
     void setIsImportAll(bool value);
+
+    /**
+     * Serializes the Expose to JSON: all properties of the metaclass (stored and derived ones) and of its base classes. References to
+     * other elements are only written as identities ({"@id": "<uuid>"}), never recursively.
+     * @return The JSON representation of the Expose.
+     */
+    std::string serializeToJson() override;
+
+    /**
+     * Resolves the references that were read from JSON to the elements (see Element::resolveJsonReferences()), for the properties
+     * of Expose and of its base classes.
+     * @param lookup Returns the element of an element id, or an empty pointer if it is not known.
+     */
+    void resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) override;
+
+protected:
+    /**
+     * Populates the Expose from its JSON representation; the stored properties of Expose and of its base classes are read,
+     * computed derived properties are ignored, the derived references that the model keeps as snapshots are read like the stored ones,
+     * and references are only stored as ids.
+     * @param jsonString The JSON representation of the Expose.
+     */
+    void deserializeAndPopulate(const std::string& jsonString) override;
 private:
 };
 }

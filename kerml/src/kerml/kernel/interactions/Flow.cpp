@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::vector<std::shared_ptr<Classifier>> Flow::payloadType() const {
@@ -35,3 +37,40 @@ Flow::Flow() {
 
 Flow::~Flow() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    Flow::Flow(const std::string& nameOrJson) :
+        Flow() {
+        _dType = "Flow";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string Flow::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Connector::serializeToJson());
+        json.update(nlohmann::json::parse(Step::serializeToJson()));
+        json["payloadType"] = Json::reference(unresolvedJsonReferences("payloadType"), Flow::payloadType());
+        json["targetInputFeature"] = Json::reference(unresolvedJsonReferences("targetInputFeature"), Flow::targetInputFeature());
+        json["sourceOutputFeature"] = Json::reference(unresolvedJsonReferences("sourceOutputFeature"), Flow::sourceOutputFeature());
+        json["flowEnd"] = Json::reference(unresolvedJsonReferences("flowEnd"), Flow::flowEnd());
+        json["payloadFeature"] = Json::reference(unresolvedJsonReferences("payloadFeature"), Flow::payloadFeature());
+        json["interaction"] = Json::reference(unresolvedJsonReferences("interaction"), Flow::interaction());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Flow::deserializeAndPopulate(const std::string& jsonString) {
+        Connector::deserializeAndPopulate(jsonString);
+        Step::deserializeAndPopulate(jsonString);
+    }
+
+    void Flow::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Connector::resolveJsonReferences(lookup);
+        Step::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

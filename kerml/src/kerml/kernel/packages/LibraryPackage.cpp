@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 bool LibraryPackage::isStandard() const {
@@ -19,3 +21,43 @@ LibraryPackage::LibraryPackage() {
 
 LibraryPackage::~LibraryPackage() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    LibraryPackage::LibraryPackage(const std::string& nameOrJson) :
+        LibraryPackage() {
+        _dType = "LibraryPackage";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string LibraryPackage::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Package::serializeToJson());
+        json["isStandard"] = Json::value(LibraryPackage::isStandard());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void LibraryPackage::deserializeAndPopulate(const std::string& jsonString) {
+        Package::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        {
+            bool value{};
+            if (Json::readBool(json, "isStandard", value)) {
+                try {
+                    LibraryPackage::setIsStandard(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+    }
+
+    void LibraryPackage::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Package::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

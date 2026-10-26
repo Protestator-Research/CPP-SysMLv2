@@ -85,3 +85,5 @@
 #include <kerml/root/elements/Relationship.h>
 #include <kerml/root/elements/Element.h>
 #include <kerml/model/Representation.h>
+#include <kerml/model/ElementFactory.h>
+#include <kerml/model/ElementLinker.h>

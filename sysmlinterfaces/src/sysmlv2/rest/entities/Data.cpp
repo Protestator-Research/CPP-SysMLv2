@@ -31,6 +31,9 @@ namespace SysMLv2::REST {
         _dId = id;
     }
 
+    Data::Data(boost::uuids::uuid id, std::string type) : _dType(std::move(type)), _dId(id) {
+    }
+
     Data::Data(std::string jsonString) {
         Data::deserializeAndPopulate(jsonString);
     }

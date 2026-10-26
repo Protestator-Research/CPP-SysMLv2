@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::vector<std::shared_ptr<Behavior>> Step::behavior() const {
@@ -10,6 +12,7 @@ std::vector<std::shared_ptr<Behavior>> Step::behavior() const {
 }
 
 void Step::setBehavior(std::vector<std::shared_ptr<Behavior>> value) {
+    clearUnresolvedJsonReferences("behavior");
     detail::checkCollection(value, true, -1);
     behavior_ = std::move(value);
 }
@@ -23,6 +26,7 @@ std::vector<std::shared_ptr<Feature>> Step::parameter() const {
 }
 
 void Step::setParameter(std::vector<std::shared_ptr<Feature>> value) {
+    clearUnresolvedJsonReferences("parameter");
     detail::checkCollection(value, true, -1);
     parameter_ = std::move(value);
 }
@@ -37,3 +41,77 @@ Step::Step() {
 
 Step::~Step() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    Step::Step(const std::string& nameOrJson) :
+        Step() {
+        _dType = "Step";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string Step::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Feature::serializeToJson());
+        json["behavior"] = Json::reference(unresolvedJsonReferences("behavior"), Step::behavior());
+        json["parameter"] = Json::reference(unresolvedJsonReferences("parameter"), Step::parameter());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Step::deserializeAndPopulate(const std::string& jsonString) {
+        Feature::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "behavior", ids))
+            setUnresolvedJsonReferences("behavior", ids);
+        if (Json::readReferences(json, "parameter", ids))
+            setUnresolvedJsonReferences("parameter", ids);
+    }
+
+    void Step::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Feature::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("behavior")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Behavior>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Behavior>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Step::setBehavior(std::move(resolved));
+                    clearUnresolvedJsonReferences("behavior");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("behavior", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("parameter")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Feature>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Step::setParameter(std::move(resolved));
+                    clearUnresolvedJsonReferences("parameter");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("parameter", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

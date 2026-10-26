@@ -8,6 +8,7 @@ find_package(date REQUIRED)
 
 set(GLOBAL_HEADER
         include/sysmlv2/rest/sysmlv2rest_global.h
+        include/sysmlv2/rest/Deprecation.h
 )
 
 set(ENTITIES_HEADER
@@ -32,10 +33,20 @@ set(ENTITIES_HEADER
         include/sysmlv2/rest/entities/ProjectRequest.h
         src/sysmlv2/rest/entities/BranchRequest.cpp
         include/sysmlv2/rest/entities/BranchRequest.h
+        include/sysmlv2/rest/entities/TagRequest.h
+        include/sysmlv2/rest/entities/QueryRequest.h
+        include/sysmlv2/rest/entities/Constraint.h
 )
 
 set(SERIALIZATION_HEADER
         include/sysmlv2/rest/serialization/SysMLv2Deserializer.h)
+
+set(VERSIONING_HEADER
+        include/sysmlv2/rest/versioning/VersionedData.h
+        include/sysmlv2/rest/versioning/CommitFactory.h
+        include/sysmlv2/rest/versioning/Merge.h
+        include/sysmlv2/rest/versioning/ElementReferences.h
+        include/sysmlv2/rest/versioning/QueryEvaluation.h)
 
 
 add_library(sysmlv2rest
@@ -57,9 +68,22 @@ add_library(sysmlv2rest
         src/sysmlv2/rest/entities/MergeResult.cpp
         src/sysmlv2/rest/entities/DataDifference.cpp
         src/sysmlv2/rest/entities/ProjectRequest.cpp
+        src/sysmlv2/rest/entities/TagRequest.cpp
+        src/sysmlv2/rest/entities/QueryRequest.cpp
+        src/sysmlv2/rest/entities/Constraint.cpp
+        src/sysmlv2/rest/versioning/VersionedData.cpp
+        src/sysmlv2/rest/versioning/CommitFactory.cpp
+        src/sysmlv2/rest/versioning/Merge.cpp
+        src/sysmlv2/rest/versioning/ElementReferences.cpp
+        src/sysmlv2/rest/versioning/QueryEvaluation.cpp
+        src/sysmlv2/rest/versioning/VersioningDetail.h
+        src/sysmlv2/rest/entities/QueryJson.h
         src/sysmlv2/rest/WindowsFix.cpp
+        src/sysmlv2/rest/Deprecation.cpp
+        src/sysmlv2/rest/entities/RestJson.h
         ${ENTITIES_HEADER}
         ${SERIALIZATION_HEADER}
+        ${VERSIONING_HEADER}
         ${GLOBAL_HEADER})
 
 target_link_libraries(sysmlv2rest
@@ -67,7 +91,8 @@ target_link_libraries(sysmlv2rest
         nlohmann_json::nlohmann_json
         date::date
         sysmlv2interfaces
-        kerml)
+        kerml
+        sysml)
 
 include(GNUInstallDirs)
 install(TARGETS sysmlv2rest ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
@@ -75,6 +100,7 @@ install(TARGETS sysmlv2rest RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${ENTITIES_HEADER} DESTINATION include/sysmlv2/rest/entities)
 install(FILES ${GLOBAL_HEADER} DESTINATION include/sysmlv2/rest)
 install(FILES ${SERIALIZATION_HEADER} DESTINATION include/sysmlv2/rest/serialization)
+install(FILES ${VERSIONING_HEADER} DESTINATION include/sysmlv2/rest/versioning)
 
 
 
@@ -86,7 +112,7 @@ if(MSVC)
         ../sysmlinterfaces/include
         ../kerml/include)
 else ()
-    target_compile_options(sysmlv2rest PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
+    target_compile_options(sysmlv2rest PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror> $<$<AND:$<BOOL:${SYSMLV2_WERROR}>,$<CXX_COMPILER_ID:GNU>>:-Wno-error=uninitialized -Wno-error=maybe-uninitialized>)
     target_include_directories(sysmlv2rest PRIVATE
         ./include/
         ../sysmlinterfaces/include

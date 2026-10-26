@@ -356,7 +356,7 @@ metaclass: type_prefix? KEYWORD_METACLASS (identification | classifier_declarati
 prefix_metadata_annotation: SYMBOL_HASHTAG prefix_metadata_feature;
 prefix_metadata_member: SYMBOL_HASHTAG prefix_metadata_feature;
 prefix_metadata_feature: owned_feature_typing;
-metadata_feature: (prefix_metadata_member)* (SYMBOL_AT | KEYWORD_METADATA) metadata_feature_declaration (KEYWORD_ABOUT annotation (SYMBOL_COMMA annotation));
+metadata_feature: (prefix_metadata_member)* (SYMBOL_AT | KEYWORD_METADATA) metadata_feature_declaration (KEYWORD_ABOUT annotation (SYMBOL_COMMA annotation)*)? metadata_body;
 metadata_feature_declaration: (identification typed_by_operator)? owned_feature_typing;
 metadata_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN (metadata_body_element)* SYMBOL_CURLY_BRACKET_CLOSE);
 metadata_body_element: non_feature_member |

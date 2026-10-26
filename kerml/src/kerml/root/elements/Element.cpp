@@ -18,6 +18,8 @@
 
 #include "kerml/root/annotations/Annotation.h"
 #include "kerml/root/annotations/TextualRepresentation.h"
+#include <kerml/root/namespaces/OwningMembership.h>
+#include "../../model/JsonSupport.h"
 
 
 namespace KerML::Entities {
@@ -107,7 +109,103 @@ namespace KerML::Entities {
     }
 
     void Element::deserializeAndPopulate(const std::string &jsonString) {
-        Data::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        if (!json.is_object())
+            throw std::invalid_argument("The JSON of an Element must be an object.");
+
+        // The element id is the "@id"; "elementId" is only used if there is no valid "@id". Both are kept the same.
+        std::optional<boost::uuids::uuid> id;
+        for (const char* key : {"@id", "elementId"}) {
+            const auto it = json.find(key);
+            if (it != json.end() && it->is_string())
+                id = Json::parseIdentity(*it);
+            if (id)
+                break;
+        }
+        if (id)
+            assignElementId(*id);
+
+        Json::readStringArray(json, SysMLv2::REST::JSON_ALIAS_ID_ENTITY.c_str(), AliasIds);
+        sortAliasIds();
+        Json::readString(json, SysMLv2::REST::JSON_DECLARED_NAME_ENTITY.c_str(), DeclaredName);
+        Json::readString(json, SysMLv2::REST::JSON_DECLARED_SHORT_NAME_ENTITY.c_str(), DeclaredShortName);
+        // (name, shortName and qualifiedName are derived: they feed effectiveName() and would change the name of the element)
+        Json::readBool(json, SysMLv2::REST::JSON_IS_IMPLIED_INCLUDED_ENTITY.c_str(), IsImpliedIncluded);
+        Json::readBool(json, SysMLv2::REST::JSON_IS_LIBRARY_ELEMENT_ENTITY.c_str(), IsLibraryElement);
+
+        std::vector<boost::uuids::uuid> ids;
+        // (older versions wrote the property as "ownedRelationships")
+        if (Json::readReferences(json, "ownedRelationship", ids) || Json::readReferences(json, "ownedRelationships", ids))
+            setUnresolvedJsonReferences("ownedRelationship", ids);
+        if (Json::readReferences(json, "owningRelationship", ids))
+            setUnresolvedJsonReferences("owningRelationship", ids);
+        // The derived references that Element keeps as caches (see the generated code of the other classes).
+        for (const char* key : {"owner", "ownedElement", "documentation", "ownedAnnotation", "textualRepresentation"}) {
+            if (Json::readReferences(json, key, ids))
+                setUnresolvedJsonReferences(key, ids);
+        }
+    }
+
+    std::optional<std::vector<boost::uuids::uuid>> Element::unresolvedJsonReferences(const std::string& property) const {
+        const auto it = UnresolvedJsonReferences.find(property);
+        if (it == UnresolvedJsonReferences.end())
+            return std::nullopt;
+        return it->second;
+    }
+
+    void Element::setUnresolvedJsonReferences(const std::string& property, std::vector<boost::uuids::uuid> ids) {
+        if (ids.empty())
+            UnresolvedJsonReferences.erase(property);
+        else
+            UnresolvedJsonReferences[property] = std::move(ids);
+    }
+
+    void Element::clearUnresolvedJsonReferences(const std::string& property) {
+        UnresolvedJsonReferences.erase(property);
+    }
+
+    bool Element::hasUnresolvedJsonReferences() const {
+        return !UnresolvedJsonReferences.empty();
+    }
+
+    void Element::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        if (const auto ids = unresolvedJsonReferences("ownedRelationship")) {
+            try {
+                std::vector<std::shared_ptr<Relationship>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<Relationship>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                if (resolved.size() == ids->size()) {
+                    setOwnedRelationship(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedRelationship");
+                }
+            } catch (const std::exception&) {
+                // The references stay unresolved if the model refuses them.
+                setUnresolvedJsonReferences("ownedRelationship", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("owningRelationship")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<Relationship>(lookup(ids->front()))) {
+                    setOwningRelationship(std::move(target));
+                    clearUnresolvedJsonReferences("owningRelationship");
+                }
+            } catch (const std::exception&) {
+                setUnresolvedJsonReferences("owningRelationship", *ids);
+            }
+        }
+        resolveCache<Element>("owner", lookup, [this](std::shared_ptr<Element> value) { setOwner(std::move(value)); });
+        resolveCaches<Element>("ownedElement", lookup, [this](std::vector<std::shared_ptr<Element>> value) { setOwnedElement(std::move(value)); });
+        resolveCaches<Documentation>("documentation", lookup, [this](std::vector<std::shared_ptr<Documentation>> value) { setDocumentation(std::move(value)); });
+        resolveCaches<Annotation>("ownedAnnotation", lookup, [this](std::vector<std::shared_ptr<Annotation>> value) { setOwnedAnnotation(std::move(value)); });
+        resolveCaches<TextualRepresentation>("textualRepresentation", lookup, [this](std::vector<std::shared_ptr<TextualRepresentation>> value) { setTextualRepresentation(std::move(value)); });
+    }
+
+    std::string Element::sourceJson() const {
+        return SourceJson;
     }
 
     void Element::sortAliasIds() {
@@ -115,10 +213,45 @@ namespace KerML::Entities {
     }
 
     Element::Element(std::string elementID, std::shared_ptr<Element> owner) :
-        Data(boost::uuids::string_generator()(elementID)),
-        ElementId(boost::uuids::string_generator()(elementID)) {
-        _dType = "Element";
-        Owner = owner;
+        Element(Json::elementIdOf(elementID), std::move(owner)) {
+        if (Json::looksLikeJson(elementID)) {
+            Element::deserializeAndPopulate(elementID);
+            // a plain Element keeps the type of the JSON, like fromJson()
+            std::string type;
+            if (Json::readString(nlohmann::json::parse(elementID), SysMLv2::REST::JSON_TYPE_ENTITY.c_str(), type) && !type.empty())
+                _dType = type;
+            captureJsonSource(elementID);
+        }
+    }
+
+    void Element::captureJsonSource(const std::string& jsonString) {
+        SourceJson.clear();
+        BaselineJson = serializeToJson();
+        SourceJson = nlohmann::json::parse(jsonString).dump();
+    }
+
+    void Element::discardSourceJson() {
+        SourceJson.clear();
+        BaselineJson.clear();
+    }
+
+    std::string Element::applyJsonSource(const std::string& produced) {
+        if (SourceJson.empty())
+            return produced;
+        nlohmann::json result = nlohmann::json::parse(produced);
+        const nlohmann::json source = nlohmann::json::parse(SourceJson);
+        const nlohmann::json baseline = nlohmann::json::parse(BaselineJson);
+        for (auto it = source.begin(); it != source.end(); ++it) {
+            const auto current = result.find(it.key());
+            if (current == result.end()) {
+                result[it.key()] = it.value();
+                continue;
+            }
+            const auto original = baseline.find(it.key());
+            if (original != baseline.end() && *original == *current)
+                *current = it.value();
+        }
+        return result.dump(JSON_INTENT);
     }
 
     void Element::assignElementId(const boost::uuids::uuid& elementId) {
@@ -164,6 +297,7 @@ namespace KerML::Entities {
     }
 
     void Element::setOwner(std::shared_ptr<Element> owner) {
+        clearUnresolvedJsonReferences("owner");
         Owner = owner;
     }
 
@@ -263,65 +397,25 @@ namespace KerML::Entities {
         json[SysMLv2::REST::JSON_ELEMENT_ID_ENTITY] = boost::uuids::to_string(ElementId);
         json[SysMLv2::REST::JSON_ALIAS_ID_ENTITY] = AliasIds;
 
-        json[SysMLv2::REST::JSON_NAME_ENTITY] = Name;
-        json[SysMLv2::REST::JSON_DECLARED_NAME_ENTITY] = DeclaredName;
-        json[SysMLv2::REST::JSON_DECLARED_SHORT_NAME_ENTITY] = DeclaredShortName;
-
-        std::string ownedRelationshipsString = "[\r\n";
-        for (size_t i = 0; i < OwnedRelationships.size(); i++) {
-            ownedRelationshipsString += OwnedRelationships[i]->serializeAsIdentity();
-            if (i != (OwnedRelationships.size()-1))
-                ownedRelationshipsString += ",\r\n";
-        }
-        ownedRelationshipsString += "]\r\n";
-        json[SysMLv2::REST::JSON_OWNED_RELATIONSHIPS_ENTITY] = nlohmann::json::parse(ownedRelationshipsString);
-
+        json[SysMLv2::REST::JSON_NAME_ENTITY] = Json::value(name());
+        json[SysMLv2::REST::JSON_DECLARED_NAME_ENTITY] = Json::value(declaredName());
+        json[SysMLv2::REST::JSON_DECLARED_SHORT_NAME_ENTITY] = Json::value(declaredShortName());
+        json[SysMLv2::REST::JSON_SHORT_NAME_ENTITY] = Json::value(shortName());
+        json[SysMLv2::REST::JSON_QUALIFIED_NAME_ENTITY] = Json::value(qualifiedName());
         json[SysMLv2::REST::JSON_IS_IMPLIED_INCLUDED_ENTITY] = IsImpliedIncluded;
-        json[SysMLv2::REST::JSON_OWNER_ENTITY] = Owner? nlohmann::json::parse(Owner->serializeAsIdentity()):"";
-
-        std::string ownedElementsString = "[\r\n";
-        for (size_t i = 0; i < OwnedElements.size(); i++) {
-            ownedElementsString += OwnedElements[i]->serializeAsIdentity();
-            if (i != (OwnedElements.size()-1))
-                ownedElementsString += ",\r\n";
-        }
-        ownedElementsString += "]\r\n";
-        json[SysMLv2::REST::JSON_OWNED_ELEMENTS_ENTITY] = nlohmann::json::parse(ownedElementsString);
-
-        json[SysMLv2::REST::JSON_SHORT_NAME_ENTITY] = ShortName;
-        json[SysMLv2::REST::JSON_QUALIFIED_NAME_ENTITY] = QualifiedName;
         json[SysMLv2::REST::JSON_IS_LIBRARY_ELEMENT_ENTITY] = IsLibraryElement;
 
-        std::string docuementationsString = "[\r\n";
-        for (size_t i = 0; i < Documentations.size(); i++) {
-            docuementationsString += Documentations[i]->serializeAsIdentity();
-            if (i != (Documentations.size()-1))
-                docuementationsString += ",\r\n";
-        }
-        docuementationsString += "]\r\n";
-        json[SysMLv2::REST::JSON_DOCUMENTATION_ENTITY] = nlohmann::json::parse(docuementationsString);
+        json["ownedRelationship"] = Json::reference(unresolvedJsonReferences("ownedRelationship"), OwnedRelationships);
+        json["owningRelationship"] = Json::reference(unresolvedJsonReferences("owningRelationship"), OwningRelationship);
+        json["owningMembership"] = Json::identity(owningMembership());
+        json["owningNamespace"] = Json::identity(owningNamespace());
+        json[SysMLv2::REST::JSON_OWNER_ENTITY] = Json::reference(unresolvedJsonReferences("owner"), Owner);
+        json["ownedElement"] = Json::reference(unresolvedJsonReferences("ownedElement"), OwnedElements);
+        json[SysMLv2::REST::JSON_DOCUMENTATION_ENTITY] = Json::reference(unresolvedJsonReferences("documentation"), Documentations);
+        json[SysMLv2::REST::JSON_OWNED_ANNOTATION_ENTITY] = Json::reference(unresolvedJsonReferences("ownedAnnotation"), OwnedAnnotations);
+        json[SysMLv2::REST::JSON_TEXTUAL_REPRESENTATION_ENTITY] = Json::reference(unresolvedJsonReferences("textualRepresentation"), TextualRepresentations);
 
-        std::string ownedAnnotationsString = "[\r\n";
-        for (size_t i = 0; i < OwnedAnnotations.size(); i++) {
-            ownedAnnotationsString += OwnedAnnotations[i]->serializeAsIdentity();
-            if (i != (OwnedAnnotations.size()-1))
-                ownedAnnotationsString += ",\r\n";
-        }
-        ownedAnnotationsString += "]\r\n";
-        json[SysMLv2::REST::JSON_OWNED_ANNOTATION_ENTITY] = nlohmann::json::parse(ownedAnnotationsString);
-
-        std::string textualRepresentationString = "[\r\n";
-        for (size_t i = 0; i < TextualRepresentations.size(); i++) {
-            textualRepresentationString += TextualRepresentations[i]->serializeAsIdentity();
-            if (i != (TextualRepresentations.size()-1))
-                textualRepresentationString += ",\r\n";
-        }
-        textualRepresentationString += "]\r\n";
-        json[SysMLv2::REST::JSON_TEXTUAL_REPRESENTATION_ENTITY] = nlohmann::json::parse(textualRepresentationString);
-
-        json[SysMLv2::REST::JSON_OWNING_RELATIONSHIP_ENTITY] = OwningRelationship?nlohmann::json::parse(OwningRelationship->serializeAsIdentity()):"";
-
-        return json.dump(JSON_INTENT);
+        return applyJsonSource(json.dump(JSON_INTENT));
     }
 } // KerML::Entities
 

@@ -39,7 +39,7 @@ dependency_declaration: (identification KEYWORD_FROM)? qualified_name (SYMBOL_CO
 annotation: qualified_name;
 owned_annotation: annotating_element;
 annotating_member: annotating_element;
-annotating_element: comment | documentation | textual_representation | metadata_feature;
+annotating_element: comment | documentation | textual_representation | metadata_usage;
 
 comment: (KEYWORD_COMMENT identification (KEYWORD_ABOUT annotation (SYMBOL_COMMA annotation)*)?)?(KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
 documentation: KEYWORD_DOC identification? (KEYWORD_LOCALE STRING_VALUE)? REGULAR_COMMENT;
@@ -101,11 +101,15 @@ definition_body_item: definition_member |
                       non_occurrence_usage_member |
                       source_succession_member? occurrence_usage_member |
                       alias_member |
-                      namespace_import;
+                      namespace_import |
+                      kerml_feature_member;
 definition_member: member_prefix definition_element;
 variant_usage_member: member_prefix KEYWORD_VARIANT variant_usage_element;
 non_occurrence_usage_member: member_prefix non_occurrence_usage_element;
 occurrence_usage_member: member_prefix occurrence_usage_element;
+// KerML features in SysML bodies. Must stay the last alternative of the body rules: where an input reads both ways, SysML wins.
+kerml_feature_member: member_prefix kerml_explicit_feature;
+kerml_explicit_feature: feature_prefix KEYWORD_FEATURE feature_declaration? value_part? type_body;
 structure_usage_member: member_prefix structure_usage_element;
 behavior_usage_member: member_prefix behavior_usage_element;
 
@@ -232,6 +236,10 @@ part_usage: occurrence_usage_prefix KEYWORD_PART usage;
 port_definition: definition_prefix KEYWORD_PORT KEYWORD_DEF definition;
 port_usage: occurrence_usage_prefix KEYWORD_PORT usage;
 conjungated_port_typing: SYMBOL_CONJUGATES qualified_name;
+// SysML 8.2.2.6.5: FeatureTyping/Typings/TypedBy; FeatureTyping = OwnedFeatureTyping | ConjugatedPortTyping (8.2.2.12). Overrides the KerML typed_by/typings rules (which only allow owned_feature_typing).
+feature_typing_target: owned_feature_typing | conjungated_port_typing;
+typings: typed_by (SYMBOL_COMMA feature_typing_target)*;
+typed_by: typed_by_operator feature_typing_target;
 
 connection_definition: occurrence_definition_prefix KEYWORD_CONNECTION KEYWORD_DEF definition;
 connection_usage: occurrence_usage_prefix ((KEYWORD_CONNECTION usage_declaration value_part? (KEYWORD_CONNECT connector_part)?)| (KEYWORD_CONNECT connector_part)) usage_body;
@@ -254,7 +262,8 @@ interface_body_item: definition_member |
                      interface_non_occurrence_usage_member source_succession_member? |
                      interface_occurrence_usage_member |
                      alias_member |
-                     namespace_import;
+                     namespace_import |
+                     kerml_feature_member;
 interface_non_occurrence_usage_member: member_prefix interface_non_occurrence_usage_element;
 interface_non_occurrence_usage_element: reference_usage |
                                         attribute_usage |
@@ -279,19 +288,19 @@ allocation_usage_declaration: KEYWORD_ALLOCATION usage_declaration (KEYWORD_ALLO
 
 flow_definition: occurrence_definition_prefix KEYWORD_FLOW KEYWORD_DEF definition;
 message: occurrence_usage_prefix KEYWORD_MESSAGE message_declaration definition_body;
-message_declaration: usage_declaration value_part? (KEYWORD_OF flow_payload_feature_member)? (KEYWORD_FROM message_event_member KEYWORD_TO message_event_member)? | message_event_member KEYWORD_TO message_event_member;
+message_declaration: usage_declaration? value_part? (KEYWORD_OF flow_payload_feature_member)? (KEYWORD_FROM message_event_member KEYWORD_TO message_event_member)? | message_event_member KEYWORD_TO message_event_member;
 message_event_member: message_event;
 message_event: owned_reference_subsetting;
 flow_usage: occurrence_usage_prefix KEYWORD_FLOW flow_declaration definition_body;
 succession_flow_usage: occurrence_usage_prefix KEYWORD_SUCCESSION KEYWORD_FLOW flow_declaration definition_body;
-flow_declaration: usage_declaration value_part? (KEYWORD_OF flow_payload_feature_member)? (KEYWORD_OF flow_end_member KEYWORD_TO flow_end_member)? | flow_end_member KEYWORD_TO flow_end_member;
+flow_declaration: usage_declaration? value_part? (KEYWORD_OF flow_payload_feature_member)? (KEYWORD_FROM flow_end_member KEYWORD_TO flow_end_member)? | flow_end_member KEYWORD_TO flow_end_member;
 flow_payload_feature_member: flow_payload_feature;
 flow_payload_feature: payload_feature;
 payload_feature: identification? payload_feature_specialization_part value_part? | owned_feature_typing owned_multiplicity? | owned_multiplicity owned_feature_typing;
 payload_feature_specialization_part: feature_specialization+ (multiplicity_part feature_specialization*)? | multiplicity_part feature_specialization+;
 flow_end_member: flow_end;
 flow_end: flow_end_subsetting? flow_feature_member;
-flow_end_subsetting: qualified_name | feature_chain_prefix;
+flow_end_subsetting: qualified_name SYMBOL_DOT | feature_chain_prefix;
 feature_chain_prefix: owned_feature_chaining SYMBOL_DOT (owned_feature_chaining SYMBOL_DOT)+;
 flow_feature_member: flow_feature;
 flow_feature: flow_feature_redefinition;
@@ -308,7 +317,8 @@ non_behavior_body_item: namespace_import |
                         definition_member |
                         variant_usage_member |
                         non_occurrence_usage_member |
-                        source_succession_member? structure_usage_member;
+                        source_succession_member? structure_usage_member |
+                        kerml_feature_member;
 action_behavior_member: behavior_usage_member | action_node_member;
 initial_node_member: member_prefix KEYWORD_FIRST qualified_name relationship_body;
 action_node_member: member_prefix action_node;
@@ -522,10 +532,10 @@ prefix_metadata_annotation: SYMBOL_HASHTAG prefix_metadata_usage annotating_elem
 prefix_metadata_member: SYMBOL_HASHTAG prefix_metadata_usage;
 prefix_metadata_usage: owned_feature_typing;
 metadata_usage: usage_extention_keyword* (SYMBOL_AT | KEYWORD_METADATA) metadata_usage_declaration (KEYWORD_ABOUT annotation (SYMBOL_COMMA annotation)*)? metadata_body;
-metadata_usage_declaration: (identification defined_by)? owned_feature_typing;
-metadata_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN (definition_member | metadata_body_usage_member | alias_member | namespace_import) SYMBOL_CURLY_BRACKET_CLOSE;
+metadata_usage_declaration: (identification (defined_by | typed_by_operator))? owned_feature_typing;
+metadata_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN (metadata_body_usage_member | definition_member | alias_member | namespace_import)* SYMBOL_CURLY_BRACKET_CLOSE;
 metadata_body_usage_member: metadata_body_usage;
-metadata_body_usage: KEYWORD_REF? redefines_operator? owned_redefinition feature_specialization_part? value_part? metadata_body;
+metadata_body_usage: KEYWORD_REF? KEYWORD_FEATURE? redefines_operator? owned_redefinition feature_specialization_part? value_part? metadata_body;
 extended_definition: basic_definition_prefix? definition_extension_keyword+ KEYWORD_DEF definition;
 extended_usage: unextended_usage_prefix usage_extention_keyword+ usage;
 

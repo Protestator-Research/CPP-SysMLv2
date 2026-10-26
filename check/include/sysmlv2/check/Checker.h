@@ -52,13 +52,16 @@ namespace SysMLv2::Check {
      *   "elemente": [ { "metaklasse": "PartDefinition", "qualifiedName": "P::Vehicle" }, ... ] }
      * @endcode
      *  - GRAMMATIK / SYNTAX: a syntax error of `quelltext` (also internal errors while the parse tree was processed).
+     *  - LOGIK / SYNTAX: a misused keyword in `quelltext` (a reserved keyword used as a name, `inv not`, `perform` after `entry`/`do`/`exit`,
+     *    an invocation `T(x)` in a typing): the text does not parse, `meldung` explains the misuse, `zeile`/`spalte` are the position of the
+     *    keyword. It replaces the syntax error of the parser for that statement (so the text may have no GRAMMATIK diagnosis and still not parse).
      *  - WARNUNG / SYNTAX: a warning of the parser for `quelltext`.
      *  - LOGIK / UNRESOLVED: a name of `quelltext` that cannot be resolved (`name`: the name as written).
      *  - LOGIK / STRUKTUR: KerML::Entities::validateRepresentation() found a structural violation in an element of `quelltext`: a missing
      *    mandatory reference, a violated multiplicity, a null or duplicate entry (`meldung`: "<property>: <problem>", at most 200 characters;
      *    `element`: its metaclass, `name`: its declared name if any, `eigenschaft`: the property). Derived properties are not checked. Only
      *    present if the library is built with SYSMLV2CHECK_VALIDATE_REPRESENTATION (default ON, see check/CMakeLists.txt). Not reported twice: with a
-     *    GRAMMATIK error in the text there is no STRUKTUR diagnosis (the half-built elements are consequences), and a missing reference next to an
+     *    GRAMMATIK error or a LOGIK / SYNTAX error (keyword misuse) in the text there is no STRUKTUR diagnosis (the half-built elements are consequences), and a missing reference next to an
      *    UNRESOLVED one is skipped.
      *  - LOGIK / PFLICHT: no element of `quelltext` has the metaclass `metaklasse` and the name `name` (the declared name,
      *    the short name or the qualified name; `element` repeats the metaclass).

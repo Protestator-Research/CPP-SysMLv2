@@ -2,6 +2,8 @@
 #include <sysml/verificationcases/VerificationCaseUsage.h>
 #include <sysml/verificationcases/VerificationCaseDefinition.h>
 #include <sysml/requirements/RequirementUsage.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -12,6 +14,7 @@ std::shared_ptr<VerificationCaseDefinition> VerificationCaseUsage::verificationC
 }
 
 void VerificationCaseUsage::setVerificationCaseDefinition(std::shared_ptr<VerificationCaseDefinition> value) {
+    clearUnresolvedJsonReferences("verificationCaseDefinition");
     verificationCaseDefinition_ = std::move(value);
 }
 
@@ -20,6 +23,7 @@ std::vector<std::shared_ptr<RequirementUsage>> VerificationCaseUsage::verifiedRe
 }
 
 void VerificationCaseUsage::setVerifiedRequirement(std::vector<std::shared_ptr<RequirementUsage>> value) {
+    clearUnresolvedJsonReferences("verifiedRequirement");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("VerificationCaseUsage.verifiedRequirement: null entry");
     }
@@ -52,6 +56,69 @@ std::vector<RepresentationIssue> VerificationCaseUsage::validateRepresentation(b
     { auto optional = OccurrenceUsage::portionKind(); if (optional) { auto value = *optional; if (!(value == PortionKind::timeslice || value == PortionKind::snapshot)) issues.push_back({"OccurrenceUsage.portionKind", "invalid enumeration value"}); } }
     if (includeDerived) if (!CaseUsage::subjectParameter()) issues.push_back({"CaseUsage.subjectParameter", "required reference is missing"});
     return issues;
+}
+
+VerificationCaseUsage::VerificationCaseUsage(const std::string& nameOrJson) : VerificationCaseUsage() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string VerificationCaseUsage::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(CaseUsage::serializeToJson());
+    json["verificationCaseDefinition"] = Json::reference(unresolvedJsonReferences("verificationCaseDefinition"), VerificationCaseUsage::verificationCaseDefinition());
+    json["verifiedRequirement"] = Json::reference(unresolvedJsonReferences("verifiedRequirement"), VerificationCaseUsage::verifiedRequirement());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void VerificationCaseUsage::deserializeAndPopulate(const std::string& jsonString) {
+    CaseUsage::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    if (Json::readReferences(json, "verificationCaseDefinition", ids)) {
+        setUnresolvedJsonReferences("verificationCaseDefinition", ids);
+    }
+    if (Json::readReferences(json, "verifiedRequirement", ids)) {
+        setUnresolvedJsonReferences("verifiedRequirement", ids);
+    }
+}
+
+void VerificationCaseUsage::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    CaseUsage::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("verificationCaseDefinition")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<VerificationCaseDefinition>(lookup(ids->front()))) {
+                VerificationCaseUsage::setVerificationCaseDefinition(std::move(target));
+                clearUnresolvedJsonReferences("verificationCaseDefinition");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("verificationCaseDefinition", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("verifiedRequirement")) {
+        try {
+            std::vector<std::shared_ptr<RequirementUsage>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<RequirementUsage>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                VerificationCaseUsage::setVerifiedRequirement(std::move(resolved));
+                clearUnresolvedJsonReferences("verifiedRequirement");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("verifiedRequirement", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

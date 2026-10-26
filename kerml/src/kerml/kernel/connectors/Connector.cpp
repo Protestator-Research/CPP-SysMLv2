@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::vector<std::shared_ptr<Feature>> Connector::relatedFeature() const {
@@ -18,6 +20,7 @@ std::vector<std::shared_ptr<Feature>> Connector::connectorEnd() const {
 }
 
 void Connector::setConnectorEnd(std::vector<std::shared_ptr<Feature>> value) {
+    clearUnresolvedJsonReferences("connectorEnd");
     detail::checkCollection(value, true, -1);
     setEndFeatures(std::move(value));
 }
@@ -39,6 +42,7 @@ std::shared_ptr<Type> Connector::defaultFeaturingType() const {
 }
 
 void Connector::setDefaultFeaturingType(std::shared_ptr<Type> value) {
+    clearUnresolvedJsonReferences("defaultFeaturingType");
     defaultFeaturingType_ = std::move(value);
 }
 
@@ -48,3 +52,76 @@ Connector::Connector() {
 
 Connector::~Connector() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    Connector::Connector(const std::string& nameOrJson) :
+        Connector() {
+        _dType = "Connector";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string Connector::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Feature::serializeToJson());
+        json.update(nlohmann::json::parse(Relationship::serializeToJson()));
+        json["relatedFeature"] = Json::reference(unresolvedJsonReferences("relatedFeature"), Connector::relatedFeature());
+        json["association"] = Json::reference(unresolvedJsonReferences("association"), Connector::association());
+        json["connectorEnd"] = Json::reference(unresolvedJsonReferences("connectorEnd"), Connector::connectorEnd());
+        json["sourceFeature"] = Json::reference(unresolvedJsonReferences("sourceFeature"), Connector::sourceFeature());
+        json["targetFeature"] = Json::reference(unresolvedJsonReferences("targetFeature"), Connector::targetFeature());
+        json["defaultFeaturingType"] = Json::reference(unresolvedJsonReferences("defaultFeaturingType"), Connector::defaultFeaturingType());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Connector::deserializeAndPopulate(const std::string& jsonString) {
+        Feature::deserializeAndPopulate(jsonString);
+        Relationship::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "connectorEnd", ids))
+            setUnresolvedJsonReferences("connectorEnd", ids);
+        if (Json::readReferences(json, "defaultFeaturingType", ids))
+            setUnresolvedJsonReferences("defaultFeaturingType", ids);
+    }
+
+    void Connector::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Feature::resolveJsonReferences(lookup);
+        Relationship::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("connectorEnd")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Feature>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Connector::setConnectorEnd(std::move(resolved));
+                    clearUnresolvedJsonReferences("connectorEnd");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("connectorEnd", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("defaultFeaturingType")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Type>(lookup(ids->front()))) {
+                    Connector::setDefaultFeaturingType(std::move(target));
+                    clearUnresolvedJsonReferences("defaultFeaturingType");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("defaultFeaturingType", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

@@ -54,6 +54,16 @@ test('syntax error is GRAMMATIK/SYNTAX with a line', () => {
   assert.ok(errors.some((e) => e.zeile === 3));
 });
 
+test('keyword misuse is LOGIK/SYNTAX, not GRAMMATIK, and no STRUKTUR follows', () => {
+  const r = pruefe({ quelltext: 'action def T {\n  then action send { in cs : Integer; }\n}\n' });
+  const m = select(r, 'LOGIK', 'SYNTAX');
+  assert.equal(m.length, 1);
+  assert.ok(m[0].meldung.includes('reserved keyword'));
+  assert.equal(m[0].zeile, 2);
+  assert.deepEqual(select(r, 'GRAMMATIK'), []);
+  assert.deepEqual(select(r, 'LOGIK', 'STRUKTUR'), []);
+});
+
 test('unresolved reference is LOGIK/UNRESOLVED', () => {
   const r = pruefe({ quelltext: 'package P {\n  part def A;\n  part x : DoesNotExist;\n}\n' });
   assert.deepEqual(select(r, 'GRAMMATIK'), []);

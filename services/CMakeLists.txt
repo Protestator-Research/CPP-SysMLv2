@@ -17,6 +17,7 @@ set(ONLINE_HEADER
         include/sysmlv2/service/online/HttpException.h
         include/sysmlv2/service/online/NotEnoughMemoryError.h
         include/sysmlv2/service/online/HttpReturnCodes.h
+        include/sysmlv2/service/online/LinkHeader.h
         include/sysmlv2/service/online/StatusCode.h
         include/sysmlv2/service/online/SysMLAPIImplementation.h)
 
@@ -71,7 +72,7 @@ if(MSVC)
         ../filehandling/include
         ../kerml/include)
 else ()
-    target_compile_options(sysmlv2service PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
+    target_compile_options(sysmlv2service PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror> $<$<AND:$<BOOL:${SYSMLV2_WERROR}>,$<CXX_COMPILER_ID:GNU>>:-Wno-error=uninitialized -Wno-error=maybe-uninitialized>)
     target_include_directories(sysmlv2service PRIVATE
         ./include
         ../rest-api/include

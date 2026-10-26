@@ -45,6 +45,35 @@ public:
     std::vector<std::shared_ptr<PartUsage>> stakeholderParameter() const;
     void setStakeholderParameter(std::vector<std::shared_ptr<PartUsage>> value);
     void appendStakeholderParameter(std::shared_ptr<PartUsage> value);
+
+    /**
+     * Creates a RequirementUsage either from its JSON representation (if the string starts with '{') or with the given declared name.
+     * Reading JSON only stores the ids of the referenced elements, see Element::resolveJsonReferences(). The type of the object stays "RequirementUsage".
+     * @param nameOrJson The JSON representation of the RequirementUsage, or its declared name.
+     */
+    explicit RequirementUsage(const std::string& nameOrJson);
+    /**
+     * Serializes the RequirementUsage to JSON: all properties of the metaclass (stored and derived ones) and of its base classes. References to
+     * other elements are only written as identities ({"@id": "<uuid>"}), never recursively.
+     * @return The JSON representation of the RequirementUsage.
+     */
+    std::string serializeToJson() override;
+
+    /**
+     * Resolves the references that were read from JSON to the elements (see Element::resolveJsonReferences()), for the properties
+     * of RequirementUsage and of its base classes.
+     * @param lookup Returns the element of an element id, or an empty pointer if it is not known.
+     */
+    void resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) override;
+
+protected:
+    /**
+     * Populates the RequirementUsage from its JSON representation; the stored properties of RequirementUsage and of its base classes are read,
+     * computed derived properties are ignored, the derived references that the model keeps as snapshots are read like the stored ones,
+     * and references are only stored as ids.
+     * @param jsonString The JSON representation of the RequirementUsage.
+     */
+    void deserializeAndPopulate(const std::string& jsonString) override;
 private:
     std::shared_ptr<RequirementDefinition> requirementDefinition_ = {};
     std::optional<std::string> reqId_ = {};

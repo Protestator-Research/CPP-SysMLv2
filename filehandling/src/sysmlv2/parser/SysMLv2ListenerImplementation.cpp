@@ -637,12 +637,9 @@ void SysMLv2ListenerImplementation::applyFeatureSpecifications(const std::vector
 	if (!feature) return;
 	for (auto spec : specifications) {
 		if (spec->typings()) {
-			for (auto typingCtx : spec->typings()->owned_feature_typing()) {
-				addTyping(feature, typingCtx->getText(), typingCtx);
-			}
-			if (spec->typings()->typed_by() && spec->typings()->typed_by()->owned_feature_typing()) {
-				auto* typingCtx = spec->typings()->typed_by()->owned_feature_typing();
-				addTyping(feature, typingCtx->getText(), typingCtx);
+			if (spec->typings()->typed_by()) addTypingTarget(feature, spec->typings()->typed_by()->feature_typing_target());
+			for (auto targetCtx : spec->typings()->feature_typing_target()) {
+				addTypingTarget(feature, targetCtx);
 			}
 		}
 		if (spec->subsettings()) {
@@ -973,7 +970,6 @@ DEFINE_USAGE_METHODS(Verification_case_usage, SysMLv2::Entities::VerificationCas
 DEFINE_USAGE_METHODS(View_usage, SysMLv2::Entities::ViewUsage)
 DEFINE_USAGE_METHODS(Viewpoint_usage, SysMLv2::Entities::ViewpointUsage)
 DEFINE_USAGE_METHODS(Rendering_usage, SysMLv2::Entities::RenderingUsage)
-DEFINE_USAGE_METHODS(Metadata_usage, SysMLv2::Entities::MetadataUsage)
 DEFINE_USAGE_METHODS(Occurrence_usage, SysMLv2::Entities::OccurrenceUsage)
 DEFINE_USAGE_METHODS(Enumeration_usage, SysMLv2::Entities::EnumerationUsage)
 DEFINE_USAGE_METHODS(State_usage, SysMLv2::Entities::StateUsage)
@@ -1053,6 +1049,65 @@ void SysMLv2ListenerImplementation::exitPrefix_metadata_usage(SysMLv2Parser::Pre
 		OwnershipKinds[metadata.get()] = SysMLv2::Files::MembershipKind::Owning;
 		owner->appendOwnedElement(metadata);
 	}
+}
+
+// `metadata M about A, B { ... }` / `@M;`: a MetadataUsage that annotates the elements named after `about`, or else the namespace that owns it.
+// The metadata is owned through an OwningMembership (as for `#M`): it is not a feature of its owner. The prefix `#N metadata M;` is
+// handled by enterPrefix_metadata_usage (a child of this rule, whose owner is this MetadataUsage).
+void SysMLv2ListenerImplementation::enterMetadata_usage(SysMLv2Parser::Metadata_usageContext* ctx) {
+	handleUsageEnter<SysMLv2::Entities::MetadataUsage>(ParentStack, &PushedByContext, ctx);
+}
+
+// MetadataUsageDeclaration = ( Identification DefinedBy )? OwnedFeatureTyping: the name is only taken from an explicit declaration.
+void SysMLv2ListenerImplementation::exitMetadata_usage_declaration(SysMLv2Parser::Metadata_usage_declarationContext* ctx) {
+	if (ParentStack.empty() || !ctx || !shouldApplyToTop(ctx)) return;
+	const auto metadata = std::dynamic_pointer_cast<SysMLv2::Entities::MetadataUsage>(ParentStack.top());
+	if (!metadata) return;
+	if (ctx->identification()) applyIdentification(ctx->identification(), metadata);
+	if (ctx->owned_feature_typing()) addTyping(metadata, ctx->owned_feature_typing()->getText(), ctx->owned_feature_typing());
+}
+
+void SysMLv2ListenerImplementation::exitMetadata_usage(SysMLv2Parser::Metadata_usageContext* ctx) {
+	if (ParentStack.empty()) return;
+	const auto metadata = std::dynamic_pointer_cast<SysMLv2::Entities::MetadataUsage>(ParentStack.top());
+	if (!metadata) return;
+	ParentStack.pop();
+	Elements.push_back(metadata);
+
+	const auto owner = ParentStack.empty() ? nullptr : ParentStack.top();
+	if (ctx && ctx->KEYWORD_ABOUT() != nullptr && !ctx->annotation().empty()) {
+		// `about` targets are resolved from the namespace that owns the metadata, as for `comment ... about`.
+		for (auto& about : ctx->annotation()) {
+			Recorder.reference<KerML::Entities::Element>(about->getText(), SysMLv2::Files::ReferenceKind::Element,
+				SysMLv2::Files::ReferenceRole::Plain, owner, false, nullptr, about,
+				[metadata](const std::shared_ptr<KerML::Entities::Element>& target) { metadata->appendAnnotatedElement(target); });
+		}
+	}
+	else if (owner) {
+		metadata->appendAnnotatedElement(owner);
+	}
+
+	if (owner) {
+		metadata->setOwner(owner);
+		OwnershipKinds[metadata.get()] = SysMLv2::Files::MembershipKind::Owning;
+		owner->appendOwnedElement(metadata);
+	}
+}
+
+// MetadataBodyUsage = 'ref'? ( ':>>' | 'redefines' )? OwnedRedefinition FeatureSpecializationPart? ValuePart? MetadataBody:
+// a ReferenceUsage that redefines the feature of the metadata definition that is named by the OwnedRedefinition (`serviceId = 1;`).
+// The redefined feature is resolved in the context of the usage, i.e. through the definition that types the enclosing MetadataUsage.
+void SysMLv2ListenerImplementation::enterMetadata_body_usage(SysMLv2Parser::Metadata_body_usageContext* ctx) {
+	handleUsageEnter<SysMLv2::Entities::ReferenceUsage>(ParentStack, &PushedByContext, ctx);
+	if (!ctx) return;
+	const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+	if (!feature) return;
+	if (ctx->owned_redefinition()) addRedefinition(feature, ctx->owned_redefinition()->getText(), ctx->owned_redefinition());
+	if (ctx->feature_specialization_part()) applyFeatureSpecializationPart(ctx->feature_specialization_part(), feature);
+}
+
+void SysMLv2ListenerImplementation::exitMetadata_body_usage(SysMLv2Parser::Metadata_body_usageContext*) {
+	handleUsageExit<SysMLv2::Entities::ReferenceUsage>(ParentStack, Elements);
 }
 
 // The payload of an `accept` (of a transition or of an accept node) is a parameter (a ReferenceUsage with direction in).
@@ -1141,7 +1196,6 @@ DEFINE_USAGE_METHODS(State_assignment_action_usage, SysMLv2::Entities::Assignmen
 DEFINE_USAGE_METHODS(Transition_usage, SysMLv2::Entities::TransitionUsage)
 DEFINE_USAGE_METHODS(Target_transition_usage, SysMLv2::Entities::TransitionUsage)
 DEFINE_USAGE_METHODS(View_rendering_usage, SysMLv2::Entities::RenderingUsage)
-DEFINE_USAGE_METHODS(Metadata_body_usage, SysMLv2::Entities::ReferenceUsage)
 
 void SysMLv2ListenerImplementation::enterRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext* ctx) {
 	std::shared_ptr<KerML::Entities::Feature> feature;
@@ -1875,31 +1929,58 @@ void SysMLv2ListenerImplementation::enterFeature(SysMLv2Parser::FeatureContext* 
 	recordPush(ctx, f);
 }
 void SysMLv2ListenerImplementation::exitFeature(SysMLv2Parser::FeatureContext* ctx) {
+	finishFeature(ctx->feature_prefix(), ctx->feature_declaration());
+}
+
+// A KerML feature written with the keyword `feature` inside the body of a SysML definition or usage (kerml_explicit_feature).
+void SysMLv2ListenerImplementation::enterKerml_explicit_feature(SysMLv2Parser::Kerml_explicit_featureContext* ctx) {
+	auto f = std::make_shared<KerML::Entities::Feature>();
+	ParentStack.push(f);
+	recordPush(ctx, f);
+}
+void SysMLv2ListenerImplementation::exitKerml_explicit_feature(SysMLv2Parser::Kerml_explicit_featureContext* ctx) {
+	finishFeature(ctx->feature_prefix(), ctx->feature_declaration());
+}
+
+// BasicFeaturePrefix = direction? derived? abstract? (composite | portion)? (var | const | readonly)? (the same flags as in the KerML parser).
+static void applyBasicFeaturePrefix(SysMLv2Parser::Basic_feature_prefixContext* prefix, const std::shared_ptr<KerML::Entities::Feature>& feature) {
+	if (!prefix || !feature) return;
+	applyFeatureDirectionFromContext(prefix->feature_direction(), feature);
+	if (prefix->KEYWORD_ABSTRACT() != nullptr) feature->setAbstract(true);
+	if (prefix->KEYWORD_DERIVED() != nullptr) feature->setIsDerived(true);
+	if (prefix->KEYWORD_COMPOSITE() != nullptr) feature->setIsComposite(true);
+	if (prefix->KEYWORD_PORTION() != nullptr) feature->setIsPortion(true);
+	// 'const' (and the legacy alias 'readonly') implies isVariable = true.
+	const bool isConstant = prefix->KEYWORD_CONST() != nullptr || prefix->KEYWORD_READONLY() != nullptr;
+	if (isConstant) feature->setIsConstant(true);
+	if (isConstant || prefix->KEYWORD_VAR() != nullptr) feature->setIsVariable(true);
+}
+
+// Completes the feature on top of the stack from its prefix and declaration, and hands it to its owner.
+void SysMLv2ListenerImplementation::finishFeature(SysMLv2Parser::Feature_prefixContext* prefix, SysMLv2Parser::Feature_declarationContext* declaration) {
 	if (ParentStack.empty()) return;
 	auto f = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
+	if (!f) return;
 	ParentStack.pop();
 
-	if (ctx->feature_prefix() != nullptr)
+	if (prefix != nullptr)
 	{
 		// FeaturePrefix = ( EndFeaturePrefix ( OwnedCrossFeatureMember )? | BasicFeaturePrefix ) PrefixMetadataMember*
-		if (ctx->feature_prefix()->end_feature_prefix() != nullptr)
+		if (const auto endPrefix = prefix->end_feature_prefix()) {
 			f->setIsEnd(true);
-		const auto basicPrefix = ctx->feature_prefix()->basic_feature_prefix();
-		if (basicPrefix != nullptr && basicPrefix->feature_direction() != nullptr)
-		{
-			if (basicPrefix->feature_direction()->KEYWORD_IN() != nullptr)
-				f->setDirection(KerML::Entities::FeatureDirectionKind::IN);
-			if (basicPrefix->feature_direction()->KEYWORD_INOUT() != nullptr)
-				f->setDirection(KerML::Entities::FeatureDirectionKind::IN_OUT);
-			if (basicPrefix->feature_direction()->KEYWORD_OUT() != nullptr)
-				f->setDirection(KerML::Entities::FeatureDirectionKind::OUT);
+			// EndFeaturePrefix: 'const' implies isVariable = true.
+			if (endPrefix->KEYWORD_CONST() != nullptr) {
+				f->setIsConstant(true);
+				f->setIsVariable(true);
+			}
 		}
+		applyBasicFeaturePrefix(prefix->basic_feature_prefix(), f);
 	}
 
-	if (ctx->feature_declaration() != nullptr)
+	if (declaration != nullptr)
 	{
-		if (ctx->feature_declaration()->feature_identification() != nullptr) {
-			const auto idCtx = ctx->feature_declaration()->feature_identification();
+		if (declaration->feature_identification() != nullptr) {
+			const auto idCtx = declaration->feature_identification();
 
 			auto names = idCtx->NAME();
 
@@ -1910,20 +1991,26 @@ void SysMLv2ListenerImplementation::exitFeature(SysMLv2Parser::FeatureContext* c
 			else if (idCtx->SYMBOL_SMALLER() != nullptr && names.size() == 1) {
 				f->setDeclaredShortName(names[0]->getText());
 			}
-			else {
+			else if (!names.empty()) {
 				f->setDeclaredName(names[0]->getText());
 			}
 		}
 
-		if (ctx->feature_declaration()->feature_specialization_part() != nullptr && f)
+		if (declaration->feature_specialization_part() != nullptr)
 		{
-			applyFeatureSpecializationPart(ctx->feature_declaration()->feature_specialization_part(), f);
+			applyFeatureSpecializationPart(declaration->feature_specialization_part(), f);
 		}
 	}
 
-	if (f) {
-		Elements.push_back(f);
-		if (!ParentStack.empty()) ParentStack.top()->appendOwnedElement(f);
+	Elements.push_back(f);
+	if (!ParentStack.empty()) {
+		ParentStack.top()->appendOwnedElement(f);
+		// In the body of a type the feature is one of its owned features (a directed one is a parameter of a behavior, as for `in x : T;`).
+		if (auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top())) {
+			f->setOwner(type);
+			type->appendOwnedFeature(f);
+			f->setOwningType(type);
+		}
 	}
 }
 
@@ -1955,10 +2042,7 @@ void SysMLv2ListenerImplementation::exitRedefinition(SysMLv2Parser::Redefinition
 		addRedefinition(feature, redefName, ctx->qualified_name());
 	}
 	// `:>> x : T :> y;` (the typing and the subsetting of the redefining feature)
-	if (ctx && ctx->typed_by() && ctx->typed_by()->owned_feature_typing()) {
-		auto* typingCtx = ctx->typed_by()->owned_feature_typing();
-		addTyping(feature, typingCtx->getText(), typingCtx);
-	}
+	if (ctx && ctx->typed_by()) addTypingTarget(feature, ctx->typed_by()->feature_typing_target());
 	if (ctx && ctx->subsets() && ctx->subsets()->owned_subsetting()) {
 		auto* subsetCtx = ctx->subsets()->owned_subsetting();
 		addSubsetting(feature, subsetCtx->getText(), subsetCtx);
@@ -2143,15 +2227,6 @@ void SysMLv2ListenerImplementation::enterMetaclass(SysMLv2Parser::MetaclassConte
 }
 void SysMLv2ListenerImplementation::exitMetaclass(SysMLv2Parser::MetaclassContext*) {
 	handleUsageExit<KerML::Entities::Metaclass>(ParentStack, Elements);
-}
-
-void SysMLv2ListenerImplementation::enterMetadata_feature(SysMLv2Parser::Metadata_featureContext* ctx) {
-	auto mf = std::make_shared<KerML::Entities::MetadataFeature>();
-	ParentStack.push(mf);
-	recordPush(ctx, mf);
-}
-void SysMLv2ListenerImplementation::exitMetadata_feature(SysMLv2Parser::Metadata_featureContext*) {
-	handleUsageExit<KerML::Entities::MetadataFeature>(ParentStack, Elements);
 }
 
 void SysMLv2ListenerImplementation::enterLibrary_package(SysMLv2Parser::Library_packageContext* ctx) {
@@ -2393,6 +2468,18 @@ static void applyDerivedDefinitions(const std::shared_ptr<KerML::Entities::Featu
 		feature, typeTarget, &SysMLv2::Entities::ViewpointUsage::setViewpointDefinition);
 	setDerivedDefinition<SysMLv2::Entities::RenderingUsage, SysMLv2::Entities::RenderingDefinition>(
 		feature, typeTarget, &SysMLv2::Entities::RenderingUsage::setRenderingDefinition);
+}
+
+// `: P` (OwnedFeatureTyping) or `: ~P` (ConjugatedPortTyping). A conjugated typing is currently approximated by a
+// plain FeatureTyping to the port definition P (the ConjugatedPortDefinition `P::'~P'` is not synthesised yet).
+void SysMLv2ListenerImplementation::addTypingTarget(const std::shared_ptr<KerML::Entities::Feature>& feature,
+	SysMLv2Parser::Feature_typing_targetContext* target) {
+	if (!feature || !target) return;
+	if (auto* owned = target->owned_feature_typing()) {
+		addTyping(feature, owned->getText(), owned);
+	} else if (auto* conj = target->conjungated_port_typing()) {
+		if (conj->qualified_name()) addTyping(feature, conj->qualified_name()->getText(), conj->qualified_name());
+	}
 }
 
 void SysMLv2ListenerImplementation::addTyping(const std::shared_ptr<KerML::Entities::Feature>& feature, const std::string& typeName,

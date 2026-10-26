@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::shared_ptr<Metaclass> MetadataFeature::metaclass() const {
@@ -15,3 +17,35 @@ MetadataFeature::MetadataFeature() {
 
 MetadataFeature::~MetadataFeature() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    MetadataFeature::MetadataFeature(const std::string& nameOrJson) :
+        MetadataFeature() {
+        _dType = "MetadataFeature";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string MetadataFeature::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(AnnotatingElement::serializeToJson());
+        json.update(nlohmann::json::parse(Feature::serializeToJson()));
+        json["metaclass"] = Json::reference(unresolvedJsonReferences("metaclass"), MetadataFeature::metaclass());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void MetadataFeature::deserializeAndPopulate(const std::string& jsonString) {
+        AnnotatingElement::deserializeAndPopulate(jsonString);
+        Feature::deserializeAndPopulate(jsonString);
+    }
+
+    void MetadataFeature::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        AnnotatingElement::resolveJsonReferences(lookup);
+        Feature::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

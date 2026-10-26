@@ -26,6 +26,8 @@
 //---------------------------------------------------------
 #include <chrono>
 #include <memory>
+#include <optional>
+#include <string>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
@@ -37,6 +39,7 @@
 //---------------------------------------------------------
 namespace SysMLv2::REST{
     class Commit;
+    class Project;
 }
 
 
@@ -52,7 +55,8 @@ namespace SysMLv2::REST {
 
         /**
          * Constructor
-         * @param jsonStringOrName
+         * @param jsonStringOrName A JSON object (the text starts with '{') or the name of the reference.
+         * @throws std::invalid_argument If the text looks like JSON but is malformed or has values of a wrong type.
          */
         explicit CommitReference(const std::string& jsonStringOrName);
 
@@ -66,41 +70,74 @@ namespace SysMLv2::REST {
         std::string serializeToJson() override;
 
         /**
-         *
+         * Sets the creation time of the reference.
          * @param created
          */
         void setCreated(std::chrono::system_clock::time_point created);
+
         /**
-         *
-         * @return
+         * The creation time of the reference. A reference read from JSON without "created" returns time_point{}.
          */
         std::chrono::system_clock::time_point created();
+
         /**
-         *
+         * Marks the reference as deleted at the given time.
          * @param deleted
          */
         void setDeleted(std::chrono::system_clock::time_point deleted);
+
         /**
-         *
-         * @return
+         * The deletion time as plain time point. A reference that is not deleted returns time_point{} (the epoch); use
+         * isDeleted() or deletedAt() to tell the two cases apart.
          */
         std::chrono::system_clock::time_point deleted();
 
         /**
-         * 
-         * @return 
+         * True if the reference has a deletion time.
+         */
+        [[nodiscard]] bool isDeleted() const;
+
+        /**
+         * The deletion time, empty if the reference is not deleted. Only a set value is serialized as "deleted".
+         */
+        [[nodiscard]] std::optional<std::chrono::system_clock::time_point> deletedAt() const;
+
+        /**
+         * The commit that is referenced (the head of a Branch, the tagged commit of a Tag). Can be empty.
          */
         std::shared_ptr<Commit> referencedCommit();
+
         /**
-         * 
-         * @param referencedCommit 
+         * The project that owns the reference. Can be empty.
+         */
+        [[nodiscard]] std::shared_ptr<Project> getOwningProject() const;
+
+        /**
+         * Sets the project that owns the reference.
+         */
+        void setOwningProject(std::shared_ptr<Project> owningProject);
+    protected:
+        /**
+         * Constructor for the subclasses, so that error messages name the concrete class.
+         * @param className Name of the concrete class, e.g. "Branch".
+         */
+        CommitReference(const std::string& jsonStringOrName, std::string className);
+
+        /**
+         * Sets the referenced commit. Protected, because the commit of a Tag is immutable and the one of a Branch is set
+         * via Branch::setHead.
          */
         void setReferencedCommit(std::shared_ptr<Commit> referencedCommit);
-    protected:
+
         void deserializeAndPopulate(const std::string& jsonString) override;
 
-        std::chrono::system_clock::time_point Created;
-        std::chrono::system_clock::time_point Deleted;
+        /**
+         * Name of the concrete class for error messages.
+         */
+        std::string ClassName;
+        std::optional<std::chrono::system_clock::time_point> Created;
+        std::optional<std::chrono::system_clock::time_point> Deleted;
         std::shared_ptr<Commit> ReferencedCommit;
+        std::shared_ptr<Project> OwningProject;
     };
 }

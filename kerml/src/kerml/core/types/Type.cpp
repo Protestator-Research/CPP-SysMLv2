@@ -5,6 +5,9 @@
 #include <kerml/core/types/Type.h>
 #include <kerml/core/features/Multiplicity.h>
 #include <kerml/kernel/assiciations/Association.h>
+#include <kerml/KerML.h>
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 	Type::Type(boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
@@ -13,8 +16,12 @@ namespace KerML::Entities {
 	}
 
 	Type::Type(std::string namespaceName, boost::uuids::uuid elementID, std::shared_ptr<Element> owner) :
-		Element(elementID, owner), Namespace(namespaceName, elementID, owner) {
+		Element(elementID, owner), Namespace(Json::looksLikeJson(namespaceName) ? std::string() : namespaceName, elementID, owner) {
 		_dType = "Type";
+		if (Json::looksLikeJson(namespaceName)) {
+		    deserializeAndPopulate(namespaceName);
+		    captureJsonSource(namespaceName);
+		}
 	}
 
 	std::vector<std::shared_ptr<Membership>>
@@ -111,6 +118,7 @@ namespace KerML::Entities {
 	}
 
 	void Type::setDifferencingType(std::vector<std::shared_ptr<Type>> differencingType) {
+		clearUnresolvedJsonReferences("differencingType");
 		DifferencingType = differencingType;
 	}
 
@@ -128,6 +136,7 @@ namespace KerML::Entities {
 
 	void Type::setDirectedFeature(std::vector<std::shared_ptr<Feature>> directedFeature)
 	{
+		clearUnresolvedJsonReferences("directedFeature");
 		DirectedFeature = directedFeature;
 	}
 
@@ -208,6 +217,7 @@ namespace KerML::Entities {
 
 	void Type::setInheritedFeature(std::vector<std::shared_ptr<Feature>> inheritedFeature)
 	{
+		clearUnresolvedJsonReferences("inheritedFeature");
 		InheritedFeature = inheritedFeature;
 	}
 
@@ -228,6 +238,7 @@ namespace KerML::Entities {
 
 	void Type::setInheritedMembership(std::vector<std::shared_ptr<Membership>> inheritedMembership)
 	{
+		clearUnresolvedJsonReferences("inheritedMembership");
 		InheritedMembership = inheritedMembership;
 	}
 
@@ -248,6 +259,7 @@ namespace KerML::Entities {
 
 	void Type::setInput(std::vector<std::shared_ptr<Feature>> input)
 	{
+		clearUnresolvedJsonReferences("input");
 		Input = input;
 	}
 
@@ -268,6 +280,7 @@ namespace KerML::Entities {
 
 	void Type::setIntersectingType(std::vector<std::shared_ptr<Type>> intersectingType)
 	{
+		clearUnresolvedJsonReferences("intersectingType");
 		IntersectingType = intersectingType;
 	}
 
@@ -291,6 +304,7 @@ namespace KerML::Entities {
 
 	void Type::setMultiplicity(std::shared_ptr<Entities::Multiplicity> multiplicity)
 	{
+		clearUnresolvedJsonReferences("multiplicity");
 		_Multiplicity = multiplicity;
 	}
 
@@ -301,6 +315,7 @@ namespace KerML::Entities {
 
 	void Type::setOutput(std::vector<std::shared_ptr<Feature>> output)
 	{
+		clearUnresolvedJsonReferences("output");
 		Output = output;
 	}
 
@@ -333,6 +348,7 @@ namespace KerML::Entities {
 
 	void Type::setOwnedDifferencing(std::vector<std::shared_ptr<Differencing>> ownedDifferencing)
 	{
+		clearUnresolvedJsonReferences("ownedDifferencing");
 		OwnedDifferencing = ownedDifferencing;
 	}
 
@@ -353,6 +369,7 @@ namespace KerML::Entities {
 
 	void Type::setOwnedDisjoining(std::vector<std::shared_ptr<Disjoining>> ownedDisjoining)
 	{
+		clearUnresolvedJsonReferences("ownedDisjoining");
 		OwnedDisjoining = ownedDisjoining;
 	}
 
@@ -373,6 +390,7 @@ namespace KerML::Entities {
 
 	void Type::setOwnedEndFeature(std::vector<std::shared_ptr<Feature>> ownedEndFeature)
 	{
+		clearUnresolvedJsonReferences("ownedEndFeature");
 		OwnedEndFeature = ownedEndFeature;
 	}
 
@@ -393,6 +411,7 @@ namespace KerML::Entities {
 
 	void Type::setOwnedFeature(std::vector<std::shared_ptr<Feature>> ownedFeature)
 	{
+		clearUnresolvedJsonReferences("ownedFeature");
 		OwnedFeature = ownedFeature;
 	}
 
@@ -413,6 +432,7 @@ namespace KerML::Entities {
 
 	void Type::setOwnedFeatureMembership(std::vector<std::shared_ptr<FeatureMembership>> ownedFeatureMembership)
 	{
+		clearUnresolvedJsonReferences("ownedFeatureMembership");
 		OwnedFeatureMembership = ownedFeatureMembership;
 	}
 
@@ -433,6 +453,7 @@ namespace KerML::Entities {
 
 	void Type::setOwnedIntersecting(std::vector<std::shared_ptr<Intersecting>> ownedIntersecting)
 	{
+		clearUnresolvedJsonReferences("ownedIntersecting");
 		OwnedIntersecting = ownedIntersecting;
 	}
 
@@ -453,6 +474,7 @@ namespace KerML::Entities {
 
 	void Type::setOwnedSpecialization(std::vector<std::shared_ptr<Specialization>> ownedSpecialization)
 	{
+		clearUnresolvedJsonReferences("ownedSpecialization");
 		OwnedSpecialization = ownedSpecialization;
 	}
 
@@ -473,6 +495,7 @@ namespace KerML::Entities {
 
 	void Type::setOwnedUnioning(std::vector<std::shared_ptr<Unioning>> ownedUnioning)
 	{
+		clearUnresolvedJsonReferences("ownedUnioning");
 		OwnedUnioning = ownedUnioning;
 	}
 
@@ -493,6 +516,7 @@ namespace KerML::Entities {
 
 	void Type::setUnioningType(std::vector<std::shared_ptr<Type>> unioningType)
 	{
+		clearUnresolvedJsonReferences("unioningType");
 		UnioningType = unioningType;
 	}
 
@@ -507,3 +531,415 @@ namespace KerML::Entities {
 	}
 
 } // KerML::Entities
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    std::string Type::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Namespace::serializeToJson());
+        json["ownedSpecialization"] = Json::reference(unresolvedJsonReferences("ownedSpecialization"), Type::ownedSpecialization());
+        json["ownedFeatureMembership"] = Json::reference(unresolvedJsonReferences("ownedFeatureMembership"), Type::ownedFeatureMembership());
+        json["feature"] = Json::reference(unresolvedJsonReferences("feature"), Type::feature());
+        json["ownedFeature"] = Json::reference(unresolvedJsonReferences("ownedFeature"), Type::ownedFeature());
+        json["input"] = Json::reference(unresolvedJsonReferences("input"), Type::input());
+        json["output"] = Json::reference(unresolvedJsonReferences("output"), Type::output());
+        json["isAbstract"] = Json::value(Type::isAbstract());
+        json["inheritedMembership"] = Json::reference(unresolvedJsonReferences("inheritedMembership"), Type::inheritedMembership());
+        json["endFeature"] = Json::reference(unresolvedJsonReferences("endFeature"), Type::endFeature());
+        json["ownedEndFeature"] = Json::reference(unresolvedJsonReferences("ownedEndFeature"), Type::ownedEndFeature());
+        json["isSufficient"] = Json::value(Type::isSufficient());
+        json["ownedConjugator"] = Json::reference(unresolvedJsonReferences("ownedConjugator"), Type::ownedConjugator());
+        json["isConjugated"] = Json::value(Type::isConjugated());
+        json["inheritedFeature"] = Json::reference(unresolvedJsonReferences("inheritedFeature"), Type::inheritedFeature());
+        json["multiplicity"] = Json::reference(unresolvedJsonReferences("multiplicity"), Type::multiplicity());
+        json["unioningType"] = Json::reference(unresolvedJsonReferences("unioningType"), Type::unioningType());
+        json["ownedIntersecting"] = Json::reference(unresolvedJsonReferences("ownedIntersecting"), Type::ownedIntersecting());
+        json["intersectingType"] = Json::reference(unresolvedJsonReferences("intersectingType"), Type::intersectingType());
+        json["ownedUnioning"] = Json::reference(unresolvedJsonReferences("ownedUnioning"), Type::ownedUnioning());
+        json["ownedDisjoining"] = Json::reference(unresolvedJsonReferences("ownedDisjoining"), Type::ownedDisjoining());
+        json["featureMembership"] = Json::reference(unresolvedJsonReferences("featureMembership"), Type::featureMembership());
+        json["differencingType"] = Json::reference(unresolvedJsonReferences("differencingType"), Type::differencingType());
+        json["ownedDifferencing"] = Json::reference(unresolvedJsonReferences("ownedDifferencing"), Type::ownedDifferencing());
+        json["directedFeature"] = Json::reference(unresolvedJsonReferences("directedFeature"), Type::directedFeature());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Type::deserializeAndPopulate(const std::string& jsonString) {
+        Namespace::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "ownedSpecialization", ids))
+            setUnresolvedJsonReferences("ownedSpecialization", ids);
+        if (Json::readReferences(json, "ownedFeatureMembership", ids))
+            setUnresolvedJsonReferences("ownedFeatureMembership", ids);
+        if (Json::readReferences(json, "ownedFeature", ids))
+            setUnresolvedJsonReferences("ownedFeature", ids);
+        if (Json::readReferences(json, "input", ids))
+            setUnresolvedJsonReferences("input", ids);
+        if (Json::readReferences(json, "output", ids))
+            setUnresolvedJsonReferences("output", ids);
+        {
+            bool value{};
+            if (Json::readBool(json, "isAbstract", value)) {
+                try {
+                    Type::setAbstract(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+        if (Json::readReferences(json, "inheritedMembership", ids))
+            setUnresolvedJsonReferences("inheritedMembership", ids);
+        if (Json::readReferences(json, "ownedEndFeature", ids))
+            setUnresolvedJsonReferences("ownedEndFeature", ids);
+        {
+            bool value{};
+            if (Json::readBool(json, "isSufficient", value)) {
+                try {
+                    Type::setIsSufficient(value);
+                } catch (const std::invalid_argument&) {
+                    // A value the metaclass refuses (for example another operator than the fixed one) is ignored.
+                }
+            }
+        }
+        if (Json::readReferences(json, "inheritedFeature", ids))
+            setUnresolvedJsonReferences("inheritedFeature", ids);
+        if (Json::readReferences(json, "multiplicity", ids))
+            setUnresolvedJsonReferences("multiplicity", ids);
+        if (Json::readReferences(json, "unioningType", ids))
+            setUnresolvedJsonReferences("unioningType", ids);
+        if (Json::readReferences(json, "ownedIntersecting", ids))
+            setUnresolvedJsonReferences("ownedIntersecting", ids);
+        if (Json::readReferences(json, "intersectingType", ids))
+            setUnresolvedJsonReferences("intersectingType", ids);
+        if (Json::readReferences(json, "ownedUnioning", ids))
+            setUnresolvedJsonReferences("ownedUnioning", ids);
+        if (Json::readReferences(json, "ownedDisjoining", ids))
+            setUnresolvedJsonReferences("ownedDisjoining", ids);
+        if (Json::readReferences(json, "differencingType", ids))
+            setUnresolvedJsonReferences("differencingType", ids);
+        if (Json::readReferences(json, "ownedDifferencing", ids))
+            setUnresolvedJsonReferences("ownedDifferencing", ids);
+        if (Json::readReferences(json, "directedFeature", ids))
+            setUnresolvedJsonReferences("directedFeature", ids);
+    }
+
+    void Type::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Namespace::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("ownedSpecialization")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Specialization>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Specialization>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setOwnedSpecialization(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedSpecialization");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedSpecialization", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedFeatureMembership")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::FeatureMembership>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::FeatureMembership>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setOwnedFeatureMembership(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedFeatureMembership");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedFeatureMembership", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedFeature")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Feature>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setOwnedFeature(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedFeature");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedFeature", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("input")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Feature>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setInput(std::move(resolved));
+                    clearUnresolvedJsonReferences("input");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("input", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("output")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Feature>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setOutput(std::move(resolved));
+                    clearUnresolvedJsonReferences("output");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("output", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("inheritedMembership")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Membership>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Membership>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setInheritedMembership(std::move(resolved));
+                    clearUnresolvedJsonReferences("inheritedMembership");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("inheritedMembership", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedEndFeature")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Feature>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setOwnedEndFeature(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedEndFeature");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedEndFeature", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("inheritedFeature")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Feature>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setInheritedFeature(std::move(resolved));
+                    clearUnresolvedJsonReferences("inheritedFeature");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("inheritedFeature", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("multiplicity")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Multiplicity>(lookup(ids->front()))) {
+                    Type::setMultiplicity(std::move(target));
+                    clearUnresolvedJsonReferences("multiplicity");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("multiplicity", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("unioningType")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Type>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Type>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setUnioningType(std::move(resolved));
+                    clearUnresolvedJsonReferences("unioningType");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("unioningType", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedIntersecting")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Intersecting>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Intersecting>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setOwnedIntersecting(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedIntersecting");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedIntersecting", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("intersectingType")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Type>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Type>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setIntersectingType(std::move(resolved));
+                    clearUnresolvedJsonReferences("intersectingType");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("intersectingType", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedUnioning")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Unioning>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Unioning>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setOwnedUnioning(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedUnioning");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedUnioning", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedDisjoining")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Disjoining>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Disjoining>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setOwnedDisjoining(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedDisjoining");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedDisjoining", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("differencingType")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Type>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Type>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setDifferencingType(std::move(resolved));
+                    clearUnresolvedJsonReferences("differencingType");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("differencingType", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("ownedDifferencing")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Differencing>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Differencing>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setOwnedDifferencing(std::move(resolved));
+                    clearUnresolvedJsonReferences("ownedDifferencing");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedDifferencing", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("directedFeature")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Feature>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    Type::setDirectedFeature(std::move(resolved));
+                    clearUnresolvedJsonReferences("directedFeature");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("directedFeature", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

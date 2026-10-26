@@ -899,6 +899,8 @@ public:
     virtual void enterMetadata_usage(SysMLv2Parser::Metadata_usageContext* ctx) override;
     virtual void exitMetadata_usage(SysMLv2Parser::Metadata_usageContext* ctx) override;
 
+    virtual void exitMetadata_usage_declaration(SysMLv2Parser::Metadata_usage_declarationContext* ctx) override;
+
     virtual void enterExtended_definition(SysMLv2Parser::Extended_definitionContext* ctx) override;
     virtual void exitExtended_definition(SysMLv2Parser::Extended_definitionContext* ctx) override;
 
@@ -931,6 +933,9 @@ public:
 
     virtual void enterFeature(SysMLv2Parser::FeatureContext* ctx) override;
     virtual void exitFeature(SysMLv2Parser::FeatureContext* ctx) override;
+
+    virtual void enterKerml_explicit_feature(SysMLv2Parser::Kerml_explicit_featureContext* ctx) override;
+    virtual void exitKerml_explicit_feature(SysMLv2Parser::Kerml_explicit_featureContext* ctx) override;
 
     virtual void enterFeature_typing(SysMLv2Parser::Feature_typingContext* ctx) override;
     virtual void exitFeature_typing(SysMLv2Parser::Feature_typingContext* ctx) override;
@@ -1115,9 +1120,6 @@ public:
     virtual void enterPrefix_metadata_feature(SysMLv2Parser::Prefix_metadata_featureContext* /*ctx*/) override {}
     virtual void exitPrefix_metadata_feature(SysMLv2Parser::Prefix_metadata_featureContext* /*ctx*/) override {}
 
-    virtual void enterMetadata_feature(SysMLv2Parser::Metadata_featureContext* ctx) override;
-    virtual void exitMetadata_feature(SysMLv2Parser::Metadata_featureContext* ctx) override;
-
     virtual void enterMetadata_feature_declaration(SysMLv2Parser::Metadata_feature_declarationContext* /*ctx*/) override {}
     virtual void exitMetadata_feature_declaration(SysMLv2Parser::Metadata_feature_declarationContext* /*ctx*/) override {}
 
@@ -1174,6 +1176,7 @@ private:
     /// Creates the (unresolved) typing of @p feature by the type named @p typeName; resolution later patches the typing, the
     /// feature's types and the derived ...Definition properties of the usage.
     void addTyping(const std::shared_ptr<KerML::Entities::Feature>& feature, const std::string& typeName, antlr4::ParserRuleContext* position);
+    void addTypingTarget(const std::shared_ptr<KerML::Entities::Feature>& feature, SysMLv2Parser::Feature_typing_targetContext* target);
     /// The same for the specialization of a classifier by the classifier named @p superName.
     void addSubclassification(const std::shared_ptr<KerML::Entities::Classifier>& classifier, const std::string& superName, antlr4::ParserRuleContext* position);
     /// Subsetting, redefinition and reference subsetting of @p feature by the feature named @p name.
@@ -1195,6 +1198,7 @@ private:
 
     void applyUsagePrefix(SysMLv2Parser::Usage_prefixContext* prefix, const std::shared_ptr<KerML::Entities::Feature>& feature);
     void applyOccurrenceUsagePrefix(SysMLv2Parser::Occurrence_usage_prefixContext* prefix, const std::shared_ptr<KerML::Entities::Feature>& feature);
+    void finishFeature(SysMLv2Parser::Feature_prefixContext* prefix, SysMLv2Parser::Feature_declarationContext* declaration);
     void applyFeatureSpecializationPart(SysMLv2Parser::Feature_specialization_partContext* part, const std::shared_ptr<KerML::Entities::Feature>& feature);
     void applyFeatureSpecifications(const std::vector<SysMLv2Parser::Feature_specializationContext*>& specifications, const std::shared_ptr<KerML::Entities::Feature>& feature);
 

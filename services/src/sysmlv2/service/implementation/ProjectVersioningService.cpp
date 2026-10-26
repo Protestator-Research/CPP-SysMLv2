@@ -4,6 +4,10 @@
 
 #include "sysmlv2/service/implementation/ProjectVersioningService.h"
 
+#include <algorithm>
+#include <deque>
+#include <functional>
+#include <set>
 #include <boost/uuid/nil_generator.hpp>
 
 #include <sysmlv2/rest/entities/Project.h>
@@ -23,8 +27,10 @@ namespace SysMLv2::API {
     }
 
     std::shared_ptr<SysMLv2::REST::Commit> ProjectVersioningService::getCommitById(std::shared_ptr<SysMLv2::REST::Project> project, boost::uuids::uuid commitId) {
-        const auto projectCommits = ProjectIdCommitMap[project->getId()];
-        for (const auto& commit:projectCommits)
+        const auto projectEntry = ProjectIdCommitMap.find(project->getId());
+        if (projectEntry == ProjectIdCommitMap.end())
+            return nullptr;
+        for (const auto& commit:projectEntry->second)
         {
             if (commit->getId() == commitId)
                 return commit;
@@ -72,31 +78,85 @@ namespace SysMLv2::API {
         return commit;
     }
 
-    std::vector<std::shared_ptr<SysMLv2::REST::DataVersion>> ProjectVersioningService::getCommitChange(std::shared_ptr<SysMLv2::REST::Project>, std::shared_ptr<SysMLv2::REST::Commit> commit, std::vector<int> changeType) {
+    namespace {
+        /**
+         * Tells if the Data exists in the previous commits of the commit. Every path through the previous commits is followed
+         * breadth-first up to the nearest version of the Data: a version with a payload means the Data exists on that path,
+         * a version without payload (deletion) ends the path as "does not exist". For a merge commit the Data exists if it
+         * exists on the path of any parent. The search stops as soon as one path shows that the Data exists.
+         * @param resolve Maps a commit to the commit whose changes are used (a commit that is only known by reference is
+         * replaced by the stored one).
+         */
+        bool existsInPreviousCommits(const std::shared_ptr<SysMLv2::REST::Commit>& commit, const boost::uuids::uuid& dataId,
+                                     const std::function<std::shared_ptr<SysMLv2::REST::Commit>(const std::shared_ptr<SysMLv2::REST::Commit>&)>& resolve) {
+            std::set<boost::uuids::uuid> visited;
+            std::deque<std::shared_ptr<SysMLv2::REST::Commit>> pending;
+            for (const auto& previous : commit->getPreviousCommits())
+                pending.push_back(previous);
+            while (!pending.empty()) {
+                const auto current = resolve(pending.front());
+                pending.pop_front();
+                if (current == nullptr || !visited.insert(current->getId()).second)
+                    continue;
+                bool found = false;
+                for (const auto& version : current->getChange()) {
+                    if (version == nullptr || version->getId() != dataId)
+                        continue;
+                    if (version->getPayload() != nullptr)
+                        return true;
+                    found = true;
+                }
+                if (found)
+                    continue; // deleted on this path
+                for (const auto& previous : current->getPreviousCommits())
+                    pending.push_back(previous);
+            }
+            return false;
+        }
+    }
+
+    // ChangeType::CREATED is 0, so the values of the filter can not be combined as bit flags. The vector is a set of
+    // ChangeType values (other values are ignored); an empty vector means no filter (all changes).
+    // DELETED: no payload. CREATED: a payload and the Data does not exist in the previous commits, i.e. there is no
+    // version of it, or the nearest version is a deletion (a re-creation). UPDATED: a payload and the Data exists there.
+    // A commit that is only known by reference (no changes) is replaced by the stored commit of the project.
+    std::vector<std::shared_ptr<SysMLv2::REST::DataVersion>> ProjectVersioningService::getCommitChange(std::shared_ptr<SysMLv2::REST::Project> project, std::shared_ptr<SysMLv2::REST::Commit> commit, std::vector<int> changeType) {
         std::vector<std::shared_ptr<SysMLv2::REST::DataVersion>> returnValue;
 
-        uint8_t filter = 0x00;
+        const auto wanted = [&changeType](REST::ChangeType type) {
+            return changeType.empty() || std::find(changeType.begin(), changeType.end(), static_cast<int>(type)) != changeType.end();
+        };
 
-        for (const auto change : changeType)
-            filter |= (uint8_t)change;
+        const auto resolve = [this, &project](const std::shared_ptr<SysMLv2::REST::Commit>& reference) {
+            if (reference == nullptr || project == nullptr || !reference->getChange().empty() || !reference->getPreviousCommits().empty())
+                return reference;
+            const auto stored = getCommitById(project, reference->getId());
+            return stored != nullptr ? stored : reference;
+        };
 
-        for (const auto& dataVersion : commit->getDataVersion())
+        for (const auto& dataVersion : commit->getChange())
         {
-            if ((REST::ChangeType::CREATED & filter)&&((dataVersion->getId()==boost::uuids::nil_uuid())&&(dataVersion->getPayload()!=nullptr)))
-                returnValue.push_back(dataVersion);
-            if ((REST::ChangeType::UPDATED & filter)&&((dataVersion->getId()!=boost::uuids::nil_uuid())&&(dataVersion->getPayload()!=nullptr)))
-                returnValue.push_back(dataVersion);
-            if ((REST::ChangeType::DELETED & filter)&&((dataVersion->getId()!=boost::uuids::nil_uuid())&&(dataVersion->getPayload()==nullptr)))
-                returnValue.push_back(dataVersion);
+            if (dataVersion == nullptr)
+                continue;
+            if (dataVersion->getPayload() == nullptr) {
+                if (wanted(REST::ChangeType::DELETED))
+                    returnValue.push_back(dataVersion);
+            } else if (wanted(REST::ChangeType::CREATED) || wanted(REST::ChangeType::UPDATED)) {
+                const bool exists = existsInPreviousCommits(commit, dataVersion->getId(), resolve);
+                if (wanted(exists ? REST::ChangeType::UPDATED : REST::ChangeType::CREATED))
+                    returnValue.push_back(dataVersion);
+            }
         }
 
         return returnValue;
     }
 
     std::shared_ptr<SysMLv2::REST::DataVersion> ProjectVersioningService::getCommitChangeById(std::shared_ptr<SysMLv2::REST::Project>, std::shared_ptr<SysMLv2::REST::Commit> commit, boost::uuids::uuid &changeId) {
-        for (const auto& change : commit->getDataVersion())
+        for (const auto& change : commit->getChange())
         {
-            if (change->getId() == changeId)
+            // The id of the change is the id of the DataVersion; the id of the Data is accepted as well (earlier versions
+            // of the library used it).
+            if (change->getVersionId() == changeId || change->getId() == changeId)
                 return change;
         }
         return nullptr;
@@ -137,6 +197,7 @@ namespace SysMLv2::API {
     std::shared_ptr<SysMLv2::REST::Branch> ProjectVersioningService::createBranch(std::shared_ptr<SysMLv2::REST::Project> project, std::string branchName, std::shared_ptr<SysMLv2::REST::Commit> head) {
         const auto newBranch = std::make_shared<SysMLv2::REST::Branch>(branchName);
         newBranch->setHead(head);
+        newBranch->setOwningProject(project);
         ProjectIdBranchMap.at(project->getId()).push_back(newBranch);
         return newBranch;
     }
@@ -172,8 +233,8 @@ namespace SysMLv2::API {
     }
 
     std::shared_ptr<SysMLv2::REST::Tag> ProjectVersioningService::createTag(std::shared_ptr<SysMLv2::REST::Project> project, std::string &tagName, std::shared_ptr<SysMLv2::REST::Commit> taggedCommit) {
-        const auto newTag = std::make_shared<SysMLv2::REST::Tag>(tagName);
-        newTag->setReferencedCommit(taggedCommit);
+        // A Tag is immutable: the tagged commit is passed to the constructor.
+        const auto newTag = std::make_shared<SysMLv2::REST::Tag>(tagName, project, taggedCommit);
         ProjectIdTagMap[project->getId()].push_back(newTag);
         return newTag;
     }

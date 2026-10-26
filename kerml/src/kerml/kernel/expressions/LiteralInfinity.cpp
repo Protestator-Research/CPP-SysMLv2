@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 LiteralInfinity::LiteralInfinity() {
@@ -11,3 +13,31 @@ LiteralInfinity::LiteralInfinity() {
 
 LiteralInfinity::~LiteralInfinity() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    LiteralInfinity::LiteralInfinity(const std::string& nameOrJson) :
+        LiteralInfinity() {
+        _dType = "LiteralInfinity";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string LiteralInfinity::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(LiteralExpression::serializeToJson());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void LiteralInfinity::deserializeAndPopulate(const std::string& jsonString) {
+        LiteralExpression::deserializeAndPopulate(jsonString);
+    }
+
+    void LiteralInfinity::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        LiteralExpression::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

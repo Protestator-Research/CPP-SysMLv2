@@ -16,8 +16,32 @@ add_executable(conformance-test
         src/TestRestAPI.cpp
         src/TestResourcePackages.cpp
         src/TestElementDeserialization.cpp
+        src/TestKerMLJson.cpp
+        src/TestSysMLJson.cpp
         src/TestBranchRequest.cpp
+        src/TestRestFoundation.cpp
+        src/TestRestVersioning.cpp
+        src/TestRestData.cpp
+        src/TestRestQuery.cpp
+        src/TestRestDeserializer.cpp
 )
+
+# The pagination tests need the online part of the services (SysMLAPIImplementation).
+if(BUILD_WITH_ONLINE)
+    target_sources(conformance-test PRIVATE src/TestOnlinePagination.cpp)
+endif()
+
+# TestRestAPI.cpp (unchanged tests) deliberately uses the deprecated ProjectRequest API to prove it keeps working.
+if(MSVC)
+    set_source_files_properties(src/TestRestAPI.cpp PROPERTIES COMPILE_OPTIONS /wd4996)
+else()
+    set_source_files_properties(src/TestRestAPI.cpp PROPERTIES COMPILE_OPTIONS -Wno-deprecated-declarations)
+endif()
+
+# TestKerMLJson.cpp and TestSysMLJson.cpp instantiate their round trip for every KerML/SysML metaclass and need more sections than an object file allows by default.
+if(MSVC)
+    set_source_files_properties(src/TestKerMLJson.cpp src/TestSysMLJson.cpp PROPERTIES COMPILE_OPTIONS /bigobj)
+endif()
 
 #if((EXISTS antlr4_shared) OR (MSVC))
     target_link_libraries(conformance-test

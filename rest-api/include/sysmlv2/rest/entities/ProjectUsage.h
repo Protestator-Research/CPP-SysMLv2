@@ -41,8 +41,11 @@ namespace SysMLv2::REST {
         explicit ProjectUsage(const std::shared_ptr<SysMLv2::REST::Commit>& commit);
 
         /**
-         *
-         * @param jsonString
+         * Constructor for the JSON parsing. Reads "usedProjectCommit" and "usedProject" (references). The older field
+         * "usedCommit" (an object, or the escaped JSON text of the commit like earlier library versions wrote it) is still
+         * read and prints a deprecation warning.
+         * @param jsonString The JSON object of the ProjectUsage.
+         * @throws std::invalid_argument If the text is no valid JSON object or has values of a wrong type.
          */
         ProjectUsage(std::string jsonString);
 
@@ -63,7 +66,8 @@ namespace SysMLv2::REST {
         /**
          * Returns the connected project according to the SysML v2 Standard
          * @see Commit
-         * @return The project from the connected commit.
+         * @return The project of the connected commit (usedProjectCommit.owningProject); if the commit does not know its
+         * project, the project read from the JSON field "usedProject"; otherwise nullptr.
          */
         [[nodiscard]] std::shared_ptr<Project> getUsedProject() const;
 
@@ -73,6 +77,8 @@ namespace SysMLv2::REST {
         void deserializeAndPopulate(const std::string &jsonString) override;
 
         std::shared_ptr<Commit> UsedProjectCommit;
+        /** The project read from "usedProject"; used if the commit does not know its owning project. */
+        std::shared_ptr<Project> UsedProject;
 
     };
 

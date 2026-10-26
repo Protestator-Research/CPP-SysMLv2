@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 Structure::Structure() {
@@ -11,3 +13,31 @@ Structure::Structure() {
 
 Structure::~Structure() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    Structure::Structure(const std::string& nameOrJson) :
+        Structure() {
+        _dType = "Structure";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string Structure::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Class::serializeToJson());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Structure::deserializeAndPopulate(const std::string& jsonString) {
+        Class::deserializeAndPopulate(jsonString);
+    }
+
+    void Structure::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Class::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

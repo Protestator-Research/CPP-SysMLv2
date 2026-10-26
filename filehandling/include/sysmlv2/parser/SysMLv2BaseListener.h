@@ -127,6 +127,12 @@ public:
   virtual void enterOccurrence_usage_member(SysMLv2Parser::Occurrence_usage_memberContext * /*ctx*/) override { }
   virtual void exitOccurrence_usage_member(SysMLv2Parser::Occurrence_usage_memberContext * /*ctx*/) override { }
 
+  virtual void enterKerml_feature_member(SysMLv2Parser::Kerml_feature_memberContext * /*ctx*/) override { }
+  virtual void exitKerml_feature_member(SysMLv2Parser::Kerml_feature_memberContext * /*ctx*/) override { }
+
+  virtual void enterKerml_explicit_feature(SysMLv2Parser::Kerml_explicit_featureContext * /*ctx*/) override { }
+  virtual void exitKerml_explicit_feature(SysMLv2Parser::Kerml_explicit_featureContext * /*ctx*/) override { }
+
   virtual void enterStructure_usage_member(SysMLv2Parser::Structure_usage_memberContext * /*ctx*/) override { }
   virtual void exitStructure_usage_member(SysMLv2Parser::Structure_usage_memberContext * /*ctx*/) override { }
 
@@ -294,6 +300,15 @@ public:
 
   virtual void enterConjungated_port_typing(SysMLv2Parser::Conjungated_port_typingContext * /*ctx*/) override { }
   virtual void exitConjungated_port_typing(SysMLv2Parser::Conjungated_port_typingContext * /*ctx*/) override { }
+
+  virtual void enterFeature_typing_target(SysMLv2Parser::Feature_typing_targetContext * /*ctx*/) override { }
+  virtual void exitFeature_typing_target(SysMLv2Parser::Feature_typing_targetContext * /*ctx*/) override { }
+
+  virtual void enterTypings(SysMLv2Parser::TypingsContext * /*ctx*/) override { }
+  virtual void exitTypings(SysMLv2Parser::TypingsContext * /*ctx*/) override { }
+
+  virtual void enterTyped_by(SysMLv2Parser::Typed_byContext * /*ctx*/) override { }
+  virtual void exitTyped_by(SysMLv2Parser::Typed_byContext * /*ctx*/) override { }
 
   virtual void enterConnection_definition(SysMLv2Parser::Connection_definitionContext * /*ctx*/) override { }
   virtual void exitConnection_definition(SysMLv2Parser::Connection_definitionContext * /*ctx*/) override { }
@@ -1140,12 +1155,6 @@ public:
 
   virtual void enterFeature_specialization(SysMLv2Parser::Feature_specializationContext * /*ctx*/) override { }
   virtual void exitFeature_specialization(SysMLv2Parser::Feature_specializationContext * /*ctx*/) override { }
-
-  virtual void enterTypings(SysMLv2Parser::TypingsContext * /*ctx*/) override { }
-  virtual void exitTypings(SysMLv2Parser::TypingsContext * /*ctx*/) override { }
-
-  virtual void enterTyped_by(SysMLv2Parser::Typed_byContext * /*ctx*/) override { }
-  virtual void exitTyped_by(SysMLv2Parser::Typed_byContext * /*ctx*/) override { }
 
   virtual void enterSubsettings(SysMLv2Parser::SubsettingsContext * /*ctx*/) override { }
   virtual void exitSubsettings(SysMLv2Parser::SubsettingsContext * /*ctx*/) override { }

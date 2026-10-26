@@ -775,6 +775,11 @@ namespace SysMLv2::Files {
             return message.substr(0, end) + "...";
         }
 
+        /// The type of a diagnosis of the parser's error listener as workspace error type.
+        static ErrorType errorTypeOf(KerML::Parser::ErrorTypes type) {
+            return type == KerML::Parser::KEYWORD_MISUSE ? ErrorType::KEYWORD_MISUSE : ErrorType::SYNTAX_ERROR;
+        }
+
         static std::shared_ptr<ParserError> makeError(ErrorType type, const std::string& message, int line, int column,
                                                        const std::string& source) {
             return std::make_shared<ParserError>(boost::uuids::random_generator()(), "", type, message, line, column, source);
@@ -835,8 +840,7 @@ namespace SysMLv2::Files {
             const auto syntaxErrors = errorListener->getSyntaxErrors();
             source->errors.reserve(syntaxErrors.size());
             for (const auto& error : syntaxErrors) {
-                source->errors.push_back(makeError(SysMLv2::
-                	Files::SYNTAX_ERROR, shortened(error->message()), error->line(), error->positionInLine(), source->name));
+                source->errors.push_back(makeError(errorTypeOf(error->errorType()), shortened(error->message()), error->line(), error->positionInLine(), source->name));
             }
 
             try {
@@ -866,7 +870,7 @@ namespace SysMLv2::Files {
             const auto syntaxErrors = errorListener.getSyntaxErrors();
             source->errors.reserve(syntaxErrors.size());
             for (const auto& error : syntaxErrors) {
-                source->errors.push_back(makeError(ErrorType::SYNTAX_ERROR, shortened(error->message()), error->line(), error->positionInLine(), source->name));
+                source->errors.push_back(makeError(errorTypeOf(error->errorType()), shortened(error->message()), error->line(), error->positionInLine(), source->name));
             }
 
             try {

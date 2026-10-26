@@ -47,6 +47,7 @@ namespace KerML::Entities {
 		 * @param elementID The Id of the specific element. This is initialized by a random UUID.
 		 * @param owner The owner of the element, given as a shared pointer. By default initialized by a nullptr.
 		 * @see KerML::Entities::Namespace
+	     * If the string is a JSON object (it starts with '{') it is the JSON representation of the element, see serializeToJson(); otherwise it is the declared name.
 	     */
 	    explicit Classifier(std::string classifierName, boost::uuids::uuid elementID = boost::uuids::random_generator()(), std::shared_ptr<Element> owner = nullptr);
 
@@ -81,5 +82,31 @@ namespace KerML::Entities {
 
     private:
         std::vector<std::shared_ptr<Subclassification>> OwnedSubclassification;
+
+    // BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+    public:
+        /**
+         * Serializes the Classifier to JSON: all properties of the metaclass (stored and derived ones). References to other elements are
+         * only written as identities ({"@id": "<uuid>"}), never recursively.
+         * @return The JSON representation of the Classifier.
+         */
+        std::string serializeToJson() override;
+
+        /**
+         * Resolves the references that were read from JSON to the elements (see Element::resolveJsonReferences()), for the properties
+         * of Classifier and of its base classes.
+         * @param lookup Returns the element of an element id, or an empty pointer if it is not known.
+         */
+        void resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) override;
+
+    protected:
+        /**
+         * Populates the Classifier from its JSON representation; the stored properties of Classifier and of its base classes are read,
+         * computed derived properties are ignored, the derived references that the model keeps as collections are read like the stored ones,
+         * and references are only stored as ids.
+         * @param jsonString The JSON representation of the Classifier.
+         */
+        void deserializeAndPopulate(const std::string& jsonString) override;
+    // END GENERATED JSON
     };
 }

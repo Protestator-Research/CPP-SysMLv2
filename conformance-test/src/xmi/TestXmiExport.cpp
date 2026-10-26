@@ -66,7 +66,7 @@ using ElementPtr = std::shared_ptr<K::Element>;
 using Errors = std::vector<std::shared_ptr<ParserError>>;
 
 std::string describe(const std::shared_ptr<ParserError>& error) {
-    static const char* kinds[] = {"SYNTAX_ERROR", "LOGICAL_ERROR", "INTERNAL_ERROR", "WARNING"};
+    static const char* kinds[] = {"SYNTAX_ERROR", "LOGICAL_ERROR", "INTERNAL_ERROR", "WARNING", "KEYWORD_MISUSE"};
     return std::string(kinds[static_cast<int>(error->errorType())]) + " " + error->getSource() + ": " + error->description();
 }
 

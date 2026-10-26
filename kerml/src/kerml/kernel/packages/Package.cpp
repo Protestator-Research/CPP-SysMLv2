@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::vector<std::shared_ptr<Expression>> Package::filterCondition() const {
@@ -15,3 +17,32 @@ Package::Package() {
 
 Package::~Package() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    Package::Package(const std::string& nameOrJson) :
+        Package() {
+        _dType = "Package";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string Package::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Namespace::serializeToJson());
+        json["filterCondition"] = Json::reference(unresolvedJsonReferences("filterCondition"), Package::filterCondition());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void Package::deserializeAndPopulate(const std::string& jsonString) {
+        Namespace::deserializeAndPopulate(jsonString);
+    }
+
+    void Package::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Namespace::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

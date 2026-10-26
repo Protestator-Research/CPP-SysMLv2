@@ -28,6 +28,7 @@
 #include <list>
 #include <vector>
 #include <memory>
+#include <boost/uuid/uuid.hpp>
 
 //---------------------------------------------------------
 // Internal Classes
@@ -60,7 +61,9 @@ namespace SysMLv2::REST {
 	    /**
 	     * @brief Constructor that is used to parse the given JSON string.
 	     * This constructor allows to set the Description, but can also be used to set the JSON string to be parsed.
-	     * @param jsonStringOrDescription Can be the JSON string or the description of the CommitRequest.
+	     * @param jsonStringOrDescription Can be the JSON string (the text starts with '{') or the description of the CommitRequest.
+	     * The older "@type" "CommitRequest" is still read and prints a deprecation warning.
+	     * @throws std::invalid_argument If the text looks like JSON but is malformed or has values of a wrong type.
 	     */
 	    CommitRequest(const std::string& jsonStringOrDescription);
 	    /**
@@ -68,8 +71,10 @@ namespace SysMLv2::REST {
 	     * This constructor allows to set the description and the requested change.
 	     * @param description The given string that is used to describe the changes of the given commit.
 	     * @param changeRequested The given requested change, that can be implemented in the project.
+	     * @param previousCommits Ids of the commits that precede the new commit. Written only if not empty.
 	     */
-	    CommitRequest(const std::string& description, const std::vector<std::shared_ptr<DataVersion>>& changeRequested);
+	    CommitRequest(const std::string& description, const std::vector<std::shared_ptr<DataVersion>>& changeRequested,
+	                  const std::vector<boost::uuids::uuid>& previousCommits = {});
 	    /**
 	     * @brief DTor
 	     * DTor
@@ -91,6 +96,11 @@ namespace SysMLv2::REST {
 	     */
 	    std::string description();
 
+	    /**
+	     * @brief Ids of the commits that precede the new commit.
+	     */
+	    [[nodiscard]] std::vector<boost::uuids::uuid> previousCommits() const;
+
     protected:
         void deserializeAndPopulate(const std::string& jsonValue) override;
 
@@ -98,5 +108,6 @@ namespace SysMLv2::REST {
         const std::string Type;
         std::string Description;
         std::vector<std::shared_ptr<DataVersion>> ChangeRequested;
+        std::vector<boost::uuids::uuid> PreviousCommits;
     };
 }

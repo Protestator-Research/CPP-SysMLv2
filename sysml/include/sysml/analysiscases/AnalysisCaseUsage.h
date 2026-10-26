@@ -18,6 +18,35 @@ public:
     /// Derived snapshot; populated by a semantic evaluator or importer.
     std::shared_ptr<KerML::Entities::Expression> resultExpression() const;
     void setResultExpression(std::shared_ptr<KerML::Entities::Expression> value);
+
+    /**
+     * Creates a AnalysisCaseUsage either from its JSON representation (if the string starts with '{') or with the given declared name.
+     * Reading JSON only stores the ids of the referenced elements, see Element::resolveJsonReferences(). The type of the object stays "AnalysisCaseUsage".
+     * @param nameOrJson The JSON representation of the AnalysisCaseUsage, or its declared name.
+     */
+    explicit AnalysisCaseUsage(const std::string& nameOrJson);
+    /**
+     * Serializes the AnalysisCaseUsage to JSON: all properties of the metaclass (stored and derived ones) and of its base classes. References to
+     * other elements are only written as identities ({"@id": "<uuid>"}), never recursively.
+     * @return The JSON representation of the AnalysisCaseUsage.
+     */
+    std::string serializeToJson() override;
+
+    /**
+     * Resolves the references that were read from JSON to the elements (see Element::resolveJsonReferences()), for the properties
+     * of AnalysisCaseUsage and of its base classes.
+     * @param lookup Returns the element of an element id, or an empty pointer if it is not known.
+     */
+    void resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) override;
+
+protected:
+    /**
+     * Populates the AnalysisCaseUsage from its JSON representation; the stored properties of AnalysisCaseUsage and of its base classes are read,
+     * computed derived properties are ignored, the derived references that the model keeps as snapshots are read like the stored ones,
+     * and references are only stored as ids.
+     * @param jsonString The JSON representation of the AnalysisCaseUsage.
+     */
+    void deserializeAndPopulate(const std::string& jsonString) override;
 private:
     std::shared_ptr<AnalysisCaseDefinition> analysisCaseDefinition_ = {};
     std::shared_ptr<KerML::Entities::Expression> resultExpression_ = {};

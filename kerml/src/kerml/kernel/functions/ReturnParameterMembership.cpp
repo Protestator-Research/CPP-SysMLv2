@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 ReturnParameterMembership::ReturnParameterMembership() {
@@ -11,3 +13,31 @@ ReturnParameterMembership::ReturnParameterMembership() {
 
 ReturnParameterMembership::~ReturnParameterMembership() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    ReturnParameterMembership::ReturnParameterMembership(const std::string& nameOrJson) :
+        ReturnParameterMembership() {
+        _dType = "ReturnParameterMembership";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string ReturnParameterMembership::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(ParameterMembership::serializeToJson());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void ReturnParameterMembership::deserializeAndPopulate(const std::string& jsonString) {
+        ParameterMembership::deserializeAndPopulate(jsonString);
+    }
+
+    void ReturnParameterMembership::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        ParameterMembership::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

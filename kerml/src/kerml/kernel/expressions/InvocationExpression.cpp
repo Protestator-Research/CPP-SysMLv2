@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 InvocationExpression::InvocationExpression() {
@@ -11,3 +13,31 @@ InvocationExpression::InvocationExpression() {
 
 InvocationExpression::~InvocationExpression() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    InvocationExpression::InvocationExpression(const std::string& nameOrJson) :
+        InvocationExpression() {
+        _dType = "InvocationExpression";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string InvocationExpression::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(InstantiationExpression::serializeToJson());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void InvocationExpression::deserializeAndPopulate(const std::string& jsonString) {
+        InstantiationExpression::deserializeAndPopulate(jsonString);
+    }
+
+    void InvocationExpression::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        InstantiationExpression::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

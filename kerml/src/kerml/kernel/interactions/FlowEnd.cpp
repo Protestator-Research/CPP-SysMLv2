@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 FlowEnd::FlowEnd() {
@@ -12,3 +14,31 @@ FlowEnd::FlowEnd() {
 
 FlowEnd::~FlowEnd() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    FlowEnd::FlowEnd(const std::string& nameOrJson) :
+        FlowEnd() {
+        _dType = "FlowEnd";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string FlowEnd::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Feature::serializeToJson());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void FlowEnd::deserializeAndPopulate(const std::string& jsonString) {
+        Feature::deserializeAndPopulate(jsonString);
+    }
+
+    void FlowEnd::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Feature::resolveJsonReferences(lookup);
+    }
+}
+// END GENERATED JSON

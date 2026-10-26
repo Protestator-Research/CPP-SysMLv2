@@ -12,6 +12,8 @@
 #include <cctype>
 #include <memory>
 #include <mutex>
+#include <optional>
+#include <set>
 #include <stdexcept>
 #include <curl/curl.h>
 #include <nlohmann/json.hpp>
@@ -24,6 +26,7 @@
 #include <sysmlv2/service/online/NotEnoughMemoryError.h>
 #include <sysmlv2/service/online/ConnectionError.h>
 #include <sysmlv2/service/online/HttpException.h>
+#include <sysmlv2/service/online/LinkHeader.h>
 #include <sysmlv2/rest/serialization/SysMLv2Deserializer.h>
 #include <sysmlv2/rest/entities/Project.h>
 #include <sysmlv2/rest/entities/Commit.h>
@@ -46,11 +49,10 @@ namespace SysMLv2::API {
         std::once_flag CurlGlobalInitFlag;
 
         /**
-         * Searches the header (case-insensitive) in the raw header block and returns its trimmed value. If the block
-         * contains several responses (e.g. 100-continue) the last occurrence wins.
+         * Searches the header (case-insensitive) in the raw header block and returns the trimmed values of all its lines.
          */
-        std::string findHeaderValue(const std::string& rawHeaders, const std::string& name) {
-            std::string result;
+        std::vector<std::string> findHeaderValues(const std::string& rawHeaders, const std::string& name) {
+            std::vector<std::string> values;
             std::size_t position = 0;
             while (position < rawHeaders.size()) {
                 auto lineEnd = rawHeaders.find('\n', position);
@@ -69,9 +71,25 @@ namespace SysMLv2::API {
                     continue;
                 auto first = line.find_first_not_of(" \t", colon + 1);
                 auto last = line.find_last_not_of(" \t\r");
-                result = (first == std::string::npos || last < first) ? "" : line.substr(first, last - first + 1);
+                values.push_back((first == std::string::npos || last < first) ? "" : line.substr(first, last - first + 1));
             }
-            return result;
+            return values;
+        }
+
+        std::string findHeaderValue(const std::string& rawHeaders, const std::string& name) {
+            auto values = findHeaderValues(rawHeaders, name);
+            return values.empty() ? std::string() : values.back();
+        }
+
+        /// All lines of a header joined with ", " (RFC 9110: several lines are equivalent to one comma separated line).
+        std::string joinedHeaderValue(const std::string& rawHeaders, const std::string& name) {
+            std::string joined;
+            for (const auto& value : findHeaderValues(rawHeaders, name)) {
+                if (value.empty())
+                    continue;
+                joined += (joined.empty() ? "" : ", ") + value;
+            }
+            return joined;
         }
     }
 
@@ -97,15 +115,13 @@ namespace SysMLv2::API {
     }
 
     std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> SysMLAPIImplementation::getAllProjects(std::string barrierString) {
-        auto response = performRequest("GET", "projects", "", barrierString);
-        return SysMLv2::SysMLv2Deserializer::deserializeJsonArray(response.Body);
+        return SysMLv2::SysMLv2Deserializer::deserializeJsonArray(performPagedGet("projects", barrierString));
     }
 
     std::vector<std::shared_ptr<SysMLv2::REST::IEntity>>
     SysMLAPIImplementation::getAllElementsFromCommit(std::string projectId, std::string commitId, std::string barrierString) {
-        auto response = performRequest("GET", "projects/" + projectId + "/commits/" + commitId + "/elements", "",
-                                       barrierString);
-        return SysMLv2::SysMLv2Deserializer::deserializeJsonArray(response.Body);
+        return SysMLv2::SysMLv2Deserializer::deserializeJsonArray(
+                performPagedGet("projects/" + projectId + "/commits/" + commitId + "/elements", barrierString));
     }
 
     std::string SysMLAPIImplementation::getVersionOfBackend(const std::string& barrierString) {
@@ -114,8 +130,8 @@ namespace SysMLv2::API {
 
     std::vector<std::shared_ptr<SysMLv2::REST::IEntity>> SysMLAPIImplementation::getAllBranchesFroProject(const std::string& projectId, std::string barrierString)
     {
-        auto response = performRequest("GET", "projects/" + projectId + "/branches", "", barrierString);
-        return SysMLv2::SysMLv2Deserializer::deserializeJsonArray(response.Body);
+        return SysMLv2::SysMLv2Deserializer::deserializeJsonArray(
+                performPagedGet("projects/" + projectId + "/branches", barrierString));
     }
 
     std::shared_ptr<SysMLv2::REST::IEntity>
@@ -152,7 +168,63 @@ namespace SysMLv2::API {
     }
 
     std::string SysMLAPIImplementation::getCustomRequest(std::string const &endpoint, std::string const &barrierString) {
-        return performRequest("GET", endpoint, "", barrierString).Body;
+        return performPagedGet(endpoint, barrierString, true);
+    }
+
+    std::string SysMLAPIImplementation::performPagedGet(const std::string& endpoint, const std::string& barrierString,
+                                                        bool onlyIfArray) {
+        constexpr std::size_t MaxPages = 10000;
+
+        // All Link lines of the last header set of the answer; empty if there is none.
+        auto linkHeader = [](const HttpResponse& response) {
+            return joinedHeaderValue(detail::lastHeaderSet(response.Headers), "Link");
+        };
+        auto nextTarget = [&](const HttpResponse& response, const std::string& currentEndpoint)
+                -> std::optional<std::string> {
+            auto link = linkHeader(response);
+            if (link.empty())
+                return std::nullopt;
+            auto next = detail::findNextLinkUrl(link);
+            if (!next)
+                return std::nullopt;
+            return detail::resolveNextLinkTarget(*next, ServerAddress, currentEndpoint);
+        };
+
+        auto response = performRequest("GET", endpoint, "", barrierString);
+        if (linkHeader(response).empty())
+            return response.Body;
+
+        auto firstPage = nlohmann::json::parse(response.Body, nullptr, false);
+        if (!firstPage.is_array()) {
+            // Not a list: returned unchanged, whatever the Link header looks like (custom requests only).
+            if (onlyIfArray)
+                return response.Body;
+        }
+        auto target = nextTarget(response, endpoint);
+        if (!target)
+            return response.Body;
+        if (!firstPage.is_array())
+            throw std::runtime_error("A paginated answer must be a JSON array.");
+
+        nlohmann::json merged = std::move(firstPage);
+        std::set<std::string> visited;
+        visited.insert(endpoint.substr(std::min(endpoint.find_first_not_of('/'), endpoint.size()))); // same form as the targets
+        std::size_t pages = 1;
+        while (target) {
+            if (++pages > MaxPages)
+                throw std::runtime_error("The server announced more than 10000 pages.");
+            if (!visited.insert(*target).second)
+                throw std::runtime_error("The pagination of the server loops: a page was announced twice.");
+            const std::string currentEndpoint = *target;
+            response = performRequest("GET", currentEndpoint, "", barrierString);
+            auto page = nlohmann::json::parse(response.Body, nullptr, false);
+            if (!page.is_array())
+                throw std::runtime_error("A paginated answer must be a JSON array.");
+            for (auto& element : page)
+                merged.push_back(std::move(element));
+            target = nextTarget(response, currentEndpoint);
+        }
+        return merged.dump();
     }
 
     std::string SysMLAPIImplementation::putCustomRequest(std::string const &endpoint, std::string const &payload,

@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::vector<std::shared_ptr<Expression>> InstantiationExpression::argument() const {
@@ -10,6 +12,7 @@ std::vector<std::shared_ptr<Expression>> InstantiationExpression::argument() con
 }
 
 void InstantiationExpression::setArgument(std::vector<std::shared_ptr<Expression>> value) {
+    clearUnresolvedJsonReferences("argument");
     detail::checkCollection(value, true, -1);
     argument_ = std::move(value);
 }
@@ -23,6 +26,7 @@ std::shared_ptr<Type> InstantiationExpression::instantiatedType() const {
 }
 
 void InstantiationExpression::setInstantiatedType(std::shared_ptr<Type> value) {
+    clearUnresolvedJsonReferences("instantiatedType");
     instantiatedType_ = std::move(value);
 }
 
@@ -32,3 +36,69 @@ InstantiationExpression::InstantiationExpression() {
 
 InstantiationExpression::~InstantiationExpression() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    InstantiationExpression::InstantiationExpression(const std::string& nameOrJson) :
+        InstantiationExpression() {
+        _dType = "InstantiationExpression";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string InstantiationExpression::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Expression::serializeToJson());
+        json["argument"] = Json::reference(unresolvedJsonReferences("argument"), InstantiationExpression::argument());
+        json["instantiatedType"] = Json::reference(unresolvedJsonReferences("instantiatedType"), InstantiationExpression::instantiatedType());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void InstantiationExpression::deserializeAndPopulate(const std::string& jsonString) {
+        Expression::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "argument", ids))
+            setUnresolvedJsonReferences("argument", ids);
+        if (Json::readReferences(json, "instantiatedType", ids))
+            setUnresolvedJsonReferences("instantiatedType", ids);
+    }
+
+    void InstantiationExpression::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Expression::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("argument")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Expression>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Expression>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    InstantiationExpression::setArgument(std::move(resolved));
+                    clearUnresolvedJsonReferences("argument");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("argument", *ids);
+            }
+        }
+        if (const auto ids = unresolvedJsonReferences("instantiatedType")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Type>(lookup(ids->front()))) {
+                    InstantiationExpression::setInstantiatedType(std::move(target));
+                    clearUnresolvedJsonReferences("instantiatedType");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("instantiatedType", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

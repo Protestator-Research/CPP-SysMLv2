@@ -21,12 +21,12 @@ namespace SysMLv2::API {
 
         std::vector<std::shared_ptr<KerML::Entities::Element>> elements;
 
-        auto dataVersionsOfCommit = commit->getDataVersion();
+        auto dataVersionsOfCommit = commit->getChange();
         for(const auto &dataVersion : dataVersionsOfCommit) {
-            auto payload = dataVersion->getPayload();
-            try {
-                elements.push_back(std::dynamic_pointer_cast<KerML::Entities::Element>(payload));
-            }catch (...){}
+            // A deletion has no payload; payloads that are no Element are not part of the result.
+            auto element = std::dynamic_pointer_cast<KerML::Entities::Element>(dataVersion->getPayload());
+            if (element != nullptr)
+                elements.push_back(element);
         }
         return elements;
     }
@@ -38,10 +38,11 @@ namespace SysMLv2::API {
         if(project!=commit->getOwningProject())
             throw std::runtime_error("Project does not fit the commits project");
 
-        auto dataVersionsOfCommit = commit->getDataVersion();
+        auto dataVersionsOfCommit = commit->getChange();
         for(const auto &dataVersion : dataVersionsOfCommit) {
             auto payload = dataVersion->getPayload();
-            if(dataVersion->getId() == elementId) {
+            // A deleted element (no payload) is not found.
+            if(payload != nullptr && dataVersion->getId() == elementId) {
                 try {
                     return std::dynamic_pointer_cast<KerML::Entities::Element>(payload);
                 } catch (...) {

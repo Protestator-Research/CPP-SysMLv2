@@ -29,6 +29,8 @@
 #include <sysml/views/RenderingUsage.h>
 #include <sysml/metadata/MetadataUsage.h>
 #include "../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -179,6 +181,71 @@ std::string_view Definition::metaclassName() const noexcept {
 std::vector<RepresentationIssue> Definition::validateRepresentation(bool includeDerived) const {
     std::vector<RepresentationIssue> issues; (void)includeDerived;
     return issues;
+}
+
+Definition::Definition(const std::string& nameOrJson) : Definition() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string Definition::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(KerML::Entities::Classifier::serializeToJson());
+    json["isVariation"] = Json::value(Definition::isVariation());
+    json["variant"] = Json::reference(unresolvedJsonReferences("variant"), Definition::variant());
+    json["variantMembership"] = Json::reference(unresolvedJsonReferences("variantMembership"), Definition::variantMembership());
+    json["usage"] = Json::reference(unresolvedJsonReferences("usage"), Definition::usage());
+    json["directedUsage"] = Json::reference(unresolvedJsonReferences("directedUsage"), Definition::directedUsage());
+    json["ownedUsage"] = Json::reference(unresolvedJsonReferences("ownedUsage"), Definition::ownedUsage());
+    json["ownedReference"] = Json::reference(unresolvedJsonReferences("ownedReference"), Definition::ownedReference());
+    json["ownedAttribute"] = Json::reference(unresolvedJsonReferences("ownedAttribute"), Definition::ownedAttribute());
+    json["ownedEnumeration"] = Json::reference(unresolvedJsonReferences("ownedEnumeration"), Definition::ownedEnumeration());
+    json["ownedOccurrence"] = Json::reference(unresolvedJsonReferences("ownedOccurrence"), Definition::ownedOccurrence());
+    json["ownedItem"] = Json::reference(unresolvedJsonReferences("ownedItem"), Definition::ownedItem());
+    json["ownedPart"] = Json::reference(unresolvedJsonReferences("ownedPart"), Definition::ownedPart());
+    json["ownedPort"] = Json::reference(unresolvedJsonReferences("ownedPort"), Definition::ownedPort());
+    json["ownedConnection"] = Json::reference(unresolvedJsonReferences("ownedConnection"), Definition::ownedConnection());
+    json["ownedFlow"] = Json::reference(unresolvedJsonReferences("ownedFlow"), Definition::ownedFlow());
+    json["ownedInterface"] = Json::reference(unresolvedJsonReferences("ownedInterface"), Definition::ownedInterface());
+    json["ownedAllocation"] = Json::reference(unresolvedJsonReferences("ownedAllocation"), Definition::ownedAllocation());
+    json["ownedAction"] = Json::reference(unresolvedJsonReferences("ownedAction"), Definition::ownedAction());
+    json["ownedState"] = Json::reference(unresolvedJsonReferences("ownedState"), Definition::ownedState());
+    json["ownedTransition"] = Json::reference(unresolvedJsonReferences("ownedTransition"), Definition::ownedTransition());
+    json["ownedCalculation"] = Json::reference(unresolvedJsonReferences("ownedCalculation"), Definition::ownedCalculation());
+    json["ownedConstraint"] = Json::reference(unresolvedJsonReferences("ownedConstraint"), Definition::ownedConstraint());
+    json["ownedRequirement"] = Json::reference(unresolvedJsonReferences("ownedRequirement"), Definition::ownedRequirement());
+    json["ownedConcern"] = Json::reference(unresolvedJsonReferences("ownedConcern"), Definition::ownedConcern());
+    json["ownedCase"] = Json::reference(unresolvedJsonReferences("ownedCase"), Definition::ownedCase());
+    json["ownedAnalysisCase"] = Json::reference(unresolvedJsonReferences("ownedAnalysisCase"), Definition::ownedAnalysisCase());
+    json["ownedVerificationCase"] = Json::reference(unresolvedJsonReferences("ownedVerificationCase"), Definition::ownedVerificationCase());
+    json["ownedUseCase"] = Json::reference(unresolvedJsonReferences("ownedUseCase"), Definition::ownedUseCase());
+    json["ownedView"] = Json::reference(unresolvedJsonReferences("ownedView"), Definition::ownedView());
+    json["ownedViewpoint"] = Json::reference(unresolvedJsonReferences("ownedViewpoint"), Definition::ownedViewpoint());
+    json["ownedRendering"] = Json::reference(unresolvedJsonReferences("ownedRendering"), Definition::ownedRendering());
+    json["ownedMetadata"] = Json::reference(unresolvedJsonReferences("ownedMetadata"), Definition::ownedMetadata());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void Definition::deserializeAndPopulate(const std::string& jsonString) {
+    KerML::Entities::Classifier::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    {
+        bool value{};
+        if (Json::readBool(json, "isVariation", value)) {
+            try {
+                Definition::setIsVariation(value);
+            } catch (const std::invalid_argument&) {
+                // A value the metaclass refuses is ignored.
+            }
+        }
+    }
+}
+
+void Definition::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    KerML::Entities::Classifier::resolveJsonReferences(lookup);
 }
 
 } // namespace SysMLv2::Entities

@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::shared_ptr<Predicate> BooleanExpression::predicate() const {
@@ -10,6 +12,7 @@ std::shared_ptr<Predicate> BooleanExpression::predicate() const {
 }
 
 void BooleanExpression::setPredicate(std::shared_ptr<Predicate> value) {
+    clearUnresolvedJsonReferences("predicate");
     setFunction(std::move(value));
 }
 
@@ -19,3 +22,47 @@ BooleanExpression::BooleanExpression() {
 
 BooleanExpression::~BooleanExpression() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    BooleanExpression::BooleanExpression(const std::string& nameOrJson) :
+        BooleanExpression() {
+        _dType = "BooleanExpression";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string BooleanExpression::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Expression::serializeToJson());
+        json["predicate"] = Json::reference(unresolvedJsonReferences("predicate"), BooleanExpression::predicate());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void BooleanExpression::deserializeAndPopulate(const std::string& jsonString) {
+        Expression::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "predicate", ids))
+            setUnresolvedJsonReferences("predicate", ids);
+    }
+
+    void BooleanExpression::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Expression::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("predicate")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Predicate>(lookup(ids->front()))) {
+                    BooleanExpression::setPredicate(std::move(target));
+                    clearUnresolvedJsonReferences("predicate");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("predicate", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

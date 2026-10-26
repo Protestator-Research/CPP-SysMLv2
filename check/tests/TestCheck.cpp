@@ -115,6 +115,18 @@ TEST(SysmlPruefe, SyntaxErrorIsGrammarWithLine) {
     EXPECT_TRUE(onLineThree) << response.dump(2);
 }
 
+TEST(SysmlPruefe, KeywordMisuseIsLogicAndNotAGrammarError) {
+    // A reserved keyword used as a name: the diagnosis of the misuse (category LOGIK, source SYNTAX, with the position of the keyword)
+    // replaces the cryptic message of the parser; no second diagnosis (no GRAMMATIK, no STRUKTUR) for the half-built statement.
+    const json response = pruefe("action def T {\n  then action send { in cs : Integer; }\n}\n");
+    const auto misuse = select(response, "LOGIK", "SYNTAX");
+    ASSERT_EQ(misuse.size(), 1u) << response.dump(2);
+    EXPECT_NE(misuse[0].at("meldung").get<std::string>().find("reserved keyword"), std::string::npos) << response.dump(2);
+    EXPECT_EQ(misuse[0].at("zeile"), 2);
+    EXPECT_TRUE(select(response, "GRAMMATIK").empty()) << response.dump(2);
+    EXPECT_TRUE(select(response, "LOGIK", "STRUKTUR").empty()) << response.dump(2);
+}
+
 TEST(SysmlPruefe, UnresolvedReferenceIsLogic) {
     const json response = pruefe("package P {\n  part def A;\n  part x : DoesNotExist;\n}\n");
     EXPECT_TRUE(select(response, "GRAMMATIK").empty()) << response.dump(2);

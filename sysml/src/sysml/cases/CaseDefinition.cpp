@@ -3,6 +3,8 @@
 #include <sysml/requirements/RequirementUsage.h>
 #include <sysml/usage/Usage.h>
 #include <sysml/parts/PartUsage.h>
+#include <nlohmann/json.hpp>
+#include "../model/JsonSupport.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -13,6 +15,7 @@ std::shared_ptr<RequirementUsage> CaseDefinition::objectiveRequirement() const {
 }
 
 void CaseDefinition::setObjectiveRequirement(std::shared_ptr<RequirementUsage> value) {
+    clearUnresolvedJsonReferences("objectiveRequirement");
     objectiveRequirement_ = std::move(value);
 }
 
@@ -21,6 +24,7 @@ std::shared_ptr<Usage> CaseDefinition::subjectParameter() const {
 }
 
 void CaseDefinition::setSubjectParameter(std::shared_ptr<Usage> value) {
+    clearUnresolvedJsonReferences("subjectParameter");
     subjectParameter_ = std::move(value);
 }
 
@@ -29,6 +33,7 @@ std::vector<std::shared_ptr<PartUsage>> CaseDefinition::actorParameter() const {
 }
 
 void CaseDefinition::setActorParameter(std::vector<std::shared_ptr<PartUsage>> value) {
+    clearUnresolvedJsonReferences("actorParameter");
     if (std::any_of(value.begin(), value.end(), [](const auto& item) { return !item; })) {
         throw std::invalid_argument("CaseDefinition.actorParameter: null entry");
     }
@@ -60,6 +65,84 @@ std::vector<RepresentationIssue> CaseDefinition::validateRepresentation(bool inc
     std::vector<RepresentationIssue> issues; (void)includeDerived;
     if (includeDerived) if (!CaseDefinition::subjectParameter()) issues.push_back({"CaseDefinition.subjectParameter", "required reference is missing"});
     return issues;
+}
+
+CaseDefinition::CaseDefinition(const std::string& nameOrJson) : CaseDefinition() {
+    if (Json::looksLikeJson(nameOrJson)) {
+        deserializeAndPopulate(nameOrJson);
+        captureJsonSource(nameOrJson);
+    } else {
+        setDeclaredName(nameOrJson);
+    }
+}
+
+std::string CaseDefinition::serializeToJson() {
+    nlohmann::json json = nlohmann::json::parse(CalculationDefinition::serializeToJson());
+    json["objectiveRequirement"] = Json::reference(unresolvedJsonReferences("objectiveRequirement"), CaseDefinition::objectiveRequirement());
+    json["subjectParameter"] = Json::reference(unresolvedJsonReferences("subjectParameter"), CaseDefinition::subjectParameter());
+    json["actorParameter"] = Json::reference(unresolvedJsonReferences("actorParameter"), CaseDefinition::actorParameter());
+    return applyJsonSource(json.dump(JSON_INTENT));
+}
+
+void CaseDefinition::deserializeAndPopulate(const std::string& jsonString) {
+    CalculationDefinition::deserializeAndPopulate(jsonString);
+    const nlohmann::json json = nlohmann::json::parse(jsonString);
+    std::vector<boost::uuids::uuid> ids;
+    if (Json::readReferences(json, "objectiveRequirement", ids)) {
+        setUnresolvedJsonReferences("objectiveRequirement", ids);
+    }
+    if (Json::readReferences(json, "subjectParameter", ids)) {
+        setUnresolvedJsonReferences("subjectParameter", ids);
+    }
+    if (Json::readReferences(json, "actorParameter", ids)) {
+        setUnresolvedJsonReferences("actorParameter", ids);
+    }
+}
+
+void CaseDefinition::resolveJsonReferences(const std::function<std::shared_ptr<KerML::Entities::Element>(const boost::uuids::uuid&)>& lookup) {
+    CalculationDefinition::resolveJsonReferences(lookup);
+    if (const auto ids = unresolvedJsonReferences("objectiveRequirement")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<RequirementUsage>(lookup(ids->front()))) {
+                CaseDefinition::setObjectiveRequirement(std::move(target));
+                clearUnresolvedJsonReferences("objectiveRequirement");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("objectiveRequirement", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("subjectParameter")) {
+        try {
+            if (auto target = std::dynamic_pointer_cast<Usage>(lookup(ids->front()))) {
+                CaseDefinition::setSubjectParameter(std::move(target));
+                clearUnresolvedJsonReferences("subjectParameter");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("subjectParameter", *ids);
+        }
+    }
+    if (const auto ids = unresolvedJsonReferences("actorParameter")) {
+        try {
+            std::vector<std::shared_ptr<PartUsage>> resolved;
+            for (const auto& id : *ids) {
+                auto target = std::dynamic_pointer_cast<PartUsage>(lookup(id));
+                if (!target) {
+                    break;
+                }
+                resolved.push_back(std::move(target));
+            }
+            // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+            if (resolved.size() == ids->size()) {
+                CaseDefinition::setActorParameter(std::move(resolved));
+                clearUnresolvedJsonReferences("actorParameter");
+            }
+        } catch (const std::exception&) {
+            // The reference stays unresolved if the model refuses it.
+            setUnresolvedJsonReferences("actorParameter", *ids);
+        }
+    }
 }
 
 } // namespace SysMLv2::Entities

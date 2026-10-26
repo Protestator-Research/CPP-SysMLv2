@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 std::shared_ptr<Expression> MultiplicityRange::lowerBound() const {
@@ -18,6 +20,7 @@ std::vector<std::shared_ptr<Expression>> MultiplicityRange::bound() const {
 }
 
 void MultiplicityRange::setBound(std::vector<std::shared_ptr<Expression>> value) {
+    clearUnresolvedJsonReferences("bound");
     detail::checkCollection(value, true, 2);
     bound_ = std::move(value);
 }
@@ -32,3 +35,57 @@ MultiplicityRange::MultiplicityRange() {
 
 MultiplicityRange::~MultiplicityRange() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    MultiplicityRange::MultiplicityRange(const std::string& nameOrJson) :
+        MultiplicityRange() {
+        _dType = "MultiplicityRange";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string MultiplicityRange::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(Multiplicity::serializeToJson());
+        json["lowerBound"] = Json::reference(unresolvedJsonReferences("lowerBound"), MultiplicityRange::lowerBound());
+        json["upperBound"] = Json::reference(unresolvedJsonReferences("upperBound"), MultiplicityRange::upperBound());
+        json["bound"] = Json::reference(unresolvedJsonReferences("bound"), MultiplicityRange::bound());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void MultiplicityRange::deserializeAndPopulate(const std::string& jsonString) {
+        Multiplicity::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "bound", ids))
+            setUnresolvedJsonReferences("bound", ids);
+    }
+
+    void MultiplicityRange::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        Multiplicity::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("bound")) {
+            try {
+                std::vector<std::shared_ptr<KerML::Entities::Expression>> resolved;
+                for (const auto& id : *ids) {
+                    auto target = std::dynamic_pointer_cast<KerML::Entities::Expression>(lookup(id));
+                    if (!target)
+                        break;
+                    resolved.push_back(std::move(target));
+                }
+                // (the setter forgets the ids, see clearUnresolvedJsonReferences)
+                if (resolved.size() == ids->size()) {
+                    MultiplicityRange::setBound(std::move(resolved));
+                    clearUnresolvedJsonReferences("bound");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("bound", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON

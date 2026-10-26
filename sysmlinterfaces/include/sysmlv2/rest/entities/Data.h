@@ -68,6 +68,14 @@ namespace SysMLv2::REST {
 
         std::string serializeAsIdentity();
 protected:
+        /**
+         * C-Tor for subclasses that know their id and type (e.g. the REST entities ProjectUsage or ExternalData). Unlike
+         * Data(std::string) it does not parse anything, so a subclass can accept other texts than the Data JSON.
+         * @param id The id of the Data element.
+         * @param type The type of the data element, e.g. "ProjectUsage".
+         */
+        Data(boost::uuids::uuid id, std::string type);
+
         void deserializeAndPopulate(const std::string& jsonString) override;
 
         /**

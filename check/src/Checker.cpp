@@ -502,7 +502,10 @@ namespace SysMLv2::Check {
             for (const auto& error : workspace.errors(source)) {
                 if (full()) continue;
                 const bool isError = error->errorType() == SysMLv2::Files::ErrorType::SYNTAX_ERROR || error->errorType() == SysMLv2::Files::ErrorType::LOGICAL_ERROR || error->errorType() == SysMLv2::Files::ErrorType::INTERNAL_ERROR;
-                json entry = diagnosis(isError ? "GRAMMATIK" : "WARNUNG", syntaxSource, error->description());
+                // A misused keyword (KEYWORD_MISUSE) is reported as LOGIK with source SYNTAX (as requested); like a syntax error it means that the
+                // text does not parse, see syntaxErrors below.
+                const bool isMisuse = error->errorType() == SysMLv2::Files::ErrorType::KEYWORD_MISUSE;
+                json entry = diagnosis(isMisuse ? "LOGIK" : isError ? "GRAMMATIK" : "WARNUNG", syntaxSource, error->description());
                 setPosition(entry, error->getLine(), error->getColumn());
                 out.push_back(std::move(entry));
             }
@@ -570,11 +573,11 @@ namespace SysMLv2::Check {
             // (workspace.elements(userSource) holds neither the given text nor the library). Derived properties are not checked
             // (includeDerived = false): the parser does not fill them. The messages are cut to 200 characters; the number of
             // diagnoses is limited like the others.
-            // Not reported twice: after a syntax error the parser leaves half-built elements behind (the GRAMMATIK diagnosis says it all), and an
+            // Not reported twice: after a syntax error the parser leaves half-built elements behind (the GRAMMATIK diagnosis or, for a keyword misuse, the LOGIK/SYNTAX diagnosis says it all), and an
             // element with an unresolved reference is already reported as UNRESOLVED (its missing target is the same problem); placeholders are skipped.
             bool syntaxErrors = false;
             for (const auto& error : workspace.errors(userSource)) {
-                if (error->errorType() == SysMLv2::Files::ErrorType::SYNTAX_ERROR || error->errorType() == SysMLv2::Files::ErrorType::INTERNAL_ERROR) syntaxErrors = true;
+                if (error->errorType() == SysMLv2::Files::ErrorType::SYNTAX_ERROR || error->errorType() == SysMLv2::Files::ErrorType::KEYWORD_MISUSE || error->errorType() == SysMLv2::Files::ErrorType::INTERNAL_ERROR) syntaxErrors = true;
             }
             std::unordered_set<const Element*> unresolvedContext;
             std::unordered_set<const Element*> unresolvedNeighbours;

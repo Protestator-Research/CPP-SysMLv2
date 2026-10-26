@@ -87,7 +87,7 @@ variant, because its time zone library needs libcurl, too), and the remaining se
 ##### sysmlv2check
 
 `sysmlv2check` (`check/`, `BUILD_WITH_CHECK=ON`, requires `BUILD_WITH_PARSING`) checks a SysML v2 text and answers with JSON diagnoses
-(`GRAMMATIK`: syntax errors, `LOGIK`: unresolved names / missing required elements, `WARNUNG`: parser warnings, each with line and column where
+(`GRAMMATIK`: syntax errors, `LOGIK`: unresolved names / missing required elements / misused keywords (source `SYNTAX`: the text does not parse, e.g. a reserved keyword used as a name), `WARNUNG`: parser warnings, each with line and column where
 known). The request and the response are documented in `check/include/sysmlv2/check/Checker.h`; in short:
 
 ```json
@@ -135,7 +135,7 @@ milliseconds), so keep the process or the module alive.
   `vorgabe`, not the library, no derived properties) for missing mandatory references, violated multiplicities and null / duplicate entries.
   Switch: CMake option `SYSMLV2CHECK_VALIDATE_REPRESENTATION` (default ON). The message is `<Class.property>: <problem>`, at most 200
   characters; the diagnoses count against `maxDiagnosen`. Valid models (also the whole standard library as input) produce none; a syntax error
-  leaves half-built elements behind, which are not reported again: with a `GRAMMATIK` error in the text there is no `STRUKTUR` diagnosis, and a missing reference next to an `UNRESOLVED` one is skipped (an alias of an unknown name is exactly one Logik diagnosis). The check does not evaluate OCL constraints (for example `[3..1]`).
+  leaves half-built elements behind, which are not reported again: with a `GRAMMATIK` error or a `LOGIK`/`SYNTAX` diagnosis (keyword misuse) in the text there is no `STRUKTUR` diagnosis, and a missing reference next to an `UNRESOLVED` one is skipped (an alias of an unknown name is exactly one Logik diagnosis). The check does not evaluate OCL constraints (for example `[3..1]`).
   The cost is small (about 0-3 % of a warm request, Debug build).
 * Tests: `sysmlv2check-test` (with `BUILD_TESTING=ON`).
   Machine-dependent assertions (parse budget of the library test, `maxParseMillis` wall-clock check, timeout count and RSS growth under forced timeouts, the interrupted library load test) only run when the environment variable `SYSML_ENABLE_PERFORMANCE_TESTS` is set to a non-empty value other than `0`; otherwise they are skipped.

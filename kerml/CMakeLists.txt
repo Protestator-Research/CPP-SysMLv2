@@ -251,7 +251,7 @@ target_sources(kerml PRIVATE
         src/kerml/kernel/functions/ResultExpressionMembership.cpp)
 
 include(KernelSources.cmake)
-target_sources(kerml PRIVATE src/kerml/model/RootProperties.cpp src/kerml/model/Representation.cpp src/kerml/model/ElementDisposer.cpp)
+target_sources(kerml PRIVATE src/kerml/model/RootProperties.cpp src/kerml/model/Representation.cpp src/kerml/model/ElementDisposer.cpp src/kerml/model/ElementFactory.cpp src/kerml/model/ElementLinker.cpp)
 
 target_link_libraries(kerml PRIVATE
         Boost::headers
@@ -294,7 +294,7 @@ if(MSVC)
             ./include
             ../sysmlinterfaces/include)
 else ()
-    target_compile_options(kerml PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
+    target_compile_options(kerml PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror> $<$<AND:$<BOOL:${SYSMLV2_WERROR}>,$<CXX_COMPILER_ID:GNU>>:-Wno-error=uninitialized -Wno-error=maybe-uninitialized>)
     target_include_directories(kerml PUBLIC
             ./include
             ../sysmlinterfaces/include)

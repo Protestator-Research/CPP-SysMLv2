@@ -28,6 +28,7 @@
 #include <list>
 #include <vector>
 #include <memory>
+#include <optional>
 
 //---------------------------------------------------------
 // Internal Classes
@@ -77,7 +78,9 @@ namespace SysMLv2::REST {
 
         /**
          * Constructor for Parsing an Commit from the REST API, according to the SysMLv2 Standard.
-         * @param jsonString The JSON String that is received by the REST Client
+         * @param jsonString The JSON String that is received by the REST Client. The older names "timestamp" (now "created")
+         * and "previousCommit" (now "previousCommits") are still read and print a deprecation warning.
+         * @throws std::invalid_argument If the text is no valid JSON object or has values of a wrong type.
          */
         explicit Commit(std::string jsonString);
 
@@ -99,15 +102,27 @@ namespace SysMLv2::REST {
         void addChange(std::shared_ptr<DataVersion> dataVersion);
 
         /**
-         *
-         * @return
+         * The changes (DataVersions) of the commit.
          */
+        [[nodiscard]] std::vector<std::shared_ptr<DataVersion>> getChange() const;
+
+        /**
+         * The changes (DataVersions) of the commit.
+         * @deprecated Use getChange.
+         */
+        [[deprecated("Use Commit::getChange().")]]
         std::vector<std::shared_ptr<DataVersion>> getDataVersion();
 
         /**
-         *
-         * @return
+         * The commits that precede this commit.
          */
+        [[nodiscard]] std::vector<std::shared_ptr<Commit>> getPreviousCommits() const;
+
+        /**
+         * The commits that precede this commit.
+         * @deprecated Use getPreviousCommits (the name was misspelled).
+         */
+        [[deprecated("Use Commit::getPreviousCommits().")]]
         [[nodiscard]] std::vector<std::shared_ptr<Commit>> getPreviusCommits() const;
 
         /**
@@ -122,13 +137,20 @@ namespace SysMLv2::REST {
 
         [[nodiscard]] std::chrono::system_clock::time_point getCreated() const;
 
+        /**
+         * Sets the timestamp of the commit. Commit() sets the current time; a service that has to keep the timestamps of a
+         * history strictly increasing (7.1.2) replaces it.
+         * @param created The new timestamp.
+         */
+        void setCreated(std::chrono::system_clock::time_point created);
+
 protected:
         void deserializeAndPopulate(const std::string& jsonString) override;
 
         /**
          *
          */
-        std::vector<std::shared_ptr<Commit>> PreviusCommits;
+        std::vector<std::shared_ptr<Commit>> PreviousCommits;
         /**
          *
          */
@@ -140,6 +162,6 @@ protected:
         /**
          *
          */
-        std::chrono::system_clock::time_point Created;
+        std::optional<std::chrono::system_clock::time_point> Created;
     };
 }

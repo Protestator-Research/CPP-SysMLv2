@@ -3,6 +3,8 @@
 #include <utility>
 #include <stdexcept>
 #include "../../model/RepresentationSupport.h"
+#include <nlohmann/json.hpp>
+#include "../../model/JsonSupport.h"
 
 namespace KerML::Entities {
 ResultExpressionMembership::ResultExpressionMembership(std::shared_ptr<Expression> expression, std::shared_ptr<Type> owner) : ResultExpressionMembership() {
@@ -20,6 +22,7 @@ std::shared_ptr<Expression> ResultExpressionMembership::ownedResultExpression() 
 }
 
 void ResultExpressionMembership::setOwnedResultExpression(std::shared_ptr<Expression> value) {
+    clearUnresolvedJsonReferences("ownedResultExpression");
     if (!value) throw std::invalid_argument("Result expression is required");
     FeatureMembership::setOwnedMemberFeature(std::move(value));
 }
@@ -30,3 +33,47 @@ ResultExpressionMembership::ResultExpressionMembership() {
 
 ResultExpressionMembership::~ResultExpressionMembership() = default;
 }
+
+// BEGIN GENERATED JSON (kerml/tools/generate_json.py): do not edit, run the script instead.
+namespace KerML::Entities {
+    ResultExpressionMembership::ResultExpressionMembership(const std::string& nameOrJson) :
+        ResultExpressionMembership() {
+        _dType = "ResultExpressionMembership";
+        if (Json::looksLikeJson(nameOrJson)) {
+            deserializeAndPopulate(nameOrJson);
+            captureJsonSource(nameOrJson);
+        } else {
+            setDeclaredName(nameOrJson);
+        }
+    }
+
+    std::string ResultExpressionMembership::serializeToJson() {
+        nlohmann::json json = nlohmann::json::parse(FeatureMembership::serializeToJson());
+        json["ownedResultExpression"] = Json::reference(unresolvedJsonReferences("ownedResultExpression"), ResultExpressionMembership::ownedResultExpression());
+        return applyJsonSource(json.dump(JSON_INTENT));
+    }
+
+    void ResultExpressionMembership::deserializeAndPopulate(const std::string& jsonString) {
+        FeatureMembership::deserializeAndPopulate(jsonString);
+        const nlohmann::json json = nlohmann::json::parse(jsonString);
+        std::vector<boost::uuids::uuid> ids;
+        if (Json::readReferences(json, "ownedResultExpression", ids))
+            setUnresolvedJsonReferences("ownedResultExpression", ids);
+    }
+
+    void ResultExpressionMembership::resolveJsonReferences(const std::function<std::shared_ptr<Element>(const boost::uuids::uuid&)>& lookup) {
+        FeatureMembership::resolveJsonReferences(lookup);
+        if (const auto ids = unresolvedJsonReferences("ownedResultExpression")) {
+            try {
+                if (auto target = std::dynamic_pointer_cast<KerML::Entities::Expression>(lookup(ids->front()))) {
+                    ResultExpressionMembership::setOwnedResultExpression(std::move(target));
+                    clearUnresolvedJsonReferences("ownedResultExpression");
+                }
+            } catch (const std::exception&) {
+                // The reference stays unresolved if the model refuses it.
+                setUnresolvedJsonReferences("ownedResultExpression", *ids);
+            }
+        }
+    }
+}
+// END GENERATED JSON
