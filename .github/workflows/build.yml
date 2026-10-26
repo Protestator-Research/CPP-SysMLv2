@@ -29,12 +29,12 @@ jobs:
     - name: prepare dependencies
       run: |
        mkdir build && cd build
-       conan install .. --build missing -o "&:with_check=True"
+       CC=gcc-16 CXX=g++-16 conan install .. --build missing -o "&:with_check=True"
     - name: build sysmlv2lib
       run: |
         ls -al
         cd build
-        conan build .. --version=wip -o "&:with_check=True"
+        CC=gcc-16 CXX=g++-16 conan build .. --version=wip -o "&:with_check=True"
     - name: test
       run: |
         # the dependencies are shared libraries in the Conan cache: conanrun.sh puts them on LD_LIBRARY_PATH
