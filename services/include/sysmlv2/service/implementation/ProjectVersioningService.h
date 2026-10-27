@@ -9,9 +9,10 @@
 #include <sysmlv2/rest/entities/ChangeType.h>
 #include <map>
 #include <boost/uuid/uuid.hpp>
+#include <sysmlv2/service/sysmlv2service_global.h>
 
 namespace SysMLv2::API {
-    class ProjectVersioningService : public SysMLv2::API::IProjectVersioningService{
+    class SYSMLV2SERVICE_EXPORT ProjectVersioningService : public SysMLv2::API::IProjectVersioningService{
     public:
         ProjectVersioningService() = default;
         ~ProjectVersioningService() override = default;
