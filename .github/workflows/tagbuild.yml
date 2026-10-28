@@ -74,7 +74,7 @@ jobs:
         pip install --upgrade conan
         conan profile detect --force
         # MSVC is detected with C++14, the project and antlr4 need a newer standard
-        sed -i 's/^compiler.cppstd=.*/compiler.cppstd=20/' "$(conan profile path default)"
+        # sed -i 's/^compiler.cppstd=.*/compiler.cppstd=20/' "$(conan profile path default)"
         conan remote add --force protestator-conan $ARTIFACTORY_URL
         conan remote login -p $ARTIFACTORY_TOKEN protestator-conan $ARTIFACTORY_USER
         conan remote remove conancenter
@@ -86,8 +86,8 @@ jobs:
       run: |
         ls -al
         cd build
-        conan create .. --version=$VERSION --build missing
-        conan create .. --version=$VERSION -s build_type=Debug --build missing
+        conan create .. --version=$VERSION --build missing -pr:b=default -pr:h=default -s:h compiler.cppstd=20
+        conan create .. --version=$VERSION -s build_type=Debug --build missing -pr:b=default -pr:h=default -s:h compiler.cppstd=20
         conan upload "sysmllib/*" -c -r protestator-conan
     - name: deploy and package binaries
       run: |
