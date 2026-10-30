@@ -13,6 +13,7 @@
 #include <cerrno>
 #include <cmath>
 #include <cstdint>
+#include <cstdio>
 #include <cstdlib>
 #include <charconv>
 #include <limits>
@@ -165,9 +166,16 @@ namespace SysMLv2::Files::Xmi {
     inline std::string formatReal(double value) {
         if (std::isnan(value)) return "NaN";
         if (std::isinf(value)) return value < 0 ? "-INF" : "INF";
+        // Shortest %g text (15..17 significant digits) that reads back as the same double. Not std::to_chars(double): libc++ offers
+        // it only from macOS 13.3. snprintf honours the C locale's decimal point, so a ',' (or any single-character separator) is mapped to '.'.
         char buffer[64];
-        const auto result = std::to_chars(buffer, buffer + sizeof(buffer), value);
-        return std::string(buffer, result.ptr);
+        for (int precision = 15; precision <= 17; ++precision) {
+            std::snprintf(buffer, sizeof(buffer), "%.*g", precision, value);
+            if (precision == 17 || std::strtod(buffer, nullptr) == value) break;
+        }
+        std::string text(buffer);
+        for (char& c : text) if (c == ',') c = '.';
+        return text;
     }
 
     inline std::string formatString(const std::string& value) { return value; }

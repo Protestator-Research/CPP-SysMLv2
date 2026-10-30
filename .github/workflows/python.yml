@@ -1,0 +1,145 @@
+name: Python Wheels
+
+# Reusable workflow: builds the wheels of the Python package "sysmlv2" (pyproject.toml, python/) with cibuildwheel, tests every wheel
+# (pytest python/tests against the installed wheel) and uploads them as the artifacts "sysmlv2-wheels-<os>-<arch>" and "sysmlv2-sdist".
+# The wheel is py3-none-<platform> (ctypes, no Python ABI): one CPython (cp312) per platform. Nothing is published to PyPI here.
+#
+# Dependencies: python/tools/conan_deps.py (Conan, static). Linux: inside the manylinux container (.github/scripts/cibw-linux-before-all.sh,
+# toolchain path fixed in pyproject.toml). Windows / macOS: on the runner, the toolchain reaches cibuildwheel through $GITHUB_ENV.
+# The Conan packages are cached with `conan cache save/restore` (actions/cache); the Linux container reaches the host through /host.
+on:
+  workflow_call:
+    inputs:
+      version:
+        description: "Release name; becomes the wheel version (v1.2.3 -> 1.2.3, 1.0-main -> 1.0.dev0). Empty: version of pyproject.toml"
+        required: false
+        default: ""
+        type: string
+  workflow_dispatch:
+
+jobs:
+  wheels:
+    name: wheel ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: linux-x86_64,   os: ubuntu-latest,    platform: linux,   archs: x86_64, conan_arch: x86_64 }
+          - { name: linux-aarch64,  os: ubuntu-24.04-arm, platform: linux,   archs: aarch64, conan_arch: armv8 }
+          - { name: windows-x86_64, os: windows-latest,   platform: windows, archs: AMD64,  conan_arch: x86_64 }
+          # cross build on an x64 runner (Conan -s:h arch=armv8, generator platform ARM64); the tests cannot run there
+          - { name: windows-arm64,  os: windows-latest,   platform: windows, archs: ARM64,  conan_arch: armv8 }
+          - { name: macos-arm64,    os: macos-14,         platform: macos,   archs: arm64,  conan_arch: armv8,  deployment: "11.0" }
+          # native Intel runner (macos-13 was retired by GitHub); std::filesystem needs 10.15
+          - { name: macos-x86_64,   os: macos-15-intel,   platform: macos,   archs: x86_64, conan_arch: x86_64, deployment: "10.15" }
+    env:
+      ARTIFACTORY_URL: ${{ secrets.ARTIFACTORY_URL }}
+      ARTIFACTORY_TOKEN: ${{ secrets.ARTIFACTORY_TOKEN }}
+      ARTIFACTORY_USER: ${{ secrets.ARTIFACTORY_USERNAME }}
+      CIBW_ARCHS: ${{ matrix.archs }}
+      # 'true' only for an exact cache hit; otherwise the Conan cache is saved again (a partial restore-keys hit gets refreshed)
+      CONAN_CACHE_HIT: ${{ steps.conan-cache.outputs.cache-hit }}
+      MACOSX_DEPLOYMENT_TARGET: ${{ matrix.deployment }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: enable long paths
+      if: matrix.platform == 'windows'
+      run: git config --system core.longpaths true
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    # --- Linux: the cache directory of the host (the container sees it as /host/home/runner/conan-cache) ---
+    - name: Conan cache directory (Linux)
+      if: matrix.platform == 'linux'
+      run: |
+        mkdir -p "$HOME/conan-cache" && chmod 777 "$HOME/conan-cache"
+        echo "CONAN_CACHE_HOST_DIR=$HOME/conan-cache" >> "$GITHUB_ENV"
+    # --- Windows / macOS: Conan on the runner ---
+    - name: Conan cache directory (Windows / macOS)
+      if: matrix.platform != 'linux'
+      run: |
+        if [ "${{ matrix.platform }}" = windows ]; then
+          echo "CONAN_HOME=C:\c2" >> "$GITHUB_ENV"     # short path (MAX_PATH)
+          echo "CONAN_CACHE_FILE=C:/c2-save/conan-cache.tgz" >> "$GITHUB_ENV"
+          mkdir -p /c/c2-save
+        else
+          echo "CONAN_CACHE_FILE=$HOME/conan-save/conan-cache.tgz" >> "$GITHUB_ENV"
+          mkdir -p "$HOME/conan-save"
+        fi
+    - uses: actions/cache@v4
+      id: conan-cache
+      with:
+        path: ${{ matrix.platform == 'linux' && '~/conan-cache' || (matrix.platform == 'windows' && 'C:/c2-save' || '~/conan-save') }}
+        key: conan-wheel-${{ matrix.name }}-${{ hashFiles('conanfile.py', 'python/tools/conan_deps.py') }}
+        restore-keys: conan-wheel-${{ matrix.name }}-
+    - name: package version
+      run: |
+        python -m pip install --quiet packaging
+        python .github/scripts/set-version.py '${{ inputs.version }}'
+    - name: install dependencies with Conan (Windows / macOS)
+      if: matrix.platform != 'linux'
+      run: |
+        pip install --upgrade conan
+        conan profile detect --force
+        if [ -n "$ARTIFACTORY_URL" ]; then
+          conan remote add --force protestator-conan "$ARTIFACTORY_URL"
+          conan remote login -p "$ARTIFACTORY_TOKEN" protestator-conan "$ARTIFACTORY_USER"
+          conan remote remove conancenter
+        fi
+        if [ -f "$CONAN_CACHE_FILE" ]; then conan cache restore "$CONAN_CACHE_FILE" || echo "conan cache restore failed"; fi
+        if [ "${{ matrix.platform }}" = windows ]; then OUT=C:/c/o; else OUT="$PWD/build-python/conan"; fi
+        # CMAKE_TOOLCHAIN_FILE, CMAKE_GENERATOR (+ _TOOLSET / _PLATFORM on Windows) -> $GITHUB_ENV -> inherited by cibuildwheel
+        python python/tools/conan_deps.py --output-folder "$OUT" --arch ${{ matrix.conan_arch }} --format github >> "$GITHUB_ENV"
+        if [ "$CONAN_CACHE_HIT" != true ]; then rm -f "$CONAN_CACHE_FILE"; conan cache save "*/*:*" --file "$CONAN_CACHE_FILE" || echo "conan cache save failed"; fi
+
+    - name: build and test wheel
+      uses: pypa/cibuildwheel@v3.2.1
+      with:
+        output-dir: wheelhouse
+      env:
+        CIBW_PLATFORM: ${{ matrix.platform }}
+    - uses: actions/upload-artifact@v4
+      with:
+        name: sysmlv2-wheels-${{ matrix.name }}
+        path: wheelhouse/*.whl
+        if-no-files-found: error
+
+  sdist:
+    # the sdist is not self-contained: building from it needs the Conan step (see python/README.md); it is only uploaded
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: package version
+      run: |
+        python -m pip install --quiet packaging
+        python .github/scripts/set-version.py '${{ inputs.version }}'
+    - run: pipx run build --sdist --outdir dist
+    - uses: actions/upload-artifact@v4
+      with:
+        name: sysmlv2-sdist
+        path: dist/*.tar.gz
+        if-no-files-found: error
+
+  # Template, disabled: publish to PyPI with trusted publishing (configure the project + environment "pypi" on pypi.org first).
+  # publish-pypi:
+  #   if: false
+  #   needs: [wheels, sdist]
+  #   runs-on: ubuntu-latest
+  #   environment: pypi
+  #   permissions:
+  #     id-token: write
+  #   steps:
+  #   - uses: actions/download-artifact@v4
+  #     with:
+  #       pattern: sysmlv2-*
+  #       path: dist
+  #       merge-multiple: true
+  #   - uses: pypa/gh-action-pypi-publish@release/v1

@@ -95,6 +95,14 @@ known). The request and the response are documented in `check/include/sysmlv2/ch
   "pflichtelemente": [ { "metaklasse": "PartDefinition", "name": "Vehicle" } ] }
 ```
 
+With `"modell": true` in the request the response additionally carries `"modell"`: the full model of the text (not of `vorgabe` or the library) as one
+SysML v2 API JSON object per element (`"@id"`, `"@type"`, `"declaredName"`, `"ownedRelationship"`, ..., relationships included; the root namespace
+is the first entry; also a partial model for a text with syntax errors), `"modellFehler"`, the number of elements that could not be serialized (e.g.
+names that are not valid UTF-8) and `"modellUnvollstaendig"`, true if the model was cut at `maxModellElemente` (default 20000; `--max-modell-elemente=N`) or at the
+parse deadline. Implied relationships (e.g. the implicit specialization of a `part def` to `Parts::Part`) are not materialized by the parser and therefore
+missing. The `"@id"`s are random UUIDs per request; library elements appear only as `{ "@id": ... }` references. Without the flag the response is unchanged. The command line
+option `--modell` sets the flag in every request that does not carry it.
+
 All variants share one long-living checking context (`SysMLv2::Check::Checker`): the embedded standard library packages are parsed only when
 a text needs them (an `import ISQ::*;`, a `part` needs `Parts`, ...) and are then kept; for every request only the source of the text is
 exchanged (`Workspace::replaceSource`). Parsing library files is slow (seconds for the first request that needs `Parts` or `ISQ`/`SI`, then
@@ -149,6 +157,20 @@ milliseconds), so keep the process or the module alive.
   valid model, syntax error, `UNRESOLVED`, `PFLICHT`, library import, `STRUKTUR`, invalid requests, limits, parse deadline). Measured with Node 24 (Release `-O2`):
   `.wasm` 4.6 MB raw / 0.95 MB gzip (+16 KB JS), module start 12 ms, `sysml_vorwaermen(["*"])` (whole library, 41 files) 1.9 s, a warm request about 43 ms. Memory: the linear memory starts at 64 MB (`INITIAL_MEMORY`), is 77 MB after the first request, 159 MB with the whole library, and may grow to 1 GB (`MAXIMUM_MEMORY`); `sysml_speicher()` returns its size in bytes (a host can recycle the instance above a threshold). The shadow stack is 16 MB.
   `-flto` makes the module 5 % bigger without being faster.
+* Python module / static build: `-DBUILD_PYTHON_MODULE=ON` (needs `BUILD_WITH_CHECK`, `BUILD_SHARED_LIBS=OFF`) builds `sysmlv2check-python`, ONE self-contained
+  shared library (`sysmlv2check_native.dll` / `libsysmlv2check_native.so` / `libsysmlv2check_native.dylib`, loaded with ctypes by the Python package `sysmlv2`) with our
+  libraries, Boost, ANTLR4 runtime, pugixml, ... linked statically; it exports only the five functions of `sysml_pruefe.h` (`.def` file on Windows, version script on Linux
+  with static libstdc++/libgcc, `-exported_symbols_list` on macOS; see `check/python/CMakeLists.txt`). A static build defines `SYSMLV2_STATIC` (empty `*_EXPORT` macros, no
+  `__declspec(dllimport)`; the Conan package adds the define for static consumers) and uses position independent code. Install into a wheel directory with
+  `cmake --install <build> --component python --prefix <dir>` (subdirectory: `-DSYSMLV2_PYTHON_INSTALL_DIR=...`, default `.`).
+  `compiler.runtime=static` (static CRT) makes the Windows DLL independent of MSVCP140/VCRUNTIME140, which CPython does not ship; the import library is in the
+  component `python-dev` (not installed by `--component python`). External non-Conan static consumers on Windows must define `SYSMLV2_STATIC` themselves.
+  Windows example (short build path because of MAX_PATH):
+  ```bash
+  conan install . -of C:/b/py -s build_type=Release -s compiler.runtime=static -o "&:shared=False" -o "&:with_online=False" -o "&:with_check=True" -o "&:with_rest=False" -o "&:with_services=False" -b missing -c tools.build:skip_test=True
+  cmake -S . -B C:/b/py/build -DCMAKE_TOOLCHAIN_FILE=C:/b/py/build/generators/conan_toolchain.cmake -DBUILD_SHARED_LIBS=OFF -DBUILD_WITH_REST=OFF -DBUILD_WITH_SERVICES=OFF -DBUILD_WITH_ONLINE=OFF -DBUILD_TESTING=OFF -DBUILD_WITH_CHECK=ON -DBUILD_PYTHON_MODULE=ON
+  cmake --build C:/b/py/build --config Release --target sysmlv2check-python
+  ```
 
 ```bash
 conan install .. -o with_check=True

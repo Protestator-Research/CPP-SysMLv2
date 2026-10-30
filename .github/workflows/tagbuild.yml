@@ -107,8 +107,14 @@ jobs:
       version: ${{ github.ref_name }}
     secrets: inherit
 
+  python:
+    uses: ./.github/workflows/python.yml
+    with:
+      version: ${{ github.ref_name }}
+    secrets: inherit
+
   release:
-    needs: [build, build-windows, wasm]
+    needs: [build, build-windows, wasm, python]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -122,3 +128,4 @@ jobs:
         files: |
           dist/*.tar.gz
           dist/*.zip
+          dist/*.whl

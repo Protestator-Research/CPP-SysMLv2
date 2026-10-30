@@ -281,7 +281,7 @@ target_include_directories(sysml PRIVATE
 if(MSVC)
     target_compile_options(sysml PRIVATE /W4 /WX- /bigobj)
 else()
-    target_compile_options(sysml PRIVATE -Wno-error=maybe-uninitialized -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror> $<$<AND:$<BOOL:${SYSMLV2_WERROR}>,$<CXX_COMPILER_ID:GNU>>:-Wno-error=uninitialized -Wno-error=maybe-uninitialized>)
+    target_compile_options(sysml PRIVATE $<$<CXX_COMPILER_ID:GNU>:-Wno-error=maybe-uninitialized> -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror> $<$<AND:$<BOOL:${SYSMLV2_WERROR}>,$<CXX_COMPILER_ID:GNU>>:-Wno-error=uninitialized -Wno-error=maybe-uninitialized>)
 endif()
 
 include(GNUInstallDirs)

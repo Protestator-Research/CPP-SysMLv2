@@ -39,7 +39,8 @@ namespace SysMLv2::Check {
      * @code
      * { "quelltext": "<SysML v2 text>",
      *   "vorgabe": "<SysML v2 text, optional>",
-     *   "pflichtelemente": [ { "metaklasse": "PartDefinition", "name": "Vehicle" }, ... ] }   // optional
+     *   "pflichtelemente": [ { "metaklasse": "PartDefinition", "name": "Vehicle" }, ... ],   // optional
+     *   "modell": true }                                                                      // optional, see below
      * @endcode
      * The response (JSON):
      * @code
@@ -49,7 +50,9 @@ namespace SysMLv2::Check {
      *                    "zeile": 3, "spalte": 14,      // 1-based line, 0-based column in Unicode code points (a tab counts 1); only if known
      *                    "name": "...", "element": "...", "eigenschaft": "...", "meldung": "..." }, ... ],
      *   "vorgabeFehler": [ { "kategorie": ..., "quelle": "VORGABE", "zeile": ..., "meldung": ... }, ... ],
-     *   "elemente": [ { "metaklasse": "PartDefinition", "qualifiedName": "P::Vehicle" }, ... ] }
+     *   "elemente": [ { "metaklasse": "PartDefinition", "qualifiedName": "P::Vehicle" }, ... ],
+     *   "modell": [ { "@id": "...", "@type": "PartDefinition", "declaredName": "Vehicle", "ownedRelationship": [ { "@id": "..." } ], ... }, ... ],   // only if requested
+     *   "modellFehler": 0, "modellUnvollstaendig": false }                                    // only if requested
      * @endcode
      *  - GRAMMATIK / SYNTAX: a syntax error of `quelltext` (also internal errors while the parse tree was processed).
      *  - LOGIK / SYNTAX: a misused keyword in `quelltext` (a reserved keyword used as a name, `inv not`, `perform` after `entry`/`do`/`exit`,
@@ -70,6 +73,18 @@ namespace SysMLv2::Check {
      *  - Names are compared and reported without their quotes: `part def 'Mein Auto';` is `Mein Auto` in "pflichtelemente" and
      *    in "qualifiedName" (`P::Mein Auto`).
      *  - "elemente": the named elements of `quelltext` (not of `vorgabe` or the library) that are no relationships.
+     *  - "modell" (request: the boolean `true`, anything else or absent means false): the response carries the full model that the parser
+     *    created for `quelltext` (not for `vorgabe` or the library) as "modell", one JSON object per element in the SysML v2 API format
+     *    (KerML::Entities::Element::serializeToJson(): "@id", "@type", "declaredName", "qualifiedName", "ownedRelationship", ...), including
+     *    the relationships and the root namespace of `quelltext` (first entry; the memberships of the top level refer to it). Implied
+     *    relationships (an implicit Subclassification of a `part def` to `Parts::Part`, ...) are NOT materialized by the parser and
+     *    therefore not part of the model. The elements are in the order of the workspace; unresolved placeholders are left out. The "@id"s
+     *    are random UUIDs, new for every request; elements of the library (and other targets outside `quelltext`) appear only as
+     *    `{ "@id": "..." }` references and are not part of "modell". The model is also delivered when the text has syntax errors (then
+     *    partial, as far as the parser got). "modellFehler" counts the elements that could not be serialized and were left out (e.g. a name that is not valid UTF-8).
+     *    The model is bounded by Limits::maxModelElements and a deadline of Limits::maxParseMillis; if it was cut, "modellUnvollstaendig" is true. Without the
+     *    request member the response has none of the three. Error responses (invalid request, limits, deadline) never
+     *    contain them.
      * "weitereDiagnosen" and "weitereVorgabeFehler" count the diagnoses that were left out because of Limits::maxDiagnostics.
      * A request that is an object may carry an `id` (any JSON value, also null); the response, also an error response, contains it
      * unchanged. A request that is not valid JSON, or whose `quelltext` is not a string, yields
@@ -120,6 +135,9 @@ namespace SysMLv2::Check {
             size_t maxLoadMillis = 60000;
             /// Most entries in "diagnosen" and in "vorgabeFehler"; the rest is counted in "weitereDiagnosen" and "weitereVorgabeFehler".
             size_t maxDiagnostics = 200;
+            /// Most elements in "modell" (the root namespace counts); the model is cut there and "modellUnvollstaendig" is true. The time for
+            /// building the model is limited by maxParseMillis, counted from the start of the model.
+            size_t maxModelElements = 20000;
         };
         void setLimits(const Limits& limits);
         Limits limits() const;

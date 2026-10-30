@@ -641,8 +641,47 @@ namespace SysMLv2::Check {
                 elementsJson.push_back({{"metaklasse", element->getType()}, {"qualifiedName", element->qualifiedName().value()}});
             }
 
-            return {{"version", ResponseVersion}, {"diagnosen", std::move(diagnoses)}, {"vorgabeFehler", std::move(givenDiagnoses)},
-                    {"weitereDiagnosen", more}, {"weitereVorgabeFehler", givenMore}, {"elemente", std::move(elementsJson)}};
+            json response = {{"version", ResponseVersion}, {"diagnosen", std::move(diagnoses)}, {"vorgabeFehler", std::move(givenDiagnoses)},
+                             {"weitereDiagnosen", more}, {"weitereVorgabeFehler", givenMore}, {"elemente", std::move(elementsJson)}};
+
+            // The whole model of the text (also after syntax errors: then partial) as the SysML v2 API JSON of every element: the root
+            // namespace first (the memberships of the top level refer to it), then the elements of the workspace, relationships included.
+            // Only on request; an element that cannot be serialized is skipped and counted. Bounded by maxModelElements and by a deadline
+            // (maxParseMillis from here): "modellUnvollstaendig" says that the model was cut.
+            if (request.contains("modell") && request["modell"].is_boolean() && request["modell"].get<bool>()) {
+                json model = json::array();
+                size_t skipped = 0;
+                bool incomplete = false;
+                const auto deadline = std::chrono::steady_clock::now() + std::chrono::milliseconds(limits.maxParseMillis);
+                std::vector<std::shared_ptr<Element>> all;
+                all.reserve(elements.size() + 1);
+                const std::shared_ptr<Element> root = workspace.rootNamespace(userSource);
+                if (root) all.push_back(root);
+                for (const auto& element : elements) {
+                    if (element.get() != root.get()) all.push_back(element);
+                }
+                for (const auto& element : all) {
+                    if (!element || SysMLv2::Files::isUnresolved(element)) continue;
+                    if (model.size() >= limits.maxModelElements || std::chrono::steady_clock::now() > deadline) {
+                        incomplete = true;
+                        break;
+                    }
+                    try {
+                        json entry = json::parse(element->serializeToJson(), nullptr, false);
+                        if (entry.is_discarded() || !entry.is_object()) {
+                            ++skipped;
+                            continue;
+                        }
+                        model.push_back(std::move(entry));
+                    } catch (...) {
+                        ++skipped;
+                    }
+                }
+                response["modell"] = std::move(model);
+                response["modellFehler"] = skipped;
+                response["modellUnvollstaendig"] = incomplete;
+            }
+            return response;
         }
 
         /// Whether the text has an element of the metaclass @p metaclass (empty: any) that is called @p name: through the scoped

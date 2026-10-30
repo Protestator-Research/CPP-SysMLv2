@@ -1,0 +1,79 @@
+[build-system]
+requires = ["scikit-build-core>=0.11"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "sysmlv2"
+version = "0.1.0"
+description = "Checker and parser for SysML v2 textual notation (native library, no dependencies)"
+readme = "python/README.md"
+license = "GPL-3.0-only"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+dependencies = []
+keywords = ["sysml", "sysmlv2", "kerml", "mbse", "parser", "checker"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: C++",
+    "Topic :: Software Development :: Compilers",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://github.com/Protestator-Research/CPP-SysMLv2"
+
+[tool.scikit-build]
+minimum-version = "build-system.requires"
+# only the Python module is built and packaged; the dependencies come from Conan (python/tools/conan_deps.py sets CMAKE_TOOLCHAIN_FILE)
+cmake.version = ">=3.21"   # honors the environment variable CMAKE_TOOLCHAIN_FILE (set by python/tools/conan_deps.py)
+cmake.build-type = "Release"
+build.targets = ["sysmlv2check-python"]
+cmake.define.BUILD_PYTHON_MODULE = "ON"
+cmake.define.BUILD_SHARED_LIBS = "OFF"
+cmake.define.BUILD_WITH_CHECK = "ON"
+cmake.define.BUILD_WITH_REST = "OFF"
+cmake.define.BUILD_WITH_SERVICES = "OFF"
+cmake.define.BUILD_WITH_ONLINE = "OFF"
+cmake.define.BUILD_TESTING = "OFF"
+cmake.define.SYSMLV2_PYTHON_INSTALL_DIR = "."
+install.components = ["python"]
+# the native library lands in the package directory sysmlv2/ (the Python sources are copied there, too)
+wheel.install-dir = "sysmlv2"
+wheel.packages = ["python/src/sysmlv2"]
+# ctypes only: no Python ABI, tag py3-none-<platform>
+wheel.py-api = "py3"
+# mutually exclusive with project.license-files: the third-party license file is generated (python/tools/conan_deps.py), absent in a fresh checkout
+wheel.license-files = ["LICENSE", "python/THIRD_PARTY_LICENSES*"]
+cmake.define.SYSMLV2_WERROR = "OFF"
+sdist.include = ["python/README.md", "python/src", "python/tools", "python/tests", "LICENSE", "python/THIRD_PARTY_LICENSES*"]
+sdist.exclude = ["build", "build-python", "cmake-build-debug", "cmake-build-*", "doc", "**/__pycache__", "*.dll", "*.so", "*.dylib"]
+
+[tool.pytest.ini_options]
+testpaths = ["python/tests"]
+
+[tool.cibuildwheel]
+# the wheel is py3-none-<platform> (ctypes, no Python ABI): exactly ONE CPython per platform/architecture, otherwise the wheel names collide
+build = "cp312-*"
+skip = ["*-musllinux_*"]
+build-verbosity = 1
+manylinux-x86_64-image = "manylinux_2_28"
+manylinux-aarch64-image = "manylinux_2_28"
+# the library of a successful build must load: without the native library the "native" tests would be skipped silently
+test-requires = ["pytest"]
+test-command = 'python -c "from sysmlv2._native import get_library; get_library()" && pytest {project}/python/tests -x -q -p no:cacheprovider'
+
+# Dependencies: scikit-build-core does not run Conan (see python/tools/conan_deps.py). Linux: the script below installs Conan inside the
+# container and writes the toolchain to a fixed folder; Windows/macOS build natively, the workflow (.github/workflows/python.yml) runs
+# conan_deps.py on the runner and exports CMAKE_TOOLCHAIN_FILE / CMAKE_GENERATOR* through $GITHUB_ENV, which cibuildwheel inherits.
+[tool.cibuildwheel.linux]
+before-all = "bash {project}/.github/scripts/cibw-linux-before-all.sh"
+environment-pass = ["ARTIFACTORY_URL", "ARTIFACTORY_TOKEN", "ARTIFACTORY_USER", "CONAN_CACHE_HOST_DIR", "CONAN_CACHE_HIT"]
+environment = { CMAKE_TOOLCHAIN_FILE = "/project/build-python/conan/build/Release/generators/conan_toolchain.cmake" }
+
+[tool.cibuildwheel.windows]
+# short build directory (MAX_PATH)
+config-settings = { build-dir = "C:/b/cibw-sk" }
+# the static CRT/DLL has only KERNEL32 dependencies: no delvewheel
+repair-wheel-command = ""
+# the Windows ARM64 wheel is cross compiled on an x64 runner and cannot be tested there
+test-skip = "*-win_arm64"

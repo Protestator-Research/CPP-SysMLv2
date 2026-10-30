@@ -76,6 +76,10 @@ if(EMSCRIPTEN)
     include(cmake/Emscripten.cmake)
 endif()
 
+if(BUILD_PYTHON_MODULE AND NOT EMSCRIPTEN)
+    add_subdirectory(python)
+endif()
+
 if(BUILD_TESTING)
     find_package(GTest REQUIRED)
     add_executable(sysmlv2check-test tests/TestCheck.cpp)

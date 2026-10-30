@@ -106,3 +106,9 @@ jobs:
     with:
       version: 1.0-main
     secrets: inherit
+
+  python:
+    uses: ./.github/workflows/python.yml
+    with:
+      version: 1.0-main
+    secrets: inherit

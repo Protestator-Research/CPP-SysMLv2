@@ -83,6 +83,7 @@ int sysml_konfigurieren(const char* konfigJson) {
         set("maxMs", limits.maxParseMillis);
         set("maxLadeMs", limits.maxLoadMillis);
         set("maxDiagnosen", limits.maxDiagnostics);
+        set("maxModellElemente", limits.maxModelElements);
         context().setLimits(limits);
         return 1;
     } catch (...) {

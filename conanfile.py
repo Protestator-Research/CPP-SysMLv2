@@ -1,4 +1,5 @@
 from conan import ConanFile
+from conan.errors import ConanInvalidConfiguration
 from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
 from conan.tools.env import Environment
 from conan.tools.apple import XcodeDeps
@@ -37,7 +38,12 @@ class CPPSysMLRecipe(ConanFile):
     def config_options(self):
         if self.settings.os == "Windows":
             del self.options.fPIC
-            self.options.shared=True
+
+    def validate(self):
+        if self.options.with_services and not self.options.with_rest:
+            raise ConanInvalidConfiguration("with_services=True needs with_rest=True (sysmlv2service links sysmlv2rest)")
+        if self.options.with_check and not self.options.with_parsing:
+            raise ConanInvalidConfiguration("with_check=True needs with_parsing=True")
 
     def configure(self):
         if not self.options.with_online:
@@ -75,6 +81,8 @@ class CPPSysMLRecipe(ConanFile):
             tc.variables["BUILD_WITH_PARSING"]=True
 
         tc.variables["BUILD_WITH_ONLINE"] = bool(self.options.with_online)
+        tc.variables["BUILD_WITH_REST"] = bool(self.options.with_rest)
+        tc.variables["BUILD_WITH_SERVICES"] = bool(self.options.with_services)
         tc.variables["BUILD_WITH_CHECK"] = bool(self.options.with_check)
 
         tc.user_presets_path = 'CMakePresets.json'
@@ -99,9 +107,23 @@ class CPPSysMLRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = ["sysmlv2interfaces", "sysmlv2service", "sysmlv2rest", "kerml", "sysmlv2parser", "sysmlv2resources", "sysml"]
+        # dependents first (static link order): check > service > rest > parser > sysml > kerml > resources > interfaces
+        libs = []
         if self.options.with_check:
-            self.cpp_info.libs.append("sysmlv2check")
+            libs.append("sysmlv2check")
+        if self.options.with_services:
+            libs.append("sysmlv2service")
+        if self.options.with_rest:
+            libs.append("sysmlv2rest")
+        if self.options.with_parsing:
+            libs.append("sysmlv2parser")
+        libs += ["sysml", "kerml"]
+        if self.options.with_parsing:
+            libs.append("sysmlv2resources")
+        libs.append("sysmlv2interfaces")
+        self.cpp_info.libs = libs
+        if not self.options.shared:
+            self.cpp_info.defines.append("SYSMLV2_STATIC")
         self.cpp_info.builddirs.append(os.path.join("lib", "cmake", "sysmlv2"))
 
     

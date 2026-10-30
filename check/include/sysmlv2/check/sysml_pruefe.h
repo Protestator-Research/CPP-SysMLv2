@@ -26,7 +26,7 @@ SYSMLV2CHECK_EXPORT int sysml_vorwaermen(const char* paketeJson);
 
 /**
  * Sets the limits of the input (see SysMLv2::Check::Checker::Limits).
- * @param konfigJson a JSON object with the optional members "maxBytes", "maxTiefe" (nesting), "maxTokens", "maxKette" (chain length) and "maxMs" (parse deadline in milliseconds), "maxLadeMs" (time a request may spend loading library packages) and "maxDiagnosen", for example `{"maxBytes":50000,"maxTiefe":32,"maxMs":10000}`.
+ * @param konfigJson a JSON object with the optional members "maxBytes", "maxTiefe" (nesting), "maxTokens", "maxKette" (chain length) and "maxMs" (parse deadline in milliseconds), "maxLadeMs" (time a request may spend loading library packages) "maxDiagnosen" and "maxModellElemente" (most elements in the "modell" of a response), for example `{"maxBytes":50000,"maxTiefe":32,"maxMs":10000}`.
  * @return 1, or 0 if the argument is not such an object.
  */
 SYSMLV2CHECK_EXPORT int sysml_konfigurieren(const char* konfigJson);
