@@ -9,6 +9,7 @@
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
+#include <functional>
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -74,6 +75,11 @@ namespace SysMLv2::Files {
         std::vector<PendingReference> generalizations() const;
         /// The references of the last XmiReader::link() that no loaded document could resolve.
         std::vector<XmiUnresolvedReference> unresolved() const;
+        /// Whether unresolved() is not empty (without copying it).
+        bool hasUnresolved() const;
+        /// The files that the hrefs of the document name (normalized paths, relative to the directory of the document, without duplicates), in
+        /// the order of their first use. Available right after read(): it needs no link().
+        std::vector<std::string> referencedFiles() const;
 
         /// (implementation detail)
         struct Impl;
@@ -127,9 +133,12 @@ namespace SysMLv2::Files {
          * Reads the XMI text of one file.
          * @param text the content of the file.
          * @param sourceName recorded on the errors (usually the path of the file); relative hrefs are resolved against its directory.
+         * @param checkInterrupt called now and then while the elements are read (every few dozen elements); it may throw to abandon the
+         *        read (the exception leaves read() as it is). Empty: never called.
          * @return the document; its errors() tell what could not be read. Never null.
          */
-        static std::unique_ptr<XmiDocument> read(const std::string& text, const std::string& sourceName);
+        static std::unique_ptr<XmiDocument> read(const std::string& text, const std::string& sourceName,
+                                                 const std::function<void()>& checkInterrupt = {});
 
         /**
          * Resolves the references of @p document by id, sets the properties they stand for and completes the model (the generalization

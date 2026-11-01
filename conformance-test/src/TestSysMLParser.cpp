@@ -1,3 +1,4 @@
+#include <kerml/root/elements/NameEscaping.h>
 #include <algorithm>
 #include <gtest/gtest.h>
 #include <sysmlv2/Parser.h>
@@ -248,19 +249,84 @@ TEST(TestSysMLParser, AnonymousRedefinitionUsage) {
     std::shared_ptr<KerML::Entities::Feature> redefFeature;
     for (const auto& elem : elements) {
         if (auto feat = std::dynamic_pointer_cast<KerML::Entities::Feature>(elem)) {
-            if (feat->declaredName() == "mass" && !feat->ownedRedefinition().empty()) {
+            // (`:>> mass` has no declared name: it is known by the name of the feature it redefines)
+            if (!feat->declaredName().has_value() && feat->effectiveName() == "mass" && !feat->ownedRedefinition().empty()) {
                 redefFeature = feat;
                 break;
             }
         }
     }
     ASSERT_NE(redefFeature, nullptr);
+    EXPECT_FALSE(redefFeature->declaredName().has_value());
+    EXPECT_EQ(redefFeature->effectiveName(), "mass");
     ASSERT_EQ(redefFeature->ownedRedefinition().size(), 1u);
     const auto redef = redefFeature->ownedRedefinition()[0];
     ASSERT_NE(redef, nullptr);
     ASSERT_NE(redef->redefinedFeature(), nullptr);
     EXPECT_EQ(redef->redefinedFeature()->declaredName(), "mass");
     EXPECT_EQ(redef->redefiningFeature(), redefFeature);
+}
+
+// (the lexer reads an unrestricted name up to the next quote, so an escaped quote `\'` is not written in a text; the other escapes are)
+TEST(TestSysMLParser, UnrestrictedNamesAreStoredWithoutQuotesAndEscapes) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package P { attribute '!=' : Real; attribute 'a\\tb' : Real; attribute 'c\\\\d' : Real; attribute <'x y'> 'z' : Real; part def 'Mein Auto'; alias 'A B' for 'Mein Auto'; }");
+    ASSERT_TRUE(errors.empty());
+    EXPECT_NE(named<KerML::Entities::Feature>(elements, "!="), nullptr);
+    EXPECT_EQ(named<KerML::Entities::Feature>(elements, "'!='"), nullptr);
+    EXPECT_NE(named<KerML::Entities::Feature>(elements, "a\tb"), nullptr);
+    EXPECT_NE(named<KerML::Entities::Feature>(elements, "c\\d"), nullptr);
+    EXPECT_NE(named<SysMLv2::Entities::PartDefinition>(elements, "Mein Auto"), nullptr);
+    const auto z = named<KerML::Entities::Feature>(elements, "z");
+    ASSERT_NE(z, nullptr);
+    EXPECT_EQ(z->declaredShortName(), "x y");
+}
+
+TEST(TestSysMLParser, NameEscapingRoundTrips) {
+    using KerML::Names::escapeName;
+    using KerML::Names::unescapeName;
+    EXPECT_EQ(unescapeName("'a\\'b'"), "a'b");
+    EXPECT_EQ(unescapeName("'a\\\\b'"), "a\\b");
+    EXPECT_EQ(unescapeName("'\\'q\\''"), "'q'");   // (a name that starts and ends with a quote: unquoted once)
+    EXPECT_EQ(unescapeName("'t\\tn\\nr\\rb\\bf\\f\\\"'"), "t\tn\nr\rb\bf\f\"");
+    EXPECT_EQ(unescapeName("plain"), "plain");
+    EXPECT_EQ(unescapeName("'q'"), "q");
+    EXPECT_EQ(escapeName("plain_1"), "plain_1");
+    EXPECT_EQ(escapeName("1abc"), "'1abc'");
+    EXPECT_EQ(escapeName("!="), "'!='");
+    EXPECT_EQ(escapeName("a b"), "'a b'");
+    EXPECT_EQ(escapeName("a'b"), "'a\\'b'");
+    EXPECT_EQ(escapeName("tab\t"), "'tab\\t'");
+    EXPECT_EQ(escapeName(""), "''");
+    // reserved words are no basic names
+    for (const char* word : {"not", "xor", "if", "action", "in", "and", "or", "implies", "meta", "istype", "hastype", "state", "view", "succession", "allocation", "true", "null"}) {
+        EXPECT_EQ(escapeName(word), std::string("'") + word + "'") << word;
+        EXPECT_TRUE(KerML::Names::isReservedWord(word)) << word;
+    }
+    EXPECT_EQ(escapeName("Not"), "Not");   // (the words are lower case)
+    EXPECT_EQ(escapeName("notes"), "notes");
+    EXPECT_FALSE(KerML::Names::isReservedWord("notes"));
+    EXPECT_FALSE(KerML::Names::isReservedWord(""));
+    EXPECT_EQ(KerML::Names::reservedWordCount(), 174u);
+    EXPECT_TRUE(std::is_sorted(KerML::Names::reservedWordsBegin(), KerML::Names::reservedWordsBegin() + KerML::Names::reservedWordCount(),
+                               [](const char* a, const char* b) { return std::string(a) < std::string(b); }));
+    for (const std::string name : {"a'b", "'q'", "x\\y", "t\tn\nr\rb\bf\f", "plain", "!=", "a b", "\"quoted\""}) {
+        EXPECT_EQ(unescapeName(escapeName(name)), name) << name;
+    }
+}
+
+TEST(TestSysMLParser, AnonymousRedefinitionHasNoDeclaredName) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package P { part def A { part p; } part def B :> A { part :>> p; part q :>> p; :>> p; } }");
+    ASSERT_TRUE(errors.empty());
+    size_t redefiningP = 0;
+    for (const auto& element : elements) {
+        const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(element);
+        if (!feature || feature->ownedRedefinition().empty() || feature->declaredName().has_value()) continue;
+        EXPECT_EQ(feature->effectiveName(), "p");
+        ++redefiningP;
+    }
+    EXPECT_EQ(redefiningP, 2u);   // (`part :>> p` and `:>> p`; `q :>> p` has its own name)
 }
 
 TEST(TestSysMLParser, IndividualDefinitionUsageAndDirection) {

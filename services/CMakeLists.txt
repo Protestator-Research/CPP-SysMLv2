@@ -3,7 +3,8 @@ cmake_minimum_required(VERSION 3.15)
 project(sysmlv2service CXX C)
 
 set(GLOBAL_HEADER
-        include/sysmlv2/service/sysmlv2service_global.h)
+        include/sysmlv2/service/sysmlv2service_global.h
+        include/sysmlv2/service/StandardLibraryResources.h)
 
 set(API_HEADER
         include/sysmlv2/service/implementation/ElementNavigationService.h
@@ -35,7 +36,9 @@ add_library(sysmlv2service
         src/sysmlv2/service/implementation/ProjectService.cpp
         src/sysmlv2/service/implementation/ProjectUsageService.cpp
         src/sysmlv2/service/implementation/ProjectVersioningService.cpp
-        src/sysmlv2/service/implementation/InstanceManager.cpp)
+        src/sysmlv2/service/implementation/InstanceManager.cpp
+        src/sysmlv2/service/StandardLibraryResources.cpp
+        src/sysmlv2/service/StandardLibraryTable.h)
 
 if(BUILD_WITH_ONLINE)
     find_package(CURL REQUIRED)
@@ -50,7 +53,8 @@ target_link_libraries(sysmlv2service
         kerml
         sysmlv2interfaces
         sysmlv2parser
-        sysmlv2resources)
+        sysmlv2resources
+        sysmlv2xmiresources)
 
 
 include(GNUInstallDirs)

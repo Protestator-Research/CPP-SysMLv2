@@ -208,7 +208,7 @@ namespace SysMLv2::API {
 
         nlohmann::json merged = std::move(firstPage);
         std::set<std::string> visited;
-        visited.insert(endpoint.substr(std::min(endpoint.find_first_not_of('/'), endpoint.size()))); // same form as the targets
+        visited.insert(endpoint.substr((std::min)(endpoint.find_first_not_of('/'), endpoint.size()))); // same form as the targets
         std::size_t pages = 1;
         while (target) {
             if (++pages > MaxPages)

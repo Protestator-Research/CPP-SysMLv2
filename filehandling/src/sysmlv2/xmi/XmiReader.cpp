@@ -7,6 +7,7 @@
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
+#include <kerml/root/elements/NameEscaping.h>
 #include <algorithm>
 #include <cctype>
 #include <filesystem>
@@ -122,23 +123,7 @@ namespace SysMLv2::Files {
         }
 
         /// A name in the form of the textual notation, so that the name resolution can split and unquote it.
-        std::string quoted(const std::string& name) {
-            bool basic = !name.empty() && !(name[0] >= '0' && name[0] <= '9');
-            for (const char c : name) {
-                if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_')) {
-                    basic = false;
-                    break;
-                }
-            }
-            if (basic) return name;
-            std::string out = "'";
-            for (const char c : name) {
-                if (c == '\'' || c == '\\') out.push_back('\\');
-                out.push_back(c);
-            }
-            out.push_back('\'');
-            return out;
-        }
+        std::string quoted(const std::string& name) { return KerML::Names::escapeName(name); }
 
         /// Line numbers of byte offsets.
         class LineTable {
@@ -218,9 +203,25 @@ namespace SysMLv2::Files {
 
     std::vector<XmiUnresolvedReference> XmiDocument::unresolved() const { return impl_->unresolvedList; }
 
+    bool XmiDocument::hasUnresolved() const { return !impl_->unresolvedList.empty(); }
+
+    std::vector<std::string> XmiDocument::referencedFiles() const {
+        std::vector<std::string> files;
+        std::unordered_set<std::string> seen;
+        for (const auto& pending : impl_->pending) {
+            for (const auto& token : pending.tokens) {
+                if (!token.file.empty() && seen.insert(token.file).second) files.push_back(token.file);
+            }
+        }
+        return files;
+    }
+
     std::vector<PendingReference> XmiDocument::generalizations() const {
         std::vector<PendingReference> result;
+        size_t position = 0;
         for (const auto& relationship : impl_->relationships) {
+            // (the position in the document does not depend on how many of the specializations are linked)
+            const size_t order = position++;
             const auto specialization = std::dynamic_pointer_cast<K::Specialization>(relationship);
             if (!specialization) continue;
             const auto specific = specialization->specific();
@@ -233,6 +234,7 @@ namespace SysMLv2::Files {
             reference.specific = specific;
             reference.resolvedTarget = general;
             reference.resolved = true;
+            reference.order = order;
             result.push_back(std::move(reference));
         }
         return result;
@@ -268,9 +270,11 @@ namespace SysMLv2::Files {
 
         class Reader {
         public:
-            Reader(XmiDocument::Impl& impl, const std::string& text) : D(impl), Lines(text) {}
+            Reader(XmiDocument::Impl& impl, const std::string& text, const std::function<void()>& checkInterrupt)
+                : D(impl), Lines(text), Interrupt(checkInterrupt) {}
 
             void run(const std::string& text) {
+                if (Interrupt) Interrupt();
                 pugi::xml_document xml;
                 const pugi::xml_parse_result parsed = xml.load_buffer(text.data(), text.size(), pugi::parse_default, pugi::encoding_utf8);
                 if (!parsed) {
@@ -291,6 +295,9 @@ namespace SysMLv2::Files {
 
             XmiDocument::Impl& D;
             LineTable Lines;
+            /// Called every few elements (see readElement()); may throw to abandon the read.
+            const std::function<void()>& Interrupt;
+            size_t ElementsRead = 0;
             /// The element that owns a relationship (the element whose "ownedRelationship" it is).
             std::unordered_map<const K::Element*, ElementPtr> OwnerOfRelationship;
             /// Elements owned by a relationship that is not an owning membership.
@@ -396,6 +403,7 @@ namespace SysMLv2::Files {
             }
 
             ElementPtr readElement(const pugi::xml_node& node, Role role, const ElementPtr& parent) {
+                if (Interrupt && (++ElementsRead & 0x3F) == 0) Interrupt();
                 const int line = Lines.lineOf(node.offset_debug());
                 std::string typeName = localName(node.attribute("xsi:type").value());
                 if (typeName.empty()) {
@@ -592,10 +600,11 @@ namespace SysMLv2::Files {
         };
     }
 
-    std::unique_ptr<XmiDocument> XmiReader::read(const std::string& text, const std::string& sourceName) {
+    std::unique_ptr<XmiDocument> XmiReader::read(const std::string& text, const std::string& sourceName,
+                                                 const std::function<void()>& checkInterrupt) {
         std::unique_ptr<XmiDocument> document(new XmiDocument());
         document->impl_->name = sourceName;
-        Reader reader(*document->impl_, text);
+        Reader reader(*document->impl_, text, checkInterrupt);
         reader.run(text);
         return document;
     }

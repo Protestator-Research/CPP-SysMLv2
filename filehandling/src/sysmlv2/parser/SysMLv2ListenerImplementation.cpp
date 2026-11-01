@@ -1,3 +1,4 @@
+#include <kerml/root/elements/NameEscaping.h>
 #include <sysmlv2/parser/SysMLv2ListenerImplementation.h>
 #include <sysml/SysML.h>
 #include <kerml/KerML.h>
@@ -242,8 +243,7 @@ void SysMLv2ListenerImplementation::exitComment(SysMLv2Parser::CommentContext* c
 	const auto& comment = std::make_shared<KerML::Entities::Comment>(locale, body);
 	Elements.push_back(comment);
 
-	if (!identification.empty())
-		comment->setDeclaredName(identification);
+	applyIdentification(ctx->identification(), comment);
 
 	if (hasAbout) {
 		// `about` targets are resolved from the namespace that owns the comment; resolved targets are annotated by the comment.
@@ -273,7 +273,7 @@ void SysMLv2ListenerImplementation::exitDocumentation(SysMLv2Parser::Documentati
 	std::string body = ctx->REGULAR_COMMENT() ? ctx->REGULAR_COMMENT()->getText() : "";
 	auto parent = ParentStack.empty() ? nullptr : ParentStack.top();
 	auto documentation = std::make_shared<KerML::Entities::Documentation>(parent, locale, body);
-	documentation->setDeclaredName(identification);
+	applyIdentification(ctx->identification(), documentation);
 	Elements.push_back(documentation);
 	if (!ParentStack.empty()) {
 		ParentStack.top()->appendOwnedElement(documentation);
@@ -332,11 +332,11 @@ void SysMLv2ListenerImplementation::exitAlias_member(SysMLv2Parser::Alias_member
 	std::string aliasName;
 	std::string shortName;
 	if (ctx->SYMBOL_SMALLER() != nullptr) {
-		if (!names.empty()) shortName = names[0]->getText();
-		if (names.size() > 1) aliasName = names[1]->getText();
+		if (!names.empty()) shortName = KerML::Names::unescapeName(names[0]->getText());
+		if (names.size() > 1) aliasName = KerML::Names::unescapeName(names[1]->getText());
 	}
 	else if (!names.empty()) {
-		aliasName = names[0]->getText();
+		aliasName = KerML::Names::unescapeName(names[0]->getText());
 	}
 	if (aliasName.empty() && shortName.empty()) return;
 
@@ -1237,13 +1237,7 @@ void SysMLv2ListenerImplementation::exitRedefinition_usage(SysMLv2Parser::Redefi
 
 	if (ctx) {
 		if (!ctx->qualified_name().empty()) {
-			std::string fullName = ctx->qualified_name(0)->getText();
-			std::string shortName = fullName;
-			size_t lastColon = shortName.rfind("::");
-			if (lastColon != std::string::npos) {
-				shortName = shortName.substr(lastColon + 2);
-			}
-			feature->setDeclaredName(shortName);
+			// (`:>> p` has no declared name: it is known by the name of the feature it redefines, Feature::effectiveName())
 		}
 		for (auto qNameCtx : ctx->qualified_name()) {
 			addRedefinition(feature, qNameCtx->getText(), qNameCtx);
@@ -1985,14 +1979,14 @@ void SysMLv2ListenerImplementation::finishFeature(SysMLv2Parser::Feature_prefixC
 			auto names = idCtx->NAME();
 
 			if (idCtx->SYMBOL_SMALLER() != nullptr && names.size() >= 2) {
-				f->setDeclaredShortName(names[0]->getText());
-				f->setDeclaredName(names[1]->getText());
+				f->setDeclaredShortName(KerML::Names::unescapeName(names[0]->getText()));
+				f->setDeclaredName(KerML::Names::unescapeName(names[1]->getText()));
 			}
 			else if (idCtx->SYMBOL_SMALLER() != nullptr && names.size() == 1) {
-				f->setDeclaredShortName(names[0]->getText());
+				f->setDeclaredShortName(KerML::Names::unescapeName(names[0]->getText()));
 			}
 			else if (!names.empty()) {
-				f->setDeclaredName(names[0]->getText());
+				f->setDeclaredName(KerML::Names::unescapeName(names[0]->getText()));
 			}
 		}
 
@@ -2033,12 +2027,7 @@ void SysMLv2ListenerImplementation::exitRedefinition(SysMLv2Parser::Redefinition
 
 	if (ctx && ctx->qualified_name()) {
 		std::string redefName = ctx->qualified_name()->getText();
-		std::string shortName = redefName;
-		size_t lastColon = shortName.rfind("::");
-		if (lastColon != std::string::npos) {
-			shortName = shortName.substr(lastColon + 2);
-		}
-		feature->setDeclaredName(shortName);
+		// (`:>> p` has no declared name: it is known by the name of the feature it redefines, Feature::effectiveName())
 		addRedefinition(feature, redefName, ctx->qualified_name());
 	}
 	// `:>> x : T :> y;` (the typing and the subsetting of the redefining feature)
@@ -2310,14 +2299,14 @@ void SysMLv2ListenerImplementation::applyIdentification(SysMLv2Parser::Identific
 	auto names = idCtx->sysml_name();
 	if (names.empty()) return;
 	if (idCtx->SYMBOL_SMALLER() != nullptr && names.size() >= 2) {
-		elem->setDeclaredShortName(names[0]->getText());
-		elem->setDeclaredName(names[1]->getText());
+		elem->setDeclaredShortName(KerML::Names::unescapeName(names[0]->getText()));
+		elem->setDeclaredName(KerML::Names::unescapeName(names[1]->getText()));
 	}
 	else if (idCtx->SYMBOL_SMALLER() != nullptr && names.size() == 1) {
-		elem->setDeclaredShortName(names[0]->getText());
+		elem->setDeclaredShortName(KerML::Names::unescapeName(names[0]->getText()));
 	}
 	else {
-		elem->setDeclaredName(names[0]->getText());
+		elem->setDeclaredName(KerML::Names::unescapeName(names[0]->getText()));
 	}
 }
 

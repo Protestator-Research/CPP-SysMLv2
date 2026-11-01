@@ -142,6 +142,10 @@ namespace SysMLv2::Files {
         std::shared_ptr<KerML::Entities::Element> resolvedTarget;
         /// Index of the source (Workspace) this reference was recorded for; set by the workspace.
         size_t source = 0;
+        /// Position of the reference in its source (set by the workspace; XmiDocument::generalizations(): the position of the relationship
+        /// in the document). Together with `source` it orders the references as they are declared; it does not change when other
+        /// sources are added or replaced.
+        size_t order = 0;
         bool resolved = false;
     };
 

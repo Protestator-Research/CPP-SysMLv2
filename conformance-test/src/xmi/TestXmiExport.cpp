@@ -552,6 +552,24 @@ TEST(XmiExportTextIds, ElementIdModeKeepsTheElementIds) {
 // References that cannot be written
 // ---------------------------------------------------------------------------------------------------------------------
 
+// The names of a text are stored without quotes, and `:>> p` has no declared name: the XMI has the unquoted declaredName and none for the redefinition.
+TEST(XmiExport, NamesAreWrittenWithoutQuotesAndAnonymousRedefinitionsWithoutDeclaredName) {
+    Workspace workspace;
+    const size_t source = workspace.addText(
+        "package P { attribute '!=' : ScalarValues::Real; attribute 'a b' : ScalarValues::Real; part def A { part p; } part def B :> A { part :>> p; } }", "p.sysml",
+        SourceLanguage::SysML);
+    workspace.resolve();
+    Errors errors;
+    const std::string xml = XmiWriter::write(workspace.rootNamespace(source), "p.sysmlx", {}, errors);
+    EXPECT_NE(xml.find("declaredName=\"!=\""), std::string::npos) << xml;
+    EXPECT_NE(xml.find("declaredName=\"a b\""), std::string::npos) << xml;
+    EXPECT_EQ(xml.find("&apos;"), std::string::npos) << xml;
+    EXPECT_EQ(xml.find("declaredName=\"'"), std::string::npos) << xml;
+    size_t namedP = 0;
+    for (size_t at = xml.find("declaredName=\"p\""); at != std::string::npos; at = xml.find("declaredName=\"p\"", at + 1)) ++namedP;
+    EXPECT_EQ(namedP, 1u) << xml;   // (A::p; the redefinition in B has no declaredName)
+}
+
 TEST(XmiExportNegative, UnresolvedNameIsAWarningAndThePropertyIsOmitted) {
     Workspace workspace;
     const size_t source = workspace.addText("package P { part def A :> Missing; part a : Unknown; part b : A; }", "p.sysml", SourceLanguage::SysML);

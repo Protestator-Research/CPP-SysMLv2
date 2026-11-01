@@ -33,6 +33,7 @@
 #include <boost/uuid/uuid_generators.hpp>
 
 #include <algorithm>
+#include <atomic>
 #include <exception>
 #include <iostream>
 #include <mutex>
@@ -56,6 +57,7 @@
 #include <set>
 #include <sstream>
 #include <stdexcept>
+#include <thread>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -64,40 +66,56 @@ namespace {
     /// parser's prediction recurses deeply for runs of operators), which the 8 MB of an ordinary stack does not always survive.
     [[maybe_unused]] constexpr size_t ParseStackSize = size_t(512) << 20;
 
-    /// Runs @p function on a thread with a large stack and waits for it. Where no thread can be created (and with Emscripten, which
-    /// has one stack for everything, see STACK_SIZE in check/cmake/Emscripten.cmake) it runs on the calling thread.
-    void runOnLargeStack(const std::function<void()>& function) {
+    /// Runs @p function on @p count threads with a large stack at the same time and waits for all of them. Where a thread cannot be created
+    /// (and with Emscripten, which has one stack for everything, see STACK_SIZE in check/cmake/Emscripten.cmake) @p function also runs on
+    /// the calling thread, once, so with @p count 1 it runs exactly once, wherever. @p function must not throw, and with several threads it
+    /// must be one that may run several times at once and in any number of copies (a worker that takes its work from a shared queue).
+    void runOnLargeStacks(size_t count, const std::function<void()>& function) {
 #if defined(__EMSCRIPTEN__)
+        (void)count;
         function();
 #elif defined(_WIN32)
-        struct Context { const std::function<void()>* function; };
-        Context context{&function};
-        HANDLE thread = CreateThread(nullptr, ParseStackSize, [](LPVOID argument) -> DWORD {
-            (*static_cast<Context*>(argument)->function)();
-            return 0;
-        }, &context, STACK_SIZE_PARAM_IS_A_RESERVATION, nullptr);
-        if (thread == nullptr) {
-            function();
-            return;
-        }
-        WaitForSingleObject(thread, INFINITE);
-        CloseHandle(thread);
-#else
-        pthread_attr_t attributes;
-        pthread_t thread;
-        bool started = false;
-        if (pthread_attr_init(&attributes) == 0) {
-            if (pthread_attr_setstacksize(&attributes, ParseStackSize) == 0) {
-                started = pthread_create(&thread, &attributes, [](void* argument) -> void* {
-                    (*static_cast<const std::function<void()>*>(argument))();
-                    return nullptr;
-                }, const_cast<std::function<void()>*>(&function)) == 0;
+        std::vector<HANDLE> threads;
+        bool failed = false;
+        for (size_t i = 0; i < count; ++i) {
+            HANDLE thread = CreateThread(nullptr, ParseStackSize, [](LPVOID argument) -> DWORD {
+                (*static_cast<const std::function<void()>*>(argument))();
+                return 0;
+            }, const_cast<std::function<void()>*>(&function), STACK_SIZE_PARAM_IS_A_RESERVATION, nullptr);
+            if (thread == nullptr) {
+                failed = true;
+                break;
             }
-            pthread_attr_destroy(&attributes);
+            threads.push_back(thread);
         }
-        if (started) {
-            pthread_join(thread, nullptr);
-        } else {
+        if (failed || count == 0) function();
+        for (HANDLE thread : threads) {
+            WaitForSingleObject(thread, INFINITE);
+            CloseHandle(thread);
+        }
+#else
+        std::vector<pthread_t> threads;
+        bool failed = false;
+        for (size_t i = 0; i < count; ++i) {
+            bool started = false;
+            pthread_attr_t attributes;
+            pthread_t thread;
+            if (pthread_attr_init(&attributes) == 0) {
+                if (pthread_attr_setstacksize(&attributes, ParseStackSize) == 0) {
+                    started = pthread_create(&thread, &attributes, [](void* argument) -> void* {
+                        (*static_cast<const std::function<void()>*>(argument))();
+                        return nullptr;
+                    }, const_cast<std::function<void()>*>(&function)) == 0;
+                }
+                pthread_attr_destroy(&attributes);
+            }
+            if (!started) {
+                failed = true;
+                break;
+            }
+            threads.push_back(thread);
+        }
+        if (failed || count == 0) {
             static std::once_flag warned;
             std::call_once(warned, [] {
                 std::cerr << "sysmlv2parser: cannot create a thread with a " << (ParseStackSize >> 20)
@@ -105,20 +123,58 @@ namespace {
             });
             function();
         }
+        for (pthread_t thread : threads) pthread_join(thread, nullptr);
 #endif
     }
 
-    /// Thrown by DeadlineTokenStream; not derived from ParseCancellationException, which parseTwoStage handles.
+    /// Runs @p function on one thread with a large stack and waits for it (see runOnLargeStacks()).
+    void runOnLargeStack(const std::function<void()>& function) {
+        runOnLargeStacks(1, function);
+    }
+
+    /// Thrown by DeadlineTokenStream and Interrupt::check(); not derived from ParseCancellationException, which parseTwoStage handles.
     struct DeadlineReached {};
+    /// The same for a cancellation (Workspace::setCancellation()).
+    struct CancelReached {};
+
+    /// What stops a long running call of the workspace: a deadline and a flag that cancels. Copyable and cheap; the flag is shared.
+    struct Interrupt {
+        std::optional<std::chrono::steady_clock::time_point> deadline;
+        std::shared_ptr<const std::atomic<bool>> cancelled;
+
+        bool active() const { return deadline.has_value() || cancelled != nullptr; }
+        bool isCancelled() const { return cancelled && cancelled->load(std::memory_order_relaxed); }
+        bool isExpired() const { return deadline && std::chrono::steady_clock::now() > *deadline; }
+        bool shouldStop() const { return isCancelled() || isExpired(); }
+        /// Throws CancelReached or DeadlineReached if the call has to stop.
+        void check() const {
+            if (isCancelled()) throw CancelReached();
+            if (isExpired()) throw DeadlineReached();
+        }
+    };
+
+    /// The exception that a failure of a build of a source stands for outside of this file: DeadlineReached becomes ParseTimeout,
+    /// CancelReached ParseCancelled, everything else stays as it is.
+    std::exception_ptr translated(std::exception_ptr failure) {
+        try {
+            std::rethrow_exception(failure);
+        } catch (const DeadlineReached&) {
+            return std::make_exception_ptr(SysMLv2::Files::ParseTimeout());
+        } catch (const CancelReached&) {
+            return std::make_exception_ptr(SysMLv2::Files::ParseCancelled());
+        } catch (...) {
+            return failure;
+        }
+    }
 
     /**
-     * A token stream that checks a deadline while the parser reads tokens (every prediction step reads them), so that a parse that
-     * runs for too long can be abandoned by throwing DeadlineReached.
+     * A token stream that checks the deadline and the cancellation while the parser reads tokens (every prediction step reads them), so
+     * that a parse that runs for too long can be abandoned by throwing DeadlineReached or CancelReached.
      */
     class DeadlineTokenStream : public antlr4::CommonTokenStream {
     public:
-        DeadlineTokenStream(antlr4::TokenSource* source, std::optional<std::chrono::steady_clock::time_point> deadline)
-            : antlr4::CommonTokenStream(source), Deadline(deadline) {}
+        DeadlineTokenStream(antlr4::TokenSource* source, Interrupt interrupt)
+            : antlr4::CommonTokenStream(source), Stop(std::move(interrupt)) {}
 
         // Only a look-ahead (k >= 1) and consume() throw. LT(-1) is called by Parser::exitRule from the destructor of a scope guard,
         // which must never throw (the exception would end the process).
@@ -137,9 +193,9 @@ namespace {
 
     private:
         void check() {
-            if (Deadline && (++Calls & 0xFF) == 0 && std::chrono::steady_clock::now() > *Deadline) throw DeadlineReached();
+            if (Stop.active() && (++Calls & 0xFF) == 0) Stop.check();
         }
-        std::optional<std::chrono::steady_clock::time_point> Deadline;
+        Interrupt Stop;
         size_t Calls = 0;
     };
 
@@ -274,16 +330,86 @@ namespace SysMLv2::Files {
             /// references that are resolved already (rebuilt by every resolve()).
             std::shared_ptr<XmiDocument> xmi;
             std::vector<PendingReference> xmiGeneralizations;
+            /// XMI sources: whether resolve() linked the document, and the value of Impl::xmiEpoch at that time.
+            bool xmiLinked = false;
+            size_t xmiLinkedEpoch = 0;
         };
 
         std::vector<std::shared_ptr<Source>> sources;
         /// The ids of the elements of all XMI sources.
         XmiIndex xmiIndex;
+        /// Counts the changes of xmiIndex (an XMI source added, replaced or removed): what a document can link to changed.
+        size_t xmiEpoch = 0;
         std::optional<std::chrono::steady_clock::time_point> deadline;
+        /// The flag that cancels the calls (Workspace::setCancellation()); may be null.
+        std::shared_ptr<const std::atomic<bool>> cancel;
         std::vector<UnresolvedReferenceInfo> unresolved;
         std::vector<UnresolvedReferenceInfo> notAttempted;
         std::unique_ptr<Detail::Resolver> resolver;
+        /// The number of the sources (from the first) that the resolver has indexed; the sources after them were added since.
+        size_t indexedSources = 0;
         size_t resolvedCount = 0;
+        /// The sources that replaceSource() exchanged since the resolver indexed them (only while there is a resolver).
+        std::set<size_t> replaced;
+
+        /// What stops the calls now: the deadline and the cancellation.
+        Interrupt interrupt() const { return Interrupt{deadline, cancel}; }
+
+        /// Adds a finished source: at the end of the sources, and its ids to the XMI index.
+        void appendSource(std::shared_ptr<Source> source) {
+            sources.push_back(std::move(source));
+            if (sources.back()->xmi) {
+                xmiIndex.add(*sources.back()->xmi);
+                ++xmiEpoch;
+            }
+            // (the resolver stays: resolve() and find() add the new source to it)
+        }
+
+        /// Throws the index away: the next resolve() or find() builds it again over all sources.
+        void resetResolver() {
+            resolver.reset();
+            indexedSources = 0;
+            replaced.clear();
+        }
+
+        /// Brings the resolver up to date with the sources: an existing resolver takes the sources that replaceSource() exchanged out and
+        /// indexes their new versions (if Resolver::canReplace() allows it), and gets the sources that it has not indexed yet (if their
+        /// levels allow it, see Resolver::canAdd()); in every other case a new resolver is built over all sources.
+        Detail::Resolver& updatedResolver() {
+            bool incremental = resolver && indexedSources <= sources.size() && resolver->sourceCount() == indexedSources;
+            std::map<size_t, Detail::SourceInput> exchanged;
+            if (incremental) {
+                std::map<size_t, int> levels;
+                for (const size_t index : replaced) {
+                    if (index >= indexedSources) continue;   // (indexed below, like every source added since)
+                    if (index >= sources.size() || sources[index]->xmi) {
+                        incremental = false;
+                        break;
+                    }
+                    exchanged[index] = {&sources[index]->elements, &sources[index]->data, sources[index]->level};
+                    levels[index] = sources[index]->level;
+                }
+                if (incremental && !levels.empty() && !resolver->canReplace(levels)) incremental = false;
+            }
+            if (incremental) {
+                if (!exchanged.empty()) resolver->replaceSources(exchanged);
+                incremental = std::all_of(sources.begin() + static_cast<std::ptrdiff_t>(indexedSources), sources.end(),
+                                          [this](const std::shared_ptr<Source>& source) { return resolver->canAdd(source->level); });
+            }
+            std::vector<Detail::SourceInput> inputs;
+            for (size_t index = incremental ? indexedSources : 0; index < sources.size(); ++index) {
+                inputs.push_back({&sources[index]->elements, &sources[index]->data, sources[index]->level});
+            }
+            if (!incremental) {
+                resolver = std::make_unique<Detail::Resolver>(std::move(inputs));
+            } else if (!inputs.empty()) {
+                resolver->addSources(std::move(inputs));
+            }
+            indexedSources = sources.size();
+            replaced.clear();
+            return *resolver;
+        }
+
         /// Which source holds an element. Built for one write and discarded with it: the model may change (resolve(), edits of the
         /// elements, replaceSource()) between two writes, so nothing of it is kept in the workspace.
         struct Lookup {
@@ -829,7 +955,7 @@ namespace SysMLv2::Files {
             KerMLLexer lexer(&input);
             lexer.removeErrorListeners();  // no ConsoleErrorListener: nothing is written to stderr
             lexer.addErrorListener(errorListener.get());
-            DeadlineTokenStream tokens(&lexer, deadline);
+            DeadlineTokenStream tokens(&lexer, interrupt());
             KerMLParser parser(&tokens);
 
             // Parse first, then walk the completed tree with the listener. Running the listener
@@ -861,7 +987,7 @@ namespace SysMLv2::Files {
             SysMLv2Lexer lexer(&input);
             lexer.removeErrorListeners();  // no ConsoleErrorListener: nothing is written to stderr
             lexer.addErrorListener(&errorListener);
-            DeadlineTokenStream tokens(&lexer, deadline);
+            DeadlineTokenStream tokens(&lexer, interrupt());
             SysMLv2Parser parser(&tokens);
 
             // Parse first, then walk the completed tree with the listener (see parseKerML for why).
@@ -885,7 +1011,9 @@ namespace SysMLv2::Files {
         }
 
         void readXmi(std::shared_ptr<Source> source, const std::string& text) {
-            std::shared_ptr<XmiDocument> document = XmiReader::read(text, source->name);
+            const Interrupt stop = interrupt();
+            const std::function<void()> check = stop.active() ? std::function<void()>([stop] { stop.check(); }) : std::function<void()>();
+            std::shared_ptr<XmiDocument> document = XmiReader::read(text, source->name, check);
             source->errors = document->errors();
             source->elements = document->elements();
             source->data = document->resolutionData();
@@ -919,38 +1047,51 @@ namespace SysMLv2::Files {
             source.data = ResolutionData();
         }
 
-        /// Parses @p text into a new source whose references are recorded for the source index @p index.
-        std::shared_ptr<Source> makeSource(const std::string& text, std::string name, SourceLanguage language, size_t index, int level) {
+        static std::shared_ptr<Source> newSource(std::string name, SourceLanguage language, int level) {
             auto source = std::make_shared<Source>();
             source->level = level;
             source->name = std::move(name);
             source->language = language;
+            return source;
+        }
+
+        /// Parses @p text into @p source (the part of makeSource() that needs the large stack). Throws DeadlineReached and CancelReached.
+        void parseInto(const std::shared_ptr<Source>& source, const std::string& text) {
+            // (a cancellation is noticed before the first token, so that a small text is not parsed after it either)
+            if (interrupt().isCancelled()) throw CancelReached();
+            if (source->language == SourceLanguage::Xmi) {
+                readXmi(source, text);
+            } else if (source->language == SourceLanguage::KerML) {
+                parseKerML(source, text);
+            } else {
+                parseSysML(source, text);
+            }
+        }
+
+        /// The rest of makeSource(): the references of the parsed @p source are recorded for the source index @p index.
+        static void finishSource(const std::shared_ptr<Source>& source, size_t index) {
+            size_t order = 0;
+            for (auto& reference : source->data.references) {
+                reference.source = index;
+                reference.order = order++;
+            }
+            computeTopLevel(source);
+            findRoot(source);
+        }
+
+        /// Parses @p text into a new source whose references are recorded for the source index @p index.
+        std::shared_ptr<Source> makeSource(const std::string& text, std::string name, SourceLanguage language, size_t index, int level) {
+            auto source = newSource(std::move(name), language, level);
             std::exception_ptr failure;
             runOnLargeStack([&] {
                 try {
-                    if (language == SourceLanguage::Xmi) {
-                        readXmi(source, text);
-                    } else if (language == SourceLanguage::KerML) {
-                        parseKerML(source, text);
-                    } else {
-                        parseSysML(source, text);
-                    }
+                    parseInto(source, text);
                 } catch (...) {
                     failure = std::current_exception();   // rethrown on the calling thread
                 }
             });
-            if (failure) {
-                try {
-                    std::rethrow_exception(failure);
-                } catch (const DeadlineReached&) {
-                    throw ParseTimeout();
-                }
-            }
-            for (auto& reference : source->data.references) {
-                reference.source = index;
-            }
-            computeTopLevel(source);
-            findRoot(source);
+            if (failure) std::rethrow_exception(translated(failure));
+            finishSource(source, index);
             return source;
         }
     };
@@ -967,13 +1108,74 @@ namespace SysMLv2::Files {
         impl_->deadline.reset();
     }
 
+    void Workspace::setCancellation(std::shared_ptr<const std::atomic<bool>> cancelled) {
+        impl_->cancel = std::move(cancelled);
+    }
+
     size_t Workspace::addText(std::string text, std::string sourceName, SourceLanguage language, int level) {
         if (language == SourceLanguage::Auto) language = languageOf(sourceName);
         const size_t index = impl_->sources.size();
-        impl_->sources.push_back(impl_->makeSource(text, std::move(sourceName), language, index, level));
-        if (impl_->sources.back()->xmi) impl_->xmiIndex.add(*impl_->sources.back()->xmi);
-        impl_->resolver.reset();
+        impl_->appendSource(impl_->makeSource(text, std::move(sourceName), language, index, level));
         return index;
+    }
+
+    std::vector<size_t> Workspace::addTexts(std::vector<TextInput> inputs, unsigned threads, std::function<void(size_t, size_t)> progress) {
+        std::vector<size_t> indices;
+        const size_t total = inputs.size();
+        if (total == 0) return indices;
+        for (auto& input : inputs) {
+            if (input.language == SourceLanguage::Auto) input.language = languageOf(input.name);
+        }
+        size_t workers = threads != 0 ? threads : std::thread::hardware_concurrency();
+        workers = std::min(std::max<size_t>(workers, 1), total);
+
+        // The sources are built in parallel, each for the index it will get; nothing of the workspace is touched meanwhile (but the
+        // deadline and the cancellation, which are only read).
+        const size_t base = impl_->sources.size();
+        std::vector<std::shared_ptr<Impl::Source>> built(total);
+        std::atomic<size_t> next{0};
+        std::atomic<bool> failed{false};
+        std::mutex mutex;   // (guards first, done and the calls of progress)
+        std::exception_ptr first;
+        size_t done = 0;
+        runOnLargeStacks(workers, [&] {
+            for (;;) {
+                if (failed.load()) return;
+                const size_t i = next.fetch_add(1);
+                if (i >= total) return;
+                try {
+                    auto source = Impl::newSource(std::move(inputs[i].name), inputs[i].language, inputs[i].level);
+                    impl_->parseInto(source, inputs[i].text);
+                    Impl::finishSource(source, base + i);
+                    built[i] = std::move(source);
+                    if (progress) {
+                        std::lock_guard<std::mutex> lock(mutex);
+                        progress(++done, total);
+                    }
+                } catch (...) {
+                    const std::exception_ptr failure = translated(std::current_exception());
+                    failed.store(true);
+                    std::lock_guard<std::mutex> lock(mutex);
+                    if (!first) first = failure;
+                    return;
+                }
+            }
+        });
+
+        if (first) {
+            // Nothing of it is kept: the models that were built are taken apart (their reference cycles), the workspace is unchanged.
+            for (const auto& source : built) {
+                if (source) Impl::dispose(*source);
+            }
+            std::rethrow_exception(first);
+        }
+        // The serial part, in the order of the inputs: exactly what addText() does for each of them.
+        indices.reserve(total);
+        for (size_t i = 0; i < total; ++i) {
+            indices.push_back(base + i);
+            impl_->appendSource(std::move(built[i]));
+        }
+        return indices;
     }
 
     void Workspace::replaceSource(size_t source, std::string text, SourceLanguage language) {
@@ -992,11 +1194,29 @@ namespace SysMLv2::Files {
         impl_->notAttempted.erase(std::remove_if(impl_->notAttempted.begin(), impl_->notAttempted.end(), belongsToSource), impl_->notAttempted.end());
 
         // The new source takes the index and the name of the old one; the other sources are not touched.
-        if (old->xmi) impl_->xmiIndex.remove(*old->xmi);
+        if (old->xmi) {
+            impl_->xmiIndex.remove(*old->xmi);
+            ++impl_->xmiEpoch;
+        }
         replacement->loadRoot = old->loadRoot;   // (the file keys of an export must not change with the text)
+        const bool xmi = old->xmi != nullptr || replacement->xmi != nullptr;
         impl_->sources[source] = std::move(replacement);
-        if (impl_->sources[source]->xmi) impl_->xmiIndex.add(*impl_->sources[source]->xmi);
-        impl_->resolver.reset();
+        if (impl_->sources[source]->xmi) {
+            impl_->xmiIndex.add(*impl_->sources[source]->xmi);
+            ++impl_->xmiEpoch;
+        }
+        // The index of the old version is updated by the next resolve() or find() (Impl::updatedResolver()), which takes the old version
+        // out and indexes the new one, if that gives the result of a new index. XMI sources always get a new index (their elements
+        // are linked by id, and their specializations are rebuilt by every resolve()).
+        if (xmi) {
+            impl_->resetResolver();
+        } else if (impl_->resolver && source < impl_->indexedSources) {
+            // The old version is taken out of the index now, so that the index does not keep its elements alive (they are freed with it).
+            // Whether the index is still usable is decided by updatedResolver() (Resolver::canReplace()): it can hold several replaced
+            // sources, and the others of them are not known yet.
+            impl_->resolver->removeSources({source});
+            impl_->replaced.insert(source);
+        }
         Impl::dispose(*old);
     }
 
@@ -1010,7 +1230,6 @@ namespace SysMLv2::Files {
             source->level = level;
             source->errors.push_back(Impl::makeError(ErrorType::INTERNAL_ERROR, "could not open file: " + path, -1, -1, path));
             impl_->sources.push_back(std::move(source));
-            impl_->resolver.reset();
             return impl_->sources.size() - 1;
         }
         std::stringstream buffer;
@@ -1038,25 +1257,52 @@ namespace SysMLv2::Files {
     void Workspace::resolve() {
         // The references of the XMI sources are resolved by id over the ids of all XMI sources; what they resolve to is not resolved again
         // by name, but the resolver learns the specializations from the XMI sources (inherited members).
-        for (auto& source : impl_->sources) {
+        const Interrupt cancellation = impl_->interrupt();
+        for (size_t index = 0; index < impl_->sources.size(); ++index) {
+            auto& source = impl_->sources[index];
             if (!source->xmi) continue;
+            // A document is linked once, and again only if something it could link to has changed (an XMI source was added, replaced or
+            // removed since) while it still has references that no document could resolve. Skipping the link is equivalent otherwise:
+            //  - link() works through the pending references of the document (those that are done are not touched again; the others look
+            //    their ids up in the document and in xmiIndex) and then recomputes the redundant ends, the collections derived from them and
+            //    the targets of aliases and imports from the targets that are set. If no reference is pending (unresolved() is empty) or
+            //    xmiIndex has not changed, the lookups give what they gave last time, so the state of the elements, errors(),
+            //    unresolved() and generalizations() stay as they are.
+            //  - What the document links to is not looked at again, also for the elements of a replaced XMI source (a document that was
+            //    linked completely keeps the old targets: see XmiLibrary.ReplacedXmiSourceKeepsTheTargetsOfDocumentsThatLinkedCompletely).
+            // The cached xmiGeneralizations are kept as they are: their addresses, `source` and `order` do not change between resolve()s.
+            const bool needsLink = !source->xmiLinked || (source->xmiLinkedEpoch != impl_->xmiEpoch && source->xmi->hasUnresolved());
+            if (!needsLink) {
+                source->xmiLinkedEpoch = impl_->xmiEpoch;   // (nothing to link: the state is the one of this epoch)
+                continue;
+            }
+            // (a cancellation is noticed between the documents; the documents that were linked stay linked, the others are linked by the
+            // next resolve(). The resolver has not been touched yet.)
+            if (cancellation.isCancelled()) throw ParseCancelled();
             XmiReader::link(*source->xmi, impl_->xmiIndex);
+            // (only a link that returned counts: if it threw, the next resolve() links again)
+            source->xmiLinked = true;
+            source->xmiLinkedEpoch = impl_->xmiEpoch;
             source->errors = source->xmi->errors();   // (the document keeps the errors of reading and of linking)
             source->xmiGeneralizations = source->xmi->generalizations();
+            // (their place in the order of the declarations: after the references of the source, at the position in the document)
+            for (auto& reference : source->xmiGeneralizations) {
+                reference.source = index;
+                reference.order += source->data.references.size();
+            }
         }
-        std::vector<Detail::SourceInput> inputs;
         std::vector<PendingReference*> all;
-        inputs.reserve(impl_->sources.size());
         for (auto& source : impl_->sources) {
-            inputs.push_back({&source->elements, &source->data, source->level});
             for (auto& reference : source->data.references) all.push_back(&reference);
             for (auto& reference : source->xmiGeneralizations) all.push_back(&reference);
         }
-        impl_->resolver = std::make_unique<Detail::Resolver>(std::move(inputs));
+        Detail::Resolver& resolver = impl_->updatedResolver();
+        const Interrupt stop = impl_->interrupt();
         try {
-            impl_->resolver->run(all, impl_->deadline);
+            resolver.run(all, stop.active() ? std::function<bool()>([stop] { return stop.shouldStop(); }) : std::function<bool()>());
         } catch (const Detail::ResolveDeadlineReached&) {
-            impl_->resolver.reset();   // what was resolved stays resolved; the unresolved list is not updated
+            impl_->resetResolver();   // what was resolved stays resolved; the unresolved list is not updated
+            if (stop.isCancelled()) throw ParseCancelled();
             throw ParseTimeout();
         }
 
@@ -1100,7 +1346,11 @@ namespace SysMLv2::Files {
 
     void Workspace::setSourceLevel(size_t source, int level) {
         impl_->sources.at(source)->level = level;
-        impl_->resolver.reset();
+        impl_->resetResolver();
+    }
+
+    void Workspace::invalidateIndex() {
+        impl_->resetResolver();
     }
 
     int Workspace::sourceLevel(size_t source) const {
@@ -1142,6 +1392,14 @@ namespace SysMLv2::Files {
             for (const auto& element : source->topLevel) {
                 if (std::dynamic_pointer_cast<KerML::Entities::Package>(element)) packages.push_back(element);
             }
+        }
+        return packages;
+    }
+
+    std::vector<std::shared_ptr<KerML::Entities::Element>> Workspace::rootPackages(size_t source) const {
+        std::vector<std::shared_ptr<KerML::Entities::Element>> packages;
+        for (const auto& element : impl_->sources.at(source)->topLevel) {
+            if (std::dynamic_pointer_cast<KerML::Entities::Package>(element)) packages.push_back(element);
         }
         return packages;
     }
@@ -1272,6 +1530,11 @@ namespace SysMLv2::Files {
         return names;
     }
 
+    std::vector<std::string> Workspace::referencedFiles(size_t source) const {
+        const auto& xmi = impl_->sources.at(source)->xmi;
+        return xmi ? xmi->referencedFiles() : std::vector<std::string>();
+    }
+
     size_t Workspace::referenceCount() const {
         size_t count = 0;
         for (const auto& source : impl_->sources) count += source->data.references.size();
@@ -1285,12 +1548,7 @@ namespace SysMLv2::Files {
     std::shared_ptr<KerML::Entities::Element> Workspace::find(const std::string& name,
                                                               const std::shared_ptr<KerML::Entities::Element>& scope,
                                                               ReferenceKind kind) const {
-        if (!impl_->resolver) {
-            // Sources were added since the last resolve(): build the index without resolving anything.
-            std::vector<Detail::SourceInput> inputs;
-            for (auto& source : impl_->sources) inputs.push_back({&source->elements, &source->data, source->level});
-            impl_->resolver = std::make_unique<Detail::Resolver>(std::move(inputs));
-        }
-        return impl_->resolver->find(name, scope, kind, true);
+        // Sources that were added since the last resolve() are indexed (without resolving anything).
+        return impl_->updatedResolver().find(name, scope, kind, true);
     }
 }

@@ -6,12 +6,13 @@
 #define SYSML_PROJECTVERSIONINGSERVICE_H
 
 #include <sysmlv2/service/interfaces/IProjectVersioningService.h>
+#include <sysmlv2/service/sysmlv2service_global.h>
 #include <sysmlv2/rest/entities/ChangeType.h>
 #include <map>
 #include <boost/uuid/uuid.hpp>
 
 namespace SysMLv2::API {
-    class ProjectVersioningService : public SysMLv2::API::IProjectVersioningService{
+    class SYSMLV2SERVICE_EXPORT ProjectVersioningService : public SysMLv2::API::IProjectVersioningService{
     public:
         ProjectVersioningService() = default;
         ~ProjectVersioningService() override = default;

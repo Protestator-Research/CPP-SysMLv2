@@ -76,6 +76,9 @@ target_include_directories(conformance-test PRIVATE
         ../kerml/include
         ../rest-api/include)
 
+target_compile_definitions(conformance-test PRIVATE
+        CONFORMANCE_SYSML_VALID_DIR="${CMAKE_CURRENT_SOURCE_DIR}/testdata/syntax/sysml/valid")
+
 # The pre-existing test binary above (parser regression tests plus the service/REST tests) keeps its
 # single-executable layout; its tests are all labeled "regression" below. AP1's new lexer/syntax/
 # library/robustness suites, added underneath, each get their own executable so CTest
@@ -162,11 +165,14 @@ set_tests_properties(conformance-robustness PROPERTIES LABELS robustness)
 # CONFORMANCE_EXPECTED_UNRESOLVED_FILE lists the library references that are still unresolved.
 add_executable(conformance-resolution
         src/resolution/TestResolution.cpp
+        src/resolution/TestParallelLoading.cpp
         src/support/TestHelpers.h)
 target_link_libraries(conformance-resolution ${CONFORMANCE_LIBRARY_LINK_LIBS})
 target_include_directories(conformance-resolution PRIVATE ${CONFORMANCE_LIBRARY_INCLUDE_DIRS})
 target_compile_definitions(conformance-resolution PRIVATE
         SYSML_LIBRARY_DIR="${CMAKE_SOURCE_DIR}/resources/sysml.library"
+        SYSML_LIBRARY_XMI_DIR="${CMAKE_SOURCE_DIR}/resources/sysml.library.xmi"
+        CONFORMANCE_SYSML_VALID_DIR="${CMAKE_CURRENT_SOURCE_DIR}/testdata/syntax/sysml/valid"
         CONFORMANCE_EXPECTED_UNRESOLVED_FILE="${CMAKE_CURRENT_SOURCE_DIR}/expected_unresolved.txt")
 add_test(NAME conformance-resolution COMMAND conformance-resolution)
 set_tests_properties(conformance-resolution PROPERTIES LABELS resolution)
@@ -210,3 +216,20 @@ target_compile_definitions(conformance-xmi PRIVATE
         SYSML_VALID_DIR="${CMAKE_CURRENT_SOURCE_DIR}/testdata/syntax/sysml/valid")
 add_test(NAME conformance-xmi COMMAND conformance-xmi)
 set_tests_properties(conformance-xmi PROPERTIES LABELS xmi)
+
+# Benchmark of the InstanceManager and of the Workspace on the standard library (text and XMI). It is a tool, not a test: no add_test.
+# Usage: conformance-benchmark [--runs=N] [--only=1,2,3,4,5] [--modes=...], see src/benchmark/BenchmarkInstanceManager.cpp.
+add_executable(conformance-benchmark
+        src/benchmark/BenchmarkInstanceManager.cpp)
+target_link_libraries(conformance-benchmark
+        ${CONFORMANCE_LIBRARY_LINK_LIBS}
+        sysmlv2service
+        sysmlv2resources
+        sysmlv2xmiresources)
+target_include_directories(conformance-benchmark PRIVATE
+        ${CONFORMANCE_LIBRARY_INCLUDE_DIRS}
+        ../services/include
+        ../rest-api/include
+        ../sysml/include)
+target_compile_definitions(conformance-benchmark PRIVATE
+        SYSML_LIBRARY_DIR="${CMAKE_SOURCE_DIR}/resources/sysml.library")

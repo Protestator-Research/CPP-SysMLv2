@@ -1591,7 +1591,7 @@ TEST(TestKerMLExpressions, InvocationSelectCollectAndBodyExpressions) {
     const auto reduce = std::dynamic_pointer_cast<OperatorExpression>(kermlValue("s->reduce '+'"));
     ASSERT_NE(reduce, nullptr);
     ASSERT_EQ(reduce->argument().size(), 2u);
-    expectTypeReference(reduce->argument()[1], "'+'");
+    expectTypeReference(reduce->argument()[1], "+");
 
     const auto sized = std::dynamic_pointer_cast<OperatorExpression>(kermlValue("s->size()"));
     ASSERT_NE(sized, nullptr);
@@ -1861,6 +1861,69 @@ TEST(TestKerMLListener, ConnectorsWithoutFromAndWithoutEnds) {
     }
 }
 
+TEST(TestKerMLListener, UnrestrictedNamesAreStoredWithoutQuotesAndEscapes) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML("datatype D { feature '!=' : D[1]; feature 'a\\tb' : D[1]; feature <'x y'> 'z' : D[1]; }");
+    ASSERT_TRUE(errors.empty());
+    EXPECT_NE(namedElement<Feature>(elements, "!="), nullptr);
+    EXPECT_NE(namedElement<Feature>(elements, "a\tb"), nullptr);
+    const auto z = namedElement<Feature>(elements, "z");
+    ASSERT_NE(z, nullptr);
+    EXPECT_EQ(z->declaredShortName(), "x y");
+}
+
+TEST(TestKerMLListener, RedefinitionWithoutNameHasNoDeclaredName) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML("class A { feature p; } class B specializes A { feature :>> p; }");
+    ASSERT_TRUE(errors.empty());
+    size_t found = 0;
+    for (const auto& element : elements) {
+        const auto feature = std::dynamic_pointer_cast<Feature>(element);
+        if (!feature || feature->ownedRedefinition().empty() || feature->declaredName().has_value()) continue;
+        EXPECT_EQ(feature->effectiveName(), "p");
+        ++found;
+    }
+    EXPECT_GE(found, 1u);
+}
+
+TEST(TestKerMLListener, ImportElementHasTheVisibilityOfItsPrefix) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML("package P { public import A::*; private import B::*; import C::*; protected import D::*; }");
+    ASSERT_TRUE(errors.empty());
+    std::vector<VisibilityKind> visibilities;
+    for (const auto& element : elements) {
+        if (const auto import = std::dynamic_pointer_cast<Import>(element)) visibilities.push_back(import->visibility());
+    }
+    ASSERT_EQ(visibilities.size(), 4u);
+    EXPECT_EQ(visibilities[0], PUBLIC);
+    EXPECT_EQ(visibilities[1], PRIVATE);
+    EXPECT_EQ(visibilities[2], PRIVATE);   // (an import without a visibility keyword is private)
+    EXPECT_EQ(visibilities[3], PROTECTED);
+}
+
+// (the SysML grammar has no short name without a name, the KerML grammar has)
+TEST(TestKerMLListener, ShortNameOnlyRedefinitionIsNotNamedByItsNamingFeature) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML("class A { feature p; } class B specializes A { feature <s> redefines p; feature redefines p; }");
+    ASSERT_TRUE(errors.empty()) << (errors.empty() ? "" : errors.front()->description());
+    size_t shortOnly = 0;
+    size_t anonymous = 0;
+    for (const auto& element : elements) {
+        const auto feature = std::dynamic_pointer_cast<Feature>(element);
+        if (!feature || feature->declaredName().has_value()) continue;
+        if (feature->declaredShortName() == "s") {
+            ++shortOnly;
+            // (the naming feature names a feature that has neither a name nor a short name)
+            EXPECT_FALSE(feature->effectiveName().has_value());
+        } else if (!feature->ownedRedefinition().empty()) {
+            ++anonymous;
+            EXPECT_EQ(feature->effectiveName(), "p");
+        }
+    }
+    EXPECT_EQ(shortOnly, 1u);
+    EXPECT_GE(anonymous, 1u);
+}
+
 TEST(TestKerMLListener, MemberFeatureInTypeBody) {
     using namespace KerML::Entities;
     // TypeFeatureMember = MemberPrefix 'member' FeatureElement is part of the TypeBodyElement alternatives
@@ -1869,8 +1932,8 @@ TEST(TestKerMLListener, MemberFeatureInTypeBody) {
     ASSERT_TRUE(errors.empty());
     const auto datatype = namedElement<DataType>(elements, "D");
     ASSERT_NE(datatype, nullptr);
-    const auto priv = namedElement<Feature>(elements, "'private'");
-    const auto prot = namedElement<Feature>(elements, "'protected'");
+    const auto priv = namedElement<Feature>(elements, "private");
+    const auto prot = namedElement<Feature>(elements, "protected");
     ASSERT_NE(priv, nullptr);
     ASSERT_NE(prot, nullptr);
     EXPECT_TRUE(ownsElement(datatype, priv));

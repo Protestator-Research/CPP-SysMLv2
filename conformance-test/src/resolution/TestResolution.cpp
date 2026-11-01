@@ -9,9 +9,11 @@
 #include <gtest/gtest.h>
 
 #include <algorithm>
+#include <atomic>
 #include <chrono>
 #include <cstdlib>
 #include <filesystem>
+#include <fstream>
 #include <iostream>
 #include <memory>
 #include <set>
@@ -907,6 +909,749 @@ TEST(SourceLevels, AnAliasOfAHigherLevelIsInvisibleToALowerOne) {
     EXPECT_EQ(unresolvedIn(ws, user), 0u);
 }
 
+// ---------------------------------------------------------------------------------------------------------------------
+// Incremental resolution: a source that is added after a resolve() is added to the index of the resolver, which is not built again
+// ---------------------------------------------------------------------------------------------------------------------
+
+/// "<source name>:<line>:<name>" of every unresolved reference.
+std::set<std::string> unresolvedKeys(const Workspace& ws) {
+    std::set<std::string> keys;
+    for (const auto& info : ws.unresolvedReferences()) keys.insert(info.sourceName + ":" + std::to_string(info.line) + ":" + info.name);
+    return keys;
+}
+
+/// What a workspace that resolved in several steps and one that resolved once have to agree on.
+/// (@p targets: also what every reference resolved to, see ConformanceTest::resolvedGenerals(). A reference binds to what is known when it is
+/// resolved and is not looked at again, so the targets only have to agree if everything a reference needs was added before it was resolved.)
+void expectSameResolution(const Workspace& steps, const Workspace& once, const std::string& what, bool targets = true) {
+    EXPECT_EQ(steps.sourceCount(), once.sourceCount()) << what;
+    EXPECT_EQ(steps.referenceCount(), once.referenceCount()) << what;
+    EXPECT_EQ(steps.resolvedReferenceCount(), once.resolvedReferenceCount()) << what;
+    EXPECT_EQ(steps.unresolvedReferences().size(), once.unresolvedReferences().size()) << what;
+    EXPECT_EQ(unresolvedKeys(steps), unresolvedKeys(once)) << what;
+    EXPECT_EQ(steps.elements().size(), once.elements().size()) << what;
+    if (targets) ConformanceTest::expectSameLines(ConformanceTest::resolvedGenerals(steps.elements()), ConformanceTest::resolvedGenerals(once.elements()), what);
+}
+
+// The documented differences of the library loaded file by file against the whole library (see the test, 7 references: a reference binds to
+// what is known when it is resolved): the lines of resolvedGenerals() (sorted) that only one of the two workspaces has.
+const std::vector<std::string> ExpectedStepwiseDifferencesFromSteps = {
+    "Interfaces::participant::thisParticipant :> Base::Anything::self,",
+    "ShapeItems::ConeOrCylinder::af::innerSpaceDimension :> Objects::StructuredSpaceObject::StructuredSurface::innerSpaceDimension, Objects::StructuredSpaceObject::innerSpaceDimension,",
+    "ShapeItems::ConeOrCylinder::base::innerSpaceDimension :> Objects::StructuredSpaceObject::StructuredSurface::innerSpaceDimension, Objects::StructuredSpaceObject::innerSpaceDimension,",
+    "ShapeItems::CuboidOrTriangularPrism::ff::edges :> ShapeItems::Polygon::edges, ShapeItems::Polyhedron::faces::edges,",
+    "ShapeItems::CuboidOrTriangularPrism::rf::edges :> ShapeItems::Polygon::edges, ShapeItems::Polyhedron::faces::edges,",
+    "ShapeItems::Disc::edges::innerSpaceDimension :> Objects::StructuredSpaceObject::innerSpaceDimension, Objects::StructuredSpaceObject::StructuredCurve::innerSpaceDimension,",
+    "ShapeItems::Polyhedron::faces::innerSpaceDimension :> Objects::StructuredSpaceObject::StructuredCurve::innerSpaceDimension, Objects::StructuredSpaceObject::innerSpaceDimension,",
+};
+const std::vector<std::string> ExpectedStepwiseDifferencesFromWhole = {
+    "Interfaces::participant::thisParticipant :> Ports::Port::self,",
+    "ShapeItems::ConeOrCylinder::af::innerSpaceDimension :> Objects::StructuredSpaceObject::StructuredSurface::innerSpaceDimension, Objects::StructuredSpaceObject::StructuredSurface::innerSpaceDimension,",
+    "ShapeItems::ConeOrCylinder::base::innerSpaceDimension :> Objects::StructuredSpaceObject::StructuredSurface::innerSpaceDimension, Objects::StructuredSpaceObject::StructuredSurface::innerSpaceDimension,",
+    "ShapeItems::CuboidOrTriangularPrism::ff::edges :> ShapeItems::Polygon::edges, Objects::StructuredSpaceObject::faces::edges,",
+    "ShapeItems::CuboidOrTriangularPrism::rf::edges :> ShapeItems::Polygon::edges, Objects::StructuredSpaceObject::faces::edges,",
+    "ShapeItems::Disc::edges::innerSpaceDimension :> Objects::StructuredSpaceObject::StructuredCurve::innerSpaceDimension, Objects::StructuredSpaceObject::StructuredCurve::innerSpaceDimension,",
+    "ShapeItems::Polyhedron::faces::innerSpaceDimension :> Objects::StructuredSpaceObject::StructuredCurve::innerSpaceDimension, Objects::StructuredSpaceObject::StructuredSurface::innerSpaceDimension,",
+};
+
+TEST(IncrementalResolution, LibraryInStepsGivesTheSameResultAsTheWholeLibrary) {
+    const auto files = ConformanceTest::listFiles(SYSML_LIBRARY_DIR, {".sysml", ".kerml"});
+    Workspace whole;
+    EXPECT_EQ(whole.loadLibrary(SYSML_LIBRARY_DIR), files.size());
+    whole.resolve();
+
+    Workspace steps;
+    for (const auto& file : files) {
+        steps.addFile(file.string());
+        steps.resolve();
+    }
+    expectSameResolution(steps, whole, "library file by file", false);
+    EXPECT_TRUE(steps.errors().empty());
+    // The targets differ for the references that bind to what is known when they are resolved (Interfaces is resolved before Ports is
+    // there, and its `thisParticipant :>> self` binds to what it found then): exactly these lines, in this workspace and not in the other.
+    {
+        const auto stepLines = ConformanceTest::resolvedGenerals(steps.elements());
+        const auto wholeLines = ConformanceTest::resolvedGenerals(whole.elements());
+        std::vector<std::string> onlySteps, onlyWhole;
+        std::set_difference(stepLines.begin(), stepLines.end(), wholeLines.begin(), wholeLines.end(), std::back_inserter(onlySteps));
+        std::set_difference(wholeLines.begin(), wholeLines.end(), stepLines.begin(), stepLines.end(), std::back_inserter(onlyWhole));
+        EXPECT_EQ(onlySteps, ExpectedStepwiseDifferencesFromSteps) << "lines that only the file by file workspace has";
+        EXPECT_EQ(onlyWhole, ExpectedStepwiseDifferencesFromWhole) << "lines that only the whole library workspace has";
+    }
+
+    // In the order of the dependencies (the kernel libraries, the systems library, the domain libraries) the results agree completely.
+    Workspace batches;
+    for (const char* part : {"/KerML/", "/SystemsLibrary/", "/DomainLibraries/"}) {
+        for (const auto& file : files) {
+            std::string path = file.generic_string();
+            if (path.find(part) != std::string::npos) batches.addFile(file.string());
+        }
+        batches.resolve();
+    }
+    expectSameResolution(batches, whole, "library in batches");
+}
+
+TEST(IncrementalResolution, ReferencesToLaterSourcesStayUnresolvedUntilTheyAreAdded) {
+    Workspace steps;
+    const size_t a = steps.addText("package A { part x : B::Y; part z : B::Missing; }", "a.sysml");
+    steps.resolve();
+    EXPECT_EQ(unresolvedIn(steps, a), 2u);
+
+    steps.addText("package B { part def Y; }", "b.sysml");
+    steps.resolve();
+    EXPECT_EQ(unresolvedIn(steps, a), 1u);
+    EXPECT_EQ(typeOf(steps, "A::x").get(), steps.find("B::Y").get());
+
+    Workspace once;
+    once.addText("package A { part x : B::Y; part z : B::Missing; }", "a.sysml");
+    once.addText("package B { part def Y; }", "b.sysml");
+    once.resolve();
+    expectSameResolution(steps, once, "later source");
+}
+
+TEST(IncrementalResolution, NamesOfAnonymousRedefinitionsAreRegisteredOnce) {
+    // `part redefines p` has no name of its own: it is known as `p` from its (pending) redefinition on, and `q :>> p` refers to it.
+    const char* user = "package U { part def B :> L::A { part :>> p; part q :>> p; } }";
+    const char* library = "package L { part def A { part p; } }";
+    Workspace steps;
+    steps.addText(user, "user.sysml");
+    steps.resolve();
+    steps.resolve();  // (nothing new: the pending redefinition is retried)
+    steps.addText(library, "lib.sysml");
+    steps.resolve();
+
+    Workspace once;
+    once.addText(user, "user.sysml");
+    once.addText(library, "lib.sysml");
+    once.resolve();
+    expectSameResolution(steps, once, "anonymous redefinition", false);   // (the targets of q are checked below and in RedefinitionTargetDoesNotDependOnWhenTheLibraryIsAdded)
+    EXPECT_TRUE(steps.unresolvedReferences().empty());
+    EXPECT_TRUE(once.unresolvedReferences().empty());
+
+    // The name p is registered once for B (not twice, not for the library), in both workspaces: there is one feature p among the members of B.
+    for (const Workspace* ws : {&steps, &once}) {
+        const auto b = ws->find("U::B");
+        ASSERT_NE(b, nullptr);
+        size_t featuresPOfB = 0;
+        for (const auto& element : ws->elements()) {
+            const auto feature = as<KerML::Entities::Feature>(element);
+            if (feature && feature->owner() == b && feature->effectiveName().value_or("") == "p") ++featuresPOfB;   // (`part :>> p` has no declared name)
+        }
+        EXPECT_EQ(featuresPOfB, 1u);
+    }
+
+    // Per KerML a redefined feature is looked up through the general types of the owning type: `q :>> p` in B redefines the p of A. With
+    // everything there at once it does.
+    const auto q = as<KerML::Entities::Feature>(once.find("U::B::q"));
+    ASSERT_NE(q, nullptr);
+    ASSERT_FALSE(q->ownedSpecialization().empty());
+    const auto target = q->ownedSpecialization().front()->general();
+    ASSERT_NE(target, nullptr);
+    EXPECT_FALSE(isUnresolved(target));
+    EXPECT_EQ(target, once.find("L::A::p"));
+}
+
+// `q :>> p` redefines the p of L::A (redefined features are looked up via the general types of the owning type), not the feature of B that
+// redefines p: while the library is missing the generals of B are unknown, and the redefinition is not accepted from what is found in B.
+TEST(IncrementalResolution, RedefinitionTargetDoesNotDependOnWhenTheLibraryIsAdded) {
+    const char* user = "package U { part def B :> L::A { part :>> p; part q :>> p; } }";
+    const char* library = "package L { part def A { part p; } }";
+    Workspace steps;
+    steps.addText(user, "user.sysml");
+    steps.resolve();
+    steps.addText(library, "lib.sysml");
+    steps.resolve();
+    const auto q = as<KerML::Entities::Feature>(steps.find("U::B::q"));
+    ASSERT_NE(q, nullptr);
+    ASSERT_FALSE(q->ownedSpecialization().empty());
+    EXPECT_EQ(q->ownedSpecialization().front()->general(), steps.find("L::A::p"));
+}
+
+TEST(IncrementalResolution, RedefinitionBindsToTheInheritedFeatureInBothLoadOrders) {
+    const char* user = "package U { part def B :> L::A { part :>> p; part q :>> p; } }";
+    const char* library = "package L { part def A { part p; } }";
+    for (const bool libraryFirst : {false, true}) {
+        Workspace ws;
+        if (libraryFirst) {
+            ws.addText(library, "lib.sysml");
+            ws.resolve();
+            ws.addText(user, "user.sysml");
+        } else {
+            ws.addText(user, "user.sysml");
+            ws.addText(library, "lib.sysml");
+        }
+        ws.resolve();
+        EXPECT_TRUE(ws.unresolvedReferences().empty()) << libraryFirst;
+        const auto q = as<KerML::Entities::Feature>(ws.find("U::B::q"));
+        ASSERT_NE(q, nullptr);
+        ASSERT_FALSE(q->ownedSpecialization().empty());
+        EXPECT_EQ(q->ownedSpecialization().front()->general(), ws.find("L::A::p")) << libraryFirst;
+        // (the `:>> p` of B redefines it as well)
+        const auto b = ws.find("U::B");
+        for (const auto& element : ws.elements()) {
+            const auto feature = as<KerML::Entities::Feature>(element);
+            if (!feature || feature->owner() != b || feature->declaredName().has_value() || feature->effectiveName().value_or("") != "p") continue;
+            ASSERT_FALSE(feature->ownedSpecialization().empty());
+            EXPECT_EQ(feature->ownedSpecialization().front()->general(), ws.find("L::A::p")) << libraryFirst;
+        }
+    }
+}
+
+TEST(IncrementalResolution, RedefinitionWithAMissingGeneralStaysUnresolvedInsteadOfBindingToASibling) {
+    // The general of B does not exist: `q :>> p` must not bind to the feature of B that redefines p (a sibling), it stays open.
+    Workspace ws;
+    ws.addText("package U { part def B :> Missing { part :>> p; part q :>> p; } }", "user.sysml");
+    ws.resolve();
+    ws.resolve();   // (retried, still open)
+    const auto q = as<KerML::Entities::Feature>(ws.find("U::B::q"));
+    ASSERT_NE(q, nullptr);
+    bool boundToSibling = false;
+    for (const auto& specialization : q->ownedSpecialization()) {
+        const auto general = specialization->general();
+        if (general && !isUnresolved(general)) boundToSibling = true;
+    }
+    EXPECT_FALSE(boundToSibling);
+    bool qOpen = false;
+    for (const auto& info : ws.unresolvedReferences()) {
+        // (the reference is written in the feature q: its context element)
+        const auto context = as<KerML::Entities::Feature>(info.context);
+        if (info.name == "p" && context && context->declaredName().value_or("") == "q") qOpen = true;
+    }
+    EXPECT_TRUE(qOpen);
+}
+
+TEST(IncrementalResolution, PlaceholderOfAnUnresolvedQuotedNameHasTheNameWithoutQuotes) {
+    Workspace ws;
+    ws.addText("package U { part def B { part :>> 'x y'; part a : Missing::'q r'; part b : 'm n'; } }", "user.sysml");
+    ws.resolve();
+    std::set<std::string> names;
+    for (const auto& info : ws.unresolvedReferences()) {
+        ASSERT_NE(info.placeholder, nullptr) << info.name;
+        names.insert(info.placeholder->declaredName().value_or("<none>"));
+    }
+    EXPECT_EQ(names, (std::set<std::string>{"x y", "q r", "m n"}));
+}
+
+TEST(IncrementalResolution, ReplaceSourceAfterIncrementalRunsGivesTheSameResultAsAFreshWorkspace) {
+    const char* lib1 = "package Lib { part def Base; part def Other { part inner : Base; } part def Broken : Missing; }";
+    const char* lib2 = "package Lib2 { public import Lib::*; part def Third :> Other; part uses : Absent; }";
+    const std::vector<std::string> texts = {
+        "package U { import Lib2::*; part x : Third; }",
+        "package U { part x : Base; }",
+        "package W { import Lib::*; part a : Other; part b : Base; part c : Missing2; }",
+        "package W { import Lib2::Third; part a : Third; part b : Lib::Base; }",
+        "package U { import Lib2::*; part x : Third; }",
+    };
+
+    Workspace steps;
+    steps.addText(lib1, "lib1.sysml");
+    steps.resolve();
+    steps.addText(lib2, "lib2.sysml");
+    steps.resolve();
+    const size_t user = steps.addText(texts.front(), "user.sysml");
+    steps.resolve();
+    for (const auto& text : texts) {
+        steps.replaceSource(user, text);
+        steps.resolve();
+
+        Workspace fresh;
+        fresh.addText(lib1, "lib1.sysml");
+        fresh.addText(lib2, "lib2.sysml");
+        fresh.addText(text, "user.sysml");
+        fresh.resolve();
+        expectSameResolution(steps, fresh, text);
+    }
+}
+
+namespace {
+/// The general type of the (only) specialization of the unnamed feature that @p owner owns: the feature it redefines.
+ElementPtr redefinedByTheAnonymousFeatureOf(const Workspace& ws, const std::string& ownerName) {
+    const auto owner = ws.find(ownerName);
+    for (const auto& element : ws.elements()) {
+        const auto feature = as<KerML::Entities::Feature>(element);
+        if (!feature || feature->declaredName().has_value() || feature->owner() != owner) continue;
+        const auto specializations = feature->ownedSpecialization();
+        if (!specializations.empty()) return specializations.front()->general();
+    }
+    return nullptr;
+}
+}
+
+TEST(IncrementalResolution, AnonymousRedefinitionsKeepTheirEffectiveNamesWhenTheResolverIsBuiltAnew) {
+    // `attribute :>> m` of Sub has no name: it is known as `m`, and the `:>> m` of My redefines it, not the m of Base.
+    const char* library = "package L { part def Base { attribute m; } part def Sub :> Base { attribute :>> m; } }";
+    const char* user = "package U { part def My :> L::Sub { attribute :>> m; } }";
+    Workspace ws;
+    ws.addText(library, "lib.sysml");
+    ws.resolve();
+    const size_t source = ws.addText(user, "user.sysml");
+    ws.resolve();
+    auto redefined = redefinedByTheAnonymousFeatureOf(ws, "U::My");
+    ASSERT_NE(redefined, nullptr);
+    EXPECT_EQ(redefined->owner(), ws.find("L::Sub"));
+
+    // The resolver is built anew by replaceSource: what was resolved before (the library) must still give its names.
+    ws.replaceSource(source, user);
+    ws.resolve();
+    redefined = redefinedByTheAnonymousFeatureOf(ws, "U::My");
+    ASSERT_NE(redefined, nullptr);
+    EXPECT_EQ(redefined->owner(), ws.find("L::Sub"));
+
+    Workspace once;
+    once.addText(library, "lib.sysml");
+    once.addText(user, "user.sysml");
+    once.resolve();
+    ConformanceTest::expectSameLines(ConformanceTest::resolvedGenerals(ws.elements()), ConformanceTest::resolvedGenerals(once.elements()), "replaced");
+}
+
+TEST(IncrementalResolution, GeneralsKeepTheOrderOfTheDeclarations) {
+    // `S :> G1, G2` with G1 from a source that is added later: the specializations (and the lookup through the generals) stay G1, G2.
+    const char* user = "package U { part def S :> L::G1, G2 { } part def G2 { attribute x; } }";
+    const char* library = "package L { part def G1 { attribute x; } }";
+    Workspace steps;
+    steps.addText(user, "user.sysml");
+    steps.resolve();
+    steps.addText(library, "lib.sysml");
+    steps.resolve();
+    Workspace once;
+    once.addText(user, "user.sysml");
+    once.addText(library, "lib.sysml");
+    once.resolve();
+    ConformanceTest::expectSameLines(ConformanceTest::resolvedGenerals(steps.elements()), ConformanceTest::resolvedGenerals(once.elements()), "generals order");
+    ASSERT_NE(steps.find("L::G1"), nullptr);
+    ASSERT_NE(steps.find("U::G2"), nullptr);
+    ASSERT_NE(steps.find("U::S::x"), nullptr);
+    ASSERT_NE(once.find("U::S::x"), nullptr);
+    const auto s = as<KerML::Entities::Type>(steps.find("U::S"));
+    ASSERT_NE(s, nullptr);
+    ASSERT_EQ(s->ownedSpecialization().size(), 2u);
+    EXPECT_EQ(s->ownedSpecialization()[0]->general().get(), steps.find("L::G1").get());
+    EXPECT_EQ(s->ownedSpecialization()[1]->general().get(), steps.find("U::G2").get());
+    // `x` is found through the generals in their order: G1 first.
+    EXPECT_EQ(ConformanceTest::qualifiedNameOf(steps.find("U::S::x")), ConformanceTest::qualifiedNameOf(once.find("U::S::x")));
+}
+
+TEST(IncrementalResolution, FindAfterAddTextNeedsNoResolve) {
+    Workspace ws;
+    ws.addText("package Lib { part def Base; }", "lib.sysml");
+    EXPECT_NE(ws.find("Lib::Base"), nullptr);    // (the index is built by find() without a resolve)
+    ws.resolve();
+
+    ws.addText("package U { import Lib::*; part def X :> Base; part x : X; }", "user.sysml");
+    EXPECT_NE(ws.find("U::X"), nullptr);
+    EXPECT_NE(ws.find("U::x"), nullptr);
+    EXPECT_NE(ws.find("Lib::Base"), nullptr);
+    EXPECT_EQ(ws.find("U::Nope"), nullptr);
+
+    ws.addText("package V { part def Y; }", "v.sysml");
+    EXPECT_NE(ws.find("V::Y"), nullptr);
+    EXPECT_NE(ws.find("U::X"), nullptr);
+
+    // The references of the added sources are still resolved by the next resolve().
+    ws.resolve();
+    EXPECT_TRUE(ws.unresolvedReferences().empty());
+    EXPECT_EQ(typeOf(ws, "U::x").get(), ws.find("U::X").get());
+}
+
+TEST(IncrementalResolution, ASourceOfALowerLevelNeedsAFullRebuildAndGivesTheSameResult) {
+    const char* library = "standard library package Base { abstract classifier Anything; abstract feature things : Anything; }\npackage Parts { part def Part; }";
+    const char* model = "package Base { part def Fake; }\npackage U { part def A; part a : A; part ref : Parts::Part; }";
+
+    Workspace steps;
+    const size_t user = steps.addText(model, "user.sysml", SourceLanguage::SysML, 2);
+    steps.resolve();
+    EXPECT_EQ(unresolvedIn(steps, user), 1u);   // Parts is not loaded yet
+    steps.addText(library, "lib.kerml", SourceLanguage::KerML, 0);
+    steps.resolve();
+
+    Workspace once;
+    once.addText(model, "user.sysml", SourceLanguage::SysML, 2);
+    once.addText(library, "lib.kerml", SourceLanguage::KerML, 0);
+    once.resolve();
+    expectSameResolution(steps, once, "lower level added later");
+    EXPECT_EQ(unresolvedIn(steps, user), unresolvedIn(once, user));
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Incremental replaceSource: a document above its libraries is exchanged in the index of the resolver, which is not built again
+// ---------------------------------------------------------------------------------------------------------------------
+
+namespace {
+/// What one source resolved to, and what stayed unresolved, written as lines.
+/// (@p global: also the counts and the unresolved references of all sources; false: only the document)
+void expectSameDocument(const Workspace& incremental, size_t slotIncremental, const Workspace& reference, size_t slotReference, const std::string& what,
+                        bool global = true) {
+    if (global) {
+        EXPECT_EQ(incremental.referenceCount(), reference.referenceCount()) << what;
+        EXPECT_EQ(incremental.resolvedReferenceCount(), reference.resolvedReferenceCount()) << what;
+        EXPECT_EQ(incremental.unresolvedReferences().size(), reference.unresolvedReferences().size()) << what;
+        EXPECT_EQ(unresolvedKeys(incremental), unresolvedKeys(reference)) << what;
+    } else {
+        EXPECT_EQ(unresolvedIn(incremental, slotIncremental), unresolvedIn(reference, slotReference)) << what;
+    }
+    EXPECT_EQ(incremental.elements(slotIncremental).size(), reference.elements(slotReference).size()) << what;
+    ConformanceTest::expectSameLines(ConformanceTest::resolvedGenerals(incremental.elements(slotIncremental)),
+                                     ConformanceTest::resolvedGenerals(reference.elements(slotReference)), what);
+}
+}
+
+TEST(ReplaceSourceIncremental, ADocumentAboveItsLibrariesGivesTheSameResultAsAFreshWorkspace) {
+    const char* lib1 = "package Lib { part def Base; part def Other { part inner : Base; } part def Broken : Missing; }";
+    const char* lib2 = "package Lib2 { public import Lib::*; part def Third :> Other; part uses : Absent; }";
+    const std::vector<std::string> texts = {
+        "package U { import Lib2::*; part x : Third; }",
+        "package U { part x : Base; }",
+        "package W { import Lib::*; part a : Other; part b : Base; part c : Missing2; }",
+        "package W { import Lib2::Third; part a : Third; part b : Lib::Base; part def D :> Third { part redefines inner; part k :>> inner; } }",
+        "package U { import Lib2::*; part x : Third; }",
+        "",
+    };
+
+    Workspace steps;
+    steps.addText(lib1, "lib1.sysml", SourceLanguage::SysML, 0);
+    steps.addText(lib2, "lib2.sysml", SourceLanguage::SysML, 100);
+    const size_t user = steps.addText("package Empty { }", "user.sysml", SourceLanguage::SysML, 1000);
+    steps.resolve();
+    for (const auto& text : texts) {
+        steps.replaceSource(user, text);
+        steps.resolve();
+
+        Workspace fresh;
+        fresh.addText(lib1, "lib1.sysml", SourceLanguage::SysML, 0);
+        fresh.addText(lib2, "lib2.sysml", SourceLanguage::SysML, 100);
+        const size_t slot = fresh.addText(text, "user.sysml", SourceLanguage::SysML, 1000);
+        fresh.resolve();
+        expectSameResolution(steps, fresh, text);
+        expectSameDocument(steps, user, fresh, slot, text);
+    }
+}
+
+TEST(ReplaceSourceIncremental, SeveralReplacementsBeforeOneResolveAndSeveralDocuments) {
+    const char* library = "package Lib { part def Base { attribute m; } part def Sub :> Base { attribute :>> m; } }";
+    const auto makeOne = [](const std::string& body) { return "package One { import Lib::*; " + body + " }"; };
+    const auto makeTwo = [](const std::string& body) { return "package Two { import One::*; private import Lib::*; " + body + " }"; };
+
+    Workspace steps;
+    steps.addText(library, "lib.sysml", SourceLanguage::SysML, 0);
+    const size_t one = steps.addText(makeOne(""), "one.sysml", SourceLanguage::SysML, 1000);
+    const size_t two = steps.addText(makeTwo(""), "two.sysml", SourceLanguage::SysML, 1000);
+    steps.resolve();
+
+    const std::vector<std::pair<std::string, std::string>> rounds = {
+        {"part def A :> Sub { attribute :>> m; }", "part def B :> A { attribute :>> m; } part b : B;"},
+        {"part def A :> Base;", "part b : A; part c : Missing;"},
+        {"part def A :> Sub { attribute :>> m; } part def Z;", "part def B :> A { attribute :>> m; } part b : B; part z : Z;"},
+    };
+    for (size_t round = 0; round < rounds.size(); ++round) {
+        const auto& [first, second] = rounds[round];
+        // (twice before the resolve: the first of the replacements is never indexed)
+        steps.replaceSource(one, makeOne("part def Gone;"));
+        steps.replaceSource(two, makeTwo("part gone : Gone;"));
+        steps.replaceSource(one, makeOne(first));
+        steps.replaceSource(two, makeTwo(second));
+        steps.resolve();
+
+        Workspace fresh;
+        fresh.addText(library, "lib.sysml", SourceLanguage::SysML, 0);
+        const size_t freshOne = fresh.addText(makeOne(first), "one.sysml", SourceLanguage::SysML, 1000);
+        const size_t freshTwo = fresh.addText(makeTwo(second), "two.sysml", SourceLanguage::SysML, 1000);
+        fresh.resolve();
+        expectSameResolution(steps, fresh, "round " + std::to_string(round));
+        expectSameDocument(steps, one, fresh, freshOne, "one, round " + std::to_string(round));
+        expectSameDocument(steps, two, fresh, freshTwo, "two, round " + std::to_string(round));
+    }
+}
+
+TEST(ReplaceSourceIncremental, FindSeesTheNewVersionWithoutAResolve) {
+    Workspace ws;
+    ws.addText("package Lib { part def Base; }", "lib.sysml", SourceLanguage::SysML, 0);
+    const size_t user = ws.addText("package U { part def Old; }", "user.sysml", SourceLanguage::SysML, 1000);
+    ws.resolve();
+    EXPECT_NE(ws.find("U::Old"), nullptr);
+    ws.replaceSource(user, "package U { import Lib::*; part def New :> Base; }");
+    EXPECT_EQ(ws.find("U::Old"), nullptr);
+    EXPECT_NE(ws.find("U::New"), nullptr);
+    EXPECT_NE(ws.find("Lib::Base"), nullptr);
+    ws.resolve();
+    EXPECT_TRUE(ws.unresolvedReferences().empty());
+    EXPECT_EQ(ws.resolvedReferenceCount(), ws.referenceCount());
+}
+
+TEST(ReplaceSourceIncremental, ASourceOfTheSameLevelAsAnotherOneIsIndexedAnew) {
+    // The library has the level of the document: its references could be bound to the old version, so the index is built again.
+    const char* lib = "package Lib { import U::*; part def Needs :> Wanted; }";
+    const std::vector<std::string> texts = {"package U { part def Wanted; }", "package U { part def Other; }", "package U { part def Wanted { part p; } }"};
+    Workspace steps;
+    steps.addText(lib, "lib.sysml", SourceLanguage::SysML, 5);
+    const size_t user = steps.addText("package U { }", "user.sysml", SourceLanguage::SysML, 5);
+    steps.resolve();
+    for (const auto& text : texts) {
+        steps.replaceSource(user, text);
+        steps.resolve();
+        Workspace fresh;
+        fresh.addText(lib, "lib.sysml", SourceLanguage::SysML, 5);
+        fresh.addText(text, "user.sysml", SourceLanguage::SysML, 5);
+        fresh.resolve();
+        // (the library keeps what it resolved before: only the document has to agree)
+        expectSameDocument(steps, user, fresh, 1, text, false);
+    }
+
+    // A document below the library (a lower level than the other source) is a full rebuild as well.
+    Workspace below;
+    below.addText("package Lib { part def Base; }", "lib.sysml", SourceLanguage::SysML, 10);
+    const size_t doc = below.addText("package D { }", "doc.sysml", SourceLanguage::SysML, 1);
+    below.resolve();
+    below.replaceSource(doc, "package D { part x : Lib::Base; }");
+    below.resolve();
+    EXPECT_EQ(unresolvedIn(below, doc), 1u);   // (Lib is above D)
+}
+
+TEST(ReplaceSourceIncremental, ALibraryThatStaysBehindIsNotDamaged) {
+    // The library's own references to the standard-like base elements, and their order, must not change while a document is replaced.
+    const char* base = "standard library package Base { abstract classifier Anything; abstract feature things : Anything; }";
+    const char* lib = "package L { part def A { part p; } part def B :> A { part redefines p; } part def C :> B, A; }";
+    Workspace ws;
+    ws.addText(base, "base.kerml", SourceLanguage::KerML, 0);
+    ws.addText(lib, "lib.sysml", SourceLanguage::SysML, 0);
+    const size_t doc = ws.addText("package U { }", "doc.sysml", SourceLanguage::SysML, 1000);
+    ws.resolve();
+    const auto before = ConformanceTest::resolvedGenerals(ws.elements());
+    const auto resolvedBefore = ws.resolvedReferenceCount();
+    for (int round = 0; round < 4; ++round) {
+        ws.replaceSource(doc, "package U { import L::*; part def D :> C { part redefines p; part q :>> p; } part d : D; part e : Missing" + std::to_string(round) + "; }");
+        ws.resolve();
+        EXPECT_EQ(ws.unresolvedReferences().size(), 1u);
+        ws.replaceSource(doc, "package U { }");
+        ws.resolve();
+        EXPECT_TRUE(ws.unresolvedReferences().empty());
+        EXPECT_EQ(ws.resolvedReferenceCount(), resolvedBefore);
+        ConformanceTest::expectSameLines(ConformanceTest::resolvedGenerals(ws.elements()), before, "round " + std::to_string(round));
+    }
+}
+
+TEST(ReplaceSourceIncremental, InvalidateIndexMakesAnElementAddedThroughTheApiFindable) {
+    Workspace ws;
+    ws.addText("package P { part def A; }", "p.sysml", SourceLanguage::SysML, 0);
+    ws.resolve();
+    const auto p = as<KerML::Entities::Namespace>(ws.find("P"));
+    ASSERT_NE(p, nullptr);
+    EXPECT_EQ(ws.find("P::Added"), nullptr);
+    auto added = std::make_shared<KerML::Entities::Package>();
+    added->setDeclaredName("Added");
+    p->appendOwnedElement(added);   // (what the index walks: the owned elements)
+    // (the index was built before: it does not know the new element)
+    ws.invalidateIndex();
+    EXPECT_EQ(ws.find("P::Added"), added);
+    ws.resolve();
+    EXPECT_EQ(ws.find("P::Added"), added);
+    EXPECT_NE(ws.find("P::A"), nullptr);
+}
+
+namespace {
+/// A directory below the temporary directory that is removed at the end (short names: MAX_PATH).
+struct ScratchDirectory {
+    std::filesystem::path path;
+    ScratchDirectory() {
+        static int counter = 0;
+        path = std::filesystem::temp_directory_path() / ("rs" + std::to_string(std::rand() & 0xFFFFF) + "_" + std::to_string(counter++));
+        std::filesystem::create_directories(path);
+    }
+    ~ScratchDirectory() {
+        std::error_code ec;
+        std::filesystem::remove_all(path, ec);
+    }
+};
+
+void writeText(const std::filesystem::path& file, const std::string& text) {
+    std::ofstream(file, std::ios::binary) << text;
+}
+}
+
+TEST(ReplaceSourceIncremental, TheOrderOfTheGeneralsOfAnXmiSourceDoesNotDependOnWhatIsLinked) {
+    // `S :> G1, G2, G3` where G2 is in another file that is added after the first resolve (Finding B: the ordinal of a general is its
+    // place in the document, not the number of those that are linked).
+    ScratchDirectory source, xmi;
+    writeText(source.path / "a.sysml",
+              "package A { import B::*; part def G1 { attribute x; } part def G3 { attribute x; } part def S :> G1, G2, G3; part def T :> G3, G2, G1; }");
+    writeText(source.path / "b.sysml", "package B { part def G2 { attribute x; } }");
+    {
+        Workspace export_;
+        export_.addFile((source.path / "a.sysml").string());
+        export_.addFile((source.path / "b.sysml").string());
+        export_.resolve();
+        ASSERT_TRUE(export_.unresolvedReferences().empty());
+        ASSERT_TRUE(export_.exportXmi(xmi.path.string()).empty());
+    }
+    const auto generalsOf = [](const Workspace& ws, const std::string& name) {
+        std::vector<std::string> names;
+        const auto type = as<KerML::Entities::Type>(ws.find(name));
+        if (!type) return names;
+        for (const auto& specialization : type->ownedSpecialization()) {
+            const auto general = specialization->general();
+            names.push_back(general && !isUnresolved(general) ? ConformanceTest::qualifiedNameOf(general) : std::string("?"));
+        }
+        return names;
+    };
+
+    Workspace steps;
+    steps.addFile((xmi.path / "a.sysmlx").string());
+    steps.resolve();
+    EXPECT_NE(steps.find("A::S"), nullptr);
+    steps.addFile((xmi.path / "b.sysmlx").string());
+    steps.resolve();
+
+    Workspace once;
+    once.addFile((xmi.path / "a.sysmlx").string());
+    once.addFile((xmi.path / "b.sysmlx").string());
+    once.resolve();
+
+    EXPECT_EQ(generalsOf(steps, "A::S"), (std::vector<std::string>{"A::G1", "B::G2", "A::G3"}));
+    EXPECT_EQ(generalsOf(steps, "A::T"), (std::vector<std::string>{"A::G3", "B::G2", "A::G1"}));
+    EXPECT_EQ(generalsOf(steps, "A::S"), generalsOf(once, "A::S"));
+    // The lookup through the generals follows the declaration order: x of G1 first for S, x of G3 first for T.
+    for (const auto* name : {"A::S::x", "A::T::x"}) {
+        ASSERT_NE(steps.find(name), nullptr) << name;
+        ASSERT_NE(once.find(name), nullptr) << name;
+        EXPECT_EQ(ConformanceTest::qualifiedNameOf(steps.find(name)), ConformanceTest::qualifiedNameOf(once.find(name))) << name;
+        EXPECT_EQ(steps.find(name)->owner(), steps.find(std::string(name) == "A::S::x" ? "A::G1" : "A::G3")) << name;
+    }
+}
+
+TEST(ReplaceSourceIncremental, ADocumentOverAnXmiLibraryIsExchangedIncrementally) {
+    ScratchDirectory source, xmi;
+    writeText(source.path / "base.sysml", "package Base { part def Thing { attribute m; } part def Sub :> Thing { attribute :>> m; } }");
+    {
+        Workspace export_;
+        export_.addFile((source.path / "base.sysml").string());
+        export_.resolve();
+        ASSERT_TRUE(export_.exportXmi(xmi.path.string()).empty());
+    }
+    const std::vector<std::string> texts = {
+        "package M { import Base::*; part t : Sub { attribute :>> m; } }",
+        "package M { import Base::Thing; part t : Thing; part u : Nope; }",
+        "package M { import Base::*; part def X :> Sub; part x : X; }",
+    };
+    const auto library = (xmi.path / "base.sysmlx").string();
+    Workspace steps;
+    steps.addFile(library, 0);
+    const size_t doc = steps.addText("package M { }", "doc.sysml", SourceLanguage::SysML, 1000);
+    steps.resolve();
+    for (const auto& text : texts) {
+        steps.replaceSource(doc, text);
+        steps.resolve();
+        Workspace fresh;
+        fresh.addFile(library, 0);
+        const size_t slot = fresh.addText(text, "doc.sysml", SourceLanguage::SysML, 1000);
+        fresh.resolve();
+        expectSameResolution(steps, fresh, text);
+        expectSameDocument(steps, doc, fresh, slot, text);
+    }
+    // An XMI source that is replaced always gets a new index; the result is the same as with a new workspace.
+    const std::string xml = ConformanceTest::readFile(xmi.path / "base.sysmlx");
+    // (the document refers to the old elements of the library, so it is replaced as well: see replaceSource())
+    steps.replaceSource(0, xml, SourceLanguage::Xmi);
+    steps.replaceSource(doc, texts.back());
+    steps.resolve();
+    Workspace fresh;
+    fresh.addFile(library, 0);
+    const size_t slot = fresh.addText(texts.back(), "doc.sysml", SourceLanguage::SysML, 1000);
+    fresh.resolve();
+    expectSameResolution(steps, fresh, "replaced XMI source");
+    expectSameDocument(steps, doc, fresh, slot, "replaced XMI source");
+}
+
+/// The whole text library at level 0 and a document at level 1000 that is replaced; the library is loaded once for all tests of the fixture.
+/// Two workspaces: one exchanges the document incrementally, the other has its index thrown away before every replacement (a new index over
+/// all sources, what replaceSource() did before it was incremental).
+class ReplaceOverLibrary : public ::testing::Test {
+protected:
+    static void SetUpTestSuite() {
+        const auto start = std::chrono::steady_clock::now();
+        incremental = std::make_unique<Workspace>();
+        reference = std::make_unique<Workspace>();
+        for (Workspace* ws : {incremental.get(), reference.get()}) {
+            EXPECT_GT(ws->loadLibrary(SYSML_LIBRARY_DIR), 80u);
+            ws->resolve();
+        }
+        slotIncremental = incremental->addText("package Doc { }", "doc.sysml", SourceLanguage::SysML, 1000);
+        slotReference = reference->addText("package Doc { }", "doc.sysml", SourceLanguage::SysML, 1000);
+        incremental->resolve();
+        reference->resolve();
+        baseline = ConformanceTest::resolvedGenerals(incremental->elements());
+        std::cout << "[  INFO  ] two libraries loaded in "
+                  << std::chrono::duration<double>(std::chrono::steady_clock::now() - start).count() << " s" << std::endl;
+    }
+    static void TearDownTestSuite() {
+        incremental.reset();
+        reference.reset();
+    }
+
+    /// Replaces the document of both workspaces (incrementally, and with a new index), resolves and compares.
+    static void replaceAndCompare(const std::string& text, const std::string& what) {
+        incremental->replaceSource(slotIncremental, text);
+        incremental->resolve();
+        reference->invalidateIndex();
+        reference->replaceSource(slotReference, text);
+        reference->resolve();
+        expectSameDocument(*incremental, slotIncremental, *reference, slotReference, what);
+    }
+
+    static std::unique_ptr<Workspace> incremental;
+    static std::unique_ptr<Workspace> reference;
+    static size_t slotIncremental;
+    static size_t slotReference;
+    static std::vector<std::string> baseline;
+};
+
+std::unique_ptr<Workspace> ReplaceOverLibrary::incremental;
+std::unique_ptr<Workspace> ReplaceOverLibrary::reference;
+size_t ReplaceOverLibrary::slotIncremental = 0;
+size_t ReplaceOverLibrary::slotReference = 0;
+std::vector<std::string> ReplaceOverLibrary::baseline;
+
+TEST_F(ReplaceOverLibrary, EveryValidModelIsTheSameWhenItIsReplacedIncrementally) {
+    const auto files = ConformanceTest::listFiles(CONFORMANCE_SYSML_VALID_DIR, {".sysml"});
+    ASSERT_GT(files.size(), 40u);
+    const auto start = std::chrono::steady_clock::now();
+    for (const auto& file : files) {
+        SCOPED_TRACE(file.filename().string());
+        const std::string text = ConformanceTest::readFile(file);
+        // (twice: the second replacement exchanges a source that was exchanged before; slightly different text)
+        replaceAndCompare(text, file.filename().string());
+        replaceAndCompare(text + "\npackage ReplacedAgain { part def Added; part added : Added; }\n", file.filename().string() + " (changed)");
+    }
+    std::cout << "[  INFO  ] " << files.size() << " models, replaced twice each, in "
+              << std::chrono::duration<double>(std::chrono::steady_clock::now() - start).count() << " s" << std::endl;
+}
+
+TEST_F(ReplaceOverLibrary, TheLibraryIsTheSameAfterAllReplacements) {
+    // (runs after the test above, which replaced the document many times; both workspaces end with an empty document)
+    replaceAndCompare("package Doc { }", "empty document");
+    ConformanceTest::expectSameLines(ConformanceTest::resolvedGenerals(incremental->elements()), baseline, "library, incremental");
+    ConformanceTest::expectSameLines(ConformanceTest::resolvedGenerals(reference->elements()), baseline, "library, with a new index");
+    EXPECT_TRUE(incremental->unresolvedReferences().empty());
+    EXPECT_EQ(incremental->resolvedReferenceCount(), reference->resolvedReferenceCount());
+}
+
+TEST_F(ReplaceOverLibrary, ADocumentThatUsesTheLibraryEqualsAFreshWorkspace) {
+    // The same, against a workspace that was never replaced (a new library: parsed once more).
+    const char* text =
+        "package Doc { private import ISQ::*; private import SI::*; private import ScalarValues::*; private import Parts::*;\n"
+        "  part def Engine { attribute power : PowerValue; attribute m : MassValue; }\n"
+        "  part def Vehicle :> Part { part engine : Engine; attribute topSpeed : SpeedValue; attribute :>> mass; }\n"
+        "  part fleet : Vehicle[3] { part redefines engine; attribute :>> mass = 3 [kg]; }\n"
+        "}";
+    replaceAndCompare(text, "doc over the library");
+    replaceAndCompare(std::string(text) + "\npackage More { import Doc::*; part v : Vehicle; }\n", "doc over the library, changed");
+
+    Workspace fresh;
+    EXPECT_GT(fresh.loadLibrary(SYSML_LIBRARY_DIR), 80u);
+    const size_t slot = fresh.addText(std::string(text) + "\npackage More { import Doc::*; part v : Vehicle; }\n", "doc.sysml", SourceLanguage::SysML, 1000);
+    fresh.resolve();
+    expectSameDocument(*incremental, slotIncremental, fresh, slot, "fresh workspace");
+    EXPECT_EQ(incremental->resolvedReferenceCount(), fresh.resolvedReferenceCount());
+}
+
 TEST(ReplaceSource, ElementsOfSysMLSpecificMetaclassesAreFreed) {
     const char* text =
         "package M {\n"
@@ -1457,6 +2202,84 @@ TEST(InvocationStructure, KerMLBrokenConstructorsStayConsistent) {
             EXPECT_EQ(results, 1u);
         }
     }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// addTexts() and setCancellation() (smoke tests; the equivalence over the whole library is in the parallel loading tests)
+// ---------------------------------------------------------------------------------------------------------------------
+
+std::vector<SysMLv2::Files::TextInput> smallTexts() {
+    return {
+        {"package Lib { part def A; part def B :> A; }", "lib.sysml", SourceLanguage::Auto, 0},
+        {"package U { import Lib::*; part a : A; part b : Missing; }", "use.sysml", SourceLanguage::Auto, 1},
+        {"package Broken { part def ; }", "broken.sysml", SourceLanguage::SysML, 1},
+    };
+}
+
+TEST(WorkspaceAddTexts, EqualsAddTextOneByOne) {
+    Workspace reference;
+    for (const auto& input : smallTexts()) reference.addText(input.text, input.name, input.language, input.level);
+    reference.resolve();
+    for (const unsigned threads : {1u, 2u, 0u, 8u}) {
+        Workspace ws;
+        std::vector<std::pair<size_t, size_t>> calls;
+        const auto indices = ws.addTexts(smallTexts(), threads, [&](size_t done, size_t total) { calls.emplace_back(done, total); });
+        ws.resolve();
+        SCOPED_TRACE(threads);
+        ASSERT_EQ(indices, (std::vector<size_t>{0, 1, 2}));
+        ASSERT_EQ(ws.sourceCount(), reference.sourceCount());
+        for (size_t i = 0; i < ws.sourceCount(); ++i) {
+            EXPECT_EQ(ws.sourceName(i), reference.sourceName(i));
+            EXPECT_EQ(ws.sourceLevel(i), reference.sourceLevel(i));
+            EXPECT_EQ(ws.errors(i).size(), reference.errors(i).size());
+        }
+        EXPECT_GT(ws.errors(2).size(), 0u);
+        EXPECT_EQ(ws.unresolvedReferences().size(), reference.unresolvedReferences().size());
+        EXPECT_EQ(ws.resolvedReferenceCount(), reference.resolvedReferenceCount());
+        EXPECT_EQ(typeOf(ws, "U::a").get(), ws.find("Lib::A").get());
+        ASSERT_EQ(calls.size(), 3u);
+        for (size_t i = 0; i < calls.size(); ++i) EXPECT_EQ(calls[i], std::make_pair(i + 1, size_t(3)));
+    }
+    // (the indices continue after the sources that are there already)
+    Workspace ws;
+    ws.addText("package First;", "first.sysml");
+    EXPECT_EQ(ws.addTexts(smallTexts(), 2), (std::vector<size_t>{1, 2, 3}));
+    EXPECT_TRUE(ws.addTexts({}, 4).empty());
+    EXPECT_EQ(ws.sourceCount(), 4u);
+}
+
+TEST(WorkspaceCancellation, CancelledBeforeAddTextsLeavesTheWorkspaceUnchanged) {
+    Workspace ws;
+    ws.addText("package First;", "first.sysml");
+    auto cancelled = std::make_shared<std::atomic<bool>>(true);
+    ws.setCancellation(cancelled);
+    for (const unsigned threads : {1u, 3u}) {
+        EXPECT_THROW(ws.addTexts(smallTexts(), threads), SysMLv2::Files::ParseCancelled);
+        EXPECT_EQ(ws.sourceCount(), 1u);
+    }
+    EXPECT_THROW(ws.addTexts(smallTexts(), 2), SysMLv2::Files::ParseTimeout);   // (a ParseCancelled is a ParseTimeout)
+    EXPECT_THROW(ws.addText("package X;", "x.sysml"), SysMLv2::Files::ParseCancelled);
+    EXPECT_THROW(ws.addText("<xmi/>", "x.sysmlx"), SysMLv2::Files::ParseCancelled);
+    EXPECT_EQ(ws.sourceCount(), 1u);
+    cancelled->store(false);
+    EXPECT_EQ(ws.addTexts(smallTexts(), 2).size(), 3u);
+    EXPECT_EQ(ws.sourceCount(), 4u);
+    ws.setCancellation(nullptr);
+}
+
+TEST(WorkspaceCancellation, CancelledResolveBehavesLikeATimeout) {
+    std::string text = "package P { part def A;";
+    for (int i = 0; i < 60; ++i) text += " part a" + std::to_string(i) + " : A;";
+    text += " }";
+    Workspace ws;
+    ws.addText(text, "many.sysml");
+    auto cancelled = std::make_shared<std::atomic<bool>>(true);
+    ws.setCancellation(cancelled);
+    EXPECT_THROW(ws.resolve(), SysMLv2::Files::ParseCancelled);
+    cancelled->store(false);
+    ws.resolve();
+    EXPECT_TRUE(ws.unresolvedReferences().empty());
+    EXPECT_EQ(typeOf(ws, "P::a7").get(), ws.find("P::A").get());
 }
 
 }  // namespace

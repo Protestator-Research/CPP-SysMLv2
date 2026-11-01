@@ -7,8 +7,11 @@
 #include <sysmlv2/resolution/ResolutionData.h>
 
 #include <chrono>
+#include <functional>
+#include <map>
 #include <memory>
 #include <optional>
+#include <set>
 #include <string>
 #include <vector>
 
@@ -42,10 +45,34 @@ namespace SysMLv2::Files::Detail {
         Resolver(const Resolver&) = delete;
         Resolver& operator=(const Resolver&) = delete;
 
+        /// Indexes further sources; the result is the same as that of a resolver built over all sources at once.
+        /// Only possible if canAdd() is true for the level of every new source.
+        void addSources(std::vector<SourceInput> sources);
+
+        /// Whether a source of @p level can be added by addSources(): the implicit generals are looked up at the lowest level,
+        /// so a source below every indexed level changes that lookup and needs a new Resolver.
+        bool canAdd(int level) const;
+
+        /// The number of the sources that are indexed (the index of the next source that addSources() adds).
+        size_t sourceCount() const;
+
+        /**
+         * Whether the sources in @p replaced (index -> level of the new version) can be exchanged by replaceSources(): the resolver knows
+         * every one of them with the same level, and every other indexed source has a lower level than all of them (a reference only
+         * resolves to elements of its own or a lower level, so nothing that remains can be bound to what is removed). If not, a new
+         * Resolver over all sources is needed.
+         */
+        bool canReplace(const std::map<size_t, int>& replaced) const;
+
+        /// Takes the old versions of the sources out (if removeSources() did not yet; see canReplace()) and indexes the new ones under the same indices. The references
+        /// of the new sources have to be passed to run() as pending; the result is that of a resolver built over all sources at once.
+        void replaceSources(const std::map<size_t, SourceInput>& sources);
+
         /// Resolves the given references (in dependency order, to a fixed point) and calls their patch callbacks.
         /// @return the number of references that were resolved.
-        /// @param deadline throws ResolveDeadlineReached after this point in time (checked between references).
-        size_t run(const std::vector<PendingReference*>& pending, std::optional<std::chrono::steady_clock::time_point> deadline = std::nullopt);
+        /// @param shouldStop asked between references (every few of them); throws ResolveDeadlineReached if it returns true (the deadline
+        ///        has passed or the work was cancelled). Empty: never stops.
+        size_t run(const std::vector<PendingReference*>& pending, const std::function<bool()>& shouldStop = {});
 
         /**
          * Looks up @p name (qualified names and feature chains allowed).
@@ -58,6 +85,11 @@ namespace SysMLv2::Files::Detail {
 
         /// Number of references whose context element is not reachable from any root (resolved against the global namespace only).
         size_t detachedContexts() const;
+
+        /// Takes the sources out of the index now (so that the elements the index holds are released) and leaves their slots empty until
+        /// replaceSources() indexes the new versions. The index is only right afterwards if canReplace() accepts all the sources that are
+        /// out of it; ask before using it again. Removing a source that is out already does nothing.
+        void removeSources(const std::set<size_t>& removed);
 
     private:
         struct Impl;
