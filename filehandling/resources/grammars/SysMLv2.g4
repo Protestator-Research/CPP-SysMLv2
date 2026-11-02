@@ -528,11 +528,11 @@ rendering_definition: occurrence_definition_prefix KEYWORD_RENDERING KEYWORD_DEF
 rendering_usage: occurrence_usage_prefix KEYWORD_RENDERING usage;
 
 metadata_definition: KEYWORD_ABSTRACT? definition_extension_keyword* KEYWORD_METADATA KEYWORD_DEF definition;
-prefix_metadata_annotation: SYMBOL_HASHTAG prefix_metadata_usage annotating_element;
+prefix_metadata_annotation: SYMBOL_HASHTAG prefix_metadata_usage;
 prefix_metadata_member: SYMBOL_HASHTAG prefix_metadata_usage;
 prefix_metadata_usage: owned_feature_typing;
 metadata_usage: usage_extention_keyword* (SYMBOL_AT | KEYWORD_METADATA) metadata_usage_declaration (KEYWORD_ABOUT annotation (SYMBOL_COMMA annotation)*)? metadata_body;
-metadata_usage_declaration: (identification (defined_by | typed_by_operator))? owned_feature_typing;
+metadata_usage_declaration: (identification typed_by_operator)? owned_feature_typing;
 metadata_body: SYMBOL_STATEMENT_DELIMITER | SYMBOL_CURLY_BRACKET_OPEN (metadata_body_usage_member | definition_member | alias_member | namespace_import)* SYMBOL_CURLY_BRACKET_CLOSE;
 metadata_body_usage_member: metadata_body_usage;
 metadata_body_usage: KEYWORD_REF? KEYWORD_FEATURE? redefines_operator? owned_redefinition feature_specialization_part? value_part? metadata_body;

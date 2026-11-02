@@ -86,8 +86,11 @@ void KerMLListenerImplementation::exitComment(KerMLParser::CommentContext *conte
     else if (!ParentStack.empty())
         comment->appendAnnotatedElement(ParentStack.top());
 
-    if (!ParentStack.empty())
+    // The owner is the surrounding namespace, independent of the (later resolved) `about` targets.
+    if (!ParentStack.empty()) {
+        comment->setOwner(ParentStack.top());
         ParentStack.top()->appendOwnedElement(comment);
+    }
 }
 
 void KerMLListenerImplementation::enterStart(KerMLParser::StartContext *)
@@ -3088,6 +3091,7 @@ void KerMLListenerImplementation::exitPrefix_metadata_feature(KerMLParser::Prefi
     Elements.push_back(metaFeature);
     if (!ParentStack.empty()) {
         metaFeature->appendAnnotatedElement(ParentStack.top());
+        metaFeature->setOwner(ParentStack.top());
         ParentStack.top()->appendOwnedElement(metaFeature);
     }
 }
@@ -3107,6 +3111,7 @@ void KerMLListenerImplementation::exitMetadata_feature(KerMLParser::Metadata_fea
     if (!ParentStack.empty()) {
         // Without `about` the metadata annotates the namespace that owns it (the targets of `about` are resolved in exitAnnotation).
         if (ctx && ctx->KEYWORD_ABOUT() == nullptr) metaFeature->appendAnnotatedElement(ParentStack.top());
+        metaFeature->setOwner(ParentStack.top());
         ParentStack.top()->appendOwnedElement(metaFeature);
         if (auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top())) {
             type->appendOwnedFeature(metaFeature);

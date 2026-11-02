@@ -1382,13 +1382,14 @@ TEST(TestSysMLParser, MetadataUsageWithBody) {
 
     const auto features = metadata->ownedFeature();
     ASSERT_EQ(features.size(), 4u);
+    const auto signalFeatures = signal->ownedFeature();
     const std::vector<std::string> redefined = {"serviceId", "pid", "trigger", "startOrder"};
     for (size_t i = 0; i < features.size(); ++i) {
         ASSERT_EQ(features[i]->ownedRedefinition().size(), 1u);
         const auto target = features[i]->ownedRedefinition()[0]->redefinedFeature();
         ASSERT_NE(target, nullptr);
         EXPECT_EQ(target->declaredName(), redefined[i]);
-        EXPECT_TRUE(std::find(signal->ownedFeature().begin(), signal->ownedFeature().end(), target) != signal->ownedFeature().end());
+        EXPECT_TRUE(std::find(signalFeatures.begin(), signalFeatures.end(), target) != signalFeatures.end());
         EXPECT_NE(featureValueOf(features[i]), nullptr);
     }
     const auto serviceId = std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(featureValueOf(features[0])->value());
@@ -1406,7 +1407,7 @@ TEST(TestSysMLParser, MetadataUsageWithBody) {
 
 TEST(TestSysMLParser, MetadataUsageForms) {
     const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
-        "metadata def M; part def A; part def B; part def P { metadata M; @M; metadata m : M; metadata n defined by M; } "
+        "metadata def M; part def A; part def B; part def P { metadata M; @M; metadata m : M; metadata n typed by M; } "
         "metadata M about A, B;");
     EXPECT_TRUE(errors.empty());
     const auto p = named<SysMLv2::Entities::PartDefinition>(elements, "P");
@@ -1534,6 +1535,75 @@ TEST(TestSysMLParser, MetadataUsageAboutAnnotatesTheTargets) {
 TEST(TestSysMLParser, MetadataUsageWithoutTypeIsAnError) {
     const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("part def P { metadata ; }");
     EXPECT_FALSE(errors.empty());
+}
+
+// `metadata n defined by M;` is not SysML (only `:` or `typed by`).
+TEST(TestSysMLParser, MetadataUsageDefinedByIsAnError) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("metadata def M; part def P { metadata n defined by M; }");
+    EXPECT_FALSE(errors.empty());
+}
+
+// `#N dependency d from A to B;`: the prefix metadata annotates and belongs to the dependency.
+TEST(TestSysMLParser, PrefixMetadataAnnotationOnDependency) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "metadata def N; part def A; part def B; #N dependency d from A to B;");
+    EXPECT_TRUE(errors.empty());
+    const auto n = named<SysMLv2::Entities::MetadataDefinition>(elements, "N");
+    const auto dependency = named<KerML::Entities::Dependency>(elements, "d");
+    ASSERT_NE(n, nullptr);
+    ASSERT_NE(dependency, nullptr);
+    const auto found = metadataUsagesOf(dependency);
+    ASSERT_EQ(found.size(), 1u);
+    // A dependency is a relationship, not a namespace: the metadata belongs to it without a membership.
+    ASSERT_NE(found[0]->metadataDefinition(), nullptr);
+    EXPECT_EQ(found[0]->metadataDefinition()->declaredName(), "N");
+    ASSERT_EQ(found[0]->annotatedElements().size(), 1u);
+    EXPECT_EQ(found[0]->annotatedElements()[0], dependency);
+    EXPECT_EQ(found[0]->owner(), dependency);
+    EXPECT_EQ(found[0]->metadataDefinition(), n);
+}
+
+// The targets of `about` are resolved after parsing; they must not replace the owner of the annotating element.
+TEST(TestSysMLParser, MetadataUsageAboutKeepsOwner) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "metadata def M { attribute b : Natural; } part def A; part def B; "
+        "part def P { metadata m : M about A, B { b = 1; } comment c about A /* x */ }");
+    EXPECT_TRUE(errors.empty());
+    const auto p = named<SysMLv2::Entities::PartDefinition>(elements, "P");
+    const auto a = named<SysMLv2::Entities::PartDefinition>(elements, "A");
+    const auto b = named<SysMLv2::Entities::PartDefinition>(elements, "B");
+    ASSERT_NE(p, nullptr);
+    const auto found = metadataUsagesOf(p);
+    ASSERT_EQ(found.size(), 1u);
+    EXPECT_EQ(found[0]->owner(), p);
+    ASSERT_EQ(found[0]->annotatedElements().size(), 2u);
+    EXPECT_EQ(found[0]->annotatedElements()[0], a);
+    EXPECT_EQ(found[0]->annotatedElements()[1], b);
+    const auto comment = named<KerML::Entities::Comment>(elements, "c");
+    ASSERT_NE(comment, nullptr);
+    EXPECT_EQ(comment->owner(), p);
+    ASSERT_EQ(comment->annotatedElements().size(), 1u);
+    EXPECT_EQ(comment->annotatedElements()[0], a);
+}
+
+// Without `about`, a top level annotating element annotates its owning namespace, i.e. the root namespace.
+TEST(TestSysMLParser, TopLevelMetadataAnnotatesRoot) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "metadata def M { attribute b : Natural; } @M { b = 1; } comment c /* x */");
+    EXPECT_TRUE(errors.empty());
+    std::shared_ptr<SysMLv2::Entities::MetadataUsage> metadata;
+    for (const auto& element : elements) {
+        if (auto candidate = std::dynamic_pointer_cast<SysMLv2::Entities::MetadataUsage>(element)) metadata = candidate;
+    }
+    ASSERT_NE(metadata, nullptr);
+    ASSERT_NE(metadata->owner(), nullptr);
+    ASSERT_EQ(metadata->annotatedElements().size(), 1u);
+    EXPECT_EQ(metadata->annotatedElements()[0], metadata->owner());
+    const auto comment = named<KerML::Entities::Comment>(elements, "c");
+    ASSERT_NE(comment, nullptr);
+    ASSERT_NE(comment->owner(), nullptr);
+    ASSERT_EQ(comment->annotatedElements().size(), 1u);
+    EXPECT_EQ(comment->annotatedElements()[0], comment->owner());
 }
 
 // KerML features (`feature`) in the bodies of SysML definitions and usages.

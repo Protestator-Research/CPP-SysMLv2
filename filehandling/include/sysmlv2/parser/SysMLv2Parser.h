@@ -5581,7 +5581,6 @@ public:
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *SYMBOL_HASHTAG();
     Prefix_metadata_usageContext *prefix_metadata_usage();
-    Annotating_elementContext *annotating_element();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -5646,7 +5645,6 @@ public:
     virtual size_t getRuleIndex() const override;
     Owned_feature_typingContext *owned_feature_typing();
     IdentificationContext *identification();
-    Defined_byContext *defined_by();
     Typed_by_operatorContext *typed_by_operator();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;

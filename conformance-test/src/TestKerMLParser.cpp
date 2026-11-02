@@ -15,6 +15,8 @@
 #include <kerml/kernel/classes/Class.h>
 #include <kerml/core/features/Feature.h>
 #include <kerml/KerML.h>
+#include <kerml/kernel/metadata/MetadataFeature.h>
+#include <kerml/root/annotations/Comment.h>
 
 namespace {
 template<class T>
@@ -1966,6 +1968,38 @@ TEST(TestKerMLListener, CommentAboutWithoutName) {
     EXPECT_FALSE(comments[0]->declaredName().has_value());
     EXPECT_EQ(comments[0]->annotatedElement().size(), 2u);
     EXPECT_EQ(comments[1]->declaredName().value_or(""), "named");
+}
+
+// The targets of `about` are resolved after parsing; they must not replace the owner of the annotating element.
+TEST(TestKerMLListener, MetadataFeatureAboutKeepsOwner) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "class A; class B; metaclass M; class P { metadata m : M about A, B; }");
+    ASSERT_TRUE(errors.empty());
+    const auto p = namedElement<Class>(elements, "P");
+    const auto a = namedElement<Class>(elements, "A");
+    const auto b = namedElement<Class>(elements, "B");
+    ASSERT_NE(p, nullptr);
+    const auto metadata = listenerElements<MetadataFeature>(elements);
+    ASSERT_EQ(metadata.size(), 1u);
+    EXPECT_EQ(metadata[0]->owner(), p);
+    ASSERT_EQ(metadata[0]->annotatedElement().size(), 2u);
+    EXPECT_EQ(metadata[0]->annotatedElement()[0], a);
+    EXPECT_EQ(metadata[0]->annotatedElement()[1], b);
+}
+
+TEST(TestKerMLListener, CommentAboutKeepsOwner) {
+    using namespace KerML::Entities;
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML("class A; class P { comment c about A /* x */ }");
+    ASSERT_TRUE(errors.empty());
+    const auto p = namedElement<Class>(elements, "P");
+    const auto a = namedElement<Class>(elements, "A");
+    ASSERT_NE(p, nullptr);
+    const auto comment = namedElement<Comment>(elements, "c");
+    ASSERT_NE(comment, nullptr);
+    EXPECT_EQ(comment->owner(), p);
+    ASSERT_EQ(comment->annotatedElement().size(), 1u);
+    EXPECT_EQ(comment->annotatedElement()[0], a);
 }
 
 TEST(TestKerMLListener, MultiplicityModifiersWithoutBounds) {

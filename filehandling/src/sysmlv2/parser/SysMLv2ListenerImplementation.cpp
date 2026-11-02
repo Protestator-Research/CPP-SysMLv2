@@ -127,6 +127,7 @@ void SysMLv2ListenerImplementation::enterStart(SysMLv2Parser::StartContext*) {
 	OwnershipKinds.clear();
 	MemberMarks.clear();
 	SkippedContexts.clear();
+	RootAnnotators.clear();
 }
 
 void SysMLv2ListenerImplementation::enterEveryRule(antlr4::ParserRuleContext* ctx) {
@@ -171,8 +172,13 @@ void SysMLv2ListenerImplementation::exitStart(SysMLv2Parser::StartContext*) {
 	input.elements = &Elements;
 	input.kinds = std::move(OwnershipKinds);
 	input.visibility = &Recorder.data.visibility;
-	SysMLv2::Files::buildOwnership(input);
+	const auto root = SysMLv2::Files::buildOwnership(input);
 	OwnershipKinds.clear();
+	// Top level annotating elements without `about` annotate the root namespace.
+	if (root) {
+		for (const auto& annotator : RootAnnotators) annotator->appendAnnotatedElement(root);
+	}
+	RootAnnotators.clear();
 }
 
 void SysMLv2ListenerImplementation::enterDependency(SysMLv2Parser::DependencyContext*) {
@@ -256,9 +262,14 @@ void SysMLv2ListenerImplementation::exitComment(SysMLv2Parser::CommentContext* c
 	}
 	else if (!ParentStack.empty())
 		comment->appendAnnotatedElement(ParentStack.top());
+	else
+		RootAnnotators.push_back(comment);
 
-	if (!ParentStack.empty())
+	// The owner is the surrounding namespace, independent of the (later resolved) `about` targets.
+	if (!ParentStack.empty()) {
+		comment->setOwner(ParentStack.top());
 		ParentStack.top()->appendOwnedElement(comment);
+	}
 }
 
 void SysMLv2ListenerImplementation::exitDocumentation(SysMLv2Parser::DocumentationContext* ctx) {
@@ -1058,7 +1069,7 @@ void SysMLv2ListenerImplementation::enterMetadata_usage(SysMLv2Parser::Metadata_
 	handleUsageEnter<SysMLv2::Entities::MetadataUsage>(ParentStack, &PushedByContext, ctx);
 }
 
-// MetadataUsageDeclaration = ( Identification DefinedBy )? OwnedFeatureTyping: the name is only taken from an explicit declaration.
+// MetadataUsageDeclaration = ( Identification TypedByOperator )? OwnedFeatureTyping: the name is only taken from an explicit declaration.
 void SysMLv2ListenerImplementation::exitMetadata_usage_declaration(SysMLv2Parser::Metadata_usage_declarationContext* ctx) {
 	if (ParentStack.empty() || !ctx || !shouldApplyToTop(ctx)) return;
 	const auto metadata = std::dynamic_pointer_cast<SysMLv2::Entities::MetadataUsage>(ParentStack.top());
@@ -1085,6 +1096,9 @@ void SysMLv2ListenerImplementation::exitMetadata_usage(SysMLv2Parser::Metadata_u
 	}
 	else if (owner) {
 		metadata->appendAnnotatedElement(owner);
+	}
+	else {
+		RootAnnotators.push_back(metadata);
 	}
 
 	if (owner) {
