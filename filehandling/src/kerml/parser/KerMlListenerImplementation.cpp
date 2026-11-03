@@ -1501,7 +1501,7 @@ void KerMLListenerImplementation::exitOwned_reference_subsetting(KerMLParser::Ow
         });
 }
 
-void KerMLListenerImplementation::enterRedefinition(KerMLParser::RedefinitionContext *ctx) {
+void KerMLListenerImplementation::enterRedefinition(KerMLParser::RedefinitionContext *) {
     const auto feature = std::make_shared<KerML::Entities::Feature>();
     // (`:>> p` has no declared name: it is known by the name of the feature it redefines, Feature::effectiveName())
     ParentStack.push(feature);
