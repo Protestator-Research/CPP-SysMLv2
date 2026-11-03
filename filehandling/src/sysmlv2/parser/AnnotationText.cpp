@@ -27,9 +27,9 @@ namespace SysMLv2::Files {
         }
         lines.push_back(lexical.substr(start));
 
-        // Rule 2: white space after `/*` up to and including the first line terminator. If the first line has only white space and
+        // Rule 2: white space after `commet singage` up to and including the first line terminator. If the first line has only white space and
         // there is a terminator, the whole first line goes; otherwise the first line keeps its text (its white space is stripped
-        // as on the other lines, so that "/* x */" becomes "x"; only white space is stripped, a leading `*` is text there).
+        // as on the other lines, so that "commet singage x commet singage" becomes "x"; only white space is stripped, a leading `*` is text there).
         size_t first = 0;
         std::string_view head = lines[0];
         size_t h = 0;
@@ -51,7 +51,7 @@ namespace SysMLv2::Files {
             if (n != first) result.push_back('\n');
             result.append(line);
         }
-        // The standard's rules alone would leave white space in front of the closing `*/` ("/* a > 0 */" -> "a > 0 "); like the reference
+        // The standard's rules alone would leave white space in front of the closing `commet singage` ("commet singage a > 0 commet singage" -> "a > 0 "); like the reference
         // (Pilot) implementation the trailing white space of the body is removed.
         while (!result.empty() && (isBlank(result.back()) || result.back() == '\n')) result.pop_back();
         return result;

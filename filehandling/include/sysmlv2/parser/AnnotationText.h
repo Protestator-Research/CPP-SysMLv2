@@ -17,8 +17,8 @@ namespace SysMLv2::Files {
     class SYSMLV2FILE_EXPORT AnnotationText {
     public:
         /**
-         * Processes the lexical text of a regular comment (`/* ... *&#47;`) into a body:
-         * the initial `/*` and the final `*&#47;` are removed; white space right after `/*` up to and including the first line terminator is
+         * Processes the lexical text of a regular comment (`commet singage ... *&#47;`) into a body:
+         * the initial `commet singage` and the final `*&#47;` are removed; white space right after `commet singage` up to and including the first line terminator is
          * removed; on every following line the initial white space (other than line terminators) is removed, then a leading `*`, then
          * a single leading space.
          * @param lexical the text of the token, including the delimiters.
