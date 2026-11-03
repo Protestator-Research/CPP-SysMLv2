@@ -20,8 +20,11 @@
 #include <sysmlv2/xmi/XmiWriter.h>
 
 #include <kerml/kernel/packages/Package.h>
+#include <kerml/root/elements/NameEscaping.h>
 #include <kerml/root/elements/Relationship.h>
 #include <kerml/root/namespaces/Namespace.h>
+#include <kerml/root/namespaces/Membership.h>
+#include <kerml/root/namespaces/OwningMembership.h>
 
 #include <antlr4-common.h>
 #include <BailErrorStrategy.h>
@@ -1422,8 +1425,98 @@ namespace SysMLv2::Files {
         return impl_->notAttempted;
     }
 
+    namespace {
+        /// The first segment of a reference ("A" of "A::b::c", "a" of "a.b"), as written: a quoted segment keeps its quotes. @p qualified: whether "::" follows
+        /// it, @p chained: whether a "." follows it.
+        std::string firstSegment(const std::string& name, bool& qualified, bool& chained) {
+            size_t end = 0;
+            if (!name.empty() && name[0] == '\'') {
+                end = 1;
+                while (end < name.size() && name[end] != '\'') end += name[end] == '\\' ? 2 : 1;
+                end = std::min(end + 1, name.size());
+            } else {
+                while (end < name.size() && name[end] != '.' && name.compare(end, 2, "::") != 0) ++end;
+            }
+            qualified = name.compare(end, 2, "::") == 0;
+            chained = end < name.size() && name[end] == '.';
+            return name.substr(0, end);
+        }
+
+        /// The namespace that owns @p element (an owning membership is skipped), or null.
+        std::shared_ptr<KerML::Entities::Namespace> owningNamespaceOf(const std::shared_ptr<KerML::Entities::Element>& element) {
+            auto owner = element ? element->owner() : nullptr;
+            while (owner && !std::dynamic_pointer_cast<KerML::Entities::Namespace>(owner)) owner = owner->owner();
+            return std::dynamic_pointer_cast<KerML::Entities::Namespace>(owner);
+        }
+
+        /// The name of an element as it is written in a qualified name, empty if it has none.
+        std::string nameOf(const KerML::Entities::Element& element) {
+            if (element.declaredName() && !element.declaredName()->empty()) return *element.declaredName();
+            if (element.declaredShortName() && !element.declaredShortName()->empty()) return *element.declaredShortName();
+            return std::string();
+        }
+
+        /// The qualified name of a namespace as an import would write it (names that are not basic names are quoted). The root namespace of a
+        /// source does not contribute, so the result is empty for a namespace without a name.
+        std::string qualifiedNameOf(const std::shared_ptr<KerML::Entities::Namespace>& ns) {
+            std::vector<std::string> parts;
+            for (auto current = ns; current; current = owningNamespaceOf(current)) {
+                // (a root namespace is no package of a qualified name: the one of an XMI source is named, the one of a text is not)
+                if (!std::dynamic_pointer_cast<KerML::Entities::Package>(current) && !owningNamespaceOf(current)) continue;
+                const std::string name = nameOf(*current);
+                if (!name.empty()) parts.push_back(KerML::Names::escapeName(name));
+            }
+            std::string result;
+            for (auto part = parts.rbegin(); part != parts.rend(); ++part) result += (result.empty() ? "" : "::") + *part;
+            return result;
+        }
+
+        bool matchesKind(const std::shared_ptr<KerML::Entities::Element>& element, ReferenceKind kind) {
+            switch (kind) {
+                case ReferenceKind::Feature: return std::dynamic_pointer_cast<KerML::Entities::Feature>(element) != nullptr;
+                case ReferenceKind::Type: return std::dynamic_pointer_cast<KerML::Entities::Type>(element) != nullptr;
+                case ReferenceKind::Classifier: return std::dynamic_pointer_cast<KerML::Entities::Classifier>(element) != nullptr;
+                case ReferenceKind::Namespace: return std::dynamic_pointer_cast<KerML::Entities::Namespace>(element) != nullptr;
+                default: return true;
+            }
+        }
+    }
+
     std::vector<std::shared_ptr<ParserError>> Workspace::unresolvedAsWarnings(size_t source) const {
         std::vector<std::shared_ptr<ParserError>> warnings;
+
+        // The members of packages by name and by short name (only a package can be imported with `import P::*`); built when the first
+        // unresolved reference of the source needs it.
+        struct Named {
+            std::shared_ptr<KerML::Entities::Element> element;
+            std::shared_ptr<KerML::Entities::Namespace> package;
+            bool byShortName;
+        };
+        std::optional<std::unordered_map<std::string, std::vector<Named>>> index;
+        // Whether the standard library is part of the workspace: the library package Base of KerML is a top-level package of it. (The library may
+        // be added with loadLibrary(), addText() or from XMI: it is recognised by its content.)
+        bool libraryLoaded = false;
+        const auto buildIndex = [&]() {
+            index.emplace();
+            for (const auto& other : impl_->sources) {
+                for (const auto& element : other->elements) {
+                    if (!element || isUnresolved(element)) continue;
+                    auto package = owningNamespaceOf(element);
+                    if (!std::dynamic_pointer_cast<KerML::Entities::Package>(package)) {
+                        libraryLoaded = libraryLoaded || (std::dynamic_pointer_cast<KerML::Entities::Package>(element) && element->declaredName() == "Base");
+                        continue;
+                    }
+                    // `import P::*` does not import the members that are not public
+                    const auto membership = element->owningMembership();
+                    if (membership && membership->visibility() != KerML::Entities::VisibilityKind::PUBLIC) continue;
+                    const auto name = element->declaredName();
+                    const auto shortName = element->declaredShortName();
+                    if (name && !name->empty()) (*index)[*name].push_back({element, package, false});
+                    if (shortName && !shortName->empty() && (!name || *shortName != *name)) (*index)[*shortName].push_back({element, package, true});
+                }
+            }
+        };
+
         for (const auto& info : impl_->unresolved) {
             if (info.source != source) continue;
             std::string kind;
@@ -1434,8 +1527,61 @@ namespace SysMLv2::Files {
                 case ReferenceKind::Namespace: kind = "namespace"; break;
                 default: kind = "element"; break;
             }
-            warnings.push_back(Impl::makeError(ErrorType::WARNING, "unresolved reference to " + kind + " '" + info.name + "'",
-                                               info.line, info.column, info.sourceName));
+            std::string message = "unresolved reference to " + kind + " '" + info.name + "'";
+
+            // Packages that define the first segment of the name but are not visible at the reference: an import would make it visible.
+            // (a qualifier that is found already is not the segment that failed: nothing is suggested then; chains are not examined)
+            bool qualified = false;
+            bool chained = false;
+            const std::string written = firstSegment(info.name, qualified, chained);
+            const std::string first = KerML::Names::unescapeName(written);
+            std::vector<std::pair<std::string, const Named*>> candidates;   // (qualified name, entry)
+            if (!first.empty() && !chained && (!qualified || !find(written, info.context, ReferenceKind::Namespace))) {
+                if (!index) buildIndex();
+                const auto found = index->find(first);
+                if (found != index->end()) {
+                    std::unordered_set<const KerML::Entities::Element*> enclosing;
+                    for (auto scope = info.context; scope; scope = scope->owner()) enclosing.insert(scope.get());
+                    std::unordered_set<const KerML::Entities::Element*> packages;
+                    for (const auto& entry : found->second) {
+                        if (!matchesKind(entry.element, qualified ? ReferenceKind::Namespace : info.kind)) continue;
+                        if (enclosing.count(entry.package.get()) != 0) continue;   // visible anyway
+                        const std::string package = qualifiedNameOf(entry.package);
+                        if (package.empty()) continue;
+                        const std::string declared = entry.element->declaredName().value_or(std::string());
+                        candidates.push_back({package + "::" + KerML::Names::escapeName(declared.empty() ? first : declared), &entry});
+                    }
+                    std::sort(candidates.begin(), candidates.end(), [](const auto& a, const auto& b) { return a.first < b.first; });
+                    // (one candidate per qualified name - the same package in two sources - and per package)
+                    candidates.erase(std::unique(candidates.begin(), candidates.end(), [](const auto& a, const auto& b) { return a.first == b.first; }),
+                                     candidates.end());
+                    candidates.erase(std::remove_if(candidates.begin(), candidates.end(),
+                                                    [&](const auto& candidate) { return !packages.insert(candidate.second->package.get()).second; }),
+                                     candidates.end());
+                }
+            }
+            if (!candidates.empty()) {
+                const std::string example = "'private import " + qualifiedNameOf(candidates.front().second->package) + "::*;'";
+                if (candidates.size() == 1) {
+                    message += "; " + candidates.front().first;
+                    const Named& only = *candidates.front().second;
+                    if (only.byShortName && only.element->declaredName() && !only.element->declaredName()->empty()) {
+                        message += " (short name '" + first + "')";
+                    }
+                    message += " is not visible here: add " + example;
+                } else {
+                    message += "; candidates that are not visible here: ";
+                    for (size_t i = 0; i < candidates.size() && i < 3; ++i) message += (i == 0 ? "" : ", ") + candidates[i].first;
+                    if (candidates.size() > 3) message += ", ...";
+                    message += "; import one of their packages, e.g. " + example;
+                }
+            } else {
+                if (!index) buildIndex();
+                if (!libraryLoaded) {
+                    message += " (the standard library is not loaded; names such as SI, ISQ or ScalarValues are only found when it is)";
+                }
+            }
+            warnings.push_back(Impl::makeError(ErrorType::WARNING, message, info.line, info.column, info.sourceName));
         }
         return warnings;
     }

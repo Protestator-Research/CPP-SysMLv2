@@ -548,6 +548,47 @@ TEST(XmiExportTextIds, ElementIdModeKeepsTheElementIds) {
     }
 }
 
+// A TextualRepresentation keeps language, body, name, represented element and the owner's collection through the XMI.
+TEST(XmiExportTextIds, TextualRepresentationRoundTrips) {
+    Workspace workspace;
+    const size_t source = workspace.addText(
+        "package P { item def C { attribute x : ScalarValues::Real; assert constraint x_constraint { rep inOCL language \"ocl\" /* self.x > 0.0 */ } } "
+        "action def setX { language \"alf\" /* c.x = newX;\n * WriteLine(\"Set\");\n */ } }",
+        "p.sysml", SourceLanguage::SysML);
+    workspace.resolve();
+    ASSERT_TRUE(workspace.errors(source).empty()) << allErrors(workspace.errors(source));
+    TempDir directory;
+    const fs::path file = directory.path() / "p.sysmlx";
+    const Errors written = workspace.writeXmi(source, file.string());
+    for (const auto& error : written) EXPECT_EQ(error->errorType(), ErrorType::WARNING) << describe(error);
+    Workspace again;
+    const size_t read = again.addFile(file.string());
+    again.resolve();
+    for (const auto& error : again.errors(read)) EXPECT_EQ(error->errorType(), ErrorType::WARNING) << describe(error);
+
+    const auto check = [&](Workspace& w, size_t src, const char* what) {
+        SCOPED_TRACE(what);
+        const auto ocl = ConformanceTest::named<K::TextualRepresentation>(w.elements(src), "inOCL");
+        ASSERT_NE(ocl, nullptr);
+        EXPECT_EQ(ocl->language(), "ocl");
+        EXPECT_EQ(ocl->body(), "self.x > 0.0");
+        const auto constraint = ConformanceTest::named<K::Element>(w.elements(src), "x_constraint");
+        ASSERT_NE(constraint, nullptr);
+        EXPECT_EQ(ocl->representedElement(), constraint);
+        ASSERT_EQ(constraint->textualRepresentation().size(), 1u);
+        EXPECT_EQ(constraint->textualRepresentation()[0], ocl);
+        ASSERT_EQ(ocl->annotatedElements().size(), 1u);
+        EXPECT_EQ(ocl->annotatedElements()[0], constraint);
+        const auto setX = ConformanceTest::named<K::Element>(w.elements(src), "setX");
+        ASSERT_NE(setX, nullptr);
+        ASSERT_EQ(setX->textualRepresentation().size(), 1u);
+        EXPECT_EQ(setX->textualRepresentation()[0]->language(), "alf");
+        EXPECT_EQ(setX->textualRepresentation()[0]->body(), "c.x = newX;\nWriteLine(\"Set\");");
+    };
+    check(workspace, source, "text");
+    check(again, read, "xmi");
+}
+
 // ---------------------------------------------------------------------------------------------------------------------
 // References that cannot be written
 // ---------------------------------------------------------------------------------------------------------------------

@@ -550,6 +550,15 @@ namespace SysMLv2::Files {
                         documentation->setDocumentedElement(documentation->owner());
                         continue;
                     }
+                    if (const auto representation = std::dynamic_pointer_cast<K::TextualRepresentation>(element)) {
+                        if (const auto owner = representation->owner()) {
+                            representation->appendAnnotatedElement(owner);
+                            auto representations = owner->textualRepresentation();
+                            representations.push_back(representation);
+                            owner->setTextualRepresentation(std::move(representations));
+                        }
+                        continue;
+                    }
                     const auto relationship = std::dynamic_pointer_cast<K::Relationship>(element);
                     if (!relationship) continue;
                     const auto owner = relationship->owningRelatedElement();

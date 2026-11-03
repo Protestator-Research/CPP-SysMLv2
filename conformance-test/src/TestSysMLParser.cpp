@@ -1,3 +1,4 @@
+#include <chrono>
 #include <kerml/root/elements/NameEscaping.h>
 #include <algorithm>
 #include <gtest/gtest.h>
@@ -9,6 +10,8 @@
 #include <sysmlv2/parser/SysMLv2ListenerImplementation.h>
 #include <sysmlv2/parser/KeywordMisuseDiagnoser.h>
 #include <kerml/kernel/packages/Package.h>
+#include <kerml/root/annotations/TextualRepresentation.h>
+#include <sysmlv2/parser/AnnotationText.h>
 
 namespace {
 template<class T>
@@ -1761,4 +1764,183 @@ TEST(TestSysMLParser, MisspelledFeatureKeywordInBodyIsStillAnError) {
     const auto errors = SysMLv2::Files::Parser::parseSysMLv2("part def P { featur x : Integer; }").second;
     ASSERT_FALSE(errors.empty());
     EXPECT_EQ(errors[0]->errorType(), SysMLv2::Files::ErrorType::SYNTAX_ERROR);
+}
+
+TEST(TestSysMLParser, LexerErrorHintsToQuoteANameWithSpecialCharacters) {
+    // "°" cannot be part of a basic name: the lexer fails there; the message tells how to write the name (KerML 8.2.2.3).
+    const std::string degree = "\xC2\xB0";
+    const auto errors = SysMLv2::Files::Parser::parseSysMLv2("attribute t = 20 [" + degree + "C];").second;
+    ASSERT_FALSE(errors.empty());
+    EXPECT_EQ(errors[0]->getLine(), 1);
+    EXPECT_EQ(errors[0]->getColumn(), 18);   // (unchanged: the position of the character)
+    EXPECT_EQ(errors[0]->description().find("token recognition error at: '" + degree + "'"), 0u);
+    EXPECT_NE(errors[0]->description().find("unless they are quoted; write '" + degree + "C'"), std::string::npos);
+    // Only the first special character of a word has the hint; the word is read up to the next delimiter.
+    const auto several = SysMLv2::Files::Parser::parseSysMLv2("attribute t = 1 [" + degree + degree + "C^-1];").second;
+    size_t hints = 0;
+    for (const auto& error : several) hints += error->description().find("write '" + degree + degree + "C'") != std::string::npos ? 1 : 0;
+    EXPECT_EQ(hints, 1u);
+    // A number in front of the character is not part of the name; the quoted name is no error.
+    const auto number = SysMLv2::Files::Parser::parseSysMLv2("attribute t = 20" + degree + "C;").second;
+    ASSERT_FALSE(number.empty());
+    EXPECT_NE(number[0]->description().find("write '" + degree + "C'"), std::string::npos);
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseSysMLv2("attribute t = 20 ['" + degree + "C'];").second.empty());
+    // One hint per word, whatever the number of special characters in it; the suggestion is the escaped name of the whole word.
+    const std::string dot = "\xC2\xB7";
+    const std::string squared = "\xC2\xB2";
+    const auto units = SysMLv2::Files::Parser::parseSysMLv2("attribute t = 1 [kg" + dot + "m" + squared + "];").second;
+    size_t kgHints = 0;
+    size_t otherHints = 0;
+    for (const auto& error : units) {
+        const auto& text = error->description();
+        if (text.find("write '") == std::string::npos) continue;
+        (text.find("write 'kg" + dot + "m" + squared + "'") != std::string::npos ? kgHints : otherHints)++;
+    }
+    EXPECT_EQ(kgHints, 1u);
+    EXPECT_EQ(otherHints, 0u);
+    // A backslash is escaped in the suggested name.
+    const auto backslash = SysMLv2::Files::Parser::parseSysMLv2("attribute t = a\\b;").second;
+    ASSERT_FALSE(backslash.empty());
+    EXPECT_NE(backslash[0]->description().find("write 'a\\\\b'"), std::string::npos) << backslash[0]->description();
+    // Typographic quotes are no quotes of the notation.
+    const std::string open = "\xE2\x80\x98";
+    const std::string close = "\xE2\x80\x99";
+    const auto smart = SysMLv2::Files::Parser::parseSysMLv2("attribute t = 1 [" + open + degree + "C" + close + "];").second;
+    ASSERT_FALSE(smart.empty());
+    EXPECT_NE(smart[0]->description().find("ASCII apostrophe"), std::string::npos) << smart[0]->description();
+    EXPECT_NE(smart[0]->description().find("write '" + degree + "C'"), std::string::npos) << smart[0]->description();
+    // A very long run is answered quickly, with one explanation per word and without a suggestion.
+    std::string run;
+    for (int i = 0; i < 5000; ++i) run += degree + "a";
+    const auto start = std::chrono::steady_clock::now();
+    const auto longRun = SysMLv2::Files::Parser::parseSysMLv2("attribute t = 1 [" + run + "];").second;
+    EXPECT_LT(std::chrono::duration<double>(std::chrono::steady_clock::now() - start).count(), 20.0);
+    size_t explained = 0;
+    for (const auto& error : longRun) {
+        const auto& text = error->description();
+        if (text.find("unless they are quoted") == std::string::npos) continue;
+        ++explained;
+        EXPECT_EQ(text.find("write"), std::string::npos) << text;
+    }
+    EXPECT_EQ(explained, 1u);
+    // The special character is the last character of the text.
+    const auto atEnd = SysMLv2::Files::Parser::parseSysMLv2("attribute t = 1" + degree).second;
+    bool reported = false;
+    for (const auto& error : atEnd) reported = reported || error->description().find("token recognition error at: '" + degree + "'") != std::string::npos;
+    EXPECT_TRUE(reported);
+}
+
+namespace {
+template<class T>
+std::vector<std::shared_ptr<T>> listenerElements(const std::vector<std::shared_ptr<KerML::Entities::Element>>& elements) {
+    std::vector<std::shared_ptr<T>> result;
+    for (const auto& element : elements) {
+        if (auto typed = std::dynamic_pointer_cast<T>(element)) result.push_back(typed);
+    }
+    return result;
+}
+}
+
+TEST(TestSysMLParser, TextualRepresentationIsBuiltIntoTheModel) {
+    // The examples of the standard: TextualRepresentationTest.sysml and the training "22. Opaque Actions".
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        R"SYSML(package TextualRepresentationTest {
+	private import ScalarValues::Real;
+	item def C {
+	    attribute x: Real;
+	    assert constraint x_constraint {
+		    rep inOCL language "ocl"
+		        /* self.x > 0.0 */
+	    }
+	}
+	action def setX {
+		in c : C;
+		in newX : Real;
+	    language "alf"
+	        /* c.x = newX;
+	         * WriteLine("Set new x");
+	         */
+	}
+	action def UpdateSensors {
+		in sensors : Real[*];
+		language "Alf"
+			/*
+			 * for (sensor in sensors) {
+			 *     if (sensor.ready) {
+			 *         Update(sensor);
+			 *     }
+			 * }
+			 */
+	}
+})SYSML");
+    ASSERT_TRUE(errors.empty());
+
+    const auto reps = listenerElements<KerML::Entities::TextualRepresentation>(elements);
+    ASSERT_GE(reps.size(), 2u);
+    auto ocl = named<KerML::Entities::TextualRepresentation>(elements, "inOCL");
+    ASSERT_NE(ocl, nullptr);
+    EXPECT_EQ(ocl->language(), "ocl");
+    EXPECT_EQ(ocl->body(), "self.x > 0.0");
+    EXPECT_TRUE(ocl->isLanguage("OCL"));
+    EXPECT_FALSE(ocl->isLanguage("alf"));
+    const auto constraint = named<KerML::Entities::Element>(elements, "x_constraint");
+    ASSERT_NE(constraint, nullptr);
+    EXPECT_EQ(ocl->representedElement(), constraint);
+    EXPECT_EQ(ocl->owner(), constraint);
+    ASSERT_EQ(constraint->textualRepresentation().size(), 1u);
+    EXPECT_EQ(constraint->textualRepresentation()[0], ocl);
+    ASSERT_EQ(ocl->annotatedElements().size(), 1u);
+    EXPECT_EQ(ocl->annotatedElements()[0], constraint);
+    const auto setX = named<KerML::Entities::Element>(elements, "setX");
+    ASSERT_NE(setX, nullptr);
+    ASSERT_EQ(setX->textualRepresentation().size(), 1u);
+    const auto alf = setX->textualRepresentation()[0];
+    EXPECT_FALSE(alf->declaredName().has_value());
+    EXPECT_EQ(alf->language(), "alf");
+    EXPECT_EQ(alf->body(), "c.x = newX;\nWriteLine(\"Set new x\");");
+    EXPECT_EQ(alf->representedElement(), setX);
+    const auto update = named<KerML::Entities::Element>(elements, "UpdateSensors");
+    ASSERT_NE(update, nullptr);
+    ASSERT_EQ(update->textualRepresentation().size(), 1u);
+    const auto opaque = update->textualRepresentation()[0];
+    EXPECT_TRUE(opaque->isLanguage("alf"));
+    EXPECT_EQ(opaque->body(), "for (sensor in sensors) {\n    if (sensor.ready) {\n        Update(sensor);\n    }\n}");
+}
+
+TEST(TestSysMLParser, AnnotationTextProcessesCommentBodies) {
+    using SysMLv2::Files::AnnotationText;
+    EXPECT_EQ(AnnotationText::processCommentBody("/* self.x > 0.0 */"), "self.x > 0.0");
+    EXPECT_EQ(AnnotationText::processCommentBody("/**/"), "");
+    EXPECT_EQ(AnnotationText::processCommentBody("/* a\n * b\n */"), "a\nb");
+    EXPECT_EQ(AnnotationText::processCommentBody("/*\n * a\n *  b\n */"), "a\n b");
+    EXPECT_EQ(AnnotationText::processCommentBody("/*  \r\n\t* a\r\n\t*b\r\n\t*/"), "a\nb");
+    EXPECT_EQ(AnnotationText::processCommentBody("/*\n   plain\n   text\n*/"), "plain\ntext");
+    // Rule 3 (strip `*` and one space) applies to the lines after the first one only.
+    EXPECT_EQ(AnnotationText::processCommentBody("/* *p = 0; */"), "*p = 0;");
+    EXPECT_EQ(AnnotationText::processCommentBody("/** doc */"), "* doc");
+    EXPECT_EQ(AnnotationText::processCommentBody("/* *a\n * *b\n */"), "*a\n*b");
+}
+
+TEST(TestSysMLParser, TopLevelTextualRepresentationRepresentsTheRoot) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(R"SYSML(language "ocl" /* x */
+package P {}
+)SYSML");
+    ASSERT_TRUE(errors.empty());
+    const auto reps = listenerElements<KerML::Entities::TextualRepresentation>(elements);
+    ASSERT_EQ(reps.size(), 1u);
+    const auto rep = reps[0];
+    ASSERT_EQ(rep->annotatedElements().size(), 1u);
+    const auto root = rep->annotatedElements()[0];
+    ASSERT_NE(root, nullptr);
+    ASSERT_EQ(root->textualRepresentation().size(), 1u);
+    EXPECT_EQ(root->textualRepresentation()[0], rep);
+    EXPECT_EQ(rep->representedElement(), root);
+}
+
+TEST(TestSysMLParser, AnnotationTextResolvesStringValues) {
+    using SysMLv2::Files::AnnotationText;
+    EXPECT_EQ(AnnotationText::stringValue("\"ocl\""), "ocl");
+    EXPECT_EQ(AnnotationText::stringValue("\"\""), "");
+    EXPECT_EQ(AnnotationText::stringValue("\"a\\\"b\\\\c\\n\\t\\'\""), "a\"b\\c\n\t'");
+    EXPECT_EQ(AnnotationText::stringValue("not quoted"), "not quoted");
 }

@@ -40,7 +40,8 @@ namespace SysMLv2::Files {
 		 * @param sourceName Optional file name / source identifier, recorded on any ParserError produced. Existing
 		 *        callers that omit it keep compiling and behaving as before.
 		 * @param reportUnresolvedAsWarnings true: every name that could not be resolved within this text is also returned as a
-		 *        ParserError of type WARNING (with its position). Names are resolved among the elements of the text only; to
+		 *        ParserError of type WARNING (with its position; the hints in the message are described at
+		 *        Workspace::unresolvedAsWarnings()). Names are resolved among the elements of the text only; to
 		 *        resolve against other sources (for example the standard library) use SysMLv2::Files::Workspace.
 		 * @return A pair of the vectors of the parsed Elements, but also the Parser Errors.
 		 * @see KerML::Entities

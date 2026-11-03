@@ -9,6 +9,7 @@
 #include <iostream>
 #include <algorithm>
 #include <sysmlv2/resolution/Retarget.h>
+#include <sysmlv2/parser/AnnotationText.h>
 #include "../../sysmlv2/parser/ArgumentStructure.h"
 
 namespace {
@@ -249,13 +250,25 @@ void KerMLListenerImplementation::exitTextual_representation(KerMLParser::Textua
     std::string language;
 
     if (ctx->KEYWORD_LANGUAGE()!=nullptr && ctx->STRING_VALUE()!=nullptr)
-        language = ctx->STRING_VALUE()->getText();
+        language = SysMLv2::Files::AnnotationText::stringValue(ctx->STRING_VALUE()->getText());
 
-    const auto textualRepresentation = std::make_shared<KerML::Entities::TextualRepresentation>(language, ctx->REGULAR_COMMENT()->getText());
+    const auto textualRepresentation = std::make_shared<KerML::Entities::TextualRepresentation>(
+        language, SysMLv2::Files::AnnotationText::processCommentBody(ctx->REGULAR_COMMENT()->getText()));
     Elements.push_back(textualRepresentation);
 
-    if (!ParentStack.empty())
-        ParentStack.top()->appendOwnedElement(textualRepresentation);
+    if (ctx->identification() != nullptr)
+        applyIdentification(ctx->identification(), textualRepresentation);
+
+    // The represented element is the owner (KerML 8.3.2.3.6); it is annotated by the representation as well.
+    if (!ParentStack.empty()) {
+        const auto parent = ParentStack.top();
+        textualRepresentation->setOwner(parent);
+        textualRepresentation->appendAnnotatedElement(parent);
+        parent->appendOwnedElement(textualRepresentation);
+        auto representations = parent->textualRepresentation();
+        representations.push_back(textualRepresentation);
+        parent->setTextualRepresentation(std::move(representations));
+    }
 }
 
 void KerMLListenerImplementation::enterRoot_namespace(KerMLParser::Root_namespaceContext*) { }

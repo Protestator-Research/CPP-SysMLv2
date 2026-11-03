@@ -274,7 +274,10 @@ namespace SysMLv2::Files {
         /// References that are recorded but for which no scoped resolution is attempted (currently: the parameter names of
         /// named invocation arguments). They keep their placeholder.
         const std::vector<UnresolvedReferenceInfo>& notAttemptedReferences() const;
-        /// The unresolved references of one source as ParserErrors of type WARNING (with position).
+        /// The unresolved references of one source as ParserErrors of type WARNING (with position). The message names the missing
+        /// import when a package of the workspace defines the (first segment of the) name but is not visible at the reference
+        /// ("... SI::minute (short name 'min') is not visible here: add 'private import SI::*;'"), and points at the missing standard library when
+        /// nothing is found and the standard library is not part of the workspace (recognised by its top-level package Base).
         std::vector<std::shared_ptr<ParserError>> unresolvedAsWarnings(size_t source) const;
         /// The names (as written) of all references recorded in one source, resolved or not, without the ones that are not attempted.
         /// Available right after parsing; meant to find out which library packages a text needs before it is resolved.

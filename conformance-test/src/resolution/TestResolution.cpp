@@ -474,6 +474,99 @@ TEST(UnresolvedReferences, TheParserApiReportsThemOnRequest) {
     EXPECT_EQ(kerml.second[0]->errorType(), SysMLv2::Files::ErrorType::WARNING);
 }
 
+// An unresolved name that a package of the workspace defines is reported with the import that would make it visible.
+TEST(UnresolvedReferences, HintTheMissingImport) {
+    Workspace ws;
+    ws.addText("package Lib { attribute <kg> kilogram; part def Engine; }", "lib.sysml");
+    ws.addText("package U { attribute m = 1 [kg]; part e : Engine; }", "user.sysml");
+    ws.resolve();
+    const auto warnings = ws.unresolvedAsWarnings(1);
+    ASSERT_EQ(warnings.size(), 2u);
+    EXPECT_NE(warnings[0]->description().find("unresolved reference to feature 'kg'"), std::string::npos);
+    EXPECT_NE(warnings[0]->description().find("Lib::kilogram (short name 'kg') is not visible here: add 'private import Lib::*;'"), std::string::npos);
+    EXPECT_NE(warnings[1]->description().find("Lib::Engine is not visible here: add 'private import Lib::*;'"), std::string::npos);
+    EXPECT_EQ(warnings[1]->description().find("short name"), std::string::npos);
+    // (a candidate was found: no hint about loadLibrary())
+    EXPECT_EQ(warnings[0]->description().find("loadLibrary"), std::string::npos);
+}
+
+TEST(UnresolvedReferences, HintSeveralCandidatePackages) {
+    Workspace ws;
+    ws.addText("package A { part def Engine; }", "a.sysml");
+    ws.addText("package B { part def Engine; }", "b.sysml");
+    ws.addText("package 'C d' { part def Engine; }", "c.sysml");
+    ws.addText("package U { part e : Engine; }", "user.sysml");
+    ws.resolve();
+    const auto warnings = ws.unresolvedAsWarnings(3);
+    ASSERT_EQ(warnings.size(), 1u);
+    EXPECT_NE(warnings[0]->description().find("candidates that are not visible here: 'C d'::Engine, A::Engine, B::Engine; import one of their packages, e.g. 'private import"),
+              std::string::npos) << warnings[0]->description();
+}
+
+TEST(UnresolvedReferences, HintOnlyForMembersOfPackagesAndOfTheRightKind) {
+    Workspace ws;
+    // "inner" is a member of a part def (not importable with a package import), "min" is a feature in P and a function in Q
+    ws.addText("package P { part def Holder { attribute inner; } attribute <min> minute; }", "p.sysml");
+    ws.addText("package Q { calc def min; }", "q.sysml");
+    ws.addText("package U { attribute a : inner; attribute b = min; }", "user.sysml");
+    ws.resolve();
+    const auto warnings = ws.unresolvedAsWarnings(2);
+    ASSERT_EQ(warnings.size(), 2u);
+    bool inner = false;
+    bool min = false;
+    for (const auto& warning : warnings) {
+        const auto& text = warning->description();
+        if (text.find("'inner'") != std::string::npos) {
+            inner = true;
+            EXPECT_EQ(text.find("not visible here"), std::string::npos) << text;
+        } else if (text.find("feature 'min'") != std::string::npos) {
+            min = true;
+            EXPECT_NE(text.find("P::minute (short name 'min')"), std::string::npos) << text;
+            EXPECT_EQ(text.find("Q::"), std::string::npos) << text;
+        }
+    }
+    EXPECT_TRUE(inner);
+    EXPECT_TRUE(min);
+}
+
+TEST(UnresolvedReferences, HintListsAPackageOnceAndSkipsPrivateMembers) {
+    Workspace ws;
+    // the same package in two sources: one candidate; a private member is not imported by `import P::*`
+    ws.addText("package Lib { part def Engine; }", "lib1.sysml");
+    ws.addText("package Lib { part def Engine; }", "lib2.sysml");
+    ws.addText("package Hidden { private part def Secret; }", "hidden.sysml");
+    ws.addText("package U { part e : Engine; part s : Secret; }", "user.sysml");
+    ws.resolve();
+    const auto warnings = ws.unresolvedAsWarnings(3);
+    ASSERT_EQ(warnings.size(), 2u);
+    EXPECT_NE(warnings[0]->description().find("; Lib::Engine is not visible here: add 'private import Lib::*;'"), std::string::npos) << warnings[0]->description();
+    EXPECT_EQ(warnings[1]->description().find("not visible here"), std::string::npos) << warnings[1]->description();
+}
+
+TEST(UnresolvedReferences, HintTheMissingLibraryOnlyIfItIsNotInTheWorkspace) {
+    const auto alone = SysMLv2::Files::Parser::parseSysMLv2("package U { private import SI::*; attribute r = 1 [min]; }", "u.sysml", true);
+    ASSERT_FALSE(alone.second.empty());
+    EXPECT_NE(alone.second[0]->description().find("unresolved reference to namespace 'SI' (the standard library is not loaded; "), std::string::npos)
+        << alone.second[0]->description();
+    // a package of the model is no library; names that a package defines get the import hint instead
+    Workspace ws;
+    ws.addText("package Lib { part def Engine; }", "lib.sysml");
+    ws.addText("package U { part e : Engine; part f : Missing; }", "user.sysml");
+    ws.resolve();
+    const auto warnings = ws.unresolvedAsWarnings(1);
+    ASSERT_EQ(warnings.size(), 2u);
+    EXPECT_EQ(warnings[0]->description().find("standard library"), std::string::npos);
+    EXPECT_NE(warnings[1]->description().find("the standard library is not loaded"), std::string::npos);
+    // the library is recognised by its package Base, however it was added (the application adds it with addText)
+    Workspace loaded;
+    loaded.addText("standard library package Base { abstract classifier Anything; }", "Base.kerml", SourceLanguage::KerML);
+    loaded.addText("package U { part f : Missing; }", "user.sysml");
+    loaded.resolve();
+    const auto fromLibrary = loaded.unresolvedAsWarnings(1);
+    ASSERT_EQ(fromLibrary.size(), 1u);
+    EXPECT_EQ(fromLibrary[0]->description(), "unresolved reference to type 'Missing'");
+}
+
 TEST(UnresolvedReferences, ABaseTypeNameResolvesOnlyIfTheLibraryIsLoaded) {
     const std::string model = "package M { private import ScalarValues::*; attribute a : Real; }";
     {
@@ -649,6 +742,21 @@ TEST_F(LibraryResolution, SysMLMetadataDefinitionsReachKerMLThroughImports) {
     ASSERT_NE(definition, nullptr);
     ASSERT_FALSE(definition->ownedSubclassification().empty());
     EXPECT_EQ(definition->ownedSubclassification().front()->superclassifier().get(), workspace->find("KerML::Core::Classifier").get());
+}
+
+TEST_F(LibraryResolution, AUnitOfTheLibraryThatIsNotImportedIsHinted) {
+    // `min` is the short name of SI::minute (a feature); the functions RealFunctions::min etc. are no features. SI is not imported by ISQ.
+    const size_t user = workspace->addText("package U { private import ISQ::*; attribute r = 3000 [min^-1]; }", "user.sysml", SourceLanguage::SysML, 1);
+    workspace->resolve();
+    const auto warnings = workspace->unresolvedAsWarnings(user);
+    std::string all;
+    for (const auto& warning : warnings) all += warning->description() + "\n";
+    ASSERT_FALSE(warnings.empty());
+    EXPECT_NE(all.find("unresolved reference to feature 'min'; SI::minute (short name 'min') is not visible here: add 'private import SI::*;'"), std::string::npos) << all;
+    EXPECT_EQ(all.find("standard library"), std::string::npos);
+    // (the placeholder source is emptied again for the other tests)
+    workspace->replaceSource(user, "", SourceLanguage::SysML);
+    workspace->resolve();
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
