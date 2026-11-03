@@ -1642,8 +1642,14 @@ void SysMLv2ListenerImplementation::exitFeature_reference_expression(SysMLv2Pars
 	if (!expr) return;
 	ParentStack.pop();
 	if (ctx) {
+		const size_t recorded = Recorder.data.references.size();
 		expr->setReferent(expressionFeatureReference(ctx->getText(), ctx,
 			[expr](const std::shared_ptr<KerML::Entities::Feature>& target) { expr->setReferent(target); }));
+		// A reference in the bounds of a multiplicity may be a unit that was written after the type instead of after the value.
+		if (Recorder.data.references.size() == recorded + 1 &&
+			dynamic_cast<SysMLv2Parser::Internal_multiplicity_expression_memberContext*>(ctx->parent) != nullptr) {
+			Recorder.data.references.back().inMultiplicity = true;
+		}
 	}
 	attachExpression(expr);
 }

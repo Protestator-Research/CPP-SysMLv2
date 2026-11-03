@@ -759,6 +759,182 @@ TEST_F(LibraryResolution, AUnitOfTheLibraryThatIsNotImportedIsHinted) {
     workspace->resolve();
 }
 
+// A unit written in the multiplicity (`attribute m : X [kg] = 3;`) is reported; the unit belongs after the value (`= 3 [kg]`).
+namespace {
+    /// A mini library with a unit (sources 0 - 2) and a user text.
+    struct UnitFixture {
+        Workspace ws;
+        size_t user = 0;
+        UnitFixture(const std::string& userText, SourceLanguage language = SourceLanguage::SysML) {
+            // (the package Base marks the standard library as loaded: no hint about it)
+            ws.addText("standard library package Base { abstract classifier Anything; }", "Base.kerml", SourceLanguage::KerML);
+            ws.addText("package MeasurementReferences { abstract attribute def ScalarMeasurementReference; abstract attribute def MeasurementUnit :> ScalarMeasurementReference; }",
+                       "MeasurementReferences.sysml");
+            ws.addText("package SI { private import MeasurementReferences::*; attribute <kg> kilogram : MeasurementUnit; }", "SI.sysml");
+            user = ws.addText(userText, "user.sysml", language);
+            ws.resolve();
+        }
+        std::vector<std::string> warnings() const {
+            std::vector<std::string> texts;
+            for (const auto& warning : ws.unresolvedAsWarnings(user)) texts.push_back(warning->description());
+            return texts;
+        }
+    };
+
+    /// The number of warnings that remark on a multiplicity.
+    size_t unitWarnings(const std::vector<std::string>& texts) {
+        return static_cast<size_t>(std::count_if(texts.begin(), texts.end(), [](const std::string& text) { return text.find("multiplicity") != std::string::npos; }));
+    }
+}
+
+TEST(UnitInMultiplicity, AnUnresolvedUnitExpressionIsHinted) {
+    UnitFixture f("package U { attribute def X; attribute m : X ['kg*s^-1'] = 1; }");
+    const auto warnings = f.warnings();
+    ASSERT_EQ(warnings.size(), 1u);
+    EXPECT_NE(warnings[0].find("unresolved reference to feature ''kg*s^-1'' in the multiplicity of 'm'; '[...]' after a type is a multiplicity, not a unit: "
+                               "write the unit after the value, e.g. '= <value> [kg*s^-1]' (inside quotes, '*', '/' and '^' are part of one name, not operators)"),
+              std::string::npos) << warnings[0];
+}
+
+TEST(UnitInMultiplicity, AUnitThatIsNotImportedIsHinted) {
+    UnitFixture f("package U { attribute def X; attribute m : X [kg] = 1; }");
+    const auto warnings = f.warnings();
+    ASSERT_EQ(warnings.size(), 1u);
+    EXPECT_NE(warnings[0].find("in the multiplicity of 'm'"), std::string::npos) << warnings[0];
+    EXPECT_NE(warnings[0].find("SI::kilogram (short name 'kg') is not visible here: add 'private import SI::*;'"), std::string::npos) << warnings[0];
+    EXPECT_NE(warnings[0].find("not a unit"), std::string::npos) << warnings[0];
+}
+
+TEST(UnitInMultiplicity, AResolvedUnitIsReported) {
+    UnitFixture f("package U {\n  private import SI::*;\n  attribute def X;\n  attribute m : X [kg] = 1;\n}");
+    const auto warnings = f.warnings();
+    ASSERT_EQ(warnings.size(), 1u);
+    EXPECT_EQ(warnings[0],
+              "the multiplicity of 'm' refers to the measurement unit SI::kilogram ('kg'): '[...]' after a type is a multiplicity, not a unit; "
+              "write the unit after the value, e.g. '= <value> [kg]'");
+    const auto positions = f.ws.unresolvedAsWarnings(f.user);
+    ASSERT_EQ(positions.size(), 1u);
+    EXPECT_EQ(positions[0]->errorType(), SysMLv2::Files::ErrorType::WARNING);
+    EXPECT_EQ(positions[0]->getLine(), 4);
+    EXPECT_EQ(positions[0]->getSource(), "user.sysml");
+}
+
+TEST(UnitInMultiplicity, WarningsAreOrderedByPosition) {
+    UnitFixture f("package U {\n  private import SI::*;\n  attribute def X;\n  attribute a : X [kg] = 1;\n  attribute b : Nope;\n  attribute c : X ['m/s'] = 1;\n  attribute d : X [kg] = 1;\n}");
+    const auto warnings = f.ws.unresolvedAsWarnings(f.user);
+    ASSERT_EQ(warnings.size(), 4u);
+    EXPECT_EQ(warnings[0]->getLine(), 4);
+    EXPECT_NE(warnings[0]->description().find("the multiplicity of 'a' refers to the measurement unit SI::kilogram"), std::string::npos) << warnings[0]->description();
+    EXPECT_EQ(warnings[1]->getLine(), 5);
+    EXPECT_NE(warnings[1]->description().find("unresolved reference to type 'Nope'"), std::string::npos) << warnings[1]->description();
+    EXPECT_EQ(warnings[2]->getLine(), 6);
+    EXPECT_NE(warnings[2]->description().find("in the multiplicity of 'c'"), std::string::npos) << warnings[2]->description();
+    EXPECT_EQ(warnings[3]->getLine(), 7);
+    EXPECT_NE(warnings[3]->description().find("the multiplicity of 'd' refers"), std::string::npos) << warnings[3]->description();
+}
+
+TEST(UnitInMultiplicity, AnUnknownSourceHasNoWarnings) {
+    UnitFixture f("package U { attribute def X; attribute m : X [kg] = 1; }");
+    EXPECT_TRUE(f.ws.unresolvedAsWarnings(99).empty());
+}
+
+TEST(UnitInMultiplicity, ARedefiningFeatureIsNamedByTheFeatureItRedefines) {
+    UnitFixture f("package U {\n  private import SI::*;\n  attribute def X;\n  part def Base { attribute mass : X; }\n  part def Car :> Base { attribute :>> mass [kg]; }\n}");
+    const auto warnings = f.warnings();
+    ASSERT_EQ(warnings.size(), 1u);
+    EXPECT_NE(warnings[0].find("the multiplicity of 'mass' refers to the measurement unit SI::kilogram"), std::string::npos) << warnings[0];
+}
+
+TEST(UnitInMultiplicity, AQualifiedShortNameIsRenderedFromTheUnit) {
+    UnitFixture f("package U {\n  attribute def X;\n  attribute a : X [SI::kg];\n}");
+    const auto warnings = f.warnings();
+    ASSERT_EQ(warnings.size(), 1u);
+    EXPECT_NE(warnings[0].find("refers to the measurement unit SI::kilogram ('kg'): "), std::string::npos) << warnings[0];
+    EXPECT_NE(warnings[0].find("e.g. '= <value> [SI::kg]'"), std::string::npos) << warnings[0];
+}
+
+TEST(UnitInMultiplicity, RangeSubsettingAndMultiplicityElements) {
+    UnitFixture f(
+        "package U {\n  private import SI::*;\n  attribute def X;\n  attribute y : X;\n  attribute a : X [1..kg];\n  attribute x :> y [kg];\n"
+        "  attribute b : X [kg..*];\n}");
+    const auto warnings = f.warnings();
+    ASSERT_EQ(warnings.size(), 3u);
+    EXPECT_NE(warnings[0].find("the multiplicity of 'a' refers"), std::string::npos) << warnings[0];
+    EXPECT_NE(warnings[1].find("the multiplicity of 'x' refers"), std::string::npos) << warnings[1];
+    EXPECT_NE(warnings[2].find("the multiplicity of 'b' refers"), std::string::npos) << warnings[2];
+    UnitFixture kerml("package U { private import SI::*; classifier X; feature f : X; multiplicity m [kg]; }", SourceLanguage::KerML);
+    const auto kermlWarnings = kerml.warnings();
+    ASSERT_EQ(kermlWarnings.size(), 1u);
+    EXPECT_NE(kermlWarnings[0].find("the multiplicity of 'm' refers"), std::string::npos) << kermlWarnings[0];
+}
+
+TEST(UnitInMultiplicity, OtherBoundsAndUnitsAfterTheValueAreNotRemarkedOn) {
+    UnitFixture f(
+        "package U {\n  private import SI::*;\n  attribute def X;\n  attribute n = 3;\n  attribute a : X [n];\n  attribute b : X [0..*];\n  attribute c : X [1];\n"
+        "  attribute d : X [n..*];\n  attribute m : X = 1 [kg];\n}");
+    EXPECT_EQ(unitWarnings(f.warnings()), 0u);
+    UnitFixture missing("package U { attribute def X; attribute a : X [n]; attribute m : X = 1 ['kg*s^-1']; }");
+    const auto warnings = missing.warnings();
+    ASSERT_EQ(warnings.size(), 2u);
+    EXPECT_EQ(warnings[0], "unresolved reference to feature 'n'");
+    EXPECT_EQ(unitWarnings(warnings), 0u);
+}
+
+TEST(UnitInMultiplicity, AReturnFeatureOfAFunctionOrCalculation) {
+    UnitFixture f(
+        "package U {\n  private import SI::*;\n  attribute def X;\n"
+        "  calc def F { in a : X; in b : X; return feature airMassFlow : X ['kg*s^-1'] = (a * 256 + b) * 0.01; }\n"
+        "  function G { return feature mass : X [kg] = 1; }\n}");
+    const auto warnings = f.warnings();
+    ASSERT_EQ(warnings.size(), 2u);
+    EXPECT_NE(warnings[0].find("unresolved reference to feature ''kg*s^-1'' in the multiplicity of 'airMassFlow'; '[...]' after a type"), std::string::npos) << warnings[0];
+    EXPECT_NE(warnings[1].find("the multiplicity of 'mass' refers to the measurement unit SI::kilogram ('kg')"), std::string::npos) << warnings[1];
+}
+
+TEST(UnitInMultiplicity, OnlyAFeatureTypedByAUnitIsReported) {
+    UnitFixture unit("package U { private import MeasurementReferences::*; attribute def X; attribute n : MeasurementUnit; attribute a : X [n]; }");
+    EXPECT_EQ(unitWarnings(unit.warnings()), 1u);
+    UnitFixture plain("package U { private import SI::*; attribute def X; attribute n : X; attribute a : X [n]; }");
+    EXPECT_EQ(unitWarnings(plain.warnings()), 0u);
+}
+
+TEST(UnitInMultiplicity, KerML) {
+    UnitFixture f("package U { private import SI::*; classifier X; feature m : X [kg]; feature q : X ['kg*s^-1']; feature n; feature o : X [n]; }",
+                  SourceLanguage::KerML);
+    const auto warnings = f.warnings();
+    ASSERT_EQ(warnings.size(), 2u);
+    EXPECT_NE(warnings[0].find("the multiplicity of 'm' refers to the measurement unit SI::kilogram ('kg')"), std::string::npos) << warnings[0];
+    EXPECT_NE(warnings[1].find("unresolved reference to feature ''kg*s^-1'' in the multiplicity of 'q'; '[...]' after a type is a multiplicity"), std::string::npos) << warnings[1];
+}
+
+TEST_F(LibraryResolution, UnitsInAMultiplicityAreReported) {
+    const std::string model =
+        "package U {\n"
+        "  private import ScalarValues::*;\n  private import ISQ::*;\n  private import SI::*;\n"
+        "  part def P {\n"
+        "    attribute q : MassFlowRateValue ['kg*s^-1'] = 1;\n"
+        "    attribute r : MassFlowRateValue ['kg\xE2\x8B\x85s\xE2\x81\xBB\xC2\xB9'] = 1;\n"
+        "    attribute s : MassValue [kg] = 1;\n"
+        "    attribute t : MassValue = 1 [kg];\n"
+        "  }\n}";
+    const size_t user = workspace->addText(model, "user.sysml", SourceLanguage::SysML, 1);
+    workspace->resolve();
+    std::vector<std::string> texts;
+    std::string all;
+    for (const auto& warning : workspace->unresolvedAsWarnings(user)) {
+        texts.push_back(warning->description());
+        all += warning->description() + "\n";
+    }
+    std::cout << all;
+    ASSERT_EQ(texts.size(), 3u) << all;
+    EXPECT_NE(texts[0].find("in the multiplicity of 'q'; '[...]' after a type is a multiplicity, not a unit"), std::string::npos) << all;
+    EXPECT_NE(texts[1].find("the multiplicity of 'r' refers to the measurement unit SI::"), std::string::npos) << all;
+    EXPECT_NE(texts[2].find("the multiplicity of 's' refers to the measurement unit SI::kilogram ('kg')"), std::string::npos) << all;
+    // (the placeholder source is emptied again for the other tests)
+    workspace->replaceSource(user, "", SourceLanguage::SysML);
+    workspace->resolve();
+}
+
 // ---------------------------------------------------------------------------------------------------------------------
 // Workspace::replaceSource: exchange one source, keep the others (library) resolved
 // ---------------------------------------------------------------------------------------------------------------------

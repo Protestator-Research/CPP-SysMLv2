@@ -2390,9 +2390,15 @@ KerMLListenerImplementation::exitFeature_reference_expression(KerMLParser::Featu
 
     if (ctx) {
         std::string refName = ctx->getText();
+        const size_t recorded = Recorder.data.references.size();
         auto feat = featureReference(refName, ParentStack.empty() ? nullptr : ParentStack.top(), false, ctx,
             [expr](const std::shared_ptr<KerML::Entities::Feature>& target) { expr->setReferent(target); });
         expr->setReferent(feat);
+        // A reference in the bounds of a multiplicity may be a unit that was written after the type instead of after the value.
+        if (Recorder.data.references.size() == recorded + 1 &&
+            dynamic_cast<KerMLParser::Internal_multiplicity_expression_memberContext *>(ctx->parent) != nullptr) {
+            Recorder.data.references.back().inMultiplicity = true;
+        }
     }
     attachExpression(expr);
 }

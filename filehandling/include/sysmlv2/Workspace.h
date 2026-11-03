@@ -75,7 +75,8 @@ namespace SysMLv2::Files {
 
     /**
      * A reference that could not be resolved. The model keeps a placeholder element (see isUnresolved()) in place of the
-     * target; the placeholder is not part of any element list.
+     * target; the placeholder is not part of any element list. inMultiplicity tells that the name is written in the bounds
+     * of a multiplicity (`[kg]`): a unit that was written after the type instead of after the value.
      */
     struct SYSMLV2FILE_EXPORT UnresolvedReferenceInfo {
         /// The name as written in the source.
@@ -87,6 +88,8 @@ namespace SysMLv2::Files {
         int line = -1;
         int column = -1;
         size_t source = 0;
+        /// The reference is written in the bounds of a multiplicity (`[kg]`).
+        bool inMultiplicity = false;
         /// The element the reference is written in and the placeholder that stands in for the target.
         std::shared_ptr<KerML::Entities::Element> context;
         std::shared_ptr<KerML::Entities::Element> placeholder;
@@ -278,6 +281,10 @@ namespace SysMLv2::Files {
         /// import when a package of the workspace defines the (first segment of the) name but is not visible at the reference
         /// ("... SI::minute (short name 'min') is not visible here: add 'private import SI::*;'"), and points at the missing standard library when
         /// nothing is found and the standard library is not part of the workspace (recognised by its top-level package Base).
+        /// It also reports units that stand in the bounds of a multiplicity, `attribute m : MassValue [kg] = 3;` instead of `= 3 [kg]`: an unresolved
+        /// name that looks like a unit (or is a measurement unit of a package that is not imported) gets the remark that '[...]' after a type is a
+        /// multiplicity, and a reference that resolved to a measurement unit (a feature typed by a specialization of
+        /// MeasurementReferences::ScalarMeasurementReference, needs the library in the workspace) is reported as a warning of its own.
         std::vector<std::shared_ptr<ParserError>> unresolvedAsWarnings(size_t source) const;
         /// The names (as written) of all references recorded in one source, resolved or not, without the ones that are not attempted.
         /// Available right after parsing; meant to find out which library packages a text needs before it is resolved.

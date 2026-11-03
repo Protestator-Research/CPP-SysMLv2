@@ -25,6 +25,9 @@
 #include <kerml/root/namespaces/Namespace.h>
 #include <kerml/root/namespaces/Membership.h>
 #include <kerml/root/namespaces/OwningMembership.h>
+#include <kerml/core/features/Feature.h>
+#include <kerml/core/types/Specialization.h>
+#include <kerml/core/types/Type.h>
 
 #include <antlr4-common.h>
 #include <BailErrorStrategy.h>
@@ -1327,6 +1330,7 @@ namespace SysMLv2::Files {
                 info.line = reference.line;
                 info.column = reference.column;
                 info.source = index;
+                info.inMultiplicity = reference.inMultiplicity;
                 info.context = reference.context;
                 info.placeholder = reference.placeholder;
                 (reference.role == ReferenceRole::NotAttempted ? impl_->notAttempted : impl_->unresolved).push_back(std::move(info));
@@ -1471,6 +1475,70 @@ namespace SysMLv2::Files {
             return result;
         }
 
+        /// True if a name written in the bounds of a multiplicity looks like a unit expression ("kg*s^-1", "m/s", "degC" with a degree sign, "s" with a superscript exponent): it contains an operator of
+        /// units, a degree sign, a middle dot or a superscript character. (@p name is UTF-8.)
+        bool looksLikeUnit(const std::string& name) {
+            for (size_t i = 0; i < name.size(); ++i) {
+                const auto byte = static_cast<unsigned char>(name[i]);
+                if (byte == '*' || byte == '/' || byte == '^') return true;
+                if (byte == 0xC2 && i + 1 < name.size()) {
+                    const auto next = static_cast<unsigned char>(name[i + 1]);
+                    // degree sign, middle dot, superscript two / three / one
+                    if (next == 0xB0 || next == 0xB7 || next == 0xB2 || next == 0xB3 || next == 0xB9) return true;
+                } else if (byte == 0xE2 && i + 2 < name.size()) {
+                    const auto next = static_cast<unsigned char>(name[i + 1]);
+                    const auto last = static_cast<unsigned char>(name[i + 2]);
+                    // dot operator (U+22C5), superscripts U+2070 - U+207F
+                    if ((next == 0x8B && last == 0x85) || (next == 0x81 && last >= 0xB0)) return true;
+                }
+            }
+            return false;
+        }
+
+        /// True if @p start is @p goal or specializes it through the resolved typings, subclassifications, subsettings and redefinitions. (Type::specializes()
+        /// is not implemented.)
+        bool specializesOrIs(const std::shared_ptr<KerML::Entities::Type>& start, const KerML::Entities::Type* goal) {
+            std::vector<std::shared_ptr<KerML::Entities::Type>> todo{start};
+            std::unordered_set<const KerML::Entities::Type*> visited;
+            while (!todo.empty()) {
+                const auto current = std::move(todo.back());
+                todo.pop_back();
+                if (!current || isUnresolved(current) || !visited.insert(current.get()).second) continue;
+                if (current.get() == goal) return true;
+                for (const auto& specialization : current->ownedSpecialization()) {
+                    if (specialization) todo.push_back(specialization->general());
+                }
+                if (const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(current)) {
+                    for (const auto& type : feature->type()) todo.push_back(type);
+                }
+            }
+            return false;
+        }
+
+        /// The name of the nearest element at or around @p context that has one (the feature whose multiplicity is written), empty if there is none.
+        std::string enclosingNameOf(std::shared_ptr<KerML::Entities::Element> context) {
+            for (; context; context = context->owner()) {
+                // (`attribute :>> mass [kg];` is known as mass: the effective name of a feature)
+                if (const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(context)) {
+                    const auto effective = feature->effectiveName();
+                    if (effective && !effective->empty()) return *effective;
+                }
+                const std::string name = nameOf(*context);
+                if (!name.empty()) return name;
+            }
+            return std::string();
+        }
+
+        /// The unit as it is written after the value in the remark on a unit in a multiplicity. A quoted name with operators ('kg*s^-1') is one name; the
+        /// unit expression has to be written without quotes.
+        std::string unitExample(const std::string& written) {
+            const bool quoted = written.size() >= 2 && written.front() == '\'' && written.back() == '\'';
+            if (quoted && written.find_first_of("*/^") != std::string::npos) {
+                return "= <value> [" + written.substr(1, written.size() - 2) + "]' (inside quotes, '*', '/' and '^' are part of one name, not operators)";
+            }
+            return "= <value> [" + written + "]'";
+        }
+
         bool matchesKind(const std::shared_ptr<KerML::Entities::Element>& element, ReferenceKind kind) {
             switch (kind) {
                 case ReferenceKind::Feature: return std::dynamic_pointer_cast<KerML::Entities::Feature>(element) != nullptr;
@@ -1484,6 +1552,13 @@ namespace SysMLv2::Files {
 
     std::vector<std::shared_ptr<ParserError>> Workspace::unresolvedAsWarnings(size_t source) const {
         std::vector<std::shared_ptr<ParserError>> warnings;
+        if (source >= impl_->sources.size()) return warnings;
+
+        // (a deadline of resolve() leaves the list of the unresolved references behind the references that were resolved before it)
+        std::unordered_set<const KerML::Entities::Element*> resolvedPlaceholders;
+        for (const auto& reference : impl_->sources[source]->data.references) {
+            if (reference.resolved && reference.placeholder) resolvedPlaceholders.insert(reference.placeholder.get());
+        }
 
         // The members of packages by name and by short name (only a package can be imported with `import P::*`); built when the first
         // unresolved reference of the source needs it.
@@ -1517,8 +1592,32 @@ namespace SysMLv2::Files {
             }
         };
 
+        // The library type that all measurement units specialize (MeasurementReferences::ScalarMeasurementReference); found when the first unit in a
+        // multiplicity needs it. Without it (the library is not loaded) no feature is known to be a unit.
+        bool scalarSearched = false;
+        std::shared_ptr<KerML::Entities::Type> scalarReference;
+        const auto isMeasurementUnit = [&](const std::shared_ptr<KerML::Entities::Element>& element) {
+            const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(element);
+            if (!feature || isUnresolved(feature)) return false;
+            if (!scalarSearched) {
+                scalarSearched = true;
+                for (const auto& other : impl_->sources) {
+                    for (const auto& candidate : other->elements) {
+                        const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(candidate);
+                        if (type && !isUnresolved(type) && type->declaredName() == "ScalarMeasurementReference" &&
+                            qualifiedNameOf(owningNamespaceOf(type)) == "MeasurementReferences") {
+                            scalarReference = type;
+                            break;
+                        }
+                    }
+                    if (scalarReference) break;
+                }
+            }
+            return scalarReference && specializesOrIs(feature, scalarReference.get());
+        };
+
         for (const auto& info : impl_->unresolved) {
-            if (info.source != source) continue;
+            if (info.source != source || (info.placeholder && resolvedPlaceholders.count(info.placeholder.get()) != 0)) continue;
             std::string kind;
             switch (info.kind) {
                 case ReferenceKind::Type: kind = "type"; break;
@@ -1528,6 +1627,7 @@ namespace SysMLv2::Files {
                 default: kind = "element"; break;
             }
             std::string message = "unresolved reference to " + kind + " '" + info.name + "'";
+            const size_t prefixLength = message.size();
 
             // Packages that define the first segment of the name but are not visible at the reference: an import would make it visible.
             // (a qualifier that is found already is not the segment that failed: nothing is suggested then; chains are not examined)
@@ -1581,8 +1681,44 @@ namespace SysMLv2::Files {
                     message += " (the standard library is not loaded; names such as SI, ISQ or ScalarValues are only found when it is)";
                 }
             }
+
+            // A unit in the bounds of a multiplicity (`attribute m : MassValue [kg] = 3;`): the unit belongs after the value. A feature that is not a unit
+            // is a valid bound (`[n]`) and is not remarked on.
+            if (info.inMultiplicity) {
+                bool unit = looksLikeUnit(info.name);
+                for (size_t i = 0; !unit && i < candidates.size(); ++i) unit = isMeasurementUnit(candidates[i].second->element);
+                if (unit) {
+                    const std::string owner = enclosingNameOf(info.context);
+                    if (!owner.empty()) message.insert(prefixLength, " in the multiplicity of '" + owner + "'");
+                    message += "; '[...]' after a type is a multiplicity, not a unit: write the unit after the value, e.g. '" + unitExample(info.name);
+                }
+            }
             warnings.push_back(Impl::makeError(ErrorType::WARNING, message, info.line, info.column, info.sourceName));
         }
+
+        // Units in the bounds of a multiplicity that were resolved (`import SI::*;` makes `[kg]` a valid reference to the unit kilogram): the model is
+        // fine, the unit is in the wrong place all the same.
+        for (const auto& reference : impl_->sources[source]->data.references) {
+            if (!reference.inMultiplicity || !reference.resolved || !isMeasurementUnit(reference.resolvedTarget)) continue;
+            const auto target = reference.resolvedTarget;
+            const std::string declared = target->declaredName().value_or(std::string());
+            const std::string shortName = target->declaredShortName().value_or(std::string());
+            std::string unit = qualifiedNameOf(owningNamespaceOf(target));
+            // (a unit that has a short name only is known by it)
+            unit += (unit.empty() ? "" : "::") + KerML::Names::escapeName(declared.empty() ? shortName : declared);
+            if (!declared.empty() && !shortName.empty() && shortName != declared) {
+                unit += " ('" + shortName + "')";
+            }
+            const std::string owner = enclosingNameOf(reference.context);
+            const std::string message = std::string("the multiplicity ") + (owner.empty() ? "" : "of '" + owner + "' ") + "refers to the measurement unit " + unit +
+                                        ": '[...]' after a type is a multiplicity, not a unit; write the unit after the value, e.g. '= <value> [" +
+                                        reference.name + "]'";
+            warnings.push_back(Impl::makeError(ErrorType::WARNING, message, reference.line, reference.column, impl_->sources[source]->name));
+        }
+        // (in the order of the source: the units in multiplicities are interleaved with the unresolved references)
+        std::stable_sort(warnings.begin(), warnings.end(), [](const auto& a, const auto& b) {
+            return a->getLine() != b->getLine() ? a->getLine() < b->getLine() : a->getColumn() < b->getColumn();
+        });
         return warnings;
     }
 

@@ -138,6 +138,9 @@ namespace SysMLv2::Files {
         std::function<void(const std::shared_ptr<KerML::Entities::Element>&)> apply;
         int line = -1;
         int column = -1;
+        /// The reference is written in the bounds of a multiplicity (`[kg]`, `[n]`). Does not change how it is resolved; it lets the workspace
+        /// warn when a unit stands there (the unit belongs after the value).
+        bool inMultiplicity = false;
         /// Set by the resolver.
         std::shared_ptr<KerML::Entities::Element> resolvedTarget;
         /// Index of the source (Workspace) this reference was recorded for; set by the workspace.
