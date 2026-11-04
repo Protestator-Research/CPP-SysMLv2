@@ -181,7 +181,7 @@ private:
     // The name of an element: its declared name; for a feature without one the effective name (KerML Feature::effectiveName), which is the
     // name of the feature it redefines first (`attribute :>> num : Real;` is the feature `num`).
     static std::string ownName(const Element* element, int depth = 0) {
-        std::string name = Xmi::unquoteName(element->declaredName().value_or(""));
+        std::string name = element->declaredName().value_or("");   // (declared names are stored without quotes)
         if (!name.empty() || depth > 32) return name;
         if (const auto* feature = dynamic_cast<const KerML::Entities::Feature*>(element)) {
             const auto redefinitions = feature->ownedRedefinition();
@@ -267,8 +267,8 @@ private:
             // aliases: memberships that do not own their member
             if (type == "Membership") {
                 const auto membership = std::dynamic_pointer_cast<KerML::Entities::Membership>(element);
-                const std::string memberName = Xmi::unquoteName(membership->memberName().value_or(""));
-                const std::string memberShortName = Xmi::unquoteName(membership->memberShortName().value_or(""));
+                const std::string memberName = membership->memberName().value_or("");
+                const std::string memberShortName = membership->memberShortName().value_or("");
                 if (membership && (!memberName.empty() || !memberShortName.empty())) {
                     Element* owner = ownerOf(element.get());
                     const auto ownerName = owner ? ourName(owner, 0) : std::optional<std::string>(std::string());

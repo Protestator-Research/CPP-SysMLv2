@@ -99,7 +99,7 @@ class CPPSysMLRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = ["sysmlv2interfaces", "sysmlv2service", "sysmlv2rest", "kerml", "sysmlv2parser", "sysmlv2resources", "sysml"]
+        self.cpp_info.libs = ["sysmlv2interfaces", "sysmlv2service", "sysmlv2rest", "kerml", "sysmlv2parser", "sysmlv2resources", "sysmlv2xmiresources", "sysml"]
         if self.options.with_check:
             self.cpp_info.libs.append("sysmlv2check")
         self.cpp_info.builddirs.append(os.path.join("lib", "cmake", "sysmlv2"))

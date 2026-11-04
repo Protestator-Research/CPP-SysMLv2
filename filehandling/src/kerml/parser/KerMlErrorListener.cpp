@@ -6,6 +6,7 @@
 #include <kerml/ErrorTypes.h>
 
 #include <sysmlv2/parser/KeywordMisuseDiagnoser.h>
+#include <sysmlv2/parser/LexerErrorHint.h>
 
 KerMLErrorListener::KerMLErrorListener() {
 
@@ -21,7 +22,7 @@ void KerMLErrorListener::syntaxError(antlr4::Recognizer *recognizer, antlr4::Tok
         SyntaxErrors.push_back(std::make_shared<KerMLError>(KerML::Parser::KEYWORD_MISUSE, decision.Misuse.line, decision.Misuse.column, decision.Misuse.message));
         return;
     }
-    SyntaxErrors.push_back(std::make_shared<KerMLError>(KerML::Parser::SYNTAX_ERROR,line,charPositionInLine,msg));
+    SyntaxErrors.push_back(std::make_shared<KerMLError>(KerML::Parser::SYNTAX_ERROR,line,charPositionInLine,SysMLv2::Files::LexerErrorHint::complete(recognizer, offendingSymbol, msg)));
 }
 
 void KerMLErrorListener::reportAttemptingFullContext(antlr4::Parser *, const antlr4::dfa::DFA &,

@@ -17,6 +17,10 @@
 #include <sysmlv2/Parser.h>
 #include <sysmlv2/ParserError.h>
 #include <kerml/root/elements/Element.h>
+#include <kerml/root/elements/Relationship.h>
+#include <kerml/core/types/Type.h>
+#include <kerml/core/types/Specialization.h>
+#include <sysmlv2/resolution/ResolutionData.h>
 
 namespace ConformanceTest {
 
@@ -41,6 +45,57 @@ inline std::string readFile(const std::filesystem::path& path) {
     buffer << in.rdbuf();
     return buffer.str();
 }
+
+// The name of an element made of the names of the namespaces that own it (an unnamed element is written as <Metaclass>); the root
+// namespace of a source contributes nothing. Works for the elements of every source, whether or not qualifiedName() was set.
+inline std::string qualifiedNameOf(const std::shared_ptr<KerML::Entities::Element>& element) {
+    std::string result;
+    for (auto current = element; current; current = current->owner()) {
+        // (the root namespace of a source has no owner: it is named "Root Namespace" in the text and has no name in the XMI)
+        if (std::dynamic_pointer_cast<KerML::Entities::Relationship>(current) || current->owner() == nullptr) continue;
+        std::string part;
+        // (a feature without a declared name, `:>> p`, is known by the name of the feature it redefines)
+        if (const auto effective = current->effectiveName(); effective.has_value() && !effective->empty()) part = effective.value();
+        else if (current->declaredShortName().has_value()) part = current->declaredShortName().value();
+        else part = "<" + current->getType() + ">";
+        result = result.empty() ? part : part + "::" + result;
+    }
+    return result;
+}
+
+// What the references of `elements` resolved to: one line "<type> :> <general 1>, <general 2>, ..." for every type with specializations
+// (typings, subsettings, redefinitions, ... in the order of the type's specializations), sorted. A target that is still a placeholder is
+// written as ?<name>. Two runs that resolved every reference to the same element give the same lines.
+inline std::vector<std::string> resolvedGenerals(const std::vector<std::shared_ptr<KerML::Entities::Element>>& elements) {
+    std::vector<std::string> lines;
+    for (const auto& element : elements) {
+        const auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(element);
+        if (!type) continue;
+        const auto specializations = type->ownedSpecialization();
+        if (specializations.empty()) continue;
+        std::string line = qualifiedNameOf(type) + " :>";
+        for (const auto& specialization : specializations) {
+            const auto general = specialization ? specialization->general() : nullptr;
+            line += (general && SysMLv2::Files::isUnresolved(general)) ? " ?" + general->declaredName().value_or("") + ","
+                                                                         : " " + (general ? qualifiedNameOf(general) : std::string("-")) + ",";
+        }
+        lines.push_back(std::move(line));
+    }
+    std::sort(lines.begin(), lines.end());
+    return lines;
+}
+
+
+// Expects the two sets of lines of resolvedGenerals() to be equal and reports (the first) lines that only one of them has.
+inline void expectSameLines(const std::vector<std::string>& actual, const std::vector<std::string>& expected, const std::string& what) {
+    std::vector<std::string> onlyActual, onlyExpected;
+    std::set_difference(actual.begin(), actual.end(), expected.begin(), expected.end(), std::back_inserter(onlyActual));
+    std::set_difference(expected.begin(), expected.end(), actual.begin(), actual.end(), std::back_inserter(onlyExpected));
+    EXPECT_EQ(actual.size(), expected.size()) << what;
+    for (size_t index = 0; index < onlyActual.size() && index < 10; ++index) ADD_FAILURE() << what << ": only in the first: " << onlyActual[index];
+    for (size_t index = 0; index < onlyExpected.size() && index < 10; ++index) ADD_FAILURE() << what << ": only in the second: " << onlyExpected[index];
+}
+
 
 // Timing / performance assertions only run when SYSML_ENABLE_PERFORMANCE_TESTS is set to a non-empty value other than "0"; they depend
 // on the machine and must not fail CI.

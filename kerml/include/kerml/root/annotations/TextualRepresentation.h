@@ -11,6 +11,7 @@
 //---------------------------------------------------------
 #include <kerml/root/annotations/AnnotatingElement.h>
 #include <string>
+#include <string_view>
 //---------------------------------------------------------
 // Internal Classes
 //---------------------------------------------------------
@@ -39,6 +40,12 @@ namespace KerML::Entities {
 
         std::string language();
         void setLanguage(std::string language);
+
+        /**
+         * @param name a language name, for example "kerml", "sysml", "ocl" or "alf".
+         * @return true if the language of the representation is @p name; the comparison ignores the case (KerML 8.3.2.3.6).
+         */
+        bool isLanguage(std::string_view name);
 
         std::string body();
         void setBody(std::string body);

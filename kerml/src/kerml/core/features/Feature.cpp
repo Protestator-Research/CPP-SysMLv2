@@ -2,6 +2,8 @@
 // Created by Moritz Herzog on 25.03.25.
 //
 
+#include <algorithm>
+#include <vector>
 #include <kerml/core/features/Feature.h>
 #include <vector>
 #include <unordered_set>
@@ -188,6 +190,23 @@ namespace KerML::Entities
 
 	std::optional<std::string> Feature::effectiveName() const
 	{
+		// KerML 8.3.3.3.4: without a declared name and without a declared short name, the name of the feature is the effective name of its
+		// naming feature, the feature that it redefines first (`:>> p` is known as p). The chain ends at a feature with a name; a cycle of redefinitions ends it as well.
+		const Feature* current = this;
+		std::vector<const Feature*> visited;
+		while (current != nullptr)
+		{
+			if (current->declaredName().has_value())
+				return current->declaredName();
+			// (a feature with a short name only has no name from its naming feature: `attribute <s> :>> p;` is known as s)
+			if (current->declaredShortName().has_value())
+				break;
+			if (std::find(visited.begin(), visited.end(), current) != visited.end())
+				break;
+			visited.push_back(current);
+			const auto naming = current->namingFeature();
+			current = naming.has_value() ? naming.value().get() : nullptr;
+		}
 		return Element::effectiveName();
 	}
 

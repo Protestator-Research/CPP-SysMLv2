@@ -478,6 +478,129 @@ std::string typingXmi(const std::string& href) {
         "</sysml:Package>\n";
 }
 
+// ---------------------------------------------------------------------------------------------------------------------
+// resolve() links an XMI source once, and again only when an XMI source was added, replaced or removed and the source has open references
+// ---------------------------------------------------------------------------------------------------------------------
+
+namespace {
+/// "<source name>:<line>:<name>" of every unresolved reference.
+std::set<std::string> unresolvedKeysOf(const Workspace& ws) {
+    std::set<std::string> keys;
+    for (const auto& info : ws.unresolvedReferences()) keys.insert(info.sourceName + ":" + std::to_string(info.line) + ":" + info.name);
+    return keys;
+}
+
+const char* DemoModel =
+    "package Demo { private import ScalarValues::*; attribute count : Integer; part def Engine :> Base::Anything { attribute power : Real; } "
+    "part e : Engine { attribute :>> power; } attribute missing : Nowhere; }";
+
+/// A package Q with a classifier named @p name (id ...0401), to which `typingXmi(TargetHref)` points.
+std::string targetXmi(const std::string& name) {
+    return
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+        "<sysml:Package xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
+        "xmlns:sysml=\"https://www.omg.org/spec/SysML/20250201\" xmi:id=\"00000000-0000-4000-8000-000000000011\" "
+        "elementId=\"00000000-0000-4000-8000-000000000011\" declaredName=\"Q\">\n"
+        "  <ownedRelationship xsi:type=\"sysml:OwningMembership\" xmi:id=\"00000000-0000-4000-8000-000000000012\" elementId=\"00000000-0000-4000-8000-000000000012\">\n"
+        "    <ownedRelatedElement xsi:type=\"sysml:Classifier\" xmi:id=\"00000000-0000-4000-8000-000000000401\" elementId=\"00000000-0000-4000-8000-000000000401\" declaredName=\"" + name + "\"/>\n"
+        "  </ownedRelationship>\n"
+        "</sysml:Package>\n";
+}
+const char* TargetHref = "target.sysmlx#00000000-0000-4000-8000-000000000401";
+
+ElementPtr typeOfF(const Workspace& workspace, size_t source) {
+    const auto f = ConformanceTest::named<K::Feature>(workspace.elements(source), "f");
+    if (!f || f->ownedTyping().empty()) return nullptr;
+    return f->ownedTyping().front()->type();
+}
+}
+
+TEST(XmiLibrary, RepeatedResolveGivesTheSameResultAsTheFirstOne) {
+    Library& lib = library();
+    Workspace workspace;
+    for (const auto& file : lib.files) workspace.addFile(file.string());
+    const size_t model = workspace.addText(DemoModel, "demo.sysml", SourceLanguage::SysML, 1);
+    workspace.resolve();
+    const auto lines = ConformanceTest::resolvedGenerals(workspace.elements());
+    const auto keys = unresolvedKeysOf(workspace);
+    const size_t resolved = workspace.resolvedReferenceCount();
+    EXPECT_EQ(keys.size(), 1u);   // (`Nowhere`)
+    EXPECT_FALSE(lines.empty());
+    for (int round = 0; round < 3; ++round) {
+        workspace.resolve();
+        EXPECT_EQ(unresolvedKeysOf(workspace), keys) << round;
+        EXPECT_EQ(workspace.resolvedReferenceCount(), resolved) << round;
+        EXPECT_EQ(ConformanceTest::resolvedGenerals(workspace.elements()), lines) << round;
+    }
+    // (a change of the textual model does not link the library again, and the result is the one of a fresh workspace)
+    workspace.replaceSource(model, DemoModel);
+    workspace.resolve();
+    Workspace fresh;
+    for (const auto& file : lib.files) fresh.addFile(file.string());
+    fresh.addText(DemoModel, "demo.sysml", SourceLanguage::SysML, 1);
+    fresh.resolve();
+    EXPECT_EQ(unresolvedKeysOf(workspace), unresolvedKeysOf(fresh));
+    EXPECT_EQ(workspace.resolvedReferenceCount(), fresh.resolvedReferenceCount());
+    ConformanceTest::expectSameLines(ConformanceTest::resolvedGenerals(workspace.elements()), ConformanceTest::resolvedGenerals(fresh.elements()), "fresh");
+}
+
+TEST(XmiLibrary, AnXmiFileThatIsAddedLaterLinksTheOpenHrefsOfTheOthers) {
+    Workspace workspace;
+    const size_t user = workspace.addText(typingXmi(TargetHref), "m.sysmlx", SourceLanguage::Xmi, 0);
+    workspace.resolve();
+    ASSERT_EQ(workspace.unresolvedReferences().size(), 1u);
+    workspace.resolve();   // (nothing changed: the same open reference)
+    EXPECT_EQ(workspace.unresolvedReferences().size(), 1u);
+    ASSERT_NE(typeOfF(workspace, user), nullptr);
+    EXPECT_TRUE(SysMLv2::Files::isUnresolved(typeOfF(workspace, user)));
+
+    const size_t target = workspace.addText(targetXmi("B"), "target.sysmlx", SourceLanguage::Xmi, 0);
+    workspace.resolve();
+    EXPECT_TRUE(workspace.unresolvedReferences().empty());
+    const auto type = typeOfF(workspace, user);
+    ASSERT_NE(type, nullptr);
+    EXPECT_FALSE(SysMLv2::Files::isUnresolved(type));
+    EXPECT_EQ(type->declaredName().value_or(""), "B");
+    const auto targetElements = workspace.elements(target);
+    EXPECT_NE(std::find(targetElements.begin(), targetElements.end(), type), targetElements.end());
+    // (and stays so)
+    workspace.resolve();
+    EXPECT_TRUE(workspace.unresolvedReferences().empty());
+    EXPECT_EQ(typeOfF(workspace, user), type);
+}
+
+// Documented limitation (unchanged by the caching of the links): a document that linked all its references keeps the targets it linked when the
+// XMI source it pointed to is replaced; it does not follow to the elements of the new version. A document that still has open references is
+// linked again after the replacement (the references that were open are then resolved against the new version).
+TEST(XmiLibrary, ReplacedXmiSourceKeepsTheTargetsOfDocumentsThatLinkedCompletely) {
+    Workspace workspace;
+    const size_t user = workspace.addText(typingXmi(TargetHref), "m.sysmlx", SourceLanguage::Xmi, 0);
+    const size_t target = workspace.addText(targetXmi("B"), "target.sysmlx", SourceLanguage::Xmi, 0);
+    workspace.resolve();
+    ASSERT_TRUE(workspace.unresolvedReferences().empty());
+    const auto before = typeOfF(workspace, user);
+    ASSERT_NE(before, nullptr);
+    EXPECT_EQ(before->declaredName().value_or(""), "B");
+
+    workspace.replaceSource(target, targetXmi("B2"));
+    workspace.resolve();
+    EXPECT_TRUE(workspace.unresolvedReferences().empty());
+    EXPECT_EQ(typeOfF(workspace, user), before);   // (the old element, named B)
+    EXPECT_EQ(typeOfF(workspace, user)->declaredName().value_or(""), "B");
+
+    // A document whose href was open when the target was replaced links against the new version.
+    Workspace other;
+    const size_t waiting = other.addText(typingXmi(TargetHref), "m.sysmlx", SourceLanguage::Xmi, 0);
+    const size_t slot = other.addText(typingXmi("elsewhere.sysmlx#00000000-0000-4000-8000-000000000999"), "target.sysmlx", SourceLanguage::Xmi, 0);
+    other.resolve();
+    EXPECT_FALSE(other.unresolvedReferences().empty());
+    other.replaceSource(slot, targetXmi("B2"));
+    other.resolve();
+    ASSERT_NE(typeOfF(other, waiting), nullptr);
+    EXPECT_EQ(typeOfF(other, waiting)->declaredName().value_or(""), "B2");
+    EXPECT_FALSE(SysMLv2::Files::isUnresolved(typeOfF(other, waiting)));
+}
+
 // The file part of an href is for display only: bytes that are no UTF-8 (a percent escape of Latin-1, a raw byte, a lone surrogate) never throw,
 // and the target is found by its id.
 TEST(XmiNegative, HrefWithInvalidUtf8InTheFilePartDoesNotThrow) {

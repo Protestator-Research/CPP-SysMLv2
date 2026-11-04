@@ -2,12 +2,14 @@
 // Created by Moritz Herzog on 09.05.25.
 //
 
+#include <kerml/root/elements/NameEscaping.h>
 #include <kerml/parser/KerMlListenerImplementation.h>
 #include <kerml/KerML.h>
 #include <string>
 #include <iostream>
 #include <algorithm>
 #include <sysmlv2/resolution/Retarget.h>
+#include <sysmlv2/parser/AnnotationText.h>
 #include "../../sysmlv2/parser/ArgumentStructure.h"
 
 namespace {
@@ -72,7 +74,7 @@ void KerMLListenerImplementation::exitComment(KerMLParser::CommentContext *conte
 
 
     if(!identification.empty())
-        comment->setDeclaredName(identification);
+        applyIdentification(context->identification(), comment);
 
     if (hasAbout) {
         // Annotated elements are added once the workspace has resolved the names.
@@ -85,8 +87,11 @@ void KerMLListenerImplementation::exitComment(KerMLParser::CommentContext *conte
     else if (!ParentStack.empty())
         comment->appendAnnotatedElement(ParentStack.top());
 
-    if (!ParentStack.empty())
+    // The owner is the surrounding namespace, independent of the (later resolved) `about` targets.
+    if (!ParentStack.empty()) {
+        comment->setOwner(ParentStack.top());
         ParentStack.top()->appendOwnedElement(comment);
+    }
 }
 
 void KerMLListenerImplementation::enterStart(KerMLParser::StartContext *)
@@ -153,7 +158,7 @@ void KerMLListenerImplementation::exitDependency(KerMLParser::DependencyContext 
     ParentStack.pop();
 
     if (ctx && ctx->identification()) {
-        dep->setDeclaredName(ctx->identification()->getText());
+        applyIdentification(ctx->identification(), dep);
     }
 
     if (ctx && ctx->KEYWORD_TO()) {
@@ -229,7 +234,7 @@ void KerMLListenerImplementation::exitDocumentation(KerMLParser::DocumentationCo
     std::string body = context->REGULAR_COMMENT()->getText();
 
     auto documentation = std::make_shared<KerML::Entities::Documentation>(ParentStack.top(), locale, body);
-    documentation->setDeclaredName(identification);
+    applyIdentification(context->identification(), documentation);
 
     ParentStack.top()->appendOwnedElement(documentation);
 }
@@ -245,13 +250,25 @@ void KerMLListenerImplementation::exitTextual_representation(KerMLParser::Textua
     std::string language;
 
     if (ctx->KEYWORD_LANGUAGE()!=nullptr && ctx->STRING_VALUE()!=nullptr)
-        language = ctx->STRING_VALUE()->getText();
+        language = SysMLv2::Files::AnnotationText::stringValue(ctx->STRING_VALUE()->getText());
 
-    const auto textualRepresentation = std::make_shared<KerML::Entities::TextualRepresentation>(language, ctx->REGULAR_COMMENT()->getText());
+    const auto textualRepresentation = std::make_shared<KerML::Entities::TextualRepresentation>(
+        language, SysMLv2::Files::AnnotationText::processCommentBody(ctx->REGULAR_COMMENT()->getText()));
     Elements.push_back(textualRepresentation);
 
-    if (!ParentStack.empty())
-        ParentStack.top()->appendOwnedElement(textualRepresentation);
+    if (ctx->identification() != nullptr)
+        applyIdentification(ctx->identification(), textualRepresentation);
+
+    // The represented element is the owner (KerML 8.3.2.3.6); it is annotated by the representation as well.
+    if (!ParentStack.empty()) {
+        const auto parent = ParentStack.top();
+        textualRepresentation->setOwner(parent);
+        textualRepresentation->appendAnnotatedElement(parent);
+        parent->appendOwnedElement(textualRepresentation);
+        auto representations = parent->textualRepresentation();
+        representations.push_back(textualRepresentation);
+        parent->setTextualRepresentation(std::move(representations));
+    }
 }
 
 void KerMLListenerImplementation::enterRoot_namespace(KerMLParser::Root_namespaceContext*) { }
@@ -344,11 +361,11 @@ void KerMLListenerImplementation::exitAlias_member(KerMLParser::Alias_memberCont
     std::string aliasName;
     std::string shortName;
     if (ctx->SYMBOL_SMALLER() != nullptr) {
-        if (!names.empty()) shortName = names[0]->getText();
-        if (names.size() > 1) aliasName = names[1]->getText();
+        if (!names.empty()) shortName = KerML::Names::unescapeName(names[0]->getText());
+        if (names.size() > 1) aliasName = KerML::Names::unescapeName(names[1]->getText());
     }
     else if (!names.empty()) {
-        aliasName = names[0]->getText();
+        aliasName = KerML::Names::unescapeName(names[0]->getText());
     }
     if (aliasName.empty() && shortName.empty()) return;
 
@@ -742,7 +759,7 @@ void KerMLListenerImplementation::exitSpecialization(KerMLParser::Specialization
         });
 
 	if (ctx->KEYWORD_SPECIALIZATION() != nullptr)
-        specialization->setDeclaredName(ctx->identification()->getText());
+        applyIdentification(ctx->identification(), specialization);
 
     if (!ParentStack.empty()) {
         ParentStack.top()->appendOwnedElement(specialization);
@@ -779,7 +796,7 @@ void KerMLListenerImplementation::exitConjunction(KerMLParser::ConjunctionContex
             if (auto target = std::dynamic_pointer_cast<KerML::Entities::Type>(element)) conjugation->setConjungatedType(target);
         });
     if (ctx->identification()) {
-        conjugation->setDeclaredName(ctx->identification()->getText());
+        applyIdentification(ctx->identification(), conjugation);
     }
     if (!ParentStack.empty()) {
         conjugation->setOwningType(std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top()));
@@ -809,7 +826,7 @@ void KerMLListenerImplementation::exitDisjoining(KerMLParser::DisjoiningContext 
             if (auto target = std::dynamic_pointer_cast<KerML::Entities::Type>(element)) disjoining->setDisjoiningType(target);
         });
     if (ctx->identification()) {
-        disjoining->setDeclaredName(ctx->identification()->getText());
+        applyIdentification(ctx->identification(), disjoining);
     }
     if (!ParentStack.empty()) {
         disjoining->setOwningType(std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top()));
@@ -993,7 +1010,7 @@ void KerMLListenerImplementation::exitSubclassification(KerMLParser::Subclassifi
         });
 
     if (ctx->identification() != nullptr) {
-        subclassification->setDeclaredName(ctx->identification()->getText());
+        applyIdentification(ctx->identification(), subclassification);
     }
 
     if (!ParentStack.empty()) {
@@ -1191,10 +1208,13 @@ void KerMLListenerImplementation::exitFeature_identification(KerMLParser::Featur
     }
 
     if (ctx->SYMBOL_SMALLER() != nullptr && ctx->SYMBOL_GREATER() != nullptr && ctx->NAME().size() >= 2) {
-        feature->setDeclaredShortName(ctx->NAME().front()->getText());
-        feature->setDeclaredName(ctx->NAME().back()->getText());
+        feature->setDeclaredShortName(KerML::Names::unescapeName(ctx->NAME().front()->getText()));
+        feature->setDeclaredName(KerML::Names::unescapeName(ctx->NAME().back()->getText()));
+    } else if (ctx->SYMBOL_SMALLER() != nullptr && ctx->SYMBOL_GREATER() != nullptr && ctx->NAME().size() == 1) {
+        // (`<s>` alone is a short name)
+        feature->setDeclaredShortName(KerML::Names::unescapeName(ctx->NAME().front()->getText()));
     } else if (!ctx->NAME().empty()) {
-        feature->setDeclaredName(ctx->NAME().front()->getText());
+        feature->setDeclaredName(KerML::Names::unescapeName(ctx->NAME().front()->getText()));
     }
 }
 
@@ -1481,11 +1501,9 @@ void KerMLListenerImplementation::exitOwned_reference_subsetting(KerMLParser::Ow
         });
 }
 
-void KerMLListenerImplementation::enterRedefinition(KerMLParser::RedefinitionContext *ctx) {
+void KerMLListenerImplementation::enterRedefinition(KerMLParser::RedefinitionContext *) {
     const auto feature = std::make_shared<KerML::Entities::Feature>();
-    if (ctx && ctx->qualified_name()) {
-        feature->setDeclaredName(ctx->qualified_name()->getText());
-    }
+    // (`:>> p` has no declared name: it is known by the name of the feature it redefines, Feature::effectiveName())
     ParentStack.push(feature);
 }
 
@@ -1557,7 +1575,7 @@ void KerMLListenerImplementation::exitFeature_chain(KerMLParser::Feature_chainCo
     if (!ctx || dynamic_cast<KerMLParser::Chaining_partContext*>(ctx->parent) || ParentStack.empty()) return;
     const auto chain = std::dynamic_pointer_cast<KerML::Entities::Feature>(ParentStack.top());
     if (!chain) return;
-    chain->setDeclaredName(ctx->getText());
+    // (a feature chain is an anonymous feature: its name is not the text of the chain)
     ParentStack.pop();
     Elements.push_back(chain);
     if (!ParentStack.empty()) {
@@ -1908,7 +1926,7 @@ void KerMLListenerImplementation::exitConnector_end(KerMLParser::Connector_endCo
     ParentStack.pop();
 
     if (ctx && ctx->NAME()) {
-        endFeature->setDeclaredName(ctx->NAME()->getText());
+        endFeature->setDeclaredName(KerML::Names::unescapeName(ctx->NAME()->getText()));
     }
     Elements.push_back(endFeature);
     if (!ParentStack.empty()) {
@@ -2372,9 +2390,15 @@ KerMLListenerImplementation::exitFeature_reference_expression(KerMLParser::Featu
 
     if (ctx) {
         std::string refName = ctx->getText();
+        const size_t recorded = Recorder.data.references.size();
         auto feat = featureReference(refName, ParentStack.empty() ? nullptr : ParentStack.top(), false, ctx,
             [expr](const std::shared_ptr<KerML::Entities::Feature>& target) { expr->setReferent(target); });
         expr->setReferent(feat);
+        // A reference in the bounds of a multiplicity may be a unit that was written after the type instead of after the value.
+        if (Recorder.data.references.size() == recorded + 1 &&
+            dynamic_cast<KerMLParser::Internal_multiplicity_expression_memberContext *>(ctx->parent) != nullptr) {
+            Recorder.data.references.back().inMultiplicity = true;
+        }
     }
     attachExpression(expr);
 }
@@ -3086,6 +3110,7 @@ void KerMLListenerImplementation::exitPrefix_metadata_feature(KerMLParser::Prefi
     Elements.push_back(metaFeature);
     if (!ParentStack.empty()) {
         metaFeature->appendAnnotatedElement(ParentStack.top());
+        metaFeature->setOwner(ParentStack.top());
         ParentStack.top()->appendOwnedElement(metaFeature);
     }
 }
@@ -3105,6 +3130,7 @@ void KerMLListenerImplementation::exitMetadata_feature(KerMLParser::Metadata_fea
     if (!ParentStack.empty()) {
         // Without `about` the metadata annotates the namespace that owns it (the targets of `about` are resolved in exitAnnotation).
         if (ctx && ctx->KEYWORD_ABOUT() == nullptr) metaFeature->appendAnnotatedElement(ParentStack.top());
+        metaFeature->setOwner(ParentStack.top());
         ParentStack.top()->appendOwnedElement(metaFeature);
         if (auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(ParentStack.top())) {
             type->appendOwnedFeature(metaFeature);
@@ -3505,12 +3531,12 @@ void KerMLListenerImplementation::applyIdentification(KerMLParser::Identificatio
     auto names = idCtx->NAME();
     if (names.empty()) return;
     if (idCtx->SYMBOL_SMALLER() != nullptr && names.size() >= 2) {
-        elem->setDeclaredShortName(names[0]->getText());
-        elem->setDeclaredName(names[1]->getText());
+        elem->setDeclaredShortName(KerML::Names::unescapeName(names[0]->getText()));
+        elem->setDeclaredName(KerML::Names::unescapeName(names[1]->getText()));
     } else if (idCtx->SYMBOL_SMALLER() != nullptr && names.size() == 1) {
-        elem->setDeclaredShortName(names[0]->getText());
+        elem->setDeclaredShortName(KerML::Names::unescapeName(names[0]->getText()));
     } else {
-        elem->setDeclaredName(names[0]->getText());
+        elem->setDeclaredName(KerML::Names::unescapeName(names[0]->getText()));
     }
 }
 
@@ -3647,7 +3673,9 @@ void KerMLListenerImplementation::finishMembership(KerMLParser::Member_prefixCon
                                   visibility->KEYWORD_PROTECTED() ? KerML::Entities::PROTECTED : KerML::Entities::PUBLIC);
         if (membership->visibility() != KerML::Entities::PUBLIC) Recorder.data.visibility[member.get()] = membership->visibility();
         // The visibility keyword of an import is written in the prefix of the member that contains it.
-        if (std::dynamic_pointer_cast<KerML::Entities::Import>(member) != nullptr) {
+        if (const auto importElement = std::dynamic_pointer_cast<KerML::Entities::Import>(member)) {
+            // (the import element has the visibility as well: `public import A::*;` of a KerML text exports A)
+            importElement->setVisibility(membership->visibility());
             for (auto it = Recorder.data.imports.rbegin(); it != Recorder.data.imports.rend(); ++it) {
                 if ((*it)->element == member) {
                     (*it)->visibility = membership->visibility();
