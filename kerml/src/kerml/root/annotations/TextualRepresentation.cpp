@@ -6,6 +6,7 @@
 #include <nlohmann/json.hpp>
 #include "../../model/JsonSupport.h"
 #include <kerml/KerML.h>
+#include <cctype>
 
 namespace KerML::Entities {
     TextualRepresentation::TextualRepresentation() : AnnotatingElement() {
@@ -36,6 +37,13 @@ namespace KerML::Entities {
 
     void TextualRepresentation::setLanguage(std::string language) {
         Language = language;
+    }
+
+    bool TextualRepresentation::isLanguage(std::string_view name) {
+        if (name.size() != Language.size()) return false;
+        for (size_t i = 0; i < name.size(); ++i)
+            if (std::tolower(static_cast<unsigned char>(name[i])) != std::tolower(static_cast<unsigned char>(Language[i]))) return false;
+        return true;
     }
 
     void TextualRepresentation::setBody(std::string body) {

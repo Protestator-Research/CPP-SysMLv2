@@ -52,7 +52,9 @@ set(SYSML_PARSER_HEADER
         include/sysmlv2/parser/SysMLv2Parser.h
         include/sysmlv2/parser/SysMLv2Error.h
         include/sysmlv2/parser/SysMLv2ErrorListener.h
-        include/sysmlv2/parser/KeywordMisuseDiagnoser.h)
+        include/sysmlv2/parser/KeywordMisuseDiagnoser.h
+        include/sysmlv2/parser/LexerErrorHint.h
+        include/sysmlv2/parser/AnnotationText.h)
 
 add_library(sysmlv2parser
         ${KERML_PARSER_HEADER}
@@ -67,6 +69,7 @@ add_library(sysmlv2parser
         src/kerml/parser/KerMLParser.cpp
         src/sysmlv2/parser/SysMLv2BaseListener.cpp
         src/sysmlv2/parser/ArgumentStructure.h
+        src/sysmlv2/parser/RealLiteral.h
         src/sysmlv2/parser/SysMLv2ListenerImplementation.cpp
         src/sysmlv2/parser/SysMLv2Lexer.cpp
         src/sysmlv2/parser/SysMLv2Listener.cpp
@@ -76,6 +79,8 @@ add_library(sysmlv2parser
         src/sysmlv2/parser/SysMLv2ErrorListener.cpp
         src/sysmlv2/parser/SysMLv2Error.cpp
         src/sysmlv2/parser/KeywordMisuseDiagnoser.cpp
+        src/sysmlv2/parser/LexerErrorHint.cpp
+        src/sysmlv2/parser/AnnotationText.cpp
         src/sysmlv2/Parser.cpp
         src/sysmlv2/ParserError.cpp
         src/sysmlv2/Workspace.cpp

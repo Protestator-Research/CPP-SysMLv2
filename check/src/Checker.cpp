@@ -307,10 +307,11 @@ namespace SysMLv2::Check {
             const auto visit = [&visited](auto self, const std::shared_ptr<Element>& element, const std::string& parent) -> void {
                 if (!element || !visited.insert(element.get()).second) return;
                 std::string name;
-                if (element->declaredName().has_value() && !element->declaredName()->empty())
-                    name = unquote(element->declaredName().value());
+                // (declared names are stored without quotes; a feature without one, `:>> p`, is known by what it redefines)
+                if (const auto effective = element->effectiveName(); effective.has_value() && !effective->empty())
+                    name = effective.value();
                 else if (element->declaredShortName().has_value() && !element->declaredShortName()->empty())
-                    name = unquote(element->declaredShortName().value());
+                    name = element->declaredShortName().value();
                 std::string qualifiedName = parent;
                 if (!name.empty() && std::dynamic_pointer_cast<KerML::Entities::Relationship>(element) == nullptr) {
                     qualifiedName = parent.empty() ? name : parent + "::" + name;
@@ -339,8 +340,8 @@ namespace SysMLv2::Check {
 
 #ifdef SYSMLV2CHECK_STRUCTURE_CHECK
         std::string declaredNameOf(const Element& element) {
-            if (element.declaredName().has_value()) return unquote(element.declaredName().value());
-            if (element.declaredShortName().has_value()) return unquote(element.declaredShortName().value());
+            if (element.declaredName().has_value()) return element.declaredName().value();
+            if (element.declaredShortName().has_value()) return element.declaredShortName().value();
             return "";
         }
 #endif
@@ -698,8 +699,8 @@ namespace SysMLv2::Check {
             const std::string wanted = normalizeQualified(name);
             for (const auto& element : elements) {
                 if (!accepts(element)) continue;
-                if ((element->declaredName().has_value() && unquote(element->declaredName().value()) == wanted) ||
-                    (element->declaredShortName().has_value() && unquote(element->declaredShortName().value()) == wanted) ||
+                if ((element->declaredName().has_value() && element->declaredName().value() == wanted) ||
+                    (element->declaredShortName().has_value() && element->declaredShortName().value() == wanted) ||
                     (element->qualifiedName().has_value() && element->qualifiedName().value() == wanted))
                     return true;
             }

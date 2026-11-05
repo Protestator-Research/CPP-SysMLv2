@@ -5,6 +5,7 @@
 #include "Resolver.h"
 #include "ImplicitGenerals.h"
 
+#include <kerml/root/elements/NameEscaping.h>
 #include <kerml/root/elements/Relationship.h>
 #include <kerml/root/namespaces/Namespace.h>
 #include <kerml/kernel/functions/ReturnParameterMembership.h>
@@ -12,6 +13,8 @@
 #include <algorithm>
 #include <cstdint>
 #include <functional>
+#include <map>
+#include <set>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -26,29 +29,9 @@ namespace SysMLv2::Files::Detail {
     using KerML::Entities::VisibilityKind;
 
     namespace {
-        /// Removes the quotes of an unrestricted name ('a b' -> a b) and resolves its escape sequences.
-        std::string normalizeName(const std::string& raw) {
-            if (raw.size() >= 2 && raw.front() == '\'' && raw.back() == '\'') {
-                std::string out;
-                out.reserve(raw.size());
-                for (size_t i = 1; i + 1 < raw.size(); ++i) {
-                    if (raw[i] == '\\' && i + 2 < raw.size()) {
-                        ++i;
-                        switch (raw[i]) {
-                            case 'n': out.push_back('\n'); break;
-                            case 't': out.push_back('\t'); break;
-                            case 'b': out.push_back('\b'); break;
-                            case 'f': out.push_back('\f'); break;
-                            default: out.push_back(raw[i]); break;
-                        }
-                    } else {
-                        out.push_back(raw[i]);
-                    }
-                }
-                return out;
-            }
-            return raw;
-        }
+        /// The name that the text of a name in a reference stands for (quotes and escapes removed). Declared names are stored without quotes
+        /// (the parsers apply KerML::Names::unescapeName() once) and are not passed through this.
+        std::string normalizeName(const std::string& raw) { return KerML::Names::unescapeName(raw); }
 
         /// Splits "A::'b c'::d.e" at "::" and "." outside of quotes. A leading "$::" sets @p global.
         std::vector<std::string> splitName(const std::string& text, bool& global) {
@@ -144,6 +127,9 @@ namespace SysMLv2::Files::Detail {
             std::shared_ptr<Element> element;
             const Scope* parent = nullptr;
             size_t depth = 0;
+            /// The source this scope was indexed for (a scope never links to a scope of another source: parent and children are
+            /// those of the same source).
+            size_t source = 0;
             std::unordered_map<std::string, std::vector<Entry>> members;
             std::vector<const ImportRecord*> imports;
             std::vector<Child> children;
@@ -158,10 +144,37 @@ namespace SysMLv2::Files::Detail {
             bool hideEnds = false;
             /// Elements of sources of a higher level are invisible (see SourceInput::level).
             int maxLevel = std::numeric_limits<int>::max();
+            /// The owned members of this scope are not candidates (the redefinition of a feature does not find its owner's own members).
+            const Scope* skipOwnedOf = nullptr;
         };
         using Visited = std::vector<std::pair<const Scope*, unsigned>>;
 
-        std::vector<std::unique_ptr<Scope>> pool;
+        /// What the indexing of one source put into the tables below. removeSources() takes it out again. The pointers are only
+        /// used as keys (never dereferenced): the elements, aliases and imports of a replaced source may be freed already.
+        struct SourceRecord {
+            SourceRecord() = default;
+            SourceRecord(SourceRecord&&) noexcept = default;
+            SourceRecord& operator=(SourceRecord&&) noexcept = default;
+            SourceRecord(const SourceRecord&) = delete;
+            SourceRecord& operator=(const SourceRecord&) = delete;
+            std::vector<std::unique_ptr<Scope>> scopes;
+            /// Every element visited by the indexing (scopes and transparent relationships, the root).
+            std::vector<const Element*> elements;
+            std::vector<const Element*> visibilityKeys;
+            std::vector<const ImportRecord*> imports;
+            /// The placeholders whose redirect was set by a reference of this source.
+            std::vector<const Element*> redirectKeys;
+            /// The elements that got a general type (generals) from a reference of this source: they can belong to another source.
+            std::vector<const Element*> generalKeys;
+            /// The elements whose provisional or effective name was registered because of a reference of this source.
+            std::vector<const Element*> registeredKeys;
+            /// What the root of the source contributed to `global` when it was indexed (the order of `global` is the order of the sources).
+            std::unordered_map<std::string, std::vector<Entry>> globalContribution;
+        };
+        std::vector<SourceRecord> records;
+        size_t currentSource = 0;
+        /// removeSources() met something that only a new index can repair (see there): canReplace() is false from then on.
+        bool tainted = false;
         /// Level of every source (by index), of every indexed element, and the level that is currently indexed.
         std::vector<int> sourceLevels;
         std::unordered_map<const Element*, int> elementLevel;
@@ -181,6 +194,25 @@ namespace SysMLv2::Files::Detail {
         std::unordered_map<const Element*, VisibilityKind> visibility;
         std::unordered_map<const ImportRecord*, std::string> importedName;
         std::unordered_map<const Element*, std::vector<std::shared_ptr<Element>>> generals;
+        /// The position of the reference that made a general type known, parallel to the lists of generals: the lists are kept in the
+        /// order of the declarations, however late (in which run, after which source was added) a reference is resolved.
+        std::unordered_map<const Element*, std::vector<std::uint64_t>> generalOrdinals;
+        /// The place of a reference in the order of the declarations: the source, then the position within the source
+        /// (PendingReference::order). It does not depend on which other sources exist or how many references are resolved.
+        static std::uint64_t ordinalOf(const PendingReference& reference) {
+            return (static_cast<std::uint64_t>(reference.source) << 32) | (static_cast<std::uint64_t>(reference.order) & 0xFFFFFFFFull);
+        }
+        static size_t sourceOfOrdinal(std::uint64_t ordinal) { return static_cast<size_t>(ordinal >> 32); }
+
+        /// Remembers that the reference makes the placeholder stand for @p target.
+        void setRedirect(const PendingReference& reference, const std::shared_ptr<Element>& target) {
+            auto [it, inserted] = redirect.emplace(reference.placeholder.get(), target);
+            if (inserted) {
+                if (reference.source < records.size()) records[reference.source].redirectKeys.push_back(reference.placeholder.get());
+            } else {
+                it->second = target;
+            }
+        }
         // A reference may name the *specific* element of another reference through its placeholder (`subclassifier A specializes B`:
         // A is itself a reference). Once A is resolved, its placeholder stands for the resolved element.
         std::unordered_map<const Element*, std::shared_ptr<Element>> redirect;
@@ -202,6 +234,8 @@ namespace SysMLv2::Files::Detail {
         // therefore deferred until they are resolved (`strictOrder`), unless nothing else can make progress.
         mutable std::unordered_map<const Element*, int> pendingGenerals;
         mutable bool incomplete = false;
+        /// Set by resolveReference(): the result of a redefinition came from the enclosing namespaces while generals of its owner are pending.
+        mutable bool redefinitionOwnerPending = false;
         mutable const Element* ignoreIncomplete = nullptr;
         void noteInheritance(const Element* element) const {
             if (element == nullptr || element == ignoreIncomplete || pendingGenerals.empty()) return;
@@ -237,8 +271,9 @@ namespace SysMLv2::Files::Detail {
         }
 
         Scope* newScope(const std::shared_ptr<Element>& element, const Scope* parent) {
-            pool.push_back(std::make_unique<Scope>());
-            Scope* scope = pool.back().get();
+            records[currentSource].scopes.push_back(std::make_unique<Scope>());
+            Scope* scope = records[currentSource].scopes.back().get();
+            scope->source = currentSource;
             scope->element = element;
             scope->parent = parent;
             scope->depth = parent ? parent->depth + 1 : 0;
@@ -252,12 +287,13 @@ namespace SysMLv2::Files::Detail {
 
         void addNames(Scope* scope, const std::shared_ptr<Element>& element, const AliasRecord* alias, VisibilityKind vis,
                       const std::string& name, const std::string& shortName) {
-            if (!name.empty()) scope->members[normalizeName(name)].push_back({element, vis, alias, currentLevel});
-            if (!shortName.empty() && shortName != name) scope->members[normalizeName(shortName)].push_back({element, vis, alias, currentLevel});
+            if (!name.empty()) scope->members[name].push_back({element, vis, alias, currentLevel});
+            if (!shortName.empty() && shortName != name) scope->members[shortName].push_back({element, vis, alias, currentLevel});
         }
 
         void visit(const std::shared_ptr<Element>& element, Scope* memberScope) {
             if (!element || !visitedElements.insert(element.get()).second) return;
+            records[currentSource].elements.push_back(element.get());
             elementLevel[element.get()] = currentLevel;
             if (dynamic_cast<const Relationship*>(element.get()) != nullptr && dynamic_cast<const Namespace*>(element.get()) == nullptr) {
                 relationshipScope[element.get()] = memberScope;
@@ -280,19 +316,32 @@ namespace SysMLv2::Files::Detail {
             for (const auto& child : element->ownedElements()) visit(child, scope);
         }
 
-        void indexSource(const SourceInput& source) {
+        /// Indexes @p source as the source number @p index: a new one (index == number of the indexed sources), or one that
+        /// removeSources() took out before (it keeps its level).
+        void indexSource(const SourceInput& source, size_t index) {
+            const bool fresh = index == sourceRoots.size();
+            if (fresh) {
+                records.emplace_back();
+                sourceRoots.push_back(nullptr);
+                sourceLevels.push_back(source.level);
+                lowestLevel = sourceLevels.size() == 1 ? source.level : std::min(lowestLevel, source.level);
+            } else {
+                sourceLevels[index] = source.level;
+            }
+            currentSource = index;
             Scope* root = newScope(nullptr, nullptr);
-            sourceRoots.push_back(root);
+            sourceRoots[index] = root;
             currentLevel = source.level;
-            sourceLevels.push_back(source.level);
-            lowestLevel = sourceLevels.size() == 1 ? source.level : std::min(lowestLevel, source.level);
             if (!source.elements || !source.data) return;
-            for (const auto& [element, vis] : source.data->visibility) visibility[element] = vis;
+            for (const auto& [element, vis] : source.data->visibility) {
+                visibility[element] = vis;
+                records[index].visibilityKeys.push_back(element);
+            }
 
             if (source.data->root) {
                 root->element = source.data->root;
                 scopeOf[source.data->root.get()] = root;
-                visitedElements.insert(source.data->root.get());
+                if (visitedElements.insert(source.data->root.get()).second) records[index].elements.push_back(source.data->root.get());
                 elementLevel[source.data->root.get()] = currentLevel;
                 for (const auto& child : source.data->root->ownedElements()) visit(child, root);
             }
@@ -328,18 +377,36 @@ namespace SysMLv2::Files::Detail {
                     if (const Scope* owner = scopeFor(import->owner.get())) scope = const_cast<Scope*>(owner);
                 }
                 scope->imports.push_back(import.get());
+                records[index].imports.push_back(import.get());
                 bool globalPrefix = false;
                 auto segments = splitName(import->target, globalPrefix);
                 importedName[import.get()] = segments.empty() ? std::string() : segments.back();
             }
         }
 
-        void buildGlobal() {
-            for (const Scope* root : sourceRoots) {
+        /// Adds the members of the roots of the sources from @p first on to the implicit global namespace.
+        void buildGlobal(size_t first) {
+            for (size_t index = first; index < sourceRoots.size(); ++index) {
+                const Scope* root = sourceRoots[index];
+                if (root == nullptr) continue;
+                records[index].globalContribution = root->members;
                 for (const auto& [name, entries] : root->members) {
                     auto& target = global[name];
                     target.insert(target.end(), entries.begin(), entries.end());
                 }
+            }
+        }
+
+        /// Builds the entries of `global` for @p names again from what the sources contributed, in the order of the sources.
+        void rebuildGlobal(const std::set<std::string>& names) {
+            for (const auto& name : names) {
+                std::vector<Entry> entries;
+                for (const auto& record : records) {
+                    auto found = record.globalContribution.find(name);
+                    if (found != record.globalContribution.end()) entries.insert(entries.end(), found->second.begin(), found->second.end());
+                }
+                if (entries.empty()) global.erase(name);
+                else global[name] = std::move(entries);
             }
         }
 
@@ -442,7 +509,7 @@ namespace SysMLv2::Files::Detail {
                                           Visited& visited) const {
             if (!scope || !markVisited(visited, scope, access)) return nullptr;
 
-            auto own = scope->members.find(name);
+            auto own = scope == q.skipOwnedOf ? scope->members.end() : scope->members.find(name);
             if (own != scope->members.end()) {
                 for (const auto& entry : own->second) {
                     if (!visibleUnder(entry.visibility, access)) continue;
@@ -470,8 +537,8 @@ namespace SysMLv2::Files::Detail {
                     // `import N::**` is equivalent to `import N; import N::*;` plus the same for every visible owned namespace.
                     const Element* target = import->resolvedTarget.get();
                     if (!import->isMembershipImport) {
-                        const std::string targetName = normalizeName(target->declaredName().value_or(""));
-                        const std::string targetShort = normalizeName(target->declaredShortName().value_or(""));
+                        const std::string targetName = target->declaredName().value_or("");
+                        const std::string targetShort = target->declaredShortName().value_or("");
                         if ((targetName == name || targetShort == name) && accepts(q, target)) return import->resolvedTarget;
                     }
                     if (auto found = lookupRecursive(imported, name, importAccess, q, visited)) return found;
@@ -620,7 +687,7 @@ namespace SysMLv2::Files::Detail {
                 if (auto* endFeature = dynamic_cast<const Feature*>(start->element.get());
                     endFeature != nullptr && const_cast<Feature*>(endFeature)->isEnd() && start->parent && start->parent->element &&
                     endFeature->declaredName().has_value()) {
-                    const std::string endName = normalizeName(*endFeature->declaredName());
+                    const std::string endName = *endFeature->declaredName();
                     std::vector<std::shared_ptr<Element>> ownerGenerals;
                     auto ownerGens = generals.find(start->parent->element.get());
                     if (ownerGens != generals.end()) ownerGenerals = ownerGens->second;
@@ -638,15 +705,27 @@ namespace SysMLv2::Files::Detail {
                     }
                 }
             }
+            if (pending.role == ReferenceRole::Redefinition && segments.size() == 1 && start && start->element) {
+                // The redefined feature is looked up through the general types of the owning type (above), never among its owned members
+                // (KerML 8.3.3.3.4: a redefinition is not inherited from, nor does it redefine, a feature of its own featuring type). What
+                // remains is the enclosing namespaces (a feature of the enclosing package that the owner redefines, as in the geometry library).
+                // While generals of the owner are pending, what is found here may be shadowed by an inherited feature: it is not accepted
+                // permanently (see run()).
+                const Element* owner = canonical(start->element);
+                auto pendingIt = pendingGenerals.find(owner);
+                if (pendingIt != pendingGenerals.end() && pendingIt->second > 0) redefinitionOwnerPending = true;
+                finalQuery.skipOwnedOf = start;
+            }
             return resolveSegments(segments, globalOnly, start, finalQuery);
         }
 
-        size_t run(const std::vector<PendingReference*>& pending, std::optional<std::chrono::steady_clock::time_point> deadline) {
+        size_t run(const std::vector<PendingReference*>& pending, const std::function<bool()>& shouldStop) {
+            detached = 0;   // (run() may be called again after sources were added)
             std::vector<PendingReference*> todo;
             for (const PendingReference* reference : pending) {
                 if (reference && reference->resolved && reference->placeholder && reference->resolvedTarget &&
                     reference->placeholder != reference->resolvedTarget && !isChain(reference->name)) {
-                    redirect[reference->placeholder.get()] = reference->resolvedTarget;
+                    setRedirect(*reference, reference->resolvedTarget);
                 }
             }
             for (PendingReference* reference : pending) {
@@ -690,6 +769,7 @@ namespace SysMLv2::Files::Detail {
             todo.clear();
             for (const auto& item : keyed) todo.push_back(item.second);
 
+            registerResolvedEffectiveNames(pending);
             registerProvisionalNames(pending);
             pendingGenerals.clear();
             for (const PendingReference* reference : todo) {
@@ -708,13 +788,14 @@ namespace SysMLv2::Files::Detail {
                 bool lenientAccepted = false;
                 size_t visited = 0;
                 for (PendingReference* reference : todo) {
-                    if (deadline && (++visited & 0xF) == 0 && std::chrono::steady_clock::now() > *deadline) throw ResolveDeadlineReached();
+                    if (shouldStop && (++visited & 0xF) == 0 && shouldStop()) throw ResolveDeadlineReached();
                     if (lenientAccepted) {
                         next.push_back(reference);
                         continue;
                     }
                     std::shared_ptr<Element> target;
                     incomplete = false;
+                    redefinitionOwnerPending = false;
                     ignoreIncomplete = canonical(reference->specific);
                     try {
                         target = resolveReference(*reference);
@@ -722,7 +803,8 @@ namespace SysMLv2::Files::Detail {
                         target = nullptr;
                     }
                     ignoreIncomplete = nullptr;
-                    if (target && incomplete && strictOrder) {
+                    if (target && incomplete && (strictOrder || redefinitionOwnerPending)) {
+                        // (a redefinition whose owner still lacks generals stays open for the next resolve(): the redefined feature may be inherited)
                         target = nullptr;
                     }
                     if (!target) {
@@ -738,14 +820,15 @@ namespace SysMLv2::Files::Detail {
                     reference->resolvedTarget = target;
                     // (`a.b` names a feature chain, a new feature: its placeholder does not stand for the last feature of the chain)
                     if (reference->placeholder && reference->placeholder != target && !isChain(reference->name)) {
-                        redirect[reference->placeholder.get()] = target;
+                        setRedirect(*reference, target);
                         auto moved = generals.find(reference->placeholder.get());
                         if (moved != generals.end()) {
                             const auto movedGenerals = moved->second;
+                            const auto movedOrdinals = generalOrdinals[reference->placeholder.get()];   // (copy: the entry is erased below)
                             generals.erase(moved);
-                            auto& list = generals[target.get()];
-                            for (const auto& general : movedGenerals) {
-                                if (std::find(list.begin(), list.end(), general) == list.end()) list.push_back(general);
+                            generalOrdinals.erase(reference->placeholder.get());
+                            for (size_t index = 0; index < movedGenerals.size(); ++index) {
+                                addGeneral(target.get(), movedGenerals[index], movedOrdinals[index]);
                             }
                         }
                     }
@@ -757,7 +840,7 @@ namespace SysMLv2::Files::Detail {
                             // A patch that cannot be applied leaves the model as recorded; the reference still counts as resolved.
                         }
                     }
-                    if (reference->role == ReferenceRole::Redefinition) registerEffectiveName(reference->specific, target);
+                    if (reference->role == ReferenceRole::Redefinition) registerEffectiveName(reference->specific, target, reference->source);
                     progress = true;
                     ++total;
                 }
@@ -777,11 +860,33 @@ namespace SysMLv2::Files::Detail {
 
         std::unordered_map<const Element*, std::string> provisionalNames;
 
+        /// The effective names of the redefinitions that are resolved already (XMI specializations, or the references of an earlier run of a
+        /// resolver that was built anew since): resolving registers the name of a redefining feature without a name of its own, so it has
+        /// to be done for these as well. A redefined feature can itself be only known by an effective name: repeat until nothing changes.
+        void registerResolvedEffectiveNames(const std::vector<PendingReference*>& pending) {
+            std::vector<const PendingReference*> redefinitions;
+            for (const PendingReference* reference : pending) {
+                if (reference && reference->resolved && reference->role == ReferenceRole::Redefinition && reference->specific &&
+                    reference->resolvedTarget) {
+                    redefinitions.push_back(reference);
+                }
+            }
+            for (bool changed = !redefinitions.empty(); changed;) {
+                changed = false;
+                for (const PendingReference* reference : redefinitions) {
+                    const Element* key = canonical(reference->specific);
+                    if (key == nullptr || effectivelyNamed.count(key) != 0) continue;
+                    registerEffectiveName(reference->specific, reference->resolvedTarget, reference->source);
+                    if (effectivelyNamed.count(key) != 0) changed = true;
+                }
+            }
+        }
+
         /// The name a feature that is declared without a name gets from its first redefinition is known before the redefinition is
         /// resolved: it is the last segment of the text (`feature redefines elements` is `elements`), which is what a lookup of the
         /// name inside the owner needs. The name is corrected when the redefined feature turns out to have another name.
         void registerProvisionalNames(const std::vector<PendingReference*>& pending) {
-            provisionalNames.clear();
+            // (the names of an earlier run() stay: their entries are already among the members of the owners)
             for (const PendingReference* reference : pending) {
                 if (!reference || reference->resolved || reference->role != ReferenceRole::Redefinition || !reference->specific) continue;
                 if (isChain(reference->name)) continue;
@@ -796,9 +901,10 @@ namespace SysMLv2::Files::Detail {
                 bool globalOnly = false;
                 const auto segments = splitName(reference->name, globalOnly);
                 if (segments.empty()) continue;
-                const std::string name = normalizeName(segments.back());
+                const std::string name = segments.back();   // (splitName() removed the quotes)
                 if (name.empty()) continue;
                 provisionalNames[key] = name;
+                noteRegistered(reference->source, key);
                 owner->members[name].push_back({scopeIt->second->element, visibilityOf(element), nullptr});
             }
         }
@@ -808,7 +914,11 @@ namespace SysMLv2::Files::Detail {
 
         /// A feature that is declared without a name and redefines another feature is known by the name of the redefined feature
         /// (KerML 8.3.3.3.4 effectiveName): `feature redefines elements { ... }` can be referred to as `elements`.
-        void registerEffectiveName(const std::shared_ptr<Element>& specific, const std::shared_ptr<Element>& redefined) {
+        void noteRegistered(size_t source, const Element* key) {
+            if (source < records.size()) records[source].registeredKeys.push_back(key);
+        }
+
+        void registerEffectiveName(const std::shared_ptr<Element>& specific, const std::shared_ptr<Element>& redefined, size_t source) {
             if (!specific || !redefined || specific == redefined) return;
             const Element* key = canonical(specific);
             if (key == nullptr || effectivelyNamed.count(key) != 0) return;
@@ -817,8 +927,8 @@ namespace SysMLv2::Files::Detail {
             auto provisional = provisionalNames.find(key);
             if (provisional != provisionalNames.end()) {
                 // The name that was registered from the text of the redefinition stands if it is the name of the redefined feature.
-                std::string actual = normalizeName(redefined->declaredName().value_or(""));
-                std::string actualShort = normalizeName(redefined->declaredShortName().value_or(""));
+                std::string actual = redefined->declaredName().value_or("");
+                std::string actualShort = redefined->declaredShortName().value_or("");
                 if (actual.empty() && actualShort.empty()) {
                     // (the redefined feature is itself only known by the name it redefines)
                     auto known = effectiveNames.find(redefined.get());
@@ -832,6 +942,7 @@ namespace SysMLv2::Files::Detail {
                 if (same) {
                     effectivelyNamed.insert(key);
                     effectiveNames[key] = {actual.empty() && actualShort.empty() ? provisional->second : actual, actualShort};
+                    noteRegistered(source, key);
                     return;
                 }
                 if (Scope* owner = const_cast<Scope*>(scopeIt->second->parent)) {
@@ -849,8 +960,8 @@ namespace SysMLv2::Files::Detail {
             if (element == nullptr || element->declaredName().has_value() || element->declaredShortName().has_value()) return;
             const Scope* owner = scopeIt->second->parent;
             if (owner == nullptr) return;
-            std::string name = normalizeName(redefined->declaredName().value_or(""));
-            std::string shortName = normalizeName(redefined->declaredShortName().value_or(""));
+            std::string name = redefined->declaredName().value_or("");
+            std::string shortName = redefined->declaredShortName().value_or("");
             if (name.empty() && shortName.empty()) {
                 // The redefined feature is itself only known by the name it redefines.
                 auto known = effectiveNames.find(redefined.get());
@@ -862,6 +973,7 @@ namespace SysMLv2::Files::Detail {
             if (name.empty() && shortName.empty()) return;
             effectiveNames[key] = {name, shortName};
             effectivelyNamed.insert(key);
+            noteRegistered(source, key);
             Scope* mutableOwner = const_cast<Scope*>(owner);
             if (!name.empty()) mutableOwner->members[name].push_back({scopeIt->second->element, visibilityOf(element), nullptr});
             if (!shortName.empty() && shortName != name) {
@@ -869,24 +981,181 @@ namespace SysMLv2::Files::Detail {
             }
         }
 
+        /// Adds a general type of @p key at the place its ordinal gives (after the ones with an ordinal that is not greater).
+        void addGeneral(const Element* key, const std::shared_ptr<Element>& general, std::uint64_t ordinal) {
+            auto& list = generals[key];
+            if (std::find(list.begin(), list.end(), general) != list.end()) return;
+            auto& ordinals = generalOrdinals[key];
+            const size_t position = static_cast<size_t>(std::upper_bound(ordinals.begin(), ordinals.end(), ordinal) - ordinals.begin());
+            if (sourceOfOrdinal(ordinal) < records.size()) records[sourceOfOrdinal(ordinal)].generalKeys.push_back(key);
+            list.insert(list.begin() + static_cast<std::ptrdiff_t>(position), general);
+            ordinals.insert(ordinals.begin() + static_cast<std::ptrdiff_t>(position), ordinal);
+        }
+
         void seedGenerals(const PendingReference& reference) {
             if ((reference.role == ReferenceRole::Generalization || reference.role == ReferenceRole::Redefinition) &&
                 reference.specific && reference.resolvedTarget) {
-                auto& list = generals[canonical(reference.specific)];
-                if (std::find(list.begin(), list.end(), reference.resolvedTarget) == list.end()) list.push_back(reference.resolvedTarget);
+                addGeneral(canonical(reference.specific), reference.resolvedTarget, ordinalOf(reference));
             }
         }
     };
 
     Resolver::Resolver(std::vector<SourceInput> sources) : impl_(std::make_unique<Impl>()) {
-        for (const auto& source : sources) impl_->indexSource(source);
-        impl_->buildGlobal();
+        for (const auto& source : sources) impl_->indexSource(source, impl_->sourceRoots.size());
+        impl_->buildGlobal(0);
+    }
+
+    bool Resolver::canAdd(int level) const {
+        return level >= impl_->lowestLevel;
+    }
+
+    void Resolver::addSources(std::vector<SourceInput> sources) {
+        const size_t first = impl_->sourceRoots.size();
+        for (const auto& source : sources) impl_->indexSource(source, impl_->sourceRoots.size());
+        impl_->buildGlobal(first);
+        // What was cached from the library elements so far (also the "not loaded" entries) may change with the new sources.
+        impl_->libraryElements.clear();
+        impl_->implicitOf.clear();
+    }
+
+    size_t Resolver::sourceCount() const {
+        return impl_->sourceRoots.size();
+    }
+
+    bool Resolver::canReplace(const std::map<size_t, int>& replaced) const {
+        if (replaced.empty()) return true;
+        if (impl_->tainted) return false;
+        int lowestReplaced = std::numeric_limits<int>::max();
+        for (const auto& [index, level] : replaced) {
+            // (a source the resolver does not know, or one that changes its level: a new Resolver is needed)
+            if (index >= impl_->sourceLevels.size() || impl_->sourceLevels[index] != level) return false;
+            lowestReplaced = std::min(lowestReplaced, level);
+        }
+        // Every other source is below all replaced ones: a reference only resolves to sources of the same or a lower level, so no
+        // remaining reference, import or alias can have been bound to an element that is removed now.
+        for (size_t index = 0; index < impl_->sourceLevels.size(); ++index) {
+            if (replaced.count(index) == 0 && impl_->sourceLevels[index] >= lowestReplaced) return false;
+        }
+        // (A name that a reference of a replaced source registered for an element of another source would stay behind in that source. That
+        // case is covered by `tainted`, which removeSources() sets before it clears the record of the source; Workspace removes a source
+        // when it is replaced, so the record is gone when this is asked.)
+        return true;
+    }
+
+    /*
+     * removeSources: what each member of Impl can hold that belongs to a removed source, and what is done about it.
+     * (S = the removed sources; a "key" is an Element* that is only used as a key and is never dereferenced.)
+     *   records[s]               the scopes of s are freed with it (after every table below lost its pointers to them).
+     *   sourceRoots, sourceLevels  stay by index: the slot is filled again by indexSource() with the same level.
+     *   scopeOf, relationshipScope, elementLevel, visitedElements   keys = elements of s (records[s].elements): erased.
+     *   visibility               keys = records[s].visibilityKeys: erased.
+     *   importedName             keys = imports of s: erased.
+     *   global                   entries of s (its elements and aliases) leave with records[s].globalContribution; the names it touched
+     *                            are rebuilt from the contributions of all sources, in the order of the sources.
+     *   generals, generalOrdinals  keys that are elements (or placeholders) of s are erased. The list of another key can hold a general
+     *                            that a reference of s made known (the placeholder of s stands for an element elsewhere): those entries
+     *                            carry an ordinal of s and are removed (records[s].generalKeys). No remaining key can hold an element
+     *                            of s as a general otherwise (level rule, see canReplace()).
+     *   redirect                 keys = placeholders of s (records[s].redirectKeys) and elements of s: erased. The targets of remaining
+     *                            keys are never in s (level rule).
+     *   provisionalNames, effectiveNames, effectivelyNamed   keys that are elements of s, and the keys that references of s registered
+     *                            (records[s].registeredKeys): erased. Their entries in `members` sit in the scope of the owner of the
+     *                            key, which is of the source of the key (a scope never has a parent of another source). If that source is
+     *                            not s, the resolver is marked as tainted and canReplace() refuses from then on.
+     *   The removal itself is valid for every source; whether the index that remains is right (nothing that remains was bound to what
+     *   is gone) is decided by canReplace(), which has to be asked before the index is used again.
+     *   ordinalOf (a function now) has no state. pendingGenerals, incomplete, ignoreIncomplete, detached: reset at the start of every
+     *                            run(). currentLevel, currentSource: set by indexSource(). lowestLevel: unchanged (levels stay).
+     *   libraryElements, implicitOf   caches over all sources: cleared.
+     *   Scope::declaresEnds      a cache over the children of the scope, which are of the same source: other sources are not affected.
+     *   Imports and aliases of the remaining scopes cannot have resolved into scopes of s (level rule), and Scope::parent / children
+     *   never leave the source, so no remaining Scope points to a freed one.
+     */
+    void Resolver::removeSources(const std::set<size_t>& removed) {
+        Impl& d = *impl_;
+        // A name that a reference of a removed source registered for an element of a source that stays (the placeholder of the reference
+        // stands for an element there) would stay behind in that source: only a new index repairs that.
+        for (const size_t index : removed) {
+            for (const Element* key : d.records[index].registeredKeys) {
+                auto scope = d.scopeOf.find(key);
+                if (scope != d.scopeOf.end() && removed.count(scope->second->source) == 0) d.tainted = true;
+            }
+        }
+        std::set<std::string> touchedNames;
+        const auto forget = [&d](const Element* key) {
+            d.scopeOf.erase(key);
+            d.relationshipScope.erase(key);
+            d.elementLevel.erase(key);
+            d.visitedElements.erase(key);
+            d.generals.erase(key);
+            d.generalOrdinals.erase(key);
+            d.redirect.erase(key);
+            d.provisionalNames.erase(key);
+            d.effectiveNames.erase(key);
+            d.effectivelyNamed.erase(key);
+        };
+        for (const size_t index : removed) {
+            auto& record = d.records[index];
+            for (const Element* key : record.elements) forget(key);
+            for (const Element* key : record.redirectKeys) forget(key);
+            for (const Element* key : record.registeredKeys) {
+                d.provisionalNames.erase(key);
+                d.effectiveNames.erase(key);
+                d.effectivelyNamed.erase(key);
+            }
+            for (const Element* key : record.visibilityKeys) d.visibility.erase(key);
+            for (const ImportRecord* import : record.imports) d.importedName.erase(import);
+            for (const auto& entry : record.globalContribution) touchedNames.insert(entry.first);
+        }
+        // Entries that a reference of a removed source added to the lists of general types of elements of other sources.
+        for (const size_t index : removed) {
+            std::set<const Element*> done;
+            for (const Element* key : d.records[index].generalKeys) {
+                if (!done.insert(key).second) continue;
+                auto list = d.generals.find(key);
+                auto ordinals = d.generalOrdinals.find(key);
+                if (list == d.generals.end() || ordinals == d.generalOrdinals.end()) continue;
+                for (size_t position = list->second.size(); position-- > 0;) {
+                    if (removed.count(Impl::sourceOfOrdinal(ordinals->second[position])) == 0) continue;
+                    list->second.erase(list->second.begin() + static_cast<std::ptrdiff_t>(position));
+                    ordinals->second.erase(ordinals->second.begin() + static_cast<std::ptrdiff_t>(position));
+                }
+                if (list->second.empty()) {
+                    d.generals.erase(list);
+                    d.generalOrdinals.erase(ordinals);
+                }
+            }
+        }
+        for (const size_t index : removed) {
+            d.records[index] = Impl::SourceRecord();   // frees the scopes
+            d.sourceRoots[index] = nullptr;
+        }
+        d.rebuildGlobal(touchedNames);
+        d.libraryElements.clear();
+        d.implicitOf.clear();
+    }
+
+    void Resolver::replaceSources(const std::map<size_t, SourceInput>& sources) {
+        std::set<size_t> removed;
+        for (const auto& entry : sources) removed.insert(entry.first);
+        removeSources(removed);
+        for (const auto& entry : sources) impl_->indexSource(entry.second, entry.first);
+        // The entries of `global` are rebuilt in the order of the sources (as buildGlobal() would have appended them to a new resolver).
+        std::set<std::string> names;
+        for (const auto& entry : sources) {
+            auto& record = impl_->records[entry.first];
+            record.globalContribution = impl_->sourceRoots[entry.first]->members;
+            for (const auto& member : record.globalContribution) names.insert(member.first);
+        }
+        impl_->rebuildGlobal(names);
+        impl_->libraryElements.clear();
+        impl_->implicitOf.clear();
     }
 
     Resolver::~Resolver() = default;
 
-    size_t Resolver::run(const std::vector<PendingReference*>& pending, std::optional<std::chrono::steady_clock::time_point> deadline) {
-        return impl_->run(pending, deadline);
+    size_t Resolver::run(const std::vector<PendingReference*>& pending, const std::function<bool()>& shouldStop) {
+        return impl_->run(pending, shouldStop);
     }
 
     std::shared_ptr<Element> Resolver::find(const std::string& name, const std::shared_ptr<Element>& scope, ReferenceKind kind,

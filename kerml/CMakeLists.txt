@@ -7,6 +7,7 @@ set(GLOBAL_HEADER
 
 set(ROOT_ELEMENTS_HEADER
         include/kerml/root/elements/Element.h
+        include/kerml/root/elements/NameEscaping.h
         include/kerml/root/elements/Relationship.h)
 
 set(ROOT_DEPENDENCIES_HEADER
