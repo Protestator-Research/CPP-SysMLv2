@@ -954,6 +954,13 @@ namespace SysMLv2::Files {
             }
         }
 
+        /// The problems the listener found while building the model are errors of the source (the model is still built).
+        static void reportDiagnostics(Source& source) {
+            for (const auto& diagnostic : source.data.diagnostics) {
+                source.errors.push_back(makeError(ErrorType::LOGICAL_ERROR, diagnostic.message, diagnostic.line, diagnostic.column, source.name));
+            }
+        }
+
         void parseKerML(std::shared_ptr<Source> source, const std::string& text) {
             antlr4::ANTLRInputStream input(text);
             auto errorListener = std::make_unique<KerMLErrorListener>();
@@ -979,6 +986,7 @@ namespace SysMLv2::Files {
                 antlr4::tree::ParseTreeWalker::DEFAULT.walk(listener.get(), tree);
                 source->elements = listener->getElements();
                 source->data = listener->takeResolutionData();
+                reportDiagnostics(*source);
             } catch (const std::exception& ex) {
                 source->errors.push_back(makeError(ErrorType::INTERNAL_ERROR, std::string("internal: ") + ex.what(), -1, -1, source->name));
             } catch (...) {
@@ -1009,6 +1017,7 @@ namespace SysMLv2::Files {
                 antlr4::tree::ParseTreeWalker::DEFAULT.walk(&listener, tree);
                 source->elements = listener.getElements();
                 source->data = listener.takeResolutionData();
+                reportDiagnostics(*source);
             } catch (const std::exception& ex) {
                 source->errors.push_back(makeError(ErrorType::INTERNAL_ERROR, std::string("internal: ") + ex.what(), -1, -1, source->name));
             } catch (...) {

@@ -7,6 +7,7 @@
 #include <iostream>
 #include <algorithm>
 #include "ArgumentStructure.h"
+#include "RealLiteral.h"
 
 namespace {
 	using SysMLv2::Files::ReferenceKind;
@@ -1798,7 +1799,15 @@ void SysMLv2ListenerImplementation::exitLiteral_expression(SysMLv2Parser::Litera
 	}
 	else if (ctx->literal_real()) {
 		auto r = std::make_shared<KerML::Entities::LiteralRational>();
-		r->setValue(std::stod(ctx->literal_real()->getText()));
+		double parsed = 0.0;
+		if (SysMLv2::Files::parseDouble(ctx->literal_real()->getText(), parsed)) {
+			r->setValue(parsed);
+		} else {
+			auto* start = ctx->literal_real()->getStart();
+			Recorder.data.diagnostics.push_back({"the real literal '" + ctx->literal_real()->getText() + "' is not a valid number or does not fit a double; it is read as 0",
+			                                     static_cast<int>(start->getLine()), static_cast<int>(start->getCharPositionInLine())});
+			r->setValue(0.0);
+		}
 		literal = r;
 	}
 	else if (ctx->literal_infinity()) {

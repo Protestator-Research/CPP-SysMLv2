@@ -189,6 +189,13 @@ namespace SysMLv2::Files {
         int column = -1;
     };
 
+    /// A problem a listener found while building the model (not a syntax error); the Workspace reports it as a logical error.
+    struct ListenerDiagnostic {
+        std::string message;
+        int line = -1;
+        int column = -1;
+    };
+
     /**
      * Everything a listener records for name resolution while it walks one parse tree.
      */
@@ -202,6 +209,8 @@ namespace SysMLv2::Files {
         /// Declared visibility of the members that were declared with an explicit or default visibility.
         /// Elements not listed here are public.
         std::unordered_map<const KerML::Entities::Element*, KerML::Entities::VisibilityKind> visibility;
+        /// Problems of the listener itself, e.g. a real literal that does not fit a double.
+        std::vector<ListenerDiagnostic> diagnostics;
     };
 
     /**

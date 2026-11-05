@@ -69,6 +69,7 @@ add_library(sysmlv2parser
         src/kerml/parser/KerMLParser.cpp
         src/sysmlv2/parser/SysMLv2BaseListener.cpp
         src/sysmlv2/parser/ArgumentStructure.h
+        src/sysmlv2/parser/RealLiteral.h
         src/sysmlv2/parser/SysMLv2ListenerImplementation.cpp
         src/sysmlv2/parser/SysMLv2Lexer.cpp
         src/sysmlv2/parser/SysMLv2Listener.cpp

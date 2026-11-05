@@ -205,6 +205,7 @@ set_tests_properties(conformance-abstract-syntax PROPERTIES LABELS abstract-synt
 add_executable(conformance-xmi
         src/xmi/TestXmiImport.cpp
         src/xmi/TestXmiExport.cpp
+        src/xmi/TestRealLocale.cpp
         src/support/TestHelpers.h
         src/support/XmiReader.h
         src/support/ModelDiff.h)
