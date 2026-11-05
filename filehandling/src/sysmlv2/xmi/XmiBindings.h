@@ -31,6 +31,7 @@
 #include <kerml/core/types/Type.h>
 #include <kerml/root/elements/Element.h>
 #include <sysmlv2/resolution/ResolutionData.h>
+#include "../parser/RealLiteral.h"
 //---------------------------------------------------------
 
 namespace SysMLv2::Files::Xmi {
@@ -132,26 +133,28 @@ namespace SysMLv2::Files::Xmi {
     }
 
     inline bool parseReal(const std::string& text, double& value) {
-        if (text.empty()) return false;
+        // xsd:double allows surrounding XML whitespace
+        const auto isSpace = [](char c) { return c == ' ' || c == '\t' || c == '\r' || c == '\n'; };
+        size_t first = 0;
+        size_t last = text.size();
+        while (first < last && isSpace(text[first])) ++first;
+        while (last > first && isSpace(text[last - 1])) --last;
+        const std::string trimmed = text.substr(first, last - first);
+        if (trimmed.empty()) return false;
         // (the xsd:double literals of the special values)
-        if (text == "INF" || text == "+INF") {
+        if (trimmed == "INF" || trimmed == "+INF") {
             value = std::numeric_limits<double>::infinity();
             return true;
         }
-        if (text == "-INF") {
+        if (trimmed == "-INF") {
             value = -std::numeric_limits<double>::infinity();
             return true;
         }
-        if (text == "NaN") {
+        if (trimmed == "NaN") {
             value = std::numeric_limits<double>::quiet_NaN();
             return true;
         }
-        errno = 0;
-        char* end = nullptr;
-        const double parsed = std::strtod(text.c_str(), &end);
-        if (errno != 0 || end == nullptr || *end != '\0') return false;
-        value = parsed;
-        return true;
+        return SysMLv2::Files::parseDouble(trimmed, value);
     }
 
     // ---------------------------------------------------------------------------------------------------------------

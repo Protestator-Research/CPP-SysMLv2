@@ -9,8 +9,10 @@
 //---------------------------------------------------------
 // External Classes
 //---------------------------------------------------------
+#include <atomic>
 #include <chrono>
 #include <cstddef>
+#include <functional>
 #include <memory>
 #include <optional>
 #include <stdexcept>
@@ -45,16 +47,36 @@ namespace SysMLv2::Files {
         Xmi
     };
 
-    /// Thrown by addText(), addFile(), replaceSource() (the workspace is unchanged) and resolve() (what was resolved stays resolved) when the
-    /// deadline (setParseDeadline()) has passed.
+    /// Thrown by addText(), addFile(), addTexts(), replaceSource() (the workspace is unchanged) and resolve() (what was resolved stays
+    /// resolved) when the deadline (setParseDeadline()) has passed.
     class SYSMLV2FILE_EXPORT ParseTimeout : public std::runtime_error {
     public:
         ParseTimeout() : std::runtime_error("the parse deadline has passed") {}
+
+    protected:
+        explicit ParseTimeout(const char* message) : std::runtime_error(message) {}
+    };
+
+    /// Thrown in the same places as ParseTimeout, with the same guarantees, when the work was cancelled (setCancellation()). Derived from
+    /// ParseTimeout, so that code that handles a timeout handles a cancellation too.
+    class SYSMLV2FILE_EXPORT ParseCancelled : public ParseTimeout {
+    public:
+        ParseCancelled() : ParseTimeout("the operation was cancelled") {}
+    };
+
+    /// One text for Workspace::addTexts(): the arguments of Workspace::addText().
+    struct SYSMLV2FILE_EXPORT TextInput {
+        std::string text;
+        /// Recorded on the errors and unresolved references of the source (usually a file path); decides the language for Auto.
+        std::string name;
+        SourceLanguage language = SourceLanguage::Auto;
+        int level = 0;
     };
 
     /**
      * A reference that could not be resolved. The model keeps a placeholder element (see isUnresolved()) in place of the
-     * target; the placeholder is not part of any element list.
+     * target; the placeholder is not part of any element list. inMultiplicity tells that the name is written in the bounds
+     * of a multiplicity (`[kg]`): a unit that was written after the type instead of after the value.
      */
     struct SYSMLV2FILE_EXPORT UnresolvedReferenceInfo {
         /// The name as written in the source.
@@ -66,6 +88,8 @@ namespace SysMLv2::Files {
         int line = -1;
         int column = -1;
         size_t source = 0;
+        /// The reference is written in the bounds of a multiplicity (`[kg]`).
+        bool inMultiplicity = false;
         /// The element the reference is written in and the placeholder that stands in for the target.
         std::shared_ptr<KerML::Entities::Element> context;
         std::shared_ptr<KerML::Entities::Element> placeholder;
@@ -111,6 +135,30 @@ namespace SysMLv2::Files {
         size_t addText(std::string text, std::string sourceName, SourceLanguage language = SourceLanguage::Auto, int level = 0);
 
         /**
+         * Parses several texts at once, on several threads, and adds them in the order of @p inputs. The result is the same as that of
+         * calling addText() for every input in turn: the same indices (the first input gets the index that the next addText() would
+         * get, and so on), the same order, the same errors and references, the same state of the XMI index. Only the building of the
+         * sources runs in parallel (the generated parsers share their prediction caches between threads, which they lock, so the
+         * speed-up on text is smaller than on XMI); the sources are added to the workspace afterwards, on the calling thread.
+         *
+         * All or nothing: if any input throws (ParseTimeout, ParseCancelled, ...), the other threads stop after the input they are
+         * working on, the sources built so far are discarded, the workspace is unchanged, and the first exception is rethrown. A text
+         * with syntax errors is no exception: it becomes a source with errors, as with addText().
+         *
+         * The deadline (setParseDeadline()) and the cancellation (setCancellation()) apply to every thread; do not change them, or call
+         * any other member of the workspace, from another thread while addTexts() runs.
+         * @param threads the number of threads; 0 means std::thread::hardware_concurrency() (at least 1). At most one thread per input
+         *        is used. 1 parses one input after the other (on one thread with a large stack, like addText()).
+         * @param progress called after each input is finished with the number of finished inputs and the number of inputs. It is
+         *        called from the worker threads (not from the calling thread, unless the threads cannot be created), but never by two
+         *        threads at the same time; the numbers rise by one each call. It must not call the workspace. If it throws, addTexts()
+         *        fails like an input that throws.
+         * @return the indices of the new sources, in the order of @p inputs.
+         */
+        std::vector<size_t> addTexts(std::vector<TextInput> inputs, unsigned threads = 0,
+                                     std::function<void(size_t done, size_t total)> progress = {});
+
+        /**
          * Sets the level of a source (the default is 0). A reference only resolves to elements of sources of the same or a lower
          * level: names written in a library (level 0) never find the elements of a model (level 1, 2, ...) that happens to define a
          * package with the same name, whereas the model sees the library. The level also applies to the implicit general types
@@ -135,6 +183,12 @@ namespace SysMLv2::Files {
          * refer to a user model). A reference of another source that was resolved to an element of the old source keeps
          * that (now detached) element, and an unresolved reference of another source may be resolved to an element of the
          * new source by the next resolve(). Replace such sources together, or build a new Workspace.
+         *
+         * Cost: if every other source has a lower level (setSourceLevel()) than all the sources that were replaced since the last
+         * resolve() (a document above its libraries), the next resolve() only takes the old versions out of the name index and indexes
+         * the new ones, so its cost depends on the size of the replaced sources and not on the size of the libraries. Otherwise (a
+         * replaced source of the same or a lower level than another one, XMI sources) the index is built again over all sources, which
+         * gives the same result, only slower.
          * The elements of the old source are taken apart (KerML::Entities::disposeLinks: owners, owned elements, relationships,
          * types, ... are cleared), because the model refers to itself through std::shared_ptr in cycles and would never be freed
          * otherwise. A pointer to an old element that the caller still holds stays valid as an object, but the element is detached
@@ -163,9 +217,31 @@ namespace SysMLv2::Files {
         /// Removes the parse deadline.
         void clearParseDeadline();
 
+        /**
+         * Sets a flag that cancels the work: as soon as it is true, the calls that the deadline applies to (addText(), addFile(),
+         * addTexts(), replaceSource(), resolve()) are aborted with ParseCancelled, at the same places and with the same guarantees as with
+         * a passed deadline (parsing and reading XMI check it while they work, resolve() between references). The flag is only read;
+         * set it from any thread. An empty pointer removes the cancellation. The workspace keeps a share of the flag.
+         *
+         * A cancellation that arrives while a text or an XMI file is being parsed abandons the half-built model: it is dropped, but the
+         * reference cycles inside it are not broken (as with a passed deadline), so its memory may not be freed. That is meant for
+         * cancelling at the end of a program, not for a cancellation that is used over and over.
+         */
+        void setCancellation(std::shared_ptr<const std::atomic<bool>> cancelled);
+
         /// Resolves all pending references of all sources: the names of the textual sources, the ids and hrefs of the XMI sources.
-        /// May be called again after more sources were added.
+        /// May be called again after more sources were added: the index of the earlier sources is kept and only the new sources are indexed,
+        /// unless a new source has a lower level than all the earlier ones (setSourceLevel()), then everything is indexed again.
+        /// The same goes for replaceSource() (see there).
+        ///
+        /// The index (the names of the elements) is built from the elements as they are when it is indexed. It is kept between the calls
+        /// and does not see changes that are made to the model by other means, for example adding, renaming or removing elements through
+        /// the KerML API of the elements. Call invalidateIndex() after such a change so that the next resolve() or find() indexes again.
         void resolve();
+
+        /// Throws the name index away: the next resolve() or find() indexes all sources again (references that are resolved already stay
+        /// resolved). Needed after the model of a source was changed through the KerML API, see resolve().
+        void invalidateIndex();
 
         /// Number of loaded sources.
         size_t sourceCount() const;
@@ -189,6 +265,8 @@ namespace SysMLv2::Files {
         std::vector<std::shared_ptr<KerML::Entities::Element>> elements() const;
         /// The top-level packages (Package / LibraryPackage) of all sources: the members of the implicit global namespace.
         std::vector<std::shared_ptr<KerML::Entities::Element>> rootPackages() const;
+        /// The top-level packages of one source.
+        std::vector<std::shared_ptr<KerML::Entities::Element>> rootPackages(size_t source) const;
         /// Syntax errors of one source (references that could not be resolved are not errors).
         const std::vector<std::shared_ptr<ParserError>>& errors(size_t source) const;
         /// Syntax errors of all sources.
@@ -199,11 +277,21 @@ namespace SysMLv2::Files {
         /// References that are recorded but for which no scoped resolution is attempted (currently: the parameter names of
         /// named invocation arguments). They keep their placeholder.
         const std::vector<UnresolvedReferenceInfo>& notAttemptedReferences() const;
-        /// The unresolved references of one source as ParserErrors of type WARNING (with position).
+        /// The unresolved references of one source as ParserErrors of type WARNING (with position). The message names the missing
+        /// import when a package of the workspace defines the (first segment of the) name but is not visible at the reference
+        /// ("... SI::minute (short name 'min') is not visible here: add 'private import SI::*;'"), and points at the missing standard library when
+        /// nothing is found and the standard library is not part of the workspace (recognised by its top-level package Base).
+        /// It also reports units that stand in the bounds of a multiplicity, `attribute m : MassValue [kg] = 3;` instead of `= 3 [kg]`: an unresolved
+        /// name that looks like a unit (or is a measurement unit of a package that is not imported) gets the remark that '[...]' after a type is a
+        /// multiplicity, and a reference that resolved to a measurement unit (a feature typed by a specialization of
+        /// MeasurementReferences::ScalarMeasurementReference, needs the library in the workspace) is reported as a warning of its own.
         std::vector<std::shared_ptr<ParserError>> unresolvedAsWarnings(size_t source) const;
         /// The names (as written) of all references recorded in one source, resolved or not, without the ones that are not attempted.
         /// Available right after parsing; meant to find out which library packages a text needs before it is resolved.
         std::vector<std::string> referenceNames(size_t source) const;
+        /// The files that an XMI source refers to by hrefs (normalized paths, see XmiDocument::referencedFiles()), available right after
+        /// addText(): they tell which other XMI files the source needs. Empty for the other sources.
+        std::vector<std::string> referencedFiles(size_t source) const;
         /// Number of references recorded in all sources (resolved, unresolved and not attempted).
         size_t referenceCount() const;
         /// Number of references resolved so far.

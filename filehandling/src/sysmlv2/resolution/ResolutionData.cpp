@@ -3,15 +3,29 @@
 //
 #include <sysmlv2/resolution/ResolutionData.h>
 
+#include <kerml/root/elements/NameEscaping.h>
+
 #include "antlr4-runtime.h"
 
 namespace SysMLv2::Files {
 
     namespace {
-        // The placeholder of `A::b` is named `b`; a feature chain `a.b` keeps its text as the name.
+        // The placeholder of `A::b` is named `b` (the name without its quotes: `A::'x y'` is `x y`); a feature chain `a.b` keeps its text as the name.
         std::string lastSegment(const std::string& name) {
-            const auto colon = name.rfind("::");
-            return colon == std::string::npos ? name : name.substr(colon + 2);
+            size_t start = 0;
+            bool quoted = false;
+            for (size_t i = 0; i < name.size(); ++i) {
+                if (quoted) {
+                    if (name[i] == '\\' && i + 1 < name.size()) ++i;
+                    else if (name[i] == '\'') quoted = false;
+                } else if (name[i] == '\'') {
+                    quoted = true;
+                } else if (name[i] == ':' && i + 1 < name.size() && name[i + 1] == ':') {
+                    start = i + 2;
+                    ++i;
+                }
+            }
+            return KerML::Names::unescapeName(name.substr(start));
         }
     }
 

@@ -1,10 +1,13 @@
+#include <kerml/root/elements/NameEscaping.h>
 #include <sysmlv2/parser/SysMLv2ListenerImplementation.h>
 #include <sysml/SysML.h>
 #include <kerml/KerML.h>
 #include <sysmlv2/resolution/Retarget.h>
+#include <sysmlv2/parser/AnnotationText.h>
 #include <iostream>
 #include <algorithm>
 #include "ArgumentStructure.h"
+#include "RealLiteral.h"
 
 namespace {
 	using SysMLv2::Files::ReferenceKind;
@@ -126,6 +129,7 @@ void SysMLv2ListenerImplementation::enterStart(SysMLv2Parser::StartContext*) {
 	OwnershipKinds.clear();
 	MemberMarks.clear();
 	SkippedContexts.clear();
+	RootAnnotators.clear();
 }
 
 void SysMLv2ListenerImplementation::enterEveryRule(antlr4::ParserRuleContext* ctx) {
@@ -170,8 +174,23 @@ void SysMLv2ListenerImplementation::exitStart(SysMLv2Parser::StartContext*) {
 	input.elements = &Elements;
 	input.kinds = std::move(OwnershipKinds);
 	input.visibility = &Recorder.data.visibility;
-	SysMLv2::Files::buildOwnership(input);
+	const auto root = SysMLv2::Files::buildOwnership(input);
 	OwnershipKinds.clear();
+	// Top level annotating elements without `about` annotate the root namespace.
+	if (root) {
+		for (const auto& annotator : RootAnnotators) {
+			annotator->appendAnnotatedElement(root);
+			// A top level textual representation represents the root namespace (as in the KerML listener and the XMI reader).
+			if (const auto representation = std::dynamic_pointer_cast<KerML::Entities::TextualRepresentation>(annotator)) {
+				auto representations = root->textualRepresentation();
+				if (std::find(representations.begin(), representations.end(), representation) == representations.end()) {
+					representations.push_back(representation);
+					root->setTextualRepresentation(std::move(representations));
+				}
+			}
+		}
+	}
+	RootAnnotators.clear();
 }
 
 void SysMLv2ListenerImplementation::enterDependency(SysMLv2Parser::DependencyContext*) {
@@ -242,8 +261,7 @@ void SysMLv2ListenerImplementation::exitComment(SysMLv2Parser::CommentContext* c
 	const auto& comment = std::make_shared<KerML::Entities::Comment>(locale, body);
 	Elements.push_back(comment);
 
-	if (!identification.empty())
-		comment->setDeclaredName(identification);
+	applyIdentification(ctx->identification(), comment);
 
 	if (hasAbout) {
 		// `about` targets are resolved from the namespace that owns the comment; resolved targets are annotated by the comment.
@@ -256,9 +274,14 @@ void SysMLv2ListenerImplementation::exitComment(SysMLv2Parser::CommentContext* c
 	}
 	else if (!ParentStack.empty())
 		comment->appendAnnotatedElement(ParentStack.top());
+	else
+		RootAnnotators.push_back(comment);
 
-	if (!ParentStack.empty())
+	// The owner is the surrounding namespace, independent of the (later resolved) `about` targets.
+	if (!ParentStack.empty()) {
+		comment->setOwner(ParentStack.top());
 		ParentStack.top()->appendOwnedElement(comment);
+	}
 }
 
 void SysMLv2ListenerImplementation::exitDocumentation(SysMLv2Parser::DocumentationContext* ctx) {
@@ -273,7 +296,7 @@ void SysMLv2ListenerImplementation::exitDocumentation(SysMLv2Parser::Documentati
 	std::string body = ctx->REGULAR_COMMENT() ? ctx->REGULAR_COMMENT()->getText() : "";
 	auto parent = ParentStack.empty() ? nullptr : ParentStack.top();
 	auto documentation = std::make_shared<KerML::Entities::Documentation>(parent, locale, body);
-	documentation->setDeclaredName(identification);
+	applyIdentification(ctx->identification(), documentation);
 	Elements.push_back(documentation);
 	if (!ParentStack.empty()) {
 		ParentStack.top()->appendOwnedElement(documentation);
@@ -283,13 +306,26 @@ void SysMLv2ListenerImplementation::exitDocumentation(SysMLv2Parser::Documentati
 void SysMLv2ListenerImplementation::exitTextual_representation(SysMLv2Parser::Textual_representationContext* ctx) {
 	std::string language;
 	if (ctx->KEYWORD_LANGUAGE() != nullptr && ctx->STRING_VALUE() != nullptr)
-		language = ctx->STRING_VALUE()->getText();
+		language = SysMLv2::Files::AnnotationText::stringValue(ctx->STRING_VALUE()->getText());
 
-	std::string body = ctx->REGULAR_COMMENT() ? ctx->REGULAR_COMMENT()->getText() : "";
+	std::string body = ctx->REGULAR_COMMENT() ? SysMLv2::Files::AnnotationText::processCommentBody(ctx->REGULAR_COMMENT()->getText()) : "";
 	const auto textualRepresentation = std::make_shared<KerML::Entities::TextualRepresentation>(language, body);
 	Elements.push_back(textualRepresentation);
-	if (!ParentStack.empty())
-		ParentStack.top()->appendOwnedElement(textualRepresentation);
+	if (ctx->identification() != nullptr)
+		applyIdentification(ctx->identification(), textualRepresentation);
+
+	// The represented element is the owner (KerML 8.3.2.3.6); it is annotated by the representation as well.
+	if (!ParentStack.empty()) {
+		const auto parent = ParentStack.top();
+		textualRepresentation->setOwner(parent);
+		textualRepresentation->appendAnnotatedElement(parent);
+		parent->appendOwnedElement(textualRepresentation);
+		auto representations = parent->textualRepresentation();
+		representations.push_back(textualRepresentation);
+		parent->setTextualRepresentation(std::move(representations));
+	}
+	else
+		RootAnnotators.push_back(textualRepresentation);
 }
 
 void SysMLv2ListenerImplementation::enterPackage(SysMLv2Parser::PackageContext* ctx) {
@@ -332,11 +368,11 @@ void SysMLv2ListenerImplementation::exitAlias_member(SysMLv2Parser::Alias_member
 	std::string aliasName;
 	std::string shortName;
 	if (ctx->SYMBOL_SMALLER() != nullptr) {
-		if (!names.empty()) shortName = names[0]->getText();
-		if (names.size() > 1) aliasName = names[1]->getText();
+		if (!names.empty()) shortName = KerML::Names::unescapeName(names[0]->getText());
+		if (names.size() > 1) aliasName = KerML::Names::unescapeName(names[1]->getText());
 	}
 	else if (!names.empty()) {
-		aliasName = names[0]->getText();
+		aliasName = KerML::Names::unescapeName(names[0]->getText());
 	}
 	if (aliasName.empty() && shortName.empty()) return;
 
@@ -1058,7 +1094,7 @@ void SysMLv2ListenerImplementation::enterMetadata_usage(SysMLv2Parser::Metadata_
 	handleUsageEnter<SysMLv2::Entities::MetadataUsage>(ParentStack, &PushedByContext, ctx);
 }
 
-// MetadataUsageDeclaration = ( Identification DefinedBy )? OwnedFeatureTyping: the name is only taken from an explicit declaration.
+// MetadataUsageDeclaration = ( Identification TypedByOperator )? OwnedFeatureTyping: the name is only taken from an explicit declaration.
 void SysMLv2ListenerImplementation::exitMetadata_usage_declaration(SysMLv2Parser::Metadata_usage_declarationContext* ctx) {
 	if (ParentStack.empty() || !ctx || !shouldApplyToTop(ctx)) return;
 	const auto metadata = std::dynamic_pointer_cast<SysMLv2::Entities::MetadataUsage>(ParentStack.top());
@@ -1085,6 +1121,9 @@ void SysMLv2ListenerImplementation::exitMetadata_usage(SysMLv2Parser::Metadata_u
 	}
 	else if (owner) {
 		metadata->appendAnnotatedElement(owner);
+	}
+	else {
+		RootAnnotators.push_back(metadata);
 	}
 
 	if (owner) {
@@ -1237,13 +1276,7 @@ void SysMLv2ListenerImplementation::exitRedefinition_usage(SysMLv2Parser::Redefi
 
 	if (ctx) {
 		if (!ctx->qualified_name().empty()) {
-			std::string fullName = ctx->qualified_name(0)->getText();
-			std::string shortName = fullName;
-			size_t lastColon = shortName.rfind("::");
-			if (lastColon != std::string::npos) {
-				shortName = shortName.substr(lastColon + 2);
-			}
-			feature->setDeclaredName(shortName);
+			// (`:>> p` has no declared name: it is known by the name of the feature it redefines, Feature::effectiveName())
 		}
 		for (auto qNameCtx : ctx->qualified_name()) {
 			addRedefinition(feature, qNameCtx->getText(), qNameCtx);
@@ -1610,8 +1643,14 @@ void SysMLv2ListenerImplementation::exitFeature_reference_expression(SysMLv2Pars
 	if (!expr) return;
 	ParentStack.pop();
 	if (ctx) {
+		const size_t recorded = Recorder.data.references.size();
 		expr->setReferent(expressionFeatureReference(ctx->getText(), ctx,
 			[expr](const std::shared_ptr<KerML::Entities::Feature>& target) { expr->setReferent(target); }));
+		// A reference in the bounds of a multiplicity may be a unit that was written after the type instead of after the value.
+		if (Recorder.data.references.size() == recorded + 1 &&
+			dynamic_cast<SysMLv2Parser::Internal_multiplicity_expression_memberContext*>(ctx->parent) != nullptr) {
+			Recorder.data.references.back().inMultiplicity = true;
+		}
 	}
 	attachExpression(expr);
 }
@@ -1760,7 +1799,15 @@ void SysMLv2ListenerImplementation::exitLiteral_expression(SysMLv2Parser::Litera
 	}
 	else if (ctx->literal_real()) {
 		auto r = std::make_shared<KerML::Entities::LiteralRational>();
-		r->setValue(std::stod(ctx->literal_real()->getText()));
+		double parsed = 0.0;
+		if (SysMLv2::Files::parseDouble(ctx->literal_real()->getText(), parsed)) {
+			r->setValue(parsed);
+		} else {
+			auto* start = ctx->literal_real()->getStart();
+			Recorder.data.diagnostics.push_back({"the real literal '" + ctx->literal_real()->getText() + "' is not a valid number or does not fit a double; it is read as 0",
+			                                     static_cast<int>(start->getLine()), static_cast<int>(start->getCharPositionInLine())});
+			r->setValue(0.0);
+		}
 		literal = r;
 	}
 	else if (ctx->literal_infinity()) {
@@ -1985,14 +2032,14 @@ void SysMLv2ListenerImplementation::finishFeature(SysMLv2Parser::Feature_prefixC
 			auto names = idCtx->NAME();
 
 			if (idCtx->SYMBOL_SMALLER() != nullptr && names.size() >= 2) {
-				f->setDeclaredShortName(names[0]->getText());
-				f->setDeclaredName(names[1]->getText());
+				f->setDeclaredShortName(KerML::Names::unescapeName(names[0]->getText()));
+				f->setDeclaredName(KerML::Names::unescapeName(names[1]->getText()));
 			}
 			else if (idCtx->SYMBOL_SMALLER() != nullptr && names.size() == 1) {
-				f->setDeclaredShortName(names[0]->getText());
+				f->setDeclaredShortName(KerML::Names::unescapeName(names[0]->getText()));
 			}
 			else if (!names.empty()) {
-				f->setDeclaredName(names[0]->getText());
+				f->setDeclaredName(KerML::Names::unescapeName(names[0]->getText()));
 			}
 		}
 
@@ -2033,12 +2080,7 @@ void SysMLv2ListenerImplementation::exitRedefinition(SysMLv2Parser::Redefinition
 
 	if (ctx && ctx->qualified_name()) {
 		std::string redefName = ctx->qualified_name()->getText();
-		std::string shortName = redefName;
-		size_t lastColon = shortName.rfind("::");
-		if (lastColon != std::string::npos) {
-			shortName = shortName.substr(lastColon + 2);
-		}
-		feature->setDeclaredName(shortName);
+		// (`:>> p` has no declared name: it is known by the name of the feature it redefines, Feature::effectiveName())
 		addRedefinition(feature, redefName, ctx->qualified_name());
 	}
 	// `:>> x : T :> y;` (the typing and the subsetting of the redefining feature)
@@ -2310,14 +2352,14 @@ void SysMLv2ListenerImplementation::applyIdentification(SysMLv2Parser::Identific
 	auto names = idCtx->sysml_name();
 	if (names.empty()) return;
 	if (idCtx->SYMBOL_SMALLER() != nullptr && names.size() >= 2) {
-		elem->setDeclaredShortName(names[0]->getText());
-		elem->setDeclaredName(names[1]->getText());
+		elem->setDeclaredShortName(KerML::Names::unescapeName(names[0]->getText()));
+		elem->setDeclaredName(KerML::Names::unescapeName(names[1]->getText()));
 	}
 	else if (idCtx->SYMBOL_SMALLER() != nullptr && names.size() == 1) {
-		elem->setDeclaredShortName(names[0]->getText());
+		elem->setDeclaredShortName(KerML::Names::unescapeName(names[0]->getText()));
 	}
 	else {
-		elem->setDeclaredName(names[0]->getText());
+		elem->setDeclaredName(KerML::Names::unescapeName(names[0]->getText()));
 	}
 }
 

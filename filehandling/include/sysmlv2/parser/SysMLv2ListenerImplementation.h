@@ -4,6 +4,7 @@
 #include "antlr4-runtime.h"
 #include <sysmlv2/parser/SysMLv2BaseListener.h>
 #include <kerml/root/elements/Element.h>
+#include <kerml/root/annotations/AnnotatingElement.h>
 #include <sysmlv2/resolution/ResolutionData.h>
 #include <sysmlv2/ownership/Ownership.h>
 #include <memory>
@@ -1229,6 +1230,8 @@ private:
     /// The rule contexts whose exit handler must do nothing, because the enter handler pushed no element: owned_cross_feature rules that do not
     /// declare a cross feature (see enterOwned_cross_feature) and prefix metadata without an owner (see enterPrefix_metadata_usage).
     std::set<antlr4::ParserRuleContext*> SkippedContexts;
+    /// Annotating elements at the top level without `about`: they annotate the root namespace, which buildOwnership only creates in exitStart.
+    std::vector<std::shared_ptr<KerML::Entities::AnnotatingElement>> RootAnnotators;
 
     SysMLv2::Files::ReferenceRecorder Recorder;
     /// Contexts (and their elements) whose declared visibility has to be recorded, in addition to PushedByContext.

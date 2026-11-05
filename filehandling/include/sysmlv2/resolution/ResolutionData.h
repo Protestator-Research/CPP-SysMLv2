@@ -138,10 +138,17 @@ namespace SysMLv2::Files {
         std::function<void(const std::shared_ptr<KerML::Entities::Element>&)> apply;
         int line = -1;
         int column = -1;
+        /// The reference is written in the bounds of a multiplicity (`[kg]`, `[n]`). Does not change how it is resolved; it lets the workspace
+        /// warn when a unit stands there (the unit belongs after the value).
+        bool inMultiplicity = false;
         /// Set by the resolver.
         std::shared_ptr<KerML::Entities::Element> resolvedTarget;
         /// Index of the source (Workspace) this reference was recorded for; set by the workspace.
         size_t source = 0;
+        /// Position of the reference in its source (set by the workspace; XmiDocument::generalizations(): the position of the relationship
+        /// in the document). Together with `source` it orders the references as they are declared; it does not change when other
+        /// sources are added or replaced.
+        size_t order = 0;
         bool resolved = false;
     };
 
@@ -182,6 +189,13 @@ namespace SysMLv2::Files {
         int column = -1;
     };
 
+    /// A problem a listener found while building the model (not a syntax error); the Workspace reports it as a logical error.
+    struct ListenerDiagnostic {
+        std::string message;
+        int line = -1;
+        int column = -1;
+    };
+
     /**
      * Everything a listener records for name resolution while it walks one parse tree.
      */
@@ -195,6 +209,8 @@ namespace SysMLv2::Files {
         /// Declared visibility of the members that were declared with an explicit or default visibility.
         /// Elements not listed here are public.
         std::unordered_map<const KerML::Entities::Element*, KerML::Entities::VisibilityKind> visibility;
+        /// Problems of the listener itself, e.g. a real literal that does not fit a double.
+        std::vector<ListenerDiagnostic> diagnostics;
     };
 
     /**

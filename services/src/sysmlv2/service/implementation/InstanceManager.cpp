@@ -2,8 +2,11 @@
 // Created by herzo on 24.09.2026.
 //
 
+#include <kerml/root/elements/NameEscaping.h>
 #include <sysmlv2/service/implementation/InstanceManager.h>
+#include "../StandardLibraryTable.h"
 
+#include <kerml/core/features/Feature.h>
 #include <kerml/root/elements/Element.h>
 #include <kerml/root/elements/Relationship.h>
 #include <kerml/root/namespaces/Namespace.h>
@@ -12,6 +15,7 @@
 
 #include <boost/uuid/uuid.hpp>
 #include <algorithm>
+#include <cctype>
 #include <iterator>
 #include <string_view>
 #include <system_error>
@@ -19,131 +23,26 @@
 #include <cmrc/cmrc.hpp>
 
 CMRC_DECLARE(Library);
+CMRC_DECLARE(LibraryXmi);
 
 namespace SysMLv2::API
 {
 	namespace
 	{
-		/// The embedded standard library: the name of the (top-level) package and the path of its file in the resources
-		/// (sysmlv2resources, namespace Library). The paths are those of resources/CMakeLists.txt.
-		struct StandardLibraryFile
-		{
-			const char* Name;
-			const char* Path;
-		};
 
-		constexpr StandardLibraryFile StandardLibrary[] = {
-		// KerML/Semantic
-		{"Base", "sysml.library/KerML/Semantic/Base.kerml"},
-		{"Clocks", "sysml.library/KerML/Semantic/Clocks.kerml"},
-		{"ControlPerformances", "sysml.library/KerML/Semantic/ControlPerformances.kerml"},
-		{"FeatureReferencingPerformances", "sysml.library/KerML/Semantic/FeatureReferencingPerformances.kerml"},
-		{"KerML", "sysml.library/KerML/Semantic/KerML.kerml"},
-		{"Links", "sysml.library/KerML/Semantic/Links.kerml"},
-		{"Metaobjects", "sysml.library/KerML/Semantic/Metaobjects.kerml"},
-		{"Objects", "sysml.library/KerML/Semantic/Objects.kerml"},
-		{"Observation", "sysml.library/KerML/Semantic/Observation.kerml"},
-		{"Occurrences", "sysml.library/KerML/Semantic/Occurrences.kerml"},
-		{"Performances", "sysml.library/KerML/Semantic/Performances.kerml"},
-		{"SpatialFrames", "sysml.library/KerML/Semantic/SpatialFrames.kerml"},
-		{"StatePerformances", "sysml.library/KerML/Semantic/StatePerformances.kerml"},
-		{"Transfers", "sysml.library/KerML/Semantic/Transfers.kerml"},
-		{"TransitionPerformances", "sysml.library/KerML/Semantic/TransitionPerformances.kerml"},
-		{"Triggers", "sysml.library/KerML/Semantic/Triggers.kerml"},
-		// KerML/DataTypes
-		{"Collections", "sysml.library/KerML/DataTypes/Collections.kerml"},
-		{"ScalarValues", "sysml.library/KerML/DataTypes/ScalarValues.kerml"},
-		{"VectorValues", "sysml.library/KerML/DataTypes/VectorValues.kerml"},
-		// KerML/Function
-		{"BaseFunctions", "sysml.library/KerML/Function/BaseFunctions.kerml"},
-		{"BooleanFunctions", "sysml.library/KerML/Function/BooleanFunctions.kerml"},
-		{"CollectionFunctions", "sysml.library/KerML/Function/CollectionFunctions.kerml"},
-		{"ComplexFunctions", "sysml.library/KerML/Function/ComplexFunctions.kerml"},
-		{"ControlFunctions", "sysml.library/KerML/Function/ControlFunctions.kerml"},
-		{"DataFunctions", "sysml.library/KerML/Function/DataFunctions.kerml"},
-		{"IntegerFunctions", "sysml.library/KerML/Function/IntegerFunctions.kerml"},
-		{"NaturalFunctions", "sysml.library/KerML/Function/NaturalFunctions.kerml"},
-		{"NumericalFunctions", "sysml.library/KerML/Function/NumericalFunctions.kerml"},
-		{"OccurrenceFunctions", "sysml.library/KerML/Function/OccurrenceFunctions.kerml"},
-		{"RationalFunctions", "sysml.library/KerML/Function/RationalFunctions.kerml"},
-		{"RealFunctions", "sysml.library/KerML/Function/RealFunctions.kerml"},
-		{"ScalarFunctions", "sysml.library/KerML/Function/ScalarFunctions.kerml"},
-		{"SequenceFunctions", "sysml.library/KerML/Function/SequenceFunctions.kerml"},
-		{"StringFunctions", "sysml.library/KerML/Function/StringFunctions.kerml"},
-		{"TrigFunctions", "sysml.library/KerML/Function/TrigFunctions.kerml"},
-		{"VectorFunctions", "sysml.library/KerML/Function/VectorFunctions.kerml"},
-		// DomainLibraries/Analysis
-		{"AnalysisTooling", "sysml.library/DomainLibraries/Analysis/AnalysisTooling.sysml"},
-		{"SampledFunctions", "sysml.library/DomainLibraries/Analysis/SampledFunctions.sysml"},
-		{"StateSpaceRepresentation", "sysml.library/DomainLibraries/Analysis/StateSpaceRepresentation.sysml"},
-		{"TradeStudies", "sysml.library/DomainLibraries/Analysis/TradeStudies.sysml"},
-		// DomainLibraries/CauseAndEffect
-		{"CausationConnections", "sysml.library/DomainLibraries/CauseAndEffect/CausationConnections.sysml"},
-		{"CauseAndEffect", "sysml.library/DomainLibraries/CauseAndEffect/CauseAndEffect.sysml"},
-		// DomainLibraries/Geometry
-		{"ShapeItems", "sysml.library/DomainLibraries/Geometry/ShapeItems.sysml"},
-		{"SpatialItems", "sysml.library/DomainLibraries/Geometry/SpatialItems.sysml"},
-		// DomainLibraries/Metadata
-		{"ImageMetadata", "sysml.library/DomainLibraries/Metadata/ImageMetadata.sysml"},
-		{"ModelingMetadata", "sysml.library/DomainLibraries/Metadata/ModelingMetadata.sysml"},
-		{"ParametersOfInterestMetadata", "sysml.library/DomainLibraries/Metadata/ParametersOfInterestMetadata.sysml"},
-		{"RiskMetadata", "sysml.library/DomainLibraries/Metadata/RiskMetadata.sysml"},
-		// DomainLibraries/QuantitiesAndUnits
-		{"ISQ", "sysml.library/DomainLibraries/QuantitiesAndUnits/ISQ.sysml"},
-		{"ISQAcoustics", "sysml.library/DomainLibraries/QuantitiesAndUnits/ISQAcoustics.sysml"},
-		{"ISQAtomicNuclear", "sysml.library/DomainLibraries/QuantitiesAndUnits/ISQAtomicNuclear.sysml"},
-		{"ISQBase", "sysml.library/DomainLibraries/QuantitiesAndUnits/ISQBase.sysml"},
-		{"ISQCharacteristicNumbers", "sysml.library/DomainLibraries/QuantitiesAndUnits/ISQCharacteristicNumbers.sysml"},
-		{"ISQChemistryMolecular", "sysml.library/DomainLibraries/QuantitiesAndUnits/ISQChemistryMolecular.sysml"},
-		{"ISQCondensedMatter", "sysml.library/DomainLibraries/QuantitiesAndUnits/ISQCondensedMatter.sysml"},
-		{"ISQElectromagnetism", "sysml.library/DomainLibraries/QuantitiesAndUnits/ISQElectromagnetism.sysml"},
-		{"ISQInformation", "sysml.library/DomainLibraries/QuantitiesAndUnits/ISQInformation.sysml"},
-		{"ISQLight", "sysml.library/DomainLibraries/QuantitiesAndUnits/ISQLight.sysml"},
-		{"ISQMechanics", "sysml.library/DomainLibraries/QuantitiesAndUnits/ISQMechanics.sysml"},
-		{"ISQSpaceTime", "sysml.library/DomainLibraries/QuantitiesAndUnits/ISQSpaceTime.sysml"},
-		{"ISQThermodynamics", "sysml.library/DomainLibraries/QuantitiesAndUnits/ISQThermodynamics.sysml"},
-		{"MeasurementRefCalculations", "sysml.library/DomainLibraries/QuantitiesAndUnits/MeasurementRefCalculations.sysml"},
-		{"MeasurementReferences", "sysml.library/DomainLibraries/QuantitiesAndUnits/MeasurementReferences.sysml"},
-		{"QuantityCalculations", "sysml.library/DomainLibraries/QuantitiesAndUnits/QuantityCalculations.sysml"},
-		{"Quantities", "sysml.library/DomainLibraries/QuantitiesAndUnits/Quantities.sysml"},
-		{"SI", "sysml.library/DomainLibraries/QuantitiesAndUnits/SI.sysml"},
-		{"SIPrefixes", "sysml.library/DomainLibraries/QuantitiesAndUnits/SIPrefixes.sysml"},
-		{"TensorCalculations", "sysml.library/DomainLibraries/QuantitiesAndUnits/TensorCalculations.sysml"},
-		{"Time", "sysml.library/DomainLibraries/QuantitiesAndUnits/Time.sysml"},
-		{"USCustomaryUnits", "sysml.library/DomainLibraries/QuantitiesAndUnits/USCustomaryUnits.sysml"},
-		{"VectorCalculations", "sysml.library/DomainLibraries/QuantitiesAndUnits/VectorCalculations.sysml"},
-		// DomainLibraries/RequirementDerivation
-		{"DerivationConnections", "sysml.library/DomainLibraries/RequirementDerivation/DerivationConnections.sysml"},
-		{"RequirementDerivation", "sysml.library/DomainLibraries/RequirementDerivation/RequirementDerivation.sysml"},
-		// SystemsLibrary
-		{"Actions", "sysml.library/SystemsLibrary/Actions.sysml"},
-		{"Allocations", "sysml.library/SystemsLibrary/Allocations.sysml"},
-		{"AnalysisCases", "sysml.library/SystemsLibrary/AnalysisCases.sysml"},
-		{"Attributes", "sysml.library/SystemsLibrary/Attributes.sysml"},
-		{"Calculations", "sysml.library/SystemsLibrary/Calculations.sysml"},
-		{"Cases", "sysml.library/SystemsLibrary/Cases.sysml"},
-		{"Connections", "sysml.library/SystemsLibrary/Connections.sysml"},
-		{"Constraints", "sysml.library/SystemsLibrary/Constraints.sysml"},
-		{"Flows", "sysml.library/SystemsLibrary/Flows.sysml"},
-		{"Interfaces", "sysml.library/SystemsLibrary/Interfaces.sysml"},
-		{"Items", "sysml.library/SystemsLibrary/Items.sysml"},
-		{"Metadata", "sysml.library/SystemsLibrary/Metadata.sysml"},
-		{"Parts", "sysml.library/SystemsLibrary/Parts.sysml"},
-		{"Ports", "sysml.library/SystemsLibrary/Ports.sysml"},
-		{"Requirements", "sysml.library/SystemsLibrary/Requirements.sysml"},
-		{"StandardViewDefinitions", "sysml.library/SystemsLibrary/StandardViewDefinitions.sysml"},
-		{"States", "sysml.library/SystemsLibrary/States.sysml"},
-		{"SysML", "sysml.library/SystemsLibrary/SysML.sysml"},
-		{"UseCases", "sysml.library/SystemsLibrary/UseCases.sysml"},
-		{"VerificationCases", "sysml.library/SystemsLibrary/VerificationCases.sysml"},
-		{"Views", "sysml.library/SystemsLibrary/Views.sysml"},
-		};
+		/// The levels of the sources in the mode that keeps the workspace (see Workspace::setSourceLevel()): a reference of the standard
+		/// library never resolves to an element of the model.
+		constexpr int StandardLevel = 0;
+		constexpr int UserLevel = 1;
 
-		const StandardLibraryFile* findStandardLibrary(const std::string& packageName)
+
+		using Detail::StandardLibraryEntry;
+
+		const StandardLibraryEntry* findStandardLibrary(const std::string& packageName)
 		{
-			const auto it = std::find_if(std::begin(StandardLibrary), std::end(StandardLibrary),
-				[&packageName](const StandardLibraryFile& file) { return packageName == file.Name; });
-			return it == std::end(StandardLibrary) ? nullptr : &*it;
+			const auto it = std::find_if(std::begin(Detail::StandardLibraryTable), std::end(Detail::StandardLibraryTable),
+				[&packageName](const StandardLibraryEntry& file) { return packageName == file.Name; });
+			return it == std::end(Detail::StandardLibraryTable) ? nullptr : &*it;
 		}
 
 		/// The library package a metaclass name (`PartUsage`) makes necessary: the packages that the implicit specializations of
@@ -197,6 +96,37 @@ namespace SysMLv2::API
 			return segment;
 		}
 
+		/// The library package of a library file (`Kernel Libraries/Base.kermlx` -> `Base`): the file is named like the package.
+		std::string packageOfFile(const std::string& file)
+		{
+			const auto slash = file.find_last_of("/\\");
+			const auto start = slash == std::string::npos ? 0 : slash + 1;
+			const auto dot = file.find('.', start);
+			return file.substr(start, dot == std::string::npos ? std::string::npos : dot - start);
+		}
+
+		/// Whether @p file ends with .sysmlx, .kermlx or .xmi (any case).
+		bool hasXmiExtension(const std::string& file)
+		{
+			std::string lower(file);
+			std::transform(lower.begin(), lower.end(), lower.begin(), [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
+			const std::string_view view(lower);
+			return view.ends_with(".sysmlx") || view.ends_with(".kermlx") || view.ends_with(".xmi");
+		}
+
+		/// The library package that a reference that no loaded source could resolve names. The XMI files refer to each other by hrefs
+		/// ("<path of the file>#<id>"): the file of an href is a library file, which is named like its package (`Base.kermlx`). The other
+		/// references are names.
+		std::string packageOfReference(const std::string& name)
+		{
+			// A name is an href only if it does not start with a quote (`'a#b'::x` is a name) and the part before the # is a file of the
+			// XMI formats: otherwise it is a name, which starts with its first segment.
+			const auto hash = name.rfind('#');
+			if (hash == std::string::npos || name.front() == '\'' || !hasXmiExtension(name.substr(0, hash)))
+				return firstSegment(name);
+			return packageOfFile(name.substr(0, hash));
+		}
+
 		/// The elements @p element owns: its owned elements, the owned members of a namespace and the owned related elements of a
 		/// relationship (a membership does not list its member among its owned elements).
 		std::vector<std::shared_ptr<KerML::Entities::Element>> ownedChildren(const std::shared_ptr<KerML::Entities::Element>& element)
@@ -215,6 +145,31 @@ namespace SysMLv2::API
 			return children;
 		}
 
+		/// The name an element has for the qualified names: its declared name, else its declared short name, else (a feature) the declared name of the
+		/// feature it redefines first, found along the naming features. Empty if there is none.
+		std::string nameOf(const std::shared_ptr<KerML::Entities::Element>& element)
+		{
+			if (element->declaredName().has_value() && !element->declaredName()->empty())
+				return element->declaredName().value();
+			if (element->declaredShortName().has_value() && !element->declaredShortName()->empty())
+				return element->declaredShortName().value();
+			auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(element);
+			std::unordered_set<const KerML::Entities::Feature*> visited;
+			while (feature && visited.insert(feature.get()).second)
+			{
+				const auto naming = feature->namingFeature();
+				if (!naming.has_value() || !naming.value())
+					break;
+				const auto& named = naming.value();
+				if (named->declaredName().has_value() && !named->declaredName()->empty())
+					return named->declaredName().value();
+				if (named->declaredShortName().has_value())
+					break;
+				feature = named;
+			}
+			return std::string();
+		}
+
 		/// Sets the qualified name of every named, non-relationship element below @p root from the chain of the owning
 		/// namespaces. An unnamed element gets none and adds no segment to the names of what it owns.
 		void assignQualifiedNames(const std::shared_ptr<KerML::Entities::Element>& root)
@@ -228,11 +183,12 @@ namespace SysMLv2::API
 				if (!element || !visited.insert(element.get()).second)
 					return;
 
+				// The name as the notation writes it: declared names are stored without quotes, a feature without a declared name or short name
+				// (`:>> p`) is known by the name of the feature it redefines. (Not Element::effectiveName(): its fallback to the qualified name
+				// that an earlier run assigned would give the names of elements with a short name only a second time.)
 				std::string name;
-				if (element->declaredName().has_value() && !element->declaredName()->empty())
-					name = element->declaredName().value();
-				else if (element->declaredShortName().has_value() && !element->declaredShortName()->empty())
-					name = element->declaredShortName().value();
+				if (const auto own = nameOf(element); !own.empty())
+					name = KerML::Names::escapeName(own);
 
 				std::string qualifiedName = parent;
 				if (!name.empty() && std::dynamic_pointer_cast<KerML::Entities::Relationship>(element) == nullptr)
@@ -255,31 +211,60 @@ namespace SysMLv2::API
 
 	InstanceManager::~InstanceManager() = default;
 
+	void InstanceManager::setReuseStandardLibrary(bool reuse)
+	{
+		ReuseStandardLibrary = reuse;
+		WorkspaceReusable = false; // the workspace of the next parse is built for the mode
+	}
+
+	bool InstanceManager::reuseStandardLibrary() const
+	{
+		return ReuseStandardLibrary;
+	}
+
+	void InstanceManager::setStandardLibraryFormat(StandardLibraryFormat format)
+	{
+		LibraryFormat = format;
+		WorkspaceReusable = false; // a workspace with the library in the other format is not kept
+	}
+
+	StandardLibraryFormat InstanceManager::standardLibraryFormat() const
+	{
+		return LibraryFormat;
+	}
+
 	void InstanceManager::parseModel(std::string model)
 	{
 		InstanceModel = std::move(model);
 		ModelParsed = true;
-		rebuildModel();
+		if (ReuseStandardLibrary && WorkspaceReusable && Model)
+			updateModel();
+		else
+			rebuildModel();
 	}
 
 	void InstanceManager::appendNonStandardLibrary(std::string model)
 	{
 		NonStandardLibraries.push_back(std::move(model));
-		if (ModelParsed)
+		if (!ModelParsed)
+			return;
+		if (ReuseStandardLibrary && WorkspaceReusable && Model)
+			addNonStandardLibrary();
+		else
 			rebuildModel();
 	}
 
-	std::vector<std::shared_ptr<SysMLv2::Files::ParserError>> InstanceManager::getParserErrors() const
+	const std::vector<std::shared_ptr<SysMLv2::Files::ParserError>>& InstanceManager::getParserErrors() const
 	{
 		return ParserErrors;
 	}
 
-	std::vector<std::shared_ptr<SysMLv2::Files::ParserError>> InstanceManager::getUnresolvedReferences() const
+	const std::vector<std::shared_ptr<SysMLv2::Files::ParserError>>& InstanceManager::getUnresolvedReferences() const
 	{
 		return UnresolvedReferences;
 	}
 
-	std::vector<std::shared_ptr<KerML::Entities::Element>> InstanceManager::getElements() const
+	const std::vector<std::shared_ptr<KerML::Entities::Element>>& InstanceManager::getElements() const
 	{
 		return Elements;
 	}
@@ -290,7 +275,7 @@ namespace SysMLv2::API
 		if (!Model)
 			return elements;
 
-		for (std::size_t source = 0; source < UserSourceCount; ++source)
+		for (const std::size_t source : UserSources)
 		{
 			const auto& sourceElements = Model->elements(source);
 			elements.insert(elements.end(), sourceElements.begin(), sourceElements.end());
@@ -303,17 +288,12 @@ namespace SysMLv2::API
 		return RootNamespace;
 	}
 
-	std::list<std::shared_ptr<KerML::Entities::Element>> InstanceManager::findAllElementsWithDeclaredName(std::string name)
+	std::list<std::shared_ptr<KerML::Entities::Element>> InstanceManager::findAllElementsWithDeclaredName(const std::string& name) const
 	{
-		std::list<std::shared_ptr<KerML::Entities::Element>> returnValue;
-
-		for (const auto& elem : Elements)
-		{
-			if (elem && elem->declaredName() == name)
-				returnValue.emplace_back(elem);
-		}
-
-		return returnValue;
+		const auto it = ElementsByDeclaredName.find(name);
+		if (it == ElementsByDeclaredName.end())
+			return {};
+		return std::list<std::shared_ptr<KerML::Entities::Element>>(it->second.begin(), it->second.end());
 	}
 
 	std::shared_ptr<KerML::Entities::Element> InstanceManager::findElementWithQualifiedName(const std::string& name) const
@@ -327,29 +307,32 @@ namespace SysMLv2::API
 			return found;
 
 		// Elements that are not reachable by name from the global namespace (top-level elements that are no packages, ...).
-		const auto it = std::find_if(Elements.begin(), Elements.end(), [&name](const std::shared_ptr<KerML::Entities::Element>& elem)
-			{
-				return (elem && elem->qualifiedName().has_value() && elem->qualifiedName().value() == name);
-			});
-
-		if (it != Elements.end())
-			return *it;
-
-		return nullptr;
+		const auto it = ElementsByQualifiedName.find(name);
+		return it == ElementsByQualifiedName.end() ? nullptr : it->second;
 	}
 
 	std::shared_ptr<KerML::Entities::Element> InstanceManager::findElementWithId(const boost::uuids::uuid& uuid) const
 	{
+		const auto it = ElementsById.find(uuid);
+		return it == ElementsById.end() ? nullptr : it->second;
+	}
 
-		auto it = std::find_if(Elements.begin(), Elements.end(), [uuid](const std::shared_ptr<KerML::Entities::Element>& elem)
-			{
-				return (elem && elem->getId() == uuid);
-			});
-
-		if (it != Elements.end())
-			return *it;
-
-		return nullptr;
+	void InstanceManager::buildIndices()
+	{
+		ElementsById.clear();
+		ElementsByDeclaredName.clear();
+		ElementsByQualifiedName.clear();
+		ElementsById.reserve(Elements.size());
+		for (const auto& elem : Elements)
+		{
+			if (!elem)
+				continue;
+			ElementsById.emplace(elem->getId(), elem); // (the first element of an id wins, like the linear search before)
+			if (elem->declaredName().has_value())
+				ElementsByDeclaredName[elem->declaredName().value()].push_back(elem);
+			if (elem->qualifiedName().has_value())
+				ElementsByQualifiedName.emplace(elem->qualifiedName().value(), elem);
+		}
 	}
 
 	void InstanceManager::rebuildModel()
@@ -358,49 +341,132 @@ namespace SysMLv2::API
 		ParserErrors.clear();
 		UnresolvedReferences.clear();
 		LoadedStandardLibraries.clear();
+		UserSources.clear();
 		RootNamespace = nullptr;
 		Model = std::make_unique<SysMLv2::Files::Workspace>();
 
-		// The instance model is source 0, the non-standard libraries follow, the standard library files come last.
-		const std::size_t modelSource = Model->addText(InstanceModel, "InstanceModel", SysMLv2::Files::SourceLanguage::SysML);
+		// The instance model is the first source, the non-standard libraries follow, the standard library files come last. (In the mode that
+		// keeps the workspace the user sources have a level above the standard library.)
+		const int userLevel = ReuseStandardLibrary ? UserLevel : StandardLevel;
+		UserSources.push_back(Model->addText(InstanceModel, "InstanceModel", SysMLv2::Files::SourceLanguage::SysML, userLevel));
 		for (std::size_t index = 0; index < NonStandardLibraries.size(); ++index)
-			Model->addText(NonStandardLibraries[index], "NonStandardLibrary" + std::to_string(index + 1), SysMLv2::Files::SourceLanguage::SysML);
-		UserSourceCount = Model->sourceCount();
+			UserSources.push_back(Model->addText(NonStandardLibraries[index], "NonStandardLibrary" + std::to_string(index + 1),
+				SysMLv2::Files::SourceLanguage::SysML, userLevel));
+		ActiveFormat = formatFor(UserSources);
 
-		loadStandardLibraries(UserSourceCount);
-		Model->resolve();
+		const std::size_t firstLibrary = loadStandardLibraries(UserSources);
+		publishModel(UserSources, firstLibrary);
+		WorkspaceReusable = ReuseStandardLibrary;
+	}
 
+	void InstanceManager::updateModel()
+	{
+		// The model and the non-standard libraries are parsed again: the targets of their references may be elements of the old model. The
+		// standard library files stay as they are, resolved.
+		Model->replaceSource(UserSources.front(), InstanceModel, SysMLv2::Files::SourceLanguage::SysML);
+		for (std::size_t index = 0; index < NonStandardLibraries.size(); ++index)
+			Model->replaceSource(UserSources[index + 1], NonStandardLibraries[index], SysMLv2::Files::SourceLanguage::SysML);
+
+		// (the XMI files cannot refer to a package of the model by name: a model that defines a package with the name of a standard library
+		// package is processed with the text, and the workspace that has the library in the other format is built anew)
+		if (definesLoadedStandardPackage(UserSources) || formatFor(UserSources) != ActiveFormat)
+		{
+			rebuildModel();
+			return;
+		}
+		const std::size_t firstLibrary = loadStandardLibraries(UserSources);
+		publishModel(UserSources, firstLibrary);
+	}
+
+	void InstanceManager::addNonStandardLibrary()
+	{
+		const std::size_t source = Model->addText(NonStandardLibraries.back(), "NonStandardLibrary" + std::to_string(NonStandardLibraries.size()),
+			SysMLv2::Files::SourceLanguage::SysML, UserLevel);
+		UserSources.push_back(source);
+
+		const std::vector<std::size_t> added{source};
+		if (definesLoadedStandardPackage(added) || formatFor(UserSources) != ActiveFormat)
+		{
+			rebuildModel();
+			return;
+		}
+		const std::size_t firstLibrary = loadStandardLibraries(added);
+		publishModel(added, firstLibrary);
+	}
+
+	StandardLibraryFormat InstanceManager::formatFor(const std::vector<std::size_t>& sources) const
+	{
+		if (LibraryFormat != StandardLibraryFormat::Xmi)
+			return LibraryFormat;
+		for (const std::size_t source : sources)
+		{
+			for (const auto& package : Model->rootPackages(source))
+			{
+				if (package->declaredName().has_value() && findStandardLibrary(package->declaredName().value()) != nullptr)
+					return StandardLibraryFormat::Text;
+			}
+		}
+		return StandardLibraryFormat::Xmi;
+	}
+
+	bool InstanceManager::definesLoadedStandardPackage(const std::vector<std::size_t>& sources) const
+	{
+		for (const std::size_t source : sources)
+		{
+			for (const auto& package : Model->rootPackages(source))
+			{
+				if (package->declaredName().has_value() && LoadedStandardLibraries.count(package->declaredName().value()) != 0)
+					return true;
+			}
+		}
+		return false;
+	}
+
+	void InstanceManager::publishModel(const std::vector<std::size_t>& changed, std::size_t firstLibrary)
+	{
 		ParserErrors = Model->errors();
-		for (std::size_t source = 0; source < UserSourceCount; ++source)
+		UnresolvedReferences.clear();
+		for (const std::size_t source : UserSources)
 		{
 			const auto warnings = Model->unresolvedAsWarnings(source);
 			UnresolvedReferences.insert(UnresolvedReferences.end(), warnings.begin(), warnings.end());
 		}
 		Elements = Model->elements();
 
-		for (std::size_t source = 0; source < Model->sourceCount(); ++source)
+		// The sources that are new or were replaced; the other ones keep the qualified names they have.
+		for (const std::size_t source : changed)
 			assignQualifiedNames(Model->rootNamespace(source));
+		for (std::size_t source = firstLibrary; source < Model->sourceCount(); ++source)
+			assignQualifiedNames(Model->rootNamespace(source));
+		buildIndices();
 
-		RootNamespace = Model->rootNamespace(modelSource);
+		RootNamespace = Model->rootNamespace(UserSources.front());
 		if (RootNamespace == nullptr)
 			RootNamespace = std::make_shared<KerML::Entities::Namespace>(""); // empty model: an empty root namespace
 	}
 
-	void InstanceManager::loadStandardLibraries(std::size_t userSources)
+	std::size_t InstanceManager::loadStandardLibraries(const std::vector<std::size_t>& changed)
 	{
 		// Packages that the model or a non-standard library defines itself are not taken from the standard library.
-		for (const auto& package : Model->rootPackages())
+		UserPackages.clear();
+		for (const std::size_t source : UserSources)
 		{
-			if (package->declaredName().has_value())
-				LoadedStandardLibraries.push_back(package->declaredName().value());
+			for (const auto& package : Model->rootPackages(source))
+			{
+				if (package->declaredName().has_value())
+					UserPackages.insert(package->declaredName().value());
+			}
 		}
+
+		// The standard library files are added from here on.
+		const std::size_t firstLibrary = Model->sourceCount();
 
 		// Base is the implicit general of every feature and type.
 		loadStandardLibrary("Base");
 
 		// The packages of the implicit specializations, by the metaclasses that occur in the model.
 		std::unordered_set<std::string> wanted;
-		for (std::size_t source = 0; source < userSources; ++source)
+		for (const std::size_t source : changed)
 		{
 			std::unordered_set<std::string> metaclasses;
 			for (const auto& element : Model->elements(source))
@@ -423,39 +489,78 @@ namespace SysMLv2::API
 				loadStandardLibrary(entry.Package);
 		}
 
-		// The packages that the loaded sources name: every unresolved reference that starts with the name of a standard library
-		// package loads it. The files loaded in one round can name further packages, so resolve and look again.
+		// The packages that the sources name: every reference (imports included) that starts with the name of a standard library package
+		// loads it; this goes on for the files that are loaded. That is what resolving would find missing, without a round of resolving for
+		// every level of imports.
+		std::vector<std::size_t> pending = changed;
+		for (std::size_t source = firstLibrary; source < Model->sourceCount(); ++source)
+			pending.push_back(source);
+		preloadStandardLibraries(std::move(pending));
+
+		// The packages that the loaded sources name and that were not found above: every unresolved reference that starts with the name of
+		// a standard library package loads it (a safety net, normally one resolve). The files loaded in one round can name further packages,
+		// so resolve and look again.
 		for (;;)
 		{
 			Model->resolve();
 			bool loaded = false;
 			for (const auto& reference : Model->unresolvedReferences())
 			{
-				if (loadStandardLibrary(firstSegment(reference.name)))
+				if (loadStandardLibrary(packageOfReference(reference.name)))
 					loaded = true;
 			}
 			if (!loaded)
 				break;
 		}
+		return firstLibrary;
+	}
+
+	void InstanceManager::preloadStandardLibraries(std::vector<std::size_t> pending)
+	{
+		while (!pending.empty())
+		{
+			const std::size_t source = pending.back();
+			pending.pop_back();
+			for (const auto& name : Model->referenceNames(source))
+			{
+				if (loadStandardLibrary(firstSegment(name)))
+					pending.push_back(Model->sourceCount() - 1); // the file just added
+			}
+			// An XMI file names the files it needs by its hrefs, not by names.
+			for (const auto& file : Model->referencedFiles(source))
+			{
+				if (loadStandardLibrary(packageOfFile(file)))
+					pending.push_back(Model->sourceCount() - 1);
+			}
+		}
 	}
 
 	bool InstanceManager::loadStandardLibrary(const std::string& packageName)
 	{
-		if (std::find(LoadedStandardLibraries.begin(), LoadedStandardLibraries.end(), packageName) != LoadedStandardLibraries.end())
+		if (LoadedStandardLibraries.count(packageName) != 0 || UserPackages.count(packageName) != 0)
 			return false;
 
-		const StandardLibraryFile* file = findStandardLibrary(packageName);
+		const StandardLibraryEntry* file = findStandardLibrary(packageName);
 		if (file == nullptr)
 			return false;
 
-		LoadedStandardLibraries.push_back(packageName);
+		LoadedStandardLibraries.insert(packageName);
 		try
 		{
-			const auto fs = cmrc::Library::get_filesystem();
-			const auto data = fs.open(file->Path);
-			const std::string_view path(file->Path);
-			Model->addText(std::string(data.begin(), data.end()), std::string(path),
-				path.ends_with(".kerml") ? SysMLv2::Files::SourceLanguage::KerML : SysMLv2::Files::SourceLanguage::SysML);
+			if (ActiveFormat == StandardLibraryFormat::Xmi)
+			{
+				const auto fs = cmrc::LibraryXmi::get_filesystem();
+				const auto data = fs.open(file->XmiPath);
+				Model->addText(std::string(data.begin(), data.end()), std::string(file->XmiPath), SysMLv2::Files::SourceLanguage::Xmi, StandardLevel);
+			}
+			else
+			{
+				const auto fs = cmrc::Library::get_filesystem();
+				const auto data = fs.open(file->Path);
+				const std::string_view path(file->Path);
+				Model->addText(std::string(data.begin(), data.end()), std::string(path),
+					path.ends_with(".kerml") ? SysMLv2::Files::SourceLanguage::KerML : SysMLv2::Files::SourceLanguage::SysML, StandardLevel);
+			}
 		}
 		catch (const std::system_error&)
 		{
