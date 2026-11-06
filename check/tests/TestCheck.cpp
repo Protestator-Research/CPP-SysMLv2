@@ -11,7 +11,14 @@
 #include <chrono>
 #include <cstdio>
 #include <cstdlib>
+#ifdef _WIN32
+#define popen _popen
+#define pclose _pclose
+#define WEXITSTATUS(status) (status)
+#else
 #include <sys/wait.h>
+#endif
+#include <filesystem>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -23,6 +30,21 @@ namespace {
     bool performanceTestsEnabled() {
         const char* value = std::getenv("SYSML_ENABLE_PERFORMANCE_TESTS");
         return value != nullptr && value[0] != '\0' && std::string(value) != "0";
+    }
+
+#ifdef _WIN32
+    const char* const NULL_DEVICE = "NUL";
+#else
+    const char* const NULL_DEVICE = "/dev/null";
+#endif
+
+    /// The shell command that runs the command line program with the given arguments (quoted path; cmd.exe needs the whole command quoted).
+    std::string cliCommand(const std::string& arguments) {
+#ifdef _WIN32
+        return "\"\"" + std::string(SYSMLV2CHECK_CLI) + "\" " + arguments + "\"";
+#else
+        return "'" + std::string(SYSMLV2CHECK_CLI) + "' " + arguments;
+#endif
     }
 
     /// Sends a request through the C interface and parses the response.
@@ -455,7 +477,7 @@ TEST(SysmlPruefeContext, TheIdOfARequestIsReturned) {
 }
 
 TEST(SysmlPruefeCli, StdoutHoldsOnlyResponseLinesWithTheirIds) {
-    const std::string input = std::tmpnam(nullptr);
+    const std::string input = (std::filesystem::temp_directory_path() / ("sysmlv2check-test-lines-" + std::to_string(std::rand()) + ".jsonl")).string();
     {
         std::ofstream out(input);
         out << json{{"id", 1}, {"quelltext", "package A { part def X; }"}}.dump() << "\n";
@@ -465,7 +487,7 @@ TEST(SysmlPruefeCli, StdoutHoldsOnlyResponseLinesWithTheirIds) {
         out << json{{"id", 4}, {"quelltext", 7}}.dump() << "\n";
         out << json{{"id", 5}, {"quelltext", "package C { part def Q; }"}}.dump() << "\n";
     }
-    const std::string command = std::string(SYSMLV2CHECK_CLI) + " --lines < " + input + " 2>/dev/null";
+    const std::string command = cliCommand("--lines < \"" + input + "\" 2>" + NULL_DEVICE);
     FILE* pipe = popen(command.c_str(), "r");
     ASSERT_NE(pipe, nullptr);
     std::string output;
@@ -643,11 +665,11 @@ TEST(SysmlPruefeContext, AnIdThatIsNullIsReturned) {
 
 TEST(SysmlPruefeCli, UnusableArgumentsEndWithExitCodeTwo) {
     for (const char* argument : {"--max-ms=abc", "--max-ms=", "--max-ms=-5", "--max-tiefe=1x", "--unknown"}) {
-        const std::string command = std::string(SYSMLV2CHECK_CLI) + " " + argument + " < /dev/null 2>/dev/null";
+        const std::string command = cliCommand(std::string(argument) + " < " + NULL_DEVICE + " 2>" + NULL_DEVICE);
         const int status = std::system(command.c_str());
         EXPECT_EQ(WEXITSTATUS(status), 2) << argument;
     }
-    EXPECT_EQ(WEXITSTATUS(std::system((std::string(SYSMLV2CHECK_CLI) + " --max-ms=500 < /dev/null 2>/dev/null").c_str())), 0);
+    EXPECT_EQ(WEXITSTATUS(std::system(cliCommand(std::string("--max-ms=500 < ") + NULL_DEVICE + " 2>" + NULL_DEVICE).c_str())), 0);
 }
 
 TEST(SysmlPruefe, TimingWithWarmParser) {
