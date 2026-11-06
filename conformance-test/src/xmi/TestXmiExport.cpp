@@ -456,7 +456,9 @@ TEST(XmiExportTextLibrary, ReferencesIntoTheLibraryAreHrefs) {
     const auto integer = ctx.text.find("ScalarValues::Integer");
     ASSERT_NE(integer, nullptr);
     EXPECT_NE(xml.find("ScalarValues.kermlx#" + integer->elementId() + "\""), std::string::npos) << "the typing of count refers to the file of ScalarValues";
-    EXPECT_NE(xml.find("href=\"../"), std::string::npos);
+    // A library on another drive than the temporary directory cannot be reached by a relative path: the writer uses a file URI then.
+    const bool relativeHref = !fs::absolute(SYSML_LIBRARY_XMI_DIR).lexically_normal().lexically_relative(fs::absolute(directory.path()).lexically_normal()).empty();
+    EXPECT_NE(xml.find(relativeHref ? "href=\"../" : "href=\"file:///"), std::string::npos);
     EXPECT_EQ(xml.find("href=\"" + std::string(SYSML_LIBRARY_XMI_DIR)), std::string::npos) << "the paths are relative";
 
     std::vector<std::string> before;
