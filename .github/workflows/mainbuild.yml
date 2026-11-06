@@ -73,15 +73,14 @@ jobs:
       run: |
         pip install --upgrade conan
         conan profile detect --force
-        # MSVC is detected with C++14, the project and antlr4 need a newer standard
-        # sed -i 's/^compiler.cppstd=.*/compiler.cppstd=20/' "$(conan profile path default)"
+        # MSVC is detected with C++14, the project and antlr4 need a newer standard: every conan call below passes compiler.cppstd=20
         conan remote add --force protestator-conan $ARTIFACTORY_URL
         conan remote login -p $ARTIFACTORY_TOKEN protestator-conan $ARTIFACTORY_USER
         conan remote remove conancenter
     - name: prepare dependencies
       run: |
        mkdir build && cd build
-       conan install .. --build missing
+       conan install .. --build missing -pr:b=default -pr:h=default -s:h compiler.cppstd=20
     - name: build sysmlv2lib
       run: |
         ls -al
@@ -92,7 +91,7 @@ jobs:
     - name: deploy and package binaries
       run: |
         for bt in Release Debug; do
-          conan install --requires="sysmllib/$VERSION" -s build_type=$bt --deployer=direct_deploy --deployer-folder="dist/$bt"
+          conan install --requires="sysmllib/$VERSION" -s build_type=$bt --deployer=direct_deploy --deployer-folder="dist/$bt" -pr:b=default -pr:h=default -s:h compiler.cppstd=20
           7z a "dist/sysmllib-$VERSION-windows-x86_64-$bt.zip" "./dist/$bt/direct_deploy/sysmllib/*"
         done
     - uses: actions/upload-artifact@v4
