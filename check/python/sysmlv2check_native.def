@@ -1,0 +1,7 @@
+LIBRARY sysmlv2check_native
+EXPORTS
+    sysml_pruefe
+    sysml_vorwaermen
+    sysml_konfigurieren
+    sysml_speicher
+    sysml_freigeben

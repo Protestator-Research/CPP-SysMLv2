@@ -11,8 +11,17 @@
 #include <chrono>
 #include <cstdio>
 #include <cstdlib>
+#ifdef _WIN32
+#define popen _popen
+#define pclose _pclose
+#define WEXITSTATUS(status) (status)
+#else
 #include <sys/wait.h>
+#endif
+#include <filesystem>
 #include <fstream>
+#include <set>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -23,6 +32,49 @@ namespace {
     bool performanceTestsEnabled() {
         const char* value = std::getenv("SYSML_ENABLE_PERFORMANCE_TESTS");
         return value != nullptr && value[0] != '\0' && std::string(value) != "0";
+    }
+
+#ifdef _WIN32
+    const char* const NULL_DEVICE = "NUL";
+#else
+    const char* const NULL_DEVICE = "/dev/null";
+#endif
+
+    /// The shell command that runs the command line program with the given arguments (quoted path; cmd.exe needs the whole command quoted).
+    std::string cliCommand(const std::string& arguments) {
+#ifdef _WIN32
+        return "\"\"" + std::string(SYSMLV2CHECK_CLI) + "\" " + arguments + "\"";
+#else
+        return "'" + std::string(SYSMLV2CHECK_CLI) + "' " + arguments;
+#endif
+    }
+
+    /// Runs the command line program with the given lines of requests on stdin and returns the lines of stdout.
+    std::vector<std::string> runCli(const std::string& arguments, const std::vector<std::string>& requestLines) {
+        const std::string input = (std::filesystem::temp_directory_path() / ("sysmlv2check-test-" + std::to_string(std::rand()) + ".jsonl")).string();
+        {
+            std::ofstream out(input);
+            for (const auto& line : requestLines) out << line << "\n";
+        }
+        FILE* pipe = popen(cliCommand(arguments + " < \"" + input + "\" 2>" + NULL_DEVICE).c_str(), "r");
+        std::vector<std::string> result;
+        if (pipe == nullptr) return result;
+        std::string output;
+        char buffer[4096];
+        while (size_t n = fread(buffer, 1, sizeof buffer, pipe)) output.append(buffer, n);
+        pclose(pipe);
+        std::remove(input.c_str());
+        std::stringstream lines(output);
+        for (std::string line; std::getline(lines, line);) {
+            if (!line.empty() && line.back() == '\r') line.pop_back();
+            result.push_back(line);
+        }
+        return result;
+    }
+
+    /// The declared name of an element of "modell" ("" if it has none: the member is null then).
+    std::string nameOf(const json& element) {
+        return element.contains("declaredName") && element.at("declaredName").is_string() ? element.at("declaredName").get<std::string>() : "";
     }
 
     /// Sends a request through the C interface and parses the response.
@@ -455,7 +507,7 @@ TEST(SysmlPruefeContext, TheIdOfARequestIsReturned) {
 }
 
 TEST(SysmlPruefeCli, StdoutHoldsOnlyResponseLinesWithTheirIds) {
-    const std::string input = std::tmpnam(nullptr);
+    const std::string input = (std::filesystem::temp_directory_path() / ("sysmlv2check-test-lines-" + std::to_string(std::rand()) + ".jsonl")).string();
     {
         std::ofstream out(input);
         out << json{{"id", 1}, {"quelltext", "package A { part def X; }"}}.dump() << "\n";
@@ -465,7 +517,7 @@ TEST(SysmlPruefeCli, StdoutHoldsOnlyResponseLinesWithTheirIds) {
         out << json{{"id", 4}, {"quelltext", 7}}.dump() << "\n";
         out << json{{"id", 5}, {"quelltext", "package C { part def Q; }"}}.dump() << "\n";
     }
-    const std::string command = std::string(SYSMLV2CHECK_CLI) + " --lines < " + input + " 2>/dev/null";
+    const std::string command = cliCommand("--lines < \"" + input + "\" 2>" + NULL_DEVICE);
     FILE* pipe = popen(command.c_str(), "r");
     ASSERT_NE(pipe, nullptr);
     std::string output;
@@ -643,11 +695,11 @@ TEST(SysmlPruefeContext, AnIdThatIsNullIsReturned) {
 
 TEST(SysmlPruefeCli, UnusableArgumentsEndWithExitCodeTwo) {
     for (const char* argument : {"--max-ms=abc", "--max-ms=", "--max-ms=-5", "--max-tiefe=1x", "--unknown"}) {
-        const std::string command = std::string(SYSMLV2CHECK_CLI) + " " + argument + " < /dev/null 2>/dev/null";
+        const std::string command = cliCommand(std::string(argument) + " < " + NULL_DEVICE + " 2>" + NULL_DEVICE);
         const int status = std::system(command.c_str());
         EXPECT_EQ(WEXITSTATUS(status), 2) << argument;
     }
-    EXPECT_EQ(WEXITSTATUS(std::system((std::string(SYSMLV2CHECK_CLI) + " --max-ms=500 < /dev/null 2>/dev/null").c_str())), 0);
+    EXPECT_EQ(WEXITSTATUS(std::system(cliCommand(std::string("--max-ms=500 < ") + NULL_DEVICE + " 2>" + NULL_DEVICE).c_str())), 0);
 }
 
 TEST(SysmlPruefe, TimingWithWarmParser) {
@@ -677,6 +729,129 @@ TEST(SysmlPruefe, TimingWithWarmParser) {
     std::cout << "[timing, warm parser] context creation: " << creation << " ms; request with ISQ/SI import: first " << first << " ms, second "
               << second << " ms; request with part def: first " << firstParts << " ms, second " << secondParts << " ms; library files loaded: "
               << checker.loadedLibraryCount() << "\n";
+}
+
+TEST(SysmlModell, DeliversTheParsedModel) {
+    const json response = sende({{"quelltext", "package P { part def A { attribute x; } }"}, {"modell", true}});
+    ASSERT_TRUE(response.contains("modell")) << response.dump(2);
+    ASSERT_TRUE(response.at("modell").is_array());
+    EXPECT_EQ(response.at("modellFehler"), 0);
+    std::set<std::string> ids;
+    bool hasPartDefinition = false, hasAttribute = false, hasRelationship = false;
+    for (const auto& element : response.at("modell")) {
+        ASSERT_TRUE(element.contains("@id") && element.contains("@type")) << element.dump(2);
+        ids.insert(element.at("@id").get<std::string>());
+        const std::string type = element.at("@type").get<std::string>();
+        const std::string name = element.contains("declaredName") && element.at("declaredName").is_string() ? element.at("declaredName").get<std::string>() : "";
+        if (type == "PartDefinition" && name == "A") hasPartDefinition = true;
+        if (type == "AttributeUsage" && name == "x") hasAttribute = true;
+        if (type.find("Membership") != std::string::npos) hasRelationship = true;
+    }
+    EXPECT_TRUE(hasPartDefinition);
+    EXPECT_TRUE(hasAttribute);
+    EXPECT_TRUE(hasRelationship);
+    for (const auto& element : response.at("modell")) {
+        if (!element.contains("ownedRelationship")) continue;
+        for (const auto& reference : element.at("ownedRelationship")) {
+            EXPECT_TRUE(ids.count(reference.at("@id").get<std::string>()) != 0) << reference.dump();
+        }
+    }
+}
+
+TEST(SysmlModell, AbsentWithoutTheFlag) {
+    const json response = sende({{"quelltext", "package P { part def A; }"}});
+    EXPECT_FALSE(response.contains("modell")) << response.dump(2);
+    EXPECT_FALSE(response.contains("modellFehler"));
+    EXPECT_TRUE(response.contains("elemente"));
+    EXPECT_FALSE(sende({{"quelltext", "package P { part def A; }"}, {"modell", "ja"}}).contains("modell"));
+}
+
+TEST(SysmlModell, PartialModelAfterSyntaxError) {
+    const json response = sende({{"quelltext", "package P { part def A { attribute ; } part def ( }"}, {"modell", true}});
+    EXPECT_FALSE(select(response, "GRAMMATIK").empty()) << response.dump(2);
+    ASSERT_TRUE(response.contains("modell")) << response.dump(2);
+    ASSERT_TRUE(response.at("modell").is_array());
+    bool hasPartDefinition = false;
+    for (const auto& element : response.at("modell")) {
+        if (element.at("@type") == "PartDefinition" && nameOf(element) == "A") hasPartDefinition = true;
+    }
+    EXPECT_TRUE(hasPartDefinition) << response.at("modell").dump(2);
+}
+
+TEST(SysmlModell, RootNamespaceIsInTheModelAndReferencesResolve) {
+    const json response = sende({{"quelltext", "package P { part def A; }"}, {"modell", true}});
+    ASSERT_TRUE(response.contains("modell")) << response.dump(2);
+    std::set<std::string> ids;
+    for (const auto& element : response.at("modell")) ids.insert(element.at("@id").get<std::string>());
+    const json& root = response.at("modell").at(0);   // the root namespace comes first
+    EXPECT_EQ(root.at("@type"), "Namespace");
+    size_t topLevel = 0;
+    for (const auto& element : response.at("modell")) {
+        if (!element.contains("owningNamespace") || !element.at("owningNamespace").is_object()) continue;
+        if (element.at("owningNamespace").at("@id") != root.at("@id")) continue;
+        ++topLevel;
+        EXPECT_TRUE(ids.count(element.at("owningNamespace").at("@id").get<std::string>()) != 0);
+        for (const char* key : {"memberElement", "ownedMemberElement", "source", "target"}) {
+            if (!element.contains(key)) continue;
+            const json& value = element.at(key);
+            const auto check = [&](const json& reference) {
+                if (reference.is_object() && reference.contains("@id")) {
+                    EXPECT_TRUE(ids.count(reference.at("@id").get<std::string>()) != 0) << key << ": " << reference.dump();
+                }
+            };
+            if (value.is_array()) {
+                for (const auto& reference : value) check(reference);
+            } else {
+                check(value);
+            }
+        }
+    }
+    EXPECT_GE(topLevel, 1u);
+}
+
+TEST(SysmlModell, ErrorResponsesHaveNoModel) {
+    const std::string big(Checker().limits().maxTextBytes + 1, ' ');
+    const json response = sende({{"quelltext", big}, {"modell", true}});
+    EXPECT_EQ(response.at("fehler"), "zuGross");
+    EXPECT_FALSE(response.contains("modell"));
+    EXPECT_FALSE(response.contains("modellUnvollstaendig"));
+}
+
+TEST(SysmlModell, GivenTextIsNotPartOfTheModel) {
+    const json response = sende({{"quelltext", "package P { part def A; }"}, {"vorgabe", "package G { part def Gegeben; }"}, {"modell", true}});
+    ASSERT_TRUE(response.contains("modell")) << response.dump(2);
+    bool hasA = false;
+    for (const auto& element : response.at("modell")) {
+        EXPECT_NE(nameOf(element), "Gegeben");
+        EXPECT_NE(nameOf(element), "G");
+        if (nameOf(element) == "A") hasA = true;
+    }
+    EXPECT_TRUE(hasA);
+}
+
+TEST(SysmlModell, ModelIsBoundedByMaxModelElements) {
+    Checker checker;
+    Checker::Limits limits = checker.limits();
+    limits.maxModelElements = 3;
+    checker.setLimits(limits);
+    const json response = askJson(checker, json{{"quelltext", "package P { part def A; part def B; part def C; }"}, {"modell", true}});
+    ASSERT_TRUE(response.contains("modell")) << response.dump(2);
+    EXPECT_EQ(response.at("modell").size(), 3u);
+    EXPECT_TRUE(response.at("modellUnvollstaendig").get<bool>());
+    limits.maxModelElements = 20000;
+    checker.setLimits(limits);
+    const json full = askJson(checker, json{{"quelltext", "package P { part def A; }"}, {"modell", true}});
+    EXPECT_FALSE(full.at("modellUnvollstaendig").get<bool>());
+}
+
+TEST(SysmlPruefeCli, ModelOptionAddsTheModelUnlessTheRequestSaysOtherwise) {
+    const auto lines = runCli("--lines --modell", {json{{"id", 1}, {"quelltext", "package P { part def A; }"}}.dump(),
+                                                  json{{"id", 2}, {"quelltext", "package P { part def A; }"}, {"modell", false}}.dump()});
+    ASSERT_EQ(lines.size(), 2u);
+    const json first = json::parse(lines[0]);
+    const json second = json::parse(lines[1]);
+    EXPECT_TRUE(first.contains("modell")) << lines[0];
+    EXPECT_FALSE(second.contains("modell")) << lines[1];
 }
 
 int main(int argc, char** argv) {

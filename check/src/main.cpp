@@ -10,6 +10,8 @@
 //                                     (default 102400 bytes, nesting depth 64).
 //          --max-tokens=N / --max-kette=N / --max-ms=N / --max-lade-ms=N / --max-diagnosen=N  the token limit, the chain length limit,
 //          the parse deadline and the limit for loading library packages during a request (milliseconds), the number of diagnoses.
+//          --max-modell-elemente=N limits the elements of the "modell" of a response (default 20000).
+//          --modell sets "modell": true in every request that does not carry the member (the response then has the model of the text).
 //          --vorwaermen=alle loads the whole standard library at the start (recommended in production: the first request that needs
 //          many packages would take half a minute). A number that cannot be read ends the program with exit code 2.
 // An "id" in a request is returned unchanged in its response. Only response lines are written to stdout: whatever the library prints
@@ -17,6 +19,8 @@
 // The exit code is 0 unless the input could not be read. Request and response: see SysMLv2::Check::Checker.
 //
 #include <sysmlv2/check/Checker.h>
+
+#include <nlohmann/json.hpp>
 
 #include <cstring>
 #include <cstdio>
@@ -48,6 +52,14 @@ namespace {
 #endif
     }
 
+    /// The request with "modell": true added, if it is a JSON object without the member; any other request stays as it is.
+    std::string withModel(const std::string& request) {
+        nlohmann::json parsed = nlohmann::json::parse(request, nullptr, false);
+        if (!parsed.is_object() || parsed.contains("modell")) return request;
+        parsed["modell"] = true;
+        return parsed.dump(-1, ' ', false, nlohmann::json::error_handler_t::replace);
+    }
+
     void respond(FILE* out, const std::string& line) {
         std::fwrite(line.data(), 1, line.size(), out);
         std::fputc('\n', out);
@@ -76,12 +88,15 @@ namespace {
 
 int main(int argc, char** argv) {
     bool lines = false;
+    bool model = false;
     std::vector<std::string> preload;
     SysMLv2::Check::Checker::Limits limits;
     for (int i = 1; i < argc; ++i) {
         const std::string argument = argv[i];
         if (argument == "--lines" || argument == "--zeilen") {
             lines = true;
+        } else if (argument == "--modell") {
+            model = true;
         } else if (argument.rfind("--vorwaermen=", 0) == 0) {
             std::stringstream names(argument.substr(13));
             for (std::string name; std::getline(names, name, ',');) {
@@ -103,8 +118,10 @@ int main(int argc, char** argv) {
             limits.maxLoadMillis = number(argument, 14);
         } else if (argument.rfind("--max-diagnosen=", 0) == 0) {
             limits.maxDiagnostics = number(argument, 16);
+        } else if (argument.rfind("--max-modell-elemente=", 0) == 0) {
+            limits.maxModelElements = number(argument, 22);
         } else {
-            std::cerr << "usage: sysmlv2check [--lines] [--vorwaermen=alle|ISQ,SI,...] [--max-bytes=N] [--max-tiefe=N] [--max-tokens=N] [--max-kette=N] [--max-operatoren=N] [--max-ms=N] [--max-lade-ms=N] [--max-diagnosen=N] < request.json\n";
+            std::cerr << "usage: sysmlv2check [--lines] [--modell] [--vorwaermen=alle|ISQ,SI,...] [--max-bytes=N] [--max-tiefe=N] [--max-tokens=N] [--max-kette=N] [--max-operatoren=N] [--max-ms=N] [--max-lade-ms=N] [--max-diagnosen=N] [--max-modell-elemente=N] < request.json\n";
             return argument == "--help" ? 0 : 2;
         }
     }
@@ -117,12 +134,12 @@ int main(int argc, char** argv) {
         std::string line;
         while (std::getline(std::cin, line)) {
             if (line.find_first_not_of(" \t\r") == std::string::npos) continue;
-            respond(out, checker.check(line));
+            respond(out, checker.check(model ? withModel(line) : line));
         }
         return 0;
     }
     const std::string request((std::istreambuf_iterator<char>(std::cin)), std::istreambuf_iterator<char>());
     if (std::cin.bad()) return 1;
-    respond(out, checker.check(request));
+    respond(out, checker.check(model ? withModel(request) : request));
     return 0;
 }
