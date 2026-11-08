@@ -62,6 +62,11 @@ if(NOT EMSCRIPTEN)
     add_executable(sysmlv2check-cli src/main.cpp)
     set_target_properties(sysmlv2check-cli PROPERTIES OUTPUT_NAME sysmlv2check)
     target_link_libraries(sysmlv2check-cli sysmlv2check)
+    if(MSVC)
+        # The main thread only has 1 MB by default. With raised limits, resolving, the checks and the destruction of the ANTLR cache
+        # at exit recurse once per nesting level of the text on that thread.
+        target_link_options(sysmlv2check-cli PRIVATE /STACK:16777216)
+    endif()
 endif()
 
 include(GNUInstallDirs)
@@ -84,6 +89,9 @@ if(BUILD_TESTING)
     find_package(GTest REQUIRED)
     add_executable(sysmlv2check-test tests/TestCheck.cpp)
     target_link_libraries(sysmlv2check-test sysmlv2check gtest::gtest)
+    if(MSVC)
+        target_link_options(sysmlv2check-test PRIVATE /STACK:16777216)
+    endif()
     target_include_directories(sysmlv2check-test PRIVATE
             ../filehandling/include
             ../kerml/include)
