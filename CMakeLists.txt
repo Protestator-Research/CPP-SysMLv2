@@ -22,9 +22,20 @@ option(BUILD_WITH_ONLINE "Builds the online part of the services (SysMLv2 API cl
 # The checker of SysML v2 texts (sysmlv2check): C interface sysml_pruefe, command line tool, tests.
 option(BUILD_WITH_CHECK "Builds sysmlv2check, the checker for SysML v2 texts (requires BUILD_WITH_PARSING)" OFF)
 option(BUILD_WITH_PARSING "Builds with the SysMLv2 parsing API" ON)
+# The Python module (check/python): one self-contained shared library sysmlv2check_native with the C interface of sysmlv2check, everything else linked statically.
+option(BUILD_PYTHON_MODULE "Builds the shared library for the Python package sysmlv2 (requires BUILD_WITH_CHECK, static build)" OFF)
 option(BUILD_TESTING "Build the conformance tests" ON)
 # Warnings are errors (GCC / Clang). Switch off for toolchains whose warnings differ (Emscripten) or optimized builds with newer compilers.
 option(SYSMLV2_WERROR "Treats compiler warnings as errors" ON)
+# Static build: the export macros (*_global.h) must be empty (no __declspec(dllimport) on Windows); position independent code so that the
+# static libraries can be linked into a shared library (Python module) on Linux. There is no installed CMake config, consumers get
+# SYSMLV2_STATIC from the Conan recipe (package_info).
+if(NOT BUILD_SHARED_LIBS)
+    add_compile_definitions(SYSMLV2_STATIC)
+    if(NOT EMSCRIPTEN)
+        set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+    endif()
+endif()
 if(BUILD_TESTING)
     enable_testing()
 endif()
@@ -59,6 +70,8 @@ if (BUILD_WITH_CHECK)
         message(FATAL_ERROR "BUILD_WITH_CHECK requires BUILD_WITH_PARSING")
     endif ()
     add_subdirectory(check)
+elseif (BUILD_PYTHON_MODULE)
+    message(FATAL_ERROR "BUILD_PYTHON_MODULE requires BUILD_WITH_CHECK")
 endif ()
 if(BUILD_TESTING AND BUILD_WITH_PARSING AND BUILD_WITH_SERVICES AND BUILD_WITH_REST)
     add_subdirectory(conformance-test)
