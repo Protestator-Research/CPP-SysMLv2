@@ -46,6 +46,53 @@ jobs:
         path: dist/*.tar.gz
         if-no-files-found: error
 
+  build-macos:
+    runs-on: macos-latest
+    env:
+      ARTIFACTORY_URL: ${{ secrets.ARTIFACTORY_URL }}
+      ARTIFACTORY_TOKEN: ${{ secrets.ARTIFACTORY_TOKEN }}
+      ARTIFACTORY_USER: ${{secrets.ARTIFACTORY_USERNAME}}
+      VERSION: ${{ github.ref_name }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - uses: actions/cache@v4
+      with:
+        path: ~/.conan2/p
+        key: conan-macos-pkg-${{ runner.arch }}-${{ hashFiles('conanfile.py') }}
+        restore-keys: conan-macos-pkg-${{ runner.arch }}-
+    - name: prepare runner
+      run: |
+        pip install --upgrade conan
+        conan profile detect --force
+        conan remote add --force protestator-conan $ARTIFACTORY_URL
+        conan remote login -p $ARTIFACTORY_TOKEN protestator-conan $ARTIFACTORY_USER
+        conan remote remove conancenter
+    - name: prepare dependencies
+      run: |
+       mkdir build && cd build
+       conan install .. --build missing
+    - name: build sysmlv2lib
+      run: |
+        cd build
+        conan create .. --version=$VERSION --build missing
+        conan create .. --version=$VERSION -s build_type=Debug --build missing
+        conan upload "sysmllib/*" -c -r protestator-conan
+    - name: deploy and package binaries
+      run: |
+        ARCH=$(uname -m)   # arm64 on Apple Silicon, x86_64 on Intel
+        for bt in Release Debug; do
+          conan install --requires="sysmllib/$VERSION" -s build_type=$bt --deployer=direct_deploy --deployer-folder="dist/$bt"
+          tar -czf "dist/sysmllib-$VERSION-macos-$ARCH-$bt.tar.gz" -C "dist/$bt/direct_deploy/sysmllib" .
+        done
+    - uses: actions/upload-artifact@v4
+      with:
+        name: sysmllib-macos-${{ runner.arch }}
+        path: dist/*.tar.gz
+        if-no-files-found: error
+
   build-windows:
     runs-on: windows-latest
     defaults:
@@ -113,7 +160,7 @@ jobs:
     secrets: inherit
 
   release:
-    needs: [build, build-windows, wasm, python]
+    needs: [build, build-macos, build-windows, wasm, python]
     runs-on: ubuntu-latest
     permissions:
       contents: write

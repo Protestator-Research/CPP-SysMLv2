@@ -43,6 +43,48 @@ jobs:
         name: test-logs
         path: build/Release/Testing/Temporary/
 
+  build-macos:
+    runs-on: macos-latest
+    env:
+      ARTIFACTORY_URL: ${{ secrets.ARTIFACTORY_URL }}
+      ARTIFACTORY_TOKEN: ${{ secrets.ARTIFACTORY_TOKEN }}
+      ARTIFACTORY_USER: ${{secrets.ARTIFACTORY_USERNAME}}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - uses: actions/cache@v4
+      with:
+        path: ~/.conan2/p
+        key: conan-macos-check-${{ runner.arch }}-${{ hashFiles('conanfile.py') }}
+        restore-keys: conan-macos-check-${{ runner.arch }}-
+    - name: prepare runner
+      run: |
+        pip install --upgrade conan
+        conan profile detect --force
+        conan remote add --force protestator-conan $ARTIFACTORY_URL
+        conan remote login -p $ARTIFACTORY_TOKEN protestator-conan $ARTIFACTORY_USER
+        conan remote remove conancenter
+    - name: prepare dependencies
+      run: |
+       mkdir build && cd build
+       conan install .. --build missing -o "&:with_check=True"
+    - name: build sysmlv2lib
+      run: |
+        cd build
+        conan build .. --version=wip -o "&:with_check=True"
+    - name: test
+      run: |
+        # the dependencies are shared libraries in the Conan cache: conanrun.sh puts them on DYLD_LIBRARY_PATH
+        source build/Release/generators/conanrun.sh
+        ctest --test-dir build/Release --output-on-failure --timeout 1800
+    - uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: test-logs-macos
+        path: build/Release/Testing/Temporary/
+
   build-windows:
     runs-on: windows-latest
     defaults:
