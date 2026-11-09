@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Checker and parser for SysML v2 textual notation (native library, no dependencies)"
 readme = "python/README.md"
 license = "GPL-3.0-only"
-license-files = ["LICENSE"]
+# no project.license-files: scikit-build-core rejects it together with tool.scikit-build.wheel.license-files (see below)
 requires-python = ">=3.9"
 dependencies = []
 keywords = ["sysml", "sysmlv2", "kerml", "mbse", "parser", "checker"]
