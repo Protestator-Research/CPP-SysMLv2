@@ -38,8 +38,6 @@ jobs:
       ARTIFACTORY_TOKEN: ${{ secrets.ARTIFACTORY_TOKEN }}
       ARTIFACTORY_USER: ${{ secrets.ARTIFACTORY_USERNAME }}
       CIBW_ARCHS: ${{ matrix.archs }}
-      # 'true' only for an exact cache hit; otherwise the Conan cache is saved again (a partial restore-keys hit gets refreshed)
-      CONAN_CACHE_HIT: ${{ steps.conan-cache.outputs.cache-hit }}
       MACOSX_DEPLOYMENT_TARGET: ${{ matrix.deployment }}
     defaults:
       run:
@@ -77,6 +75,10 @@ jobs:
         path: ${{ matrix.platform == 'linux' && '~/conan-cache' || (matrix.platform == 'windows' && 'C:/c2-save' || '~/conan-save') }}
         key: conan-wheel-${{ matrix.name }}-${{ hashFiles('conanfile.py', 'python/tools/conan_deps.py') }}
         restore-keys: conan-wheel-${{ matrix.name }}-
+    # 'true' only for an exact cache hit; otherwise the Conan cache is saved again (a partial restore-keys hit gets refreshed).
+    # The steps context is not available in the job-level env, so the value reaches the later steps through $GITHUB_ENV.
+    - name: export Conan cache hit
+      run: echo "CONAN_CACHE_HIT=${{ steps.conan-cache.outputs.cache-hit }}" >> "$GITHUB_ENV"
     - name: package version
       run: |
         python -m pip install --quiet packaging
