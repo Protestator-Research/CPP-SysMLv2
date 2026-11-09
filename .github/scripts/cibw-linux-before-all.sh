@@ -6,9 +6,10 @@
 set -euo pipefail
 
 cd /project
-# OpenSSL 3 (transitive dependency, built from source with -b missing) runs a Perl Configure that needs IPC::Cmd (and Time::Piece);
-# the manylinux_2_28 image (AlmaLinux 8) does not ship these modules.
-dnf install -y --setopt=install_weak_deps=False perl-IPC-Cmd perl-Time-Piece
+# OpenSSL 3 (transitive dependency, built from source with -b missing) needs several Perl core modules (IPC::Cmd for Configure,
+# Digest::SHA for the FIPS module, ...); the manylinux_2_28 image (AlmaLinux 8) only has a minimal perl. The "perl" package is the
+# EL8 meta package that pulls in all core modules.
+dnf install -y --setopt=install_weak_deps=False perl
 PYBIN=/opt/python/cp312-cp312/bin
 "$PYBIN/python" -m pip install --quiet conan
 export PATH="$PYBIN:$PATH"
@@ -28,7 +29,9 @@ if [ -f "$CACHE_FILE" ]; then
   conan cache restore "$CACHE_FILE" || echo "conan cache restore failed, continuing without cache"
 fi
 
-python python/tools/conan_deps.py --output-folder /project/build-python/conan --format json >/dev/null
+# b2 (build tool of boost) is always built inside the container: the prebuilt b2 binary from the remote was built on a newer distro
+# (needs GLIBC 2.38 / GLIBCXX 3.4.32) and does not start on manylinux_2_28 (glibc 2.28); the package ID does not encode the glibc.
+python python/tools/conan_deps.py --output-folder /project/build-python/conan --format json '--conan-arg=--build=b2/*' >/dev/null
 
 if [ -d "$(dirname "$CACHE_FILE")" ] && [ "${CONAN_CACHE_HIT:-}" != true ]; then
   rm -f "$CACHE_FILE"
