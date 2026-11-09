@@ -30,7 +30,7 @@ jobs:
           - { name: windows-x86_64, os: windows-latest,   platform: windows, archs: AMD64,  conan_arch: x86_64 }
           # cross build on an x64 runner (Conan -s:h arch=armv8, generator platform ARM64); the tests cannot run there
           - { name: windows-arm64,  os: windows-latest,   platform: windows, archs: ARM64,  conan_arch: armv8 }
-          - { name: macos-arm64,    os: macos-14,         platform: macos,   archs: arm64,  conan_arch: armv8,  deployment: "11.0" }
+          # - { name: macos-arm64,    os: macos-14,         platform: macos,   archs: arm64,  conan_arch: armv8,  deployment: "11.0" } Currently not supported
           # native Intel runner (macos-13 was retired by GitHub); std::filesystem needs 10.15
           - { name: macos-x86_64,   os: macos-15-intel,   platform: macos,   archs: x86_64, conan_arch: x86_64, deployment: "10.15" }
     env:
