@@ -6,9 +6,10 @@
 set -euo pipefail
 
 cd /project
-# OpenSSL 3 (transitive dependency, built from source with -b missing) runs a Perl Configure that needs IPC::Cmd (and Time::Piece);
-# the manylinux_2_28 image (AlmaLinux 8) does not ship these modules.
-dnf install -y --setopt=install_weak_deps=False perl-IPC-Cmd perl-Time-Piece
+# OpenSSL 3 (transitive dependency, built from source with -b missing) needs several Perl core modules (IPC::Cmd for Configure,
+# Digest::SHA for the FIPS module, ...); the manylinux_2_28 image (AlmaLinux 8) only has a minimal perl. The "perl" package is the
+# EL8 meta package that pulls in all core modules.
+dnf install -y --setopt=install_weak_deps=False perl
 PYBIN=/opt/python/cp312-cp312/bin
 "$PYBIN/python" -m pip install --quiet conan
 export PATH="$PYBIN:$PATH"
