@@ -128,3 +128,30 @@ jobs:
           dist/*.tar.gz
           dist/*.zip
           dist/*.whl
+
+  publish-pypi:
+    # Trusted publishing (no token): PyPI validates this workflow (tagbuild.yml) and the environment "pypi". Runs last, after the GitHub release.
+    # Only the wheels are uploaded, not the sdist (it is not self-contained, see python/README.md).
+    needs: [release]
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+      contents: read   # for actions/checkout: naming one permission sets all others to none
+    steps:
+    # checkout first: it must not wipe dist/
+    - uses: actions/checkout@v4
+    - uses: actions/download-artifact@v4
+      with:
+        pattern: sysmlv2-wheels-*
+        path: dist
+        merge-multiple: true
+    # set-version.py silently keeps the version of pyproject.toml for a tag that is not PEP 440, and a PyPI upload cannot be undone:
+    # the tag must be a valid version and every wheel must carry exactly that version.
+    - name: verify the wheels match the tag
+      env:
+        TAG: ${{ github.ref_name }}
+      run: |
+        python3 -m pip install --quiet packaging
+        python3 .github/scripts/check-dist-version.py "$TAG" dist
+    - uses: pypa/gh-action-pypi-publish@release/v1

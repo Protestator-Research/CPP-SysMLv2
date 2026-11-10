@@ -139,7 +139,7 @@ def collect_licenses(graph: Dict[str, Any]) -> int:
         body = "\n\n".join(f"--- {f.name} ---\n{f.read_text(encoding='utf-8', errors='replace').strip()}" for f in files)
         sections.append(f"{'=' * 78}\n{header}\n{'=' * 78}\n{body}\n")
     LICENSES_FILE.write_text(
-        "Third-party software statically linked into the native library of the sysmlv2 package.\n"
+        "Third-party software statically linked into the native library of the cpp-sysmlv2 package.\n"
         "The package itself is GPL-3.0-only (see LICENSE).\n\n" + "\n".join(sorted(sections)),
         encoding="utf-8",
     )

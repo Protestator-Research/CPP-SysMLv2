@@ -22,7 +22,7 @@ from ._types import Category, CheckResult, Diagnostic, ElementInfo, ErrorKind, R
 try:
     from importlib.metadata import version as _version
 
-    __version__ = _version("sysmlv2")
+    __version__ = _version("cpp-sysmlv2")
 except Exception:  # not installed (source checkout)
     __version__ = "0+unknown"
 

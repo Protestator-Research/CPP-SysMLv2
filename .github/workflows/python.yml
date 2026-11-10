@@ -1,8 +1,11 @@
 name: Python Wheels
 
-# Reusable workflow: builds the wheels of the Python package "sysmlv2" (pyproject.toml, python/) with cibuildwheel, tests every wheel
-# (pytest python/tests against the installed wheel) and uploads them as the artifacts "sysmlv2-wheels-<os>-<arch>" and "sysmlv2-sdist".
-# The wheel is py3-none-<platform> (ctypes, no Python ABI): one CPython (cp312) per platform. Nothing is published to PyPI here.
+# Reusable workflow: builds the wheels of the Python package "cpp-sysmlv2" (import name "sysmlv2"; pyproject.toml, python/) with cibuildwheel,
+# tests every wheel (pytest python/tests against the installed wheel) and uploads them as the artifacts "sysmlv2-wheels-<os>-<arch>" and
+# "sysmlv2-sdist" (the wheel files are named cpp_sysmlv2-*.whl; the artifact names are unchanged).
+# The wheel is py3-none-<platform> (ctypes, no Python ABI): one CPython (cp312) per platform.
+# Nothing is published here: publishing happens in the calling workflows (tagbuild.yml -> PyPI, testpypi.yml -> TestPyPI), because PyPI
+# trusted publishing validates the top-level (calling) workflow, not a reusable one.
 #
 # Dependencies: python/tools/conan_deps.py (Conan, static). Linux: inside the manylinux container (.github/scripts/cibw-linux-before-all.sh,
 # toolchain path fixed in pyproject.toml). Windows / macOS: on the runner, the toolchain reaches cibuildwheel through $GITHUB_ENV.
@@ -78,9 +81,11 @@ jobs:
         key: conan-wheel-${{ matrix.name }}-${{ hashFiles('conanfile.py', 'python/tools/conan_deps.py') }}
         restore-keys: conan-wheel-${{ matrix.name }}-
     - name: package version
+      env:
+        VERSION: ${{ inputs.version }}   # through the environment, never expanded inside the script (the value is free text)
       run: |
         python -m pip install --quiet packaging
-        python .github/scripts/set-version.py '${{ inputs.version }}'
+        python .github/scripts/set-version.py "$VERSION"
     - name: install dependencies with Conan (Windows / macOS)
       if: matrix.platform != 'linux'
       run: |
@@ -118,28 +123,14 @@ jobs:
       with:
         python-version: '3.12'
     - name: package version
+      env:
+        VERSION: ${{ inputs.version }}   # through the environment, never expanded inside the script (the value is free text)
       run: |
         python -m pip install --quiet packaging
-        python .github/scripts/set-version.py '${{ inputs.version }}'
+        python .github/scripts/set-version.py "$VERSION"
     - run: pipx run build --sdist --outdir dist
     - uses: actions/upload-artifact@v4
       with:
         name: sysmlv2-sdist
         path: dist/*.tar.gz
         if-no-files-found: error
-
-  # Template, disabled: publish to PyPI with trusted publishing (configure the project + environment "pypi" on pypi.org first).
-  # publish-pypi:
-  #   if: false
-  #   needs: [wheels, sdist]
-  #   runs-on: ubuntu-latest
-  #   environment: pypi
-  #   permissions:
-  #     id-token: write
-  #   steps:
-  #   - uses: actions/download-artifact@v4
-  #     with:
-  #       pattern: sysmlv2-*
-  #       path: dist
-  #       merge-multiple: true
-  #   - uses: pypa/gh-action-pypi-publish@release/v1

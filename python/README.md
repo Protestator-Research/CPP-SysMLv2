@@ -1,8 +1,27 @@
-# sysmlv2
+# cpp-sysmlv2
 
 Checker and parser for SysML v2 textual notation. A thin, typed Python API (ctypes, no runtime dependencies) around the
 native C++ library of [CPP-SysMLv2](https://github.com/Protestator-Research/CPP-SysMLv2): syntax errors, unresolved names,
 structure violations, required elements and (optionally) the full parsed model in the SysML v2 API JSON format.
+
+## Installation
+
+```bash
+pip install cpp-sysmlv2
+```
+
+The distribution is named `cpp-sysmlv2`, but the import name is `sysmlv2` (`import sysmlv2`).
+
+Prebuilt wheels (`py3-none-<platform>`, no compiler needed) are published for:
+
+* Linux x86_64 and aarch64 (`manylinux_2_28`, glibc)
+* Windows x86_64 and ARM64
+* macOS x86_64 (>= 10.15) and arm64 (>= 11.0)
+
+No sdist is published on PyPI, because it is not self-contained (see "Building the wheel"). On other platforms, build the wheel from a
+checkout as described in "Building the wheel".
+
+## Usage
 
 ```python
 import sysmlv2
@@ -103,7 +122,7 @@ macOS: build one wheel per architecture (`--arch armv8` or `--arch x86_64`, or v
 `os.version`), not universal2. Windows ARM64 (`--arch armv8` on x64) is a Conan cross build. Other Conan settings go through `--conan-arg=...`. Test the wheel:
 
 ```bash
-python -m venv venv && venv/bin/pip install dist/sysmlv2-*.whl pytest && venv/bin/python -m pytest python/tests
+python -m venv venv && venv/bin/pip install dist/cpp_sysmlv2-*.whl pytest && venv/bin/python -m pytest python/tests
 ```
 
 The tests that need no native library (`test_protocol.py`) also run from a source checkout (`PYTHONPATH=python/src`); with

@@ -3,8 +3,9 @@ requires = ["scikit-build-core>=0.11"]
 build-backend = "scikit_build_core.build"
 
 [project]
-name = "sysmlv2"
-version = "0.1.0"
+name = "cpp-sysmlv2"
+# scheme YYMM.N like the git tags; CI overwrites it from the tag via .github/scripts/set-version.py
+version = "2611.1"
 description = "Checker and parser for SysML v2 textual notation (native library, no dependencies)"
 readme = "python/README.md"
 license = "GPL-3.0-only"
@@ -17,10 +18,15 @@ classifiers = [
     "Programming Language :: C++",
     "Topic :: Software Development :: Compilers",
     "Typing :: Typed",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
 ]
 
 [project.urls]
 Homepage = "https://github.com/Protestator-Research/CPP-SysMLv2"
+Repository = "https://github.com/Protestator-Research/CPP-SysMLv2"
+Issues = "https://github.com/Protestator-Research/CPP-SysMLv2/issues"
 
 [tool.scikit-build]
 minimum-version = "build-system.requires"

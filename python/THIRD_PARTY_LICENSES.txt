@@ -1,4 +1,4 @@
-Third-party software statically linked into the native library of the sysmlv2 package.
+Third-party software statically linked into the native library of the cpp-sysmlv2 package.
 The package itself is GPL-3.0-only (see LICENSE).
 
 ==============================================================================
