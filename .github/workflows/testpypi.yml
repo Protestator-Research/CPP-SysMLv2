@@ -1,0 +1,46 @@
+name: Publish to TestPyPI
+
+# Manual rehearsal of the PyPI upload: builds the wheels (python.yml) with the given version and uploads them to TestPyPI.
+# A version can be uploaded to TestPyPI only once, so use a new one per run (e.g. 2611.2.dev1, 2611.2.dev2, ...).
+# Required setup on test.pypi.org: a (pending) trusted publisher for the project "cpp-sysmlv2" with owner Protestator-Research,
+# repository CPP-SysMLv2, workflow "testpypi.yml" and environment "testpypi". The environment "testpypi" must exist in the GitHub repository.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "PEP 440 version for the rehearsal upload, e.g. 2611.2.dev1 (a version can be uploaded to TestPyPI only once)"
+        required: true
+        type: string
+
+jobs:
+  python:
+    uses: ./.github/workflows/python.yml
+    with:
+      version: ${{ inputs.version }}
+    secrets: inherit
+
+  publish-testpypi:
+    needs: [python]
+    runs-on: ubuntu-latest
+    environment: testpypi
+    permissions:
+      id-token: write
+      contents: read   # for actions/checkout: naming one permission sets all others to none
+    steps:
+    # checkout first: it must not wipe dist/
+    - uses: actions/checkout@v4
+    - uses: actions/download-artifact@v4
+      with:
+        pattern: sysmlv2-wheels-*
+        path: dist
+        merge-multiple: true
+    # same check as in tagbuild.yml: set-version.py silently keeps the version of pyproject.toml for an invalid version
+    - name: verify the wheels match the version
+      env:
+        VERSION: ${{ inputs.version }}
+      run: |
+        python3 -m pip install --quiet packaging
+        python3 .github/scripts/check-dist-version.py "$VERSION" dist
+    - uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        repository-url: https://test.pypi.org/legacy/
