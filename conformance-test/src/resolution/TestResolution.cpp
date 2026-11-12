@@ -7,6 +7,7 @@
 // resolves; references that do not are listed in conformance-test/expected_unresolved.txt (ratchet, same semantics as
 // expected_failures.txt: a listed reference that now resolves fails, an unlisted unresolved one fails).
 #include <gtest/gtest.h>
+#include <nlohmann/json.hpp>
 
 #include <algorithm>
 #include <atomic>
@@ -16,12 +17,14 @@
 #include <fstream>
 #include <iostream>
 #include <memory>
+#include <cstdint>
 #include <set>
 #include <stdexcept>
 #include <string>
 #include <vector>
 
 #include <kerml/KerML.h>
+#include <kerml/kernel/expressions/OperatorFunctions.h>
 #include <sysml/SysML.h>
 #include <sysmlv2/Parser.h>
 #include <sysmlv2/Workspace.h>
@@ -2567,3 +2570,346 @@ TEST(WorkspaceCancellation, CancelledResolveBehavesLikeATimeout) {
 }
 
 }  // namespace
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Binding of operator expressions to the functions of the Kernel Function Library
+// ---------------------------------------------------------------------------------------------------------------------
+
+namespace {
+    /// The qualified names of the functions of the operator expressions with the operator @p operatorName of source @p source
+    /// ("-" for an expression without a function), in the order of the source.
+    std::vector<std::string> boundFunctions(const Workspace& ws, size_t source, const std::string& operatorName) {
+        std::vector<std::string> names;
+        for (const auto& element : ws.elements(source)) {
+            const auto expression = as<KerML::Entities::OperatorExpression>(element);
+            if (!expression || expression->operatorName() != operatorName) continue;
+            const auto function = expression->function();
+            if (expression->instantiatedType().get() != function.get()) {
+                names.push_back("instantiatedType differs from function");
+            } else {
+                names.push_back(function ? ConformanceTest::qualifiedNameOf(function) : "-");
+            }
+        }
+        return names;
+    }
+
+    /// Empties a user source of the shared library workspace at the end of the test.
+    struct EmptyAtEnd {
+        Workspace& ws;
+        size_t source;
+        ~EmptyAtEnd() {
+            ws.replaceSource(source, "", SourceLanguage::SysML);
+            ws.resolve();
+        }
+    };
+}
+
+TEST_F(LibraryResolution, OperatorTableNamesFunctionsOfTheLibrary) {
+    EXPECT_GT(KerML::operatorFunctionCount, 30u);
+    for (const KerML::OperatorFunction& entry : KerML::operatorFunctions) {
+        ASSERT_STREQ(KerML::operatorFunctionName(entry.operatorName), entry.functionName) << entry.operatorName;
+        EXPECT_NE(as<KerML::Entities::Function>(workspace->find(entry.functionName)), nullptr) << entry.operatorName << " -> " << entry.functionName;
+    }
+    EXPECT_EQ(KerML::operatorFunctionName("->"), nullptr);
+    EXPECT_EQ(KerML::operatorFunctionName("plus"), nullptr);
+    EXPECT_EQ(KerML::operatorFunctionName(""), nullptr);
+}
+
+TEST_F(LibraryResolution, SysMLOperatorsAreBoundToLibraryFunctions) {
+    const size_t user = workspace->addText(
+        "package U { attribute a = 1 + 2; attribute b = -a; attribute c = a == b; attribute d = true and false; attribute e = true & false;"
+        " attribute f = if true ? 1 else 2; attribute g = a as ScalarValues::Integer; attribute h = a istype ScalarValues::Integer;"
+        " attribute i = (1, 2); attribute j = 5 [SI::kg]; attribute k = 1..3; attribute l = a ?? 2; attribute m = a.b; attribute n = a#(1);"
+        " attribute o = a hastype ScalarValues::Integer; attribute p = not true; attribute q = a != b; attribute r = true implies false; }",
+        "ops.sysml", SourceLanguage::SysML, 1);
+    EmptyAtEnd cleanup{*workspace, user};
+    workspace->resolve();
+    EXPECT_EQ(boundFunctions(*workspace, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "-"), std::vector<std::string>({"DataFunctions::-"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "=="), std::vector<std::string>({"BaseFunctions::=="}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "!="), std::vector<std::string>({"BaseFunctions::!="}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "and"), std::vector<std::string>({"ControlFunctions::and"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "implies"), std::vector<std::string>({"ControlFunctions::implies"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "&"), std::vector<std::string>({"DataFunctions::&"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "not"), std::vector<std::string>({"DataFunctions::not"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "if"), std::vector<std::string>({"ControlFunctions::if"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "as"), std::vector<std::string>({"BaseFunctions::as"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "istype"), std::vector<std::string>({"BaseFunctions::istype"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "hastype"), std::vector<std::string>({"BaseFunctions::hastype"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, ","), std::vector<std::string>({"BaseFunctions::,"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "["), std::vector<std::string>({"BaseFunctions::["}));
+    EXPECT_EQ(boundFunctions(*workspace, user, ".."), std::vector<std::string>({"DataFunctions::.."}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "??"), std::vector<std::string>({"ControlFunctions::??"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "."), std::vector<std::string>({"ControlFunctions::."}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "#"), std::vector<std::string>({"BaseFunctions::#"}));
+    // (the function is the element of the library that find() returns)
+    for (const auto& element : workspace->elements(user)) {
+        const auto expression = as<KerML::Entities::OperatorExpression>(element);
+        if (expression && expression->operatorName() == "+") EXPECT_EQ(expression->function().get(), workspace->find("DataFunctions::'+'").get());
+    }
+}
+
+TEST_F(LibraryResolution, KerMLOperatorsAreBoundToLibraryFunctions) {
+    const size_t user = workspace->addText(
+        "package U { feature a = 1 + 2; feature b = -a; feature c = a == b; feature d = true and false; feature e = true & false;"
+        " feature f = if true ? 1 else 2; feature g = a as ScalarValues::Integer; feature h = a istype ScalarValues::Integer;"
+        " feature i = (1, 2); feature k = 1..3; feature l = a ?? 2; feature n = a#(1); feature o = a.b;"
+        " feature p = a.?{ true }; feature q = a.{ true }; }",
+        "ops.kerml", SourceLanguage::KerML, 1);
+    EmptyAtEnd cleanup{*workspace, user};
+    workspace->resolve();
+    EXPECT_EQ(boundFunctions(*workspace, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "-"), std::vector<std::string>({"DataFunctions::-"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "=="), std::vector<std::string>({"BaseFunctions::=="}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "and"), std::vector<std::string>({"ControlFunctions::and"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "&"), std::vector<std::string>({"DataFunctions::&"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "if"), std::vector<std::string>({"ControlFunctions::if"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "as"), std::vector<std::string>({"BaseFunctions::as"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "istype"), std::vector<std::string>({"BaseFunctions::istype"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, ","), std::vector<std::string>({"BaseFunctions::,"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, ".."), std::vector<std::string>({"DataFunctions::.."}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "??"), std::vector<std::string>({"ControlFunctions::??"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "#"), std::vector<std::string>({"BaseFunctions::#"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "."), std::vector<std::string>({"ControlFunctions::."}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "select"), std::vector<std::string>({"ControlFunctions::select"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "collect"), std::vector<std::string>({"ControlFunctions::collect"}));
+}
+
+TEST_F(LibraryResolution, TheRemainingOperatorsAreBound) {
+    const size_t user = workspace->addText(
+        "package U { import ScalarValues::*; attribute a = 6; attribute b = 3;"
+        " attribute c1 = a * b; attribute c2 = a / b; attribute c3 = a % b; attribute c4 = a ** b; attribute c5 = a ^ b;"
+        " attribute c6 = a < b; attribute c7 = a > b; attribute c8 = a <= b; attribute c9 = a >= b; attribute d1 = a === b;"
+        " attribute d2 = a !== b; attribute d3 = true xor false; attribute d4 = ~a; attribute d5 = a | b; attribute d6 = true or false;"
+        " attribute d7 = a @ Integer; attribute d8 = a @@ Integer; attribute d9 = a meta Integer; attribute e1 = all Integer; attribute e2 = +a; }",
+        "more.sysml", SourceLanguage::SysML, 1);
+    EmptyAtEnd cleanup{*workspace, user};
+    workspace->resolve();
+    EXPECT_TRUE(workspace->errors(user).empty());
+    const std::vector<std::pair<std::string, std::string>> expected = {
+        {"*", "DataFunctions::*"}, {"/", "DataFunctions::/"}, {"%", "DataFunctions::%"}, {"**", "DataFunctions::**"},
+        {"^", "DataFunctions::^"}, {"<", "DataFunctions::<"}, {">", "DataFunctions::>"}, {"<=", "DataFunctions::<="},
+        {">=", "DataFunctions::>="}, {"===", "BaseFunctions::==="}, {"!==", "BaseFunctions::!=="}, {"xor", "DataFunctions::xor"},
+        {"~", "DataFunctions::~"}, {"|", "DataFunctions::|"}, {"or", "ControlFunctions::or"}, {"@", "BaseFunctions::@"},
+        {"@@", "BaseFunctions::@@"}, {"meta", "BaseFunctions::meta"}, {"all", "BaseFunctions::all"}, {"+", "DataFunctions::+"}};
+    for (const auto& [name, function] : expected) EXPECT_EQ(boundFunctions(*workspace, user, name), std::vector<std::string>({function})) << name;
+}
+
+namespace {
+    /// The invocations of a source that are no operator expressions, and the `->` expressions.
+    std::vector<std::shared_ptr<KerML::Entities::InvocationExpression>> namedCalls(const Workspace& ws, size_t source) {
+        std::vector<std::shared_ptr<KerML::Entities::InvocationExpression>> calls;
+        for (const auto& element : ws.elements(source)) {
+            const auto call = as<KerML::Entities::InvocationExpression>(element);
+            if (!call) continue;
+            const auto op = as<KerML::Entities::OperatorExpression>(call);
+            if (!op || op->operatorName() == "->") calls.push_back(call);
+        }
+        return calls;
+    }
+}
+
+TEST_F(LibraryResolution, NamedCallsBindTheFunctionTheyName) {
+    const size_t user = workspace->addText(
+        "package V { import ScalarValues::*; calc def Calc { in x : Integer; return : Integer = x; } calc c : Calc;"
+        " attribute a = DataFunctions::'+'(1, 2); attribute b = (1, 2, 3)->NumericalFunctions::sum(); attribute d = c(1); }",
+        "calls.sysml", SourceLanguage::SysML, 1);
+    EmptyAtEnd cleanup{*workspace, user};
+    workspace->resolve();
+    EXPECT_TRUE(workspace->errors(user).empty());
+    const auto plus = as<KerML::Entities::Function>(workspace->find("DataFunctions::'+'"));
+    const auto sum = as<KerML::Entities::Function>(workspace->find("NumericalFunctions::sum"));
+    ASSERT_NE(plus, nullptr);
+    ASSERT_NE(sum, nullptr);
+    size_t withPlus = 0, withSum = 0, withFeature = 0;
+    for (const auto& call : namedCalls(*workspace, user)) {
+        if (call->instantiatedType() == plus) {
+            ++withPlus;
+            EXPECT_EQ(call->function(), plus);
+        } else if (call->instantiatedType() == sum) {
+            ++withSum;
+            EXPECT_EQ(call->function(), sum);
+        } else if (as<KerML::Entities::Feature>(call->instantiatedType()) && !as<KerML::Entities::Function>(call->instantiatedType())) {
+            // (the instantiated type is a feature, the calc usage `c`: no function for now, the type stays)
+            ++withFeature;
+            EXPECT_EQ(call->function(), nullptr);
+            EXPECT_EQ(call->instantiatedType()->declaredName(), "c");
+        }
+    }
+    EXPECT_EQ(withPlus, 1u);
+    EXPECT_EQ(withSum, 1u);
+    EXPECT_EQ(withFeature, 1u);
+}
+
+// Decision (see the plan, step 1): the derived properties instantiatedType and function are part of the JSON of the model, so a bound
+// operator expression writes them (and an unbound one does not); the XMI does not (the reference XMI has no such attributes).
+TEST_F(LibraryResolution, BoundOperatorsAreInTheJsonButNotInTheXmi) {
+    const size_t user = workspace->addText("package J { attribute a = 1 + 2; }", "json.sysml", SourceLanguage::SysML, 1);
+    EmptyAtEnd cleanup{*workspace, user};
+    workspace->resolve();
+    const auto plus = workspace->find("DataFunctions::'+'");
+    ASSERT_NE(plus, nullptr);
+    std::shared_ptr<KerML::Entities::OperatorExpression> expression;
+    for (const auto& element : workspace->elements(user)) {
+        if (const auto op = as<KerML::Entities::OperatorExpression>(element)) expression = op;
+    }
+    ASSERT_NE(expression, nullptr);
+    const auto json = nlohmann::json::parse(expression->serializeToJson());
+    ASSERT_TRUE(json.contains("function")) << json.dump();
+    ASSERT_TRUE(json.contains("instantiatedType")) << json.dump();
+    EXPECT_EQ(json["function"]["@id"], plus->elementId());
+    EXPECT_EQ(json["instantiatedType"]["@id"], plus->elementId());
+
+    namespace fs = std::filesystem;
+    const fs::path directory = fs::temp_directory_path() / ("operator-binding-xmi-" + std::to_string(reinterpret_cast<std::uintptr_t>(this)));
+    fs::create_directories(directory);
+    const auto errors = workspace->writeXmi(user, (directory / "json.sysmlx").string());
+    const std::string xmi = ConformanceTest::readFile(directory / "json.sysmlx");
+    std::error_code ignored;
+    fs::remove_all(directory, ignored);
+    EXPECT_TRUE(errors.empty());
+    EXPECT_NE(xmi.find("OperatorExpression"), std::string::npos);
+    EXPECT_NE(xmi.find("operator=\"+\""), std::string::npos) << xmi;
+    EXPECT_EQ(xmi.find("instantiatedType"), std::string::npos);
+    EXPECT_EQ(xmi.find("function"), std::string::npos);
+}
+
+TEST_F(LibraryResolution, TheLibraryOwnOperatorsAreBound) {
+    // `!=` of BaseFunctions is defined by `not (x == y)`-like expressions in the library itself.
+    size_t bound = 0, unbound = 0;
+    for (const auto& element : workspace->elements()) {
+        const auto expression = as<KerML::Entities::OperatorExpression>(element);
+        if (!expression || KerML::operatorFunctionName(expression->operatorName()) == nullptr) continue;
+        (expression->function() ? bound : unbound)++;
+    }
+    EXPECT_GT(bound, 0u);
+    EXPECT_EQ(unbound, 0u);
+}
+
+TEST(OperatorBinding, WithoutTheLibraryTheOperatorsStayUnbound) {
+    for (const auto language : {SourceLanguage::SysML, SourceLanguage::KerML}) {
+        const bool sysml = language == SourceLanguage::SysML;
+        One m(sysml ? "package P { attribute a = 1 + 2 * 3; attribute b = if true ? 1 else 2; attribute c = (1, 2); }"
+                    : "package P { feature a = 1 + 2 * 3; feature b = if true ? 1 else 2; feature c = (1, 2); }",
+              language, sysml ? "p.sysml" : "p.kerml");
+        size_t operators = 0;
+        for (const auto& element : m.ws.elements(0)) {
+            const auto expression = as<KerML::Entities::OperatorExpression>(element);
+            if (!expression) continue;
+            ++operators;
+            EXPECT_EQ(expression->function(), nullptr) << expression->operatorName();
+            EXPECT_EQ(expression->instantiatedType(), nullptr) << expression->operatorName();
+            const auto json = nlohmann::json::parse(expression->serializeToJson());
+            EXPECT_TRUE(!json.contains("function") || json["function"].is_null()) << json.dump();
+            EXPECT_TRUE(!json.contains("instantiatedType") || json["instantiatedType"].is_null()) << json.dump();
+        }
+        EXPECT_EQ(operators, 4u);
+        EXPECT_TRUE(m.ws.unresolvedReferences().empty());
+        EXPECT_TRUE(m.ws.notAttemptedReferences().empty());
+    }
+}
+
+namespace {
+    const char* const miniLibrary =
+        "standard library package DataFunctions { abstract function '+'; abstract function '*'; }"
+        "standard library package ControlFunctions { abstract function 'if'; }"
+        "standard library package BaseFunctions { abstract function ','; }";
+    const char* const miniUser = "package P { attribute a = 1 + 2 * 3; attribute b = if true ? 1 else 2; attribute c = (1, 2); }";
+}
+
+TEST(OperatorBinding, ResolveIsRepeatableAndFollowsTheSources) {
+    Workspace ws;
+    const size_t library = ws.addText(miniLibrary, "lib.kerml", SourceLanguage::KerML, 0);
+    const size_t user = ws.addText(miniUser, "user.sysml", SourceLanguage::SysML, 1);
+    ws.resolve();
+    const auto plus = ws.find("DataFunctions::'+'");
+    ASSERT_NE(plus, nullptr);
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    EXPECT_EQ(boundFunctions(ws, user, "*"), std::vector<std::string>({"DataFunctions::*"}));
+    EXPECT_EQ(boundFunctions(ws, user, "if"), std::vector<std::string>({"ControlFunctions::if"}));
+    EXPECT_EQ(boundFunctions(ws, user, ","), std::vector<std::string>({"BaseFunctions::,"}));
+
+    // (a second resolve() gives the same binding, to the same element)
+    ws.resolve();
+    ws.resolve();
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    for (const auto& element : ws.elements(user)) {
+        if (const auto expression = as<KerML::Entities::OperatorExpression>(element)) {
+            if (expression->operatorName() == "+") EXPECT_EQ(expression->function().get(), plus.get());
+        }
+    }
+
+    // (replacing the user source binds the new expressions)
+    ws.replaceSource(user, "package P { attribute z = 1 * 2 + 3; }", SourceLanguage::SysML);
+    ws.resolve();
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    EXPECT_EQ(boundFunctions(ws, user, "*"), std::vector<std::string>({"DataFunctions::*"}));
+    EXPECT_TRUE(boundFunctions(ws, user, "if").empty());
+
+    // (a source that is added after the resolve() is bound by the next one)
+    const size_t later = ws.addText("package Q { attribute y = 4 + 5; }", "later.sysml", SourceLanguage::SysML, 1);
+    ws.resolve();
+    EXPECT_EQ(boundFunctions(ws, later, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    (void)library;
+}
+
+TEST(OperatorBinding, ReplacingTheLibraryReleasesAndRebinds) {
+    Workspace ws;
+    const size_t library = ws.addText(miniLibrary, "lib.kerml", SourceLanguage::KerML, 0);
+    const size_t user = ws.addText(miniUser, "user.sysml", SourceLanguage::SysML, 1);
+    ws.resolve();
+    std::weak_ptr<KerML::Entities::Element> oldPlus = ws.find("DataFunctions::'+'");
+    ASSERT_FALSE(oldPlus.expired());
+    ASSERT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+
+    // (the library without the function: unbound, and the removed function is not kept alive by the expression)
+    ws.replaceSource(library, "standard library package DataFunctions { abstract function '*'; }", SourceLanguage::KerML);
+    ws.resolve();
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"-"}));
+    EXPECT_EQ(boundFunctions(ws, user, "*"), std::vector<std::string>({"DataFunctions::*"}));
+    EXPECT_EQ(boundFunctions(ws, user, "if"), std::vector<std::string>({"-"}));
+    EXPECT_TRUE(oldPlus.expired());
+    EXPECT_TRUE(ws.unresolvedReferences().empty());
+
+    // (the library is back)
+    ws.replaceSource(library, miniLibrary, SourceLanguage::KerML);
+    ws.resolve();
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+
+    // (the library is emptied)
+    ws.replaceSource(library, "", SourceLanguage::KerML);
+    ws.resolve();
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"-"}));
+    EXPECT_EQ(boundFunctions(ws, user, ","), std::vector<std::string>({"-"}));
+    EXPECT_TRUE(ws.unresolvedReferences().empty());
+}
+
+TEST(OperatorBinding, LibraryAndModelOnTheSameLevelBind) {
+    Workspace ws;
+    ws.addText(miniLibrary, "lib.kerml", SourceLanguage::KerML, 0);
+    const size_t user = ws.addText(miniUser, "user.sysml", SourceLanguage::SysML, 0);
+    ws.resolve();
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    EXPECT_EQ(boundFunctions(ws, user, "if"), std::vector<std::string>({"ControlFunctions::if"}));
+}
+
+TEST(OperatorBinding, AModelCannotShadowTheLibraryFunctions) {
+    Workspace ws;
+    ws.addText(miniLibrary, "lib.kerml", SourceLanguage::KerML, 0);
+    const size_t user = ws.addText("package DataFunctions { abstract function '+'; } package P { attribute a = 1 + 2; }", "user.sysml",
+                                   SourceLanguage::SysML, 1);
+    ws.resolve();
+    const auto bound = boundFunctions(ws, user, "+");
+    ASSERT_EQ(bound.size(), 1u);
+    for (const auto& element : ws.elements(user)) {
+        if (const auto expression = as<KerML::Entities::OperatorExpression>(element)) {
+            EXPECT_NE(expression->function(), nullptr);
+            // (the function lies in the library, not in the model that tries to shadow it)
+            bool inUser = false;
+            for (const auto& e : ws.elements(user)) inUser = inUser || e == expression->function();
+            EXPECT_FALSE(inUser);
+        }
+    }
+}
+

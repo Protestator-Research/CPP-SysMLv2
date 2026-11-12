@@ -194,6 +194,8 @@ namespace SysMLv2::Files {
         std::string message;
         int line = -1;
         int column = -1;
+        /// A warning (something that was read differently before is not read at all now) instead of an error.
+        bool warning = false;
     };
 
     /**

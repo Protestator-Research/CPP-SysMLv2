@@ -1,4 +1,7 @@
 #include <chrono>
+#include <cstdint>
+#include <limits>
+#include <tuple>
 #include <kerml/root/elements/NameEscaping.h>
 #include <algorithm>
 #include <gtest/gtest.h>
@@ -1943,4 +1946,201 @@ TEST(TestSysMLParser, AnnotationTextResolvesStringValues) {
     EXPECT_EQ(AnnotationText::stringValue("\"\""), "");
     EXPECT_EQ(AnnotationText::stringValue("\"a\\\"b\\\\c\\n\\t\\'\""), "a\"b\\c\n\t'");
     EXPECT_EQ(AnnotationText::stringValue("not quoted"), "not quoted");
+}
+
+// ---- Literals: integers outside the int64 range, multiplicity bounds, real literals that overflow, string literal escapes ----
+// (the same cases as TestKerMLLiterals in TestKerMLParser.cpp: the two languages give the same value or the same error)
+namespace {
+using SysMLv2::Files::ErrorType;
+
+struct ParsedLiterals {
+    std::vector<std::shared_ptr<KerML::Entities::Element>> elements;
+    std::vector<std::shared_ptr<SysMLv2::Files::ParserError>> errors;
+    template <class T> std::shared_ptr<T> only() const {
+        const auto found = listenerElements<T>(elements);
+        return found.size() == 1 ? found[0] : nullptr;
+    }
+};
+
+// `package P { attribute x = <expression>; }`: the expression starts at column 26.
+ParsedLiterals parseSysMLValue(const std::string& expression) {
+    ParsedLiterals result;
+    std::tie(result.elements, result.errors) = SysMLv2::Files::Parser::parseSysMLv2("package P { attribute x = " + expression + "; }");
+    return result;
+}
+}
+
+TEST(TestSysMLLiterals, IntegerLiteralOutOfRangeIsOneErrorAndNeverALeakedException) {
+    for (const char* literal : {"9223372036854775808", "18446744073709551616", "99999999999999999999999999999999"}) {
+        SCOPED_TRACE(literal);
+        const auto parsed = parseSysMLValue(literal);
+        ASSERT_EQ(parsed.errors.size(), 1u);
+        EXPECT_EQ(parsed.errors[0]->errorType(), ErrorType::LOGICAL_ERROR);   // (was INTERNAL_ERROR "internal: stoll")
+        EXPECT_NE(parsed.errors[0]->description().find("integer literal out of range"), std::string::npos) << parsed.errors[0]->description();
+        EXPECT_NE(parsed.errors[0]->description().find(literal), std::string::npos) << parsed.errors[0]->description();
+        EXPECT_EQ(parsed.errors[0]->description().find("internal"), std::string::npos);
+        EXPECT_EQ(parsed.errors[0]->getLine(), 1);
+        EXPECT_EQ(parsed.errors[0]->getColumn(), 26);
+        // (the elements built before the literal are kept, and the literal has the documented placeholder 0)
+        const auto integer = parsed.only<KerML::Entities::LiteralInteger>();
+        ASSERT_NE(integer, nullptr);
+        EXPECT_EQ(integer->value(), 0);
+    }
+}
+
+TEST(TestSysMLLiterals, TheLargestIntegerLiteralIsAccepted) {
+    const auto parsed = parseSysMLValue("9223372036854775807");
+    EXPECT_TRUE(parsed.errors.empty());
+    const auto integer = parsed.only<KerML::Entities::LiteralInteger>();
+    ASSERT_NE(integer, nullptr);
+    EXPECT_EQ(integer->value(), std::numeric_limits<std::int64_t>::max());
+}
+
+TEST(TestSysMLLiterals, MinusAndTheSmallestIntegerIsTheUnaryMinusOfAnOutOfRangeLiteral) {
+    // `-9223372036854775808` is no literal: it is the unary minus applied to the literal 9223372036854775808, which does not fit; the same
+    // error is reported for it.
+    const auto parsed = parseSysMLValue("-9223372036854775808");
+    ASSERT_EQ(parsed.errors.size(), 1u);
+    EXPECT_NE(parsed.errors[0]->description().find("integer literal out of range"), std::string::npos);
+    EXPECT_TRUE(parseSysMLValue("-9223372036854775807").errors.empty());
+}
+
+TEST(TestSysMLLiterals, MultiplicityBoundsOutOfRange) {
+    {
+        const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("package P { attribute y[4294967295]; }");
+        EXPECT_TRUE(errors.empty());
+        const auto y = named<KerML::Entities::Feature>(elements, "y");
+        ASSERT_NE(y, nullptr);
+        EXPECT_TRUE(y->multiplicity().has_value());
+    }
+    for (const char* text : {"package P { attribute y[4294967296]; }", "package P { attribute y[0..99999999999999999999]; }",
+                             "package P { attribute y[99999999999999999999..*]; }", "package P { part y[4294967296]; }"}) {
+        SCOPED_TRACE(text);
+        const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(text);
+        ASSERT_EQ(errors.size(), 1u);
+        EXPECT_EQ(errors[0]->errorType(), ErrorType::LOGICAL_ERROR);
+        EXPECT_NE(errors[0]->description().find("integer literal out of range"), std::string::npos) << errors[0]->description();
+        const auto y = named<KerML::Entities::Feature>(elements, "y");
+        ASSERT_NE(y, nullptr);
+        EXPECT_FALSE(y->multiplicity().has_value());   // (no multiplicity of another number is invented)
+    }
+}
+
+TEST(TestSysMLLiterals, RealLiteralThatOverflowsADoubleIsReportedLikeAnIntegerThatDoesNotFit) {
+    for (const char* literal : {"1e999", "1.5e999", "9e99999999"}) {
+        SCOPED_TRACE(literal);
+        const auto parsed = parseSysMLValue(literal);
+        ASSERT_EQ(parsed.errors.size(), 1u);
+        EXPECT_EQ(parsed.errors[0]->errorType(), ErrorType::LOGICAL_ERROR);
+        EXPECT_NE(parsed.errors[0]->description().find(literal), std::string::npos) << parsed.errors[0]->description();
+        EXPECT_EQ(parsed.errors[0]->getColumn(), 26);
+    }
+    EXPECT_TRUE(parseSysMLValue("1e300").errors.empty());
+}
+
+TEST(TestSysMLLiterals, StringEscapesAreDecoded) {
+    const auto string = [](const std::string& source) {
+        const auto parsed = parseSysMLValue(source);
+        EXPECT_TRUE(parsed.errors.empty()) << source << (parsed.errors.empty() ? "" : ": " + parsed.errors[0]->description());
+        const auto text = parsed.only<KerML::Entities::LiteralString>();
+        EXPECT_NE(text, nullptr) << source;
+        return text ? text->value() : std::string("<no string>");
+    };
+    EXPECT_EQ(string(R"("plain")"), "plain");
+    EXPECT_EQ(string(R"("")"), "");
+    EXPECT_EQ(string(R"("a\"b")"), "a\"b");   // (was `a\`)
+    EXPECT_EQ(string(R"("\"")"), "\"");
+    EXPECT_EQ(string(R"("a\\b")"), "a\\b");
+    EXPECT_EQ(string(R"("a\\")"), "a\\");
+    EXPECT_EQ(string(R"("it\'s")"), "it's");
+    EXPECT_EQ(string(R"("a\nb\tc\bd\fe\rf")"), "a\nb\tc\bd\fe\rf");
+    EXPECT_EQ(string(R"("\\n")"), "\\n");
+    EXPECT_EQ(string("\"a\nb\""), "a\nb");
+    EXPECT_EQ(string(R"("héllo \"wörld\"")"), "héllo \"wörld\"");
+    EXPECT_EQ(string(R"("//not a comment" )"), "//not a comment");
+}
+
+TEST(TestSysMLLiterals, StringWithAnUnknownEscapeIsOneError) {
+    const auto parsed = parseSysMLValue(R"("a\qb")");
+    ASSERT_EQ(parsed.errors.size(), 1u);
+    EXPECT_EQ(parsed.errors[0]->errorType(), ErrorType::LOGICAL_ERROR);
+    EXPECT_NE(parsed.errors[0]->description().find("invalid escape sequence '\\q'"), std::string::npos) << parsed.errors[0]->description();
+    EXPECT_EQ(parsed.errors[0]->getLine(), 1);
+    EXPECT_EQ(parsed.errors[0]->getColumn(), 28);
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("package P { attribute x = \"first\nsecond \\x\"; }");
+    ASSERT_EQ(errors.size(), 1u);
+    EXPECT_EQ(errors[0]->getLine(), 2);
+    EXPECT_EQ(errors[0]->getColumn(), 7);
+}
+
+TEST(TestSysMLLiterals, UnterminatedStringIsALexerErrorAtTheOpeningQuote) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("package P { attribute a = \"never closed; attribute b; }");
+    ASSERT_FALSE(errors.empty());
+    EXPECT_NE(errors[0]->description().find("token recognition error"), std::string::npos) << errors[0]->description();
+    EXPECT_EQ(errors[0]->getLine(), 1);
+    EXPECT_EQ(errors[0]->getColumn(), 26);
+    const auto escaped = SysMLv2::Files::Parser::parseSysMLv2("package P { attribute a = \"closed by an escape\\\"; }");
+    ASSERT_FALSE(escaped.second.empty());
+    EXPECT_EQ(escaped.second[0]->getColumn(), 26);
+    const auto closed = SysMLv2::Files::Parser::parseSysMLv2("package P { attribute a = \"closed\"; attribute b = \"also\"; }");
+    EXPECT_TRUE(closed.second.empty());
+    EXPECT_NE(named<KerML::Entities::Feature>(closed.first, "b"), nullptr);
+}
+
+TEST(TestSysMLLiterals, ColumnOfAnInvalidEscapeCountsCodePointsAndABackslashBeforeALineEndIsInvalid) {
+    const auto accented = SysMLv2::Files::Parser::parseSysMLv2("package P { attribute c = \"\xC3\xA9\xC3\xA9\\q\"; }");   // "éé\q"
+    ASSERT_EQ(accented.second.size(), 1u);
+    EXPECT_EQ(accented.second[0]->getColumn(), 29);
+    const auto lineEnd = SysMLv2::Files::Parser::parseSysMLv2("package P { attribute c = \"a\\\nb\"; }");
+    ASSERT_EQ(lineEnd.second.size(), 1u);
+    EXPECT_NE(lineEnd.second[0]->description().find("invalid escape sequence"), std::string::npos);
+    EXPECT_EQ(lineEnd.second[0]->description().find('\n'), std::string::npos) << "the message has a raw line break";
+    EXPECT_NE(lineEnd.second[0]->description().find("'\\\\n'"), std::string::npos) << lineEnd.second[0]->description();
+    EXPECT_EQ(lineEnd.second[0]->getColumn(), 28);
+}
+
+TEST(TestSysMLLiterals, QuotedNamesAreDecodedAndInvalidEscapesAreReported) {
+    const auto quoted = SysMLv2::Files::Parser::parseSysMLv2("package P { attribute 'it\\'s' = 1; attribute 'back\\\\slash\\tx' = 2; }");
+    EXPECT_TRUE(quoted.second.empty()) << (quoted.second.empty() ? "" : quoted.second[0]->description());
+    EXPECT_NE(named<KerML::Entities::Feature>(quoted.first, "it's"), nullptr);
+    EXPECT_NE(named<KerML::Entities::Feature>(quoted.first, "back\\slash\tx"), nullptr);
+    const auto bad = SysMLv2::Files::Parser::parseSysMLv2("package P { attribute 'a\\qb'; }");
+    ASSERT_EQ(bad.second.size(), 1u);
+    EXPECT_NE(bad.second[0]->description().find("invalid escape sequence '\\q' in the quoted name"), std::string::npos) << bad.second[0]->description();
+    EXPECT_EQ(bad.second[0]->getColumn(), 24);
+    for (const std::string name : {"it's", "back\\slash", "tab\there", "quo\"te", "a b", "x\ny"}) {
+        const auto again = SysMLv2::Files::Parser::parseSysMLv2("package P { attribute " + KerML::Names::escapeName(name) + "; }");
+        EXPECT_TRUE(again.second.empty()) << name;
+        EXPECT_NE(named<KerML::Entities::Feature>(again.first, name), nullptr) << name;
+    }
+}
+
+TEST(TestSysMLLiterals, MultiplicityBoundsAreAllChecked) {
+    {
+        const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("package P { attribute h[n..99999999999999999999999]; }");
+        ASSERT_EQ(errors.size(), 1u);
+        EXPECT_EQ(errors[0]->errorType(), ErrorType::LOGICAL_ERROR);
+        EXPECT_NE(errors[0]->description().find("integer literal out of range"), std::string::npos);
+        EXPECT_EQ(errors[0]->getColumn(), 27);
+    }
+    for (const char* text : {"package P { attribute h[2.5]; }", "package P { attribute h[1e3]; }", "package P { attribute h[1..2.5]; }"}) {
+        SCOPED_TRACE(text);
+        const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(text);
+        ASSERT_EQ(errors.size(), 1u);
+        EXPECT_EQ(errors[0]->errorType(), ErrorType::WARNING);
+        EXPECT_NE(errors[0]->description().find("is not a non-negative integer literal"), std::string::npos) << errors[0]->description();
+    }
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseSysMLv2("package P { attribute h[n]; }").second.empty());
+}
+
+TEST(TestSysMLLiterals, StringTokensOfAnnotationsShareTheDecoding) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2("package P { attribute f; rep r language \"a\\\"b\" /* body */ }");
+    EXPECT_TRUE(errors.empty()) << (errors.empty() ? "" : errors[0]->description());
+    const auto reps = listenerElements<KerML::Entities::TextualRepresentation>(elements);
+    ASSERT_EQ(reps.size(), 1u);
+    EXPECT_EQ(reps[0]->language(), "a\"b");
+    const auto bad = SysMLv2::Files::Parser::parseSysMLv2("package P { doc locale \"x\\y\" /* body */ }");
+    ASSERT_EQ(bad.second.size(), 1u);
+    EXPECT_NE(bad.second[0]->description().find("invalid escape sequence"), std::string::npos);
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseSysMLv2("package P { doc locale \"en\" /* it says \\n and \"quotes\" */ }").second.empty());
 }

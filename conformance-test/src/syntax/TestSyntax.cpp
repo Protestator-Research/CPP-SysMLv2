@@ -21,9 +21,8 @@
 // "expect: error" files are a permanent hard requirement (never ratcheted): the parser must report
 // at least one syntax error for them, today and going forward.
 //
-// NOTE: exact line:col checking is not implemented in this pass; only the valid/error distinction
-// is enforced. The optional "<line>:<col>" suffix is parsed (so files may carry it for documentation
-// / future use) but not currently asserted against ParserError::getLine()/getColumn().
+// "expect: error <line>:<col>" additionally requires that one of the reported errors is at that 1-based line and 0-based column
+// (ParserError::getLine()/getColumn()); the first line of the file, the directive, is line 1.
 #include <gtest/gtest.h>
 
 #include <cctype>
@@ -155,7 +154,18 @@ TEST_P(SyntaxFileTest, MatchesExpectation) {
     if (directive.expectation == Expectation::Error) {
         // Hard requirement, never ratcheted: these are deliberately-broken snippets.
         ASSERT_FALSE(crashed) << testCase.relativeKey << " crashed/threw instead of reporting a syntax error: " << crashMessage;
-        EXPECT_FALSE(errors.empty()) << testCase.relativeKey << " was expected to report a syntax error but parsed cleanly";
+        // (a warning alone is no error)
+        EXPECT_TRUE(std::any_of(errors.begin(), errors.end(), [](const auto& error) { return error->errorType() != SysMLv2::Files::ErrorType::WARNING; }))
+            << testCase.relativeKey << " was expected to report a syntax error but parsed cleanly";
+        if (directive.line >= 0) {
+            bool found = false;
+            std::string reported;
+            for (const auto& error : errors) {
+                reported += "\n  " + std::to_string(error->getLine()) + ":" + std::to_string(error->getColumn()) + " " + error->description();
+                if (error->getLine() == directive.line && error->getColumn() == directive.column) found = true;
+            }
+            EXPECT_TRUE(found) << testCase.relativeKey << " was expected to report an error at " << directive.line << ":" << directive.column << "; reported:" << reported;
+        }
         if (directive.forbidKeywordMisuse) {
             for (const auto& error : errors) {
                 EXPECT_NE(error->errorType(), SysMLv2::Files::ErrorType::KEYWORD_MISUSE)

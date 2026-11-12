@@ -291,29 +291,63 @@ namespace SysMLv2::Files::Detail {
             if (!shortName.empty() && shortName != name) scope->members[shortName].push_back({element, vis, alias, currentLevel});
         }
 
-        void visit(const std::shared_ptr<Element>& element, Scope* memberScope) {
-            if (!element || !visitedElements.insert(element.get()).second) return;
-            records[currentSource].elements.push_back(element.get());
-            elementLevel[element.get()] = currentLevel;
-            if (dynamic_cast<const Relationship*>(element.get()) != nullptr && dynamic_cast<const Namespace*>(element.get()) == nullptr) {
-                relationshipScope[element.get()] = memberScope;
-                const bool returnParameter = dynamic_cast<const KerML::Entities::ReturnParameterMembership*>(element.get()) != nullptr;
-                for (const auto& child : element->ownedElements()) {
-                    visit(child, memberScope);
+        /// One element of the walk of visit() whose owned elements are still being visited.
+        struct VisitFrame {
+            std::vector<std::shared_ptr<Element>> children;
+            /// The index of the next child to visit; the children before it are visited or being visited.
+            size_t next = 0;
+            /// The number of children whose visit is complete (the checks that follow a visit were made).
+            size_t done = 0;
+            /// The scope that the children are members of.
+            Scope* childScope = nullptr;
+            /// The element is a return parameter membership: a child without a name is known as `result`.
+            bool returnParameter = false;
+        };
+
+        /// Indexes @p element and everything it owns (depth first, in the order of ownedElements()). The walk keeps its own stack of frames instead
+        /// of recursing: a model can be nested as deep as the text (an expression `1 + 1 + ... + 1` with 100000 terms is a tree 100000 levels deep).
+        void visit(const std::shared_ptr<Element>& root, Scope* rootScope) {
+            std::vector<VisitFrame> stack;
+            // Indexes one element; if it has owned elements, a frame for them is pushed.
+            const auto enter = [&](const std::shared_ptr<Element>& element, Scope* memberScope) {
+                if (!element || !visitedElements.insert(element.get()).second) return;
+                records[currentSource].elements.push_back(element.get());
+                elementLevel[element.get()] = currentLevel;
+                VisitFrame frame;
+                if (dynamic_cast<const Relationship*>(element.get()) != nullptr && dynamic_cast<const Namespace*>(element.get()) == nullptr) {
+                    relationshipScope[element.get()] = memberScope;
+                    frame.returnParameter = dynamic_cast<const KerML::Entities::ReturnParameterMembership*>(element.get()) != nullptr;
+                    frame.childScope = memberScope;
+                } else {
+                    const VisibilityKind vis = visibilityOf(element.get());
+                    addNames(memberScope, element, nullptr, vis, element->declaredName().value_or(""), element->declaredShortName().value_or(""));
+                    Scope* scope = newScope(element, memberScope);
+                    scopeOf[element.get()] = scope;
+                    memberScope->children.push_back({scope, vis});
+                    frame.childScope = scope;
+                }
+                frame.children = element->ownedElements();
+                if (!frame.children.empty()) stack.push_back(std::move(frame));
+            };
+            enter(root, rootScope);
+            while (!stack.empty()) {
+                VisitFrame& frame = stack.back();
+                if (frame.done < frame.next) {
+                    // The visit of the previous child is complete.
+                    const auto& child = frame.children[frame.done++];
                     // A return parameter without a name is known as `result` (it redefines Evaluation::result).
-                    if (returnParameter && child && !child->declaredName().has_value() && !child->declaredShortName().has_value() &&
+                    if (frame.returnParameter && child && !child->declaredName().has_value() && !child->declaredShortName().has_value() &&
                         dynamic_cast<const Feature*>(child.get()) != nullptr) {
-                        memberScope->members["result"].push_back({child, visibilityOf(child.get()), nullptr});
+                        frame.childScope->members["result"].push_back({child, visibilityOf(child.get()), nullptr});
                     }
                 }
-                return;
+                if (frame.next == frame.children.size()) {
+                    stack.pop_back();
+                    continue;
+                }
+                const std::shared_ptr<Element> child = frame.children[frame.next++];
+                enter(child, frame.childScope);   // (may push: `frame` is not used again in this iteration)
             }
-            const VisibilityKind vis = visibilityOf(element.get());
-            addNames(memberScope, element, nullptr, vis, element->declaredName().value_or(""), element->declaredShortName().value_or(""));
-            Scope* scope = newScope(element, memberScope);
-            scopeOf[element.get()] = scope;
-            memberScope->children.push_back({scope, vis});
-            for (const auto& child : element->ownedElements()) visit(child, scope);
         }
 
         /// Indexes @p source as the source number @p index: a new one (index == number of the indexed sources), or one that
@@ -447,10 +481,20 @@ namespace SysMLv2::Files::Detail {
 
         std::shared_ptr<Element> lookupRecursive(const Scope* scope, const std::string& name, Access access, const Query& q,
                                                  Visited& visited) const {
+            // (depth first with a stack of its own: the scopes are nested as deep as the packages of the text)
             if (auto found = lookupIn(scope, name, access, q, visited)) return found;
-            for (const auto& child : scope->children) {
+            std::vector<std::pair<const Scope*, size_t>> stack;
+            stack.emplace_back(scope, 0);
+            while (!stack.empty()) {
+                const Scope* current = stack.back().first;
+                if (stack.back().second == current->children.size()) {
+                    stack.pop_back();
+                    continue;
+                }
+                const auto& child = current->children[stack.back().second++];
                 if (!visibleUnder(child.visibility, access)) continue;
-                if (auto found = lookupRecursive(child.scope, name, access, q, visited)) return found;
+                if (auto found = lookupIn(child.scope, name, access, q, visited)) return found;
+                stack.emplace_back(child.scope, 0);
             }
             return nullptr;
         }
@@ -1167,6 +1211,14 @@ namespace SysMLv2::Files::Detail {
         Impl::Query query;
         query.kind = kind;
         return impl_->resolveSegments(segments, globalOnly, start, query);
+    }
+
+    std::shared_ptr<Element> Resolver::findLibraryElement(const std::string& name) const {
+        bool globalOnly = false;
+        const auto segments = splitName(name, globalOnly);
+        Impl::Query query;
+        query.maxLevel = impl_->lowestLevel;
+        return impl_->resolveSegments(segments, true, nullptr, query);
     }
 
     size_t Resolver::detachedContexts() const {

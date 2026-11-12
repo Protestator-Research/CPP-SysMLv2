@@ -5,7 +5,7 @@
     #include <sysmlv2/sysmlv2file_global.h>
 
 
-// Generated from ./SysMLv2.g4 by ANTLR 4.13.2
+// Generated from filehandling/resources/grammars/SysMLv2.g4 by ANTLR 4.13.2
 
 #pragma once
 
@@ -14,7 +14,7 @@
 #include <sysmlv2/parser/SysMLv2Visitor.h>
 
 
-    /**
+/**
  * This class provides an empty implementation of SysMLv2Visitor, which can be
  * extended to create a visitor which only needs to handle a subset of the available methods.
  */
@@ -22,6 +22,18 @@ class SYSMLV2FILE_EXPORT SysMLv2BaseVisitor : public SysMLv2Visitor {
 public:
 
   virtual std::any visitStart(SysMLv2Parser::StartContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitIdentification(SysMLv2Parser::IdentificationContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitSysml_name(SysMLv2Parser::Sysml_nameContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitQualified_name(SysMLv2Parser::Qualified_nameContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -229,6 +241,14 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitRedefinition_usage_element(SysMLv2Parser::Redefinition_usage_elementContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitRedefinition_usage(SysMLv2Parser::Redefinition_usageContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitNon_occurrence_usage_element(SysMLv2Parser::Non_occurrence_usage_elementContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -250,14 +270,6 @@ public:
   }
 
   virtual std::any visitSubsclassification_part(SysMLv2Parser::Subsclassification_partContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitCrosses(SysMLv2Parser::CrossesContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitOwned_cross_subsetting(SysMLv2Parser::Owned_cross_subsettingContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -382,6 +394,14 @@ public:
   }
 
   virtual std::any visitFeature_typing_target(SysMLv2Parser::Feature_typing_targetContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitTypings(SysMLv2Parser::TypingsContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitTyped_by(SysMLv2Parser::Typed_byContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -746,6 +766,10 @@ public:
   }
 
   virtual std::any visitOwned_feature_chain_member(SysMLv2Parser::Owned_feature_chain_memberContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitExpression_body(SysMLv2Parser::Expression_bodyContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -1237,10 +1261,6 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual std::any visitIdentification(SysMLv2Parser::IdentificationContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual std::any visitRelationship_owned_elements(SysMLv2Parser::Relationship_owned_elementsContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -1290,10 +1310,6 @@ public:
   }
 
   virtual std::any visitNamespace_feature_member(SysMLv2Parser::Namespace_feature_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitQualified_name(SysMLv2Parser::Qualified_nameContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -1465,7 +1481,19 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitAnonymous_feature(SysMLv2Parser::Anonymous_featureContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitFeature_prefix(SysMLv2Parser::Feature_prefixContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitEnd_feature_prefix(SysMLv2Parser::End_feature_prefixContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitBasic_feature_prefix(SysMLv2Parser::Basic_feature_prefixContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -1497,15 +1525,11 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitMultiplicity_modifier(SysMLv2Parser::Multiplicity_modifierContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitFeature_specialization(SysMLv2Parser::Feature_specializationContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitTypings(SysMLv2Parser::TypingsContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitTyped_by(SysMLv2Parser::Typed_byContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -1518,6 +1542,10 @@ public:
   }
 
   virtual std::any visitReferences(SysMLv2Parser::ReferencesContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitCrosses(SysMLv2Parser::CrossesContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -1546,6 +1574,10 @@ public:
   }
 
   virtual std::any visitOwned_reference_subsetting(SysMLv2Parser::Owned_reference_subsettingContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitOwned_cross_subsetting(SysMLv2Parser::Owned_cross_subsettingContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -1693,115 +1725,63 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual std::any visitOwned_expressions(SysMLv2Parser::Owned_expressionsContext *ctx) override {
+  virtual std::any visitSelectExpr(SysMLv2Parser::SelectExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitOwned_expression(SysMLv2Parser::Owned_expressionContext *ctx) override {
+  virtual std::any visitCollectExpr(SysMLv2Parser::CollectExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitEased_owned_expression(SysMLv2Parser::Eased_owned_expressionContext *ctx) override {
+  virtual std::any visitBinaryExpr(SysMLv2Parser::BinaryExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitConditional_expression(SysMLv2Parser::Conditional_expressionContext *ctx) override {
+  virtual std::any visitExtentExpr(SysMLv2Parser::ExtentExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitConditional_binary_operator_expression(SysMLv2Parser::Conditional_binary_operator_expressionContext *ctx) override {
+  virtual std::any visitConditionalExpr(SysMLv2Parser::ConditionalExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitConditional_binary_operator(SysMLv2Parser::Conditional_binary_operatorContext *ctx) override {
+  virtual std::any visitUnaryExpr(SysMLv2Parser::UnaryExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitBinary_operator_expression(SysMLv2Parser::Binary_operator_expressionContext *ctx) override {
+  virtual std::any visitIndexExpr(SysMLv2Parser::IndexExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitBinary_operator(SysMLv2Parser::Binary_operatorContext *ctx) override {
+  virtual std::any visitBaseExpr(SysMLv2Parser::BaseExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitUnary_operator_expression(SysMLv2Parser::Unary_operator_expressionContext *ctx) override {
+  virtual std::any visitFeatureChainExpr(SysMLv2Parser::FeatureChainExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitUnary_operator(SysMLv2Parser::Unary_operatorContext *ctx) override {
+  virtual std::any visitBracketExpr(SysMLv2Parser::BracketExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitClassification_expression(SysMLv2Parser::Classification_expressionContext *ctx) override {
+  virtual std::any visitMetaclassificationExpr(SysMLv2Parser::MetaclassificationExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitClassification(SysMLv2Parser::ClassificationContext *ctx) override {
+  virtual std::any visitClassificationExpr(SysMLv2Parser::ClassificationExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitClassification_test_operator(SysMLv2Parser::Classification_test_operatorContext *ctx) override {
+  virtual std::any visitSequenceExpr(SysMLv2Parser::SequenceExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitCast_operator(SysMLv2Parser::Cast_operatorContext *ctx) override {
+  virtual std::any visitFunctionOperationExpr(SysMLv2Parser::FunctionOperationExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitMetaclassification_expression(SysMLv2Parser::Metaclassification_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitArgument_member(SysMLv2Parser::Argument_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitArgument(SysMLv2Parser::ArgumentContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitArgument_value(SysMLv2Parser::Argument_valueContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitArgument_expression_member(SysMLv2Parser::Argument_expression_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitArgument_expression(SysMLv2Parser::Argument_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitArgument_expression_value(SysMLv2Parser::Argument_expression_valueContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitMetadata_argument_member(SysMLv2Parser::Metadata_argument_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitMetadata_argument(SysMLv2Parser::Metadata_argumentContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitMetadata_value(SysMLv2Parser::Metadata_valueContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitMetadata_reference(SysMLv2Parser::Metadata_referenceContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitMetadataclassification_test_operator(SysMLv2Parser::Metadataclassification_test_operatorContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitMeta_cast_operator(SysMLv2Parser::Meta_cast_operatorContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitExtend_expression(SysMLv2Parser::Extend_expressionContext *ctx) override {
+  virtual std::any visitFunction_operation_arguments(SysMLv2Parser::Function_operation_argumentsContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -1821,50 +1801,6 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual std::any visitPrimary_expressions(SysMLv2Parser::Primary_expressionsContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitPrimary_expression(SysMLv2Parser::Primary_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitPrimary_argument_value(SysMLv2Parser::Primary_argument_valueContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitPrimary_argument(SysMLv2Parser::Primary_argumentContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitPrimary_argument_member(SysMLv2Parser::Primary_argument_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitNon_feature_chain_primary_expression(SysMLv2Parser::Non_feature_chain_primary_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitNon_feature_chain_primary_argument_value(SysMLv2Parser::Non_feature_chain_primary_argument_valueContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitNon_feature_chain_primary_argument(SysMLv2Parser::Non_feature_chain_primary_argumentContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitNon_feature_chain_primary_argument_member(SysMLv2Parser::Non_feature_chain_primary_argument_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitBracket_expression(SysMLv2Parser::Bracket_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitIndex_expression(SysMLv2Parser::Index_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual std::any visitSequence_expression(SysMLv2Parser::Sequence_expressionContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -1873,63 +1809,7 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual std::any visitSequence_operator_expression(SysMLv2Parser::Sequence_operator_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual std::any visitSequence_expression_list_member(SysMLv2Parser::Sequence_expression_list_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitFeature_chain_expression(SysMLv2Parser::Feature_chain_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitCollect_expression(SysMLv2Parser::Collect_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitSelect_expression(SysMLv2Parser::Select_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitFunction_operation_expression(SysMLv2Parser::Function_operation_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitBody_argument_member(SysMLv2Parser::Body_argument_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitBody_argument(SysMLv2Parser::Body_argumentContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitBody_argument_value(SysMLv2Parser::Body_argument_valueContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitBody_expression_member(SysMLv2Parser::Body_expression_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitFunction_reference_argument_member(SysMLv2Parser::Function_reference_argument_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitFunction_reference_argument(SysMLv2Parser::Function_reference_argumentContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitFunction_reference_arugment_value(SysMLv2Parser::Function_reference_arugment_valueContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitFunction_reference_expression(SysMLv2Parser::Function_reference_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitFunction_reference_member(SysMLv2Parser::Function_reference_memberContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -1969,6 +1849,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitConstructor_expression(SysMLv2Parser::Constructor_expressionContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitArgument_list(SysMLv2Parser::Argument_listContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -1998,10 +1882,6 @@ public:
   }
 
   virtual std::any visitExpression_body_member(SysMLv2Parser::Expression_body_memberContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitExpression_body(SysMLv2Parser::Expression_bodyContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -2162,6 +2042,34 @@ public:
   }
 
   virtual std::any visitMeta_assignment(SysMLv2Parser::Meta_assignmentContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitTyped_by_operator(SysMLv2Parser::Typed_by_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitSpecializes_operator(SysMLv2Parser::Specializes_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitSubsets_operator(SysMLv2Parser::Subsets_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitReferences_operator(SysMLv2Parser::References_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitRedefines_operator(SysMLv2Parser::Redefines_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitConjugates_operator(SysMLv2Parser::Conjugates_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitCrosses_operator(SysMLv2Parser::Crosses_operatorContext *ctx) override {
     return visitChildren(ctx);
   }
 

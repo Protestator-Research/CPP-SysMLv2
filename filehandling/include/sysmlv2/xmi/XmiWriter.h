@@ -132,6 +132,27 @@ namespace SysMLv2::Files {
      * OwningMembership or FeatureMembership (exactly these metaclasses) owning one end feature. The end feature memberships of a text,
      * which own their end feature themselves, are never touched.
      *
+     * The referent of a FeatureReferenceExpression and the target feature of a FeatureChainExpression are properties of the models of
+     * the parsers, without a relationship. They are written in the shape of the pilot's XMI: a plain Membership (exactly a Membership)
+     * of the expression whose memberElement is that feature (an href with the metaclass for a feature of another file). In the pilot
+     * library the membership follows the ParameterMembership of the left operand of a chain (a reference: Membership, then
+     * ReturnParameterMembership); the operands of the models of this project are FeatureMemberships, so the writer adds the membership
+     * as the first ownedRelationship of the expression, and a reader takes the first membership that is no ParameterMembership. The id
+     * of the membership is name based like the others (or derived from the id of the expression when the ids are the element ids or
+     * the expression keeps an id of its own).
+     *
+     * What is not written, and so is lost in a round trip:
+     *  - An unresolved referent or target, also a placeholder that no model owns (no message: the resolver has reported the name). The
+     *    parsers resolve the target of a chain only if its left operand is a plain name chain (`a.b.c`) whose features have the link;
+     *    for every other left operand (a computed one: `(q1, q2).r`, `(a.b).c`, `(x).f`, `f(x).y`, `v#(1).z`, `(x as T).f`, or a name
+     *    chain with an untyped feature: `x.power` for `ref part x = e`) the target is a placeholder. The evaluator finds such a link by
+     *    its name, which the pilot's shape cannot carry, so a model that was written and read again has no target there.
+     *  - Nothing is added if the expression owns a plain Membership with a member already (a model read from XMI: it is written as it
+     *    is, once), or, for a chain, an OwningMembership (the pilot's target that is a chain of its own, with ownedFeatureChaining).
+     *    The target of a chain of the parsers is always one feature, so only the single feature form is written.
+     * A referent in the file that is not part of the written tree (excluded with XmiWriteOptions::include) is reported as an error
+     * naming its role ("the referent ... of FeatureReferenceExpression ...") and not written.
+     *
      * Deviations from the model: an instance of the abstract class InstantiationExpression (the type reference of `x as T`, which the
      * parsers create) is written as an InvocationExpression; a relationship that is listed among the relationships of a namespace and
      * is owned by a membership is written once, in the membership.

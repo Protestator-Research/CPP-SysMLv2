@@ -20,11 +20,11 @@ class CPPSysMLRecipe(ConanFile):
 
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False], "fPIC": [True, False], "with_rest": [True, False], "with_services":[True, False], "with_parsing":[True,False], "with_online":[True, False], "with_check":[True, False]}
-    default_options = {"shared": True, "fPIC": True, "with_rest": True, "with_services": True, "with_parsing": True, "with_online": True, "with_check": False}
+    options = {"shared": [True, False], "fPIC": [True, False], "with_rest": [True, False], "with_services":[True, False], "with_parsing":[True,False], "with_online":[True, False], "with_check":[True, False], "with_evaluation": [True, False]}
+    default_options = {"shared": True, "fPIC": True, "with_rest": True, "with_services": True, "with_parsing": True, "with_online": True, "with_check": False, "with_evaluation": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
-    exports_sources = "CMakeLists.txt", "interfaces/*", "conformance-test/*", "filehandling/*", "kerml/*", "rest-api/*", "services/*", "sysmlinterfaces/*", "resources/*", "sysml/*", "check/*"
+    exports_sources = "CMakeLists.txt", "interfaces/*", "conformance-test/*", "filehandling/*", "kerml/*", "rest-api/*", "services/*", "sysmlinterfaces/*", "resources/*", "sysml/*", "check/*", "evaluation/*"
 
     def requirements(self):
         self.requires("boost/[>=1.86.0 <2]")
@@ -84,6 +84,7 @@ class CPPSysMLRecipe(ConanFile):
         tc.variables["BUILD_WITH_REST"] = bool(self.options.with_rest)
         tc.variables["BUILD_WITH_SERVICES"] = bool(self.options.with_services)
         tc.variables["BUILD_WITH_CHECK"] = bool(self.options.with_check)
+        tc.variables["BUILD_WITH_EVALUATION"] = bool(self.options.with_evaluation)
 
         tc.user_presets_path = 'CMakePresets.json'
         tc.generate()
@@ -107,7 +108,7 @@ class CPPSysMLRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        # dependents first (static link order): check > service > rest > parser > sysml > kerml > resources > interfaces
+        # dependents first (static link order): check > service > rest > parser > evaluation > sysml > kerml > resources > interfaces
         libs = []
         if self.options.with_check:
             libs.append("sysmlv2check")
@@ -117,6 +118,8 @@ class CPPSysMLRecipe(ConanFile):
             libs.append("sysmlv2rest")
         if self.options.with_parsing:
             libs.append("sysmlv2parser")
+        if self.options.with_evaluation:
+            libs.append("sysmlv2evaluation")
         libs += ["sysml", "kerml"]
         if self.options.with_parsing:
             libs.append("sysmlv2resources")

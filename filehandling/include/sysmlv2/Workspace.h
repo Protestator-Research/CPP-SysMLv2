@@ -111,11 +111,51 @@ namespace SysMLv2::Files {
      *    without their quotes.
      * References that cannot be resolved keep a placeholder element and are reported by unresolvedReferences().
      * The workspace can be extended and resolve() called again; already resolved references are kept.
+     *
+     * Limits of a text (text sources: KerML and SysML v2; XMI is not affected). A text that exceeds one of them is not read: its source has no
+     * elements and one syntax error (ErrorType::SYNTAX_ERROR) whose message names the limit ("nesting too deep", "text too large for the stack" or
+     * "look-ahead budget exceeded"), at the position where the limit was exceeded. The limits only count (nesting levels, tokens), never time, so that a text gives the same result in every build and on every machine.
+     * They are constants of the library, not options.
+     *  - Nesting: the recursion of the parser may be 10000 levels deep, and the finished parse tree 200000 (the levels are the rules of the grammar:
+     *    about 1 per term of a sum or of a feature chain, about 3 per parenthesis or per package; the elements of a sequence `(a, b, c)` count one
+     *    level each in the tree, as the model nests their `,` operators). This holds where the text is parsed on the thread with a large stack
+     *    (512 MB), which the workspace makes for it. The limits follow the stack that was obtained: with 128 MB 10000 and 58000 levels, with 32 MB
+     *    6400 and 14600 (the same stack is used for all workers of one addTexts()). Where no such thread can be made, the text is parsed on the
+     *    calling thread and the limits follow what is left of its stack, measured when the parse starts (less 64 KB for the rest of the work; for 1 MB
+     *    201 and 455, for 256 KB 36 and 82); where that cannot be measured, as in WebAssembly, 1 MB is assumed (the recursion there is also bounded
+     *    by the native stack of the JavaScript engine, about 1 MB in V8: larger values need to be measured in the target engine). The limits are a
+     *    stack divided by 5200 bytes for the recursion and by 2300 bytes for the tree, 4 times the measured cost of a level in an unoptimized build.
+     *    A text exceeds a limit with the message "nesting too deep" (recursion) or "text too large for the stack" (tree: a chain or sequence of that
+     *    many terms). A sum, a sequence or a feature chain of 50000 terms, 5000
+     *    negations and every text of the standard library (nested 72 levels at most) are inside the limits on the 512 MB stack. Everything after the parse (indexing and resolving the names, writing
+     *    XMI, serialising to JSON, releasing the model) is iterative or runs on the thread with the large stack, whatever the nesting of an
+     *    accepted text.
+     *  - Look-ahead: the cost of the parser's look-ahead through a nested text grows with the square of the nesting. It is counted in units (a token read
+     *    ahead counts 1, plus 1 for every bracket, `if` or prefix operator that is open at it): one decision may use 1 million units, and all
+     *    decisions of a text together 60 per token of the text plus 10 million. The standard library needs at most 5.3 per token, 15000 in total and
+     *    1600 for one decision (all other test data less); the limits are 11, 650 and 610 times that. They do not bound the size of a flat text: a
+     *    package of 200000 tokens, a sum, sequence or chain of 50000 terms are read. They never stop a text that I know of before the limits of the nesting
+     *    do; they are the guard for the shapes that I do not know. A text that exceeds one is rejected with the message "look-ahead budget exceeded".
+     *  - Feature chains: the references of a chain `a.b.c` carry the text of the chain up to each link, which takes memory and time that grow
+     *    with the square of its length. Beyond 512 links (a left operand of more than 1024 tokens) the features of the further links are not
+     *    resolved (as for `f(x).b`), and one warning (ErrorType::WARNING) says so; the text is read all the same.
+     * The thread of the caller needs no large stack for any of it.
+     * Prediction caches: the generated parsers of a language share their prediction caches (DFA and contexts) between all instances in the process.
+     * After a text that was rejected, or that needed an unusually long look-ahead (a prediction of more than 2000 units), the workspace empties the
+     * caches of its language at once, so that their memory is given back and no deep chain of contexts is left for the end of the process (the runtime
+     * frees it recursively). So does a parse that is abandoned (deadline, cancellation) after such a look-ahead; one that is abandoned without it leaves
+     * the caches alone. Every parse of the workspace (also Parser::parse*) holds a lock of its language shared; the cleanup takes it exclusively, i.e. it
+     * waits for the parses of that language that are running. Whether parses that start meanwhile wait for the cleanup depends on the lock of the
+     * platform (with a reader-preferring lock, as the one of glibc, they do not). A program that uses KerMLParser or SysMLv2Parser directly in the
+     * same process must not parse while a workspace may clean up (parse through the workspace instead).
+     * Writing XMI: with the default indentation the file has one indentation step per level of nesting on every line, i.e. its size grows with the
+     * square of the nesting of the model (a model that is 8000 levels deep: gigabytes); XmiWriteOptions::indent = "" writes it without.
      */
     class SYSMLV2FILE_EXPORT Workspace {
     public:
         Workspace();
         ~Workspace();
+
         Workspace(const Workspace&) = delete;
         Workspace& operator=(const Workspace&) = delete;
 

@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <memory>
 #include <stdexcept>
+#include <unordered_set>
 #include <vector>
 namespace KerML::Entities::detail {
 template<class T, class U> std::vector<std::shared_ptr<T>> select(const std::vector<std::shared_ptr<U>>& values) {
@@ -10,11 +11,15 @@ template<class T, class U> std::vector<std::shared_ptr<T>> select(const std::vec
     for (const auto& value : values) if (auto typed = std::dynamic_pointer_cast<T>(value)) result.push_back(typed);
     return result;
 }
+// (the entries are looked up in a set: the check of a collection is linear in its size, and a collection that grows by one entry at a time,
+// which copies and checks the whole collection for each entry, is quadratic, not cubic)
 template<class T> void checkCollection(const std::vector<std::shared_ptr<T>>& values, bool unique, int upper) {
     if (upper >= 0 && values.size() > static_cast<std::size_t>(upper)) throw std::invalid_argument("Upper multiplicity exceeded");
+    std::unordered_set<const T*> seen;
+    if (unique) seen.reserve(values.size());
     for (std::size_t i = 0; i < values.size(); ++i) {
         if (!values[i]) throw std::invalid_argument("Null collection entry");
-        if (unique && std::find(values.begin(), values.begin() + i, values[i]) != values.begin() + i) throw std::invalid_argument("Duplicate collection entry");
+        if (unique && !seen.insert(values[i].get()).second) throw std::invalid_argument("Duplicate collection entry");
     }
 }
 }

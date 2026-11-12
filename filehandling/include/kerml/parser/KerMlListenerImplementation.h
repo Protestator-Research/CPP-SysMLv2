@@ -10,6 +10,8 @@
 #include <sysmlv2/ownership/Ownership.h>
 #include <memory>
 #include <stack>
+#include <unordered_set>
+#include <unordered_map>
 #include <functional>
 
 namespace KerML::Entities {
@@ -716,9 +718,7 @@ public:
 
     void exitSequence_expression_list(KerMLParser::Sequence_expression_listContext *ctx) override;
 
-    void enterSequence_operator_expression(KerMLParser::Sequence_operator_expressionContext *ctx) override;
 
-    void exitSequence_operator_expression(KerMLParser::Sequence_operator_expressionContext *ctx) override;
 
     void enterSequence_expression_list_member(KerMLParser::Sequence_expression_list_memberContext *ctx) override;
 
@@ -1030,5 +1030,11 @@ private:
     std::vector<SysMLv2::Files::MemberMark> MemberMarks;
     std::vector<std::shared_ptr<KerML::Entities::Element>> Elements;
     std::stack<std::shared_ptr<KerML::Entities::Element>> ParentStack;
+    /// The sequences that are being read, innermost last: the last element of each and the number of its elements (see exitSequence_expression_list()).
+    std::vector<std::pair<const antlr4::ParserRuleContext*, size_t>> SequenceLists;
+    /// The first tokens of the feature chains that were warned about (see exitFeatureChainExpr()).
+    std::unordered_set<size_t> ChainsWarned;
+    /// For parents with many children: the index of the child after the one that was found last (see enterEveryRule()).
+    std::unordered_map<const antlr4::ParserRuleContext*, size_t> ChildHints;
 };
 

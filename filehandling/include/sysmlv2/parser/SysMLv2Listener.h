@@ -1361,9 +1361,6 @@ public:
   virtual void enterSequence_expression_list(SysMLv2Parser::Sequence_expression_listContext *ctx) = 0;
   virtual void exitSequence_expression_list(SysMLv2Parser::Sequence_expression_listContext *ctx) = 0;
 
-  virtual void enterSequence_operator_expression(SysMLv2Parser::Sequence_operator_expressionContext *ctx) = 0;
-  virtual void exitSequence_operator_expression(SysMLv2Parser::Sequence_operator_expressionContext *ctx) = 0;
-
   virtual void enterSequence_expression_list_member(SysMLv2Parser::Sequence_expression_list_memberContext *ctx) = 0;
   virtual void exitSequence_expression_list_member(SysMLv2Parser::Sequence_expression_list_memberContext *ctx) = 0;
 

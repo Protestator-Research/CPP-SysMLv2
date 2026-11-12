@@ -346,8 +346,6 @@ public:
 
     virtual std::any visitSequence_expression_list(KerMLParser::Sequence_expression_listContext *context) = 0;
 
-    virtual std::any visitSequence_operator_expression(KerMLParser::Sequence_operator_expressionContext *context) = 0;
-
     virtual std::any visitSequence_expression_list_member(KerMLParser::Sequence_expression_list_memberContext *context) = 0;
 
     virtual std::any visitFunction_reference(KerMLParser::Function_referenceContext *context) = 0;

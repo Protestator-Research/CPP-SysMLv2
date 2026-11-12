@@ -28,7 +28,10 @@ sysml_name: NAME | KEYWORD_VAR | KEYWORD_CONST | KEYWORD_ASSOC | KEYWORD_BEHAVIO
 // (step, bool, expr, function, feature, ...), so those remain usable as names, also in qualified names.
 qualified_name: sysml_name (SYMBOL_NAMESPACE_SUBSET sysml_name)*;
 
-start_element: element | usage_element | definition_element;
+// (the three alternatives do not overlap: `element` is additional_options, annotating_element, non_feature_element and feature_element, and the
+// last three are in definition_element and usage_element already. With `element` as a fourth way to the same package, the parser read to the end
+// of the file to decide between the ways, for every file that is one package)
+start_element: definition_element | usage_element | additional_options;
 
 startRule: start;
 
@@ -56,10 +59,8 @@ package_body_element: package_member |
 package_member: member_prefix (usage_element | definition_element);
 alias_member: member_prefix KEYWORD_ALIAS ('<'sysml_name'>')? sysml_name? KEYWORD_FOR qualified_name relationship_body;
 
-definition_element: package |
-                    library_package |
-                    annotating_element |
-                    dependency |
+// (package, library_package and dependency are non_feature_elements, at the end of this rule; they are not listed twice)
+definition_element: annotating_element |
                     attribute_definition |
                     enumeration_definition |
                     occurrence_definition |

@@ -234,3 +234,18 @@ target_include_directories(conformance-benchmark PRIVATE
         ../sysml/include)
 target_compile_definitions(conformance-benchmark PRIVATE
         SYSML_LIBRARY_DIR="${CMAKE_SOURCE_DIR}/resources/sysml.library")
+
+# Evaluation (sysmlv2evaluation): end-to-end tests of the Evaluator on text parsed by the real parsers (KerML and SysML), with and without
+# the standard library (text and XMI).
+if (BUILD_WITH_EVALUATION)
+    add_executable(conformance-evaluation
+            src/evaluation/TestEvaluation.cpp
+            src/support/TestHelpers.h)
+    target_link_libraries(conformance-evaluation ${CONFORMANCE_LIBRARY_LINK_LIBS} sysmlv2evaluation)
+    target_include_directories(conformance-evaluation PRIVATE ${CONFORMANCE_LIBRARY_INCLUDE_DIRS} ../evaluation/include)
+    target_compile_definitions(conformance-evaluation PRIVATE
+            SYSML_LIBRARY_DIR="${CMAKE_SOURCE_DIR}/resources/sysml.library"
+            SYSML_LIBRARY_XMI_DIR="${CMAKE_SOURCE_DIR}/resources/sysml.library.xmi")
+    add_test(NAME conformance-evaluation COMMAND conformance-evaluation)
+    set_tests_properties(conformance-evaluation PROPERTIES LABELS evaluation)
+endif ()
