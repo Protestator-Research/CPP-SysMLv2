@@ -2221,8 +2221,9 @@ void expectParameterWithoutValue(const std::shared_ptr<KerML::Entities::Type>& o
 template <class T>
 std::shared_ptr<T> firstCallOf(Workspace& ws) {
     for (const auto& element : ws.elements(0)) {
-        const auto elementRef = *element;
-        if (element && typeid(elementRef) == typeid(T)) return std::dynamic_pointer_cast<T>(element);
+        if (!element) continue;
+        const auto& elementRef = *element;
+        if (typeid(elementRef) == typeid(T)) return std::dynamic_pointer_cast<T>(element);
     }
     return nullptr;
 }
@@ -3275,8 +3276,9 @@ std::vector<std::shared_ptr<KerML::Entities::InvocationExpression>> plainInvocat
     std::vector<std::shared_ptr<KerML::Entities::InvocationExpression>> result;
     for (const auto& element : ws.elements()) {
         const auto invocation = as<KerML::Entities::InvocationExpression>(element);
-        const auto invocationRef = *invocation;
-        if (invocation && typeid(invocationRef) == typeid(KerML::Entities::InvocationExpression)) result.push_back(invocation);
+        if (!invocation) continue;
+        const auto& invocationRef = *invocation;
+        if (typeid(invocationRef) == typeid(KerML::Entities::InvocationExpression)) result.push_back(invocation);
     }
     return result;
 }

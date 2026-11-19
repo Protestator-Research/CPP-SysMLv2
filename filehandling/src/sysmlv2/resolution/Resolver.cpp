@@ -43,6 +43,13 @@ namespace SysMLv2::Files::Detail {
     using KerML::Entities::VisibilityKind;
 
     namespace {
+        /// Whether the feature is exactly a Feature (not an instance of a subclass); false for null.
+        bool isExactlyFeature(const std::shared_ptr<Feature>& feature) {
+            if (!feature) return false;
+            const auto& featureRef = *feature;
+            return typeid(featureRef) == typeid(Feature);
+        }
+
         /// The name that the text of a name in a reference stands for (quotes and escapes removed). Declared names are stored without quotes
         /// (the parsers apply KerML::Names::unescapeName() once) and are not passed through this.
         std::string normalizeName(const std::string& raw) { return KerML::Names::unescapeName(raw); }
@@ -1099,9 +1106,7 @@ namespace SysMLv2::Files::Detail {
                 } else if (const auto invocation = std::dynamic_pointer_cast<KerML::Entities::InvocationExpression>(expression)) {
                     auto type = invocation->instantiatedType();
                     // (an invoked type that is a feature chain, `c.twice(5)`: the result of its last feature)
-                    const auto chainFeature = std::dynamic_pointer_cast<Feature>(type);
-                    const auto chainFeatureRef = *chainFeature;
-                    if (chainFeature && !chainFeature->chainingFeature().empty() && typeid(chainFeatureRef) == typeid(Feature)) {
+                    if (const auto chainFeature = std::dynamic_pointer_cast<Feature>(type); chainFeature && !chainFeature->chainingFeature().empty() && isExactlyFeature(chainFeature)) {
                         type = chainFeature->chainingFeature().back();
                         if (!type || isUnresolved(type)) return StaticType();
                     } else if (!type || isUnresolved(type) || !std::dynamic_pointer_cast<KerML::Entities::Function>(type)) {
