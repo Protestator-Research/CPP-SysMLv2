@@ -113,7 +113,8 @@ set(KERNEL_EXPRESSIONS_HEADER
         include/kerml/kernel/expressions/LiteralInteger.h)
 list(APPEND KERNEL_EXPRESSIONS_HEADER
         include/kerml/kernel/expressions/ConstructorExpression.h
-        include/kerml/kernel/expressions/IndexExpression.h)
+        include/kerml/kernel/expressions/IndexExpression.h
+        include/kerml/kernel/expressions/OperatorFunctions.h)
 
 set(KERNEL_INTERACTIONS_HEADER
         include/kerml/kernel/interactions/Flow.h

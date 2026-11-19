@@ -83,6 +83,11 @@ namespace SysMLv2::Files::Detail {
         std::shared_ptr<KerML::Entities::Element> find(const std::string& name, const std::shared_ptr<KerML::Entities::Element>& scope,
                                                        ReferenceKind kind = ReferenceKind::Element, bool fromScopeItself = true) const;
 
+        /// Looks up the qualified name @p name of a library element in the global namespace, among the elements of the lowest level only
+        /// (as the implicit generals are: a model must not shadow the library). Null if it is not there. If the library and the model are on the
+        /// same level (or there is no library), a package of the model with the name of a library package is matched, as for the implicit generals.
+        std::shared_ptr<KerML::Entities::Element> findLibraryElement(const std::string& name) const;
+
         /// Number of references whose context element is not reachable from any root (resolved against the global namespace only).
         size_t detachedContexts() const;
 

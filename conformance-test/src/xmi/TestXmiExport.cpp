@@ -36,6 +36,8 @@
 #endif
 
 #include <kerml/KerML.h>
+#include <kerml/root/elements/NameEscaping.h>
+#include <nlohmann/json.hpp>
 #include <sysml/SysML.h>
 #include <sysmlv2/Workspace.h>
 #include <sysmlv2/resolution/ResolutionData.h>
@@ -303,7 +305,10 @@ std::unordered_set<const K::Element*> listedBy(const Workspace& workspace, size_
 
 // What a model is, element by element (in the order of the ownership tree): metaclass, id, names, owner, the stored properties of the common
 // metaclasses and the ends of the relationships (as ids).
-void describeTree(const ElementPtr& root, const std::unordered_set<const K::Element*>& listed, std::vector<std::string>& out) {
+//
+// @param implied if not null: the plain Memberships that the writer adds to a FeatureReferenceExpression and a FeatureChainExpression for the referent
+// and the target feature (the models of the parsers hold them as a property) are left out and counted here; each must have a member.
+void describeTree(const ElementPtr& root, const std::unordered_set<const K::Element*>& listed, std::vector<std::string>& out, size_t* implied = nullptr) {
     std::unordered_set<const K::Element*> seen;
     // (an unresolved reference is not written: it reads back as none)
     const auto id = [](const ElementPtr& element) {
@@ -313,6 +318,27 @@ void describeTree(const ElementPtr& root, const std::unordered_set<const K::Elem
     const std::function<void(const ElementPtr&, const std::string&)> visit = [&](const ElementPtr& element, const std::string& position) {
         // (the classes of the model create structure of their own, such as the end features of a connector, which a source does not list)
         if (!element || listed.count(element.get()) == 0 || !seen.insert(element.get()).second) return;
+        // The referent of a reference and the target of a chain: from the model on the text side; on the XMI side from the plain Membership that the
+        // writer added (left out of the tree, counted, and it must have a member), so that a wrong member is a difference.
+        std::unordered_set<const K::Element*> skipped;
+        std::string target;
+        const auto reference = std::dynamic_pointer_cast<K::FeatureReferenceExpression>(element);
+        const auto chain = std::dynamic_pointer_cast<K::FeatureChainExpression>(element);
+        if (reference || chain) {
+            if (implied == nullptr) {
+                target = id(reference ? std::shared_ptr<K::Element>(reference->referent()) : std::shared_ptr<K::Element>(chain->targetFeature()));
+            } else {
+                target = "-";
+                for (const auto& relationship : element->ownedRelationship()) {
+                    if (!relationship || relationship->getType() != "Membership") continue;
+                    const auto membership = std::dynamic_pointer_cast<K::Membership>(relationship);
+                    EXPECT_TRUE(membership && membership->memberElement()) << "the membership of a referent has no member";
+                    target = membership ? id(membership->memberElement()) : std::string("-");
+                    skipped.insert(relationship.get());
+                    ++*implied;
+                }
+            }
+        }
         std::ostringstream line;
         // (the writer writes the abstract InstantiationExpression that the parsers create for a type reference as an InvocationExpression)
         line << position << " " << (element->getType() == "InstantiationExpression" ? std::string("InvocationExpression") : element->getType()) << " " << element->elementId() << " name=" << element->declaredName().value_or("<none>")
@@ -347,9 +373,13 @@ void describeTree(const ElementPtr& root, const std::unordered_set<const K::Elem
         if (const auto boolean = std::dynamic_pointer_cast<K::LiteralBoolean>(element)) line << " value=" << boolean->value();
         if (const auto real = std::dynamic_pointer_cast<K::LiteralRational>(element)) line << " value=" << real->value();
         if (const auto expression = std::dynamic_pointer_cast<K::OperatorExpression>(element)) line << " operator=" << expression->operatorName();
+        if (reference || chain) line << " target=" << target;
         out.push_back(line.str());
         size_t index = 0;
-        for (const auto& relationship : element->ownedRelationship()) visit(relationship, position + "/r" + std::to_string(index++));
+        for (const auto& relationship : element->ownedRelationship()) {
+            if (skipped.count(relationship.get()) != 0) continue;   // (the position of the others does not shift)
+            visit(relationship, position + "/r" + std::to_string(index++));
+        }
         if (const auto relationship = std::dynamic_pointer_cast<K::Relationship>(element); relationship && !std::dynamic_pointer_cast<K::Namespace>(element)) {
             index = 0;
             for (const auto& related : relationship->ownedRelatedElement()) visit(related, position + "/e" + std::to_string(index++));
@@ -392,10 +422,9 @@ std::vector<std::string> modelFiles() {
     return names;
 }
 
-TEST_P(XmiExportText, WrittenAndReadAgainIsTheSameModel) {
-    auto& ctx = context();
-    const std::string text = ConformanceTest::readFile(fs::path(SYSML_VALID_DIR) / GetParam());
-    ctx.text.replaceSource(ctx.textSource, text, SourceLanguage::SysML);
+void checkWrittenAndReadAgain(const std::string& text, SourceLanguage language, size_t minimumImplied = 0) {
+    auto& ctx = XmiExportText::context();
+    ctx.text.replaceSource(ctx.textSource, text, language);
     ctx.text.resolve();
     ASSERT_TRUE(ctx.text.errors(ctx.textSource).empty()) << allErrors(ctx.text.errors(ctx.textSource));
     const auto root = ctx.text.rootNamespace(ctx.textSource);
@@ -425,8 +454,19 @@ TEST_P(XmiExportText, WrittenAndReadAgainIsTheSameModel) {
     EXPECT_TRUE(ctx.xmi.errors(ctx.xmiSource).empty()) << allErrors(ctx.xmi.errors(ctx.xmiSource));
     for (const auto& reference : ctx.xmi.unresolvedReferences()) ADD_FAILURE() << "unresolved href " << reference.name;
 
+    // (the memberships of the referents and targets are the only additions: one for each referent or target the text model resolved to an
+    // element that a model owns, not for a placeholder)
     std::vector<std::string> after;
-    describeTree(ctx.xmi.rootNamespace(ctx.xmiSource), listedBy(ctx.xmi, ctx.xmiSource), after);
+    size_t implied = 0;
+    describeTree(ctx.xmi.rootNamespace(ctx.xmiSource), listedBy(ctx.xmi, ctx.xmiSource), after, &implied);
+    size_t expectedImplied = 0;
+    for (const auto& element : ctx.text.elements(ctx.textSource)) {
+        const auto owned = [](const std::shared_ptr<K::Feature>& feature) { return feature && (feature->owner() || feature->owningRelationship()); };
+        if (const auto reference = std::dynamic_pointer_cast<K::FeatureReferenceExpression>(element)) expectedImplied += owned(reference->referent()) ? 1 : 0;
+        if (const auto chain = std::dynamic_pointer_cast<K::FeatureChainExpression>(element)) expectedImplied += owned(chain->targetFeature()) ? 1 : 0;
+    }
+    EXPECT_EQ(implied, expectedImplied);
+    EXPECT_GE(expectedImplied, minimumImplied);
     ASSERT_EQ(before.size(), after.size());
     size_t different = 0;
     for (size_t i = 0; i < before.size(); ++i) {
@@ -434,6 +474,31 @@ TEST_P(XmiExportText, WrittenAndReadAgainIsTheSameModel) {
         if (++different <= 5) ADD_FAILURE() << "element " << i << " differs:\n  text: " << before[i] << "\n  xmi:  " << after[i];
     }
     EXPECT_EQ(different, 0u);
+}
+
+TEST_P(XmiExportText, WrittenAndReadAgainIsTheSameModel) {
+    checkWrittenAndReadAgain(ConformanceTest::readFile(fs::path(SYSML_VALID_DIR) / GetParam()), SourceLanguage::SysML);
+}
+
+// References and chains with resolved referents and targets (the files of the corpus have none that is resolved): every reference and chain
+// has the member the text model resolved it to (describeTree compares the target of each).
+TEST(XmiExportTextReferents, AResolvedReferentAndTargetAreTheSameAfterTheRoundTrip) {
+    checkWrittenAndReadAgain(
+        "package Ref { part def Engine { attribute power = 100; attribute twice = power * 2; part cyl { attribute count = 4; } } "
+        "part def Big :> Engine { attribute :>> power = 300; } part e : Engine; part b : Big; attribute r0 = e.power; attribute r1 = b.twice; attribute r2 = b.power + 1; "
+        "part def V { part motor { attribute k = 2; part inner { attribute z = 7; } } } part v : V; attribute r3 = v.motor.inner.z; attribute r4 = v.motor.k * 2; "
+        "package Other { attribute o = Ref::r0 + 1; attribute q = Ref::e.power; } attribute r5 = Other::o; ref part x : Engine = e; attribute r6 = x.power; "
+        "attribute r7 = e.cyl.count; }",
+        SourceLanguage::SysML, 20);
+}
+
+TEST(XmiExportTextReferents, AResolvedReferentAndTargetOfAKerMLModelAreTheSameAfterTheRoundTrip) {
+    checkWrittenAndReadAgain(
+        "package Ref { class Engine { feature power = 100; feature twice = power * 2; feature cyl { feature count = 4; } } class Big :> Engine { feature :>> power = 300; } "
+        "feature e : Engine; feature b : Big; feature r0 = e.power; feature r1 = b.twice; feature r2 = b.power + 1; "
+        "class V { feature motor { feature k = 2; feature inner { feature z = 7; } } } feature v : V; feature r3 = v.motor.inner.z; "
+        "package Other { feature o = Ref::r0 + 1; feature q = Ref::e.power; } feature r5 = Other::o; feature r7 = e.cyl.count; }",
+        SourceLanguage::KerML, 15);
 }
 
 INSTANTIATE_TEST_SUITE_P(XmiExportText, XmiExportText, ::testing::ValuesIn(modelFiles()),
@@ -2607,6 +2672,469 @@ TEST(XmiExportFinalReview, MixedRootsAreWarnedAboutOncePerRoot) {
     const Errors written = workspace.writeXmi(model, (single.path() / "model.sysmlx").string(), options);
     EXPECT_EQ(warningsWith(written, "working directory"), 1u) << allErrors(written, 20);
     EXPECT_EQ(warningsWith(written, "3 sources"), 1u) << allErrors(written, 20);
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// String literals: the value of a LiteralString is the decoded text; every output format escapes it in its own way, and reading it back
+// does not decode a second time
+// ---------------------------------------------------------------------------------------------------------------------
+
+TEST(XmiExportStrings, DecodedStringLiteralsRoundTripThroughXmiAndJson) {
+    // the text of the model has the escape sequences; the value has the characters
+    const std::string expected = "q\"uote \\ back \\n (not a line feed) a\nline\ttab\rcr \'single' \xC3\xA9";
+    const std::string text = R"KERML(package P { feature x = "q\"uote \\ back \\n (not a line feed) a\nline\ttab\rcr \'single' é"; })KERML";
+    for (const SourceLanguage language : {SourceLanguage::KerML, SourceLanguage::SysML}) {
+        SCOPED_TRACE(language == SourceLanguage::KerML ? "KerML" : "SysML");
+        const std::string source = language == SourceLanguage::KerML ? text : std::string(R"SYSML(package P { attribute x = "q\"uote \\ back \\n (not a line feed) a\nline\ttab\rcr \'single' é"; })SYSML");
+        const auto literalOf = [](const Workspace& workspace, size_t index) -> std::shared_ptr<K::LiteralString> {
+            for (const auto& element : workspace.elements(index)) {
+                if (auto literal = std::dynamic_pointer_cast<K::LiteralString>(element)) return literal;
+            }
+            return nullptr;
+        };
+        Workspace original;
+        const size_t index = original.addText(source, language == SourceLanguage::KerML ? "s.kerml" : "s.sysml", language);
+        original.resolve();
+        ASSERT_TRUE(original.errors(index).empty()) << allErrors(original.errors(index));
+        const auto literal = literalOf(original, index);
+        ASSERT_NE(literal, nullptr);
+        EXPECT_EQ(literal->value(), expected);
+
+        // XMI: the value is written with the escaping of XML and read back unchanged (not decoded a second time)
+        TempDir directory;
+        const fs::path file = directory.path() / "s.sysmlx";
+        for (const auto& error : original.writeXmi(index, file.string())) EXPECT_NE(error->errorType(), ErrorType::INTERNAL_ERROR) << describe(error);
+        const std::string xml = ConformanceTest::readFile(file);
+        EXPECT_EQ(xml.find("\\\""), std::string::npos) << "the XMI holds the text of the source, not the decoded value";
+        Workspace reread;
+        const size_t xmiIndex = reread.addText(xml, "s.sysmlx", SourceLanguage::Xmi);
+        reread.resolve();
+        ASSERT_TRUE(reread.errors(xmiIndex).empty()) << allErrors(reread.errors(xmiIndex));
+        const auto fromXmi = literalOf(reread, xmiIndex);
+        ASSERT_NE(fromXmi, nullptr);
+        EXPECT_EQ(fromXmi->value(), expected);
+
+        // JSON: the value is the decoded text with the escaping of JSON, and reading it back gives the same value
+        const nlohmann::json json = nlohmann::json::parse(literal->serializeToJson());
+        EXPECT_EQ(json.at("value").get<std::string>(), expected);
+        const K::LiteralString copy(literal->serializeToJson());
+        EXPECT_EQ(copy.value(), expected);
+    }
+}
+
+// A quoted name is written with the escape sequences of the notation (KerML::Names::escapeName) and read back as the same name: text -> model ->
+// XMI / JSON -> escapeName -> text.
+TEST(XmiExportStrings, QuotedNamesRoundTripThroughTextXmiAndJson) {
+    const std::vector<std::string> names = {"it's", "back\\slash", "tab\there", "quo\"te", "two words", "line\nbreak", "\\'both\\'", "caf\xC3\xA9"};
+    for (const SourceLanguage language : {SourceLanguage::KerML, SourceLanguage::SysML}) {
+        SCOPED_TRACE(language == SourceLanguage::KerML ? "KerML" : "SysML");
+        const std::string keyword = language == SourceLanguage::KerML ? "feature" : "attribute";
+        std::string text = "package P { ";
+        for (const auto& name : names) text += keyword + " " + KerML::Names::escapeName(name) + "; ";
+        text += "}";
+        const auto featureOf = [](const Workspace& workspace, size_t index, const std::string& name) -> std::shared_ptr<K::Feature> {
+            for (const auto& element : workspace.elements(index)) {
+                if (auto feature = std::dynamic_pointer_cast<K::Feature>(element); feature && feature->declaredName() == name) return feature;
+            }
+            return nullptr;
+        };
+        Workspace original;
+        const size_t index = original.addText(text, language == SourceLanguage::KerML ? "n.kerml" : "n.sysml", language);
+        original.resolve();
+        ASSERT_TRUE(original.errors(index).empty()) << allErrors(original.errors(index));
+        TempDir directory;
+        const fs::path file = directory.path() / "n.sysmlx";
+        for (const auto& error : original.writeXmi(index, file.string())) EXPECT_NE(error->errorType(), ErrorType::INTERNAL_ERROR) << describe(error);
+        Workspace reread;
+        const size_t xmiIndex = reread.addText(ConformanceTest::readFile(file), "n.sysmlx", SourceLanguage::Xmi);
+        reread.resolve();
+        ASSERT_TRUE(reread.errors(xmiIndex).empty()) << allErrors(reread.errors(xmiIndex));
+        std::string written = "package P { ";
+        for (const auto& name : names) {
+            const auto feature = featureOf(original, index, name);
+            ASSERT_NE(feature, nullptr) << "name: " << name;
+            const auto fromXmi = featureOf(reread, xmiIndex, name);
+            EXPECT_NE(fromXmi, nullptr) << "XMI lost the name: " << name;
+            const nlohmann::json json = nlohmann::json::parse(feature->serializeToJson());
+            EXPECT_EQ(json.at("declaredName").get<std::string>(), name);
+            written += keyword + " " + KerML::Names::escapeName(*feature->declaredName()) + "; ";
+        }
+        written += "}";
+        EXPECT_EQ(written, text);   // (escapeName of the names that were read is the text that was read)
+    }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// The name based ids are fixed values: the version 5 UUIDs (SHA-1) of the namespace of the writer and the key of the element. The values were
+// computed independently of the writer, with the key rules of its documentation (root|<file>, then /OwningMembership(<name>), ::Package:<name>,
+// ::PartDefinition:<name> below the root key of the owner) and python's uuid.uuid5(5f0c8a52-3b1e-4d6a-9c7e-2a4b6d8e0f13, key).
+// ---------------------------------------------------------------------------------------------------------------------
+
+TEST(XmiExportIds, NameBasedIdsHaveTheirKnownValues) {
+    Workspace workspace;
+    const size_t source = workspace.addText("package P { part def A; }", "user.sysml", SourceLanguage::SysML);
+    workspace.resolve();
+    ASSERT_TRUE(workspace.errors(source).empty());
+    TempDir directory;
+    const fs::path file = directory.path() / "user.sysmlx";
+    XmiWriteOptions options;
+    options.ids = XmiWriteOptions::IdMode::NameBased;
+    for (const auto& error : workspace.writeXmi(source, file.string(), options)) EXPECT_NE(error->errorType(), ErrorType::INTERNAL_ERROR) << describe(error);
+    const std::string xml = ConformanceTest::readFile(file);
+    for (const char* id : {"54dece66-cf44-5a8e-aaa0-b5020819a11a",    // the root namespace: root|user.sysmlx
+                           "faff7f06-ed47-5acd-aa21-17d1764258e0",    // the membership of P
+                           "5e69025b-6e2e-580c-88da-11bb8aeb2f1e",    // P
+                           "5ca40434-8f61-5b15-91b5-f0dfdb148869",    // the membership of A
+                           "a1372363-4549-56b4-a4df-8fd935409576"}) { // A
+        EXPECT_NE(xml.find(std::string("xmi:id=\"") + id + "\""), std::string::npos) << id << " is missing in " << xml;
+    }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// The referent of a feature reference and the target of a feature chain are written as the pilot's XMI has them: as a plain Membership
+// (the first ownedRelationship of the expression) whose memberElement is the feature.
+// ---------------------------------------------------------------------------------------------------------------------
+
+namespace {
+
+/// The model written as name based XMI.
+struct Written {
+    Workspace workspace;
+    size_t source = 0;
+    Errors errors;
+    std::string xml;
+    TempDir directory;
+    std::string extension;
+
+    Written(const std::string& model, SourceLanguage language) : extension(language == SourceLanguage::KerML ? ".kermlx" : ".sysmlx") {
+        source = workspace.addText(model, language == SourceLanguage::KerML ? "model.kerml" : "model.sysml", language, 1);
+        workspace.resolve();
+        errors = write("m", nameBased());
+    }
+
+    Errors write(const std::string& name, const XmiWriteOptions& options) {
+        const fs::path file = directory.path() / (name + extension);
+        const Errors result = workspace.writeXmi(source, file.string(), options);
+        xml = ConformanceTest::readFile(file);
+        return result;
+    }
+};
+
+/// The id of the (first) element of the type and name in the XML.
+std::string idOf(const std::string& xml, const std::string& type, const std::string& name) {
+    const auto ids = idsOfType(xml, type, name);
+    return ids.empty() ? std::string() : ids.front();
+}
+
+/// The start tags that follow the n-th start tag of the type (those up to and including the one at the given distance).
+struct Expression {
+    std::string tag;
+    std::vector<std::string> following;   // (the start tags after it, in the order of the file)
+};
+
+std::vector<Expression> expressionsOf(const std::string& xml, const std::string& type, size_t following = 3) {
+    std::vector<Expression> result;
+    const auto tags = startTags(xml);
+    for (size_t i = 0; i < tags.size(); ++i) {
+        if (attributeOf(tags[i], "xsi:type") != "sysml:" + type) continue;
+        Expression expression{tags[i], {}};
+        for (size_t k = 1; k <= following && i + k < tags.size(); ++k) expression.following.push_back(tags[i + k]);
+        result.push_back(std::move(expression));
+    }
+    return result;
+}
+
+size_t membershipsWithMember(const std::string& xml) {
+    size_t count = 0;
+    for (const auto& tag : startTags(xml)) {
+        if (attributeOf(tag, "xsi:type") == "sysml:Membership" && !attributeOf(tag, "memberElement").empty()) ++count;
+    }
+    return count;
+}
+
+}  // namespace
+
+TEST(XmiExportReferents, AFeatureReferenceOwnsAPlainMembershipWithTheReferent) {
+    for (const bool kerml : {false, true}) {
+        SCOPED_TRACE(kerml ? "KerML" : "SysML");
+        const std::string keyword = kerml ? "feature" : "attribute";
+        Written written("package P { " + keyword + " a = 3; " + keyword + " b = a + 1; }", kerml ? SourceLanguage::KerML : SourceLanguage::SysML);
+        EXPECT_TRUE(written.errors.empty()) << allErrors(written.errors);
+        const std::string type = kerml ? "Feature" : "AttributeUsage";
+        const std::string a = idOf(written.xml, type, "a");
+        ASSERT_FALSE(a.empty());
+        const auto references = expressionsOf(written.xml, "FeatureReferenceExpression");
+        ASSERT_EQ(references.size(), 1u);
+        ASSERT_FALSE(references.front().following.empty());
+        const std::string& membership = references.front().following.front();
+        EXPECT_EQ(tagName(membership), "ownedRelationship");
+        EXPECT_EQ(attributeOf(membership, "xsi:type"), "sysml:Membership");   // (exactly a Membership)
+        EXPECT_EQ(attributeOf(membership, "memberElement"), a);
+        EXPECT_EQ(attributeOf(membership, "xmi:id"), attributeOf(membership, "elementId"));
+        EXPECT_FALSE(attributeOf(membership, "xmi:id").empty());
+    }
+}
+
+TEST(XmiExportReferents, AFeatureChainOwnsAPlainMembershipWithTheTargetFeature) {
+    Written written("package P { part def D { attribute m = 5; part inner { attribute z = 7; } } part d : D; attribute c = d.m; attribute e = d.inner.z; }", SourceLanguage::SysML);
+    EXPECT_TRUE(written.errors.empty()) << allErrors(written.errors);
+    const std::string m = idOf(written.xml, "AttributeUsage", "m");
+    const std::string z = idOf(written.xml, "AttributeUsage", "z");
+    const std::string d = idOf(written.xml, "PartUsage", "d");
+    const std::string inner = idOf(written.xml, "PartUsage", "inner");
+    ASSERT_FALSE(m.empty() || z.empty() || d.empty() || inner.empty());
+    const auto chains = expressionsOf(written.xml, "FeatureChainExpression", 1);
+    ASSERT_EQ(chains.size(), 3u);   // d.m, and d.inner.z = (d.inner).z
+    std::set<std::string> targets;
+    for (const auto& chain : chains) {
+        ASSERT_EQ(chain.following.size(), 1u);
+        EXPECT_EQ(attributeOf(chain.following.front(), "xsi:type"), "sysml:Membership");
+        targets.insert(attributeOf(chain.following.front(), "memberElement"));
+    }
+    EXPECT_EQ(targets, (std::set<std::string>{m, z, inner}));
+    // the operand `d` of the chains is a reference with its own membership
+    size_t referencesToD = 0;
+    for (const auto& reference : expressionsOf(written.xml, "FeatureReferenceExpression", 1)) {
+        ASSERT_EQ(reference.following.size(), 1u);
+        if (attributeOf(reference.following.front(), "memberElement") == d) ++referencesToD;
+    }
+    EXPECT_EQ(referencesToD, 2u);
+}
+
+TEST(XmiExportReferents, TheIdsAreNameBasedAndUniqueAndNoExistingIdChanges) {
+    const std::string model = "package P { part def D { attribute m = 5; } part d : D; attribute a = 3; attribute b = a + 1; attribute c = d.m; }";
+    Written first(model, SourceLanguage::SysML);
+    const std::string xml = first.xml;
+    // every id is a UUID and no id is used twice
+    std::set<std::string> ids;
+    size_t count = 0;
+    for (const auto& tag : startTags(xml)) {
+        const std::string id = attributeOf(tag, "xmi:id");
+        if (id.empty()) continue;
+        ++count;
+        ids.insert(id);
+        EXPECT_EQ(id.size(), 36u);
+        EXPECT_EQ(id, attributeOf(tag, "elementId"));
+    }
+    EXPECT_EQ(ids.size(), count);
+    // a second workspace gives the same bytes
+    Written second(model, SourceLanguage::SysML);
+    EXPECT_EQ(second.xml, xml);
+    // removing the memberships that stand for the references leaves a file whose ids are those of a model without them: the memberships are
+    // additions, none of the other ids moves (compare with the ids of the same model where the references are literals)
+    Written plain("package P { part def D { attribute m = 5; } part d : D; attribute a = 3; attribute b = 4; attribute c = 5; }", SourceLanguage::SysML);
+    for (const char* name : {"D", "d", "a", "b", "c"}) {
+        for (const char* type : {"PartDefinition", "PartUsage", "AttributeUsage"}) {
+            const auto withReferences = idsOfType(xml, type, name);
+            const auto without = idsOfType(plain.xml, type, name);
+            EXPECT_EQ(withReferences, without) << type << " " << name;
+        }
+    }
+}
+
+TEST(XmiExportReferents, WritingAModelThatWasReadFromXmiGivesTheSameFileWithoutDuplicates) {
+    const std::string model = "package P { part def D { attribute m = 5; } part d : D; attribute a = 3; attribute b = a + 1; attribute c = d.m; }";
+    Written first(model, SourceLanguage::SysML);
+    EXPECT_TRUE(first.errors.empty()) << allErrors(first.errors);
+    const size_t memberships = membershipsWithMember(first.xml);
+    EXPECT_EQ(memberships, 3u);   // the references to a and to d, and the target m of the chain
+    // writing twice: the same bytes
+    first.write("again", nameBased());
+    const std::string twice = first.xml;
+    first.write("m", nameBased());
+    EXPECT_EQ(twice, first.xml);
+    // read the file, write it again: the same file, and no second membership for any expression
+    Workspace read;
+    const fs::path file = first.directory.path() / "m.sysmlx";
+    const size_t source = read.addFile(file.string(), 1);
+    read.resolve();
+    EXPECT_TRUE(read.errors().empty()) << allErrors(read.errors());
+    TempDir directory;
+    const fs::path rewritten = directory.path() / "m.sysmlx";
+    const Errors errors = read.writeXmi(source, rewritten.string(), nameBased());
+    EXPECT_TRUE(errors.empty()) << allErrors(errors);
+    const std::string again = ConformanceTest::readFile(rewritten);
+    EXPECT_EQ(membershipsWithMember(again), memberships);
+    EXPECT_EQ(again, first.xml);
+}
+
+// The resolver resolves the target of a chain with a computed left operand in the static type of the operand (ReferenceRole::ChainTarget), so
+// the writer writes it like any other target.
+TEST(XmiExportReferents, TheTargetOfAChainWithAComputedLeftOperandIsWritten) {
+    Written written("package P { part def Engine { attribute power = 100; } part e : Engine; part def Q { attribute r; } part q1 : Q { attribute :>> r = 5; } "
+                    "part q2 : Q { attribute :>> r = 6; } attribute a = (e).power; attribute b = (q1, q2).r; attribute c = (e as Engine).power; ref part x = e; attribute d = (x).power; }",
+                    SourceLanguage::SysML);
+    EXPECT_TRUE(written.errors.empty()) << allErrors(written.errors);
+    const std::string power = idOf(written.xml, "AttributeUsage", "power");
+    const std::string r = idOf(written.xml, "AttributeUsage", "r");
+    ASSERT_FALSE(power.empty() || r.empty());
+    std::vector<std::string> targets;
+    for (const auto& chain : expressionsOf(written.xml, "FeatureChainExpression", 1)) {
+        ASSERT_EQ(chain.following.size(), 1u);
+        if (attributeOf(chain.following.front(), "xsi:type") == "sysml:Membership") targets.push_back(attributeOf(chain.following.front(), "memberElement"));
+    }
+    std::sort(targets.begin(), targets.end());
+    // a, b, c have a target; d (through the untyped `x`) has none
+    std::vector<std::string> expected{power, r, power};
+    std::sort(expected.begin(), expected.end());
+    EXPECT_EQ(targets, expected);
+    // written twice: the same bytes
+    const std::string once = written.xml;
+    written.write("again", nameBased());
+    EXPECT_EQ(written.xml, once);
+}
+
+// A call whose invoked type is a feature chain (`c.twice(5)`): the invocation owns, as its first relationship, an OwningMembership of a Feature that has
+// a FeatureChaining for every link (the shape of the pilot's XMI); the model that is read back gives the same file.
+TEST(XmiExportReferents, TheChainFeatureOfAnInvokedTypeIsWrittenAndReadBack) {
+    Written written("package P { part def Car { attribute m = 3; calc twice { in k; k * m } } part c : Car; part def G { part car : Car; } part g : G; "
+                    "attribute r = c.twice(5); attribute r3 = g.car.twice(2); }",
+                    SourceLanguage::SysML);
+    EXPECT_TRUE(written.errors.empty()) << allErrors(written.errors);
+    const std::string c = idOf(written.xml, "PartUsage", "c");
+    const std::string twice = idOf(written.xml, "CalculationUsage", "twice");
+    ASSERT_FALSE(c.empty() || twice.empty());
+    const auto invocations = expressionsOf(written.xml, "InvocationExpression", 6);
+    ASSERT_EQ(invocations.size(), 2u);
+    for (size_t index = 0; index < invocations.size(); ++index) {
+        SCOPED_TRACE(index);
+        const auto& following = invocations[index].following;
+        ASSERT_GE(following.size(), 4u);
+        EXPECT_EQ(attributeOf(following[0], "xsi:type"), "sysml:OwningMembership");
+        EXPECT_EQ(attributeOf(following[1], "xsi:type"), "sysml:Feature");
+        // the chainings, in the order of the text: c (or g, car) ... twice
+        size_t chainings = 0;
+        std::string last;
+        for (const auto& tag : following) {
+            if (attributeOf(tag, "xsi:type") != "sysml:FeatureChaining") continue;
+            ++chainings;
+            last = attributeOf(tag, "chainingFeature");
+        }
+        EXPECT_EQ(chainings, index == 0 ? 2u : 3u);
+        EXPECT_EQ(last, twice);
+        if (index == 0) EXPECT_EQ(attributeOf(following[2], "chainingFeature"), c);
+    }
+    const std::string once = written.xml;
+    written.write("again", nameBased());
+    EXPECT_EQ(written.xml, once);
+    // read and written again: the same file
+    Workspace read;
+    const size_t source = read.addFile((written.directory.path() / "m.sysmlx").string(), 1);
+    read.resolve();
+    EXPECT_TRUE(read.errors().empty()) << allErrors(read.errors());
+    TempDir directory;
+    const fs::path rewritten = directory.path() / "m.sysmlx";
+    const Errors errors = read.writeXmi(source, rewritten.string(), nameBased());
+    EXPECT_TRUE(errors.empty()) << allErrors(errors);
+    EXPECT_EQ(ConformanceTest::readFile(rewritten), once);
+    // the invocation of the read model has the chain feature as its instantiated type
+    size_t chained = 0;
+    for (const auto& element : read.elements(source)) {
+        const auto invocation = std::dynamic_pointer_cast<K::InvocationExpression>(element);
+        if (!invocation || std::dynamic_pointer_cast<K::OperatorExpression>(element)) continue;
+        const auto type = std::dynamic_pointer_cast<K::Feature>(invocation->instantiatedType());
+        if (type && type->chainingFeature().size() > 1) ++chained;
+    }
+    EXPECT_EQ(chained, 2u);
+}
+
+TEST(XmiExportReferents, AnUnresolvedReferentWritesNothing) {
+    Written written("package P { attribute a = 3; attribute bad = nothere + 1; attribute ok = a; attribute chain = nothere.deeper; }", SourceLanguage::SysML);
+    EXPECT_TRUE(written.errors.empty()) << allErrors(written.errors);   // (the resolver reported the names; the writer adds no message)
+    // one membership for the reference to `a` (in `ok`), none for the names that could not be resolved
+    const std::string a = idOf(written.xml, "AttributeUsage", "a");
+    size_t toA = 0;
+    for (const auto& tag : startTags(written.xml)) {
+        if (attributeOf(tag, "xsi:type") != "sysml:Membership") continue;
+        const std::string member = attributeOf(tag, "memberElement");
+        if (member.empty()) continue;
+        EXPECT_EQ(member, a) << "a membership with a referent other than a";
+        ++toA;
+    }
+    EXPECT_EQ(toA, 1u);
+    // every memberElement refers to an element of the file
+    std::set<std::string> ids;
+    for (const auto& tag : startTags(written.xml)) ids.insert(attributeOf(tag, "xmi:id"));
+    for (const auto& tag : startTags(written.xml)) {
+        const std::string member = attributeOf(tag, "memberElement");
+        if (!member.empty()) EXPECT_EQ(ids.count(member), 1u) << member << " dangles";
+    }
+}
+
+TEST(XmiExportReferents, AReferentThatIsNotPartOfTheWrittenTreeIsReportedWithItsRole) {
+    Workspace workspace;
+    const size_t source = workspace.addText("package P { attribute a = 3; attribute b = a + 1; part def D { attribute m = 5; } part d : D; attribute c = d.m; }", "model.sysml", SourceLanguage::SysML, 1);
+    workspace.resolve();
+    const auto a = workspace.find("P::a");
+    const auto m = workspace.find("P::D::m");
+    ASSERT_NE(a, nullptr);
+    ASSERT_NE(m, nullptr);
+    TempDir directory;
+    XmiWriteOptions options = nameBased();
+    options.include = [&](const K::Element& element) { return &element != a.get() && &element != m.get(); };
+    const Errors errors = workspace.writeXmi(source, (directory.path() / "m.sysmlx").string(), options);
+    bool referent = false;
+    bool target = false;
+    for (const auto& error : errors) {
+        const std::string text = error->description();
+        // (an element that the source lists but the options exclude is in no file of the export, one that is in the file of the tree is not part of it)
+        const bool unwritten = text.find("is not part of the written tree") != std::string::npos || text.find("is in no file") != std::string::npos;
+        if (text.find("the referent ") == 0 && text.find(" of FeatureReferenceExpression") != std::string::npos && unwritten) referent = true;
+        if (text.find("the target feature ") == 0 && text.find(" of FeatureChainExpression") != std::string::npos && unwritten) target = true;
+        EXPECT_EQ(text.find("property 'memberElement'"), std::string::npos) << text;
+    }
+    EXPECT_TRUE(referent) << allErrors(errors);
+    EXPECT_TRUE(target) << allErrors(errors);
+    // (no membership that dangles)
+    const std::string xml = ConformanceTest::readFile(directory.path() / "m.sysmlx");
+    std::set<std::string> ids;
+    for (const auto& tag : startTags(xml)) ids.insert(attributeOf(tag, "xmi:id"));
+    for (const auto& tag : startTags(xml)) {
+        const std::string member = attributeOf(tag, "memberElement");
+        if (!member.empty()) EXPECT_EQ(ids.count(member), 1u) << member << " dangles";
+    }
+}
+
+TEST(XmiExportReferents, ReferentsInTheLibraryAreHrefsLikeOtherReferences) {
+    auto& ctx = XmiExportText::context();
+    ctx.text.replaceSource(ctx.textSource,
+                           "package Demo { attribute g = Base::things; attribute h = g; }",
+                           SourceLanguage::SysML);
+    ctx.text.resolve();
+    TempDir directory;
+    const fs::path file = directory.path() / "demo.sysmlx";
+    const Errors errors = ctx.text.writeXmi(ctx.textSource, file.string());
+    const std::string xml = ConformanceTest::readFile(file);
+    const auto length = ctx.text.find("Base::things");
+    if (length == nullptr) GTEST_SKIP() << "Base::things is not in the library";
+    // the reference to the library element: a child memberElement with the type and an href into the file of the library element
+    bool found = false;
+    for (const auto& tag : startTags(xml)) {
+        if (tagName(tag) != "memberElement") continue;
+        const std::string href = attributeOf(tag, "href");
+        if (href.find("#" + length->elementId()) == std::string::npos) continue;
+        found = true;
+        EXPECT_EQ(attributeOf(tag, "xsi:type").rfind("sysml:", 0), 0u);
+        EXPECT_NE(href.find("Base"), std::string::npos);
+    }
+    EXPECT_TRUE(found) << errors.size() << " errors";
+    // and the reference within the file (h = g) is an attribute
+    const std::string g = idOf(xml, "AttributeUsage", "g");
+    bool inFile = false;
+    for (const auto& tag : startTags(xml)) inFile = inFile || (attributeOf(tag, "xsi:type") == "sysml:Membership" && attributeOf(tag, "memberElement") == g);
+    EXPECT_TRUE(inFile);
+}
+
+TEST(XmiExportReferents, AWrittenPilotFileKeepsItsMembershipsAndGetsNoSecondOne) {
+    RoundTrip& rt = roundTrip();
+    for (const char* name : {"Kernel Libraries/Kernel Function Library/BaseFunctions.kermlx", "Domain Libraries/Quantities and Units/ISQ.sysmlx"}) {
+        SCOPED_TRACE(name);
+        const std::string original = ConformanceTest::readFile(fs::path(SYSML_LIBRARY_XMI_DIR) / name);
+        const std::string written = ConformanceTest::readFile(rt.directory.path() / name);
+        EXPECT_GT(membershipsWithMember(original) + countOf(original, "<memberElement"), 0u);
+        EXPECT_EQ(countOf(written, "FeatureReferenceExpression\""), countOf(original, "FeatureReferenceExpression\""));
+        EXPECT_EQ(countOf(written, "sysml:Membership\""), countOf(original, "sysml:Membership\""));
+    }
 }
 
 

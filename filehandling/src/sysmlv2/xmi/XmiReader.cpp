@@ -778,6 +778,22 @@ namespace SysMLv2::Files {
             }
         }
 
+        // The invoked type of an invocation that owns a feature chain (`c.twice(5)`: the first relationship is an OwningMembership of the chain feature).
+        for (const auto& element : D.elements) {
+            const auto invocation = std::dynamic_pointer_cast<K::InvocationExpression>(element);
+            if (!invocation || invocation->instantiatedType()) continue;
+            const auto& invocationRef = *invocation;
+            if (typeid(invocationRef) != typeid(K::InvocationExpression)) continue;
+            for (const auto& relationship : invocation->ownedRelationship()) {
+                if (!relationship) continue;
+                const auto& relationshipRef = *relationship;
+                if (typeid(relationshipRef) != typeid(K::OwningMembership)) continue;
+                const auto feature = std::dynamic_pointer_cast<K::Feature>(std::dynamic_pointer_cast<K::Membership>(relationship)->memberElement());
+                if (feature && !feature->ownedFeatureChaining().empty()) invocation->setInstantiatedType(feature);
+                break;
+            }
+        }
+
         // The targets of the aliases and imports.
         for (const auto& alias : D.aliases) {
             const auto target = alias->membership->memberElement();

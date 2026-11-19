@@ -22,6 +22,8 @@ option(BUILD_WITH_ONLINE "Builds the online part of the services (SysMLv2 API cl
 # The checker of SysML v2 texts (sysmlv2check): C interface sysml_pruefe, command line tool, tests.
 option(BUILD_WITH_CHECK "Builds sysmlv2check, the checker for SysML v2 texts (requires BUILD_WITH_PARSING)" OFF)
 option(BUILD_WITH_PARSING "Builds with the SysMLv2 parsing API" ON)
+# The evaluation of expressions (sysmlv2evaluation): value model, native functions of the Kernel Function Library. Depends on kerml only.
+option(BUILD_WITH_EVALUATION "Builds sysmlv2evaluation, the evaluation of KerML / SysML v2 expressions" ON)
 # The Python module (check/python): one self-contained shared library sysmlv2check_native with the C interface of sysmlv2check, everything else linked statically.
 option(BUILD_PYTHON_MODULE "Builds the shared library for the Python package sysmlv2 (requires BUILD_WITH_CHECK, static build)" OFF)
 option(BUILD_TESTING "Build the conformance tests" ON)
@@ -63,6 +65,9 @@ endif ()
 
 
 add_subdirectory(kerml)
+if (BUILD_WITH_EVALUATION)
+    add_subdirectory(evaluation)
+endif ()
 add_subdirectory(sysml)
 
 if (BUILD_WITH_CHECK)

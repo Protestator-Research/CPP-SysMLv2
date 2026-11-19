@@ -16,6 +16,9 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include <cstring>
+#include <type_traits>
+#include <typeinfo>
 #include <boost/uuid/name_generator_sha1.hpp>
 #include <boost/uuid/random_generator.hpp>
 #include <boost/uuid/string_generator.hpp>
@@ -45,6 +48,8 @@ namespace SysMLv2::Files {
         using Locate = std::function<std::optional<std::string>(const K::Element&)>;
         using Errors = std::vector<std::shared_ptr<ParserError>>;
 
+        using Sha1 = boost::uuids::detail::sha1;
+
         /// The namespace of the name based ids: the version 5 UUIDs of this project are derived from it.
         const char* const IdNamespace = "5f0c8a52-3b1e-4d6a-9c7e-2a4b6d8e0f13";
 
@@ -56,6 +61,16 @@ namespace SysMLv2::Files {
         std::string concreteSubstitute(const std::string& abstractType) {
             if (abstractType == "InstantiationExpression") return "InvocationExpression";
             return std::string();
+        }
+
+        /// The metaclass written as xsi:type for an element: its own, or the concrete one that stands for an abstract class the parsers instantiate.
+        std::string writtenTypeOf(const std::string& type) {
+            const Xmi::MetaclassBinding* meta = Xmi::findMetaclass(type);
+            if (meta != nullptr && meta->isAbstract) {
+                const std::string substitute = concreteSubstitute(type);
+                if (!substitute.empty()) return substitute;
+            }
+            return type;
         }
 
         /// A relationship that is not, at the same time, a namespace (a connector is both a feature and a relationship).
@@ -169,6 +184,10 @@ namespace SysMLv2::Files {
                 /// The relationships the element owns (role ownedRelationship) and the elements it owns as a relationship (ownedRelatedElement).
                 std::vector<ElementPtr> relationships;
                 std::vector<ElementPtr> related;
+                /// The feature that the model holds as the referent of a FeatureReferenceExpression or as the target feature of a
+                /// FeatureChainExpression, and the id of the plain Membership that the pilot's XMI has for it (see noteImplied()). Null: none.
+                ElementPtr implied;
+                std::string impliedId;
             };
 
             /// A reference property with its targets.
@@ -199,7 +218,7 @@ namespace SysMLv2::Files {
             std::unordered_set<const K::Element*> OwnedAsRelated;
             std::unordered_map<std::string, const K::Element*> UsedIds;
             std::unordered_map<const K::Element*, std::optional<std::string>> Located;
-            std::unordered_map<const K::Element*, std::string> Keys;
+            std::unordered_map<const K::Element*, Sha1> Keys;
             std::vector<Skipped> SkippedList;
             std::unordered_set<const K::Element*> SkippedSeen;
             /// The stand-ins and wrappers of the end feature memberships of an XMI file: structure of the reader, not reported.
@@ -243,10 +262,43 @@ namespace SysMLv2::Files {
                 reportSkipped();
             }
 
+            /// The owned elements of an element that collect() still has to visit: its relationships, then the elements it owns as a relationship.
+            struct CollectFrame {
+                const K::Element* owner = nullptr;
+                std::vector<ElementPtr> relationships;
+                std::vector<ElementPtr> related;
+                std::size_t next = 0;
+            };
+
+            /// Collects @p root and everything below it (depth first: the relationships of an element in their order, then its related elements).
+            /// The walk keeps its own stack of frames instead of recursing, because a model can be nested as deep as the text it was read from.
+            void collect(const ElementPtr& root, const K::Element* rootParent) {
+                std::vector<CollectFrame> stack;
+                const auto enter = [&](const ElementPtr& element, const K::Element* parent, bool asRelated) {
+                    CollectFrame frame;
+                    if (collectOne(element, parent, asRelated, frame)) stack.push_back(std::move(frame));
+                };
+                enter(root, rootParent, false);
+                while (!stack.empty()) {
+                    CollectFrame& frame = stack.back();
+                    const std::size_t index = frame.next++;
+                    if (index >= frame.relationships.size() + frame.related.size()) {
+                        stack.pop_back();
+                        continue;
+                    }
+                    const bool asRelated = index >= frame.relationships.size();
+                    const ElementPtr child = asRelated ? frame.related[index - frame.relationships.size()] : frame.relationships[index];
+                    const K::Element* owner = frame.owner;
+                    enter(child, owner, asRelated);   // (may push: `frame` is not used again in this iteration)
+                }
+            }
+
+            /// The part of collect() that concerns one element.
             /// @param asRelated true if @p parent is a relationship that owns the element as one of its related elements, false if the element
             /// is a relationship of @p parent.
-            void collect(const ElementPtr& element, const K::Element* parent, bool asRelated = false) {
-                if (!element || Dropped.count(element.get()) != 0) return;
+            /// @return true (and fills @p frame) if the element has owned elements to visit.
+            bool collectOne(const ElementPtr& element, const K::Element* parent, bool asRelated, CollectFrame& frame) {
+                if (!element || Dropped.count(element.get()) != 0) return false;
                 if (Info.count(element.get()) != 0) {
                     // A relationship that a membership owns as its member is also listed in the relationships of the namespace the
                     // membership belongs to (the way the reader and the parsers wire the model): the membership is the owner in the file.
@@ -264,7 +316,7 @@ namespace SysMLv2::Files {
                         report(ErrorType::LOGICAL_ERROR, describe(*element) + " is owned more than once (by " + (first != nullptr ? describe(*first) : std::string("-")) +
                                                              " and by " + (parent != nullptr ? describe(*parent) : std::string("-")) + "); it is written once");
                     }
-                    return;
+                    return false;
                 }
                 const std::string type = metaclassOf(*element);
                 const Xmi::MetaclassBinding* meta = Xmi::findMetaclass(type);
@@ -272,7 +324,7 @@ namespace SysMLv2::Files {
                 if (meta != nullptr && meta->isAbstract) written = concreteSubstitute(type);
                 if (meta == nullptr || written.empty()) {
                     report(ErrorType::LOGICAL_ERROR, "cannot write an element of the class '" + type + "': it is no concrete KerML or SysML metaclass; it and its owned elements are not written");
-                    return;
+                    return false;
                 }
                 Entry entry;
                 entry.meta = meta;
@@ -314,13 +366,69 @@ namespace SysMLv2::Files {
                 ParentOf[element.get()] = parent;
                 if (asRelated) OwnedAsRelated.insert(element.get());
                 entry.id = idOf(*element);
+                noteImplied(*element, entry);
                 const auto& stored = Info.emplace(element.get(), std::move(entry)).first->second;
                 // (Info does not move its values: the vectors of the entry stay valid while the children are collected)
-                // (collect() may take a relationship out of the lists: the loops run over copies)
-                const std::vector<ElementPtr> relationships = stored.relationships;
-                const std::vector<ElementPtr> related = stored.related;
-                for (const auto& relationship : relationships) collect(relationship, element.get(), false);
-                for (const auto& owned : related) collect(owned, element.get(), true);
+                // (collecting a child may take a relationship out of the lists: the frame holds copies)
+                frame.owner = element.get();
+                frame.relationships = stored.relationships;
+                frame.related = stored.related;
+                return !frame.relationships.empty() || !frame.related.empty();
+            }
+
+            // ---------------------------------------------------------------------------------------------------------------
+            // The referent of a feature reference and the target of a feature chain
+            // ---------------------------------------------------------------------------------------------------------------
+
+            /// The pilot's XMI holds the referent of a FeatureReferenceExpression and the target feature of a FeatureChainExpression as an ownedRelationship
+            /// of the expression: a plain Membership (exactly a Membership) whose memberElement is that feature. The models of the parsers hold both as
+            /// a property (referent(), targetFeature()) without such a membership, so nothing in the tree stands for them; the writer adds the membership
+            /// when it writes the expression (writeImplied(); it is no element of the model and not part of Info). Nothing is added
+            ///  - without a referent or target feature (also if the text could not be resolved: a placeholder that no model owns is no element of any file,
+            ///    and a reference to it would dangle; nothing is written and no message is added, the resolver has reported the name),
+            ///  - if the expression owns such a membership already (a model that was read from XMI, the pilot's or this writer's: nothing is written twice),
+            ///  - for a feature chain, if it owns an OwningMembership: the pilot writes a target that is a chain of its own (`a.(b.c)`) as an OwningMembership
+            ///    that owns a feature with ownedFeatureChaining, and it is written as it is. The parsers resolve `a.b.c` to the feature c as a whole, so
+            ///    the target of a chain they make is always one feature, written as a plain Membership.
+            void noteImplied(const K::Element& element, Entry& entry) {
+                ElementPtr target;
+                bool chain = false;
+                if (const auto* reference = dynamic_cast<const K::FeatureReferenceExpression*>(&element)) {
+                    target = reference->referent();
+                } else if (const auto* featureChain = dynamic_cast<const K::FeatureChainExpression*>(&element)) {
+                    target = featureChain->targetFeature();
+                    chain = true;
+                }
+                if (!target) return;
+                for (const auto& relationship : element.ownedRelationship()) {
+                    if (!relationship) continue;
+                    const K::Relationship& object = *relationship;
+                    if (typeid(object) == typeid(K::Membership)) {
+                        if (std::dynamic_pointer_cast<K::Membership>(relationship)->memberElement()) return;
+                    } else if (chain && typeid(object) == typeid(K::OwningMembership)) {
+                        return;
+                    }
+                }
+                entry.implied = std::move(target);
+                // The id: from the path of the expression like the ids of its other relationships, or, where the expression keeps an id of its own (or the
+                // ids are the element ids), from that id; in both cases unique among the elements of the file.
+                Sha1 state;
+                if (Options.ids == XmiWriteOptions::IdMode::NameBased && !keepsId(element)) {
+                    state = key(element);
+                    feed(state, "/Membership@" + std::string(chain ? "target" : "referent"));
+                } else {
+                    static const boost::uuids::uuid space = boost::uuids::string_generator()(IdNamespace);
+                    state.process_bytes(space.begin(), space.size());
+                    feed(state, "implied|" + std::string(chain ? "target|" : "referent|") + entry.id);
+                }
+                std::string id = finish(state);
+                for (int n = 2; UsedIds.count(id) != 0; ++n) {
+                    Sha1 numbered = state;
+                    feed(numbered, "~" + std::to_string(n));
+                    id = finish(numbered);
+                }
+                UsedIds[id] = nullptr;
+                entry.impliedId = std::move(id);
             }
 
             // ---------------------------------------------------------------------------------------------------------------
@@ -430,7 +538,9 @@ namespace SysMLv2::Files {
                     if (Options.ids == XmiWriteOptions::IdMode::NameBased && !keepsId(element)) {
                         // Two elements with the same key (for example equal anonymous elements): the later one gets a numbered key.
                         for (int n = 2;; ++n) {
-                            id = nameBasedId(key(element) + "~" + std::to_string(n));
+                            Sha1 numbered = key(element);
+                            feed(numbered, "~" + std::to_string(n));
+                            id = finish(numbered);
                             if (UsedIds.count(id) == 0) break;
                         }
                     } else {
@@ -446,7 +556,7 @@ namespace SysMLv2::Files {
             /// The id an element of the tree starts from (before the check for duplicates).
             std::string idOfTree(const K::Element& element) {
                 if (Options.ids == XmiWriteOptions::IdMode::ElementId || keepsId(element)) return element.elementId();
-                return nameBasedId(key(element));
+                return finish(key(element));
             }
 
             /// The id of an element in another file (for an href), as that file defines it; nullopt if it is not known. Nothing is derived
@@ -457,9 +567,35 @@ namespace SysMLv2::Files {
                 return std::nullopt;
             }
 
-            static std::string nameBasedId(const std::string& key) {
-                static const boost::uuids::uuid space = boost::uuids::string_generator()(IdNamespace);
-                return boost::uuids::to_string(boost::uuids::name_generator_sha1(space)(key));
+            /// The name based id of a key: the UUID (version 5) of the SHA-1 of the namespace and the text of the key, as boost::uuids::name_generator_sha1
+            /// makes it. The key is not kept as text: it is the whole path from the root, so that the keys of a deep model would need memory that grows
+            /// with the square of its depth (a sequence of 20000 elements: 11 GB); the state of the hash after the key of an element is what its children
+            /// continue from, and what is kept.
+            static void feed(Sha1& state, const std::string& text) { state.process_bytes(text.data(), text.size()); }
+
+            static std::string finish(Sha1 state) {
+                Sha1::digest_type digest;
+                state.get_digest(digest);
+                // The 20 bytes of the digest. boost 1.86 and later give them as bytes; the versions before as five 32 bit words, from which
+                // boost::uuids::name_generator_sha1 made the bytes in big endian order. Any other layout would silently change every id.
+                static_assert(std::is_same_v<std::remove_extent_t<Sha1::digest_type>, unsigned char> ||
+                              std::is_same_v<std::remove_extent_t<Sha1::digest_type>, unsigned int>,
+                              "the digest of boost::uuids::detail::sha1 has a layout that the name based ids do not know");
+                unsigned char bytes[20];
+                if constexpr (std::is_same_v<std::remove_extent_t<Sha1::digest_type>, unsigned char>) {
+                    std::memcpy(bytes, digest, 20);
+                } else {
+                    for (int word = 0; word < 5; ++word) {
+                        for (int byte = 0; byte < 4; ++byte) bytes[word * 4 + byte] = static_cast<unsigned char>((digest[word] >> (24 - 8 * byte)) & 0xFF);
+                    }
+                }
+                boost::uuids::uuid id;
+                std::memcpy(id.data, bytes, 16);
+                *(id.begin() + 8) &= 0x3F;   // variant
+                *(id.begin() + 8) |= 0x80;
+                *(id.begin() + 6) &= 0x0F;   // version
+                *(id.begin() + 6) |= static_cast<unsigned char>(state.get_version() << 4);
+                return boost::uuids::to_string(id);
             }
 
             /// The owner in the ownership tree (as the tree is written): for a relationship the element that owns it, for any other element the
@@ -484,50 +620,78 @@ namespace SysMLv2::Files {
             /// The text the name based id of an element is made of: the identity of the file, the metaclasses and names on the path from the root
             /// of the file, and the position in the ownership structure for what has no name. (Only the file and the names and the order of the
             /// model go into it, nothing else that the file contains.) Only for elements of the tree.
-            const std::string& key(const K::Element& element) {
+            const Sha1& key(const K::Element& element) {
                 const auto found = Keys.find(&element);
                 if (found != Keys.end()) return found->second;
-                std::string text;
+                Sha1 state;
                 const K::Element* parent = parentOf(element);
                 if (parent == nullptr) {
                     // The root of a file: the file is what tells it from the roots of other files.
-                    text = "root|" + (Options.fileKey.empty() ? TargetPath : Options.fileKey);
+                    static const boost::uuids::uuid space = boost::uuids::string_generator()(IdNamespace);
+                    state.process_bytes(space.begin(), space.size());
+                    feed(state, "root|" + (Options.fileKey.empty() ? TargetPath : Options.fileKey));
                 } else if (isPlainRelationship(element)) {
                     const std::string label = labelOf(element);
-                    text = key(*parent) + "/" + metaclassOf(element);
+                    state = key(*parent);
+                    std::string text = "/" + metaclassOf(element);
                     text += label.empty() ? "#" + std::to_string(indexOf(parent->ownedRelationship(), &element)) : "(" + label + ")";
+                    feed(state, text);
                 } else {
                     const auto* relationship = dynamic_cast<const K::Relationship*>(parent);
                     const K::Element* owner = relationship != nullptr ? parentOf(*parent) : nullptr;
                     const auto name = element.declaredName();
+                    std::string text;
                     if (relationship != nullptr && owner != nullptr && dynamic_cast<const K::OwningMembership*>(parent) != nullptr) {
                         // A member of a namespace: qualified by the names of its owners.
-                        text = key(*owner) + "::" + metaclassOf(element);
+                        state = key(*owner);
+                        text = "::" + metaclassOf(element);
                         text += name && !name->empty() ? ":" + *name : "#" + std::to_string(indexOf(owner->ownedRelationship(), parent));
                     } else {
                         const std::size_t position = relationship != nullptr ? indexOf(relationship->ownedRelatedElement(), &element) : 0;
-                        text = key(*parent) + "/" + metaclassOf(element) + "#" + std::to_string(position);
+                        state = key(*parent);
+                        text = "/" + metaclassOf(element) + "#" + std::to_string(position);
                         if (name && !name->empty()) text += ":" + *name;
                     }
+                    feed(state, text);
                 }
-                return Keys.emplace(&element, std::move(text)).first->second;
+                return Keys.emplace(&element, std::move(state)).first->second;
             }
 
             // ---------------------------------------------------------------------------------------------------------------
             // Step two: the XML
             // ---------------------------------------------------------------------------------------------------------------
 
-            void emit(const ElementPtr& element, pugi::xml_node node, bool isRoot) {
-                const Entry& entry = Info.at(element.get());
-                if (!isRoot) node.append_attribute("xsi:type") = ("sysml:" + entry.type).c_str();
-                node.append_attribute("xmi:id") = entry.id.c_str();
-                node.append_attribute("elementId") = entry.id.c_str();
-                writeProperties(*element, entry, node);
-                for (const auto& relationship : entry.relationships) {
-                    if (Info.count(relationship.get()) != 0) emit(relationship, node.append_child("ownedRelationship"), false);
-                }
-                for (const auto& related : entry.related) {
-                    if (Info.count(related.get()) != 0) emit(related, node.append_child("ownedRelatedElement"), false);
+            /// Writes @p root and everything below it (depth first, like collect(), with a stack of its own for the same reason).
+            void emit(const ElementPtr& root, pugi::xml_node rootNode, bool isRoot) {
+                struct Frame {
+                    const Entry* entry;
+                    pugi::xml_node node;
+                    std::size_t next = 0;
+                };
+                std::vector<Frame> stack;
+                const auto enter = [&](const ElementPtr& element, pugi::xml_node node, bool isTop) {
+                    const Entry& entry = Info.at(element.get());
+                    if (!isTop) node.append_attribute("xsi:type") = ("sysml:" + entry.type).c_str();
+                    node.append_attribute("xmi:id") = entry.id.c_str();
+                    node.append_attribute("elementId") = entry.id.c_str();
+                    writeProperties(*element, entry, node);
+                    if (entry.implied) writeImplied(*element, entry, node);
+                    stack.push_back({&entry, node, 0});
+                };
+                enter(root, rootNode, isRoot);
+                while (!stack.empty()) {
+                    Frame& frame = stack.back();
+                    const Entry& entry = *frame.entry;
+                    const std::size_t index = frame.next++;
+                    if (index >= entry.relationships.size() + entry.related.size()) {
+                        stack.pop_back();
+                        continue;
+                    }
+                    const bool related = index >= entry.relationships.size();
+                    const ElementPtr& child = related ? entry.related[index - entry.relationships.size()] : entry.relationships[index];
+                    if (Info.count(child.get()) == 0) continue;
+                    pugi::xml_node parentNode = frame.node;
+                    enter(child, parentNode.append_child(related ? "ownedRelatedElement" : "ownedRelationship"), false);   // (may push)
                 }
             }
 
@@ -667,7 +831,26 @@ namespace SysMLv2::Files {
             }
 
             void writeReference(const K::Element& element, const Reference& reference, pugi::xml_node node) {
-                const std::string property(reference.binding->name);
+                writeTargets(element, std::string(reference.binding->name), reference.targets, node, nullptr);
+            }
+
+            /// Adds the membership of the referent or target feature (Entry::implied) as the first ownedRelationship of the expression @p node.
+            /// Nothing is added if the feature cannot be referred to (see writeTargets()).
+            void writeImplied(const K::Element& owner, const Entry& entry, pugi::xml_node node) {
+                pugi::xml_node membership = node.append_child("ownedRelationship");
+                membership.append_attribute("xsi:type") = "sysml:Membership";
+                membership.append_attribute("xmi:id") = entry.impliedId.c_str();
+                membership.append_attribute("elementId") = entry.impliedId.c_str();
+                if (!writeTargets(owner, "memberElement", {entry.implied}, membership, dynamic_cast<const K::FeatureChainExpression*>(&owner) != nullptr ? "target feature" : "referent")) node.remove_child(membership);
+            }
+
+            /// Writes the targets of a reference property of @p element into @p node: as the attribute with the ids if all are in the tree, else as
+            /// a child element with an href for each. Targets that cannot be referred to are reported and left out.
+            /// @param implied non-null for the memberElement of an implied membership (writeImplied()), the role of the target in the expression
+            /// ("referent", "target feature"): a target that is unresolved is left out without a message, the messages name the role, and an href
+            /// names the metaclass of the target, as the pilot's XMI does for a memberElement.
+            /// @return true if at least one target was written.
+            bool writeTargets(const K::Element& element, const std::string& property, const std::vector<ElementPtr>& referenced, pugi::xml_node node, const char* implied) {
                 struct Resolved {
                     const K::Element* element;
                     std::string href;   // empty: in the tree
@@ -675,8 +858,13 @@ namespace SysMLv2::Files {
                 };
                 std::vector<Resolved> targets;
                 bool foreign = false;
-                for (const auto& target : reference.targets) {
+                const auto subject = [&](const K::Element& target) {
+                    if (implied != nullptr) return "the " + std::string(implied) + " " + describe(target) + " of " + describe(element);
+                    return "the target " + describe(target) + " of the property '" + property + "' of " + describe(element);
+                };
+                for (const auto& target : referenced) {
                     if (isUnresolved(target)) {
+                        if (implied != nullptr) continue;
                         const auto* marker = dynamic_cast<const UnresolvedMarker*>(target.get());
                         report(ErrorType::WARNING, "unresolved reference '" + (marker != nullptr ? marker->reference : std::string()) + "' in the property '" + property +
                                                        "' of " + describe(element) + "; the reference is not written");
@@ -688,26 +876,25 @@ namespace SysMLv2::Files {
                     }
                     const auto& file = fileOf(*target);
                     if (!file && !target->owner() && !target->owningRelationship()) {
+                        if (implied != nullptr) continue;
                         // (an element no model owns: what the parser keeps for a name it could not resolve, such as the namespace of an import)
                         report(ErrorType::WARNING, "unresolved reference '" + target->declaredName().value_or(std::string()) + "' in the property '" + property + "' of " +
                                                        describe(element) + "; the reference is not written");
                         continue;
                     }
                     if (!file || *file == TargetPath) {
-                        report(ErrorType::LOGICAL_ERROR, "the target " + describe(*target) + " of the property '" + property + "' of " + describe(element) +
-                                                             (file ? " is not part of the written tree" : " is in no file") + "; the reference is not written");
+                        report(ErrorType::LOGICAL_ERROR, subject(*target) + (file ? " is not part of the written tree" : " is in no file") + "; the reference is not written");
                         continue;
                     }
                     const auto id = foreignIdOf(*target);
                     if (!id) {
-                        report(ErrorType::LOGICAL_ERROR, "the target " + describe(*target) + " of the property '" + property + "' of " + describe(element) +
-                                                             " is not written to its file '" + *file + "' (or its id there is not known: XmiWriteOptions::foreignId); the reference is not written");
+                        report(ErrorType::LOGICAL_ERROR, subject(*target) + " is not written to its file '" + *file + "' (or its id there is not known: XmiWriteOptions::foreignId); the reference is not written");
                         continue;
                     }
                     targets.push_back({target.get(), hrefPathOf(*file), *id});
                     foreign = true;
                 }
-                if (targets.empty()) return;
+                if (targets.empty()) return false;
                 if (!foreign) {
                     std::string ids;
                     for (const auto& target : targets) {
@@ -715,13 +902,15 @@ namespace SysMLv2::Files {
                         ids += target.id;
                     }
                     node.append_attribute(property.c_str()) = ids.c_str();
-                    return;
+                    return true;
                 }
                 for (const auto& target : targets) {
                     pugi::xml_node tag = node.append_child(property.c_str());
+                    if (implied != nullptr && !target.href.empty()) tag.append_attribute("xsi:type") = ("sysml:" + writtenTypeOf(metaclassOf(*target.element))).c_str();
                     const std::string href = target.href + "#" + target.id;
                     tag.append_attribute("href") = href.c_str();
                 }
+                return true;
             }
         };
     }

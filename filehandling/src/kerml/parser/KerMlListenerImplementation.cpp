@@ -11,6 +11,7 @@
 #include <sysmlv2/resolution/Retarget.h>
 #include <sysmlv2/parser/AnnotationText.h>
 #include "../../sysmlv2/parser/ArgumentStructure.h"
+#include "../../sysmlv2/parser/LiteralText.h"
 #include "../../sysmlv2/parser/RealLiteral.h"
 
 namespace {
@@ -36,6 +37,18 @@ namespace {
                                                                   const ElementPtr& context, antlr4::ParserRuleContext* position) {
         return recorder.reference<KerML::Entities::Feature>(name, ReferenceKind::Feature, ReferenceRole::NotAttempted, context, false, nullptr,
                                                             position, nullptr);
+    }
+
+    // The target of a feature chain whose left operand is a computed value: a feature of the static result type of the operand (resolved after all
+    // other references, see ReferenceRole::ChainTarget). Until then, and if the type is not known, the placeholder stays and the reference is reported as
+    // "not attempted".
+    std::shared_ptr<KerML::Entities::Feature> chainTargetFeature(SysMLv2::Files::ReferenceRecorder& recorder, const std::string& name,
+        const std::shared_ptr<KerML::Entities::Element>& context, const std::shared_ptr<KerML::Entities::Expression>& operand,
+        antlr4::ParserRuleContext* position, const std::shared_ptr<KerML::Entities::FeatureChainExpression>& chain) {
+        auto placeholder = recorder.reference<KerML::Entities::Feature>(name, ReferenceKind::Feature, ReferenceRole::ChainTarget, context, false, nullptr,
+            position, [chain](const std::shared_ptr<KerML::Entities::Feature>& feature) { chain->setTargetFeature(feature); });
+        recorder.data.references.back().operand = operand;
+        return placeholder;
     }
 }
 
@@ -1377,6 +1390,25 @@ void KerMLListenerImplementation::enterOwned_feature_typing(KerMLParser::Owned_f
 void KerMLListenerImplementation::exitOwned_feature_typing(KerMLParser::Owned_feature_typingContext *ctx) {
     if (ParentStack.empty()) return;
     if (const auto instExpr = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top())) {
+        if (ctx && ctx->general_type() && ctx->general_type()->owned_feature_chain() && SysMLv2::Files::isPlainInvocation(instExpr)) {
+            // The invoked type is a feature chain (`c.twice(5)`): as in the pilot's XMI the invocation owns the chain feature (through an
+            // OwningMembership, first of its relationships) and that feature is the instantiated type. The feature and its chainings were made
+            // by the rules of the chain (exitFeature_chain, exitOwned_feature_chaining), which ran before this one.
+            std::shared_ptr<KerML::Entities::Feature> chain;
+            auto owned = instExpr->ownedElements();
+            for (auto it = owned.rbegin(); it != owned.rend() && !chain; ++it) {
+                const auto candidate = std::dynamic_pointer_cast<KerML::Entities::Feature>(*it);
+                if (candidate && SysMLv2::Files::isArgumentParameter(candidate) && !candidate->ownedFeatureChaining().empty()) chain = candidate;
+            }
+            if (chain) {
+                owned.erase(std::remove(owned.begin(), owned.end(), chain), owned.end());
+                owned.insert(owned.begin(), chain);
+                instExpr->setOwnedElements(owned);
+                OwnershipKinds[chain.get()] = SysMLv2::Files::MembershipKind::Owning;
+                instExpr->setInstantiatedType(chain);
+                return;
+            }
+        }
         if (ctx && ctx->general_type()) {
             std::string typeName = ctx->general_type()->getText();
             // A plain invocation or constructor owns a non-owning membership of the invoked type as first owned relationship. The
@@ -2248,7 +2280,10 @@ void KerMLListenerImplementation::exitOwned_expression_reference(KerMLParser::Ow
 
 }
 
-void KerMLListenerImplementation::enterOwned_expression_member(KerMLParser::Owned_expression_memberContext *) {
+void KerMLListenerImplementation::enterOwned_expression_member(KerMLParser::Owned_expression_memberContext *ctx) {
+    // (every element of a sequence but the last one is the first operand of a `,`; see exitSequence_expression_list)
+    if (ctx != nullptr && !SequenceLists.empty() && SequenceLists.back().first != ctx && dynamic_cast<KerMLParser::Sequence_expression_listContext*>(ctx->parent) != nullptr)
+        ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
 
 }
 
@@ -2300,20 +2335,19 @@ void KerMLListenerImplementation::exitSequence_expression(KerMLParser::Sequence_
 
 }
 
-void KerMLListenerImplementation::enterSequence_expression_list(KerMLParser::Sequence_expression_listContext *) {
-
+void KerMLListenerImplementation::enterSequence_expression_list(KerMLParser::Sequence_expression_listContext *ctx) {
+    // (the elements are looked up once: asking the context for them builds a vector, which for every element would be quadratic)
+    const auto members = ctx != nullptr ? ctx->owned_expression_member() : std::vector<KerMLParser::Owned_expression_memberContext*>();
+    SequenceLists.emplace_back(members.empty() ? nullptr : members.back(), members.size());
 }
 
+// The list `(a, b, c)` is flat in the parse tree; the model nests the `,` operators to the right: `,`(a, `,`(b, c)). An operator is opened in
+// front of every element but the last (enterOwned_expression_member) and all of them are closed, the innermost first, at the end of the list.
 void KerMLListenerImplementation::exitSequence_expression_list(KerMLParser::Sequence_expression_listContext *) {
-
-}
-
-void KerMLListenerImplementation::enterSequence_operator_expression(KerMLParser::Sequence_operator_expressionContext *) {
-    ParentStack.push(std::make_shared<KerML::Entities::OperatorExpression>());
-}
-
-void KerMLListenerImplementation::exitSequence_operator_expression(KerMLParser::Sequence_operator_expressionContext *) {
-    finishOperatorExpression(",");
+    if (SequenceLists.empty()) return;
+    const size_t count = SequenceLists.back().second;
+    SequenceLists.pop_back();
+    for (size_t index = 1; index < count; ++index) finishOperatorExpression(",");
 }
 
 void KerMLListenerImplementation::enterSequence_expression_list_member(
@@ -2596,17 +2630,26 @@ void KerMLListenerImplementation::exitLiteral_expression(KerMLParser::Literal_ex
         literal = b;
     } else if (ctx->literal_string() != nullptr) {
         auto s = std::make_shared<KerML::Entities::LiteralString>();
-        std::string text = ctx->literal_string()->getText();
-        if (text.size() >= 2 && text.front() == '"' && text.back() == '"') {
-            text = text.substr(1, text.size() - 2);
-        }
-        s->setValue(text);
+        // (the value is the decoded text; an invalid escape sequence is reported once per token by visitTerminal())
+        s->setValue(SysMLv2::Files::decodeStringLiteral(ctx->literal_string()->getText()).text);
         literal = s;
     } else if (ctx->literal_integer() != nullptr) {
         auto i = std::make_shared<KerML::Entities::LiteralInteger>();
-        try {
-            i->setValue(std::stoll(ctx->literal_integer()->getText()));
-        } catch (...) {
+        std::int64_t parsed = 0;
+        const std::string text = ctx->literal_integer()->getText();
+        if (SysMLv2::Files::parseInteger(text, parsed) == SysMLv2::Files::IntegerStatus::Ok) {
+            i->setValue(parsed);
+        } else {
+            // (a literal that does not fit a 64-bit signed integer: reported like a real literal that does not fit a double, and the
+            // element keeps the placeholder 0. `-9223372036854775808` is the unary minus applied to the literal 9223372036854775808
+            // and is reported the same way.)
+            // (a bound of a multiplicity is reported by the multiplicity, which is left out, not by the literal)
+            const bool inMultiplicity = ctx->parent != nullptr && dynamic_cast<KerMLParser::Multiplicity_expression_memberContext*>(ctx->parent->parent) != nullptr;
+            if (!inMultiplicity) {
+                auto* start = ctx->literal_integer()->getStart();
+                Recorder.data.diagnostics.push_back({SysMLv2::Files::integerOutOfRangeMessage(text, "a 64-bit signed integer", "it is read as 0"),
+                                                     static_cast<int>(start->getLine()), static_cast<int>(start->getCharPositionInLine())});
+            }
             i->setValue(0);
         }
         literal = i;
@@ -3000,27 +3043,16 @@ void KerMLListenerImplementation::exitMultiplicity_bounds(KerMLParser::Multiplic
     if (!type || !ctx || ctx->multiplicity_expression_member().empty()) {
         return;
     }
-    std::shared_ptr<KerML::Entities::Multiplicity> multiplicity;
-    try {
-        if (ctx->multiplicity_expression_member().size() > 1) {
-            unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
-            if (ctx->multiplicity_expression_member().back()->getText() == "*") {
-                multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, true);
-            } else {
-                unsigned maximum = std::stoul(ctx->multiplicity_expression_member().back()->getText());
-                multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum, maximum);
-            }
-        } else {
-            if (ctx->multiplicity_expression_member().front()->getText() == "*") {
-                multiplicity = std::make_shared<KerML::Entities::Multiplicity>(0, true);
-            } else {
-                unsigned minimum = std::stoul(ctx->multiplicity_expression_member().front()->getText());
-                multiplicity = std::make_shared<KerML::Entities::Multiplicity>(minimum);
-            }
-        }
-    } catch (...) {
-        multiplicity = std::make_shared<KerML::Entities::Multiplicity>(1);
-    }
+    std::vector<std::string> members;
+    for (auto* member : ctx->multiplicity_expression_member()) members.push_back(member->getText());
+    const auto multiplicity = SysMLv2::Files::multiplicityFromBounds<KerML::Entities::Multiplicity>(
+        members,
+        [&](const std::string& message, std::size_t index, bool warning) {
+            auto* start = ctx->multiplicity_expression_member()[index]->getStart();
+            Recorder.data.diagnostics.push_back({message, static_cast<int>(start->getLine()), static_cast<int>(start->getCharPositionInLine()), warning});
+        },
+        // (a bound that is no integer literal, e.g. a reference to a feature: the multiplicity 1, as before)
+        [] { return std::make_shared<KerML::Entities::Multiplicity>(1); });
     if (multiplicity) {
         type->setMultiplicity(multiplicity);
         type->appendOwnedElement(multiplicity);
@@ -3412,18 +3444,33 @@ void KerMLListenerImplementation::exitFeatureChainExpr(KerMLParser::FeatureChain
     expr->setOperatorName(".");
     if (ctx && ctx->feature_reference_member()) {
         const auto scope = ParentStack.empty() ? nullptr : ParentStack.top();
-        const std::string left = ctx->owned_expression() ? ctx->owned_expression()->getText() : std::string();
+        // (the text of a long left operand is not even built: that alone would take time that grows with the square of the chain)
+        auto* leftContext = ctx->owned_expression();
+        const size_t leftTokens = leftContext != nullptr ? SysMLv2::Files::cappedTokenCount(leftContext, SysMLv2::Files::MaxPlainChainTokens) : 0;
+        const bool tooLong = leftTokens > SysMLv2::Files::MaxPlainChainTokens;
+        // (one warning for a chain: all its links start at the same token, however they are mixed with indexing and brackets)
+        if (tooLong && leftContext->getStart() != nullptr && ChainsWarned.insert(leftContext->getStart()->getTokenIndex()).second) {
+            auto* start = ctx->feature_reference_member()->getStart();
+            Recorder.data.diagnostics.push_back({"feature chain of more than " + std::to_string(SysMLv2::Files::MaxPlainChainTokens) +
+                                                 " tokens (about " + std::to_string(SysMLv2::Files::MaxPlainChainTokens / 2) +
+                                                 " links): the features of its further links are not resolved", static_cast<int>(start->getLine()),
+                                                 static_cast<int>(start->getCharPositionInLine()), true});
+        }
+        const std::string left = !tooLong && leftContext != nullptr ? leftContext->getText() : std::string();
         const std::string target = ctx->feature_reference_member()->getText();
-        if (SysMLv2::Files::isPlainNameChain(left)) {
+        if (!tooLong && SysMLv2::Files::isPlainNameChain(left)) {
             // `a.b`: the target is a feature of the value of `a`; the feature chain a.b is resolved as a whole.
             auto placeholder = Recorder.reference<KerML::Entities::Feature>(left + "." + target, ReferenceKind::Feature, ReferenceRole::Plain,
                 scope, false, nullptr, ctx->feature_reference_member(),
                 [expr](const std::shared_ptr<KerML::Entities::Feature>& feature) { expr->setTargetFeature(feature); });
             placeholder->setDeclaredName(target);
             expr->setTargetFeature(placeholder);
-        } else {
-            // The left operand is a computed value: no scoped lookup is attempted for the target.
+        } else if (tooLong || expr->argument().empty()) {
+            // (the text of the left operand is too long to be looked at: the target is not resolved)
             expr->setTargetFeature(notAttemptedFeature(Recorder, target, scope, ctx->feature_reference_member()));
+        } else {
+            // The left operand is a computed value: the target is a feature of its static result type, which the resolver finds out (ChainTarget).
+            expr->setTargetFeature(chainTargetFeature(Recorder, target, scope, expr->argument().front(), ctx->feature_reference_member(), expr));
         }
     }
     attachExpression(expr);
@@ -3494,8 +3541,23 @@ void KerMLListenerImplementation::exitConstructor_expression(KerMLParser::Constr
     attachExpression(expr);
 }
 
-void KerMLListenerImplementation::visitTerminal(antlr4::tree::TerminalNode *) {
-
+void KerMLListenerImplementation::visitTerminal(antlr4::tree::TerminalNode *node) {
+    // Every string token of the text (string literals, the locale of a comment, the language of a textual representation) and every
+    // unrestricted name ('a b') is checked here once: the lexer accepts any character after a backslash, the notation has only the escape
+    // sequences of decodeQuoted().
+    if (node == nullptr || node->getSymbol() == nullptr) return;
+    const auto type = node->getSymbol()->getType();
+    if (type != KerMLParser::STRING_VALUE && type != KerMLParser::NAME) return;
+    const auto text = node->getText();
+    if (type == KerMLParser::NAME && (text.empty() || text.front() != '\'')) return;
+    const auto decoded = SysMLv2::Files::decodeQuoted(text, type == KerMLParser::NAME ? '\'' : '"');
+    if (decoded.invalidEscape == std::string::npos) return;
+    auto* token = node->getSymbol();
+    int line = static_cast<int>(token->getLine());
+    int column = static_cast<int>(token->getCharPositionInLine());
+    SysMLv2::Files::positionInToken(text, decoded.invalidEscape, line, column);
+    Recorder.data.diagnostics.push_back({"invalid escape sequence '" + SysMLv2::Files::printable(text.substr(decoded.invalidEscape, 2)) + "' in the " +
+                                         (type == KerMLParser::NAME ? "quoted name " : "string literal ") + SysMLv2::Files::printable(text), line, column});
 }
 
 void KerMLListenerImplementation::visitErrorNode(antlr4::tree::ErrorNode *) {
@@ -3509,16 +3571,30 @@ void KerMLListenerImplementation::enterEveryRule(antlr4::ParserRuleContext *ctx)
         SysMLv2::Files::beginMember(MemberMarks, ctx, SysMLv2::Files::MembershipKind::EndFeature, ParentStack.top());
     // The element that follows a member prefix (`private feature x;`) is owned with the visibility of the prefix.
     if (auto *parent = dynamic_cast<antlr4::ParserRuleContext *>(ctx->parent)) {
-        for (size_t i = 0; i < parent->children.size() && parent->children[i] != ctx; ++i) {
-            auto *prefix = dynamic_cast<KerMLParser::Member_prefixContext *>(parent->children[i]);
-            if (prefix == nullptr || prefix->visibility_indicator() == nullptr) continue;
-            // (only the keyword and the element itself may follow the prefix: `member`, `return`, `filter`, ...)
-            bool adjacent = true;
-            for (size_t j = i + 1; j < parent->children.size() && parent->children[j] != ctx; ++j) {
-                if (dynamic_cast<antlr4::tree::TerminalNode *>(parent->children[j]) == nullptr) adjacent = false;
+        // Only the nearest sibling in front of the element that is no token can be the prefix that the element follows: the tokens between the two
+        // (`member`, `return`, `filter`, ...) do not matter, any other context between them separates the two.
+        // The position of the element among the children is looked up from where the last child of this parent was found: the tree is walked in
+        // order, so it is the next one; a parent with many children (the elements of a long sequence, the lines of a file) would otherwise cost
+        // time that grows with the square of the number of the children.
+        const auto& children = parent->children;
+        size_t position = children.size();
+        if (children.size() > 32) {
+            size_t& hint = ChildHints[parent];
+            if (hint >= children.size() || children[hint] != ctx) {
+                const auto found = std::find(children.begin(), children.end(), ctx);
+                hint = static_cast<size_t>(found - children.begin());
             }
-            if (adjacent) SysMLv2::Files::beginMemberWithVisibility(MemberMarks, ctx, importVisibility(prefix->visibility_indicator()), ParentStack.top());
+            position = hint;
+            hint = position + 1;
+        } else {
+            position = static_cast<size_t>(std::find(children.begin(), children.end(), ctx) - children.begin());
         }
+        size_t previous = position;
+        while (previous > 0 && dynamic_cast<antlr4::tree::TerminalNode *>(children[previous - 1]) != nullptr) --previous;
+        if (previous == 0 || position >= children.size()) return;
+        auto *prefix = dynamic_cast<KerMLParser::Member_prefixContext *>(children[previous - 1]);
+        if (prefix != nullptr && prefix->visibility_indicator() != nullptr)
+            SysMLv2::Files::beginMemberWithVisibility(MemberMarks, ctx, importVisibility(prefix->visibility_indicator()), ParentStack.top());
     }
 }
 

@@ -46,7 +46,9 @@ qualified_name: NAME  (SYMBOL_NAMESPACE_SUBSET NAME)*;
 
 namespace_import: visibility_indicator? KEYWORD_IMPORT KEYWORD_ALL? import_declaration relationship_body;
 import_declaration: membership_import | filter_package;
-membership_import: qualified_name (SYMBOL_NAMESPACE_SUBSET? (SYMBOL_DOUBLE_STAR|SYMBOL_STAR)?);
+// (a `::` is only read in front of a `*` or `**`: with the `::` optional on its own the parser could not tell the `::` that goes on with the
+// qualified name from the one of the import before it had read to the end of the name, which takes time that grows with the square of its length)
+membership_import: qualified_name (SYMBOL_NAMESPACE_SUBSET? (SYMBOL_DOUBLE_STAR|SYMBOL_STAR))?;
 filter_package: membership_import filter_package_member;
 filter_package_member: SYMBOL_SQUARE_BRACKET_OPEN owned_expression SYMBOL_SQUARE_BRACKET_CLOSE;
 
@@ -279,8 +281,9 @@ type_reference: reference_typing;
 reference_typing: qualified_name;
 
 sequence_expression: SYMBOL_ROUND_BRACKET_OPEN sequence_expression_list SYMBOL_ROUND_BRACKET_CLOSE;
-sequence_expression_list: sequence_operator_expression | owned_expression SYMBOL_COMMA?;
-sequence_operator_expression: owned_expression_member SYMBOL_COMMA sequence_expression_list_member;
+// The elements of a sequence are a flat list (a right recursive rule needs a look-ahead to the closing bracket at every element, and a parser
+// stack as deep as the sequence is long). The listeners nest the `,` operators to the right: `(a, b, c)` is `,`(a, `,`(b, c)).
+sequence_expression_list: owned_expression_member (SYMBOL_COMMA owned_expression_member)* SYMBOL_COMMA?;
 sequence_expression_list_member: sequence_expression_list;
 function_reference:  reference_typing;
 feature_chain_member: feature_reference_member | owned_feature_chain_member;
@@ -369,7 +372,9 @@ metadata_body_feature: KEYWORD_FEATURE? redefines_operator? owned_redefinition f
 package:(prefix_metadata_member)* package_declaration package_body;
 library_package: (KEYWORD_STANDARD)? KEYWORD_LIBRARY (prefix_metadata_member)* package_declaration package_body;
 package_declaration: KEYWORD_PACKAGE identification?;
-package_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN (namespace_body_element | element_filter_member | element)* SYMBOL_CURLY_BRACKET_CLOSE);
+// (not `| element`: every element with a member prefix, which may be empty, is a namespace_body_element already, and two ways to the same package
+// make the parser read to the end of the package to decide, for every package, i.e. the whole file for a file that is one package)
+package_body: SYMBOL_STATEMENT_DELIMITER | (SYMBOL_CURLY_BRACKET_OPEN (namespace_body_element | element_filter_member | annotating_element | additional_options)* SYMBOL_CURLY_BRACKET_CLOSE);
 element_filter_member: member_prefix KEYWORD_FILTER owned_expression ';';
 
 meta_assignment: qualified_name SYMBOL_ASSIGN identification KEYWORD_META qualified_name ';';
@@ -543,11 +548,14 @@ SYMBOL_ATAT: '@@';
 
 NAME: BASIC_NAME | UNRESTRICTED_NAME;
 BASIC_NAME: ('_'|[a-z]|[A-Z])('_'|[a-z]|[A-Z]|[0-9])* ;
-UNRESTRICTED_NAME: '\'' .*? '\'';
+// An unrestricted name between single quotes: the closing quote is the first one that no backslash escapes (see STRING_VALUE).
+UNRESTRICTED_NAME: '\'' ('\\' . | ~['\\])* '\'';
 
 //Values:
 DECIMAL_VALUE: [0-9]+ ;
 EXPONENTIAL_VALUE: DECIMAL_VALUE ('e' | 'E') ('+'|'-')? DECIMAL_VALUE;
-STRING_VALUE: '"' .*? '"';
+// A string literal (KerML 8.2.2.3 lexical structure): the closing quote is the first one that no backslash escapes. Any character after a
+// backslash is accepted by the lexer; the listeners decode the escape sequences (\' \" \b \f \t \n \r \\) and report any other as an error.
+STRING_VALUE: '"' ('\\' . | ~["\\])* '"';
 
 WS: [ \t\r\n]+ -> channel(HIDDEN) ;

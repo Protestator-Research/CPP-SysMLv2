@@ -666,10 +666,6 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual std::any visitSequence_operator_expression(KerMLParser::Sequence_operator_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual std::any visitSequence_expression_list_member(KerMLParser::Sequence_expression_list_memberContext *ctx) override {
     return visitChildren(ctx);
   }

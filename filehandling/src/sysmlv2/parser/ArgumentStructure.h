@@ -17,13 +17,15 @@ namespace SysMLv2::Files {
 	// A plain invocation (`f(a, b)`), not one of its subclasses (operators...): the arguments of it are parameters of the invoked
 	// function, each owned through a ParameterMembership.
 	inline bool isPlainInvocation(const std::shared_ptr<KerML::Entities::Element>& element) {
+		if (element == nullptr) return false;
 		const auto& elementpointer = *element;
-		return element != nullptr && typeid(elementpointer) == typeid(KerML::Entities::InvocationExpression);
+		return typeid(elementpointer) == typeid(KerML::Entities::InvocationExpression);
 	}
 
 	inline bool isConstructor(const std::shared_ptr<KerML::Entities::Element>& element) {
+		if (element == nullptr) return false;
 		const auto& elementpointer = *element;
-		return element != nullptr && typeid(elementpointer) == typeid(KerML::Entities::ConstructorExpression);
+		return typeid(elementpointer) == typeid(KerML::Entities::ConstructorExpression);
 	}
 
 	// An expression whose arguments are parameter features: plain invocations and constructors.
@@ -34,8 +36,9 @@ namespace SysMLv2::Files {
 	// A feature that is exactly a Feature (not an Expression or any other subclass): the parameter feature that is created for an
 	// argument while it is parsed.
 	inline bool isArgumentParameter(const std::shared_ptr<KerML::Entities::Element>& element) {
+		if (element == nullptr) return false;
 		const auto& elementpointer = *element;
-		return element != nullptr && typeid(elementpointer) == typeid(KerML::Entities::Feature);
+		return typeid(elementpointer) == typeid(KerML::Entities::Feature);
 	}
 
 	inline std::shared_ptr<KerML::Entities::Feature> makeArgumentParameter() {

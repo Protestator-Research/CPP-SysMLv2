@@ -406,6 +406,8 @@ namespace SysMLv2::Check {
                 workspace.resolve();
                 bool added = false;
                 for (const auto& reference : workspace.unresolvedReferences()) {
+                    // (the name of a chain target is a member of a type, not of a package)
+                    if (reference.role == SysMLv2::Files::ReferenceRole::ChainTarget) continue;
                     if (loadPackage(firstSegment(reference.name))) added = true;
                 }
                 if (!added) break;

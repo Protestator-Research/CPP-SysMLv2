@@ -1,4 +1,7 @@
 #include <chrono>
+#include <cstdint>
+#include <map>
+#include <limits>
 //
 // Created by Moritz Herzog on 07.04.25.
 //
@@ -16,6 +19,7 @@
 #include <kerml/kernel/classes/Class.h>
 #include <kerml/core/features/Feature.h>
 #include <kerml/KerML.h>
+#include <kerml/root/elements/NameEscaping.h>
 #include <kerml/kernel/metadata/MetadataFeature.h>
 #include <kerml/root/annotations/Comment.h>
 #include <kerml/root/annotations/TextualRepresentation.h>
@@ -2249,4 +2253,311 @@ TEST(TestKerMLListener, TextualRepresentationIsBuiltIntoTheModel) {
     EXPECT_EQ(alf->language(), "alf");
     EXPECT_EQ(alf->body(), "c.x = newX;\nWriteLine(\"Set new x\");");
     EXPECT_EQ(alf->representedElement(), setX);
+}
+
+// ---- Literals: integers outside the int64 range, multiplicity bounds, real literals that overflow, string literal escapes ----
+namespace {
+using SysMLv2::Files::ErrorType;
+
+// The one feature value expression of `feature x = <expression>;`, or nullptr (the errors are returned, not asserted).
+struct ParsedValue {
+    std::shared_ptr<KerML::Entities::Expression> value;
+    std::vector<std::shared_ptr<SysMLv2::Files::ParserError>> errors;
+};
+
+ParsedValue parseKerMLValue(const std::string& expression) {
+    ParsedValue result;
+    auto [elements, errors] = SysMLv2::Files::Parser::parseKerML("feature x = " + expression + ";");
+    result.errors = errors;
+    for (const auto& element : elements) {
+        if (auto value = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(element)) {
+            if (value->featureWithValue() && value->featureWithValue()->declaredName() == "x") result.value = value->value();
+        }
+    }
+    return result;
+}
+}
+
+TEST(TestKerMLLiterals, IntegerLiteralOutOfRangeIsOneErrorAndNeverALeakedExceptionOrAWrongValue) {
+    for (const char* literal : {"9223372036854775808", "18446744073709551616", "99999999999999999999999999999999"}) {
+        SCOPED_TRACE(literal);
+        const auto parsed = parseKerMLValue(literal);
+        ASSERT_EQ(parsed.errors.size(), 1u);
+        EXPECT_EQ(parsed.errors[0]->errorType(), ErrorType::LOGICAL_ERROR);
+        EXPECT_NE(parsed.errors[0]->description().find("integer literal out of range"), std::string::npos) << parsed.errors[0]->description();
+        EXPECT_NE(parsed.errors[0]->description().find(literal), std::string::npos) << parsed.errors[0]->description();
+        EXPECT_EQ(parsed.errors[0]->description().find("internal"), std::string::npos);
+        EXPECT_EQ(parsed.errors[0]->getLine(), 1);
+        EXPECT_EQ(parsed.errors[0]->getColumn(), 12);   // (the column of the literal in `feature x = <literal>;`)
+        // the documented placeholder of the element: 0, together with the error
+        const auto integer = std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(parsed.value);
+        ASSERT_NE(integer, nullptr);
+        EXPECT_EQ(integer->value(), 0);
+    }
+}
+
+TEST(TestKerMLLiterals, TheLargestIntegerLiteralIsAccepted) {
+    const auto parsed = parseKerMLValue("9223372036854775807");
+    EXPECT_TRUE(parsed.errors.empty());
+    const auto integer = std::dynamic_pointer_cast<KerML::Entities::LiteralInteger>(parsed.value);
+    ASSERT_NE(integer, nullptr);
+    EXPECT_EQ(integer->value(), std::numeric_limits<std::int64_t>::max());
+}
+
+TEST(TestKerMLLiterals, MinusAndTheSmallestIntegerIsTheUnaryMinusOfAnOutOfRangeLiteral) {
+    // `-9223372036854775808` is no literal: it is the unary minus applied to the literal 9223372036854775808, which does not fit; the same
+    // error is reported for it.
+    const auto parsed = parseKerMLValue("-9223372036854775808");
+    ASSERT_EQ(parsed.errors.size(), 1u);
+    EXPECT_NE(parsed.errors[0]->description().find("integer literal out of range"), std::string::npos);
+    EXPECT_TRUE(parseKerMLValue("-9223372036854775807").errors.empty());
+}
+
+TEST(TestKerMLLiterals, IntegerLiteralOutOfRangeInsideAnExpression) {
+    const auto parsed = parseKerMLValue("1 + 9223372036854775808 * 2");
+    ASSERT_EQ(parsed.errors.size(), 1u);
+    EXPECT_EQ(parsed.errors[0]->getColumn(), 16);
+}
+
+TEST(TestKerMLLiterals, MultiplicityBoundsOutOfRange) {
+    {
+        const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML("feature y[4294967295];");
+        EXPECT_TRUE(errors.empty());
+        const auto y = named<KerML::Entities::Feature>(elements, "y");
+        ASSERT_NE(y, nullptr);
+        EXPECT_TRUE(y->multiplicity().has_value());
+    }
+    for (const char* text : {"feature y[4294967296];", "feature y[0..99999999999999999999];", "feature y[99999999999999999999..*];"}) {
+        SCOPED_TRACE(text);
+        const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(text);
+        ASSERT_EQ(errors.size(), 1u);
+        EXPECT_EQ(errors[0]->errorType(), ErrorType::LOGICAL_ERROR);
+        EXPECT_NE(errors[0]->description().find("integer literal out of range"), std::string::npos) << errors[0]->description();
+        EXPECT_EQ(errors[0]->description().find("internal"), std::string::npos);
+        // (no multiplicity of another number is invented: the feature has none)
+        const auto y = named<KerML::Entities::Feature>(elements, "y");
+        ASSERT_NE(y, nullptr);
+        EXPECT_FALSE(y->multiplicity().has_value());
+    }
+}
+
+TEST(TestKerMLLiterals, RealLiteralThatOverflowsADoubleIsReportedLikeAnIntegerThatDoesNotFit) {
+    for (const char* literal : {"1e999", "1.5e999", "9e99999999"}) {
+        SCOPED_TRACE(literal);
+        const auto parsed = parseKerMLValue(literal);
+        ASSERT_EQ(parsed.errors.size(), 1u);
+        EXPECT_EQ(parsed.errors[0]->errorType(), ErrorType::LOGICAL_ERROR);
+        EXPECT_NE(parsed.errors[0]->description().find(literal), std::string::npos) << parsed.errors[0]->description();
+        EXPECT_EQ(parsed.errors[0]->getLine(), 1);
+        EXPECT_EQ(parsed.errors[0]->getColumn(), 12);
+    }
+    EXPECT_TRUE(parseKerMLValue("1e300").errors.empty());
+}
+
+TEST(TestKerMLLiterals, StringEscapesAreDecoded) {
+    const auto string = [](const std::string& source) {
+        const auto parsed = parseKerMLValue(source);
+        EXPECT_TRUE(parsed.errors.empty()) << source << (parsed.errors.empty() ? "" : ": " + parsed.errors[0]->description());
+        const auto text = std::dynamic_pointer_cast<KerML::Entities::LiteralString>(parsed.value);
+        EXPECT_NE(text, nullptr) << source;
+        return text ? text->value() : std::string("<no string>");
+    };
+    EXPECT_EQ(string(R"("plain")"), "plain");
+    EXPECT_EQ(string(R"("")"), "");
+    EXPECT_EQ(string(R"("a\"b")"), "a\"b");
+    EXPECT_EQ(string(R"("\"")"), "\"");
+    EXPECT_EQ(string(R"("a\\b")"), "a\\b");
+    EXPECT_EQ(string(R"("a\\")"), "a\\");   // (an escaped backslash in front of the closing quote)
+    EXPECT_EQ(string(R"("it\'s")"), "it's");
+    EXPECT_EQ(string(R"("a\nb\tc\bd\fe\rf")"), "a\nb\tc\bd\fe\rf");
+    EXPECT_EQ(string(R"("\\n")"), "\\n");   // (a backslash followed by an n, not a line feed)
+    EXPECT_EQ(string("\"a\nb\""), "a\nb");   // (a line feed in the text itself)
+    EXPECT_EQ(string(R"("héllo \"wörld\"")"), "héllo \"wörld\"");
+    EXPECT_EQ(string(R"("//not a comment" )"), "//not a comment");
+}
+
+TEST(TestKerMLLiterals, StringWithAnUnknownEscapeIsOneError) {
+    const auto parsed = parseKerMLValue(R"("a\qb")");
+    ASSERT_EQ(parsed.errors.size(), 1u);
+    EXPECT_EQ(parsed.errors[0]->errorType(), ErrorType::LOGICAL_ERROR);
+    EXPECT_NE(parsed.errors[0]->description().find("invalid escape sequence '\\q'"), std::string::npos) << parsed.errors[0]->description();
+    EXPECT_EQ(parsed.errors[0]->getLine(), 1);
+    EXPECT_EQ(parsed.errors[0]->getColumn(), 14);   // (the column of the backslash)
+    // (a string on two lines: the position follows the line feeds)
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML("feature x = \"first\nsecond \\x\";");
+    ASSERT_EQ(errors.size(), 1u);
+    EXPECT_EQ(errors[0]->getLine(), 2);
+    EXPECT_EQ(errors[0]->getColumn(), 7);
+}
+
+TEST(TestKerMLLiterals, UnterminatedStringIsALexerErrorAtTheOpeningQuote) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML("feature a = \"never closed; feature b;");
+    ASSERT_FALSE(errors.empty());
+    EXPECT_NE(errors[0]->description().find("token recognition error"), std::string::npos) << errors[0]->description();
+    EXPECT_EQ(errors[0]->getLine(), 1);
+    EXPECT_EQ(errors[0]->getColumn(), 12);   // (the opening quote: the rest of the text is not part of a string that is never closed)
+    // an escaped closing quote does not close the string
+    const auto escaped = SysMLv2::Files::Parser::parseKerML("feature a = \"closed by an escape\\\";");
+    ASSERT_FALSE(escaped.second.empty());
+    EXPECT_EQ(escaped.second[0]->getColumn(), 12);
+    // a string that is closed is not affected by an unterminated one that follows it
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseKerML("feature a = \"closed\"; feature b = \"also\";").second.empty());
+    EXPECT_NE(named<KerML::Entities::Feature>(SysMLv2::Files::Parser::parseKerML("feature a = \"closed\"; feature b = \"also\";").first, "b"), nullptr);
+}
+
+TEST(TestKerMLLiterals, ColumnOfAnInvalidEscapeCountsCodePointsAndABackslashBeforeALineEndIsInvalid) {
+    const auto accented = SysMLv2::Files::Parser::parseKerML("feature c = \"\xC3\xA9\xC3\xA9\\q\";");   // "éé\q"
+    ASSERT_EQ(accented.second.size(), 1u);
+    EXPECT_EQ(accented.second[0]->getColumn(), 15);   // (the characters count, not their bytes)
+    const auto lineEnd = SysMLv2::Files::Parser::parseKerML("feature c = \"a\\\nb\";");
+    ASSERT_EQ(lineEnd.second.size(), 1u);
+    EXPECT_NE(lineEnd.second[0]->description().find("invalid escape sequence"), std::string::npos);
+    EXPECT_EQ(lineEnd.second[0]->description().find('\n'), std::string::npos) << "the message has a raw line break";
+    EXPECT_NE(lineEnd.second[0]->description().find("'\\\\n'"), std::string::npos) << lineEnd.second[0]->description();
+    EXPECT_EQ(lineEnd.second[0]->getColumn(), 14);
+}
+
+TEST(TestKerMLLiterals, QuotedNamesAreDecodedAndInvalidEscapesAreReported) {
+    const auto quoted = SysMLv2::Files::Parser::parseKerML("feature 'it\\'s' = 1; feature 'back\\\\slash\\tx' = 2;");
+    EXPECT_TRUE(quoted.second.empty()) << (quoted.second.empty() ? "" : quoted.second[0]->description());
+    EXPECT_NE(named<KerML::Entities::Feature>(quoted.first, "it's"), nullptr);
+    EXPECT_NE(named<KerML::Entities::Feature>(quoted.first, "back\\slash\tx"), nullptr);
+    const auto bad = SysMLv2::Files::Parser::parseKerML("feature 'a\\qb';");
+    ASSERT_EQ(bad.second.size(), 1u);
+    EXPECT_NE(bad.second[0]->description().find("invalid escape sequence '\\q' in the quoted name"), std::string::npos) << bad.second[0]->description();
+    EXPECT_EQ(bad.second[0]->getColumn(), 10);
+    // what escapeName writes is read back as the same name
+    for (const std::string name : {"it's", "back\\slash", "tab\there", "quo\"te", "a b", "x\ny"}) {
+        const auto again = SysMLv2::Files::Parser::parseKerML("feature " + KerML::Names::escapeName(name) + ";");
+        EXPECT_TRUE(again.second.empty()) << name;
+        EXPECT_NE(named<KerML::Entities::Feature>(again.first, name), nullptr) << name;
+    }
+}
+
+TEST(TestKerMLLiterals, MultiplicityBoundsAreAllChecked) {
+    // an out of range bound is reported although the other bound is no literal
+    {
+        const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML("feature h[n..99999999999999999999999];");
+        ASSERT_EQ(errors.size(), 1u);
+        EXPECT_EQ(errors[0]->errorType(), ErrorType::LOGICAL_ERROR);
+        EXPECT_NE(errors[0]->description().find("integer literal out of range"), std::string::npos);
+        EXPECT_EQ(errors[0]->getColumn(), 13);
+    }
+    // a bound that was read in part or wrapped around is a warning, and the multiplicity stays 1 (a feature reference is silent)
+    for (const char* text : {"feature h[2.5];", "feature h[1..2.5];", "feature h[1e3];"}) {
+        SCOPED_TRACE(text);
+        const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(text);
+        ASSERT_EQ(errors.size(), 1u);
+        EXPECT_EQ(errors[0]->errorType(), ErrorType::WARNING);
+        EXPECT_NE(errors[0]->description().find("is not a non-negative integer literal"), std::string::npos) << errors[0]->description();
+    }
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseKerML("feature h[n];").second.empty());
+}
+
+TEST(TestKerMLLiterals, StringTokensOfAnnotationsShareTheDecoding) {
+    // the language of a textual representation is decoded, an invalid escape is reported for every kind of string token
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML("feature f; rep r language \"a\\\"b\" /* body */");
+    EXPECT_TRUE(errors.empty()) << (errors.empty() ? "" : errors[0]->description());
+    const auto reps = listenerElements<KerML::Entities::TextualRepresentation>(elements);
+    ASSERT_EQ(reps.size(), 1u);
+    EXPECT_EQ(reps[0]->language(), "a\"b");
+    const auto bad = SysMLv2::Files::Parser::parseKerML("feature f; comment locale \"x\\y\" /* body */");
+    ASSERT_EQ(bad.second.size(), 1u);
+    EXPECT_NE(bad.second[0]->description().find("invalid escape sequence"), std::string::npos);
+    EXPECT_TRUE(SysMLv2::Files::Parser::parseKerML("feature f; comment locale \"en\" /* it says \\n and \"quotes\" */").second.empty());
+}
+
+// ---- The visibility of the elements of a file with many lines, and the collections of the elements that grow one entry at a time ----
+
+TEST(TestKerMLListener, VisibilitiesOfManyTopLevelLinesAreAllRead) {
+    using namespace KerML::Entities;
+    // (the check of the prefix of a line used to look at all the lines before it: 1000 lines took 11 s, 2000 95 s)
+    const char* keywords[] = {"private ", "protected ", "public ", ""};
+    std::string text;
+    for (int line = 0; line < 5000; ++line) text += std::string(keywords[line % 4]) + "feature a" + std::to_string(line) + ";\n";
+    const auto begin = std::chrono::steady_clock::now();
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(text);
+    const double seconds = std::chrono::duration<double>(std::chrono::steady_clock::now() - begin).count();
+    EXPECT_TRUE(errors.empty());
+    std::map<std::string, VisibilityKind> visibilities;
+    for (const auto& membership : listenerElements<OwningMembership>(elements)) {
+        if (membership->memberElement() && membership->memberElement()->declaredName()) visibilities[*membership->memberElement()->declaredName()] = membership->visibility();
+    }
+    ASSERT_EQ(visibilities.size(), 5000u);
+    for (int line = 0; line < 5000; line += 7) {
+        const VisibilityKind expected = line % 4 == 0 ? PRIVATE : line % 4 == 1 ? PROTECTED : PUBLIC;
+        EXPECT_EQ(visibilities["a" + std::to_string(line)], expected) << "line " << line;
+    }
+    EXPECT_LT(seconds, 120.0) << "5000 lines took " << seconds << " s";
+}
+
+TEST(TestKerMLListener, ManyEndsAndManyTextualRepresentationsAreNotQuadratic) {
+    const auto timed = [](const std::string& text, const std::string& what) {
+        const auto begin = std::chrono::steady_clock::now();
+        const auto result = SysMLv2::Files::Parser::parseSysMLv2(text);
+        EXPECT_TRUE(result.second.empty()) << what << (result.second.empty() ? "" : ": " + result.second[0]->description());
+        return std::chrono::duration<double>(std::chrono::steady_clock::now() - begin).count();
+    };
+    // (the ends of a connector and the textual representations of an element were checked for duplicates again at every entry that was added: 4000 took
+    // 39 s and 37 s)
+    std::string ends = "package P { ";
+    for (int index = 0; index < 4000; ++index) ends += "part p" + std::to_string(index) + "; ";
+    ends += "connection c connect (";
+    for (int index = 0; index < 4000; ++index) ends += std::string(index == 0 ? "" : ", ") + "p" + std::to_string(index);
+    ends += "); }";
+    EXPECT_LT(timed(ends, "connection with 4000 ends"), 60.0);
+    std::string representations = "package P { ";
+    for (int index = 0; index < 4000; ++index) representations += "rep r" + std::to_string(index) + " language \"text\" /* body " + std::to_string(index) + " */ ";
+    representations += "}";
+    EXPECT_LT(timed(representations, "4000 textual representations"), 60.0);
+}
+
+TEST(TestKerMLModel, CollectionsStillRejectNullDuplicatesAndTooManyEntries) {
+    using namespace KerML::Entities;
+    auto first = std::make_shared<Package>();
+    auto second = std::make_shared<Package>();
+    Package owner;
+    EXPECT_NO_THROW(owner.setOwnedElement({first, second}));
+    EXPECT_EQ(owner.ownedElements().size(), 2u);
+    EXPECT_THROW(owner.setOwnedElement({first, second, first}), std::invalid_argument);
+    EXPECT_THROW(owner.setOwnedElement({first, nullptr}), std::invalid_argument);
+    // (the first problem in the order of the entries is the one that is reported)
+    try {
+        owner.setOwnedElement({first, first, nullptr});
+        FAIL() << "no exception";
+    } catch (const std::invalid_argument& ex) {
+        EXPECT_STREQ(ex.what(), "Duplicate collection entry");
+    }
+    try {
+        owner.setOwnedElement({first, nullptr, first});
+        FAIL() << "no exception";
+    } catch (const std::invalid_argument& ex) {
+        EXPECT_STREQ(ex.what(), "Null collection entry");
+    }
+    // (a failed set leaves the collection as it was)
+    EXPECT_EQ(owner.ownedElements().size(), 2u);
+    // the entries are appended one at a time, in order, and a second append of the same entry is refused
+    Package appended;
+    std::vector<std::shared_ptr<Package>> entries;
+    for (int index = 0; index < 3000; ++index) {
+        entries.push_back(std::make_shared<Package>());
+        appended.appendOwnedElement(entries.back());
+    }
+    ASSERT_EQ(appended.ownedElements().size(), 3000u);
+    EXPECT_EQ(appended.ownedElements().front(), entries.front());
+    EXPECT_EQ(appended.ownedElements().back(), entries.back());
+}
+
+// The direction in front of a redefinition without a name or a kind keyword (`in :>> x;`) is recorded.
+TEST(TestKerMLParser, DirectionInFrontOfARedefinitionWithoutANameIsRecorded) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "package P { class A { in feature x; out feature y; inout feature z; } class B :> A { in :>> x; out :>> y; inout :>> z; in feature x2 :>> x; feature x3 in :>> x; in :> x; :>> x; } }");
+    EXPECT_TRUE(errors.empty()) << (errors.empty() ? "" : errors[0]->description());
+    std::vector<std::string> directions;
+    for (const auto& element : elements) {
+        const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(element);
+        if (!feature || !feature->owner() || feature->owner()->declaredName() != std::string("B")) continue;
+        directions.push_back(!feature->direction() ? "none" : *feature->direction() == KerML::Entities::IN ? "in" : *feature->direction() == KerML::Entities::OUT ? "out" : "inout");
+    }
+    EXPECT_EQ(directions, (std::vector<std::string>{"in", "out", "inout", "in", "in", "in", "none"}));
 }

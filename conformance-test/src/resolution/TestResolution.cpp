@@ -7,6 +7,7 @@
 // resolves; references that do not are listed in conformance-test/expected_unresolved.txt (ratchet, same semantics as
 // expected_failures.txt: a listed reference that now resolves fails, an unlisted unresolved one fails).
 #include <gtest/gtest.h>
+#include <nlohmann/json.hpp>
 
 #include <algorithm>
 #include <atomic>
@@ -16,12 +17,14 @@
 #include <fstream>
 #include <iostream>
 #include <memory>
+#include <cstdint>
 #include <set>
 #include <stdexcept>
 #include <string>
 #include <vector>
 
 #include <kerml/KerML.h>
+#include <kerml/kernel/expressions/OperatorFunctions.h>
 #include <sysml/SysML.h>
 #include <sysmlv2/Parser.h>
 #include <sysmlv2/Workspace.h>
@@ -2218,7 +2221,9 @@ void expectParameterWithoutValue(const std::shared_ptr<KerML::Entities::Type>& o
 template <class T>
 std::shared_ptr<T> firstCallOf(Workspace& ws) {
     for (const auto& element : ws.elements(0)) {
-        if (element && typeid(*element) == typeid(T)) return std::dynamic_pointer_cast<T>(element);
+        if (!element) continue;
+        const auto& elementRef = *element;
+        if (typeid(elementRef) == typeid(T)) return std::dynamic_pointer_cast<T>(element);
     }
     return nullptr;
 }
@@ -2446,9 +2451,13 @@ TEST(InvocationStructure, KerMLChainInvocationOwnsItsParameterMemberships) {
             call = std::dynamic_pointer_cast<KerML::Entities::InvocationExpression>(value->value());
     }
     ASSERT_NE(call, nullptr);
-    ASSERT_EQ(call->ownedRelationship().size(), 3u);
-    EXPECT_NE(std::dynamic_pointer_cast<KerML::Entities::Membership>(call->ownedRelationship()[0]), nullptr);
-    EXPECT_NE(std::dynamic_pointer_cast<KerML::Entities::FeatureMembership>(call->ownedRelationship()[1]), nullptr);
+    // (the invoked type is the chain feature `q.c`: the pilot's shape owns it through an OwningMembership as the first relationship, there is no
+    // separate non-owning membership of the type any more)
+    ASSERT_EQ(call->ownedRelationship().size(), 2u);
+    EXPECT_EQ(call->ownedRelationship()[0]->getType(), "OwningMembership");
+    const auto chain = std::dynamic_pointer_cast<KerML::Entities::Feature>(call->instantiatedType());
+    ASSERT_NE(chain, nullptr);
+    EXPECT_EQ(chain->chainingFeature().size(), 2u);
     size_t parameters = 0;
     for (const auto& relationship : call->ownedRelationship()) {
         const auto membership = std::dynamic_pointer_cast<KerML::Entities::ParameterMembership>(relationship);
@@ -2567,3 +2576,813 @@ TEST(WorkspaceCancellation, CancelledResolveBehavesLikeATimeout) {
 }
 
 }  // namespace
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Binding of operator expressions to the functions of the Kernel Function Library
+// ---------------------------------------------------------------------------------------------------------------------
+
+namespace {
+    /// The qualified names of the functions of the operator expressions with the operator @p operatorName of source @p source
+    /// ("-" for an expression without a function), in the order of the source.
+    std::vector<std::string> boundFunctions(const Workspace& ws, size_t source, const std::string& operatorName) {
+        std::vector<std::string> names;
+        for (const auto& element : ws.elements(source)) {
+            const auto expression = as<KerML::Entities::OperatorExpression>(element);
+            if (!expression || expression->operatorName() != operatorName) continue;
+            const auto function = expression->function();
+            if (expression->instantiatedType().get() != function.get()) {
+                names.push_back("instantiatedType differs from function");
+            } else {
+                names.push_back(function ? ConformanceTest::qualifiedNameOf(function) : "-");
+            }
+        }
+        return names;
+    }
+
+    /// Empties a user source of the shared library workspace at the end of the test.
+    struct EmptyAtEnd {
+        Workspace& ws;
+        size_t source;
+        ~EmptyAtEnd() {
+            ws.replaceSource(source, "", SourceLanguage::SysML);
+            ws.resolve();
+        }
+    };
+}
+
+TEST_F(LibraryResolution, OperatorTableNamesFunctionsOfTheLibrary) {
+    EXPECT_GT(KerML::operatorFunctionCount, 30u);
+    for (const KerML::OperatorFunction& entry : KerML::operatorFunctions) {
+        ASSERT_STREQ(KerML::operatorFunctionName(entry.operatorName), entry.functionName) << entry.operatorName;
+        EXPECT_NE(as<KerML::Entities::Function>(workspace->find(entry.functionName)), nullptr) << entry.operatorName << " -> " << entry.functionName;
+    }
+    EXPECT_EQ(KerML::operatorFunctionName("->"), nullptr);
+    EXPECT_EQ(KerML::operatorFunctionName("plus"), nullptr);
+    EXPECT_EQ(KerML::operatorFunctionName(""), nullptr);
+}
+
+TEST_F(LibraryResolution, SysMLOperatorsAreBoundToLibraryFunctions) {
+    const size_t user = workspace->addText(
+        "package U { attribute a = 1 + 2; attribute b = -a; attribute c = a == b; attribute d = true and false; attribute e = true & false;"
+        " attribute f = if true ? 1 else 2; attribute g = a as ScalarValues::Integer; attribute h = a istype ScalarValues::Integer;"
+        " attribute i = (1, 2); attribute j = 5 [SI::kg]; attribute k = 1..3; attribute l = a ?? 2; attribute m = a.b; attribute n = a#(1);"
+        " attribute o = a hastype ScalarValues::Integer; attribute p = not true; attribute q = a != b; attribute r = true implies false; }",
+        "ops.sysml", SourceLanguage::SysML, 1);
+    EmptyAtEnd cleanup{*workspace, user};
+    workspace->resolve();
+    EXPECT_EQ(boundFunctions(*workspace, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "-"), std::vector<std::string>({"DataFunctions::-"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "=="), std::vector<std::string>({"BaseFunctions::=="}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "!="), std::vector<std::string>({"BaseFunctions::!="}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "and"), std::vector<std::string>({"ControlFunctions::and"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "implies"), std::vector<std::string>({"ControlFunctions::implies"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "&"), std::vector<std::string>({"DataFunctions::&"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "not"), std::vector<std::string>({"DataFunctions::not"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "if"), std::vector<std::string>({"ControlFunctions::if"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "as"), std::vector<std::string>({"BaseFunctions::as"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "istype"), std::vector<std::string>({"BaseFunctions::istype"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "hastype"), std::vector<std::string>({"BaseFunctions::hastype"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, ","), std::vector<std::string>({"BaseFunctions::,"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "["), std::vector<std::string>({"BaseFunctions::["}));
+    EXPECT_EQ(boundFunctions(*workspace, user, ".."), std::vector<std::string>({"DataFunctions::.."}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "??"), std::vector<std::string>({"ControlFunctions::??"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "."), std::vector<std::string>({"ControlFunctions::."}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "#"), std::vector<std::string>({"BaseFunctions::#"}));
+    // (the function is the element of the library that find() returns)
+    for (const auto& element : workspace->elements(user)) {
+        const auto expression = as<KerML::Entities::OperatorExpression>(element);
+        if (expression && expression->operatorName() == "+") EXPECT_EQ(expression->function().get(), workspace->find("DataFunctions::'+'").get());
+    }
+}
+
+TEST_F(LibraryResolution, KerMLOperatorsAreBoundToLibraryFunctions) {
+    const size_t user = workspace->addText(
+        "package U { feature a = 1 + 2; feature b = -a; feature c = a == b; feature d = true and false; feature e = true & false;"
+        " feature f = if true ? 1 else 2; feature g = a as ScalarValues::Integer; feature h = a istype ScalarValues::Integer;"
+        " feature i = (1, 2); feature k = 1..3; feature l = a ?? 2; feature n = a#(1); feature o = a.b;"
+        " feature p = a.?{ true }; feature q = a.{ true }; }",
+        "ops.kerml", SourceLanguage::KerML, 1);
+    EmptyAtEnd cleanup{*workspace, user};
+    workspace->resolve();
+    EXPECT_EQ(boundFunctions(*workspace, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "-"), std::vector<std::string>({"DataFunctions::-"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "=="), std::vector<std::string>({"BaseFunctions::=="}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "and"), std::vector<std::string>({"ControlFunctions::and"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "&"), std::vector<std::string>({"DataFunctions::&"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "if"), std::vector<std::string>({"ControlFunctions::if"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "as"), std::vector<std::string>({"BaseFunctions::as"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "istype"), std::vector<std::string>({"BaseFunctions::istype"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, ","), std::vector<std::string>({"BaseFunctions::,"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, ".."), std::vector<std::string>({"DataFunctions::.."}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "??"), std::vector<std::string>({"ControlFunctions::??"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "#"), std::vector<std::string>({"BaseFunctions::#"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "."), std::vector<std::string>({"ControlFunctions::."}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "select"), std::vector<std::string>({"ControlFunctions::select"}));
+    EXPECT_EQ(boundFunctions(*workspace, user, "collect"), std::vector<std::string>({"ControlFunctions::collect"}));
+}
+
+TEST_F(LibraryResolution, TheRemainingOperatorsAreBound) {
+    const size_t user = workspace->addText(
+        "package U { import ScalarValues::*; attribute a = 6; attribute b = 3;"
+        " attribute c1 = a * b; attribute c2 = a / b; attribute c3 = a % b; attribute c4 = a ** b; attribute c5 = a ^ b;"
+        " attribute c6 = a < b; attribute c7 = a > b; attribute c8 = a <= b; attribute c9 = a >= b; attribute d1 = a === b;"
+        " attribute d2 = a !== b; attribute d3 = true xor false; attribute d4 = ~a; attribute d5 = a | b; attribute d6 = true or false;"
+        " attribute d7 = a @ Integer; attribute d8 = a @@ Integer; attribute d9 = a meta Integer; attribute e1 = all Integer; attribute e2 = +a; }",
+        "more.sysml", SourceLanguage::SysML, 1);
+    EmptyAtEnd cleanup{*workspace, user};
+    workspace->resolve();
+    EXPECT_TRUE(workspace->errors(user).empty());
+    const std::vector<std::pair<std::string, std::string>> expected = {
+        {"*", "DataFunctions::*"}, {"/", "DataFunctions::/"}, {"%", "DataFunctions::%"}, {"**", "DataFunctions::**"},
+        {"^", "DataFunctions::^"}, {"<", "DataFunctions::<"}, {">", "DataFunctions::>"}, {"<=", "DataFunctions::<="},
+        {">=", "DataFunctions::>="}, {"===", "BaseFunctions::==="}, {"!==", "BaseFunctions::!=="}, {"xor", "DataFunctions::xor"},
+        {"~", "DataFunctions::~"}, {"|", "DataFunctions::|"}, {"or", "ControlFunctions::or"}, {"@", "BaseFunctions::@"},
+        {"@@", "BaseFunctions::@@"}, {"meta", "BaseFunctions::meta"}, {"all", "BaseFunctions::all"}, {"+", "DataFunctions::+"}};
+    for (const auto& [name, function] : expected) EXPECT_EQ(boundFunctions(*workspace, user, name), std::vector<std::string>({function})) << name;
+}
+
+namespace {
+    /// The invocations of a source that are no operator expressions, and the `->` expressions.
+    std::vector<std::shared_ptr<KerML::Entities::InvocationExpression>> namedCalls(const Workspace& ws, size_t source) {
+        std::vector<std::shared_ptr<KerML::Entities::InvocationExpression>> calls;
+        for (const auto& element : ws.elements(source)) {
+            const auto call = as<KerML::Entities::InvocationExpression>(element);
+            if (!call) continue;
+            const auto op = as<KerML::Entities::OperatorExpression>(call);
+            if (!op || op->operatorName() == "->") calls.push_back(call);
+        }
+        return calls;
+    }
+}
+
+TEST_F(LibraryResolution, NamedCallsBindTheFunctionTheyName) {
+    const size_t user = workspace->addText(
+        "package V { import ScalarValues::*; calc def Calc { in x : Integer; return : Integer = x; } calc c : Calc;"
+        " attribute a = DataFunctions::'+'(1, 2); attribute b = (1, 2, 3)->NumericalFunctions::sum(); attribute d = c(1); }",
+        "calls.sysml", SourceLanguage::SysML, 1);
+    EmptyAtEnd cleanup{*workspace, user};
+    workspace->resolve();
+    EXPECT_TRUE(workspace->errors(user).empty());
+    const auto plus = as<KerML::Entities::Function>(workspace->find("DataFunctions::'+'"));
+    const auto sum = as<KerML::Entities::Function>(workspace->find("NumericalFunctions::sum"));
+    ASSERT_NE(plus, nullptr);
+    ASSERT_NE(sum, nullptr);
+    size_t withPlus = 0, withSum = 0, withFeature = 0;
+    for (const auto& call : namedCalls(*workspace, user)) {
+        if (call->instantiatedType() == plus) {
+            ++withPlus;
+            EXPECT_EQ(call->function(), plus);
+        } else if (call->instantiatedType() == sum) {
+            ++withSum;
+            EXPECT_EQ(call->function(), sum);
+        } else if (as<KerML::Entities::Feature>(call->instantiatedType()) && !as<KerML::Entities::Function>(call->instantiatedType())) {
+            // (the instantiated type is a feature, the calc usage `c`: no function for now, the type stays)
+            ++withFeature;
+            EXPECT_EQ(call->function(), nullptr);
+            EXPECT_EQ(call->instantiatedType()->declaredName(), "c");
+        }
+    }
+    EXPECT_EQ(withPlus, 1u);
+    EXPECT_EQ(withSum, 1u);
+    EXPECT_EQ(withFeature, 1u);
+}
+
+// Decision (see the plan, step 1): the derived properties instantiatedType and function are part of the JSON of the model, so a bound
+// operator expression writes them (and an unbound one does not); the XMI does not (the reference XMI has no such attributes).
+TEST_F(LibraryResolution, BoundOperatorsAreInTheJsonButNotInTheXmi) {
+    const size_t user = workspace->addText("package J { attribute a = 1 + 2; }", "json.sysml", SourceLanguage::SysML, 1);
+    EmptyAtEnd cleanup{*workspace, user};
+    workspace->resolve();
+    const auto plus = workspace->find("DataFunctions::'+'");
+    ASSERT_NE(plus, nullptr);
+    std::shared_ptr<KerML::Entities::OperatorExpression> expression;
+    for (const auto& element : workspace->elements(user)) {
+        if (const auto op = as<KerML::Entities::OperatorExpression>(element)) expression = op;
+    }
+    ASSERT_NE(expression, nullptr);
+    const auto json = nlohmann::json::parse(expression->serializeToJson());
+    ASSERT_TRUE(json.contains("function")) << json.dump();
+    ASSERT_TRUE(json.contains("instantiatedType")) << json.dump();
+    EXPECT_EQ(json["function"]["@id"], plus->elementId());
+    EXPECT_EQ(json["instantiatedType"]["@id"], plus->elementId());
+
+    namespace fs = std::filesystem;
+    const fs::path directory = fs::temp_directory_path() / ("operator-binding-xmi-" + std::to_string(reinterpret_cast<std::uintptr_t>(this)));
+    fs::create_directories(directory);
+    const auto errors = workspace->writeXmi(user, (directory / "json.sysmlx").string());
+    const std::string xmi = ConformanceTest::readFile(directory / "json.sysmlx");
+    std::error_code ignored;
+    fs::remove_all(directory, ignored);
+    EXPECT_TRUE(errors.empty());
+    EXPECT_NE(xmi.find("OperatorExpression"), std::string::npos);
+    EXPECT_NE(xmi.find("operator=\"+\""), std::string::npos) << xmi;
+    EXPECT_EQ(xmi.find("instantiatedType"), std::string::npos);
+    EXPECT_EQ(xmi.find("function"), std::string::npos);
+}
+
+TEST_F(LibraryResolution, TheLibraryOwnOperatorsAreBound) {
+    // `!=` of BaseFunctions is defined by `not (x == y)`-like expressions in the library itself.
+    size_t bound = 0, unbound = 0;
+    for (const auto& element : workspace->elements()) {
+        const auto expression = as<KerML::Entities::OperatorExpression>(element);
+        if (!expression || KerML::operatorFunctionName(expression->operatorName()) == nullptr) continue;
+        (expression->function() ? bound : unbound)++;
+    }
+    EXPECT_GT(bound, 0u);
+    EXPECT_EQ(unbound, 0u);
+}
+
+TEST(OperatorBinding, WithoutTheLibraryTheOperatorsStayUnbound) {
+    for (const auto language : {SourceLanguage::SysML, SourceLanguage::KerML}) {
+        const bool sysml = language == SourceLanguage::SysML;
+        One m(sysml ? "package P { attribute a = 1 + 2 * 3; attribute b = if true ? 1 else 2; attribute c = (1, 2); }"
+                    : "package P { feature a = 1 + 2 * 3; feature b = if true ? 1 else 2; feature c = (1, 2); }",
+              language, sysml ? "p.sysml" : "p.kerml");
+        size_t operators = 0;
+        for (const auto& element : m.ws.elements(0)) {
+            const auto expression = as<KerML::Entities::OperatorExpression>(element);
+            if (!expression) continue;
+            ++operators;
+            EXPECT_EQ(expression->function(), nullptr) << expression->operatorName();
+            EXPECT_EQ(expression->instantiatedType(), nullptr) << expression->operatorName();
+            const auto json = nlohmann::json::parse(expression->serializeToJson());
+            EXPECT_TRUE(!json.contains("function") || json["function"].is_null()) << json.dump();
+            EXPECT_TRUE(!json.contains("instantiatedType") || json["instantiatedType"].is_null()) << json.dump();
+        }
+        EXPECT_EQ(operators, 4u);
+        EXPECT_TRUE(m.ws.unresolvedReferences().empty());
+        EXPECT_TRUE(m.ws.notAttemptedReferences().empty());
+    }
+}
+
+namespace {
+    const char* const miniLibrary =
+        "standard library package DataFunctions { abstract function '+'; abstract function '*'; }"
+        "standard library package ControlFunctions { abstract function 'if'; }"
+        "standard library package BaseFunctions { abstract function ','; }";
+    const char* const miniUser = "package P { attribute a = 1 + 2 * 3; attribute b = if true ? 1 else 2; attribute c = (1, 2); }";
+}
+
+TEST(OperatorBinding, ResolveIsRepeatableAndFollowsTheSources) {
+    Workspace ws;
+    const size_t library = ws.addText(miniLibrary, "lib.kerml", SourceLanguage::KerML, 0);
+    const size_t user = ws.addText(miniUser, "user.sysml", SourceLanguage::SysML, 1);
+    ws.resolve();
+    const auto plus = ws.find("DataFunctions::'+'");
+    ASSERT_NE(plus, nullptr);
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    EXPECT_EQ(boundFunctions(ws, user, "*"), std::vector<std::string>({"DataFunctions::*"}));
+    EXPECT_EQ(boundFunctions(ws, user, "if"), std::vector<std::string>({"ControlFunctions::if"}));
+    EXPECT_EQ(boundFunctions(ws, user, ","), std::vector<std::string>({"BaseFunctions::,"}));
+
+    // (a second resolve() gives the same binding, to the same element)
+    ws.resolve();
+    ws.resolve();
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    for (const auto& element : ws.elements(user)) {
+        if (const auto expression = as<KerML::Entities::OperatorExpression>(element)) {
+            if (expression->operatorName() == "+") EXPECT_EQ(expression->function().get(), plus.get());
+        }
+    }
+
+    // (replacing the user source binds the new expressions)
+    ws.replaceSource(user, "package P { attribute z = 1 * 2 + 3; }", SourceLanguage::SysML);
+    ws.resolve();
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    EXPECT_EQ(boundFunctions(ws, user, "*"), std::vector<std::string>({"DataFunctions::*"}));
+    EXPECT_TRUE(boundFunctions(ws, user, "if").empty());
+
+    // (a source that is added after the resolve() is bound by the next one)
+    const size_t later = ws.addText("package Q { attribute y = 4 + 5; }", "later.sysml", SourceLanguage::SysML, 1);
+    ws.resolve();
+    EXPECT_EQ(boundFunctions(ws, later, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    (void)library;
+}
+
+TEST(OperatorBinding, ReplacingTheLibraryReleasesAndRebinds) {
+    Workspace ws;
+    const size_t library = ws.addText(miniLibrary, "lib.kerml", SourceLanguage::KerML, 0);
+    const size_t user = ws.addText(miniUser, "user.sysml", SourceLanguage::SysML, 1);
+    ws.resolve();
+    std::weak_ptr<KerML::Entities::Element> oldPlus = ws.find("DataFunctions::'+'");
+    ASSERT_FALSE(oldPlus.expired());
+    ASSERT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+
+    // (the library without the function: unbound, and the removed function is not kept alive by the expression)
+    ws.replaceSource(library, "standard library package DataFunctions { abstract function '*'; }", SourceLanguage::KerML);
+    ws.resolve();
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"-"}));
+    EXPECT_EQ(boundFunctions(ws, user, "*"), std::vector<std::string>({"DataFunctions::*"}));
+    EXPECT_EQ(boundFunctions(ws, user, "if"), std::vector<std::string>({"-"}));
+    EXPECT_TRUE(oldPlus.expired());
+    EXPECT_TRUE(ws.unresolvedReferences().empty());
+
+    // (the library is back)
+    ws.replaceSource(library, miniLibrary, SourceLanguage::KerML);
+    ws.resolve();
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+
+    // (the library is emptied)
+    ws.replaceSource(library, "", SourceLanguage::KerML);
+    ws.resolve();
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"-"}));
+    EXPECT_EQ(boundFunctions(ws, user, ","), std::vector<std::string>({"-"}));
+    EXPECT_TRUE(ws.unresolvedReferences().empty());
+}
+
+TEST(OperatorBinding, LibraryAndModelOnTheSameLevelBind) {
+    Workspace ws;
+    ws.addText(miniLibrary, "lib.kerml", SourceLanguage::KerML, 0);
+    const size_t user = ws.addText(miniUser, "user.sysml", SourceLanguage::SysML, 0);
+    ws.resolve();
+    EXPECT_EQ(boundFunctions(ws, user, "+"), std::vector<std::string>({"DataFunctions::+"}));
+    EXPECT_EQ(boundFunctions(ws, user, "if"), std::vector<std::string>({"ControlFunctions::if"}));
+}
+
+TEST(OperatorBinding, AModelCannotShadowTheLibraryFunctions) {
+    Workspace ws;
+    ws.addText(miniLibrary, "lib.kerml", SourceLanguage::KerML, 0);
+    const size_t user = ws.addText("package DataFunctions { abstract function '+'; } package P { attribute a = 1 + 2; }", "user.sysml",
+                                   SourceLanguage::SysML, 1);
+    ws.resolve();
+    const auto bound = boundFunctions(ws, user, "+");
+    ASSERT_EQ(bound.size(), 1u);
+    for (const auto& element : ws.elements(user)) {
+        if (const auto expression = as<KerML::Entities::OperatorExpression>(element)) {
+            EXPECT_NE(expression->function(), nullptr);
+            // (the function lies in the library, not in the model that tries to shadow it)
+            bool inUser = false;
+            for (const auto& e : ws.elements(user)) inUser = inUser || e == expression->function();
+            EXPECT_FALSE(inUser);
+        }
+    }
+}
+
+
+// ---------------------------------------------------------------------------------------------------------------------
+// The target of a feature chain whose left operand is not a plain name chain (ReferenceRole::ChainTarget): a feature of the static result
+// type of the operand.
+// ---------------------------------------------------------------------------------------------------------------------
+
+namespace {
+
+/// The target feature of the chain that is the value of the feature (the outermost expression); null if the value is no chain.
+std::shared_ptr<KerML::Entities::Feature> chainTargetOf(const Workspace& ws, const std::string& attribute) {
+    const auto feature = as<KerML::Entities::Feature>(ws.find(attribute));
+    if (!feature) return nullptr;
+    for (const auto& relationship : feature->ownedRelationship()) {
+        if (const auto value = as<KerML::Entities::FeatureValue>(relationship)) {
+            if (const auto chain = as<KerML::Entities::FeatureChainExpression>(value->value())) return chain->targetFeature();
+        }
+    }
+    return nullptr;
+}
+
+/// True if the chain target is a feature of a model (not a placeholder).
+bool isResolvedTarget(const std::shared_ptr<KerML::Entities::Feature>& target) { return target != nullptr && !isUnresolved(target); }
+
+std::vector<std::string> namesOf(const std::vector<SysMLv2::Files::UnresolvedReferenceInfo>& infos) {
+    std::vector<std::string> names;
+    for (const auto& info : infos) names.push_back(info.name);
+    return names;
+}
+
+const char* const ChainModelSysML =
+    "package P { part def Engine { attribute power = 100; part cyl { attribute count = 4; } } part e : Engine; ref part x = e; "
+    "part def Q { attribute r; } part q1 : Q { attribute :>> r = 5; } part q2 : Q { attribute :>> r = 6; } "
+    "part def Inner { attribute z = 9; } part def M { part i : Inner; } part def W { part m : M; } part w : W; "
+    "attribute paren = (e).power; attribute cast = (e as Engine).power; attribute seq = (q1, q2).r; attribute deep = (w.m).i.z; "
+    "attribute viaChain = (w.m).i; attribute viaCyl = (e).cyl.count; attribute viaIf = (if true ? q1 else q2).r; }";
+
+}  // namespace
+
+TEST(ChainTarget, ComputedLeftOperandsAreResolvedInTheirStaticType) {
+    One m(ChainModelSysML);
+    ASSERT_TRUE(m.ws.errors().empty());
+    EXPECT_TRUE(m.ws.unresolvedReferences().empty()) << namesOf(m.ws.unresolvedReferences()).front();
+    EXPECT_TRUE(m.ws.notAttemptedReferences().empty());
+    EXPECT_EQ(chainTargetOf(m.ws, "P::paren").get(), m.ws.find("P::Engine::power").get());                // (e).power: a reference, in parentheses
+    EXPECT_EQ(chainTargetOf(m.ws, "P::cast").get(), m.ws.find("P::Engine::power").get());                 // (e as Engine).power: the cast type
+    EXPECT_EQ(chainTargetOf(m.ws, "P::seq").get(), m.ws.find("P::Q::r").get());                           // (q1, q2).r: the feature both redefine
+    EXPECT_EQ(chainTargetOf(m.ws, "P::deep").get(), m.ws.find("P::Inner::z").get());                      // (w.m).i.z: through the target of the inner chain
+    EXPECT_EQ(chainTargetOf(m.ws, "P::viaChain").get(), m.ws.find("P::M::i").get());
+    EXPECT_EQ(chainTargetOf(m.ws, "P::viaCyl").get(), m.ws.find("P::Engine::cyl::count").get());
+    EXPECT_EQ(chainTargetOf(m.ws, "P::viaIf").get(), m.ws.find("P::Q::r").get());                         // both branches have r
+}
+
+TEST(ChainTarget, ResolvingAgainChangesNothing) {
+    One m(ChainModelSysML);
+    std::vector<ElementPtr> first;
+    for (const char* name : {"paren", "cast", "seq", "deep", "viaChain", "viaCyl", "viaIf"}) first.push_back(chainTargetOf(m.ws, std::string("P::") + name));
+    const size_t resolved = m.ws.resolvedReferenceCount();
+    m.ws.resolve();
+    m.ws.resolve();
+    size_t index = 0;
+    for (const char* name : {"paren", "cast", "seq", "deep", "viaChain", "viaCyl", "viaIf"}) EXPECT_EQ(chainTargetOf(m.ws, std::string("P::") + name), first[index++]) << name;
+    EXPECT_EQ(m.ws.resolvedReferenceCount(), resolved);
+}
+
+TEST(ChainTarget, ASequenceOfUnrelatedFeaturesIsNotGuessed) {
+    One m("package P { part def A { attribute f = 1; } part def B { attribute f = 2; } part a : A; part b : B; attribute s = (a, b).f; attribute ok = (a, a).f; attribute missing = (a, b).g; }");
+    EXPECT_FALSE(isResolvedTarget(chainTargetOf(m.ws, "P::s")));
+    EXPECT_EQ(chainTargetOf(m.ws, "P::ok").get(), m.ws.find("P::A::f").get());
+    EXPECT_FALSE(isResolvedTarget(chainTargetOf(m.ws, "P::missing")));
+    // `g` is in no member: reported like an unresolved link of a plain chain, with the role ChainTarget; `f` is in both, but they are two features:
+    // not attempted (no error; the evaluator finds the feature in each member)
+    std::vector<std::string> names;
+    for (const auto& info : m.ws.unresolvedReferences()) {
+        EXPECT_EQ(info.role, SysMLv2::Files::ReferenceRole::ChainTarget);
+        names.push_back(info.name);
+    }
+    std::sort(names.begin(), names.end());
+    EXPECT_EQ(names, (std::vector<std::string>{"g"}));
+    ASSERT_EQ(m.ws.notAttemptedReferences().size(), 1u);
+    EXPECT_EQ(m.ws.notAttemptedReferences().front().name, "f");
+}
+
+TEST(ChainTarget, KerMLOperandsInvocationsIndexesAndConstructors) {
+    One m("package P { class Engine { feature power = 100; feature cyl { feature count = 4; } } class Big :> Engine { feature :>> power = 300; } "
+          "function Make { in feature x : Engine; return feature r : Engine; } "
+          "feature e : Engine; feature big : Big; feature engines : Engine [2]; "
+          "feature viaCall = Make(e).power; feature viaIndex = engines#(1).power; feature viaNew = (new Big()).power; feature viaSeq = (e, big).power; "
+          "feature viaNested = (e).cyl.count; feature viaCast = (big as Engine).cyl; }",
+          SourceLanguage::KerML, "test.kerml");
+    ASSERT_TRUE(m.ws.errors().empty());
+    EXPECT_TRUE(m.ws.unresolvedReferences().empty()) << namesOf(m.ws.unresolvedReferences()).front();
+    EXPECT_EQ(chainTargetOf(m.ws, "P::viaCall").get(), m.ws.find("P::Engine::power").get());     // the result parameter of Make has the type Engine
+    EXPECT_EQ(chainTargetOf(m.ws, "P::viaIndex").get(), m.ws.find("P::Engine::power").get());    // an element of engines
+    EXPECT_EQ(chainTargetOf(m.ws, "P::viaNew").get(), m.ws.find("P::Big::power").get());         // the constructed type
+    EXPECT_EQ(chainTargetOf(m.ws, "P::viaSeq").get(), m.ws.find("P::Engine::power").get());      // e has Engine::power, big has Big::power which redefines it
+    EXPECT_EQ(chainTargetOf(m.ws, "P::viaNested").get(), m.ws.find("P::Engine::cyl::count").get());
+    EXPECT_EQ(chainTargetOf(m.ws, "P::viaCast").get(), m.ws.find("P::Engine::cyl").get());
+}
+
+TEST(ChainTarget, WhatIsNotKnownStaysNotAttemptedWithoutAnError) {
+    // an untyped feature (its type is only suggested by its value), an operator (its function is bound after the resolution) and a computed value
+    One m("package P { part def Engine { attribute power = 100; } part e : Engine; ref part x = e; attribute a = (x).power; attribute b = (1 + 2).power; "
+          "attribute c = (e, x).power; part y; attribute d = (y).power; }");
+    for (const char* name : {"a", "b", "c", "d"}) EXPECT_FALSE(isResolvedTarget(chainTargetOf(m.ws, std::string("P::") + name))) << name;
+    EXPECT_TRUE(m.ws.unresolvedReferences().empty()) << namesOf(m.ws.unresolvedReferences()).front();
+    size_t chainTargets = 0;
+    for (const auto& info : m.ws.notAttemptedReferences()) chainTargets += info.role == SysMLv2::Files::ReferenceRole::ChainTarget ? 1 : 0;
+    EXPECT_EQ(chainTargets, 4u);
+    // a plain chain through an untyped feature is unresolved as before
+    One plain("package P { part def Engine { attribute power = 100; } part e : Engine; ref part x = e; attribute a = x.power; }");
+    ASSERT_EQ(plain.ws.unresolvedReferences().size(), 1u);
+    EXPECT_EQ(plain.ws.unresolvedReferences().front().name, "x.power");
+}
+
+TEST(ChainTarget, ATypeThatLacksTheFeatureIsReportedLikeAPlainChain) {
+    One m("package P { part def Engine { attribute power = 100; } part e : Engine; attribute a = (e).missing; }");
+    ASSERT_EQ(m.ws.unresolvedReferences().size(), 1u);
+    const auto& info = m.ws.unresolvedReferences().front();
+    EXPECT_EQ(info.name, "missing");
+    EXPECT_EQ(info.role, SysMLv2::Files::ReferenceRole::ChainTarget);
+    EXPECT_EQ(info.kind, SysMLv2::Files::ReferenceKind::Feature);
+    EXPECT_FALSE(isResolvedTarget(chainTargetOf(m.ws, "P::a")));
+    EXPECT_EQ(m.ws.unresolvedAsWarnings(0).size(), 1u);
+}
+
+TEST(ChainTarget, ReplacingTheSourceOfTheChainDoesNotLeaveStaleTargets) {
+    Workspace ws;
+    ws.addText("package Lib { part def Engine { attribute power = 100; } part def Other { attribute force = 1; } }", "lib.sysml", SourceLanguage::SysML, 0);
+    const size_t user = ws.addText("package U { import Lib::*; part e : Engine; attribute a = (e).power; }", "user.sysml", SourceLanguage::SysML, 1);
+    ws.resolve();
+    const auto first = chainTargetOf(ws, "U::a");
+    ASSERT_TRUE(isResolvedTarget(first));
+    EXPECT_EQ(first.get(), ws.find("Lib::Engine::power").get());
+    EXPECT_TRUE(ws.unresolvedReferences().empty());
+
+    // the chain itself is replaced: a new target (the old one is not kept), then a name that does not exist, then a plain name chain
+    ws.replaceSource(user, "package U { import Lib::*; part e : Engine; attribute a = (e).power; attribute b = (e).power; }");
+    ws.resolve();
+    EXPECT_EQ(chainTargetOf(ws, "U::a").get(), ws.find("Lib::Engine::power").get());
+    EXPECT_EQ(chainTargetOf(ws, "U::b").get(), ws.find("Lib::Engine::power").get());
+    ws.replaceSource(user, "package U { import Lib::*; part e : Engine; attribute a = (e).nothing; }");
+    ws.resolve();
+    EXPECT_FALSE(isResolvedTarget(chainTargetOf(ws, "U::a")));
+    EXPECT_EQ(ws.unresolvedReferences().size(), 1u);
+    ws.replaceSource(user, "package U { import Lib::*; part e : Engine; attribute a = e.power; }");
+    ws.resolve();
+    EXPECT_TRUE(ws.unresolvedReferences().empty());
+    EXPECT_TRUE(ws.notAttemptedReferences().empty());
+}
+
+// The source that holds the TYPE is replaced, the source with the chain is not: the typing `e : Engine` of the unchanged source still points to the
+// replaced (not indexed any more) type, as for every other reference of a source that is not replaced. The type of `(e)` is then open: the chain
+// has no target, it is never reported as unresolved (the name may well be a member of the new type), and no old feature is used.
+TEST(ChainTarget, ReplacingTheSourceOfTheTypeIsNeverAFalseUnresolved) {
+    for (const char* replacement : {"package Lib { part def Engine { attribute power = 100; } }",    // identical
+                                    "package Lib { part def Engine { attribute power = 200; } }",    // changed, the feature is still there
+                                    "package Lib { part def Engine { attribute force = 100; } }"}) { // the feature is gone
+        SCOPED_TRACE(replacement);
+        Workspace ws;
+        const size_t library = ws.addText("package Lib { part def Engine { attribute power = 100; } }", "lib.sysml", SourceLanguage::SysML, 0);
+        const size_t user = ws.addText("package U { import Lib::*; part e : Engine; attribute a = (e).power; }", "user.sysml", SourceLanguage::SysML, 1);
+        ws.resolve();
+        const auto first = chainTargetOf(ws, "U::a");
+        ASSERT_TRUE(isResolvedTarget(first));
+        ws.replaceSource(library, replacement);
+        ws.resolve();
+        EXPECT_TRUE(ws.unresolvedReferences().empty()) << namesOf(ws.unresolvedReferences()).front();
+        const auto second = chainTargetOf(ws, "U::a");
+        EXPECT_TRUE(!isResolvedTarget(second) || second != first) << "the target is a feature of the replaced type";
+        // reading the source of the chain again makes the typing and the chain right
+        ws.replaceSource(user, "package U { import Lib::*; part e : Engine; attribute a = (e).power; }");
+        ws.resolve();
+        const auto third = chainTargetOf(ws, "U::a");
+        const bool featureThere = std::string(replacement).find("power") != std::string::npos;
+        EXPECT_EQ(isResolvedTarget(third), featureThere);
+        if (featureThere) EXPECT_EQ(third.get(), ws.find("Lib::Engine::power").get());
+        EXPECT_EQ(ws.unresolvedReferences().size(), featureThere ? 0u : 1u);
+    }
+}
+
+TEST(ChainTarget, SequencesAndConditionalsNeedOneFeatureThatAllMembersRedefine) {
+    One m("package P { part def Q { attribute base = 0; attribute r0 = 0; } "
+          "part q1 : Q { attribute r :> base = 5; attribute :>> r0 = 7; } part q2 : Q { attribute r :> base = 6; attribute :>> r0 = 8; } "
+          "part def X { attribute r = 1; } part def Y { attribute r :> X::r = 2; } part x : X; part y : Y; "
+          "attribute subsetted = (q1, q2).r; attribute viaIf = (if true ? q1 else q2).r; attribute redefined = (q1, q2).r0; "
+          "attribute otherOwner = (x, y).r; attribute single = (q1).r; }");
+    ASSERT_TRUE(m.ws.errors().empty());
+    // features that only subset a common feature are not one feature: no target, and no error (not attempted: the evaluator looks per member)
+    for (const char* name : {"subsetted", "viaIf", "otherOwner"}) EXPECT_FALSE(isResolvedTarget(chainTargetOf(m.ws, std::string("P::") + name))) << name;
+    EXPECT_TRUE(m.ws.unresolvedReferences().empty()) << namesOf(m.ws.unresolvedReferences()).front();
+    size_t chainTargets = 0;
+    for (const auto& info : m.ws.notAttemptedReferences()) chainTargets += info.role == SysMLv2::Files::ReferenceRole::ChainTarget ? 1 : 0;
+    EXPECT_EQ(chainTargets, 3u);
+    // features that redefine a common feature: that feature
+    EXPECT_EQ(chainTargetOf(m.ws, "P::redefined").get(), m.ws.find("P::Q::r0").get());
+    EXPECT_EQ(chainTargetOf(m.ws, "P::single").get(), m.ws.find("P::q1::r").get());
+}
+
+TEST(ChainTarget, AResultParameterWithoutADeclaredTypeIsNotAKnownType) {
+    One m("package P { part def Engine { attribute power = 100; } part e : Engine; calc def C4 { in v; return r = e; } attribute a = C4(1).power; }");
+    EXPECT_TRUE(m.ws.unresolvedReferences().empty()) << namesOf(m.ws.unresolvedReferences()).front();
+    EXPECT_FALSE(isResolvedTarget(chainTargetOf(m.ws, "P::a")));
+}
+
+TEST(ChainTarget, NullBranchesDoNotBlockTheTypeAndNamesOutsideTheTypeAreNotFound) {
+    One m("package P { part def Engine { attribute power = 100; private attribute secret = 1; } part e : Engine; attribute outer = 7; "
+          "attribute viaNull = (if true ? e else null).power; attribute hidden = (e).secret; attribute lexical = (e).outer; }");
+    EXPECT_EQ(chainTargetOf(m.ws, "P::viaNull").get(), m.ws.find("P::Engine::power").get());
+    // a private member of the type is not visible from outside, and a feature of the enclosing package is not a member of the type
+    EXPECT_FALSE(isResolvedTarget(chainTargetOf(m.ws, "P::hidden")));
+    EXPECT_FALSE(isResolvedTarget(chainTargetOf(m.ws, "P::lexical")));
+    std::vector<std::string> names = namesOf(m.ws.unresolvedReferences());
+    std::sort(names.begin(), names.end());
+    EXPECT_EQ(names, (std::vector<std::string>{"outer", "secret"}));
+    // the message says where the name was looked up
+    const auto warnings = m.ws.unresolvedAsWarnings(0);
+    ASSERT_EQ(warnings.size(), 2u);
+    for (const auto& warning : warnings) {
+        EXPECT_NE(warning->description().find("the type 'Engine' of the left operand has no feature"), std::string::npos) << warning->description();
+        EXPECT_EQ(warning->description().find("standard library"), std::string::npos) << warning->description();
+    }
+}
+
+TEST(ChainTarget, TypesOfOtherSourcesAndOfTheLibraryAreSearchedLikeThoseOfTheSameSource) {
+    Workspace ws;
+    ws.addText("package Types { part def Engine { attribute power = 100; } part def Big :> Engine { attribute weight = 5; } }", "types.sysml", SourceLanguage::SysML, 0);
+    ws.addText("package U { part b : Types::Big; attribute a = (b).power; attribute w = (b).weight; attribute c = (b as Types::Engine).power; "
+               "attribute n = (b as Types::Engine).weight; }", "user.sysml", SourceLanguage::SysML, 1);
+    ws.resolve();
+    EXPECT_EQ(chainTargetOf(ws, "U::a").get(), ws.find("Types::Engine::power").get());      // inherited by Big
+    EXPECT_EQ(chainTargetOf(ws, "U::w").get(), ws.find("Types::Big::weight").get());
+    EXPECT_EQ(chainTargetOf(ws, "U::c").get(), ws.find("Types::Engine::power").get());
+    EXPECT_FALSE(isResolvedTarget(chainTargetOf(ws, "U::n")));                               // Engine has no weight
+    ASSERT_EQ(ws.unresolvedReferences().size(), 1u);
+    EXPECT_EQ(ws.unresolvedReferences().front().name, "weight");
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// A name in the value expression of a feature is looked up from the namespace that owns the feature, not in the feature itself (the pilot
+// implementation binds it so, which the XMI of the standard library shows): the members that the feature has through its own types are not visible.
+// ---------------------------------------------------------------------------------------------------------------------
+
+TEST(ValueExpressionScope, NamesAreNotLookedUpThroughTheTypeOfTheFeatureThatHasTheValue) {
+    One m("package P { attribute def Ref { attribute mRefs : Ref[*] = self; } attribute def LengthUnit :> Ref; "
+          "attribute def Frame { attribute xUnit : LengthUnit = mRefs#(1); attribute :>> mRefs : LengthUnit[3]; } }");
+    const auto xUnit = as<KerML::Entities::Feature>(m.ws.find("P::Frame::xUnit"));
+    ASSERT_NE(xUnit, nullptr);
+    std::shared_ptr<KerML::Entities::FeatureReferenceExpression> reference;
+    for (const auto& element : m.ws.elements()) {
+        const auto candidate = as<KerML::Entities::FeatureReferenceExpression>(element);
+        if (candidate && candidate->owner() && candidate->owner()->owner() == xUnit) reference = candidate;
+    }
+    ASSERT_NE(reference, nullptr);
+    ASSERT_NE(reference->referent(), nullptr);
+    // the local redefinition of the frame, not the `mRefs` of Ref that xUnit inherits through LengthUnit
+    EXPECT_NE(reference->referent().get(), m.ws.find("P::Ref::mRefs").get());
+    EXPECT_EQ(reference->referent()->owner(), m.ws.find("P::Frame"));
+}
+
+TEST(ValueExpressionScope, NamesOfTheOwnerAndOfTheEnclosingNamespacesAreStillFound) {
+    One m("package P { attribute outer = 1; part def D { attribute a = 2; attribute b = a + outer; attribute c : Real = b; } }");
+    for (const char* name : {"b", "c"}) {
+        const auto feature = as<KerML::Entities::Feature>(m.ws.find(std::string("P::D::") + name));
+        ASSERT_NE(feature, nullptr);
+    }
+    // nothing is unresolved except `Real`, which this model does not define
+    for (const auto& info : m.ws.unresolvedReferences()) EXPECT_EQ(info.name, "Real");
+}
+
+// A chain segment is the member of the scope of the previous segment under its effective name: a redefinition that is declared without a name is
+// found by the name of the feature it redefines, before the feature of the same name that the scope inherits through its type.
+TEST(ValueExpressionScope, ASegmentOfAChainIsTheUnnamedRedefinitionNotTheInheritedFeature) {
+    const std::string ShapeLike =
+        "package P { item def SSO { item edges : SSO[0..*]; item vertices : SSO[0..*]; } "
+        "item def Path :> SSO { item :>> edges [1..*] { item :>> vertices [0..2]; attribute y = vertices; } item :>> vertices [*] = edges.vertices; } }";
+    One m(ShapeLike);
+    EXPECT_TRUE(m.ws.unresolvedReferences().empty());
+    const auto path = m.ws.find("P::Path");
+    ASSERT_NE(path, nullptr);
+    std::shared_ptr<KerML::Entities::FeatureChainExpression> chain;
+    std::vector<std::shared_ptr<KerML::Entities::FeatureReferenceExpression>> references;
+    for (const auto& element : m.ws.elements()) {
+        if (const auto candidate = as<KerML::Entities::FeatureChainExpression>(element)) chain = candidate;
+        if (const auto reference = as<KerML::Entities::FeatureReferenceExpression>(element)) references.push_back(reference);
+    }
+    ASSERT_NE(chain, nullptr);
+    const auto target = chain->targetFeature();
+    ASSERT_NE(target, nullptr);
+    // `edges.vertices`: the `vertices` that Path::edges (the redefinition of SSO::edges, which has no name of its own) owns, not the `vertices` of
+    // SSO (which the type of `edges` has as well)
+    EXPECT_NE(target.get(), m.ws.find("P::SSO::vertices").get());
+    EXPECT_FALSE(isUnresolved(target));
+    ASSERT_NE(target->owner(), nullptr);
+    EXPECT_EQ(target->owner()->owner(), path);
+    EXPECT_FALSE(target->owner()->declaredName().has_value());
+    // `attribute y = vertices` inside Path::edges is the same feature (a plain reference to a name that is the same unnamed redefinition)
+    bool sameReference = false;
+    for (const auto& reference : references) sameReference = sameReference || reference->referent() == target;
+    EXPECT_TRUE(sameReference);
+}
+
+TEST(ValueExpressionScope, ASegmentIsTheRedefinitionWithADeclaredNameToo) {
+    One m("package P { item def SSO { item edges : SSO[0..*]; item vertices : SSO[0..*]; } "
+          "item def Path :> SSO { item :>> edges [1..*] { item vx :>> vertices [0..2]; } item :>> vertices [*] = edges.vx; } }");
+    EXPECT_TRUE(m.ws.unresolvedReferences().empty());
+    for (const auto& element : m.ws.elements()) {
+        if (const auto chain = as<KerML::Entities::FeatureChainExpression>(element)) {
+            ASSERT_NE(chain->targetFeature(), nullptr);
+            EXPECT_EQ(chain->targetFeature()->declaredName().value_or(""), "vx");
+            EXPECT_FALSE(isUnresolved(chain->targetFeature()));
+        }
+    }
+}
+
+TEST(ValueExpressionScope, TheBindingFollowsTheTextWhenTheSourceIsReplaced) {
+    Workspace ws;
+    const size_t source = ws.addText("package P { item def SSO { item edges : SSO[0..*]; item vertices : SSO[0..*]; } "
+                                     "item def Path :> SSO { item :>> edges [1..*] { item :>> vertices [0..2]; } item :>> vertices [*] = edges.vertices; } }", "m.sysml");
+    ws.resolve();
+    const auto target = [&] {
+        for (const auto& element : ws.elements()) {
+            if (const auto chain = as<KerML::Entities::FeatureChainExpression>(element)) return chain->targetFeature();
+        }
+        return std::shared_ptr<KerML::Entities::Feature>();
+    };
+    const auto first = target();
+    ASSERT_NE(first, nullptr);
+    EXPECT_NE(first->owner(), ws.find("P::SSO"));   // (a feature nested in the redefinition of `edges`)
+    // without the nested redefinition the segment is the feature that `edges` inherits through its type
+    ws.replaceSource(source, "package P { item def SSO { item edges : SSO[0..*]; item vertices : SSO[0..*]; } "
+                             "item def Path :> SSO { item :>> edges [1..*]; item :>> vertices [*] = edges.vertices; } }");
+    ws.resolve();
+    const auto second = target();
+    ASSERT_NE(second, nullptr);
+    EXPECT_EQ(second.get(), ws.find("P::SSO::vertices").get());
+    EXPECT_TRUE(ws.unresolvedReferences().empty());
+    // and with it again, the nested one
+    ws.replaceSource(source, "package P { item def SSO { item edges : SSO[0..*]; item vertices : SSO[0..*]; } "
+                             "item def Path :> SSO { item :>> edges [1..*] { item :>> vertices [0..2]; } item :>> vertices [*] = edges.vertices; } }");
+    ws.resolve();
+    const auto third = target();
+    ASSERT_NE(third, nullptr);
+    EXPECT_NE(third->owner(), ws.find("P::SSO"));
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// An invocation whose invoked type is a feature chain (`c.twice(5)`): as in the pilot's XMI the invocation owns the chain feature (through an
+// OwningMembership, its first relationship); the feature has a chaining for every link, and it is the instantiated type.
+// ---------------------------------------------------------------------------------------------------------------------
+
+namespace {
+
+/// The invocations (not the operators and constructors) of the model, in the order of the elements.
+std::vector<std::shared_ptr<KerML::Entities::InvocationExpression>> plainInvocationsOf(const Workspace& ws) {
+    std::vector<std::shared_ptr<KerML::Entities::InvocationExpression>> result;
+    for (const auto& element : ws.elements()) {
+        const auto invocation = as<KerML::Entities::InvocationExpression>(element);
+        if (!invocation) continue;
+        const auto& invocationRef = *invocation;
+        if (typeid(invocationRef) == typeid(KerML::Entities::InvocationExpression)) result.push_back(invocation);
+    }
+    return result;
+}
+
+std::shared_ptr<KerML::Entities::Feature> chainOf(const std::shared_ptr<KerML::Entities::InvocationExpression>& invocation) {
+    const auto feature = as<KerML::Entities::Feature>(invocation->instantiatedType());
+    return feature && !feature->ownedFeatureChaining().empty() ? feature : nullptr;
+}
+
+std::vector<ElementPtr> linksOf(const std::shared_ptr<KerML::Entities::Feature>& chain) {
+    std::vector<ElementPtr> links;
+    for (const auto& link : chain->chainingFeature()) links.push_back(link);
+    return links;
+}
+
+}  // namespace
+
+TEST(InvokedFeatureChain, TwoAndThreeSegmentPrefixesInSysML) {
+    One m("package P { part def Car { attribute m = 3; calc twice { in k; k * m } } part c : Car; part def G { part car : Car; } part g : G; "
+          "attribute r = c.twice(5); attribute r3 = g.car.twice(2); attribute plain = Car::twice(1); }");
+    EXPECT_TRUE(m.ws.unresolvedReferences().empty()) << namesOf(m.ws.unresolvedReferences()).front();
+    const auto invocations = plainInvocationsOf(m.ws);
+    ASSERT_EQ(invocations.size(), 3u);
+    const auto two = chainOf(invocations[0]);
+    const auto three = chainOf(invocations[1]);
+    ASSERT_NE(two, nullptr);
+    ASSERT_NE(three, nullptr);
+    EXPECT_EQ(linksOf(two), (std::vector<ElementPtr>{m.ws.find("P::c"), m.ws.find("P::Car::twice")}));
+    EXPECT_EQ(linksOf(three), (std::vector<ElementPtr>{m.ws.find("P::g"), m.ws.find("P::G::car"), m.ws.find("P::Car::twice")}));
+    // the chain feature is owned through an OwningMembership that is the first relationship of the invocation
+    ASSERT_FALSE(invocations[0]->ownedRelationship().empty());
+    EXPECT_EQ(invocations[0]->ownedRelationship().front()->getType(), "OwningMembership");
+    EXPECT_EQ(two->owner(), invocations[0]);
+    EXPECT_EQ(two->owningRelationship(), invocations[0]->ownedRelationship().front());
+    // the relationships of the chaining are consistent
+    ASSERT_EQ(two->ownedFeatureChaining().size(), 2u);
+    for (size_t index = 0; index < 2; ++index) EXPECT_EQ(two->ownedFeatureChaining()[index]->chainingFeature(), two->chainingFeature()[index]);
+    // a name that is not a chain is as it was: the called feature itself, a non-owning membership of it, no chain
+    EXPECT_EQ(chainOf(invocations[2]), nullptr);
+    EXPECT_EQ(invocations[2]->instantiatedType(), m.ws.find("P::Car::twice"));
+    EXPECT_EQ(invocations[2]->ownedRelationship().front()->getType(), "Membership");
+    // `function()` of an invocation through a chain stays unset: the evaluator takes the chain (an instance prefix) first
+    EXPECT_EQ(invocations[0]->function(), nullptr);
+}
+
+TEST(InvokedFeatureChain, KerMLPrefixesAndTheFunctionOfTheLastFeature) {
+    One m("package P { class Car { feature power = 100; } function F { in feature a; return feature r : Car; } class H { feature fn : F; } "
+          "feature h : H; feature viaChain = h.fn(5); feature result = h.fn(5).power; feature plain = F(5); }",
+          SourceLanguage::KerML, "test.kerml");
+    EXPECT_TRUE(m.ws.unresolvedReferences().empty()) << namesOf(m.ws.unresolvedReferences()).front();
+    const auto invocations = plainInvocationsOf(m.ws);
+    ASSERT_EQ(invocations.size(), 3u);
+    for (const size_t index : {0u, 1u}) {
+        const auto chain = chainOf(invocations[index]);
+        ASSERT_NE(chain, nullptr) << index;
+        EXPECT_EQ(linksOf(chain), (std::vector<ElementPtr>{m.ws.find("P::h"), m.ws.find("P::H::fn")}));
+    }
+    // a plain call of a function binds its function as before
+    EXPECT_EQ(invocations[2]->function(), as<KerML::Entities::Function>(m.ws.find("P::F")));
+    // the type of the result of the last feature (here through the function that types it) is the static type for a chain target
+    EXPECT_EQ(chainTargetOf(m.ws, "P::result").get(), m.ws.find("P::Car::power").get());
+}
+
+TEST(InvokedFeatureChain, UnresolvedLinksAreReportedAndNoChainIsLeftDangling) {
+    One m("package P { part def Car { calc twice { in k; k * 2 } } part c : Car; attribute a = nope.twice(1); attribute b = c.missing(1); }");
+    std::vector<std::string> names = namesOf(m.ws.unresolvedReferences());
+    std::sort(names.begin(), names.end());
+    // `nope` and `nope.twice` (the second link names the first), and `c.missing`
+    EXPECT_EQ(names, (std::vector<std::string>{"c.missing", "nope", "nope.twice"}));
+    const auto invocations = plainInvocationsOf(m.ws);
+    ASSERT_EQ(invocations.size(), 2u);
+    for (const auto& invocation : invocations) {
+        const auto chain = chainOf(invocation);
+        ASSERT_NE(chain, nullptr);
+        EXPECT_EQ(chain->chainingFeature().size(), 2u);
+    }
+    EXPECT_TRUE(isUnresolved(invocations[0]->instantiatedType() ? as<KerML::Entities::Feature>(invocations[0]->instantiatedType())->chainingFeature().front() : nullptr));
+    // the first link of the second call is resolved, the last is a placeholder
+    EXPECT_EQ(chainOf(invocations[1])->chainingFeature().front(), as<KerML::Entities::Feature>(m.ws.find("P::c")));
+    EXPECT_TRUE(isUnresolved(chainOf(invocations[1])->chainingFeature().back()));
+}
+
+TEST(InvokedFeatureChain, TheChainFollowsTheTextWhenTheSourceIsReplaced) {
+    Workspace ws;
+    ws.addText("package Lib { part def Car { calc twice { in k; k * 2 } } }", "lib.sysml", SourceLanguage::SysML, 0);
+    const size_t user = ws.addText("package U { import Lib::*; part c : Car; attribute r = c.twice(5); }", "user.sysml", SourceLanguage::SysML, 1);
+    ws.resolve();
+    auto invocations = plainInvocationsOf(ws);
+    ASSERT_EQ(invocations.size(), 1u);
+    ASSERT_NE(chainOf(invocations[0]), nullptr);
+    EXPECT_EQ(linksOf(chainOf(invocations[0])), (std::vector<ElementPtr>{ws.find("U::c"), ws.find("Lib::Car::twice")}));
+    EXPECT_TRUE(ws.unresolvedReferences().empty());
+    // the chain changes with its source: a longer prefix, then a call that is no chain
+    ws.replaceSource(user, "package U { import Lib::*; part c : Car; part h { part d : Car; } attribute r = h.d.twice(5); }");
+    ws.resolve();
+    invocations = plainInvocationsOf(ws);
+    ASSERT_EQ(invocations.size(), 1u);
+    ASSERT_NE(chainOf(invocations[0]), nullptr);
+    EXPECT_EQ(linksOf(chainOf(invocations[0])).size(), 3u);
+    EXPECT_TRUE(ws.unresolvedReferences().empty());
+    ws.replaceSource(user, "package U { import Lib::*; attribute r = Car::twice(5); }");
+    ws.resolve();
+    invocations = plainInvocationsOf(ws);
+    ASSERT_EQ(invocations.size(), 1u);
+    EXPECT_EQ(chainOf(invocations[0]), nullptr);
+    EXPECT_EQ(invocations[0]->instantiatedType(), ws.find("Lib::Car::twice"));
+}

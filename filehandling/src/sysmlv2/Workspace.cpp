@@ -4,6 +4,7 @@
 #include <sysmlv2/Workspace.h>
 
 #include "resolution/Resolver.h"
+#include <sysmlv2/detail/WorkspaceTesting.h>
 
 #include <kerml/parser/KerMlErrorListener.h>
 #include <kerml/parser/KerMLLexer.h>
@@ -19,6 +20,10 @@
 #include <sysmlv2/xmi/XmiReader.h>
 #include <sysmlv2/xmi/XmiWriter.h>
 
+#include <kerml/kernel/expressions/InvocationExpression.h>
+#include <kerml/kernel/expressions/OperatorExpression.h>
+#include <kerml/kernel/expressions/OperatorFunctions.h>
+#include <kerml/kernel/functions/Function.h>
 #include <kerml/kernel/packages/Package.h>
 #include <kerml/root/elements/NameEscaping.h>
 #include <kerml/root/elements/Relationship.h>
@@ -34,12 +39,22 @@
 #include <DefaultErrorStrategy.h>
 #include <Exceptions.h>
 #include <atn/ParserATNSimulator.h>
+#include <atn/PredictionContextCache.h>
 #include <atn/PredictionMode.h>
+#include <ParserRuleContext.h>
+#include <Token.h>
+#include <tree/ErrorNode.h>
+#include <tree/ParseTree.h>
+#include <tree/ParseTreeListener.h>
+#include <tree/TerminalNode.h>
 #include <tree/ParseTreeWalker.h>
 #include <boost/uuid/uuid_generators.hpp>
 
 #include <algorithm>
+#include <array>
+#include <cstdint>
 #include <atomic>
+#include <shared_mutex>
 #include <exception>
 #include <iostream>
 #include <mutex>
@@ -68,67 +83,156 @@
 #include <unordered_set>
 
 namespace {
-    /// Stack of the thread that parses a text. The parser and the listener walk recurse once per nesting level of the text (and the
-    /// parser's prediction recurses deeply for runs of operators), which the 8 MB of an ordinary stack does not always survive.
-    [[maybe_unused]] constexpr size_t ParseStackSize = size_t(512) << 20;
+    /// The stacks that the thread of a parse is tried with, largest first. The first that the system gives is used, and the limits of the nesting
+    /// of a text follow the stack that was obtained (nestingLimitsFor()).
+    constexpr size_t ParseStackSizes[] = {size_t(512) << 20, size_t(128) << 20, size_t(32) << 20};
 
-    /// Runs @p function on @p count threads with a large stack at the same time and waits for all of them. Where a thread cannot be created
-    /// (and with Emscripten, which has one stack for everything, see STACK_SIZE in check/cmake/Emscripten.cmake) @p function also runs on
-    /// the calling thread, once, so with @p count 1 it runs exactly once, wherever. @p function must not throw, and with several threads it
-    /// must be one that may run several times at once and in any number of copies (a worker that takes its work from a shared queue).
+    /// The stack that the code of a parse runs on, in bytes: the size of the thread made by runOnLargeStacks(); else (the function ran on the calling
+    /// thread) what is left of the stack of the calling thread, measured (remainingStackBytes()) less a reserve for the rest of the work; where that
+    /// cannot be measured (WebAssembly: the recursion is also bounded by the native stack of the engine, about 1 MB in V8, whatever STACK_SIZE says
+    /// in check/cmake/Emscripten.cmake) the 1 MB of the smallest stack of a platform (a Windows main thread).
+    constexpr size_t UnknownStackBytes = size_t(1) << 20;
+    thread_local size_t ParseStackBytes = UnknownStackBytes;
+
+    /// What the frames of a parse need besides the recursion over the nesting of the text (the lexer, the prediction of the parser, the resolver, the
+    /// functions that called the workspace and the signal handlers), measured: 20 KB for a text of a few levels; 64 KB with a margin.
+    constexpr size_t InlineReserveBytes = size_t(64) << 10;
+
+    /// The bytes of stack that the calling thread has left, or 0 if that is not known.
+    size_t remainingStackBytes() {
+        char here = 0;
+        const auto address = reinterpret_cast<std::uintptr_t>(&here);
+#if defined(_WIN32)
+        ULONG_PTR low = 0, high = 0;
+        GetCurrentThreadStackLimits(&low, &high);
+        return address > low ? static_cast<size_t>(address - low) : 0;
+#elif defined(__EMSCRIPTEN__)
+        (void)address;
+        return 0;
+#elif defined(__APPLE__)
+        const auto top = reinterpret_cast<std::uintptr_t>(pthread_get_stackaddr_np(pthread_self()));
+        const size_t size = pthread_get_stacksize_np(pthread_self());
+        return top - size < address ? static_cast<size_t>(address - (top - size)) : 0;
+#else
+        pthread_attr_t attributes;
+        if (pthread_getattr_np(pthread_self(), &attributes) != 0) return 0;
+        void* lowest = nullptr;
+        size_t size = 0;
+        const int result = pthread_attr_getstack(&attributes, &lowest, &size);
+        pthread_attr_destroy(&attributes);
+        if (result != 0 || lowest == nullptr) return 0;
+        const auto low = reinterpret_cast<std::uintptr_t>(lowest);
+        return address > low ? static_cast<size_t>(address - low) : 0;
+#endif
+    }
+
+    /// The stack that a parse on the calling thread may count on.
+    size_t inlineStackBytes() {
+        const size_t remaining = remainingStackBytes();
+        if (remaining == 0) return UnknownStackBytes;
+        return remaining > InlineReserveBytes ? remaining - InlineReserveBytes : 0;
+    }
+
+    /// For tests (SysMLv2::Files::detail::setParseStackForTesting()): parse on the calling thread, or on a thread with this stack (0: the default sizes).
+    std::atomic<bool> ForceInlineParsing{false};
+    std::atomic<size_t> ForcedParseStack{0};
+    /// How many times the prediction caches were emptied (SysMLv2::Files::detail::predictionCacheCleanups()).
+    std::atomic<size_t> PredictionCacheCleanups{0};
+
+    /// Runs @p function on @p count threads with a large stack at the same time and waits for all of them. The first thread is made with the largest
+    /// of ParseStackSizes that the system gives, and every other with the same size (the limits of the nesting of a text follow the stack, and the
+    /// same text must not be accepted by one worker and rejected by another); if a further thread cannot be made, there are fewer workers. Where
+    /// not even the first can be created (and with Emscripten, which has one stack for everything) @p function runs on the calling thread, once,
+    /// so with @p count 1 it runs exactly once, wherever.
+    /// @p function must not throw, and with several threads it must be one that may run several times at once and in any number of copies (a worker
+    /// that takes its work from a shared queue).
+    struct ThreadStart {
+        const std::function<void()>* function;
+        size_t stack;
+    };
+#if defined(_WIN32)
+    DWORD WINAPI runThread(LPVOID argument) {
+        auto* start = static_cast<ThreadStart*>(argument);
+        ParseStackBytes = start->stack;
+        (*start->function)();
+        return 0;
+    }
+#elif !defined(__EMSCRIPTEN__)
+    void* runThread(void* argument) {
+        auto* start = static_cast<ThreadStart*>(argument);
+        ParseStackBytes = start->stack;
+        (*start->function)();
+        return nullptr;
+    }
+#endif
+
     void runOnLargeStacks(size_t count, const std::function<void()>& function) {
+        // (the sizes to try for the first thread: the forced one, or all of them)
+        std::vector<size_t> sizes(std::begin(ParseStackSizes), std::end(ParseStackSizes));
+        if (ForcedParseStack.load() != 0) sizes = {ForcedParseStack.load()};
+        std::vector<std::unique_ptr<ThreadStart>> starts;
+        bool anyThread = false;
 #if defined(__EMSCRIPTEN__)
         (void)count;
-        function();
 #elif defined(_WIN32)
         std::vector<HANDLE> threads;
-        bool failed = false;
-        for (size_t i = 0; i < count; ++i) {
-            HANDLE thread = CreateThread(nullptr, ParseStackSize, [](LPVOID argument) -> DWORD {
-                (*static_cast<const std::function<void()>*>(argument))();
-                return 0;
-            }, const_cast<std::function<void()>*>(&function), STACK_SIZE_PARAM_IS_A_RESERVATION, nullptr);
-            if (thread == nullptr) {
-                failed = true;
-                break;
+        for (size_t i = 0; i < count && !ForceInlineParsing.load(); ++i) {
+            HANDLE thread = nullptr;
+            for (const size_t size : sizes) {
+                starts.push_back(std::make_unique<ThreadStart>(ThreadStart{&function, size}));
+                thread = CreateThread(nullptr, size, runThread, starts.back().get(), STACK_SIZE_PARAM_IS_A_RESERVATION, nullptr);
+                if (thread != nullptr) {
+                    sizes = {size};   // (the same for the other threads)
+                    break;
+                }
             }
+            if (thread == nullptr) break;
             threads.push_back(thread);
         }
-        if (failed || count == 0) function();
+        anyThread = !threads.empty();
+#else
+        std::vector<pthread_t> threads;
+        for (size_t i = 0; i < count && !ForceInlineParsing.load(); ++i) {
+            bool started = false;
+            pthread_t thread;
+            for (const size_t size : sizes) {
+                pthread_attr_t attributes;
+                if (pthread_attr_init(&attributes) != 0) continue;
+                if (pthread_attr_setstacksize(&attributes, size) == 0) {
+                    starts.push_back(std::make_unique<ThreadStart>(ThreadStart{&function, size}));
+                    started = pthread_create(&thread, &attributes, runThread, starts.back().get()) == 0;
+                }
+                pthread_attr_destroy(&attributes);
+                if (started) {
+                    sizes = {size};   // (the same for the other threads)
+                    break;
+                }
+            }
+            if (!started) break;
+            threads.push_back(thread);
+        }
+        anyThread = !threads.empty();
+#endif
+        if (!anyThread) {
+#if !defined(__EMSCRIPTEN__)
+            static std::once_flag warned;
+            if (!ForceInlineParsing.load()) {
+                std::call_once(warned, [] {
+                    std::cerr << "sysmlv2parser: cannot create a thread with a stack of " << (ParseStackSizes[std::size(ParseStackSizes) - 1] >> 20)
+                              << " MB or more; parsing on the calling thread: the nesting of a text is limited to what the stack that is left to it takes"
+                                 " (see Workspace.h)\n";
+                });
+            }
+#endif
+            ParseStackBytes = inlineStackBytes();
+            function();
+        }
+#if defined(_WIN32)
         for (HANDLE thread : threads) {
             WaitForSingleObject(thread, INFINITE);
             CloseHandle(thread);
         }
-#else
-        std::vector<pthread_t> threads;
-        bool failed = false;
-        for (size_t i = 0; i < count; ++i) {
-            bool started = false;
-            pthread_attr_t attributes;
-            pthread_t thread;
-            if (pthread_attr_init(&attributes) == 0) {
-                if (pthread_attr_setstacksize(&attributes, ParseStackSize) == 0) {
-                    started = pthread_create(&thread, &attributes, [](void* argument) -> void* {
-                        (*static_cast<const std::function<void()>*>(argument))();
-                        return nullptr;
-                    }, const_cast<std::function<void()>*>(&function)) == 0;
-                }
-                pthread_attr_destroy(&attributes);
-            }
-            if (!started) {
-                failed = true;
-                break;
-            }
-            threads.push_back(thread);
-        }
-        if (failed || count == 0) {
-            static std::once_flag warned;
-            std::call_once(warned, [] {
-                std::cerr << "sysmlv2parser: cannot create a thread with a " << (ParseStackSize >> 20)
-                          << " MB stack; parsing on the calling thread (deeply nested texts can overflow its stack)\n";
-            });
-            function();
-        }
+#elif !defined(__EMSCRIPTEN__)
         for (pthread_t thread : threads) pthread_join(thread, nullptr);
 #endif
     }
@@ -173,14 +277,159 @@ namespace {
         }
     }
 
+    /// Limits on the size of a text; a text that exceeds one is not read: its source has no elements and one syntax error that names the limit.
+    ///  - Recursion depth (NestingGuard, checked while the text is parsed): how deep the recursion of the parser gets, in levels of the parse tree (the
+    ///    rules of the grammar: about 3 per parenthesis, 6 per package, 1 per unary operator or `if`). Parsing, walking the tree and building the model
+    ///    recurse once per level. Measured in an unoptimized build (the stack of the parse thread was shrunk until a text of each kind failed:
+    ///    parentheses, `- - -x`, nested `if`, packages, sums, sequences): 0.13 KB to 1.3 KB per level, the worst being the negations.
+    ///  - Tree depth (findTooDeepNode(), checked on the finished parse tree): the depth of the tree, which also counts what the parser reads in a loop
+    ///    without recursion (the terms of `1 + 1 + ...`, of `a.b.c`, of `x->f()->f()`) and the elements of a sequence, because the model nests them:
+    ///    the listeners and the building of the ownership (Ownership::process) recurse once per level of the model. Measured the same way: 0.55 KB
+    ///    per level of a sum, a sequence or a chain. Everything else after the parse is iterative (indexing and name resolution, writing XMI) or does
+    ///    not follow the nesting (see Workspace.h); the walk over the parse tree is iterative (the ANTLR walker).
+    /// Both limits follow the stack that the parse runs on (ParseStackBytes: the thread that runOnLargeStacks() made, with the largest of 512, 128 and
+    /// 32 MB that the system gave; else, on the calling thread, what is left of its stack, measured, less 64 KB for the rest of the work; where that cannot
+    /// be measured, which includes WebAssembly, 1 MB), with a safety factor of 4 on the measured cost per level: stack / 5200 bytes for the recursion
+    /// and stack / 2300 bytes for the tree, and at most 10000 levels of recursion (past that the memory of the model of a text that is rejected is not
+    /// worth it) and 200000 levels of the tree (a sum of 100000 terms needs 0.2 GB). That makes, on the 512 MB stack: 10000 and 200000; on 128 MB:
+    /// 10000 and 58000; on 32 MB: 6400 and 14600; on 1 MB: 201 and 455; on the 256 KB of a small thread, 36 and 82; on 128 KB, 11 and 24.
+    /// WebAssembly has the 1 MB: the recursion there is also bounded by the native stack of the JavaScript engine (about 1 MB in V8), whatever
+    /// STACK_SIZE says in check/cmake/Emscripten.cmake; larger values need to be measured in the target engine.
+    struct NestingLimits {
+        size_t recursion;
+        size_t tree;
+    };
+    constexpr NestingLimits nestingLimitsFor(size_t stackBytes) {
+        const size_t recursion = stackBytes / 5200;
+        const size_t tree = stackBytes / 2300;
+        return {recursion < 10000 ? recursion : 10000, tree < 200000 ? tree : 200000};
+    }
+
+    /// How much the prediction of the parser may look ahead, counted in units of work, never in time, so that a text gives the same result in every
+    /// build and on every machine: a token that is read ahead counts 1, plus 1 for every construct that is open at it (a bracket `(`, `[`, `{`; an
+    /// `if` whose `else` is not read; a prefix operator `+ - not ~` whose operand is not read), counted from the start of the prediction. Two limits:
+    ///  - one prediction may use MaxPredictionWork units;
+    ///  - all predictions together may use LookaheadWorkPerToken units for every token of the text, plus LookaheadWorkBase.
+    /// Why there is a budget at all: the cost of a look-ahead through a nested text grows with the square of the nesting. The grammar used to have
+    /// decisions that read to the end of the construct at every level (the file as a whole for a file that is one package, the elements of a
+    /// sequence), which made every text of a few thousand levels cost seconds and gigabytes; those are gone (see the grammars), and with them every
+    /// shape of text that I could find (parentheses, packages, `if`, unary operators, `**` chains, calls, indexing, `new`) reads at most a few tokens
+    /// ahead. The budget is the guard for the shapes I did not find.
+    /// Measured on the 94 files of the standard library and the other test data of this repository: at most 5.3 units per token of the text (3.3),
+    /// 15338 units for a whole file (5008) and 1630 units for one prediction (658). The limits are 11 times the largest ratio, 650 times the largest
+    /// file and 610 times the largest prediction; they do not bound the size of a flat text: a package of 200000 tokens needs a few units per
+    /// prediction, a sum of 50000 terms one unit per term in all, and the one decision that reads a whole name (`x : a::a::...`, a feature chain: it
+    /// has to see whether a `.` follows) one unit per token of the name, so that a single name may have about 500000 tokens. Where a prediction can
+    /// cost this much (1000000 units are 0.2 s for nested parentheses and up to 5 s for the worst nesting that I know) the cost is the reason for the
+    /// size of the limit.
+    constexpr size_t LookaheadWorkPerToken = 60;
+    constexpr size_t LookaheadWorkBase = 10000000;
+    constexpr size_t MaxPredictionWork = 1000000;
+
+    /// A prediction that used more than this many units (more than the library needs, with a margin of 25%) leaves states in the prediction caches
+    /// of the parser whose contexts are nested as deep as the look-ahead was long, which the runtime frees recursively; the caches of the language are
+    /// emptied after such a parse (see cleanPredictionCaches()).
+    constexpr size_t CleanupPredictionWork = 2000;
+
+    /// Which limit a text exceeded.
+    struct NestingTooDeep {
+        enum Kind { Recursion, Tree, LookaheadDecision, LookaheadText } kind;
+        int line;
+        int column;
+    };
+
+    /// A stack size for a message.
+    std::string stackText(size_t bytes) {
+        return bytes >= (size_t(1) << 20) ? std::to_string(bytes >> 20) + " MB" : std::to_string(bytes >> 10) + " KB";
+    }
+
+    /// Every parse of this library holds the lock of its language shared; cleanPredictionCaches() takes it exclusively. The generated parsers
+    /// (KerMLParser, SysMLv2Parser) share their prediction caches (DFA and contexts) between all instances in the process: a program that uses them
+    /// directly, next to the workspace, must not parse while a workspace cleans the caches (it can only happen after a text that was rejected by a limit
+    /// or needed an unusually long look-ahead); parse through Workspace or Parser::parse*, which take the lock.
+    std::shared_mutex& predictionCacheLock(bool kerml) {
+        static std::shared_mutex locks[2];
+        return locks[kerml ? 0 : 1];
+    }
+
+    /**
+     * Empties the prediction caches of a generated parser (the DFA and the cache of the contexts, which all parsers of a language share), on the
+     * calling thread, which must be one with a large stack. Waits for the parses of the language that are running (they hold the lock shared): a parse that
+     * wants to clean up waits as long as the longest parse that is running. (Whether parses that start meanwhile wait for the cleanup depends on the
+     * lock of the platform: with a reader-preferring lock, as the one of glibc, they do not.) The caches are
+     * built up again by the next texts, which costs the time that the first parse of a process needs.
+     * Why: the look-ahead of the parser leaves states in the caches whose contexts are nested as deep as the longest look-ahead through a nested
+     * text was long, and the runtime frees such a chain recursively, so that freeing it when the process ends overflowed the 8 MB stack of the
+     * main thread; they also keep the memory of a rejected text (hundreds of MB) for as long as the process lives.
+     */
+    template <class ParserType>
+    void cleanPredictionCaches(ParserType& parser, bool kerml) {
+        std::unique_lock<std::shared_mutex> exclusive(predictionCacheLock(kerml));
+        auto* simulator = parser.template getInterpreter<antlr4::atn::ParserATNSimulator>();
+        simulator->clearDFA();
+        ++PredictionCacheCleanups;
+        // (the cache of the contexts holds the nested ones as well and has no way to be emptied: it is made anew)
+        antlr4::atn::PredictionContextCache& contexts = simulator->getSharedContextCache();
+        contexts.~PredictionContextCache();
+        new (&contexts) antlr4::atn::PredictionContextCache();
+    }
+
+    /// The roles of the token types of a language for the look-ahead (see DeadlineTokenStream::LookaheadRole).
+    struct LookaheadTokenTypes {
+        std::vector<size_t> open, close;
+        size_t ifType, elseType;
+        std::vector<size_t> prefixOrBinary, prefix, operands;
+    };
+    std::vector<unsigned char> lookaheadRoles(const LookaheadTokenTypes& types) {
+        std::vector<unsigned char> roles;
+        const auto set = [&](size_t type, unsigned char role) {
+            if (roles.size() <= type) roles.resize(type + 1, 0);
+            roles[type] = role;
+        };
+        for (const size_t type : types.open) set(type, 1);
+        for (const size_t type : types.close) set(type, 2);
+        set(types.ifType, 3);
+        set(types.elseType, 4);
+        for (const size_t type : types.prefixOrBinary) set(type, 5);
+        for (const size_t type : types.prefix) set(type, 6);
+        for (const size_t type : types.operands) set(type, 7);
+        return roles;
+    }
+
     /**
      * A token stream that checks the deadline and the cancellation while the parser reads tokens (every prediction step reads them), so
      * that a parse that runs for too long can be abandoned by throwing DeadlineReached or CancelReached.
+     * It also counts the tokens that the prediction of the parser reads ahead and throws NestingTooDeep if a prediction, or the parse as a whole,
+     * reads more than the budget allows (see watchLookahead()).
      */
     class DeadlineTokenStream : public antlr4::CommonTokenStream {
     public:
         DeadlineTokenStream(antlr4::TokenSource* source, Interrupt interrupt)
             : antlr4::CommonTokenStream(source), Stop(std::move(interrupt)) {}
+
+        /// What a token does to the nesting of the look-ahead (see LookaheadRole), by token type.
+        enum LookaheadRole : unsigned char {
+            None,
+            Open,            // ( [ {
+            Close,           // ) ] }
+            If,              // if
+            Else,            // else
+            PrefixOrBinary,  // + -
+            Prefix,          // not ~
+            Operand          // a name, a number, a string, true, false, null
+        };
+
+        /// Reads all tokens (so that their number is known) and sets the budget of the look-ahead of the parse (see LookaheadWorkPerToken).
+        /// @param roles the role of every token type of the language (index: the type; missing: no role)
+        void watchLookahead(std::vector<unsigned char> roles) {
+            fill();
+            Roles = std::move(roles);
+            Budget = LookaheadWorkPerToken * size() + LookaheadWorkBase;
+            Watching = true;
+        }
+        size_t spentLookahead() const { return Spent; }
+        size_t maxPredictionSeen() const { return MaxSeen; }
+        size_t budget() const { return Budget; }
 
         // Only a look-ahead (k >= 1) and consume() throw. LT(-1) is called by Parser::exitRule from the destructor of a scope guard,
         // which must never throw (the exception would end the process).
@@ -194,15 +443,123 @@ namespace {
         }
         void consume() override {
             check();
+            if (Marks > 0) {
+                // (a token read ahead counts once, and once more for every construct that is open at it: a bracket, an `if` whose `else` is not read
+                // yet, a prefix operator whose operand is not read yet. The contexts that the prediction has to carry, and the work for each token
+                // that it reads, grow with this nesting)
+                const size_t type = antlr4::CommonTokenStream::LA(1);
+                const unsigned char role = type < Roles.size() ? Roles[type] : static_cast<unsigned char>(None);
+                switch (role) {
+                    case LookaheadRole::Open: case LookaheadRole::If: ++Nested; break;
+                    case LookaheadRole::Close: case LookaheadRole::Else: if (Nested > 0) --Nested; break;
+                    case LookaheadRole::Prefix: ++Prefixes; break;
+                    case LookaheadRole::PrefixOrBinary: if (!AfterOperand) ++Prefixes; break;
+                    default: break;
+                }
+                AfterOperand = role == LookaheadRole::Operand || role == LookaheadRole::Close;
+                if (AfterOperand) Prefixes = 0;
+                const size_t work = 1 + Nested + Prefixes;
+                Spent += work;
+                InPrediction += work;
+                if (InPrediction > MaxSeen) MaxSeen = InPrediction;
+                if (Watching && (InPrediction > MaxPredictionWork || Spent > Budget)) throwTooFar();
+            }
             antlr4::CommonTokenStream::consume();
+        }
+        // The prediction of the parser marks the stream where it starts to look ahead and releases the mark when it has decided (and
+        // rewinds); consume() between the two is look-ahead.
+        ssize_t mark() override {
+            if (Marks++ == 0) {
+                InPrediction = 0;
+                Nested = 0;
+                Prefixes = 0;
+                AfterOperand = false;
+            }
+            return antlr4::CommonTokenStream::mark();
+        }
+        void release(ssize_t marker) override {
+            if (Marks > 0) --Marks;
+            antlr4::CommonTokenStream::release(marker);
         }
 
     private:
         void check() {
             if (Stop.active() && (++Calls & 0xFF) == 0) Stop.check();
         }
+        [[noreturn]] void throwTooFar() {
+            const antlr4::Token* start = antlr4::CommonTokenStream::LT(1);
+            throw NestingTooDeep{InPrediction > MaxPredictionWork ? NestingTooDeep::LookaheadDecision : NestingTooDeep::LookaheadText, start != nullptr ? static_cast<int>(start->getLine()) : -1,
+                                 start != nullptr ? static_cast<int>(start->getCharPositionInLine()) : -1};
+        }
         Interrupt Stop;
         size_t Calls = 0;
+        bool Watching = false;
+        size_t Marks = 0;
+        size_t InPrediction = 0;
+        size_t Spent = 0;
+        size_t Budget = 0;
+        size_t MaxSeen = 0;
+        size_t Nested = 0;
+        size_t Prefixes = 0;
+        bool AfterOperand = false;
+        std::vector<unsigned char> Roles;
+    };
+
+    /// Returns where the parse tree is nested deeper than @p limit (the number of nodes on a path from the root to a leaf), if it is. Measured without
+    /// recursion: the tree can be as deep as the text is long. The left recursive rules (`1 + 1 + 1`) nest their operands in the tree without a rule of
+    /// the parser being entered for each of them, which NestingGuard therefore cannot see. @p extra(node) is the nesting that the model gets from a
+    /// node although the tree is flat there (the elements of a sequence `(a, b, c)` are one list in the tree and `,`(a, `,`(b, c)) in the model: as
+    /// deep as the list is long); everything below the node is that much deeper.
+    template <class Extra>
+    std::optional<NestingTooDeep> findTooDeepNode(antlr4::tree::ParseTree* root, size_t limit, Extra&& extra) {
+        std::vector<std::pair<antlr4::tree::ParseTree*, size_t>> stack;
+        if (root != nullptr) stack.emplace_back(root, 1);
+        while (!stack.empty()) {
+            const auto [node, depth] = stack.back();
+            stack.pop_back();
+            if (depth > limit) {
+                // (the position of the rule, or of the rule that holds the token, if the node is a token)
+                const auto* rule = dynamic_cast<antlr4::ParserRuleContext*>(node);
+                if (rule == nullptr) rule = dynamic_cast<antlr4::ParserRuleContext*>(node->parent);
+                const antlr4::Token* start = rule != nullptr ? rule->getStart() : nullptr;
+                return NestingTooDeep{NestingTooDeep::Tree, start != nullptr ? static_cast<int>(start->getLine()) : -1,
+                                      start != nullptr ? static_cast<int>(start->getCharPositionInLine()) : -1};
+            }
+            if (node->children.empty()) continue;
+            const size_t below = depth + 1 + extra(node);
+            for (auto* child : node->children) stack.emplace_back(child, below);
+        }
+        return std::nullopt;
+    }
+
+    /**
+     * A parse listener that follows the nesting of the rules the parser is in and throws NestingTooDeep when it exceeds @c Limit. Added to the
+     * parser before the text is parsed, so that the parser stops long before it uses up its stack, and before it gets slow (every level of
+     * parentheses is looked ahead through by the prediction of the levels in it). It counts the recursion of the parser, which is what costs
+     * stack while the text is parsed; the left recursive rules (`1 + 1 + 1`) nest in the tree without a recursion and are measured afterwards.
+     */
+    class NestingGuard : public antlr4::tree::ParseTreeListener {
+    public:
+        explicit NestingGuard(size_t limit) : Limit(limit) {}
+
+        void enterEveryRule(antlr4::ParserRuleContext* context) override {
+            // (the start rule has no parent: a second parse of the text, after an SLL failure, starts at depth 1 again)
+            Depth = context->parent == nullptr ? 1 : Depth + 1;
+            if (Depth > Limit) {
+                const antlr4::Token* start = context->getStart();
+                throw NestingTooDeep{NestingTooDeep::Recursion, start != nullptr ? static_cast<int>(start->getLine()) : -1,
+                                     start != nullptr ? static_cast<int>(start->getCharPositionInLine()) : -1};
+            }
+        }
+        void exitEveryRule(antlr4::ParserRuleContext*) override {
+            if (Depth > 0) --Depth;
+        }
+        void visitTerminal(antlr4::tree::TerminalNode*) override {}
+        void visitErrorNode(antlr4::tree::ErrorNode*) override {}
+
+    private:
+        size_t Limit;
+        size_t Depth = 0;
     };
 
     /**
@@ -339,6 +696,26 @@ namespace SysMLv2::Files {
             /// XMI sources: whether resolve() linked the document, and the value of Impl::xmiEpoch at that time.
             bool xmiLinked = false;
             size_t xmiLinkedEpoch = 0;
+
+            /// An invocation of `elements` (bindFunctions()). The pointers do not own: `elements` does, and it does not change after the
+            /// source is built; dispose() clears the list with it, and listInvocations() lists again if the count of the elements differs.
+            struct Invocation {
+                KerML::Entities::InvocationExpression* invocation = nullptr;
+                KerML::Entities::OperatorExpression* operatorExpression = nullptr;   // (the same object, if it is one)
+            };
+            std::vector<Invocation> invocations;
+            size_t invocationsOf = static_cast<size_t>(-1);   // (the number of elements the list was made for)
+
+            void listInvocations() {
+                if (invocationsOf == elements.size()) return;
+                invocations.clear();
+                for (const auto& element : elements) {
+                    auto* invocation = dynamic_cast<KerML::Entities::InvocationExpression*>(element.get());
+                    if (invocation == nullptr) continue;
+                    invocations.push_back({invocation, dynamic_cast<KerML::Entities::OperatorExpression*>(invocation)});
+                }
+                invocationsOf = elements.size();
+            }
         };
 
         std::vector<std::shared_ptr<Source>> sources;
@@ -414,6 +791,57 @@ namespace SysMLv2::Files {
             indexedSources = sources.size();
             replaced.clear();
             return *resolver;
+        }
+
+        /**
+         * Binds the invocations of the text sources to their functions (KerML: the function of an OperatorExpression is the library
+         * function named like its operator; the function of any other invocation is its instantiated type if that is a Function).
+         * Done for every invocation by every resolve(), so that the binding follows the library (replaced, removed, not loaded: unbound)
+         * and holds nothing that the model no longer contains. The library functions found are only kept for the duration of the call.
+         * An operator that has no function name (`->`) keeps the type it names; XMI sources are not touched (they carry their own values).
+         *  - If resolve() throws (deadline, cancellation) before this pass, the bindings stay as they were until the next resolve() that returns.
+         *  - An invocation whose instantiated type is a feature (a CalculationUsage, an Expression, ...) keeps `function` unset on purpose
+         *    for now. TODO (evaluator steps): decide how such an invocation reaches the function of its type.
+         * The invocations of a source are listed once (Source::invocations) so that the pass does not look at every element of the model.
+         */
+        void bindFunctions(const Detail::Resolver& index) {
+            // (per operator name: whether the table knows it, and the function of the library, null if it is not loaded)
+            struct Bound {
+                bool known = false;
+                std::shared_ptr<KerML::Entities::Function> function;
+            };
+            std::unordered_map<std::string, Bound> libraryFunctions;
+            for (const auto& source : sources) {
+                if (source->xmi) continue;
+                source->listInvocations();
+                for (const auto& entry : source->invocations) {
+                    KerML::Entities::InvocationExpression& invocation = *entry.invocation;
+                    const Bound* bound = nullptr;
+                    if (entry.operatorExpression != nullptr) {
+                        const std::string& operatorName = entry.operatorExpression->operatorName();
+                        auto found = libraryFunctions.find(operatorName);
+                        if (found == libraryFunctions.end()) {
+                            Bound value;
+                            if (const char* qualifiedName = KerML::operatorFunctionName(operatorName)) {
+                                value.known = true;
+                                value.function = std::dynamic_pointer_cast<KerML::Entities::Function>(index.findLibraryElement(qualifiedName));
+                            }
+                            found = libraryFunctions.emplace(operatorName, std::move(value)).first;
+                        }
+                        if (found->second.known) bound = &found->second;
+                    }
+                    if (bound != nullptr) {
+                        // (null: the library is not loaded, or the binding of an earlier resolve() is stale)
+                        if (invocation.instantiatedType() != bound->function) invocation.setInstantiatedType(bound->function);
+                        if (invocation.function() != bound->function) invocation.setFunction(bound->function);
+                    } else {
+                        // The function an expression names itself (`f(x)`, `x->f()`): known once the name is resolved. Null if the type
+                        // is not a Function (any more), so that a function of an earlier resolve() does not stay behind.
+                        const auto named = std::dynamic_pointer_cast<KerML::Entities::Function>(invocation.instantiatedType());
+                        if (invocation.function() != named) invocation.setFunction(named);
+                    }
+                }
+            }
         }
 
         /// Which source holds an element. Built for one write and discarded with it: the model may change (resolve(), edits of the
@@ -957,8 +1385,77 @@ namespace SysMLv2::Files {
         /// The problems the listener found while building the model are errors of the source (the model is still built).
         static void reportDiagnostics(Source& source) {
             for (const auto& diagnostic : source.data.diagnostics) {
-                source.errors.push_back(makeError(ErrorType::LOGICAL_ERROR, diagnostic.message, diagnostic.line, diagnostic.column, source.name));
+                source.errors.push_back(makeError(diagnostic.warning ? ErrorType::WARNING : ErrorType::LOGICAL_ERROR, diagnostic.message, diagnostic.line, diagnostic.column, source.name));
             }
+        }
+
+        /// The nesting that the parse running now may have: it depends on the stack that the parse runs on.
+        static NestingLimits nestingLimits() { return nestingLimitsFor(ParseStackBytes); }
+
+        /// The error of a source whose text exceeds a limit (see nestingLimitsFor() and LookaheadWorkPerToken): nothing of it is read (the source has
+        /// no elements). The message names the limit.
+        static void reportTooDeep(Source& source, const NestingTooDeep& where) {
+            std::string message;
+            switch (where.kind) {
+                case NestingTooDeep::Recursion:
+                    message = "nesting too deep: the parser needs more than " + std::to_string(nestingLimits().recursion) +
+                              " levels of recursion (about 3 per parenthesis, 6 per package, 1 per unary operator or `if`; the limit for a stack of " +
+                              stackText(ParseStackBytes) + "); the text is not read";
+                    break;
+                case NestingTooDeep::Tree:
+                    message = "text too large for the stack: its parse tree is deeper than " + std::to_string(nestingLimits().tree) +
+                              " levels (a chain or sequence of about that many terms, or nested expressions; the limit for a stack of " +
+                              stackText(ParseStackBytes) + "); the text is not read";
+                    break;
+                case NestingTooDeep::LookaheadDecision:
+                    message = "look-ahead budget exceeded: one decision of the parser needs more than " + std::to_string(MaxPredictionWork) +
+                              " units of look-ahead work (a token read ahead counts 1, plus 1 for every open bracket, `if` or prefix operator); the text is not read";
+                    break;
+                case NestingTooDeep::LookaheadText:
+                    message = "look-ahead budget exceeded: the text needs more than " + std::to_string(LookaheadWorkPerToken) +
+                              " units of look-ahead work per token plus " + std::to_string(LookaheadWorkBase) +
+                              " (a token read ahead counts 1, plus 1 for every open bracket, `if` or prefix operator); the text is not read";
+                    break;
+            }
+            source.errors.push_back(makeError(ErrorType::SYNTAX_ERROR, message, where.line, where.column, source.name));
+        }
+
+        /// Parses with the guards of the nesting and of the look-ahead; returns the tree, or the limit that the text exceeds in @p tooDeep. The
+        /// prediction caches of the language are emptied afterwards if the text was rejected, or needed an unusually long look-ahead, or the parse
+        /// was abandoned (deadline, cancellation).
+        template <class ParserType, class StartContext>
+        static StartContext* parseGuarded(bool kerml, ParserType& parser, DeadlineTokenStream& tokens, antlr4::ANTLRErrorListener& errors,
+                                          StartContext* (ParserType::*start)(), const LookaheadTokenTypes& types,
+                                          const std::function<size_t(antlr4::tree::ParseTree*)>& sequenceLength, std::optional<NestingTooDeep>& tooDeep) {
+            const NestingLimits limits = nestingLimits();
+            NestingGuard guard(limits.recursion);
+            parser.addParseListener(&guard);
+            StartContext* tree = nullptr;
+            bool clean = false;
+            {
+                std::shared_lock<std::shared_mutex> parsing(predictionCacheLock(kerml));
+                try {
+                    tokens.watchLookahead(lookaheadRoles(types));
+                    tree = parseTwoStage(parser, tokens, errors, start);
+                    tooDeep = findTooDeepNode(tree, limits.tree, sequenceLength);
+                } catch (const NestingTooDeep& where) {
+                    tooDeep = where;
+                } catch (...) {
+                    // (deadline, cancellation, ...: the look-ahead that was done so far stays in the caches, which is only worth emptying them if it
+                    // was an unusual one: a service with tight deadlines must not clear them for every text that it abandons)
+                    const bool unusual = tokens.maxPredictionSeen() > CleanupPredictionWork;
+                    parser.removeParseListener(&guard);
+                    if (unusual) {
+                        parsing.unlock();
+                        cleanPredictionCaches(parser, kerml);
+                    }
+                    throw;
+                }
+                clean = tooDeep.has_value() || tokens.maxPredictionSeen() > CleanupPredictionWork;
+            }
+            parser.removeParseListener(&guard);
+            if (clean) cleanPredictionCaches(parser, kerml);
+            return tree;
         }
 
         void parseKerML(std::shared_ptr<Source> source, const std::string& text) {
@@ -973,13 +1470,28 @@ namespace SysMLv2::Files {
 
             // Parse first, then walk the completed tree with the listener. Running the listener
             // during parsing (addParseListener) exposed it to partially-built, still-recovering
-            // contexts; walking a finished tree afterwards does not.
-            KerMLParser::StartContext* tree = parseTwoStage(parser, tokens, *errorListener, &KerMLParser::start);
+            // contexts; walking a finished tree afterwards does not. (The guard that parseGuarded() adds only counts the rules; it does not look at
+            // the contexts, which the remark above is about. A text that exceeds a limit is not walked: the source gets one error and no elements.)
+            std::optional<NestingTooDeep> tooDeep;
+            using P = KerMLParser;
+            KerMLParser::StartContext* tree = parseGuarded(true, parser, tokens, *errorListener, &KerMLParser::start,
+                LookaheadTokenTypes{{P::SYMBOL_ROUND_BRACKET_OPEN, P::SYMBOL_CURLY_BRACKET_OPEN, P::SYMBOL_SQUARE_BRACKET_OPEN},
+                                    {P::SYMBOL_ROUND_BRACKET_CLOSE, P::SYMBOL_CURLY_BRACKET_CLOSE, P::SYMBOL_SQUARE_BRACKET_CLOSE}, P::KEYWORD_IF, P::KEYWORD_ELSE,
+                                    {P::SYMBOL_PLUS, P::SYMBOL_MINUS}, {P::KEYWORD_NOT, P::SYMBOL_CONJUGATES},
+                                    {P::NAME, P::DECIMAL_VALUE, P::EXPONENTIAL_VALUE, P::STRING_VALUE, P::KEYWORD_TRUE, P::KEYWORD_FALSE, P::KEYWORD_NULL}},
+                [](antlr4::tree::ParseTree* node) -> size_t {
+                    auto* list = dynamic_cast<KerMLParser::Sequence_expression_listContext*>(node);
+                    return list != nullptr ? list->owned_expression_member().size() : 0;
+                }, tooDeep);
 
             const auto syntaxErrors = errorListener->getSyntaxErrors();
             source->errors.reserve(syntaxErrors.size());
             for (const auto& error : syntaxErrors) {
                 source->errors.push_back(makeError(errorTypeOf(error->errorType()), shortened(error->message()), error->line(), error->positionInLine(), source->name));
+            }
+            if (tooDeep) {
+                reportTooDeep(*source, *tooDeep);
+                return;
             }
 
             try {
@@ -1005,12 +1517,26 @@ namespace SysMLv2::Files {
             SysMLv2Parser parser(&tokens);
 
             // Parse first, then walk the completed tree with the listener (see parseKerML for why).
-            SysMLv2Parser::StartContext* tree = parseTwoStage(parser, tokens, errorListener, &SysMLv2Parser::start);
+            std::optional<NestingTooDeep> tooDeep;
+            using P = SysMLv2Parser;
+            SysMLv2Parser::StartContext* tree = parseGuarded(false, parser, tokens, errorListener, &SysMLv2Parser::start,
+                LookaheadTokenTypes{{P::SYMBOL_ROUND_BRACKET_OPEN, P::SYMBOL_CURLY_BRACKET_OPEN, P::SYMBOL_SQUARE_BRACKET_OPEN},
+                                    {P::SYMBOL_ROUND_BRACKET_CLOSE, P::SYMBOL_CURLY_BRACKET_CLOSE, P::SYMBOL_SQUARE_BRACKET_CLOSE}, P::KEYWORD_IF, P::KEYWORD_ELSE,
+                                    {P::SYMBOL_PLUS, P::SYMBOL_MINUS}, {P::KEYWORD_NOT, P::SYMBOL_CONJUGATES},
+                                    {P::NAME, P::DECIMAL_VALUE, P::EXPONENTIAL_VALUE, P::STRING_VALUE, P::KEYWORD_TRUE, P::KEYWORD_FALSE, P::KEYWORD_NULL}},
+                [](antlr4::tree::ParseTree* node) -> size_t {
+                    auto* list = dynamic_cast<SysMLv2Parser::Sequence_expression_listContext*>(node);
+                    return list != nullptr ? list->owned_expression_member().size() : 0;
+                }, tooDeep);
 
             const auto syntaxErrors = errorListener.getSyntaxErrors();
             source->errors.reserve(syntaxErrors.size());
             for (const auto& error : syntaxErrors) {
                 source->errors.push_back(makeError(errorTypeOf(error->errorType()), shortened(error->message()), error->line(), error->positionInLine(), source->name));
+            }
+            if (tooDeep) {
+                reportTooDeep(*source, *tooDeep);
+                return;
             }
 
             try {
@@ -1056,6 +1582,8 @@ namespace SysMLv2::Files {
                 for (const auto& child : pending[index]->ownedElements()) add(child);
             }
             for (const auto& element : pending) KerML::Entities::disposeLinks(*element);
+            source.invocations.clear();
+            source.invocationsOf = static_cast<size_t>(-1);
             source.elements.clear();
             source.topLevel.clear();
             source.root.reset();
@@ -1311,15 +1839,30 @@ namespace SysMLv2::Files {
             for (auto& reference : source->data.references) all.push_back(&reference);
             for (auto& reference : source->xmiGeneralizations) all.push_back(&reference);
         }
-        Detail::Resolver& resolver = impl_->updatedResolver();
         const Interrupt stop = impl_->interrupt();
-        try {
-            resolver.run(all, stop.active() ? std::function<bool()>([stop] { return stop.shouldStop(); }) : std::function<bool()>());
-        } catch (const Detail::ResolveDeadlineReached&) {
-            impl_->resetResolver();   // what was resolved stays resolved; the unresolved list is not updated
-            if (stop.isCancelled()) throw ParseCancelled();
-            throw ParseTimeout();
-        }
+        // The indexing and the lookups of the resolver recurse over the generalizations of a type (a chain of 20000 `specializes` overflowed the
+        // 1 MB stack of a Windows main thread), so that they run on a thread with a large stack, like the parser (the walk over the elements
+        // is iterative: the nesting of the text does not matter).
+        Detail::Resolver* resolverInUse = nullptr;
+        std::exception_ptr failure;
+        runOnLargeStack([&] {
+            try {
+                resolverInUse = &impl_->updatedResolver();
+                try {
+                    resolverInUse->run(all, stop.active() ? std::function<bool()>([stop] { return stop.shouldStop(); }) : std::function<bool()>());
+                } catch (const Detail::ResolveDeadlineReached&) {
+                    impl_->resetResolver();   // what was resolved stays resolved; the unresolved list is not updated
+                    if (stop.isCancelled()) throw ParseCancelled();
+                    throw ParseTimeout();
+                }
+            } catch (...) {
+                failure = std::current_exception();   // rethrown on the calling thread
+            }
+        });
+        if (failure) std::rethrow_exception(failure);
+        Detail::Resolver& resolver = *resolverInUse;
+
+        impl_->bindFunctions(resolver);
 
         impl_->unresolved.clear();
         impl_->notAttempted.clear();
@@ -1342,7 +1885,10 @@ namespace SysMLv2::Files {
                 info.inMultiplicity = reference.inMultiplicity;
                 info.context = reference.context;
                 info.placeholder = reference.placeholder;
-                (reference.role == ReferenceRole::NotAttempted ? impl_->notAttempted : impl_->unresolved).push_back(std::move(info));
+                info.detail = reference.absentIn;
+                // (the target of a chain whose operand has a known type that lacks the feature is unresolved, one whose type is not known is not attempted)
+                const bool notAttempted = reference.role == ReferenceRole::NotAttempted || (reference.role == ReferenceRole::ChainTarget && !reference.absent);
+                (notAttempted ? impl_->notAttempted : impl_->unresolved).push_back(std::move(info));
             }
             if (source.xmi) {
                 for (auto& reference : source.xmi->unresolved()) {
@@ -1636,6 +2182,13 @@ namespace SysMLv2::Files {
                 default: kind = "element"; break;
             }
             std::string message = "unresolved reference to " + kind + " '" + info.name + "'";
+            if (info.role == ReferenceRole::ChainTarget) {
+                // (a link of a chain with a computed left operand: looked up among the features of the type of the operand, not in a scope; no import
+                // or library can help)
+                message += info.detail.empty() ? "; the type of the left operand has no such feature" : "; the type " + info.detail + " of the left operand has no feature '" + info.name + "'";
+                warnings.push_back(Impl::makeError(ErrorType::WARNING, message, info.line, info.column, info.sourceName));
+                continue;
+            }
             const size_t prefixLength = message.size();
 
             // Packages that define the first segment of the name but are not visible at the reference: an import would make it visible.
@@ -1816,7 +2369,7 @@ namespace SysMLv2::Files {
     std::vector<std::string> Workspace::referenceNames(size_t source) const {
         std::vector<std::string> names;
         for (const auto& reference : impl_->sources.at(source)->data.references) {
-            if (reference.role != ReferenceRole::NotAttempted) names.push_back(reference.name);
+            if (reference.role != ReferenceRole::NotAttempted && reference.role != ReferenceRole::ChainTarget) names.push_back(reference.name);
         }
         return names;
     }
@@ -1842,4 +2395,13 @@ namespace SysMLv2::Files {
         // Sources that were added since the last resolve() are indexed (without resolving anything).
         return impl_->updatedResolver().find(name, scope, kind, true);
     }
+}
+
+namespace SysMLv2::Files::detail {
+    void setParseStackForTesting(bool inlineParsing, size_t stackBytes) {
+        ForceInlineParsing.store(inlineParsing);
+        ForcedParseStack.store(stackBytes);
+    }
+
+    size_t predictionCacheCleanups() { return PredictionCacheCleanups.load(); }
 }

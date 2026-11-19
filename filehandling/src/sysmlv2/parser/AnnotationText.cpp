@@ -4,6 +4,8 @@
 
 #include <sysmlv2/parser/AnnotationText.h>
 
+#include "LiteralText.h"
+
 #include <vector>
 
 namespace SysMLv2::Files {
@@ -58,24 +60,6 @@ namespace SysMLv2::Files {
     }
 
     std::string AnnotationText::stringValue(std::string_view lexical) {
-        if (lexical.size() < 2 || lexical.front() != '"' || lexical.back() != '"') return std::string(lexical);
-        std::string out;
-        out.reserve(lexical.size());
-        for (size_t i = 1; i + 1 < lexical.size(); ++i) {
-            if (lexical[i] == '\\' && i + 2 < lexical.size()) {
-                ++i;
-                switch (lexical[i]) {
-                    case 'b': out.push_back('\b'); break;
-                    case 'f': out.push_back('\f'); break;
-                    case 't': out.push_back('\t'); break;
-                    case 'n': out.push_back('\n'); break;
-                    case 'r': out.push_back('\r'); break;
-                    default: out.push_back(lexical[i]); break;   // \" \\ \' (and an unknown escape: the character itself)
-                }
-            } else {
-                out.push_back(lexical[i]);
-            }
-        }
-        return out;
+        return decodeStringLiteral(lexical).text;
     }
 }

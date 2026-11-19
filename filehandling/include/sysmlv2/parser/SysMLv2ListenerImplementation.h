@@ -9,6 +9,7 @@
 #include <sysmlv2/ownership/Ownership.h>
 #include <memory>
 #include <stack>
+#include <unordered_set>
 #include <string>
 #include <vector>
 #include <map>
@@ -1022,8 +1023,9 @@ public:
     virtual void enterFunction_reference(SysMLv2Parser::Function_referenceContext* ctx) override;
     virtual void exitFunction_reference(SysMLv2Parser::Function_referenceContext* ctx) override;
 
-    virtual void enterSequence_operator_expression(SysMLv2Parser::Sequence_operator_expressionContext* ctx) override;
-    virtual void exitSequence_operator_expression(SysMLv2Parser::Sequence_operator_expressionContext* ctx) override;
+    virtual void enterOwned_expression_member(SysMLv2Parser::Owned_expression_memberContext* ctx) override;
+    virtual void enterSequence_expression_list(SysMLv2Parser::Sequence_expression_listContext* ctx) override;
+    virtual void exitSequence_expression_list(SysMLv2Parser::Sequence_expression_listContext* ctx) override;
 
     virtual void enterNamed_argument(SysMLv2Parser::Named_argumentContext* ctx) override;
     virtual void exitNamed_argument(SysMLv2Parser::Named_argumentContext* ctx) override;
@@ -1147,7 +1149,7 @@ public:
 
     virtual void enterEveryRule(antlr4::ParserRuleContext* ctx) override;
     virtual void exitEveryRule(antlr4::ParserRuleContext* ctx) override;
-    virtual void visitTerminal(antlr4::tree::TerminalNode* /*node*/) override {}
+    virtual void visitTerminal(antlr4::tree::TerminalNode* node) override;
     virtual void visitErrorNode(antlr4::tree::ErrorNode* /*node*/) override {}
 
     std::vector<std::shared_ptr<KerML::Entities::Element>> getElements() const;
@@ -1205,6 +1207,10 @@ private:
 
     std::vector<std::shared_ptr<KerML::Entities::Element>> Elements;
     std::stack<std::shared_ptr<KerML::Entities::Element>> ParentStack;
+    /// The sequences that are being read, innermost last: the last element of each and the number of its elements (see exitSequence_expression_list()).
+    std::vector<std::pair<const antlr4::ParserRuleContext*, size_t>> SequenceLists;
+    /// The first tokens of the feature chains that were warned about (see exitFeatureChainExpr()).
+    std::unordered_set<size_t> ChainsWarned;
 
     // Guard against the class of bug where a construct with an empty enter/exit handler (one that
     // never pushes anything onto ParentStack) lets exitUsage_declaration/exitDefinition_declaration

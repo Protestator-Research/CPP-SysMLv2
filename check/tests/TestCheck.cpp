@@ -699,7 +699,8 @@ TEST(SysmlPruefeCli, UnusableArgumentsEndWithExitCodeTwo) {
         const int status = std::system(command.c_str());
         EXPECT_EQ(WEXITSTATUS(status), 2) << argument;
     }
-    EXPECT_EQ(WEXITSTATUS(std::system(cliCommand(std::string("--max-ms=500 < ") + NULL_DEVICE + " 2>" + NULL_DEVICE).c_str())), 0);
+    const int validStatus = std::system(cliCommand(std::string("--max-ms=500 < ") + NULL_DEVICE + " 2>" + NULL_DEVICE).c_str());
+    EXPECT_EQ(WEXITSTATUS(validStatus), 0);
 }
 
 TEST(SysmlPruefe, TimingWithWarmParser) {

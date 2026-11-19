@@ -505,9 +505,6 @@ public:
   virtual void enterSequence_expression_list(KerMLParser::Sequence_expression_listContext * /*ctx*/) override { }
   virtual void exitSequence_expression_list(KerMLParser::Sequence_expression_listContext * /*ctx*/) override { }
 
-  virtual void enterSequence_operator_expression(KerMLParser::Sequence_operator_expressionContext * /*ctx*/) override { }
-  virtual void exitSequence_operator_expression(KerMLParser::Sequence_operator_expressionContext * /*ctx*/) override { }
-
   virtual void enterSequence_expression_list_member(KerMLParser::Sequence_expression_list_memberContext * /*ctx*/) override { }
   virtual void exitSequence_expression_list_member(KerMLParser::Sequence_expression_list_memberContext * /*ctx*/) override { }
 
