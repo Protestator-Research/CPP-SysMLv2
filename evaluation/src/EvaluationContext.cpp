@@ -20,6 +20,10 @@ namespace SysMLv2::Evaluation {
         SYSMLV2_COLD_PATH void reportDepthExceeded(EvaluationContext& context, std::size_t maxDepth) {
             context.report(Severity::Error, "The maximum evaluation depth of " + std::to_string(maxDepth) + " is exceeded.");
         }
+
+        SYSMLV2_COLD_PATH void reportCallDepthExceeded(EvaluationContext& context, std::size_t maxCallDepth) {
+            context.report(Severity::Error, "The maximum call depth of " + std::to_string(maxCallDepth) + " is exceeded.");
+        }
     }
 
     EvaluationContext::DepthGuard::DepthGuard(DepthGuard&& other) noexcept : Context(other.Context), Entered(other.Entered) {
@@ -28,6 +32,14 @@ namespace SysMLv2::Evaluation {
 
     EvaluationContext::DepthGuard::~DepthGuard() {
         if (Entered && Context != nullptr) --Context->Depth;
+    }
+
+    EvaluationContext::CallGuard::CallGuard(CallGuard&& other) noexcept : Context(other.Context), Entered(other.Entered) {
+        other.Entered = false;
+    }
+
+    EvaluationContext::CallGuard::~CallGuard() {
+        if (Entered && Context != nullptr) --Context->CallDepth;
     }
 
     EvaluationContext::ElementScope::~ElementScope() {
@@ -98,6 +110,19 @@ namespace SysMLv2::Evaluation {
         Evaluator = evaluator ? std::make_shared<const ExpressionEvaluator>(std::move(evaluator)) : nullptr;
     }
 
+    void EvaluationContext::setFunctionInvoker(FunctionInvoker invoker) {
+        Invoker = invoker ? std::make_shared<const FunctionInvoker>(std::move(invoker)) : nullptr;
+    }
+
+    Value EvaluationContext::invokeFunctionValue(const std::shared_ptr<KerML::Entities::Expression>& function, std::vector<Value> arguments) {
+        if (!function || !Invoker) return reportUnusable(*this, function, !Invoker);
+        const DepthGuard guard = enterScope();
+        if (!guard) return Value();
+        const ElementScope scope = enterElement(function);
+        const std::shared_ptr<const FunctionInvoker> running = Invoker;
+        return (*running)(function, std::move(arguments), *this);
+    }
+
     Value EvaluationContext::evaluate(const std::shared_ptr<KerML::Entities::Expression>& expression) {
         if (!expression || !Evaluator) return reportUnusable(*this, expression, !Evaluator);
         const DepthGuard guard = enterScope();
@@ -109,16 +134,33 @@ namespace SysMLv2::Evaluation {
     }
 
     EvaluationContext::DepthGuard EvaluationContext::enterScope() {
-        if (Depth >= MaxDepth) {
+        if (Depth >= MaxDepth + DepthPerCall * CallDepth) {
+            DepthHit = true;
             if (!DepthReported) {
                 DepthReported = true;
-                reportDepthExceeded(*this, MaxDepth);
+                reportDepthExceeded(*this, MaxDepth + DepthPerCall * CallDepth);
             }
             return DepthGuard(this, false);
         }
         ++Depth;
         return DepthGuard(this, true);
     }
+
+    EvaluationContext::CallGuard EvaluationContext::enterCall() {
+        if (CallDepth >= MaxCallDepth) {
+            CallHit = true;
+            if (!DepthReported) {
+                DepthReported = true;
+                reportCallDepthExceeded(*this, MaxCallDepth);
+            }
+            return CallGuard(this, false);
+        }
+        ++CallDepth;
+        return CallGuard(this, true);
+    }
+
+    void EvaluationContext::setMaxCallDepth(std::size_t maxCallDepth) { MaxCallDepth = maxCallDepth; }
+    std::size_t EvaluationContext::maxCallDepth() const { return MaxCallDepth; }
 
     std::size_t EvaluationContext::depth() const { return Depth; }
     void EvaluationContext::setMaxDepth(std::size_t maxDepth) { MaxDepth = maxDepth; }

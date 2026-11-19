@@ -2,6 +2,7 @@
 #include <sysmlv2/evaluation/QualifiedName.h>
 
 #include "Arguments.h"
+#include "Callables.h"
 #include "Navigation.h"
 
 #include <kerml/core/features/Redefinition.h>
@@ -31,34 +32,14 @@ namespace SysMLv2::Evaluation {
 
         constexpr std::size_t MaxDepth = 256;
 
-        /// The packages of the Kernel Function Library (the files below resources/sysml.library/KerML/Function).
-        bool isKernelFunctionPackage(const std::string& name) {
-            static const std::set<std::string> packages = {"BaseFunctions",    "BooleanFunctions", "CollectionFunctions", "ComplexFunctions",   "ControlFunctions",
-                                                           "DataFunctions",    "IntegerFunctions", "NaturalFunctions",    "NumericalFunctions", "OccurrenceFunctions",
-                                                           "RationalFunctions", "RealFunctions",    "ScalarFunctions",     "SequenceFunctions",  "StringFunctions",
-                                                           "TrigFunctions",    "VectorFunctions"};
-            return packages.count(name) != 0;
-        }
-
-        bool isLibraryPackageOf(const std::shared_ptr<KerML::Entities::Function>& function);
-
-        /// True if the function belongs to the Kernel Function Library: it is an operator function, or it is owned by one of its packages
-        /// and that package is a library package (the model marks them: metaclass LibraryPackage), which a user package of the same name
-        /// is not. The library does not carry the flag Expression::isModelLevelEvaluable for its functions, so this is the approximation
-        /// of "the invoked function is model-level evaluable".
+        /// True if the function belongs to the Kernel Function Library: it is an operator function, or it lives in a library package of
+        /// it (see isKernelLibraryType). The library does not carry the flag Expression::isModelLevelEvaluable for its functions, so this
+        /// is the approximation of "the invoked function is model-level evaluable".
         bool isLibraryFunction(const std::shared_ptr<KerML::Entities::Function>& function, const std::string& qualifiedName) {
             for (const KerML::OperatorFunction& entry : KerML::operatorFunctions) {
-                if (qualifiedName == entry.functionName) return function == nullptr || isLibraryPackageOf(function);
+                if (qualifiedName == entry.functionName) return function == nullptr || isKernelLibraryType(*function);
             }
-            return function != nullptr && isLibraryPackageOf(function);
-        }
-
-        bool isLibraryPackageOf(const std::shared_ptr<KerML::Entities::Function>& function) {
-            for (auto owner = function->owner(); owner; owner = owner->owner()) {
-                const auto name = owner->declaredName();
-                if (name && isKernelFunctionPackage(*name) && owner->getType() == "LibraryPackage") return true;
-            }
-            return false;
+            return function != nullptr && isKernelLibraryType(*function);
         }
 
         /// True if @p feature is Base::Anything::self or redefines it.

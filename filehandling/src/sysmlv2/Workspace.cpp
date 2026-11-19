@@ -1885,7 +1885,10 @@ namespace SysMLv2::Files {
                 info.inMultiplicity = reference.inMultiplicity;
                 info.context = reference.context;
                 info.placeholder = reference.placeholder;
-                (reference.role == ReferenceRole::NotAttempted ? impl_->notAttempted : impl_->unresolved).push_back(std::move(info));
+                info.detail = reference.absentIn;
+                // (the target of a chain whose operand has a known type that lacks the feature is unresolved, one whose type is not known is not attempted)
+                const bool notAttempted = reference.role == ReferenceRole::NotAttempted || (reference.role == ReferenceRole::ChainTarget && !reference.absent);
+                (notAttempted ? impl_->notAttempted : impl_->unresolved).push_back(std::move(info));
             }
             if (source.xmi) {
                 for (auto& reference : source.xmi->unresolved()) {
@@ -2179,6 +2182,13 @@ namespace SysMLv2::Files {
                 default: kind = "element"; break;
             }
             std::string message = "unresolved reference to " + kind + " '" + info.name + "'";
+            if (info.role == ReferenceRole::ChainTarget) {
+                // (a link of a chain with a computed left operand: looked up among the features of the type of the operand, not in a scope; no import
+                // or library can help)
+                message += info.detail.empty() ? "; the type of the left operand has no such feature" : "; the type " + info.detail + " of the left operand has no feature '" + info.name + "'";
+                warnings.push_back(Impl::makeError(ErrorType::WARNING, message, info.line, info.column, info.sourceName));
+                continue;
+            }
             const size_t prefixLength = message.size();
 
             // Packages that define the first segment of the name but are not visible at the reference: an import would make it visible.
@@ -2359,7 +2369,7 @@ namespace SysMLv2::Files {
     std::vector<std::string> Workspace::referenceNames(size_t source) const {
         std::vector<std::string> names;
         for (const auto& reference : impl_->sources.at(source)->data.references) {
-            if (reference.role != ReferenceRole::NotAttempted) names.push_back(reference.name);
+            if (reference.role != ReferenceRole::NotAttempted && reference.role != ReferenceRole::ChainTarget) names.push_back(reference.name);
         }
         return names;
     }

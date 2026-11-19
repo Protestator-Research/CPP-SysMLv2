@@ -17,14 +17,19 @@ namespace SysMLv2::Evaluation {
         Functions::registerDataFunctions(registry);
         Functions::registerBaseFunctions(registry);
         Functions::registerControlFunctions(registry);
+        Functions::registerSequenceFunctions(registry);
+        Functions::registerScalarFunctions(registry);
+        Functions::registerStringFunctions(registry);
         return registry;
     }
 
     void FunctionRegistry::registerFunction(const std::string& qualifiedName, NativeFunction implementation) {
         Functions[qualifiedName] = std::move(implementation);
+        StrictFunctions.erase(qualifiedName);
     }
 
     void FunctionRegistry::registerStrictFunction(const std::string& qualifiedName, StrictFunction implementation) {
+        StrictFunction direct = implementation;
         registerFunction(qualifiedName,
             [implementation = std::move(implementation)](EvaluationContext& context,
                                                           const std::vector<std::shared_ptr<KerML::Entities::Expression>>& arguments) {
@@ -33,6 +38,7 @@ namespace SysMLv2::Evaluation {
                 for (const auto& argument : arguments) values.push_back(context.evaluate(argument));
                 return implementation(context, std::move(values));
             });
+        StrictFunctions[qualifiedName] = std::move(direct);
     }
 
     const NativeFunction* FunctionRegistry::find(const std::string& qualifiedName) const {
@@ -53,7 +59,11 @@ namespace SysMLv2::Evaluation {
         while (!queue.empty()) {
             const std::shared_ptr<KerML::Entities::Type> current = std::move(queue.front());
             queue.pop_front();
-            if (const NativeFunction* found = find(qualifiedNameOf(*current))) return Match{found, current != function};
+            const std::string name = qualifiedNameOf(*current);
+            if (const NativeFunction* found = find(name)) {
+                const auto strict = StrictFunctions.find(name);
+                return Match{found, current != function, strict == StrictFunctions.end() ? nullptr : &strict->second};
+            }
             for (const auto& specialization : current->ownedSpecialization()) {
                 const std::shared_ptr<KerML::Entities::Type> general = specialization ? specialization->general() : nullptr;
                 if (general && visited.insert(general.get()).second) queue.push_back(general);

@@ -230,7 +230,9 @@ namespace SysMLv2::Evaluation {
         const bool usage = metaclass.size() > 5 && metaclass.compare(metaclass.size() - 5, 5, "Usage") == 0;
         if (metaclass == "EnumerationUsage") {
             result = true;   // an enumeration literal
-        } else if (usage && metaclass != "AttributeUsage" && metaclass != "ReferenceUsage") {
+        } else if (metaclass == "AttributeUsage") {
+            result = false;  // data, whatever the recorded types are (the implicit generals differ between text and XMI)
+        } else if (usage && metaclass != "ReferenceUsage") {
             result = true;   // a part, item, action, port, ...: an occurrence-like usage even if no type is recorded
         } else {
             bool classFound = false;
@@ -300,6 +302,118 @@ namespace SysMLv2::Evaluation {
             }
         }
         return path;
+    }
+
+    bool Navigation::isA(const std::shared_ptr<Type>& type, const std::shared_ptr<Type>& general) {
+        if (!type || !general) return false;
+        if (type == general) return true;
+        for (const auto& candidate : closure(*type)) {
+            if (candidate == general) return true;
+        }
+        return false;
+    }
+
+    namespace {
+        /// Does the feature reach one of the targets through at least one subsetting (redefinitions alone make it the effective feature)?
+        bool subsetsAny(const FeaturePtr& candidate, const std::set<const Feature*>& targets) {
+            std::set<std::pair<const Feature*, bool>> visited;
+            std::vector<std::pair<FeaturePtr, bool>> pending{{candidate, false}};
+            while (!pending.empty()) {
+                const auto [current, viaSubsetting] = pending.back();
+                pending.pop_back();
+                if (!visited.insert({current.get(), viaSubsetting}).second) continue;
+                if (viaSubsetting && targets.count(current.get())) return true;
+                // (a subsetting of what the feature also redefines is implied by the redefinition - XMI writes both - and no subsetting)
+                std::set<const Feature*> redefined;
+                for (const auto& redefinition : current->ownedRedefinition()) {
+                    if (const auto general = redefinition ? redefinition->redefinedFeature() : nullptr) redefined.insert(general.get());
+                }
+                for (const auto& subsetting : current->ownedSubsetting()) {
+                    const auto general = subsetting ? subsetting->subsettedFeature() : nullptr;
+                    if (general && redefined.count(general.get()) == 0) pending.emplace_back(general, true);
+                }
+                for (const auto& redefinition : current->ownedRedefinition()) {
+                    if (const auto general = redefinition ? redefinition->redefinedFeature() : nullptr) pending.emplace_back(general, viaSubsetting);
+                }
+            }
+            return false;
+        }
+    }
+
+    namespace {
+        /// Everything that the feature reaches through at least one subsetting (and any redefinitions around it).
+        std::set<const Feature*> subsettedBy(const FeaturePtr& candidate) {
+            std::set<const Feature*> reached;
+            std::set<std::pair<const Feature*, bool>> visited;
+            std::vector<std::pair<FeaturePtr, bool>> pending{{candidate, false}};
+            while (!pending.empty()) {
+                const auto [current, viaSubsetting] = pending.back();
+                pending.pop_back();
+                if (!visited.insert({current.get(), viaSubsetting}).second) continue;
+                if (viaSubsetting) reached.insert(current.get());
+                std::set<const Feature*> redefined;
+                for (const auto& redefinition : current->ownedRedefinition()) {
+                    if (const auto general = redefinition ? redefinition->redefinedFeature() : nullptr) redefined.insert(general.get());
+                }
+                for (const auto& subsetting : current->ownedSubsetting()) {
+                    const auto general = subsetting ? subsetting->subsettedFeature() : nullptr;
+                    if (general && redefined.count(general.get()) == 0) pending.emplace_back(general, true);
+                }
+                for (const auto& redefinition : current->ownedRedefinition()) {
+                    if (const auto general = redefinition ? redefinition->redefinedFeature() : nullptr) pending.emplace_back(general, viaSubsetting);
+                }
+            }
+            return reached;
+        }
+    }
+
+    std::vector<FeaturePtr> Navigation::subsettersOf(const FeaturePtr& feature, const std::shared_ptr<Element>& context) {
+        const auto key = std::make_pair(feature.get(), context.get());
+        if (const auto found = Subsetters.find(key); found != Subsetters.end()) return found->second;
+        std::vector<FeaturePtr> candidates;
+        std::set<const Feature*> targets{feature.get()};
+        for (const auto& redefined : redefinedBy(feature)) targets.insert(redefined.get());
+        std::set<const Feature*> seen;
+        const auto consider = [&](const FeaturePtr& candidate) {
+            if (targets.count(candidate.get()) || !seen.insert(candidate.get()).second) return;
+            if (subsetsAny(candidate, targets)) candidates.push_back(candidate);
+        };
+        if (!std::dynamic_pointer_cast<Type>(feature->owner())) {
+            // a feature of a package: the features of that package that subset it
+            if (const auto owner = feature->owner()) {
+                for (const auto& owned : owner->ownedElements()) {
+                    if (const auto candidate = std::dynamic_pointer_cast<Feature>(owned)) consider(candidate);
+                }
+            }
+        } else if (const auto contextType = std::dynamic_pointer_cast<Type>(context)) {
+            std::vector<std::shared_ptr<Type>> types{contextType};
+            for (const auto& general : closure(*contextType)) types.push_back(general);
+            for (const auto& type : types) {
+                for (const auto& candidate : ownedFeatures(type)) consider(candidate);
+            }
+        }
+        // features are unique: a candidate that another candidate subsets stands for the same values (`x :> a2`, `a2 :> parts`: x counts).
+        // Linear: what every candidate reaches through subsetting marks the candidates (and their redefinitions) among it as covered.
+        std::unordered_map<const Feature*, std::vector<std::size_t>> byFeature;
+        for (std::size_t index = 0; index < candidates.size(); ++index) {
+            byFeature[candidates[index].get()].push_back(index);
+            for (const auto& redefined : redefinedBy(candidates[index])) byFeature[redefined.get()].push_back(index);
+        }
+        std::vector<bool> covered(candidates.size(), false);
+        for (std::size_t index = 0; index < candidates.size(); ++index) {
+            for (const Feature* reached : subsettedBy(candidates[index])) {
+                const auto found = byFeature.find(reached);
+                if (found == byFeature.end()) continue;
+                for (const std::size_t other : found->second) {
+                    if (other != index) covered[other] = true;
+                }
+            }
+        }
+        std::vector<FeaturePtr> result;
+        for (std::size_t index = 0; index < candidates.size(); ++index) {
+            if (!covered[index]) result.push_back(candidates[index]);
+        }
+        return Subsetters.emplace(key, std::move(result)).first->second;
     }
 
     Resolution Navigation::resolve(const FeaturePtr& feature, const std::shared_ptr<Element>& context) {

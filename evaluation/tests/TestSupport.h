@@ -1,5 +1,8 @@
 #pragma once
 
+#include <kerml/kernel/packages/LibraryPackage.h>
+#include <set>
+
 // Helpers of the tests: a harness that evaluates the arguments of a native function through a tiny hook (literals and registered
 // stand-in expressions only, no parser).
 
@@ -133,8 +136,14 @@ namespace TestSupport {
     inline std::shared_ptr<KerML::Entities::Namespace> makeRoot() { return std::make_shared<KerML::Entities::Namespace>(); }
 
     inline std::shared_ptr<KerML::Entities::Package> makePackage(const std::string& name, const std::shared_ptr<KerML::Entities::Element>& owner) {
-        auto package = std::make_shared<KerML::Entities::Package>();
+        // (the packages of the Kernel Function Library are library packages, a package of the same name of a user is not)
+        static const std::set<std::string> kernel = {"BaseFunctions",    "BooleanFunctions", "CollectionFunctions", "ComplexFunctions",   "ControlFunctions",
+                                                     "DataFunctions",    "IntegerFunctions", "NaturalFunctions",    "NumericalFunctions", "OccurrenceFunctions",
+                                                     "RationalFunctions", "RealFunctions",    "ScalarFunctions",     "SequenceFunctions",  "StringFunctions",
+                                                     "TrigFunctions",    "VectorFunctions"};
+        std::shared_ptr<KerML::Entities::Package> package = kernel.count(name) != 0 ? std::make_shared<KerML::Entities::LibraryPackage>() : std::make_shared<KerML::Entities::Package>();
         package->setDeclaredName(name);
+        if (const auto library = std::dynamic_pointer_cast<KerML::Entities::LibraryPackage>(package)) library->setIsStandard(true);
         package->setOwner(owner);
         return package;
     }

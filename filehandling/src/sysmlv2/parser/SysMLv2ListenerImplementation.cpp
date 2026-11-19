@@ -27,6 +27,18 @@ namespace {
 		return recorder.reference<KerML::Entities::Feature>(name, ReferenceKind::Feature, ReferenceRole::NotAttempted, context, false, nullptr,
 			position, nullptr);
 	}
+
+	// The target of a feature chain whose left operand is a computed value: a feature of the static result type of the operand (resolved after all
+	// other references, see ReferenceRole::ChainTarget). Until then, and if the type is not known, the placeholder stays and the reference is reported as
+	// "not attempted".
+	std::shared_ptr<KerML::Entities::Feature> chainTargetFeature(SysMLv2::Files::ReferenceRecorder& recorder, const std::string& name,
+		const std::shared_ptr<KerML::Entities::Element>& context, const std::shared_ptr<KerML::Entities::Expression>& operand,
+		antlr4::ParserRuleContext* position, const std::shared_ptr<KerML::Entities::FeatureChainExpression>& chain) {
+		auto placeholder = recorder.reference<KerML::Entities::Feature>(name, ReferenceKind::Feature, ReferenceRole::ChainTarget, context, false, nullptr,
+			position, [chain](const std::shared_ptr<KerML::Entities::Feature>& feature) { chain->setTargetFeature(feature); });
+		recorder.data.references.back().operand = operand;
+		return placeholder;
+	}
 }
 
 namespace {
@@ -713,6 +725,8 @@ void SysMLv2ListenerImplementation::applyFeatureSpecifications(const std::vector
 		}
 		if (spec->redefinitions()) {
 			if (spec->redefinitions()->redefines() && spec->redefinitions()->redefines()->owned_redefinition()) {
+				// (`feature x in :>> y`: the direction is written in front of the redefines operator)
+				applyFeatureDirectionFromContext(spec->redefinitions()->redefines()->feature_direction(), feature);
 				auto* redefCtx = spec->redefinitions()->redefines()->owned_redefinition();
 				addRedefinition(feature, redefCtx->getText(), redefCtx);
 			}
@@ -1571,9 +1585,13 @@ void SysMLv2ListenerImplementation::exitFeatureChainExpr(SysMLv2Parser::FeatureC
 			placeholder->setDeclaredName(target);
 			expr->setTargetFeature(placeholder);
 		}
-		else {
-			// The left operand is a computed value: no scoped lookup is attempted for the target.
+		else if (tooLong || expr->argument().empty()) {
+			// (the text of the left operand is too long to be looked at: the target is not resolved)
 			expr->setTargetFeature(notAttemptedFeature(Recorder, target, scope, ctx->feature_reference_member()));
+		}
+		else {
+			// The left operand is a computed value: the target is a feature of its static result type, which the resolver finds out (ChainTarget).
+			expr->setTargetFeature(chainTargetFeature(Recorder, target, scope, expr->argument().front(), ctx->feature_reference_member(), expr));
 		}
 	}
 	attachExpression(expr);
@@ -2107,6 +2125,8 @@ void SysMLv2ListenerImplementation::exitRedefinition(SysMLv2Parser::Redefinition
 	if (!feature) return;
 	ParentStack.pop();
 
+	// (`in :>> x;`: the direction is part of the rule, not of a usage prefix)
+	if (ctx) applyFeatureDirectionFromContext(ctx->feature_direction(), feature);
 	if (ctx && ctx->qualified_name()) {
 		std::string redefName = ctx->qualified_name()->getText();
 		// (`:>> p` has no declared name: it is known by the name of the feature it redefines, Feature::effectiveName())
@@ -2357,6 +2377,42 @@ void SysMLv2ListenerImplementation::appendArgumentParameter(const std::shared_pt
 // Sets the instantiated type of the invocation or constructor and makes its first owned relationship a (non-owning) membership of the type.
 void SysMLv2ListenerImplementation::setInstantiatedTypeWithMembership(const std::shared_ptr<KerML::Entities::InstantiationExpression>& expr,
 	SysMLv2Parser::Owned_feature_typingContext* typing) {
+	if (auto* chainContext = typing->general_type() ? typing->general_type()->owned_feature_chain() : nullptr;
+		chainContext != nullptr && chainContext->feature_chain() != nullptr && SysMLv2::Files::isPlainInvocation(expr)) {
+		// The invoked type is a feature chain (`c.twice(5)`): as in the pilot's XMI the invocation owns the chain feature (through an
+		// OwningMembership, first of its relationships), which has a feature chaining for every link, and that feature is the instantiated
+		// type. The first link is looked up like any name, a following one among the features of the previous ones (`c.twice`).
+		const auto chain = std::make_shared<KerML::Entities::Feature>();
+		chain->setOwner(expr);
+		auto owned = expr->ownedElements();
+		owned.insert(owned.begin(), chain);
+		expr->setOwnedElements(owned);
+		OwnershipKinds[chain.get()] = SysMLv2::Files::MembershipKind::Owning;
+		Elements.push_back(chain);
+		std::string chainText;
+		for (auto* link : chainContext->feature_chain()->owned_feature_chaining()) {
+			if (link == nullptr || link->qualified_name() == nullptr) continue;
+			const std::string linkName = link->qualified_name()->getText();
+			chainText += (chainText.empty() ? "" : ".") + linkName;
+			const auto chaining = newPlaceholder<KerML::Entities::Feature>(ReferenceKind::Feature, linkName);
+			const auto relationship = std::make_shared<KerML::Entities::FeatureChaining>(chaining, chain);
+			chain->appendChainingFeature(chaining);
+			chain->appendOwnedFeatureChaining(relationship);
+			chain->appendOwnedElement(relationship);
+			Elements.push_back(relationship);
+			Recorder.record(chaining, chainText, ReferenceKind::Feature, ReferenceRole::Plain, chain, true, nullptr, link->qualified_name(),
+				[chain, relationship, chaining](const ElementPtr& element) {
+					const auto target = std::dynamic_pointer_cast<KerML::Entities::Feature>(element);
+					if (!target) return;
+					relationship->setChainingFeature(target);
+					auto links = chain->chainingFeature();
+					SysMLv2::Files::replaceInVector(links, chaining, target);
+					chain->setChainingFeature(links);
+				});
+		}
+		expr->setInstantiatedType(chain);
+		return;
+	}
 	const auto typeMembership = makeTypeMembership(expr);
 	expr->setInstantiatedType(expressionTypeReference(typing->general_type()->getText(), typing,
 		[expr, typeMembership](const std::shared_ptr<KerML::Entities::Type>& target) {

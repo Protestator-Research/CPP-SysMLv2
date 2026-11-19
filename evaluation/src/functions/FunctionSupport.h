@@ -11,6 +11,7 @@
 #include <limits>
 #include <optional>
 #include <string>
+#include <variant>
 #include <vector>
 
 namespace SysMLv2::Evaluation::Functions {
@@ -149,5 +150,74 @@ namespace SysMLv2::Evaluation::Functions {
     inline Value realResult(EvaluationContext& context, const std::string& function, double result) {
         if (!std::isfinite(result)) return fail(context, function, "result is not a finite number");
         return Value::real(result);
+    }
+
+    // Equality of values ------------------------------------------------------------------------------------------------------
+
+    struct ItemEquality {
+        bool operator()(bool a, bool b) const { return a == b; }
+        bool operator()(std::int64_t a, std::int64_t b) const { return a == b; }
+        bool operator()(double a, double b) const { return a == b; }
+        bool operator()(std::int64_t a, double b) const { return compareIntegerWithReal(a, b) == Order::Equal; }
+        bool operator()(double a, std::int64_t b) const { return compareIntegerWithReal(b, a) == Order::Equal; }
+        bool operator()(const std::string& a, const std::string& b) const { return a == b; }
+        bool operator()(const std::shared_ptr<KerML::Entities::Element>& a, const std::shared_ptr<KerML::Entities::Element>& b) const {
+            return a.get() == b.get();   // (identity)
+        }
+        bool operator()(Infinity, Infinity) const { return true; }
+        template <class A, class B>
+        bool operator()(const A&, const B&) const { return false; }   // (different kinds are never equal)
+    };
+
+    /// Sequence-wise equality: the same length and equal items at every position. An Integer equals the Real of the same value.
+    inline bool equal(const Value& a, const Value& b) {
+        if (a.size() != b.size()) return false;
+        for (std::size_t index = 0; index < a.size(); ++index) {
+            if (!std::visit(ItemEquality{}, a.items()[index], b.items()[index])) return false;
+        }
+        return true;
+    }
+
+
+    // Ordering of values (numbers, strings, Infinity) ---------------------------------------------------------------------------
+
+    struct Ordered {
+        enum class Kind { Number, String, Infinity } kind = Kind::Number;
+        Number number;
+        std::string text;
+    };
+
+    inline std::optional<Ordered> toOrdered(const Value& value) {
+        Ordered ordered;
+        if (const auto number = toNumber(value)) {
+            ordered.number = *number;
+            return ordered;
+        }
+        if (const auto text = value.asString()) {
+            ordered.kind = Ordered::Kind::String;
+            ordered.text = *text;
+            return ordered;
+        }
+        if (value.size() == 1 && std::holds_alternative<Infinity>(value.items().front())) {
+            ordered.kind = Ordered::Kind::Infinity;
+            return ordered;
+        }
+        return std::nullopt;
+    }
+
+    /// Orders two operands; nullopt if they are not comparable (a String with a number).
+    inline std::optional<Order> compareOrdered(const Ordered& a, const Ordered& b) {
+        using Kind = Ordered::Kind;
+        if (a.kind == Kind::Infinity || b.kind == Kind::Infinity) {
+            if (a.kind == Kind::String || b.kind == Kind::String) return std::nullopt;
+            if (a.kind == b.kind) return Order::Equal;
+            return a.kind == Kind::Infinity ? Order::Greater : Order::Less;   // (Infinity is greater than every number)
+        }
+        if (a.kind != b.kind) return std::nullopt;
+        if (a.kind == Kind::String) {
+            const int comparison = a.text.compare(b.text);   // (by code unit)
+            return comparison < 0 ? Order::Less : (comparison > 0 ? Order::Greater : Order::Equal);
+        }
+        return compareNumbers(a.number, b.number);
     }
 }

@@ -68,4 +68,16 @@ namespace SysMLv2::Evaluation {
         }
         return nullptr;
     }
+
+    std::shared_ptr<KerML::Entities::Type> invokedTypeOf(const KerML::Entities::InstantiationExpression& invocation) {
+        if (auto function = invocation.function()) return function;
+        if (auto type = invocation.instantiatedType()) return type;
+        for (const auto& relationship : invocation.ownedRelationship()) {
+            if (!relationship) continue;
+            const KerML::Entities::Relationship& object = *relationship;
+            if (typeid(object) != typeid(KerML::Entities::Membership)) continue;
+            if (auto type = std::dynamic_pointer_cast<KerML::Entities::Type>(dynamic_cast<KerML::Entities::Membership&>(*relationship).memberElement())) return type;
+        }
+        return nullptr;
+    }
 }

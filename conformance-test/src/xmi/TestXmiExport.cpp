@@ -2958,6 +2958,86 @@ TEST(XmiExportReferents, WritingAModelThatWasReadFromXmiGivesTheSameFileWithoutD
     EXPECT_EQ(again, first.xml);
 }
 
+// The resolver resolves the target of a chain with a computed left operand in the static type of the operand (ReferenceRole::ChainTarget), so
+// the writer writes it like any other target.
+TEST(XmiExportReferents, TheTargetOfAChainWithAComputedLeftOperandIsWritten) {
+    Written written("package P { part def Engine { attribute power = 100; } part e : Engine; part def Q { attribute r; } part q1 : Q { attribute :>> r = 5; } "
+                    "part q2 : Q { attribute :>> r = 6; } attribute a = (e).power; attribute b = (q1, q2).r; attribute c = (e as Engine).power; ref part x = e; attribute d = (x).power; }",
+                    SourceLanguage::SysML);
+    EXPECT_TRUE(written.errors.empty()) << allErrors(written.errors);
+    const std::string power = idOf(written.xml, "AttributeUsage", "power");
+    const std::string r = idOf(written.xml, "AttributeUsage", "r");
+    ASSERT_FALSE(power.empty() || r.empty());
+    std::vector<std::string> targets;
+    for (const auto& chain : expressionsOf(written.xml, "FeatureChainExpression", 1)) {
+        ASSERT_EQ(chain.following.size(), 1u);
+        if (attributeOf(chain.following.front(), "xsi:type") == "sysml:Membership") targets.push_back(attributeOf(chain.following.front(), "memberElement"));
+    }
+    std::sort(targets.begin(), targets.end());
+    // a, b, c have a target; d (through the untyped `x`) has none
+    std::vector<std::string> expected{power, r, power};
+    std::sort(expected.begin(), expected.end());
+    EXPECT_EQ(targets, expected);
+    // written twice: the same bytes
+    const std::string once = written.xml;
+    written.write("again", nameBased());
+    EXPECT_EQ(written.xml, once);
+}
+
+// A call whose invoked type is a feature chain (`c.twice(5)`): the invocation owns, as its first relationship, an OwningMembership of a Feature that has
+// a FeatureChaining for every link (the shape of the pilot's XMI); the model that is read back gives the same file.
+TEST(XmiExportReferents, TheChainFeatureOfAnInvokedTypeIsWrittenAndReadBack) {
+    Written written("package P { part def Car { attribute m = 3; calc twice { in k; k * m } } part c : Car; part def G { part car : Car; } part g : G; "
+                    "attribute r = c.twice(5); attribute r3 = g.car.twice(2); }",
+                    SourceLanguage::SysML);
+    EXPECT_TRUE(written.errors.empty()) << allErrors(written.errors);
+    const std::string c = idOf(written.xml, "PartUsage", "c");
+    const std::string twice = idOf(written.xml, "CalculationUsage", "twice");
+    ASSERT_FALSE(c.empty() || twice.empty());
+    const auto invocations = expressionsOf(written.xml, "InvocationExpression", 6);
+    ASSERT_EQ(invocations.size(), 2u);
+    for (size_t index = 0; index < invocations.size(); ++index) {
+        SCOPED_TRACE(index);
+        const auto& following = invocations[index].following;
+        ASSERT_GE(following.size(), 4u);
+        EXPECT_EQ(attributeOf(following[0], "xsi:type"), "sysml:OwningMembership");
+        EXPECT_EQ(attributeOf(following[1], "xsi:type"), "sysml:Feature");
+        // the chainings, in the order of the text: c (or g, car) ... twice
+        size_t chainings = 0;
+        std::string last;
+        for (const auto& tag : following) {
+            if (attributeOf(tag, "xsi:type") != "sysml:FeatureChaining") continue;
+            ++chainings;
+            last = attributeOf(tag, "chainingFeature");
+        }
+        EXPECT_EQ(chainings, index == 0 ? 2u : 3u);
+        EXPECT_EQ(last, twice);
+        if (index == 0) EXPECT_EQ(attributeOf(following[2], "chainingFeature"), c);
+    }
+    const std::string once = written.xml;
+    written.write("again", nameBased());
+    EXPECT_EQ(written.xml, once);
+    // read and written again: the same file
+    Workspace read;
+    const size_t source = read.addFile((written.directory.path() / "m.sysmlx").string(), 1);
+    read.resolve();
+    EXPECT_TRUE(read.errors().empty()) << allErrors(read.errors());
+    TempDir directory;
+    const fs::path rewritten = directory.path() / "m.sysmlx";
+    const Errors errors = read.writeXmi(source, rewritten.string(), nameBased());
+    EXPECT_TRUE(errors.empty()) << allErrors(errors);
+    EXPECT_EQ(ConformanceTest::readFile(rewritten), once);
+    // the invocation of the read model has the chain feature as its instantiated type
+    size_t chained = 0;
+    for (const auto& element : read.elements(source)) {
+        const auto invocation = std::dynamic_pointer_cast<K::InvocationExpression>(element);
+        if (!invocation || std::dynamic_pointer_cast<K::OperatorExpression>(element)) continue;
+        const auto type = std::dynamic_pointer_cast<K::Feature>(invocation->instantiatedType());
+        if (type && type->chainingFeature().size() > 1) ++chained;
+    }
+    EXPECT_EQ(chained, 2u);
+}
+
 TEST(XmiExportReferents, AnUnresolvedReferentWritesNothing) {
     Written written("package P { attribute a = 3; attribute bad = nothere + 1; attribute ok = a; attribute chain = nothere.deeper; }", SourceLanguage::SysML);
     EXPECT_TRUE(written.errors.empty()) << allErrors(written.errors);   // (the resolver reported the names; the writer adds no message)

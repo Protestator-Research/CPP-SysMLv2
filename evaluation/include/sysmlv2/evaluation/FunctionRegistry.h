@@ -63,6 +63,9 @@ namespace SysMLv2::Evaluation {
         struct Match {
             const NativeFunction* implementation = nullptr;
             bool inherited = false;
+            /// The implementation as it was registered by registerStrictFunction (called with values, without building expressions for
+            /// them), null if it was registered with registerFunction.
+            const StrictFunction* strict = nullptr;
         };
 
         /// Like find(function), but tells whether the implementation belongs to the function itself or is inherited from a general (a
@@ -71,5 +74,6 @@ namespace SysMLv2::Evaluation {
 
     private:
         std::map<std::string, NativeFunction> Functions;
+        std::map<std::string, StrictFunction> StrictFunctions;
     };
 }

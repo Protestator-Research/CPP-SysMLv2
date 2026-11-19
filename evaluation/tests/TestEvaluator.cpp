@@ -179,8 +179,7 @@ TEST(EvaluatorOperators, ABoundFunctionWinsOverTheNameOfTheOperator) {
     const Evaluator evaluator;
     const auto other = libraryFunction("MyFunctions", "plus");
     const Result result = evaluator.evaluate(op("+", {integer(1), integer(2)}, other));
-    expectOneError(result, "MyFunctions::plus");
-    EXPECT_NE(result.diagnostics.front().message.find("operator '+'"), std::string::npos);
+    expectOneError(result, "no native implementation for MyFunctions::plus");
 }
 
 TEST(EvaluatorOperators, AnUnknownOperatorIsAnError) {
@@ -223,13 +222,13 @@ TEST(EvaluatorOperators, TheValueIsNullWheneverAnErrorWasReported) {
 
 TEST(EvaluatorOperators, ShortCircuitDoesNotEvaluateTheOtherOperandOrReportIt) {
     const Evaluator evaluator;
-    const ExpressionPtr unsupported = std::make_shared<KerML::Entities::IndexExpression>();
+    const ExpressionPtr unsupported = std::make_shared<KerML::Entities::ConstructorExpression>();
     expectValue(evaluator.evaluate(op("and", {boolean(false), unsupported})), B(false));
     expectValue(evaluator.evaluate(op("or", {boolean(true), unsupported})), B(true));
     expectValue(evaluator.evaluate(op("if", {boolean(false), unsupported, integer(2)})), I(2));
     expectValue(evaluator.evaluate(op("??", {integer(5), unsupported})), I(5));
     // and the other way round it is evaluated
-    expectOneError(evaluator.evaluate(op("and", {boolean(true), unsupported})), "not supported yet: IndexExpression", unsupported);
+    expectOneError(evaluator.evaluate(op("and", {boolean(true), unsupported})), "not supported yet: ConstructorExpression", unsupported);
 }
 
 TEST(EvaluatorOperators, TheRangeIsLimitedByTheOption) {
@@ -246,12 +245,9 @@ TEST(EvaluatorOperators, TheRangeIsLimitedByTheOption) {
 TEST(EvaluatorUnsupported, EveryUnsupportedMetaclassIsAnErrorAndNull) {
     const Evaluator evaluator;
     const std::vector<std::pair<ExpressionPtr, std::string>> cases = {
-        {std::make_shared<KerML::Entities::SelectExpression>(), "SelectExpression"},
-        {std::make_shared<KerML::Entities::CollectExpression>(), "CollectExpression"},
-        {std::make_shared<KerML::Entities::IndexExpression>(), "IndexExpression"},
         {std::make_shared<KerML::Entities::MetadataAccessExpression>(), "MetadataAccessExpression"},
         {std::make_shared<KerML::Entities::ConstructorExpression>(), "ConstructorExpression"},
-        {std::make_shared<Expression>(), "Expression"},
+        {std::make_shared<Expression>(), "a function value"},
     };
     for (const auto& [expression, metaclass] : cases) {
         SCOPED_TRACE(metaclass);
@@ -259,21 +255,26 @@ TEST(EvaluatorUnsupported, EveryUnsupportedMetaclassIsAnErrorAndNull) {
     }
 }
 
-TEST(EvaluatorUnsupported, TheSubclassesOfTheOperatorExpressionAreNotEvaluatedAsOperators) {
-    // a SelectExpression has the operator name `select` of the library, which has no implementation: the message must still be the
-    // "not supported yet" one
+TEST(EvaluatorOperators, TheSubclassesOfTheOperatorExpressionRunTheirNativeFunctions) {
+    // a SelectExpression has the operator name `select` of the library: without a body to select with it is a call with the wrong
+    // number of arguments
     const Evaluator evaluator;
     const auto select = std::make_shared<KerML::Entities::SelectExpression>();
     select->setOperatorName("select");
     select->setArgument({integer(1)});
-    expectOneError(evaluator.evaluate(select), "not supported yet: SelectExpression", select);
+    expectOneError(evaluator.evaluate(select), "expected 2 argument(s) but got 1", select);
+    // the index expression `s#(i)` is the native `#`
+    const auto index = std::make_shared<KerML::Entities::IndexExpression>();
+    index->setOperatorName("#");
+    index->setArgument({op(",", {integer(10), integer(20)}), integer(2)});
+    expectValue(evaluator.evaluate(index), I(20));
 }
 
 TEST(EvaluatorUnsupported, AnUnsupportedOperandMakesTheOuterResultNull) {
     const Evaluator evaluator;
-    const ExpressionPtr reference = std::make_shared<KerML::Entities::IndexExpression>();
+    const ExpressionPtr reference = std::make_shared<KerML::Entities::ConstructorExpression>();
     const Result result = evaluator.evaluate(op("+", {integer(1), reference}));
-    expectOneError(result, "not supported yet: IndexExpression", reference);
+    expectOneError(result, "not supported yet: ConstructorExpression", reference);
 }
 
 // Invocations ----------------------------------------------------------------------------------------------------------------
@@ -295,11 +296,11 @@ TEST(EvaluatorInvocations, TheArrowFormPassesTheLeftOperandAsTheFirstArgument) {
 
 TEST(EvaluatorInvocations, AFunctionWithoutAnImplementationIsAnError) {
     const Evaluator evaluator;
-    const auto sum = libraryFunction("NumericalFunctions", "sum");
+    const auto sum = libraryFunction("Nowhere", "sum");
     const auto call = invoke(sum, {integer(1)});
-    expectOneError(evaluator.evaluate(call), "no native implementation for NumericalFunctions::sum", call);
+    expectOneError(evaluator.evaluate(call), "no native implementation for Nowhere::sum", call);
     const auto arrow = op("->", {integer(1)}, sum);
-    expectOneError(evaluator.evaluate(arrow), "no native implementation for NumericalFunctions::sum", arrow);
+    expectOneError(evaluator.evaluate(arrow), "no native implementation for Nowhere::sum", arrow);
 }
 
 TEST(EvaluatorInvocations, AnInvocationWithoutAFunctionIsAnError) {
@@ -341,7 +342,7 @@ TEST(EvaluatorInvocations, NamedArgumentsWithoutAMatchingParameterAreRefused) {
         std::shared_ptr<Feature> parameter;
         const ExpressionPtr value = argumentOf(integer(4), true, throughFeatureValue, parameter);
         const auto call = invoke(minus, {value, integer(10)});
-        expectOneError(evaluator.evaluate(call), "named arguments not supported yet", call);
+        expectOneError(evaluator.evaluate(call), "named arguments need the declared parameters", call);   // (a hand-built function declares none)
         release(value, parameter);
     }
 }
@@ -352,7 +353,7 @@ TEST(EvaluatorInvocations, NamedArgumentsOfTheArrowFormAreRefused) {
     const auto named = std::make_shared<Expression>();   // (the listener wraps `y = 4` in a plain expression that carries the name)
     named->setDeclaredName("y");
     const auto arrow = op("->", {integer(10), named}, minus);
-    expectOneError(evaluator.evaluate(arrow), "named arguments not supported yet", arrow);
+    expectOneError(evaluator.evaluate(arrow), "named arguments need the declared parameters", arrow);
 }
 
 TEST(EvaluatorInvocations, PositionalArgumentsOwnedByParametersAreNotNamed) {
@@ -823,19 +824,24 @@ TEST(EvaluatorNamedArguments, TheArgumentsAreOrderedByTheParametersTheyRedefine)
     disposeAll({specific});
 }
 
-TEST(EvaluatorNamedArguments, AnAmbiguousBindingIsRefused) {
+TEST(EvaluatorNamedArguments, ABindingThatCannotBeMadeIsAnError) {
     const Evaluator evaluator;
     std::vector<std::shared_ptr<Feature>> keep;
     const auto minus = functionWithParameters("-", {"x", "y"}, keep);
-    const std::vector<std::vector<std::string>> refused = {{"x", "x"}, {"x", "z"}, {"y"}, {"y", ""}};
-    for (const auto& names : refused) {
+    const std::vector<std::pair<std::vector<std::string>, std::string>> refused = {
+        {{"x", "x"}, "parameter 'x' is given twice"}, {{"x", "z"}, "unknown parameter 'z'"}, {{"y", ""}, "unknown parameter"}};
+    for (const auto& [names, message] : refused) {
         const auto call = invoke(nullptr, {});
         std::vector<ExpressionPtr> values;
         for (std::size_t index = 0; index < names.size(); ++index) values.push_back(integer(static_cast<std::int64_t>(index) + 1));
         const XmiShape shape(call, minus, values, names);
-        SCOPED_TRACE(names.empty() ? "" : names.front());
-        expectOneError(evaluator.evaluate(call), "named arguments not supported yet", call);
+        SCOPED_TRACE(message);
+        expectOneError(evaluator.evaluate(call), message, call);
     }
+    // only the second parameter given: the first is empty, and so is the result
+    const auto call = invoke(nullptr, {});
+    const XmiShape shape(call, minus, {integer(1)}, {"y"});
+    expectValue(evaluator.evaluate(call), N());
 }
 
 // Results, failures, subclasses ----------------------------------------------------------------------------------------------
@@ -913,8 +919,8 @@ TEST(EvaluatorFeatures, AFeatureThatIsAnExpressionIsEvaluatedAsOne) {
     const Evaluator evaluator;
     const auto expression = std::make_shared<Expression>();
     const std::shared_ptr<Feature> asFeature = expression;
-    expectOneError(evaluator.evaluateFeatureValue(asFeature), "not supported yet: Expression", expression);
-    expectOneError(evaluator.evaluate(expression), "not supported yet: Expression", expression);
+    expectOneError(evaluator.evaluateFeatureValue(asFeature), "not supported yet: a function value", expression);
+    expectOneError(evaluator.evaluate(expression), "not supported yet: a function value", expression);
     // an expression with a FeatureValue of its own: the value wins
     const auto literal = literalInteger(7);
     const auto value = std::make_shared<KerML::Entities::FeatureValue>();
@@ -1091,7 +1097,7 @@ TEST(EvaluatorReferences, ThePilotShapeRecordsTheReferentInAPlainMembership) {
         const ExpressionPtr inner = body ? std::make_shared<Expression>() : integer(9);
         owned->setMemberElement(inner);
         wrapper->setOwnedRelationship({owned});
-        if (body) expectOneError(evaluator.evaluate(wrapper), "not supported yet: Expression");
+        if (body) expectOneError(evaluator.evaluate(wrapper), "not supported yet: a function value");
         else expectValue(evaluator.evaluate(wrapper), I(9));
     }
     dispose({x});

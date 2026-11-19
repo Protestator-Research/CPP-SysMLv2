@@ -86,6 +86,15 @@ namespace SysMLv2::Evaluation {
         /// instance). The path itself if none does.
         PathPtr contextFor(const std::shared_ptr<KerML::Entities::Feature>& feature, const PathPtr& path);
 
+        /// The features of the context and of its generals that subset @p feature (directly or through chains of subsetting and
+        /// redefinition that end in it or in a feature it redefines), in declaration order: the context's own features first, then
+        /// those of its generals. A feature that only redefines it is no subsetter (it is the effective one). A feature that is
+        /// subsetted several times (multiplicity above 1) counts once.
+        std::vector<std::shared_ptr<KerML::Entities::Feature>> subsettersOf(const std::shared_ptr<KerML::Entities::Feature>& feature, const std::shared_ptr<KerML::Entities::Element>& context);
+
+        /// True if @p type is @p general or specializes it (directly or transitively; typings and subsettings of features count).
+        bool isA(const std::shared_ptr<KerML::Entities::Type>& type, const std::shared_ptr<KerML::Entities::Type>& general);
+
         /// True for a feature without a value that stands for an element of the model rather than for data: an enumeration literal, a
         /// usage of any other kind than an attribute or reference usage (part, item, action, port, connection, state, ..., typed or not;
         /// the metaclass is read from Element::getType(), so the module needs no sysml), and a feature that is typed by a Class and by no
@@ -111,6 +120,7 @@ namespace SysMLv2::Evaluation {
         std::unordered_map<const KerML::Entities::Feature*, std::vector<std::shared_ptr<KerML::Entities::Feature>>> Redefined;
         std::map<std::pair<const KerML::Entities::Feature*, const KerML::Entities::Element*>, Resolution> Resolved;
         std::unordered_map<const KerML::Entities::Feature*, bool> Denotes;
+        std::map<std::pair<const KerML::Entities::Feature*, const KerML::Entities::Element*>, std::vector<std::shared_ptr<KerML::Entities::Feature>>> Subsetters;
 
         /// Everything a feature redefines, transitively (not the feature itself).
         const std::vector<std::shared_ptr<KerML::Entities::Feature>>& redefinedBy(const std::shared_ptr<KerML::Entities::Feature>& feature);

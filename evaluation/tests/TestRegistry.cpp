@@ -10,10 +10,9 @@ using namespace TestSupport;
 namespace {
     // Operators of KerML::operatorFunctions that have no native implementation yet. Every other entry must be registered.
     const char* const NotImplemented[] = {
-        "BaseFunctions::'['",     "BaseFunctions::'#'",      "BaseFunctions::'all'",        "BaseFunctions::'istype'",
-        "BaseFunctions::'hastype'", "BaseFunctions::'@'",    "BaseFunctions::'@@'",         "BaseFunctions::'as'",
-        "BaseFunctions::'meta'",  "ControlFunctions::'.'",   "ControlFunctions::collect",   "ControlFunctions::select",
-        "DataFunctions::'~'",
+        "BaseFunctions::'['",     "BaseFunctions::'all'",    "BaseFunctions::'istype'",     "BaseFunctions::'hastype'",
+        "BaseFunctions::'@'",     "BaseFunctions::'@@'",     "BaseFunctions::'as'",         "BaseFunctions::'meta'",
+        "ControlFunctions::'.'",  "DataFunctions::'~'",
     };
 
     bool isNotImplemented(const char* name) {
@@ -34,7 +33,7 @@ TEST(Registry, EveryOperatorFunctionIsRegisteredOrListedAsNotImplemented) {
         }
     }
     EXPECT_EQ(registered + std::size(NotImplemented), KerML::operatorFunctionCount);
-    EXPECT_EQ(registered, 26u);
+    EXPECT_EQ(registered, 29u);
     // (a list entry that is not in the table would be a typo)
     for (const char* name : NotImplemented) {
         const auto* end = KerML::operatorFunctions + KerML::operatorFunctionCount;
@@ -76,6 +75,20 @@ TEST(Registry, StrictFunctionsGetTheEvaluatedArguments) {
     (void)harness.callExpressions("My::count", {first, second});
     EXPECT_TRUE(harness.wasEvaluated(first));
     EXPECT_TRUE(harness.wasEvaluated(second));
+}
+
+TEST(Registry, ALookupTellsWhetherTheImplementationTakesValues) {
+    FunctionRegistry registry;
+    registry.registerStrictFunction("MyFunctions::strict", [](EvaluationContext&, std::vector<Value>) { return Value::integer(1); });
+    registry.registerFunction("MyFunctions::lazy", [](EvaluationContext&, const std::vector<ExpressionPtr>&) { return Value::integer(2); });
+    const auto strict = makeFunction("strict", makePackage("MyFunctions", makeRoot()));
+    const auto lazy = makeFunction("lazy", makePackage("MyFunctions", makeRoot()));
+    EXPECT_NE(registry.lookup(strict).strict, nullptr);
+    EXPECT_EQ(registry.lookup(lazy).strict, nullptr);
+    EXPECT_NE(registry.lookup(lazy).implementation, nullptr);
+    registry.registerFunction("MyFunctions::strict", [](EvaluationContext&, const std::vector<ExpressionPtr>&) { return Value::integer(3); });
+    EXPECT_EQ(registry.lookup(strict).strict, nullptr);   // (replaced by a lazy one)
+    disposeAll({strict, lazy});
 }
 
 TEST(Registry, FindsTheImplementationAlongTheSpecializationChain) {

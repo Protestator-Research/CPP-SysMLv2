@@ -93,6 +93,8 @@ namespace SysMLv2::Files {
         /// The element the reference is written in and the placeholder that stands in for the target.
         std::shared_ptr<KerML::Entities::Element> context;
         std::shared_ptr<KerML::Entities::Element> placeholder;
+        /// ReferenceRole::ChainTarget: the name(s) of the type(s) of the left operand in which the name was looked up and not found.
+        std::string detail;
     };
 
     /**
@@ -106,6 +108,9 @@ namespace SysMLv2::Files {
      *  - unqualified names are looked up in the local namespace (owned members, aliases, members imported by the namespace,
      *    inherited members), then in each enclosing namespace, then in the implicit global namespace that contains the root
      *    packages of every loaded source;
+     *  - a name in the value expression of a feature (`attribute x : T = n + 1;`) is looked up from the namespace that owns the feature, not in the
+     *    feature itself: the members that `x` has through its type `T`, and the features nested in `x`, are not visible there (this is what the
+     *    pilot implementation binds, and a change of behaviour: earlier versions started the lookup in `x`);
      *  - imports (`import A::*;`, `import A::**;`, `import A::x;`), their visibility (only public imports are re-exported,
      *    `import all` ignores member visibility), aliases and short names (`<kg>`) are honoured; quoted names are compared
      *    without their quotes.

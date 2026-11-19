@@ -38,6 +38,18 @@ namespace {
         return recorder.reference<KerML::Entities::Feature>(name, ReferenceKind::Feature, ReferenceRole::NotAttempted, context, false, nullptr,
                                                             position, nullptr);
     }
+
+    // The target of a feature chain whose left operand is a computed value: a feature of the static result type of the operand (resolved after all
+    // other references, see ReferenceRole::ChainTarget). Until then, and if the type is not known, the placeholder stays and the reference is reported as
+    // "not attempted".
+    std::shared_ptr<KerML::Entities::Feature> chainTargetFeature(SysMLv2::Files::ReferenceRecorder& recorder, const std::string& name,
+        const std::shared_ptr<KerML::Entities::Element>& context, const std::shared_ptr<KerML::Entities::Expression>& operand,
+        antlr4::ParserRuleContext* position, const std::shared_ptr<KerML::Entities::FeatureChainExpression>& chain) {
+        auto placeholder = recorder.reference<KerML::Entities::Feature>(name, ReferenceKind::Feature, ReferenceRole::ChainTarget, context, false, nullptr,
+            position, [chain](const std::shared_ptr<KerML::Entities::Feature>& feature) { chain->setTargetFeature(feature); });
+        recorder.data.references.back().operand = operand;
+        return placeholder;
+    }
 }
 
 // Empty callbacks below are intentional for syntax wrappers and tokens whose
@@ -1378,6 +1390,25 @@ void KerMLListenerImplementation::enterOwned_feature_typing(KerMLParser::Owned_f
 void KerMLListenerImplementation::exitOwned_feature_typing(KerMLParser::Owned_feature_typingContext *ctx) {
     if (ParentStack.empty()) return;
     if (const auto instExpr = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(ParentStack.top())) {
+        if (ctx && ctx->general_type() && ctx->general_type()->owned_feature_chain() && SysMLv2::Files::isPlainInvocation(instExpr)) {
+            // The invoked type is a feature chain (`c.twice(5)`): as in the pilot's XMI the invocation owns the chain feature (through an
+            // OwningMembership, first of its relationships) and that feature is the instantiated type. The feature and its chainings were made
+            // by the rules of the chain (exitFeature_chain, exitOwned_feature_chaining), which ran before this one.
+            std::shared_ptr<KerML::Entities::Feature> chain;
+            auto owned = instExpr->ownedElements();
+            for (auto it = owned.rbegin(); it != owned.rend() && !chain; ++it) {
+                const auto candidate = std::dynamic_pointer_cast<KerML::Entities::Feature>(*it);
+                if (candidate && SysMLv2::Files::isArgumentParameter(candidate) && !candidate->ownedFeatureChaining().empty()) chain = candidate;
+            }
+            if (chain) {
+                owned.erase(std::remove(owned.begin(), owned.end(), chain), owned.end());
+                owned.insert(owned.begin(), chain);
+                instExpr->setOwnedElements(owned);
+                OwnershipKinds[chain.get()] = SysMLv2::Files::MembershipKind::Owning;
+                instExpr->setInstantiatedType(chain);
+                return;
+            }
+        }
         if (ctx && ctx->general_type()) {
             std::string typeName = ctx->general_type()->getText();
             // A plain invocation or constructor owns a non-owning membership of the invoked type as first owned relationship. The
@@ -3434,9 +3465,12 @@ void KerMLListenerImplementation::exitFeatureChainExpr(KerMLParser::FeatureChain
                 [expr](const std::shared_ptr<KerML::Entities::Feature>& feature) { expr->setTargetFeature(feature); });
             placeholder->setDeclaredName(target);
             expr->setTargetFeature(placeholder);
-        } else {
-            // The left operand is a computed value: no scoped lookup is attempted for the target.
+        } else if (tooLong || expr->argument().empty()) {
+            // (the text of the left operand is too long to be looked at: the target is not resolved)
             expr->setTargetFeature(notAttemptedFeature(Recorder, target, scope, ctx->feature_reference_member()));
+        } else {
+            // The left operand is a computed value: the target is a feature of its static result type, which the resolver finds out (ChainTarget).
+            expr->setTargetFeature(chainTargetFeature(Recorder, target, scope, expr->argument().front(), ctx->feature_reference_member(), expr));
         }
     }
     attachExpression(expr);

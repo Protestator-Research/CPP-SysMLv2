@@ -10,6 +10,7 @@ project(sysmlv2evaluation CXX)
 
 find_package(nlohmann_json REQUIRED)
 find_package(Boost REQUIRED)
+find_package(Threads REQUIRED)
 
 set(GLOBAL_HEADER
         include/sysmlv2/evaluation/sysmlv2evaluation_global.h)
@@ -28,6 +29,8 @@ add_library(sysmlv2evaluation
         ${API_HEADER}
         src/Arguments.cpp
         src/Arguments.h
+        src/Callables.cpp
+        src/Callables.h
         src/CompilerSupport.h
         src/EvaluationContext.cpp
         src/ModelLevel.cpp
@@ -36,15 +39,20 @@ add_library(sysmlv2evaluation
         src/Evaluator.cpp
         src/FunctionRegistry.cpp
         src/QualifiedName.cpp
+        src/StackRunner.cpp
+        src/StackRunner.h
         src/Value.cpp
         src/functions/BaseFunctions.cpp
         src/functions/ControlFunctions.cpp
         src/functions/DataFunctions.cpp
+        src/functions/ScalarFunctions.cpp
+        src/functions/SequenceFunctions.cpp
         src/functions/FunctionSupport.h
         src/functions/StandardFunctions.h)
 
 target_link_libraries(sysmlv2evaluation
-        PUBLIC kerml Boost::headers nlohmann_json::nlohmann_json)
+        PUBLIC kerml Boost::headers nlohmann_json::nlohmann_json
+        PRIVATE Threads::Threads)
 
 target_include_directories(sysmlv2evaluation PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

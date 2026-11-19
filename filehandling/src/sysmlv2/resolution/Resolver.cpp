@@ -2,6 +2,7 @@
 // Scoped, qualified name resolution over the union of all sources of a Workspace. See Resolver.h.
 //
 #include <limits>
+#include <typeinfo>
 #include "Resolver.h"
 #include "ImplicitGenerals.h"
 
@@ -9,6 +10,19 @@
 #include <kerml/root/elements/Relationship.h>
 #include <kerml/root/namespaces/Namespace.h>
 #include <kerml/kernel/functions/ReturnParameterMembership.h>
+#include <kerml/kernel/functions/Function.h>
+#include <kerml/kernel/expressions/ConstructorExpression.h>
+#include <kerml/kernel/expressions/FeatureChainExpression.h>
+#include <kerml/kernel/expressions/FeatureReferenceExpression.h>
+#include <kerml/kernel/expressions/IndexExpression.h>
+#include <kerml/kernel/expressions/InstantiationExpression.h>
+#include <kerml/kernel/expressions/InvocationExpression.h>
+#include <kerml/kernel/expressions/NullExpression.h>
+#include <kerml/core/features/Redefinition.h>
+#include <kerml/kernel/featurevalues/FeatureValue.h>
+#include <kerml/kernel/functions/Expression.h>
+#include <kerml/kernel/expressions/OperatorExpression.h>
+#include <kerml/kernel/expressions/SelectExpression.h>
 
 #include <algorithm>
 #include <cstdint>
@@ -146,6 +160,8 @@ namespace SysMLv2::Files::Detail {
             int maxLevel = std::numeric_limits<int>::max();
             /// The owned members of this scope are not candidates (the redefinition of a feature does not find its owner's own members).
             const Scope* skipOwnedOf = nullptr;
+            /// The scope of a feature whose value expression the reference is written in: the lookup of the first segment does not start there.
+            const Scope* skipStart = nullptr;
         };
         using Visited = std::vector<std::pair<const Scope*, unsigned>>;
 
@@ -629,15 +645,39 @@ namespace SysMLv2::Files::Detail {
             return lookupIn(scope, name, access, q, visited);
         }
 
+        /// The members that the element of @p scope inherits from its implicit general types only (not its own members, imports or declared general types).
+        std::shared_ptr<Element> lookupImplicitOnly(const Scope* scope, const std::string& name, const Query& q) const {
+            if (!scope || !scope->element) return nullptr;
+            Query inheritedQuery = q;
+            inheritedQuery.skipStart = nullptr;
+            std::vector<std::shared_ptr<Element>> candidates;
+            for (const auto& general : implicitGeneralsOf(scope->element)) {
+                Visited visited;
+                if (auto found = lookupIn(scopeFor(general.get()), name, Access::Inherit, inheritedQuery, visited)) {
+                    if (dynamic_cast<const Feature*>(found.get()) == nullptr) return found;
+                    candidates.push_back(std::move(found));
+                }
+            }
+            return candidates.empty() ? nullptr : mostSpecific(candidates);
+        }
+
         /// Candidates for the first segment of a name: the local namespace, then each enclosing namespace, then the global namespace.
         bool forEachStartCandidate(const Scope* start, bool globalOnly, const std::string& name, const Query& q,
                                    const std::function<bool(const std::shared_ptr<Element>&)>& callback) const {
             std::unordered_set<const Element*> seen;
             if (!globalOnly) {
                 for (const Scope* scope = start; scope; scope = scope->parent) {
+                    if (scope == q.skipStart) continue;
                     if (auto found = lookupIn(scope, name, Access::Local, q)) {
                         if (seen.insert(found.get()).second && callback(found)) return true;
                     }
+                }
+            }
+            // The members that every feature has through the implicit general types of the pilot's specializations (`self`, `that`) come after the
+            // enclosing namespaces: `feature this default self` inside Occurrence is Occurrence::self, which Occurrence owns, not Anything::self.
+            if (q.skipStart != nullptr) {
+                if (auto found = lookupImplicitOnly(q.skipStart, name, q)) {
+                    if (seen.insert(found.get()).second && callback(found)) return true;
                 }
             }
             auto it = global.find(name);
@@ -673,6 +713,7 @@ namespace SysMLv2::Files::Detail {
             Query middle;
             middle.kind = ReferenceKind::Namespace;
             middle.maxLevel = finalQuery.maxLevel;
+            middle.skipStart = finalQuery.skipStart;
             forEachStartCandidate(start, globalOnly, segments[0], middle, [&](const std::shared_ptr<Element>& candidate) {
                 std::shared_ptr<Element> current = candidate;
                 for (size_t i = 1; i < segments.size(); ++i) {
@@ -690,6 +731,38 @@ namespace SysMLv2::Files::Detail {
             return result;
         }
 
+        /// The scope of the feature whose value expression @p pending is written in (the expression is the value of its FeatureValue), else null.
+        /// A name in the value expression of a feature is looked up from the namespace that owns the feature, not in the feature itself: the members
+        /// that the feature has through its own types (`attribute xUnit : LengthUnit = mRefs#(1)` does not mean the `mRefs` of LengthUnit) are not
+        /// visible there. (This is what the pilot implementation binds: for the 46 references of the standard library that it changes, the 42 new
+        /// bindings are those of the pilot's XMI, and none of the 32 that go is.)
+        const Scope* valueOwnerScope(const PendingReference& pending) const {
+            const Element* current = pending.context.get();
+            // (the link of the feature chain of an invoked type, or any other plain feature that an expression owns)
+            if (current != nullptr && typeid(*current) == typeid(Feature)) {
+                const auto owner = current->owner();
+                if (owner && dynamic_cast<const KerML::Entities::Expression*>(owner.get()) != nullptr) current = owner.get();
+            }
+            // (the reference is written directly in the value: the parser records the feature value as its context)
+            if (dynamic_cast<const KerML::Entities::FeatureValue*>(current) != nullptr) {
+                const auto owner = current->owner();
+                return owner && dynamic_cast<const Feature*>(owner.get()) != nullptr ? scopeFor(owner.get()) : nullptr;
+            }
+            while (current != nullptr && dynamic_cast<const KerML::Entities::Expression*>(current) != nullptr) {
+                const auto next = current->owner();
+                if (next && dynamic_cast<const KerML::Entities::Expression*>(next.get()) == nullptr) {
+                    if (dynamic_cast<const Feature*>(next.get()) == nullptr) return nullptr;
+                    for (const auto& relationship : next->ownedRelationship()) {
+                        const auto value = std::dynamic_pointer_cast<KerML::Entities::FeatureValue>(relationship);
+                        if (value && value->value().get() == current) return scopeFor(next.get());
+                    }
+                    return nullptr;
+                }
+                current = next.get();
+            }
+            return nullptr;
+        }
+
         std::shared_ptr<Element> resolveReference(const PendingReference& pending) const {
             bool globalOnly = false;
             const auto segments = splitName(pending.name, globalOnly);
@@ -699,6 +772,7 @@ namespace SysMLv2::Files::Detail {
             finalQuery.kind = pending.kind;
             finalQuery.exclude = canonical(pending.specific);
             finalQuery.maxLevel = levelOfSource(pending.source);
+            finalQuery.skipStart = valueOwnerScope(pending);
 
             if (pending.role == ReferenceRole::Redefinition && segments.size() == 1 && start && start->element) {
                 noteInheritance(start->element.get());
@@ -768,13 +842,13 @@ namespace SysMLv2::Files::Detail {
             std::vector<PendingReference*> todo;
             for (const PendingReference* reference : pending) {
                 if (reference && reference->resolved && reference->placeholder && reference->resolvedTarget &&
-                    reference->placeholder != reference->resolvedTarget && !isChain(reference->name)) {
+                    reference->placeholder != reference->resolvedTarget && !isChain(reference->name) && reference->role != ReferenceRole::ChainTarget) {
                     setRedirect(*reference, reference->resolvedTarget);
                 }
             }
             for (PendingReference* reference : pending) {
                 if (!reference) continue;
-                if (reference->role == ReferenceRole::NotAttempted) continue;
+                if (reference->role == ReferenceRole::NotAttempted || reference->role == ReferenceRole::ChainTarget) continue;   // (chain targets: resolveChainTargets())
                 if (reference->resolved) {
                     seedGenerals(*reference);
                 } else {
@@ -899,7 +973,298 @@ namespace SysMLv2::Files::Detail {
                     break;
                 }
             }
+            total += resolveChainTargets(pending, shouldStop);
             return total;
+        }
+
+        // ---------------------------------------------------------------------------------------------------------------
+        // The targets of feature chains whose left operand is not a plain name chain
+        // ---------------------------------------------------------------------------------------------------------------
+
+        /// The static result type of an expression: the namespaces (features and types) in which a name that follows the expression with a `.` is
+        /// looked up. The expression has several when its value is one of several (the members of a sequence, the branches of a conditional): the
+        /// name must be found in each of them.
+        struct StaticType {
+            /// The type is known (every part of the expression has a result type that is resolved); false: nothing is attempted.
+            bool known = false;
+            /// No namespace of it is open: each has a general type that is declared, and none of the generalizations it (or one of its general
+            /// types) is waiting for is unresolved. Only a complete type can lack a feature for good.
+            bool complete = true;
+            std::vector<std::shared_ptr<Element>> namespaces;
+        };
+
+        /// The result parameter of a function (the feature of its return parameter membership), looked up in the function and its general types.
+        std::shared_ptr<Feature> resultParameterOf(const std::shared_ptr<Element>& function) const {
+            std::vector<std::shared_ptr<Element>> stack{function};
+            std::unordered_set<const Element*> seen;
+            while (!stack.empty()) {
+                const auto current = stack.back();
+                stack.pop_back();
+                if (!current || !seen.insert(current.get()).second) continue;
+                for (const auto& relationship : current->ownedRelationship()) {
+                    if (!dynamic_cast<const KerML::Entities::ReturnParameterMembership*>(relationship.get())) continue;
+                    for (const auto& related : relationship->ownedRelatedElement()) {
+                        if (auto feature = std::dynamic_pointer_cast<Feature>(related)) return feature;
+                    }
+                }
+                auto gens = generals.find(canonical(current));
+                if (gens == generals.end()) continue;
+                for (auto it = gens->second.rbegin(); it != gens->second.rend(); ++it) stack.push_back(*it);
+            }
+            return nullptr;
+        }
+
+        /// The expressions that stand for the operands of an expression (the arguments of an invocation or operator).
+        static std::vector<std::shared_ptr<KerML::Entities::Expression>> operandsOf(const std::shared_ptr<Element>& expression) {
+            if (const auto instantiation = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(expression)) return instantiation->argument();
+            return {};
+        }
+
+        /// Whether @p element is a general type that is not resolved yet (or a placeholder).
+        bool isOpen(const std::shared_ptr<Element>& element) const {
+            if (!element || isUnresolved(element)) return true;
+            std::vector<const Element*> stack{canonical(element)};
+            std::unordered_set<const Element*> seen;
+            while (!stack.empty()) {
+                const Element* current = stack.back();
+                stack.pop_back();
+                if (!seen.insert(current).second) continue;
+                // (an element that is not indexed any more: the source it was in was replaced, and a reference of a source that was not replaced
+                // may still point to it)
+                if (scopeFor(current) == nullptr) return true;
+                const auto pendingIt = pendingGenerals.find(current);
+                if (pendingIt != pendingGenerals.end() && pendingIt->second > 0) return true;
+                auto gens = generals.find(current);
+                if (gens == generals.end()) continue;
+                for (const auto& general : gens->second) stack.push_back(canonical(general));
+            }
+            return false;
+        }
+
+        StaticType staticTypeOf(const std::shared_ptr<Element>& root) const {
+            StaticType result;
+            // (a worklist instead of recursion: a sequence of 100000 elements is nested as deep, and so is a row of indexings)
+            std::vector<std::shared_ptr<Element>> work{root};
+            size_t steps = 0;
+            const auto add = [&](const std::shared_ptr<Element>& ns, bool needsDeclaredGeneral) {
+                if (!ns || isUnresolved(ns)) return false;
+                result.namespaces.push_back(ns);
+                if (isOpen(ns)) result.complete = false;
+                if (needsDeclaredGeneral) {
+                    // (a feature without a declared type has the type its value suggests, which is not looked at: not for good)
+                    const auto gens = generals.find(canonical(ns));
+                    if (gens == generals.end() || gens->second.empty()) result.complete = false;
+                }
+                return true;
+            };
+            while (!work.empty()) {
+                if (++steps > 4000000) return StaticType();
+                const auto expression = work.back();
+                work.pop_back();
+                if (!expression) return StaticType();
+                // (`null` is the empty sequence: it has no value that could lack the feature)
+                if (std::dynamic_pointer_cast<KerML::Entities::NullExpression>(expression)) continue;
+                if (const auto reference = std::dynamic_pointer_cast<KerML::Entities::FeatureReferenceExpression>(expression)) {
+                    if (!add(reference->referent(), true)) return StaticType();
+                } else if (const auto chain = std::dynamic_pointer_cast<KerML::Entities::FeatureChainExpression>(expression)) {
+                    if (!add(chain->targetFeature(), true)) return StaticType();
+                } else if (const auto index = std::dynamic_pointer_cast<KerML::Entities::IndexExpression>(expression)) {
+                    // `v#(1)`: an element of the value of `v`, which has its type
+                    const auto operands = operandsOf(index);
+                    if (operands.empty()) return StaticType();
+                    work.push_back(operands.front());
+                } else if (const auto select = std::dynamic_pointer_cast<KerML::Entities::SelectExpression>(expression)) {
+                    // `v.?{...}`: some of the elements of the value of `v`
+                    const auto operands = operandsOf(select);
+                    if (operands.empty()) return StaticType();
+                    work.push_back(operands.front());
+                } else if (const auto op = std::dynamic_pointer_cast<KerML::Entities::OperatorExpression>(expression)) {
+                    const auto operands = operandsOf(op);
+                    const std::string& name = op->operatorName();
+                    if (name == "," && operands.size() == 2) {
+                        work.push_back(operands[1]);
+                        work.push_back(operands[0]);
+                    } else if (name == "if" && operands.size() == 3) {
+                        work.push_back(operands[2]);
+                        work.push_back(operands[1]);
+                    } else if (name == "as" && operands.size() == 2) {
+                        const auto cast = std::dynamic_pointer_cast<KerML::Entities::InstantiationExpression>(operands[1]);
+                        if (!cast || !add(cast->instantiatedType(), false)) return StaticType();
+                    } else {
+                        // (the function of an operator is bound after the resolution: its result type is not known here)
+                        return StaticType();
+                    }
+                } else if (const auto constructor = std::dynamic_pointer_cast<KerML::Entities::ConstructorExpression>(expression)) {
+                    if (!add(constructor->instantiatedType(), false)) return StaticType();
+                } else if (const auto invocation = std::dynamic_pointer_cast<KerML::Entities::InvocationExpression>(expression)) {
+                    auto type = invocation->instantiatedType();
+                    // (an invoked type that is a feature chain, `c.twice(5)`: the result of its last feature)
+                    if (const auto chainFeature = std::dynamic_pointer_cast<Feature>(type); chainFeature && !chainFeature->chainingFeature().empty() && typeid(*chainFeature) == typeid(Feature)) {
+                        type = chainFeature->chainingFeature().back();
+                        if (!type || isUnresolved(type)) return StaticType();
+                    } else if (!type || isUnresolved(type) || !std::dynamic_pointer_cast<KerML::Entities::Function>(type)) {
+                        return StaticType();
+                    }
+                    const auto parameter = resultParameterOf(type);
+                    if (!parameter) return StaticType();
+                    if (!add(parameter, true)) return StaticType();
+                    if (isOpen(type)) result.complete = false;
+                } else {
+                    return StaticType();
+                }
+            }
+            result.known = !result.namespaces.empty();
+            return result;
+        }
+
+        /// The feature itself and the features it redefines, directly or not (only redefinitions: a feature that is merely subsetted is another
+        /// feature, which the members of a sequence do not share).
+        static std::vector<std::shared_ptr<Element>> redefinitionAncestors(const std::shared_ptr<Element>& start) {
+            std::vector<std::shared_ptr<Element>> result;
+            std::vector<std::shared_ptr<Element>> stack{start};
+            while (!stack.empty()) {
+                const auto current = stack.back();
+                stack.pop_back();
+                if (!current || isUnresolved(current) || std::find(result.begin(), result.end(), current) != result.end()) continue;
+                result.push_back(current);
+                if (const auto feature = std::dynamic_pointer_cast<Feature>(current)) {
+                    for (const auto& redefinition : feature->ownedRedefinition()) {
+                        if (redefinition) stack.push_back(redefinition->redefinedFeature());
+                    }
+                }
+            }
+            return result;
+        }
+
+        /// The feature that the name stands for in every namespace of the type: the same one in all of them, or, where they differ, the nearest
+        /// feature that all of them redefine (`(q1, q2).r` with `q1::r` and `q2::r` that redefine `Q::r` is `Q::r`; features that only subset a common
+        /// one are not the same feature). Null if the name is not found in one of them, or if the features have no single nearest common redefined
+        /// feature; @p unrelated tells the second case (every namespace has the name, but there is no feature to stand for it).
+        std::shared_ptr<Element> chainMember(const StaticType& type, const std::vector<std::string>& segments, const Scope* start, int maxLevel,
+                                             bool& unrelated) const {
+            unrelated = false;
+            std::vector<std::shared_ptr<Element>> found;
+            for (const auto& ns : type.namespaces) {
+                std::shared_ptr<Element> current = ns;
+                for (size_t i = 0; i < segments.size(); ++i) {
+                    const Scope* scope = scopeFor(current.get());
+                    if (!scope) return nullptr;
+                    Query query;
+                    query.kind = i + 1 == segments.size() ? ReferenceKind::Feature : ReferenceKind::Namespace;
+                    query.maxLevel = maxLevel;
+                    current = lookupIn(scope, segments[i], encloses(scope, start) ? Access::Local : Access::Public, query);
+                    if (!current) return nullptr;
+                }
+                found.push_back(std::move(current));
+            }
+            if (found.empty()) return nullptr;
+            bool same = true;
+            for (const auto& feature : found) same = same && feature == found.front();
+            if (same) return found.front();
+            // the common ancestors, and of those the ones that no other common ancestor is a redefinition of
+            std::vector<std::shared_ptr<Element>> common = redefinitionAncestors(found.front());
+            for (size_t i = 1; i < found.size() && !common.empty(); ++i) {
+                const auto ancestors = redefinitionAncestors(found[i]);
+                common.erase(std::remove_if(common.begin(), common.end(),
+                                            [&](const std::shared_ptr<Element>& candidate) { return std::find(ancestors.begin(), ancestors.end(), candidate) == ancestors.end(); }),
+                             common.end());
+            }
+            std::vector<std::shared_ptr<Element>> nearest;
+            for (const auto& candidate : common) {
+                bool general = false;
+                for (const auto& other : common) {
+                    if (other == candidate) continue;
+                    const auto ancestors = redefinitionAncestors(other);
+                    general = std::find(ancestors.begin(), ancestors.end(), candidate) != ancestors.end();
+                    if (general) break;
+                }
+                if (!general) nearest.push_back(candidate);
+            }
+            if (nearest.size() != 1) {
+                unrelated = true;
+                return nullptr;
+            }
+            return nearest.front();
+        }
+
+        /// The names of the types of a static type, for a message: a type is named by itself, a feature by its declared types (or its own name).
+        std::string typeNamesOf(const StaticType& type) const {
+            std::string names;
+            for (const auto& ns : type.namespaces) {
+                std::string name;
+                if (dynamic_cast<const Feature*>(ns.get()) != nullptr) {
+                    const auto gens = generals.find(canonical(ns));
+                    if (gens != generals.end()) {
+                        for (const auto& general : gens->second) {
+                            if (dynamic_cast<const Feature*>(general.get()) == nullptr && !isUnresolved(general) && general->declaredName()) {
+                                name = *general->declaredName();
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (name.empty()) name = ns->declaredName().value_or("<unnamed>");
+                const std::string quoted = "'" + name + "'";
+                if (names.find(quoted) != std::string::npos) continue;
+                names += (names.empty() ? "" : ", ") + quoted;
+            }
+            return names;
+        }
+
+        /// Resolves the references with the role ChainTarget (after all other references: they need the types that those resolved). Chains
+        /// that depend on another (`(a.b).c.d`) are repeated until nothing changes. A reference that resolved in an earlier run is checked again:
+        /// the types may be those of a source that was replaced meanwhile; if it no longer resolves, the model gets its placeholder back.
+        size_t resolveChainTargets(const std::vector<PendingReference*>& pending, const std::function<bool()>& shouldStop) {
+            std::vector<PendingReference*> chains;
+            for (PendingReference* reference : pending) {
+                if (reference && reference->role == ReferenceRole::ChainTarget) chains.push_back(reference);
+            }
+            if (chains.empty()) return 0;
+            size_t resolvedNow = 0;
+            for (size_t round = 0; round <= chains.size(); ++round) {
+                bool changed = false;
+                size_t visited = 0;
+                for (PendingReference* reference : chains) {
+                    if (shouldStop && (++visited & 0xF) == 0 && shouldStop()) throw ResolveDeadlineReached();
+                    std::shared_ptr<Element> target;
+                    bool absent = false;
+                    bool unrelated = false;
+                    const StaticType type = reference->operand ? staticTypeOf(reference->operand) : StaticType();
+                    if (type.known) {
+                        bool globalOnly = false;
+                        const auto segments = splitName(reference->name, globalOnly);
+                        const Scope* start = scopeFor(reference->context.get());
+                        try {
+                            if (!segments.empty() && !segments.front().empty()) {
+                                target = chainMember(type, segments, start, levelOfSource(reference->source), unrelated);
+                            }
+                        } catch (...) {
+                            target = nullptr;
+                        }
+                        absent = !target && type.complete && !unrelated;   // (features that no feature stands for: the evaluator finds them by name per member)
+                    }
+                    reference->absent = absent;
+                    reference->absentIn = absent ? typeNamesOf(type) : std::string();
+                    if (target == reference->resolvedTarget && reference->resolved == (target != nullptr)) continue;
+                    changed = true;
+                    if (target) {
+                        if (!reference->resolved) ++resolvedNow;
+                        reference->resolved = true;
+                        reference->resolvedTarget = target;
+                    } else {
+                        reference->resolved = false;
+                        reference->resolvedTarget = nullptr;
+                    }
+                    if (reference->apply) {
+                        try {
+                            reference->apply(target ? target : reference->placeholder);
+                        } catch (...) {
+                        }
+                    }
+                }
+                if (!changed) break;
+            }
+            return resolvedNow;
         }
 
         std::unordered_map<const Element*, std::string> provisionalNames;

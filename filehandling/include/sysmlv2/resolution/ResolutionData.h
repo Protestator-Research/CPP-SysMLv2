@@ -61,7 +61,16 @@ namespace SysMLv2::Files {
         Import,
         /// A reference that is recorded (so that it is reported) but for which no scoped resolution is attempted yet
         /// (for example the parameter names of named invocation arguments).
-        NotAttempted
+        NotAttempted,
+        /// The target of a feature chain `left.name` whose left operand is not a plain name chain (`(a, b).r`, `f(x).y`, `(x as T).f`):
+        /// PendingReference::operand is the left operand, and the name is looked up among the features of its static result type (see Resolver.h).
+        /// Resolved after all other references. If the type is not known the reference is reported as not attempted, as before; if the type is
+        /// known and has no such feature (PendingReference::absent) it is an unresolved reference like those of plain feature chains.
+        /// Where the members of a sequence or the branches of an `if` have different features of that name, the target is the nearest feature that all of
+        /// them redefine; if there is none (features that only subset a common one, or unrelated ones) it stays not attempted. Features that the type
+        /// imports count as its members. The type of an operator expression, of the invocation of a behavior (`A().y`) and of a unary `as T` is not
+        /// known: those chains stay not attempted.
+        ChainTarget
     };
 
     /**
@@ -141,6 +150,13 @@ namespace SysMLv2::Files {
         /// The reference is written in the bounds of a multiplicity (`[kg]`, `[n]`). Does not change how it is resolved; it lets the workspace
         /// warn when a unit stands there (the unit belongs after the value).
         bool inMultiplicity = false;
+        /// ChainTarget: the left operand of the chain (an expression of the model).
+        std::shared_ptr<KerML::Entities::Element> operand;
+        /// Set by the resolver. ChainTarget: the static type of the operand is known and has no feature of that name (or several that are
+        /// unrelated); the reference is then reported as unresolved instead of not attempted.
+        bool absent = false;
+        /// ChainTarget with `absent`: the name(s) of the type(s) of the operand in which the name was looked up (for the message).
+        std::string absentIn;
         /// Set by the resolver.
         std::shared_ptr<KerML::Entities::Element> resolvedTarget;
         /// Index of the source (Workspace) this reference was recorded for; set by the workspace.

@@ -2144,3 +2144,31 @@ TEST(TestSysMLLiterals, StringTokensOfAnnotationsShareTheDecoding) {
     EXPECT_NE(bad.second[0]->description().find("invalid escape sequence"), std::string::npos);
     EXPECT_TRUE(SysMLv2::Files::Parser::parseSysMLv2("package P { doc locale \"en\" /* it says \\n and \"quotes\" */ }").second.empty());
 }
+
+// The direction of a parameter that is written in front of a redefinition or a subsetting without a name or a kind keyword (`in :>> x;`) is recorded.
+TEST(TestSysMLParser, DirectionInFrontOfARedefinitionWithoutANameIsRecorded) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseSysMLv2(
+        "package P { part def A { in x; out y; inout z; in attribute w; } part def B :> A { in :>> x; out :>> y; inout :>> z; in attribute :>> w; in :> x; "
+        "in ref :>> x; in x2 :>> x; feature f in :>> x; :>> x; } action def Act { in a; out b; } action def Act2 :> Act { in :>> a; out :>> b; } "
+        "calc def C { in v; } calc def C2 :> C { in :>> v; } }");
+    EXPECT_TRUE(errors.empty()) << (errors.empty() ? "" : errors[0]->description());
+    // the features of B in the order of the text: the redefinitions without a name are the ones with a redefinition and no name
+    const auto features = listenerElements<KerML::Entities::Feature>(elements);
+    const auto directionsOfOwner = [&](const char* owner) {
+        std::vector<std::string> directions;
+        for (const auto& feature : features) {
+            const auto parent = feature->owner();
+            if (!parent || parent->declaredName() != std::string(owner) || feature->ownedRedefinition().empty() && feature->ownedSubsetting().empty()) continue;
+            if (!feature->declaredName().has_value() || !feature->ownedRedefinition().empty() || !feature->ownedSubsetting().empty()) {
+                directions.push_back(!feature->direction() ? "none" : *feature->direction() == KerML::Entities::IN ? "in" : *feature->direction() == KerML::Entities::OUT ? "out" : "inout");
+            }
+        }
+        return directions;
+    };
+    const auto b = directionsOfOwner("B");
+    ASSERT_GE(b.size(), 9u);
+    // in :>> x, out :>> y, inout :>> z, in attribute :>> w, in :> x, in ref :>> x, in x2 :>> x, feature f in :>> x, :>> x
+    EXPECT_EQ(std::vector<std::string>(b.begin(), b.begin() + 9), (std::vector<std::string>{"in", "out", "inout", "in", "in", "in", "in", "in", "none"}));
+    EXPECT_EQ(directionsOfOwner("Act2"), (std::vector<std::string>{"in", "out"}));
+    EXPECT_EQ(directionsOfOwner("C2"), (std::vector<std::string>{"in"}));
+}

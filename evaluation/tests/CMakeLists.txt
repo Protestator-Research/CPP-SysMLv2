@@ -7,7 +7,8 @@ add_executable(sysmlv2evaluation-test
         TestDataFunctions.cpp
         TestBaseFunctions.cpp
         TestControlFunctions.cpp
-        TestEvaluator.cpp)
+        TestEvaluator.cpp
+        TestUserFunctions.cpp)
 target_link_libraries(sysmlv2evaluation-test sysmlv2evaluation kerml sysmlv2interfaces nlohmann_json::nlohmann_json Boost::headers gtest::gtest)
 target_include_directories(sysmlv2evaluation-test PRIVATE
         ../../kerml/include

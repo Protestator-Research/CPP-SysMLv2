@@ -153,53 +153,13 @@ namespace SysMLv2::Evaluation::Functions {
 
         // Ordering ---------------------------------------------------------------------------------------------------------------
 
-        struct Ordered {
-            enum class Kind { Number, String, Infinity } kind = Kind::Number;
-            Number number;
-            std::string text;
-        };
-
-        std::optional<Ordered> toOrdered(const Value& value) {
-            Ordered ordered;
-            if (const auto number = toNumber(value)) {
-                ordered.number = *number;
-                return ordered;
-            }
-            if (const auto text = value.asString()) {
-                ordered.kind = Ordered::Kind::String;
-                ordered.text = *text;
-                return ordered;
-            }
-            if (value.size() == 1 && std::holds_alternative<Infinity>(value.items().front())) {
-                ordered.kind = Ordered::Kind::Infinity;
-                return ordered;
-            }
-            return std::nullopt;
-        }
-
-        /// Orders two operands; nullopt if they are not comparable (a String with a number).
-        std::optional<Order> compare(const Ordered& a, const Ordered& b) {
-            using Kind = Ordered::Kind;
-            if (a.kind == Kind::Infinity || b.kind == Kind::Infinity) {
-                if (a.kind == Kind::String || b.kind == Kind::String) return std::nullopt;
-                if (a.kind == b.kind) return Order::Equal;
-                return a.kind == Kind::Infinity ? Order::Greater : Order::Less;   // (Infinity is greater than every number)
-            }
-            if (a.kind != b.kind) return std::nullopt;
-            if (a.kind == Kind::String) {
-                const int comparison = a.text.compare(b.text);   // (by code unit)
-                return comparison < 0 ? Order::Less : (comparison > 0 ? Order::Greater : Order::Equal);
-            }
-            return compareNumbers(a.number, b.number);
-        }
-
         StrictFunction comparison(std::string name, bool (*accepts)(Order)) {
             return [name = std::move(name), accepts](EvaluationContext& context, const Arguments& arguments) {
                 if (!checkArity(context, name, arguments.size(), 2, 2)) return Value();
                 if (anyNull(arguments)) return Value();
                 const auto a = toOrdered(arguments[0]);
                 const auto b = toOrdered(arguments[1]);
-                const auto result = (a && b) ? compare(*a, *b) : std::nullopt;
+                const auto result = (a && b) ? compareOrdered(*a, *b) : std::nullopt;
                 if (!result) return typeError(context, name, arguments);
                 return Value::boolean(accepts(*result));
             };

@@ -2547,3 +2547,17 @@ TEST(TestKerMLModel, CollectionsStillRejectNullDuplicatesAndTooManyEntries) {
     EXPECT_EQ(appended.ownedElements().front(), entries.front());
     EXPECT_EQ(appended.ownedElements().back(), entries.back());
 }
+
+// The direction in front of a redefinition without a name or a kind keyword (`in :>> x;`) is recorded.
+TEST(TestKerMLParser, DirectionInFrontOfARedefinitionWithoutANameIsRecorded) {
+    const auto [elements, errors] = SysMLv2::Files::Parser::parseKerML(
+        "package P { class A { in feature x; out feature y; inout feature z; } class B :> A { in :>> x; out :>> y; inout :>> z; in feature x2 :>> x; feature x3 in :>> x; in :> x; :>> x; } }");
+    EXPECT_TRUE(errors.empty()) << (errors.empty() ? "" : errors[0]->description());
+    std::vector<std::string> directions;
+    for (const auto& element : elements) {
+        const auto feature = std::dynamic_pointer_cast<KerML::Entities::Feature>(element);
+        if (!feature || !feature->owner() || feature->owner()->declaredName() != std::string("B")) continue;
+        directions.push_back(!feature->direction() ? "none" : *feature->direction() == KerML::Entities::IN ? "in" : *feature->direction() == KerML::Entities::OUT ? "out" : "inout");
+    }
+    EXPECT_EQ(directions, (std::vector<std::string>{"in", "out", "inout", "in", "in", "in", "none"}));
+}
