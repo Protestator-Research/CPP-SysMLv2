@@ -506,6 +506,9 @@ namespace SysMLv2::API
 			bool loaded = false;
 			for (const auto& reference : Model->unresolvedReferences())
 			{
+				// (the name of a chain target is a member of a type, not of a package)
+				if (reference.role == SysMLv2::Files::ReferenceRole::ChainTarget)
+					continue;
 				if (loadStandardLibrary(packageOfReference(reference.name)))
 					loaded = true;
 			}
