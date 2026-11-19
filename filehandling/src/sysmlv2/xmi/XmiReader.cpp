@@ -781,9 +781,11 @@ namespace SysMLv2::Files {
         // The invoked type of an invocation that owns a feature chain (`c.twice(5)`: the first relationship is an OwningMembership of the chain feature).
         for (const auto& element : D.elements) {
             const auto invocation = std::dynamic_pointer_cast<K::InvocationExpression>(element);
-            if (!invocation || invocation->instantiatedType() || typeid(*invocation) != typeid(K::InvocationExpression)) continue;
+            const auto invocationRef = *invocation;
+            if (!invocation || invocation->instantiatedType() || typeid(invocationRef) != typeid(K::InvocationExpression)) continue;
             for (const auto& relationship : invocation->ownedRelationship()) {
-                if (!relationship || typeid(*relationship) != typeid(K::OwningMembership)) continue;
+                const auto relationshipRef = *relationship;
+                if (!relationship || typeid(relationshipRef) != typeid(K::OwningMembership)) continue;
                 const auto feature = std::dynamic_pointer_cast<K::Feature>(std::dynamic_pointer_cast<K::Membership>(relationship)->memberElement());
                 if (feature && !feature->ownedFeatureChaining().empty()) invocation->setInstantiatedType(feature);
                 break;

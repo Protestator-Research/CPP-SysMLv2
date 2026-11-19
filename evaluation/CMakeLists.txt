@@ -64,7 +64,7 @@ target_include_directories(sysmlv2evaluation PRIVATE
 if(MSVC)
     target_compile_options(sysmlv2evaluation PRIVATE /W4 /WX- /bigobj)
 else()
-    target_compile_options(sysmlv2evaluation PRIVATE -Wno-error=maybe-uninitialized -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
+    target_compile_options(sysmlv2evaluation PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
 endif()
 
 include(GNUInstallDirs)

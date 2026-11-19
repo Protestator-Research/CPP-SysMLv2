@@ -1099,7 +1099,9 @@ namespace SysMLv2::Files::Detail {
                 } else if (const auto invocation = std::dynamic_pointer_cast<KerML::Entities::InvocationExpression>(expression)) {
                     auto type = invocation->instantiatedType();
                     // (an invoked type that is a feature chain, `c.twice(5)`: the result of its last feature)
-                    if (const auto chainFeature = std::dynamic_pointer_cast<Feature>(type); chainFeature && !chainFeature->chainingFeature().empty() && typeid(*chainFeature) == typeid(Feature)) {
+                    const auto chainFeature = std::dynamic_pointer_cast<Feature>(type);
+                    const auto chainFeatureRef = *chainFeature;
+                    if (chainFeature && !chainFeature->chainingFeature().empty() && typeid(chainFeatureRef) == typeid(Feature)) {
                         type = chainFeature->chainingFeature().back();
                         if (!type || isUnresolved(type)) return StaticType();
                     } else if (!type || isUnresolved(type) || !std::dynamic_pointer_cast<KerML::Entities::Function>(type)) {

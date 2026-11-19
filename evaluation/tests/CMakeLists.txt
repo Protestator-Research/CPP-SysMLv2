@@ -16,6 +16,6 @@ target_include_directories(sysmlv2evaluation-test PRIVATE
 if(MSVC)
     target_compile_options(sysmlv2evaluation-test PRIVATE /W4 /WX- /bigobj)
 else()
-    target_compile_options(sysmlv2evaluation-test PRIVATE -Wno-error=maybe-uninitialized -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
+    target_compile_options(sysmlv2evaluation-test PRIVATE -Wall -Wextra -Wpedantic $<$<BOOL:${SYSMLV2_WERROR}>:-Werror>)
 endif()
 add_test(NAME sysmlv2evaluation COMMAND sysmlv2evaluation-test)
