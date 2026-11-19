@@ -51,7 +51,7 @@ add_library(sysmlv2evaluation
         src/functions/StandardFunctions.h)
 
 target_link_libraries(sysmlv2evaluation
-        PUBLIC kerml Boost::headers nlohmann_json::nlohmann_json
+        PUBLIC kerml Boost::headers nlohmann_json::nlohmann_json sysmlv2interfaces
         PRIVATE Threads::Threads)
 
 target_include_directories(sysmlv2evaluation PUBLIC
@@ -71,6 +71,14 @@ include(GNUInstallDirs)
 install(TARGETS sysmlv2evaluation ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS sysmlv2evaluation RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${GLOBAL_HEADER} ${API_HEADER} DESTINATION include/sysmlv2/evaluation)
+
+file(GLOB_RECURSE _source_list *.cpp* *.h* *.hpp*)
+foreach(_source IN ITEMS ${_source_list})
+    get_filename_component(_source_path "${_source}" PATH)
+    string(REPLACE "${CMAKE_SOURCE_DIR}" "" _group_path "${_source_path}")
+    string(REPLACE "/" "\\" _group_path "${_group_path}")
+    source_group("${_group_path}" FILES "${_source}")
+endforeach()
 
 if(BUILD_TESTING)
     find_package(GTest REQUIRED)
