@@ -212,6 +212,25 @@ namespace SysMLv2::Files {
          * @throws std::out_of_range if @p source is not the index of a source.
          */
         void setSourceLevel(size_t source, int level);
+
+        /**
+         * The base of the URLs that the ids of the packages of the library packages that are not declared `standard` are made of
+         * (KerML::Entities::vendorPackageId()): the id of such a top-level package is the name based UUID (version 5) of the base followed by the name of
+         * the package, in the namespace of the URLs, and what it owns gets the UUID of its path in the namespace of that id. The default is
+         * "https://sysml.protestator-research.com/"; a vendor replaces it with its own. The base is the same for KerML and SysML sources. An empty string is the
+         * default; a base that does not end with "/" gets one ("https://example.org/sysml" is "https://example.org/sysml/"); the stored value is the normalised one.
+         * The packages that are declared `standard` always use the URLs of the OMG. The new base is used by the next resolve(), which assigns the ids of
+         * the sources that were parsed already again (until then they have the ids of the old base); sources that are added later use it when they are parsed.
+         * Set it before the library sources are added to be sure that nobody sees an id of the old base.
+         *
+         * The ids of the library elements are assigned when a source is parsed and again by resolve(); they are final after resolve() (the
+         * name of an element can come from a reference that is only resolved then, for example the name of a feature that redefines another one,
+         * and an id that a source shares with an earlier source is taken away from the later one then). Elements that no name identifies keep random ids.
+         * Whoever indexes the elements by id has to do it after resolve().
+         */
+        void setLibraryVendorBase(const std::string& base);
+        /// The base of the URLs of the packages of the library packages that are not standard (see setLibraryVendorBase()), normalised.
+        const std::string& libraryVendorBase() const;
         /// The level of a source (see setSourceLevel()).
         int sourceLevel(size_t source) const;
 
@@ -227,7 +246,10 @@ namespace SysMLv2::Files {
          * Assumption: the other sources do not refer to the elements of the replaced source (a standard library does not
          * refer to a user model). A reference of another source that was resolved to an element of the old source keeps
          * that (now detached) element, and an unresolved reference of another source may be resolved to an element of the
-         * new source by the next resolve(). Replace such sources together, or build a new Workspace.
+         * new source by the next resolve(). Replace such sources together, or build a new Workspace. The ids of the library elements
+         * (setLibraryVendorBase()) that rest on such a reference are the same: an element of another source that is named after a feature
+         * it redefines keeps the id of the old name until that source is parsed again (they differ from those of a Workspace that is built
+         * from the same texts).
          *
          * Cost: if every other source has a lower level (setSourceLevel()) than all the sources that were replaced since the last
          * resolve() (a document above its libraries), the next resolve() only takes the old versions out of the name index and indexes

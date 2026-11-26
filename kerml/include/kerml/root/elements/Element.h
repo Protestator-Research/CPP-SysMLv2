@@ -149,10 +149,23 @@ namespace KerML::Entities {
         [[nodiscard]] bool isImpliedIncluded() const;
 
         /**
-         * 
-         * @return
+         * The name of this Element (name(), the effective name) as it is written in a qualified name (KerML 1.0, 8.3.2.3.1): unchanged if it is a basic
+         * name (a letter or '_' followed by letters, digits and '_'; the reserved words are basic names as well), else in single quotes with
+         * the backslash and the single quote escaped by a backslash.
+         * An Element without a name is known by its short name (declaredShortName()), if it has one. The stored qualified name never counts.
+         * @return The escaped name, null if the Element has no name.
          */
         [[nodiscard]] std::optional<std::string> escapedName() const;
+
+        /**
+         * The qualified name of this Element computed from the ownership structure (KerML 1.0, 8.3.2.3.1): the escaped names of the owning
+         * namespaces from the root namespace on, separated by "::". Unlike qualifiedName(), which returns the string that was stored (JSON, or
+         * assigned by the service after parsing), nothing is cached: the result is always the one of the model as it is now.
+         * @return The qualified name, null if the Element is not owned by a Namespace (through an OwningMembership), if it or one of the
+         * owning namespaces below the root namespace has no name, or if a namespace owns a member with the same name before it (of
+         * the members with the same name only the first has a qualified name).
+         */
+        [[nodiscard]] std::optional<std::string> computeQualifiedName() const;
 
         /**
          * Returns the effective ShortName of this Element. By default it is the DeclaredShortName.
@@ -259,8 +272,10 @@ namespace KerML::Entities {
 
 
         /**
-         * Returns a unique description of the location of this specific element. Herby the conatining Structure is to consider.
-         * @return Description where the element is to be found.
+         * Returns a description of the location of this element in its model (KerML 1.0, 8.3.2.2.1): the qualified name if the element has one,
+         * else the path of the owning relationship followed by "/" and the 1-based position of the element in the owned related elements of that
+         * relationship, else "". It is the name that the name based ids of the elements of the model libraries are made of (see LibraryElementIds.h).
+         * @return The path of the element.
          */
         virtual std::string path();
 
@@ -336,6 +351,13 @@ namespace KerML::Entities {
          */
         std::string serializeToJson() override;
     protected:
+        /**
+         * The name that an Element gets from a redefinition that the model does not contain (the implied relationships are not elements of the
+         * model), for the paths of the model libraries only (escapedName()); name() and the name resolution do not use it. The default is none.
+         * @return The implied name, null if there is none.
+         */
+        [[nodiscard]] virtual std::optional<std::string> impliedName() const;
+
         /**
          *
          * @return
@@ -519,6 +541,9 @@ namespace KerML::Entities {
         void sortOwnedElements();
 
     private:
+        /// The name that escapedName() escapes: the declared name, the implied name, else the declared short name.
+        [[nodiscard]] std::optional<std::string> nameForPath() const;
+
         /**
          * 
          */

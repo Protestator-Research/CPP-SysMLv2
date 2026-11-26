@@ -24,7 +24,9 @@
 #include <kerml/kernel/expressions/OperatorExpression.h>
 #include <kerml/kernel/expressions/OperatorFunctions.h>
 #include <kerml/kernel/functions/Function.h>
+#include <kerml/kernel/packages/LibraryPackage.h>
 #include <kerml/kernel/packages/Package.h>
+#include <kerml/model/LibraryElementIds.h>
 #include <kerml/root/elements/NameEscaping.h>
 #include <kerml/root/elements/Relationship.h>
 #include <kerml/root/namespaces/Namespace.h>
@@ -697,6 +699,10 @@ namespace SysMLv2::Files {
             bool xmiLinked = false;
             size_t xmiLinkedEpoch = 0;
 
+            /// KerML and SysML sources: the elements that got the ids of the model libraries (see assignLibraryIds()). The ids of a library do not
+            /// change when they are exported.
+            std::unordered_set<KerML::Entities::Element*> libraryIds;
+
             /// An invocation of `elements` (bindFunctions()). The pointers do not own: `elements` does, and it does not change after the
             /// source is built; dispose() clears the list with it, and listInvocations() lists again if the count of the elements differs.
             struct Invocation {
@@ -738,8 +744,15 @@ namespace SysMLv2::Files {
         /// What stops the calls now: the deadline and the cancellation.
         Interrupt interrupt() const { return Interrupt{deadline, cancel}; }
 
+        /// Whether the sources changed since the ids of the model libraries were assigned last (a source was added or replaced, the levels or the index
+        /// changed): the names that the redefinitions give, and so the ids, can have changed, and resolve() assigns them again.
+        bool libraryIdsStale = false;
+        /// The base of the URLs of the ids of the packages of the libraries that are not standard (setLibraryVendorBase()), normalised.
+        std::string libraryVendorBase = KerML::Entities::normalizeLibraryVendorBase(std::string());
+
         /// Adds a finished source: at the end of the sources, and its ids to the XMI index.
         void appendSource(std::shared_ptr<Source> source) {
+            libraryIdsStale = true;
             sources.push_back(std::move(source));
             if (sources.back()->xmi) {
                 xmiIndex.add(*sources.back()->xmi);
@@ -750,6 +763,7 @@ namespace SysMLv2::Files {
 
         /// Throws the index away: the next resolve() or find() builds it again over all sources.
         void resetResolver() {
+            libraryIdsStale = true;
             resolver.reset();
             indexedSources = 0;
             replaced.clear();
@@ -1187,7 +1201,9 @@ namespace SysMLv2::Files {
                 options.keepsId = [this, userKeeps](const KerML::Entities::Element& element) {
                     if (userKeeps && userKeeps(element)) return true;
                     const size_t owner = lookup.sourceOf(element);
-                    return owner < impl.sources.size() && impl.sources[owner]->language == SourceLanguage::Xmi;
+                    if (owner >= impl.sources.size()) return false;
+                    // (the elements of the model libraries have the ids that the standard defines, whatever the file they were read from)
+                    return impl.sources[owner]->language == SourceLanguage::Xmi || impl.sources[owner]->libraryIds.count(const_cast<KerML::Entities::Element*>(&element)) != 0;
                 };
                 options.foreignId = [this](const KerML::Entities::Element& element) -> std::optional<std::string> {
                     const size_t other = lookup.sourceOf(element);
@@ -1586,6 +1602,7 @@ namespace SysMLv2::Files {
             source.invocationsOf = static_cast<size_t>(-1);
             source.elements.clear();
             source.topLevel.clear();
+            source.libraryIds.clear();
             source.root.reset();
             source.data = ResolutionData();
         }
@@ -1611,8 +1628,35 @@ namespace SysMLv2::Files {
             }
         }
 
+        /// Assigns the ids of the model libraries (KerML 1.0, 9.1: KerML::Entities::assignLibraryElementIds()) to the top-level library packages of a
+        /// KerML or SysML source and to the elements of them that a name identifies. A source that is read from XMI keeps the ids it came with, and the
+        /// packages that are not library packages keep their random ids. No id is given twice among the ids of @p taken: the element that comes later
+        /// keeps (or gets) a random id.
+        /// The ids depend on the names of the elements, which the redefinitions can give (a feature that redefines another one has its name), and those
+        /// are only known when the references are resolved (until then a reference is a placeholder named like the last segment of the reference): so this
+        /// is called when the source is parsed, which makes the ids that do not depend on a resolved reference (almost all of them) available at once, and
+        /// again by resolve(), after which the ids are final. The ids that are assigned before are only good for a source that is not shared yet. This happens
+        /// before anything indexes the elements by their ids: the workspace does not, and its users get the elements from it.
+        static void assignLibraryIds(Source& source, const std::string& vendorBase, std::set<boost::uuids::uuid>& taken) {
+            if (source.language != SourceLanguage::KerML && source.language != SourceLanguage::SysML) return;
+            const auto language = source.language == SourceLanguage::KerML ? KerML::Entities::LibraryLanguage::KerML : KerML::Entities::LibraryLanguage::SysML;
+            std::vector<KerML::Entities::Element*> assigned;
+            for (const auto& element : source.topLevel) {
+                if (KerML::Entities::getsLibraryIds(element)) {
+                    KerML::Entities::assignLibraryElementIds(element, language, &assigned, &taken, vendorBase);
+                }
+            }
+            // (an element that had an id of the model libraries and has none now, because its path became the one of another element, is not left with
+            // the old id, which the other element may have)
+            const std::unordered_set<KerML::Entities::Element*> now(assigned.begin(), assigned.end());
+            for (auto* element : source.libraryIds) {
+                if (now.count(element) == 0) element->assignElementId(boost::uuids::random_generator()());
+            }
+            source.libraryIds = now;
+        }
+
         /// The rest of makeSource(): the references of the parsed @p source are recorded for the source index @p index.
-        static void finishSource(const std::shared_ptr<Source>& source, size_t index) {
+        static void finishSource(const std::shared_ptr<Source>& source, size_t index, const std::string& vendorBase) {
             size_t order = 0;
             for (auto& reference : source->data.references) {
                 reference.source = index;
@@ -1620,6 +1664,8 @@ namespace SysMLv2::Files {
             }
             computeTopLevel(source);
             findRoot(source);
+            std::set<boost::uuids::uuid> taken;   // (the sources are parsed on several threads: the ids of the other sources are looked at by resolve())
+            assignLibraryIds(*source, vendorBase, taken);
         }
 
         /// Parses @p text into a new source whose references are recorded for the source index @p index.
@@ -1634,7 +1680,7 @@ namespace SysMLv2::Files {
                 }
             });
             if (failure) std::rethrow_exception(translated(failure));
-            finishSource(source, index);
+            finishSource(source, index, libraryVendorBase);
             return source;
         }
     };
@@ -1689,7 +1735,7 @@ namespace SysMLv2::Files {
                 try {
                     auto source = Impl::newSource(std::move(inputs[i].name), inputs[i].language, inputs[i].level);
                     impl_->parseInto(source, inputs[i].text);
-                    Impl::finishSource(source, base + i);
+                    Impl::finishSource(source, base + i, impl_->libraryVendorBase);
                     built[i] = std::move(source);
                     if (progress) {
                         std::lock_guard<std::mutex> lock(mutex);
@@ -1722,6 +1768,7 @@ namespace SysMLv2::Files {
     }
 
     void Workspace::replaceSource(size_t source, std::string text, SourceLanguage language) {
+        impl_->libraryIdsStale = true;
         const auto old = impl_->sources.at(source);
         if (language == SourceLanguage::Auto) language = old->language;
 
@@ -1904,6 +1951,33 @@ namespace SysMLv2::Files {
                 }
             }
         }
+
+        // What was resolved can give names to features (the redefinitions), and the ids of the model libraries are made of the names. Whether the name
+        // of a feature changed is not known for a source that was not touched (a chain of redefinitions that crosses sources can change in another one),
+        // so every source of the libraries is looked at when anything changed since the last time; the id of an element whose path is the same does not change.
+        // No id is shared by two sources: the ids that the elements of XMI sources came with are taken first (they keep them), then the sources in the order
+        // of the workspace, so that the elements of the earlier source keep the ids and the later ones are given random ones.
+        if (impl_->libraryIdsStale) {
+            impl_->libraryIdsStale = false;
+            std::set<boost::uuids::uuid> taken;
+            for (const auto& source : impl_->sources) {
+                if (!source->xmi) continue;
+                if (source->root) taken.insert(source->root->elementIdAsUUID());
+                for (const auto& element : source->elements) {
+                    if (element) taken.insert(element->elementIdAsUUID());
+                }
+            }
+            for (const auto& source : impl_->sources) Impl::assignLibraryIds(*source, impl_->libraryVendorBase, taken);
+        }
+    }
+
+    void Workspace::setLibraryVendorBase(const std::string& base) {
+        impl_->libraryVendorBase = KerML::Entities::normalizeLibraryVendorBase(base);
+        impl_->libraryIdsStale = true;
+    }
+
+    const std::string& Workspace::libraryVendorBase() const {
+        return impl_->libraryVendorBase;
     }
 
     void Workspace::setSourceLevel(size_t source, int level) {
