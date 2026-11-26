@@ -26,6 +26,11 @@ namespace KerML::Entities{
         OwningMembership();
         ~OwningMembership() override = default;
 
+        /**
+         * The path of an OwningMembership (KerML 1.0, 8.3.2.4.5): the qualified name of the owned member element followed by "/owningMembership"
+         * if that element has one; else the path of a Relationship.
+         * @return The path of the OwningMembership.
+         */
         std::string path() override;
 
 

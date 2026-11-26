@@ -297,6 +297,16 @@ namespace KerML::Entities {
 
     protected:
         /**
+         * The name of a Feature without name from the redefinitions that the model does not contain (Element::impliedName()): the name of the
+         * feature that it redefines (the first one, if its redefinition is part of the model), or, for the result parameter of a Function or an
+         * Expression (a feature that a ReturnParameterMembership owns), the name of the result parameter of the types its owner specializes
+         * (searched breadth first), in the end the result of Performances::Evaluation (KerML 1.0, 9.2.9): "result". (The implied redefinitions of
+         * the other parameters are not taken into account.)
+         * @return The implied name, null if there is none or if the Feature has a short name.
+         */
+        [[nodiscard]] std::optional<std::string> impliedName() const override;
+
+        /**
          * Populates the Feature from its JSON representation; the stored properties of Feature and of its base classes are read,
          * computed derived properties are ignored, the derived references that the model keeps as collections are read like the stored ones,
          * and references are only stored as ids.

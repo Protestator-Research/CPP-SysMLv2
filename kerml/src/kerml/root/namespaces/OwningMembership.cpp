@@ -31,8 +31,8 @@ namespace KerML::Entities
 
 	std::string OwningMembership::path()
 	{
-		//TODO Implement
-		return Membership::path();
+		// The rule of the OwningMembership is applied by Element::path(), together with the ones of the Relationship and of the Element.
+		return Element::path();
 	}
 
 	std::string OwningMembership::ownedMemberElementId()

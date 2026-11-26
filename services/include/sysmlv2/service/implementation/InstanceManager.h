@@ -99,6 +99,15 @@ namespace SysMLv2::API
 		StandardLibraryFormat standardLibraryFormat() const;
 
 		/**
+		 * The base of the URLs that the ids of the library packages that are not declared `standard` are made of (default
+		 * "https://sysml.protestator-research.com/", see SysMLv2::Files::Workspace::setLibraryVendorBase() for the rules: an empty string is the
+		 * default, a missing "/" at the end is added, white space around it is removed). Setting the base that is set already changes nothing. The ids of the elements of the standard library packages do not depend on it. Takes effect
+		 * with the next parseModel (or appendNonStandardLibrary): the workspace is built anew then.
+		 */
+		void setLibraryVendorBase(std::string base);
+		const std::string& libraryVendorBase() const;
+
+		/**
 		 * Sets the instance model and rebuilds everything (a fresh workspace: nothing of an earlier model is kept, the
 		 * non-standard libraries that were appended so far are parsed again with the new model). In the mode that keeps the standard
 		 * library (setReuseStandardLibrary()) only the sources of the model and of the libraries are replaced.
@@ -202,6 +211,8 @@ namespace SysMLv2::API
 		std::vector<std::string> NonStandardLibraries;
 
 		bool ReuseStandardLibrary = false;
+		/// The base of the URLs of the ids of the packages of the non-standard libraries (setLibraryVendorBase()), normalised.
+		std::string LibraryVendorBase;
 		StandardLibraryFormat LibraryFormat = StandardLibraryFormat::Xmi;
 		/// The format the workspace was built with: LibraryFormat, or the text for a model that defines a package of the standard library.
 		StandardLibraryFormat ActiveFormat = StandardLibraryFormat::Xmi;

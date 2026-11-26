@@ -210,6 +210,68 @@ namespace KerML::Entities
 		return Element::effectiveName();
 	}
 
+	namespace {
+		/// The name of the first return parameter that the types specialized by @p type (searched breadth first) own.
+		std::optional<std::string> inheritedResultName(const Type& type)
+		{
+			std::unordered_set<const Type*> visited{&type};
+			std::vector<const Type*> pending{&type};
+			for (std::size_t next = 0; next < pending.size(); ++next)
+			{
+				for (const auto& relationship : pending[next]->ownedRelationship())
+				{
+					const auto specialization = std::dynamic_pointer_cast<Specialization>(relationship);
+					const auto general = specialization ? specialization->general() : nullptr;
+					if (!general || !visited.insert(general.get()).second)
+						continue;
+					for (const auto& generalRelationship : general->ownedRelationship())
+					{
+						const auto returnMembership = std::dynamic_pointer_cast<ReturnParameterMembership>(generalRelationship);
+						const auto result = returnMembership ? returnMembership->ownedMemberElement() : nullptr;
+						// (the declared name, else the short name: not name(), whose fallback is the stored qualified name, and not the implied name,
+						// which would search the generals of the generals again)
+						if (result && result->declaredName().has_value())
+							return result->declaredName();
+						if (result && result->declaredShortName().has_value())
+							return result->declaredShortName();
+					}
+					pending.push_back(general.get());
+				}
+			}
+			return {};
+		}
+	}
+
+	std::optional<std::string> Feature::impliedName() const
+	{
+		if (declaredShortName().has_value())
+			return {};
+
+		// The name of the feature that this one redefines (KerML 8.3.3.3.4), as effectiveName() has it, but without the stored qualified name.
+		std::unordered_set<const Feature*> visited{this};
+		for (const Feature* current = this;;)
+		{
+			const auto naming = current->namingFeature();
+			if (!naming.has_value() || !naming.value() || !visited.insert(naming.value().get()).second)
+				break;
+			current = naming.value().get();
+			if (current->declaredName().has_value())
+				return current->declaredName();
+			if (current->declaredShortName().has_value())
+				break;
+		}
+
+		if (dynamic_cast<const ReturnParameterMembership*>(owningRelationship().get()) == nullptr)
+			return {};
+		const auto owner = std::dynamic_pointer_cast<Type>(owningRelationship()->owningRelatedElement());
+		if (owner)
+		{
+			if (const auto inherited = inheritedResultName(*owner); inherited.has_value())
+				return inherited;
+		}
+		return std::string("result");
+	}
+
 	std::optional<std::shared_ptr<Feature>> Feature::namingFeature() const
 	{
 		if (OwnedRedefinition.empty())

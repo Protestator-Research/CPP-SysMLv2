@@ -3,6 +3,7 @@
 //
 
 #include <kerml/root/elements/NameEscaping.h>
+#include <kerml/model/LibraryElementIds.h>
 #include <sysmlv2/service/implementation/InstanceManager.h>
 #include "../StandardLibraryTable.h"
 
@@ -207,7 +208,9 @@ namespace SysMLv2::API
 		}
 	}
 
-	InstanceManager::InstanceManager() = default;
+	InstanceManager::InstanceManager() : LibraryVendorBase(KerML::Entities::defaultLibraryVendorBase())
+	{
+	}
 
 	InstanceManager::~InstanceManager() = default;
 
@@ -226,6 +229,20 @@ namespace SysMLv2::API
 	{
 		LibraryFormat = format;
 		WorkspaceReusable = false; // a workspace with the library in the other format is not kept
+	}
+
+	void InstanceManager::setLibraryVendorBase(std::string base)
+	{
+		std::string normalised = KerML::Entities::normalizeLibraryVendorBase(base);
+		if (normalised == LibraryVendorBase)
+			return;
+		LibraryVendorBase = std::move(normalised);
+		WorkspaceReusable = false; // the ids of a workspace that was built with another base are not kept
+	}
+
+	const std::string& InstanceManager::libraryVendorBase() const
+	{
+		return LibraryVendorBase;
 	}
 
 	StandardLibraryFormat InstanceManager::standardLibraryFormat() const
@@ -344,6 +361,7 @@ namespace SysMLv2::API
 		UserSources.clear();
 		RootNamespace = nullptr;
 		Model = std::make_unique<SysMLv2::Files::Workspace>();
+		Model->setLibraryVendorBase(LibraryVendorBase);
 
 		// The instance model is the first source, the non-standard libraries follow, the standard library files come last. (In the mode that
 		// keeps the workspace the user sources have a level above the standard library.)

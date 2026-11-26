@@ -8,6 +8,10 @@
 #include <kerml/root/annotations/Documentation.h>
 #include <sysmlv2/rest/entities/JSONEntities.h>
 
+#include <algorithm>
+#include <string>
+#include <unordered_set>
+#include <vector>
 #include <utility>
 #include <stdexcept>
 #include <functional>
@@ -78,8 +82,88 @@ namespace KerML::Entities {
         return IsImpliedIncluded;
     }
 
+    std::optional<std::string> Element::impliedName() const {
+        return {};
+    }
+
+    std::optional<std::string> Element::nameForPath() const {
+        // The effective name, else the short name. The stored qualified name is never a name here: (the one of effectiveName() would make
+        // the path of an element depend on whether a service assigned the qualified names).
+        if (!DeclaredName.empty())
+            return DeclaredName;
+        if (!Name.empty())
+            return Name;
+        if (auto implied = impliedName(); implied.has_value())
+            return implied;
+        if (!DeclaredShortName.empty())
+            return DeclaredShortName;
+        return {};
+    }
+
     std::optional<std::string> Element::escapedName() const{
-        return std::string();
+        const std::optional<std::string> effective = nameForPath();
+        if (!effective.has_value())
+            return {};
+
+        // A basic name is written as it is (the reserved words are basic names here: the qualified names of the model libraries,
+        // which the ids of their elements are made of, do not quote them), any other name in single quotes.
+        const std::string& text = effective.value();
+        const bool startsLikeBasicName = !text.empty() && !(text[0] >= '0' && text[0] <= '9');
+        const bool isBasicName = startsLikeBasicName && std::all_of(text.begin(), text.end(), [](char c) {
+            return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_';
+        });
+        if (isBasicName)
+            return text;
+
+        std::string escaped = "'";
+        for (const char c : text) {
+            if (c == '\\' || c == '\'')
+                escaped.push_back('\\');
+            escaped.push_back(c);
+        }
+        escaped.push_back('\'');
+        return escaped;
+    }
+
+    std::optional<std::string> Element::computeQualifiedName() const {
+        // The names are collected from this Element up to the root namespace and joined in the opposite order (no recursion: the
+        // ownership of a model can be very deep).
+        std::vector<std::string> names;
+        std::unordered_set<const Element*> visited;
+        const Element* current = this;
+        for (;;) {
+            if (!visited.insert(current).second)
+                return {};   // an ownership cycle: no qualified name
+            const std::shared_ptr<Namespace> owningNamespace = current->owningNamespace();
+            if (!owningNamespace)
+                return {};
+            const std::optional<std::string> escaped = current->escapedName();
+            if (!escaped.has_value())
+                return {};
+            // Of the members of a namespace that have the same name only the first has a qualified name.
+            const auto membership = current->owningRelationship();
+            for (const auto& relationship : owningNamespace->ownedRelationship()) {
+                if (relationship == membership)
+                    break;
+                const auto earlier = std::dynamic_pointer_cast<OwningMembership>(relationship);
+                const auto member = earlier ? earlier->ownedMemberElement() : nullptr;
+                if (member && member.get() != current && member->escapedName() == escaped)
+                    return {};
+            }
+            names.push_back(escaped.value());
+            // The root namespace is the one that is not owned by a relationship: it adds no segment.
+            if (!owningNamespace->owningRelationship())
+                break;
+            current = owningNamespace.get();
+        }
+
+        std::string result;
+        for (auto it = names.rbegin(); it != names.rend(); ++it) {
+            if (!result.empty())
+                result += "::";
+            result += *it;
+        }
+        return result;
     }
 
     std::optional<std::string> Element::effectiveShortName() const{
@@ -322,10 +406,60 @@ namespace KerML::Entities {
 
     std::string Element::path()
     {
-        if (libraryNamespace())
-            return libraryNamespace()->path() + "::" + escapedName().value();
-        else
-            return escapedName().value();
+        // The path follows the ownership up to the first Element that has a qualified name (or to the root): the position suffixes are collected
+        // on the way and appended in the opposite order. This is the whole of path(), Relationship::path() and OwningMembership::path():
+        // the rules of the three classes are applied here by the type of the Element in the chain (no recursion: the ownership of a model
+        // can be very deep).
+        std::vector<std::string> suffixes;
+        std::unordered_set<const Element*> visited;
+        std::string base;
+        Element* current = this;
+        for (;;) {
+            if (!visited.insert(current).second)
+                break;   // an ownership cycle: the path ends here
+
+            // Element::path(): the qualified name, if there is one.
+            if (const auto qualified = current->computeQualifiedName(); qualified.has_value()) {
+                base = qualified.value();
+                break;
+            }
+            // OwningMembership::path(): the qualified name of the owned member element, if there is one.
+            if (const auto* membership = dynamic_cast<OwningMembership*>(current)) {
+                const auto member = membership->ownedMemberElement();
+                if (member) {
+                    if (const auto qualified = member->computeQualifiedName(); qualified.has_value()) {
+                        base = qualified.value() + "/owningMembership";
+                        break;
+                    }
+                }
+            }
+            // Relationship::path(): owned by an element and not by a relationship.
+            if (auto* relationship = dynamic_cast<Relationship*>(current)) {
+                const auto owningElement = relationship->owningRelatedElement();
+                if (!relationship->OwningRelationship && owningElement) {
+                    const auto& siblings = owningElement->OwnedRelationships;
+                    const auto position = std::find_if(siblings.begin(), siblings.end(),
+                        [relationship](const std::shared_ptr<Relationship>& sibling) { return sibling.get() == relationship; });
+                    suffixes.push_back("/" + std::to_string(position == siblings.end() ? 0 : position - siblings.begin() + 1));
+                    current = owningElement.get();
+                    continue;
+                }
+            }
+            // Element::path(): owned by a relationship.
+            if (current->OwningRelationship) {
+                const auto siblings = current->OwningRelationship->ownedRelatedElement();
+                const auto position = std::find_if(siblings.begin(), siblings.end(),
+                    [current](const std::shared_ptr<Element>& sibling) { return sibling.get() == current; });
+                suffixes.push_back("/" + std::to_string(position == siblings.end() ? 0 : position - siblings.begin() + 1));
+                current = current->OwningRelationship.get();
+                continue;
+            }
+            break;   // not owned: the path is empty
+        }
+
+        for (auto it = suffixes.rbegin(); it != suffixes.rend(); ++it)
+            base += *it;
+        return base;
     }
 
     bool Element::includes(std::shared_ptr<Element>) {

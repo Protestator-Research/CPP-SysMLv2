@@ -218,6 +218,18 @@ target_compile_definitions(conformance-xmi PRIVATE
 add_test(NAME conformance-xmi COMMAND conformance-xmi)
 set_tests_properties(conformance-xmi PROPERTIES LABELS xmi)
 
+# The ids of the elements of the model libraries (KerML 1.0, 9.1): escapedName() and path(), the two id functions, the ids that the Workspace assigns to the
+# library packages of the text it parses, and the standard library parsed from its text against the ids of the official XMI files.
+add_executable(conformance-library-ids
+        src/ids/TestLibraryElementIds.cpp)
+target_link_libraries(conformance-library-ids ${CONFORMANCE_LIBRARY_LINK_LIBS})
+target_include_directories(conformance-library-ids PRIVATE ${CONFORMANCE_LIBRARY_INCLUDE_DIRS} ../sysml/include)
+target_compile_definitions(conformance-library-ids PRIVATE
+        SYSML_LIBRARY_DIR="${CMAKE_SOURCE_DIR}/resources/sysml.library"
+        SYSML_LIBRARY_XMI_DIR="${CMAKE_SOURCE_DIR}/resources/sysml.library.xmi")
+add_test(NAME conformance-library-ids COMMAND conformance-library-ids)
+set_tests_properties(conformance-library-ids PROPERTIES LABELS library-ids)
+
 # Benchmark of the InstanceManager and of the Workspace on the standard library (text and XMI). It is a tool, not a test: no add_test.
 # Usage: conformance-benchmark [--runs=N] [--only=1,2,3,4,5] [--modes=...], see src/benchmark/BenchmarkInstanceManager.cpp.
 add_executable(conformance-benchmark
